@@ -1,0 +1,35 @@
+.container {
+  font-family: sans-serif;
+}
+
+.container__input {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.container__title {
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.icon {
+  position: absolute;
+  left: 10px;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.397);
+}
+
+.ti-16 {
+  text-indent: 1.2rem;
+}
+
+.separator {
+  border-top: 1px solid rgba(34, 34, 34, 0.336);
+  height: 2px;
+  width: 90%;
+  padding: 0;
+  margin: 20px auto 0 auto;
+}
