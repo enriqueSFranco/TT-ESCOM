@@ -8,6 +8,8 @@ django = "*"
 psycopg2-binary = "*"
 django-environ = "*"
 django-freeze = "*"
+django-simple-history = "*"
+pillow = "*"
 
 [dev-packages]
 
