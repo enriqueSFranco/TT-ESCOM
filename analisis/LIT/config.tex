@@ -1,0 +1,105 @@
+
+
+\setImgPortada[0.9]{LIT/LIT-banner}
+\setImgHeader[40pt]{LIT/headerPar}{LIT/headerImp}
+%\setImgPleca{LIT/LIT-footer}
+%\setImgLogo{LIT/logo}{LIT/logo}
+%\setDireccion{Flores Magon \#82 B-402, Edificion Lopez Mateos, Nonoalco Tlatelolco, Delegación Cuauhtemoc, cp: 06900, CDMX}
+%\setTelefono{Correo del TT }
+%\setCorreo{email del TT }
+
+%\AtBeginDocument{%
+%    \ThisURCornerWallPaper{0.3}{LIT/LIT}%
+%}
+
+
+%===== Comandos específicos del proyecto GRP =====
+
+%% Los siguientes comandos se utilizan para indicar el tipo de mensaje que se muestra en la pantalla.
+%% Esto crea una referencia al diseño de los mensajes.
+%%
+%% Ejemplo: \begin{mensaje}{MSG2}{Confirmar registro}{\MSGConfirmacion}...
+%%
+%% Salida: MSG2 Confirmar registro Tipo: Confirmación
+
+\newcommand{\MSGConfirmacion}{%
+	\hyperref[fig:interaccion:msg-confirmacion]{Mensaje emergente de confirmación}%
+}
+
+\newcommand{\MSGExito}{%
+	\hyperref[fig:interaccion:msg-toast-exito]{Mensaje emergente de éxito}%
+}
+
+\newcommand{\MSGInfo}{%
+	\hyperref[fig:interaccion:msg-toast-info]{Mensaje emergente de información}%
+}
+
+\newcommand{\MSGAlerta}{%
+	\hyperref[fig:interaccion:msg-toast-alerta]{Mensaje emergente de alerta}%
+}
+
+\newcommand{\MSGError}{%
+	\hyperref[fig:interaccion:msg-toast-error]{Mensaje emergente de error}%
+}
+
+\newcommand{\MSGCampoError}{%
+	\hyperref[fig:interaccion:msg-campo-error]{Mensaje de error en campo}%
+}
+
+\newcommand{\MSGTooltip}{%
+	\hyperref[fig:interaccion:msg-tooltip]{Mensaje emergente de ayuda}%
+}
+
+\newcommand{\MSGTexto}{%
+	\hyperref[fig:interaccion:msg-texto]{Mensaje de texto en pantalla}%
+}
+
+\newcommand{\MSGNotif}{%
+	\hyperref[fig:interaccion:msg-notif]{Mensaje de notificación}%
+}
+
+%% El comando \UCerrCamposReq se utiliza para mostrar un error común en la tabla del CU
+%% indicando el motivo del error, la reacción del sistema, la pantalla en la que se muestra y el paso en el que contúa
+%% de la trayectoria principal.
+%%
+%% Recibe 4 parámetros:
+%%		1. Número de error: Uno, Dos, Tres, Cuatro...
+%%		2. Mensaje que se muestra dependiendo del error: MSG1, MSG2...
+%%		3. Pantalla en la que se muestra el mensaje: CH-EM-IU1...
+%%		4. Referencia al paso de la trayectoria principal en el que continúa después de mostrar el mensaje: \ref{paso}...
+%%
+%% Ejemplo: \UCerrCamposReq{Uno}{MSG1}{CH-EM-IU1}{\ref{paso}}
+%%
+%% Salida: Uno: Cuando el actor no ingresó todos los los campos requeridos. Muestra el mensaje MSG1 debajo de los campos correcpondientes en la pantalla CH-EM-IU1 
+%%				y continúa en el paso 3 de la trayectoria principal.
+
+%Error de campos requeridos omitidos
+\newcommand{\UCerrCamposReq}[4]{%
+	\UCerr{#1}%
+	{Cuando el actor no ingresó todos los campos requeridos.}%
+	{el sistema muestra el mensaje \refElem{#2} debajo de los campos correspondientes en la pantalla \refElem{#3} y continúa en el paso #4 de la trayectoria principal.}%
+}
+
+%Error de tipo de dato inválido
+\newcommand{\UCerrTipoDato}[4]{%
+	\UCerr{#1}%
+	{Cuando el actor ingresó algún dato que no coincide con el tipo de dato especificado en el modelo de información.}%
+	{el sistema muestra el mensaje \refElem{#2} debajo de los campos correspondientes en la pantalla \refElem{#3} y continúa en el paso #4 de la trayectoria principal.}%
+}
+
+%Error de longitud
+\newcommand{\UCerrLongitud}[4]{%
+	\UCerr{#1}%
+	{Cuando el actor ingresó algún dato que no coincide con la longitud especificada en el modelo de información.}%
+	{el sistema muestra el mensaje \refElem{#2} debajo de los campos correspondientes en la pantalla \refElem{#3} y continúa en el paso #4 de la trayectoria principal.}%
+}
+
+%Error de formato
+\newcommand{\UCerrFormato}[4]{%
+	\UCerr{#1}%
+	{Cuando el actor ingresó algún dato que no coincide con el formato especificado en el modelo de información.}%
+	{el sistema muestra el mensaje \refElem{#2} debajo de los campos correspondientes en la pantalla \refElem{#3} y continúa en el paso #4 de la trayectoria principal.}%
+}
+
+%------------------------------------------------
+

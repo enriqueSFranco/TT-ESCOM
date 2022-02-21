@@ -1,0 +1,174 @@
+%!TEX root = ../example.tex
+\chapter{Modelo de Información}
+\label{ch:modInfo}
+
+En este paquete se encuentran todas las entidades y datos del Alumno de acuerdo a la toma de requerimientos hasta esta iteración del proyecto, muchas de las cuales son resultado de las relaciones entre el Alumno y los catálogos generales del CALMÉCAC.
+
+\section{Alumno}
+
+\begin{cdtEntidad}{Alumno}{Alumno}{%
+    Un alumno es una persona inscrita en algún programa académico que se imparta en cualquier nivel educativo y modalidad educativa que ofrece el Instituto Politécnico Nacional.}
+
+	\brAttr{nombre}{Nombre}{tFrase}{Representa la palabra o conjunto de palabras con las que se designan y se distinguen a una persona esta inscrita en algún programa académico impartido en el Instituto.}{\datOpcional}
+	\brAttr{primerApellido}{Primer Apellido}{tFrase}{Representa la palabra o conjunto de palabras que sigue al nombre de pila de una persona y que se transmite de padres a hijos.}{\datOpcional}
+	\brAttr{segundoApellido}{Segundo Apellido}{tFrase}{Representa la palabra o conjunto de palabras que sigue al primer apellido de una persona y que se transmite de padres a hijos.}{\datOpcional}
+	\brAttr{CURP}{CURP}{tPalabra}{Representa la clave alfanumérica compuesta de 18 caracteres que permite identificar a un ciudadano residente de México. En el Instituto es otro de los mecanismos que ayudan a identificar a una persona que esta inscrito a algún programa académico impartido en el Instituto.}{\datOpcional}
+	\brAttr{fechaDeNacimiento}{Fecha de Nacimiento}{tFecha}{Es la fecha que, en el Acta de Nacimiento de una persona, establece el día en que nació.}{\datOpcional}
+	\brAttr{fechaDeUltimaActualizacion}{Fecha de Última Actualización}{tFecha}{Indica la fecha en la que en el sistema se llevo a cabo una modificación o actualización en los datos o relaciones de una persona con otras entidades.}{\datOpcional}
+	\brAttr{fotografia}{Fotografía}{tArchivo}{Es el conjunto de datos almacenados dentro de una extensión especifican que contiene una imagen del rostro del Alumno. }{\datOpcional}
+	\cdtEntityRelSection
+	\brRel{\brRelComposition}{ContactoPersonal}{Indica los contactos asociados a un alumno.}
+	\brRel{\brRelComposition}{ContactoDeAlumno}{Indica la informacion de contacto de un alumno.}
+	\brRel{\brRelComposition}{InformacionMedica}{Indica el toda la informacion medica de un alumno.}
+	\brRel{\brRelComposition}{AlumnoAsegurado}{Indica la información de la aseguradora a la que esta asociado el alumno.}
+	\brRel{\brRelComposition}{DocumentoDeIdentidad}{Indica los documetnos de identificación del Alumno.}
+	\brRel{\brRelComposition}{Domicilio}{Indica la dirección del alumno.}
+	
+\end{cdtEntidad}
+
+
+\begin{cdtEntidad}{Domicilio}{Domicilio}{%
+    Consiste en el lugar donde la persona (física o jurídica) tiene su residencia con el ánimo real o presunto de permanecer en ella.}
+	
+	\brAttr{colonia}{Colonia}{tFrase}{Lugar donde se establece un grupo de personas.}{\datOpcional}		
+	\brAttr{calle}{Calle}{tFrase}{Vía de una población que generalmente queda limitada}{\datOpcional}
+	\brAttr{numExt}{Número Exterior}{tFrase}{Valor que asignado que identifica la vivienda correspondiente a la calle }{\datOpcional}
+	\brAttr{numInt}{Número Interior}{tFrase}{Valor que asignado que identifica una vivienda dentro de una unidad habilitación.}{\datOpcional}
+	\brAttr{cp}{Codigo Postal}{tEntero}{Combinación de números que se asigna a una población y a las distintas zonas dentro de ella para hacer más fácil la clasificación}{\datOpcional}
+	\cdtEntityRelSection
+	\brRel{\brRelComposition}{Alumno}{Un alumno esta compuesto por una dirección.}
+	
+\end{cdtEntidad}
+
+
+\begin{cdtEntidad}[Un alumno asegurado es un alumno que esta afiliado a una insitución médica y que cuenta  con un numero de seguro social.]{AlumnoAsegurado}{Alumno Asegurado}
+	
+	\brAttr{numeroDeSeguridad}{Número de seguridad}{tPalabra}{El número de seguridad es el número de seguro social.}{\datOpcional}	
+	\brAttr{ingreso}{Ingreso}{tFecha}{Indica la fecha con la que se registro el seguro.}{\datOpcional}
+	\brAttr{vigencia}{Vigencia}{tFecha}{Indica la fehca de vencimiento del seguro}{\datOpcional}
+	\cdtEntityRelSection
+	\brRel{\brRelComposition}{Alumno}{Es la información asociada a al seguro social del alumno.}
+	
+\end{cdtEntidad}
+
+\begin{cdtEntidad}{InformacionMedica}{Información Médica}{%
+    Situación médica general en la cual se encuentra un alumno}
+	
+	\brAttr{peso}{Peso}{tFlotante}{Indica el peso del estudiante en kilos.}{\datOpcional}	
+	\brAttr{estatura}{Estatura}{tFlotante}{Especifica la altura de un alumno en metros.}{\datOpcional}
+	\brAttr{piePlano}{Tiene pie plano}{tBooleano}{Indica si un alumno tiene o no el pie plano.}{\datOpcional}	
+	\brAttr{estaTatuado}{Esta Tatuado}{tBooleano}{Indica si un alumno tiene o no algún tatuaje.}{\datOpcional}
+	\brAttr{observaciones}{Observaciones}{tTexto}{Indica si el alumno tiene alguna discapacidad medica.}{\datOpcional}	
+	\cdtEntityRelSection
+	\brRel{\brRelComposition}{Alumno}{Es toda la inforamción médica asociada a un alumno.}
+	
+\end{cdtEntidad}
+
+\begin{cdtEntidad}{ContactoDeAlumno}{Contacto de Alumno}{%
+    Contiene la información de los contactos que un alumno tenga registrados en el Calmécac.}
+	
+	\brAttr{dato}{Dato}{tPalabra}{Con forme al tipo de contacto que un alumno registre este campo puede tomar diferentes valores. En el caso de ser un teléfono éste contendrá el número telefónico, si es un correo contendrá la dirección de éste, si es una red social indica el URL de la página y en caso de ser un número celular contendrá el número celular.}{\datOpcional}	
+	\brAttr{auxiliarA}{Auxiliar A}{tPalabra}{Con forme al tipo de contacto que un alumno registre este campo puede tomar diferentes valores. En el caso de ser un teléfono éste contendrá el número de lada, si es un correo se indicará si es principal o secundario, si es una red social indica la red social y en caso de ser un número celular contendrá el número clave del interior de la república.}{\datOpcional}
+	\brAttr{auxiliarB}{Auxiliar B}{tPalabra}{Para éste campo se indica la extensión de un número telefónico en caso de ser otro tipo de contacto éste campo no se usa.}{\datOpcional}	
+	\cdtEntityRelSection
+	\brRel{\brRelComposition}{ContactoPersonal}{Un contacto que un alumno tenga registrado tiene un tipo de contacto como puede ser celular, red social, correo o telefono.}
+	
+\end{cdtEntidad}
+
+\begin{cdtEntidad}{ContactoPersonal}{Contacto Personal}{%
+    Contiene la información de un contacto que un alumno tenga registrado, se persiste el nombre completo del contacto y se indica si éste es el tutor del alumno.}
+	
+	\brAttr{nombre}{Nombre}{tFrase}{Representa la palabra o conjunto de palabras con las que se designan y se distinguen a una persona que es registrado como contacto personal de un alumno.}{\datOpcional}
+	\brAttr{primerApellido}{Primer Apellido}{tFrase}{Representa la palabra o conjunto de palabras que sigue al nombre de pila de una persona y que se transmite de padres a hijos.}{\datOpcional}
+	\brAttr{segundoApellido}{Segundo Apellido}{tFrase}{Representa la palabra o conjunto de palabras que sigue al nombre de pila de una persona y que se transmite de padres a hijos.}{\datOpcional}
+	\brAttr{esTutor}{Es Tutor}{tBooleano}{Indica si el contacto personal del alumno es su tutor.}{\datOpcional}
+	\cdtEntityRelSection
+	\brRel{\brRelComposition}{Alumno}{Es el contacto al que esta asociado el alumno.}
+	\brRel{\brRelComposition}{ContactoDeAlumno}{Cada contacto personal tiene un tipo de contacto para comunicarce con el o ella.}
+\end{cdtEntidad}
+
+\begin{cdtEntidad}{ContactoDeTutor}{Contacto de Tutor}{%
+    Es el resultado de la relación entre. \refElem{ContactoPersonal} y \refElem{ContactoDeAlumno} y tiene como propósito almacenar los contactos con los que cuenta un contacto personal de un alumno.
+}
+\end{cdtEntidad}
+
+\begin{cdtEntidad}{EnfermedadEnInformacionMedica}{Enfermedad en Información Médica}{%
+    Es el resultado de la relación entre  Enfermedad e \refElem{InformacionMedica} y tiene como propósito almacenar las enfermedades con las que cuenta un alumno.}
+
+	\brAttr{fechaDeDeteccion}{Fecha de detección}{tFecha}{Indica la fecha en la que algun doctor o institución médica detecto la enfermedad.}{\datOpcional}
+	\brAttr{contagiosa}{Contagiosa}{tBooleano}{Indica si la enfermedad detectada se puede contagiar o no.}{\datOpcional}
+	\brAttr{observaciones}{Observaciones}{tFrase}{Muestra una descripción de la enfermedad.}{\datOpcional}
+	
+\end{cdtEntidad}
+
+\begin{cdtEntidad}{AlumnoConDeporte}{Alumno con Deporte}{%
+    Es el resultado de la relación entre TipoDeDeporte y \refElem{Alumno} y tiene como propósito señalar si el alumno realiza algún deporte.}
+\end{cdtEntidad}
+
+\begin{cdtEntidad}{DiscapacidadEnInformacionMedica}{Discapacidad en Información Médica}{%
+    Es el resultado de la relación entre TipoDeDiscapacidad e \refElem{InformacionMedica} y tiene como propósito señalar si el alumno tiene alguna discapacidad médica.}
+\end{cdtEntidad}
+
+
+\begin{cdtEntidad}{DocumentoDeIdentidad}{Documento de Identidad}{%
+    Es el número del acta de nacimiento, pasaporte, permiso de conducir, etc, cualquier número de un documento de identificación oficial.}
+	\cdtEntityRelSection
+	\brRel{\brRelComposition}{Alumno}{Un alumno cuenta con documentos validos de identificación.}
+\end{cdtEntidad}
+
+
+
+\section{Inscripciones}
+
+%\TODO: En el MDI cambiar Plan de Estudios por Plan de Estudio
+
+\begin{cdtEntidad}{AlumnoAsignado}{Alumno Asignado}{%
+    Es un aspirante o alumno que al haber aprobado el examen de Admisión y que cumple con los requisitos de la convocatoria correspondiente es asignado a un plan de estudio ofertado por una Unidad Académica en un periodo escolar. Tiene como propósito especificar si el aspirante tiene la documentación requerida para completar el proceso de Inscripción o si requiere realizar una corrección o si su asignación debe ser anulada.}
+	
+	\brAttr{observacionDeDocumento}{Observacion de documento}{tTexto}{Especifica las observaciones del personal de Gestión Escolar en caso de que no haya sido satisfactoria la entrega de documentos a un Aspirante una vez que haya completado su Inscripción y se le haya asignado su número de Boleta.}{\datOpcional}
+	\brAttr{folio}{Folio}{tPalabra}{Identificador del aspirante junto con Clave en el proceso, utilizado únicamente durante el proceso de admisión.}{\datRequerido}
+	\brAttr{preboleta}{Preboleta}{tPalabra}{Identificador del estudiante mientras no cuente con Boleta. Permite identificar el tipo u origen del alumno.}{\datOpcional}
+	\brAttr{boleta}{Boleta}{tPalabra}{Identificador del Alumno dentro del Instituto. Su asignación le permite tener todos los derechos como estudiante. Al no contar con Boleta al estudiante se le denomina Aspirante.}{\datOpcional}
+	\brAttr{fechaDeUltimaActualizacion}{Fecha de Última Actualización}{tFecha}{Indica fecha y hora de la última  actualización la información.}{\datOpcional}
+	\brAttr{fechaDeInicio}{Fecha de Inicio}{tFecha}{Indica la fecha en la que incio sus actividades en ese Programa Académico.}{\datOpcional}
+	\brAttr{fechaDeFin}{Fecha de Fin}{tFecha}{Indica la fecha en la que concluyo sus actividades en ese Programa Académico.}{\datOpcional}
+	\cdtEntityRelSection
+	\brRel{\brRelComposition}{DocumentoDeAsignacion}{A un Alumno Asignado se le entregan sus documentos al finalizar el proceso de Inscripción.}
+	\brRel{\brRelAgregation}{Alumno}{Un Alumno Asignado es un Alumno.}
+	\brRel{Asociacion}{AlumnoInscrito}{Un Alumno Asignado se le asigna una Unidad Académica.}
+	\brRel{\brRelAgregation}{PeriodoEscolar}{Un alumno se le asignan un periodo escolar.}
+	\brRel{\brRelAgregation}{PlanDeEstudio}{Un alumno se le asignan un plan de estudio.}
+	
+\end{cdtEntidad}
+
+
+\begin{cdtEntidad}{AlumnoInscrito}{Alumno Inscrito}{%
+    Es alumno que es asignado a un plan de estudio ofertado por una Unidad Académica en un periodo escolar. Tiene como propósito especificar si el aspirante tiene la documentación requerida para completar el proceso de Inscripción o si requiere realizar una corrección o si su asignación debe ser anulada.}
+
+	\brAttr{fechaInicio}{Fecha Inicio}{tFecha}{Indica la fecha en la que inicio sus actividades en esa Unidad Acaémica.}{\datOpcional}
+	\brAttr{fechaFin}{Fecha Fin}{tFecha}{Indica la fecha en la que inicio sus actividades en esa Unidad Acaémica}{\datOpcional}
+	\cdtEntityRelSection
+	\brRel{Asociacion}{Reinscripcion}{A un Alumno inscrito se le asignan unidades de aprendizaje.}
+	\brRel{Asociacion}{Reinscripcion}{A un Alumno inscrito es asignado a una Unidad Académica y se le asignan unidades de aprendizaje.}
+	
+\end{cdtEntidad}
+
+
+\begin{cdtEntidad}{TrayectorioDeAlumnoAsignado}{Trayectoria de Alumno Asignado}{%
+    Es el resultado de la relación de Estado de Trayectoria y Alumno Asignado.}
+	\brAttr{fechaDeCambio}{Fecha de Cambio}{tFecha}{Incia la fecha en la que se le asigno ese estado a un aspirante.}{\datOpcional}
+\end{cdtEntidad}
+
+
+\begin{cdtEntidad}{DocumentoDeAsignacion}{Documento de Asignación}{%
+    Son aquellos Documentos que le son entregados a un alumno al finalizar su proceso de Inscripción.}
+	\cdtEntityRelSection
+	\brRel{\brRelComposition}{AlumnoAsignado}{A un alumno asignado a una Unidad Académica y un Plan Académica se le entregan documentos que lo identifican en esa Unidad Académica.}
+\end{cdtEntidad}
+
+
+\begin{cdtEntidad}{ProcesoDeAdmision}{Proceso}{%
+    Es el proceso de admisión en el que concursó el alumno para ingresar al IPN}
+	\brAttr{nombre}{Nombre}{tPalabra}{Nombre con el que se identifica el proceso}{\datRequerido}
+\end{cdtEntidad}
+

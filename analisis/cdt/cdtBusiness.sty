@@ -1,0 +1,295 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Componente: cdtBusiness.sty
+%  Autor: Ulises Vélez Saldaña
+%  Fecha: 27 de Abril, 2017
+%  Versión: 1.1
+%  Biblioteca: cdt
+%  Capa: 5
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cdt/cdtBusiness}[2013/04/23, v1.0 CDT-ESCOM-IPN Paquete para escribir reglas de negocio]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\gdef\view{all}
+\DeclareOption{userView} {\gdef\view{all}}
+\DeclareOption{adminView}{\gdef\view{all,admin,control,design}}
+\DeclareOption{testView} {\gdef\view{all,design}}
+\DeclareOption*{\PackageWarning{cdt/cdtBusiness}{Unknown option ''\CurrentOption''}}
+\ProcessOptions\relax
+
+\RequirePackage{MnSymbol}
+\RequirePackage{environ}
+\RequirePackage{pbox}
+\RequirePackage{cdt/cdtPersistencia}
+\RequirePackage{cdt/cdtControl}
+
+%=====================================================
+% Ambiente: bGlosario
+% Definición del glosario de términos para el negocio
+%=====================================================
+% Ejemplo:
+%    \begin{bGlosario}
+%        \bTerm{id}{Término} Descripción
+%        ...
+%    \end{bGlosario} 
+%  @params:
+%    @required \bTerm
+%    @required   Id, clave o identificador del término
+%    @required   Termino, Nombre del termino a definir
+%    @required   Descripción, Definición del termino
+%
+\newenvironment{bGlosario}{\begin{Cdescription}}{\end{Cdescription}}
+\newcommand{\bTerm}[3][]{%
+    \item[{\cdtLabel{#2}{#3}}]%
+    \CrearVariablesInternas{#1}%
+    \cdtAddElement{#2}{#3}{\Autor}{\Version}{\Estado}%
+}
+
+%======================================================
+% Ambiente: cdtEntidad
+% Especifica los atributos y relaciones de una entidad.
+%======================================================
+% Ejemplos:
+%     \begin{cdtEntidad}[Resumen]{Id}{Nombre}
+%         \brAttr{Atributo}{AtributoNom}{Tipo}{Descripción}{Requerido}
+%         \brAttr{Atributo}{AtributoNom}{Tipo}{Descripción}{Requerido}
+%         ...
+%	      \cdtEntityRelSection
+%           \brRel{TipoRelación}{Entidad}{Descripción}
+%	        \brRel{\brRelComposition}{Entidad}{Descripción}
+%           ...
+%     \end{cdtEntidad}
+%  @params:
+%     @required Resumen, acerca de que representa la entidad que se esta especificando
+%     @required Id, identificador único para la entidad
+%     @required Nombre, a desplegar de la entidad
+%
+%     @required \brAttr, añade un renglon para especificar un atributo
+%     @required     Atributo, nombre clave del atributo
+%     @required     AtributoNom, nombre a desplegar del atributo
+%     @required     Tipo, tipo de dato del atributo
+%     @required     Descripción, acerca del atributo
+%     @required     Requerido, puede contener los valores \datOpcional o \datRequerido
+%
+%     @required \cdtEntityRelSection, indica que empieza la seccion de relaciones
+%     @required \brRel, indica una relación
+%     @required     TipoRelacion, puede tener los valores \brRelComposition, \brRelAgregation o \brRelGeneralization
+%     @required     Entidad, Nombre de la entidad con la que se relaciona
+%     @required     Descripción, especifica el rol que cumple la entidad en la relación
+%
+\def\varBusinessEntityId{}
+\def\varDataTypeId{}
+\newcommand{\datRequerido}{Si}
+\newcommand{\datOpcional}{No}
+\newcommand{\brRel}[3]{{\em{#1}} & {\bf\refElem{#2}} & \multicolumn{2}{p{0.54\textwidth}|}{#3}\\\hline}
+\newcommand{\brRelComposition}{{\color{colorPrincipal}$\filleddiamond$\hspace{-1pt}---Composición}}
+\newcommand{\brRelAgregation}{{\color{colorPrincipal}$\Diamond$\hspace{-1pt}---Agregación}}
+\newcommand{\brRelGeneralization}{{\color{colorPrincipal}$\lhd$\hspace{-1pt}---Generalización}}
+\newcommand{\brAttr}[5]{%
+    \cdtLabel{\varBusinessEntityId.#1}{{\bf #2}}\par#1\cdtAddElement{\varBusinessEntityId.#1}{#2}{\Autor}{\Version}{\Estado} &%
+    \refElem{#3} & {#4} & {#5}\\\hline%
+}
+\newcommand{\cdtEntityRelSection}{%
+    %\multicolumn{4}{|c|}{{\cellcolor{colorSecundario}\color{white}Relaciones}}\\\hline%
+    \rowcolor{colorSecundario}%
+    \multicolumn{4}{|c|}{\color{white}Atributos}\\\hline%
+    \rowcolor{colorAgua}%
+    Tipo de relación & Entidad & \multicolumn{2}{|c|}{Rol}
+    \setCurrentElementId{\varBusinessEntityId}\\\hline%
+}
+\newenvironment{cdtEntidad}[4][]{%
+    \gdef\varBusinessEntityId{#2}%
+    \CrearVariablesInternas{#1}%
+    \cdtAddElement{#2}{#3}{\Autor}{\Version}{\Estado}%
+%
+    \cdtLabel{#2}{\hspace{1pt}}%
+    \newline\noindent{\includegraphics[width=\textwidth]{cdt/uc/rules/classRule}}\vspace{-25pt}%
+    \section{Entidad: #3}%
+    \IfStrEq{\detokenize{#4}}{}{%
+        \hspace{0pt}%
+    }{%
+        \subsubsection{Resumen}{#4}%
+    }%
+        \noindent\begin{longtable}{|p{.2\textwidth} | p{.15\textwidth} | p{.5\textwidth} | p{.04\textwidth} |}\hline%
+            \rowcolor{colorSecundario}%
+            \multicolumn{4}{|c|}{\color{white}{Atributos}}\\\hline
+            \rowcolor{colorAgua}%
+            Nombre & Tipo & Descripción & Req.\\\hline\endhead%
+}{%
+        \end{longtable}%
+    \gdef\varBusinessEntityId{}%
+}
+
+%======================================================
+% Ambiente: BusinessRule
+% Especifica una regla de negocio.
+% NOTA: El tipo no se debe especificar si la regla es de clase \bcDerivation
+%======================================================
+% Ejemplos:
+%    \begin{BussinesRule}{Id}{Nombre}{Clase Tipo}{Fortaleza}
+%        \BRccitem{Versión}{ArgVersion}
+%        \BRccitem{Autor}{NombreAutor}
+%        \BRccitem{Evaluador}{NombreEvaluador}
+%        \BRccitem{Estado} ArgEstado
+%        \BRItem[Descripción] ArgDescripción
+%        \BRItem[Sentencia] ArgSentencia
+%        \BRItem[Motivación] ArgMotivación *
+%        \BRItem[Ejemplo Positivo] ArgEjemploP *
+%        \BRItem[Ejemplo Negativo] ArgEjemploN *
+%        \BRItem[Referenciado por]{ \refUC{idCU}, ... } **
+%    \end{BussinesRule}
+%
+%  @params:
+%    @required Id, identificador para la regla de negocio
+%    @required Nombre de la regla de negocio
+%    @required Clase, Indica la clase, puede tener los valores \bcCondition, \bcIntegridad \bcAutorization y \bcDerivation
+%    @required Tipo, Indica el tipo de regla de negocio, puede tener los valores \btEnabler \btTimer o \btExecutive
+%    @required Fortaleza, indica el nivel de la regla, puede tener los valores \blControlling o \blInfluencing
+%    @required \BRccitem, indica atributos para el control de revisiones y versiones
+%    @required     ArgVersion, Indica la versión actual de la regla de negocio
+%    @required     NombreAutor, Indica el nombre del Autor
+%    @required     NombreEvaluador, Indica el nombre del Evaluador
+%    @required     ArgEstado, Indica el estado actual (p.e, Terminada: 20 de Junio, 2012, Aprobada: 23 de Junio del 2012)
+%    @required \BRitem, añade un elemento de la especificación de la regla de negocio
+%    @required     ArgDescripción, Contiene una descripción de la regla
+%    @required     ArgSentencia, se define una regla en una sentencia formal (se recomienda usar notación matemática)
+%    @required     ArgEjemplo, Contiene un ejemplo de la regla de negocio
+%    @required     idCU, Indica con que casos de uso la regla está relacionada
+%
+\newcommand{\bcCondition}{De condición. {\color{gray}\em Establece una condicionante para una operación.}}
+\newcommand{\bcIntegridad}{De Integridad. {\color{gray}\em Garantiza la integridad de la información.}}
+\newcommand{\bcAutorization}{De Autorización {\color{gray}\em Autoriza o restringe la ejecución de una operación.}}
+\newcommand{\bcDerivation}{De derivación {\color{gray}\em Explica como determinar una condición, estado o calcular un valor.}}
+\newcommand{\btEnabler}{Habilitadora. {\color{gray}\em Decisión de tipo Sí o No.}}
+\newcommand{\btTimer}{Cronometrada {\color{gray}\em Decisión que depende de un parámetro definido.}}
+\newcommand{\btExecutive}{Ejecutiva. {\color{gray}\em Decisión que depende de la autorización de un superior.}}
+\newcommand{\blControlling}{Controla. {\color{gray}\em La operación está restringida a que se cumpla siempre esta regla.}}
+\newcommand{\blInfluencing}{Motiva. {\color{gray}\em Debe motivarse este comportamiento, pero la operación no está restringida a que se cumpla siempre esta regla.}}
+\newcommand{\varBRItemCommand}[1][]{}
+    \newcommand{\BRItem}[1][]{\item[{#1}:]}
+    \newcommand{\BRccitem}[1][]{\item[{#1}:]}
+
+\newcommand{\BRitem}[3][all]{%
+    \IfSubStr{\view}{#1}{%
+        \item[{#2}:]{#3}%
+    }{}%
+}
+
+\newcommand{\BRsection}[2][all]{%
+    \IfSubStr{\view}{#1}{%
+        \item[]\vspace{10pt}\fbox{\parbox{\textwidth}{\centering\bf\color{colorPrincipal}#2}}\\\hfill%
+    }{}%
+}
+
+\let\varBRItemCommand=\BRItem
+\NewEnviron{BusinessRule}[3][Estado/Propuesta]{%
+    \CrearVariablesInternas{#1}%
+    \cdtAddElement{#2}{#3}{\Autor}{\Version}{\Estado}%
+        \noindent{\includegraphics[width=\textwidth]{cdt/uc/rules/BRRule}}%\vspace*{-\baselineskip}%
+        \vspace{-25pt}%
+        \hypertarget{#2}{\section{{#2} {#3}}}%
+        \begin{description}\addtolength{\itemsep}{-0.5\baselineskip}%
+            \BRsection[control]{Datos Para el Control Interno}
+	        \BRitem[control]{Autor}{\Autor}
+	        \BRitem[control]{Versión}{\Version}
+	        \BRitem[control]{Estado}{\Estado}
+            \BODY%
+        \end{description}%
+}
+
+%======================================================
+% Ambiente: Maquina
+% Especifica una regla de negocio.
+% NOTA: El tipo no se debe especificar si la regla es de clase \bcDerivation
+%======================================================
+% Ejemplos:
+%    \begin{Maquina}{Id}{Nombre}{Resumen}{Path to image}
+%        Descripción
+%    \end{Maquina}
+%  @params:
+%     @required Id,  identificador de la maquina de estados
+%     @required Nombre, Nombre que recibe esta maquina de estados
+%     @required Resumen, Resumen para la máquina de estados
+%     @required Path to image, ruta completa a la imagen (archivo)
+%
+\newenvironment{Maquina}[4]{
+    \section{#2}
+    \hypertarget{#1}{}
+    \cdtAddElement{#1}{#2}{\Autor}{\Version}{\Estado}%
+    \subsection*{Resumen}%
+    #3%
+    \begin{center}%
+        \begin{figure}[hbtp!]%
+            \fbox{\includegraphics[width=\textwidth]{#4}}%
+            \caption{#2}%
+            \label{fig:#1}%
+        \end{figure}%
+    \end{center}%
+    \subsection*{Descripción}
+}{}
+
+
+%====================================================
+% Ambiente: TipoDeDato
+% Entorno para declarar un catálogo de tipos de datos
+% NOTA: Un tipo de dato puede tener atributos (p.e, Datatype:Alumno,Attribute:Alumno.nombre)
+%====================================================
+% Ejemplos:
+%    \begin{TipoDeDato}{Id}{Nombre}{Descripción}
+%        ... ?
+%    \end{TipoDeDato}
+%  @params:
+%    @required Id, Identificador del tipo de dato
+%    @required Nombre del tipo de dato
+%    @required Descripción del tipo de dato
+%    @required ... ?
+% 
+\environbodyname\tdBODY%
+\NewEnviron{TipoDeDato}[3]{%
+    \cdtAddElement{#1}{TipoDeDato}{#2}{NA}{NA}{NA}%
+    \DTLgetvalueforkey{\varEntityReferenceValue}{idElementoRef}{cdtDBReferenceConsulta}{idElemento}{#1}%
+    \DTLifnull{\varEntityReferenceIValue}{}{%
+        \IfSubStr{\varEntityReferenceValue}{Undefined}{}{%
+            \cdtSetContext{#1}%
+            \hypertarget{#1}{}%
+            \def \varDataTypeId{#1}%
+            \section{Tipo de dato #2}%
+            \noindent\includegraphics[width=\textwidth]{cdt/uc/rules/tdRule}
+            \subsection{Descripción}%
+            #3%
+            \tdBODY%
+            \cdtSetContext{}%
+    }}%
+}%
+
+%====================================
+% Ambiente: tdAtributos
+% Indicar un atributo que compone a un catálogo o un tipo de dato
+% NOTA: Un tipo de dato puede tener atributos (p.e, Datatype:Alumno,Attribute:Alumno.nombre)
+%==========================================
+% Ejemplos:
+%    \begin{tdAtributos}
+%        \tdAttr{Id}{Apariencia}{Tipo}{Descripción.}
+%    \end{tdAtributos}
+%  @params:
+%    @required \tdAttr, añade un nuevo elemento al catálogo
+%    @required     Id, Identificador del atributo de tipo de dato
+%    @required     Apariencia que tiene el tipo de dato
+%    @required     Tipo, Tipo de Dato del atributo
+%    @required     Descripción del atributo del tipo de dato
+%
+\newenvironment{tdAtributos}{%
+    \begin{longtable}{|p{.2\textwidth}| p{.15\textwidth} | p{.5\textwidth}|}\hline%
+        \multicolumn{3}{|c|}{{\cellcolor{colorSecundario}\color{white}Atributos}}\\\hline%
+        {\cellcolor{colorAgua}Atributo} & {\cellcolor{colorAgua}Tipo} & {\cellcolor{colorAgua}Descripción}\\\hline%
+        \endhead%
+}{%
+    \end{longtable}%
+}%
+\newcommand{\tdAttr}[4]{%
+    \def \idAttr{\varDataTypeId.#1}%
+    \cdtAddElement{\idAttr}{Atributo}{#2}%
+    \textbf{\hypertarget{\varDataTypeId.#1}{#2}} & \refElem{#3} & #4 \\\hline%
+}
+
+

@@ -1,0 +1,404 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Componente: cdtControl.sty
+%  Autor: Ulises Vélez Saldaña
+%  Fecha: 27 de Abril, 2017
+%  Versión: 2.4
+%  Biblioteca: cdt
+%  Capa: 4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cdt/cdtControl}[2013/04/06, v2.3 CDT-ESCOM-IPN Paquete para escribir documentos con control de versiones]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage[usenames,dvipsnames]{xcolor} % Para usar y definir colores.
+\RequirePackage{longtable}     % Crear tablas Multipagina
+\RequirePackage{colortbl}      % Colores en las celdas de tablas
+\RequirePackage{multirow}      % Celdas multi-fila
+
+%=====================================================
+% Definición de colores para el control de versiones
+%=====================================================
+\definecolor{cdtTODOColor}{rgb}{1.0, 0.0, 0.0}
+\definecolor{cdtTOCHKColor}{rgb}{0.8, 0.5, 0.0}
+\definecolor{cdtDONEColor}{rgb}{0.0, 0.5, 0.0}
+
+%=====================================================
+% Permite añadir instrucciones para el llenado de la plantilla
+%=====================================================
+\newcommand{\instrucciones}[1]{}
+\newcommand{\varInstrucciones}[1]{
+% Define la forma en que se muestran las instrucciones
+% Ejemplos:
+%    \organizacion{Nombre de la Organización}
+%    \organizacion[CLAVE]{Nombre de la Organización}
+%  @params:
+%    @optional Clave de la Organizacion
+%    @required Nombre de la Organizacion
+    {\noindent\small\em\color{colorGris}#1}\par%
+}
+
+
+%=====================================================
+% Habilita que las instrucciones sean visibles en documento
+%=====================================================
+\newcommand{\showInstrucciones}{%
+% Muestra las instrucciones en el documento
+% Ejemplos:
+%    \showInstrucciones
+    \let\instrucciones=\varInstrucciones%
+}
+
+\DeclareOption{instrucciones}{\let\instrucciones=\varInstrucciones}
+\DeclareOption*{\PackageWarning{cdt/cdtControl}{Unknown option ''\CurrentOption''}}
+\ProcessOptions\relax
+
+%=====================================================
+% Definicion de estados: Pendiente
+%=====================================================
+\newcommand{\TODO}[1][]{%
+% Indica una tarea pendiente a resolver en la fecha especificada
+% Ejemplos:
+%    \TODO
+%    \TODO[Fecha]
+%  @params:
+%    @optional Fecha, indica la fecha en la que debe estar concluida la tarea
+    {\color{cdtTODOColor}TODO:{\em\ #1}}%
+}
+
+%=====================================================
+% Definicion de estados: Pendiente de Revisión
+%=====================================================
+\newcommand{\TOCHK}[1][]{%
+% Indica una tarea pendiente de revision en la fecha especificada
+% Ejemplos:
+%    \TOCHK
+%    \TOCHK[Fecha]
+%  @params:
+%    @optional Fecha, indica la fecha en la que debe estar revisada la tarea
+    {\color{cdtTOCHKColor}TOCHK:{\em\ #1}}%
+}
+
+%=====================================================
+% Definicion de estados: Realizado
+%=====================================================
+\newcommand{\DONE}[1][]{
+% Indica una tarea concluida en la fecha especificada
+% Ejemplos:
+%    \DONE
+%    \DONE[Fecha]
+%  @params:
+%    @optional Fecha, indica la fecha en la que debe estar revisada la tarea
+    {\color{cdtDONEColor}DONE:{\em\ #1}}%
+}
+
+
+%=====================================================
+% Ambiente: cdtCard
+% Agregar una ficha de datos generica
+%=====================================================
+% Ejemplo:
+%    \begin{cdtCard}
+%        \cItem{Clave:}{Descripción}
+%        \cItem{Revisor:}{José Montes Villarrutia}
+%        ...
+%    \end{cdtCard}
+%  @params:
+%    @required \cItem, indica un elemento en la ficha de datos.
+%    @required Clave, indica una clave o campo de la tabla
+%    @required Descripción, contiene el valore del campo para la tabla
+\newcommand{\cItem}[2]{\arrayrulecolor{gray}%
+    {\bf\color{gray}#1:} & {\em\color{gray}#2}\\\hline\arrayrulecolor{black}%
+}%
+\newenvironment{cdtCard}{%
+    \par\begin{longtable}{| p{.17\textwidth} | p{.75\textwidth} |}%
+        \arrayrulecolor{gray}\rowcolor{lightgray}\hline\rowcolor{white}%
+    }{%
+        \arrayrulecolor{black}%
+        \end{longtable}%
+}
+
+%=====================================================
+% Ambiente: techCard
+% Agregar una ficha Tecnica
+%=====================================================
+% Ejemplo:
+%    \begin{techCard}{Versión}{Autor}{Status}
+%        \tItem{Clave:}{Descripción}
+%        \tItem{Madurez:}{Alta}
+%        ...
+%    \end{techCard}
+%  @params:
+%    @required Versión de la ficha técnica
+%    @required Autor de la ficha técnica
+%    @required Status, indica el estado de la ficha técnica
+%
+%    @required \tItem, indica un elemento en la ficha de datos.
+%    @required   Clave, indica una clave o campo de la tabla
+%    @required   Descripción, contiene el valore del campo para la tabla
+\newenvironment{techCard}[3]{\begin{cdtCard}\techData{#1}{#2}{#3}}{\end{cdtCard}}
+\newcommand{\tItem}[2]{\cItem{#1}{#2}}%
+\newcommand{\techData}[3]{%
+    \arrayrulecolor{gray}\rowcolor{gray!30}%
+    \multicolumn{2}{|c|}{{\bf\color{white}Datos Técnicos}}\\\hline%
+    \tItem{Versión}{#1}%
+    \tItem{Autor}{#2}%
+    \tItem{Status}{#3}%
+}
+
+%=====================================================
+% Ambiente: revCard
+% Agregar una ficha de revisión
+%=====================================================
+% Ejemplo:
+%    \begin{revCard}{VersiónRevisada}{Revisor}{Fecha}
+%        \rItem{Id}{Descripción}{Status}
+%        ...
+%    \end{revCard}
+%  @params:
+%    @required VersiónRevisada de la ficha técnica correspondiente
+%    @required Revisor, persona encargada de la revisión
+%    @required Fecha, indica la fecha en que se realiza la revisión
+%
+%    @required \rItem, indica un elemento en la ficha de revisión.
+%    @required   id,  identificador para el elemento en la ficha
+%    @required   Descripción, contiene el valore del campo para la tabla
+%    @required   Status, estado de la forma usando \TOCHK, \TODO o \DONE 
+\newenvironment{revCard}[3]{%
+    \begin{cdtCard}%
+        \arrayrulecolor{gray}\rowcolor{gray!30}%
+        \multicolumn{2}{|c|}{{\bf \color{white}Control de cambios}}\\\hline%
+        \tItem{Versión}{#1}%
+        \tItem{Revisor}{#2}%
+        \tItem{Fecha}{#3}%
+        {\color{gray}\bf {Cambios:}} &%
+            \begingroup\begin{Titemize}%
+    }{%
+            \end{Titemize}%
+        \endgroup\\\hline%
+    \end{cdtCard}%
+}
+\newcommand{\rItem}[3]{ \Titem {#1} {#2} {\em #3} }
+\newcommand{\revision}[3]{}
+
+%==========================================================================
+% Permite ocultar en el documento toda la información de control de cambios.
+%==========================================================================
+\newcommand{\hideControlVersion}{%
+    \renewcommand{\rItem}[3]{}%
+    \renewcommand{\cItem}[3]{}%
+    \renewcommand{\tItem}[3]{}%
+    \renewcommand{\UCccitem}[2]{}%
+    \renewcommand{\UCccsection}[1]{}%
+    \renewenvironment{revCard}[3]{}{}%
+    \renewenvironment{techCard}[3]{}{}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Estructuras en el documento
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%=====================================================
+% Define la forma en como se presentan los comentarios
+%=====================================================
+\newcommand{\cdtInstrucciones}[1]{{\color{Gray}{#1}}}
+
+%=====================================================================
+% Incluye una imagen en el texto
+% NOTA: El archivo de la imagen debe estar en el directorio ./images
+%=====================================================================
+\newcommand{\imgInline}[2][10pt]{%
+% Incluye un imagen en el texto con altura especificada
+% Ejemplos:
+%    \imgInline{Nombre del archivo de Imagen}
+%    \imgInline[20pt]{Path to image}
+%  @params:
+%    @optional Altura de la imagen en puntos (pt)
+%    @required Nombra del archivo de imagen, sin espacios
+    \raisebox{-1mm}{\includegraphics[height=#1]{images/#2}}%
+}
+
+%=====================================================================
+% Insertar un espacio horizontal de 10pt.
+%=====================================================================
+\newcommand{\cdtEmpty}{\hspace{10pt}} % \hfill\\
+
+%=====================================================================
+% Insertar una imagen sin marco
+%=====================================================================
+\newcommand{\addfigure}[4]{%
+% Ejemplos:
+%    \addfigure{Ancho}{Path to Image}{Label}{Caption}
+%  @params:
+%    @required Ancho de la imagen, valores entre 0 y 1.0
+%    @required Path To Image, localizacion de la imagen
+%    @required Label, Etiqueta para referencias
+%    @required Caption, Nombre a mostrar de la imagen
+    \begin{figure}[htbp!]%
+        \begin{center}%	
+            \includegraphics[width=#1\textwidth]{#2}%
+            \caption{#4}%
+            \label{#3}%
+        \end{center}%
+    \end{figure}%
+}
+
+%=====================================================================
+% Insertar una imagen con marco
+%=====================================================================
+\newcommand{\addfigureB}[4]{%
+% Ejemplos:
+%    \addfigureB{Ancho}{Path to Image}{Label}{Caption}
+%  @params:
+%    @required Ancho de la imagen, valores entre 0 y 1.0
+%    @required Path To Image, localizacion de la imagen
+%    @required Label, Etiqueta para referencias
+%    @required Caption, Nombre a mostrar de la imagen
+    \begin{figure}[htbp!]%
+        \begin{center}%	
+            \fbox{\includegraphics[width=#1\textwidth]{#2}}%
+            \caption{#4}%
+            \label{#3}%
+        \end{center}%
+    \end{figure}%
+}
+
+%=====================================================================
+% Insertar una tabla
+%=====================================================================
+\newcommand{\addtable}[4]{%
+% Ejemplos:
+%    \addtable{Definicion}{Contenido}{label}{caption}
+%  @params:
+%    @required Definicino de las columnas, 
+%    @required Contenido de la tabla
+%    @required Etiqueta para referencias
+%    @required Nombre a mostrar de la tabla
+    \begin{table}[hbtp!]%
+        \centering%
+        \begin{tabular}{#1}\hline%
+                #3\hline%
+        \end{tabular}%
+        \caption{#4}%
+        \label{#2}%
+    \end{table}%
+}
+
+%=====================================================================
+% Insertar una tabla multi-página
+%=====================================================================
+% Ejemplos:
+%    \addtable{Definicion}{Contenido}{label}{caption}
+%  @params:
+%    @required Definicino de las columnas, 
+%    @required Contenido de la tabla
+%    @required Etiqueta para referencias
+%    @required Nombre a mostrar de la tabla
+\newcommand{\addlongtable}[4]{%
+    \begin{longtable}{#1}\hline%
+        #2\hline%
+        \caption{#4}%
+        \label{#3}%
+    \end{longtable}%
+}%
+
+%=====================================================
+% Ambiente: objetivos
+% Crea un nuevo entorno para especificar objetivos en cada capitulo.
+%=====================================================
+% Ejemplos:
+%    \begin{objetivos}[Enunciado]
+%        \item Objetivo N
+%        \item ...
+%    \end{objetivo}
+%
+%    \begin{objetivos}
+%        \item Objetivo N
+%        \item ...
+%    \end{objetivo}
+%
+%  @params:
+%    @optional Enunciado que introduce a los objetivos, valor por defecto "El presente capítulo tiene los siguientes objetivos"
+%    @optional \item, Denota un objetivo en especifico, debe iniciar con Objetivo 'N' donde N es un numero consecutivo natural
+%
+\newenvironment{objetivos}[1][El presente capítulo tiene los siguientes objetivos]{%
+    \arrayrulecolor{colorPrincipal}%
+    \indent\begin{tabular}{|p{.9\textwidth}|}\hline%
+        \rowcolor{colorAgua}{\bf\large\color{colorPrincipal} {#1:}}%
+        \begin{itemize}%
+    }{% ...
+        \end{itemize}\\\hline%
+    \end{tabular}\bigskip%
+}
+
+%=====================================================
+% Ambiente: Citemize
+% Viñetas con poco espacion de separacion entre elementos
+% NOTA: No se recomienda anidarlos.
+%=====================================================
+% Ejemplos:
+%    \begin{Citemize}
+%        \item Texto de la viñeta
+%        \item ...
+%    \end{Citemize}
+%  @params:
+%    @optional \item, Denota una viñeta, debe estar seguido por el texto de la viñeta
+\newenvironment{Citemize}{%
+    \begin{itemize}\addtolength{\itemsep}{-0.3\baselineskip}% Changed in C2-DT-IN 
+%    \begin{itemize}[topsep=0pt]\addtolength{\itemsep}{-0.75\baselineskip} % C2-TD-IN Version
+}{%
+    \end{itemize}%
+}%
+
+%=====================================================
+% Ambiente: Cdescription
+% Crea una lista de descripciones con poco espacio de separación entre elementos.
+% NOTA: No se recomienda anidarlos.
+%=====================================================
+% Ejemplo:
+%    \begin{Cdescription}
+%        \item[Clave] Descripción
+%        \item ...
+%    \end{Cdescription}
+%  @params:
+%    @optional \item, Denota una descripción, debe estar seguido por la Descripción
+%    @optional Clave, Clave (o Nombre) del elemento al cual pertenece la descripción
+\newenvironment{Cdescription}{%
+    \begin{description}\addtolength{\itemsep}{-0.3\baselineskip}%
+}{%
+    \end{description}%
+}%
+
+%=====================================================
+% Ambiente: Cenumerate
+% Crea una lista enumerada con poco espacio de separación entre elementos.
+% NOTA: No se recomienda anidarlas.
+%=====================================================
+% Ejemplos:
+%    \begin{Cenumerate}
+%        \item Texto del Elemento
+%        \item ...
+%    \end{Cenumerate}
+%  @params:
+%    @optional \item, Denota un nuevo elemento de la lista, debe estar seguido por el texto del Elemento
+\newenvironment{Cenumerate}{%
+    \begin{enumerate}\addtolength{\itemsep}{-0.3\baselineskip}%
+}{%
+    \end{enumerate}%
+}%
+
+%=====================================================
+% Ambiente: Titemize
+% Agregar una lista de viñetas en una tabla
+%=====================================================
+% Ejemplo:
+%    \begin{Titemize}
+%        \Titem Texto del Elemento
+%        \Titem[Viñeta] Texto del Elemento
+%    \end{Titemize}
+%  @params:
+%    @optional \item, Denota un elemento, debe estar seguido por el Texto del Elemento
+%    @optional   Viñeta, Remplaza al icono a ocupar como viñeta. Ver paquete marvosym
+\newenvironment{Titemize}{\vspace{-0.5em}}{\vspace{0em}}
+\newcommand{\Titem}[1][\textbullet]{%
+    \par{ \color{colorPrincipal}{#1} }%
+}
