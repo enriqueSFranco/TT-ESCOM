@@ -261,13 +261,6 @@
 
 \newcounter{counterUC}
 \newenvironment{UseCase}[4][]{\newpage%
-    \addtocounter{counterUC}{1}%
-    \CrearVariablesInternas{#1}%
-    \cdtAddElement{#2}{#3}{\Autor}{\Version}{\Estado}%
-    \vspace*{-2\baselineskip}%
-        \noindent{\includegraphics[width=\textwidth]{cdt/uc/rules/UCRule}}%
-    \vspace*{-2\baselineskip}%
-    
     \section{#2 #3}%
     \hypertarget{#2}{}%
     \subsection{Resumen}{#4}
@@ -275,12 +268,8 @@
 	\resetTable%
         \addtoTable{all}{\rowcolor{black}}%
         \UCitem{\color{white}Caso de Uso}{\color{white}#2 #3}%
-        \UCsection[control]{Datos para el control Interno}
-        \UCitem[control]{Autor}{\Autor}
-        \UCitem[control]{Versión}{\Version}
-        \UCitem[control]{Estado}{\Estado}
 }{%
-    \begin{longtable}{| p{.17\textwidth} | p{.75\textwidth} |}%
+    \begin{longtable}{| p{.20\textwidth} | p{.75\textwidth} |}%
         \tablecontent
     \end{longtable}%
     \subsection{Trayectorias del Caso de Uso}
@@ -306,6 +295,7 @@
 %     @required Condición, indica la condición
 %     @required Resultado, Indica el resultado producido por el error
     \textbf{#1:} \hypertarget{\arabic{counterUC}:err#1} #2 #3
+    \newline
 }
 
 %==============================================

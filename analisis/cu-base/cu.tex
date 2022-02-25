@@ -1,0 +1,66 @@
+% Actualizar para indicar cual es el archivo raíz a compilar.
+%!TEX root = ../../main2.tex
+
+\begin{UseCase}[]{GRAL-USR-CU1}{Inicio de sesión.}{
+	El actor quiere entrar al sistema para llevar a cabo las operaciones que requiera dentro de este mismo, para esto necesita 
+	identificarse dentro del sistema introduciendo su nombre de usuario y contraseña.  
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		Todos. 
+	}
+	\UCitem[admin]{Prioridad}{
+		Alta
+	}
+	\UCitem[admin]{Complejidad}{
+		Alta
+	}
+	\UCitem{Precondiciones}{
+		Ninguna.
+	}
+	\UCitem{Postcondiciones}{
+		Ninguna.
+	}
+	\UCitems{Entradas}{
+		\imprimeUC{entrada}
+	}
+	\UCitems{Salidas}{
+		\imprimeUC{salida}
+	}   
+	\UCitem{Destino}{
+		GRAL-USR-IU1.
+	}
+	\UCitem{Reglas de Negocio}{
+		\refIdElem{BR-N002}
+	}
+	\UCitem{Errores}{
+		\UCerr{Uno}{El actor no proporcionó un dato obligatorio, el sistema indica la omisión con el mensaje \refIdElem{MSG002} en los campos faltantes,}{ regresa al paso \ref{cu3-dd} de la trayectoria principal.}
+		\UCerr{Dos}{Los datos ingresados no existen dentro del sistema, el sistema indica el error con el mensaje \refIdElem{MSG002} en los campos correspondientes,}{ regresa al paso \ref{cu3-dd} de la trayectoria principal.}
+	}
+	\UCitem{Viene de}{
+		Caso de uso primario.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Solicita igresar al sitio web de la \textbf{Bolsa de trabajo de ESCOM} desde el navegador de su preferencia.
+    \UCpaso [\UCsist] Muestra la pantalla GRAL-USR-IU1.
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Alumno}. \refTray{A}
+	\UCpaso [\UCsist] Muestra la pantalla GRAL-USR-IU1-1.
+	\UCpaso [\UCactor] Introduce los datos para identificarse ante el sistema que son usuario y contraseña.\label{cu3-dd} \refErr{Uno}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Iniciar Sesión}. 
+    \UCpaso [\UCsist] Valida que el nombre de usuario y la contraseña ingresados esten registrados en el sistema. \refErr{Dos}
+    \UCpaso [\UCsist] Muestra la pantalla GRAL-USR-IU3a.
+\end{UCtrayectoria}
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor da clic en el botón \IUbutton{Empresa}.}
+	\UCpaso [\UCsist] Muestra la pantalla GRAL-USR-IU1-2.
+	\UCpaso [\UCactor] Introduce los datos para identificarse ante el sistema que son usuaruio y contraseña.\label{cu3-dd} \refErr{Uno}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Iniciar Sesión}. 
+    \UCpaso [\UCsist] Valida que el nombre de usuario y la contraseña ingresados esten registrados en el sistema. \refErr{Dos}
+    \UCpaso [\UCsist] Muestra la pantalla GRAL-USR-IU3a.
+\end{UCtrayectoriaA} 
