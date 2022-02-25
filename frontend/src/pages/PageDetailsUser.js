@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useForm } from "../hooks/useForm";
 import { $ajax } from "../utils/$ajax";
 import * as FaIcon from "react-icons/fa";
@@ -18,8 +18,9 @@ const PageDetailsUser = () => {
 	const { showPassword, toggle } = useShowPassword(false)
 	const { user } = useContext(AuthContext);
 	const { form, handleChange } = useForm(initialForm);
-	
+	console.log(user)
 	let { id } = user;
+	console.log(id)
 	let url = `/usuario/usuario/${id}/`;
 
 	// FUNCION PARA ACTUALIZAR LA INFORMACION DE UN USARIO
