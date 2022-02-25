@@ -1,9 +1,8 @@
-import React from 'react';
 import Form from '../components/Form/Form';
 
 const Login = () => {
   return (
-    <section>
+    <section className='container-login'>
       <Form />
     </section>
   )

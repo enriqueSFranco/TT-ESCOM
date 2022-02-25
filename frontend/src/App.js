@@ -12,7 +12,6 @@ import PageCreateAccount from "./pages/PageCreateAccount";
 import PageRecruiter from "./pages/PageRecruiter";
 import { AuthProvider } from "./context/AuthContext";
 import PageDetailsUser from "./pages/PageDetailsUser";
-// import PageDashBoard from "./pages/PageDashBoard";
 
 import "./App.css";
 
@@ -25,8 +24,9 @@ function App() {
           {/* Rutas publicas */}
           <Route path="/" element={<PageHome />}/>
           <Route path="/empresas" element={<PageCompany />} />
-            <Route path="/nueva-cuenta" element={<PageCreateAccount />} />
           <Route path="/iniciar-sesion" element={<PageLogin />} />
+          <Route path="/nueva-cuenta" element={<PageCreateAccount />} />
+          
           {/* Rutas privadas */}
           <Route element={<PrivateRoute />}>
             <Route path="/reclutador" element={<PageRecruiter />} />
