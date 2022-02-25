@@ -22,19 +22,30 @@ class UserManager(BaseUserManager):
 		return self._create_user(username, email, name, last_name, password, False, False, **extra_fields)
 
 	def create_superuser(self, username, email, name, last_name, password=None, **extra_fields):
+		extra_fields.setdefault('role', 1)
+		if extra_fields.get('role') != 1:
+			raise ValueError('El superusuario debe tener permisos de administrador')
 		return self._create_user(username, email, name, last_name, password, True, True, **extra_fields)
 
 # clase customizada del modelo usuario
 class User(AbstractBaseUser, PermissionsMixin):
+	ADMIN = 1
+	COMPANY = 2
+	STUDENT = 3
+
+	ROLE_CHOICE = (
+		(ADMIN, 'Admin'),
+		(COMPANY, 'Company'),
+		(STUDENT, 'Student')
+	)
+
 	username = models.CharField(max_length=255, unique=True)
 	email = models.EmailField('Correo Electrónico', max_length=255, unique=True,)
 	name = models.CharField('Nombres', max_length=255, blank=True, null=True)
-	last_name = models.CharField(
-		'Apellidos', max_length=255, blank=True, null=True)
-	image = models.ImageField(
-		'Imagen de perfil', upload_to='perfil/', max_length=255, null=True, blank=True)
+	last_name = models.CharField('Apellidos', max_length=255, blank=True, null=True)
+	image = models.ImageField('Imagen de perfil', upload_to='perfil/', max_length=255, null=True, blank=True)
 	is_active = models.BooleanField(default=True)
-	is_staff = models.BooleanField(default=False)
+	role = models.PositiveSmallIntegerField(choices=ROLE_CHOICE, blank=True, null=True, default=3)
 	historical = HistoricalRecords()
 	objects = UserManager()
 

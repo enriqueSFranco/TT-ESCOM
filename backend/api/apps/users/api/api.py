@@ -36,4 +36,5 @@ def user_detail_api_view(request, pk):
     elif request.method == "DELETE":
       user = User.objects.filter(id=pk).first()
       user.delete()
-      return Response(status=status.HTTP_400_BAD_REQUEST)
+      return Response({'message': 'Cuenta eliminada'},status=status.HTTP_200_OK)
+  return Response({'message': 'Usuario no encontrado'},status=status.HTTP_400_BAD_REQUEST)

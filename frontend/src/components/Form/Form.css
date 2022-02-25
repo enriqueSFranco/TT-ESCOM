@@ -1,0 +1,29 @@
+.input {
+  width: 100%;
+  border: none;
+  padding: .7rem;
+  outline: none;
+  background-color: #F3F4F8;
+}
+
+.input::placeholder {
+  font-size: .85rem;
+  font-weight: 500;
+  color: #454547;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-right: 40px;
+  background-color: #F3F4F8;
+}
+
+.right-icon {
+  color: rgba(0, 0, 0, 0.397);;
+  position: absolute;
+  right: 20px;
+}
+.eye-password { cursor: pointer;}
+

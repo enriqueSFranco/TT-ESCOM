@@ -7,12 +7,21 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from apps.users.api.serializers import UserTokenSerializer
+class UserToken(APIView):
+  def get(self, request, *args, **kwargs):
+    username = request.GET.get('username')
+    try:
+      user_token = Token.objects.get(user=UserTokenSerializer().Meta.model.objects.filter(username=username).first())
+      return Response({'token': user_token.key})
+    except:
+      return Response({'error': 'Credenciales incorrectas'}, status=status.HTTP_400_BAD_REQUEST)
 
+# 28
 class Login(ObtainAuthToken):
   def post(self, request, *args, **kwargs):
     login_serializer = self.serializer_class(data=request.data, context={'request':request})
-
     if login_serializer.is_valid():
+      print(login_serializer.validated_data['user'])
       user = login_serializer.validated_data['user']
       if user.is_active:
         token, created = Token.objects.get_or_create(user=user)
@@ -23,11 +32,14 @@ class Login(ObtainAuthToken):
             'user': user_serializer.data,
             'message': 'Inicio de sesion correcto'
           }, status=status.HTTP_201_CREATED)
-        else:
+        else: # si inicia sesion en otro navegador le borramos el token actual y le creamos uno nuevo
           token.delete()
+          token = Token.objects.create(user=user)
           return Response({
-            'error': 'ya se ha iniciado sesion con este usuario'
-          }, status=status.HTTP_409_CONFLICT)
+            'token': token.key,
+            'user': user_serializer.data,
+            'message': 'Inicio de sesion correcto'
+          }, status=status.HTTP_201_CREATED)
       else:
         return Response({'error': 'Este usuario no puede inicar sesion'}, status=status.HTTP_401_UNAUTHORIZED)
     else:

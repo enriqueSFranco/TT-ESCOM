@@ -1,8 +1,11 @@
-import { Link } from 'react-router-dom';
-
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
+import { useShowPassword } from '../../hooks/usePassword';
+import Input from '../Input/Input';
 import AuthContext from '../../context/AuthContext';
+import * as FaIcon from 'react-icons/fa';
+import './Form.css';
 
 let initialForm = {
   username: "",
@@ -10,37 +13,46 @@ let initialForm = {
 };
 
 const Form = () => {
+  const { showPassword, toggle } = useShowPassword(false);
   const { form, handleChange } = useForm(initialForm);
   const { login } = useContext(AuthContext);
 
   return (
-    <div>
-      <h3>Iniciar Sesion</h3>
+    <div className="container w-90">
+      <h3>Iniciar Sesión</h3>
       <form onSubmit={login}>
-        <div className="mb-3">
-          <label htmlFor="username" className="htmlF-label">Username</label>
-          <input 
-            type="text" 
+        {/* input para el username */}
+        <div className="mb-3 inner">
+          <i className='right-icon'>
+            <FaIcon.FaUser />
+          </i>
+          <Input 
+            type="text"
             id="username"
             name="username"
-            className="form-control" 
+            placeholder='Escribre tu nombre de usuario'
+            className="input ti-16"
             value={form.username} 
             onChange={handleChange}
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">Contraseña</label>
-          <input 
-            type="password" 
+        {/* input para el password */}
+        <div className="mb-3 inner">
+          <i className='right-icon eye-password' onClick={toggle}>
+            {showPassword ? <FaIcon.FaEye /> : <FaIcon.FaEyeSlash />}
+          </i>
+          <Input 
+            type={showPassword ? "text" : "password"} 
             name="password"
             id="password" 
-            className="form-control" 
+            placeholder='Escribre tu constraseña'
+            className="input ti-16" 
             value={form.password} 
             onChange={handleChange} 
           />
         </div>
         <div className="d-grid">
-          <button type="submit" className="btn btn-primary">Iniciar sesion</button>
+          <button type="submit" className="btn btn-primary">Iniciar sesión</button>
         </div>
         <div className="my-3">
           <span>No tines cuenta? <Link to="/nueva-cuenta">Registrate</Link></span>

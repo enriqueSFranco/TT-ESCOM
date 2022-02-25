@@ -1,66 +1,99 @@
-import React from "react";
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 import { useForm } from "../hooks/useForm";
 import * as FaIcon from "react-icons/fa";
-import "./PageHome.css";
 import JobCard from "../components/Card/JobCard";
+import Input from "../components/Input/Input";
+import db from "../api/db";
+import "./PageHome.css";
 
 const initialForm = {
   job: "",
   location: "",
 };
 
-const validateForm = () => {};
-
 const Home = () => {
-  const { form, handleChange } = useForm(initialForm, validateForm);
+  const { user } = useContext(AuthContext);
+  const { form, handleChange } = useForm(initialForm);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("buscando...");
+  };
 
   return (
     <section>
-      <div className="container search__job">
-        <h1 className="container__title">Encuentra el trabajo de tus seños</h1>
-        <form>
-          <label htmlFor="job" className="htmlF-label">
-            Vacante
-          </label>
+      <div className="container container-form">
+        {user ? (
+          <div className="hero">
+            <h3>Hola {user.username}</h3>
+            <span>Busquemos el trabajo de tus sueños</span>
+          </div>
+        ) : (
+          <h1 className="container__title">
+            Encuentra el trabajo de tus sueños
+          </h1>
+        )}
+        <form onSubmit={handleSubmit}>
           <div className="mb-3 container__input">
-            <span className="icon">
+            <span className="icon-left">
               <FaIcon.FaBuilding />
             </span>
-            <input
+            <Input
               type="text"
               id="job"
               name="job"
-              className="form-control ti-16"
+              placeholder="Buscar un empleo"
+              className="input ti-24"
               value={form.job}
               onChange={handleChange}
             />
           </div>
-          <label htmlFor="location" className="htmlF-label">
-            Ubicacion
-          </label>
           <div className="mb-3 container__input">
-            <span className="icon">
+            <span className="icon-left">
               <FaIcon.FaLocationArrow />
             </span>
-            <input
+            <Input
               type="text"
               name="location"
               id="location"
-              className="form-control ti-16"
+              placeholder="Ubicación"
+              className="input ti-24"
               value={form.location}
               onChange={handleChange}
             />
           </div>
           <div className="d-grid">
-            <input type="submit" value="Buscar" className="btn btn-primary" />
+            <Input type="submit" value="Buscar" className="btn btn-primary" />
           </div>
         </form>
       </div>
-      <div className="separator"></div>
       <article className="container jobs">
-        <h2>Vacantes</h2>
+        <h2 className="vacancy">Vacantes</h2>
         <div className="container__job-card">
-          <JobCard />
+          {db.map(
+            ({
+              id,
+              company,
+              img_company,
+              type_vacancy,
+              min_salary,
+              max_salary,
+              full_time,
+              location,
+            }) => (
+              <JobCard
+                key={id}
+                company={company}
+                img_company={img_company}
+                type_vacancy={type_vacancy}
+                min_salary={min_salary}
+                max_salary={max_salary}
+                full_time={full_time}
+                location={location}
+              />
+            )
+          )}
         </div>
       </article>
     </section>
