@@ -5,3 +5,5 @@
 *.lof
 *.pdf
 *.log
+backend/*
+frontend/*
