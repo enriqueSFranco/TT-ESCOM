@@ -6,6 +6,10 @@
   cursor: pointer;
 }
 
+.company-logo {
+  font-size: 2.7rem;
+}
+
 .card_details {
   width: 100%;
   padding: .4rem 1rem;
@@ -30,4 +34,11 @@
 .tag {
   font-size: .75rem;
   color: rgb(116, 114, 114);
+}
+
+@media screen and (min-width: 992px) {
+  .card {
+
+    background-color: red;
+  }
 }

@@ -1,6 +1,10 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { useForm } from '../../hooks/useForm';
-import Alert from '../Alert/Alert';
+import { useShowPassword } from '../../hooks/usePassword';
+import { $ajax } from '../../utils/$ajax';
+import Input from '../Input/Input';
+import * as FaIcon from 'react-icons/fa';
+import * as MdIcon from 'react-icons/md';
 
 let initialForm = {
   username: "",
@@ -9,73 +13,76 @@ let initialForm = {
 };
 
 const CreateAccount = () => {
-  const [loading, setLoading] = useState(false);
+  // const [typeUser, setTypeUser] = useState();
+	const { showPassword, toggle } = useShowPassword(false);
   const { form, handleChange } = useForm(initialForm);
   
   if (form === null) return;
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      setLoading(true)
-      let res = await fetch("/usuario/usuario/", {
-        method: 'POST',
-        cache: 'no-cache',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(form)
-      });
-      if (!res.ok) {
-        let error = {
-          err: true,
-          status: res.status || "00",
-          statusText: res.statusText || "Oppps, ha ocurrido un error"
+    
+    let options = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: form
+    };
+
+    $ajax().POST('/usuario/usuario/', options)
+      .then((response) => {
+        if (!response.err) {
+          console.log(response);
+          
         }
-        throw error;
-      }
-      let json = await res.json();
-      console.log(json);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
+      })
+      .catch((err) => console.log(err));
   }
 
   return (
-    <div>
-      <h3>Iniciar Sesion</h3>
+    <div className="container w-90">
+      <h3>Crear Cuenta</h3>
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="username" className="htmlF-label">Username</label>
-          <input 
+        <div className="mb-3 inner">
+          <i className='right-icon'>
+            <FaIcon.FaUser />
+          </i>
+          <Input 
             type="text" 
             id="username"
             name="username"
-            className="form-control" 
+            placeholder="Escribre tu nombre de usuario"
+            className="input" 
             value={form.username} 
             onChange={handleChange}
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="email" className="htmlF-label">Correo electronico</label>
-          <input 
+
+        <div className="mb-3 inner">
+          <i className='right-icon'>
+            <MdIcon.MdEmail />
+          </i>
+          <Input 
             type="email" 
             id="email"
             name="email"
-            className="form-control" 
+            placeholder="Escribre tu correo electrónico"
+            className="input" 
             value={form.email} 
             onChange={handleChange}
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">Contraseña</label>
-          <input 
-            type="password" 
+        <div className="mb-3 inner">
+          <i className='right-icon eye-password' onClick={toggle}>
+            {showPassword ? <FaIcon.FaEye /> : <FaIcon.FaEyeSlash />}
+          </i>
+          <Input 
+            type={showPassword ? "text" : "password"} 
+            id="password"
             name="password"
-            id="password" 
-            className="form-control" 
+            placeholder="Escribre tu contraseña"
+            className="input" 
             value={form.password} 
             onChange={handleChange} 
           />
@@ -83,9 +90,6 @@ const CreateAccount = () => {
         <div className="d-grid">
           <button type="submit" className="btn btn-primary">Crear cuenta</button>
         </div>
-        {
-          loading && <Alert message="usuario creado correctamente" />
-        }
       </form>
     </div>
   )

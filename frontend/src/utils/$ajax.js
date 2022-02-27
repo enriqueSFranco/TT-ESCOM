@@ -27,14 +27,17 @@ export const $ajax = () => {
   };
 
   const GET = (endpoint, options = {}) => customFetch(endpoint, options);
+  
   const POST = (endpoint, options) => {
     options.method = "POST";
     return customFetch(endpoint, options);
   };
+  
   const PUT = (endpoint, options) => {
     options.method = "PUT";
     return customFetch(endpoint, options);
   };
+  
   const DEL = (endpoint, options) => {
     options.method = "DELETE";
     return customFetch(endpoint, options);

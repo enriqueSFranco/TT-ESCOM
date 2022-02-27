@@ -5,8 +5,8 @@ const AuthContext = createContext(); // creamos el contecto
 
 // Provider
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null);
+  const [user, setUser] = useState(() => window.localStorage.getItem('token') ? window.localStorage.getItem('token') : null) ;
+  const [token, setToken] = useState(() => window.localStorage.getItem('token') ? JSON.parse(window.localStorage.getItem('token')) : null);
   let navigate = useNavigate();
 
   const login = async (e) => {
@@ -34,10 +34,11 @@ const AuthProvider = ({ children }) => {
       const json = await response.json();
       console.log(json)
       const { token, user } = json;
+      console.info(user.username);
       if (response.status === 200 || response.status === 201) {
-        setUser(user);
-        setToken(token)
-        console.log(user);
+        setUser(user.username);
+        setToken(token);
+        window.localStorage.setItem('token', JSON.stringify(json))
         navigate('/');
       } else {
         console.log(`error: ${response.error}`);
@@ -47,13 +48,16 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = (e) => {
+  const logout = () => {
     setUser(null);
+    setToken(null);
+    window.localStorage.removeItem('token');
     navigate('/');
   }
 
   const data = {
     user,
+    token,
     login,
     logout,
   };
