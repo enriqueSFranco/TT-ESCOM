@@ -20,8 +20,13 @@ const PageDetailsUser = () => {
 	const { form, handleChange } = useForm(initialForm);
 	
 	let { id } = user;
-	let url = `/usuario/usuario/${id}/`;
-
+	let data=JSON.parse(window.localStorage.getItem('token'));
+	console.log(data);
+	let userId=data.user.id;
+	console.log(userId);
+	let url = `/usuario/usuario/${userId}/`;
+	console.log(user);
+	console.log(id);
 	// FUNCION PARA ACTUALIZAR LA INFORMACION DE UN USARIO
 	const handleUpdateAccount = (e) => {
 		e.preventDefault();

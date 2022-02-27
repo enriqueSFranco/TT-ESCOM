@@ -3,8 +3,8 @@ from apps.users.models import User
 
 # Create your models here.
 
-class Solocitud():
-  id_soliticitud
+"""class Solocitud():
+  #id_soliticitud
   pass
 
 class Habilidad(models.Model):
@@ -17,4 +17,4 @@ class Student(User):
   cv = models.FieldFile()
 
   class Meta:
-    pass
+    pass"""
