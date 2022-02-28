@@ -85,9 +85,12 @@
 \newcommand{\brRelComposition}{{\color{colorPrincipal}$\filleddiamond$\hspace{-1pt}---Composición}}
 \newcommand{\brRelAgregation}{{\color{colorPrincipal}$\Diamond$\hspace{-1pt}---Agregación}}
 \newcommand{\brRelGeneralization}{{\color{colorPrincipal}$\lhd$\hspace{-1pt}---Generalización}}
-\newcommand{\brAttr}[5]{%
-    \cdtLabel{\varBusinessEntityId.#1}{{\bf #2}}\par#1\cdtAddElement{\varBusinessEntityId.#1}{#2}{\Autor}{\Version}{\Estado} &%
-    \refElem{#3} & {#4} & {#5}\\\hline%
+
+\newcommand{\brAttr}[3]{%
+    %\cdtLabel{\varBusinessEntityId.#1}{{\bf #2}}\par#1\cdtAddElement{\varBusinessEntityId.#1}{#2}{\Autor}{\Version}{\Estado} &%
+    %\refElem{#3} & {#4} & {#5}\\\hline%
+    \bf{#1}&\bf{#2}& {#3}\\
+    \hline
 }
 \newcommand{\cdtEntityRelSection}{%
     %\multicolumn{4}{|c|}{{\cellcolor{colorSecundario}\color{white}Relaciones}}\\\hline%
@@ -97,27 +100,18 @@
     Tipo de relación & Entidad & \multicolumn{2}{|c|}{Rol}
     \setCurrentElementId{\varBusinessEntityId}\\\hline%
 }
-\newenvironment{cdtEntidad}[4][]{%
-    \gdef\varBusinessEntityId{#2}%
-    \CrearVariablesInternas{#1}%
-    \cdtAddElement{#2}{#3}{\Autor}{\Version}{\Estado}%
-%
-    \cdtLabel{#2}{\hspace{1pt}}%
-    \newline\noindent{\includegraphics[width=\textwidth]{cdt/uc/rules/classRule}}\vspace{-25pt}%
-    \section{Entidad: #3}%
-    \IfStrEq{\detokenize{#4}}{}{%
-        \hspace{0pt}%
-    }{%
-        \subsubsection{Resumen}{#4}%
-    }%
-        \noindent\begin{longtable}{|p{.2\textwidth} | p{.15\textwidth} | p{.5\textwidth} | p{.04\textwidth} |}\hline%
-            \rowcolor{colorSecundario}%
-            \multicolumn{4}{|c|}{\color{white}{Atributos}}\\\hline
-            \rowcolor{colorAgua}%
-            Nombre & Tipo & Descripción & Req.\\\hline\endhead%
+\newenvironment{cdtEntidad}[2]{
+        \subsection{Entidad: #1}
+        {#2}
+        \begin{longtable}{| p{0.4\textwidth} | p{0.2\textwidth} | p{0.3\textwidth} |}
+            \hline
+            Atributo & Tipo & Descripción\\
+            \hline
+            \endhead
 }{%
+            %\caption{Tabla: #1}
+            %\label{table:usuarios\_tipo\_contacto}\\
         \end{longtable}%
-    \gdef\varBusinessEntityId{}%
 }
 
 %======================================================

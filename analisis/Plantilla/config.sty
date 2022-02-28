@@ -1,0 +1,68 @@
+%Plantilla TT-2022
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{plantilla}[2017/06/24 Capa uno de la plantilla del trabajo terminal]
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[spanish, es-tabla]{babel}
+\RequirePackage[a4paper, lmargin=3cm, rmargin=2cm, tmargin=2cm, bmargin=2cm]{geometry}
+\RequirePackage[Sonny]{fncychap}
+\RequirePackage{enumitem}
+\RequirePackage{graphicx}
+\RequirePackage{longtable}
+\RequirePackage{fancyhdr}
+\RequirePackage{cmbright}
+\RequirePackage{wrapfig}
+\RequirePackage[colorlinks]{hyperref}
+\RequirePackage{xcolor}
+\RequirePackage{longtable}
+\RequirePackage{subcaption}
+\RequirePackage{multicol}
+\RequirePackage{multirow}
+\RequirePackage{colortbl}
+\RequirePackage{marvosym}
+\RequirePackage{xifthen}
+\RequirePackage{xstring}
+\RequirePackage{datatool}
+\RequirePackage{keystroke}
+\RequirePackage{MnSymbol}
+\RequirePackage{mdframed}
+\RequirePackage{tikz}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\RequirePackage{adjustbox}
+\RequirePackage{float}
+\RequirePackage{datatool}
+\RequirePackage{pgfkeys}
+\RequirePackage{xstring}
+\RequirePackage{xifthen}
+\RequirePackage{environ}
+\RequirePackage{chapterfolder}
+\RequirePackage{keystroke}
+
+
+%=====================================================
+% Definición de colores.
+%=====================================================
+\definecolor{colorPrincipal}{rgb}{0.0, 0.3, 0.55}
+\definecolor{colorSecundario}{rgb}{0.0, 0.5, 0.8}
+\definecolor{colorGris}{rgb}{0.4, 0.4, 0.4}
+\definecolor{colorAgua}{rgb}{0.80, 0.90, .95}
+
+%=====================================================
+% Colores para las referencias del documento.
+%=====================================================
+\hypersetup{linkcolor=colorPrincipal}
+\hypersetup{urlcolor=colorSecundario}
+\hypersetup{filecolor=colorSecundario}
+\hypersetup{citecolor=colorGris}
+
+
+%====================================================================================================
+%========================Encabezado y pie de Pagina==================================================
+\fancyhead[LE]{\includegraphics[width=0.55\textwidth]{Plantilla/imagenes/headerImp.png}}
+\fancyhead[RO]{\includegraphics[width=0.55\textwidth]{Plantilla/imagenes/headerPar.png}}
+\fancyhead[RE,LO]{}
+
+%====================================================================================================
+
