@@ -1,0 +1,58 @@
+.container__input {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.container__title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.icon_left {
+  position: absolute;
+  left: 10px;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.397);
+}
+
+.input {
+  /* position: relative; */
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #8E0F4B;
+  padding: .7rem;
+  outline: none;
+  /* background-color: #F3F4F8; */
+}
+
+.input::placeholder {
+  font-size: .85rem;
+  font-weight: 500;
+  color: #454547;
+}
+
+.ti_24 {
+  text-indent: 1.5rem;
+}
+
+.vacancy {
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+/* HERO */
+.hero {
+  margin-bottom: 1rem;
+}
+
+.hero h3 {
+  margin-bottom: 0;
+}
+
+.hero span {
+  font-size: .9rem;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.397);
+}
