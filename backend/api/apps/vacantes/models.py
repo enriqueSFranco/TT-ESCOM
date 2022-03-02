@@ -3,10 +3,10 @@ from django.db import models
 
 # Create your models here.
 class Vacant:
-    t200_id_vacante = models.AutoField(primary_key=True)
-    t200_puesto = models.CharField(max_length=50)
-    t200_descripcion = models.TextField()
-    t200_ubicacion = models.TextField()
+    t200_id_vacant = models.AutoField(primary_key=True)
+    t200_job = models.CharField(max_length=50)
+    t200_description = models.TextField()
+    t200_address = models.TextField()
     t200_hora_entrada = models.DateField()
     t200_hora_salida = models.DateField()
     t200_dias_laborales = models.CharField(max_length=7)
