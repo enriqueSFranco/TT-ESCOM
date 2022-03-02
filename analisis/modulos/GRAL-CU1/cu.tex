@@ -1,0 +1,100 @@
+% Actualizar para indicar cual es el archivo raíz a compilar.
+%!TEX root = ../../main2.tex
+
+\begin{UseCase}[]{GRAL-CU1}{Iniciar sesión.}{
+	Permite al actor ingresar al sistema por medio de una cuenta y así poder acceder a las
+	acciones que tiene permitidas dentro del sistema según los permisos del actor.
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		Todos. 
+	}
+	\UCitem[admin]{Prioridad}{
+		Alta
+	}
+	\UCitem[admin]{Complejidad}{
+		Media.
+	}
+	\UCitem{Precondiciones}{
+		El actor debe de ingresar al sitio web de la Bolsa de Trabajo ESCOM.
+	}
+	\UCitem{Postcondiciones}{
+		El actor podrá acceder al sistema y dependeiendo el tipo de usuario se habilitarán las acciones correspondientes.
+	}
+	\UCitems{Entradas}{
+		\begin{Titemize}
+			\Titem Nombre de usuario
+			\Titem Contraseña
+		\end{Titemize}
+
+	}
+	\UCitems{Salidas}{	
+		\begin{Titemize}
+			\Titem Nombre de usuario
+			\Titem Contraseña
+		\end{Titemize}	
+	}   
+	\UCitem{Destino}{
+		GRAL-USR-IU1.
+	}
+	\UCitem{Viene de}{
+		Caso de uso primario.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Ingresa al sitio web de la \textbf{Bolsa de trabajo de ESCOM} desde el navegador de su preferencia.
+    \UCpaso [\UCsist] Muestra la interfaz \refIdElem{GRAL-IU1}.
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Alumno}. \refTray{A}
+	\UCpaso [\UCsist] Muestra la interfaz \refIdElem{GRAL-USR-IU1}.
+	\UCpaso [\UCactor] Introduce los datos para ingresar al sistema: usuario y contraseña.\refTray{B}\label{gral-01-1}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Iniciar Sesión}. \refTray{C}\refTray{D}
+    \UCpaso [\UCsist] Valida que el nombre de usuario y la contraseña ingresados esten registrados en el sistema.\refTray{E}
+    \UCpaso [\UCsist] Muestra la interfaz \refIdElem{AA-IU1}.
+\end{UCtrayectoria}
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor da clic en el botón \IUbutton{Empresa}.}
+	\UCpaso [\UCsist] Muestra la interfaz \refIdElem{GRAL-USR-IU1}.
+	\UCpaso [\UCactor] Introduce los datos para ingresar al sistema: usuario y contraseña.\refTray{B}\label{gral-01-2}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Iniciar Sesión}. \refTray{F}\refTray{D}
+    \UCpaso [\UCsist] Valida que el nombre de usuario y la contraseña ingresados esten registrados en el sistema. \refTray{E}
+    \UCpaso [\UCsist] Muestra la interfaz \refIdElem{EMP-IU1}.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la Trayectoria]{B}{El actor no ingresó uno o más campos obligatorios.}
+	\UCpaso [\UCsist] Muestra el mensaje \textbf{MSG} en la interfaz \refIdElem{GRAL-USR-IU1} .
+	\UCpaso [\UCsist] Continua en el paso \ref{gral-01-1} de la Trayectoria Principal o en el paso \ref{gral-01-2} de la Trayectoria Alternativa A.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la Trayectoria]{C}{El actor desea registrarse en el sistema.}
+	\UCpaso [\UCsist] Presiona el botón \IUbutton{¿No tienes una cuenta?}.
+	%\extendUC{GRAL-CU2}
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la Trayectoria]{D}{El actor ha olvidado su contraseña.}
+	\UCpaso [\UCsist] Presiona el botón \IUbutton{¿Olvidaste tu contraseña?}.
+	%\extendUC{GRAL-CU3}
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la Trayectoria]{E}{El actor no ingresó un correo o contraseña válidos.}
+	\UCpaso [\UCsist] Muestra el mensaje \textbf{MSG} en la interfaz \refIdElem{GRAL-USR-IU1} .
+	\UCpaso [\UCsist] Continua en el paso \ref{gral-01-1} de la Trayectoria Principal o en el paso \ref{gral-01-2} de la Trayectoria Alternativa A.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la Trayectoria]{F}{El actor desea hacer el pre-registro en el sistema.}
+	\UCpaso [\UCsist] Presiona el botón \IUbutton{¿No tienes una cuenta?}.
+	%\extendUC{GRAL-CU4}
+\end{UCtrayectoriaA} 
+
+
+
+
+\subsubsection{Puntos de extensión}
+
+%\UCExtensionPoint{Registrar usuario}{El usuario requiere registrarse en el sistema}{En la trayectoria alternativa B}{\refIdElem{AUCU2}}
+
+%\UCExtensionPoint{Recuperar contraseña}{El usuario requiere recuperar su contraseña para ingresar al sistema}{En la trayectoria alternativa C}{\refIdElem{AUCU3}}

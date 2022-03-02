@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.10.18)  28 FEB 2022 07:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2021.10.18)  1 MAR 2022 18:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -837,15 +837,8 @@ File: l3backend-pdftex.def 2020-01-29 L3 backend support: PDF output (pdfTeX)
 \l__pdf_internal_box=\box107
 )
 (./main.aux
-LaTeX Info: Redefining \. on input line 25.
-LaTeX Info: Redefining \% on input line 25.
-
-
-LaTeX Warning: Label `cu3-dd' multiply defined.
-
-
-LaTeX Warning: Label `ch:modInfo' multiply defined.
-
+LaTeX Info: Redefining \. on input line 28.
+LaTeX Info: Redefining \% on input line 28.
 )
 \openout1 = `main.aux'.
 
@@ -960,39 +953,30 @@ LaTeX Info: Redefining \nameref on input line 6.
 \@outlinefile=\write5
 \openout5 = `main.out'.
 
- (./3ModInfo.tex
-Cap\'{\i }tulo 1.
+ (./modulos/GRAL-CU1/cu.tex
 LaTeX Font Info:    Font shape `T1/fvs/m/n' will be
-(Font)              scaled to size 12.9599pt on input line 2.
-LaTeX Font Info:    Font shape `T1/fvs/m/n' will be
-(Font)              scaled to size 22.39185pt on input line 2.
-LaTeX Font Info:    Font shape `T1/fvs/m/n' will be
-(Font)              scaled to size 10.79993pt on input line 7.
-LaTeX Font Info:    Font shape `T1/fvs/b/n' will be
-(Font)              scaled to size 10.79993pt on input line 7.
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 7.
-
-LaTeX Font Info:    Font shape `T1/fvs/b/n' will be
-(Font)              scaled to size 9.85492pt on input line 8.
-) (./cu-base/cu.tex [1
-
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+(Font)              scaled to size 12.9599pt on input line 7.
 LaTeX Font Info:    Font shape `T1/fvs/b/n' will be
 (Font)              scaled to size 12.9599pt on input line 7.
+LaTeX Font Info:    Font shape `T1/fvs/m/n' will be
+(Font)              scaled to size 10.79993pt on input line 7.
+LaTeX Font Info:    Font shape `T1/fvs/b/n' will be
+(Font)              scaled to size 10.79993pt on input line 7.
+LaTeX Font Info:    Font shape `T1/fvs/b/n' will be
+(Font)              scaled to size 9.85492pt on input line 45.
 
 Overfull \hbox (3.08667pt too wide) in paragraph at lines 45--45
 []|\T1/fvs/b/n/10.95 Postcondiciones:| 
  []
 
+LaTeX Font Info:    Trying to load font information for TS1+fvs on input line 4
+5.
+(/usr/share/texlive/texmf-dist/tex/latex/bera/ts1fvs.fd
+File: ts1fvs.fd 2004/09/07 scalable font definitions for TS1/fvs.
+)
+LaTeX Font Info:    Font shape `TS1/fvs/m/n' will be
+(Font)              scaled to size 9.85492pt on input line 45.
 
-Warning Referencia a elemento no definido /BR/BR-N002, pp2
-
-Warning Referencia a elemento no definido /MSG/MSG002, pp2
-
-Warning Referencia a elemento no definido /MSG/MSG002, pp2
 Overfull \hbox (2.43637pt too wide) in alignment at lines 45--45
  [] [] 
  []
@@ -1002,16 +986,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 48--48
 
  []
 
-<cdt/uc/actor.png, id=54, 96.36pt x 74.2775pt>
+<cdt/uc/actor.png, id=23, 96.36pt x 74.2775pt>
 File: cdt/uc/actor.png Graphic file (type png)
 <use cdt/uc/actor.png>
 Package pdftex.def Info: cdt/uc/actor.png  used on input line 49.
 (pdftex.def)             Requested size: 14.26958pt x 11.0pt.
-<cdt/uc/usecase.png, id=56, 91.34125pt x 61.22874pt>
+<cdt/uc/usecase.png, id=25, 91.34125pt x 61.22874pt>
 File: cdt/uc/usecase.png Graphic file (type png)
 <use cdt/uc/usecase.png>
 Package pdftex.def Info: cdt/uc/usecase.png  used on input line 50.
 (pdftex.def)             Requested size: 16.40865pt x 11.0pt.
+
+Warning Referencia a elemento no definido /IU/GRAL-IU1, pp1
 File: cdt/uc/actor.png Graphic file (type png)
 <use cdt/uc/actor.png>
 Package pdftex.def Info: cdt/uc/actor.png  used on input line 51.
@@ -1022,6 +1008,9 @@ File: cdt/uc/usecase.png Graphic file (type png)
 <use cdt/uc/usecase.png>
 Package pdftex.def Info: cdt/uc/usecase.png  used on input line 52.
 (pdftex.def)             Requested size: 16.40865pt x 11.0pt.
+
+
+Warning Referencia a elemento no definido /IU/GRAL-USR-IU1, pp1
 File: cdt/uc/actor.png Graphic file (type png)
 <use cdt/uc/actor.png>
 Package pdftex.def Info: cdt/uc/actor.png  used on input line 53.
@@ -1038,6 +1027,9 @@ File: cdt/uc/usecase.png Graphic file (type png)
 <use cdt/uc/usecase.png>
 Package pdftex.def Info: cdt/uc/usecase.png  used on input line 56.
 (pdftex.def)             Requested size: 16.40865pt x 11.0pt.
+
+
+Warning Referencia a elemento no definido /IU/AA-IU1, pp1
 LaTeX Font Info:    Font shape `T1/fvs/m/it' will be
 (Font)              scaled to size 9.85492pt on input line 57.
 LaTeX Font Info:    Font shape `T1/fvs/m/n' will be
@@ -1050,20 +1042,13 @@ File: cdt/uc/usecase.png Graphic file (type png)
 <use cdt/uc/usecase.png>
 Package pdftex.def Info: cdt/uc/usecase.png  used on input line 61.
 (pdftex.def)             Requested size: 16.40865pt x 11.0pt.
+
+
+Warning Referencia a elemento no definido /IU/GRAL-USR-IU1, pp1
 File: cdt/uc/actor.png Graphic file (type png)
 <use cdt/uc/actor.png>
 Package pdftex.def Info: cdt/uc/actor.png  used on input line 62.
 (pdftex.def)             Requested size: 14.26958pt x 11.0pt.
-<Plantilla/imagenes/headerImp.png, id=61, 873.2625pt x 564.1075pt>
-File: Plantilla/imagenes/headerImp.png Graphic file (type png)
-<use Plantilla/imagenes/headerImp.png>
-Package pdftex.def Info: Plantilla/imagenes/headerImp.png  used on input line 6
-3.
-(pdftex.def)             Requested size: 45.51784pt x 24.9964pt.
-[2 <./Plantilla/imagenes/headerImp.png> <./cdt/uc/actor.png> <./cdt/uc/usecase.
-png> </usr/share/texlive/texmf-dist/tex/latex/keystroke/keystroke_left.pdf> </u
-sr/share/texlive/texmf-dist/tex/latex/keystroke/keystroke_middle.pdf> </usr/sha
-re/texlive/texmf-dist/tex/latex/keystroke/keystroke_right.pdf>]
 File: cdt/uc/actor.png Graphic file (type png)
 <use cdt/uc/actor.png>
 Package pdftex.def Info: cdt/uc/actor.png  used on input line 63.
@@ -1075,6 +1060,56 @@ Package pdftex.def Info: cdt/uc/usecase.png  used on input line 64.
 File: cdt/uc/usecase.png Graphic file (type png)
 <use cdt/uc/usecase.png>
 Package pdftex.def Info: cdt/uc/usecase.png  used on input line 65.
+(pdftex.def)             Requested size: 16.40865pt x 11.0pt.
+
+
+Warning Referencia a elemento no definido /IU/EMP-IU1, pp1
+<Plantilla/imagenes/headerPar.png, id=35, 862.22125pt x 560.0925pt>
+File: Plantilla/imagenes/headerPar.png Graphic file (type png)
+<use Plantilla/imagenes/headerPar.png>
+Package pdftex.def Info: Plantilla/imagenes/headerPar.png  used on input line 6
+9.
+(pdftex.def)             Requested size: 45.52121pt x 24.99796pt.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Plantilla/imagenes/heade
+rPar.png> <./cdt/uc/actor.png> <./cdt/uc/usecase.png> </usr/share/texlive/texmf
+-dist/tex/latex/keystroke/keystroke_left.pdf> </usr/share/texlive/texmf-dist/te
+x/latex/keystroke/keystroke_middle.pdf> </usr/share/texlive/texmf-dist/tex/late
+x/keystroke/keystroke_right.pdf>]
+File: cdt/uc/usecase.png Graphic file (type png)
+<use cdt/uc/usecase.png>
+Package pdftex.def Info: cdt/uc/usecase.png  used on input line 69.
+(pdftex.def)             Requested size: 16.40865pt x 11.0pt.
+
+
+Warning Referencia a elemento no definido /IU/GRAL-USR-IU1, pp2
+File: cdt/uc/usecase.png Graphic file (type png)
+<use cdt/uc/usecase.png>
+Package pdftex.def Info: cdt/uc/usecase.png  used on input line 70.
+(pdftex.def)             Requested size: 16.40865pt x 11.0pt.
+File: cdt/uc/usecase.png Graphic file (type png)
+<use cdt/uc/usecase.png>
+Package pdftex.def Info: cdt/uc/usecase.png  used on input line 74.
+(pdftex.def)             Requested size: 16.40865pt x 11.0pt.
+File: cdt/uc/usecase.png Graphic file (type png)
+<use cdt/uc/usecase.png>
+Package pdftex.def Info: cdt/uc/usecase.png  used on input line 79.
+(pdftex.def)             Requested size: 16.40865pt x 11.0pt.
+File: cdt/uc/usecase.png Graphic file (type png)
+<use cdt/uc/usecase.png>
+Package pdftex.def Info: cdt/uc/usecase.png  used on input line 84.
+(pdftex.def)             Requested size: 16.40865pt x 11.0pt.
+
+
+Warning Referencia a elemento no definido /IU/GRAL-USR-IU1, pp2
+File: cdt/uc/usecase.png Graphic file (type png)
+<use cdt/uc/usecase.png>
+Package pdftex.def Info: cdt/uc/usecase.png  used on input line 85.
+(pdftex.def)             Requested size: 16.40865pt x 11.0pt.
+File: cdt/uc/usecase.png Graphic file (type png)
+<use cdt/uc/usecase.png>
+Package pdftex.def Info: cdt/uc/usecase.png  used on input line 89.
 (pdftex.def)             Requested size: 16.40865pt x 11.0pt.
 )
 \dtldb@BusinessRules=\toks61
@@ -1124,13 +1159,13 @@ Info Se han guardado 0 Actores
 \dtlkeys@UseCasesIO=\toks76
 \dtlrows@UseCasesIO=\count365
 \dtlcols@UseCasesIO=\count366
-<Plantilla/imagenes/headerPar.png, id=89, 862.22125pt x 560.0925pt>
-File: Plantilla/imagenes/headerPar.png Graphic file (type png)
-<use Plantilla/imagenes/headerPar.png>
-Package pdftex.def Info: Plantilla/imagenes/headerPar.png  used on input line 1
+<Plantilla/imagenes/headerImp.png, id=76, 873.2625pt x 564.1075pt>
+File: Plantilla/imagenes/headerImp.png Graphic file (type png)
+<use Plantilla/imagenes/headerImp.png>
+Package pdftex.def Info: Plantilla/imagenes/headerImp.png  used on input line 1
 2.
-(pdftex.def)             Requested size: 45.52121pt x 24.99796pt.
- [3
+(pdftex.def)             Requested size: 45.51784pt x 24.9964pt.
+ [2
 \openout3 = `cdtBusinessRules.csv'.
 
 \openout3 = `cdtTerminos.csv'.
@@ -1147,52 +1182,31 @@ Package pdftex.def Info: Plantilla/imagenes/headerPar.png  used on input line 1
 
 \openout3 = `cdtUseCasesIO.csv'.
 
- <./Plantilla/imagenes/headerPar.png>]
+ <./Plantilla/imagenes/headerImp.png>]
 (./main.aux
-LaTeX Info: Redefining \. on input line 29.
-LaTeX Info: Redefining \% on input line 29.
+LaTeX Info: Redefining \. on input line 28.
+LaTeX Info: Redefining \% on input line 28.
 )
-
-LaTeX Warning: There were multiply-defined labels.
-
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: 0460B1A39A487E6834D6CBCEDA2CD64B;606
-(rerunfilecheck)             After:  BF93ADD1FFF7FD159A8AF2912B027563;411.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 1CF3CBAC7312EBDA427BFF8E74674869;272.
  ) 
 Here is how much of TeX's memory you used:
- 20281 strings out of 479304
- 317297 string characters out of 5869778
- 678947 words of memory out of 5000000
- 37023 multiletter control sequences out of 15000+600000
- 456479 words of font info for 51 fonts, out of 8000000 for 9000
+ 20289 strings out of 479304
+ 317466 string characters out of 5869778
+ 680708 words of memory out of 5000000
+ 37029 multiletter control sequences out of 15000+600000
+ 448582 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 147i,15n,144p,473b,566s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{subsection.2.0.3} has been referenced but does no
-t exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.0.2} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.0.1} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{chapter.2} has been referenced but does not exist, 
-replaced by a fixed one
-
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texlive/
-texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/typ
-e1/public/bera/fvsb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ber
-a/fvsr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/bera/fvsro8a.pfb
-></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on main.pdf (3 pages, 295189 bytes).
+ 147i,15n,144p,473b,542s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texliv
+e/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/t
+ype1/public/bera/fvsb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/b
+era/fvsr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/bera/fvsro8a.p
+fb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on main.pdf (2 pages, 294613 bytes).
 PDF statistics:
- 136 PDF objects out of 1000 (max. 8388607)
- 114 compressed objects within 2 object streams
- 41 named destinations out of 1000 (max. 500000)
- 108 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 128 PDF objects out of 1000 (max. 8388607)
+ 107 compressed objects within 2 object streams
+ 44 named destinations out of 1000 (max. 500000)
+ 68 words of extra memory for PDF output out of 10000 (max. 10000000)
 
