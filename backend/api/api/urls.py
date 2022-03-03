@@ -19,8 +19,9 @@ from apps.users.views import Login, Logout, UserToken
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('usuario/', include('apps.users.api.urls')),
-    path('iniciar-sesion/', Login.as_view(), name='iniciar-sesion'),
-    path('cerrar-sesion/', Logout.as_view(), name='cerrar-sesion'),
+    path('users/', include('apps.users.api.urls')),
+    path('students/', include('apps.students.api.routers')),
+    path('login/', Login.as_view(), name='login'),
+    path('logout/', Logout.as_view(), name='logout'),
     path('refresh-token/', UserToken.as_view(), name='refresh-token')
 ]
