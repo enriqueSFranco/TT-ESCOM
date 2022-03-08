@@ -4,13 +4,15 @@ import { $ajax } from "../../utils/$ajax";
 import Input from "../Input/Input";
 import * as FaIcon from "react-icons/fa";
 import * as MdIcon from "react-icons/md";
+import * as IoIcon from "react-icons/io"
 import styles from "./Styles.module.css";
 
 let initialForm = {
-  fullName: "",
-  boleta: "",
-  email: "",
-  password: "",
+  t100_name: "",
+  t100_boleta: "",
+  t100_academic_level: "",
+  t100_email: "",
+  t100_password: "",
 };
 
 const CreateAccount = () => {
@@ -29,9 +31,9 @@ const CreateAccount = () => {
       },
       body: form,
     };
-
+    console.log(form)
     $ajax()
-      .POST("/usuario/usuario/", options)
+      .POST("/api/students/", options)
       .then((response) => {
         if (!response.err) {
           console.log(response);
@@ -46,34 +48,49 @@ const CreateAccount = () => {
         <div className="my-5">
           <h3 className={styles.form_title}>Crear Cuenta</h3>
           <form onSubmit={handleSubmit}>
+            {/* campo para el nombre */}
+            <div className={`${styles.inner} mb-3`}>
+                <i className={styles.right_icon}>
+                  <FaIcon.FaUser />
+                </i>
+                <Input
+                  type="text"
+                  id="t100_name"
+                  name="t100_name"
+                  placeholder="Nombre(s)"
+                  className={styles.input}
+                  value={form.t100_name}
+                  onChange={handleChange}
+                />
+            </div>
             <div className={`${styles.inner} mb-3`}>
               <i className={styles.right_icon}>
-                <FaIcon.FaUser />
+                <MdIcon.MdSchool />
               </i>
               <Input
                 type="text"
-                id="fullName"
-                name="fullName"
-                placeholder="Nombre Completo"
+                id="t100_boleta"
+                name="t100_boleta"
+                placeholder="Numero de boleta"
                 className={styles.input}
-                value={form.fullName}
+                value={form.t100_boleta}
                 onChange={handleChange}
               />
             </div>
 
             <div className={`${styles.inner} mb-3`}>
-              <i className={styles.right_icon}>
-                <FaIcon.FaUser />
+              <i className={`${styles.right_icon} ${styles.customArrow}`}>
+                <IoIcon.IoMdArrowDropdown />
               </i>
-              <Input
-                type="text"
-                id="boleta"
-                name="boleta"
-                placeholder="Numero de boleta"
-                className={styles.input}
-                value={form.boleta}
-                onChange={handleChange}
-              />
+              <select className={`${styles.levelAcademic} ${styles.noArrowSelect}`} name="t100_academic_level" onChange={handleChange}>
+                <option value="3">3er Semestre</option>
+                <option value="4">4to Semestre</option>
+                <option value="5">5to Semestre</option>
+                <option value="6">6to Semestre</option>
+                <option value="7">7to Semestre</option>
+                <option value="8">8to Semestre</option>
+                <option value="graduado">Graduado</option>
+              </select>
             </div>
 
             <div className={`${styles.inner} mb-3`}>
@@ -81,12 +98,12 @@ const CreateAccount = () => {
                 <MdIcon.MdEmail />
               </i>
               <Input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Escribre tu correo electrónico"
+                type="t100_email"
+                id="t100_email"
+                name="t100_email"
+                placeholder="Correo electrónico"
                 className={styles.input}
-                value={form.email}
+                value={form.t100_email}
                 onChange={handleChange}
               />
             </div>
@@ -99,11 +116,11 @@ const CreateAccount = () => {
               </i>
               <Input
                 type={showPassword ? "text" : "password"}
-                id="password"
-                name="password"
-                placeholder="Escribre tu contraseña"
+                id="t100_password"
+                name="t100_password"
+                placeholder="Contraseña"
                 className={styles.input}
-                value={form.password}
+                value={form.t100_password}
                 onChange={handleChange}
               />
             </div>

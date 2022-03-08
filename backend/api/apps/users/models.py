@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 from simple_history.models import HistoricalRecords
 
-# clase para crear un usuario
+
 class UserManager(BaseUserManager):
 	def _create_user(self, username, email, name, last_name, password, is_staff, is_superuser, **extra_fields):
 		user = self.model(
@@ -22,21 +22,15 @@ class UserManager(BaseUserManager):
 		return self._create_user(username, email, name, last_name, password, False, False, **extra_fields)
 
 	def create_superuser(self, username, email, name, last_name, password=None, **extra_fields):
-		extra_fields.setdefault('role', 1)
-		if extra_fields.get('role') != 1:
-			raise ValueError('El superusuario debe tener permisos de administrador')
 		return self._create_user(username, email, name, last_name, password, True, True, **extra_fields)
 
-# clase customizada del modelo usuario
-class User(AbstractBaseUser, PermissionsMixin):
-	ADMIN = 1
-	COMPANY = 2
-	STUDENT = 3
+# MODELO PARA UN USUARIO GENERAL
+class User (AbstractBaseUser, PermissionsMixin):
 
-	ROLE_CHOICE = (
-		(ADMIN, 'Admin'),
-		(COMPANY, 'Company'),
-		(STUDENT, 'Student')
+	ROLE_CHOICES = (
+		('administrador', 'Administrador'),
+		('reclutador', 'Reclutador'),
+		('alumno', 'Alumno'),
 	)
 
 	username = models.CharField(max_length=255, unique=True)
@@ -45,9 +39,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 	last_name = models.CharField('Apellidos', max_length=255, blank=True, null=True)
 	image = models.ImageField('Imagen de perfil', upload_to='perfil/', max_length=255, null=True, blank=True)
 	is_active = models.BooleanField(default=True)
-	role = models.PositiveSmallIntegerField(choices=ROLE_CHOICE, blank=True, null=True, default=3)
+	is_staff = models.BooleanField(default=True)
+	role = models.CharField(max_length=50, choices=ROLE_CHOICES)
 	historical = HistoricalRecords()
-	objects = UserManager()
 
 	class Meta:
 		verbose_name = 'Usuario'

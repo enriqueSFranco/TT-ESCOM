@@ -2,13 +2,13 @@ from django.db import models
 
 # Create your models here.
 class Student(models.Model):
-	t100_boleta = models.PositiveIntegerField(primary_key=True, help_text='id unico para este alumno', null=False, blank=False)
+	t100_boleta = models.CharField(max_length=12, null=False, blank=False)
 	t100_name = models.CharField(max_length=50, null=False, blank=False)
-	t100_last_name = models.CharField(max_length=50, null=False, blank=False)
-	t100_username = models.CharField(max_length=40, null=False, blank=False)
+	t100_last_name = models.CharField(max_length=50, null=True, blank=True)
+	t100_username = models.CharField(max_length=40, null=True, blank=True)
 	t100_password = models.CharField(max_length=100, null=False, blank=False)
-	t100_rfc = models.CharField(max_length=12, unique=True, null=True, blank=True)
-	t100_nss = models.CharField(max_length=12,unique=True, blank=True, null=True)
+	t100_rfc = models.CharField(max_length=12, null=True, blank=True)
+	t100_nss = models.CharField(max_length=12, blank=True, null=True)
 	t100_cv = models.FileField(null=True, blank=True)
 	t100_email = models.EmailField(max_length=50, null=False, blank=False)
 	genders = [
@@ -49,17 +49,3 @@ class Skill(models.Model):
 
 	def __str__(self) -> str:
 		return self.t102_description
-
-
-# skill.t102_description: ["ckja,aslkdfj,askfj,"]
-
-
-"""
-	"boleta": 1219238,
-	"habilidades": {
-		"1": "css",
-		"2": "java",
-	},
-	...
-
-"""

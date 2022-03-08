@@ -1,3 +1,11 @@
+.container__form {
+  background-color: #8e0f4af6;
+  color: #fff;
+  text-align: center;
+  padding: 1.4rem;
+  border-radius: 0 0 8px 1rem;
+}
+
 .container__input {
   display: flex;
   position: relative;
@@ -5,7 +13,7 @@
 }
 
 .container__title {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 1rem;
 }
@@ -18,13 +26,14 @@
 }
 
 .input {
-  /* position: relative; */
   width: 100%;
   border: none;
-  border-bottom: 2px solid #8E0F4B;
-  padding: .7rem;
+  border-radius: 8px;
+  padding: .8rem;
   outline: none;
-  /* background-color: #F3F4F8; */
+  background-color: #F3F4F8;
+
+  transition: box-shadow .5s;
 }
 
 .input::placeholder {
@@ -55,4 +64,16 @@
   font-size: .9rem;
   font-weight: 300;
   color: rgba(0, 0, 0, 0.397);
+}
+
+
+/* SECCION DE VACANTES */
+
+
+/* MEDIA QUERY */
+@media screen and (min-width: 570px) {
+  .container__form {
+    background-color: #fff;
+    color: #000;
+  }
 }

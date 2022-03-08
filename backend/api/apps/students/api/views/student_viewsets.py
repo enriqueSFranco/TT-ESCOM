@@ -6,7 +6,7 @@ from rest_framework.decorators import action
 from rest_framework import viewsets
 
 from apps.students.models import Student
-from apps.students.api.serializers import StudentSerializer, StudentListSerializer, PasswordSerializer, UpdateStudentSerializer
+from apps.students.api.serializer.student_serializer import StudentSerializer, StudentListSerializer, PasswordSerializer, UpdateStudentSerializer
 
 class StudentViewSet(viewsets.GenericViewSet):
 	model = Student
@@ -21,9 +21,10 @@ class StudentViewSet(viewsets.GenericViewSet):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter(is_active=True)\
-				.values('t100_boleta', 't100_name', 't100_username', 't100_password', 't100_email')
+				.values('t100_boleta', 't100_name', 't100_username', 't100_password', 't100_email', 't100_rfc', 't100_gender', 't100_academic_level')
 		return self.queryset
 
+  # TODO terminar ruta para cambiar el password
 	@action(detail=True, methods=['post'])
 	def set_password(self, request, pk=None):
 		student = self.get_object(pk)
@@ -47,7 +48,7 @@ class StudentViewSet(viewsets.GenericViewSet):
 
 	def create(self, request):
 		student_serializer = self.serializer_class(data=request.data)
-		print(request.data)
+		print('request: ',request.data)
 		if student_serializer.is_valid():
 			student_serializer.save()
 			return Response({
@@ -65,8 +66,7 @@ class StudentViewSet(viewsets.GenericViewSet):
 
 	def update(self, request, pk=None):
 		student = self.get_object(pk)
-		student_serializer = UpdateStudentSerializer(
-			student, data=request.data)
+		student_serializer = UpdateStudentSerializer(student, data=request.data)
 		if student_serializer.is_valid():
 			student_serializer.save()
 			return Response({
@@ -78,8 +78,7 @@ class StudentViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk=None):
-		student_destroy = self.model.objects.filter(
-			id=pk).update(is_active=False)
+		student_destroy = self.model.objects.filter(id=pk).update(is_active=False)
 		if student_destroy == 1:
 			return Response({
 				'message': 'Alumno eliminado correctamente'

@@ -17,5 +17,5 @@ class SkillListSerializer(serializers.ModelSerializer):
     return {
       "t102_id_skill": instance["t102_id_skill"],
       "t102_description": instance["t102_description"],
-      "t100_boleta": instance["t100_boleta"]
+      # "t100_boleta": instance["t100_boleta"]
     }

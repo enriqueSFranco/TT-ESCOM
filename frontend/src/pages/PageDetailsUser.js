@@ -1,12 +1,8 @@
-import { useContext } from "react";
 import { useForm } from "../hooks/useForm";
-import { $ajax } from "../utils/$ajax";
-import * as FaIcon from "react-icons/fa";
 import { useShowPassword } from "../hooks/usePassword";
-import Input from "../components/Input/Input";
-import AuthContext from "../context/AuthContext";
+import { $ajax } from "../utils/$ajax";
 import * as MdIcon from "react-icons/md";
-
+import * as FaIcon from "react-icons/fa";
 
 let initialForm = {
 	username: "",
@@ -15,31 +11,36 @@ let initialForm = {
 };
 
 const PageDetailsUser = () => {
-	const { showPassword, toggle } = useShowPassword(false)
-	const { user } = useContext(AuthContext);
+	const { showPassword, toggle } = useShowPassword(false);
 	const { form, handleChange } = useForm(initialForm);
-	console.log(user)
-	let { id } = user;
-	console.log(id)
-	let url = `/usuario/usuario/${id}/`;
-
+	
+	let data = JSON.parse(window.localStorage.getItem('token')); 
+	let userId = data.user.id;
+	let url = `/usuario/usuario/${userId}/`;
+	
 	// FUNCION PARA ACTUALIZAR LA INFORMACION DE UN USARIO
 	const handleUpdateAccount = (e) => {
 		e.preventDefault();
-
 		let options = {
 			headers: {
 				'Content-Type': 'application/json',
 				'Accept': 'application/json'
 			},
 			body: form
-		}
-
+		};
 		$ajax().PUT(url, options)
 			.then((response) => {
-				console.log(response)
+				if (!response.err)
+					console.log('datos actualizado correctamente');
+				else {
+					window.alert('Campos vacios...');
+					console.log(response)
+				}
 			})
-			.catch(err => console.log(err));
+			.catch(err => {
+				// setResponse(true);
+				console.log(err);
+			});
 	};
 
 	// FUNCION PARA ELIMINAR LA CUENTA DE UN USUARIO
@@ -50,7 +51,7 @@ const PageDetailsUser = () => {
 				'Content-Type': 'application/json',
 				'Accept': 'application/json'
 			},
-			body: user
+			body: data.user
 		};
 		$ajax().DEL(url, options)
 			.then((response) => {
@@ -62,6 +63,7 @@ const PageDetailsUser = () => {
 
 	return (
 		<section>
+			{/* <h1>{response ? <span>true</span> : <span>false</span>}</h1> */}
 			<div className="container">
 				<h1 style={{ textAlign: "center", fontSize: "1.4rem" }}>
 					Detalles de usuario
@@ -71,7 +73,7 @@ const PageDetailsUser = () => {
 						<i className='right-icon'>
 							<FaIcon.FaUser />
 						</i>
-						<Input
+						<input
 							type="text"
 							id="username"
 							name="username"
@@ -80,12 +82,13 @@ const PageDetailsUser = () => {
 							value={form.username}
 							onChange={handleChange}
 						/>
+				
 					</div>
 					<div className="mb-3 inner">
 						<i className='right-icon'>
 							<MdIcon.MdEmail />
 						</i>
-						<Input
+						<input
 							type="email"
 							id="email"
 							name="email"
@@ -96,10 +99,10 @@ const PageDetailsUser = () => {
 						/>
 					</div>
 					<div className="mb-3 inner">
-						<i className='right-icon' onClick={toggle}>
+					<i className='right-icon eye-password' onClick={toggle}>
 							{ showPassword ? <FaIcon.FaEye /> : <FaIcon.FaEyeSlash />}
 						</i>
-						<Input
+						<input
 							type={showPassword ? "type" : "password"}
 							name="password"
 							id="password"

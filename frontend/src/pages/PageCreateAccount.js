@@ -1,11 +1,12 @@
-import React from 'react';
-import CreateAccount from '../components/Form/CreateAccount';
+import CreateAccountStudent from '../components/Form/CreateAccountStudent';
 
 const PageCreateAccount = () => {
   return (
-    <section>
-      <CreateAccount />
-    </section>
+    <>
+      <section>
+        <CreateAccountStudent />
+      </section>
+    </>
   )
 }
 
