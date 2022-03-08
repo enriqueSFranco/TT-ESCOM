@@ -45,21 +45,21 @@ class Vacant(models.Model):
     t200_job = models.CharField(max_length=50)
     t200_description = models.TextField()
     t200_address = models.TextField()
-    t200_hora_entrada = models.DateField()
-    t200_hora_salida = models.DateField()
-    t200_dias_laborales = models.CharField(max_length=7)
-    t200_prestaciones = models.CharField()
-    t200_pago_min = models.IntegerField()
-    t200_pago_max = models.IntegerField()
-    t200_pago_bruto = models.BooleanField()
-    t200_remoto = models.BooleanField()
-    t200_fecha_cierre = models.DateField()
-    t200_fecha_alta = models.DateField()
+    t200_check_time = models.DateField()
+    t200_closing_hour = models.DateField()
+    t200_work_days = models.CharField(max_length=7)
+    t200_benefits = models.TextField()
+    t200_min_salary = models.IntegerField()
+    t200_max_salary = models.IntegerField()
+    t200_gross_salary = models.BooleanField()
+    t200_home_ofice = models.BooleanField()
+    t200_open_date = models.DateField()
+    t200_close_date = models.DateField()
     #t200_puestos
-    c204_id_status = models.ForeignKey(Status_Vacant, on_delete=models.CASCADE)
+    #c204_id_status = models.ForeignKey(Status_Vacant, on_delete=models.CASCADE)
     #c108_id_area = models.ForeignKey(Area_Vacant, on_delete=models.CASCADE)
-    c106_id_type_candidate = models.ForeignKey(Type_Candidate, on_delete=models.CASCADE)
-    c207_id_experience = models.ForeignKey(Experience, on_delete=models.CASCADE)
+    #c106_id_type_candidate = models.ForeignKey(Type_Candidate, on_delete=models.CASCADE)
+    #c207_id_experience = models.ForeignKey(Experience, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Vacant'
@@ -68,8 +68,7 @@ class Vacant(models.Model):
 
     def __str__(self):
 	    return self.t200_id_vacant
-
-class Application(models.Model):
+'''class Application(models.Model):
     t201_id_application = models.AutoField(primary_key=True)
     t200_id_vacant = models.ForeignKey(Vacant, on_delete=models.CASCADE)
     #t100_boleta = models.ForeignKey(Student, on_delete=models.CASCADE)
@@ -85,4 +84,4 @@ class Application(models.Model):
 
     def __str__(self):
 	    return self.t201_id_application
-
+'''
