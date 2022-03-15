@@ -1,21 +1,18 @@
-import ReactDom from "react-dom";
-import Modal from "../components/Modal/Modal";
+// import FormUpdateDataStudent from "../components/Form/FormUpdateDataStudent";
 import LoginStudent from "../components/Form/LoginStudent";
 import styles from './PageLoginStudent.module.css';
 
-const modalContainer = document.getElementById("modal");
 
-const PageLoginStudent = ({ isMobile }) => {
+const PageLoginStudent = () => {
 
-  if (!isMobile) {
-    return (
+  return (
+    <>
       <section className={styles.wrapper}>
         <LoginStudent />
+        {/* <FormUpdateDataStudent /> */}
       </section>
-    )
-  }
-
-  return ReactDom.createPortal(<Modal><LoginStudent /></Modal>, modalContainer)
+    </>
+  )
 }
 
 export default PageLoginStudent;

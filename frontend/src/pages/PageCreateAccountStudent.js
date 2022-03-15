@@ -1,6 +1,6 @@
 import CreateAccountStudent from '../components/Form/CreateAccountStudent';
 
-const PageCreateAccount = () => {
+const PageCreateAccountStudent = () => {
   return (
     <>
       <section>
@@ -10,4 +10,4 @@ const PageCreateAccount = () => {
   )
 }
 
-export default PageCreateAccount;
+export default PageCreateAccountStudent;

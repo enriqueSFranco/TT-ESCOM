@@ -1,33 +1,54 @@
+import { useEffect, useState } from "react";
 import { useForm } from "../hooks/useForm";
-import JobCard from "../components/Card/JobCard";
+import { useFetch } from "../hooks/useFetch";
 import Input from "../components/Input/Input";
+import Loader from "../components/Loader/Loader";
+import JobList from "../components/Card/CardJobList";
 import Footer from "../components/Footer/Footer";
-import db from "../api/db";
 import * as FaIcon from "react-icons/fa";
 import styles from "./PageHome.module.css";
 
-const initialForm = {
+
+let initialForm = {
   job: "",
   location: "",
-};
+}
 
 const Home = () => {
+  const [show, setShow] = useState(true);
   const { form, handleChange } = useForm(initialForm);
+  const { data, loading } = useFetch("https://pokeapi.co/api/v2/pokemon/");
+
+  const handleScroll = () => {
+    if (window.screenY > 500) {
+      setShow(false);
+    } else {
+      setShow(true);
+    }
+  };
+
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, false);
+    return () => window.removeEventListener('scroll', handleScroll, false);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("buscando...");
   };
 
+  if (!data) return null;
+
   return (
     <section>
-      <div className={`${styles.container__form} container`}>
-        <h1 className={styles.container__title}>
+      <div className={`container my-4`}>
+        <h1 className={styles.containerTitle}>
           Encuentra el trabajo de tus sueños
         </h1>
         <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={`${styles.container__input} mb-3 `}>
-            <i className={styles.icon_left}>
+          <div className={`${styles.containerInput}`}>
+            <i className={styles.iconLeft}>
               <FaIcon.FaBuilding />
             </i>
             <Input
@@ -40,8 +61,8 @@ const Home = () => {
               onChange={handleChange}
             />
           </div>
-          <div className={`${styles.container__input} mb-3`}>
-            <i className={styles.icon_left}>
+          <div className={`${styles.containerInput}`}>
+            <i className={styles.iconLeft}>
               <FaIcon.FaLocationArrow />
             </i>
             <Input
@@ -59,33 +80,10 @@ const Home = () => {
           </div>
         </form>
       </div>
-      <article className="container jobs">
-        <h2 className="vacancy">Vacantes</h2>
-        <div className="container__job-card">
-          {db.map(
-            ({
-              id,
-              company,
-              img_company,
-              type_vacancy,
-              min_salary,
-              max_salary,
-              full_time,
-              location,
-            }) => (
-              <JobCard
-                key={id}
-                company={company}
-                type_vacancy={type_vacancy}
-                min_salary={min_salary}
-                max_salary={max_salary}
-                full_time={full_time}
-                location={location}
-              />
-            )
-          )}
-        </div>
-      </article>
+      {loading && <Loader />}
+      <div className="container">
+        <JobList />
+      </div>
       <Footer />
     </section>
   );
