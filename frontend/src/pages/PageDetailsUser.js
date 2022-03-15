@@ -1,20 +1,7 @@
-import { useContext, useState } from "react";
-import { useForm } from "../hooks/useForm";
-import { $ajax } from "../utils/$ajax";
-import * as FaIcon from "react-icons/fa";
-import { useShowPassword } from "../hooks/usePassword";
-import Input from "../components/Input/Input";
-import AuthContext from "../context/AuthContext";
-import * as MdIcon from "react-icons/md";
-
-
-let initialForm = {
-	username: "",
-	email: "",
-	password: "",
-};
+import CardProfileStudent from "../components/Card/CardProfileStudent";
 
 const PageDetailsUser = () => {
+<<<<<<< HEAD
 	const { showPassword, toggle } = useShowPassword(false)
 	const { user } = useContext(AuthContext);
 	const { form, handleChange } = useForm(initialForm);
@@ -128,6 +115,21 @@ const PageDetailsUser = () => {
 			</div>
 		</section>
 	);
+=======
+  return (
+    <section className="container">
+      <div className="row align-items-stretch my-5">
+        <div className="col">
+          <CardProfileStudent />
+        </div>
+        <div className="col">
+          {/* Componente details student */}
+          <h5>Detalles de estudiente</h5>
+        </div>
+      </div>
+    </section>
+  );
+>>>>>>> 381436477f41d0858fd99454eb1e7f7f0a1dade4
 };
 
 export default PageDetailsUser;

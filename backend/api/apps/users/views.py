@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
 from rest_framework import status
 
 from apps.users.api.serializers import UserTokenSerializer
@@ -18,6 +19,7 @@ class UserToken(APIView):
 
 # 28
 class Login(ObtainAuthToken):
+  permission_classes = [AllowAny]
   def post(self, request, *args, **kwargs):
     login_serializer = self.serializer_class(data=request.data, context={'request':request})
     if login_serializer.is_valid():
@@ -29,8 +31,11 @@ class Login(ObtainAuthToken):
         if created:
           return Response({
             'token': token.key,
-            'user': user_serializer.data,
-            'message': 'Inicio de sesion correcto'
+            # 'user': user_serializer.data,
+            'message': 'Inicio de sesion correcto',
+            'authenticatedUser': {
+              'email': user_serializer.data['email'],
+            }
           }, status=status.HTTP_201_CREATED)
         else: # si inicia sesion en otro navegador le borramos el token actual y le creamos uno nuevo
           token.delete()

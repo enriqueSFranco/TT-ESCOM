@@ -1,0 +1,50 @@
+:root {
+  --size-bezel: .5rem;
+  --size-radius: 4px;
+}
+
+.input {
+  position: relative;
+  margin: 1rem;
+}
+
+.inputLabel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: calc(var(--size-bezel) * 0.75) calc(var(--size-bezel) * .5);
+  margin: calc(var(--size-bezel) * 0.75 + 3px) calc(var(--size-bezel) * .5);
+  white-space: nowrap;
+  transform: translate(0, 0);
+  transform-origin: 0 0;
+  background-color: #fff;
+  transition: transform 120ms ease-in;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.inputField {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border: 1px solid currentColor;
+  padding: calc(var(--size-bezel) * 1.5) var(--size-bezel);
+  color: currentColor;
+  background: transparent;
+  border-radius: var(--size-radius);
+}
+
+.inputField:focus + .inputLabel, .inputField:not(:placeholder-shown) + .inputLabel {
+  transform: translate(0.25rem, -65%) scale(0.8);
+  color: #90314b;
+}
+
+.title {
+  text-transform: capitalize;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.wrapper {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
