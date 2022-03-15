@@ -23,5 +23,5 @@ urlpatterns = [
     path('iniciar-sesion/', Login.as_view(), name='iniciar-sesion'),
     path('cerrar-sesion/', Logout.as_view(), name='cerrar-sesion'),
     path('refresh-token/', UserToken.as_view(), name='refresh-token'),
-    path('api/', include('apps.vacantes.api.routers'))
+    path('api/', include('apps.routers'))
 ]
