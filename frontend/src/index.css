@@ -9,3 +9,15 @@ html {
 *::before {
   box-sizing: border-box;
 }
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+section {
+  padding: 3rem 0 0;
+}

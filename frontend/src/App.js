@@ -1,11 +1,19 @@
-import Form from "./components/Form";
+import Header from "./components/Menu/Header";
+import Root from "./Root";
+
+import { AuthProvider } from "./context/AuthContext";
+
+import "./App.css";
 
 function App() {
+
   return (
-    <div>
-      <h1>App</h1>
-      <Form />
-    </div>
+    <>
+      <AuthProvider>  
+        <Header />
+        <Root />
+      </AuthProvider>
+    </>
   );
 }
 
