@@ -1,9 +1,9 @@
 import React from "react";
-import "./JobCard.css";
+import { Link } from "react-router-dom";
+import styles from "./JobCard.module.css";
 
 const JobCard = ({
   company,
-  img_company,
   type_vacancy,
   min_salary,
   max_salary,
@@ -11,24 +11,35 @@ const JobCard = ({
   location,
 }) => {
   return (
-    <article className="card">
-      <div className="card_details">
-        <i className="company-logo">{img_company}</i>
-        <h2 className="title_company">{company}</h2>
-        <h3 className="title_job">{type_vacancy}</h3>
-        <div className="description_job">Descripcion de la vacante</div>
-        <div className="tag">
-          <span className="tag_salary">
-            Sueldo: ${min_salary} - ${max_salary}
-          </span>
-          <br />
-          <span className="tag_time">
-            Horario:{full_time ? "Tiempo Completo" : "Medio Tiempo"}
-          </span>
-          <br />
-          <span className="tag_location">Ubicacion:{location}</span>
+    <article className={styles.card}>
+      <Link to="/vacante">
+        <div className={styles.cardBody}>
+          <div className={styles.cardHeader}>
+            <h3 className={`${styles.nameCompany} ${styles.placeholder}`}>
+              {company}
+            </h3>
+            <h3 className={`${styles.titleJob} ${styles.placeholder}`}>
+              {type_vacancy}
+            </h3>
+          </div>
+          <div className={styles.cardContent}>
+            <div className={`${styles.descriptionJob} ${styles.placeholder}`}>
+              <p>Descripcion de la vacante</p>
+            </div>
+            <div className={`${styles.tag} ${styles.placeholder}`}>
+              <span className={`${styles.tagSalary} ${styles.placeholder}`}>
+                Sueldo: ${min_salary} - ${max_salary}
+              </span>
+              <br />
+              <span className={`${styles.tagTime} ${styles.placeholder}`}>
+                Horario:{full_time ? "Tiempo Completo" : "Medio Tiempo"}
+              </span>
+              <br />
+              <span className={`${styles.tagLocation} ${styles.placeholder}`}>Ubicacion:{location}</span>
+            </div>
+          </div>
         </div>
-      </div>
+      </Link>
     </article>
   );
 };

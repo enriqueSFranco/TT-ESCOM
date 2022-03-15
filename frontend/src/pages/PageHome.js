@@ -1,101 +1,90 @@
-import { useContext } from "react";
-import AuthContext from "../context/AuthContext";
+import { useEffect, useState } from "react";
 import { useForm } from "../hooks/useForm";
-import * as FaIcon from "react-icons/fa";
-import JobCard from "../components/Card/JobCard";
+import { useFetch } from "../hooks/useFetch";
 import Input from "../components/Input/Input";
-import db from "../api/db";
-import "./PageHome.css";
+import Loader from "../components/Loader/Loader";
+import JobList from "../components/Card/CardJobList";
+import Footer from "../components/Footer/Footer";
+import * as FaIcon from "react-icons/fa";
+import styles from "./PageHome.module.css";
 
-const initialForm = {
+
+let initialForm = {
   job: "",
   location: "",
-};
+}
 
 const Home = () => {
-  const { user } = useContext(AuthContext);
+  const [show, setShow] = useState(true);
   const { form, handleChange } = useForm(initialForm);
+  const { data, loading } = useFetch("https://pokeapi.co/api/v2/pokemon/");
+
+  const handleScroll = () => {
+    if (window.screenY > 500) {
+      setShow(false);
+    } else {
+      setShow(true);
+    }
+  };
+
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, false);
+    return () => window.removeEventListener('scroll', handleScroll, false);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("buscando...");
   };
 
+  if (!data) return null;
+
   return (
     <section>
-      <div className="container container-form">
-        {user ? (
-          <div className="hero">
-            <h3>Hola {user.username}</h3>
-            <span>Busquemos el trabajo de tus sueños</span>
-          </div>
-        ) : (
-          <h1 className="container__title">
-            Encuentra el trabajo de tus sueños
-          </h1>
-        )}
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3 container__input">
-            <span className="icon-left">
+      <div className={`container my-4`}>
+        <h1 className={styles.containerTitle}>
+          Encuentra el trabajo de tus sueños
+        </h1>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <div className={`${styles.containerInput}`}>
+            <i className={styles.iconLeft}>
               <FaIcon.FaBuilding />
-            </span>
+            </i>
             <Input
               type="text"
               id="job"
               name="job"
               placeholder="Buscar un empleo"
-              className="input ti-24"
+              className={`${styles.input} ${styles.ti_24}`}
               value={form.job}
               onChange={handleChange}
             />
           </div>
-          <div className="mb-3 container__input">
-            <span className="icon-left">
+          <div className={`${styles.containerInput}`}>
+            <i className={styles.iconLeft}>
               <FaIcon.FaLocationArrow />
-            </span>
+            </i>
             <Input
               type="text"
               name="location"
               id="location"
               placeholder="Ubicación"
-              className="input ti-24"
+              className={`${styles.input} ${styles.ti_24}`}
               value={form.location}
               onChange={handleChange}
             />
           </div>
           <div className="d-grid">
-            <Input type="submit" value="Buscar" className="btn btn-primary" />
+            <Input type="submit" value="Buscar Vacante" className="btn btn-primary" />
           </div>
         </form>
       </div>
-      <article className="container jobs">
-        <h2 className="vacancy">Vacantes</h2>
-        <div className="container__job-card">
-          {db.map(
-            ({
-              id,
-              company,
-              img_company,
-              type_vacancy,
-              min_salary,
-              max_salary,
-              full_time,
-              location,
-            }) => (
-              <JobCard
-                key={id}
-                company={company}
-                img_company={img_company}
-                type_vacancy={type_vacancy}
-                min_salary={min_salary}
-                max_salary={max_salary}
-                full_time={full_time}
-                location={location}
-              />
-            )
-          )}
-        </div>
-      </article>
+      {loading && <Loader />}
+      <div className="container">
+        <JobList />
+      </div>
+      <Footer />
     </section>
   );
 };

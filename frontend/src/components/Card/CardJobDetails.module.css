@@ -1,0 +1,80 @@
+svg {
+  color: #90314b;
+  font-size: 1rem;
+}
+
+.actions {
+  width: 70px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+}
+
+.btnApplyEmployment {
+  background-color: transparent;
+  border: none;
+  outline: 2px solid #90314b;
+  padding: .6rem;
+  border-radius: 3px;
+  transition: background-color .3s ease-in;
+}
+
+.btnApplyEmployment:hover {
+  background-color: #90314b;
+  color: #fff;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.flex ul {
+  margin-top: .5rem;
+}
+
+.flex li > span {
+  margin-left: .4rem;
+}
+
+.like {
+  background-color: #fff;
+  border: none;
+  padding: 0;
+}
+.like svg {
+  color: #121212;
+  transition: color 200ms;
+}
+
+.like.active svg {
+  color: #ff2391;
+  /* animation: bounce 300ms cubic-bezier(.5, 1.75, .75, 1.25); */
+}
+
+.requirements {}
+
+.requirements ul {
+  padding: 0;
+}
+
+.wrapper h1 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.wrapper {
+  height: 700px;
+  width: 700px;
+  border-radius: 8px;
+  outline: 1px solid #ccc;
+  overflow-y: scroll;
+}
+
+/* @keyframes bounce {
+  0% { transform: scale(1.0); }
+  50% { transform: scale(1.1); }
+  100% {transform: scale((1.0)); }
+} */

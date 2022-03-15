@@ -29,15 +29,16 @@ class UserListSerializer(serializers.ModelSerializer):
       'id': instance['id'],
       'username': instance['username'],
       'email': instance['email'],
-      'password': instance['password']
+      'password': instance['password'],
+      'role': instance['role'],
     }
 
 class CustomUserSerializer(serializers.ModelSerializer):
   class Meta:
     model = User
-    fields = ('username', 'email', 'password')
+    fields = ('username', 'email', 'password', 'role')
 
 class UserTokenSerializer(serializers.ModelSerializer):
   class Meta:
     model = User
-    fields = ('id', 'username', 'email', 'name', 'last_name')
+    fields = ('id', 'username', 'email', 'name', 'last_name', 'role')
