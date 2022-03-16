@@ -1,0 +1,31 @@
+
+.objectspersonals{
+    width: 55%;
+    border-right: black solid;
+    border-width: 2px;
+    margin-right: 1rem;
+
+}
+.salary{
+    width: 20%;
+    text-align: center;
+}
+
+.mode{
+    width: 25%;
+    text-align: center;
+}
+
+
+.objects {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+	display: flex;
+    width: 55%;
+
+    /*border: #90314b;
+    border-width: 1px ;
+    border-style: solid;*/
+}
+
