@@ -19,7 +19,7 @@ class StudentListSerializer(serializers.ModelSerializer):
   #skills=StudentSkill(many=True)
   class Meta:
     model = Student
-    fields=['t100_boleta',"skills"]
+    fields='__all__'
 
   def to_representation(self, instance):
     return {

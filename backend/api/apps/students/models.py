@@ -76,7 +76,7 @@ class residence(models.Model):
 		related_name='StudentResidence',
 		on_delete=models.CASCADE)
 	t101_state = models.CharField(max_length=50,choices=estados,default='33',null=True,blank=True)
-	t101_mucipality = models.CharField(max_length=70,null=True,blank=True)
+	t101_municipality = models.CharField(max_length=70,null=True,blank=True)
 	t101_locality = models.CharField(max_length=100,null=True,blank=True)
 
 	class Meta:

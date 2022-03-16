@@ -15,12 +15,15 @@ class StudentViewSet(viewsets.GenericViewSet):
 	queryset = None
 
 	def get_object(self, pk):
-		return get_object_or_404(self.model, pk=pk)
-
+		if self.queryset is None:
+			self.queryset = self.model.objects\
+				.filter(t100_boleta=pk)\
+				.values('t100_boleta', 't100_name', 't100_username', 't100_password', 't100_email', 't100_gender')
+		return self.queryset
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
-				.filter(is_active=True)\
+				.filter()\
 				.values('t100_boleta', 't100_name', 't100_username', 't100_password', 't100_email', 't100_gender')
 		return self.queryset
 
@@ -61,7 +64,7 @@ class StudentViewSet(viewsets.GenericViewSet):
 
 	def retrieve(self, request, pk):
 		student = self.get_object(pk)
-		student_serializer = self.serializer_class(student)
+		student_serializer = self.serializer_class(student,many=True)
 		return Response(student_serializer.data)
 
 	def update(self, request, pk=None):

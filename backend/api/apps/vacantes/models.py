@@ -27,7 +27,7 @@ class Vacant(models.Model):
     class Meta:
         verbose_name = 'Vacant'
         verbose_name_plural = 'Vacants'
-        db_table = "c200_vacant"
+        db_table = "t200_vacant"
 
     def __str__(self):
 	    return self.t200_id_vacant
@@ -54,7 +54,7 @@ class Application(models.Model):
     class Meta:
         verbose_name = 'Application'
         verbose_name_plural = 'Applications'
-        db_table = "c201_application"
+        db_table = "t201_application"
 
     def __str__(self):
 	    return self.t201_id_application
