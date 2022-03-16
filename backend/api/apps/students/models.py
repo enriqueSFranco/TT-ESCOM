@@ -1,27 +1,16 @@
 from tabnanny import verbose
 from django.db import models
 
-<<<<<<< HEAD
-# Create your models here.
-class Student(models.Model):
-	t100_boleta = models.CharField(max_length=12, null=False, blank=False)
-=======
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
 #T100 Alumno
 class Student(models.Model):	
 	t100_boleta = models.CharField(primary_key=True,max_length=12, null=False, blank=False)
->>>>>>> 6337219edaab73675865f1dd4b1e06fe89ce2fae
 	t100_name = models.CharField(max_length=50, null=False, blank=False)
 	t100_last_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_username = models.CharField(max_length=40, null=True, blank=True)
 	t100_password = models.CharField(max_length=100, null=False, blank=False)
-<<<<<<< HEAD
-	t100_rfc = models.CharField(max_length=12, null=True, blank=True)
-	t100_nss = models.CharField(max_length=12, blank=True, null=True)
-=======
 	#t100_rfc = models.CharField(max_length=12, null=True, blank=True)
 	#t100_nss = models.CharField(max_length=12, blank=True, null=True)
->>>>>>> 6337219edaab73675865f1dd4b1e06fe89ce2fae
 	t100_cv = models.FileField(null=True, blank=True)
 	t100_email = models.EmailField(max_length=50, null=False, blank=False)
 	genders = [
@@ -29,11 +18,7 @@ class Student(models.Model):
 		('M', 'Masculino')
 	]
 	t100_gender = models.CharField(max_length=1, choices=genders, default='F', null=True, blank=True)
-<<<<<<< HEAD
-	t100_academic_level = models.PositiveSmallIntegerField(null=True, blank=True)
-=======
 	#t100_academic_level = models.PositiveSmallIntegerField(null=True, blank=True)
->>>>>>> 6337219edaab73675865f1dd4b1e06fe89ce2fae
 	t100_date_of_birth = models.DateField(null=True, blank=True)
 	t100_travel = models.BooleanField(default=False)
 	is_active = models.BooleanField(default=True)
@@ -42,21 +27,11 @@ class Student(models.Model):
 		unique_together = ['t100_boleta', 't100_email']
 		verbose_name = 'Student'
 		verbose_name_plural = 'Students'
-<<<<<<< HEAD
-		db_table = "student"
-=======
 		db_table = "t100_alumno"
->>>>>>> 6337219edaab73675865f1dd4b1e06fe89ce2fae
 
 	def __str__(self):
 		return self.t100_name
 
-<<<<<<< HEAD
-
-class Skill(models.Model):
-	t102_id_skill = models.AutoField(primary_key=True)
-	t102_description = models.CharField(max_length=100)
-=======
 #T101 Domicilio
 class residence(models.Model):
 	estados=[
@@ -116,28 +91,15 @@ class residence(models.Model):
 class StudentSkill(models.Model):
 	t102_id_skill = models.AutoField(primary_key=True)
 	#t102_description = models.CharField(max_length=100,null=True,blank=True)
->>>>>>> 6337219edaab73675865f1dd4b1e06fe89ce2fae
 	t100_boleta = models.ForeignKey(
 		Student, 
 		null=True, 
 		blank=True, 
-<<<<<<< HEAD
-		related_name='Student',
-=======
 		related_name='StudentSkills',
->>>>>>> 6337219edaab73675865f1dd4b1e06fe89ce2fae
 		on_delete=models.CASCADE
 	)
 
 	class Meta:
-<<<<<<< HEAD
-		verbose_name = "Skill"
-		verbose_name_plural = "Skills"
-		db_table = "Skill"
-
-	def __str__(self) -> str:
-		return self.t102_description
-=======
 		verbose_name = "StudentSkill"
 		verbose_name_plural = "StudentSkills"
 		db_table = "t102_habilidades"
@@ -325,4 +287,3 @@ class Skills(models.Model):
 	
 	def __str__(self) -> str:
 		return self.c116_description		
->>>>>>> 6337219edaab73675865f1dd4b1e06fe89ce2fae
