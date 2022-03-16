@@ -15,6 +15,7 @@ class StudentViewSet(viewsets.GenericViewSet):
 	queryset = None
 
 	def get_object(self, pk):
+<<<<<<< HEAD
 		return get_object_or_404(self.model, pk=pk)
 
 	def get_queryset(self):
@@ -26,6 +27,22 @@ class StudentViewSet(viewsets.GenericViewSet):
 
   # TODO terminar ruta para cambiar el password
 	@action(detail=True, methods=['post'])
+=======
+		if self.queryset is None:
+			self.queryset = self.model.objects\
+				.filter(t100_boleta=pk)\
+				.values('t100_boleta', 't100_name', 't100_username', 't100_password', 't100_email', 't100_gender')
+		return self.queryset
+	def get_queryset(self):
+		if self.queryset is None:
+			self.queryset = self.model.objects\
+				.filter()\
+				.values('t100_boleta', 't100_name', 't100_username', 't100_password', 't100_email', 't100_gender')
+		return self.queryset
+
+  # TODO terminar ruta para cambiar el password
+	@action(detail=True, methods=['post'],url_path='cambio_pass')
+>>>>>>> 6337219edaab73675865f1dd4b1e06fe89ce2fae
 	def set_password(self, request, pk=None):
 		student = self.get_object(pk)
 		password_serializer = PasswordSerializer(data=request.data)
@@ -59,9 +76,15 @@ class StudentViewSet(viewsets.GenericViewSet):
 			'errors': student_serializer.errors
 		}, status=status.HTTP_400_BAD_REQUEST)
 
+<<<<<<< HEAD
 	def retrieve(self, request, pk=None):
 		student = self.get_object(pk)
 		student_serializer = self.serializer_class(student)
+=======
+	def retrieve(self, request, pk):
+		student = self.get_object(pk)
+		student_serializer = self.serializer_class(student,many=True)
+>>>>>>> 6337219edaab73675865f1dd4b1e06fe89ce2fae
 		return Response(student_serializer.data)
 
 	def update(self, request, pk=None):

@@ -1,7 +1,11 @@
 from email.mime import base
 from rest_framework.routers import DefaultRouter
 from apps.students.api.views.student_viewsets import StudentViewSet
+<<<<<<< HEAD
 from apps.students.api.views.skill_viewset import SkillViewSet
+=======
+from apps.students.api.views.studentskill_viewset import SkillViewSet
+>>>>>>> 6337219edaab73675865f1dd4b1e06fe89ce2fae
 
 router = DefaultRouter()
 
