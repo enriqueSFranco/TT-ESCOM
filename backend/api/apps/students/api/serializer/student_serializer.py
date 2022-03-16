@@ -28,7 +28,6 @@ class StudentListSerializer(serializers.ModelSerializer):
       't100_rfc': instance["t100_rfc"],
       't100_gender': instance["t100_gender"],
       't100_academic_level': instance["t100_academic_level"],
-      # 't102_skill': instance["t102_skill"]
     }
 
 class UpdateStudentSerializer(serializers.ModelSerializer):
@@ -54,3 +53,8 @@ class PasswordSerializer(serializers.Serializer):
         {'password': 'Debe ingresar ambas contraseñas iguales'}
       )
     return data
+
+class StudentTokenSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Student
+    fields = ('t100_boleta', 't100_name', 't100_last_name', 't100_username', 't100_email', 't100_password')

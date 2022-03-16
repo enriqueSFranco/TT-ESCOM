@@ -6,6 +6,7 @@
 .input {
   position: relative;
   margin: 1rem;
+  width: 500px;
 }
 
 .inputLabel {
@@ -37,62 +38,4 @@
 .inputField:focus + .inputLabel, .inputField:not(:placeholder-shown) + .inputLabel {
   transform: translate(0.25rem, -65%) scale(0.8);
   color: #90314b;
-}
-
-.inputFile {
-  width: .1px;
-  height: .1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-}
-
-.inputFile + label {
-  margin-left: 1rem;
-  max-width: 80%;
-  font-size: .9rem;
-  font-weight: 700;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  cursor: pointer;
-  display: inline-block;
-  overflow: hidden;
-  padding: .65rem 1.25rem;
-  border-radius: var(--size-radius);
-}
-
-.inputFile + label svg {
-  width: 1rem;
-  height: 1rem;
-  color: #fff;
-  vertical-align: middle;
-  fill: currentColor;
-  margin-top: -.25rem;
-  margin-right: .25rem;
-}
-
-.inputFile + label {
-  color: #fff;
-  background-color: #90314b;
-}
-
-.inputGroup {
-  width: 100%;
-  outline: 1px solid red;
-}
-
-.title {
-  text-transform: capitalize;
-  text-align: center;
-  font-size: 1.4rem;
-}
-
-.travel {
-  font-size: .9rem;
-  margin-left: .4rem;
-}
-
-.wrapper {
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }

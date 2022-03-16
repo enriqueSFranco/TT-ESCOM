@@ -60,12 +60,14 @@ svg {
   padding: 0;
 }
 
-.wrapper h1 {
-  font-size: 1.6rem;
+.title {
+  color: red;
+  font-size: 1.4rem;
   margin: 0;
 }
 
 .wrapper {
+  font-family: sans-serif;
   height: 700px;
   width: 700px;
   border-radius: 8px;

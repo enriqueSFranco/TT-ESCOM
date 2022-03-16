@@ -4,7 +4,6 @@ import { $ajax } from "../../utils/$ajax";
 import Input from "../Input/Input";
 import * as FaIcon from "react-icons/fa";
 import * as MdIcon from "react-icons/md";
-import * as IoIcon from "react-icons/io"
 import styles from "./Styles.module.css";
 
 let initialForm = {
@@ -77,22 +76,6 @@ const CreateAccount = () => {
                 onChange={handleChange}
               />
             </div>
-
-            <div className={`${styles.inner} mb-3`}>
-              <i className={`${styles.right_icon} ${styles.customArrow}`}>
-                <IoIcon.IoMdArrowDropdown />
-              </i>
-              <select className={`${styles.levelAcademic} ${styles.noArrowSelect}`} name="t100_academic_level" onChange={handleChange}>
-                <option value="3">3er Semestre</option>
-                <option value="4">4to Semestre</option>
-                <option value="5">5to Semestre</option>
-                <option value="6">6to Semestre</option>
-                <option value="7">7to Semestre</option>
-                <option value="8">8to Semestre</option>
-                <option value="graduado">Graduado</option>
-              </select>
-            </div>
-
             <div className={`${styles.inner} mb-3`}>
               <i className={styles.right_icon}>
                 <MdIcon.MdEmail />

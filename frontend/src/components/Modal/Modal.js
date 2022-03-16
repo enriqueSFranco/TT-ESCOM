@@ -1,28 +1,21 @@
-import { useNavigate } from 'react-router-dom';
-import styles from './Modal.module.css';
+import { createPortal } from "react-dom";
+import * as IoIcon from "react-icons/io";
+import styles from "./Modal.module.css";
 
-const Modal = (props) => {
-  const navigate = useNavigate();
-  
-  const handleModalClick = (e) => e.stopPropagation();
-  
-  const closeModal = (e) => {
-    e.stopPropagation();
-    navigate(-1);
-  };
-  
-  return (
-    <article className={`${styles.modal}`}>
-      <div className={styles.modalContainer}>
-        <div className={styles.modalClose} onClick={handleModalClick}>
-          <button onClick={closeModal}>
-            X
-          </button>
-        </div>
-        {props.children}
+const Modal = ({ children, isOpen, closeModal }) => isOpen ? createPortal (
+  <>
+    <article
+      className={`${styles.modal} ${isOpen && `${styles.isOpen}`} ${styles.active}`}
+      onClick={closeModal}
+    >
+      <div className={styles.modalContainer} onClick={(e) => e.stopPropagation()}>
+        <button className={styles.modalClose} onClick={closeModal}>
+          <IoIcon.IoMdClose />
+        </button>
+        {children}
       </div>
     </article>
-  );
-}
+  </>,document.getElementById("modal")
+) : null;
 
 export default Modal;
