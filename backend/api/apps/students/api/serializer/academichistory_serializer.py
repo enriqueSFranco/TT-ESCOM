@@ -18,7 +18,7 @@ class AcademicHistoryListSerializer(serializers.ModelSerializer):
 
     def to_representation(self,instance):
         return{
-            '100_boleta' : instance['100_boleta'],
+            't100_boleta' : instance['t100_boleta'],
 	        't104_academic_unit' : instance['t104_academic_unit'],
 	        't104_carreer ' : instance['t104_carreer '],
 	        #'c107_id_academic_level ' : instance[''c107_id_academic_level '],
@@ -31,7 +31,7 @@ class AcademicHistoryListSerializer(serializers.ModelSerializer):
 class UpdateAcademicHistorySerializer(serializers.ModelSerializer):
         class Meta:
             model = AcademicHistory
-            fields = ('100_boleta','t104_academic_unit','t104_carreer ','t104_start_date','t104_end_date')
+            fields = ('t100_boleta','t104_academic_unit','t104_carreer ','t104_start_date','t104_end_date')
         
         def update(self,instance,validate_data):
             update_historial = super().update(instance,validate_data)
