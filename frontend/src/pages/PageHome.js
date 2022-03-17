@@ -8,7 +8,7 @@ import Loader from "../components/Loader/Loader";
 import JobList from "../components/Card/CardJobList";
 import Footer from "../components/Footer/Footer";
 import styles from "./PageHome.module.css";
-
+import React from "react";
 
 let initialForm = {
   job: "",

@@ -6,7 +6,6 @@ import Input from '../Input/Input';
 import * as FaIcon from "react-icons/fa";
 import styles from './Styles.module.css';
 
-
 let initialForm = {
   nameCompany: "",
   rfc: "",
