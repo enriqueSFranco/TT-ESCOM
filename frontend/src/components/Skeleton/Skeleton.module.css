@@ -1,0 +1,53 @@
+.cardSkContent {
+  width: 450px;
+  height: 210px;
+}
+
+.cardSk {
+  width: 500px;
+  height: 280px;
+  margin-bottom:1rem;
+  outline: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: .4rem 0 .4rem 1rem;
+  transition: box-shadow .3s ease-in;
+}
+
+.cardSk:hover { box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, 
+  rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; }
+
+
+.cardSkHeader {
+  width: 450px;
+  height: 22px;
+}
+
+.lineClamp {
+  height: 96px;
+  margin: .5rem 0 .5rem 0;
+}
+
+
+.placeholder {
+  width: 450px;
+  background-color: #ccc;
+  border-radius: 3px;
+  animation-name: placeholder;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.timeWork, 
+.locationJob,
+.publicationTimeJob {
+  margin: .5rem 0 .5rem 0;
+  width: 200px;
+  height: 22px;
+}
+
+@keyframes placeholder {
+  0% { background-color: #ccc; }
+  50% { background-color: #eee; }
+  100% { background-color: #ccc; }
+}
