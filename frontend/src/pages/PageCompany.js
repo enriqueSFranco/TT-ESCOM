@@ -1,3 +1,5 @@
+import React from "react"
+
 import Objects from "../components/AboutMe/Objects";
 import Interests from "../components/AboutMe/Interests";
 import Skills from "../components/AboutMe/Skills";

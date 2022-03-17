@@ -1,3 +1,5 @@
+import React from "react"
+
 import CardProfileStudent from "../components/Card/CardProfileStudent";
 
 const PageDetailsUser = () => {

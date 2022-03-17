@@ -1,3 +1,5 @@
+import React from "react"
+
 import { createPortal } from "react-dom";
 import * as IoIcon from "react-icons/io";
 import styles from "./Modal.module.css";

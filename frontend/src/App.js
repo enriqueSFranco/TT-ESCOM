@@ -1,6 +1,9 @@
 import React from "react"
-import Root from "./Root";
+
 import Header from "./components/Menu/Header";
+import Root from "./Root";
+
+
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
