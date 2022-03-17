@@ -11,30 +11,14 @@ import JobList from "../components/Card/CardJobList";
 import Footer from "../components/Footer/Footer";
 import styles from "./PageHome.module.css";
 
-
 let initialForm = {
   job: "",
   location: "",
 }
 
 const Home = () => {
-  // const [show, setShow] = useState(true);
   const { form, handleChange } = useForm(initialForm);
   const { data, loading } = useFetch("https://pokeapi.co/api/v2/pokemon/");
-
-  // const handleScroll = () => {
-  //   if (window.screenY > 500) {
-  //     setShow(false);
-  //   } else {
-  //     setShow(true);
-  //   }
-  // };
-
-
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handleScroll, false);
-  //   return () => window.removeEventListener('scroll', handleScroll, false);
-  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -79,10 +63,13 @@ const Home = () => {
           <input type="submit" value="Buscar Vacante" className="btn btn-primary" />
         </form>
       </div>
-      {loading && <Loader />}
-      <div className="container">
-        <JobList />
-      </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className={`${styles.jobsSection} container`}>
+          <JobList />
+        </div>
+      )}
       <Footer />
     </section>
   );
