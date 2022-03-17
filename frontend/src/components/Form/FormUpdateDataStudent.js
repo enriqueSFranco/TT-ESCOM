@@ -5,7 +5,7 @@ import Span from "../Input/Span";
 import Switch from "../Input/Switch";
 import * as BiIcon from "react-icons/bi";
 import styles from "./FormUpdateDataStudent.module.css";
-import React from "react";
+
 let initialForm = {
   name: "",
   specialty: "",

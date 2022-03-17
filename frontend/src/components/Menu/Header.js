@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import DropMenu from "./DropMenu";
 import styles from "./Header.module.css";
-import React from "react";
 
 const Header = () => {
   return (

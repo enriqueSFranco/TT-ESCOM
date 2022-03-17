@@ -2,7 +2,7 @@ import { Link, Outlet } from "react-router-dom";
 import JobCard from "./CardJob";
 import db from "../../api/db";
 import styles from "./CardJob.module.css";
-import React from "react";
+
 const JobList = () => {
   return (
     <div className={styles.grid}>

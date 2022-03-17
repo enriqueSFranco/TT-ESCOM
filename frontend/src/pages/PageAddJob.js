@@ -8,7 +8,7 @@ import TextareaAutosize from "@mui/material/TextareaAutosize";
 import * as FaIcon from "react-icons/fa";
 import styles from "./PageAddJob.module.css";
 import FormLocationJob from "../components/Form/FormLocationJob";
-import React from "react";
+
 let initialForm = {
   nameJob: "",
   jobLocation: "",

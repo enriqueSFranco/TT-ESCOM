@@ -5,7 +5,7 @@ import * as MdIcon from "react-icons/md";
 import * as BsIcon from "react-icons/bs";
 import * as IoIcon from "react-icons/io";
 import styles from "./CardProfileStudent.module.css";
-import React from "react";
+
 const CardProfileStudent = ({
   name,
   lastName,

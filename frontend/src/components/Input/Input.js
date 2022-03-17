@@ -1,5 +1,4 @@
 import styles from "./Styles.module.css";
-import React from "react";
 
 const Input = ({
   type,
