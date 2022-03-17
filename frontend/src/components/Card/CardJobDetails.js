@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { useFetch } from "../../hooks/useFetch";
 import styles from "./CardJobDetails.module.css";
 import * as AiIcon from "react-icons/ai";
 import * as FaIcon from "react-icons/fa";
@@ -37,12 +38,13 @@ const profit = [
 
 const JobCardDetails = () => {
   let { id } = useParams();
+  const { data } = useFetch(`/empleos/${id}`);
 
   return (
     <div className={styles.wrapper}>
       <header className="container">
         <div className={`${styles.flex}`}>
-          <h1 className={styles.title}>Documentador de procesos - id {id}</h1>
+          <h1 className={styles.title}>{data?.jobTitle ?? 'Sin nombre de vacante'}</h1>
           <div className={styles.actions}>
             <button
               className={`${styles.like} ${styles.active}`}
@@ -67,11 +69,11 @@ const JobCardDetails = () => {
             <ul className={`${styles.flex}`}>
               <li className={styles.flex}>
                 <FaIcon.FaBuilding />
-                <span>Empresa</span>
+                <span>{data?.company ?? 'Anonima'}</span>
               </li>
               <li className={styles.flex}>
                 <MdIcon.MdOutlineAttachMoney />
-                <span>Negociable</span>
+                <span>{data?.maxSalary ?? 'No especificado'}</span>
               </li>
               <li className={styles.flex}>
                 <FaIcon.FaLocationArrow />
@@ -101,12 +103,7 @@ const JobCardDetails = () => {
         </p>
         <div>
           <p>
-            Análisis y mapeo de los procesos de negocio, para apoyar la visión
-            de la organización “AS-IS” to "To-Be", la verificación de que se
-            están cumpliendo los objetivos de negocio. Desarrollo de políticas,
-            procedimientos, diagramas de flujo, objetivos de control, reportes
-            ejecutivos, presentaciones ejecutivas y materiales de capacitación
-            (prevencion de antilavado de dinero, terrorismo)
+            {data?.descriptionJob ?? 'Sin datos'}
           </p>
         </div>
         <div className={styles.requirements}>
