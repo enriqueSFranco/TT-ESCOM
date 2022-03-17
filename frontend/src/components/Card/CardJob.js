@@ -1,17 +1,16 @@
 import React from "react";
-import { useFetch } from "../../hooks/useFetch";
 import styles from "./CardJob.module.css";
 
 const JobCard = ({
   company,
   type_vacancy,
+  descriptionJob,
   min_salary,
-  max_salary,
+  maxSalary,
   full_time,
   locationJob,
 }) => {
-  const { data, loading } = useFetch("../../api/db.js");
-  console.log(data);
+
   return (
     <article className={`${styles.card}`}>
       <header className={styles.cardHeader}>
@@ -24,7 +23,7 @@ const JobCard = ({
       </header>
       <main>
         <p className={`${styles.lineClamp}  ${styles.placeholder}`}>
-        Análisis y mapeo de los procesos de negocio, para apoyar la visión de la organización “AS-IS” to "To-Be", la verificación de que se están cumpliendo los objetivos de negocio. Desarrollo de políticas, procedimientos, diagramas de flujo, objetivos de control, reportes ejecutivos, presentaciones ejecutivas y materiales de capacitación (prevencion de antilavado de dinero, terrorismo)
+        {descriptionJob}
         </p>
         <p className={`${styles.placeholder} ${styles.timeWork}`}>
           Tiempo: {full_time ? "Tiempo Completo" : "Medio Tiempo"}
