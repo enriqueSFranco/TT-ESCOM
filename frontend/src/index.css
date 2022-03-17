@@ -1,5 +1,10 @@
-html {
+html, 
+body {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  background-color: #fff;
   font-size: 16px;
   font-family: 'Source Sans Pro', sans-serif;
 }
