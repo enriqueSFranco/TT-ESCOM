@@ -1,3 +1,5 @@
+import React from "react"
+
 import CreateAccountStudent from '../components/Form/CreateAccountStudent';
 
 const PageCreateAccountStudent = () => {

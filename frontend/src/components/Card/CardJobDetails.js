@@ -1,3 +1,5 @@
+import React from "react"
+
 import { useParams } from "react-router-dom";
 import styles from "./CardJobDetails.module.css";
 import * as AiIcon from "react-icons/ai";
@@ -165,7 +167,3 @@ const JobCardDetails = () => {
 };
 
 export default JobCardDetails;
-
-<div>
-  <div></div>
-</div>;

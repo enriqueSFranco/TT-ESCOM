@@ -1,3 +1,5 @@
+import React from "react"
+
 import { Link, Outlet } from "react-router-dom";
 import JobCard from "./CardJob";
 import db from "../../api/db";
