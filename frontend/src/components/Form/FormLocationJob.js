@@ -3,7 +3,6 @@ import { useForm } from "../../hooks/useForm";
 import Input from "../Input/Input";
 import * as MdIcon from "react-icons/md";
 import styles from "./FormLocation.module.css";
-
 let initialForm = {
   street: "",
   numInt: "",

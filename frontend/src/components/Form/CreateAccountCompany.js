@@ -4,6 +4,7 @@ import Input from "../Input/Input";
 import * as FaIcon from "react-icons/fa";
 import * as MdIcon from "react-icons/md";
 import styles from "./Styles.module.css";
+import React from "react";
 
 const initialForm = {
   nameCompany: "",

@@ -1,5 +1,5 @@
 import CardProfileStudent from "../components/Card/CardProfileStudent";
-
+import React from "react";
 const PageDetailsUser = () => {
   return (
     <section className="container">
