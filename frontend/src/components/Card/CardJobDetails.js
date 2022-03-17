@@ -6,17 +6,6 @@ import * as FaIcon from "react-icons/fa";
 import * as MdIcon from "react-icons/md";
 import * as IoIcon from "react-icons/io";
 
-/**
- * descripcion
- * status
- * tipo
- * experiencia
- * ubicacaion
- * salario
- * home office
- * horario
- */
-
 const requirements = [
   "Fuertes habilidades de comunicación",
   "Tolerancia a la frustración",
