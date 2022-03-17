@@ -5,7 +5,7 @@ import * as AiIcon from "react-icons/ai";
 import * as FaIcon from "react-icons/fa";
 import * as MdIcon from "react-icons/md";
 import * as IoIcon from "react-icons/io";
-import React from "react";
+
 /**
  * descripcion
  * status
@@ -162,3 +162,7 @@ const JobCardDetails = () => {
 };
 
 export default JobCardDetails;
+
+<div>
+  <div></div>
+</div>;

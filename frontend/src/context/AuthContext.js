@@ -1,6 +1,5 @@
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import React from "react";
 
 const AuthContext = createContext(); // creamos el contecto
 

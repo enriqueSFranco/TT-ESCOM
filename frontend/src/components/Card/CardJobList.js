@@ -2,7 +2,7 @@ import { Link, Outlet } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 import JobCard from "./CardJob";
 import styles from "./CardJob.module.css";
-import React from "react";
+
 const JobList = () => {
   const { data } = useFetch("/empleos");
 

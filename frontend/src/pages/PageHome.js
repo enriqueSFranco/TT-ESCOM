@@ -7,6 +7,10 @@ import Loader from "../components/Loader/Loader";
 import JobList from "../components/Card/CardJobList";
 import Footer from "../components/Footer/Footer";
 import styles from "./PageHome.module.css";
+<<<<<<< HEAD
+=======
+
+>>>>>>> c06ce669c6212a38c526e364cf4a598cc31b0781
 
 let initialForm = {
   job: "",

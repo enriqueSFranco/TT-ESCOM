@@ -8,7 +8,6 @@ import facebook from "../../images/fb.png";
 import google from "../../images/google.png"
 import * as FaIcon from "react-icons/fa";
 import styles from "./Styles.module.css";
-import React from "react";
 
 let initialForm = {
   username: "",

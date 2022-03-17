@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as IoIcon from 'react-icons/io';
 import styles from './Dropdown.module.css';
-import React from "react";
 
 const DropMenu = () => {
   const dropdownRef = useRef(null);
