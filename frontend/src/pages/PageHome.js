@@ -63,7 +63,7 @@ const Home = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="container">
+        <div className={`${styles.jobsSection} container`}>
           <JobList />
         </div>
       )}
