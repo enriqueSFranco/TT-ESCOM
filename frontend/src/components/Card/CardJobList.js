@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import JobCard from "./CardJob";
-import db from "../../api/db";
+import db from "../../api/db.json";
 import styles from "./CardJob.module.css";
 
 const JobList = () => {
