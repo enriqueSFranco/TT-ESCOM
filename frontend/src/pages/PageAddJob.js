@@ -3,7 +3,6 @@ import React from "react"
 import { useForm } from "../hooks/useForm";
 import { useModal } from "../hooks/useModal";
 import Modal from "../components/Modal/Modal";
-import DropMenu from "../components/Menu/DropMenu";
 import Label from "../components/Input/Label";
 import Input from "../components/Input/Input";
 import Span from "../components/Input/Span";
@@ -26,7 +25,7 @@ let initialForm = {
 
 const PageAddJob = () => {
   const { form, handleChange } = useForm(initialForm);
-  const [isOpen, openModal, closeModal] = useModal();
+  const [isOpen, closeModal] = useModal();
 
   return (
     <section className={styles.container}>

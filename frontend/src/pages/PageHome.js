@@ -1,6 +1,4 @@
-import React from "react"
-
-// import { useEffect, useState } from "react";
+import React from "react";
 import { useForm } from "../hooks/useForm";
 import Input from "../components/Input/Input";
 import Label from "../components/Input/Label";
