@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./CardJob.module.css";
 
 const JobCard = ({ job }) => {
-  // console.log(job.t200)
+
   return (
     <article className={`${styles.card}`}>
       <header className={styles.cardHeader}>

@@ -8,7 +8,7 @@ import styles from "./CardJob.module.css";
 
 const JobList = () => {
   const { data, loading } = useFetch("/api/Vacants/");
-  console.log(data)
+  // console.log(data)
   if (!data) return null;
 
   return (
@@ -19,7 +19,7 @@ const JobList = () => {
             <Skeleton type="feed" />
           ) : (
             data.map((job) => (
-              <Link to={`/${job?.id}`} key={job?.t200_id_vacant}>
+              <Link to={`/${job?.t200_id_vacant}`} key={job?.t200_id_vacant}>
                 <JobCard job={job} />
               </Link>
             ))

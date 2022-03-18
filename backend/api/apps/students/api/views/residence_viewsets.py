@@ -15,7 +15,10 @@ class StudentResidenceViewSet(viewsets.GenericViewSet):
 	queryset = None
 
 	def get_object(self, pk):
-		return get_object_or_404(self.model, pk=pk)
+		self.queryset = self.model.objects\
+			.filter(t100_boleta=pk)\
+			.values('t100_boleta', 't101_state', 't101_municipality', 't101_locality')
+		return self.queryset #get_object_or_404(self.model, pk=pk)
 
 	def get_queryset(self):
 		if self.queryset is None:
@@ -23,24 +26,7 @@ class StudentResidenceViewSet(viewsets.GenericViewSet):
 				.filter()\
 				.values('t100_boleta', 't101_state', 't101_municipality', 't101_locality')
 		return self.queryset
-
-  # TODO terminar ruta para cambiar el password
-	'''@action(detail=True, methods=['post'])
-	def set_password(self, request, pk=None):
-		student = self.get_object(pk)
-		password_serializer = PasswordSerializer(data=request.data)
-		if password_serializer.is_valid():
-			student.set_password(
-				password_serializer.validated_data['t100_password'])
-			student.save()
-			return Response({
-				'message': 'Contraseña actualizada correctamente'
-			})
-		return Response({
-			'message': 'Hay errores en la información enviada',
-			'errors': password_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)'''
-
+  
 	def list(self, request):
 		residence = self.get_queryset()
 		residence_serializer = self.list_serializer_class(residence, many=True)
@@ -61,7 +47,7 @@ class StudentResidenceViewSet(viewsets.GenericViewSet):
 
 	def retrieve(self, request, pk):
 		residence = self.get_object(pk)
-		residence_serializer = self.serializer_class(residence)
+		residence_serializer = self.list_serializer_class(residence,many=True)
 		return Response(residence_serializer.data)
 
 	def update(self, request, pk=None):
@@ -77,8 +63,9 @@ class StudentResidenceViewSet(viewsets.GenericViewSet):
 			'errors': residence_serializer.errors
 		}, status=status.HTTP_400_BAD_REQUEST)
 
-	def destroy(self, request, pk=None):
-		student_destroy = self.model.objects.filter(id=pk).update(is_active=False)
+	def destroy(self, request, pk):
+		student_destroy = self.model.objects.filter(t100_boleta=pk).delete()
+		#SI lo borra pero no se como indicar que se realizo con exito
 		if student_destroy == 1:
 			return Response({
 				'message': 'Residencia del alumno eliminada correctamente'

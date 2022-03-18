@@ -30,15 +30,11 @@
 }
 
 .inner {
+  outline: 1px solid red;
   display: flex;
   align-items: center;
   position: relative;
-  padding-right: 40px;
-  background-color: #F3F4F8;
-  border-radius: 8px;
-  font-family: sans-serif;
   font-size: .85rem;
-  width: 100%;
 }
 
 .levelAcademic {
