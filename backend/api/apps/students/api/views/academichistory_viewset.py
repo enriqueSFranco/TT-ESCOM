@@ -15,7 +15,12 @@ class HistorialViewSet(viewsets.GenericViewSet):
 	queryset = None
 
 	def get_object(self, pk):
-		return get_object_or_404(self.model,pk=pk)
+		self.queryset= None
+		if self.queryset == None:
+			self.queryset = self.model.objects\
+				.filter(t100_boleta = pk)\
+				.values('t100_boleta','t104_academic_unit','t104_start_date','t104_end_date')
+		return  self.queryset #get_object_or_404(self.model,pk=pk)
 
 	def get_queryset(self):
 		if self.queryset is None:
@@ -45,7 +50,7 @@ class HistorialViewSet(viewsets.GenericViewSet):
 
 	def retrieve(self, request, pk):
 		historial = self.get_object(pk)
-		historial_serializer = self.serializer_class(historial,many=True)
+		historial_serializer = self.list_serializer_class(historial,many=True)
 		return Response(historial_serializer.data)
 
 	def update(self, request, pk=None):
@@ -62,7 +67,9 @@ class HistorialViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk=None):
-		historial_destroy = self.model.objects.filter(id=pk).update(t100_boleta='')
+		historial_destroy = self.model.objects.filter(t100_boleta=pk).delete()
+		print(historial_destroy)
+		#SI lo borra pero no se como indicar que se realizo con exito
 		if historial_destroy == 1:
 			return Response({
 				'message': 'Historial Academico del alumno eliminado correctamente'

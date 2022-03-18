@@ -128,7 +128,7 @@ class AcademicHistory(models.Model):
 		db_table="t104_historial_academico"
 	
 	def __str__ (self) ->str:
-		return self.t104_academic_unit+" : "+self.t104_carreer
+		return self.t104_academic_unit+" : "+self.t104_carreer+" , "+self.t104_carreer
 
 #T113 Areas de interes
 class InterestArea(models.Model):

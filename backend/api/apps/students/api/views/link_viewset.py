@@ -19,7 +19,7 @@ class LinkViewSet(viewsets.GenericViewSet):
 			self.queryset = self.model.objects\
 				.filter(t100_boleta=pk)\
 				.values('t100_boleta','t113_link')
-		return get_object_or_404(self.model,pk=pk)
+		return self.queryset
 
 	def get_queryset(self):
 		if self.queryset is None:
@@ -49,7 +49,7 @@ class LinkViewSet(viewsets.GenericViewSet):
 
 	def retrieve(self, request, pk):
 		link = self.get_object(pk)
-		link_serializer = self.serializer_class(link,many=True)
+		link_serializer = self.list_serializer_class(link,many=True)
 		return Response(link_serializer.data)
 
 	def update(self, request, pk=None):
@@ -65,8 +65,9 @@ class LinkViewSet(viewsets.GenericViewSet):
 			'errors': link_serializer.errors
 		}, status=status.HTTP_400_BAD_REQUEST)
 
-	def destroy(self, request, pk=None):
-		link_destroy = self.model.objects.filter(id=pk).update(t113_link='')
+	def destroy(self, request, pk):
+		link_destroy = self.model.objects.filter(t100_boleta=pk).delete()
+		#SI lo borra pero no se como indicar que se realizo con exito
 		if link_destroy == 1:
 			return Response({
 				'message': 'Link del alumno eliminado correctamente'
