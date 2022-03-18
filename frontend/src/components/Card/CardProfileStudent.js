@@ -1,8 +1,8 @@
-import React from "react"
 import { useState } from "react";
-
+// import { useFetch } from "../../hooks/useFetch.js";
 import FormUpdateDataStudent from "../Form/FormUpdateDataStudent";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion/dist/framer-motion";
 import * as MdIcon from "react-icons/md";
 import * as BsIcon from "react-icons/bs";
 import * as IoIcon from "react-icons/io";
@@ -16,27 +16,37 @@ const CardProfileStudent = ({
   socialNetworks,
 }) => {
   const [state, setState] = useState("profile");
+  // let t100_boleta = useParams();
+  // const { data } = useFetch(`/api/Students/${t100_boleta}`);
+  // console.log(data[0]);
 
   const handleEdit = (e) => {
     let isEdit = state === "edit" ? "profile" : "edit";
     setState(isEdit);
   };
 
-  console.log(state);
-
   return (
     <>
       {state === "edit" ? (
-        <article className="container">
-          <FormUpdateDataStudent />
-          <button onClick={handleEdit}>perfil</button>
-        </article>
+        <motion.article 
+          className="container"
+          initial={{scaleY: 0}}
+          animate={{scaleY: 1}}
+          exit={{scaleY: 0}}
+          duration={{duration: 0.5}}
+        >
+          <FormUpdateDataStudent handleBackToProfile={handleEdit} />
+          {/* <button onClick={handleEdit}>perfil</button> */}
+        </motion.article>
       ) : (
         <article className="container">
           <div className={`${styles.card}`}>
             <header className={styles.background}>
               <div className={styles.avatar}>
-                <IoIcon.IoMdSettings className={styles.config} onClick={handleEdit} />
+                <IoIcon.IoMdSettings
+                  className={styles.config}
+                  onClick={handleEdit}
+                />
                 <img src="https://placeimg.com/640/480/any" alt="user" />
                 <div className={styles.nameHolder}>
                   <h3>Enrique Salinas Franco</h3>
@@ -75,8 +85,12 @@ const CardProfileStudent = ({
                   <span>enrique Salinas Franco</span>
                 </Link>
               </div>
-              <div className="py-4">
-                <p>perfil verificado</p>
+              <div className={`${styles.flexColumn} py-4`}>
+                <IoIcon.IoIosCheckmarkCircle />
+                <p>
+                  Tu curriculum esta activo y visible para las empresas.
+                  <em>Abierto a oportunidades.</em>
+                </p>
               </div>
             </div>
           </div>
