@@ -49,11 +49,12 @@
 }
 
 .inputFile + label {
-  margin-left: 1rem;
-  max-width: 80%;
+  margin-left: 2rem;
+  max-width: 150px;
   font-size: .9rem;
   font-weight: 700;
   text-overflow: ellipsis;
+  text-align: center;
   white-space: nowrap;
   cursor: pointer;
   display: inline-block;
@@ -74,18 +75,29 @@
 
 .inputFile + label {
   color: #fff;
+  margin: 1rem;
   background-color: #90314b;
 }
 
 .inputGroup {
-  width: 100%;
-  outline: 1px solid red;
+  /* outline: 1px solid orangered; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inputGroup > label {
+  width: 250px;
 }
 
 .title {
   text-transform: capitalize;
   text-align: center;
   font-size: 1.4rem;
+  padding: 1rem 0 1rem 0;
+  color: #fff;
+  background-color: #90314b;
+  border-radius: 4px 4px 0 0;
 }
 
 .travel {
@@ -94,5 +106,8 @@
 }
 
 .wrapper {
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  width: 500px;
+  height: 600px;
+  border-radius: 4px;
+  box-shadow: #90314b 0px 1px 4px;
 }
