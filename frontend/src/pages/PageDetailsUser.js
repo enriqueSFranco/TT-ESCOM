@@ -1,6 +1,7 @@
 import React from "react"
 
 import CardProfileStudent from "../components/Card/CardProfileStudent";
+import CardDetailsStudent from "../components/AboutMe/AboutMe";
 
 const PageDetailsUser = () => {
   return (
@@ -12,6 +13,7 @@ const PageDetailsUser = () => {
         <div className="col">
           {/* Componente details student */}
           <h5>Detalles de estudiente</h5>
+          <CardDetailsStudent />
         </div>
       </div>
     </section>
