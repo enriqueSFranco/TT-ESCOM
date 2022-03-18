@@ -1,11 +1,10 @@
-import React from "react"
-
+import React from "react";
 import { useForm } from "../../hooks/useForm";
-import { useShowPassword } from "../../hooks/usePassword";
+// import { useShowPassword } from "../../hooks/usePassword";
 import { $ajax } from "../../utils/$ajax";
 import Input from "../Input/Input";
-import * as FaIcon from "react-icons/fa";
-import * as MdIcon from "react-icons/md";
+import Label from "../Input/Label";
+import Span from "../Input/Span";
 import styles from "./Styles.module.css";
 
 let initialForm = {
@@ -17,7 +16,7 @@ let initialForm = {
 };
 
 const CreateAccount = () => {
-  const { showPassword, toggle } = useShowPassword(false);
+  // const { showPassword, toggle } = useShowPassword(false);
   const { form, handleChange } = useForm(initialForm);
 
   if (form === null) return;
@@ -32,9 +31,9 @@ const CreateAccount = () => {
       },
       body: form,
     };
-    console.log(form)
+    console.log(form);
     $ajax()
-      .POST("/api/students/", options)
+      .POST("/api/Students/", options)
       .then((response) => {
         if (!response.err) {
           console.log(response);
@@ -49,66 +48,54 @@ const CreateAccount = () => {
         <div className="my-5">
           <h3 className={styles.form_title}>Crear Cuenta</h3>
           <form onSubmit={handleSubmit}>
-            {/* campo para el nombre */}
-            <div className={`${styles.inner} mb-3`}>
-                <i className={styles.right_icon}>
-                  <FaIcon.FaUser />
-                </i>
-                <Input
-                  type="text"
-                  id="t100_name"
-                  name="t100_name"
-                  placeholder="Nombre(s)"
-                  className={styles.input}
-                  value={form.t100_name}
-                  onChange={handleChange}
-                />
-            </div>
-            <div className={`${styles.inner} mb-3`}>
-              <i className={styles.right_icon}>
-                <MdIcon.MdSchool />
-              </i>
+            {/* input para ingresar el nombre */}
+            <Label htmlFor="t100_name">
+              <Input
+                type="text"
+                id="t100_name"
+                name="t100_name"
+                placeholder=" "
+                value={form.t100_name}
+                onChange={handleChange}
+              />
+              <Span content="Nombre(s)" />
+            </Label>
+            {/* input para ingrasar el numero de boleta */}
+            <Label htmlFor="t100_boleta">
               <Input
                 type="text"
                 id="t100_boleta"
                 name="t100_boleta"
-                placeholder="Numero de boleta"
-                className={styles.input}
-                value={form.t100_boleta}
+                placeholder=" "
+                value={form.t100bolet100_boleta}
                 onChange={handleChange}
               />
-            </div>
-            <div className={`${styles.inner} mb-3`}>
-              <i className={styles.right_icon}>
-                <MdIcon.MdEmail />
-              </i>
+              <Span content="Numero de boleta" />
+            </Label>
+            {/* input para ingrasar el correo electronico */}
+            <Label htmlFor="t100_email">
               <Input
-                type="t100_email"
+                type="email"
                 id="t100_email"
                 name="t100_email"
-                placeholder="Correo electrónico"
-                className={styles.input}
+                placeholder=" "
                 value={form.t100_email}
                 onChange={handleChange}
               />
-            </div>
-            <div className={`${styles.inner} mb-3`}>
-              <i
-                className={`${styles.right_icon} ${styles.eye_password}`}
-                onClick={toggle}
-              >
-                {showPassword ? <FaIcon.FaEye /> : <FaIcon.FaEyeSlash />}
-              </i>
+              <Span content="Correo electronico" />
+            </Label>
+            {/* input para ingrasar el password */}
+            <Label htmlFor="t100_password">
               <Input
-                type={showPassword ? "text" : "password"}
+                type="password"
                 id="t100_password"
                 name="t100_password"
-                placeholder="Contraseña"
-                className={styles.input}
+                placeholder=" "
                 value={form.t100_password}
                 onChange={handleChange}
               />
-            </div>
+              <Span content="Contrasenia" />
+            </Label>
             <div className="d-grid">
               <button type="submit" className="btn btn-primary">
                 Crear cuenta

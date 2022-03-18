@@ -276,7 +276,7 @@ class Plataform(models.Model):
 		return self.c111_description		"""
 
 #C116 habilidades
-class Skills(models.Model):
+class StudentSkills(models.Model):
 	c116_id_skill = models.AutoField(primary_key=True)
 	c116_description = models.CharField(max_length=60,blank=True,null=True)	
 

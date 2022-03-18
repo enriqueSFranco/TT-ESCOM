@@ -34,14 +34,16 @@ const CardProfileStudent = ({
       ) : (
         <article className="container">
           <div className={`${styles.card}`}>
-            <IoIcon.IoMdSettings className={styles.config} onClick={handleEdit} />
-            <div className={styles.avatar}>
-              <img src="https://placeimg.com/640/480/any" alt="user" />
-              <div className={styles.nameHolder}>
-                <h3>Enrique Salinas Franco</h3>
-                <h4>Ingeniero de software</h4>
+            <header className={styles.background}>
+              <div className={styles.avatar}>
+                <IoIcon.IoMdSettings className={styles.config} onClick={handleEdit} />
+                <img src="https://placeimg.com/640/480/any" alt="user" />
+                <div className={styles.nameHolder}>
+                  <h3>Enrique Salinas Franco</h3>
+                  <h4>Ingeniero de software</h4>
+                </div>
               </div>
-            </div>
+            </header>
             <div className={styles.userDetails}>
               <div className={styles.separator}>
                 <h4 className={styles.label}>Ubicacion</h4>

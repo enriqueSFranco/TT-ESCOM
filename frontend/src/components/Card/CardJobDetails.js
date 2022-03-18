@@ -8,17 +8,6 @@ import * as FaIcon from "react-icons/fa";
 import * as MdIcon from "react-icons/md";
 import * as IoIcon from "react-icons/io";
 
-/**
- * descripcion
- * status
- * tipo
- * experiencia
- * ubicacaion
- * salario
- * home office
- * horario
- */
-
 const requirements = [
   "Fuertes habilidades de comunicación",
   "Tolerancia a la frustración",
@@ -39,8 +28,10 @@ const profit = [
 ];
 
 const JobCardDetails = () => {
-  let { id } = useParams();
-  const { data } = useFetch(`/empleos/${id}`);
+  let { t200_id_vacant } = useParams();
+
+  console.log(t200_id_vacant);
+  const { data } = useFetch(`/api/Vacants/${t200_id_vacant}/`);
 
   return (
     <div className={styles.wrapper}>

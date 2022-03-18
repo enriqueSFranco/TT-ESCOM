@@ -5,8 +5,8 @@ import { createTheme, ThemeProvider } from '@mui/material'
 
 import Header from "./components/Menu/Header";
 import Root from "./Root";
-
-
+import Header from "./components/Menu/Header";
+import Footer from "./components/Footer/Footer";
 import { AuthProvider } from "./context/AuthContext";
 
 import "./App.css";
@@ -29,6 +29,7 @@ function App() {
         <Header />
         <Root />
       </AuthProvider>
+      <Footer />
     </ThemeProvider>
   );
 }
