@@ -12,10 +12,9 @@ export const useForm = (initialForm) => {
   };
 
   const handleChecked = (e) => {
-    const { name, value } = e.target;
     setForm({
       ...form,
-      [name]: value,
+      [e.target.name]: e.target.checked,
     });
   };
 
