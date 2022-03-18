@@ -1,22 +1,22 @@
-import React from 'react';
-//import { useFetch } from "../../hooks/useFetch";
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import Grid from '@mui/material/Grid';
-//import CardMedia from '@mui/material/CardMedia';
-//import CardContent from '@mui/material/CardContent';
-
+import * as React from 'react';
+import {Card, CardContent,Typography,Grid} from '@mui/material';
+/*import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardHeader from '@mui/material/CardContent';*/
 export default function CardLanguaje() {
-  const { data } = {"idiomas":"Ingles"}
   
   return (
     <Grid container>
+      <div>
       <Card>
-    <CardHeader>
-      title = {data["idiomas"]}
-    </CardHeader>
-
-  </Card></Grid>
+        <CardContent>
+          <Typography>
+            Ingles
+          </Typography>
+        </CardContent>
+      </Card>
+      </div>
+    </Grid>
     
   )
 }

@@ -7,7 +7,15 @@ const Languajes = () => {
 	return (
 		<div className={styles.CompOne}>
 			<h5>Idiomas</h5>
-			<CardLanguaje></CardLanguaje>
+			<div className={styles.contaCards}>
+				<div className={styles.Cards}>
+					<CardLanguaje></CardLanguaje>
+				</div>
+				<div className={styles.Cards}>
+					<CardLanguaje></CardLanguaje>
+				</div>
+			</div>
+			
 		</div>
 	);
 };

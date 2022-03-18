@@ -7,3 +7,14 @@
     border-width: 1px;
     border-style: solid;*/
 }
+
+.contaCards{
+    display: flex;
+
+}
+
+.Cards{
+    margin-top: 1em;
+    display: flex;
+    margin-left: 2em;
+}
