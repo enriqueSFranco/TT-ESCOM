@@ -1,5 +1,5 @@
 import React from "react"
-
+import { useParams } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import Label from "../Input/Label";
 import Input from "../Input/Input";
@@ -26,7 +26,7 @@ let initialForm = {
 
 const FormUpdateDataStudent = ({ ref }) => {
   const { form, handleChange, handleChecked } = useForm(initialForm);
-
+  const { name } = useParams();
   return (
     <>
       <div className={styles.wrapper}>

@@ -28,8 +28,10 @@ const profit = [
 ];
 
 const JobCardDetails = () => {
-  let { id } = useParams();
-  const { data } = useFetch(`/empleos/${id}`);
+  let { t200_id_vacant } = useParams();
+
+  console.log(t200_id_vacant);
+  const { data } = useFetch(`/api/Vacants/${t200_id_vacant}/`);
 
   return (
     <div className={styles.wrapper}>

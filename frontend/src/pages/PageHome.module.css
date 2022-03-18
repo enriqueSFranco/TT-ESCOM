@@ -40,3 +40,9 @@
   font-weight: 500;
   color: #454547;
 }
+
+.wrapper {
+  flex-grow: 1;
+  /* position: relative; */
+  min-height: 100vh;
+}

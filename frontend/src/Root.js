@@ -18,7 +18,7 @@ const Root = () => {
       <Routes>
         {/* Rutas publicas */}
         <Route path="/" element={<PageHome />}>
-          <Route path=":id" element={<CardJobDetails />} />
+          <Route path=":t200_id_vacant" element={<CardJobDetails />} />
         </Route>
         <Route path="/empresas" element={<PageCompany />} />
         

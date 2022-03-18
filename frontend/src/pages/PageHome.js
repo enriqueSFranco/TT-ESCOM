@@ -6,7 +6,6 @@ import Input from "../components/Input/Input";
 import Label from "../components/Input/Label";
 import Span from "../components/Input/Span";
 import JobList from "../components/Card/CardJobList";
-import Footer from "../components/Footer/Footer";
 import styles from "./PageHome.module.css";
 
 let initialForm = {
@@ -65,7 +64,6 @@ const Home = () => {
       <div className={`container`}>
         <JobList />
       </div>
-      <Footer />
     </section>
   );
 };

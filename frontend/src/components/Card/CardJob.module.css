@@ -21,22 +21,6 @@
   height: 22px;
 }
 
-p:nth-child(2).placeholder { margin-bottom: .5rem; width: 200px; font-size: .9rem; }
-p:nth-child(3).placeholder { margin-bottom: .5rem; width: 200px; font-size: .9rem; }
-p:nth-child(4).placeholder { margin-bottom: .5rem; width: 200px; font-size: .9rem; }
-
-
-.card .cardContent .tag {
-  width: 220px;
-  height: 22px;
-}
-
-
-.card .cardContent .tagLocation {
-  width: 220px;
-  height: 22px;
-}
-
 .cardHeader::before {
   position: absolute;
   left: 0;
@@ -44,7 +28,6 @@ p:nth-child(4).placeholder { margin-bottom: .5rem; width: 200px; font-size: .9re
   content: '';
   height: 100%;
   border-left: 5px solid #8E0F4B;
-  /* border-radius: rem; */
 }
 
 .description {
@@ -96,6 +79,18 @@ p:nth-child(4).placeholder { margin-bottom: .5rem; width: 200px; font-size: .9re
   animation-duration: 3s;
   animation-iteration-count: infinite;
 }
+
+.tag {
+  /* outline: 2px solid blue; */
+  font-size: .8rem;
+  color: #222;
+  font-weight: bold;
+}
+
+.timeWork,
+.salary,
+.location,
+.publicationTime { margin-bottom: .2rem; }
 
 .title {
   font-size: .9rem;

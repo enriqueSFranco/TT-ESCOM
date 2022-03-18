@@ -70,7 +70,7 @@ const Form = () => {
               </div>
               <div className="my-3">
                 <span>
-                  No tines cuenta? <Link to="/registro-alumno">Registrate</Link>
+                  No tines cuenta? <Link to="/crear-cuenta-alumno">Registrate</Link>
                 </span>
                 <br />
                 <span>
