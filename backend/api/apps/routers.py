@@ -10,6 +10,7 @@ from apps.students.api.views.link_viewset import LinkViewSet
 from apps.students.api.views.academichistory_viewset import HistorialViewSet
 from apps.students.api.views.employmenthistory_viewset import EmploymentViewSet
 from apps.students.api.views.studentlenguages_viewset import LenguagesViewSet
+from apps.vacantes.api.views.announcement_viewset import AnnouncementViewSet
 router = DefaultRouter()
 
 router.register(r'Students', StudentViewSet, basename='students')
@@ -28,4 +29,6 @@ router.register(r'EmploymentHistorial',EmploymentViewSet,basename='students empl
 router.register(r'EmploymentHistorial/<int:pk>',EmploymentViewSet,basename='student employment historial')
 router.register(r'StudentsLenguages',LenguagesViewSet,basename='students lenguages')
 router.register(r'StudentLenguages/<int:pk>',LenguagesViewSet,basename='student lenguages')
+router.register(r'Announcements',AnnouncementViewSet,basename='announcements')
+router.register(r'Announcement/<int:pk>',AnnouncementViewSet,basename='announcement')
 urlpatterns=router.urls
