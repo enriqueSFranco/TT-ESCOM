@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import React from "react"
 
 import PageHome from "./pages/PageHome";
@@ -20,16 +20,17 @@ const Root = () => {
         <Route path="/" element={<PageHome />}>
           <Route path=":id" element={<CardJobDetails />} />
         </Route>
-        <Route path="empresas" element={<PageCompany />} />
+        <Route path="/empresas" element={<PageCompany />} />
         
-        <Route path="alumno" element={<PageLoginStudent/>} />
-        <Route path="registro-alumno" element={<PageCreateAccountStudent />} />
+        <Route path="/iniciar-sesion-alumno" element={<PageLoginStudent/>} />
+        <Route path="/crear-cuenta-alumno" element={<PageCreateAccountStudent />} />
 
-        <Route path="/configuracion" element={<PageDetailsUser />} />
         
         <Route path="/reclutador" element={<PageLoginCompany />} />
         <Route path="/publicar-vacante" element={<PageAddJob />} />
         <Route path="/registro-empresa" element={<PageRegisterCompany />} />
+          
+            <Route path="/perfil" element={<PageDetailsUser />} />
 
 
         {/* Rutas privadas */}
