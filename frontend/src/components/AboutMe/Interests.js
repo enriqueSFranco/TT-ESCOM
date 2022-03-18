@@ -5,7 +5,7 @@ import * as BsIcon from "react-icons/bs";
 const Interests = () => {
   return (
     <div className={styles.CompOne}>
-      <h4>Intereses</h4>
+      <h5>Intereses</h5>
       <div className={styles.content}>
         <div className={styles.areas}>
           <BsIcon.BsCircleFill className={styles.icon} />

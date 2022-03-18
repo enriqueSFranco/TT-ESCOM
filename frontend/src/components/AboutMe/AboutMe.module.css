@@ -1,11 +1,19 @@
 .conteiner{
-    border-color: #8E0F4B;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 10px;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    margin-top: 1rem;
-    width: 55%;
-
+    color: #000;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    height: 480px;
+    border-radius: 4px;
+    width: 100%;
+    position: relative;
 }
+
+/* KEYFRAMES */
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  

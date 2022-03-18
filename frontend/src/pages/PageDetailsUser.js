@@ -12,7 +12,7 @@ const PageDetailsUser = () => {
         </div>
         <div className="col">
           {/* Componente details student */}
-          <h5>Detalles de estudiente</h5>
+          <h5>Menu trabajando.....</h5>
           <CardDetailsStudent />
         </div>
       </div>

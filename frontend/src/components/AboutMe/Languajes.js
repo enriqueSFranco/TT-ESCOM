@@ -6,7 +6,7 @@ import CardLanguaje from "./CardLanguaje"
 const Languajes = () => {
 	return (
 		<div className={styles.CompOne}>
-			<h4>Idiomas</h4>
+			<h5>Idiomas</h5>
 			<div className={styles.contaCards}>
 				<div className={styles.Cards}>
 					<CardLanguaje></CardLanguaje>
