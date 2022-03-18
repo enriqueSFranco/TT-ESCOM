@@ -1,5 +1,4 @@
-import React from "react"
-
+import React from "react";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 import styles from "./CardJobDetails.module.css";
@@ -29,15 +28,16 @@ const profit = [
 
 const JobCardDetails = () => {
   let { t200_id_vacant } = useParams();
-
-  console.log(t200_id_vacant);
   const { data } = useFetch(`/api/Vacants/${t200_id_vacant}/`);
+  // console.log(data[0]);
+
+  if (!data) return null;
 
   return (
     <div className={styles.wrapper}>
       <header className="container">
         <div className={`${styles.flex}`}>
-          <h1 className={styles.title}>{data?.jobTitle ?? 'Sin nombre de vacante'}</h1>
+          <h1 className={styles.title}>{data[0]?.t200_job ?? 'Sin nombre de vacante'}</h1>
           <div className={styles.actions}>
             <button
               className={`${styles.like} ${styles.active}`}
@@ -96,7 +96,7 @@ const JobCardDetails = () => {
         </p>
         <div>
           <p>
-            {data?.descriptionJob ?? 'Sin datos'}
+            {data[0]?.t200_description ?? 'Sin datos'}
           </p>
         </div>
         <div className={styles.requirements}>
@@ -125,7 +125,7 @@ const JobCardDetails = () => {
             Si estás interesado enla vacante y cubres con el perfil requerido postulate por este medio, manda tu CV español e ingles por correo electrónico o comunícate vía telefónica 812074 6435
           </p>
           <p>Tipo de puesto:<span>Tiempo completo, Indefinido</span></p>
-          <p>Salario: <span>$16,000.00 - $17,000.00 al mes</span></p>
+          <p>Salario: <span>${data[0]?.t200_max_salary ?? 'No especificado'} al mes</span></p>
         </div>
         <div>
           <h3>Beneficios</h3>
