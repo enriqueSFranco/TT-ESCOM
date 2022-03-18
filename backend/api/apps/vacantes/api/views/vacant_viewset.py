@@ -14,8 +14,12 @@ class VacantViewSet(viewsets.GenericViewSet):
 	list_serializer_class = VacantListSerializer
 	queryset = None
 
-	def get_object(self, pk):			
-		return get_object_or_404(self.model, pk=pk)
+	def get_object(self, pk):	
+		self.queryset = self.model.objects\
+				.filter(t200_id_vacant = pk)\
+				.values('t200_id_vacant','t200_job','t200_description','t200_check_time','t200_closing_hour','t200_work_days',
+            't200_min_salary','t200_max_salary','t200_gross_salary','t200_home_ofice','t200_publish_date','t200_close_date')		
+		return self.queryset
 
 	def get_queryset(self):
 		if self.queryset is None:
@@ -62,8 +66,18 @@ class VacantViewSet(viewsets.GenericViewSet):
 
 	def retrieve(self, request, pk):
 		Vacant = self.get_object(pk)
-		vacant_serializer = self.serializer_class(Vacant)
+		vacant_serializer = self.list_serializer_class(Vacant,many=True)
 		return Response(vacant_serializer.data)
+
+	def destroy(self, request, pk=None):
+		vacant_destroy = self.model.objects.filter(t200_id_vacant=pk).delete()
+		if vacant_destroy == 1:
+			return Response({
+				'message': 'Vacante eliminado correctamente'
+			})
+		return Response({
+			'message': 'No existe la vacante que desea eliminar'
+		}, status=status.HTTP_404_NOT_FOUND)
 
 	def update(self, request, pk=None):
             vacant = self.get_object(pk)
@@ -77,15 +91,3 @@ class VacantViewSet(viewsets.GenericViewSet):
                 'message': 'Hay errores en la actualización',
                 'errors': vacant_serializer.errors
             }, status=status.HTTP_400_BAD_REQUEST)
-        
-"""def destroy(self, request, pk=None):
-		vacant_destroy = self.model.objects.filter(t200_id_vacant=pk).update(t200_description="")
-		if vacant_destroy == 1:
-			return Response({
-				'message': 'Vacante eliminado correctamente'
-			})
-		return Response({
-			'message': 'No existe la vacante que desea eliminar'
-		}, status=status.HTTP_404_NOT_FOUND)
-"""
-

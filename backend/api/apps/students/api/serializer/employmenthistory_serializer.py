@@ -22,8 +22,8 @@ class EmploymentListSerializer(serializers.ModelSerializer):
 	        't103_corporation' : instance['t103_corporation'],
 	        't103_employment' : instance['t103_employment'],
 	        't103_description' : instance['t103_description'],
-	        't103_start_date' : instance['t103_start_date'],
-	        't103_end_date ' : instance['t103_end_date ']
+	        't103_start_date' : instance['t103_start_date']#,
+	        #'t103_end_date ' : instance['t103_end_date ']
         }
 
 class UpdateEmploymentSerializer(serializers.ModelSerializer):

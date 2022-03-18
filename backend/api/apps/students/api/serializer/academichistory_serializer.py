@@ -4,7 +4,7 @@ from apps.students.models import AcademicHistory
 class AcademicHistorySerializer(serializers.ModelSerializer):
     class Meta:
         model = AcademicHistory
-        fields = '__all__'
+        fields = '__all__'#('t100_boleta','t104_academic_unit','t104_start_date','t104_end_date')#'__all__'
     
     def create(self,validate_data):
         Historial = AcademicHistory(**validate_data)
@@ -20,7 +20,7 @@ class AcademicHistoryListSerializer(serializers.ModelSerializer):
         return{
             't100_boleta' : instance['t100_boleta'],
 	        't104_academic_unit' : instance['t104_academic_unit'],
-	        't104_carreer ' : instance['t104_carreer '],
+	        't104_carreer' :'carreer',
 	        #'c107_id_academic_level ' : instance[''c107_id_academic_level '],
 	        #'C108_id_area ' : instance[''C108_id_area '],
 	        #'c109_id_academic_state ' : instance[''c109_id_academic_state '],
@@ -31,7 +31,7 @@ class AcademicHistoryListSerializer(serializers.ModelSerializer):
 class UpdateAcademicHistorySerializer(serializers.ModelSerializer):
         class Meta:
             model = AcademicHistory
-            fields = ('t100_boleta','t104_academic_unit','t104_carreer ','t104_start_date','t104_end_date')
+            fields = ('t100_boleta','t104_academic_unit','t104_start_date','t104_end_date')
         
         def update(self,instance,validate_data):
             update_historial = super().update(instance,validate_data)
