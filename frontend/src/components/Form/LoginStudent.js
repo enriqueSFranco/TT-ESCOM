@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { useShowPassword } from "../../hooks/usePassword";
 import Input from "../Input/Input";
+import Label from "../Input/Label";
+import Span from "../Input/Span";
 import AuthContext from "../../context/AuthContext";
 import facebook from "../../images/fb.png";
 import google from "../../images/google.png"
@@ -12,7 +14,7 @@ import * as FaIcon from "react-icons/fa";
 import styles from "./Styles.module.css";
 
 let initialForm = {
-  username: "",
+  boleta: "",
   password: "",
 };
 
@@ -35,15 +37,17 @@ const Form = () => {
                 <i className={styles.right_icon}>
                   <FaIcon.FaUser />
                 </i>
-                <Input
-                  type="text"
-                  id="username"
-                  name="username"
-                  placeholder="Escribre tu nombre de usuario"
-                  className={`${styles.input} ${styles.ti_16}`}
-                  value={form.username}
-                  onChange={handleChange}
-                />
+                <Label htmlFor="boleta">
+                  <Input
+                    type="text"
+                    id="boleta"
+                    name="boleta"
+                    placeholder=" "
+                    value={form.boleta}
+                    onChange={handleChange}
+                  />
+                  <Span content="Numero de Boleta" />
+                </Label>
               </div>
               {/* input para el password */}
               <div className={`${styles.inner} mb-3`}>
@@ -53,15 +57,17 @@ const Form = () => {
                 >
                   {showPassword ? <FaIcon.FaEye /> : <FaIcon.FaEyeSlash />}
                 </i>
-                <Input
-                  type={showPassword ? "text" : "password"}
-                  name="password"
-                  id="password"
-                  placeholder="Escribre tu constraseña"
-                  className={`${styles.input} ${styles.ti_16}`}
-                  value={form.password}
-                  onChange={handleChange}
-                />
+                <Label htmlFor="password">
+                  <Input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    id="password"
+                    placeholder=" "
+                    value={form.password}
+                    onChange={handleChange}
+                  />
+                  <Span content="Escribre tu constraseña" />
+                </Label>
               </div>
               <div className="d-grid">
                 <button type="submit" className="btn btn-primary">

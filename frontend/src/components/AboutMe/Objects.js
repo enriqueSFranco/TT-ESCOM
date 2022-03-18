@@ -6,19 +6,19 @@ const Objects = () => {
         return (
             <div className={styles.objects}>
                 <div className={styles.objectspersonals}>
-                    <h5>Objetivos Personales</h5>
-                    <p>Deseo desarrollarme en </p>
+                    <h4>Objetivos Personales</h4>
+                    <p className={styles.tex}> Deseo desarrollarme en </p>
                 </div>
 
                 <div className={styles.salary}>
-                    <h5>Salario deseado</h5>
+                    <h4>Salario deseado</h4>
                     <MdIcon.MdOutlineAttachMoney size={25}/>
-                    <span>12,000</span>      
+                    <span className={styles.tex}>12,000</span>      
                 </div>
 
                 <div className={styles.mode}>
-                    <h5>Modalidad de trabajo</h5>
-                        <span>Remoto</span>
+                    <h4>Modalidad de trabajo</h4>
+                        <span className={styles.tex}>Remoto</span>
                 </div>
             </div>	
         )

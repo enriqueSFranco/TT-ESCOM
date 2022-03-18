@@ -22,10 +22,13 @@
     margin-right: 1rem;
     margin-top: 1rem;
 	display: flex;
-    width: 55%;
 
     /*border: #90314b;
     border-width: 1px ;
     border-style: solid;*/
 }
 
+.tex{
+    vertical-align: middle;
+    font-size:18px;
+}
