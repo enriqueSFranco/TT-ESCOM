@@ -174,7 +174,7 @@ class residence(models.Model):
 
 #T102 Habilidades
 class StudentSkill(models.Model):	
-	t102_id_skill = models.AutoField(primary_key=True)
+	t102_id_skill_registrer = models.AutoField(primary_key=True)
 	c116_id_skill = models.ForeignKey(
 		Skills,
 		null=True,
@@ -201,6 +201,7 @@ class StudentSkill(models.Model):
 
 #T104 Historial academico
 class AcademicHistory(models.Model):
+	t104_id_registrer = models.AutoField(primary_key=True)
 	t100_boleta = models.ForeignKey(
 		Student,
 		null=True,
@@ -225,6 +226,7 @@ class AcademicHistory(models.Model):
 
 #T113 Areas de interes
 class InterestArea(models.Model):
+	t113_id_registrer = models.AutoField(primary_key=True)
 	t100_boleta = models.ForeignKey(
 		Student,
 		null=True,
@@ -241,6 +243,7 @@ class InterestArea(models.Model):
 
 #T114 Enlaces
 class Link(models.Model):
+	t114_id_registrer = models.AutoField(primary_key=True)
 	t100_boleta = models.ForeignKey(
 		Student,
 		null=True,
@@ -266,6 +269,7 @@ class Link(models.Model):
 
 #T110 Idiomas
 class StudentLenguage(models.Model):
+	t110_id_registrer = models.AutoField(primary_key=True)
 	t100_boleta = models.ForeignKey(
 		Student,
 		null=True,
@@ -296,6 +300,7 @@ class StudentLenguage(models.Model):
 
 #T103 Historial laboral
 class EmploymentHistory(models.Model):
+	t103_id_registrer = models.AutoField(primary_key=True)
 	t100_boleta = models.ForeignKey(
 		Student,
 		null=True,
