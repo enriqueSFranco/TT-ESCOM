@@ -1,0 +1,57 @@
+.eye_password { cursor: pointer;}
+
+.form_title {
+  font-family: sans-serif;
+  text-align: center;
+  font-weight: 600;
+  line-height: 2rem;
+}
+
+.groupInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.input, .select {
+  width: 100%;
+  border: none;
+  padding: .7rem;
+  outline: none;
+  background-color: #F3F4F8;
+  border-radius: 8px;
+}
+
+.input::placeholder {
+  font-weight: 500;
+  color: #454547;
+}
+
+.inner {
+  outline: 1px solid red;
+  display: flex;
+  align-items: center;
+  position: relative;
+  font-size: .85rem;
+}
+
+.levelAcademic {
+  position: relative;
+} 
+
+.noArrowSelect {
+  appearance: none;
+}
+
+.right_icon {
+  color: rgba(0, 0, 0, 0.397);;
+  position: absolute;
+  right: 20px;
+}
+
+select {
+  font-family: sans-serif;
+  font-size: .85rem;
+}

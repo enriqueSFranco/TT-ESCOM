@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.students.models import Student,StudentSkill
+from apps.students.models import Student, StudentSkill
 
 
 class StudentSerializer(serializers.ModelSerializer):
@@ -11,7 +11,7 @@ class StudentSerializer(serializers.ModelSerializer):
   # encriptamos el password al momento de que se crea un usuario
   def create(self, validate_data):
     student = Student(**validate_data)
-    student.set_password(validate_data['password']) 
+    #student.set_password(validate_data['password']) 
     # generar token de autenticacion
     student.save() # guardamos al usuario
     return student
@@ -31,7 +31,7 @@ class StudentListSerializer(serializers.ModelSerializer):
       #'t100_rfc': instance["t100_rfc"],
       't100_gender': instance["t100_gender"],
       #'t100_academic_level': instance["t100_academic_level"],
-      't102_skills':'skills'
+      't102_skills': "t102_skills"
     }
 
 class UpdateStudentSerializer(serializers.ModelSerializer):
@@ -57,3 +57,8 @@ class PasswordSerializer(serializers.Serializer):
         {'password': 'Debe ingresar ambas contraseñas iguales'}
       )
     return data
+
+class StudentTokenSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Student
+    fields = ('t100_boleta', 't100_name', 't100_last_name', 't100_username', 't100_email', 't100_password')

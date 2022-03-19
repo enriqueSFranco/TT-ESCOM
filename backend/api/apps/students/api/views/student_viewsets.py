@@ -17,7 +17,7 @@ class StudentViewSet(viewsets.GenericViewSet):
 	def get_object(self, pk):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
-				.filter(t100_boleta=pk)\
+				.filter(pk=pk)\
 				.values('t100_boleta', 't100_name', 't100_username', 't100_password', 't100_email', 't100_gender')
 		return self.queryset
 	def get_queryset(self):
@@ -67,8 +67,13 @@ class StudentViewSet(viewsets.GenericViewSet):
 		student_serializer = self.serializer_class(student,many=True)
 		return Response(student_serializer.data)
 
+<<<<<<< HEAD
 	def update(self, request, pk):
 		student = self.model.objects.filter(t100_boleta=pk).first()
+=======
+	def update(self, request, pk=None):
+		student = self.model.objects.filter(pk=pk).first()
+>>>>>>> desing
 		student_serializer = UpdateStudentSerializer(student, data=request.data)
 		if student_serializer.is_valid():
 			student_serializer.save()

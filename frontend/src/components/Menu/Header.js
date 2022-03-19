@@ -1,72 +1,41 @@
-import { useContext } from "react";
+import React from "react"
+
 import { Link } from "react-router-dom";
-import * as FaIcon from "react-icons/fa";
-import Avatar from "../Avatar/Avatar";
-import AuthContext from "../../context/AuthContext";
-import "./Header.css";
+import DropMenu from "./DropMenu";
+import styles from "./Header.module.css";
 
 const Header = () => {
-  const { user, logout } = useContext(AuthContext);
-
   return (
-    <header className="header">
-      <nav className="nav container">
-        <Link to="/" className="nav__logo">
-          BTESCOM
-        </Link>
-        {user && (
-          <Link to="/configuracion">
-            <Avatar src="https://placeimg.com/30/30/people" alt="avatar" />
+    <>
+      <header className={styles.header}>
+        <nav className={styles.nav}>
+          <Link to="/" className={styles.navLogo}>
+            BTESCOM
           </Link>
-        )}
-        <div className="nav__menu">
-          <ul className="nav__list">
+          <ul className={styles.navList}>
             {/* inicio */}
-            <li className="nav__item">
-              <Link to="/" className="nav__link">
-                <FaIcon.FaHome className="nav__icon" />
-                <span className="nav__name">Inicio</span>
+            <li className={styles.navItem}>
+              <Link to="/" className={`${styles.navLink} ${styles.selected}`}>
+                {/* <FaIcon.FaHome className={styles.navIcon} /> */}
+                Inicio
+                {/* <span className={styles.navName}>Inicio</span> */}
               </Link>
             </li>
             {/* empresas */}
-            <li className="nav__item">
-              <Link to="/empresas" className="nav__link">
-                <FaIcon.FaBuilding className="nav__icon" />
-                <span className="nav__name">Empresas</span>
+            <li className={styles.navItem}>
+              <Link to="/empresas" className={styles.navLink}>
+                Empresas
+                {/* <FaIcon.FaBuilding className={styles.nav__icon} /> */}
+                {/* <span className={styles.nav__name}>Empresas</span> */}
               </Link>
             </li>
-            {/* reclutador */}
-            <li className="nav__item">
-              {user ? (
-                <Link to="/postulaciones" className="nav__link">
-                  <FaIcon.FaBriefcase className="nav__icon" />
-                  <span className="nav__name">Postulaciones</span>
-                </Link>
-              ) : (
-                <Link to="/reclutador" className="nav__link">
-                  <FaIcon.FaUserTie className="nav__icon" />
-                  <span className="nav__name">Reclutador</span>
-                </Link>
-              )}
-            </li>
-            {/* iniciar sesion y cerrar sesion*/}
-            <li className="nav__item">
-              {user ? (
-                <Link to="/" className="nav__link" onClick={logout}>
-                  <FaIcon.FaUser className="nav__icon" />
-                  <span className="nav__name">Cerrar sesion</span>
-                </Link>
-              ) : (
-                <Link to="/iniciar-sesion" className="nav__link">
-                  <FaIcon.FaUser className="nav__icon" />
-                  <span className="nav__name">Alumno</span>
-                </Link>
-              )}
+            <li>
+              <DropMenu />
             </li>
           </ul>
-        </div>
-      </nav>
-    </header>
+        </nav>
+      </header>
+    </>
   );
 };
 

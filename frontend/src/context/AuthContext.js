@@ -1,3 +1,5 @@
+import React from "react"
+
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -34,9 +36,9 @@ const AuthProvider = ({ children }) => {
       const json = await response.json();
       console.log(json)
       const { token, user } = json;
-      console.info(user.username);
+      console.log(user)
       if (response.status === 200 || response.status === 201) {
-        setUser(user.username);
+        setUser(user);
         setToken(token);
         window.localStorage.setItem('token', JSON.stringify(json))
         navigate('/');

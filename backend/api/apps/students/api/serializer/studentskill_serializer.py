@@ -19,6 +19,6 @@ class SkillListSerializer(serializers.ModelSerializer):
   def to_representation(self, instance):
     return {
       "t102_id_skill": instance["t102_id_skill"],
-      #"t102_description": instance["t102_description"],
+      "c116_id_skill": instance["c116_id_skill"],
       "t100_boleta": instance["t100_boleta"]
     }

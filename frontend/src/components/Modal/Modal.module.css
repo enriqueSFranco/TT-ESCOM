@@ -1,0 +1,41 @@
+.modal {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0,0,0,.75);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.modal.active {
+  visibility: visible;
+}
+
+.modal.isOpen {
+  display: flex;
+}
+
+.modalContainer {
+  position: relative;
+  min-width: 520px;
+  max-width: 680px;
+  min-height: 400px;
+  max-height: 500px;
+  overflow-y: auto;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.modalClose {
+  position: absolute;
+  top: .5rem;
+  right: 1rem;
+  background-color: transparent;
+  border: none;
+}
