@@ -1,6 +1,89 @@
 from tabnanny import verbose
 from django.db import models
 
+
+"""----------------------------------------------------------- Catalogos --------------------------------------------------------"""
+
+#C107 Nivel academico
+class AcademicLevel(models.Model):
+	c107_id_academic_level = models.AutoField(primary_key=True)
+	c107_description = models.CharField(max_length=60,blank=True,null=True)
+
+	class Meta:
+		verbose_name = 'AcademicLevel'
+		db_table = 'c107_nivel_academico'
+	
+	def __str__(self) -> str:
+		return self.c107_description
+
+#C109 Estado academico
+class AcademicState(models.Model):
+	c109_id_academic_state = models.AutoField(primary_key=True)
+	c109_description = models.CharField(max_length=60,blank=True,null=True)	
+
+	class Meta:
+		verbose_name = 'AcademicState'
+		db_table = 'c109_estado_academico'
+	
+	def __str__(self) -> str:
+		return self.c109_description
+
+#C108 Area estudio
+class StudyArea(models.Model):
+	c108_id_study_area = models.AutoField(primary_key=True)
+	c108_description = models.CharField(max_length=60,blank=True,null=True)	
+
+	class Meta:
+		verbose_name = 'StudyArea'
+		db_table = 'c108_area_estudio'
+	
+	def __str__(self) -> str:
+		return self.c108_description		
+
+
+#C115 Plataformas
+class Plataform(models.Model):
+	c115_id_plataform = models.AutoField(primary_key=True)
+	c115_description = models.CharField(max_length=60,blank=True,null=True)	
+
+	class Meta:
+		verbose_name = 'Plataform'
+		verbose_name_plural ='Plataforms'
+		db_table = 'c115_plataformas'
+	
+	def __str__(self) -> str:
+		return self.c115_description
+
+#C116 habilidades
+class Skills(models.Model):
+	c116_id_skill = models.AutoField(primary_key=True)
+	c116_description = models.CharField(max_length=60,blank=False,null=False)	
+	c116_type = models.CharField(max_length=1,blank=False,null=False)
+
+	class Meta:
+		verbose_name = 'Skill'
+		verbose_name_plural = 'Skills'
+		db_table = 'c116_habilidades'
+	
+	def __str__(self) -> str:
+		return self.c116_description	
+			
+
+#C111 Idiomas
+"""class Lenguage(models.Model):
+	c111_id_lenguage = models.AutoField(primary_key=True)
+	c111_description = models.CharField(max_length=60,blank=True,null=True)	
+
+	class Meta:
+		verbose_name = 'Lenguange'
+		verbose_name_plural = 'Lenguages'
+		db_table = 'c111_idiomas'
+	
+	def __str__(self) -> str:
+		return self.c111_description		"""
+
+
+
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
 #T100 Alumno
 class Student(models.Model):	
@@ -9,16 +92,13 @@ class Student(models.Model):
 	t100_last_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_username = models.CharField(max_length=40, null=True, blank=True)
 	t100_password = models.CharField(max_length=100, null=False, blank=False)
-	#t100_rfc = models.CharField(max_length=12, null=True, blank=True)
-	#t100_nss = models.CharField(max_length=12, blank=True, null=True)
 	t100_cv = models.FileField(null=True, blank=True)
 	t100_email = models.EmailField(max_length=50, null=False, blank=False)
 	genders = [
 		('F', 'Femenino'),
 		('M', 'Masculino')
 	]
-	t100_gender = models.CharField(max_length=1, choices=genders, default='F', null=True, blank=True)
-	#t100_academic_level = models.PositiveSmallIntegerField(null=True, blank=True)
+	t100_gender = models.CharField(max_length=1, choices=genders, default='F', null=True, blank=True)	
 	t100_date_of_birth = models.DateField(null=True, blank=True)
 	t100_travel = models.BooleanField(default=False)
 	is_active = models.BooleanField(default=True)
@@ -88,9 +168,15 @@ class residence(models.Model):
 
 
 #T102 Habilidades
-class StudentSkill(models.Model):
+class StudentSkill(models.Model):	
 	t102_id_skill = models.AutoField(primary_key=True)
-	#t102_description = models.CharField(max_length=100,null=True,blank=True)
+	c116_id_skill = models.ForeignKey(
+		Skills,
+		null=True,
+		blank=True,
+		related_name='SkillDescription',
+		on_delete=models.CASCADE
+	)
 	t100_boleta = models.ForeignKey(
 		Student, 
 		null=True, 
@@ -209,81 +295,3 @@ class EmploymentHistory(models.Model):
 	def __str__(self)->str:
 		return self.t103_corporation+', '+self.t103_employment
 		
-
-"""----------------------------------------------------------- Catalogos --------------------------------------------------------"""
-
-#C107 Nivel academico
-class AcademicLevel(models.Model):
-	c107_id_academic_level = models.AutoField(primary_key=True)
-	c107_description = models.CharField(max_length=60,blank=True,null=True)
-
-	class Meta:
-		verbose_name = 'AcademicLevel'
-		db_table = 'c107_nivel_academico'
-	
-	def __str__(self) -> str:
-		return self.c107_description
-
-#C109 Estado academico
-class AcademicState(models.Model):
-	c109_id_academic_state = models.AutoField(primary_key=True)
-	c109_description = models.CharField(max_length=60,blank=True,null=True)	
-
-	class Meta:
-		verbose_name = 'AcademicState'
-		db_table = 'c109_estado_academico'
-	
-	def __str__(self) -> str:
-		return self.c109_description
-
-#C108 Area estudio
-class StudyArea(models.Model):
-	c108_id_study_area = models.AutoField(primary_key=True)
-	c108_description = models.CharField(max_length=60,blank=True,null=True)	
-
-	class Meta:
-		verbose_name = 'StudyArea'
-		db_table = 'c108_area_estudio'
-	
-	def __str__(self) -> str:
-		return self.c108_description		
-
-
-#C115 Plataformas
-class Plataform(models.Model):
-	c115_id_plataform = models.AutoField(primary_key=True)
-	c115_description = models.CharField(max_length=60,blank=True,null=True)	
-
-	class Meta:
-		verbose_name = 'Plataform'
-		verbose_name_plural ='Plataforms'
-		db_table = 'c115_plataformas'
-	
-	def __str__(self) -> str:
-		return self.c115_description
-
-#C111 Idiomas
-"""class Lenguage(models.Model):
-	c111_id_lenguage = models.AutoField(primary_key=True)
-	c111_description = models.CharField(max_length=60,blank=True,null=True)	
-
-	class Meta:
-		verbose_name = 'Lenguange'
-		verbose_name_plural = 'Lenguages'
-		db_table = 'c111_idiomas'
-	
-	def __str__(self) -> str:
-		return self.c111_description		"""
-
-#C116 habilidades
-class StudentSkills(models.Model):
-	c116_id_skill = models.AutoField(primary_key=True)
-	c116_description = models.CharField(max_length=60,blank=True,null=True)	
-
-	class Meta:
-		verbose_name = 'Skill'
-		verbose_name_plural = 'Skills'
-		db_table = 'c116_habilidades'
-	
-	def __str__(self) -> str:
-		return self.c116_description		
