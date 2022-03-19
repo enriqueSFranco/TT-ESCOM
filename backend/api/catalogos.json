@@ -125,8 +125,8 @@
         "model":"students.Skills",        
         "pk":1,
         "fields":{
-            "c116_description": "JavaScript",
-            "c116_type": "H"
+            "c116_description": "No definido",
+            "c116_type": "U"
         }
     },
     {
@@ -1257,7 +1257,14 @@
             "c116_type": "s"
         }
     },
-    
+    {
+        "model":"students.Skills",        
+        "pk":143,
+        "fields":{
+            "c116_description": "JavaScript",
+            "c116_type": "H"
+        }
+    },
     {
         "model":"students.Lenguage",        
         "pk":1,

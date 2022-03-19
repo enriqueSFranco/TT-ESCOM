@@ -1,5 +1,7 @@
+from doctest import FAIL_FAST
 from enum import unique
 from tabnanny import verbose
+#from turtle import ondrag
 from django.db import models
 
 
@@ -160,7 +162,7 @@ class residence(models.Model):
 		unique=True,
 		related_name='StudentResidence',
 		on_delete=models.CASCADE)
-	t101_state = models.CharField(max_length=50,choices=estados,default='33',null=True,blank=True)
+	t101_state = models.CharField(max_length=50,choices=estados,default='NO ESPECIFICADA',null=True,blank=True)
 	t101_municipality = models.CharField(max_length=70,null=True,blank=True)
 	t101_locality = models.CharField(max_length=100,null=True,blank=True)
 
@@ -174,13 +176,14 @@ class residence(models.Model):
 
 #T102 Habilidades
 class StudentSkill(models.Model):	
-	t102_id_skill_registrer = models.AutoField(primary_key=True)
+	t102_id_registrer = models.AutoField(primary_key=True)
 	c116_id_skill = models.ForeignKey(
 		Skills,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
 		related_name='SkillDescription',
-		on_delete=models.CASCADE
+		on_delete=models.CASCADE,
+		default=1
 	)
 	t100_boleta = models.ForeignKey(
 		Student, 
@@ -210,9 +213,23 @@ class AcademicHistory(models.Model):
 		on_delete=models.CASCADE)
 	t104_academic_unit = models.CharField(max_length=100,null=True,blank=True)
 	t104_carreer = models.CharField(max_length=100,null=True,blank=True)
-	#c107_id_academic_level =
+	c107_id_academic_level = models.ForeignKey(
+		AcademicLevel,
+		null=False,
+		blank=False,
+		related_name='AcademicLevel',
+		on_delete=models.CASCADE,
+		default=1
+	)
 	#C108_id_area = 
-	#c109_id_academic_state =
+	c109_id_academic_state = models.ForeignKey(
+		AcademicState,
+		null=False,
+		blank=False,
+		related_name='AcadmeicState',
+		on_delete=models.CASCADE,
+		default=1
+	)
 	t104_start_date = models.DateField(null=True,blank=True)
 	t104_end_date = models.DateField(null=True,blank=True)
 
@@ -256,7 +273,8 @@ class Link(models.Model):
 		null=False,
 		blank=False,
 		related_name='PlataformDescription',
-		on_delete=models.CASCADE)
+		on_delete=models.CASCADE,
+		default=1)
 
 	class Meta:
 		unique_together = ['t100_boleta','c115_id_plataform']
@@ -281,7 +299,8 @@ class StudentLenguage(models.Model):
 		null=False,
 		blank=False,
 		related_name='LenguageDescription',
-		on_delete=models.CASCADE
+		on_delete=models.CASCADE,
+		default=1
 	)
 	t110_written_level = models.PositiveSmallIntegerField(null=True, blank=True)
 	t110_reading_level = models.PositiveSmallIntegerField(null=True, blank=True)

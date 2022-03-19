@@ -21,10 +21,10 @@ class AcademicHistoryListSerializer(serializers.ModelSerializer):
             't104_id_registrer': instance['t104_id_registrer'],
             't100_boleta' : instance['t100_boleta'],
 	        't104_academic_unit' : instance['t104_academic_unit'],
-	        't104_carreer' :'carreer',
-	        #'c107_id_academic_level ' : instance[''c107_id_academic_level '],
-	        #'C108_id_area ' : instance[''C108_id_area '],
-	        #'c109_id_academic_state ' : instance[''c109_id_academic_state '],
+	        't104_carreer' : instance['t104_carreer'],
+	        'c107_id_academic_level ' : instance['c107_id_academic_level'],
+	        #'C108_id_area ' : instance['C108_id_area '],
+	        'c109_id_academic_state ' : instance['c109_id_academic_state'],
 	        't104_start_date' : instance['t104_start_date'],
 	        't104_end_date' : instance['t104_end_date']
         }
@@ -32,7 +32,7 @@ class AcademicHistoryListSerializer(serializers.ModelSerializer):
 class UpdateAcademicHistorySerializer(serializers.ModelSerializer):
         class Meta:
             model = AcademicHistory
-            fields = ('t100_boleta','t104_academic_unit','t104_start_date','t104_end_date')
+            fields = '__all__'#('t104_id_registrer','t100_boleta','t104_academic_unit','t104_carreer','c107_id_academic_level','c109_id_academic_state','t104_start_date','t104_end_date')
         
         def update(self,instance,validate_data):
             update_historial = super().update(instance,validate_data)
