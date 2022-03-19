@@ -1,3 +1,4 @@
+from enum import unique
 from tabnanny import verbose
 from django.db import models
 
@@ -31,6 +32,9 @@ class AcademicState(models.Model):
 #C108 Area estudio
 class StudyArea(models.Model):
 	c108_id_study_area = models.AutoField(primary_key=True)
+	c108_study_area = models.CharField(max_length=60,null=False,blank=False)
+	c108_generic_carreer = models.CharField(max_length=100,null=False,blank=False)
+	c108_specific_carreer = models.CharField(max_length=100,null=False,blank=False)
 	c108_description = models.CharField(max_length=60,blank=True,null=True)	
 
 	class Meta:
@@ -70,7 +74,7 @@ class Skills(models.Model):
 			
 
 #C111 Idiomas
-"""class Lenguage(models.Model):
+class Lenguage(models.Model):
 	c111_id_lenguage = models.AutoField(primary_key=True)
 	c111_description = models.CharField(max_length=60,blank=True,null=True)	
 
@@ -80,7 +84,7 @@ class Skills(models.Model):
 		db_table = 'c111_idiomas'
 	
 	def __str__(self) -> str:
-		return self.c111_description		"""
+		return self.c111_description
 
 
 
@@ -115,51 +119,52 @@ class Student(models.Model):
 #T101 Domicilio
 class residence(models.Model):
 	estados=[
-		('01' ,'AGUASCALIENTES'),
-		('02' ,'BAJA CALIFORNIA'),
-		('03' ,'BAJA CALIFORNIA SUR'),
-		('04' ,'CAMPECHE'),
-		('05' ,'COAHUILA'),
-		('06' ,'COLIMA'),
-		('07' ,'CHIAPAS'),
-		('08' ,'CHIHUAHUA'),
-		('09' ,'CIUDAD DE MEXICO'),
-		('10' ,'DURANGO'),
-		('11' ,'GUANAJUATO'),
-		('12' ,'GUERRERO'),
-		('13' ,'HIDALGO'),
-		('14' ,'JALISCO'),
-		('15' ,'MEXICO'),
-		('16' ,'MICHOACAN'),
-		('17' ,'MORELOS'),
-		('18' ,'NAYARIT'),
-		('19' ,'NUEVO LEON'),
-		('20' ,'OAXACA'),
-		('21' ,'PUEBLA'),
-		('22' ,'QUERETARO DE ARTEAGA'),
-		('23' ,'QUINTANA ROO'),
-		('24' ,'SAN LUIS POTOSI'),
-		('25' ,'SINALOA'),
-		('26' ,'SONORA'),
-		('27' ,'TABASCO'),
-		('28' ,'TAMAULIPAS'),
-		('29' ,'TLAXCALA'),
-		('30' ,'VERACRUZ '),
-		('31' ,'YUCATAN'),
-		('32' ,'ZACATECAS'),
-		('33' ,'NO ESPECIFICADA')
+		('AGUASCALIENTES','AGUASCALIENTES'),
+		('BAJA CALIFORNIA','BAJA CALIFORNIA'),
+		('BAJA CALIFORNIA SUR','BAJA CALIFORNIA SUR'),
+		('CAMPECHE','CAMPECHE'),
+		('COAHUILA','COAHUILA'),
+		('COLIMA','COLIMA'),
+		('CHIAPAS','CHIAPAS'),
+		('CHIHUAHUA','CHIHUAHUA'),
+		('CIUDAD DE MEXICO','CIUDAD DE MEXICO'),
+		('DURANGO','DURANGO'),
+		('GUANAJUATO','GUANAJUATO'),
+		('GUERRERO','GUERRERO'),
+		('HIDALGO','HIDALGO'),
+		('JALISCO','JALISCO'),
+		('MEXICO','MEXICO'),
+		('MICHOACAN','MICHOACAN'),
+		('MORELOS','MORELOS'),
+		('NAYARIT','NAYARIT'),
+		('NUEVO LEON','NUEVO LEON'),
+		('OAXACA','OAXACA'),
+		('PUEBLA','PUEBLA'),
+		('QUERETARO DE ARTEAGA','QUERETARO DE ARTEAGA'),
+		('QUINTANA ROO','QUINTANA ROO'),
+		('SAN LUIS POTOSI','SAN LUIS POTOSI'),
+		('SINALOA','SINALOA'),
+		('SONORA','SONORA'),
+		('TABASCO','TABASCO'),
+		('TAMAULIPAS' ,'TAMAULIPAS'),
+		('TLAXCALA' ,'TLAXCALA'),
+		('VERACRUZ' ,'VERACRUZ '),
+		('YUCATAN' ,'YUCATAN'),
+		('ZACATECAS' ,'ZACATECAS'),
+		('NO ESPECIFICADA' ,'NO ESPECIFICADA')
 	]
 	t100_boleta = models.ForeignKey(
 		Student,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+		unique=True,
 		related_name='StudentResidence',
 		on_delete=models.CASCADE)
 	t101_state = models.CharField(max_length=50,choices=estados,default='33',null=True,blank=True)
 	t101_municipality = models.CharField(max_length=70,null=True,blank=True)
 	t101_locality = models.CharField(max_length=100,null=True,blank=True)
 
-	class Meta:
+	class Meta:		
 		verbose_name = 'Residence'
 		db_table='t101_domicilio'
 
@@ -186,6 +191,7 @@ class StudentSkill(models.Model):
 	)
 
 	class Meta:
+		unique_together = ['t100_boleta','c116_id_skill']
 		verbose_name = "StudentSkill"
 		verbose_name_plural = "StudentSkills"
 		db_table = "t102_habilidades"
@@ -210,6 +216,7 @@ class AcademicHistory(models.Model):
 	t104_end_date = models.DateField(null=True,blank=True)
 
 	class Meta:
+		unique_together = ['t100_boleta','t104_carreer']
 		verbose_name="Academic history"
 		db_table="t104_historial_academico"
 	
@@ -241,9 +248,15 @@ class Link(models.Model):
 		related_name='StudentLinks',
 		on_delete=models.CASCADE)
 	t113_link = models.CharField(max_length=100,blank=True,null=True)
-	#c115_id_network=
+	c115_id_plataform = models.ForeignKey(
+		Plataform,
+		null=False,
+		blank=False,
+		related_name='PlataformDescription',
+		on_delete=models.CASCADE)
 
 	class Meta:
+		unique_together = ['t100_boleta','c115_id_plataform']
 		verbose_name="Link"
 		verbose_name_plural="Links"
 		db_table='t114_enlaces'
@@ -259,7 +272,13 @@ class StudentLenguage(models.Model):
 		blank=True,
 		related_name='StudentLenguages',
 		on_delete=models.CASCADE)
-	#c111_id_language
+	c111_id_language = models.ForeignKey(
+		Lenguage,
+		null=False,
+		blank=False,
+		related_name='LenguageDescription',
+		on_delete=models.CASCADE
+	)
 	t110_written_level = models.PositiveSmallIntegerField(null=True, blank=True)
 	t110_reading_level = models.PositiveSmallIntegerField(null=True, blank=True)
 	t110_speaking_level = models.PositiveSmallIntegerField(null=True, blank=True)
@@ -267,6 +286,7 @@ class StudentLenguage(models.Model):
 	t110_native = models.BooleanField(default=False)
 
 	class Meta:
+		unique_together = ['t100_boleta','c111_id_language']
 		verbose_name='StudentLenguage'
 		verbose_name_plural='StudentLenguages'
 		db_table='t110_idiomas'
@@ -289,6 +309,7 @@ class EmploymentHistory(models.Model):
 	t103_end_date = models.DateField(null=True)
 
 	class Meta:
+		unique_together = ['t100_boleta','t103_corporation']
 		verbose_name='Employment history'
 		db_table='t103_historial_laboral'
 	
