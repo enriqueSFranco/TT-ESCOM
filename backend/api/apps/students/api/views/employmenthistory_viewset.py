@@ -52,8 +52,8 @@ class EmploymentViewSet(viewsets.GenericViewSet):
 		employments_serializer = self.list_serializer_class(employment,many=True)
 		return Response(employments_serializer.data)
 
-	def update(self, request, pk=None):
-		employment = self.get_object(pk)
+	def update(self, request, pk,corporation):
+		employment = self.model.objects.filter(t100_boleta=pk,t103_corporation=corporation).first()
 		employment_serializer = UpdateEmploymentSerializer(employment, data=request.data)
 		if employment_serializer.is_valid():
 			employment_serializer.save()

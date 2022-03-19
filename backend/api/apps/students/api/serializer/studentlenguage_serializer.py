@@ -35,6 +35,7 @@ class UpdateLenguagesSerializer(serializers.ModelSerializer):
         def update(self,instance,validate_data):
             update_Lenguages = super().update(instance,validate_data)
             update_Lenguages.save()
+            return update_Lenguages
 
 
 

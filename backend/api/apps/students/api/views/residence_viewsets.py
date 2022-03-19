@@ -51,7 +51,7 @@ class StudentResidenceViewSet(viewsets.GenericViewSet):
 		return Response(residence_serializer.data)
 
 	def update(self, request, pk=None):
-		residence = self.get_object(pk)
+		residence = self.model.objects.filter(t100_boleta=pk).first()
 		residence_serializer = UpdateResidenceSerializer(residence, data=request.data)
 		if residence_serializer.is_valid():
 			residence_serializer.save()

@@ -54,7 +54,7 @@ class LenguagesViewSet(viewsets.GenericViewSet):
 		return Response(lenguages_serializer.data)
 
 	def update(self, request, pk=None):
-		lenguage = self.get_object(pk)
+		lenguage = self.model.objects.filter(t100_boleta=pk).first()
 		lenguage_serializer = UpdateLenguagesSerializer(lenguage, data=request.data)
 		if lenguage_serializer.is_valid():
 			lenguage_serializer.save()

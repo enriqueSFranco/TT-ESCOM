@@ -28,23 +28,7 @@ class VacantViewSet(viewsets.GenericViewSet):
 				.values('t200_id_vacant','t200_job','t200_description','t200_check_time','t200_closing_hour','t200_work_days',
             't200_min_salary','t200_max_salary','t200_gross_salary','t200_home_ofice','t200_publish_date','t200_close_date')
 		return self.queryset
-
-  # TODO terminar ruta para cambiar el password
-	"""@action(detail=True, methods=['post'],url_path='cambio_pass')
-	def set_password(self, request, pk=None):
-		student = self.get_object(pk)
-		password_serializer = PasswordSerializer(data=request.data)
-		if password_serializer.is_valid():
-			student.set_password(
-				password_serializer.validated_data['t100_password'])
-			student.save()
-			return Response({
-				'message': 'Contraseña actualizada correctamente'
-			})
-		return Response({
-			'message': 'Hay errores en la información enviada',
-			'errors': password_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)"""
+  
 
 	def list(self, request):
 		vacants = self.get_queryset()
@@ -79,8 +63,8 @@ class VacantViewSet(viewsets.GenericViewSet):
 			'message': 'No existe la vacante que desea eliminar'
 		}, status=status.HTTP_404_NOT_FOUND)
 
-	def update(self, request, pk=None):
-            vacant = self.get_object(pk)
+	def update(self, request, pk):
+            vacant = self.queryset = self.model.objects.filter(t200_id_vacant = pk).first()
             vacant_serializer = UpdateVacantSerializer(vacant, data=request.data)
             if vacant_serializer.is_valid():
                 vacant_serializer.save()

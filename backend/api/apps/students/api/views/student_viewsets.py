@@ -67,8 +67,8 @@ class StudentViewSet(viewsets.GenericViewSet):
 		student_serializer = self.serializer_class(student,many=True)
 		return Response(student_serializer.data)
 
-	def update(self, request, pk=None):
-		student = self.get_object(pk)
+	def update(self, request, pk):
+		student = self.model.objects.filter(t100_boleta=pk).first()
 		student_serializer = UpdateStudentSerializer(student, data=request.data)
 		if student_serializer.is_valid():
 			student_serializer.save()
