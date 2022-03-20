@@ -52,3 +52,27 @@ h5,h6{
     }
   }
   
+  .modal{
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom:0;
+    background-color: black;
+    opacity: 0;
+    pointer-events: none;
+  
+  }
+
+  .modal--show{
+    opacity: 1;
+    pointer-events: unset;
+  }
+
+.modal_container{
+  margin:auto;
+  width: 98%;
+  display:grid;
+  max-width: 600px;
+  background-color:white
+}
