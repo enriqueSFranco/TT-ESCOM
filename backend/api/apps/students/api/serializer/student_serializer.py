@@ -11,7 +11,7 @@ class StudentSerializer(serializers.ModelSerializer):
   # encriptamos el password al momento de que se crea un usuario
   def create(self, validate_data):
     student = Student(**validate_data)
-    student.set_password(validate_data['password']) 
+    # student.set_password(validate_data['password'])
     # generar token de autenticacion
     student.save() # guardamos al usuario
     return student
