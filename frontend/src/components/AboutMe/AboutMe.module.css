@@ -1,19 +1,9 @@
-.conteiner{
-    color: #000;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    height: 480px;
-    border-radius: 4px;
-    width: 100%;
-    position: relative;
+.conteiner {
+  overflow: hidden;
+  color: #000;
+  box-shadow: #90314b 0px 1px 4px;
+  height: 560px;
+  width: 100%;
+  border-radius: 0 0 4px 4px;
+  position: relative;
 }
-
-/* KEYFRAMES */
-@keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
