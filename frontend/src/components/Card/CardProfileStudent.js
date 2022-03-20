@@ -39,7 +39,7 @@ const CardProfileStudent = ({
           {/* <button onClick={handleEdit}>perfil</button> */}
         </motion.article>
       ) : (
-        <article className="container">
+        <article className={`${styles.mainContainer} container`}>
           <div className={`${styles.card}`}>
             <header className={styles.background}>
               <div className={styles.avatar}>
