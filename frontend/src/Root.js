@@ -33,7 +33,7 @@ const Root = () => {
       {/* TODO: Hacer ruta privada */}
       <Route path="/perfil" element={<PageProfileStudent />}>
         <Route path="editar" element={<h4>Editar perfil</h4>} />
-        <Route path="sombreMi" element={<AboutMe />} />
+        <Route path="sobreMi" element={<AboutMe />} />
         <Route path="experiencia" element={<h4>experiencia</h4>} />
         <Route path="certificaciones" element={<h4>certificaciones</h4>} />
       </Route>

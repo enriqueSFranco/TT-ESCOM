@@ -27,8 +27,8 @@
     margin-left: 1rem;
     margin-right: 1rem;
     margin-top: 1rem;
-    animation-delay: 4s;
-    animation: fadeIn 2s ease-in;
+    /* animation-delay: 4s;
+    animation: fadeIn 2s ease-in; */
 }
 
 h5{
@@ -37,7 +37,7 @@ h5{
   
 
 /* KEYFRAMES */
-@keyframes fadeIn {
+/* @keyframes fadeIn {
     0% {
       opacity: 0;
     }
@@ -45,4 +45,4 @@ h5{
       opacity: 1;
     }
   }
-  
+   */
