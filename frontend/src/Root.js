@@ -8,37 +8,39 @@ import PageLoginCompany from "./pages/PageLoginCompany";
 import PageRegisterCompany from "./pages/PageRegisterCompany";
 import PageProfileStudent from "./pages/PageProfileStudent";
 import PrivateRoute from "./routes/PrivateRoute";
+import AboutMe from "./components/AboutMe/AboutMe";
 import CardJobDetails from "./components/Card/CardJobDetails";
 import PageAddJob from "./pages/PageAddJob";
 
 const Root = () => {
-
   return (
     <Routes>
-      {/* Rutas publicas */}
+      {/* Indice de rutas publicas */}
       <Route path="/" element={<PageHome />}>
         <Route path=":t200_id_vacant" element={<CardJobDetails />} />
       </Route>
-      <Route path="/empresas" element={<PageCompany />} />
 
-      <Route path="/iniciar-sesion-alumno" element={<PageLoginStudent />} />
-      <Route
-        path="/crear-cuenta-alumno"
-        element={<PageCreateAccountStudent />}
-      />
-
+      <Route path="/alumno" element={<PageLoginStudent />} />
+      <Route path="/registro-alumno" element={<PageCreateAccountStudent />} />
       <Route path="/reclutador" element={<PageLoginCompany />} />
-      <Route path="/publicar-vacante" element={<PageAddJob />} />
-      <Route path="/registro-empresa" element={<PageRegisterCompany />} />
+      <Route path="/registro-reclutador" element={<PageRegisterCompany />} />
+      <Route path="/empresas" element={<PageCompany />} />
+      <Route path="/comunicados" element={<h1>Comunicados</h1>} />
 
+      {/* TODO: Hacer ruta privada */}
+      <Route path="/publicar-vacante" element={<PageAddJob />} />
+
+      {/* TODO: Hacer ruta privada */}
       <Route path="/perfil" element={<PageProfileStudent />}>
-        {/* <Route path=":t100_boleta" element={} /> */}
+        <Route path="editar" element={<h4>Editar perfil</h4>} />
+        <Route path="sombreMi" element={<AboutMe />} />
+        <Route path="experiencia" element={<h4>experiencia</h4>} />
+        <Route path="certificaciones" element={<h4>certificaciones</h4>} />
       </Route>
 
-      {/* Rutas privadas */}
+      {/* Indice de rutas privadas */}
       <Route element={<PrivateRoute />}>
-        {/* <Route path="/reclutador" element={<PageRecruiter />} /> */}
-        {/* <Route path="/configuracion" element={<PageDetailsUser />} /> */}
+        {/* Aqui van todas las rutas privadas del sistema */}
       </Route>
     </Routes>
   );
