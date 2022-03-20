@@ -19,14 +19,14 @@ class HistorialViewSet(viewsets.GenericViewSet):
 		if self.queryset == None:
 			self.queryset = self.model.objects\
 				.filter(t100_boleta = pk)\
-				.values('t100_boleta','t104_academic_unit','t104_start_date','t104_end_date')
+				.values('t104_id_registrer','t100_boleta','t104_academic_unit','t104_start_date','t104_end_date')
 		return  self.queryset #get_object_or_404(self.model,pk=pk)
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t100_boleta','t104_academic_unit','t104_start_date','t104_end_date')
+				.values('t104_id_registrer','t100_boleta','t104_academic_unit','t104_start_date','t104_end_date')
 		return self.queryset
   
 
@@ -53,8 +53,8 @@ class HistorialViewSet(viewsets.GenericViewSet):
 		historial_serializer = self.list_serializer_class(historial,many=True)
 		return Response(historial_serializer.data)
 
-	def update(self, request, pk=None):
-		historial = self.get_object(pk)
+	def update(self, request, pk):
+		historial = self.model.objects.filter(t104_id_registrer = pk).first()
 		historial_serializer = UpdateAcademicHistorySerializer(historial, data=request.data)
 		if historial_serializer.is_valid():
 			historial_serializer.save()
@@ -66,8 +66,8 @@ class HistorialViewSet(viewsets.GenericViewSet):
 			'errors': historial_serializer.errors
 		}, status=status.HTTP_400_BAD_REQUEST)
 
-	def destroy(self, request, pk=None):
-		historial_destroy = self.model.objects.filter(t100_boleta=pk).delete()
+	def destroy(self, request, pk):
+		historial_destroy = self.model.objects.filter(t104_id_registrer=pk).delete()
 		print(historial_destroy)
 		#SI lo borra pero no se como indicar que se realizo con exito
 		if historial_destroy == 1:

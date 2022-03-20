@@ -16,14 +16,14 @@ class SkillViewSet(viewsets.GenericViewSet):
   def get_object(self, pk):
     self.queryset = self.model.objects\
 			.filter(t100_boleta=pk)\
-			.values('t100_boleta','t102_id_skill')
+			.values('t100_boleta','c116_id_skill','t102_id_skill')
     return self.queryset
 
   def get_queryset(self):
     if self.queryset is None:
       self.queryset = self.model.objects\
 			  .filter()\
-			  .values('t100_boleta','t102_id_skill')
+			  .values('t100_boleta','c116_id_skill','t102_id_skill')
     return self.queryset
 
   def list(self, request):
