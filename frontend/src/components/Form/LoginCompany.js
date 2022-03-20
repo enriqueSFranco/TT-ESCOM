@@ -62,7 +62,7 @@ const LoginCompany = () => {
             </div>
             <div className="my-3">
               <span>
-                No tines cuenta? <Link to="/registro-empresa">Registrate</Link>
+                No tines cuenta? <Link to="/registro-reclutador">Registrate</Link>
               </span>
               <br />
               <span>

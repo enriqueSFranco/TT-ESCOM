@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "../../hooks/useForm";
 // import { useShowPassword } from "../../hooks/usePassword";
-import { $ajax } from "../../utils/$ajax";
+import { loginService } from "../../services/login";
 import Input from "../Input/Input";
 import Label from "../Input/Label";
 import Span from "../Input/Span";
@@ -21,26 +21,17 @@ const CreateAccount = () => {
 
   if (form === null) return;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    let options = {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: form,
-    };
-    console.log(form);
-    $ajax()
-      .POST("/api/Students/", options)
-      .then((response) => {
-        if (!response.err) {
-          console.log(response);
-        }
-      })
-      .catch((err) => console.log(err));
+    try {
+      const user = await loginService(form);
+      console.log(user);
+    } catch (error) {
+      console.error(error)
+    }
   };
+
+  console.info(form)
 
   return (
     <>

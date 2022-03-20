@@ -1,0 +1,24 @@
+.nav {
+  background-color: #90314b;
+  border-radius: 4px 4px 0 0;
+}
+
+.navMenu {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navList {
+  padding: .5rem;
+}
+
+.navLink {
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.navLink:hover { color: #fff; }

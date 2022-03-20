@@ -49,10 +49,7 @@ svg {
   transition: color 200ms;
 }
 
-.like.active svg {
-  color: #ff2391;
-  /* animation: bounce 300ms cubic-bezier(.5, 1.75, .75, 1.25); */
-}
+.like.active svg { color: #ff2391; }
 
 .requirements {}
 
@@ -61,17 +58,18 @@ svg {
 }
 
 .title {
-  color: red;
-  font-size: 1.4rem;
+  color: #90314b;
+  font-weight: bold;
+  font-size: 1.3rem;
   margin: 0;
 }
 
 .wrapper {
+  background-color: #fff;
   font-family: sans-serif;
   height: 700px;
   width: 700px;
   border-radius: 8px;
   outline: 1px solid #ccc;
   overflow-y: scroll;
-  z-index: 999;
 }

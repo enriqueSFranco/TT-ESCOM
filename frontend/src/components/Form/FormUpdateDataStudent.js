@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "../../hooks/useForm";
+import { useFetch }  from "../../hooks/useFetch";
 import Label from "../Input/Label";
 import Input from "../Input/Input";
 import Span from "../Input/Span";
@@ -25,7 +26,8 @@ let initialForm = {
 
 const FormUpdateDataStudent = ({ handleBackToProfile }) => {
   const { form, handleChange, handleChecked } = useForm(initialForm);
-
+  const { data } = useFetch();
+  
   return (
     <>
       <motion.div

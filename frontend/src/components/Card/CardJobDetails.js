@@ -29,7 +29,6 @@ const profit = [
 const JobCardDetails = () => {
   let { t200_id_vacant } = useParams();
   const { data } = useFetch(`/api/Vacants/${t200_id_vacant}/`);
-  // console.log(data[0]);
 
   if (!data) return null;
 
@@ -83,7 +82,7 @@ const JobCardDetails = () => {
           </div>
         </div>
       </header>
-      <main className="container">
+      <article className={`container`}>
         <p>
           <span>Formacion:{" "}</span>
           ingenieria industrial, administracion o similar
@@ -149,7 +148,7 @@ const JobCardDetails = () => {
           <h3>Idioma</h3>
           <p>Inglés (Obligatorio)</p>
         </div>
-      </main>
+      </article>
     </div>
   );
 };
