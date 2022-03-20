@@ -1,4 +1,3 @@
-import React from 'react';
 import CardProfileStudent from "../components/Card/CardProfileStudent";
 import styles from "./PageProfileStudent.module.css";
 import CardDetailsStudent from "../components/AboutMe/AboutMe";
