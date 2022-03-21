@@ -1,3 +1,4 @@
+
 .modal {
   position: fixed;
   z-index: 999;
@@ -9,13 +10,7 @@
   display: none;
   justify-content: center;
   align-items: center;
-  visibility: hidden;
 }
-
-.modal.active {
-  visibility: visible;
-}
-
 .modal.isOpen {
   display: flex;
 }
