@@ -21,8 +21,8 @@
   display: flex;
   justify-content: center;
   /* align-items: center; */
-  animation-delay: 4s;
-  animation: fadeIn 2s ease-in;
+  /* animation-delay: 4s;
+  animation: fadeIn 2s ease-in; */
 }
 
 h5,
@@ -33,39 +33,4 @@ h6 {
 .tex {
   vertical-align: middle;
   font-size: 18px;
-}
-
-/* KEYFRAMES */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-  }
-  
-  .modal{
-    position:fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom:0;
-    background-color: black;
-    opacity: 0;
-    pointer-events: none;
-  
-  }
-
-  .modal--show{
-    opacity: 1;
-    pointer-events: unset;
-  }
-
-.modal_container{
-  margin:auto;
-  width: 98%;
-  display:grid;
-  max-width: 600px;
-  background-color:white
 }

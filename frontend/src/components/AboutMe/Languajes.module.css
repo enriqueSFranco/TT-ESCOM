@@ -3,9 +3,9 @@
     margin-right: 1rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
-
+/* 
     animation-delay: 4s;
-    animation: fadeIn 2s ease-in;
+    animation: fadeIn 2s ease-in; */
     /*border-color: black;
     border-width: 1px;
     border-style: solid;*/
@@ -25,7 +25,7 @@ h5{
 }
 
 /* KEYFRAMES */
-@keyframes fadeIn {
+/* @keyframes fadeIn {
     0% {
       opacity: 0;
     }
@@ -33,4 +33,4 @@ h5{
       opacity: 1;
     }
   }
-  
+   */

@@ -11,7 +11,6 @@ const PageProfileStudent = () => {
           <CardProfileStudent />
         </div>
         <div className="col">
-          {/* TODO: Pasar el menu a un componente */}
           <MenuStudent />
           <Outlet />
         </div>
