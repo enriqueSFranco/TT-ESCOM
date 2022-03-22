@@ -8,12 +8,11 @@
     width: 40%;
     margin: 10px;
 }
-
 .icon{
-    vertical-align: middle;
-    font-size:13px;
-    margin-right: 5px;
-    color:#8E0F4B;
+  vertical-align: middle;
+  font-size:13px;
+  margin-right: 5px;
+  color:#8E0F4B;
 }
 
 .tex{
@@ -35,6 +34,13 @@ h5{
     font-weight:normal;
   }
   
+  .edit {
+    display: none;
+  }
+  
+  .content:hover .edit {
+    display: block;
+  }
 
 /* KEYFRAMES */
 /* @keyframes fadeIn {

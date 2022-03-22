@@ -20,9 +20,6 @@
 .objects {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
-  /* animation-delay: 4s;
-  animation: fadeIn 2s ease-in; */
 }
 
 h5,
@@ -34,3 +31,12 @@ h6 {
   vertical-align: middle;
   font-size: 18px;
 }
+
+.edit {
+	display: none;
+}
+
+.objects:hover .edit {
+	display: block;
+}
+

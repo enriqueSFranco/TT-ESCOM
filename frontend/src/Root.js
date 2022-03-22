@@ -8,7 +8,7 @@ import PageLoginCompany from "./pages/PageLoginCompany";
 import PageRegisterCompany from "./pages/PageRegisterCompany";
 import PageProfileStudent from "./pages/PageProfileStudent";
 import PrivateRoute from "./routes/PrivateRoute";
-import AboutMe from "./components/AboutMe/AboutMe";
+import AboutMe from "./components/Card/AboutMe/AboutMe";
 import CardJobDetails from "./components/Card/CardJobDetails";
 import PageAddJob from "./pages/PageAddJob";
 
