@@ -40,13 +40,13 @@ class SkillViewSet(viewsets.GenericViewSet):
     return Response({"message": "Hay errores en el registro"}, status=status.HTTP_400_BAD_REQUEST)
 
   def retrieve(self, request, pk):        
-    skills = self.get_object(pk)
+    skills = self.model.objects.filter(t102_id_registrer=pk).values('t100_boleta','c116_id_skill','t102_id_skill')
     skills_serializer = self.serializer_list_class(skills,many=True)
     return Response(skills_serializer.data)
 
   
   def destroy(self, request, pk):
-    skill_destroy = self.model.objects.filter(t100_boleta=pk).delete()
+    skill_destroy = self.model.objects.filter(t102_id_registrer=pk).delete()
     #SI lo borra pero no se como indicar que se realizo con exito
     if skill_destroy == 1:      
       return Response({

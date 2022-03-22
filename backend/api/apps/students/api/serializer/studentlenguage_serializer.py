@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from apps.students.models import StudentLenguage
+from apps.students.api.serializer.lenguage_serializer import LenguageListSerializer
 
 class LenguagesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,12 +13,14 @@ class LenguagesSerializer(serializers.ModelSerializer):
         return Lenguages
     
 class LenguagesListSerializer(serializers.ModelSerializer):
+    lenguage = LenguageListSerializer(read_only=True)
     class Meta:
         model = StudentLenguage
         fields = '__all__'
 
     def to_representation(self,instance):
-        return{
+        print(instance)
+        """return{
             't100_boleta' : instance['t100_boleta'],
 	        #'c111_id_language' : instance[''c111_id_language'],
 	        't110_written_level' : instance['t110_written_level'],
@@ -25,7 +28,7 @@ class LenguagesListSerializer(serializers.ModelSerializer):
 	        't110_speaking_level' : instance['t110_speaking_level'],
 	        't110_comprension_level' : instance['t110_comprension_level'],
 	        't110_native' : instance['t110_native']
-        }
+        }"""
 
 class UpdateLenguagesSerializer(serializers.ModelSerializer):
         class Meta:

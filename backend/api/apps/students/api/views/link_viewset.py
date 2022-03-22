@@ -54,7 +54,7 @@ class LinkViewSet(viewsets.GenericViewSet):
 		return Response(link_serializer.data)
 
 	def update(self, request, pk):
-		link = self.model.objects.filter(t100_boleta=pk).first()
+		link = self.model.objects.filter(t114_id_registrer=pk).first()
 		link_serializer = UpdateLinkSerializer(link, data=request.data)
 		if link_serializer.is_valid():
 			link_serializer.save()
@@ -66,8 +66,8 @@ class LinkViewSet(viewsets.GenericViewSet):
 			'errors': link_serializer.errors
 		}, status=status.HTTP_400_BAD_REQUEST)
 
-	def destroy(self, request, pk,link):
-		link_destroy = self.model.objects.filter(t100_boleta=pk,t113_link=link).delete()
+	def destroy(self, request, pk):
+		link_destroy = self.model.objects.filter(t114_id_registrer=pk).delete()
 		#SI lo borra pero no se como indicar que se realizo con exito
 		if link_destroy == 1:
 			return Response({

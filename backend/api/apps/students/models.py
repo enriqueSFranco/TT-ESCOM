@@ -1,6 +1,8 @@
 from doctest import FAIL_FAST
+from email.policy import default
 from enum import unique
 from tabnanny import verbose
+
 #from turtle import ondrag
 from django.db import models
 
@@ -106,7 +108,10 @@ class Student(models.Model):
 	]
 	t100_gender = models.CharField(max_length=1, choices=genders, default='F', null=True, blank=True)	
 	t100_date_of_birth = models.DateField(null=True, blank=True)
+	t100_personal_objectives = models.TextField(null=True, blank=True)
+	t100_target_salary = models.PositiveIntegerField(null=True, blank=True)	
 	t100_travel = models.BooleanField(default=False)
+	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to='profiles_pictures')
 	is_active = models.BooleanField(default=True)
 
 	class Meta:
@@ -314,8 +319,8 @@ class StudentLenguage(models.Model):
 		verbose_name_plural='StudentLenguages'
 		db_table='t110_idiomas'
 	
-	def __str__(self)->str:
-		return self.t110_written_level+" "+self.t110_reading_level
+	def __str__(self):
+		return str(self.t110_written_level) #+" "+self.t110_reading_level
 
 #T103 Historial laboral
 class EmploymentHistory(models.Model):

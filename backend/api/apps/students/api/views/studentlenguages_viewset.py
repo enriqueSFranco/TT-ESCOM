@@ -24,9 +24,9 @@ class LenguagesViewSet(viewsets.GenericViewSet):
 
 	def get_queryset(self):
 		if self.queryset is None:
-			self.queryset = self.model.objects\
-				.filter()\
-				.values('t100_boleta','t110_written_level','t110_reading_level','t110_speaking_level','t110_comprension_level','t110_native')
+			self.queryset = self.model.objects.all()
+				#.filter()\
+				#.values('t100_boleta','t110_written_level','t110_reading_level','t110_speaking_level','t110_comprension_level','t110_native')
 		return self.queryset
   
 

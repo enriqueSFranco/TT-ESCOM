@@ -50,7 +50,7 @@ class StudentResidenceViewSet(viewsets.GenericViewSet):
 		residence_serializer = self.list_serializer_class(residence,many=True)
 		return Response(residence_serializer.data)
 
-	def update(self, request, pk=None):
+	def update(self, request, pk):
 		residence = self.model.objects.filter(t100_boleta=pk).first()
 		residence_serializer = UpdateResidenceSerializer(residence, data=request.data)
 		if residence_serializer.is_valid():
