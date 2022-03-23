@@ -300,7 +300,7 @@ class StudentLenguage(models.Model):
 		related_name='StudentLenguages',
 		on_delete=models.CASCADE)
 	c111_id_language = models.ForeignKey(
-		Lenguage,
+		Lenguage,#"Lenguage.c111_id_lenguage",
 		null=False,
 		blank=False,
 		related_name='LenguageDescription',
