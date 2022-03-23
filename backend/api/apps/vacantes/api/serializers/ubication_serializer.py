@@ -1,4 +1,3 @@
-from turtle import undobufferentries
 from rest_framework import serializers
 from apps.vacantes.models import Ubication
 
@@ -37,6 +36,7 @@ class UpdateUbicationSerializer(serializers.ModelSerializer):
         def update(self,instance,validate_data):
             u_ubication = super().update(instance,validate_data)
             u_ubication.save()
+            return u_ubication
 
 
 

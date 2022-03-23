@@ -35,6 +35,7 @@ class UpdateAnnouncementSerializer(serializers.ModelSerializer):
         def update(self,instance,validate_data):
             u_announcement = super().update(instance,validate_data)
             u_announcement.save()
+            return u_announcement
 
 
 

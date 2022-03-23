@@ -17,10 +17,11 @@ class ApplicationListSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def to_representation(self,instance):
+        print(instance)
         return{
             't201_id_application' : instance['t201_id_application'],
             't100_boleta' : instance['t100_boleta'],
-            #'t201_cv' : instance['t201_cv'],
+            't201_cv' : instance['t201_cv'],
             'c205_id_application_state' : instance['c205_id_application_state'],
             't201_date_application' : instance['t201_date_application']
         }
@@ -28,11 +29,12 @@ class ApplicationListSerializer(serializers.ModelSerializer):
 class UpdateApplicationSerializer(serializers.ModelSerializer):
         class Meta:
             model = Application
-            fields = ('t201_id_application','t100_boleta','c205_id_application_state','t201_date_application')
+            fields = ('t201_id_application','t100_boleta','c205_id_application_state','t201_date_application','t201_cv')
         
         def update(self,instance,validate_data):
             u_aplication = super().update(instance,validate_data)
             u_aplication.save()
+            return u_aplication
 
 
 

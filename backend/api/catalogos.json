@@ -1398,7 +1398,256 @@
         "fields":{
             "c115_description": "Linkedin"
         }
-    }
+    },
+
+
+    {
+        "model":"vacantes.VacantStatus",        
+        "pk":1,
+        "fields":{
+            "c204_description": "Sin información"
+        }
+    },
+    {
+        "model":"vacantes.VacantStatus",        
+        "pk":2,
+        "fields":{
+            "c204_description": "Publicada Visible"
+        }
+    },
+    {
+        "model":"vacantes.VacantStatus",        
+        "pk":3,
+        "fields":{
+            "c204_description": "Publicada en revisión"
+        }
+    },
+    {
+        "model":"vacantes.VacantStatus",        
+        "pk":4,
+        "fields":{
+            "c204_description": "Publicada no Visible"
+        }
+    },
+    {
+        "model":"vacantes.VacantStatus",        
+        "pk":5,
+        "fields":{
+            "c204_description": "Cerrada"
+        }
+    },
+    {
+        "model":"vacantes.VacantStatus",        
+        "pk":6,
+        "fields":{
+            "c204_description": "Publicada desactivada"
+        }
+    },
+
+
+    {
+        "model":"vacantes.ApplicationState",        
+        "pk":1,
+        "fields":{
+            "c205_description": "Sin información"
+        }
+    },
+    {
+        "model":"vacantes.ApplicationState",        
+        "pk":2,
+        "fields":{
+            "c205_description": "En revisión"
+        }
+    },
+    {
+        "model":"vacantes.ApplicationState",        
+        "pk":3,
+        "fields":{
+            "c205_description": "Aceptado"
+        }
+    },
+    {
+        "model":"vacantes.ApplicationState",        
+        "pk":4,
+        "fields":{
+            "c205_description": "Información incompleta"
+        }
+    },
+    {
+        "model":"vacantes.ApplicationState",        
+        "pk":5,
+        "fields":{
+            "c205_description": "Rechazada CV corrompido"
+        }
+    },
+    {
+        "model":"vacantes.ApplicationState",        
+        "pk":6,
+        "fields":{
+            "c205_description": "Rechazada"
+        }
+    },
 
     
+    {
+        "model":"vacantes.ReportState",        
+        "pk":1,
+        "fields":{
+            "c220_description": "Sin atender"
+        }
+    },
+    {
+        "model":"vacantes.ReportState",        
+        "pk":2,
+        "fields":{
+            "c220_description": "Se requiere mas información"
+        }
+    },
+    {
+        "model":"vacantes.ReportState",        
+        "pk":3,
+        "fields":{
+            "c220_description": "En revisión"
+        }
+    },
+    {
+        "model":"vacantes.ReportState",        
+        "pk":4,
+        "fields":{
+            "c220_description": "Reporte falso"
+        }
+    },
+    {
+        "model":"vacantes.ReportState",        
+        "pk":5,
+        "fields":{
+            "c220_description": "Reporte invalido"
+        }
+    },
+    {
+        "model":"vacantes.ReportState",        
+        "pk":6,
+        "fields":{
+            "c220_description": "Atendido"
+        }
+    },
+
+
+    {
+        "model":"vacantes.CandidateProfile",        
+        "pk":1,
+        "fields":{
+            "c206_description": "No definido"
+        }
+    },
+    {
+        "model":"vacantes.CandidateProfile",        
+        "pk":2,
+        "fields":{
+            "c206_description": "Estudiante"
+        }
+    },
+    {
+        "model":"vacantes.CandidateProfile",        
+        "pk":3,
+        "fields":{
+            "c206_description": "Becario"
+        }
+    },
+    {
+        "model":"vacantes.CandidateProfile",        
+        "pk":4,
+        "fields":{
+            "c206_description": "Pasante"
+        }
+    },
+    {
+        "model":"vacantes.CandidateProfile",        
+        "pk":5,
+        "fields":{
+            "c206_description": "Titulado"
+        }
+    },
+
+
+    {
+        "model":"vacantes.Experience",        
+        "pk":1,
+        "fields":{
+            "c207_description": "No definido"
+        }
+    },
+    {
+        "model":"vacantes.Experience",        
+        "pk":2,
+        "fields":{
+            "c207_description": "Sin experiencia"
+        }
+    },
+    {
+        "model":"vacantes.Experience",        
+        "pk":3,
+        "fields":{
+            "c207_description": "0 - 6 meses"
+        }
+    },
+    {
+        "model":"vacantes.Experience",        
+        "pk":4,
+        "fields":{
+            "c207_description": "6 meses - 1 año"
+        }
+    },
+    {
+        "model":"vacantes.Experience",        
+        "pk":5,
+        "fields":{
+            "c207_description": "1 - 2 años"
+        }
+    },
+    {
+        "model":"vacantes.Experience",        
+        "pk":6,
+        "fields":{
+            "c207_description": "más de 2 años"
+        }
+    },
+
+
+    {
+        "model":"vacantes.ReportType",        
+        "pk":1,
+        "fields":{
+            "c210_description": "No definido"
+        }
+    },
+    {
+        "model":"vacantes.ReportType",        
+        "pk":2,
+        "fields":{
+            "c210_description": "Vacante duplicada"
+        }
+    },
+    {
+        "model":"vacantes.ReportType",        
+        "pk":3,
+        "fields":{
+            "c210_description": "Comunicado duplicado"
+        }
+    },
+    {
+        "model":"vacantes.ReportType",        
+        "pk":4,
+        "fields":{
+            "c210_description": "Información de la vacante incompleta"
+        }
+    },
+    {
+        "model":"vacantes.ReportType",        
+        "pk":5,
+        "fields":{
+            "c210_description": "Información de la vacante falsa"
+        }
+    }
+
 ]

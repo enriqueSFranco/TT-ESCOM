@@ -51,8 +51,9 @@ class AnnouncementViewSet(viewsets.GenericViewSet):
 		announcement_serializer = self.list_serializer_class(announcement,many=True)
 		return Response(announcement_serializer.data)
 
-	def destroy(self, request, pk=None):
+	def destroy(self, request, pk):
 		announcement_destroy = self.model.objects.filter(t202_id_announcement=pk).delete()
+		#SI lo borra pero no se como indicar que se realizo con exito
 		if announcement_destroy == 1:
 			return Response({
 				'message': 'Comunicado eliminado correctamente'
@@ -61,8 +62,8 @@ class AnnouncementViewSet(viewsets.GenericViewSet):
 			'message': 'No existe el comunicado que desea eliminar'
 		}, status=status.HTTP_404_NOT_FOUND)
 
-	def update(self, request, pk=None):
-            announcement = self.get_object(pk)
+	def update(self, request, pk):
+            announcement = self.model.objects.filter(t202_id_announcement=pk).first()
             announcement_serializer = UpdateAnnouncementSerializer(announcement, data=request.data)
             if announcement_serializer.is_valid():
                 announcement_serializer.save()
