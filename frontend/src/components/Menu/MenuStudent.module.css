@@ -27,7 +27,6 @@
 }
 
 .navList {
-  outline: 1px solid rgb(212, 212, 214);
   border-radius: 5px 5px 0 0;
   width: 100%;
   padding: 10px 15px;
@@ -43,16 +42,16 @@
   user-select: none;
 }
 
-.navList.selected {
-  background-color: #eee;
-}
-
 .navLink {
   color: #000;
   text-transform: capitalize;
 }
-
 .navLink:hover { color: #000; }
+
+.navList.selected {
+  background-color: rgba(230, 231, 231, 0.685);
+  color: #fff;
+}
 
 .underline {
   position: absolute;

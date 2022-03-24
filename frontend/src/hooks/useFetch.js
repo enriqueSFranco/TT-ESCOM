@@ -11,7 +11,6 @@ export const useFetch = (endpoint) => {
 
     const fetchData = async () => {
       setLoading(true);
-
       try {
         let res = await fetch(endpoint, { signal });
 
@@ -39,9 +38,7 @@ export const useFetch = (endpoint) => {
       }
     };
     fetchData();
-
     return () => controller.abort();
-
   }, [endpoint]);
 
   return {

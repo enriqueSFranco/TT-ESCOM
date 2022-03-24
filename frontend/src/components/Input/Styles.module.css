@@ -6,8 +6,8 @@
 /* ESTILOS PARA EL ELEMENTO INPUT */
 .input {
   position: relative;
-  margin: 9px;
-  width: 460px;
+  margin: 0 0 1rem 0;
+  width: 1000px;
 }
 
 .inputLabel {
@@ -56,13 +56,9 @@
   top: -9999px;
 }
 
-.inputSwitch:checked + .check {
-  background-color: #65d100;
-}
+.inputSwitch:checked + .check { background-color: #65d100; }
 
-.inputSwitch:checked + .check::before {
-  left: 27px;
-}
+.inputSwitch:checked + .check::before { left: 27px; }
 
 .sliderSwitch {
   display: flex;
