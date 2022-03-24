@@ -1,9 +1,8 @@
 .filterContainer {
   position: relative;
-  top: 2rem;
+  top: 3.5rem;
   width: 1000px;
   height: 80px;
-  /* outline: 1px solid red; */
   display: flex;
   justify-content: center;
   align-items: center;
