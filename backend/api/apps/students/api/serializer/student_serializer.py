@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.contrib.auth import get_user_model
 from apps.students.models import Student, StudentSkill
 
 
@@ -15,6 +16,14 @@ class StudentSerializer(serializers.ModelSerializer):
     # generar token de autenticacion
     student.save() # guardamos al usuario
     return student
+
+  def validate_email(self, value):
+    print("value:",value)
+    if value == '':
+      raise serializers.ValidationError('Tiene que indicar un correo')
+    if get_user_model().objects.get(t100_email=value):
+      return value
+    raise serializers.ValidateError("Correo ya registrado")
 
 class StudentListSerializer(serializers.ModelSerializer):
   #skills=StudentSkill(many=True)
