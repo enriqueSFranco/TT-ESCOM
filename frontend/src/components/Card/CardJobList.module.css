@@ -1,0 +1,14 @@
+/* ESTILOS PARA EL COMPONENTE CARDJOBLIST */
+
+.grid {
+  width: 70%;
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.wrapper {
+  width: 70%;
+  background-color: royalblue;
+}

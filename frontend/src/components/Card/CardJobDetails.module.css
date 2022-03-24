@@ -3,6 +3,22 @@ svg {
   font-size: 1rem;
 }
 
+h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1;
+}
+
+.body { height: 700px; }
+
+.positionSticky {
+  position: sticky;
+  top: 5rem;
+  right: 13.1rem;
+  height: 700px;
+}
+
 .actions {
   width: 70px;
   display: flex;
@@ -72,4 +88,13 @@ svg {
   border-radius: 8px;
   outline: 1px solid #ccc;
   overflow-y: scroll;
+}
+
+.wrapper::-webkit-scrollbar { width: 8px; }
+
+.wrapper::-webkit-scrollbar-track { background-color: #d8d8d8; }
+
+.wrapper::-webkit-scrollbar-thumb {
+  background-color: #90314b;
+  border-radius: 20px;
 }

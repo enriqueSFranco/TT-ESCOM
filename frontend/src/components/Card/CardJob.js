@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./CardJob.module.css";
 
 const JobCard = ({ job }) => {
@@ -7,7 +6,7 @@ const JobCard = ({ job }) => {
     <article className={`${styles.card}`}>
       <header className={styles.cardHeader}>
         <h3 className={`${styles.nameCompany}`}>
-          Nombre de la empresa
+          {job?.t200_job}
         </h3>
       </header>
       <main>
