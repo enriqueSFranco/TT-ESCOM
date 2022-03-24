@@ -6,7 +6,7 @@ const PageLoginStudent = () => {
 
   return (
     <>
-      <section className={styles.wrapper}>
+      <section className={styles.wrapperPage}>
         <LoginStudent />
       </section>
     </>

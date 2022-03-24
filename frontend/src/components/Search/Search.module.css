@@ -1,18 +1,31 @@
 .btnSearch {
+  position: relative;
+  top: .5rem;
   height: 50px;
 }
 
 .searchContainer { 
   /* poner un background */
+  background-image: url(../../images//parallaxESCOM.jpg);
+  background-attachment: fixed;
+  background-position: 0 300%;
+  background-size: cover;
+  background-repeat: no-repeat;
   margin-top: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 250px;
+  background-color: red;
 }
 
 .searchForm {
+  /* modificacion inicio */
+  position: absolute;
+  top: 14rem;
+  background-color: #fff;
+  /* fin */
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   border-radius: 8px;
   width: 800px;
@@ -20,9 +33,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem 1rem 1rem;
+  padding: 0 1rem 1rem 0;
   margin-top: 1rem;
 }
+
+.searchForm > label { margin: 1rem 1rem 0 1rem; }
 
 .title {
   backdrop-filter: blur(30px);
@@ -31,7 +46,7 @@
   font-size: 2rem;
   text-align: center;
   font-weight: bold;
-  color: #222;
+  color: #fff;
 }
 
 .title > span {

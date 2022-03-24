@@ -3,7 +3,7 @@ import styles from './GlobalStyles.module.css';
 
 const PageRegisterCompany = () => {
   return (
-    <section className={styles.wrapperRegisterCompany}>
+    <section className={styles.wrapperPage}>
       <CreateAccountCompany />
     </section>
   )

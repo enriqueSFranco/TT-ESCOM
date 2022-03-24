@@ -5,6 +5,7 @@ import Filter from "../components/Filter/Filter";
 import CardJobList from "../components/Card/CardJobList";
 import Deck from "../components/Deck/Deck";
 import Footer from "../components/Footer/Footer";
+import styles from "./GlobalStyles.module.css";
 
 const Home = () => {
   const [, setSearch] = useState("");
@@ -59,7 +60,7 @@ const Home = () => {
   };
 
   return (
-    <>
+    <div className={styles.home}>
       {/* barra de busqueda  */}
       <Search handleSearch={handleSearch} />
       {/* control de filtros */}
@@ -70,7 +71,7 @@ const Home = () => {
       <Deck />
       {/* pie de pagina */}
       <Footer />
-    </>
+    </div>
   );
 };
 

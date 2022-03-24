@@ -4,7 +4,7 @@ import styles from './GlobalStyles.module.css';
 
 const PageLoginCompany = () => {
   return (
-    <section className={styles.wrapperLoginCompany}>
+    <section className={styles.wrapperPage}>
       <LoginCompany />
     </section>
   )
