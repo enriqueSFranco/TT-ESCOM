@@ -9,6 +9,9 @@
 }
 
 .wrapper {
+  position: relative;
+  top: 2rem;
   width: 70%;
-  background-color: royalblue;
+  border-radius: 8px;
+  background-color: #eeeeee;
 }
