@@ -4,11 +4,7 @@
 }
 
 /* ESTILOS PARA EL ELEMENTO INPUT */
-.input {
-  position: relative;
-  margin: 0 0 1rem 0;
-  width: 1000px;
-}
+.input { position: relative; }
 
 .inputLabel {
   position: absolute;
@@ -28,7 +24,7 @@
 .inputField {
   box-sizing: border-box;
   display: block;
-  width: 100%;
+  width: 400px;
   border: 1px solid currentColor;
   padding: calc(var(--size-bezel) * 1.5) var(--size-bezel);
   color: currentColor;

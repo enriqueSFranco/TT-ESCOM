@@ -72,7 +72,7 @@ const Home = () => {
   return (
     <main className={homeStyles.home}>
       {/* barra de busqueda  */}
-      <Search handleSearch={handleSearch} />
+      <Search handleSearch={handleSearch} data={dataList} />
       {/* control de filtros */}
       <Filter />
 

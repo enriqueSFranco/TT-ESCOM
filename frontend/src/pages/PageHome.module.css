@@ -1,19 +1,20 @@
-main {
-  max-height: 100vh;
-}
 
 .totalJobs {
   position: relative;
-  top: 1rem;
-  left: 17.5rem;
+  left: 17.6rem;
   font-weight: 500;
   color: #636363;
+}
+
+.wrapperJobList {
+  position: relative;
+  top: 3rem
 }
 
 .wrapperDeck {
   background-color: #eeeeee;
   position: relative;
-  top: 3rem;
+  top: 5rem;
 }
 
 .wrapperDeck h2 {
