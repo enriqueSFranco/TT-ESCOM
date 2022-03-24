@@ -1,11 +1,10 @@
-import React from "react"
-
 import CreateAccountStudent from '../components/Form/CreateAccountStudent';
+import styles from "./GlobalStyles.module.css";
 
 const PageCreateAccountStudent = () => {
   return (
     <>
-      <section>
+      <section className={styles.wrapperLoginCompany}>
         <CreateAccountStudent />
       </section>
     </>

@@ -1,24 +1,13 @@
-import React from 'react'
-import ReactDom from 'react-dom';
 import LoginCompany from '../components/Form/LoginCompany';
-import Modal from '../components/Modal/Modal';
+import styles from './GlobalStyles.module.css';
 
-const modalContainer = document.getElementById("modal");
 
-const PageLoginCompany = ({ isMObile }) => {
-  if (!isMObile) {
-    return (
-      <section>
-        <LoginCompany />
-      </section>
-    )
-  }
-  return ReactDom.createPortal (
-    <Modal>
+const PageLoginCompany = () => {
+  return (
+    <section className={styles.wrapperLoginCompany}>
       <LoginCompany />
-    </Modal>,
-    modalContainer
-  );
+    </section>
+  )
 };
 
 export default PageLoginCompany;

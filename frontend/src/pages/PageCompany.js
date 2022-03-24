@@ -1,11 +1,8 @@
-import React from "react"
-
-
 const PageCompany = () => {
   return (
-    <div className="row align-items-stretch my-5">
-    </div>
-    
+    <>
+      <h1>Empresas</h1>
+    </>
   )
 }
 
