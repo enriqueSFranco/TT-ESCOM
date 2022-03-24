@@ -4,8 +4,18 @@
   height: 50px;
 }
 
+.dataResultsJobs {
+  /* outline: 1px solid red; */
+  background-color: #fff;
+  width: 400px;
+}
+
+.searchInput {
+  margin: 1rem;
+  width: 400px;
+}
+
 .searchContainer { 
-  /* poner un background */
   background-image: url(../../images//parallaxESCOM.jpg);
   background-attachment: fixed;
   background-position: 0 300%;
@@ -17,7 +27,6 @@
   justify-content: center;
   align-items: center;
   height: 250px;
-  background-color: red;
 }
 
 .searchForm {
@@ -28,7 +37,7 @@
   /* fin */
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   border-radius: 8px;
-  width: 800px;
+  width: 1100px;
   height: 100px;
   display: flex;
   justify-content: space-between;
