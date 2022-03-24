@@ -2,7 +2,9 @@
   cursor: grab;
   margin: 0 auto;
   overflow: hidden;
-  width: 80%;
+  width: 90%;
+  position: relative;
+  top: 3rem;
 }
 
 .item {
