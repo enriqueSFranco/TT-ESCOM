@@ -1,5 +1,7 @@
 from django.db import models
 from  apps.students.models import Student
+from apps.administration.models import Admin
+from apps.companies.models import Company,Recruiter
 
 """----------------------------------------------------------- Catalogos --------------------------------------------------------"""
 
@@ -76,7 +78,13 @@ class ReportState(models.Model):
 #T200 Vacants
 class Vacant(models.Model):
     t200_id_vacant = models.AutoField(primary_key=True)
-    #t300_id_company =
+    t300_id_company = models.ForeignKey(
+        Company,
+        blank=True,
+        null=True,
+        related_name='CompanyOffering',
+        on_delete=models.CASCADE
+    )
     t200_job = models.CharField(max_length=70)
     t200_description = models.TextField()    
     t200_check_time = models.DateTimeField(auto_now=False)
@@ -102,8 +110,20 @@ class Vacant(models.Model):
         on_delete=models.CASCADE)
     t200_publish_date = models.DateField()
     t200_close_date = models.DateField()
-    #t301_id_recruiter =
-    #t400_id_administrator =
+    t301_id_recruiter = models.ForeignKey(
+        Recruiter,
+        null=True,
+        blank=True,
+        related_name='RecruiterVacant',
+        on_delete=models.CASCADE
+    )
+    t400_id_admin = models.ForeignKey(
+        Admin,
+        null=True,
+        blank=True,
+        related_name='AdminVacant',
+        on_delete=models.CASCADE
+    )    
     #t200_vacancy    
 
     class Meta:
@@ -150,13 +170,48 @@ class Application(models.Model):
 
 #T213 Ubicacion
 class Ubication(models.Model):
+    estados=[
+		('AGUASCALIENTES','AGUASCALIENTES'),
+		('BAJA CALIFORNIA','BAJA CALIFORNIA'),
+		('BAJA CALIFORNIA SUR','BAJA CALIFORNIA SUR'),
+		('CAMPECHE','CAMPECHE'),
+		('COAHUILA','COAHUILA'),
+		('COLIMA','COLIMA'),
+		('CHIAPAS','CHIAPAS'),
+		('CHIHUAHUA','CHIHUAHUA'),
+		('CIUDAD DE MEXICO','CIUDAD DE MEXICO'),
+		('DURANGO','DURANGO'),
+		('GUANAJUATO','GUANAJUATO'),
+		('GUERRERO','GUERRERO'),
+		('HIDALGO','HIDALGO'),
+		('JALISCO','JALISCO'),
+		('MEXICO','MEXICO'),
+		('MICHOACAN','MICHOACAN'),
+		('MORELOS','MORELOS'),
+		('NAYARIT','NAYARIT'),
+		('NUEVO LEON','NUEVO LEON'),
+		('OAXACA','OAXACA'),
+		('PUEBLA','PUEBLA'),
+		('QUERETARO DE ARTEAGA','QUERETARO DE ARTEAGA'),
+		('QUINTANA ROO','QUINTANA ROO'),
+		('SAN LUIS POTOSI','SAN LUIS POTOSI'),
+		('SINALOA','SINALOA'),
+		('SONORA','SONORA'),
+		('TABASCO','TABASCO'),
+		('TAMAULIPAS' ,'TAMAULIPAS'),
+		('TLAXCALA' ,'TLAXCALA'),
+		('VERACRUZ' ,'VERACRUZ '),
+		('YUCATAN' ,'YUCATAN'),
+		('ZACATECAS' ,'ZACATECAS'),
+		('NO ESPECIFICADA' ,'NO ESPECIFICADA')
+	]
     t200_id_vacant = models.ForeignKey(
 		Vacant,
 		null=True,
 		blank=True,
 		related_name='ApplicationUbication',
 		on_delete=models.CASCADE)
-    t213_state = models.CharField(max_length=30,null=False,blank=False,default='No definido')
+    t213_state = models.CharField(max_length=30,null=False,blank=False,choices=estados,default='NO ESPECIFICADA')
     t213_mucipality = models.CharField(max_length=70,null=False,blank=False,default='No definido')
     t213_locality = models.CharField(max_length=100,null=False,blank=False,default='No definido')
     t213_street = models.CharField(max_length=60,null=True,blank=True)
@@ -174,13 +229,32 @@ class Ubication(models.Model):
 #T202 Comunicados
 class Announcement(models.Model):
     t202_id_announcement = models.AutoField(primary_key=True)
-    t202_announcement = models.FileField()
-    T202_description = models.TextField()
-    #t300_id_company =
+    t202_announcement = models.FileField()#<-Titulo
+    t202_description = models.TextField()
+    t_202_linkl = models.CharField(max_length=60,blank=True,null=True)#enlaces
+    t300_id_company = models.ForeignKey(
+        Company,
+        blank=True,
+        null=True,
+        related_name='CompanyCommunicate',
+        on_delete=models.CASCADE
+    )
     t202_publish_date = models.DateField(null=True)
     t202_close_date = models.DateField(null=True)
-    #t301_id_recruiter =
-    #t400_id_administrador =     
+    t301_id_recruiter = models.ForeignKey(
+        Recruiter,
+        null=True,
+        blank=True,
+        related_name='RecruiterCommunicate',
+        on_delete=models.CASCADE
+    )
+    t400_id_admin = models.ForeignKey(
+        Admin,
+        null=True,
+        blank=True,
+        related_name='AdminCommunicate',
+        on_delete=models.CASCADE
+    ) 
 
     class Meta:
         verbose_name = 'Annuncement'
@@ -206,7 +280,13 @@ class Report(models.Model):
 		blank=True,
 		related_name='ReportStudent',
 		on_delete=models.CASCADE)    
-    #t300_id_company =
+    t300_id_company = models.ForeignKey(
+        Company,
+        blank=True,
+        null=True,
+        related_name='CompanyReport',
+        on_delete=models.CASCADE
+    )
     c210_report_type = models.ForeignKey(
         ReportType,
         null=False,
@@ -224,7 +304,13 @@ class Report(models.Model):
         on_delete=models.CASCADE
     )
     t203_report_date = models.DateField(null=True)
-    #t400_id_admin = 
+    t400_id_admin = models.ForeignKey(
+        Admin,
+        null=True,
+        blank=True,
+        related_name='AttendaceAdmin',
+        on_delete=models.CASCADE
+    ) 
     t203_atention_date = models.DateField(null=True)
     t203_adittional_comment = models.TextField(null=True,blank=True)
 

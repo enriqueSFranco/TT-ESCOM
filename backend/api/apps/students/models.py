@@ -96,7 +96,7 @@ class Lenguage(models.Model):
 #T100 Alumno
 class Student(models.Model):	
 	t100_boleta = models.CharField(primary_key=True,max_length=12, null=False, blank=False)
-	t100_name = models.CharField(max_length=50, null=False, blank=False)
+	t100_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_last_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_username = models.CharField(max_length=40, null=True, blank=True)
 	t100_password = models.CharField(max_length=100, null=False, blank=False)
@@ -111,7 +111,7 @@ class Student(models.Model):
 	t100_personal_objectives = models.TextField(null=True, blank=True)
 	t100_target_salary = models.PositiveIntegerField(null=True, blank=True)	
 	t100_travel = models.BooleanField(default=False)
-	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to='profiles_pictures')
+	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to='profiles_pictures/')
 	is_active = models.BooleanField(default=True)
 
 	class Meta:
