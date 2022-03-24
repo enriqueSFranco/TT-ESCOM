@@ -1,7 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 html {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
   font-size: 16px;
-  font-family: sans-serif;
+  font-family: 'Quicksand';
+}
+
+body::-webkit-scrollbar { width: 8px; }
+
+body::-webkit-scrollbar-track { background-color: #ffffff; }
+
+body::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 20px;
 }
 
 *,
@@ -16,8 +30,4 @@ li {
 
 a {
   text-decoration: none;
-}
-
-section {
-  padding: 3rem 0 0;
 }

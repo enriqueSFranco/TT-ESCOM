@@ -27,7 +27,8 @@ select::-ms-expand {
 }
 
 .btn {
-  padding: 0.8rem;
+  padding: .6rem;
+  width: 300px;
   border-radius: 8px;
 }
 
@@ -35,71 +36,43 @@ select::-ms-expand {
   margin-right: 1rem;
 }
 
-.btnLocation {
-  border: none;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  width: 100px;
-}
-
 .container {
-  /* background-color: red; */
+  /* background-color: #0b889e; */
+  height: 980px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.containerInput {
-  display: flex;
-  position: relative;
-  align-items: center;
-}
-
 .flexWrapper {
   width: 100%;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  align-items: center;
+  padding: 0;
   /* border: var(--border); */
 }
 
 .form {
-  /* border: .17rem solid #90314b; */
+  border: .17rem solid #90314b;
   border-radius: 8px;
   width: 100%;
   margin: 0 auto;
+  padding: 1rem;
   position: relative;
   top: 3rem;
 }
 
 .groudButton {
+  position: absolute;
+  bottom: 0;
+  right: 0;
   width: 50%;
   margin: 0 auto;
   display: flex;
-  /* border: var(--border); */
   justify-content: center;
   padding: 1rem;
-}
-
-.iconLeft {
-  position: absolute;
-  left: .8rem;
-  font-size: 15px;
-  color: rgba(0, 0, 0, 0.397);
-  cursor: pointer;
-  padding: 0.3rem;
-}
-
-.input {
-  width: 400px;
-  border: none;
-  padding: 0.7rem;
-  margin: .4rem;
-  outline: none;
-  background-color: #f3f4f8;
-  border-radius: 8px;
 }
 
 .select {
@@ -133,7 +106,7 @@ select::-ms-expand {
   width: 100%;
   height: .2rem;
   margin: 0 auto;
-  background-color: rgba(235, 235, 235, 0.527);
+  background-color: #90314b;
 }
 
 .textArea {
@@ -146,6 +119,10 @@ select::-ms-expand {
 }
 
 .title {
+  background-color: #90314b;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 2px;
   font-size: 1.5rem;
   font-family: sans-serif;
   font-weight: 600;
@@ -153,13 +130,11 @@ select::-ms-expand {
   text-transform: uppercase;
 }
 
-.ti24 {
-  text-indent: 1.5rem;
-}
-
 .wrapper {
+  position: relative;
   width: 60%;
-  border: .2rem solid rgba(235, 235, 235, 0.527);
+  /* background-color: red; */
+  backdrop-filter: blur(10px);
   height: 75vh;
   padding: 1rem;
   margin: 1rem auto;
@@ -171,5 +146,4 @@ select::-ms-expand {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* border: 1px solid; */
 }

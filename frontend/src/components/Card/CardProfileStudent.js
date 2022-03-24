@@ -1,6 +1,8 @@
 import { useState } from "react";
+ import { useFetch } from "../../hooks/useFetch.js";
 import FormUpdateDataStudent from "../Form/FormUpdateDataStudent";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion/dist/framer-motion";
 import * as MdIcon from "react-icons/md";
 import * as BsIcon from "react-icons/bs";
 import * as IoIcon from "react-icons/io";
@@ -14,32 +16,46 @@ const CardProfileStudent = ({
   socialNetworks,
 }) => {
   const [state, setState] = useState("profile");
+   let t100_boleta = 2014;//useParams();
+   const { data } = useFetch(`/api/Students/${t100_boleta}`);
+   console.log("Obtuve esto:")
+   console.log(data);
+   //console.log(data['t100_boleta']);
 
   const handleEdit = (e) => {
     let isEdit = state === "edit" ? "profile" : "edit";
     setState(isEdit);
   };
 
-  console.log(state);
-
   return (
     <>
       {state === "edit" ? (
-        <article className="container">
-          <FormUpdateDataStudent />
-          <button onClick={handleEdit}>perfil</button>
-        </article>
+        <motion.article 
+          className="container"
+          initial={{scaleY: 0}}
+          animate={{scaleY: 1}}
+          exit={{scaleY: 0}}
+          duration={{duration: 0.5}}
+        >
+          <FormUpdateDataStudent handleBackToProfile={handleEdit} />
+          {/* <button onClick={handleEdit}>perfil</button> */}
+        </motion.article>
       ) : (
-        <article className="container">
+        <article className={`${styles.mainContainer} container`}>
           <div className={`${styles.card}`}>
-            <IoIcon.IoMdSettings className={styles.config} onClick={handleEdit} />
-            <div className={styles.avatar}>
-              <img src="https://placeimg.com/640/480/any" alt="user" />
-              <div className={styles.nameHolder}>
-                <h3>Enrique Salinas Franco</h3>
-                <h4>Ingeniero de software</h4>
+            <header className={styles.background}>
+              <div className={styles.avatar}>
+                <IoIcon.IoMdSettings
+                  className={styles.config}
+                  onClick={handleEdit}
+                />
+                <img src="https://placeimg.com/640/480/any" alt="user" />
+                <div className={styles.nameHolder}>
+                  <h3>Enrique Salinas Franco</h3>
+                  <h4>Ingeniero de software</h4>
+                </div>
               </div>
-            </div>
+            </header>
             <div className={styles.userDetails}>
               <div className={styles.separator}>
                 <h4 className={styles.label}>Ubicacion</h4>
@@ -71,8 +87,12 @@ const CardProfileStudent = ({
                   <span>enrique Salinas Franco</span>
                 </Link>
               </div>
-              <div className="py-4">
-                <p>perfil verificado</p>
+              <div className={`${styles.flexColumn} py-4`}>
+                <IoIcon.IoIosCheckmarkCircle />
+                <p>
+                  Tu curriculum esta activo y visible para las empresas.
+                  <em>Abierto a oportunidades.</em>
+                </p>
               </div>
             </div>
           </div>
