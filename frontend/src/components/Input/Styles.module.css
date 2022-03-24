@@ -4,11 +4,7 @@
 }
 
 /* ESTILOS PARA EL ELEMENTO INPUT */
-.input {
-  position: relative;
-  margin: 1rem;
-  width: 460px;
-}
+.input { position: relative; }
 
 .inputLabel {
   position: absolute;
@@ -28,7 +24,7 @@
 .inputField {
   box-sizing: border-box;
   display: block;
-  width: 100%;
+  width: 400px;
   border: 1px solid currentColor;
   padding: calc(var(--size-bezel) * 1.5) var(--size-bezel);
   color: currentColor;
@@ -56,13 +52,9 @@
   top: -9999px;
 }
 
-.inputSwitch:checked + .check {
-  background-color: #65d100;
-}
+.inputSwitch:checked + .check { background-color: #65d100; }
 
-.inputSwitch:checked + .check::before {
-  left: 27px;
-}
+.inputSwitch:checked + .check::before { left: 27px; }
 
 .sliderSwitch {
   display: flex;
@@ -92,4 +84,11 @@
 .label {
   margin-left: .5rem;
   font-size: 1rem;
+}
+
+.checkbox{
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-right: 10px;
 }

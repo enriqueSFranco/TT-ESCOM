@@ -1,3 +1,5 @@
+/* ESTILOS DEL COMPONENTE CARD JOB */
+
 .card {
   position: relative;
   width: 500px;
@@ -16,10 +18,7 @@
 .card:hover { box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, 
                           rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; }
 
-.card .cardHeader  h3 {
-  width: 450px;
-  height: 22px;
-}
+.card .cardHeader h3 { width: 450px; }
 
 .cardHeader::before {
   position: absolute;
@@ -28,31 +27,6 @@
   content: '';
   height: 100%;
   border-left: 5px solid #8E0F4B;
-}
-
-.description {
-  position: absolute;
-  width: auto;
-  height: auto;
-}
-
-.cardContent {
-  outline: 1px solid rgb(0, 255, 42);
-  position: relative;
-  left: 0;
-  height: 100%;
-}
-
-.cardDetails {
-  width: 100%;
-  color: #222;
-}
-
-.companyLogo { font-size: 2.7rem; }
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 }
 
 .lineClamp {
@@ -66,9 +40,10 @@
 }
 
 .nameCompany {
-  font-size: .75rem;
+  font-size: .9rem;
   font-weight: 700;
-  color: #ccc;
+  color: #0d5ed7;
+  font-weight: bold;
 }
 
 .placeholder {
@@ -81,7 +56,6 @@
 }
 
 .tag {
-  /* outline: 2px solid blue; */
   font-size: .8rem;
   color: #222;
   font-weight: bold;
@@ -97,5 +71,3 @@
   font-weight: 600;
   margin: 0;
 }
-
-.wrapper { width: 500px; }

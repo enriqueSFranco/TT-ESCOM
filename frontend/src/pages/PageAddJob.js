@@ -1,31 +1,56 @@
-import React from "react"
+import React from "react";
 
 import { useForm } from "../hooks/useForm";
 import { useModal } from "../hooks/useModal";
+import { $ajax } from "../utils/$ajax";
+// import { numberFormat } from "../utils/numberFormat";
 import Modal from "../components/Modal/Modal";
 import Label from "../components/Input/Label";
 import Input from "../components/Input/Input";
 import Span from "../components/Input/Span";
-import NumberFormatCustom from "../components/Input/NumberFormatCustom";
-import TextField from "@mui/material/TextField";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import styles from "./PageAddJob.module.css";
 import FormLocationJob from "../components/Form/FormLocationJob";
 
+let now = new Date();
+
 let initialForm = {
-  nameJob: "",
+  t200_job: "",
   jobLocation: "",
   exp: "",
   profileJob: "",
-  salary: "",
-  initHour: "",
+  t200_max_salary: null,
+  initHour: now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds(),
   endHour: "",
-  requirements: "",
+  t200_description: "",
 };
 
 const PageAddJob = () => {
   const { form, handleChange } = useForm(initialForm);
   const [isOpen, closeModal] = useModal();
+  console.log(form.initHour);
+  let options = {
+    heders: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: form,
+  };
+  console.log(form);
+
+  const createJob = (e) => {
+    e.preventDefault();
+    $ajax()
+      .POST("/api/Vacants/", options)
+      .then((response) => {
+        if (!response.err) {
+          console.info(response);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
 
   return (
     <section className={styles.container}>
@@ -48,7 +73,6 @@ const PageAddJob = () => {
               </Label>
             </div>
             {/* drop down */}
-
           </div>
           <div className={styles.flexWrapper}>
             <div className={styles.select}>
@@ -85,17 +109,19 @@ const PageAddJob = () => {
             </div>
           </div>
           <div className={styles.flexWrapper}>
-            <TextField
-              label="Sueldo"
-              value={form.salary}
-              onChange={handleChange}
-              name="salary"
-              id="salary"
-              variant="standard"
-              InputProps={{
-                inputComponent: NumberFormatCustom,
-              }}
-            />
+            <Label htmlFor="t200_max_salary">
+              <input 
+                type="text"
+                value={form.t200_max_salary}
+                onChange={handleChange}
+                name="t200_max_salary"
+                id="t200_max_salary"
+              />
+              {/* <NumberFormatCustom
+                placeholder=" "
+              /> */}
+              {/* <Span content="Sueldo" /> */}
+            </Label>
             <div className={`${styles.wrapperHourWork} `}>
               <Input
                 type="time"
@@ -126,7 +152,10 @@ const PageAddJob = () => {
           </div>
         </form>
         <div className={`${styles.groudButton}`}>
-          <button className={`${styles.btn} btn btn-outline-success`}>
+          <button
+            onClick={createJob}
+            className={`${styles.btn} btn btn-outline-success`}
+          >
             Publicar Vacante
           </button>
           <button className={`${styles.btn} btn btn-outline-secondary`}>

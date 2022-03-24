@@ -3,6 +3,7 @@ import styles from './CardLanguaje.module.css';
 import * as GiIcon from "react-icons/gi";
 import * as FaIcon from "react-icons/fa";
 import * as RiIcon from "react-icons/ri";
+
 export default function CardLanguaje() {
   
   return (

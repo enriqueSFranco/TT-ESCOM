@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import { useFetch } from "../../hooks/useFetch.js";
+ import { useFetch } from "../../hooks/useFetch.js";
 import FormUpdateDataStudent from "../Form/FormUpdateDataStudent";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion/dist/framer-motion";
@@ -16,9 +16,11 @@ const CardProfileStudent = ({
   socialNetworks,
 }) => {
   const [state, setState] = useState("profile");
-  // let t100_boleta = useParams();
-  // const { data } = useFetch(`/api/Students/${t100_boleta}`);
-  // console.log(data[0]);
+   let t100_boleta = 2014;//useParams();
+   const { data } = useFetch(`/api/Students/${t100_boleta}`);
+   console.log("Obtuve esto:")
+   console.log(data);
+   //console.log(data['t100_boleta']);
 
   const handleEdit = (e) => {
     let isEdit = state === "edit" ? "profile" : "edit";
@@ -39,7 +41,7 @@ const CardProfileStudent = ({
           {/* <button onClick={handleEdit}>perfil</button> */}
         </motion.article>
       ) : (
-        <article className="container">
+        <article className={`${styles.mainContainer} container`}>
           <div className={`${styles.card}`}>
             <header className={styles.background}>
               <div className={styles.avatar}>

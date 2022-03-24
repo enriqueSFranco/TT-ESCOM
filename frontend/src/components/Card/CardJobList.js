@@ -1,24 +1,18 @@
-import React from "react"
-
 import { Link, Outlet } from "react-router-dom";
-import { useFetch } from "../../hooks/useFetch";
 import Skeleton from "../Skeleton/Skeleton";
 import JobCard from "./CardJob";
-import styles from "./CardJob.module.css";
+import styles from "./CardJobList.module.css";
 
-const JobList = () => {
-  const { data, loading } = useFetch("/api/Vacants/");
-  // console.log(data)
-  if (!data) return null;
-
+const JobList = ({ jobs = [], loading }) => {
   return (
-    <div className={styles.grid}>
-      <div className={`${styles.wrapper}`}>
+    <article className={`${styles.wrapper} ${styles.grid}`}>
+      <div style={{width: "500px"}}>
         {
           loading ? (
             <Skeleton type="feed" />
           ) : (
-            data.map((job) => (
+
+            jobs.map((job) => (
               <Link to={`/${job?.t200_id_vacant}`} key={job?.t200_id_vacant}>
                 <JobCard job={job} />
               </Link>
@@ -27,7 +21,7 @@ const JobList = () => {
         }
       </div>
       <Outlet />
-    </div>
+    </article>
   );
 };
 

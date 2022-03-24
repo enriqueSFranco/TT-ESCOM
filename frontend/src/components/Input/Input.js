@@ -6,20 +6,21 @@ const Input = ({
   type,
   id,
   name,
-  placeholder,
   value,
-  onChange
+  onChange,
+  text
 }) => {
   return (
     <input
       type={type}
+      autoComplete="off"
       id={id}
       name={name}
       placeholder=" "
       className={styles.inputField}
       value={value}
       onChange={onChange}
-    />
+    >{text}</input>
 
   )
 }

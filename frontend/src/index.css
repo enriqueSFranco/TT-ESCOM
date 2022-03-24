@@ -9,10 +9,13 @@ html {
   font-family: 'Quicksand';
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+body::-webkit-scrollbar { width: 8px; }
+
+body::-webkit-scrollbar-track { background-color: #ffffff; }
+
+body::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 20px;
 }
 
 *,
@@ -28,5 +31,3 @@ li {
 a {
   text-decoration: none;
 }
-
-section { padding: 3rem 0 0 0; }

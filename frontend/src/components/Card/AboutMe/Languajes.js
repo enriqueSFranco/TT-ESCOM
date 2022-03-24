@@ -11,11 +11,7 @@ const Languajes = () => {
 				<div className={styles.Cards}>
 					<CardLanguaje></CardLanguaje>
 				</div>
-				<div className={styles.Cards}>
-					<CardLanguaje></CardLanguaje>
-				</div>
-			</div>
-			
+			</div>	
 		</div>
 	);
 };

@@ -1,22 +1,21 @@
-import React from 'react';
+import { Outlet } from "react-router-dom";
+import MenuStudent from "../components/Menu/MenuStudent";
 import CardProfileStudent from "../components/Card/CardProfileStudent";
 import styles from "./PageProfileStudent.module.css";
-import CardDetailsStudent from "../components/AboutMe/AboutMe";
 
 const PageProfileStudent = () => {
   return (
-    <section className={`${styles.wrapperProfile} container`}>
-      <div className="row align-items-stretch my-5">
+    <article className={`${styles.profile} container`}>
+      <div className="row my-5">
         <div className="col">
           <CardProfileStudent />
         </div>
         <div className="col">
-          {/* Componente details student */}
-          <h5>Menu trabajando.....</h5>
-          <CardDetailsStudent />
+          <MenuStudent />
+          <Outlet />
         </div>
       </div>
-    </section>
+    </article>
   );
 };
 

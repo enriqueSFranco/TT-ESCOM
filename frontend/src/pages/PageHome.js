@@ -1,68 +1,94 @@
-import React from "react";
-import { useForm } from "../hooks/useForm";
-import Input from "../components/Input/Input";
-import Label from "../components/Input/Label";
-import Span from "../components/Input/Span";
-import JobList from "../components/Card/CardJobList";
-import styles from "./PageHome.module.css";
+import { useState, useEffect } from "react";
+import { $ajax } from "../utils/$ajax";
+import Search from "../components/Search/Search";
+import Filter from "../components/Filter/Filter";
+import CardJobList from "../components/Card/CardJobList";
+import Deck from "../components/Deck/Deck";
+import Footer from "../components/Footer/Footer";
+import homeStyles from "./PageHome.module.css";
 
-let initialForm = {
-  job: "",
-  location: "",
-};
 
 const Home = () => {
-  const { form, handleChange } = useForm(initialForm);
+  const [, setSearch] = useState(""); // estado de la busqueda
+  const [dataList, setDataList] = useState([]); // lista de vacantes
+  const [isFiltered, setIsFiltered] = useState(false); // boolean para saber si la informacion se tiene que filtrar
+  const [data, setData] = useState(null); // lista filtrada
+  const [loading, setLoading] = useState(false);
+  const [totalJobs, setTotalJobs] = useState(null); // estado para el total de vacantes
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("buscando...");
+  /**
+   * Funcion para filtrar las vacantes por nombre
+   * @param {String} value
+   **/
+  const filteredData = (value) => {
+    const lowerCaseValue = value.toLowerCase().trim();
+    let count = 0;
+    if (lowerCaseValue === "") {
+      setData(dataList);
+    } else {
+      const filteredData = dataList.filter((el) => {
+        if (el?.t200_job.toLowerCase().includes(value.toLowerCase())) {
+          count = count + 1;
+          setTotalJobs(count);
+          return el;
+        } else
+            return false;
+      });
+      setData(filteredData);
+    }
+  };
+
+  useEffect(() => {
+    let options = {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      }
+    }
+    setLoading(true);
+    $ajax().GET("/api/Vacants/", options)
+      .then(res => {
+        if (!res.err) {
+          setDataList(res);
+          setTotalJobs(res.length)
+        } else {
+          setDataList(null);
+        }
+      })
+      .catch(err => console.log(err));
+    setLoading(false);
+  }, []);
+
+  const handleSearch = (value) => {
+    setSearch(value);
+    filteredData(value);
+    /**
+     * Si el valor introduciodo en el campo ded busqueda es diferente
+     * a una cadena vacia, entonces filtramos los datos.
+     **/
+    setIsFiltered(value !== ""); 
   };
 
   return (
-    <section className={styles.wrapper}>
-      <div className={`container my-4`}>
-        <h1 className={styles.containerTitle}>
-          Encuentra el trabajo de tus sueños
-        </h1>
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={`${styles.containerInput}`}>
-            <Label htmlFor="job" className="">
-              <Input
-                type="text"
-                id="job"
-                name="job"
-                placeholder=" "
-                value={form.job}
-                onChange={handleChange}
-              />
-              <Span content="Buscar un empleo" />
-            </Label>
-          </div>
-          <div className={`${styles.containerInput}`}>
-            <Label>
-              <Input
-                type="text"
-                name="location"
-                id="location"
-                placeholder=" "
-                value={form.location}
-                onChange={handleChange}
-              />
-              <Span content="Ubicación" />
-            </Label>
-          </div>
-          <input
-            type="submit"
-            value="Buscar Vacante"
-            className="btn btn-primary"
-          />
-        </form>
-      </div>
-      <div className={`container`}>
-        <JobList />
-      </div>
-    </section>
+    <main className={homeStyles.home}>
+      {/* barra de busqueda  */}
+      <Search handleSearch={handleSearch} data={dataList} />
+      {/* control de filtros */}
+      <Filter />
+
+      <article className={homeStyles.wrapperJobList}>
+        <span className={homeStyles.totalJobs}>Total de vacantes: {totalJobs}</span>
+        {/* renderizado de los empleos */}
+        <CardJobList jobs={!isFiltered ? dataList : data} loading={loading} />
+      </article>
+      {/* comunicados */}
+      <article className={`${homeStyles.wrapperDeck}`}>
+        <h2>Comunicados</h2>
+        <Deck />
+      </article>
+      {/* pie de pagina */}
+      <Footer />
+    </main>
   );
 };
 

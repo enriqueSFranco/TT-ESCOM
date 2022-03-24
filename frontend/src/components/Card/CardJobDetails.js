@@ -1,11 +1,11 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
-import styles from "./CardJobDetails.module.css";
 import * as AiIcon from "react-icons/ai";
 import * as FaIcon from "react-icons/fa";
 import * as MdIcon from "react-icons/md";
 import * as IoIcon from "react-icons/io";
+import styles from "./CardJobDetails.module.css";
 
 const requirements = [
   "Fuertes habilidades de comunicación",
@@ -27,14 +27,29 @@ const profit = [
 ];
 
 const JobCardDetails = () => {
+  const [sticky, setSticky] = useState(false);
   let { t200_id_vacant } = useParams();
   const { data } = useFetch(`/api/Vacants/${t200_id_vacant}/`);
-  // console.log(data[0]);
+
+  const handleScroll = () => {
+    const scrolled = window.scrollY;
+    // console.log(scrolled)
+    scrolled >= 334 ? setSticky(true) : setSticky(false);
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, true);
+  
+    return () => {
+      window.removeEventListener('scroll', handleScroll, true);
+    }
+  }, []);
+  
 
   if (!data) return null;
 
   return (
-    <div className={styles.wrapper}>
+    <div className={`container ${sticky ? `${styles.wrapper} ${styles.positionSticky}` : `${styles.wrapper}`}`}>
       <header className="container">
         <div className={`${styles.flex}`}>
           <h1 className={styles.title}>{data[0]?.t200_job ?? 'Sin nombre de vacante'}</h1>
@@ -83,7 +98,7 @@ const JobCardDetails = () => {
           </div>
         </div>
       </header>
-      <main className="container">
+      <article className={`container ${styles.body}`}>
         <p>
           <span>Formacion:{" "}</span>
           ingenieria industrial, administracion o similar
@@ -149,7 +164,7 @@ const JobCardDetails = () => {
           <h3>Idioma</h3>
           <p>Inglés (Obligatorio)</p>
         </div>
-      </main>
+      </article>
     </div>
   );
 };
