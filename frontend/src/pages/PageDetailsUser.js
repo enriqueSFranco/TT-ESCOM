@@ -1,7 +1,6 @@
 import CardProfileStudent from "../components/Card/CardProfileStudent";
 
 const PageDetailsUser = () => {
-<<<<<<< HEAD
 	const { showPassword, toggle } = useShowPassword(false)
 	const { user } = useContext(AuthContext);
 	const { form, handleChange } = useForm(initialForm);
@@ -115,21 +114,6 @@ const PageDetailsUser = () => {
 			</div>
 		</section>
 	);
-=======
-  return (
-    <section className="container">
-      <div className="row align-items-stretch my-5">
-        <div className="col">
-          <CardProfileStudent />
-        </div>
-        <div className="col">
-          {/* Componente details student */}
-          <h5>Detalles de estudiente</h5>
-        </div>
-      </div>
-    </section>
-  );
->>>>>>> 381436477f41d0858fd99454eb1e7f7f0a1dade4
 };
 
 export default PageDetailsUser;

@@ -1,63 +1,65 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
-import { useShowPassword } from "../../hooks/usePassword";
-import Input from "../Input/Input";
+import TextField from "@mui/material/TextField";
 import AuthContext from "../../context/AuthContext";
-import * as FaIcon from "react-icons/fa";
 import styles from "./Styles.module.css";
 
 let initialForm = {
-  username: "",
+  boleta: "",
   password: "",
 };
 
 const Form = () => {
-  const { showPassword, toggle } = useShowPassword(false);
+  // const { showPassword, toggle } = useShowPassword(false);
   const { form, handleChange } = useForm(initialForm);
   const { login } = useContext(AuthContext);
 
   return (
-    <>
-      <div className="container w-90">
-        <div className={`${styles.wrapper} my-5`}>
-          <h3 className={styles.form_title}>Iniciar Sesión Alumno</h3>
+    <div className="container w-75 bg-primary shadow rounded">
+      <div className="row align-items-stretch">
+        <div
+          className={`${styles.bg} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
+        >
+          <h1>
+            Un paso más cerca de tu nuevo{" "}
+            <span className={styles.work}>trabajo.</span>
+          </h1>
+        </div>
+        <div className="col bg-white p-5 rounded-end">
+          <div className={styles.welcome}>
+            <h2>Bienvenido</h2>
+            <span>Bienvenido! Porfavor introduce tus datos.</span>
+          </div>
           <form onSubmit={login}>
-            {/* input para el username */}
-            <div className={`${styles.inner} mb-3`}>
-              <i className={styles.right_icon}>
-                <FaIcon.FaUser />
-              </i>
-              <Input
-                type="text"
-                id="username"
-                name="username"
-                placeholder="Escribre tu nombre de usuario"
-                className={`${styles.input} ${styles.ti_16}`}
-                value={form.username}
+            {/* input para la boleta */}
+            <div className={styles.inputGroup}>
+              <TextField
+                label="Boleta"
+                id="boleta"
+                name="boleta"
+                sx={{ width: 500, maxWidth: "100%" }}
+                value={form.boleta}
                 onChange={handleChange}
               />
             </div>
             {/* input para el password */}
-            <div className={`${styles.inner} mb-3`}>
-              <i
-                className={`${styles.right_icon} ${styles.eye_password}`}
-                onClick={toggle}
-              >
-                {showPassword ? <FaIcon.FaEye /> : <FaIcon.FaEyeSlash />}
-              </i>
-              <Input
-                type={showPassword ? "text" : "password"}
-                name="password"
-                id="password"
-                placeholder="Escribre tu constraseña"
-                className={`${styles.input} ${styles.ti_16}`}
-                value={form.password}
+            <div className={styles.inputGroup}>
+              <TextField
+                label="Contraseña"
+                id="t100_password"
+                name="t100_password"
+                type="password"
+                sx={{ width: 500, maxWidth: "100%" }}
+                value={form.t100_password}
                 onChange={handleChange}
               />
             </div>
-            <div className="d-grid">
-              <button type="submit" className="btn btn-primary">
+            <div className={styles.wrapperBtnLogin}>
+              <button
+                type="submit"
+                className={`${styles.btLogin} btn btn-primary`}
+              >
                 Iniciar sesión
               </button>
             </div>
@@ -73,7 +75,7 @@ const Form = () => {
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

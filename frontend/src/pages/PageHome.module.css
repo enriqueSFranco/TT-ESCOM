@@ -1,69 +1,25 @@
-.containerInput {
-  display: flex;
+
+.totalJobs {
   position: relative;
-  align-items: center;
-  justify-content: center;
-}
-
-.container__title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.form {
-  /* outline: 1px solid; */
-  height: 80px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-}
-
-.iconLeft {
-  position: absolute;
-  left: 10px;
-  font-size: 15px;
-  color: rgba(0, 0, 0, 0.397);
-}
-
-.input {
-  width: 500px;
-  border: none;
-  border-radius: 8px;
-  padding: .8rem;
-  outline: none;
-  background-color: #F3F4F8;
-}
-
-.input::placeholder {
-  font-size: .85rem;
+  left: 17.6rem;
   font-weight: 500;
-  color: #454547;
+  color: #636363;
 }
 
-.ti_24 {
-  text-indent: 1.5rem;
+.wrapperJobList {
+  position: relative;
+  top: 3rem
 }
 
-.vacancy {
-  font-size: 1.1rem;
-  font-weight: 300;
+.wrapperDeck {
+  background-color: #eeeeee;
+  position: relative;
+  top: 5rem;
 }
 
-
-/* SECCION DE VACANTES */
-.jobList {
-  background-color: red;
+.wrapperDeck h2 {
+  margin-left: 5.5rem;
+  padding-top: 1rem;
+  font-size: 1.5rem;
+  text-transform: capitalize;
 }
-
-
-/* MEDIA QUERY */
-/* @media screen and (min-width: 570px) {
-  .container__form {
-    background-color: #fff;
-    color: #000;
-    width: 90%;
-    font-family: 'Source Sans Pro', sans-serif;
-  }
-} */

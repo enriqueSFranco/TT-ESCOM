@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import NumberFormat from "react-number-format";
 
+import styles from "./Styles.module.css";
+
 const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(props, ref) {
   const { onChange, ...res } = props;
 
@@ -20,6 +22,7 @@ const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(props, r
       thousandSeparator
       isNumericString
       prefix="$"
+      className={styles.styles.inputField}
     />
   );
 });

@@ -3,6 +3,22 @@ svg {
   font-size: 1rem;
 }
 
+h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1;
+}
+
+.body { height: 700px; }
+
+.positionSticky {
+  position: sticky;
+  top: 5rem;
+  right: 13.1rem;
+  height: 700px;
+}
+
 .actions {
   width: 70px;
   display: flex;
@@ -49,10 +65,7 @@ svg {
   transition: color 200ms;
 }
 
-.like.active svg {
-  color: #ff2391;
-  /* animation: bounce 300ms cubic-bezier(.5, 1.75, .75, 1.25); */
-}
+.like.active svg { color: #ff2391; }
 
 .requirements {}
 
@@ -60,12 +73,16 @@ svg {
   padding: 0;
 }
 
-.wrapper h1 {
-  font-size: 1.6rem;
+.title {
+  color: #000;
+  font-weight: bold;
+  font-size: 1.3rem;
   margin: 0;
 }
 
 .wrapper {
+  background-color: #fff;
+  font-family: sans-serif;
   height: 700px;
   width: 700px;
   border-radius: 8px;
@@ -73,8 +90,11 @@ svg {
   overflow-y: scroll;
 }
 
-/* @keyframes bounce {
-  0% { transform: scale(1.0); }
-  50% { transform: scale(1.1); }
-  100% {transform: scale((1.0)); }
-} */
+.wrapper::-webkit-scrollbar { width: 8px; }
+
+.wrapper::-webkit-scrollbar-track { background-color: #d8d8d8; }
+
+.wrapper::-webkit-scrollbar-thumb {
+  background-color: #90314b;
+  border-radius: 20px;
+}

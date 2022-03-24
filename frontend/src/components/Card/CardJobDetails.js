@@ -1,20 +1,11 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import styles from "./CardJobDetails.module.css";
+import { useFetch } from "../../hooks/useFetch";
 import * as AiIcon from "react-icons/ai";
 import * as FaIcon from "react-icons/fa";
 import * as MdIcon from "react-icons/md";
 import * as IoIcon from "react-icons/io";
-
-/**
- * descripcion
- * status
- * tipo
- * experiencia
- * ubicacaion
- * salario
- * home office
- * horario
- */
+import styles from "./CardJobDetails.module.css";
 
 const requirements = [
   "Fuertes habilidades de comunicación",
@@ -36,13 +27,32 @@ const profit = [
 ];
 
 const JobCardDetails = () => {
-  let { id } = useParams();
+  const [sticky, setSticky] = useState(false);
+  let { t200_id_vacant } = useParams();
+  const { data } = useFetch(`/api/Vacants/${t200_id_vacant}/`);
+
+  const handleScroll = () => {
+    const scrolled = window.scrollY;
+    // console.log(scrolled)
+    scrolled >= 334 ? setSticky(true) : setSticky(false);
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, true);
+  
+    return () => {
+      window.removeEventListener('scroll', handleScroll, true);
+    }
+  }, []);
+  
+
+  if (!data) return null;
 
   return (
-    <div className={styles.wrapper}>
+    <div className={`container ${sticky ? `${styles.wrapper} ${styles.positionSticky}` : `${styles.wrapper}`}`}>
       <header className="container">
         <div className={`${styles.flex}`}>
-          <h1 className={styles.title}>Documentador de procesos - id {id}</h1>
+          <h1 className={styles.title}>{data[0]?.t200_job ?? 'Sin nombre de vacante'}</h1>
           <div className={styles.actions}>
             <button
               className={`${styles.like} ${styles.active}`}
@@ -67,11 +77,11 @@ const JobCardDetails = () => {
             <ul className={`${styles.flex}`}>
               <li className={styles.flex}>
                 <FaIcon.FaBuilding />
-                <span>Empresa</span>
+                <span>{data?.company ?? 'Anonima'}</span>
               </li>
               <li className={styles.flex}>
                 <MdIcon.MdOutlineAttachMoney />
-                <span>Negociable</span>
+                <span>{data?.maxSalary ?? 'No especificado'}</span>
               </li>
               <li className={styles.flex}>
                 <FaIcon.FaLocationArrow />
@@ -88,7 +98,7 @@ const JobCardDetails = () => {
           </div>
         </div>
       </header>
-      <main className="container">
+      <article className={`container ${styles.body}`}>
         <p>
           <span>Formacion:{" "}</span>
           ingenieria industrial, administracion o similar
@@ -101,12 +111,7 @@ const JobCardDetails = () => {
         </p>
         <div>
           <p>
-            Análisis y mapeo de los procesos de negocio, para apoyar la visión
-            de la organización “AS-IS” to "To-Be", la verificación de que se
-            están cumpliendo los objetivos de negocio. Desarrollo de políticas,
-            procedimientos, diagramas de flujo, objetivos de control, reportes
-            ejecutivos, presentaciones ejecutivas y materiales de capacitación
-            (prevencion de antilavado de dinero, terrorismo)
+            {data[0]?.t200_description ?? 'Sin datos'}
           </p>
         </div>
         <div className={styles.requirements}>
@@ -135,7 +140,7 @@ const JobCardDetails = () => {
             Si estás interesado enla vacante y cubres con el perfil requerido postulate por este medio, manda tu CV español e ingles por correo electrónico o comunícate vía telefónica 812074 6435
           </p>
           <p>Tipo de puesto:<span>Tiempo completo, Indefinido</span></p>
-          <p>Salario: <span>$16,000.00 - $17,000.00 al mes</span></p>
+          <p>Salario: <span>${data[0]?.t200_max_salary ?? 'No especificado'} al mes</span></p>
         </div>
         <div>
           <h3>Beneficios</h3>
@@ -159,13 +164,9 @@ const JobCardDetails = () => {
           <h3>Idioma</h3>
           <p>Inglés (Obligatorio)</p>
         </div>
-      </main>
+      </article>
     </div>
   );
 };
 
 export default JobCardDetails;
-
-<div>
-  <div></div>
-</div>;

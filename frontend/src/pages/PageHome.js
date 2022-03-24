@@ -1,91 +1,94 @@
-import { useEffect, useState } from "react";
-import { useForm } from "../hooks/useForm";
-import { useFetch } from "../hooks/useFetch";
-import Input from "../components/Input/Input";
-import Loader from "../components/Loader/Loader";
-import JobList from "../components/Card/CardJobList";
+import { useState, useEffect } from "react";
+import { $ajax } from "../utils/$ajax";
+import Search from "../components/Search/Search";
+import Filter from "../components/Filter/Filter";
+import CardJobList from "../components/Card/CardJobList";
+import Deck from "../components/Deck/Deck";
 import Footer from "../components/Footer/Footer";
-import * as FaIcon from "react-icons/fa";
-import styles from "./PageHome.module.css";
+import homeStyles from "./PageHome.module.css";
 
-
-let initialForm = {
-  job: "",
-  location: "",
-}
 
 const Home = () => {
-  const [show, setShow] = useState(true);
-  const { form, handleChange } = useForm(initialForm);
-  const { data, loading } = useFetch("https://pokeapi.co/api/v2/pokemon/");
+  const [, setSearch] = useState(""); // estado de la busqueda
+  const [dataList, setDataList] = useState([]); // lista de vacantes
+  const [isFiltered, setIsFiltered] = useState(false); // boolean para saber si la informacion se tiene que filtrar
+  const [data, setData] = useState(null); // lista filtrada
+  const [loading, setLoading] = useState(false);
+  const [totalJobs, setTotalJobs] = useState(null); // estado para el total de vacantes
 
-  const handleScroll = () => {
-    if (window.screenY > 500) {
-      setShow(false);
+  /**
+   * Funcion para filtrar las vacantes por nombre
+   * @param {String} value
+   **/
+  const filteredData = (value) => {
+    const lowerCaseValue = value.toLowerCase().trim();
+    let count = 0;
+    if (lowerCaseValue === "") {
+      setData(dataList);
     } else {
-      setShow(true);
+      const filteredData = dataList.filter((el) => {
+        if (el?.t200_job.toLowerCase().includes(value.toLowerCase())) {
+          count = count + 1;
+          setTotalJobs(count);
+          return el;
+        } else
+            return false;
+      });
+      setData(filteredData);
     }
   };
 
-
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, false);
-    return () => window.removeEventListener('scroll', handleScroll, false);
+    let options = {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      }
+    }
+    setLoading(true);
+    $ajax().GET("/api/Vacants/", options)
+      .then(res => {
+        if (!res.err) {
+          setDataList(res);
+          setTotalJobs(res.length)
+        } else {
+          setDataList(null);
+        }
+      })
+      .catch(err => console.log(err));
+    setLoading(false);
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("buscando...");
+  const handleSearch = (value) => {
+    setSearch(value);
+    filteredData(value);
+    /**
+     * Si el valor introduciodo en el campo ded busqueda es diferente
+     * a una cadena vacia, entonces filtramos los datos.
+     **/
+    setIsFiltered(value !== ""); 
   };
 
-  if (!data) return null;
-
   return (
-    <section>
-      <div className={`container my-4`}>
-        <h1 className={styles.containerTitle}>
-          Encuentra el trabajo de tus sueños
-        </h1>
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={`${styles.containerInput}`}>
-            <i className={styles.iconLeft}>
-              <FaIcon.FaBuilding />
-            </i>
-            <Input
-              type="text"
-              id="job"
-              name="job"
-              placeholder="Buscar un empleo"
-              className={`${styles.input} ${styles.ti_24}`}
-              value={form.job}
-              onChange={handleChange}
-            />
-          </div>
-          <div className={`${styles.containerInput}`}>
-            <i className={styles.iconLeft}>
-              <FaIcon.FaLocationArrow />
-            </i>
-            <Input
-              type="text"
-              name="location"
-              id="location"
-              placeholder="Ubicación"
-              className={`${styles.input} ${styles.ti_24}`}
-              value={form.location}
-              onChange={handleChange}
-            />
-          </div>
-          <div className="d-grid">
-            <Input type="submit" value="Buscar Vacante" className="btn btn-primary" />
-          </div>
-        </form>
-      </div>
-      {loading && <Loader />}
-      <div className="container">
-        <JobList />
-      </div>
+    <main className={homeStyles.home}>
+      {/* barra de busqueda  */}
+      <Search handleSearch={handleSearch} data={dataList} />
+      {/* control de filtros */}
+      <Filter />
+
+      <article className={homeStyles.wrapperJobList}>
+        <span className={homeStyles.totalJobs}>Total de vacantes: {totalJobs}</span>
+        {/* renderizado de los empleos */}
+        <CardJobList jobs={!isFiltered ? dataList : data} loading={loading} />
+      </article>
+      {/* comunicados */}
+      <article className={`${homeStyles.wrapperDeck}`}>
+        <h2>Comunicados</h2>
+        <Deck />
+      </article>
+      {/* pie de pagina */}
       <Footer />
-    </section>
+    </main>
   );
 };
 

@@ -1,61 +1,61 @@
-
-.eye_password { cursor: pointer;}
-
-.form_title {
-  font-family: sans-serif;
-  text-align: center;
-  font-weight: 600;
-  line-height: 2rem;
+.bg {
+  background-image: url(../../images/loginStudent.jpeg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
-.groupInput {
+.bg h1 {
+  width: 350px;
+  backdrop-filter: blur(10px);
+  font-weight: bold;
+  color: #fff;
+  padding: 1rem;
+}
+
+.btLogin { width: 490px; }
+
+.form {
+  width: 700px;
+  height: 400px;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+}
+
+.wrapperBtnLogin {
+  width: 490px;
+  margin-left: 1rem;
+}
+
+.work {
+  color: #a5d0d8;
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcome h2 {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #a8dee7;
+  letter-spacing: 2px;
+  padding: 0;
+  margin: 0;
+}
+
+.welcome span {
+  color: #b9b9b9;
+  font-size: .9rem;
+  text-align: center;
 }
 
 
-.input, select {
-  width: 100%;
-  border: none;
-  padding: .7rem;
-  outline: none;
-  background-color: #F3F4F8;
-  border-radius: 8px;
-}
-
-.input::placeholder {
-  font-weight: 500;
-  color: #454547;
-}
-
-.inner {
+/* ESTILOS DEL FORMULARIO DE CREAR CUENTA EMPRESA */
+.inputGroup {
+  width: 490px;
   display: flex;
-  align-items: center;
-  position: relative;
-  padding-right: 40px;
-  background-color: #F3F4F8;
-  border-radius: 8px;
-  font-family: sans-serif;
-  font-size: .85rem;
-  width: 100%;
-}
-.levelAcademic {
-  position: relative;
-} 
-
-.noArrowSelect {
-  appearance: none;
-}
-
-.right_icon {
-  color: rgba(0, 0, 0, 0.397);;
-  position: absolute;
-  right: 20px;
-}
-
-select {
-  font-family: sans-serif;
-  font-size: .85rem;
+  justify-content: space-between;
+  margin: 1rem;
 }
