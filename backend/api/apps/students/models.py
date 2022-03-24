@@ -1,5 +1,9 @@
+from doctest import FAIL_FAST
+from email.policy import default
 from enum import unique
 from tabnanny import verbose
+
+#from turtle import ondrag
 from django.db import models
 
 
@@ -92,7 +96,7 @@ class Lenguage(models.Model):
 #T100 Alumno
 class Student(models.Model):	
 	t100_boleta = models.CharField(primary_key=True,max_length=12, null=False, blank=False)
-	t100_name = models.CharField(max_length=50, null=False, blank=False)
+	t100_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_last_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_username = models.CharField(max_length=40, null=True, blank=True)
 	t100_password = models.CharField(max_length=100, null=False, blank=False)
@@ -104,7 +108,10 @@ class Student(models.Model):
 	]
 	t100_gender = models.CharField(max_length=1, choices=genders, default='F', null=True, blank=True)	
 	t100_date_of_birth = models.DateField(null=True, blank=True)
+	t100_personal_objectives = models.TextField(null=True, blank=True)
+	t100_target_salary = models.PositiveIntegerField(null=True, blank=True)	
 	t100_travel = models.BooleanField(default=False)
+	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to='profiles_pictures/')
 	is_active = models.BooleanField(default=True)
 
 """class Solocitud():
@@ -171,7 +178,7 @@ class residence(models.Model):
 		unique=True,
 		related_name='StudentResidence',
 		on_delete=models.CASCADE)
-	t101_state = models.CharField(max_length=50,choices=estados,default='33',null=True,blank=True)
+	t101_state = models.CharField(max_length=50,choices=estados,default='NO ESPECIFICADA',null=True,blank=True)
 	t101_municipality = models.CharField(max_length=70,null=True,blank=True)
 	t101_locality = models.CharField(max_length=100,null=True,blank=True)
 
@@ -194,13 +201,14 @@ class Skill(models.Model):
 
 #T102 Habilidades
 class StudentSkill(models.Model):	
-	t102_id_skill_registrer = models.AutoField(primary_key=True)
+	t102_id_registrer = models.AutoField(primary_key=True)
 	c116_id_skill = models.ForeignKey(
 		Skills,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
 		related_name='SkillDescription',
-		on_delete=models.CASCADE
+		on_delete=models.CASCADE,
+		default=1
 	)
 
 	t100_boleta = models.ForeignKey(
@@ -231,9 +239,23 @@ class AcademicHistory(models.Model):
 		on_delete=models.CASCADE)
 	t104_academic_unit = models.CharField(max_length=100,null=True,blank=True)
 	t104_carreer = models.CharField(max_length=100,null=True,blank=True)
-	#c107_id_academic_level =
+	c107_id_academic_level = models.ForeignKey(
+		AcademicLevel,
+		null=False,
+		blank=False,
+		related_name='AcademicLevel',
+		on_delete=models.CASCADE,
+		default=1
+	)
 	#C108_id_area = 
-	#c109_id_academic_state =
+	c109_id_academic_state = models.ForeignKey(
+		AcademicState,
+		null=False,
+		blank=False,
+		related_name='AcadmeicState',
+		on_delete=models.CASCADE,
+		default=1
+	)
 	t104_start_date = models.DateField(null=True,blank=True)
 	t104_end_date = models.DateField(null=True,blank=True)
 
@@ -277,7 +299,8 @@ class Link(models.Model):
 		null=False,
 		blank=False,
 		related_name='PlataformDescription',
-		on_delete=models.CASCADE)
+		on_delete=models.CASCADE,
+		default=1)
 
 	class Meta:
 		unique_together = ['t100_boleta','c115_id_plataform']
@@ -298,11 +321,12 @@ class StudentLenguage(models.Model):
 		related_name='StudentLenguages',
 		on_delete=models.CASCADE)
 	c111_id_language = models.ForeignKey(
-		Lenguage,
+		Lenguage,#"Lenguage.c111_id_lenguage",
 		null=False,
 		blank=False,
 		related_name='LenguageDescription',
-		on_delete=models.CASCADE
+		on_delete=models.CASCADE,
+		default=1
 	)
 	t110_written_level = models.PositiveSmallIntegerField(null=True, blank=True)
 	t110_reading_level = models.PositiveSmallIntegerField(null=True, blank=True)
@@ -316,8 +340,8 @@ class StudentLenguage(models.Model):
 		verbose_name_plural='StudentLenguages'
 		db_table='t110_idiomas'
 	
-	def __str__(self)->str:
-		return self.t110_written_level+" "+self.t110_reading_level
+	def __str__(self):
+		return str(self.t110_written_level) #+" "+self.t110_reading_level
 
 #T103 Historial laboral
 class EmploymentHistory(models.Model):

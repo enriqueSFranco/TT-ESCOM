@@ -19,14 +19,18 @@ class LenguagesViewSet(viewsets.GenericViewSet):
 	def get_object(self, pk):        		          
 		self.queryset = self.model.objects\
 			.filter(t100_boleta=pk)\
-			.values('t100_boleta','t110_written_level','t110_reading_level','t110_speaking_level','t110_comprension_level','t110_native')
+			.values('t100_boleta')
+		#raw(r'''SELECT t110_idiomas.t110_id_registrer,t110_idiomas.t100_boleta_id FROM t110_idiomas
+										#			JOIN C111_idiomas ON t110_idiomas.c111_id_language_id = c111_idiomas.c111_id_lenguage
+										#			Where t100_boleta_id=%s''',[pk])
+			#
 		return self.queryset#get_object_or_404(self.model,pk=pk)
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t100_boleta','t110_written_level','t110_reading_level','t110_speaking_level','t110_comprension_level','t110_native')
+				.values('t100_boleta','t110_written_level','t110_reading_level','t110_speaking_level','t110_comprension_level','t110_native','c111_id_language','c111_id_language_id')				
 		return self.queryset
   
 
@@ -54,7 +58,7 @@ class LenguagesViewSet(viewsets.GenericViewSet):
 		return Response(lenguages_serializer.data)
 
 	def update(self, request, pk=None):
-		lenguage = self.get_object(pk)
+		lenguage = self.model.objects.filter(t100_boleta=pk).first()
 		lenguage_serializer = UpdateLenguagesSerializer(lenguage, data=request.data)
 		if lenguage_serializer.is_valid():
 			lenguage_serializer.save()

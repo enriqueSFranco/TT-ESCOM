@@ -35,12 +35,13 @@ class VacantListSerializer(serializers.ModelSerializer):
 class UpdateVacantSerializer(serializers.ModelSerializer):
         class Meta:
             model = Vacant
-            fields = ('t200_id_vacant','t200_job','t200_description','t200_check_time','t200_closing_hour','t200_work_days',
-            't200_min_salary','t200_max_salary','t200_gross_salary','t200_home_ofice','t200_publish_date','t200_close_date')
+            fields = '__all__'#('t200_id_vacant','t200_job','t200_description','t200_check_time','t200_closing_hour','t200_work_days',
+            #'t200_min_salary','t200_max_salary','t200_gross_salary','t200_home_ofice','t200_publish_date','t200_close_date')
         
         def update(self,instance,validate_data):
             update_vacant = super().update(instance,validate_data)
             update_vacant.save()
+            return update_vacant
 
 
 

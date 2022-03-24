@@ -1,136 +1,7 @@
 from django.db import models
 from  apps.students.models import Student
-
-"""------------------------------------------------ Tablas de información -------------------------------------------------------"""
-#T200 Vacants
-class Vacant(models.Model):
-    t200_id_vacant = models.AutoField(primary_key=True)
-    #t300_id_company =
-    t200_job = models.CharField(max_length=70)
-    t200_description = models.TextField()    
-    t200_check_time = models.DateField()
-    t200_closing_hour = models.DateField()
-    t200_work_days = models.CharField(max_length=7)  
-    #c207_id_experience = models.ForeignKey(Experience, on_delete=models.CASCADE)
-    #c207_id_experience = models.ForeignKey(Experience, on_delete=models.CASCADE)  
-    t200_min_salary = models.IntegerField()
-    t200_max_salary = models.IntegerField()
-    t200_gross_salary = models.BooleanField()
-    t200_home_ofice = models.BooleanField()
-    #c204_id_vacant_status = models.ForeignKey(Status_Vacant, on_delete=models.CASCADE)
-    t200_publish_date = models.DateField()
-    t200_close_date = models.DateField()
-    #t301_id_recruiter =
-    #t400_id_administrator =
-    #t200_vacancy    
-
-    class Meta:
-        verbose_name = 'Vacant'
-        verbose_name_plural = 'Vacants'
-        db_table = "t200_vacant"
-
-    def __str__(self):
-	    return self.t200_id_vacant
-
-#T201_applications
-class Application(models.Model):
-    t201_id_application = models.AutoField(primary_key=True)
-    t200_id_vacant = models.ForeignKey(
-		Vacant,
-		null=True,
-		blank=True,
-		related_name='StudentApplication',
-		on_delete=models.CASCADE)
-    t100_boleta = models.ForeignKey(        
-		Student,
-		null=True,
-		blank=True,
-		related_name='AppliedStudent',
-		on_delete=models.CASCADE)    
-    t201_cv = models.FileField(null=True,blank=True)
-    #c205_id_application_state = models.IntegerField()
-    t201_date_application = models.DateField()
-
-    class Meta:
-        verbose_name = 'Application'
-        verbose_name_plural = 'Applications'
-        db_table = "t201_application"
-
-    def __str__(self):
-	    return self.t201_id_application
-
-#T213 Ubicacion
-class Ubication(models.Model):
-    t200_id_vacant = models.ForeignKey(
-		Vacant,
-		null=True,
-		blank=True,
-		related_name='ApplicationUbication',
-		on_delete=models.CASCADE)
-    t213_state = models.CharField(max_length=30,null=False,blank=False,default='No definido')
-    t213_mucipality = models.CharField(max_length=70,null=False,blank=False,default='No definido')
-    t213_locality = models.CharField(max_length=100,null=False,blank=False,default='No definido')
-    t213_street = models.CharField(max_length=60,null=True,blank=True)
-    t213_cp = models.IntegerField(blank=True,null=True)
-    t213_interior_number = models.CharField(max_length=20,blank=True,null=True)
-    t213_exterior_number = models.CharField(max_length=20,blank=True,null=True)
-
-    class Meta:
-        verbose_name = 'Ubication'
-        db_table = 't213_ubicacion'
-    
-    def __str__(self)->str:
-        return self.t213_state+","+self.t213_mucipality+","+self.t213_locality
-
-#T202 Comunicados
-class Announcement(models.Model):
-    t202_id_announcement = models.AutoField(primary_key=True)
-    t202_announcement = models.FileField()
-    T202_description = models.TextField()
-    #t300_id_company =
-    t202_publish_date = models.DateField(null=True)
-    t202_close_date = models.DateField(null=True)
-    #t400_id_administrador =     
-
-    class Meta:
-        verbose_name = 'Annuncement'
-        verbose_name_plural = 'Annuncements'
-        db_table = 't202_comunicados'
-
-    def __str__ (self)->str:
-        return self.t202_id_announcement
-
-#T203 Reportes
-class Report(models.Model):
-    t203_id_report = models.AutoField(primary_key=True)
-    t200_id_vacant = models.ForeignKey(
-		Vacant,
-		null=True,
-		blank=True,
-		related_name='Report',
-		on_delete=models.CASCADE)
-    t203_publish_type = models.BooleanField(default=True)#True->Vacante,False->Comunicado
-    t100_boleta = models.ForeignKey(        
-		Student,
-		null=True,
-		blank=True,
-		related_name='ReportStudent',
-		on_delete=models.CASCADE)    
-    #t300_id_company =
-    #c210_report_type = 
-    #c220_report_state =
-    t203_report_date = models.DateField(null=True)
-    #t400_id_admin = 
-    t203_atention_date = models.DateField(null=True)
-    t203_adittional_comment = models.TextField(null=True,blank=True)
-
-    class Meta:
-        verbose_name = 'Report'
-        verbose_name_plural = 'Reports'
-        db_table = 't203_reportes'
-
-    def __str__(self) -> str:
-        return self.t203_id_report    
+from apps.administration.models import Admin
+from apps.companies.models import Company,Recruiter
 
 """----------------------------------------------------------- Catalogos --------------------------------------------------------"""
 
@@ -202,3 +73,252 @@ class ReportState(models.Model):
 
     def __str__(self) -> str:
         return self.c220_description
+
+"""------------------------------------------------ Tablas de información -------------------------------------------------------"""
+#T200 Vacants
+class Vacant(models.Model):
+    t200_id_vacant = models.AutoField(primary_key=True)
+    t300_id_company = models.ForeignKey(
+        Company,
+        blank=True,
+        null=True,
+        related_name='CompanyOffering',
+        on_delete=models.CASCADE
+    )
+    t200_job = models.CharField(max_length=70)
+    t200_description = models.TextField()    
+    t200_check_time = models.DateTimeField(auto_now=False)
+    t200_closing_hour = models.DateTimeField(auto_now=False)
+    t200_work_days = models.CharField(max_length=7)  
+    c207_id_experience = models.ForeignKey(
+        Experience,
+        null=False,
+		blank=False,
+        default=1,
+		related_name='NecesaryExperience',
+        on_delete=models.CASCADE)
+    t200_min_salary = models.IntegerField()
+    t200_max_salary = models.IntegerField()
+    t200_gross_salary = models.BooleanField()
+    t200_home_ofice = models.BooleanField()
+    c204_id_vacant_status = models.ForeignKey(
+        VacantStatus,
+        null=False,
+		blank=False,
+        default=1,
+		related_name='ActualState',
+        on_delete=models.CASCADE)
+    t200_publish_date = models.DateField()
+    t200_close_date = models.DateField()
+    t301_id_recruiter = models.ForeignKey(
+        Recruiter,
+        null=True,
+        blank=True,
+        related_name='RecruiterVacant',
+        on_delete=models.CASCADE
+    )
+    t400_id_admin = models.ForeignKey(
+        Admin,
+        null=True,
+        blank=True,
+        related_name='AdminVacant',
+        on_delete=models.CASCADE
+    )    
+    #t200_vacancy    
+
+    class Meta:
+        verbose_name = 'Vacant'
+        verbose_name_plural = 'Vacants'
+        db_table = "t200_vacant"
+
+    def __str__(self):
+	    return self.t200_id_vacant
+
+#T201_applications
+class Application(models.Model):
+    t201_id_application = models.AutoField(primary_key=True)
+    t200_id_vacant = models.ForeignKey(
+		Vacant,
+		null=True,
+		blank=True,
+		related_name='StudentApplication',
+		on_delete=models.CASCADE)
+    t100_boleta = models.ForeignKey(        
+		Student,
+		null=True,
+		blank=True,
+		related_name='AppliedStudent',
+		on_delete=models.CASCADE)    
+    t201_cv = models.FileField(null=True,blank=True)
+    c205_id_application_state = models.ForeignKey(
+        ApplicationState,
+        null=False,
+		blank=False,
+        default=1,
+		related_name='ApplicationState',
+        on_delete=models.CASCADE
+    )
+    t201_date_application = models.DateField()
+
+    class Meta:
+        verbose_name = 'Application'
+        verbose_name_plural = 'Applications'
+        db_table = "t201_application"
+
+    def __str__(self):
+	    return self.t201_id_application
+
+#T213 Ubicacion
+class Ubication(models.Model):
+    estados=[
+		('AGUASCALIENTES','AGUASCALIENTES'),
+		('BAJA CALIFORNIA','BAJA CALIFORNIA'),
+		('BAJA CALIFORNIA SUR','BAJA CALIFORNIA SUR'),
+		('CAMPECHE','CAMPECHE'),
+		('COAHUILA','COAHUILA'),
+		('COLIMA','COLIMA'),
+		('CHIAPAS','CHIAPAS'),
+		('CHIHUAHUA','CHIHUAHUA'),
+		('CIUDAD DE MEXICO','CIUDAD DE MEXICO'),
+		('DURANGO','DURANGO'),
+		('GUANAJUATO','GUANAJUATO'),
+		('GUERRERO','GUERRERO'),
+		('HIDALGO','HIDALGO'),
+		('JALISCO','JALISCO'),
+		('MEXICO','MEXICO'),
+		('MICHOACAN','MICHOACAN'),
+		('MORELOS','MORELOS'),
+		('NAYARIT','NAYARIT'),
+		('NUEVO LEON','NUEVO LEON'),
+		('OAXACA','OAXACA'),
+		('PUEBLA','PUEBLA'),
+		('QUERETARO DE ARTEAGA','QUERETARO DE ARTEAGA'),
+		('QUINTANA ROO','QUINTANA ROO'),
+		('SAN LUIS POTOSI','SAN LUIS POTOSI'),
+		('SINALOA','SINALOA'),
+		('SONORA','SONORA'),
+		('TABASCO','TABASCO'),
+		('TAMAULIPAS' ,'TAMAULIPAS'),
+		('TLAXCALA' ,'TLAXCALA'),
+		('VERACRUZ' ,'VERACRUZ '),
+		('YUCATAN' ,'YUCATAN'),
+		('ZACATECAS' ,'ZACATECAS'),
+		('NO ESPECIFICADA' ,'NO ESPECIFICADA')
+	]
+    t200_id_vacant = models.ForeignKey(
+		Vacant,
+		null=True,
+		blank=True,
+		related_name='ApplicationUbication',
+		on_delete=models.CASCADE)
+    t213_state = models.CharField(max_length=30,null=False,blank=False,choices=estados,default='NO ESPECIFICADA')
+    t213_mucipality = models.CharField(max_length=70,null=False,blank=False,default='No definido')
+    t213_locality = models.CharField(max_length=100,null=False,blank=False,default='No definido')
+    t213_street = models.CharField(max_length=60,null=True,blank=True)
+    t213_cp = models.IntegerField(blank=True,null=True)
+    t213_interior_number = models.CharField(max_length=20,blank=True,null=True)
+    t213_exterior_number = models.CharField(max_length=20,blank=True,null=True)
+
+    class Meta:
+        verbose_name = 'Ubication'
+        db_table = 't213_ubicacion'
+    
+    def __str__(self)->str:
+        return self.t213_state+","+self.t213_mucipality+","+self.t213_locality
+
+#T202 Comunicados
+class Announcement(models.Model):
+    t202_id_announcement = models.AutoField(primary_key=True)
+    t202_announcement = models.FileField()#<-Titulo
+    t202_description = models.TextField()
+    t_202_linkl = models.CharField(max_length=60,blank=True,null=True)#enlaces
+    t300_id_company = models.ForeignKey(
+        Company,
+        blank=True,
+        null=True,
+        related_name='CompanyCommunicate',
+        on_delete=models.CASCADE
+    )
+    t202_publish_date = models.DateField(null=True)
+    t202_close_date = models.DateField(null=True)
+    t301_id_recruiter = models.ForeignKey(
+        Recruiter,
+        null=True,
+        blank=True,
+        related_name='RecruiterCommunicate',
+        on_delete=models.CASCADE
+    )
+    t400_id_admin = models.ForeignKey(
+        Admin,
+        null=True,
+        blank=True,
+        related_name='AdminCommunicate',
+        on_delete=models.CASCADE
+    ) 
+
+    class Meta:
+        verbose_name = 'Annuncement'
+        verbose_name_plural = 'Annuncements'
+        db_table = 't202_comunicados'
+
+    def __str__ (self)->str:
+        return self.t202_id_announcement
+
+#T203 Reportes
+class Report(models.Model):
+    t203_id_report = models.AutoField(primary_key=True)
+    t200_id_vacant = models.ForeignKey(
+		Vacant,
+		null=True,
+		blank=True,
+		related_name='Report',
+		on_delete=models.CASCADE)
+    t203_publish_type = models.BooleanField(default=True)#True->Vacante,False->Comunicado
+    t100_boleta = models.ForeignKey(        
+		Student,
+		null=True,
+		blank=True,
+		related_name='ReportStudent',
+		on_delete=models.CASCADE)    
+    t300_id_company = models.ForeignKey(
+        Company,
+        blank=True,
+        null=True,
+        related_name='CompanyReport',
+        on_delete=models.CASCADE
+    )
+    c210_report_type = models.ForeignKey(
+        ReportType,
+        null=False,
+		blank=False,
+		related_name='ReportType',
+        default=1,
+        on_delete=models.CASCADE
+    )
+    c220_report_state = models.ForeignKey(
+        ReportState,
+        null=False,
+		blank=False,
+        default=1,
+		related_name='StudentLenguages',        
+        on_delete=models.CASCADE
+    )
+    t203_report_date = models.DateField(null=True)
+    t400_id_admin = models.ForeignKey(
+        Admin,
+        null=True,
+        blank=True,
+        related_name='AttendaceAdmin',
+        on_delete=models.CASCADE
+    ) 
+    t203_atention_date = models.DateField(null=True)
+    t203_adittional_comment = models.TextField(null=True,blank=True)
+
+    class Meta:
+        verbose_name = 'Report'
+        verbose_name_plural = 'Reports'
+        db_table = 't203_reportes'
+
+    def __str__(self) -> str:
+        return self.t203_id_report    
+

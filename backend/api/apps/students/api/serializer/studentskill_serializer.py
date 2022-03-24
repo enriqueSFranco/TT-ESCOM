@@ -18,7 +18,17 @@ class SkillListSerializer(serializers.ModelSerializer):
 
   def to_representation(self, instance):
     return {
-      "t102_id_skill": instance["t102_id_skill"],
+      "t102_id_registrer": instance["t102_id_skill"],
       "c116_id_skill": instance["c116_id_skill"],
       "t100_boleta": instance["t100_boleta"]
     }
+
+class UpdateStudentSkillSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = StudentSkill
+            fields = ('t102_id_registrer','c116_id_skill','t100_boleta')
+     
+        def update(self,instance,validate_data):
+            update_skill = super().update(instance,validate_data)
+            update_skill.save()
+            return update_skill
