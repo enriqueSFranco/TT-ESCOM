@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "../../hooks/useForm";
-import { useFetch }  from "../../hooks/useFetch";
+// import { useFetch }  from "../../hooks/useFetch";
 import Label from "../Input/Label";
 import Input from "../Input/Input";
 import Span from "../Input/Span";
@@ -26,8 +26,8 @@ let initialForm = {
 
 const FormUpdateDataStudent = ({ handleBackToProfile }) => {
   const { form, handleChange, handleChecked } = useForm(initialForm);
-  const { data } = useFetch();
-  
+  // const { data } = useFetch();
+
   return (
     <>
       <motion.div
@@ -62,46 +62,46 @@ const FormUpdateDataStudent = ({ handleBackToProfile }) => {
             <Span content="Puesto" />
           </Label>
           <Label htmlFor="location">
-              <Input
-                type="text"
-                name="location"
-                id="location"
-                placeholder=" "
-                value={form.location}
-                onChange={handleChange}
-              />
-              <Span content="Donde vives" />
-            </Label>
-          <Switch
-              label="Disponibilidad para viajar"
-              name="travel"
-              id="travel"
-              value={form.travel}
-              onChange={handleChecked}
+            <Input
+              type="text"
+              name="location"
+              id="location"
+              placeholder=" "
+              value={form.location}
+              onChange={handleChange}
             />
-            <Label htmlFor="phone">
-              <Input
-                type="tel"
-                name="phone"
-                id="phone"
-                placeholder=" "
-                value={form.phone}
-                onChange={handleChange}
-              />
-              <Span content="Telefono/Whatsapp" />
-            </Label>
-                <input
-                  type="file"
-                  name="cv"
-                  id="cv"
-                  className={`${styles.inputFile}`}
-                  value={form.cv}
-                  onChange={handleChange}
-                />
-              <Label htmlFor="cv">
-                <BiIcon.BiCloudUpload />
-                subir cv
-              </Label>
+            <Span content="Donde vives" />
+          </Label>
+          <Switch
+            label="Disponibilidad para viajar"
+            name="travel"
+            id="travel"
+            value={form.travel}
+            onChange={handleChecked}
+          />
+          <Label htmlFor="phone">
+            <Input
+              type="tel"
+              name="phone"
+              id="phone"
+              placeholder=" "
+              value={form.phone}
+              onChange={handleChange}
+            />
+            <Span content="Telefono/Whatsapp" />
+          </Label>
+          <input
+            type="file"
+            name="cv"
+            id="cv"
+            className={`${styles.inputFile}`}
+            value={form.cv}
+            onChange={handleChange}
+          />
+          <Label htmlFor="cv">
+            <BiIcon.BiCloudUpload />
+            subir cv
+          </Label>
           <div>{/* links de redes sociales */}</div>
         </form>
         <div className="container w-100">
@@ -114,7 +114,10 @@ const FormUpdateDataStudent = ({ handleBackToProfile }) => {
               </button>
             </div>
             <div className="col">
-              <button onClick={handleBackToProfile} className="btn btn-outline-danger w-100 my-1">
+              <button
+                onClick={handleBackToProfile}
+                className="btn btn-outline-danger w-100 my-1"
+              >
                 <div className="row align-items-center">
                   <div className="col-12 col-md-10 text-center">Cancelar</div>
                 </div>
