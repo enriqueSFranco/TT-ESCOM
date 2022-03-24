@@ -6,7 +6,7 @@
 /* ESTILOS PARA EL ELEMENTO INPUT */
 .input {
   position: relative;
-  margin: 1rem;
+  margin: 9px;
   width: 460px;
 }
 
@@ -92,4 +92,11 @@
 .label {
   margin-left: .5rem;
   font-size: 1rem;
+}
+
+.checkbox{
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-right: 10px;
 }
