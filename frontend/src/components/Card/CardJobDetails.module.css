@@ -60,21 +60,18 @@ svg {
   padding: 0;
 }
 
-.wrapper h1 {
-  font-size: 1.6rem;
+.title {
+  color: red;
+  font-size: 1.4rem;
   margin: 0;
 }
 
 .wrapper {
+  font-family: sans-serif;
   height: 700px;
   width: 700px;
   border-radius: 8px;
   outline: 1px solid #ccc;
   overflow-y: scroll;
+  z-index: 999;
 }
-
-/* @keyframes bounce {
-  0% { transform: scale(1.0); }
-  50% { transform: scale(1.1); }
-  100% {transform: scale((1.0)); }
-} */

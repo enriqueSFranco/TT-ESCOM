@@ -7,6 +7,7 @@
 *.pot
 *.pyc
 __pycache__/
+migrations/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
@@ -277,3 +278,6 @@ cython_debug/
 # Support for Project snippet scope
 
 # End of https://www.toptal.com/developers/gitignore/api/python,django,visualstudiocode,linux
+
+#Fuera de develop
+analisis/*

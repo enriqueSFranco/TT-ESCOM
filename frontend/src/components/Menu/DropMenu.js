@@ -1,9 +1,11 @@
+import React from "react"
+
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as IoIcon from 'react-icons/io';
 import styles from './Dropdown.module.css';
 
-const DropMenu = () => {
+const DropMenu = ({ children }) => {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
 
@@ -26,7 +28,7 @@ const DropMenu = () => {
       </button>
       <nav ref={dropdownRef} className={`${styles.menu} ${isActive ? `${styles.active}` : `${styles.inactive}`}`}>
         <ul>
-          <li><Link to="/alumno">Eres alumno ?</Link></li>
+          <li><Link to="/iniciar-sesion-alumno">Eres alumno ?</Link></li>
           <li><Link to="/reclutador">Eres reclutador ?</Link></li>
         </ul>
       </nav>

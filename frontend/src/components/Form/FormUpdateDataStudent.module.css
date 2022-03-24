@@ -39,12 +39,75 @@
   color: #90314b;
 }
 
+.inputFile {
+  width: .1px;
+  height: .1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputFile + label {
+  margin-left: 2rem;
+  max-width: 150px;
+  font-size: .9rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  padding: .65rem 1.25rem;
+  border-radius: var(--size-radius);
+}
+
+.inputFile + label svg {
+  width: 1rem;
+  height: 1rem;
+  color: #fff;
+  vertical-align: middle;
+  fill: currentColor;
+  margin-top: -.25rem;
+  margin-right: .25rem;
+}
+
+.inputFile + label {
+  color: #fff;
+  margin: 1rem;
+  background-color: #90314b;
+}
+
+.inputGroup {
+  /* outline: 1px solid orangered; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inputGroup > label {
+  width: 250px;
+}
+
 .title {
   text-transform: capitalize;
   text-align: center;
   font-size: 1.4rem;
+  padding: 1rem 0 1rem 0;
+  color: #fff;
+  background-color: #90314b;
+  border-radius: 4px 4px 0 0;
+}
+
+.travel {
+  font-size: .9rem;
+  margin-left: .4rem;
 }
 
 .wrapper {
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  width: 500px;
+  height: 600px;
+  border-radius: 4px;
+  box-shadow: #90314b 0px 1px 4px;
 }

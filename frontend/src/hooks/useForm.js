@@ -11,8 +11,16 @@ export const useForm = (initialForm) => {
     });
   };
 
+  const handleChecked = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.checked,
+    });
+  };
+
   return {
     form,
     handleChange,
+    handleChecked
   };
 };

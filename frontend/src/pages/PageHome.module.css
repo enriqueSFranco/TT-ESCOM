@@ -1,11 +1,11 @@
 .containerInput {
   display: flex;
-  position: relative;
+  /* position: relative; */
   align-items: center;
   justify-content: center;
 }
 
-.container__title {
+.containerTitle {
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -17,7 +17,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .iconLeft {
@@ -42,28 +41,8 @@
   color: #454547;
 }
 
-.ti_24 {
-  text-indent: 1.5rem;
+.wrapper {
+  flex-grow: 1;
+  /* position: relative; */
+  min-height: 100vh;
 }
-
-.vacancy {
-  font-size: 1.1rem;
-  font-weight: 300;
-}
-
-
-/* SECCION DE VACANTES */
-.jobList {
-  background-color: red;
-}
-
-
-/* MEDIA QUERY */
-/* @media screen and (min-width: 570px) {
-  .container__form {
-    background-color: #fff;
-    color: #000;
-    width: 90%;
-    font-family: 'Source Sans Pro', sans-serif;
-  }
-} */

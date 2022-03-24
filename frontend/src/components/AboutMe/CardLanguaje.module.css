@@ -1,0 +1,44 @@
+.title{
+    font-size:18px;
+    margin-left: 4px;
+    
+}
+
+.icon{
+    vertical-align: middle;
+    font-size:14px;
+    margin-right: 3px;
+    color:#8E0F4B;
+}
+
+.text{
+    font-size:16px;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+
+.content{
+    display: flex;
+    margin-left: 4px;
+}
+
+.compone{
+    border-color: #8E0F4B;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    animation-delay: 4s;
+    animation: fadeIn 2s ease-in;
+}
+
+/* KEYFRAMES */
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
