@@ -1,23 +1,35 @@
 from rest_framework import serializers
-from apps.students.models import Student
+from django.contrib.auth import get_user_model
+from apps.students.models import Student, StudentSkill
+
 
 class StudentSerializer(serializers.ModelSerializer):
-  # skills=SkillSerializer(many=True)
+  #skills=serializers.StringRelatedField(many=True)
   class Meta:
     model = Student
-    fields = ("t100_boleta", "t100_name", "t100_academic_level", "t100_email", "t100_password")
+    fields = "__all__"#("t100_boleta", "t100_name", "t100_academic_level", "t100_email", "t100_password")
 
   # encriptamos el password al momento de que se crea un usuario
   def create(self, validate_data):
     student = Student(**validate_data)
+    #student.set_password(validate_data['password']) 
     # generar token de autenticacion
     student.save() # guardamos al usuario
     return student
 
+  def validate_email(self, value):
+    print("value:",value)
+    if value == '':
+      raise serializers.ValidationError('Tiene que indicar un correo')
+    if get_user_model().objects.get(t100_email=value):
+      return value
+    raise serializers.ValidateError("Correo ya registrado")
+
 class StudentListSerializer(serializers.ModelSerializer):
-  # skills=SkillSerializer(many=True)
+  #skills=StudentSkill(many=True)
   class Meta:
     model = Student
+    fields='__all__'
 
   def to_representation(self, instance):
     return {
@@ -25,10 +37,10 @@ class StudentListSerializer(serializers.ModelSerializer):
       't100_name': instance["t100_name"],
       't100_email': instance["t100_email"],
       't100_password': instance["t100_password"],
-      't100_rfc': instance["t100_rfc"],
+      #'t100_rfc': instance["t100_rfc"],
       't100_gender': instance["t100_gender"],
-      't100_academic_level': instance["t100_academic_level"],
-      # 't102_skill': instance["t102_skill"]
+      #'t100_academic_level': instance["t100_academic_level"],
+      't102_skills': "t102_skills"
     }
 
 class UpdateStudentSerializer(serializers.ModelSerializer):
@@ -54,3 +66,8 @@ class PasswordSerializer(serializers.Serializer):
         {'password': 'Debe ingresar ambas contraseñas iguales'}
       )
     return data
+
+class StudentTokenSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Student
+    fields = ('t100_boleta', 't100_name', 't100_last_name', 't100_username', 't100_email', 't100_password')

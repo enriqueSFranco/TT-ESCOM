@@ -1,23 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useDetectClick } from '../../hooks/useDetectClick';
 import * as IoIcon from 'react-icons/io';
 import styles from './Dropdown.module.css';
 
 const DropMenu = () => {
   const dropdownRef = useRef(null);
-  const [isActive, setIsActive] = useState(false);
-
+  const [isActive, setIsActive] = useDetectClick(dropdownRef, false);
+  
   const onClick = () => setIsActive(!isActive);
-
-  useEffect(() => {
-    const pageClickEvent = (e) => {
-      if (dropdownRef.current !== null && !dropdownRef.current.contains(e.target))
-        setIsActive(!isActive);
-    };
-    if (isActive)
-      window.addEventListener('click', pageClickEvent);
-    return () => window.removeEventListener('click', pageClickEvent);
-  }, [isActive]);
 
   return (
     <div className={styles.dropdown}>
@@ -32,6 +23,6 @@ const DropMenu = () => {
       </nav>
     </div>
   )
-}
+};
 
 export default DropMenu;

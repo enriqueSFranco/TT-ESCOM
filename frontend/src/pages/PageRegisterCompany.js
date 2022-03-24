@@ -1,9 +1,9 @@
-import React from 'react';
 import CreateAccountCompany from '../components/Form/CreateAccountCompany';
+import styles from './GlobalStyles.module.css';
 
 const PageRegisterCompany = () => {
   return (
-    <section>
+    <section className={styles.wrapperPage}>
       <CreateAccountCompany />
     </section>
   )

@@ -22,8 +22,8 @@ class Login(ObtainAuthToken):
   permission_classes = [AllowAny]
   def post(self, request, *args, **kwargs):
     login_serializer = self.serializer_class(data=request.data, context={'request':request})
+    print(login_serializer.validated_data['user'])
     if login_serializer.is_valid():
-      print(login_serializer.validated_data['user'])
       user = login_serializer.validated_data['user']
       if user.is_active:
         token, created = Token.objects.get_or_create(user=user)
@@ -34,7 +34,7 @@ class Login(ObtainAuthToken):
             # 'user': user_serializer.data,
             'message': 'Inicio de sesion correcto',
             'authenticatedUser': {
-              'email': user_serializer.data['email'],
+              'email': user_serializer.data['t100_email'],
             }
           }, status=status.HTTP_201_CREATED)
         else: # si inicia sesion en otro navegador le borramos el token actual y le creamos uno nuevo

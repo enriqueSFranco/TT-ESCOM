@@ -1,68 +1,66 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { useForm } from '../../hooks/useForm';
-import AuthContext from '../../context/AuthContext';
-import Input from '../Input/Input';
-import * as FaIcon from "react-icons/fa";
-import styles from './Styles.module.css';
-
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { useForm } from "../../hooks/useForm";
+import AuthContext from "../../context/AuthContext";
+import TextField from "@mui/material/TextField";
+import styles from "./Styles.module.css";
 
 let initialForm = {
-  nameCompany: "",
   rfc: "",
-  email: "",
-
-}
+  password: "",
+};
 
 const LoginCompany = () => {
   const { form, handleChange } = useForm(initialForm);
   const { login } = useContext(AuthContext);
 
   return (
-    <>
-      <div className="container w-90">
-        <div className={`${styles.wrapper} my-5`}>
-          <h3 className={styles.form_title}>Iniciar Sesión Reclutador</h3>
+    <div className="container w-75 bg-primary shadow rounded">
+      <div className="row align-items-stretch">
+        <div
+          className={`${styles.bg} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
+        >
+          <h1>Bolsa de trabajo ESCOM</h1>
+        </div>
+        <div className="col bg-white p-5 rounded-end">
+        <div className={styles.welcome}>
+            <h2>Bienvenido</h2>
+            <span>Bienvenido! Porfavor introduce tus datos.</span>
+          </div>
           <form onSubmit={login}>
-            {/* input para el nombre de la empresa */}
-            <div className={`${styles.inner} mb-3`}>
-              <i className={styles.right_icon}>
-                <FaIcon.FaUser />
-              </i>
-              <Input
-                type="text"
-                id="username"
-                name="username"
-                placeholder="Nombre de la Empresa"
-                className={`${styles.input} ${styles.ti_16}`}
-                value={form.nameCompany}
-                onChange={handleChange}
-              />
-            </div>
-            {/* input para el rfc */}
-            <div className={`${styles.inner} mb-3`}>
-              <i
-                className={`${styles.right_icon} ${styles.eye_password}`}
-              >
-              </i>
-              <Input
-                type="text"
-                name="rfc"
+            {/* input para el username */}
+            <div className={styles.inputGroup}>
+              <TextField
+                label="RFC"
                 id="rfc"
-                placeholder="RFC"
-                className={`${styles.input} ${styles.ti_16}`}
+                name="rfc"
+                sx={{ width: 500, maxWidth: "100%" }}
                 value={form.rfc}
                 onChange={handleChange}
               />
             </div>
-            <div className="d-grid">
-              <button type="submit" className="btn btn-primary">
+            {/* input para el password */}
+            <div className={styles.inputGroup}>
+              <TextField
+                label="Contraseña"
+                id="password"
+                name="password"
+                sx={{ width: 500, maxWidth: "100%" }}
+                value={form.password}
+                onChange={handleChange}
+              />
+            </div>
+            <div className={styles.wrapperBtnLogin}>
+              <button
+                type="submit"
+                className={`${styles.btLogin} btn btn-primary`}
+              >
                 Iniciar sesión
               </button>
             </div>
             <div className="my-3">
               <span>
-                No tines cuenta? <Link to="/registro-empresa">Registrate</Link>
+                No tines cuenta? <Link to="/registro-reclutador">Registrate</Link>
               </span>
               <br />
               <span>
@@ -72,8 +70,8 @@ const LoginCompany = () => {
           </form>
         </div>
       </div>
-    </>
-  )
-}
+    </div>
+  );
+};
 
 export default LoginCompany;

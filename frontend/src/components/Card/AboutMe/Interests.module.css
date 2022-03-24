@@ -1,0 +1,54 @@
+.content{
+    margin-top: 1em;
+    display: flex;
+    margin-left: 2em;
+}
+
+.areas{
+    width: 40%;
+    margin: 10px;
+}
+.icon{
+  vertical-align: middle;
+  font-size:13px;
+  margin-right: 5px;
+  color:#8E0F4B;
+}
+
+.tex{
+    vertical-align: middle;
+    font-size:18px;
+}
+
+
+
+.CompOne {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    /* animation-delay: 4s;
+    animation: fadeIn 2s ease-in; */
+}
+
+h5{
+    font-weight:normal;
+  }
+  
+  .edit {
+    display: none;
+  }
+  
+  .content:hover .edit {
+    display: block;
+  }
+
+/* KEYFRAMES */
+/* @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+   */

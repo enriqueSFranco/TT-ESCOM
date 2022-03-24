@@ -6,7 +6,7 @@
   left: 0;
   width: 100%;
   background-color: #8E0F4B;
-  z-index: 100;
+  z-index: 10;
 }
 
 /* NAV */
@@ -18,8 +18,7 @@
 }
 
 .navList {
-  /* outline: 1px solid blue; */
-  width: 300px;
+  width: 500px;
   display: flex;
   align-items: center;
 }
@@ -27,29 +26,17 @@
 .navLogo {
   color: #fff;
   margin-left: 1rem;
+  font-weight: bold;
 }
 
-.navLogo:hover {
-  color: #fff;
-}
-
-.navList,
-.navLink {
-  display: flex;
-}
+.navLogo:hover { color: #fff; }
 
 .navLink {
-  flex-direction: column;
-  align-items: center;
-  row-gap: .25rem;
   color: #fff;
   font-weight: 300;
-  transition: color .4s ease-in;
 }
 
-.navLink:hover {
-  color: #fff;
-}
+.navLink:hover { color: #fff; }
 
 .navList {
   padding-left: 0;
