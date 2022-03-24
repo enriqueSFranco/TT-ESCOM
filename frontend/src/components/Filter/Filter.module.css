@@ -1,0 +1,18 @@
+.filterContainer {
+  width: 1000px;
+  height: 80px;
+  /* outline: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto;
+}
+
+.filterOptions {
+  /* outline: 2px solid blue; */
+  width: 650px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  left: 2rem;
+}
