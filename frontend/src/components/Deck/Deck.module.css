@@ -1,0 +1,38 @@
+.deck {
+  cursor: grab;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 80%;
+}
+
+.item {
+  outline: 2px solid #ccc;
+  min-width: 500px;
+  min-height: 300px;
+  border-radius: 4px;
+  margin: 1rem;
+}
+
+.item img {
+  max-width: 100%;
+  height: 300px;
+  pointer-events: none;
+}
+
+.innerDeck {
+  display: flex;
+}
+
+.itemFooter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  background-color: #90314b;
+}
+
+.itemFooter h1 {
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 0;
+}
