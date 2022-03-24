@@ -5,13 +5,16 @@ import Filter from "../components/Filter/Filter";
 import CardJobList from "../components/Card/CardJobList";
 import Deck from "../components/Deck/Deck";
 import Footer from "../components/Footer/Footer";
-import styles from "./GlobalStyles.module.css";
+import homeStyles from "./PageHome.module.css";
+
 
 const Home = () => {
-  const [, setSearch] = useState("");
-  const [dataList, setDataList] = useState([]);
-  const [isFiltered, setIsFiltered] = useState(false);
-  const [data, setData] = useState(null);
+  const [, setSearch] = useState(""); // estado de la busqueda
+  const [dataList, setDataList] = useState([]); // lista de vacantes
+  const [isFiltered, setIsFiltered] = useState(false); // boolean para saber si la informacion se tiene que filtrar
+  const [data, setData] = useState(null); // lista filtrada
+  const [loading, setLoading] = useState(false);
+  const [totalJobs, setTotalJobs] = useState(null); // estado para el total de vacantes
 
   /**
    * Funcion para filtrar las vacantes por nombre
@@ -19,13 +22,17 @@ const Home = () => {
    **/
   const filteredData = (value) => {
     const lowerCaseValue = value.toLowerCase().trim();
+    let count = 0;
     if (lowerCaseValue === "") {
       setData(dataList);
     } else {
       const filteredData = dataList.filter((el) => {
         if (el?.t200_job.toLowerCase().includes(value.toLowerCase())) {
+          count = count + 1;
+          setTotalJobs(count);
           return el;
-        }
+        } else
+            return false;
       });
       setData(filteredData);
     }
@@ -38,15 +45,18 @@ const Home = () => {
         Accept: 'application/json',
       }
     }
+    setLoading(true);
     $ajax().GET("/api/Vacants/", options)
       .then(res => {
         if (!res.err) {
           setDataList(res);
+          setTotalJobs(res.length)
         } else {
           setDataList(null);
         }
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
+    setLoading(false);
   }, []);
 
   const handleSearch = (value) => {
@@ -60,18 +70,25 @@ const Home = () => {
   };
 
   return (
-    <div className={styles.home}>
+    <main className={homeStyles.home}>
       {/* barra de busqueda  */}
       <Search handleSearch={handleSearch} />
       {/* control de filtros */}
       <Filter />
-      {/* renderizado de los empleos */}
-      <CardJobList jobs={!isFiltered ? dataList : data} />
+
+      <article className={homeStyles.wrapperJobList}>
+        <span className={homeStyles.totalJobs}>Total de vacantes: {totalJobs}</span>
+        {/* renderizado de los empleos */}
+        <CardJobList jobs={!isFiltered ? dataList : data} loading={loading} />
+      </article>
       {/* comunicados */}
-      <Deck />
+      <article className={`${homeStyles.wrapperDeck}`}>
+        <h2>Comunicados</h2>
+        <Deck />
+      </article>
       {/* pie de pagina */}
       <Footer />
-    </div>
+    </main>
   );
 };
 

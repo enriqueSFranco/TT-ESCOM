@@ -1,0 +1,24 @@
+main {
+  max-height: 100vh;
+}
+
+.totalJobs {
+  position: relative;
+  top: 1rem;
+  left: 17.5rem;
+  font-weight: 500;
+  color: #636363;
+}
+
+.wrapperDeck {
+  background-color: #eeeeee;
+  position: relative;
+  top: 3rem;
+}
+
+.wrapperDeck h2 {
+  margin-left: 5.5rem;
+  padding-top: 1rem;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
