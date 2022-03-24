@@ -6,7 +6,6 @@ const Input = ({
   type,
   id,
   name,
-  placeholder,
   value,
   onChange
 }) => {

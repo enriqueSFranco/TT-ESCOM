@@ -7,7 +7,7 @@
 .input {
   position: relative;
   margin: 1rem;
-  width: 460px;
+  width: 1000px;
 }
 
 .inputLabel {
@@ -56,13 +56,9 @@
   top: -9999px;
 }
 
-.inputSwitch:checked + .check {
-  background-color: #65d100;
-}
+.inputSwitch:checked + .check { background-color: #65d100; }
 
-.inputSwitch:checked + .check::before {
-  left: 27px;
-}
+.inputSwitch:checked + .check::before { left: 27px; }
 
 .sliderSwitch {
   display: flex;
