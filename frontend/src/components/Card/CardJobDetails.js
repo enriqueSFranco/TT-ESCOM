@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useFetch } from "../../hooks/useFetch";
+// import { helpHttp } from "../../utils/helpHttp";
 import * as AiIcon from "react-icons/ai";
 import * as FaIcon from "react-icons/fa";
 import * as MdIcon from "react-icons/md";
@@ -29,7 +29,7 @@ const profit = [
 const JobCardDetails = () => {
   const [sticky, setSticky] = useState(false);
   let { t200_id_vacant } = useParams();
-  const { data } = useFetch(`/api/Vacants/${t200_id_vacant}/`);
+  // const { data } = useFetch(`/api/Vacants/${t200_id_vacant}/`);
 
   const handleScroll = () => {
     const scrolled = window.scrollY;
@@ -38,21 +38,25 @@ const JobCardDetails = () => {
   }
 
   useEffect(() => {
+    // const companyUrl = `/api/Companies/${}`;
+    const jobsUrl = `/api/Vacants/${t200_id_vacant}/`;
+  });
+
+  // obtenenemos el scroll para posicionar de forma fija el componente
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll, true);
   
     return () => {
       window.removeEventListener('scroll', handleScroll, true);
     }
   }, []);
-  
-
-  if (!data) return null;
 
   return (
     <div className={`container ${sticky ? `${styles.wrapper} ${styles.positionSticky}` : `${styles.wrapper}`}`}>
       <header className="container">
         <div className={`${styles.flex}`}>
-          <h1 className={styles.title}>{data[0]?.t200_job ?? 'Sin nombre de vacante'}</h1>
+          <h1>sin nombre de vacante</h1>
+          {/* <h1 className={styles.title}>{data[0]?.t200_job ?? 'Sin nombre de vacante'}</h1> */}
           <div className={styles.actions}>
             <button
               className={`${styles.like} ${styles.active}`}
@@ -77,11 +81,13 @@ const JobCardDetails = () => {
             <ul className={`${styles.flex}`}>
               <li className={styles.flex}>
                 <FaIcon.FaBuilding />
-                <span>{data?.company ?? 'Anonima'}</span>
+                <span>anonima</span>
+                {/* <span>{data?.company ?? 'Anonima'}</span> */}
               </li>
               <li className={styles.flex}>
                 <MdIcon.MdOutlineAttachMoney />
-                <span>{data?.maxSalary ?? 'No especificado'}</span>
+                <span>no especificado</span>
+                {/* <span>{data?.maxSalary ?? 'No especificado'}</span> */}
               </li>
               <li className={styles.flex}>
                 <FaIcon.FaLocationArrow />
@@ -111,7 +117,8 @@ const JobCardDetails = () => {
         </p>
         <div>
           <p>
-            {data[0]?.t200_description ?? 'Sin datos'}
+            sin datos
+            {/* {data[0]?.t200_description ?? 'Sin datos'} */}
           </p>
         </div>
         <div className={styles.requirements}>
@@ -140,7 +147,8 @@ const JobCardDetails = () => {
             Si estás interesado enla vacante y cubres con el perfil requerido postulate por este medio, manda tu CV español e ingles por correo electrónico o comunícate vía telefónica 812074 6435
           </p>
           <p>Tipo de puesto:<span>Tiempo completo, Indefinido</span></p>
-          <p>Salario: <span>${data[0]?.t200_max_salary ?? 'No especificado'} al mes</span></p>
+          <p>no especificado</p>
+          {/* <p>Salario: <span>${data[0]?.t200_max_salary ?? 'No especificado'} al mes</span></p> */}
         </div>
         <div>
           <h3>Beneficios</h3>
