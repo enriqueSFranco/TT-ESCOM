@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import Input from "../Input/Input";
 import Label from "../Input/Label";
 import Span from "../Input/Span";
@@ -46,10 +45,10 @@ const Search = ({ handleSearch, data }) => {
             />
             <Span content="Buscar una vacante" />
           </Label>
-          {filterData != 0 && (
+          {filterData.length !== 0 && (
             <div className={styles.dataResultsJobs}>
               {filterData.slice(0,15).map((value, index) => {
-                return <p key={index}>{value?.t200_job}</p>;
+                return <p className={styles.dataItem} key={index}>{value?.t200_job}</p>;
               })}
             </div>
           )}
