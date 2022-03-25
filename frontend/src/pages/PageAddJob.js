@@ -15,20 +15,37 @@ import FormLocationJob from "../components/Form/FormLocationJob";
 let now = new Date();
 
 let initialForm = {
-  t200_job: "",
-  jobLocation: "",
-  exp: "",
-  profileJob: "",
-  t200_max_salary: null,
-  initHour: now.getHours() + ":" + now.getMinutes(), //+ ":" + now.getSeconds(),
-  endHour: "",
-  t200_description: "",
+    t200_job: "",
+    t200_description: "",
+    t200_check_time: "00:00:00",
+    t200_closing_hour: "00:00:00",
+    t200_work_days: "0000000",
+    t200_min_salary: 0,
+    t200_max_salary: 0,
+    t200_gross_salary: false,
+    t200_home_ofice: false,
+    //t200_publish_date: now.getFullYear()+"-"+now.getMonth()+"-"+now.getDay(), 
+    //t200_close_date: now.getFullYear()+"-"+now.getMonth()+"-"+now.getDay(),
+    t300_id_company: null,
+    c207_id_experience: 1,
+    c204_id_vacant_status: 1,
+    t301_id_recruiter: null,
+    t400_id_admin: null,
+  
+  //  t200_job: "",
+  //jobLocation: "",
+  //exp: "",
+  //profileJob: "",
+  //t200_max_salary: null,
+  //initHour: now.getHours() + ":" + now.getMinutes(), //+ ":" + now.getSeconds(),
+  //endHour: "",
+  //t200_description: "",
 };
 
 const PageAddJob = () => {
   const { form, handleChange } = useForm(initialForm);
   const [isOpen, closeModal] = useModal();
-  console.log(form.initHour);
+  console.log(form.t200_publish_date);
   let options = {
     heders: {
       "Content-Type": "application/json",
@@ -105,6 +122,11 @@ const PageAddJob = () => {
                 <option value="2">2 años</option>
                 <option value="3">3 años</option>
                 <option value="4">mas de 4 años</option>
+                {/*Hacer peticion
+                vARIABLE DE ESTADO
+                Iterar con el map
+                
+                conditional render*/}
               </select>
             </div>
           </div>
