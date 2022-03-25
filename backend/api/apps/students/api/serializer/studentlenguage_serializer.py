@@ -22,6 +22,7 @@ class LenguagesListSerializer(serializers.ModelSerializer):
     def to_representation(self,instance):
         print(instance)        
         return{
+            't110_id_registrer' : instance['t110_id_registrer'],
             't100_boleta' : instance['t100_boleta'],
 	        'c111_id_language' : instance['c111_id_language'],
 	        't110_written_level' : instance['t110_written_level'],
@@ -34,7 +35,7 @@ class LenguagesListSerializer(serializers.ModelSerializer):
 class UpdateLenguagesSerializer(serializers.ModelSerializer):
         class Meta:
             model = StudentLenguage
-            fields = ('t100_boleta','t110_written_level','t110_reading_level','t110_speaking_level','t110_comprension_level','t110_native')
+            fields = ('t110_id_registrer','t100_boleta','t110_written_level','t110_reading_level','t110_speaking_level','t110_comprension_level','t110_native')
      
         def update(self,instance,validate_data):
             update_Lenguages = super().update(instance,validate_data)

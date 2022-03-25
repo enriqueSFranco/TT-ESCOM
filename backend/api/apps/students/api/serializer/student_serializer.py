@@ -33,21 +33,28 @@ class StudentListSerializer(serializers.ModelSerializer):
 
   def to_representation(self, instance):
     return {
-      't100_boleta': instance["t100_boleta"],
-      't100_name': instance["t100_name"],
-      't100_email': instance["t100_email"],
-      't100_password': instance["t100_password"],
-      #'t100_rfc': instance["t100_rfc"],
-      't100_gender': instance["t100_gender"],
-      #'t100_academic_level': instance["t100_academic_level"],
-      't102_skills': "t102_skills"
+      't100_boleta' : instance['t100_boleta'],
+      't100_name' : instance['t100_name'],
+      't100_last_name' : instance['t100_last_name'],
+      't100_username' : instance['t100_username'],
+      't100_password' : instance['t100_password'],
+      't100_cv' : instance['t100_cv'],
+      't100_email' : instance['t100_email'],
+      't100_gender' : instance['t100_gender'],
+      't100_date_of_birth' : instance['t100_date_of_birth'],
+      't100_personal_objectives' : instance['t100_personal_objectives'],
+      't100_speciality' : instance['t100_speciality'],
+      't100_target_salary' : instance['t100_target_salary'],
+      't100_travel' : instance['t100_travel'],
+      't100_profile_picture' : instance['t100_profile_picture'],
+      'is_active' : instance['is_active']
     }
 
 class UpdateStudentSerializer(serializers.ModelSerializer):
   # skills=SkillSerializer(many=True)
   class Meta:
     model = Student
-    fields = ('t100_boleta', 't100_name', 't100_last_name', 't100_username', 't100_email', 't100_password')
+    fields = ('t100_boleta','t100_name','t100_last_name','t100_username','t100_password','t100_cv','t100_email','t100_gender','t100_date_of_birth','t100_personal_objectives','t100_speciality','t100_target_salary','t100_travel','t100_profile_picture','is_active')
 
       # encriptamos el password cuando el usuario quiera actualizar su informacion
     def update(self, instance, validate_data):

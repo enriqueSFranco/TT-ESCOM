@@ -7,6 +7,8 @@ class VacantSerializer(serializers.ModelSerializer):
         fields = '__all__'
     
     def create(self,validate_data):
+        print("Creando nueva vacante...")
+        print(validate_data)
         vacant = Vacant(**validate_data)
         vacant.save()
         return vacant
@@ -14,8 +16,7 @@ class VacantSerializer(serializers.ModelSerializer):
 class VacantListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vacant
-        fields = '__all__'
-
+        fields = '__all__'    
     def to_representation(self,instance):
         return{
             't200_id_vacant' : instance['t200_id_vacant'],

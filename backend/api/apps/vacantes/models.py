@@ -87,8 +87,8 @@ class Vacant(models.Model):
     )
     t200_job = models.CharField(max_length=70)
     t200_description = models.TextField()    
-    t200_check_time = models.DateTimeField(auto_now=False)
-    t200_closing_hour = models.DateTimeField(auto_now=False)
+    t200_check_time = models.TimeField(auto_now=False)
+    t200_closing_hour = models.TimeField(auto_now=False)
     t200_work_days = models.CharField(max_length=7)  
     c207_id_experience = models.ForeignKey(
         Experience,

@@ -18,14 +18,16 @@ class LinkListSerializer(serializers.ModelSerializer):
 
     def to_representation(self,instance):
         return{
+            't114_id_registrer': instance['t114_id_registrer'],
             't100_boleta' : instance['t100_boleta'],
-	        't113_link' : instance['t113_link']
+	        't113_link' : instance['t113_link'],
+            'c115_id_plataform': instance['c115_id_plataform']
         }
 
 class UpdateLinkSerializer(serializers.ModelSerializer):
         class Meta:
             model = Link
-            fields = ('t100_boleta','t113_link')
+            fields = ('t114_id_registrer','t100_boleta','t113_link','c115_id_plataform')
      
         def update(self,instance,validate_data):
             update_StudentLink = super().update(instance,validate_data)

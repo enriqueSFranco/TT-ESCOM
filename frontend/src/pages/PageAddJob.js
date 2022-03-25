@@ -20,7 +20,7 @@ let initialForm = {
   exp: "",
   profileJob: "",
   t200_max_salary: null,
-  initHour: now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds(),
+  initHour: now.getHours() + ":" + now.getMinutes(), //+ ":" + now.getSeconds(),
   endHour: "",
   t200_description: "",
 };
@@ -85,10 +85,10 @@ const PageAddJob = () => {
                 <option value="" disabled>
                   Perfil del empleado
                 </option>
-                <option value="becario">Becario</option>
-                <option value="pasante">Pasante</option>
-                <option value="titulado">Titulado</option>
-                <option value="estudiante">Estudiante</option>
+                <option value="3">Becario</option>
+                <option value="4">Pasante</option>
+                <option value="5">Titulado</option>
+                <option value="2">Estudiante</option>
               </select>
             </div>
             <div className={styles.select}>
@@ -120,7 +120,7 @@ const PageAddJob = () => {
               {/* <NumberFormatCustom
                 placeholder=" "
               /> */}
-              {/* <Span content="Sueldo" /> */}
+              { <Span content="Sueldo" /> }
             </Label>
             <div className={`${styles.wrapperHourWork} `}>
               <Input
