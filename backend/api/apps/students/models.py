@@ -115,23 +115,11 @@ class Student(models.Model):
 	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to='profiles_pictures/')
 	is_active = models.BooleanField(default=True)
 
-"""class Solocitud():
-  #id_soliticitud
-  pass
-=======
-=======
->>>>>>> a0d9a7ca1fca1528965ee385abd232f323b13d5e
 	class Meta:
 		unique_together = ['t100_boleta', 't100_email']
 		verbose_name = 'Student'
 		verbose_name_plural = 'Students'
-<<<<<<< HEAD
-		db_table = "student"
->>>>>>> 381436477f41d0858fd99454eb1e7f7f0a1dade4
-=======
 		db_table = "t100_alumno"
->>>>>>> a0d9a7ca1fca1528965ee385abd232f323b13d5e
-
 	def __str__(self):
 		return self.t100_name
 
@@ -183,10 +171,6 @@ class residence(models.Model):
 	t101_municipality = models.CharField(max_length=70,null=True,blank=True)
 	t101_locality = models.CharField(max_length=100,null=True,blank=True)
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  class Meta:
-    pass"""
 
 class Skill(models.Model):
 	t102_id_skill = models.AutoField(primary_key=True)
