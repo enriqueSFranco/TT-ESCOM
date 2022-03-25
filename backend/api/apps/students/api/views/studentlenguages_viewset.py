@@ -18,8 +18,8 @@ class LenguagesViewSet(viewsets.GenericViewSet):
 
 	def get_object(self, pk):        		          
 		self.queryset = self.model.objects\
-			.filter(t100_boleta=pk)\
-			.values('t100_boleta')
+			.filter(t110_id_registrer=pk)\
+			.values('t110_id_registrer','t100_boleta','t110_written_level','t110_reading_level','t110_speaking_level','t110_comprension_level','t110_native','c111_id_language','c111_id_language_id')
 		#raw(r'''SELECT t110_idiomas.t110_id_registrer,t110_idiomas.t100_boleta_id FROM t110_idiomas
 										#			JOIN C111_idiomas ON t110_idiomas.c111_id_language_id = c111_idiomas.c111_id_lenguage
 										#			Where t100_boleta_id=%s''',[pk])
@@ -30,7 +30,7 @@ class LenguagesViewSet(viewsets.GenericViewSet):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t100_boleta','t110_written_level','t110_reading_level','t110_speaking_level','t110_comprension_level','t110_native','c111_id_language','c111_id_language_id')				
+				.values('t110_id_registrer','t100_boleta','t110_written_level','t110_reading_level','t110_speaking_level','t110_comprension_level','t110_native','c111_id_language','c111_id_language_id')				
 		return self.queryset
   
 
@@ -57,8 +57,8 @@ class LenguagesViewSet(viewsets.GenericViewSet):
 		lenguages_serializer = self.list_serializer_class(lenguage,many=True)
 		return Response(lenguages_serializer.data)
 
-	def update(self, request, pk=None):
-		lenguage = self.model.objects.filter(t100_boleta=pk).first()
+	def update(self, request, pk):
+		lenguage = self.model.objects.filter(t110_id_registrer=pk).first()
 		lenguage_serializer = UpdateLenguagesSerializer(lenguage, data=request.data)
 		if lenguage_serializer.is_valid():
 			lenguage_serializer.save()
@@ -70,8 +70,8 @@ class LenguagesViewSet(viewsets.GenericViewSet):
 			'errors': lenguage_serializer.errors
 		}, status=status.HTTP_400_BAD_REQUEST)
 
-	def destroy(self, request, pk=None):
-		lenguage_destroy = self.model.objects.filter(id=pk).delete()
+	def destroy(self, request, pk):
+		lenguage_destroy = self.model.objects.filter(t110_id_registrer=pk).delete()
 		#SI lo borra pero no se como indicar que se realizo con exito
 		if lenguage_destroy == 1:
 			return Response({

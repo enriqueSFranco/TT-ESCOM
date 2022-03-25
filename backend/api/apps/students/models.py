@@ -109,6 +109,7 @@ class Student(models.Model):
 	t100_gender = models.CharField(max_length=1, choices=genders, default='F', null=True, blank=True)	
 	t100_date_of_birth = models.DateField(null=True, blank=True)
 	t100_personal_objectives = models.TextField(null=True, blank=True)
+	t100_speciality = models.CharField(max_length=100,null=True,blank=True)
 	t100_target_salary = models.PositiveIntegerField(null=True, blank=True)	
 	t100_travel = models.BooleanField(default=False)
 	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to='profiles_pictures/')
