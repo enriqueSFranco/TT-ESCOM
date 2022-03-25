@@ -36,6 +36,9 @@ class VacantViewSet(viewsets.GenericViewSet):
 		return Response(vacants_serializer.data, status=status.HTTP_200_OK)
 
 	def create(self, request):
+		print(request)
+		print("Datos:")
+		print(request.data)
 		vacant_serializer = self.serializer_class(data=request.data)
 		print('request: ',request.data)
 		if vacant_serializer.is_valid():
