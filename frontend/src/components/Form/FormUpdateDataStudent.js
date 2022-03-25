@@ -1,5 +1,5 @@
 import { useForm } from "../../hooks/useForm";
-// import { useFetch }  from "../../hooks/useFetch";
+import { useFetch }  from "../../hooks/useFetch";
 import { motion } from "framer-motion/dist/framer-motion";
 import TextField from "@mui/material/TextField";
 import Label from "../Input/Label";
@@ -24,7 +24,9 @@ let initialForm = {
 
 const FormUpdateDataStudent = ({ handleBackToProfile }) => {
   const { form, handleChange, handleChecked } = useForm(initialForm);
-  // const { data } = useFetch();
+  const { data } = useFetch("/api/Students/");
+
+  console.log(data);
 
   return (
     <>

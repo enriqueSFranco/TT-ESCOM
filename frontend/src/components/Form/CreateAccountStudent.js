@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
-import { $ajax } from "../../utils/$ajax";
+import { helpHttp } from "../../utils/helpHttp";
 import TextField from "@mui/material/TextField";
 
 import styles from "./Styles.module.css";
@@ -28,7 +28,7 @@ const CreateAccount = () => {
       },
       body: form,
     };
-    $ajax()
+    helpHttp()
       .POST(endpoint, options)
       .then((response) => {
         if (!response.err) {

@@ -1,17 +1,49 @@
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
+import { helpHttp } from "../../utils/helpHttp";
 import TextField from "@mui/material/TextField";
 import styles from "./Styles.module.css";
 
 const initialForm = {
-  nameCompany: "",
-  rfcCompany: "",
-  emailCompany: "",
-  roleCompany: "",
+    t300_name: "",
+    t300_rfc: "",
+    t300_nss: 0,
+    t300_bussiness_name: "",
+    t300_web_page: "https://www.company.com.mx/",
+    t300_mision: "",
+    t300_vision: "",
+    t300_objective: "",
+    t300_logo: null,
+    t300_banner: null,
+    t400_id_admin: "",
+    t300_create_date: "2022-03-24"
 };
 
 const FormCompany = () => {
   const { form, handleChange } = useForm(initialForm);
+  const endpoint = "/api/Companies/";
+
+  const preRegister = (e) => {
+    e.preventDefault();
+    let options = {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: form,
+    };
+
+    console.log(form)
+
+    helpHttp().POST(endpoint, options)
+      .then((res) => {
+        if (!res.err)
+          console.log(res);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  if (form === null) return;
 
   return (
     <div className="container w-75 bg-primary shadow rounded">
@@ -23,30 +55,30 @@ const FormCompany = () => {
         </div>
         <div className="col bg-white p-5 rounded-end">
           <h2 className={`${styles.welcome}`}>Bienvenido</h2>
-          <form>
+          <form onSubmit={preRegister}>
             {/* input para el username */}
             <div className={styles.inputGroup}>
               <TextField
                 label="Nombre de su empresa"
-                id="nameCompany"
-                name="nameCompany"
+                id="t300_name"
+                name="t300_name"
                 sx={{ width: 500, maxWidth: "100%" }}
-                value={form.nameCompany}
+                value={form.t300_name}
                 onChange={handleChange}
               />
             </div>
             <div className={styles.inputGroup}> 
               <TextField
                 label="RFC"
-                id="rfc"
-                name="rfc"
+                id="t300_rfc"
+                name="t300_rfc"
                 sx={{ width: 500, maxWidth: "100%" }}
-                value={form.rfc}
+                value={form.t300_rfc}
                 onChange={handleChange}
               />
             </div>
             {/* input para el password */}
-            <div className={styles.inputGroup}>
+            {/* <div className={styles.inputGroup}>
               <TextField
                 label="Correo electronico"
                 id="emailCompany"
@@ -55,7 +87,7 @@ const FormCompany = () => {
                 value={form.emailCompany}
                 onChange={handleChange}
               />
-            </div>
+            </div> */}
             <div className={styles.wrapperBtnLogin}>
               <button
                 type="submit"
