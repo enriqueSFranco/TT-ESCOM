@@ -18,14 +18,14 @@ class LinkViewSet(viewsets.GenericViewSet):
 		if self.queryset is None:        
 			self.queryset = self.model.objects\
 				.filter(t100_boleta=pk)\
-				.values('t100_boleta','t113_link')
+				.values('t114_id_registrer','t100_boleta','t113_link','c115_id_plataform')
 		return self.queryset
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t100_boleta','t113_link')
+				.values('t114_id_registrer','t100_boleta','t113_link','c115_id_plataform')
 		return self.queryset
   
 
