@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { $ajax } from "../utils/$ajax";
+import { helpHttp } from "../utils/helpHttp";
 import Search from "../components/Search/Search";
 import Filter from "../components/Filter/Filter";
 import CardJobList from "../components/Card/CardJobList";
@@ -46,7 +46,7 @@ const Home = () => {
       }
     }
     setLoading(true);
-    $ajax().GET("/api/Vacants/", options)
+    helpHttp().GET("/api/Vacants/", options)
       .then(res => {
         if (!res.err) {
           setDataList(res);

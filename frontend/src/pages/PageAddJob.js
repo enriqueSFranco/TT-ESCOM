@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useForm } from "../hooks/useForm";
 import { useModal } from "../hooks/useModal";
-import { $ajax } from "../utils/$ajax";
-// import { numberFormat } from "../utils/numberFormat";
+import { helpHttp } from "../utils/helpHttp";
 import Modal from "../components/Modal/Modal";
 import Label from "../components/Input/Label";
 import Input from "../components/Input/Input";
@@ -28,6 +27,7 @@ let initialForm = {
 const PageAddJob = () => {
   const { form, handleChange } = useForm(initialForm);
   const [isOpen, closeModal] = useModal();
+  
   console.log(form.initHour);
   let options = {
     heders: {
@@ -40,7 +40,7 @@ const PageAddJob = () => {
 
   const createJob = (e) => {
     e.preventDefault();
-    $ajax()
+    helpHttp()
       .POST("/api/Vacants/", options)
       .then((response) => {
         if (!response.err) {
@@ -51,6 +51,7 @@ const PageAddJob = () => {
         console.error(err);
       });
   };
+
 
   return (
     <section className={styles.container}>
