@@ -15,22 +15,24 @@ import FormLocationJob from "../components/Form/FormLocationJob";
 let now = new Date();
 
 let initialForm = {
-    t200_job: "",
-    t200_description: "",
-    t200_check_time: "00:00:00",
-    t200_closing_hour: "00:00:00",
-    t200_work_days: "0000000",
-    t200_min_salary: 0,
-    t200_max_salary: 0,
-    t200_gross_salary: false,
-    t200_home_ofice: false,
-    //t200_publish_date: now.getFullYear()+"-"+now.getMonth()+"-"+now.getDay(), 
-    //t200_close_date: now.getFullYear()+"-"+now.getMonth()+"-"+now.getDay(),
-    t300_id_company: null,
-    c207_id_experience: 1,
-    c204_id_vacant_status: 1,
-    t301_id_recruiter: null,
-    t400_id_admin: null,
+  t200_job: "",
+  t200_description: "",
+  t200_check_time: "00:00:00",
+  t200_closing_hour: "00:00:00",
+  t200_work_days: "0000000",
+  t200_min_salary: 0,
+  t200_max_salary: 0,
+  t200_gross_salary: false,
+  t200_home_ofice: false,
+  t200_publish_date: now.getFullYear()+"-"+now.getMonth()+"-"+now.getDay(), 
+  t200_close_date: now.getFullYear()+"-"+now.getMonth()+"-"+now.getDay(),
+  t300_id_company: null,
+  c207_id_experience: 1,
+  c204_id_vacant_status: 1,
+  t301_id_recruiter: null,
+  t400_id_admin: null,
+};
+
   
   //  t200_job: "",
   //jobLocation: "",
@@ -40,28 +42,37 @@ let initialForm = {
   //initHour: now.getHours() + ":" + now.getMinutes(), //+ ":" + now.getSeconds(),
   //endHour: "",
   //t200_description: "",
-};
 
 const PageAddJob = () => {
   const { form, handleChange } = useForm(initialForm);
   const [isOpen, closeModal] = useModal();
   console.log(form.t200_publish_date);
-  let options = {
-    heders: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: form,
-  };
+  console.log("-------------------------")  
   console.log(form);
+  console.log(form.t200_publish_date);
+  
+  
+  if (form == null) return;
 
   const createJob = (e) => {
+    //const { form, handleChange } = useForm(initialForm);
+    console.log("Creando vacante");
+    console.log(form);
     e.preventDefault();
+    const endpoint = "/api/Vacants/";
+    let options = {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: form,
+    };
+    console.log(options);
     $ajax()
-      .POST("/api/Vacants/", options)
+      .POST(endpoint, options)
       .then((response) => {
         if (!response.err) {
-          console.info(response);
+          console.log(response);
         }
       })
       .catch((err) => {
@@ -80,8 +91,8 @@ const PageAddJob = () => {
               <Label>
                 <Input
                   type="text"
-                  id="nameJob"
-                  name="nameJob"
+                  id="t200_job"
+                  name="t200_job"
                   placeholder=" "
                   value={form.nameJob}
                   onChange={handleChange}
@@ -110,18 +121,19 @@ const PageAddJob = () => {
             </div>
             <div className={styles.select}>
               <select
-                defaultValue=""
-                name="exp"
+                defaultValue="1"
+                name="c207_id_experience"
+                id="c207_id_experience"
                 onChange={handleChange}
                 className={styles.select}
               >
                 <option value="" disabled>
                   Experiencia
                 </option>
-                <option value="1">6 meses a 1 año</option>
-                <option value="2">2 años</option>
-                <option value="3">3 años</option>
-                <option value="4">mas de 4 años</option>
+                <option value="3">6 meses a 1 año</option>
+                <option value="4">2 años</option>
+                <option value="5">3 años</option>
+                <option value="6">mas de 4 años</option>
                 {/*Hacer peticion
                 vARIABLE DE ESTADO
                 Iterar con el map
@@ -131,6 +143,17 @@ const PageAddJob = () => {
             </div>
           </div>
           <div className={styles.flexWrapper}>
+          <Label>
+                <Input
+                  type="text"
+                  id="t200_min_salary"
+                  name="t200_min_salary"
+                  placeholder=" "
+                  value={form.nameJob}
+                  onChange={handleChange}
+                />
+                <Span content="Salario minimo" />
+              </Label>
             <Label htmlFor="t200_max_salary">
               <input 
                 type="text"
@@ -143,19 +166,19 @@ const PageAddJob = () => {
                 placeholder=" "
               /> */}
               { <Span content="Sueldo" /> }
-            </Label>
+            </Label>            
             <div className={`${styles.wrapperHourWork} `}>
               <Input
                 type="time"
-                name="initHour"
-                id="initHour"
+                name="t200_check_time"
+                id="t200_check_time"
                 value={form.initHour}
                 onChange={handleChange}
               />
               <Input
                 type="time"
-                name="endHour"
-                id="endHour"
+                name="t200_closing_hour"
+                id="t200_closing_hour"
                 value={form.endHour}
                 onChange={handleChange}
               />
@@ -164,8 +187,8 @@ const PageAddJob = () => {
           <div className={styles.flexWrapper}>
             <TextareaAutosize
               className={styles.textArea}
-              name="requirements"
-              id="requirements"
+              name="t200_description"
+              id="t200_description"
               aria-label="empty textarea"
               placeholder="Escribe los requerimientos de la vacante"
               style={{ width: 500, height: 300 }}
