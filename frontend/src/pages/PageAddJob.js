@@ -9,6 +9,9 @@ import Label from "../components/Input/Label";
 import Input from "../components/Input/Input";
 import Span from "../components/Input/Span";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormGroup from "@mui/material/FormGroup";
+import Checkbox from "@mui/material/Checkbox";
 import styles from "./PageAddJob.module.css";
 import FormLocationJob from "../components/Form/FormLocationJob";
 
@@ -26,10 +29,10 @@ let initialForm = {
   t200_home_ofice: false,
   t200_publish_date: now.getFullYear()+"-"+now.getMonth()+"-"+now.getDay(), 
   t200_close_date: now.getFullYear()+"-"+now.getMonth()+"-"+now.getDay(),
-  t300_id_company: null,
+  t300_id_company: 1,
   c207_id_experience: 1,
   c204_id_vacant_status: 1,
-  t301_id_recruiter: null,
+  t301_id_recruiter: 1,
   t400_id_admin: null,
 };
 
@@ -52,7 +55,7 @@ const PageAddJob = () => {
   console.log(form.t200_publish_date);
   
   
-  if (form == null) return;
+  if (form == null) return;x
 
   const createJob = (e) => {
     //const { form, handleChange } = useForm(initialForm);
@@ -149,24 +152,22 @@ const PageAddJob = () => {
                   id="t200_min_salary"
                   name="t200_min_salary"
                   placeholder=" "
-                  value={form.nameJob}
+                  
                   onChange={handleChange}
                 />
-                <Span content="Salario minimo" />
+                <Span content="Salario mínimo" />
               </Label>
-            <Label htmlFor="t200_max_salary">
-              <input 
-                type="text"
-                value={form.t200_max_salary}
-                onChange={handleChange}
-                name="t200_max_salary"
-                id="t200_max_salary"
-              />
-              {/* <NumberFormatCustom
-                placeholder=" "
-              /> */}
-              { <Span content="Sueldo" /> }
-            </Label>            
+              <Label>
+                <Input
+                  type="text"
+                  id="t200_min_salary"
+                  name="t200_min_salary"
+                  placeholder=" "
+                  
+                  onChange={handleChange}
+                />
+                <Span content="Salario máxino" />
+              </Label>
             <div className={`${styles.wrapperHourWork} `}>
               <Input
                 type="time"
@@ -183,6 +184,17 @@ const PageAddJob = () => {
                 onChange={handleChange}
               />
             </div>
+          </div>
+          <div className={styles.flexWrapper}>            
+            <FormControlLabel 
+            control={<Checkbox />} label="Salario neto" 
+            name="t200_gross_salary"
+            id="t200_gross_salary"
+            onChange={handleChange}
+            />
+            <FormControlLabel 
+            control={<Checkbox />} label="Trabajo remoto" 
+            />
           </div>
           <div className={styles.flexWrapper}>
             <TextareaAutosize
