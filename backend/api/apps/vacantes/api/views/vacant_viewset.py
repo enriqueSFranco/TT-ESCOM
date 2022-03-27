@@ -24,7 +24,7 @@ class VacantViewSet(viewsets.GenericViewSet):
 
 	def get_queryset(self):
 		if self.queryset is None:
-			self.queryset = self.model.objects\ 
+			self.queryset = self.model.objects\
 				.filter()\
 				.values('t200_id_vacant','t300_id_company','t200_job','t200_description','t200_check_time','t200_closing_hour','t200_work_days',
 				'c207_id_experience','t200_min_salary','t200_max_salary','t200_gross_salary','t200_home_ofice','c204_id_vacant_status','t200_publish_date',
