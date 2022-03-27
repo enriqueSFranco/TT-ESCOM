@@ -35,6 +35,7 @@ class UpdateEmploymentSerializer(serializers.ModelSerializer):
         def update(self,instance,validate_data):
             update_historial = super().update(instance,validate_data)
             update_historial.save()
+            return update_historial
 
 
 

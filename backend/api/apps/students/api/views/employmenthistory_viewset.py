@@ -17,7 +17,7 @@ class EmploymentViewSet(viewsets.GenericViewSet):
 
 	def get_object(self, pk):        		  
 		self.queryset = self.model.objects\
-			.filter(t103_id_registrer=pk)\
+			.filter(t100_boleta=pk)\
 			.values('t103_id_registrer','t100_boleta','t103_corporation','t103_employment','t103_description','t103_start_date','t103_end_date')
 		return self.queryset#get_object_or_404(self.model,pk=pk)
 

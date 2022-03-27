@@ -5,6 +5,7 @@ class LenguageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lenguage
         fields = '__all__'
+        #depth=2
     
     def create(self,validate_data):
         lenguage = Lenguage(**validate_data)
