@@ -4,7 +4,7 @@ import Label from "../Input/Label";
 import Span from "../Input/Span";
 import styles from "./Search.module.css";
 
-const Search = ({ handleSearch, data }) => {
+const Search = ({ handleSearch, data, locationList }) => {
   const [job, setJob] = useState("");
   const [location, setLocation] = useState("");
   const [filterData, setFilterData] = useState([]);
@@ -19,6 +19,15 @@ const Search = ({ handleSearch, data }) => {
     
     query === "" ? setFilterData([]) : setFilterData(newFilter);
   };
+
+  // const handleFilteredLocation = (e) => {
+  //   const query = e.target;
+  //   setLocation(query);
+
+  //   const newFilter = data.filter((value) => {
+  //     return value?.
+  //   })
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,6 +50,9 @@ const Search = ({ handleSearch, data }) => {
               id="job"
               name="job"
               value={job}
+              onBlur={() => { setTimeout(() => {
+                setFilterData([])
+              },1000)}}
               onChange={handleFilterJob}
             />
             <Span content="Buscar una vacante" />
@@ -48,7 +60,7 @@ const Search = ({ handleSearch, data }) => {
           {filterData.length !== 0 && (
             <div className={styles.dataResultsJobs}>
               {filterData.slice(0,15).map((value, index) => {
-                return <p className={styles.dataItem} key={index}>{value?.t200_job}</p>;
+                return <p onClick={e => setJob(value?.t200_job)} className={styles.dataItem} key={index}>{value?.t200_job}</p>;
               })}
             </div>
           )}
@@ -71,8 +83,6 @@ const Search = ({ handleSearch, data }) => {
           value="Buscar Vacante"
           className={`${styles.btnSearch} btn btn-primary`}
         />
-        {/* <div className={`${styles.containerInput}`}>
-        </div> */}
       </form>
     </div>
   );
