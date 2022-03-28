@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import FormUpdateDataStudent from "../Form/FormUpdateDataStudent";
-import { Link, Navigate } from "react-router-dom";
 import { motion } from "framer-motion/dist/framer-motion";
 import * as MdIcon from "react-icons/md";
 import * as BsIcon from "react-icons/bs";
@@ -82,7 +81,7 @@ const CardProfileStudent = () => {
                   linksSocialNewtworks.map((link) => {
                     return (
                       <div className={styles.flex}>
-                        <Link to={`${link?.t113_link}`} key={Date.now()}>{link?.t113_link}</Link>
+                        <span key={Date.now()}>{link?.t113_link}</span>
                       </div>
                     )
                   })
