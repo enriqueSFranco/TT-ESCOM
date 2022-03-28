@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from django.db import models
 from apps.administration.models import Admin
 
@@ -13,7 +14,7 @@ class Company(models.Model):
     t300_vision = models.TextField(blank=True,null=True)
     t300_objective = models.TextField(blank=True,null=True)
     t300_logo = models.ImageField(null=True,blank=True)
-    t300_banner = models.ImageField(null=True,blank=True)
+    t300_banner = models.ImageField(upload_to='', null=True,blank=True)
     t400_id_admin = models.ForeignKey(
         Admin,
         null=True,

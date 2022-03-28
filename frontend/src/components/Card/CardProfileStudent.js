@@ -1,32 +1,40 @@
-import { useState } from "react";
- import { useFetch } from "../../hooks/useFetch.js";
+import { useState, useEffect } from "react";
 import FormUpdateDataStudent from "../Form/FormUpdateDataStudent";
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion/dist/framer-motion";
 import * as MdIcon from "react-icons/md";
 import * as BsIcon from "react-icons/bs";
 import * as IoIcon from "react-icons/io";
 import styles from "./CardProfileStudent.module.css";
+import { helpHttp } from "../../utils/helpHttp";
 
-const CardProfileStudent = ({
-  name,
-  lastName,
-  location,
-  travel,
-  socialNetworks,
-}) => {
+const CardProfileStudent = () => {
   const [state, setState] = useState("profile");
-   let t100_boleta = 2014;//useParams();
-   const { data } = useFetch(`/api/Students/${t100_boleta}`);
-   console.log("Obtuve esto:")
-   console.log(data);
-   //console.log(data['t100_boleta']);
+  const [student, setStudent] = useState({});
+  const [residence, setResidencce] = useState({});
+  const [linksSocialNewtworks, setLinksSocialNetworks] = useState([]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const studentUrl = `/api/Students/2021/`;
+      const studentResidenceUrl = `/api/Residence/2021`;
+      const socialNetworksUrl = `/api/Links/2021/`;
+      
+      const [studentRes, studentResidenceRes, socialNetworksRes] = await Promise.all([
+        helpHttp().GET(studentUrl),
+        helpHttp().GET(studentResidenceUrl),
+        helpHttp().GET(socialNetworksUrl)
+      ]);
+      setStudent(studentRes)
+      setResidencce(studentResidenceRes)
+      setLinksSocialNetworks(socialNetworksRes);
+    }
+    fetchData();
+  }, []);
+  
   const handleEdit = (e) => {
     let isEdit = state === "edit" ? "profile" : "edit";
     setState(isEdit);
   };
-
   return (
     <>
       {state === "edit" ? (
@@ -38,7 +46,6 @@ const CardProfileStudent = ({
           duration={{duration: 0.5}}
         >
           <FormUpdateDataStudent handleBackToProfile={handleEdit} />
-          {/* <button onClick={handleEdit}>perfil</button> */}
         </motion.article>
       ) : (
         <article className={`${styles.mainContainer} container`}>
@@ -51,7 +58,7 @@ const CardProfileStudent = ({
                 />
                 <img src="https://placeimg.com/640/480/any" alt="user" />
                 <div className={styles.nameHolder}>
-                  <h3>Enrique Salinas Franco</h3>
+                  <h3>{student[0]?.t100_name}</h3>
                   <h4>Ingeniero de software</h4>
                 </div>
               </div>
@@ -61,7 +68,7 @@ const CardProfileStudent = ({
                 <h4 className={styles.label}>Ubicacion</h4>
                 <div className={styles.flex}>
                   <MdIcon.MdLocationPin className={styles.icon} />
-                  <p>Santa Clara Coatitla, Edo Mex.</p>
+                  <p>{`${residence[0]?.t101_state}, ${residence[0]?.t101_municipality}, ${residence[0]?.t101_locality}`}</p>
                 </div>
                 <div className={styles.flex}>
                   <MdIcon.MdOutlineAirplanemodeActive className={styles.icon} />
@@ -70,7 +77,16 @@ const CardProfileStudent = ({
               </div>
               <div className={`${styles.socialNetworks} ${styles.separator}`}>
                 <h4 className={styles.label}>redes solicales</h4>
-                <Link to="/" className={styles.whatsapp}>
+                {
+                  linksSocialNewtworks.map((link) => {
+                    return (
+                      <div className={styles.flex}>
+                        <span key={Date.now()}>{link?.t113_link}</span>
+                      </div>
+                    )
+                  })
+                }
+                {/* <Link to="/" className={styles.whatsapp}>
                   <BsIcon.BsWhatsapp />
                   <span>2938394</span>
                 </Link>
@@ -85,7 +101,7 @@ const CardProfileStudent = ({
                 <Link to="/" className={styles.linkedin}>
                   <BsIcon.BsLinkedin />
                   <span>enrique Salinas Franco</span>
-                </Link>
+                </Link> */}
               </div>
               <div className={`${styles.flexColumn} py-4`}>
                 <IoIcon.IoIosCheckmarkCircle />
