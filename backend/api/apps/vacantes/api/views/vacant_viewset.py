@@ -17,8 +17,9 @@ class VacantViewSet(viewsets.GenericViewSet):
 	def get_object(self, pk):	
 		self.queryset = self.model.objects\
 				.filter(t200_id_vacant = pk)\
-				.values('t200_id_vacant','t300_id_company','t200_job','t200_description','t200_check_time','t200_closing_hour','t200_work_days',
-				'c207_id_experience','t200_min_salary','t200_max_salary','t200_gross_salary','t200_home_ofice','c204_id_vacant_status','t200_publish_date','t200_close_date','t301_id_recruiter','t400_id_admin')
+				.all()
+				#values('t200_id_vacant','t200_job','t200_description','t200_check_time','t200_closing_hour','t200_work_days',
+            #'t200_min_salary','t200_max_salary','t200_gross_salary','t200_home_ofice','t200_publish_date','t200_close_date')		
 		return self.queryset
 
 	def get_queryset(self):
@@ -26,7 +27,8 @@ class VacantViewSet(viewsets.GenericViewSet):
 			self.queryset = self.model.objects\
 				.filter()\
 				.values('t200_id_vacant','t300_id_company','t200_job','t200_description','t200_check_time','t200_closing_hour','t200_work_days',
-				'c207_id_experience','t200_min_salary','t200_max_salary','t200_gross_salary','t200_home_ofice','c204_id_vacant_status','t200_publish_date','t200_close_date','t301_id_recruiter','t400_id_admin')
+				'c207_id_experience','t200_min_salary','t200_max_salary','t200_gross_salary','t200_home_ofice','c204_id_vacant_status','t200_publish_date',
+				't200_close_date','t301_id_recruiter','t400_id_admin')
 		return self.queryset
   
 
@@ -53,7 +55,7 @@ class VacantViewSet(viewsets.GenericViewSet):
 
 	def retrieve(self, request, pk):
 		Vacant = self.get_object(pk)
-		vacant_serializer = self.list_serializer_class(Vacant,many=True)
+		vacant_serializer = self.serializer_class(Vacant,many=True)
 		return Response(vacant_serializer.data)
 
 	def destroy(self, request, pk=None):

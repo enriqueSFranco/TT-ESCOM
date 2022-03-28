@@ -4,7 +4,10 @@ from apps.vacantes.models import Vacant
 class VacantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vacant
-        fields = '__all__'
+        fields = ('t200_id_vacant','t300_id_company','t200_job','t200_description','t200_check_time','t200_closing_hour','t200_work_days',
+				'c207_id_experience','t200_min_salary','t200_max_salary','t200_gross_salary','t200_home_ofice','c204_id_vacant_status','t200_publish_date',
+				't200_close_date','t301_id_recruiter','t400_id_admin')
+        
     
     def create(self,validate_data):
         print("Creando nueva vacante...")

@@ -5,6 +5,7 @@ class LinkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Link
         fields = '__all__'
+        depth = 2
     
     def create(self,validate_data):
         StudentLink = Link(**validate_data)
@@ -32,6 +33,7 @@ class UpdateLinkSerializer(serializers.ModelSerializer):
         def update(self,instance,validate_data):
             update_StudentLink = super().update(instance,validate_data)
             update_StudentLink.save()
+            return update_StudentLink
 
 
 

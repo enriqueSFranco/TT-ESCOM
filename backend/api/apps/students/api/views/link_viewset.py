@@ -18,7 +18,8 @@ class LinkViewSet(viewsets.GenericViewSet):
 		if self.queryset is None:        
 			self.queryset = self.model.objects\
 				.filter(t100_boleta=pk)\
-				.values('t114_id_registrer','t100_boleta','t113_link','c115_id_plataform')
+				.all()
+				#values('t114_id_registrer','t100_boleta','t113_link','c115_id_plataform')
 		return self.queryset
 
 	def get_queryset(self):
@@ -50,7 +51,7 @@ class LinkViewSet(viewsets.GenericViewSet):
 	#Obtener todos los links de un estudiante
 	def retrieve(self, request, pk):
 		link = self.get_object(pk)
-		link_serializer = self.list_serializer_class(link,many=True)
+		link_serializer = self.serializer_class(link,many=True)
 		return Response(link_serializer.data)
 
 	def update(self, request, pk):

@@ -24,7 +24,7 @@ class AcademicLevelViewSet(viewsets.GenericViewSet):
 		self.queryset= None
 		if self.queryset == None:
 			self.queryset = self.model.objects\
-				.filter(t100_boleta = pk)\
+				.filter(c107_id_academic_level = pk)\
 				.values('c107_id_academic_level','c107_description')
 		return  self.queryset #get_object_or_404(self.model,pk=pk)
 		
@@ -57,7 +57,7 @@ class AcademicStateViewSet(viewsets.GenericViewSet):
 		self.queryset= None
 		if self.queryset == None:
 			self.queryset = self.model.objects\
-				.filter(t100_boleta = pk)\
+				.filter(c109_id_academic_state = pk)\
 				.values('c109_id_academic_state','c109_description')
 		return  self.queryset #get_object_or_404(self.model,pk=pk)
 		
@@ -91,7 +91,7 @@ class PlataformViewSet(viewsets.GenericViewSet):
 		self.queryset= None
 		if self.queryset == None:
 			self.queryset = self.model.objects\
-				.filter(t100_boleta = pk)\
+				.filter(c115_id_plataform = pk)\
 				.values('c115_id_plataform','c115_description')
 		return  self.queryset #get_object_or_404(self.model,pk=pk)
 		
@@ -125,7 +125,7 @@ class SkillsViewSet(viewsets.GenericViewSet):
 		self.queryset= None
 		if self.queryset == None:
 			self.queryset = self.model.objects\
-				.filter(t100_boleta = pk)\
+				.filter(c116_id_skill = pk)\
 				.values('c116_id_skill','c116_description','c116_type')
 		return  self.queryset #get_object_or_404(self.model,pk=pk)
 		
@@ -159,7 +159,7 @@ class LenguageViewSet(viewsets.GenericViewSet):
 		self.queryset= None
 		if self.queryset == None:
 			self.queryset = self.model.objects\
-				.filter(t100_boleta = pk)\
+				.filter(c111_id_lenguage = pk)\
 				.values('c111_id_lenguage','c111_description')
 		return  self.queryset #get_object_or_404(self.model,pk=pk)
 		

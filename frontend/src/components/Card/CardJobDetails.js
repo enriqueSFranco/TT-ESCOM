@@ -33,6 +33,7 @@ const JobCardDetails = () => {
   let { t200_id_vacant } = useParams();
   const [job, setJob] = useState([]);
   const [company, setCompany] = useState([]);
+  const [experience, setExperience] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,11 +41,15 @@ const JobCardDetails = () => {
         let jobResponse = await axios.get(`/api/Vacants/${t200_id_vacant}/`);
         setJob(jobResponse.data);
 
+        
+        let catalogueExperienceUrl = `/api/catalogues/catalogs/CatalogueExperience/`;
         let companyUrl = `/api/Companies/${jobResponse.data[0].t300_id_company}/`;
-        const [companyResponse] = await Promise.all([
+        const [companyResponse, experienceRes] = await Promise.all([
           axios.get(companyUrl),
+          axios.get(catalogueExperienceUrl),
         ]);
         setCompany(companyResponse.data);
+        setExperience(experienceRes.data);
       } catch (error) {
         console.error(error)
       }
@@ -53,6 +58,8 @@ const JobCardDetails = () => {
     }, [t200_id_vacant]);
 
   if (!job && !company) return null;
+
+  console.log(job, company, experience);
 
   return (
     <div

@@ -73,7 +73,6 @@ class Ubication(models.Model):
 		Company,
 		null=False,
 		blank=False,
-		unique=True,
 		related_name='CompanyUbication',
 		on_delete=models.CASCADE)
     t302_state = models.CharField(max_length=50,choices=estados,default='NO ESPECIFICADA',null=True,blank=True)

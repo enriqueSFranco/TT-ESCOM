@@ -16,14 +16,14 @@ class SkillViewSet(viewsets.GenericViewSet):
   def get_object(self, pk):
     self.queryset = self.model.objects\
 			.filter(t100_boleta=pk)\
-			.values('t100_boleta','c116_id_skill','t102_id_skill')
+			.values('t100_boleta','c116_id_skill','t102_id_registrer')
     return self.queryset
 
   def get_queryset(self):
     if self.queryset is None:
       self.queryset = self.model.objects\
 			  .filter()\
-			  .values('t100_boleta','c116_id_skill','t102_id_skill')
+			  .values('t100_boleta','c116_id_skill','t102_id_registrer')
     return self.queryset
 
   def list(self, request):
@@ -40,8 +40,8 @@ class SkillViewSet(viewsets.GenericViewSet):
     return Response({"message": "Hay errores en el registro"}, status=status.HTTP_400_BAD_REQUEST)
 
   def retrieve(self, request, pk):        
-    skills = self.model.objects.filter(t102_id_registrer=pk).values('t100_boleta','c116_id_skill','t102_id_skill')
-    skills_serializer = self.serializer_list_class(skills,many=True)
+    skills = self.model.objects.filter(t100_boleta=pk).all()
+    skills_serializer = self.serializer_class(skills,many=True)
     return Response(skills_serializer.data)
 
   def update(self, request, pk):
