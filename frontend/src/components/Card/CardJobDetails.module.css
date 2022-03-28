@@ -86,8 +86,8 @@ h3 {
   height: 700px;
   width: 700px;
   border-radius: 8px;
-  outline: 1px solid #ccc;
   overflow-y: scroll;
+  outline: 1px solid #ccc;
 }
 
 .wrapper::-webkit-scrollbar { width: 8px; }

@@ -5,9 +5,28 @@
 }
 
 .dataResultsJobs {
-  /* outline: 1px solid red; */
+  position: absolute;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   background-color: #fff;
   width: 400px;
+  height: auto;
+  max-height: 200px;
+  overflow-y: scroll;
+  border-radius: 0 0 8px 8px;
+  z-index: 10;
+}
+
+.dataItem {
+  cursor: pointer;
+  font-size: .9rem;
+  padding: .8rem;
+  margin: 0;
+  transition: background-color .5s ease;
+}
+
+.dataItem:hover {
+  color: #fff;
+  background-color: rgb(0, 132, 255);
 }
 
 .searchInput {

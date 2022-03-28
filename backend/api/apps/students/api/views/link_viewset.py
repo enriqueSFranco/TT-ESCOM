@@ -18,14 +18,15 @@ class LinkViewSet(viewsets.GenericViewSet):
 		if self.queryset is None:        
 			self.queryset = self.model.objects\
 				.filter(t100_boleta=pk)\
-				.values('t100_boleta','t113_link')
+				.all()
+				#values('t114_id_registrer','t100_boleta','t113_link','c115_id_plataform')
 		return self.queryset
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t100_boleta','t113_link')
+				.values('t114_id_registrer','t100_boleta','t113_link','c115_id_plataform')
 		return self.queryset
   
 
@@ -47,13 +48,14 @@ class LinkViewSet(viewsets.GenericViewSet):
 			'errors': link_serializer.errors
 		}, status=status.HTTP_400_BAD_REQUEST)
 
+	#Obtener todos los links de un estudiante
 	def retrieve(self, request, pk):
 		link = self.get_object(pk)
-		link_serializer = self.list_serializer_class(link,many=True)
+		link_serializer = self.serializer_class(link,many=True)
 		return Response(link_serializer.data)
 
-	def update(self, request, pk=None):
-		link = self.get_object(pk)
+	def update(self, request, pk):
+		link = self.model.objects.filter(t114_id_registrer=pk).first()
 		link_serializer = UpdateLinkSerializer(link, data=request.data)
 		if link_serializer.is_valid():
 			link_serializer.save()
@@ -66,7 +68,7 @@ class LinkViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk):
-		link_destroy = self.model.objects.filter(t100_boleta=pk).delete()
+		link_destroy = self.model.objects.filter(t114_id_registrer=pk).delete()
 		#SI lo borra pero no se como indicar que se realizo con exito
 		if link_destroy == 1:
 			return Response({

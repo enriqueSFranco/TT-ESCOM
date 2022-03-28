@@ -18,22 +18,24 @@ class EmploymentListSerializer(serializers.ModelSerializer):
 
     def to_representation(self,instance):
         return{
+            't103_id_registrer' : instance['t103_id_registrer'],
             't100_boleta' : instance['t100_boleta'],
 	        't103_corporation' : instance['t103_corporation'],
 	        't103_employment' : instance['t103_employment'],
 	        't103_description' : instance['t103_description'],
-	        't103_start_date' : instance['t103_start_date']#,
-	        #'t103_end_date ' : instance['t103_end_date ']
+	        't103_start_date' : instance['t103_start_date'],
+	        't103_end_date ' : instance['t103_end_date ']
         }
 
 class UpdateEmploymentSerializer(serializers.ModelSerializer):
         class Meta:
             model = EmploymentHistory
-            fields = ('t100_boleta','t103_corporation','t103_employment','t103_description','t103_start_date','t103_end_date')
+            fields = ('t103_id_registrer','t100_boleta','t103_corporation','t103_employment','t103_description','t103_start_date','t103_end_date')
         
         def update(self,instance,validate_data):
             update_historial = super().update(instance,validate_data)
             update_historial.save()
+            return update_historial
 
 
 
