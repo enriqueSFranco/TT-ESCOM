@@ -7,13 +7,12 @@ import Deck from "../components/Deck/Deck";
 import Footer from "../components/Footer/Footer";
 import homeStyles from "./PageHome.module.css";
 
-
 const Home = () => {
   const [, setSearch] = useState(""); // estado de la busqueda
   const [dataList, setDataList] = useState([]); // lista de vacantes
   const [isFiltered, setIsFiltered] = useState(false); // boolean para saber si la informacion se tiene que filtrar
   const [data, setData] = useState(null); // lista filtrada
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [totalJobs, setTotalJobs] = useState(null); // estado para el total de vacantes
 
   /**
@@ -31,8 +30,7 @@ const Home = () => {
           count = count + 1;
           setTotalJobs(count);
           return el;
-        } else
-            return false;
+        } else return false;
       });
       setData(filteredData);
     }
@@ -41,22 +39,23 @@ const Home = () => {
   useEffect(() => {
     let options = {
       headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      }
-    }
-    setLoading(true);
-    helpHttp().GET("/api/Vacants/", options)
-      .then(res => {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    };
+
+    helpHttp()
+      .GET("/api/Vacants/", options)
+      .then((res) => {
         if (!res.err) {
           setDataList(res);
-          setTotalJobs(res.length)
+          setTotalJobs(res.length);
+          setLoading(false) // desactivamos el modo "cargando"
         } else {
           setDataList(null);
         }
       })
-      .catch(err => console.log(err));
-    setLoading(false);
+      .catch((err) => console.log(err));
   }, []);
 
   const handleSearch = (value) => {
@@ -66,18 +65,23 @@ const Home = () => {
      * Si el valor introduciodo en el campo ded busqueda es diferente
      * a una cadena vacia, entonces filtramos los datos.
      **/
-    setIsFiltered(value !== ""); 
+    setIsFiltered(value !== "");
   };
 
   return (
     <main className={homeStyles.home}>
       {/* barra de busqueda  */}
-      <Search handleSearch={handleSearch} data={dataList} />
+      <Search
+        handleSearch={handleSearch}
+        data={dataList}
+      />
       {/* control de filtros */}
       <Filter />
 
       <article className={homeStyles.wrapperJobList}>
-        <span className={homeStyles.totalJobs}>Total de vacantes: {totalJobs}</span>
+        <span className={homeStyles.totalJobs}>
+          Total de vacantes: {totalJobs}
+        </span>
         {/* renderizado de los empleos */}
         <CardJobList jobs={!isFiltered ? dataList : data} loading={loading} />
       </article>
