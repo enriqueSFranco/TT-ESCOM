@@ -30,7 +30,7 @@ let initialForm={
 const StepComponent = () => {
 	const [activeStep,setActiveStep]=React.useState(0);
 	const { form , handleChange} = useForm(initialForm);
-	const [Allresults, setResult] = React.useState("");
+	const [Allresults, setResult] = React.useState(null);
 	
 
 	const PageDisplay =() => {
@@ -40,8 +40,10 @@ const StepComponent = () => {
 
 		}
 		if(activeStep === 1){
-			GetData();
+			Getskills('s');
 			console.log("Aqui ta c: ");
+			if (Allresults== null)
+				return;
 			console.log(Allresults);
 			return <DatesJob form={form} handleChange={handleChange} Allresults={Allresults}/>;
 		}
@@ -55,7 +57,7 @@ const StepComponent = () => {
 
 	const nextStep = () => {
 		if(activeStep<2){
-			GetData();
+			//GetData();
 			console.log((activeStep));
 			setActiveStep((currentStep) => currentStep + 1);
 		}
@@ -88,9 +90,9 @@ const StepComponent = () => {
 	  };
 	  
 
-	  const GetData = () => {
-		//console.log(form);
-		const endpoint = "/api/catalogues/CatalogueSkills/H/";
+	  const Getskills = (skilltype) => {
+		console.log("Buscando por type: "+skilltype);
+		const endpoint = "/api/catalogues/CatalogueSkills/"+skilltype+"/";
 	
 		let options = {
 		  headers: {
