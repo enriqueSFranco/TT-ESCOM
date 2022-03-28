@@ -133,14 +133,23 @@ const top100Films = [
   { title: 'Monty Python and the Holy Grail', year: 1975 },
 ];
 
-useEffect(() => {
-  const fetchData = async () => {
-    const skills = `/api/catalogues/CatalogueSkills/`
-    
-  }
-},[]);
+
 
 const DatesJob = ({form,handleChange}) =>  {
+  const [Allresults, setResult] = React.useState("");
+  useEffect(() => {
+    const fetchData = async () => {
+      const skills = `/api/catalogues/catalogs/CatalogueSkills/`
+      const [result] = await Promise.all([
+        helpHttp().GET(skills)
+      ]);
+      setResult(result);
+      
+    }
+    fetchData();
+  },[]);
+  console.log({Allresults});
+
   const [value, setValue] = React.useState(top100Films[0]);
   const [inputValue, setInputValue] = React.useState("");
   //console.log({ value });
