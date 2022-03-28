@@ -13,6 +13,7 @@ const Input = ({
   return (
     <input
       type={type}
+      autoComplete="off"
       id={id}
       name={name}
       placeholder=" "

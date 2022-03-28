@@ -19,18 +19,20 @@ class HistorialViewSet(viewsets.GenericViewSet):
 		if self.queryset == None:
 			self.queryset = self.model.objects\
 				.filter(t100_boleta = pk)\
-				.values('t104_id_registrer','t100_boleta','t104_academic_unit','t104_start_date','t104_end_date')
+				.values('t104_id_registrer','t100_boleta','t104_academic_unit','t104_carreer','c107_id_academic_level','c109_id_academic_state','t104_start_date','t104_end_date')
 		return  self.queryset #get_object_or_404(self.model,pk=pk)
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t104_id_registrer','t100_boleta','t104_academic_unit','t104_start_date','t104_end_date')
+				.values('t104_id_registrer','t100_boleta','t104_academic_unit','t104_carreer','c107_id_academic_level','c109_id_academic_state','t104_start_date','t104_end_date')
 		return self.queryset
   
 
 	def list(self, request):
+		print(request.data)
+		print("HOla")
 		historial = self.get_queryset()
 		historials_serializer = self.list_serializer_class(historial, many=True)
 		return Response(historials_serializer.data, status=status.HTTP_200_OK)

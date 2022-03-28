@@ -28,7 +28,7 @@
 .inputField {
   box-sizing: border-box;
   display: block;
-  width: 100%;
+  width: 400px;
   border: 1px solid currentColor;
   padding: calc(var(--size-bezel) * 1.5) var(--size-bezel);
   color: currentColor;

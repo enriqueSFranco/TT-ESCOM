@@ -18,10 +18,7 @@
 .card:hover { box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, 
                           rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; }
 
-.card .cardHeader  h3 {
-  width: 450px;
-  height: 22px;
-}
+.card .cardHeader h3 { width: 450px; }
 
 .cardHeader::before {
   position: absolute;
@@ -43,9 +40,10 @@
 }
 
 .nameCompany {
-  font-size: .75rem;
+  font-size: .9rem;
   font-weight: 700;
-  color: #ccc;
+  color: #0d5ed7;
+  font-weight: bold;
 }
 
 .placeholder {

@@ -52,8 +52,8 @@ class EmploymentViewSet(viewsets.GenericViewSet):
 		employments_serializer = self.list_serializer_class(employment,many=True)
 		return Response(employments_serializer.data)
 
-	def update(self, request, pk=None):
-		employment = self.get_object(pk)
+	def update(self, request, pk):
+		employment = self.model.objects.filter(t103_id_registrer=pk).first()
 		employment_serializer = UpdateEmploymentSerializer(employment, data=request.data)
 		if employment_serializer.is_valid():
 			employment_serializer.save()
@@ -66,7 +66,7 @@ class EmploymentViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk):
-		employment_destroy = self.model.objects.filter(t100_boleta=pk).delete()
+		employment_destroy = self.model.objects.filter(t103_id_registrer=pk).delete()
         #SI lo borra pero no se como indicar que se realizo con exito
 		if employment_destroy == 1:
 			return Response({

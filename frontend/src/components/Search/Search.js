@@ -1,21 +1,30 @@
-import { useForm } from "../../hooks/useForm";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import Input from "../Input/Input";
 import Label from "../Input/Label";
 import Span from "../Input/Span";
 import styles from "./Search.module.css";
 
-let initialForm = {
-  job: "",
-  location: "",
-};
+const Search = ({ handleSearch, data }) => {
+  const [job, setJob] = useState("");
+  const [location, setLocation] = useState("");
+  const [filterData, setFilterData] = useState([]);
 
-const Search = ({ handleSearch }) => {
-  const { form, handleChange } = useForm(initialForm);
+  const handleFilterJob = (e) => {
+    const query = e.target.value;
+    setJob(query);
+
+    const newFilter = data.filter((value) => {
+      return value?.t200_job.toLowerCase().includes(query.toLowerCase());
+    });
+    
+    query === "" ? setFilterData([]) : setFilterData(newFilter);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!form.job.trim() || !form.location.trim()) return;
-    handleSearch(form.job);
+    if (!job.trim() || !location.trim()) return;
+    handleSearch(job);
   };
 
   return (
@@ -26,26 +35,38 @@ const Search = ({ handleSearch }) => {
         <span>y a vivir tus sueños.</span>
       </h1>
       <form onSubmit={handleSubmit} className={styles.searchForm}>
-        <Label htmlFor="job">
-          <Input
-            type="text"
-            id="job"
-            name="job"
-            value={form.job}
-            onChange={handleChange}
-          />
-          <Span content="Buscar una vacante" />
-        </Label>
-        <Label htmlFor="location">
-          <Input
-            type="text"
-            id="location"
-            name="location"
-            value={form.location}
-            onChange={handleChange}
-          />
-          <Span content="Ubicacion" />
-        </Label>
+        <div className={styles.searchInput}>
+          <Label htmlFor="job">
+            <Input
+              type="text"
+              id="job"
+              name="job"
+              value={job}
+              onChange={handleFilterJob}
+            />
+            <Span content="Buscar una vacante" />
+          </Label>
+          {filterData != 0 && (
+            <div className={styles.dataResultsJobs}>
+              {filterData.slice(0,15).map((value, index) => {
+                return <p key={index}>{value?.t200_job}</p>;
+              })}
+            </div>
+          )}
+        </div>
+        <div className={styles.searchInput}>
+          <Label htmlFor="location">
+            <Input
+              type="text"
+              id="location"
+              name="location"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+            />
+            <Span content="Ubicacion" />
+          </Label>
+          <div>{/* lista de estados, municipios */}</div>
+        </div>
         <input
           type="submit"
           value="Buscar Vacante"
