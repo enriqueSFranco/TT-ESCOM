@@ -1,6 +1,7 @@
 import CardProfileStudent from "../components/Card/CardProfileStudent";
 
 const PageDetailsUser = () => {
+	
 	const { showPassword, toggle } = useShowPassword(false)
 	const { user } = useContext(AuthContext);
 	const { form, handleChange } = useForm(initialForm);

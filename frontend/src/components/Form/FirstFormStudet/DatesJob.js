@@ -3,7 +3,7 @@ import styles from "./Styles.module.css";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import CheckboxComponent from "../../Input/Checkbox"
-import { useEffect } from 'react';
+import { $ajax } from "../../../utils/$ajax";
 
 // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
 const top100Films = [
@@ -135,24 +135,14 @@ const top100Films = [
 
 
 
-const DatesJob = ({form,handleChange}) =>  {
-  const [Allresults, setResult] = React.useState("");
-  useEffect(() => {
-    const fetchData = async () => {
-      const skills = `/api/catalogues/catalogs/CatalogueSkills/`
-      const [result] = await Promise.all([
-        helpHttp().GET(skills)
-      ]);
-      setResult(result);
-      
-    }
-    fetchData();
-  },[]);
-  console.log({Allresults});
+const DatesJob = ({form,handleChange, Allresults}) =>  {
+  
+    
 
   const [value, setValue] = React.useState(top100Films[0]);
   const [inputValue, setInputValue] = React.useState("");
-  //console.log({ value });
+  console.log("--------------------------------")
+  console.log({Allresults});
 
     return (
       <div>
@@ -175,9 +165,9 @@ const DatesJob = ({form,handleChange}) =>  {
                   <Autocomplete
                     multiple
                     id="tags-outlined"
-                    options={top100Films}
-                    getOptionLabel={(option) => option.title}
-                    defaultValue={[top100Films[13]]}
+                    options={Allresults}
+                    getOptionLabel={(option) => option.c116_description}
+                    defaultValue={[Allresults[1]]}
                     filterSelectedOptions
                     renderInput={(params) => (
                       <TextField

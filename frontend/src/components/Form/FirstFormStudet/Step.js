@@ -30,6 +30,7 @@ let initialForm={
 const StepComponent = () => {
 	const [activeStep,setActiveStep]=React.useState(0);
 	const { form , handleChange} = useForm(initialForm);
+	const [Allresults, setResult] = React.useState("");
 	
 
 	const PageDisplay =() => {
@@ -39,7 +40,10 @@ const StepComponent = () => {
 
 		}
 		if(activeStep === 1){
-			return <DatesJob form={form} handleChange={handleChange}/>;
+			GetData();
+			console.log("Aqui ta c: ");
+			console.log(Allresults);
+			return <DatesJob form={form} handleChange={handleChange} Allresults={Allresults}/>;
 		}
 		if(activeStep === 2){
 			console.log(form);
@@ -51,6 +55,7 @@ const StepComponent = () => {
 
 	const nextStep = () => {
 		if(activeStep<2){
+			GetData();
 			console.log((activeStep));
 			setActiveStep((currentStep) => currentStep + 1);
 		}
@@ -76,6 +81,28 @@ const StepComponent = () => {
 		  .then((response) => {
 			if (!response.err) {
 			  console.log(response);
+			  
+			}
+		  })
+		  .catch((err) => console.error(err));
+	  };
+	  
+
+	  const GetData = () => {
+		//console.log(form);
+		const endpoint = "/api/catalogues/CatalogueSkills/H/";
+	
+		let options = {
+		  headers: {
+			"Content-Type": "application/json",
+			Accept: "application/json",
+		  }
+		};
+		$ajax().GET(endpoint, options)
+		  .then((response) => {
+			if (!response.err) {
+			  console.log(response);
+			  setResult(response);
 			  
 			}
 		  })

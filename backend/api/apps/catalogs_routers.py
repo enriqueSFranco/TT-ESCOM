@@ -23,5 +23,6 @@ router.register(r'CatalogueReportType',ReportTypeViewSet,basename='Report type c
 router.register(r'CatalogueReportState',ReportStateViewSet,basename='Report status catalog')
 router.register(r'States',StateViewSet,basename='States catalog')
 router.register(r'Municipalities',MunicipalityViewSet,basename='Municipalities catalog')
+router.register(r'CatalogueSkills/<str:pk>',SkillsViewSet,basename='Skills divided by types catalog')
 
 urlpatterns=router.urls

@@ -55,7 +55,7 @@ const PageAddJob = () => {
   console.log(form.t200_publish_date);
   
   
-  if (form == null) return;x
+  if (form == null) return;
 
   const createJob = (e) => {
     //const { form, handleChange } = useForm(initialForm);
