@@ -2,14 +2,25 @@ import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { $ajax } from "../../utils/$ajax";
 import TextField from "@mui/material/TextField";
-
+import StepComponent from "./FirstFormStudet/Step"
 import styles from "./Styles.module.css";
 
 let initialForm = {
-  t100_name: "",
   t100_boleta: "",
-  t100_email: "",
+  t100_name: "",
+  t100_last_name: "",
+  t100_username: "",
   t100_password: "",
+  t100_cv: null,
+  t100_email: "",
+  t100_gender: null,
+  t100_date_of_birth: null,
+  t100_personal_objectives: "",
+  t100_target_salary: null,
+  t100_travel: false,
+  t100_profile_picture: null,
+  is_active: false
+  
 };
 
 const CreateAccount = () => {
@@ -28,11 +39,13 @@ const CreateAccount = () => {
       },
       body: form,
     };
-    $ajax()
-      .POST(endpoint, options)
+    $ajax().POST(endpoint, options)
       .then((response) => {
         if (!response.err) {
           console.log(response);
+          console.log(this.props);
+          /*window.location.replace("https://www.linkedin.com/feed/");*/
+          
         }
       })
       .catch((err) => console.error(err));
@@ -49,7 +62,7 @@ const CreateAccount = () => {
         <div className="col bg-white p-5 rounded-end">
           <h2 className={`${styles.welcome}`}>Bienvenido</h2>
           <form onSubmit={createAccount}>
-            {/* input para el username */}
+            {/* input para el username 
             <div className={styles.inputGroup}>
               <TextField
                 label="Nombre"
@@ -59,7 +72,7 @@ const CreateAccount = () => {
                 value={form.t100_name}
                 onChange={handleChange}
               />
-            </div>
+  </div>*/}
             <div className={styles.inputGroup}>
               <TextField
                 label="Boleta"

@@ -8,6 +8,7 @@
     position: relative;
     justify-content: center;
     align-items: center;
+    margin-top: 40px;
 
 }
 
@@ -18,7 +19,6 @@
 }
 
 .space{
-  background: red;
   width: 250px;
 
 }
