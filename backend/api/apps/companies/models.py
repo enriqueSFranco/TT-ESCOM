@@ -6,8 +6,9 @@ class Company(models.Model):
     t300_name = models.CharField(max_length=100,blank=False,null=False,default="Sin")
     t300_rfc = models.CharField(max_length=20,blank=False,null=False,default="Sin")
     t300_nss = models.PositiveIntegerField()
+    t300_email =  models.EmailField(null=True,blank=True)
     t300_bussiness_name = models.CharField(max_length=100,blank=True,null=True)
-    t300_web_page = models.CharField(max_length=100,blank=False,null=False,default="http://")
+    t300_web_page = models.CharField(max_length=100,blank=True,null=True,default="http://")
     t300_mision = models.TextField(blank=True,null=True)
     t300_vision = models.TextField(blank=True,null=True)
     t300_objective = models.TextField(blank=True,null=True)
@@ -23,7 +24,7 @@ class Company(models.Model):
     t300_create_date = models.DateField()
 
     class Meta:
-        unique_together = ['t300_rfc','t300_nss']
+        unique_together = ['t300_rfc','t300_nss','t300_email']
         verbose_name = 'Company'
         verbose_name_plural = 'Companies'
         db_table = 't300_empresa'
@@ -71,7 +72,6 @@ class Ubication(models.Model):
 		Company,
 		null=False,
 		blank=False,
-		unique=True,
 		related_name='CompanyUbication',
 		on_delete=models.CASCADE)
     t302_state = models.CharField(max_length=50,choices=estados,default='NO ESPECIFICADA',null=True,blank=True)

@@ -14,7 +14,7 @@ class VacantStatus(models.Model):
         verbose_name = 'Vacant status'
         db_table = "c204_estado_vacante"
 
-    def __str__(self):
+    def __str__(self) ->str:
 	    return self.c204_description
 
 #C206 Perfil_candidato
@@ -26,7 +26,7 @@ class CandidateProfile(models.Model):
         verbose_name = 'CandidateProfile'
         db_table = "c206_perfil_candidato"
 
-    def __str__(self):
+    def __str__(self) ->str:
 	    return self.c206_description
 
 #C207 Experiencia
@@ -38,7 +38,7 @@ class Experience(models.Model):
         verbose_name = 'Experience'
         db_table = "c207_experiencia"
 
-    def __str__(self):
+    def __str__(self) ->str:
 	    return self.c207_description
 
 #C205 Estado solicitud
@@ -49,6 +49,9 @@ class ApplicationState(models.Model):
     class Meta:
         verbose_name = 'ApplicationState'
         db_table = 'c205_estado_solicitud'
+    
+    def __str__(self) ->str:
+	    return self.c205_description        
 
 #C210 Tipo reporte
 class ReportType(models.Model):
@@ -74,6 +77,39 @@ class ReportState(models.Model):
     def __str__(self) -> str:
         return self.c220_description
 
+#c225 Estados
+class MState(models.Model):
+	c221_id_state = models.IntegerField(primary_key=True)
+	c221_state = models.CharField(max_length=50)
+	class Meta:
+		verbose_name = 'State'
+		verbose_name_plural = 'States'
+		db_table = 'c221_estado'
+    
+	def __str__(self) -> str:
+		return self.c221_state
+
+#c222 Municipios
+class Municipality(models.Model):
+	c221_id_state = models.ForeignKey(
+        MState,  
+        null=True,
+        blank=True,
+        related_name="MuncipalState",
+        on_delete=models.CASCADE
+    )
+	c222_id_municipality = models.IntegerField(null=False,blank=False)
+	c222_municipality = models.CharField(max_length=70, null=False,blank=False)
+	c222_inegi_key = models.IntegerField(primary_key=True,null=False,blank=False,default=0)
+	class Meta:
+		verbose_name = 'Municipality'
+		verbose_name_plural = 'Municipalities'
+		db_table = 'c222_municipios'
+    
+	def __str__(self) -> str:
+		return self.c222_municipality
+
+
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
 #T200 Vacants
 class Vacant(models.Model):
@@ -86,9 +122,11 @@ class Vacant(models.Model):
         on_delete=models.CASCADE
     )
     t200_job = models.CharField(max_length=70)
-    t200_description = models.TextField()    
-    t200_check_time = models.DateTimeField(auto_now=False)
-    t200_closing_hour = models.DateTimeField(auto_now=False)
+    t200_description = models.TextField(null=True,blank=True)    
+    t200_requirements = models.TextField(null=True,blank=True)
+    t200_benefits = models.TextField(null=True,blank=True)    
+    t200_check_time = models.TimeField(auto_now=False)
+    t200_closing_hour = models.TimeField(auto_now=False)
     t200_work_days = models.CharField(max_length=7)  
     c207_id_experience = models.ForeignKey(
         Experience,
@@ -131,8 +169,8 @@ class Vacant(models.Model):
         verbose_name_plural = 'Vacants'
         db_table = "t200_vacant"
 
-    def __str__(self):
-	    return self.t200_id_vacant
+    def __str__(self) ->str:
+	    return str(self.t200_id_vacant)+","+self.t200_job
 
 #T201_applications
 class Application(models.Model):
@@ -165,54 +203,31 @@ class Application(models.Model):
         verbose_name_plural = 'Applications'
         db_table = "t201_application"
 
-    def __str__(self):
-	    return self.t201_id_application
+    def __str__(self) ->str:
+	    return str(self.t201_id_application)
 
 #T213 Ubicacion
-class Ubication(models.Model):
-    estados=[
-		('AGUASCALIENTES','AGUASCALIENTES'),
-		('BAJA CALIFORNIA','BAJA CALIFORNIA'),
-		('BAJA CALIFORNIA SUR','BAJA CALIFORNIA SUR'),
-		('CAMPECHE','CAMPECHE'),
-		('COAHUILA','COAHUILA'),
-		('COLIMA','COLIMA'),
-		('CHIAPAS','CHIAPAS'),
-		('CHIHUAHUA','CHIHUAHUA'),
-		('CIUDAD DE MEXICO','CIUDAD DE MEXICO'),
-		('DURANGO','DURANGO'),
-		('GUANAJUATO','GUANAJUATO'),
-		('GUERRERO','GUERRERO'),
-		('HIDALGO','HIDALGO'),
-		('JALISCO','JALISCO'),
-		('MEXICO','MEXICO'),
-		('MICHOACAN','MICHOACAN'),
-		('MORELOS','MORELOS'),
-		('NAYARIT','NAYARIT'),
-		('NUEVO LEON','NUEVO LEON'),
-		('OAXACA','OAXACA'),
-		('PUEBLA','PUEBLA'),
-		('QUERETARO DE ARTEAGA','QUERETARO DE ARTEAGA'),
-		('QUINTANA ROO','QUINTANA ROO'),
-		('SAN LUIS POTOSI','SAN LUIS POTOSI'),
-		('SINALOA','SINALOA'),
-		('SONORA','SONORA'),
-		('TABASCO','TABASCO'),
-		('TAMAULIPAS' ,'TAMAULIPAS'),
-		('TLAXCALA' ,'TLAXCALA'),
-		('VERACRUZ' ,'VERACRUZ '),
-		('YUCATAN' ,'YUCATAN'),
-		('ZACATECAS' ,'ZACATECAS'),
-		('NO ESPECIFICADA' ,'NO ESPECIFICADA')
-	]
+class Ubication(models.Model):    
     t200_id_vacant = models.ForeignKey(
 		Vacant,
 		null=True,
 		blank=True,
 		related_name='ApplicationUbication',
 		on_delete=models.CASCADE)
-    t213_state = models.CharField(max_length=30,null=False,blank=False,choices=estados,default='NO ESPECIFICADA')
-    t213_mucipality = models.CharField(max_length=70,null=False,blank=False,default='No definido')
+    t213_state = models.ForeignKey(
+        MState,
+        null=True,
+        blank=True,
+        related_name="UbicationState",
+        on_delete=models.CASCADE
+    )
+    t213_mucipality = models.ForeignKey(
+        Municipality,
+        null=True,
+        blank=True,
+        related_name='UbicationMuncipality',
+        on_delete=models.CASCADE
+    )
     t213_locality = models.CharField(max_length=100,null=False,blank=False,default='No definido')
     t213_street = models.CharField(max_length=60,null=True,blank=True)
     t213_cp = models.IntegerField(blank=True,null=True)
@@ -262,7 +277,7 @@ class Announcement(models.Model):
         db_table = 't202_comunicados'
 
     def __str__ (self)->str:
-        return self.t202_id_announcement
+        return self.t202_id_announcement+": "+self.t202_announcement
 
 #T203 Reportes
 class Report(models.Model):

@@ -19,14 +19,14 @@ class CompanyViewSet(viewsets.GenericViewSet):
 		if self.queryset == None:
 			self.queryset = self.model.objects\
 				.filter(t300_id_company = pk)\
-				.values('t300_id_company','t300_name','t300_rfc','t300_nss','t300_bussiness_name','t300_web_page','t300_mision','t300_vision','t300_objective','t300_logo','t300_banner','t400_id_admin','t300_create_date')
+				.values('t300_id_company','t300_name','t300_rfc','t300_nss','t300_email','t300_bussiness_name','t300_web_page','t300_mision','t300_vision','t300_objective','t300_logo','t300_banner','t400_id_admin','t300_create_date')
 		return  self.queryset #get_object_or_404(self.model,pk=pk)
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t300_id_company','t300_name','t300_rfc','t300_nss','t300_bussiness_name','t300_web_page','t300_mision','t300_vision','t300_objective','t300_logo','t300_banner','t400_id_admin','t300_create_date')
+				.values('t300_id_company','t300_name','t300_rfc','t300_nss','t300_email','t300_bussiness_name','t300_web_page','t300_mision','t300_vision','t300_objective','t300_logo','t300_banner','t400_id_admin','t300_create_date')
 		return self.queryset
   
 

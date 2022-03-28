@@ -109,6 +109,10 @@ class Student(models.Model):
 	t100_gender = models.CharField(max_length=1, choices=genders, default='F', null=True, blank=True)	
 	t100_date_of_birth = models.DateField(null=True, blank=True)
 	t100_personal_objectives = models.TextField(null=True, blank=True)
+	t100_speciality = models.CharField(max_length=100,null=True,blank=True)
+	t100_phonenumber = models.PositiveIntegerField (null=True,blank=True)
+	t100_residence = models.CharField(max_length=100,null=True,blank=True)
+	t100_modalities = models.CharField(max_length=3,null=True,blank=True)
 	t100_target_salary = models.PositiveIntegerField(null=True, blank=True)	
 	t100_travel = models.BooleanField(default=False)
 	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to='profiles_pictures/')
@@ -119,7 +123,6 @@ class Student(models.Model):
 		verbose_name = 'Student'
 		verbose_name_plural = 'Students'
 		db_table = "t100_alumno"
-
 	def __str__(self):
 		return self.t100_name
 
@@ -164,7 +167,6 @@ class residence(models.Model):
 		Student,
 		null=False,
 		blank=False,
-		unique=True,
 		related_name='StudentResidence',
 		on_delete=models.CASCADE)
 	t101_state = models.CharField(max_length=50,choices=estados,default='NO ESPECIFICADA',null=True,blank=True)
@@ -210,8 +212,8 @@ class StudentSkill(models.Model):
 		verbose_name_plural = "StudentSkills"
 		db_table = "t102_habilidades"
 
-	def __str__(self):
-		return self.t102_description
+	def __str__(self) -> str:
+		return str(self.t102_id_registrer)+","+str(self.t100_boleta)
 
 #T104 Historial academico
 class AcademicHistory(models.Model):
