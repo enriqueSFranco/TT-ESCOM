@@ -14,8 +14,23 @@ const empresas = [
   'Instagram'
 ];
 
+const profile = [
+  'Becario',
+  'Pasante',
+  'Titulado',
+];
+
+const typeJob = [
+  'Tiempo Completo',
+  'Medio Tiempo',
+  'Flexible',
+  'Freelance',
+];
+
+
 let initialForm = {
   company: "",
+  profile: "",
   salary: "",
   homeOffice: false,
 };
@@ -32,9 +47,26 @@ const Filter = () => {
             Salario
           </div>
           <div>
-            perfil
+          <Autocomplete 
+            disablePortal
+            id="profile"
+            name="profile"
+            value={form.profile}
+            options={profile}
+            sx={{width:180}}
+            renderInput={(params) => <TextField {...params} label="Perfil Laboral" />}
+          />
           </div>
-          <div>tipo de empleo</div>
+          <div>
+          <Autocomplete 
+            disablePortal
+            id="typeJob"
+            name="typeJob"
+            options={typeJob}
+            sx={{width:180}}
+            renderInput={(params) => <TextField {...params} label="Tipo de empleo" />}
+          />
+          </div>
           <div>
           <Autocomplete 
             disablePortal
