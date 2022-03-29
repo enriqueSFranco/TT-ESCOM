@@ -42,7 +42,7 @@ const JobCardDetails = () => {
         setJob(jobResponse.data);
 
         
-        let catalogueExperienceUrl = `/api/catalogues/catalogs/CatalogueExperience/`;
+        let catalogueExperienceUrl = `/api/catalogues/CatalogueExperience/${jobResponse.data[0].c207_id_experience}`;
         let companyUrl = `/api/Companies/${jobResponse.data[0].t300_id_company}/`;
         const [companyResponse, experienceRes] = await Promise.all([
           axios.get(companyUrl),
@@ -59,7 +59,7 @@ const JobCardDetails = () => {
 
   if (!job && !company) return null;
 
-  console.log(job, company, experience);
+  // console.log(job, company, experience);
 
   return (
     <div
@@ -160,7 +160,7 @@ const JobCardDetails = () => {
         </div>
         <div>
           <h3>Experiencia</h3>
-          <p>documentacion de procesos: 3 años (Obligatorio)</p>
+          <p>{experience[0]?.c207_description}</p>
         </div>
         <div>
           <h3>Idioma</h3>

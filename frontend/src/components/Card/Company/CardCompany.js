@@ -3,7 +3,7 @@ import { AnimateSharedLayout } from "framer-motion/dist/framer-motion";
 import CardExpand from "./CardExpand";
 import CardNormal from "./CardNormal";
 
-const CardCompany = ({ name, webPage, logo, banner, mision, vision }) => {
+const CardCompany = ({ name, webSite, logo, banner, mision, vision }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -11,7 +11,7 @@ const CardCompany = ({ name, webPage, logo, banner, mision, vision }) => {
       {isOpen ? (
         <CardExpand setIsOpen={setIsOpen} mision={mision} vision={vision} />
       ) : (
-        <CardNormal name={name} setIsOpen={setIsOpen} />
+        <CardNormal name={name} webSite={webSite} setIsOpen={setIsOpen} />
       )}
     </AnimateSharedLayout>
   );
