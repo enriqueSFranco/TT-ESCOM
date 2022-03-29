@@ -123,7 +123,6 @@ class Student(models.Model):
 		verbose_name = 'Student'
 		verbose_name_plural = 'Students'
 		db_table = "t100_alumno"
-
 	def __str__(self):
 		return self.t100_name
 
@@ -174,6 +173,11 @@ class residence(models.Model):
 	t101_municipality = models.CharField(max_length=70,null=True,blank=True)
 	t101_locality = models.CharField(max_length=100,null=True,blank=True)
 
+
+class Skill(models.Model):
+	t102_id_skill = models.AutoField(primary_key=True)
+	t102_description = models.CharField(max_length=100)
+
 	class Meta:		
 		verbose_name = 'Residence'
 		db_table='t101_domicilio'
@@ -193,6 +197,7 @@ class StudentSkill(models.Model):
 		on_delete=models.CASCADE,
 		default=1
 	)
+
 	t100_boleta = models.ForeignKey(
 		Student, 
 		null=True, 

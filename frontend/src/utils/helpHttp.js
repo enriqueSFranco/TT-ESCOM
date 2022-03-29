@@ -1,4 +1,4 @@
-export const $ajax = () => {
+export const helpHttp = () => {
   // FUNCION CREADA BAJO LA ARQUITECTURA REST
   const customFetch = (endpoint, options) => {
     const defaultHeaders = {

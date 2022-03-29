@@ -8,6 +8,7 @@ const Input = ({
   name,
   value,
   onChange,
+  onBlur,
   text
 }) => {
   return (
@@ -19,6 +20,7 @@ const Input = ({
       placeholder=" "
       className={styles.inputField}
       value={value}
+      onBlur={onBlur}
       onChange={onChange}
     >{text}</input>
 

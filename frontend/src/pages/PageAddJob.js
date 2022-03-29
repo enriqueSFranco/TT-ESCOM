@@ -1,19 +1,22 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
 
+=======
+import React from "react";
+>>>>>>> feature/login
 import { useForm } from "../hooks/useForm";
+import { useFetch } from "../hooks/useFetch";
 import { useModal } from "../hooks/useModal";
-import { $ajax } from "../utils/$ajax";
-// import { numberFormat } from "../utils/numberFormat";
+import { helpHttp } from "../utils/helpHttp";
 import Modal from "../components/Modal/Modal";
 import Label from "../components/Input/Label";
 import Input from "../components/Input/Input";
 import Span from "../components/Input/Span";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import FormGroup from "@mui/material/FormGroup";
 import Checkbox from "@mui/material/Checkbox";
-import styles from "./PageAddJob.module.css";
 import FormLocationJob from "../components/Form/FormLocationJob";
+import styles from "./PageAddJob.module.css";
 
 
 import TextField from '@mui/material/TextField';
@@ -31,8 +34,10 @@ let initialForm = {
   t200_max_salary: 0,
   t200_gross_salary: false,
   t200_home_ofice: false,
-  t200_publish_date: now.getFullYear()+"-"+now.getMonth()+"-"+now.getDay(), 
-  t200_close_date: now.getFullYear()+"-"+now.getMonth()+"-"+now.getDay(),
+  t200_publish_date:
+    now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay(),
+  t200_close_date:
+    now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay(),
   t300_id_company: 1,
   c207_id_experience: 1,
   c204_id_vacant_status: 1,
@@ -40,19 +45,11 @@ let initialForm = {
   t400_id_admin: null,
 };
 
-  
-  //  t200_job: "",
-  //jobLocation: "",
-  //exp: "",
-  //profileJob: "",
-  //t200_max_salary: null,
-  //initHour: now.getHours() + ":" + now.getMinutes(), //+ ":" + now.getSeconds(),
-  //endHour: "",
-  //t200_description: "",
-
 const PageAddJob = () => {
   const { form, handleChange } = useForm(initialForm);
+  const { data } = useFetch("/api/catalogues/CatalogueCandidateProfile/");
   const [isOpen, closeModal] = useModal();
+<<<<<<< HEAD
   const [profiles, setProfiles] = useState({});
   const [experience , setExperience] = React.useState(null);
   const [Allresults, setResult] = React.useState(null);
@@ -81,9 +78,14 @@ const PageAddJob = () => {
    return;
     
   
+=======
+
+  if (!form && !data) return null;
+
+  let options = data;
+>>>>>>> feature/login
 
   const createJob = (e) => {
-    //const { form, handleChange } = useForm(initialForm);
     console.log("Creando vacante");
     console.log(form);
     e.preventDefault();
@@ -96,7 +98,7 @@ const PageAddJob = () => {
       body: form,
     };
     console.log(options);
-    $ajax()
+    helpHttp()
       .POST(endpoint, options)
       .then((response) => {
         if (!response.err) {
@@ -139,7 +141,7 @@ const PageAddJob = () => {
       <div className={styles.wrapper}>
         <h1 className={styles.title}>Publicar vacante</h1>
         <div className={styles.separator}></div>
-        <form className={styles.form}>
+        <form onSubmit={createJob} className={styles.form}>
           <div className={styles.flexWrapper}>
             <div>
               <Label>
@@ -154,7 +156,6 @@ const PageAddJob = () => {
                 <Span content="Nombre de la vacante" />
               </Label>
             </div>
-            {/* drop down */}
           </div>
           <div className={styles.flexWrapper}>
             <div className={styles.select}>
@@ -164,13 +165,10 @@ const PageAddJob = () => {
                 name="profileJob"
                 onChange={handleChange}
               >
-                <option value="" disabled>
-                  Perfil del empleado
-                </option>
-                <option value="3">Becario</option>
-                <option value="4">Pasante</option>
-                <option value="5">Titulado</option>
-                <option value="2">Estudiante</option>
+                <option value="">Perfil del Canditado</option>
+              {data && options.map(({c206_description}) => (
+                <option key={c206_description} value={c206_description}>{c206_description}</option>
+              ))}
               </select>
             </div>
             <div className={styles.select}>
@@ -197,28 +195,26 @@ const PageAddJob = () => {
             </div>
           </div>
           <div className={styles.flexWrapper}>
-          <Label>
-                <Input
-                  type="text"
-                  id="t200_min_salary"
-                  name="t200_min_salary"
-                  placeholder=" "
-                  
-                  onChange={handleChange}
-                />
-                <Span content="Salario mínimo" />
-              </Label>
-              <Label>
-                <Input
-                  type="text"
-                  id="t200_min_salary"
-                  name="t200_min_salary"
-                  placeholder=" "
-                  
-                  onChange={handleChange}
-                />
-                <Span content="Salario máxino" />
-              </Label>
+            <Label>
+              <Input
+                type="text"
+                id="t200_min_salary"
+                name="t200_min_salary"
+                placeholder=" "
+                onChange={handleChange}
+              />
+              <Span content="Salario mínimo" />
+            </Label>
+            <Label>
+              <Input
+                type="text"
+                id="t200_min_salary"
+                name="t200_min_salary"
+                placeholder=" "
+                onChange={handleChange}
+              />
+              <Span content="Salario máxino" />
+            </Label>
             <div className={`${styles.wrapperHourWork} `}>
               <Input
                 type="time"
@@ -236,16 +232,15 @@ const PageAddJob = () => {
               />
             </div>
           </div>
-          <div className={styles.flexWrapper}>            
-            <FormControlLabel 
-            control={<Checkbox />} label="Salario neto" 
-            name="t200_gross_salary"
-            id="t200_gross_salary"
-            onChange={handleChange}
+          <div className={styles.flexWrapper}>
+            <FormControlLabel
+              control={<Checkbox />}
+              label="Salario neto"
+              name="t200_gross_salary"
+              id="t200_gross_salary"
+              onChange={handleChange}
             />
-            <FormControlLabel 
-            control={<Checkbox />} label="Trabajo remoto" 
-            />
+            <FormControlLabel control={<Checkbox />} label="Trabajo remoto" />
           </div>
           <div className={styles.flexWrapper}>
             <TextareaAutosize
@@ -286,7 +281,7 @@ const PageAddJob = () => {
 
         <div className={`${styles.groudButton}`}>
           <button
-            onClick={createJob}
+            type="submit"
             className={`${styles.btn} btn btn-outline-success`}
           >
             Publicar Vacante
@@ -296,6 +291,7 @@ const PageAddJob = () => {
           </button>
         </div>
       </div>
+      {/* mostramos la modal para ponder los datos de ubicacion */}
       <Modal isOpen={isOpen} closeModal={closeModal}>
         <FormLocationJob />
       </Modal>
