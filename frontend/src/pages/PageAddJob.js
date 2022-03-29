@@ -100,9 +100,12 @@ const PageAddJob = () => {
                 onChange={handleChange}
               >
                 <option value="">Perfil del Canditado</option>
-              {data && options.map(({c206_description}) => (
-                <option key={c206_description} value={c206_description}>{c206_description}</option>
-              ))}
+                {data &&
+                  options.map(({ c206_description }) => (
+                    <option key={c206_description} value={c206_description}>
+                      {c206_description}
+                    </option>
+                  ))}
               </select>
             </div>
             <div className={styles.select}>
