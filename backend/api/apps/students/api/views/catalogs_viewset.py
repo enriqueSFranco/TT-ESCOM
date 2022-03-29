@@ -125,7 +125,7 @@ class SkillsViewSet(viewsets.GenericViewSet):
 		self.queryset= None
 		if self.queryset == None:
 			self.queryset = self.model.objects\
-				.filter(c116_id_skill = pk)\
+				.filter(c116_type = pk)\
 				.values('c116_id_skill','c116_description','c116_type')
 		return  self.queryset #get_object_or_404(self.model,pk=pk)
 		

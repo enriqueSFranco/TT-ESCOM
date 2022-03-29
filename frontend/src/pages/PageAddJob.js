@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { useForm } from "../hooks/useForm";
 import { useModal } from "../hooks/useModal";
@@ -14,6 +14,10 @@ import FormGroup from "@mui/material/FormGroup";
 import Checkbox from "@mui/material/Checkbox";
 import styles from "./PageAddJob.module.css";
 import FormLocationJob from "../components/Form/FormLocationJob";
+
+
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 
 let now = new Date();
 
@@ -49,13 +53,34 @@ let initialForm = {
 const PageAddJob = () => {
   const { form, handleChange } = useForm(initialForm);
   const [isOpen, closeModal] = useModal();
+  const [profiles, setProfiles] = useState({});
+  const [experience , setExperience] = React.useState(null);
+  const [Allresults, setResult] = React.useState(null);
   console.log(form.t200_publish_date);
   console.log("-------------------------")  
   console.log(form);
   console.log(form.t200_publish_date);
+
+  useEffect(() =>{
+    try {    
+    const fetchdata = async () =>{
+      const profilesUrl = `/api/catalogues/CatalogueCandidateProfile/`;
+      const[profilesRes] = await ([
+        $ajax().GET(profilesUrl)
+      ]);
+      console.log(profilesRes);
+      setProfiles(profilesRes);
+    }
+    fetchdata();
+    }
+    catch {
+
+    }
+  },[]);
+  if(!profiles)
+   return;
+    
   
-  
-  if (form == null) return;x
 
   const createJob = (e) => {
     //const { form, handleChange } = useForm(initialForm);
@@ -81,7 +106,33 @@ const PageAddJob = () => {
       .catch((err) => {
         console.error(err);
       });
-  };
+  };  
+
+  const getProfiles = () => {
+    const endpoint = "/api/catalogues/CatalogueCandidateProfile/";
+    let options = {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      }
+    };
+    $ajax()
+      .GET(endpoint, options)
+      .then((response) => {
+        if (!response.err) {
+          console.log(response);
+          setProfiles(response);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };  
+  //getProfiles();
+  //if (!profiles)
+  //  return;
+  //console.log("Perfiles");
+  //console.log(profiles);
 
   return (
     <section className={styles.container}>
@@ -208,6 +259,31 @@ const PageAddJob = () => {
             />
           </div>
         </form>
+
+
+        <div>
+          <Autocomplete
+          //{...getProfiles()}
+          {...console.log("perfiles")}
+          {...console.log(profiles)}
+                    multiple
+                    id="tags-outlined"
+                    options={profiles}
+                    getOptionLabel={(option) => option.c206_description}
+                    defaultValue={[profiles[1]]}
+                    filterSelectedOptions
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        label="Perfiles"
+                        placeholder="Favorites"
+                      />
+                    )}
+
+                  />
+              </div>
+
+
         <div className={`${styles.groudButton}`}>
           <button
             onClick={createJob}
