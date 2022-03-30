@@ -4,6 +4,7 @@ import JobCard from "./CardJob";
 import styles from "./CardJobList.module.css";
 
 const JobList = ({ jobs = [], loading }) => {
+  // console.log(loading)
   return (
     <article className={`${styles.wrapper} ${styles.grid}`}>
       <div style={{width: "500px"}}>

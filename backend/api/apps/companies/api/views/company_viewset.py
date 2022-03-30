@@ -38,7 +38,7 @@ class CompanyViewSet(viewsets.GenericViewSet):
 
 	def create(self, request):
 		company_serializer = self.serializer_class(data=request.data)
-		print('request: ',request.data)
+		print(company_serializer.is_valid())
 		if company_serializer.is_valid():
 			company_serializer.save()
 			return Response({
