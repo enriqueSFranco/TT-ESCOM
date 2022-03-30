@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import { helpHttp } from "../utils/helpHttp";
+import { getAllJobs } from "../services/jobs/getAllJobs";
 import Search from "../components/Search/Search";
-import Filter from "../components/Filter/Filter";
+import FilterProfile from "../components/Filter/FilterProfile";
+import FilterCompany from "../components/Filter/FilterCompany";
+import Switch from "../components/Input/Switch";
 import CardJobList from "../components/Card/CardJobList";
 import Deck from "../components/Deck/Deck";
 import Footer from "../components/Footer/Footer";
@@ -13,6 +15,7 @@ const Home = () => {
   const [isFiltered, setIsFiltered] = useState(false); // boolean para saber si la informacion se tiene que filtrar
   const [data, setData] = useState(null); // lista filtrada
   const [loading, setLoading] = useState(true);
+  const [isChecked, setIsChecked] = useState(false); // informacion filtrada
   const [totalJobs, setTotalJobs] = useState(null); // estado para el total de vacantes
 
   /**
@@ -37,25 +40,13 @@ const Home = () => {
   };
 
   useEffect(() => {
-    let options = {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    };
-
-    helpHttp()
-      .GET("/api/Vacants/", options)
-      .then((res) => {
-        if (!res.err) {
-          setDataList(res);
-          setTotalJobs(res.length);
-          setLoading(false) // desactivamos el modo "cargando"
-        } else {
-          setDataList(null);
-        }
+    getAllJobs()
+      .then(response => {
+        setDataList(response);
+        setTotalJobs(response.length);
+        setLoading(false); // desactivamos el modo "cargando"
       })
-      .catch((err) => console.log(err));
+      .catch(error => console.error(error));
   }, []);
 
   const handleSearch = (value) => {
@@ -68,30 +59,62 @@ const Home = () => {
     setIsFiltered(value !== "");
   };
 
+  /**
+   * filtra los empleos que tengan la etiqueta t200_home_office === true
+   **/
+  const handleChecked = () => {
+    setIsChecked(!isChecked);
+    if (!isChecked) {
+      // mostramos las vacantes que son home office
+      let newData = dataList.filter(data => {
+        return data?.t200_home_ofice;
+      });
+      setTotalJobs(newData.length);
+      setData(newData);
+    } else { // mostramos todas las vacantes
+      setDataList(dataList);
+      setTotalJobs(dataList.length);
+    }
+  };
+
   return (
     <main className={homeStyles.home}>
+      
       {/* barra de busqueda  */}
-      <Search
-        handleSearch={handleSearch}
-        data={dataList}
-      />
+      <Search handleSearch={handleSearch} data={dataList} />
+      
       {/* control de filtros */}
-      <Filter />
+      <div className={homeStyles.filteredControls}>
+        <span>Filtros</span>
+        <FilterProfile />
+        <FilterCompany />
+        <Switch
+          label="Remoto"
+          name="homeOffice"
+          id="HomoOffice"
+          value={isChecked}
+          onChange={handleChecked}
+        />
+      </div>
 
+      {/* renderizado de los empleos */}
       <article className={homeStyles.wrapperJobList}>
         <span className={homeStyles.totalJobs}>
           Total de vacantes: {totalJobs}
         </span>
-        {/* renderizado de los empleos */}
-        <CardJobList jobs={!isFiltered ? dataList : data} loading={loading} />
+        <CardJobList jobs={!isFiltered && !isChecked ? dataList : data} loading={loading} />
       </article>
+      
+
       {/* comunicados */}
       <article className={`${homeStyles.wrapperDeck}`}>
         <h2>Comunicados</h2>
         <Deck />
       </article>
+      
       {/* pie de pagina */}
       <Footer />
+
     </main>
   );
 };

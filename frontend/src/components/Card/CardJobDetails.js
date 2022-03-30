@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { getJob } from "../../services/jobs/getJob";
+import { getBusiness } from "../../services/businnes/getBusiness";
+import { getExperience } from "../../services/catalogs/getExperience";
 import { useParams } from "react-router-dom";
 import { useSticky } from "../../hooks/useSticky";
 import { numberFormat } from "../../utils/numberFormat";
@@ -40,7 +43,6 @@ const JobCardDetails = () => {
       try {
         let jobResponse = await axios.get(`/api/Vacants/${t200_id_vacant}/`);
         setJob(jobResponse.data);
-
         
         let catalogueExperienceUrl = `/api/catalogues/CatalogueExperience/${jobResponse.data[0].c207_id_experience}`;
         let companyUrl = `/api/Companies/${jobResponse.data[0].t300_id_company}/`;
@@ -58,8 +60,6 @@ const JobCardDetails = () => {
     }, [t200_id_vacant]);
 
   if (!job && !company) return null;
-
-  // console.log(job, company, experience);
 
   return (
     <div

@@ -1,6 +1,6 @@
 import styles from "./Styles.module.css";
 
-const Switch = ({ label, name, id, value, onChange }) => {
+const Switch = ({ label, name, id, value, onChange, ...rest }) => {
   return (
     <>
       <label className={styles.wrapperSwitch}>
@@ -10,7 +10,8 @@ const Switch = ({ label, name, id, value, onChange }) => {
           name={name}
           id={id} 
           value={value} 
-          onChange={onChange} 
+          onChange={onChange}
+          {...rest}
         />
         <span className={`${styles.sliderSwitch} ${styles.check}`}></span>
       <span className={styles.label}>{label}</span>

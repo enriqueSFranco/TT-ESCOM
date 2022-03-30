@@ -10,9 +10,9 @@
   top: 3rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   justify-content: center;
   justify-items: center;
-  /* column-gap: 7rem; */
 }
 
 .search {
@@ -53,6 +53,6 @@
   position: relative;
   top: 3rem;
   background-color: #fff;
-  height: 95vh;
+  /* height: 95vh; */
   width: 100%;  
 }

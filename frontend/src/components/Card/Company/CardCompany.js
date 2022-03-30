@@ -7,13 +7,15 @@ const CardCompany = ({ name, webSite, logo, banner, mision, vision }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <AnimateSharedLayout>
-      {isOpen ? (
-        <CardExpand setIsOpen={setIsOpen} mision={mision} vision={vision} />
-      ) : (
-        <CardNormal name={name} webSite={webSite} setIsOpen={setIsOpen} />
-      )}
-    </AnimateSharedLayout>
+    <>
+      <AnimateSharedLayout>
+        {isOpen ? (
+          <CardExpand setIsOpen={setIsOpen} mision={mision} vision={vision} />
+        ) : (
+          <CardNormal name={name} webSite={webSite} setIsOpen={setIsOpen} />
+        )}
+      </AnimateSharedLayout>
+    </>
   );
 };
 

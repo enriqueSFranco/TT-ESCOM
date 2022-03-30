@@ -1,15 +1,16 @@
+import { useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 import Label from "../components/Input/Label";
 import Input from "../components/Input/Input";
 import Span from "../components/Input/Span";
 import CardCompany from "../components/Card/Company/CardCompany";
+import { API_COMPANY } from "../services/settings";
 import styles from "./PageCompany.module.css";
-import { useState } from "react";
 
 const PageCompany = () => {
   const [search, setSearch] = useState("");
   const [companyMatch, setCompanyMatch] = useState([]);
-  const { data } = useFetch("/api/Companies/");
+  const { data } = useFetch(API_COMPANY);
 
   const searchCompany = (query) => {
     if (query !== "") {
@@ -29,9 +30,7 @@ const PageCompany = () => {
   return (
     <div className={`${styles.wrapperListCompanies}`}>
       <div className={styles.search}>
-        <h1 className={styles.title}>
-          Empresas registradas
-        </h1>
+        <h1 className={styles.title}>Empresas registradas</h1>
         <form className={styles.searchForm}>
           <Label htmlFor="company">
             <Input
@@ -55,12 +54,11 @@ const PageCompany = () => {
               </div>
             ))
           : data.map((company) => (
-              <div key={company?.t300_id_company} className={styles.gridItems}>
-                <CardCompany
-                  name={company?.t300_name}
-                  webSite={company?.t300_web_page}
-                />
-              </div>
+              <CardCompany
+                key={company?.t300_id_company}
+                name={company?.t300_name}
+                webSite={company?.t300_web_page}
+              />
             ))}
       </div>
     </div>

@@ -1,4 +1,16 @@
 
+.filteredControls {
+  position: relative;
+  top: 4rem;
+  width: 650px;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  /* outline: 1px solid #ccc; */
+}
+
 .totalJobs {
   position: relative;
   left: 18.5rem;
@@ -8,18 +20,20 @@
 
 .wrapperJobList {
   position: relative;
-  top: 3rem
+  top: 7rem
 }
 
 .wrapperDeck {
-  background-color: #eeeeee;
+  background-color: #f6f8fb;
   position: relative;
-  top: 5rem;
+  top: 9rem;
 }
 
 .wrapperDeck h2 {
-  margin-left: 5.5rem;
+  color: #194695;
+  text-transform: uppercase;
+  margin-left: 7rem;
   padding-top: 1rem;
   font-size: 1.5rem;
-  text-transform: capitalize;
+  font-weight: bold;
 }
