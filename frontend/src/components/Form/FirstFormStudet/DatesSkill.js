@@ -140,27 +140,26 @@ function DatesSkill ({form,handleChange}) {
     return (
       <div className={styles.conJob}>
         <form>
-          {/* input para la eleccion de trabjo TODO: cambiar el HTMLFOR*/}
+          {/* input para la eleccion de trabjo TODO: cambiar el HTMLFOR
             <div className={styles.softskills}>
               <div className={styles.text}><h6>Escoge tus Skills (max 10)</h6></div>
-              <div>
-                <Autocomplete
-                  multiple
-                  id="tags-outlined"
-                  options={top100Films}
-                  getOptionLabel={(option) => option.title}
-                  defaultValue={[top100Films[13]]}
-                  filterSelectedOptions
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="Hard Skills"
-                      placeholder="Favorites"
-                    />
-                  )}
-                />
+              <div className={styles.select}>
+                  <select
+                    defaultValue=""
+                    className={styles.select}
+                    name="profileJob"
+                    onChange={handleChange}
+                  >
+                    <option value="" disabled>
+                      Perfil del empleado
+                    </option>
+                    <option value="3">Becario</option>
+                    <option value="4">Pasante</option>
+                    <option value="5">Titulado</option>
+                    <option value="2">Estudiante</option>
+                  </select>
               </div>
-            </div>
+    </div>*/}
 
             {/* input para la eleccion de trabjo TODO: cambiar el HTMLFOR*/}
             <div>

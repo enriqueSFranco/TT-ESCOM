@@ -60,3 +60,30 @@
   margin-top: 15px;
 }
 
+
+.select {
+  position: relative;
+  display: flex;
+  width: 450px;
+  height: 3rem;
+  list-style: 3;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  height: 100%;
+  padding: 0 1rem;
+  background-color: #90314b;
+  cursor: pointer;
+  pointer-events: none;
+  transition: .2s all ease;
+}

@@ -26,25 +26,33 @@ function DatesPersonal ({form,handleChange}) {
             </Label>        
           </div>
 
-          {/* input para Ubicacion TODO: CAMBIAR EL HTMLFOR
+          {/* input para Ubicacion TODO: CAMBIAR EL HTMLFOR*/}
           <div>
-            <Label htmlFor="">
+            <Label htmlFor="t100_residence">
               <Input
                 type="text"
+                name="t100_residence"
+                id="t100_residence"
+                value={form.t100_residence}
+                onChange={handleChange}
               />
               <Span content="¿Donde Vives?" />
             </Label>
     </div>
           
-          {/* input para Telefono TODO: CAMBIAR EL HTMLFOR
+          {/* input para Telefono TODO: CAMBIAR EL HTMLFOR*/}
           <div>
-            <Label htmlFor="">
+            <Label htmlFor="t100_phonenumber">
               <Input
                 type="tel"
+                name="t100_phonenumber"
+                id="t100_phonenumber"
+                value={form.t100_phonenumber}
+                onChange={handleChange}
               />
               <Span content="WhatsApp" />
             </Label>
-    </div>*/}
+        </div>
                             
           {/* input para E-mail TODO: CAMBIAR EL HTMLFOR*/}
           <div>

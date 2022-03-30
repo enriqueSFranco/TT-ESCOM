@@ -135,14 +135,24 @@ const top100Films = [
 
 
 
-const DatesJob = ({form,handleChange, Allresults}) =>  {
+const DatesJob = ({form, handleChange, AllResults}) =>  {
+  let soft = new Array();
+  let hard = new Array();
   
-    
 
-  const [value, setValue] = React.useState(top100Films[0]);
-  const [inputValue, setInputValue] = React.useState("");
-  console.log("--------------------------------")
-  console.log({Allresults});
+
+  AllResults.map((dato)=>{
+    if(dato['c116_type']=='H'){
+      hard.push(dato); 
+    }else{
+      soft.push(dato);
+    }
+  }  
+  );
+  console.log(hard);
+  console.log(soft);
+
+ 
 
     return (
       <div>
@@ -161,45 +171,43 @@ const DatesJob = ({form,handleChange, Allresults}) =>  {
             {/* input para la eleccion de trabjo TODO: cambiar el HTMLFOR*/}
             <div className={styles.softskills}>
               <div className={styles.text}><h6>Escoge tus Skills (max 10)</h6></div>
-                <div className={styles.autocomplete}>
-                  <Autocomplete
-                    multiple
-                    id="tags-outlined"
-                    options={Allresults}
-                    getOptionLabel={(option) => option.c116_description}
-                    defaultValue={[Allresults[1]]}
-                    filterSelectedOptions
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="Hard Skills"
-                        placeholder="Favorites"
-                      />
+                <div className={styles.select}>
+                  <select
+                    className={styles.select}
+                    name="t100_personal_objectives"
+                    onChange={handleChange} 
+                    id="t100_personal_objectives"
+                    value={form.t100_personal_objectives}
+                  >
+                  
+                    <option value="" disabled>
+                    Hard Skills
+                    </option>
+                    {hard.map((option) =>
+                    (<option key={option['c116_description']} value={option['c116_id_skill']}>{option['c116_description']}</option>)
                     )}
-
-                  />
-                </div>
+                  </select>
+              </div>
             </div>
 
             {/* input para la eleccion de trabjo TODO: cambiar el HTMLFOR*/}
             <div className={styles.softskills}>
-                <div className={styles.autocomplete}>
-                  <Autocomplete
-                    multiple
-                    id="tags-outlined"
-                    options={top100Films}
-                    getOptionLabel={(option) => option.title}
-                    defaultValue={[top100Films[13]]}
-                    filterSelectedOptions
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="Hard Skills"
-                        placeholder="Favorites"
-                      />
-                    )}
-                  />
-                </div>
+              <div className={styles.select}>
+                  <select
+                    className={styles.select}
+                    name="t100_username"
+                    onChange={handleChange} 
+                    id="t100_username"
+                    value={form.t100_username}
+                  >
+                    <option value="" disabled>
+                      Soft Skills
+                    </option>
+                    {soft.map((option) =>
+                (<option key={option['c116_description']} value={option['c116_id_skill']}>{option['c116_description']}</option>)
+              )}
+                  </select>
+              </div>
             </div>
           </form>
       </div>

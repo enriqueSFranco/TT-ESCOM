@@ -8,14 +8,16 @@ import DatesSkill from './DatesSkill';
 import Button from '@mui/material/Button';
 import styles from "./Styles.module.css";
 import { useForm } from "../../../hooks/useForm";
+import { useFetch } from "../../../hooks/useFetch";
 import { $ajax } from "../../../utils/$ajax";
 
 let initialForm={
 	t100_boleta: "2015090419",
 	t100_name: "",
+	t100_password: "123456",
 	t100_last_name: "",
 	t100_username: "",
-	t100_cv: "",
+	t100_cv: null,
 	t100_email: "",
 	t100_gender: null,
 	t100_date_of_birth: null,
@@ -23,32 +25,32 @@ let initialForm={
 	t100_speciality: "",
 	t100_target_salary: "",
 	t100_travel: false,
-	t100_profile_picture: "",
+	t100_profile_picture: null,
 	is_active: false,
+	t100_phonenumber: "",
+	t100_residence: "",
 }
+
 
 const StepComponent = () => {
 	const [activeStep,setActiveStep]=React.useState(0);
 	const { form , handleChange} = useForm(initialForm);
-	const [Allresults, setResult] = React.useState(null);
+	const { data } = useFetch("/api/catalogues/CatalogueSkills/");
+	if(!data && !form){
+		return;
+	}
+	
+	let AllResults =data;
 	
 
 	const PageDisplay =() => {
 		if(activeStep === 0){
-			console.log(form);
 			return <DatesPersonal form={form} handleChange={handleChange}/>;
-
 		}
 		if(activeStep === 1){
-			Getskills('s');
-			console.log("Aqui ta c: ");
-			if (Allresults== null)
-				return;
-			console.log(Allresults);
-			return <DatesJob form={form} handleChange={handleChange} Allresults={Allresults}/>;
+			return <DatesJob form={form} handleChange={handleChange} AllResults={AllResults}/>;
 		}
 		if(activeStep === 2){
-			console.log(form);
 			return <DatesSkill form={form} handleChange={handleChange}/>;
 
 		}
@@ -57,19 +59,19 @@ const StepComponent = () => {
 
 	const nextStep = () => {
 		if(activeStep<2){
-			//GetData();
-			console.log((activeStep));
+			//console.log((activeStep));
 			setActiveStep((currentStep) => currentStep + 1);
 		}
 		if(activeStep>=2){
-			console.log(("FInlaiza"));
+			
 			updateData();
 			
 		}
 	}
 
 	const updateData = () => {
-		//console.log(form);
+		console.log(("FInlaiza"));
+		console.log(form);
 		const endpoint = "/api/Students/2015090419/";
 	
 		let options = {
@@ -90,26 +92,7 @@ const StepComponent = () => {
 	  };
 	  
 
-	  const Getskills = (skilltype) => {
-		console.log("Buscando por type: "+skilltype);
-		const endpoint = "/api/catalogues/CatalogueSkills/"+skilltype+"/";
-	
-		let options = {
-		  headers: {
-			"Content-Type": "application/json",
-			Accept: "application/json",
-		  }
-		};
-		$ajax().GET(endpoint, options)
-		  .then((response) => {
-			if (!response.err) {
-			  console.log(response);
-			  setResult(response);
-			  
-			}
-		  })
-		  .catch((err) => console.error(err));
-	  };
+
 
 	const previousStep = () => {
 		if(activeStep>0)
