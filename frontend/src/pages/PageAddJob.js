@@ -40,20 +40,10 @@ const PageAddJob = () => {
   const { form, handleChange } = useForm(initialForm);
   const { data } = useFetch("/api/catalogues/CatalogueCandidateProfile/");
   const [isOpen, closeModal] = useModal();
-<<<<<<< HEAD
 
   if (!form && !data) return null;
 
   let options = data;
-=======
-  console.log(form.t200_publish_date);
-  console.log("-------------------------")  
-  console.log(form);
-  console.log(form.t200_publish_date);
-  
-  
-  if (form == null) return;
->>>>>>> a1dc970 (Update: backend)
 
   const createJob = (e) => {
     console.log("Creando vacante");

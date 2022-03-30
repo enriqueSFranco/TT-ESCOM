@@ -4,8 +4,7 @@ from apps.students.models import Link
 class LinkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Link
-        fields = '__all__'
-        depth = 2
+        fields = '__all__'        
     
     def create(self,validate_data):
         StudentLink = Link(**validate_data)
@@ -16,14 +15,15 @@ class LinkListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Link
         fields = '__all__'
+        depth = 2
 
-    def to_representation(self,instance):
+    '''def to_representation(self,instance):
         return{
             't114_id_registrer': instance['t114_id_registrer'],
             't100_boleta' : instance['t100_boleta'],
 	        't113_link' : instance['t113_link'],
             'c115_id_plataform': instance['c115_id_plataform']
-        }
+        }'''
 
 class UpdateLinkSerializer(serializers.ModelSerializer):
         class Meta:

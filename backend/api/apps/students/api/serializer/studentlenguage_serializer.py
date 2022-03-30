@@ -13,14 +13,13 @@ class LenguagesSerializer(serializers.ModelSerializer):
         Lenguages.save()
         return Lenguages
     
-class LenguagesListSerializer(serializers.ModelSerializer):
-    lenguage = LenguageSerializer()
-    #lenguage = LenguageListSerializer(read_only=True)
+class LenguagesListSerializer(serializers.ModelSerializer):    
     class Meta:
         model = StudentLenguage
         fields = '__all__'
+        depth = 2
 
-    def to_representation(self,instance):
+    """def to_representation(self,instance):
         print(instance)        
         return{
             't110_id_registrer' : instance['t110_id_registrer'],
@@ -31,7 +30,7 @@ class LenguagesListSerializer(serializers.ModelSerializer):
 	        't110_speaking_level' : instance['t110_speaking_level'],
 	        't110_comprension_level' : instance['t110_comprension_level'],
 	        't110_native' : instance['t110_native']
-        }
+        }"""
 
 class UpdateLenguagesSerializer(serializers.ModelSerializer):
         class Meta:

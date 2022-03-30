@@ -139,6 +139,13 @@ class Vacant(models.Model):
     t200_max_salary = models.IntegerField()
     t200_gross_salary = models.BooleanField()
     t200_home_ofice = models.BooleanField()
+    c206_id_profile = models.ForeignKey(
+        CandidateProfile,
+        null=True,
+        blank=True,
+        related_name='ProfileRequired',
+        on_delete=models.CASCADE
+    )
     c204_id_vacant_status = models.ForeignKey(
         VacantStatus,
         null=False,
@@ -244,9 +251,9 @@ class Ubication(models.Model):
 #T202 Comunicados
 class Announcement(models.Model):
     t202_id_announcement = models.AutoField(primary_key=True)
-    t202_announcement = models.FileField()#<-Titulo
+    t202_announcement = models.FileField(null=True,blank=True)#<-Titulo
     t202_description = models.TextField()
-    t_202_linkl = models.CharField(max_length=60,blank=True,null=True)#enlaces
+    t_202_link = models.CharField(max_length=60,blank=True,null=True)#enlaces
     t300_id_company = models.ForeignKey(
         Company,
         blank=True,

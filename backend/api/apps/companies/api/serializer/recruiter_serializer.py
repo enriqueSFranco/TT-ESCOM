@@ -15,8 +15,9 @@ class RecruiterListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recruiter
         fields = '__all__'
+        depth = 2
 
-    def to_representation(self,instance):
+    """def to_representation(self,instance):
         print(instance)
         return{
             't301_id_recruiter' : instance['t301_id_recruiter'],
@@ -25,7 +26,7 @@ class RecruiterListSerializer(serializers.ModelSerializer):
             't301_user' : instance['t301_user'],
             't300_id_company' : instance['t300_id_company'],
             't301_password' : instance['t301_password']
-        }
+        }"""
 
 class UpdateRecruiterSerializer(serializers.ModelSerializer):
         class Meta:

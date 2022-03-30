@@ -15,8 +15,9 @@ class UbicationListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ubication
         fields = '__all__'
+        depth = 2
 
-    def to_representation(self,instance):
+    """def to_representation(self,instance):
         print(instance)
         return{
             't300_id_company' : instance['t300_id_company'],
@@ -27,7 +28,7 @@ class UbicationListSerializer(serializers.ModelSerializer):
             't302_cp' : instance['t302_cp'],
             't302_ext' : instance['t302_ext'],
             't302_int' : instance['t302_int']
-        }
+        }"""
 
 class UpdateUbicationSerializer(serializers.ModelSerializer):
         class Meta:
