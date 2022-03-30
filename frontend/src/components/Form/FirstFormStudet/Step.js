@@ -31,7 +31,6 @@ let initialForm={
 	t100_residence: "",
 }
 
-
 const StepComponent = () => {
 	const [activeStep,setActiveStep]=React.useState(0);
 	const { form , handleChange} = useForm(initialForm);
@@ -41,6 +40,8 @@ const StepComponent = () => {
 	}
 	
 	let AllResults =data;
+	let array = new Array();
+	
 	
 
 	const PageDisplay =() => {
@@ -48,7 +49,7 @@ const StepComponent = () => {
 			return <DatesPersonal form={form} handleChange={handleChange}/>;
 		}
 		if(activeStep === 1){
-			return <DatesJob form={form} handleChange={handleChange} AllResults={AllResults}/>;
+			return <DatesJob form={form} handleChange={handleChange} AllResults={AllResults} array={array}/>;
 		}
 		if(activeStep === 2){
 			return <DatesSkill form={form} handleChange={handleChange}/>;
@@ -63,7 +64,7 @@ const StepComponent = () => {
 			setActiveStep((currentStep) => currentStep + 1);
 		}
 		if(activeStep>=2){
-			
+			console.log(array)
 			updateData();
 			
 		}
@@ -85,6 +86,47 @@ const StepComponent = () => {
 		  .then((response) => {
 			if (!response.err) {
 			  console.log(response);
+			  const endpoint2 = "/api/Skills/";
+
+			  array.map((option) =>{
+					let options = {
+						headers: {
+							"Content-Type": "application/json",
+							Accept: "application/json",
+						},
+						body: {
+							c116_id_skill:option,
+							t100_boleta:"2015090419",
+						},
+					}
+					console.log(options);
+				  
+					$ajax().POST(endpoint2, options).then((response) => {
+						if (!response.err) {
+							console.log(response);
+						}
+					}).catch((err) => console.error(err))
+				}
+			)
+				
+				/*
+			  	let options = {
+					headers: {
+						"Content-Type": "application/json",
+						Accept: "application/json",
+					},
+					body: {
+						c116_id_skill:"4",
+						t100_boleta:"2015090419",
+					},
+				}
+			  
+				$ajax().POST(endpoint2, options).then((response) => {
+					if (!response.err) {
+						console.log(response);
+					}
+				}).catch((err) => console.error(err));*/
+
 			  
 			}
 		  })
