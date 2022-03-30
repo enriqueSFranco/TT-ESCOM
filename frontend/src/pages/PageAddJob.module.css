@@ -39,6 +39,7 @@ select::-ms-expand {
 .container {
   /* background-color: #0b889e; */
   height: 980px;
+  width:100%;
   display: flex;
   flex-direction: column;
   align-items: center;

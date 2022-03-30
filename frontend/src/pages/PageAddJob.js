@@ -25,6 +25,8 @@ let now = new Date();
 let initialForm = {
   t200_job: "",
   t200_description: "",
+  t200_requirements: "",
+  t200_benefits: "",
   t200_check_time: "00:00:00",
   t200_closing_hour: "00:00:00",
   t200_work_days: "0000000",
@@ -88,13 +90,7 @@ const PageAddJob = () => {
     if (dato['c116_type']=='H'){
     hard.push(dato); }
   }  );
-  console.log(hard);  */
-  
-
-  const handleCheckbox = e =>{
-    console.log("CAmbio de estado :D");
-    console.log(e.target.checked);       
-  }
+  console.log(hard);  */  
 
   console.log(form)
   const createJob = (e) => {
@@ -214,8 +210,7 @@ const PageAddJob = () => {
               label="Salario neto"
               name="t200_gross_salary"
               id="t200_gross_salary"
-              onChange={handleChange}              
-              value = '1'    
+              onChange={handleChecked}                            
             />
             <FormControlLabel 
             control={<Checkbox />} 
@@ -230,12 +225,32 @@ const PageAddJob = () => {
               name="t200_description"
               id="t200_description"
               aria-label="empty textarea"
+              placeholder="Descripción de la vacante"
+              style={{ width: 500, height: 300 }}
+              onChange={handleChange}
+            />
+            <TextareaAutosize
+              className={styles.textArea}
+              name="t200_requirements"
+              id="t200_requirements"
+              aria-label="empty textarea"
               placeholder="Escribe los requerimientos de la vacante"
               style={{ width: 500, height: 300 }}
               onChange={handleChange}
             />
           </div>
-        </form>      
+          <div className={styles.flexWrapper}>
+            <TextareaAutosize
+              className={styles.textArea}
+              name="t200_benefits"
+              id="t200_benefits"
+              aria-label="empty textarea"
+              placeholder="Escribe las prestaciones de la vacante"
+              style={{ width: 500, height: 300 }}
+              onChange={handleChange}
+            />
+          </div>
+        {/* </form>      */}
         <div className={`${styles.groudButton}`}>
           <button
             type="submit"
@@ -247,6 +262,7 @@ const PageAddJob = () => {
             Limiar Formulario
           </button>
         </div>
+        </form>      
       </div>
       {/* mostramos la modal para ponder los datos de ubicacion */}
       <Modal isOpen={isOpen} closeModal={closeModal}>
