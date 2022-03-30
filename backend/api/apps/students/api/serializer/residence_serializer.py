@@ -8,24 +8,23 @@ class ResidenceSerializer(serializers.ModelSerializer):
         fields = '__all__'
     
     def create(self, validate_data):
-        studentresidence = residence(**validate_data)
-        # generar token de autenticacion
-        studentresidence.save() # guardamos al usuario
+        studentresidence = residence(**validate_data)        
+        studentresidence.save() 
         return studentresidence
     
-class ResidenceListSerializer(serializers.ModelSerializer):
-  #skills=StudentSkill(many=True)
+class ResidenceListSerializer(serializers.ModelSerializer):  
   class Meta:
     model = residence
     fields= '__all__'
+    depth = 2
 
-  def to_representation(self, instance):
+'''  def to_representation(self, instance):
     return {
       't100_boleta': instance["t100_boleta"],
       't101_state' : instance['t101_state'],
       't101_municipality' : instance['t101_municipality'],
       't101_locality' : instance['t101_locality']
-    }
+    }'''
 
 class UpdateResidenceSerializer(serializers.ModelSerializer):
   # skills=SkillSerializer(many=True)

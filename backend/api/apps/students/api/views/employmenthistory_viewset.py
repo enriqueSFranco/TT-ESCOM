@@ -18,14 +18,14 @@ class EmploymentViewSet(viewsets.GenericViewSet):
 	def get_object(self, pk):        		  
 		self.queryset = self.model.objects\
 			.filter(t100_boleta=pk)\
-			.values('t103_id_registrer','t100_boleta','t103_corporation','t103_employment','t103_description','t103_start_date','t103_end_date')
+			.all()#values('t103_id_registrer','t100_boleta','t103_corporation','t103_employment','t103_description','t103_start_date','t103_end_date')
 		return self.queryset#get_object_or_404(self.model,pk=pk)
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t103_id_registrer','t100_boleta','t103_corporation','t103_employment','t103_description','t103_start_date')#,'t103_end_date')
+				.all()#values('t103_id_registrer','t100_boleta','t103_corporation','t103_employment','t103_description','t103_start_date')#,'t103_end_date')
 		return self.queryset
   
 
@@ -53,6 +53,7 @@ class EmploymentViewSet(viewsets.GenericViewSet):
 		return Response(employments_serializer.data)
 
 	def update(self, request, pk):
+		print(request.data)		
 		employment = self.model.objects.filter(t103_id_registrer=pk).first()
 		employment_serializer = UpdateEmploymentSerializer(employment, data=request.data)
 		if employment_serializer.is_valid():
@@ -66,6 +67,7 @@ class EmploymentViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk):
+		print(request.data)		
 		employment_destroy = self.model.objects.filter(t103_id_registrer=pk).delete()
         #SI lo borra pero no se como indicar que se realizo con exito
 		if employment_destroy == 1:

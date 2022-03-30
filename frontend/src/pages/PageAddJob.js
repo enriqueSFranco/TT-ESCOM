@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-import React, { useEffect, useState } from "react";
-
-=======
 import React from "react";
->>>>>>> feature/login
+import axios from "axios";
+import { useState, useEffect } from "react";
 import { useForm } from "../hooks/useForm";
 import { useFetch } from "../hooks/useFetch";
 import { useModal } from "../hooks/useModal";
@@ -21,6 +18,7 @@ import styles from "./PageAddJob.module.css";
 
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import { dark } from "@mui/material/styles/createPalette";
 
 let now = new Date();
 
@@ -40,51 +38,65 @@ let initialForm = {
     now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay(),
   t300_id_company: 1,
   c207_id_experience: 1,
+  c206_id_profile:1,
   c204_id_vacant_status: 1,
   t301_id_recruiter: 1,
   t400_id_admin: null,
 };
 
 const PageAddJob = () => {
-  const { form, handleChange } = useForm(initialForm);
-  const { data } = useFetch("/api/catalogues/CatalogueCandidateProfile/");
+  const { form, handleChange, handleChecked } = useForm(initialForm);
   const [isOpen, closeModal] = useModal();
-<<<<<<< HEAD
-  const [profiles, setProfiles] = useState({});
-  const [experience , setExperience] = React.useState(null);
-  const [Allresults, setResult] = React.useState(null);
-  console.log(form.t200_publish_date);
-  console.log("-------------------------")  
-  console.log(form);
-  console.log(form.t200_publish_date);
+  const [profiles, setProfiles] = useState(null); // Estado para los perfiles buscados
+  const [experience, setExperience] = useState(null); // Estado para los perfiles buscados
+  //console.log(useFetch("/api/catalogues/CatalogueExperience/"));
 
-  useEffect(() =>{
-    try {    
-    const fetchdata = async () =>{
-      const profilesUrl = `/api/catalogues/CatalogueCandidateProfile/`;
-      const[profilesRes] = await ([
-        $ajax().GET(profilesUrl)
-      ]);
-      console.log(profilesRes);
-      setProfiles(profilesRes);
-    }
-    fetchdata();
-    }
-    catch {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {                
+        let profilesCatalogue = `/api/catalogues/CatalogueCandidateProfile/`;
+        let experienceURL = `/api/catalogues/CatalogueExperience/`;
+        const [profileResponse,experienceResponse] = await Promise.all([
+          axios.get(profilesCatalogue),
+          axios.get(experienceURL),
+        ]);
+        setProfiles(profileResponse.data);
+        setExperience(experienceResponse.data);
+      } catch (error) {
+        console.error(error)
+      }
+    };
+    fetchData();
+    }, []);
 
-    }
-  },[]);
-  if(!profiles)
-   return;
-    
   
-=======
+  if(!form && !profiles)
+    return null;
 
-  if (!form && !data) return null;
+  console.log("Profiles-------------")
+  console.log(profiles);
+  
+  if(!experience)
+    return null;
+  console.log("Experience-------------")
+  console.log(experience);
+  
+    /*console.log(options[2]['c116_description']);
+  let datos = new Array();
+  let hard = new Array();
+  options.map((dato)=> {
+    if (dato['c116_type']=='H'){
+    hard.push(dato); }
+  }  );
+  console.log(hard);  */
+  
 
-  let options = data;
->>>>>>> feature/login
+  const handleCheckbox = e =>{
+    console.log("CAmbio de estado :D");
+    console.log(e.target.checked);       
+  }
 
+  console.log(form)
   const createJob = (e) => {
     console.log("Creando vacante");
     console.log(form);
@@ -109,32 +121,6 @@ const PageAddJob = () => {
         console.error(err);
       });
   };  
-
-  const getProfiles = () => {
-    const endpoint = "/api/catalogues/CatalogueCandidateProfile/";
-    let options = {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      }
-    };
-    $ajax()
-      .GET(endpoint, options)
-      .then((response) => {
-        if (!response.err) {
-          console.log(response);
-          setProfiles(response);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };  
-  //getProfiles();
-  //if (!profiles)
-  //  return;
-  //console.log("Perfiles");
-  //console.log(profiles);
 
   return (
     <section className={styles.container}>
@@ -162,35 +148,25 @@ const PageAddJob = () => {
               <select
                 defaultValue=""
                 className={styles.select}
-                name="profileJob"
+                name="c206_id_profile"
+                id="c206_id_profile"
                 onChange={handleChange}
               >
                 <option value="">Perfil del Canditado</option>
-              {data && options.map(({c206_description}) => (
-                <option key={c206_description} value={c206_description}>{c206_description}</option>
-              ))}
+              {profiles.map((option) =>
+                (<option key={option['c206_description']} value={option['c206_id_profile']}>{option['c206_description']}</option>))}
               </select>
             </div>
             <div className={styles.select}>
               <select
-                defaultValue="1"
                 name="c207_id_experience"
                 id="c207_id_experience"
                 onChange={handleChange}
-                className={styles.select}
+                className={styles.select}                
               >
-                <option value="" disabled>
-                  Experiencia
-                </option>
-                <option value="3">6 meses a 1 año</option>
-                <option value="4">2 años</option>
-                <option value="5">3 años</option>
-                <option value="6">mas de 4 años</option>
-                {/*Hacer peticion
-                vARIABLE DE ESTADO
-                Iterar con el map
-                
-                conditional render*/}
+                <option value="" disabled>Experiencia</option>
+                {experience.map((option) =>
+                (<option key={option['c207_description']} value={option['c207_id_experience']}>{option['c207_description']}</option>))}                
               </select>
             </div>
           </div>
@@ -238,9 +214,15 @@ const PageAddJob = () => {
               label="Salario neto"
               name="t200_gross_salary"
               id="t200_gross_salary"
-              onChange={handleChange}
+              onChange={handleChange}              
+              value = '1'    
             />
-            <FormControlLabel control={<Checkbox />} label="Trabajo remoto" />
+            <FormControlLabel 
+            control={<Checkbox />} 
+            label="Trabajo remoto"
+            name="t200_home_ofice"
+            id="t200_home_ofice"
+            onChange={handleChecked} />
           </div>
           <div className={styles.flexWrapper}>
             <TextareaAutosize
@@ -253,32 +235,7 @@ const PageAddJob = () => {
               onChange={handleChange}
             />
           </div>
-        </form>
-
-
-        <div>
-          <Autocomplete
-          //{...getProfiles()}
-          {...console.log("perfiles")}
-          {...console.log(profiles)}
-                    multiple
-                    id="tags-outlined"
-                    options={profiles}
-                    getOptionLabel={(option) => option.c206_description}
-                    defaultValue={[profiles[1]]}
-                    filterSelectedOptions
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="Perfiles"
-                        placeholder="Favorites"
-                      />
-                    )}
-
-                  />
-              </div>
-
-
+        </form>      
         <div className={`${styles.groudButton}`}>
           <button
             type="submit"

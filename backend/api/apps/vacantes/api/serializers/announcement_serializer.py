@@ -16,8 +16,9 @@ class AnnouncementListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Announcement
         fields = '__all__'
+        depth = 2
 
-    def to_representation(self,instance):
+    '''def to_representation(self,instance):
         return{
             't202_id_announcement' : instance['t202_id_announcement'],
             't202_announcement' : instance['t202_announcement'],
@@ -27,11 +28,12 @@ class AnnouncementListSerializer(serializers.ModelSerializer):
             't202_close_date' : instance['t202_close_date'],
             't400_id_administrador' : instance['t400_id_administrador']
         }
+    '''
 
 class UpdateAnnouncementSerializer(serializers.ModelSerializer):
         class Meta:
             model = Announcement
-            fields = ('t202_id_announcement','t202_announcement','t202_description','t202_publish_date','t202_close_date')
+            fields = '__all__'#('t202_id_announcement','t202_announcement','t202_description','t202_publish_date','t202_close_date')
         
         def update(self,instance,validate_data):
             u_announcement = super().update(instance,validate_data)

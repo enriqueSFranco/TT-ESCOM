@@ -25,7 +25,7 @@ class AnnouncementViewSet(viewsets.GenericViewSet):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t202_id_announcement','t202_announcement','t202_description','t202_publish_date','t202_close_date')
+				.all()#values('t202_id_announcement','t202_announcement','t202_description','t202_publish_date','t202_close_date')
 		return self.queryset
 
 
@@ -49,7 +49,7 @@ class AnnouncementViewSet(viewsets.GenericViewSet):
 
 	def retrieve(self, request, pk):
 		announcement = self.get_object(pk)
-		announcement_serializer = self.serializer_class(announcement,many=True)
+		announcement_serializer = self.list_serializer_class(announcement,many=True)
 		return Response(announcement_serializer.data)
 
 	def destroy(self, request, pk):

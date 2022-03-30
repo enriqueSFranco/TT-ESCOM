@@ -19,14 +19,14 @@ class RecruiterViewSet(viewsets.GenericViewSet):
 		if self.queryset == None:
 			self.queryset = self.model.objects\
 				.filter(t301_id_recruiter = pk)\
-				.values('t301_id_recruiter','t301_name','t301_last_name','t301_user','t300_id_company','t301_password')
+				.all()#values('t301_id_recruiter','t301_name','t301_last_name','t301_user','t300_id_company','t301_password')
 		return  self.queryset #get_object_or_404(self.model,pk=pk)
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t301_id_recruiter','t301_name','t301_last_name','t301_user','t300_id_company','t301_password')
+				.all()#values('t301_id_recruiter','t301_name','t301_last_name','t301_user','t300_id_company','t301_password')
 		return self.queryset
   
 

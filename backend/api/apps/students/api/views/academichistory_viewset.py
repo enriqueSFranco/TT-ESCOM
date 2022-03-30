@@ -19,25 +19,25 @@ class HistorialViewSet(viewsets.GenericViewSet):
 		if self.queryset == None:
 			self.queryset = self.model.objects\
 				.filter(t100_boleta = pk)\
-				.values('t104_id_registrer','t100_boleta','t104_academic_unit','t104_carreer','c107_id_academic_level','c109_id_academic_state','t104_start_date','t104_end_date')
+				.all()#values('t104_id_registrer','t100_boleta','t104_academic_unit','t104_carreer','c107_id_academic_level','c109_id_academic_state','t104_start_date','t104_end_date')
 		return  self.queryset #get_object_or_404(self.model,pk=pk)
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t104_id_registrer','t100_boleta','t104_academic_unit','t104_carreer','c107_id_academic_level','c109_id_academic_state','t104_start_date','t104_end_date')
+				.all()#values('t104_id_registrer','t100_boleta','t104_academic_unit','t104_carreer','c107_id_academic_level','c109_id_academic_state','t104_start_date','t104_end_date')
 		return self.queryset
   
 
 	def list(self, request):
-		print(request.data)
-		print("HOla")
+		print(request.data)		
 		historial = self.get_queryset()
 		historials_serializer = self.list_serializer_class(historial, many=True)
 		return Response(historials_serializer.data, status=status.HTTP_200_OK)
 
 	def create(self, request):
+		print(request.data)		
 		historial_serializer = self.serializer_class(data=request.data)
 		print('request: ',request.data)
 		if historial_serializer.is_valid():
@@ -51,11 +51,13 @@ class HistorialViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def retrieve(self, request, pk):
+		print(request.data)		
 		historial = self.get_object(pk)
 		historial_serializer = self.list_serializer_class(historial,many=True)
 		return Response(historial_serializer.data)
 
 	def update(self, request, pk):
+		print(request.data)		
 		historial = self.model.objects.filter(t104_id_registrer = pk).first()
 		historial_serializer = UpdateAcademicHistorySerializer(historial, data=request.data)
 		if historial_serializer.is_valid():
@@ -69,6 +71,7 @@ class HistorialViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk):
+		print(request.data)		
 		historial_destroy = self.model.objects.filter(t104_id_registrer=pk).delete()
 		print(historial_destroy)
 		#SI lo borra pero no se como indicar que se realizo con exito

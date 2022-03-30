@@ -18,14 +18,14 @@ class ReportViewSet(viewsets.GenericViewSet):
 	def get_object(self, pk):	
 		self.queryset = self.model.objects\
 				.filter(t203_id_report = pk)\
-				.values('t203_id_report','t200_id_vacant','t203_publish_type','t100_boleta','c210_report_type','c220_report_state','t203_report_date','t203_atention_date','t203_adittional_comment')
+				.all()#values('t203_id_report','t200_id_vacant','t203_publish_type','t100_boleta','c210_report_type','c220_report_state','t203_report_date','t203_atention_date','t203_adittional_comment')
 		return self.queryset
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t203_id_report','t200_id_vacant','t203_publish_type','t100_boleta','c210_report_type','c220_report_state','t203_report_date','t203_atention_date','t203_adittional_comment')
+				.all()#values('t203_id_report','t200_id_vacant','t203_publish_type','t100_boleta','c210_report_type','c220_report_state','t203_report_date','t203_atention_date','t203_adittional_comment')
 		return self.queryset
 
 
@@ -41,7 +41,7 @@ class ReportViewSet(viewsets.GenericViewSet):
 		if report_serializer.is_valid():
 			report_serializer.save()
 			return Response({
-				'message': 'Aplicación registrada correctamente.'
+				'message': 'Reporte registrado correctamente.'
 			}, status=status.HTTP_201_CREATED)
 		return Response({
 			'message': 'Hay errores en el registro',
@@ -58,10 +58,10 @@ class ReportViewSet(viewsets.GenericViewSet):
 		#SI lo borra pero no se como indicar que se realizo con exito
 		if report_destroy == 1:
 			return Response({
-				'message': 'Comunicado eliminado correctamente'
+				'message': 'Reporte eliminado correctamente'
 			})
 		return Response({
-			'message': 'No existe el comunicado que desea eliminar'
+			'message': 'No existe el reporte que desea eliminar'
 		}, status=status.HTTP_404_NOT_FOUND)
 
 	def update(self, request, pk):
@@ -70,7 +70,7 @@ class ReportViewSet(viewsets.GenericViewSet):
             if report_serializer.is_valid():
                 report_serializer.save()
                 return Response({
-				    'message': 'Comunicado actualizado correctamente'
+				    'message': 'Reporte actualizado correctamente'
 			    }, status=status.HTTP_200_OK)
             return Response({
                 'message': 'Hay errores en la actualización',
