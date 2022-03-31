@@ -57,6 +57,8 @@ const PageCompany = () => {
               <CardCompany
                 key={company?.t300_id_company}
                 name={company?.t300_name}
+                mision={company?.t300_mision}
+                vision={company?.t300_vision}
                 webSite={company?.t300_web_page}
               />
             ))}
