@@ -27,7 +27,7 @@ class LenguagesViewSet(viewsets.GenericViewSet):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t110_id_registrer','t100_boleta','t110_written_level','t110_reading_level','t110_speaking_level','t110_comprension_level','t110_native','c111_id_language','c111_id_language_id')				
+				.all()#values('t110_id_registrer','t100_boleta','t110_written_level','t110_reading_level','t110_speaking_level','t110_comprension_level','t110_native','c111_id_language','c111_id_language_id')				
 		return self.queryset
   
 
@@ -51,7 +51,7 @@ class LenguagesViewSet(viewsets.GenericViewSet):
 
 	def retrieve(self, request, pk):        
 		lenguage = self.get_object(pk)
-		lenguages_serializer = self.serializer_class(lenguage,many=True)
+		lenguages_serializer = self.list_serializer_class(lenguage,many=True)
 		return Response(lenguages_serializer.data)
 
 	def update(self, request, pk):

@@ -4,7 +4,11 @@
 }
 
 /* ESTILOS PARA EL ELEMENTO INPUT */
-.input { position: relative; }
+.input {
+  position: relative;
+  margin: 0 0 1rem 0;
+  width: 400px;
+}
 
 .inputLabel {
   position: absolute;

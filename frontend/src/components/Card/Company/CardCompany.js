@@ -10,9 +10,17 @@ const CardCompany = ({ name, webSite, logo, banner, mision, vision }) => {
     <>
       <AnimateSharedLayout>
         {isOpen ? (
-          <CardExpand setIsOpen={setIsOpen} mision={mision} vision={vision} />
+          <CardExpand 
+            setIsOpen={setIsOpen} 
+            mision={mision} 
+            vision={vision} 
+          />
         ) : (
-          <CardNormal name={name} webSite={webSite} setIsOpen={setIsOpen} />
+          <CardNormal 
+            name={name} 
+            webSite={webSite}
+            logo={logo}
+            setIsOpen={setIsOpen} />
         )}
       </AnimateSharedLayout>
     </>

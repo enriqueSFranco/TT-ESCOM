@@ -35,7 +35,6 @@ const JobCardDetails = () => {
   const [sticky] = useSticky();
   let { t200_id_vacant } = useParams();
   const [job, setJob] = useState([]);
-  const [company, setCompany] = useState([]);
   const [experience, setExperience] = useState([]);
 
   useEffect(() => {
@@ -43,15 +42,6 @@ const JobCardDetails = () => {
       try {
         let jobResponse = await axios.get(`/api/Vacants/${t200_id_vacant}/`);
         setJob(jobResponse.data);
-        
-        let catalogueExperienceUrl = `/api/catalogues/CatalogueExperience/${jobResponse.data[0].c207_id_experience}`;
-        let companyUrl = `/api/Companies/${jobResponse.data[0].t300_id_company}/`;
-        const [companyResponse, experienceRes] = await Promise.all([
-          axios.get(companyUrl),
-          axios.get(catalogueExperienceUrl),
-        ]);
-        setCompany(companyResponse.data);
-        setExperience(experienceRes.data);
       } catch (error) {
         console.error(error)
       }
@@ -59,7 +49,7 @@ const JobCardDetails = () => {
     fetchData();
     }, [t200_id_vacant]);
 
-  if (!job && !company) return null;
+  if (!job) return null;
 
   return (
     <div
@@ -78,7 +68,7 @@ const JobCardDetails = () => {
             <ul className={`${styles.flex}`}>
               <li className={styles.flex}>
                 <FaIcon.FaBuilding />
-                <span>{company[0]?.t300_name ?? 'Anonima'}</span>
+                <span>{job[0]?.t300_id_company.t300_name ?? 'Anonima'}</span>
               </li>
               <li className={styles.flex}>
                 <MdIcon.MdOutlineAttachMoney />
@@ -117,10 +107,11 @@ const JobCardDetails = () => {
         </div>
         <div className={styles.requirements}>
           <h3>Requerimientos de la vacante</h3>
+          {job[0]?.t200_requirements}
           <ul>
-            {requirements.map((requirement, index) => (
+            {/* {job?.t200_requirements.map((requirement, index) => (
               <li key={index}>{requirement}</li>
-            ))}
+            ))} */}
           </ul>
         </div>
         <div>
@@ -149,18 +140,20 @@ const JobCardDetails = () => {
         </div>
         <div>
           <h3>Beneficios</h3>
+          {job[0]?.t200_benefits}
+{/* 
           <ul>
             {profit.map((el, index) => (
               <li key={index}>{el}</li>
             ))}
-          </ul>
+          </ul> */}
         </div>
         <div>
           <p>Horario: <span>{job[0]?.t200_check_time} a {job[0]?.t200_closing_hour}</span></p>
         </div>
         <div>
           <h3>Experiencia</h3>
-          <p>{experience[0]?.c207_description}</p>
+          <p>{job[0]?.c207_id_experience.c207_description}</p>
         </div>
         <div>
           <h3>Idioma</h3>

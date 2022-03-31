@@ -7,28 +7,92 @@ import DatesJob from './DatesJob';
 import DatesSkill from './DatesSkill';
 import Button from '@mui/material/Button';
 import styles from "./Styles.module.css";
+import { useForm } from "../../../hooks/useForm";
+import { useFetch } from "../../../hooks/useFetch";
+import { $ajax } from "../../../utils/$ajax";
+
+let initialForm={
+	t100_boleta: "2015090419",
+	t100_name: "",
+	t100_password: "123456",
+	t100_last_name: "",
+	t100_username: "",
+	t100_cv: null,
+	t100_email: "",
+	t100_gender: null,
+	t100_date_of_birth: null,
+	t100_personal_objectives: "",
+	t100_speciality: "",
+	t100_target_salary: "",
+	t100_travel: false,
+	t100_profile_picture: null,
+	is_active: false,
+	t100_phonenumber: "",
+	t100_residence: "",
+}
+
 
 const StepComponent = () => {
 	const [activeStep,setActiveStep]=React.useState(0);
+	const { form , handleChange} = useForm(initialForm);
+	const { data } = useFetch("/api/catalogues/CatalogueSkills/");
+	if(!data && !form){
+		return;
+	}
+	
+	let AllResults =data;
+	
 
 	const PageDisplay =() => {
 		if(activeStep === 0){
-			return <DatesPersonal/>;
+			return <DatesPersonal form={form} handleChange={handleChange}/>;
 		}
 		if(activeStep === 1){
-			return <DatesJob/>;
+			return <DatesJob form={form} handleChange={handleChange} AllResults={AllResults}/>;
 		}
 		if(activeStep === 2){
-			return <DatesSkill/>;
+			return <DatesSkill form={form} handleChange={handleChange}/>;
 
 		}
 
 	}
 
 	const nextStep = () => {
-		if(activeStep<2)
+		if(activeStep<2){
+			//console.log((activeStep));
 			setActiveStep((currentStep) => currentStep + 1);
+		}
+		if(activeStep>=2){
+			
+			updateData();
+			
+		}
 	}
+
+	const updateData = () => {
+		console.log(("FInlaiza"));
+		console.log(form);
+		const endpoint = "/api/Students/2015090419/";
+	
+		let options = {
+		  headers: {
+			"Content-Type": "application/json",
+			Accept: "application/json",
+		  },
+		  body: form,
+		};
+		$ajax().PUT(endpoint, options)
+		  .then((response) => {
+			if (!response.err) {
+			  console.log(response);
+			  
+			}
+		  })
+		  .catch((err) => console.error(err));
+	  };
+	  
+
+
 
 	const previousStep = () => {
 		if(activeStep>0)
@@ -52,8 +116,11 @@ const StepComponent = () => {
 					))}
 				</Stepper>
 			</div>
+			<form onSubmit={updateData}>
+				<div className={styles.pages}>{PageDisplay()}</div>
+			</form>
 			
-			<div className={styles.pages}>{PageDisplay()}</div>
+			
 			<div className={styles.buttons}>
 				<div className={styles.button1}>
 					<Button
@@ -68,6 +135,7 @@ const StepComponent = () => {
 					<Button
 						variant="outlined"
 						color="primary"
+						type="submit"
 						onClick={()=>nextStep()}
 					>{activeStep === steps.length - 1 ? "Finalizar" : "Siguiente"}</Button>
 				</div>

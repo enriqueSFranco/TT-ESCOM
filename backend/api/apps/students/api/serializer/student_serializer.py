@@ -30,8 +30,9 @@ class StudentListSerializer(serializers.ModelSerializer):
   class Meta:
     model = Student
     fields='__all__'
+    depth = 2
 
-  def to_representation(self, instance):
+  """def to_representation(self, instance):
     return {
       't100_boleta' : instance['t100_boleta'],
       't100_name' : instance['t100_name'],
@@ -51,7 +52,7 @@ class StudentListSerializer(serializers.ModelSerializer):
       't100_travel' : instance['t100_travel'],
       't100_profile_picture' : instance['t100_profile_picture'],
       'is_active' : instance['is_active']
-    }
+    }"""
 
 class UpdateStudentSerializer(serializers.ModelSerializer):
   # skills=SkillSerializer(many=True)

@@ -17,14 +17,14 @@ class StudentResidenceViewSet(viewsets.GenericViewSet):
 	def get_object(self, pk):
 		self.queryset = self.model.objects\
 			.filter(t100_boleta=pk)\
-			.values('t100_boleta', 't101_state', 't101_municipality', 't101_locality')
+			.all()#values('t100_boleta', 't101_state', 't101_municipality', 't101_locality')
 		return self.queryset #get_object_or_404(self.model, pk=pk)
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t100_boleta', 't101_state', 't101_municipality', 't101_locality')
+				.all()#values('t100_boleta', 't101_state', 't101_municipality', 't101_locality')
 		return self.queryset
   
 	def list(self, request):
