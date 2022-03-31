@@ -1,34 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { getAllBusiness } from '../../services/businnes/getAllBusiness';
-import { getAllJobs } from '../../services/jobs/getAllJobs';
 import styles from './Filter.module.css';
 
-const FilterCompany = () => {
-  const [value, setValue] = useState("");
-  const [jobs, setJobs] = useState([]);
+const FilterCompany = ({ filterBusiness }) => {
   const [business, setBusiness] = useState([]);
 
-  const businnesFilter = (e, option) => {
-    
-  };
-
   useEffect(() => {
-    const fetchData = async () => {
-      const [jobsRes, businessRes] = await Promise.all([
-        getAllJobs(),
-        getAllBusiness()
-      ]);
-      setJobs(jobsRes);
-      setBusiness(businessRes)
-    };
-    fetchData();
+    getAllBusiness()
+      .then(response => {
+        setBusiness(response);
+      })
+      .catch(error => console.error(error))
   }, []);
-  console.log(business)
+
   return (
     <div className={styles.select}>
-      <select name="profile" id="profile" onChange={businnesFilter}>
+      <select name="profile" id="profile" defaultValue="" onChange={filterBusiness}>
+        <option value="">Empresas</option>
         {business && business.map(company => (
-          <option key={company?.t300_id_company}>{company?.t300_name}</option>
+          <option key={company?.t300_id_company} value={company?.t300_name}>{company?.t300_name}</option>
         ))}
       </select>
     </div>
