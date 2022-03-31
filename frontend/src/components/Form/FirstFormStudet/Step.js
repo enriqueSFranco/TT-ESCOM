@@ -49,7 +49,7 @@ const StepComponent = () => {
 			return <DatesPersonal form={form} handleChange={handleChange}/>;
 		}
 		if(activeStep === 1){
-			return <DatesJob form={form} handleChange={handleChange} AllResults={AllResults} array={array}/>;
+			return <DatesJob form={form} handleChange={handleChange} AllResults={AllResults} />;
 		}
 		if(activeStep === 2){
 			return <DatesSkill form={form} handleChange={handleChange}/>;

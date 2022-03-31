@@ -135,7 +135,7 @@ const top100Films = [
 
 
 
-const DatesJob = ({form, handleChange, AllResults, skilss}) =>  {
+const DatesJob = ({form, handleChange, AllResults}) =>  {
   let soft = new Array();
   let hard = new Array();
   
@@ -153,7 +153,7 @@ const DatesJob = ({form, handleChange, AllResults, skilss}) =>  {
   console.log(soft);
 
   function get(){
-    array.push(document.getElementById('data').value);
+    //array.push(document.getElementById('data').value);
     console.log(document.getElementById('data').value); //WORKS
    // console.log(array)
   }
@@ -200,8 +200,8 @@ const DatesJob = ({form, handleChange, AllResults, skilss}) =>  {
                       {hard.map((option) =>
                     (<option value={option['c116_id_skill']}>{option['c116_description']}</option>)
                     )}
-                      </datalist>*/}
-                      <a onClick={()=>get()} >add</a>
+                      </datalist>
+                      <a onClick={()=>get()} >add</a>*</div>*/}
 
                   </div>
                 </form>
