@@ -3,7 +3,7 @@ import styles from "./Styles.module.css";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import CheckboxComponent from "../../Input/Checkbox"
-import { $ajax } from "../../../utils/$ajax";
+import { helpHttp } from "../../../utils/helpHttp";
 
 // Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
 const top100Films = [
