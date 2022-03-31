@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion/dist/framer-motion";
+import { motion } from "framer-motion";
 import { helpHttp } from "../../../utils/helpHttp";
 import FormUpdateDataStudent from "../../Form/FormUpdateDataStudent";
 import Avatar from "../../Avatar/Avatar";

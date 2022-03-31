@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import React from 'react';
-import { motion } from 'framer-motion/dist/framer-motion';
+import { motion } from 'framer-motion';
 import Comunicado from './Comunicado';
 import comunicados from './comunicados';
 import styles from "./Deck.module.css";

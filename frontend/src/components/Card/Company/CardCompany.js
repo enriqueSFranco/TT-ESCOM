@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AnimateSharedLayout } from "framer-motion/dist/framer-motion";
+import { AnimateSharedLayout } from "framer-motion";
 import CardExpand from "./CardExpand";
 import CardNormal from "./CardNormal";
 
