@@ -1,4 +1,5 @@
 import styles from "./CardJob.module.css";
+import logo from "../../images/google.png"
 
 const JobCard = ({ job }) => {
 
@@ -9,23 +10,35 @@ const JobCard = ({ job }) => {
           {job?.t200_job}
         </h3>
       </header>
-      <main>
-        <p className={`${styles.lineClamp}`}>
-          {job?.t200_description}
-        </p>
-        <p className={`${styles.timeWork} ${styles.tag}`}>
-          Tiempo: {job?.t200_home_ofice ? "Remoto" : "Presencial"}
-        </p>
-        <p className={`${styles.salary} ${styles.tag}`}>
-          Sueldo: ${job?.t200_min_salary} a ${job?.t200_max_salary}
-        </p>
-        <p className={`${styles.location} ${styles.tag}`}>
-          Ubicacion: {job?.locationJob}
-        </p>
-        <p className={`${styles.publicationTime} ${styles.tag}`}>
-          Fecha de publicacion: {job?.t200_publish_date}
-        </p>
-      </main>
+      <div>
+        <div className={styles.summary}>
+          <p className={`${styles.lineClamp}`}>
+            {job?.t200_description}
+          </p>
+        </div>
+        <div className={styles.wrapper}>
+          <div className={styles.wrapperTags}>
+            <p className={`${styles.timeWork} ${styles.tag}`}>
+              Tiempo: {job?.t200_home_ofice ? "Remoto" : "Presencial"}
+            </p>
+            <p className={`${styles.timeWork} ${styles.tag}`}>
+              Perfil: {job?.c206_id_profile?.c206_description}
+            </p>
+            <p className={`${styles.salary} ${styles.tag}`}>
+              Sueldo: ${job?.t200_min_salary} a ${job?.t200_max_salary}
+            </p>
+            <p className={`${styles.location} ${styles.tag}`}>
+              Ubicacion: {job?.locationJob}
+            </p>
+            <p className={`${styles.publicationTime} ${styles.tag}`}>
+              Fecha de publicacion: {job?.t200_publish_date}
+            </p>
+          </div>
+          <div className={styles.logoBusiness}>
+            <img src={logo} alt="" />
+          </div>
+        </div>
+      </div>
     </article>
   );
 };

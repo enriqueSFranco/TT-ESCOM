@@ -57,7 +57,7 @@ select::-ms-expand {
 .form {
   border: .17rem solid #90314b;
   border-radius: 8px;
-  width: 100%;
+  width: 1200px;
   margin: 0 auto;
   padding: 1rem;
   position: relative;

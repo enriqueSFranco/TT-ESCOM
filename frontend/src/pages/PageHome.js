@@ -100,6 +100,7 @@ const Home = () => {
     }
   };
 
+  console.log(dataList)
 
   return (
     <main className={homeStyles.home}>

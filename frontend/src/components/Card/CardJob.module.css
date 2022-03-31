@@ -3,7 +3,7 @@
 .card {
   position: relative;
   width: 500px;
-  height: 260px;
+  height: auto;
   margin-bottom:1rem;
   background-color: #fff;
   border: 1px solid #dadada;
@@ -70,4 +70,19 @@
   font-size: .9rem;
   font-weight: 600;
   margin: 0;
+}
+
+
+.wrapper {
+  width: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wrapperTags { width: 400px; }
+
+.logoBusiness {
+  width: 70px;
+  height: 70px;
 }
