@@ -11,8 +11,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from pickle import TRUE
 import environ
 import os
+
 
 env = environ.Env(
     DEBUG = (bool, False)

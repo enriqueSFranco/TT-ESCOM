@@ -72,7 +72,6 @@
   margin: 0;
 }
 
-
 .wrapper {
   width: 460px;
   display: flex;
@@ -80,9 +79,18 @@
   justify-content: space-between;
 }
 
-.wrapperTags { width: 400px; }
+.wrapperTags { width: 300px; }
 
 .logoBusiness {
-  width: 70px;
-  height: 70px;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.logoBusiness img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }

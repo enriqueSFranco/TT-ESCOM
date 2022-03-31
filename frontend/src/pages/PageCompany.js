@@ -27,6 +27,8 @@ const PageCompany = () => {
 
   if (!data) return null;
 
+  console.log(data);
+
   return (
     <div className={`${styles.wrapperListCompanies}`}>
       <div className={styles.search}>
@@ -48,9 +50,13 @@ const PageCompany = () => {
           ? companyMatch.map((company) => (
               <div key={company?.t300_id_company} className={styles.gridItems}>
                 <CardCompany
-                  name={company?.t300_name}
-                  webSite={company?.t300_web_page}
-                />
+                key={company?.t300_id_company}
+                name={company?.t300_name}
+                mision={company?.t300_mision}
+                vision={company?.t300_vision}
+                webSite={company?.t300_web_page}
+                logo={company?.t300_logo}
+              />
               </div>
             ))
           : data.map((company) => (
@@ -60,6 +66,7 @@ const PageCompany = () => {
                 mision={company?.t300_mision}
                 vision={company?.t300_vision}
                 webSite={company?.t300_web_page}
+                logo={company?.t300_logo}
               />
             ))}
       </div>

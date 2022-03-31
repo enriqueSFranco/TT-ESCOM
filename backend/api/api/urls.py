@@ -29,7 +29,4 @@ urlpatterns = [
     path('refresh-token/', UserToken.as_view(), name='refresh-token'),
     path('api/', include('apps.routers')),
     path('api/catalogues/',include('apps.catalogs_routers'))
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

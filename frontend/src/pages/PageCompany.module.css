@@ -4,6 +4,7 @@
 
 .grid {
   box-shadow: #00000029 0px 1px 4px;
+  background-color: #f6f8fb;
   min-height: 94%;
   width: 70%;
   position: relative;
@@ -13,6 +14,8 @@
   grid-template-columns: repeat(4, 1fr);
   justify-content: center;
   justify-items: center;
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .search {
