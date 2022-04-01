@@ -11,6 +11,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 import AboutMe from "./components/Card/AboutMe/AboutMe";
 import CardJobDetails from "./components/Card/CardJobDetails";
 import PageAddJob from "./pages/PageAddJob";
+import StepComponent from "./components/Form/FirstFormStudet/Step";
 
 const Root = () => {
   return (
@@ -24,6 +25,7 @@ const Root = () => {
       <Route path="/registro-alumno" element={<PageCreateAccountStudent />} />
       <Route path="/reclutador" element={<PageLoginCompany />} />
       <Route path="/registro-reclutador" element={<PageRegisterCompany />} />
+      <Route path="/StepComponent" element={<StepComponent />}/>
       <Route path="/empresas" element={<PageCompany />} />
       <Route path="/comunicados" element={<h1>Comunicados</h1>} />
 

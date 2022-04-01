@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useForm } from "../hooks/useForm";
-import { useFetch } from "../hooks/useFetch";
 import { useModal } from "../hooks/useModal";
 import { helpHttp } from "../utils/helpHttp";
 import Modal from "../components/Modal/Modal";
@@ -14,11 +13,6 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import FormLocationJob from "../components/Form/FormLocationJob";
 import styles from "./PageAddJob.module.css";
-
-
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
-import { dark } from "@mui/material/styles/createPalette";
 
 let now = new Date();
 

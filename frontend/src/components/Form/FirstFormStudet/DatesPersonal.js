@@ -6,16 +6,21 @@ import Input from "../../Input/Input"
 
 import styles from "./Styles.module.css";
 
-export class DatesPersonal extends Component {
-  render() {
+
+
+function DatesPersonal ({form,handleChange}) {
     return (
       <div className={styles.conJob}>
         <form>
         {/* input para Nombre*/}
           <div>
-            <Label htmlFor="name">
+            <Label htmlFor="t100_name">
               <Input
                 type="text"
+                name="t100_name"
+                id="t100_name"
+                value={form.t100_name}
+                onChange={handleChange}
               />
               <Span content="Tu Nombre" />
             </Label>        
@@ -23,29 +28,41 @@ export class DatesPersonal extends Component {
 
           {/* input para Ubicacion TODO: CAMBIAR EL HTMLFOR*/}
           <div>
-            <Label htmlFor="name">
+            <Label htmlFor="t100_residence">
               <Input
                 type="text"
+                name="t100_residence"
+                id="t100_residence"
+                value={form.t100_residence}
+                onChange={handleChange}
               />
               <Span content="¿Donde Vives?" />
             </Label>
-          </div>
+    </div>
           
           {/* input para Telefono TODO: CAMBIAR EL HTMLFOR*/}
           <div>
-            <Label htmlFor="name">
+            <Label htmlFor="t100_phonenumber">
               <Input
                 type="tel"
+                name="t100_phonenumber"
+                id="t100_phonenumber"
+                value={form.t100_phonenumber}
+                onChange={handleChange}
               />
               <Span content="WhatsApp" />
             </Label>
-          </div>
+        </div>
                             
           {/* input para E-mail TODO: CAMBIAR EL HTMLFOR*/}
           <div>
-            <Label htmlFor="name">
+            <Label htmlFor="t100_email">
               <Input
                 type="email"
+                name="t100_email"
+                id="t100_email"
+                value={form.t100_email}
+                onChange={handleChange}
               />
               <Span content="E-mail" />
             </Label>
@@ -54,7 +71,7 @@ export class DatesPersonal extends Component {
         </form>
       </div>
     );
-  }
+  
 }
 
 export default DatesPersonal;

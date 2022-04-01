@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import FormUpdateDataStudent from "../Form/FormUpdateDataStudent";
-import { motion } from "framer-motion/dist/framer-motion";
+import { motion } from "framer-motion";
+import { helpHttp } from "../../../utils/helpHttp";
+import FormUpdateDataStudent from "../../Form/FormUpdateDataStudent";
+import Avatar from "../../Avatar/Avatar";
 import * as MdIcon from "react-icons/md";
 import * as BsIcon from "react-icons/bs";
 import * as IoIcon from "react-icons/io";
 import styles from "./CardProfileStudent.module.css";
-import { helpHttp } from "../../utils/helpHttp";
 
 const CardProfileStudent = () => {
   const [state, setState] = useState("profile");
@@ -15,9 +16,9 @@ const CardProfileStudent = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const studentUrl = `/api/Students/2021/`;
-      const studentResidenceUrl = `/api/Residence/2021`;
-      const socialNetworksUrl = `/api/Links/2021/`;
+      const studentUrl = `/api/Students/2014/`;
+      const studentResidenceUrl = `/api/Residence/2014`;
+      const socialNetworksUrl = `/api/Links/2014/`;
       
       const [studentRes, studentResidenceRes, socialNetworksRes] = await Promise.all([
         helpHttp().GET(studentUrl),
@@ -35,6 +36,7 @@ const CardProfileStudent = () => {
     let isEdit = state === "edit" ? "profile" : "edit";
     setState(isEdit);
   };
+
   return (
     <>
       {state === "edit" ? (
@@ -45,7 +47,7 @@ const CardProfileStudent = () => {
           exit={{scaleY: 0}}
           duration={{duration: 0.5}}
         >
-          <FormUpdateDataStudent handleBackToProfile={handleEdit} />
+          <FormUpdateDataStudent student={student} handleBackToProfile={handleEdit} />
         </motion.article>
       ) : (
         <article className={`${styles.mainContainer} container`}>
@@ -56,7 +58,8 @@ const CardProfileStudent = () => {
                   className={styles.config}
                   onClick={handleEdit}
                 />
-                <img src="https://placeimg.com/640/480/any" alt="user" />
+                {/* <img src="https://placeimg.com/640/480/any" alt="user" /> */}
+                <Avatar student={student} />
                 <div className={styles.nameHolder}>
                   <h3>{student[0]?.t100_name}</h3>
                   <h4>Ingeniero de software</h4>

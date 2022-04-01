@@ -10,6 +10,8 @@ const DropMenu = () => {
   
   const onClick = () => setIsActive(!isActive);
 
+  console.log(isActive)
+
   return (
     <div className={styles.dropdown}>
       <button className={styles.trigger} onClick={onClick}>

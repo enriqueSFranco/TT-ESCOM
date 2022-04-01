@@ -4,7 +4,7 @@ import JobCard from "./CardJob";
 import styles from "./CardJobList.module.css";
 
 const JobList = ({ jobs = [], loading }) => {
-  // console.log(loading)
+
   return (
     <article className={`${styles.wrapper} ${styles.grid}`}>
       <div style={{width: "500px"}}>
@@ -12,8 +12,7 @@ const JobList = ({ jobs = [], loading }) => {
           loading ? (
             <Skeleton type="feed" />
           ) : (
-
-            jobs.map((job) => (
+            jobs && jobs.map((job) => (
               <Link to={`/${job?.t200_id_vacant}`} key={job?.t200_id_vacant}>
                 <JobCard job={job} />
               </Link>

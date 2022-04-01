@@ -4,15 +4,18 @@
 
 .grid {
   box-shadow: #00000029 0px 1px 4px;
+  background-color: #f6f8fb;
   min-height: 94%;
   width: 70%;
   position: relative;
   top: 3rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   justify-content: center;
   justify-items: center;
-  /* column-gap: 7rem; */
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .search {
@@ -29,10 +32,9 @@
 }
 
 .searchForm {
-  background-color: #fff;
-  box-shadow: #00000029 0px 1px 4px;
-  width: 600px;
-  height: 7rem;
+  backdrop-ground: #fff;
+  color: #000;
+  font-weight: bold;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -50,14 +52,10 @@
   bottom: 1rem;
 }
 
-.title span {
-  color: #a5d0d8;
-}
-
 .wrapperListCompanies {
   position: relative;
   top: 3rem;
   background-color: #fff;
-  height: 95vh;
+  /* height: 95vh; */
   width: 100%;  
 }

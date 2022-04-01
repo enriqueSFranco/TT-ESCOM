@@ -1,12 +1,14 @@
-import { motion } from "framer-motion/dist/framer-motion";
-import amazonBanner from "../../../images/fb.png";
+import { motion } from "framer-motion";
 import styles from "./CardCompany.module.css";
 
-const CardNormal = ({ name, setIsOpen }) => {
+const CardNormal = ({ name, webSite, logo, setIsOpen }) => {
+
   return (
     <motion.div className={styles.card} layoutId="cardExpand">
-      <img src={amazonBanner} alt={name} />
-      <motion.h1 layoutId="cardExpand-h">{name}</motion.h1>
+        <motion.div layoutId="cardExpand-img" className={styles.cardLogo}>
+          <img src={logo} alt={name} />
+        </motion.div>
+        <motion.a layoutId="cardExpand-a" href={webSite} target="_blank" alt={name}>sitio web: {name}</motion.a>
       <button onClick={() => setIsOpen(true)}>Ver mas</button>
     </motion.div>
   );

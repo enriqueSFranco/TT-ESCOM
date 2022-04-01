@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
-import { helpHttp } from "../../utils/helpHttp";
+import { createAccountCompany } from "../../services/businnes/createAccountCompany";
 import TextField from "@mui/material/TextField";
 import styles from "./Styles.module.css";
 
@@ -21,26 +21,14 @@ const initialForm = {
 
 const FormCompany = () => {
   const { form, handleChange } = useForm(initialForm);
-  const endpoint = "/api/Companies/";
 
-  const preRegister = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    let options = {
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: form,
-    };
-
-    console.log(form)
-
-    helpHttp().POST(endpoint, options)
-      .then((res) => {
-        if (!res.err)
-          console.log(res);
+    createAccountCompany(form)
+      .then(response => {
+        console.log(response);
       })
-      .catch((err) => console.error(err));
+      .catch(error => console.error(error));
   };
 
   if (form === null) return;
@@ -55,7 +43,7 @@ const FormCompany = () => {
         </div>
         <div className="col bg-white p-5 rounded-end">
           <h2 className={`${styles.welcome}`}>Bienvenido</h2>
-          <form onSubmit={preRegister}>
+          <form onSubmit={onSubmit}>
             {/* input para el username */}
             <div className={styles.inputGroup}>
               <TextField

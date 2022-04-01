@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
-import { helpHttp } from "../../utils/helpHttp";
+import { createAccountStudent } from "../../services/students/createAccountStudent";
 import TextField from "@mui/material/TextField";
 
 import styles from "./Styles.module.css";
+import { useState } from "react";
 
 let initialForm = {
   t100_name: "",
@@ -13,31 +14,20 @@ let initialForm = {
 };
 
 const CreateAccount = () => {
+  const [succes, setSucces] = useState({});
   const { form, handleChange } = useForm(initialForm);
 
   if (form === null) return;
 
-  const createAccount = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    const endpoint = "/api/Students/";
-
-    let options = {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: form,
-    };
-    helpHttp()
-      .POST(endpoint, options)
-      .then((response) => {
-        if (!response.err) {
-          console.log(response);
-        }
+    createAccountStudent(form)
+      .then(response => {
+        setSucces(response);
       })
-      .catch((err) => console.error(err));
+      .catch(error => console.log(error))
   };
-
+  // console.log(succes)
   return (
     <div className={`container bg-primary shadow rounded`}>
       <div className="row align-items-stretch">
@@ -48,7 +38,7 @@ const CreateAccount = () => {
         </div>
         <div className="col bg-white p-5 rounded-end">
           <h2 className={`${styles.welcome}`}>Bienvenido</h2>
-          <form onSubmit={createAccount}>
+          <form onSubmit={onSubmit}>
             {/* input para el username */}
             <div className={styles.inputGroup}>
               <TextField

@@ -4,7 +4,10 @@
 }
 
 /* ESTILOS PARA EL ELEMENTO INPUT */
-.input { position: relative; }
+.input {
+  position: relative;
+  width: 400px;
+}
 
 .inputLabel {
   position: absolute;
@@ -28,7 +31,7 @@
   border: 1px solid currentColor;
   padding: calc(var(--size-bezel) * 1.5) var(--size-bezel);
   color: currentColor;
-  background: transparent;
+  background: #fff;
   border-radius: var(--size-radius);
 }
 

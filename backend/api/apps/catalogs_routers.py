@@ -14,7 +14,7 @@ router.register(r'CatalogueAcademicLevel',AcademicLevelViewSet,basename='Academi
 router.register(r'CatalogueAcademicState',AcademicStateViewSet,basename='Academic state catalog')
 router.register(r'CataloguePlataform',PlataformViewSet,basename='Plataforms catalog')
 router.register(r'CatalogueSkills',SkillsViewSet,basename='Skills catalog')
-router.register(r'CatalogueSkills/<str:pk>',SkillsViewSet,basename='Skills type catalog')
+router.register(r'CatalogueSkills/<str:pk>',SkillsViewSet,basename='Skills divided by types catalog')
 router.register(r'CatalogueLenguage',LenguageViewSet,basename='Lenguages catalog')
 router.register(r'CatalogueVacantStatus',VacantStatusViewSet,basename='Vacant status catalog')
 router.register(r'CatalogueCandidateProfile',CandidateProfileViewSet,basename='Candidate profile catalog')
@@ -24,5 +24,6 @@ router.register(r'CatalogueReportType',ReportTypeViewSet,basename='Report type c
 router.register(r'CatalogueReportState',ReportStateViewSet,basename='Report status catalog')
 router.register(r'States',StateViewSet,basename='States catalog')
 router.register(r'Municipalities',MunicipalityViewSet,basename='Municipalities catalog')
+router.register(r'CatalogueSkills/<str:pk>',SkillsViewSet,basename='Skills divided by types catalog')
 
 urlpatterns=router.urls
