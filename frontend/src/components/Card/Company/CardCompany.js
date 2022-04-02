@@ -1,11 +1,16 @@
 import { useState } from "react";
+import { useFetch } from "../../../hooks/useFetch";
 import { AnimateSharedLayout } from "framer-motion";
 import CardExpand from "./CardExpand";
 import CardNormal from "./CardNormal";
 
-const CardCompany = ({ name, webSite, logo, banner, mision, vision }) => {
+const CardCompany = ({ id,name, webSite, logo, banner, mision, vision }) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const { data } = useFetch("/images/CompanyLogo/"+id);
+  if (!data) return null;
+  let company=data;
+  
+  console.log(company);
   return (
     <>
       <AnimateSharedLayout>

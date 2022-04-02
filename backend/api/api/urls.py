@@ -28,5 +28,6 @@ urlpatterns = [
     path('cerrar-sesion/', Logout.as_view(), name='cerrar-sesion'),
     path('refresh-token/', UserToken.as_view(), name='refresh-token'),
     path('api/', include('apps.routers')),
-    path('api/catalogues/',include('apps.catalogs_routers'))
+    path('api/catalogues/',include('apps.catalogs_routers')),
+    path('images/',include('apps.images_routers'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

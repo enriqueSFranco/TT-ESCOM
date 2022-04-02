@@ -51,6 +51,7 @@ const PageCompany = () => {
               <div key={company?.t300_id_company} className={styles.gridItems}>
                 <CardCompany
                 key={company?.t300_id_company}
+                id={company?.t300_id_company}
                 name={company?.t300_name}
                 mision={company?.t300_mision}
                 vision={company?.t300_vision}
@@ -62,6 +63,7 @@ const PageCompany = () => {
           : data.map((company) => (
               <CardCompany
                 key={company?.t300_id_company}
+                id={company?.t300_id_company}
                 name={company?.t300_name}
                 mision={company?.t300_mision}
                 vision={company?.t300_vision}
