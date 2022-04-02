@@ -16,7 +16,7 @@ const Search = ({ handleSearch, data, locationList }) => {
     const newFilter = data.filter((value) => {
       return value?.t200_job.toLowerCase().includes(query.toLowerCase());
     });
-    
+
     query === "" ? setFilterData([]) : setFilterData(newFilter);
   };
 
@@ -50,17 +50,27 @@ const Search = ({ handleSearch, data, locationList }) => {
               id="job"
               name="job"
               value={job}
-              onBlur={() => { setTimeout(() => {
-                setFilterData([])
-              },1000)}}
+              onBlur={() => {
+                setTimeout(() => {
+                  setFilterData([]);
+                }, 1000);
+              }}
               onChange={handleFilterJob}
             />
             <Span content="Buscar una vacante" />
           </Label>
           {filterData.length !== 0 && (
             <div className={styles.dataResultsJobs}>
-              {filterData.slice(0,15).map((value, index) => {
-                return <p onClick={e => setJob(value?.t200_job)} className={styles.dataItem} key={index}>{value?.t200_job}</p>;
+              {filterData.slice(0, 15).map((value, index) => {
+                return (
+                  <p
+                    onClick={(e) => setJob(value?.t200_job)}
+                    className={styles.dataItem}
+                    key={index}
+                  >
+                    {value?.t200_job}
+                  </p>
+                );
               })}
             </div>
           )}

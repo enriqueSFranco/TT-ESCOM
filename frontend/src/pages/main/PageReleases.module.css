@@ -1,0 +1,35 @@
+.heroReleases {
+  background-color: red;
+  height: 250px;
+}
+
+.realeaseLink {
+  width: 260px;
+  height: 260px;
+}
+
+.gridReleases {
+  box-shadow: #00000029 0px 1px 4px;
+  background-color: #f6f8fb;
+  min-height: 94%;
+  width: 70%;
+  position: absolute;
+  top: 25rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  justify-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.wrapperReleases {
+  position: relative;
+  top: 4rem;
+  max-height: 100vh;
+  height: 93.4vh;
+}

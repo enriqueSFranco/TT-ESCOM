@@ -11,7 +11,6 @@ let initialForm = {
 };
 
 const Form = () => {
-  // const { showPassword, toggle } = useShowPassword(false);
   const { form, handleChange } = useForm(initialForm);
   const { login } = useContext(AuthContext);
 

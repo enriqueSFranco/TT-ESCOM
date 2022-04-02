@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import MenuStudent from "../components/Menu/MenuStudent";
-import CardProfileStudent from "../components/Card/CardStudent/CardProfileStudent";
+import MenuStudent from "../../components/Menu/MenuStudent";
+import CardProfileStudent from "../../components/Card/CardStudent/CardProfileStudent";
 import styles from "./PageProfileStudent.module.css";
 
 const PageProfileStudent = () => {

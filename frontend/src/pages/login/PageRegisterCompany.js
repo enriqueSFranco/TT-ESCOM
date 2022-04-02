@@ -1,5 +1,5 @@
-import CreateAccountCompany from '../components/Form/CreateAccountCompany';
-import styles from './GlobalStyles.module.css';
+import CreateAccountCompany from '../../components/Form/CreateAccountCompany';
+import styles from '../GlobalStyles.module.css';
 
 const PageRegisterCompany = () => {
   return (

@@ -1,5 +1,5 @@
-import LoginStudent from "../components/Form/LoginStudent";
-import styles from './GlobalStyles.module.css';
+import LoginStudent from "../../components/Form/LoginStudent";
+import styles from '../GlobalStyles.module.css';
 
 
 const PageLoginStudent = () => {

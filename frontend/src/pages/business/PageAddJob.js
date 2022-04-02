@@ -1,17 +1,17 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useForm } from "../hooks/useForm";
-import { useModal } from "../hooks/useModal";
-import { helpHttp } from "../utils/helpHttp";
-import Modal from "../components/Modal/Modal";
-import Label from "../components/Input/Label";
-import Input from "../components/Input/Input";
-import Span from "../components/Input/Span";
+import { useForm } from "../../hooks/useForm";
+import { useModal } from "../../hooks/useModal";
+import { helpHttp } from "../../utils/helpHttp";
+import Modal from "../../components/Modal/Modal";
+import Label from "../../components/Input/Label";
+import Input from "../../components/Input/Input";
+import Span from "../../components/Input/Span";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import FormLocationJob from "../components/Form/FormLocationJob";
+import FormLocationJob from "../../components/Form/FormLocationJob";
 import styles from "./PageAddJob.module.css";
 
 let now = new Date();
