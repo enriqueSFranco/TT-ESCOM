@@ -1,5 +1,5 @@
 import { useForm } from "../../hooks/useForm";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion/dist/framer-motion";
 import TextField from "@mui/material/TextField";
 import Label from "../Input/Label";
 import Switch from "../Input/Switch";

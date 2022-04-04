@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useFetch } from "../../../hooks/useFetch";
-import { AnimateSharedLayout } from "framer-motion";
+import { motion } from "framer-motion/dist/framer-motion";
 import CardExpand from "./CardExpand";
 import CardNormal from "./CardNormal";
 

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "framer-motion/dist/framer-motion";
 import styles from "./CardCompany.module.css";
 
 const CardExpand = ({ setIsOpen, mision, vision }) => {
