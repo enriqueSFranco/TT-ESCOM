@@ -96,7 +96,7 @@ class Student(AbstractBaseUser):
 	t100_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_last_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_username = models.CharField(max_length=40, null=True, blank=True)
-	t100_password = models.CharField(max_length=100, null=False, blank=False)
+	t100_password = models.CharField('password',max_length=100, null=False, blank=False)
 	t100_cv = models.FileField(null=True, blank=True)
 	t100_email = models.EmailField(max_length=50, null=False, blank=False)
 	genders = [
