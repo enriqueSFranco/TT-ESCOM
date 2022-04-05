@@ -12,7 +12,7 @@ const JobList = ({ jobs = [], loading }) => {
           loading ? (
             <Skeleton type="feed" />
           ) : (
-            jobs && jobs.map((job) => (
+            jobs.map((job) => (
               <Link to={`/${job?.t200_id_vacant}`} key={job?.t200_id_vacant}>
                 <JobCard job={job} />
               </Link>
