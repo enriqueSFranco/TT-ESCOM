@@ -15,7 +15,8 @@ const DatesJob = ({form, handleChange, AllResults}) =>  {
   AllResults.map((dato)=>{
     if(dato['c116_type']=='H'){
       hard.push(dato); 
-    }else{
+    }
+    if(dato['c116_type']=='s'){
       soft.push(dato);
     }
   }  
