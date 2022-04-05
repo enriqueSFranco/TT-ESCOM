@@ -13,22 +13,22 @@ import { helpHttp } from "../../../utils/helpHttp";
 
 let initialForm = {
   t100_boleta: "2015090419",
-  t100_name: "",
+  t100_name: "ggg",
   t100_password: "123456",
-  t100_last_name: "",
-  t100_username: "",
+  t100_last_name: "gggg",
+  t100_username: "ggg",
   t100_cv: null,
-  t100_email: "",
+  t100_email: "gato@mmm.com",
   t100_gender: null,
   t100_date_of_birth: null,
-  t100_personal_objectives: "",
-  t100_speciality: "",
-  t100_target_salary: "",
+  t100_personal_objectives: "ggg",
+  t100_speciality: "ggg",
+  t100_target_salary: "1234679",
   t100_travel: false,
   t100_profile_picture: null,
   is_active: false,
-  t100_phonenumber: "",
-  t100_residence: "",
+  t100_phonenumber: "1234",
+  t100_residence: "ggg",
 };
 
 const StepComponent = () => {
@@ -74,8 +74,6 @@ const StepComponent = () => {
   };
 
   const updateData = () => {
-    console.log("FInlaiza");
-    console.log(form);
     const endpoint = "/api/Students/2015090419/";
 
     let options = {
@@ -90,6 +88,37 @@ const StepComponent = () => {
       .then((response) => {
         if (!response.err) {
           console.log(response);
+
+          /*hardSkills.map((dato)=>{
+            console.log(dato);
+          })*/
+          
+          const endpoint = "/api/Skills/";
+          const skilssall = hardSkills.concat(softSkills);
+
+          skilssall.map((dato)=>{
+            //console.log(dato);
+            let options = {
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: {
+                t100_boleta: "2015090419",
+                c116_id_skill: dato['c116_id_skill'],
+              },
+            };
+            helpHttp()
+              .POST(endpoint, options)
+              .then((response) => {
+                if (!response.err) {
+                  console.log(response);
+                  
+                }
+              })
+            .catch((err) => console.error(err));
+          })
+          
         }
       })
       .catch((err) => console.error(err));
@@ -99,7 +128,7 @@ const StepComponent = () => {
     if (activeStep > 0) setActiveStep((currentStep) => currentStep - 1);
   };
 
-  const steps = [" ", " ", " "];
+  const steps = ["1", "2 ", "3"];
 
   return (
     <div className={styles.container}>
@@ -107,14 +136,12 @@ const StepComponent = () => {
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map((label) => (
             <Step key={label}>
-              <StepLabel>{label}</StepLabel>
+              <StepLabel></StepLabel>
             </Step>
           ))}
         </Stepper>
       </div>
-      <form onSubmit={updateData}>
         <div className={styles.pages}>{PageDisplay()}</div>
-      </form>
 
       <div className={styles.buttons}>
         <div className={styles.button1}>

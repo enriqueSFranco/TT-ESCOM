@@ -36,13 +36,6 @@ class SkillViewSet(viewsets.GenericViewSet):
   def create(self, request):
     print(request.data)
     #if request.data['c116_id_skill']
-    ids=request.data['c116_id_skill'].split(',')
-    for data in ids:
-      print('''{
-    "c116_id_skill": '''+data+''',
-    "t100_boleta": "2014"
-}
-      ''')    
 
     skill_serializer=self.serializer_class(data=request.data)    
     if skill_serializer.is_valid():
