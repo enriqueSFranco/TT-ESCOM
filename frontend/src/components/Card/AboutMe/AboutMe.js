@@ -3,7 +3,7 @@ import styles from "./AboutMe.module.css";
 import Objects from "./Objects";
 import Interests from "./Interests";
 import Languajes from "./Languajes";
-import { motion } from "framer-motion/dist/framer-motion";
+import { motion } from "framer-motion";
 
 const AboutMe = () => {
   return (

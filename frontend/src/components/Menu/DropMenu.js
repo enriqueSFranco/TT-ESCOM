@@ -1,6 +1,6 @@
-import { useRef } from 'react';
+import { useRef } from "react";
+import { useDetectClick } from "../../hooks/useDetectClick";
 import { Link } from 'react-router-dom';
-import { useDetectClick } from '../../hooks/useDetectClick';
 import * as IoIcon from 'react-icons/io';
 import styles from './Dropdown.module.css';
 
@@ -15,7 +15,7 @@ const DropMenu = () => {
       <button className={styles.trigger} onClick={onClick}>
         <IoIcon.IoMdMenu style={{color: "#fff"}} />
       </button>
-      <nav ref={dropdownRef} className={`${styles.menu} ${isActive ? `${styles.active}` : `${styles.inactive}`}`}>
+      <nav ref={dropdownRef} className={`${styles.menu} ${isActive ? `${styles.active}` : ''}`}>
         <ul>
           <li><Link to="/alumno">Eres alumno ?</Link></li>
           <li><Link to="/reclutador">Eres reclutador ?</Link></li>

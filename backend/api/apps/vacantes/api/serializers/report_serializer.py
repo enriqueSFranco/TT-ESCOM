@@ -15,8 +15,9 @@ class ReportListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Report
         fields = '__all__'
+        depth = 2
 
-    def to_representation(self,instance):
+    '''def to_representation(self,instance):
         return{
             't203_id_report' : instance['t203_id_report'],
             't200_id_vacant' : instance['t200_id_vacant'],
@@ -29,7 +30,7 @@ class ReportListSerializer(serializers.ModelSerializer):
             #'t400_id_admin ' : instance['t400_id_admin '],
             't203_atention_date' : instance['t203_atention_date'],
             't203_adittional_comment' : instance['t203_adittional_comment']
-        }
+        }'''
 
 class UpdateReportSerializer(serializers.ModelSerializer):
         class Meta:

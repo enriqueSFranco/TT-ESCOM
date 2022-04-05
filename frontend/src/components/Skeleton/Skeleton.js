@@ -16,7 +16,16 @@ const Skeleton = ({ type }) => {
   </article>
   );
 
+  const BusinessSkeleton = () => (
+    <article className={styles.cardSkBusiness}>
+      <div className={`${styles.cardSKLogo} ${styles.placeholder}`}></div>
+      <div className={`${styles.cardSKBtnExpand} ${styles.placeholder}`}></div>
+    </article>
+  );
+
   if (type === "feed") return Array.from({length: 10}, (_, i) => <FeedSkeleton key={i}/>);
+  if (type === "business") return Array.from({length: 10}, (_, i) => <BusinessSkeleton key={i} />);
+
 }
 
 export default Skeleton;

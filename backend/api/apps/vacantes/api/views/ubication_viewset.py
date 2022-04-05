@@ -18,14 +18,14 @@ class UbicationViewSet(viewsets.GenericViewSet):
 	def get_object(self, pk):	
 		self.queryset = self.model.objects\
 				.filter(t200_id_vacant = pk)\
-				.values('t200_id_vacant','t213_state','t213_mucipality','t213_locality','t213_street','t213_cp','t213_interior_number','t213_exterior_number')
+				.all()#values('t200_id_vacant','t213_state','t213_mucipality','t213_locality','t213_street','t213_cp','t213_interior_number','t213_exterior_number')
 		return self.queryset
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t200_id_vacant','t213_state','t213_mucipality','t213_locality','t213_street','t213_cp','t213_interior_number','t213_exterior_number')
+				.all()#values('t200_id_vacant','t213_state','t213_mucipality','t213_locality','t213_street','t213_cp','t213_interior_number','t213_exterior_number')
 		return self.queryset
 
 

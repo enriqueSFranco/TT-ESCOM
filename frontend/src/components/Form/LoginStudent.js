@@ -6,12 +6,11 @@ import AuthContext from "../../context/AuthContext";
 import styles from "./Styles.module.css";
 
 let initialForm = {
-  boleta: "",
-  password: "",
+  t100_boleta: "",
+  t100_password: "",
 };
 
 const Form = () => {
-  // const { showPassword, toggle } = useShowPassword(false);
   const { form, handleChange } = useForm(initialForm);
   const { login } = useContext(AuthContext);
 
@@ -36,10 +35,10 @@ const Form = () => {
             <div className={styles.inputGroup}>
               <TextField
                 label="Boleta"
-                id="boleta"
-                name="boleta"
+                id="t100_boleta"
+                name="t100_boleta"
                 sx={{ width: 500, maxWidth: "100%" }}
-                value={form.boleta}
+                value={form.t100_boleta}
                 onChange={handleChange}
               />
             </div>

@@ -11,8 +11,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+from pickle import TRUE
 import environ
 import os
+
 
 env = environ.Env(
     DEBUG = (bool, False)
@@ -150,7 +152,7 @@ AUTH_USER_MODEL = 'users.User'
 
 STATIC_URL = 'static/'
 
-MEDIA_URL = '/files/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 # Default primary key field type

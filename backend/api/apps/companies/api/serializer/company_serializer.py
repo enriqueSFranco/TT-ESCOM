@@ -15,8 +15,9 @@ class CompanyListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
         fields = '__all__'
+        depth = 2
 
-    def to_representation(self,instance):
+    """def to_representation(self,instance):
         print(instance)
         return{
             't300_id_company' : instance['t300_id_company'],
@@ -33,7 +34,7 @@ class CompanyListSerializer(serializers.ModelSerializer):
             't300_banner' : instance['t300_banner'],
             't400_id_admin' : instance['t400_id_admin'],
             't300_create_date' : instance['t300_create_date']
-        }
+        }"""
 
 class UpdateCompanySerializer(serializers.ModelSerializer):
         class Meta:

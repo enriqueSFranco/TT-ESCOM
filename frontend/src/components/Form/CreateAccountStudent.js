@@ -1,55 +1,44 @@
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
-import { $ajax } from "../../utils/$ajax";
+import { studentInitialForm } from "./schemes";
 import TextField from "@mui/material/TextField";
-import StepComponent from "./FirstFormStudet/Step"
 import styles from "./Styles.module.css";
 
-let initialForm = {
-  t100_boleta: "",
-  t100_name: "",
-  t100_last_name: "",
-  t100_username: "",
-  t100_password: "",
-  t100_cv: null,
-  t100_email: "",
-  t100_gender: null,
-  t100_date_of_birth: null,
-  t100_personal_objectives: "",
-  t100_target_salary: null,
-  t100_travel: false,
-  t100_profile_picture: null,
-  is_active: false
-  
+const validateForm = (form) => {
+  let errors = {};
+  let regex = {
+    t100_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/, // el campo nombre debe ser de 4 a 16 digitos
+    t100_email: /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/,
+    t100_password: /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/,
+  };
+
+  if (!form.t100_name.trim())
+    errors.t100_name = "El campo 'Nombre' es requerido.";
+  else if (!regex.t100_name.test(form.t100_name.trim()))
+    errors.t100_name =
+      "El campo 'Nombre' solo acepta letras y espacios en blanco.";
+
+  if (!form.t100_email.trim())
+    errors.t100_email = "El campo 'Email' es requerido.";
+  else if (!regex.t100_email.test(form.t100_email.trim()))
+    errors.t100_email = "El campo 'Email' es incorrecto.";
+
+  if (!form.t100_password.trim())
+    errors.t100_password = "El campo 'Contraseña' es requerido."
+
+  return errors;
 };
 
 const CreateAccount = () => {
-  const { form, handleChange } = useForm(initialForm);
+  const {
+    form,
+    errors,
+    handleChange,
+    hadlerValidate,
+    handlerSubmitStudent,
+  } = useForm(studentInitialForm, validateForm);
 
   if (form === null) return;
-
-  const createAccount = (e) => {
-    e.preventDefault();
-    const endpoint = "/api/Students/";
-
-    let options = {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: form,
-    };
-    $ajax().POST(endpoint, options)
-      .then((response) => {
-        if (!response.err) {
-          console.log(response);
-          console.log(this.props);
-          /*window.location.replace("https://www.linkedin.com/feed/");*/
-          
-        }
-      })
-      .catch((err) => console.error(err));
-  };
 
   return (
     <div className={`container bg-primary shadow rounded`}>
@@ -61,8 +50,8 @@ const CreateAccount = () => {
         </div>
         <div className="col bg-white p-5 rounded-end">
           <h2 className={`${styles.welcome}`}>Bienvenido</h2>
-          <form onSubmit={createAccount}>
-            {/* input para el username 
+          <form onSubmit={handlerSubmitStudent}>
+            {/* input para el username */}
             <div className={styles.inputGroup}>
               <TextField
                 label="Nombre"
@@ -70,9 +59,14 @@ const CreateAccount = () => {
                 name="t100_name"
                 sx={{ width: 500, maxWidth: "100%" }}
                 value={form.t100_name}
+                onBlur={hadlerValidate}
+                onKeyUp={hadlerValidate}
                 onChange={handleChange}
               />
-  </div>*/}
+              {errors.t100_name && (
+                <span className={styles.error}>{errors.t100_name}</span>
+              )}
+            </div>
             <div className={styles.inputGroup}>
               <TextField
                 label="Boleta"
@@ -91,8 +85,13 @@ const CreateAccount = () => {
                 name="t100_email"
                 sx={{ width: 500, maxWidth: "100%" }}
                 value={form.t100_email}
+                onBlur={hadlerValidate}
+                onKeyUp={hadlerValidate}
                 onChange={handleChange}
               />
+              {errors.t100_email && (
+                <span className={styles.error}>{errors.t100_email}</span>
+              )}
             </div>
             <div className={styles.inputGroup}>
               <TextField
@@ -102,8 +101,11 @@ const CreateAccount = () => {
                 type="password"
                 sx={{ width: 500, maxWidth: "100%" }}
                 value={form.t100_password}
+                onBlur={hadlerValidate}
+                onKeyUp={hadlerValidate}
                 onChange={handleChange}
               />
+              { errors && <span className={styles.error}>{errors.t100_password}</span>}
             </div>
             <div className={styles.wrapperBtnLogin}>
               <button
@@ -115,8 +117,7 @@ const CreateAccount = () => {
             </div>
             <div className="my-3">
               <span>
-                Ya tines cuenta?{" "}
-                <Link to="/alumno">Inicia sesion</Link>
+                Ya tines cuenta? <Link to="/alumno">Inicia sesion</Link>
               </span>
               <br />
               <span>
@@ -124,6 +125,7 @@ const CreateAccount = () => {
               </span>
             </div>
           </form>
+          {/* { response && <Message msg="Cuenta creada exitosamente" bgColor="#198754" />} */}
         </div>
       </div>
     </div>

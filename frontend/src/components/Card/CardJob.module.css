@@ -3,7 +3,7 @@
 .card {
   position: relative;
   width: 500px;
-  height: 260px;
+  height: auto;
   margin-bottom:1rem;
   background-color: #fff;
   border: 1px solid #dadada;
@@ -42,7 +42,7 @@
 .nameCompany {
   font-size: .9rem;
   font-weight: 700;
-  color: #0d5ed7;
+  color: #123b66;
   font-weight: bold;
 }
 
@@ -70,4 +70,27 @@
   font-size: .9rem;
   font-weight: 600;
   margin: 0;
+}
+
+.wrapper {
+  width: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wrapperTags { width: 300px; }
+
+.logoBusiness {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.logoBusiness img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }

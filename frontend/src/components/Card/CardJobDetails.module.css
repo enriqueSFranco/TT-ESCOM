@@ -55,18 +55,6 @@ h3 {
   margin-left: .4rem;
 }
 
-.like {
-  background-color: #fff;
-  border: none;
-  padding: 0;
-}
-.like svg {
-  color: #121212;
-  transition: color 200ms;
-}
-
-.like.active svg { color: #ff2391; }
-
 .requirements {}
 
 .requirements ul {
@@ -74,7 +62,7 @@ h3 {
 }
 
 .title {
-  color: #000;
+  color: #123b66;
   font-weight: bold;
   font-size: 1.3rem;
   margin: 0;
@@ -86,8 +74,9 @@ h3 {
   height: 700px;
   width: 700px;
   border-radius: 8px;
-  outline: 1px solid #ccc;
   overflow-y: scroll;
+  outline: 1px solid #ccc;
+  padding: 1rem;
 }
 
 .wrapper::-webkit-scrollbar { width: 8px; }

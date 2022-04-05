@@ -15,8 +15,9 @@ class UbicationListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ubication
         fields = '__all__'
+        depth=2
 
-    def to_representation(self,instance):
+    '''def to_representation(self,instance):
         return{
             't200_id_vacant' : instance['t200_id_vacant'],
             't213_state' : instance['t213_state'],
@@ -26,12 +27,12 @@ class UbicationListSerializer(serializers.ModelSerializer):
             't213_cp' : instance['t213_cp'],
             't213_interior_number' : instance['t213_interior_number'],
             't213_exterior_number' : instance['t213_exterior_number']
-        }
+        }'''
 
 class UpdateUbicationSerializer(serializers.ModelSerializer):
         class Meta:
             model = Ubication
-            fields = ('t200_id_vacant','t213_state','t213_mucipality','t213_locality','t213_street','t213_cp','t213_interior_number','t213_exterior_number')
+            fields = '__all__'#('t200_id_vacant','t213_state','t213_mucipality','t213_locality','t213_street','t213_cp','t213_interior_number','t213_exterior_number')
         
         def update(self,instance,validate_data):
             u_ubication = super().update(instance,validate_data)

@@ -110,7 +110,7 @@ class Student(models.Model):
 	t100_date_of_birth = models.DateField(null=True, blank=True)
 	t100_personal_objectives = models.TextField(null=True, blank=True)
 	t100_speciality = models.CharField(max_length=100,null=True,blank=True)
-	t100_phonenumber = models.PositiveIntegerField (null=True,blank=True)
+	t100_phonenumber = models.PositiveBigIntegerField (null=True,blank=True)
 	t100_residence = models.CharField(max_length=100,null=True,blank=True)
 	t100_modalities = models.CharField(max_length=3,null=True,blank=True)
 	t100_target_salary = models.PositiveIntegerField(null=True, blank=True)	

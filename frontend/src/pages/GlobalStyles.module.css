@@ -1,7 +1,7 @@
 .wrapperPage {
   margin-top: 3rem;
   font-family: sans-serif;
-  height: 95.1vh;
-  position: relative;
-  top: 7rem;
+  height: 80vh;
+  display: flex;
+  align-items: center;
 }

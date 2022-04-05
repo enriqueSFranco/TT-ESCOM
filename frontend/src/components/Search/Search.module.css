@@ -1,13 +1,29 @@
-.btnSearch {
-  position: relative;
-  top: .5rem;
-  height: 50px;
-}
+.btnSearch { height: 50px; position: relative; right: 1rem; }
 
 .dataResultsJobs {
-  /* outline: 1px solid red; */
+  position: absolute;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   background-color: #fff;
+  outline: 1px solid #ccc;
   width: 400px;
+  height: auto;
+  max-height: 200px;
+  overflow-y: scroll;
+  border-radius: 0 0 8px 8px;
+  z-index: 10;
+}
+
+.dataItem {
+  cursor: pointer;
+  font-size: .9rem;
+  padding: .8rem;
+  margin: 0;
+  transition: background-color .5s ease;
+}
+
+.dataItem:hover {
+  color: #000;
+  background-color: #f6f8fb;
 }
 
 .searchInput {
@@ -26,23 +42,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 250px;
+  height: 300px;
 }
 
 .searchForm {
-  /* modificacion inicio */
   position: absolute;
-  top: 14rem;
+  top: 17.2rem;
   background-color: #fff;
-  /* fin */
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   border-radius: 8px;
-  width: 1100px;
+  width: 1050px;
   height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem 1rem 0;
   margin-top: 1rem;
 }
 

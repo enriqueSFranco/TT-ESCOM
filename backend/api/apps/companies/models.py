@@ -1,6 +1,12 @@
 from django.db import models
 from apps.administration.models import Admin
 
+def upload_image_banner(instance, filename):
+    return f"{instance.t300_id_company}-{filename}"
+
+def upload_image_logo(instance, filename):
+    return f"{instance.t300_id_company}-{filename}"
+
 class Company(models.Model):
     t300_id_company = models.AutoField(primary_key=True)
     t300_name = models.CharField(max_length=100,blank=False,null=False,default="Sin")
@@ -12,8 +18,8 @@ class Company(models.Model):
     t300_mision = models.TextField(blank=True,null=True)
     t300_vision = models.TextField(blank=True,null=True)
     t300_objective = models.TextField(blank=True,null=True)
-    t300_logo = models.ImageField(null=True,blank=True)
-    t300_banner = models.ImageField(null=True,blank=True)
+    t300_logo = models.ImageField(upload_to=upload_image_logo, null=True,blank=True)
+    t300_banner = models.ImageField(upload_to=upload_image_banner, null=True,blank=True)
     t400_id_admin = models.ForeignKey(
         Admin,
         null=True,

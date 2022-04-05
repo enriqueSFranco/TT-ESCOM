@@ -1,11 +1,11 @@
 import { useForm } from "../../hooks/useForm";
-// import { useFetch }  from "../../hooks/useFetch";
-import { motion } from "framer-motion/dist/framer-motion";
+import { motion } from "framer-motion";
 import TextField from "@mui/material/TextField";
 import Label from "../Input/Label";
 import Switch from "../Input/Switch";
 import * as BiIcon from "react-icons/bi";
 import styles from "./FormUpdateDataStudent.module.css";
+import { useState } from "react";
 
 let initialForm = {
   name: "",
@@ -13,7 +13,6 @@ let initialForm = {
   phone: undefined,
   location: "",
   travel: false,
-  cv: undefined,
   socialNetworks: {
     email: undefined,
     github: undefined,
@@ -22,9 +21,9 @@ let initialForm = {
   },
 };
 
-const FormUpdateDataStudent = ({ handleBackToProfile }) => {
+const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
   const { form, handleChange, handleChecked } = useForm(initialForm);
-  // const { data } = useFetch();
+  const [file, setfile] = useState(null);
 
   return (
     <>
@@ -89,7 +88,7 @@ const FormUpdateDataStudent = ({ handleBackToProfile }) => {
             name="cv"
             id="cv"
             className={`${styles.inputFile}`}
-            value={form.cv}
+            value={file}
             onChange={handleChange}
           />
           <Label htmlFor="cv">
