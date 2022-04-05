@@ -17,7 +17,7 @@ import styles from "./PageAddJob.module.css";
 let now = new Date();
 
 let initialForm = {
-  t200_job: "",
+  t200_job: "" ,
   t200_description: "",
   t200_requirements: "",
   t200_benefits: "",
