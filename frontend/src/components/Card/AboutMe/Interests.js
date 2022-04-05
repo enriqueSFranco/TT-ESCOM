@@ -26,7 +26,7 @@ const Interests = () => {
           <span className={styles.tex}>Posiciones buscadas</span>
         </div>
         <div className={styles.edit}>
-          <Link href="/#">
+          <Link to="#">
             <i>
               <MdIcon.MdEdit onClick={openModal1} size={25} />
             </i>
@@ -58,7 +58,7 @@ const Interests = () => {
           <span className={styles.tex}>Soft Skills</span>
         </div>
         <div className={styles.edit}>
-          <Link href="/#">
+          <Link to="#">
             <i>
               <MdIcon.MdEdit onClick={openModal2} size={25} />
             </i>

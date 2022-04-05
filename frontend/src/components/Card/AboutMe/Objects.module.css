@@ -1,26 +1,21 @@
-.objectspersonals {
-  width: 70%;
-  border-right: 1px solid #ccc;
-  border-width: 2px;
-  margin-right: 1rem;
-  margin-top: 30px;
+.objects {
+  background-color: blanchedalmond;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .salary {
   width: 30%;
   text-align: center;
-  margin-top: 30px;
 }
 
 .mode {
   width: 30%;
   text-align: center;
-  margin-top: 30px;
 }
 
-.objects {
-  display: flex;
-  justify-content: center;
-}
+
 
 h5,
 h6 {
@@ -29,7 +24,7 @@ h6 {
 
 .tex {
   vertical-align: middle;
-  font-size: 18px;
+  font-size: .9rem;
 }
 
 .edit {

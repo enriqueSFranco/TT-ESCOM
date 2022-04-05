@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { createAccountCompany } from "../services/businnes/createAccountCompany";
 import { createAccountStudent } from "../services/students/createAccountStudent";
 
 export const useForm = (initialForm, validateForm) => {
+  const navigate = useNavigate();
   const[form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -28,6 +30,8 @@ export const useForm = (initialForm, validateForm) => {
     });
   };
 
+  // PASAR A LOS COMPONENTES DE REGISTRO
+
   const handlerSubmitStudent = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
@@ -38,7 +42,7 @@ export const useForm = (initialForm, validateForm) => {
         .then(response => {
           setLoading(false);
           setResponse(response);
-          // setForm(initialForm)
+          navigate("/alumno")
         });
     } else {
       return;

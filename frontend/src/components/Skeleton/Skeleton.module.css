@@ -73,6 +73,15 @@
   left: 3.2rem;
 }
 
+
+/* SKELETON PARA LA CARAD DETAILS USER */
+.businessDetailsSkeleton {
+  height: 700px;
+  width: 700px;
+  outline: 1px solid #ccc;
+}
+
+
 @keyframes placeholder {
   0% { background-color: #ccc; }
   50% { background-color: #eee; }

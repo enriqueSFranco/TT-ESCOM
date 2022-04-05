@@ -16,6 +16,7 @@ const MenuStudent = () => {
     <nav className={styles.nav}>
       <ul className={styles.navMenu}>
         {tabs.map((item) => (
+          // console.log(item.label)
           <li className={`${item.label === selectedTab ? `${styles.selected}` : ""} ${styles.navList}`} key={item.label}>
             <Link 
               to={item.label} 

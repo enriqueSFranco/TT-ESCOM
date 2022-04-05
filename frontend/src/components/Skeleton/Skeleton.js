@@ -16,6 +16,13 @@ const Skeleton = ({ type }) => {
   </article>
   );
 
+
+  const BusinessDetailsSkeleton = () => (
+    <article className={styles.businessDetailsSkeleton}>
+      
+    </article>
+  );
+
   const BusinessSkeleton = () => (
     <article className={styles.cardSkBusiness}>
       <div className={`${styles.cardSKLogo} ${styles.placeholder}`}></div>
@@ -25,6 +32,7 @@ const Skeleton = ({ type }) => {
 
   if (type === "feed") return Array.from({length: 10}, (_, i) => <FeedSkeleton key={i}/>);
   if (type === "business") return Array.from({length: 10}, (_, i) => <BusinessSkeleton key={i} />);
+  if (type === "businessDetails") return Array.from({length: 1}, (_, i) => <BusinessDetailsSkeleton key={i} />);
 
 }
 

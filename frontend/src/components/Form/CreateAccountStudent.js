@@ -29,7 +29,7 @@ const validateForm = (form) => {
   return errors;
 };
 
-const CreateAccount = () => {
+const CreateAccountStudent = () => {
   const {
     form,
     errors,
@@ -132,4 +132,4 @@ const CreateAccount = () => {
   );
 };
 
-export default CreateAccount;
+export default CreateAccountStudent;

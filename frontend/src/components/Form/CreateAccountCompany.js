@@ -39,14 +39,14 @@ const validateForm = (form) => {
 };
 
 const FormCompany = () => {
-  const { form, errors, handleChange, hadlerValidate ,handlerSubmitCompany } = useForm(
+  const { form, errors, response, handleChange, hadlerValidate ,handlerSubmitCompany } = useForm(
     companyInitialForm,
     validateForm
   );
 
   if (form === null) return;
 
-  console.log(errors);
+  // console.log(response);
 
   return (
     <div className="container w-75 bg-primary shadow rounded">

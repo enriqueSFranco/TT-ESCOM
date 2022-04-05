@@ -1,11 +1,20 @@
 import React, { useState } from "react";
-import { helpHttp } from "../../utils/helpHttp";
 import styles from "./Avatar.module.css";
 
 const Avatar = ({ student }) => {
   const [image, setImage] = useState(null);
+
+  // useEffect(() => {
+  //   updateStudent("2014")
+  //     .then(response => {
+  //       console.log(response);
+  //     })
+  //     .catch(error => console.log(error));
+  // }, []);
   
-  const onChange = () => {};
+  const onChange = (e) => {
+  
+  };
 
   return (
     <div className={styles.wrapperAvatar}>
