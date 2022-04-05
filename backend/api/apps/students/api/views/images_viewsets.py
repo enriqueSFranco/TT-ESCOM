@@ -19,14 +19,14 @@ class StudentImageViewSet(viewsets.GenericViewSet):
 		if self.queryset == None:
 			self.queryset = self.model.objects\
 				.filter(t100_boleta = pk)\
-				.all()
+				.values('t100_boleta','t100_profile_picture')
 		return  self.queryset
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.all()
+				.values('t100_boleta','t100_profile_picture')
 		return self.queryset
   
 
