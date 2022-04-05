@@ -149,15 +149,6 @@ const DatesJob = ({form, handleChange, AllResults}) =>  {
     }
   }  
   );
-  console.log(hard);
-  console.log(soft);
-
-  function get(){
-    //array.push(document.getElementById('data').value);
-    console.log(document.getElementById('data').value); //WORKS
-   // console.log(array)
-  }
-
 
     return (
       <div>
@@ -176,10 +167,8 @@ const DatesJob = ({form, handleChange, AllResults}) =>  {
             {/* input para la eleccion de trabjo TODO: cambiar el HTMLFOR*/}
             <div className={styles.softskills}>
               <div className={styles.text}><h6>Escoge tus Skills (max 10)</h6></div>
-              <form onSubmit={get}>
-                <div>
-                  {/*
-<select
+                <div className={styles.select}>
+                  <select
                     className={styles.select}
                     name="t100_personal_objectives"
                     onChange={handleChange} 
@@ -191,20 +180,10 @@ const DatesJob = ({form, handleChange, AllResults}) =>  {
                     Hard Skills
                     </option>
                     {hard.map((option) =>
-                    (<option key={option['c116_description']} value={option['c116_id_skill']} >{option['c116_description']}</option>)
+                    (<option key={option['c116_description']} value={option['c116_id_skill']}>{option['c116_description']}</option>)
                     )}
-                    </select>*/}
-                    {/*<div className={}>input type="text" list="data-list" id="data" onChange={handleChange}/>
-
-                      <datalist id="data-list">
-                      {hard.map((option) =>
-                    (<option value={option['c116_id_skill']}>{option['c116_description']}</option>)
-                    )}
-                      </datalist>
-                      <a onClick={()=>get()} >add</a>*</div>*/}
-
-                  </div>
-                </form>
+                  </select>
+              </div>
             </div>
 
             {/* input para la eleccion de trabjo TODO: cambiar el HTMLFOR*/}
@@ -212,8 +191,10 @@ const DatesJob = ({form, handleChange, AllResults}) =>  {
               <div className={styles.select}>
                   <select
                     className={styles.select}
-                    name="t100_personal_objectives"
-                    id="t100_personal_objectives"
+                    name="t100_username"
+                    onChange={handleChange} 
+                    id="t100_username"
+                    value={form.t100_username}
                   >
                     <option value="" disabled>
                       Soft Skills
