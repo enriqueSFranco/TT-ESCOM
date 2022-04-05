@@ -33,6 +33,7 @@ let initialForm = {
 
 const StepComponent = () => {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [allskills, setAllSkills] = React.useState([]);
   const { form, handleChange } = useForm(initialForm);
   const { data } = useFetch("/api/catalogues/CatalogueSkills/");
   if (!data && !form) {
@@ -48,8 +49,7 @@ const StepComponent = () => {
     if (activeStep === 1) {
       return (
         <DatesJob
-          form={form}
-          handleChange={handleChange}
+          allskills={allskills}
           AllResults={AllResults}
         />
       );
