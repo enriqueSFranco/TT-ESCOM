@@ -3,8 +3,8 @@ import { getAllJobs } from "../../services/jobs/getAllJobs";
 import Search from "../../components/Search/Search";
 import FilterProfile from "../../components/Filter/FilterProfile";
 import FilterCompany from "../../components/Filter/FilterCompany";
-import Switch from "../../components/Input/Switch";
 import CardJobList from "../../components/Card/CardJobList";
+import FilterHomeOffice from "../../components/Filter/FilterHomeOffice";
 import Deck from "../../components/Deck/Deck";
 import Footer from "../../components/Footer/Footer";
 import homeStyles from "./PageHome.module.css";
@@ -15,6 +15,7 @@ const Home = () => {
   const [isFiltered, setIsFiltered] = useState(false); // boolean para saber si la informacion se tiene que filtrar
   const [data, setData] = useState(null); // lista filtrada
   const [loading, setLoading] = useState(true);
+  
   const [isFilteredBusiness, setIsFilteredBusiness] = useState(false);
   const [isChecked, setIsChecked] = useState(false); // informacion filtrada
   const [totalJobs, setTotalJobs] = useState(null); // estado para el total de vacantes
@@ -109,14 +110,8 @@ const Home = () => {
       <div className={homeStyles.filteredControls}>
         <span>Filtros</span>
         <FilterProfile />
-        <FilterCompany data={dataList} filterBusiness={filterBusiness} />
-        <Switch
-          label="Remoto"
-          name="homeOffice"
-          id="HomoOffice"
-          value={isChecked}
-          onChange={handleChecked}
-        />
+        <FilterCompany onChange={filterBusiness} />
+        <FilterHomeOffice value={isChecked} onChange={handleChecked} />
       </div>
 
       {/* renderizado de los empleos */}
