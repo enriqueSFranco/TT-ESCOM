@@ -7,12 +7,14 @@ class StudentSerializer(serializers.ModelSerializer):
   #skills=serializers.StringRelatedField(many=True)
   class Meta:
     model = Student
-    fields = "__all__"#("t100_boleta", "t100_name", "t100_academic_level", "t100_email", "t100_password")
+    fields = ('t100_boleta','t100_name','t100_last_name','t100_username','t100_password','t100_email',
+    't100_gender','t100_date_of_birth','t100_personal_objectives','t100_phonenumber','t100_residence',
+    't100_modalities','t100_speciality','t100_target_salary','t100_travel','is_active')
 
   # encriptamos el password al momento de que se crea un usuario
   def create(self, validate_data):
     student = Student(**validate_data)
-    #student.set_password(validate_data['password']) 
+    student.set_password(validate_data['t100_password']) 
     # generar token de autenticacion
     student.save() # guardamos al usuario
     return student
