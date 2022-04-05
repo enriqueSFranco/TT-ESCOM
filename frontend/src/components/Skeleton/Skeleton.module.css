@@ -81,6 +81,70 @@
   outline: 1px solid #ccc;
 }
 
+.btnApply {
+  width: 84px;
+  height: 43px;
+}
+
+.bodySk {
+  height: 575px;
+}
+
+.descriptionSk,
+.requirementsSk,
+.profitSk,
+.applySk {
+  height: 100px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.languageSk {
+  width: 80%;
+  height: 50px;
+}
+
+.flex {
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.jobTags {
+  margin-top: 1rem;
+  width: 500px;
+}
+
+.jobTags > ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.nameSk {
+  width: 100%;
+  height: 30px;
+  margin-top: 1rem;
+}
+
+.pSk {
+  width: 100%;
+  height: 30px;
+}
+
+.pSk:nth-child(2n) { width: 60%; }
+
+
+.tagsSk {
+  width: 150px;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
 
 @keyframes placeholder {
   0% { background-color: #ccc; }

@@ -49,6 +49,8 @@ const Home = () => {
         setLoading(false); // desactivamos el modo "cargando"
       })
       .catch((error) => console.error(error));
+    
+      return () => null;
   }, []);
 
   const handleSearch = (value) => {

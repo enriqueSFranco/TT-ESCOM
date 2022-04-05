@@ -14,6 +14,7 @@ import CardJobDetails from "./components/Card/CardJobDetails";
 import PageAddJob from "./pages/business/PageAddJob";
 import ModalRelease from "./components/Modal/ModalRelease";
 import StepComponent from "./components/Form/FirstFormStudet/Step";
+// import PageJobs from "./pages/business/PageJobs";
 
 const Root = () => {
   return (
@@ -23,11 +24,16 @@ const Root = () => {
         <Route path=":t200_id_vacant" element={<CardJobDetails />} />
       </Route>
 
+      {/* FEATURE:  */}
+      {/* <Route path="empleos" element={<PageJobs />}>
+        <Route path=":t200_id_vacant" element={<CardJobDetails />} />
+      </Route> */}
+
       <Route path="/alumno" element={<PageLoginStudent />} />
       <Route path="/registro-alumno" element={<PageCreateAccountStudent />} />
       <Route path="/reclutador" element={<PageLoginCompany />} />
       <Route path="/registro-reclutador" element={<PageRegisterCompany />} />
-      <Route path="/StepComponent" element={<StepComponent />}/>
+      <Route path="/StepComponent" element={<StepComponent />} />
       <Route path="/empresas" element={<PageCompany />} />
       <Route path="comunicados" element={<PageReleases />}>
         <Route path=":t202_id_announcement" element={<ModalRelease />} />
@@ -38,10 +44,10 @@ const Root = () => {
 
       {/* TODO: Hacer ruta privada */}
       <Route path="/perfil" element={<PageProfileStudent />}>
-          <Route path="editar" element={<h4>Editar perfil</h4>} />
-          <Route path="sobreMi" element={<AboutMe />} />
-          <Route path="experiencia" element={<h4>experiencia</h4>} />
-          <Route path="certificaciones" element={<h4>certificaciones</h4>} />
+        <Route path="editar" element={<h4>Editar perfil</h4>} />
+        <Route path="sobreMi" element={<AboutMe />} />
+        <Route path="experiencia" element={<h4>experiencia</h4>} />
+        <Route path="certificaciones" element={<h4>certificaciones</h4>} />
       </Route>
 
       {/* Indice de rutas privadas */}

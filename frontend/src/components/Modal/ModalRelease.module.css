@@ -20,6 +20,7 @@ img {
 
 .details {
   color: #fff;
+  /* background-color: bisque; */
 }
 
 .details h1 {
@@ -27,12 +28,30 @@ img {
   font-weight: 700;
 }
 
+.details span {
+  display: block;
+  color: #fff;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
 .grid {
-  height: 100%;
+  position: relative;
+  top: 5rem;
+  /* background-color: red; */
+  height: auto;
+  width: auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
+  gap: 1rem;
   align-content: center;
+  justify-items: center;
+}
+
+.releaseDescription {
+  margin-top: 3rem;
+  height: auto;
+  font-size: 1.1rem;
 }
 
 .wrapper {

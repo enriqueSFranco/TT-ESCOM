@@ -22,7 +22,7 @@ const PageReleases = () => {
   return (
     <section className={styles.wrapperReleases}>
       <div className={styles.heroReleases}>
-        <h1>Comunicados</h1>
+        <h1 className={styles.title}>Comunicados</h1>
         <div className={styles.heroReleases}></div>
       </div>
       <div className={`container ${styles.gridReleases}`}>

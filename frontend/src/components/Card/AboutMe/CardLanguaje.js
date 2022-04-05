@@ -7,7 +7,7 @@ import * as RiIcon from "react-icons/ri";
 export default function CardLanguaje() {
   return (
     <div className={styles.compone}>
-      <div className={styles.title}>Ingles</div>
+      <h3 className={styles.title}>Ingles</h3>
       <div>
         <div className={styles.content}>
           <div>

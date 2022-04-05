@@ -7,9 +7,7 @@ const Languajes = () => {
 	return (
 		<div className={styles.wrapperLenguage}>
 			<h5>Idiomas</h5>
-			<div className={styles.lenguages}>
 				<CardLanguaje />
-			</div>	
 		</div>
 	);
 };

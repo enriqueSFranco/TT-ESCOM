@@ -5,9 +5,11 @@ import Span from "../Input/Span";
 import styles from "./Search.module.css";
 
 const Search = ({ handleSearch, data, locationList }) => {
+  // const {search} = useLocation();
   const [job, setJob] = useState("");
-  const [location, setLocation] = useState("");
+  const [locationJob, setLocationJob] = useState("");
   const [filterData, setFilterData] = useState([]);
+  // const query = new URLSearchParams(search)
 
   const handleFilterJob = (e) => {
     const query = e.target.value;
@@ -20,18 +22,9 @@ const Search = ({ handleSearch, data, locationList }) => {
     query === "" ? setFilterData([]) : setFilterData(newFilter);
   };
 
-  // const handleFilteredLocation = (e) => {
-  //   const query = e.target;
-  //   setLocation(query);
-
-  //   const newFilter = data.filter((value) => {
-  //     return value?.
-  //   })
-  // }
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!job.trim() || !location.trim()) return;
+    if (!job.trim()) return;
     handleSearch(job);
   };
 
@@ -81,8 +74,8 @@ const Search = ({ handleSearch, data, locationList }) => {
               type="text"
               id="location"
               name="location"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
+              value={locationJob}
+              onChange={(e) => setLocationJob(e.target.value)}
             />
             <Span content="Ubicacion" />
           </Label>
@@ -93,6 +86,9 @@ const Search = ({ handleSearch, data, locationList }) => {
           value="Buscar Vacante"
           className={`${styles.btnSearch} btn btn-primary`}
         />
+        {/* <Link to="empleos" className={`${styles.btnSearch} btn btn-primary`}>
+          Buscar Empleo
+        </Link> */}
       </form>
     </div>
   );

@@ -33,11 +33,13 @@ const ModalRelease = () => {
         <img src={release?.t202_announcement} alt={release?.t300_id_company?.t300_name} />
         <div className={styles.details}>
           <h1>{release?.t202_description}</h1>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui deserunt in sint perspiciatis iste nemo eveniet, quasi ratione molestiae quaerat incidunt vero sit, officiis minus consectetur vitae natus nisi assumenda.
-          </p>
+          <div className={styles.releaseDescription}>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui deserunt in sint perspiciatis iste nemo eveniet, quasi ratione molestiae quaerat incidunt vero sit, officiis minus consectetur vitae natus nisi assumenda.
+            </p>
+          </div>
           <span>publicado el dia: {release?.t202_publish_date}</span>
-          <a href={release?.t_202_link}>Link del evento</a>
+          <a href={release?.t_202_link}>Enlace de registro</a>
         </div>
       </div>
     </motion.article>
