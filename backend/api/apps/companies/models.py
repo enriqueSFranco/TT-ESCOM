@@ -11,7 +11,7 @@ class Company(models.Model):
     t300_id_company = models.AutoField(primary_key=True)
     t300_name = models.CharField(max_length=100,blank=False,null=False,default="Sin")
     t300_rfc = models.CharField(max_length=20,blank=False,null=False,default="Sin")
-    t300_nss = models.PositiveIntegerField()
+    t300_nss = models.PositiveBigIntegerField(null=False,blank=False,default=000000)
     t300_email =  models.EmailField(null=True,blank=True)
     t300_bussiness_name = models.CharField(max_length=100,blank=True,null=True)
     t300_web_page = models.CharField(max_length=100,blank=True,null=True,default="http://")

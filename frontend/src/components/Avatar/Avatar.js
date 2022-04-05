@@ -11,7 +11,6 @@ const Avatar = ({ student }) => {
   //     })
   //     .catch(error => console.log(error));
   // }, []);
-  
   const onChange = (e) => {
   
   };

@@ -1,7 +1,4 @@
-from doctest import FAIL_FAST
-from email.policy import default
-from enum import unique
-from tabnanny import verbose
+from django.contrib.auth.models import  AbstractBaseUser,PermissionsMixin
 
 #from turtle import ondrag
 from django.db import models
@@ -94,7 +91,7 @@ class Lenguage(models.Model):
 
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
 #T100 Alumno
-class Student(models.Model):	
+class Student(AbstractBaseUser):	
 	t100_boleta = models.CharField(primary_key=True,max_length=12, null=False, blank=False)
 	t100_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_last_name = models.CharField(max_length=50, null=True, blank=True)
@@ -118,13 +115,15 @@ class Student(models.Model):
 	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to='profiles_pictures/')
 	is_active = models.BooleanField(default=True)
 
+	USERNAME_FIELD = 't100_boleta'
+	REQUIRED_FIELDS = ['t100_boleta','t100_password']
 	class Meta:
 		unique_together = ['t100_boleta', 't100_email']
 		verbose_name = 'Student'
 		verbose_name_plural = 'Students'
 		db_table = "t100_alumno"
 	def __str__(self):
-		return self.t100_name
+		return self.t100_boleta+": "+self.t100_name+" "+self.t100_last_name
 
 #T101 Domicilio
 class residence(models.Model):
