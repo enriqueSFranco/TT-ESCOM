@@ -1,15 +1,18 @@
-import React, { Component } from 'react';
+import React,{ useState } from 'react';
 import styles from "./Styles.module.css";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import CheckboxComponent from "../../Input/Checkbox"
-import { helpHttp } from "../../../utils/helpHttp";
+
 
 
 const DatesJob = ({form, handleChange, AllResults}) =>  {
   let soft = new Array();
   let hard = new Array();
-  
+
+  const [value, setValue] = useState("");
+
+  console.log("value: ", value);
 
 
   AllResults.map((dato)=>{
@@ -21,15 +24,8 @@ const DatesJob = ({form, handleChange, AllResults}) =>  {
     }
   }  
   );
-  console.log(hard);
-  console.log(soft);
-
-  function get(){
-    //array.push(document.getElementById('data').value);
-    console.log(document.getElementById('data').value); //WORKS
-   // console.log(array)
-  }
-
+  
+  
 
     return (
       <div>
@@ -44,62 +40,31 @@ const DatesJob = ({form, handleChange, AllResults}) =>  {
                 <CheckboxComponent htmlFor="" label="Home Office"/>
               </div>
             </div>
+            <div>
+              <Autocomplete
+                value={value}
+                onChange={(event, newValue) => {
+                  setValue(newValue);
+                }}
+                multiple
+                id="tags-filled"
+                options={hard}
+                freeSolo
+                getOptionLabel={(option) => option.c116_type}
+                filterSelectedOptions
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="filterSelectedOptions"
+                    placeholder="Favorites"
+                  />
+                )}
+              />
+            </div>
               
-            {/* input para la eleccion de trabjo TODO: cambiar el HTMLFOR*/}
-            <div className={styles.softskills}>
-              <div className={styles.text}><h6>Escoge tus Skills (max 10)</h6></div>
-              <form onSubmit={get}>
-                <div>
-                  {/*
-<select
-                    className={styles.select}
-                    name="t100_personal_objectives"
-                    onChange={handleChange} 
-                    id="t100_personal_objectives"
-                    value={form.t100_personal_objectives}
-                  >
-                  
-                    <option value="" disabled>
-                    Hard Skills
-                    </option>
-                    {hard.map((option) =>
-                    (<option key={option['c116_description']} value={option['c116_id_skill']} >{option['c116_description']}</option>)
-                    )}
-                    </select>*/}
-                    <div className={styles.select}><input type="text" list="data-list" id="data" onChange={handleChange}/>
-
-                      <datalist id="data-list">
-                      {hard.map((option) =>
-                    (<option value={option['c116_id_skill']}>{option['c116_description']}</option>)
-                    )}
-                      </datalist>
-                      <a onClick={()=>get()} >add</a></div>
-
-                  </div>
-                </form>
-            </div>
-
-            {/* input para la eleccion de trabjo TODO: cambiar el HTMLFOR*/}
-            <div className={styles.softskills}>
-              <div className={styles.select}>
-                  <select
-                    className={styles.select}
-                    name="t100_personal_objectives"
-                    id="t100_personal_objectives"
-                  >
-                    <option value="" disabled>
-                      Soft Skills
-                    </option>
-                    {soft.map((option) =>
-                (<option key={option['c116_description']} value={option['c116_id_skill']}>{option['c116_description']}</option>)
-              )}
-                  </select>
-              </div>
-            </div>
           </form>
       </div>
     );
-  //}
 }
 
 export default DatesJob;
