@@ -132,14 +132,14 @@ const top100Films = [
 ];
 
 
-const DatesJob = ({AllResults}) =>  {
+const DatesJob = ({hardSkills,setHardSkills,softSkills,setSoftSkills,AllResults}) =>  {
   let soft = new Array();
   let hard = new Array();
-
-  const [value, setValue] = useState([]);
-
-  console.log("value: ", value);
-
+  const [localhardSkills, setLocalHardSkill] = useState(hardSkills);
+  const [localsoftSkills, setLocalSoftSkill] = useState(softSkills);
+  console.log("Allskills", hardSkills,softSkills);
+  console.log("hard skills: ", localhardSkills);
+  console.log("hard skills: ", localsoftSkills);
 
   AllResults.map((dato)=>{
     if(dato['c116_type']=='H'){
@@ -150,8 +150,6 @@ const DatesJob = ({AllResults}) =>  {
     }
   }  
   );
-  
-  
 
     return (
       <div>
@@ -168,9 +166,11 @@ const DatesJob = ({AllResults}) =>  {
             </div>
             <div>
             <Autocomplete
-                value={value}
-                onChange={
-                  handleChange}
+                value={localhardSkills}
+                onChange={(event, newValue) => {
+                  setLocalHardSkill(newValue);                                
+                  setHardSkills(newValue);
+                }}
                 multiple
                 id="tags-outlined"
                 options={hard}
@@ -184,17 +184,21 @@ const DatesJob = ({AllResults}) =>  {
                     placeholder="Favorites"
                   />
                 )}
-            />
-              {/*<Autocomplete
-                value={value}
+            />              
+            </div>
+
+            <div>
+            <Autocomplete
+                value={localsoftSkills}
                 onChange={(event, newValue) => {
-                  setValue(newValue);
+                  setLocalSoftSkill(newValue);                                
+                  setSoftSkills(newValue);
                 }}
                 multiple
-                id="tags-filled"
-                options={hard}
-                defaultValue={hard[0]}
+                id="tags-outlined"
+                options={soft}
                 getOptionLabel={(option) => option.c116_description}
+                defaultValue={[soft[13]]}
                 filterSelectedOptions
                 renderInput={(params) => (
                   <TextField
@@ -203,7 +207,7 @@ const DatesJob = ({AllResults}) =>  {
                     placeholder="Favorites"
                   />
                 )}
-                />*/}
+            />              
             </div>
               
           </form>
