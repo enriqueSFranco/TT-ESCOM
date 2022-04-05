@@ -1,33 +1,45 @@
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
-import { createAccountStudent } from "../../services/students/createAccountStudent";
+import { studentInitialForm } from "./schemes";
 import TextField from "@mui/material/TextField";
-
 import styles from "./Styles.module.css";
-import { useState } from "react";
 
-let initialForm = {
-  t100_name: "",
-  t100_boleta: "",
-  t100_email: "",
-  t100_password: "",
+const validateForm = (form) => {
+  let errors = {};
+  let regex = {
+    t100_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/, // el campo nombre debe ser de 4 a 16 digitos
+    t100_email: /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/,
+    t100_password: /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/,
+  };
+
+  if (!form.t100_name.trim())
+    errors.t100_name = "El campo 'Nombre' es requerido.";
+  else if (!regex.t100_name.test(form.t100_name.trim()))
+    errors.t100_name =
+      "El campo 'Nombre' solo acepta letras y espacios en blanco.";
+
+  if (!form.t100_email.trim())
+    errors.t100_email = "El campo 'Email' es requerido.";
+  else if (!regex.t100_email.test(form.t100_email.trim()))
+    errors.t100_email = "El campo 'Email' es incorrecto.";
+
+  if (!form.t100_password.trim())
+    errors.t100_password = "El campo 'Contraseña' es requerido."
+
+  return errors;
 };
 
 const CreateAccount = () => {
-  const [succes, setSucces] = useState({});
-  const { form, handleChange } = useForm(initialForm);
+  const {
+    form,
+    errors,
+    handleChange,
+    hadlerValidate,
+    handlerSubmitStudent,
+  } = useForm(studentInitialForm, validateForm);
 
   if (form === null) return;
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    createAccountStudent(form)
-      .then(response => {
-        setSucces(response);
-      })
-      .catch(error => console.log(error))
-  };
-  // console.log(succes)
   return (
     <div className={`container bg-primary shadow rounded`}>
       <div className="row align-items-stretch">
@@ -38,7 +50,7 @@ const CreateAccount = () => {
         </div>
         <div className="col bg-white p-5 rounded-end">
           <h2 className={`${styles.welcome}`}>Bienvenido</h2>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={handlerSubmitStudent}>
             {/* input para el username */}
             <div className={styles.inputGroup}>
               <TextField
@@ -47,8 +59,13 @@ const CreateAccount = () => {
                 name="t100_name"
                 sx={{ width: 500, maxWidth: "100%" }}
                 value={form.t100_name}
+                onBlur={hadlerValidate}
+                onKeyUp={hadlerValidate}
                 onChange={handleChange}
               />
+              {errors.t100_name && (
+                <span className={styles.error}>{errors.t100_name}</span>
+              )}
             </div>
             <div className={styles.inputGroup}>
               <TextField
@@ -68,8 +85,13 @@ const CreateAccount = () => {
                 name="t100_email"
                 sx={{ width: 500, maxWidth: "100%" }}
                 value={form.t100_email}
+                onBlur={hadlerValidate}
+                onKeyUp={hadlerValidate}
                 onChange={handleChange}
               />
+              {errors.t100_email && (
+                <span className={styles.error}>{errors.t100_email}</span>
+              )}
             </div>
             <div className={styles.inputGroup}>
               <TextField
@@ -79,8 +101,11 @@ const CreateAccount = () => {
                 type="password"
                 sx={{ width: 500, maxWidth: "100%" }}
                 value={form.t100_password}
+                onBlur={hadlerValidate}
+                onKeyUp={hadlerValidate}
                 onChange={handleChange}
               />
+              { errors && <span className={styles.error}>{errors.t100_password}</span>}
             </div>
             <div className={styles.wrapperBtnLogin}>
               <button
@@ -92,8 +117,7 @@ const CreateAccount = () => {
             </div>
             <div className="my-3">
               <span>
-                Ya tines cuenta?{" "}
-                <Link to="/alumno">Inicia sesion</Link>
+                Ya tines cuenta? <Link to="/alumno">Inicia sesion</Link>
               </span>
               <br />
               <span>
@@ -101,6 +125,7 @@ const CreateAccount = () => {
               </span>
             </div>
           </form>
+          {/* { response && <Message msg="Cuenta creada exitosamente" bgColor="#198754" />} */}
         </div>
       </div>
     </div>
