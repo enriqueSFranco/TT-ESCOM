@@ -1,9 +1,9 @@
 from rest_framework import serializers
 from apps.vacantes.models import Vacant
 
-class VacantSerializer(serializers.ModelSerializer):
+class VacantSerializer(serializers.ModelSerializer):    
     class Meta:
-        model = Vacant
+        model = Vacant        
         fields = '__all__'
     
     def create(self,validate_data):
@@ -14,6 +14,8 @@ class VacantSerializer(serializers.ModelSerializer):
         return vacant
     
 class VacantListSerializer(serializers.ModelSerializer):
+    t300_id_company = serializers.StringRelatedField()
+    c207_id_experience = serializers.StringRelatedField()
     class Meta:
         model = Vacant
         fields = '__all__'    

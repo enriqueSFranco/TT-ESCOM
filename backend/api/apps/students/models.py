@@ -1,7 +1,4 @@
-from doctest import FAIL_FAST
-from email.policy import default
-from enum import unique
-from tabnanny import verbose
+from django.contrib.auth.models import  AbstractBaseUser,PermissionsMixin
 
 #from turtle import ondrag
 from django.db import models

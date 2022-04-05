@@ -59,10 +59,11 @@ class VacantViewSet(viewsets.GenericViewSet):
 		return Response(vacant_serializer.data)
 
 	def destroy(self, request, pk=None):
-		vacant_destroy = self.model.objects.filter(t200_id_vacant=pk).delete()
-		if vacant_destroy == 1:
+		vacant_destroy = self.model.objects.filter(t200_id_vacant=pk).first()
+		if vacant_destroy :
+			vacant_destroy = self.model.objects.filter(t200_id_vacant=pk).delete()
 			return Response({
-				'message': 'Vacante eliminado correctamente'
+				'message': 'Vacante eliminada correctamente'
 			})
 		return Response({
 			'message': 'No existe la vacante que desea eliminar'
