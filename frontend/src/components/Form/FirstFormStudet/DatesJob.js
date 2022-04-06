@@ -43,6 +43,7 @@ const DatesJob = ({hardSkills,setHardSkills,softSkills,setSoftSkills,AllResults}
               <div className={styles.text}><h6>Preferirias un trabajo ??</h6></div>
               <div className={styles.checkbox}>
               <RadioGroup
+                row
                 aria-labelledby="demo-controlled-radio-buttons-group"
                 name="controlled-radio-buttons-group"
                 value={value}
