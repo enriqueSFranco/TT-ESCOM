@@ -18,7 +18,7 @@ class StudentViewSet(viewsets.GenericViewSet):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter(pk=pk)\
-				.values('t100_boleta','t100_name','t100_last_name','t100_username','t100_password','t100_cv','t100_email','t100_gender','t100_date_of_birth',
+				.values('t100_boleta','t100_name','t100_last_name','t100_username','t100_cv','t100_email','t100_gender','t100_date_of_birth',
 				't100_personal_objectives','t100_phonenumber','t100_residence','t100_modalities','t100_speciality','t100_target_salary','t100_travel',
 				't100_profile_picture','is_active')
 		return self.queryset
@@ -26,9 +26,9 @@ class StudentViewSet(viewsets.GenericViewSet):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t100_boleta','t100_name','t100_last_name','t100_username','t100_password','t100_cv','t100_email','t100_gender','t100_date_of_birth',
+				.values('t100_boleta','t100_name','t100_last_name','t100_username','t100_cv','t100_email','t100_gender','t100_date_of_birth',
 				't100_personal_objectives','t100_phonenumber','t100_residence','t100_modalities','t100_speciality','t100_target_salary','t100_travel',
-				't100_profile_picture','is_active')
+				't100_profile_picture','is_active','password')
 		return self.queryset
 
   # TODO terminar ruta para cambiar el password
@@ -38,7 +38,7 @@ class StudentViewSet(viewsets.GenericViewSet):
 		password_serializer = PasswordSerializer(data=request.data)
 		if password_serializer.is_valid():
 			student.set_password(
-				password_serializer.validated_data['t100_password'])
+				password_serializer.validated_data['password'])
 			student.save()
 			return Response({
 				'message': 'Contraseña actualizada correctamente'

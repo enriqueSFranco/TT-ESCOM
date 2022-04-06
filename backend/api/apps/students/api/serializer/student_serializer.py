@@ -1,20 +1,21 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from apps.students.models import Student, StudentSkill
+from apps.students.models import Student
 
 
 class StudentSerializer(serializers.ModelSerializer):
   #skills=serializers.StringRelatedField(many=True)
   class Meta:
     model = Student
-    fields = ('t100_boleta','t100_name','t100_last_name','t100_username','t100_password','t100_email',
+    fields = ('t100_boleta','t100_name','t100_last_name','t100_username','t100_email',
     't100_gender','t100_date_of_birth','t100_personal_objectives','t100_phonenumber','t100_residence',
-    't100_modalities','t100_speciality','t100_target_salary','t100_travel','is_active')
+    't100_modalities','t100_speciality','t100_target_salary','t100_travel','is_active','password')
 
   # encriptamos el password al momento de que se crea un usuario
   def create(self, validate_data):
     student = Student(**validate_data)
-    #student.set_password(validate_data['t100_password']) 
+    student.set_password(validate_data['password']) 
+    print(student)
     # generar token de autenticacion
     student.save() # guardamos al usuario
     return student
@@ -31,9 +32,9 @@ class StudentListSerializer(serializers.ModelSerializer):
   #skills=StudentSkill(many=True)
   class Meta:
     model = Student
-    fields = ('t100_boleta','t100_name','t100_last_name','t100_username','t100_password','t100_email',
+    fields = ('t100_boleta','t100_name','t100_last_name','t100_username','t100_email',
     't100_gender','t100_date_of_birth','t100_personal_objectives','t100_phonenumber','t100_residence',
-    't100_modalities','t100_speciality','t100_target_salary','t100_travel','is_active')
+    't100_modalities','t100_speciality','t100_target_salary','t100_travel','is_active','password')
     depth = 2
 
   """def to_representation(self, instance):
@@ -62,13 +63,13 @@ class UpdateStudentSerializer(serializers.ModelSerializer):
   # skills=SkillSerializer(many=True)
   class Meta:
     model = Student
-    fields = ('t100_boleta','t100_name','t100_last_name','t100_username','t100_password','t100_email',
+    fields = ('t100_boleta','t100_name','t100_last_name','t100_username','t100_email',
     't100_gender','t100_date_of_birth','t100_personal_objectives','t100_phonenumber','t100_residence',
     't100_modalities','t100_speciality','t100_target_salary','t100_travel','is_active')    
       # encriptamos el password cuando el usuario quiera actualizar su informacion
     def update(self, instance, validate_data):
       update_student = super().update(instance, validate_data)
-      # update_student.set_password(validate_data['t100_password'])
+      update_student.set_password(validate_data['password'])
       update_student.save()
       return update_student
 
@@ -86,4 +87,4 @@ class PasswordSerializer(serializers.Serializer):
 class StudentTokenSerializer(serializers.ModelSerializer):
   class Meta:
     model = Student
-    fields = ('t100_boleta', 't100_name', 't100_last_name', 't100_username', 't100_email', 't100_password')
+    fields = ('t100_boleta', 't100_name', 't100_last_name', 't100_username', 't100_email', 'password')

@@ -14,8 +14,6 @@ class VacantSerializer(serializers.ModelSerializer):
         return vacant
     
 class VacantListSerializer(serializers.ModelSerializer):
-    t300_id_company = serializers.StringRelatedField()
-    c207_id_experience = serializers.StringRelatedField()
     class Meta:
         model = Vacant
         fields = '__all__'    
@@ -24,6 +22,7 @@ class VacantListSerializer(serializers.ModelSerializer):
         return{
             't200_id_vacant': instance['t200_id_vacant'],
             't300_id_company': instance['t300_id_company'],
+            't300_id_company': instance['t300_id_company'],            
             't200_job': instance['t200_job'],
             't200_description': instance['t200_description'],
             't200_requirements': instance['t200_requirements'],
@@ -41,8 +40,8 @@ class VacantListSerializer(serializers.ModelSerializer):
             't200_close_date': instance['t200_close_date'],
             't301_id_recruiter': instance['t301_id_recruiter'],
             't400_id_admin': instance['t400_id_admin']
-        }
-    """
+        }"""
+    
 
 class UpdateVacantSerializer(serializers.ModelSerializer):
         class Meta:
