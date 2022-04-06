@@ -14,18 +14,18 @@ class StudentSerializer(serializers.ModelSerializer):
   # encriptamos el password al momento de que se crea un usuario
   def create(self, validate_data):
     student = Student(**validate_data)
-    student.set_password(validate_data['t100_password']) 
+    #student.set_password(validate_data['t100_password']) 
     # generar token de autenticacion
     student.save() # guardamos al usuario
     return student
 
-  def validate_email(self, value):
+  """def validate_t100_email(self, value):
     print("value:",value)
     if value == '':
       raise serializers.ValidationError('Tiene que indicar un correo')
     if get_user_model().objects.get(t100_email=value):
       return value
-    raise serializers.ValidateError("Correo ya registrado")
+    raise serializers.ValidateError("Correo ya registrado")"""
 
 class StudentListSerializer(serializers.ModelSerializer):
   #skills=StudentSkill(many=True)

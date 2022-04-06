@@ -1,28 +1,29 @@
+import { useState } from "react";
 import { useForm } from "../../hooks/useForm";
-import { motion } from "framer-motion" ;
+import { motion } from "framer-motion";
 import TextField from "@mui/material/TextField";
+import InputAdornment from "@material/InputAdornment";
 import Label from "../Input/Label";
 import Switch from "../Input/Switch";
+import { updateStudentInitialForm } from "./schemes";
 import * as BiIcon from "react-icons/bi";
 import styles from "./FormUpdateDataStudent.module.css";
-import { useState } from "react";
 
-let initialForm = {
-  name: "",
-  specialty: "",
-  phone: undefined,
-  location: "",
-  travel: false,
-  socialNetworks: {
-    email: undefined,
-    github: undefined,
-    gitlab: undefined,
-    linkedin: undefined,
-  },
+const validateForm = (form) => {
+  let errors = {};
+  let regex = {
+    t100_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
+    t100_specialty: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
+    t100_location: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
+    t100_phone: "",
+  };
 };
 
 const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
-  const { form, handleChange, handleChecked } = useForm(initialForm);
+  const { form, handleChange, handleChecked } = useForm(
+    updateStudentInitialForm,
+    validateForm
+  );
   const [file, setfile] = useState(null);
 
   return (
@@ -35,7 +36,7 @@ const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
         duration={{ duration: 0.5 }}
       >
         <h1 className={styles.title}>editar informacion</h1>
-        <form className="container">
+        <form className={`container ${styles.form}`}>
           <div className="mb-4">
             <TextField
               label="Nombre"
@@ -75,12 +76,18 @@ const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
           />
           <div className="mb-4">
             <TextField
+              type="tel"
               label="Telefono/Whatsapp"
               id="phone"
               name="phone"
               sx={{ width: 450, maxWidth: "100%" }}
               value={form.phone}
               onChange={handleChange}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">+91</InputAdornment>
+                ),
+              }}
             />
           </div>
           <input
@@ -88,7 +95,7 @@ const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
             name="cv"
             id="cv"
             className={`${styles.inputFile}`}
-            value={file}
+            value={form.file}
             onChange={handleChange}
           />
           <Label htmlFor="cv">

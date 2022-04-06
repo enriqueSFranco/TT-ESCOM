@@ -91,7 +91,7 @@ class Lenguage(models.Model):
 
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
 #T100 Alumno
-class Student(AbstractBaseUser):	
+class Student(models.Model):	
 	t100_boleta = models.CharField(primary_key=True,max_length=12, null=False, blank=False)
 	t100_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_last_name = models.CharField(max_length=50, null=True, blank=True)
@@ -109,14 +109,14 @@ class Student(AbstractBaseUser):
 	t100_speciality = models.CharField(max_length=100,null=True,blank=True)
 	t100_phonenumber = models.PositiveBigIntegerField (null=True,blank=True)
 	t100_residence = models.CharField(max_length=100,null=True,blank=True)
-	t100_modalities = models.CharField(max_length=3,null=True,blank=True)
+	t100_modalities = models.CharField(max_length=20,null=True,blank=True)
 	t100_target_salary = models.PositiveIntegerField(null=True, blank=True)	
 	t100_travel = models.BooleanField(default=False)
 	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to='profiles_pictures/')
 	is_active = models.BooleanField(default=True)
 
-	USERNAME_FIELD = 't100_boleta'
-	REQUIRED_FIELDS = ['t100_boleta','t100_password']
+	#USERNAME_FIELD = 't100_boleta'
+	#REQUIRED_FIELDS = ['t100_boleta','t100_password']
 	class Meta:
 		unique_together = ['t100_boleta', 't100_email']
 		verbose_name = 'Student'
@@ -126,7 +126,7 @@ class Student(AbstractBaseUser):
 		return self.t100_boleta+": "+self.t100_name+" "+self.t100_last_name
 
 #T101 Domicilio
-class residence(models.Model):
+"""class residence(models.Model):
 	estados=[
 		('AGUASCALIENTES','AGUASCALIENTES'),
 		('BAJA CALIFORNIA','BAJA CALIFORNIA'),
@@ -171,6 +171,7 @@ class residence(models.Model):
 	t101_state = models.CharField(max_length=50,choices=estados,default='NO ESPECIFICADA',null=True,blank=True)
 	t101_municipality = models.CharField(max_length=70,null=True,blank=True)
 	t101_locality = models.CharField(max_length=100,null=True,blank=True)
+	"""
 
 
 class Skill(models.Model):

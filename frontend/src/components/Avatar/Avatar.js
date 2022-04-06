@@ -1,23 +1,29 @@
+import axios from "axios";
 import React, { useState } from "react";
 import styles from "./Avatar.module.css";
 
 const Avatar = ({ student }) => {
   const [image, setImage] = useState(null);
 
-  // useEffect(() => {
-  //   updateStudent("2014")
-  //     .then(response => {
-  //       console.log(response);
-  //     })
-  //     .catch(error => console.log(error));
-  // }, []);
-  const onChange = (e) => {
-  
-  };
+  const onChange = e => setImage(e.target.files[0]);
+
+  const upload = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+
+    formData.append('file', image);
+
+    const { data } = await axios.put(`/images/StudentPic/2014/`, formData);
+    console.log(data);
+  }
+
+  console.log(image); 
 
   return (
     <div className={styles.wrapperAvatar}>
-      <input type="file" id="avatar" name="avatar" onChange={onChange} className={styles.uploadImage} />
+      <form onSubmit={upload}>
+        <input type="file" id="avatar" name="avatar" onChange={onChange} className={styles.uploadImage} />
+      </form>
       <div className={styles.avatar}>
         {
           !image ? (

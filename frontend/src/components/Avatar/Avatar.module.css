@@ -17,18 +17,41 @@
   font-size: 2rem;
 }
 
+form {
+  position: relative; 
+  width: 100%;
+  height: .7rem;
+  top: 50px;
+  right: 50px;
+}
+
 .uploadImage {
   position: absolute;
   bottom: 0;
+  /* left: 0; */
   outline: none;
   color: transparent;
   width: 100%;
-  height: .7rem;
+  height: 1rem;
   box-sizing: border-box;
-  padding: 15px 120px;
   cursor: pointer;
-  transition: background-color .5s ease-in-out;
+  padding: 1rem;
+  transition: background-color .5s, opacity .3s ease-in-out;
   opacity: 0;
+}
+
+.uploadImage::before {
+  position: absolute;
+  top: 0;
+  left: 40px;
+  display: flex;
+  content: '📷';
+  color: #fff;
+  font-size: 15px;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  -webkit-user-select: none;
 }
 
 .uploadImage:hover { background-color: rgba(34, 34, 34, 0.575); opacity: 1; }

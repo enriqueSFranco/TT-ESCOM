@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion" ;
-import { getStuent } from "../../../services/students/getStudent";
 // import { helpHttp } from "../../../utils/helpHttp";
 import FormUpdateDataStudent from "../../Form/FormUpdateDataStudent";
 import Avatar from "../../Avatar/Avatar";
@@ -16,11 +15,7 @@ const CardProfileStudent = () => {
   const [linksSocialNewtworks, setLinksSocialNetworks] = useState([]);
 
   useEffect(() => {
-    getStuent("2014")
-      .then(response => {
-        setStudent(response);
-      })
-      .catch(error => error);
+    // uploadPhotoStudent()
     // const fetchData = async () => {
     //   const studentUrl = `/api/Students/2014/`;
     //   const studentResidenceUrl = `/api/Residence/2014`;
@@ -42,8 +37,6 @@ const CardProfileStudent = () => {
     let isEdit = state === "edit" ? "profile" : "edit";
     setState(isEdit);
   };
-
-  console.log(student)
 
   return (
     <>

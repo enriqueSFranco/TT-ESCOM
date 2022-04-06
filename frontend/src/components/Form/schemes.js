@@ -7,6 +7,15 @@ export const studentInitialForm = {
   t100_password: "",
 };
 
+export const updateStudentInitialForm = {
+  name: "",
+  specialty: "",
+  phone: undefined,
+  location: "",
+  travel: false,
+  file: undefined,
+};
+
 export const companyInitialForm = {
   t300_name: "",
   t300_rfc: "",
