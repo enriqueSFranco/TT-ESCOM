@@ -29,6 +29,7 @@ let initialForm = {
   is_active: false,
   t100_phonenumber: "1234",
   t100_residence: "ggg",
+  t100_modalities: "",
 };
 
 const StepComponent = () => {
@@ -55,6 +56,8 @@ const StepComponent = () => {
           softSkills={softSkills}
           setSoftSkills={setSoftSkills}
           AllResults={AllResults}
+          form={form} 
+          handleChange={handleChange}
         />
       );
     }

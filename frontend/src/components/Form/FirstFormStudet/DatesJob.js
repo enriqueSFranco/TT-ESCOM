@@ -8,7 +8,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 
 
 
-const DatesJob = ({hardSkills,setHardSkills,softSkills,setSoftSkills,AllResults}) =>  {
+const DatesJob = ({hardSkills,setHardSkills,softSkills,setSoftSkills,AllResults,form,handleChange}) =>  {
   let soft = new Array();
   let hard = new Array();
   const [localhardSkills, setLocalHardSkill] = useState(hardSkills);
@@ -29,10 +29,10 @@ const DatesJob = ({hardSkills,setHardSkills,softSkills,setSoftSkills,AllResults}
   }  
   );
   
-  const handleChange = (event) => {
+  /*const handleChange = (event) => {
     setValue(event.target.value);
   };
-  console.log(value);
+  console.log(value);*/
 
     return (
       <div>
@@ -45,8 +45,9 @@ const DatesJob = ({hardSkills,setHardSkills,softSkills,setSoftSkills,AllResults}
               <RadioGroup
                 row
                 aria-labelledby="demo-controlled-radio-buttons-group"
-                name="controlled-radio-buttons-group"
-                value={value}
+                id="t100_modalities"
+                name="t100_modalities"
+                value={form.t100_modalities}
                 onChange={handleChange}
               >
                 <FormControlLabel value="Hibrodo" control={<Radio />} label="Hibrido" />

@@ -1,7 +1,4 @@
-from doctest import FAIL_FAST
-from email.policy import default
-from enum import unique
-from tabnanny import verbose
+from django.contrib.auth.models import  AbstractBaseUser,PermissionsMixin
 
 #from turtle import ondrag
 from django.db import models
@@ -99,7 +96,7 @@ class Student(models.Model):
 	t100_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_last_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_username = models.CharField(max_length=40, null=True, blank=True)
-	t100_password = models.CharField(max_length=100, null=False, blank=False)
+	t100_password = models.CharField('password',max_length=100, null=False, blank=False)
 	t100_cv = models.FileField(null=True, blank=True)
 	t100_email = models.EmailField(max_length=50, null=False, blank=False)
 	genders = [
@@ -112,22 +109,24 @@ class Student(models.Model):
 	t100_speciality = models.CharField(max_length=100,null=True,blank=True)
 	t100_phonenumber = models.PositiveBigIntegerField (null=True,blank=True)
 	t100_residence = models.CharField(max_length=100,null=True,blank=True)
-	t100_modalities = models.CharField(max_length=3,null=True,blank=True)
+	t100_modalities = models.CharField(max_length=20,null=True,blank=True)
 	t100_target_salary = models.PositiveIntegerField(null=True, blank=True)	
 	t100_travel = models.BooleanField(default=False)
 	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to='profiles_pictures/')
 	is_active = models.BooleanField(default=True)
 
+	#USERNAME_FIELD = 't100_boleta'
+	#REQUIRED_FIELDS = ['t100_boleta','t100_password']
 	class Meta:
 		unique_together = ['t100_boleta', 't100_email']
 		verbose_name = 'Student'
 		verbose_name_plural = 'Students'
 		db_table = "t100_alumno"
 	def __str__(self):
-		return self.t100_name
+		return self.t100_boleta+": "+self.t100_name+" "+self.t100_last_name
 
 #T101 Domicilio
-class residence(models.Model):
+"""class residence(models.Model):
 	estados=[
 		('AGUASCALIENTES','AGUASCALIENTES'),
 		('BAJA CALIFORNIA','BAJA CALIFORNIA'),
@@ -172,6 +171,7 @@ class residence(models.Model):
 	t101_state = models.CharField(max_length=50,choices=estados,default='NO ESPECIFICADA',null=True,blank=True)
 	t101_municipality = models.CharField(max_length=70,null=True,blank=True)
 	t101_locality = models.CharField(max_length=100,null=True,blank=True)
+	"""
 
 
 class Skill(models.Model):
