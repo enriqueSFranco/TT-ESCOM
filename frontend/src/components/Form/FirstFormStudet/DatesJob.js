@@ -2,7 +2,9 @@ import React,{ useState } from 'react';
 import styles from "./Styles.module.css";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import CheckboxComponent from "../../Input/Checkbox"
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
 
 
@@ -14,6 +16,8 @@ const DatesJob = ({hardSkills,setHardSkills,softSkills,setSoftSkills,AllResults}
   /*console.log("Allskills", hardSkills,softSkills);
   console.log("hard skills: ", localhardSkills);
   console.log("hard skills: ", localsoftSkills);*/
+  const [value, setValue] = React.useState("")
+
 
   AllResults.map((dato)=>{
     if(dato['c116_type']=='H'){
@@ -24,6 +28,11 @@ const DatesJob = ({hardSkills,setHardSkills,softSkills,setSoftSkills,AllResults}
     }
   }  
   );
+  
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+  console.log(value);
 
     return (
       <div>
@@ -33,13 +42,21 @@ const DatesJob = ({hardSkills,setHardSkills,softSkills,setSoftSkills,AllResults}
             <div className={styles.conCheckbox}>
               <div className={styles.text}><h6>Preferirias un trabajo ??</h6></div>
               <div className={styles.checkbox}>
-                <CheckboxComponent htmlFor="" label="Hibrido"/>
-                <CheckboxComponent htmlFor="" label="Presencial"/>
-                <CheckboxComponent htmlFor="" label="Home Office"/>
+              <RadioGroup
+                aria-labelledby="demo-controlled-radio-buttons-group"
+                name="controlled-radio-buttons-group"
+                value={value}
+                onChange={handleChange}
+              >
+                <FormControlLabel value="Hibrodo" control={<Radio />} label="Hibrido" />
+                <FormControlLabel value="Home office" control={<Radio />} label="Home office" />
+                <FormControlLabel value="Presencial" control={<Radio />} label="Presencial" />
+          </RadioGroup>
               </div>
             </div>
             <div>
             <Autocomplete
+                name="hardskills"
                 value={localhardSkills}
                 onChange={(event, newValue) => {
                   setLocalHardSkill(newValue);                                
@@ -55,7 +72,7 @@ const DatesJob = ({hardSkills,setHardSkills,softSkills,setSoftSkills,AllResults}
                   <TextField
                     {...params}
                     label="Hard skills"
-                    placeholder=""
+                    placeholder="Selecciona "
                   />
                 )}
             />              
@@ -63,6 +80,7 @@ const DatesJob = ({hardSkills,setHardSkills,softSkills,setSoftSkills,AllResults}
 
             <div>
             <Autocomplete
+                name="softskills"
                 value={localsoftSkills}
                 onChange={(event, newValue) => {
                   setLocalSoftSkill(newValue);                                
@@ -78,7 +96,7 @@ const DatesJob = ({hardSkills,setHardSkills,softSkills,setSoftSkills,AllResults}
                   <TextField
                     {...params}
                     label="Soft skills"
-                    placeholder=""
+                    placeholder="Selecciona "
                   />
                 )}
             />              
