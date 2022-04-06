@@ -11,7 +11,8 @@
             "t100_cv": null,
             "t100_email": "joelheras@gmail.com",
             "t100_gender": "M",
-            "t100_date_of_birth": "1998-08-28"
+            "t100_date_of_birth": "1998-08-28",
+            "password":"pbkdf2_sha256$320000$Ps2NbJe1HYvXwxHYUf0H12$8BsDcfFn0pJ0kBhz4/QDyr3L6ODTu4wBRo+JhGs9ztI="
         }
 
     },

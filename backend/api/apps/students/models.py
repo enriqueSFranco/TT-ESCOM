@@ -91,12 +91,11 @@ class Lenguage(models.Model):
 
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
 #T100 Alumno
-class Student(models.Model):	
+class Student(AbstractBaseUser):	
 	t100_boleta = models.CharField(primary_key=True,max_length=12, null=False, blank=False)
 	t100_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_last_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_username = models.CharField(max_length=40, null=True, blank=True)
-	t100_password = models.CharField('password',max_length=100, null=False, blank=False)
 	t100_cv = models.FileField(null=True, blank=True)
 	t100_email = models.EmailField(max_length=50, null=False, blank=False)
 	genders = [
@@ -115,8 +114,8 @@ class Student(models.Model):
 	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to='profiles_pictures/')
 	is_active = models.BooleanField(default=True)
 
-	#USERNAME_FIELD = 't100_boleta'
-	#REQUIRED_FIELDS = ['t100_boleta','t100_password']
+	USERNAME_FIELD = 't100_boleta'
+	REQUIRED_FIELDS = ['t100_boleta','t100_password']
 	class Meta:
 		unique_together = ['t100_boleta', 't100_email']
 		verbose_name = 'Student'

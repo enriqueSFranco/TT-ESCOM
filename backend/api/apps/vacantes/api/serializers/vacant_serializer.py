@@ -14,8 +14,6 @@ class VacantSerializer(serializers.ModelSerializer):
         return vacant
     
 class VacantListSerializer(serializers.ModelSerializer):
-    t300_id_company = serializers.StringRelatedField()
-    c207_id_experience = serializers.StringRelatedField()
     class Meta:
         model = Vacant
         fields = '__all__'    
