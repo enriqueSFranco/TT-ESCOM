@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import Skeleton from "../Skeleton/Skeleton";
-import JobCard from "./CardJob";
+import CardJob from "./CardJob";
 import styles from "./CardJobList.module.css";
 
 const JobList = ({ jobs = [], loading }) => {
@@ -14,7 +14,7 @@ const JobList = ({ jobs = [], loading }) => {
           ) : (
             jobs.map((job) => (
               <Link to={`/${job?.t200_id_vacant}`} key={job?.t200_id_vacant}>
-                <JobCard job={job} />
+                <CardJob job={job} />
               </Link>
             ))
           )

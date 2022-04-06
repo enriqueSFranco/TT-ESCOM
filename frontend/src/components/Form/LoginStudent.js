@@ -15,7 +15,7 @@ const Form = () => {
   const { login } = useContext(AuthContext);
 
   return (
-    <div className="container w-75 bg-primary shadow rounded">
+    <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
       <div className="row align-items-stretch">
         <div
           className={`${styles.bg} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
@@ -25,7 +25,7 @@ const Form = () => {
             <span className={styles.work}>trabajo.</span>
           </h1>
         </div>
-        <div className="col bg-white p-5 rounded-end">
+        <div className={`col bg-white p-5 rounded-end ${styles.formLogin}`}>
           <div className={styles.welcome}>
             <h2>Bienvenido</h2>
             <span>Bienvenido! Porfavor introduce tus datos.</span>
@@ -62,7 +62,7 @@ const Form = () => {
                 Iniciar sesión
               </button>
             </div>
-            <div className="my-3">
+            <div className={styles.createAccount}>
               <span>
                 No tines cuenta? <Link to="/registro-alumno">Registrate</Link>
               </span>

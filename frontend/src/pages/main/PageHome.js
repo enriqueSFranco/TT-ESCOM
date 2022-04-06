@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { getAllJobs } from "../../services/jobs/getAllJobs";
+import { getImageCompany } from "../../services/businnes/getImageCompany";
 import Search from "../../components/Search/Search";
 import FilterProfile from "../../components/Filter/FilterProfile";
 import FilterCompany from "../../components/Filter/FilterCompany";
-import CardJobList from "../../components/Card/CardJobList";
+import JobList from "../../components/Card/JobList";
 import FilterHomeOffice from "../../components/Filter/FilterHomeOffice";
 import Deck from "../../components/Deck/Deck";
 import Footer from "../../components/Footer/Footer";
@@ -52,6 +53,10 @@ const Home = () => {
     
       return () => null;
   }, []);
+
+  // useEffect(() => {
+  //   getImageCompany()
+  // }, []);
 
   const handleSearch = (value) => {
     setSearch(value);
@@ -103,6 +108,10 @@ const Home = () => {
     }
   };
 
+
+  if (!dataList && !data) return null;
+
+
   return (
     <main className={homeStyles.home}>
       {/* barra de busqueda  */}
@@ -121,7 +130,7 @@ const Home = () => {
         <span className={homeStyles.totalJobs}>
           Total de vacantes: {totalJobs}
         </span>
-        <CardJobList
+        <JobList
           jobs={
             !isFiltered && !isChecked && !isFilteredBusiness ? dataList : data
           }

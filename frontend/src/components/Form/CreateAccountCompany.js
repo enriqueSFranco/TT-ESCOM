@@ -49,14 +49,14 @@ const FormCompany = () => {
   // console.log(response);
 
   return (
-    <div className="container w-75 bg-primary shadow rounded">
+    <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
       <div className="row align-items-stretch">
         <div
           className={`${styles.bg} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
         >
           <h1>Bolsa de trabajo ESCOM</h1>
         </div>
-        <div className="col bg-white p-5 rounded-end">
+        <div className={`col bg-white p-5 rounded-end ${styles.form}`}>
           <h2 className={`${styles.welcome}`}>Bienvenido</h2>
           <form onSubmit={handlerSubmitCompany}>
             {/* input para el username */}
@@ -102,12 +102,12 @@ const FormCompany = () => {
             <div className={styles.wrapperBtnLogin}>
               <button
                 type="submit"
-                className={`${styles.btLogin} btn btn-primary`}
+                className={`${styles.btnPreRegister} btn btn-primary`}
               >
                 Confirmar Pre-Registro
               </button>
             </div>
-            <div className="my-3">
+            <div className={`${styles.passwordLogin}`}>
               <span>
                 Ya tines cuenta? <Link to="/reclutador">Inicia sesion</Link>
               </span>

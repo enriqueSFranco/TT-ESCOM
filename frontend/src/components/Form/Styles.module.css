@@ -13,7 +13,25 @@
   padding: 1rem;
 }
 
-.btLogin { width: 490px; }
+.btLogin { 
+  width: 490px; 
+  position: relative;
+  left: 4.3rem;
+  bottom: 2rem;
+}
+
+.btnPreRegister {
+  position: relative;
+  bottom: 2rem;
+  left: 4.3rem;
+}
+
+.createAccount {
+  width: 200px;
+  position: relative;
+  left: 5.3rem;
+  bottom: 1rem;
+}
 
 .error {
   font-weight: 300;
@@ -23,10 +41,24 @@
 
 .form {
   width: 700px;
-  height: 400px;
+  height: 550px;
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  /* background-color: red; */
+}
+
+.formLogin {
+  width: 700px;
+  height: 450px;
+}
+
+.passwordLogin {
+  width: 300px;
+  position: relative;
+  left: 5.3rem;
+  bottom: 1rem;
 }
 
 .wrapperBtnLogin {
@@ -58,9 +90,22 @@
   text-align: center;
 }
 
+.wrapper {
+  position: relative;
+  top: 10rem;
+}
+
+.linkCreateAccount {
+  position: relative;
+  left: 5rem;
+  top: -3rem;
+}
 
 /* ESTILOS DEL FORMULARIO DE CREAR CUENTA EMPRESA */
 .inputGroup {
+  position: relative;
+  left: 4.3rem;
+  top: -3rem;
   width: 490px;
   display: flex;
   flex-direction: column;

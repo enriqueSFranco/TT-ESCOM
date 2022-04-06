@@ -1,31 +1,33 @@
-
-.icon {
-	vertical-align: middle;
-	font-size: 1.3rem;
-	margin-right: 3px;
-	color: #8E0F4B;
+.title{
+	font-size:18px;
+	margin-left: 4px;
+	
 }
 
-.text {
-	font-size: 16px;
+.icon{
+	vertical-align: middle;
+	font-size:14px;
+	margin-right: 3px;
+	color:#8E0F4B;
+}
+
+.text{
+	font-size:16px;
 	vertical-align: middle;
 	margin-right: 15px;
 }
 
-.content {
+.content{
 	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	width: 100%;
-	/* background: aliceblue; */
+	margin-left: 4px;
 }
 
-.compone {
+.compone{
 	border-color: #8E0F4B;
-	width: 100%;
 	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 	border-width: 1px;
 	border-style: solid;
 	border-radius: 10px;
-	padding: .5rem;
+	/* animation-delay: 4s;
+	animation: fadeIn 2s ease-in; */
 }

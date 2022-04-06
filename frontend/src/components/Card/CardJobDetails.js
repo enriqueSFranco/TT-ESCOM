@@ -20,6 +20,7 @@ const JobCardDetails = () => {
     setLoading(true);
     getJob(t200_id_vacant)
       .then(response => {
+        setLoading(false)
         setJob(response);
       })
       .catch(error => console.error(error))
@@ -27,8 +28,6 @@ const JobCardDetails = () => {
     }, [t200_id_vacant]);
 
   if (!job) return null;
-
-  console.log(loading)
 
   return (
     <>
@@ -52,7 +51,7 @@ const JobCardDetails = () => {
               <ul className={`${styles.flex}`}>
                 <li className={styles.flex}>
                   <FaIcon.FaBuilding />
-                  <span>{job[0]?.t300_id_company.t300_name ?? 'Anonima'}</span>
+                  <span>{job[0]?.t300_id_company ?? 'Anonima'}</span>
                 </li>
                 <li className={styles.flex}>
                   <MdIcon.MdOutlineAttachMoney />

@@ -29,7 +29,7 @@ const validateForm = (form) => {
   return errors;
 };
 
-const CreateAccountStudent = () => {
+const CreateAccount = () => {
   const {
     form,
     errors,
@@ -41,14 +41,14 @@ const CreateAccountStudent = () => {
   if (form === null) return;
 
   return (
-    <div className={`container bg-primary shadow rounded`}>
+    <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
       <div className="row align-items-stretch">
         <div
           className={`${styles.bg} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
         >
           <h1>Bolsa de trabajo ESCOM</h1>
         </div>
-        <div className="col bg-white p-5 rounded-end">
+        <div className={`col bg-white p-5 rounded-end ${styles.form}`}>
           <h2 className={`${styles.welcome}`}>Bienvenido</h2>
           <form onSubmit={handlerSubmitStudent}>
             {/* input para el username */}
@@ -107,15 +107,15 @@ const CreateAccountStudent = () => {
               />
               { errors && <span className={styles.error}>{errors.t100_password}</span>}
             </div>
-            <div className={styles.wrapperBtnLogin}>
+            <div className={styles.inputGroup}>
               <button
                 type="submit"
-                className={`${styles.btLogin} btn btn-primary`}
+                className={`${styles.btnCreateAccount} btn btn-primary`}
               >
                 Crear Cuenta
               </button>
             </div>
-            <div className="my-3">
+            <div className={`${styles.linkCreateAccount}`}>
               <span>
                 Ya tines cuenta? <Link to="/alumno">Inicia sesion</Link>
               </span>
@@ -132,4 +132,4 @@ const CreateAccountStudent = () => {
   );
 };
 
-export default CreateAccountStudent;
+export default CreateAccount;

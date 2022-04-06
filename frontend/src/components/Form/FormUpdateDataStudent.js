@@ -1,29 +1,26 @@
 import { useState } from "react";
 import { useForm } from "../../hooks/useForm";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion" ;
 import TextField from "@mui/material/TextField";
-import InputAdornment from "@material/InputAdornment";
 import Label from "../Input/Label";
 import Switch from "../Input/Switch";
 import { updateStudentInitialForm } from "./schemes";
 import * as BiIcon from "react-icons/bi";
 import styles from "./FormUpdateDataStudent.module.css";
 
-const validateForm = (form) => {
+
+const validateForm = form => {
   let errors = {};
   let regex = {
     t100_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
     t100_specialty: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
     t100_location: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
     t100_phone: "",
-  };
+  }
 };
 
 const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
-  const { form, handleChange, handleChecked } = useForm(
-    updateStudentInitialForm,
-    validateForm
-  );
+  const { form, handleChange, handleChecked } = useForm(updateStudentInitialForm, validateForm);
   const [file, setfile] = useState(null);
 
   return (
@@ -83,11 +80,7 @@ const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
               sx={{ width: 450, maxWidth: "100%" }}
               value={form.phone}
               onChange={handleChange}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">+91</InputAdornment>
-                ),
-              }}
+              
             />
           </div>
           <input

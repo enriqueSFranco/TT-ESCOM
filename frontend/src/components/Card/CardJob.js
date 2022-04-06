@@ -1,6 +1,7 @@
 import styles from "./CardJob.module.css";
 
 const JobCard = ({ job }) => {
+
   if (!job) return null;
 
   return (
@@ -35,7 +36,8 @@ const JobCard = ({ job }) => {
             </p>
           </div>
           <div className={styles.logoBusiness}>
-            <img src={job?.t300_id_company?.t300_logo} alt={job?.t300_id_company?.t300_name} />
+            <p>{job?.t300_id_company}</p>
+            {/* <img src={job?.t300_id_company} alt={job?.t300_name} /> */}
           </div>
         </div>
       </div>

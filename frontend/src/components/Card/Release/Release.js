@@ -5,9 +5,7 @@ const Release = ({ src, alt, nameBusiness }) => {
 
   return (
     <>
-      <article 
-        className={styles.card}
-      >
+      <article className={styles.card}>
         <div className={styles.release}>
           <img src={src} alt={alt} />
         </div>

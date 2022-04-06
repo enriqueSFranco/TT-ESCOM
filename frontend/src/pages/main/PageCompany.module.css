@@ -32,18 +32,21 @@
 }
 
 .searchForm {
-  backdrop-ground: #fff;
   color: #000;
   font-weight: bold;
   display: flex;
   justify-content: space-around;
   align-items: center;
   border-radius: 8px;
+  height: auto;
+  width: 100%;
+  position: relative;
+  left: 0;
 }
 
 .title {
   color: #fff;
-  backdrop-filter: blur(20px);
+  /* backdrop-filter: blur(20px); */
   padding: 1rem;
   border-radius: 8px;
   text-transform: uppercase;
