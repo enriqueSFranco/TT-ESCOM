@@ -7,7 +7,7 @@ import styles from "./CardJob.module.css";
 const JobCard = ({ job }) => {
 
   if (!job) return null;
-
+  
   return (
     <article className={`${styles.card}`}>
       <header className={styles.cardHeader}>

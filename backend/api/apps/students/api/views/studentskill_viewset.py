@@ -35,11 +35,6 @@ class SkillViewSet(viewsets.GenericViewSet):
   
   def create(self, request):
     print(request.data)
-<<<<<<< HEAD
-=======
-    #if request.data['c116_id_skill']
-
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
     skill_serializer=self.serializer_class(data=request.data)    
     if skill_serializer.is_valid():
       skill_serializer.save()

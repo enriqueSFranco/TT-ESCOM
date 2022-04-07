@@ -6,7 +6,7 @@ import DatesPersonal from "./DatesPersonal";
 import DatesJob from "./DatesJob";
 import DatesSkill from "./DatesSkill";
 import DatesSoftSkill from "./DatesSoftSkills";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import styles from "./Styles.module.css";
 import { useForm } from "../../../hooks/useForm";
 import { useFetch } from "../../../hooks/useFetch";
@@ -47,28 +47,28 @@ const StepComponent = () => {
 
   const PageDisplay = () => {
     if (activeStep === 0) {
-      return <DatesPersonal form={form} handleChange={handleChange}/>;
+      return <DatesPersonal form={form} handleChange={handleChange} />;
     }
     if (activeStep === 1) {
+      return <DatesJob form={form} handleChange={handleChange} />;
+    }
+    if (activeStep === 2) {
       return (
-        <DatesJob
-          
-          form={form} 
-          handleChange={handleChange}
+        <DatesSkill
+          hardSkills={hardSkills}
+          setHardSkills={setHardSkills}
+          AllResults={AllResults}
         />
       );
     }
-    if (activeStep === 2) {
-      return <DatesSkill 
-          hardSkills={hardSkills}
-          setHardSkills={setHardSkills}
-          AllResults={AllResults}/>;
-    }
     if (activeStep === 3) {
-      return <DatesSoftSkill 
+      return (
+        <DatesSoftSkill
           softSkills={softSkills}
           setSoftSkills={setSoftSkills}
-          AllResults={AllResults}/>;
+          AllResults={AllResults}
+        />
+      );
     }
   };
 
@@ -102,11 +102,11 @@ const StepComponent = () => {
           /*hardSkills.map((dato)=>{
             console.log(dato);
           })*/
-          
+
           const endpoint = "/api/Skills/";
           const skilssall = hardSkills.concat(softSkills);
 
-          skilssall.map((dato)=>{
+          skilssall.map((dato) => {
             //console.log(dato);
             let options = {
               headers: {
@@ -115,7 +115,7 @@ const StepComponent = () => {
               },
               body: {
                 t100_boleta: "2015090419",
-                c116_id_skill: dato['c116_id_skill'],
+                c116_id_skill: dato["c116_id_skill"],
               },
             };
             helpHttp()
@@ -123,12 +123,10 @@ const StepComponent = () => {
               .then((response) => {
                 if (!response.err) {
                   console.log(response);
-                  
                 }
               })
-            .catch((err) => console.error(err));
-          })
-          
+              .catch((err) => console.error(err));
+          });
         }
       })
       .catch((err) => console.error(err));
@@ -138,17 +136,14 @@ const StepComponent = () => {
     if (activeStep > 0) setActiveStep((currentStep) => currentStep - 1);
   };
 
-  const steps = ["1", "2 ", "3","4"];
+  const steps = ["1", "2 ", "3", "4"];
 
   return (
+    <div className="col bg-white p-5 rounded-end">
+      <div className={styles.container}>
+        <div className={styles.pages}>{PageDisplay()}</div>
 
-      <div className="col bg-white p-5 rounded-end">
-        <div className={styles.container}>
-
-          
-          <div className={styles.pages}>{PageDisplay()}</div>
-
-          <div className={styles.container2}>
+        <div className={styles.container2}>
           <div className={styles.stepper}>
             <Stepper activeStep={activeStep} alternativeLabel>
               {steps.map((label) => (
@@ -156,12 +151,13 @@ const StepComponent = () => {
                   <StepLabel></StepLabel>
                 </Step>
               ))}
-              </Stepper>
-              </div>
+            </Stepper>
+          </div>
 
           <div className={styles.buttons}>
             <div className={styles.button1}>
-              <button className={styles.button}
+              <button
+                className={styles.button}
                 disabled={activeStep === 0}
                 variant="outlined"
                 color="primary"
@@ -172,7 +168,8 @@ const StepComponent = () => {
             </div>
             <div className={styles.space}></div>
             <div className={styles.button2}>
-              <button className={styles.button}
+              <button
+                className={styles.button}
                 variant="outlined"
                 color="primary"
                 type="submit"
@@ -183,12 +180,8 @@ const StepComponent = () => {
             </div>
           </div>
         </div>
-
-
-          </div>
-
-         
       </div>
+    </div>
   );
 };
 export default StepComponent;

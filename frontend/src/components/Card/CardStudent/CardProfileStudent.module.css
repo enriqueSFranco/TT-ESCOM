@@ -15,7 +15,6 @@ img {
   align-items: center;
   text-align: center;
   font-weight: 700;
-  /* animation: fadeIn 2s ease-in; */
 }
 
 .avatar img {
@@ -153,6 +152,8 @@ img {
   font-weight: 400;
   font-size: 1rem;
 }
+
+.username { color: #fff;}
 
 .card {
   overflow: hidden;

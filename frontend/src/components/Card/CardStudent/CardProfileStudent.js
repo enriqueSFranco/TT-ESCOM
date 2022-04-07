@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion" ;
+import { getSocialNetwork } from "../../../services/students/getSocialNetwork"
 import FormUpdateDataStudent from "../../Form/FormUpdateDataStudent";
 import Avatar from "../../Avatar/Avatar";
 import * as MdIcon from "react-icons/md";
-import * as BsIcon from "react-icons/bs";
+// import * as BsIcon from "react-icons/bs";
 import * as IoIcon from "react-icons/io";
 import styles from "./CardProfileStudent.module.css";
 
@@ -17,6 +18,19 @@ const CardProfileStudent = () => {
     let isEdit = state === "edit" ? "profile" : "edit";
     setState(isEdit);
   };
+
+  useEffect(() => {
+    getSocialNetwork("2021")
+      .then(response => {
+        setStudent(response);
+      })
+      .catch(error => console.log(error));
+  }, []);
+  
+  if (!student) return null;
+  const [data] = student;
+  const { t113_link, t100_boleta } = data;
+  console.log(t113_link)
 
   return (
     <>
@@ -40,10 +54,10 @@ const CardProfileStudent = () => {
                   onClick={handleEdit}
                 />
                 {/* <img src="https://placeimg.com/640/480/any" alt="user" /> */}
-                <Avatar student={student} />
+                {/* <Avatar student={student} /> */}
                 <div className={styles.nameHolder}>
-                  <h3>{student[0]?.t100_name}</h3>
-                  <h4>Ingeniero de software</h4>
+                  {/* <h3>{student[0]?.t100_name}<span className={styles.username}>({student[0]?.t100_username})</span></h3>
+                  <h4>{student[0]?.t100_speciality}</h4> */}
                 </div>
               </div>
             </header>
@@ -52,7 +66,7 @@ const CardProfileStudent = () => {
                 <h4 className={styles.label}>Ubicacion</h4>
                 <div className={styles.flex}>
                   <MdIcon.MdLocationPin className={styles.icon} />
-                  <p>{`${residence[0]?.t101_state}, ${residence[0]?.t101_municipality}, ${residence[0]?.t101_locality}`}</p>
+                  <p>{student[0]?.t100_residence}</p>
                 </div>
                 <div className={styles.flex}>
                   <MdIcon.MdOutlineAirplanemodeActive className={styles.icon} />

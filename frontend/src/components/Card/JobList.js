@@ -1,7 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import Skeleton from "../Skeleton/Skeleton";
 import CardJob from "./CardJob";
-import styles from "./CardJobList.module.css";
+import styles from "./JobList.module.css";
 
 const JobList = ({ jobs = [], loading }) => {
 

@@ -2,10 +2,7 @@
   width: 100px;
   height: 100px;
   overflow: hidden;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* display: grid; */
   background-color: #0682b3;
   border-radius: 50%;
   font-size: 2.5rem;
@@ -14,7 +11,11 @@
 }
 
 .noImage {
-  font-size: 2rem;
+  /* background-color: red; */
+  position: relative;
+  top: .6rem;
+  font-size: 2.5rem;
+  font-weight: bold;
 }
 
 form {
@@ -27,8 +28,7 @@ form {
 
 .uploadImage {
   position: absolute;
-  bottom: 0;
-  /* left: 0; */
+  top: 1.2rem;
   outline: none;
   color: transparent;
   width: 100%;
@@ -41,11 +41,10 @@ form {
 }
 
 .uploadImage::before {
-  position: absolute;
-  top: 0;
-  left: 40px;
-  display: flex;
   content: '📷';
+  position: absolute;
+  top: 2px;
+  left: 40%;
   color: #fff;
   font-size: 15px;
   width: 30px;

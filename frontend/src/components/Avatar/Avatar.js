@@ -17,7 +17,7 @@ const Avatar = ({ student }) => {
     console.log(data);
   }
 
-  console.log(image); 
+  // console.log(image); 
 
   return (
     <div className={styles.wrapperAvatar}>
