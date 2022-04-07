@@ -35,15 +35,6 @@ class SkillViewSet(viewsets.GenericViewSet):
   
   def create(self, request):
     print(request.data)
-    #if request.data['c116_id_skill']
-    ids=request.data['c116_id_skill'].split(',')
-    for data in ids:
-      print('''{
-    "c116_id_skill": '''+data+''',
-    "t100_boleta": "2014"
-}
-      ''')    
-
     skill_serializer=self.serializer_class(data=request.data)    
     if skill_serializer.is_valid():
       skill_serializer.save()
@@ -69,9 +60,9 @@ class SkillViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
   def destroy(self, request, pk):
-    skill_destroy = self.model.objects.filter(t102_id_registrer=pk).delete()
-    #SI lo borra pero no se como indicar que se realizo con exito
-    if skill_destroy == 1:      
+    skill_destroy = self.model.objects.filter(t102_id_registrer=pk).first()    
+    if skill_destroy:
+      skill_destroy = self.model.objects.filter(t102_id_registrer=pk).delete()
       return Response({
 				'message': 'Habilidades del alumno eliminado correctamente'
 			})

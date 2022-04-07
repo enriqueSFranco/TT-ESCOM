@@ -55,6 +55,17 @@ class CompanyLogoViewSet(viewsets.GenericViewSet):
 			'errors': company_serializer.errors
 		}, status=status.HTTP_400_BAD_REQUEST)
 
+	def destroy(self, request, pk):
+		company_destroy = self.model.objects.filter(t300_id_company=pk).first()				
+		if company_destroy:
+			company_destroy = self.model.objects.filter(t300_id_company=pk).update(t300_logo="")
+			#Eliminar imagenes del backend
+			return Response({
+				'message': 'Logo de la compañia eliminada correctamente'
+			})
+		return Response({
+			'message': 'No existe logo de la compañia que desea eliminar'
+		}, status=status.HTTP_404_NOT_FOUND)
 
 
 class CompanyBannerViewSet(viewsets.GenericViewSet):
@@ -104,3 +115,15 @@ class CompanyBannerViewSet(viewsets.GenericViewSet):
 			'message': 'Hay errores en la actualización',
 			'errors': company_serializer.errors
 		}, status=status.HTTP_400_BAD_REQUEST)
+
+	def destroy(self, request, pk):
+		company_destroy = self.model.objects.filter(t300_id_company=pk).first()				
+		if company_destroy:
+			company_destroy = self.model.objects.filter(t300_id_company=pk).update(t300_banner="")
+			#Eliminar imagenes del backend
+			return Response({
+				'message': 'Banner de la compañia eliminada correctamente'
+			})
+		return Response({
+			'message': 'No existe banner de la compañia que desea eliminar'
+		}, status=status.HTTP_404_NOT_FOUND)

@@ -28,7 +28,7 @@ class LinkListSerializer(serializers.ModelSerializer):
 class UpdateLinkSerializer(serializers.ModelSerializer):
         class Meta:
             model = Link
-            fields = ('t114_id_registrer','t100_boleta','t113_link','c115_id_plataform')
+            fields = ('t113_link','c115_id_plataform')
      
         def update(self,instance,validate_data):
             update_StudentLink = super().update(instance,validate_data)

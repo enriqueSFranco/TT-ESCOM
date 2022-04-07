@@ -9,10 +9,9 @@ class SkillSerializer(serializers.ModelSerializer):
 
 
 class SkillListSerializer(serializers.ModelSerializer):
-  #t100_boleta_id=serializers.StringRelatedField(many=True,read_only=True)
   class Meta:
     model = StudentSkill
-    fields='__all__'#['t102_id_skill','t102_description','t100_boleta_id']
+    fields='__all__'
     depth = 2
 
   """def to_representation(self, instance):
@@ -26,7 +25,7 @@ class SkillListSerializer(serializers.ModelSerializer):
 class UpdateStudentSkillSerializer(serializers.ModelSerializer):
         class Meta:
             model = StudentSkill
-            fields = ('t102_id_registrer','c116_id_skill','t100_boleta')
+            fields = ('c116_id_skill')
      
         def update(self,instance,validate_data):
             update_skill = super().update(instance,validate_data)

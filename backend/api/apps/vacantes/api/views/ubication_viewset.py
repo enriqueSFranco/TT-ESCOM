@@ -54,9 +54,9 @@ class UbicationViewSet(viewsets.GenericViewSet):
 		return Response(ubication_serializer.data)
 
 	def destroy(self, request, pk):
-		ubication_destroy = self.model.objects.filter(t200_id_vacant=pk).delete()
-		#SI lo borra pero no se como indicar que se realizo con exito
-		if ubication_destroy == 1:
+		ubication_destroy = self.model.objects.filter(t200_id_vacant=pk).first()
+		if ubication_destroy:
+			ubication_destroy = self.model.objects.filter(t200_id_vacant=pk).delete()
 			return Response({
 				'message': 'Ubicacion de la vacante eliminada correctamente'
 			})

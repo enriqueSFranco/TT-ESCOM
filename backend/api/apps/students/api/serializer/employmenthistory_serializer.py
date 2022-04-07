@@ -31,7 +31,7 @@ class EmploymentListSerializer(serializers.ModelSerializer):
 class UpdateEmploymentSerializer(serializers.ModelSerializer):
         class Meta:
             model = EmploymentHistory
-            fields = '__all__'#('t103_id_registrer','t100_boleta','t103_corporation','t103_employment','t103_description','t103_start_date','t103_end_date')
+            fields = ('t103_corporation','t103_employment','t103_description','t103_start_date','t103_end_date')
         
         def update(self,instance,validate_data):
             update_historial = super().update(instance,validate_data)

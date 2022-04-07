@@ -20,7 +20,7 @@ class AdminViewSet(viewsets.GenericViewSet):
 			self.queryset = self.model.objects\
 				.filter(t400_id_admin = pk)\
 				.values('t400_id_admin','t400_name','t400_last_names','t400_password','t400_position')
-		return  self.queryset #get_object_or_404(self.model,pk=pk)
+		return  self.queryset 
 
 	def get_queryset(self):
 		if self.queryset is None:
@@ -68,10 +68,9 @@ class AdminViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk):
-		admin_destroy = self.model.objects.filter(t400_id_admin=pk).delete()
-		print(admin_destroy)
-		#SI lo borra pero no se como indicar que se realizo con exito
-		if admin_destroy == 1:
+		admin_destroy = self.model.objects.filter(t400_id_admin=pk).first()				
+		if admin_destroy:
+			admin_destroy = self.model.objects.filter(t400_id_admin=pk).delete()
 			return Response({
 				'message': 'Administrador eliminado correctamente'
 			})

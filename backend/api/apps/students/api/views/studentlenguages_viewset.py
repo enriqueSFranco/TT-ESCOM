@@ -19,15 +19,14 @@ class LenguagesViewSet(viewsets.GenericViewSet):
 	def get_object(self, pk):        		          
 		self.queryset = self.model.objects\
 			.filter(t100_boleta=pk)\
-			.all()
-			#values('t110_id_registrer','t100_boleta','t110_written_level','t110_reading_level','t110_speaking_level','t110_comprension_level','t110_native','c111_id_language','c111_id_language_id')
-		return self.queryset#get_object_or_404(self.model,pk=pk)
+			.all()			
+		return self.queryset
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.all()#values('t110_id_registrer','t100_boleta','t110_written_level','t110_reading_level','t110_speaking_level','t110_comprension_level','t110_native','c111_id_language','c111_id_language_id')				
+				.all()
 		return self.queryset
   
 
@@ -68,9 +67,9 @@ class LenguagesViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk):
-		lenguage_destroy = self.model.objects.filter(t110_id_registrer=pk).delete()
-		#SI lo borra pero no se como indicar que se realizo con exito
-		if lenguage_destroy == 1:
+		lenguage_destroy = self.model.objects.filter(t110_id_registrer=pk).first()
+		if lenguage_destroy:
+			lenguage_destroy = self.model.objects.filter(t110_id_registrer=pk).delete()
 			return Response({
 				'message': 'Registro del alumno eliminado correctamente'
 			})

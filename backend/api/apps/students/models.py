@@ -3,6 +3,11 @@ from django.contrib.auth.models import  AbstractBaseUser,PermissionsMixin
 #from turtle import ondrag
 from django.db import models
 
+def upload_image_profile(instance, filename):
+    return f"{instance.t100_boleta}-{filename}"
+
+def upload_cv(instance, filename):
+    return f"{instance.t100_boleta}-{filename}"	
 
 """----------------------------------------------------------- Catalogos --------------------------------------------------------"""
 
@@ -96,7 +101,7 @@ class Student(AbstractBaseUser):
 	t100_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_last_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_username = models.CharField(max_length=40, null=True, blank=True)
-	t100_cv = models.FileField(null=True, blank=True)
+	t100_cv = models.FileField(null=True, blank=True,default="",upload_to=upload_cv)
 	t100_email = models.EmailField(max_length=50, null=False, blank=False)
 	genders = [
 		('F', 'Femenino'),
@@ -111,7 +116,7 @@ class Student(AbstractBaseUser):
 	t100_modalities = models.CharField(max_length=20,null=True,blank=True)
 	t100_target_salary = models.PositiveIntegerField(null=True, blank=True)	
 	t100_travel = models.BooleanField(default=False)
-	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to='profiles_pictures/')
+	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to=upload_image_profile)
 	is_active = models.BooleanField(default=True)
 
 	USERNAME_FIELD = 't100_boleta'
@@ -124,67 +129,6 @@ class Student(AbstractBaseUser):
 	def __str__(self):
 		return self.t100_boleta
 
-#T101 Domicilio
-"""class residence(models.Model):
-	estados=[
-		('AGUASCALIENTES','AGUASCALIENTES'),
-		('BAJA CALIFORNIA','BAJA CALIFORNIA'),
-		('BAJA CALIFORNIA SUR','BAJA CALIFORNIA SUR'),
-		('CAMPECHE','CAMPECHE'),
-		('COAHUILA','COAHUILA'),
-		('COLIMA','COLIMA'),
-		('CHIAPAS','CHIAPAS'),
-		('CHIHUAHUA','CHIHUAHUA'),
-		('CIUDAD DE MEXICO','CIUDAD DE MEXICO'),
-		('DURANGO','DURANGO'),
-		('GUANAJUATO','GUANAJUATO'),
-		('GUERRERO','GUERRERO'),
-		('HIDALGO','HIDALGO'),
-		('JALISCO','JALISCO'),
-		('MEXICO','MEXICO'),
-		('MICHOACAN','MICHOACAN'),
-		('MORELOS','MORELOS'),
-		('NAYARIT','NAYARIT'),
-		('NUEVO LEON','NUEVO LEON'),
-		('OAXACA','OAXACA'),
-		('PUEBLA','PUEBLA'),
-		('QUERETARO DE ARTEAGA','QUERETARO DE ARTEAGA'),
-		('QUINTANA ROO','QUINTANA ROO'),
-		('SAN LUIS POTOSI','SAN LUIS POTOSI'),
-		('SINALOA','SINALOA'),
-		('SONORA','SONORA'),
-		('TABASCO','TABASCO'),
-		('TAMAULIPAS' ,'TAMAULIPAS'),
-		('TLAXCALA' ,'TLAXCALA'),
-		('VERACRUZ' ,'VERACRUZ '),
-		('YUCATAN' ,'YUCATAN'),
-		('ZACATECAS' ,'ZACATECAS'),
-		('NO ESPECIFICADA' ,'NO ESPECIFICADA')
-	]
-	t100_boleta = models.ForeignKey(
-		Student,
-		null=False,
-		blank=False,
-		related_name='StudentResidence',
-		on_delete=models.CASCADE)
-	t101_state = models.CharField(max_length=50,choices=estados,default='NO ESPECIFICADA',null=True,blank=True)
-	t101_municipality = models.CharField(max_length=70,null=True,blank=True)
-	t101_locality = models.CharField(max_length=100,null=True,blank=True)
-	"""
-
-
-class Skill(models.Model):
-	t102_id_skill = models.AutoField(primary_key=True)
-	t102_description = models.CharField(max_length=100)
-
-	class Meta:		
-		verbose_name = 'Residence'
-		db_table='t101_domicilio'
-
-	def __str__ (self):
-		return ""+self.t101_state+", "+self.t101_mucipality
-
-
 #T102 Habilidades
 class StudentSkill(models.Model):	
 	t102_id_registrer = models.AutoField(primary_key=True)
@@ -196,7 +140,6 @@ class StudentSkill(models.Model):
 		on_delete=models.CASCADE,
 		default=1
 	)
-
 	t100_boleta = models.ForeignKey(
 		Student, 
 		null=True, 
@@ -251,7 +194,7 @@ class AcademicHistory(models.Model):
 		db_table="t104_historial_academico"
 	
 	def __str__ (self) ->str:
-		return self.t104_academic_unit+" : "+self.t104_carreer+" , "+self.t104_carreer
+		return self.t104_academic_unit+" : "+self.t104_carreer
 
 #T113 Areas de interes
 class InterestArea(models.Model):

@@ -32,7 +32,7 @@ class UbicationListSerializer(serializers.ModelSerializer):
 class UpdateUbicationSerializer(serializers.ModelSerializer):
         class Meta:
             model = Ubication
-            fields = '__all__'#('t200_id_vacant','t213_state','t213_mucipality','t213_locality','t213_street','t213_cp','t213_interior_number','t213_exterior_number')
+            fields = ('t213_state','t213_mucipality','t213_locality','t213_street','t213_cp','t213_interior_number','t213_exterior_number')
         
         def update(self,instance,validate_data):
             u_ubication = super().update(instance,validate_data)
