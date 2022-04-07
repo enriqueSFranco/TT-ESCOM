@@ -4,7 +4,7 @@ import imp
 from operator import imod
 from posixpath import basename
 from rest_framework.routers import DefaultRouter
-from apps.students.api.views.catalogs_viewset import AcademicLevelViewSet,AcademicStateViewSet,PlataformViewSet,SkillsViewSet,LenguageViewSet
+from apps.students.api.views.catalogs_viewset import AcademicLevelViewSet,AcademicStateViewSet,PlataformViewSet,SkillsViewSet,LenguageViewSet,InterestJobViewSet
 from apps.vacantes.api.views.catalogs_viewset import VacantStatusViewSet,CandidateProfileViewSet,ExperienceViewSet,ApplicationStateViewSet,ReportTypeViewSet,ReportStateViewSet,StateViewSet,MunicipalityViewSet
 
 
@@ -13,6 +13,9 @@ router = DefaultRouter()
 router.register(r'CatalogueAcademicLevel',AcademicLevelViewSet,basename='Academic level catalog')
 router.register(r'CatalogueAcademicState',AcademicStateViewSet,basename='Academic state catalog')
 router.register(r'CataloguePlataform',PlataformViewSet,basename='Plataforms catalog')
+router.register(r'CataloguePlataform/<int:pk>',PlataformViewSet,basename='Plataforms catalog')
+router.register(r'CatalogueJobs',InterestJobViewSet,basename='Jobs catalog')
+router.register(r'CatalogueJobs/<int:pk>',InterestJobViewSet,basename='Job catalog')
 router.register(r'CatalogueSkills',SkillsViewSet,basename='Skills catalog')
 router.register(r'CatalogueSkills/<str:pk>',SkillsViewSet,basename='Skills divided by types catalog')
 router.register(r'CatalogueLenguage',LenguageViewSet,basename='Lenguages catalog')
