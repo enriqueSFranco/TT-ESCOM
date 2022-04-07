@@ -1,73 +1,42 @@
-import React, { Component } from 'react';
-
-import Label from "../../Input/Label"
-import Span from "../../Input/Span"
-import Input from "../../Input/Input"
-
+import React, { useState }  from 'react';
+import Checkbox from '@mui/material/Checkbox';
+import TextField from "@mui/material/TextField";
 import styles from "./Styles.module.css";
 
-
-
 function DatesPersonal ({form,handleChange}) {
-    return (
-      <div className={styles.conJob}>
-        <form>
-        {/* input para Nombre*/}
-          <div>
-            <Label htmlFor="t100_name">
-              <Input
-                type="text"
-                name="t100_name"
-                id="t100_name"
-                value={form.t100_name}
-                onChange={handleChange}
-              />
-              <Span content="Tu Nombre" />
-            </Label>        
-          </div>
+    const [checked, setChecked] = useState(false);
 
-          {/* input para Ubicacion TODO: CAMBIAR EL HTMLFOR*/}
-          <div>
-            <Label htmlFor="t100_residence">
-              <Input
-                type="text"
+    const checkChanged = (state) => {
+      setChecked(!checked);
+      //setTravel(!checked);
+      //console.log(!checked);
+    };
+
+    return (
+      <div className={styles.containerPage}>
+        <form>
+          <div className={styles.inputGroup}>
+              <TextField
+                label="¿Donde te ubicas?"
                 name="t100_residence"
                 id="t100_residence"
                 value={form.t100_residence}
                 onChange={handleChange}
+                sx={{ width: 400, maxWidth: "100%" }}
               />
-              <Span content="¿Donde Vives?" />
-            </Label>
-    </div>
-          
-          {/* input para Telefono TODO: CAMBIAR EL HTMLFOR*/}
-          <div>
-            <Label htmlFor="t100_phonenumber">
-              <Input
-                type="tel"
-                name="t100_phonenumber"
-                id="t100_phonenumber"
-                value={form.t100_phonenumber}
-                onChange={handleChange}
-              />
-              <Span content="WhatsApp" />
-            </Label>
-        </div>
-                            
-          {/* input para E-mail TODO: CAMBIAR EL HTMLFOR*/}
-          <div>
-            <Label htmlFor="t100_email">
-              <Input
-                type="email"
-                name="t100_email"
-                id="t100_email"
-                value={form.t100_email}
-                onChange={handleChange}
-              />
-              <Span content="E-mail" />
-            </Label>
           </div>
-                        
+          
+          <div className={styles.inputCheckbox}>
+          Dispuesto a reubicarte?
+            
+          <Checkbox 
+            value={form.t100_travel=checked}          
+            checked={checked} 
+            onChange={checkChanged}
+            size='small'
+          /> 
+          </div>
+
         </form>
       </div>
     );

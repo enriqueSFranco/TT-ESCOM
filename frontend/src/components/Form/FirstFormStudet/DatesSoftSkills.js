@@ -10,14 +10,14 @@ import Autocomplete from '@mui/material/Autocomplete';
 
 
 
-function DatesSkill ({hardSkills,setHardSkills,AllResults}) {
-  let hard = new Array();
-  const [localhardSkills, setLocalHardSkill] = useState(hardSkills);
+function DatesSoftSkill ({softSkills,setSoftSkills,AllResults}) {
+  let soft = new Array();
+  const [localsoftSkills, setLocalSoftSkill] = useState(softSkills);
 
 
   AllResults.map((dato)=>{
-    if(dato['c116_type']=='H'){
-      hard.push(dato); 
+    if(dato['c116_type']=='s'){
+      soft.push(dato);
     }
   }  
   );
@@ -27,28 +27,28 @@ function DatesSkill ({hardSkills,setHardSkills,AllResults}) {
         <form>
         <div className={styles.select}>
 
-            <Autocomplete
+        <Autocomplete
                 sx={{ width: 400, maxWidth: "100%" }}
-                name="hardskills"
-                value={localhardSkills}
+                name="softskills"
+                value={localsoftSkills}
                 onChange={(event, newValue) => {
-                  setLocalHardSkill(newValue);                                
-                  setHardSkills(newValue);
+                  setLocalSoftSkill(newValue);                                
+                  setSoftSkills(newValue);
                 }}
                 multiple
-                id="hardskills"
-                options={hard}
+                id="softskills"
+                options={soft}
                 getOptionLabel={(option) => option.c116_description}
-                defaultValue={[hard[13]]}
+                defaultValue={[soft[13]]}
                 filterSelectedOptions
                 renderInput={(params) => (
                   <TextField
                     {...params}
-                    label="Hard skills"
+                    label="Soft skills"
                     placeholder="Selecciona "
                   />
                 )}
-            />              
+            />             
         </div>
           
           </form>
@@ -57,4 +57,4 @@ function DatesSkill ({hardSkills,setHardSkills,AllResults}) {
   
 }
 
-export default DatesSkill;
+export default DatesSoftSkill;

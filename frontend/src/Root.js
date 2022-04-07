@@ -13,7 +13,7 @@ import AboutMe from "./components/Card/AboutMe/AboutMe";
 import CardJobDetails from "./components/Card/CardJobDetails";
 import PageAddJob from "./pages/business/PageAddJob";
 import ModalRelease from "./components/Modal/ModalRelease";
-import StepComponent from "./components/Form/FirstFormStudet/Step";
+import PageLoginStudentUpdate from "./pages/login/PageLoginStudentUpdate";
 
 const Root = () => {
   return (
@@ -27,7 +27,7 @@ const Root = () => {
       <Route path="/registro-alumno" element={<PageCreateAccountStudent />} />
       <Route path="/reclutador" element={<PageLoginCompany />} />
       <Route path="/registro-reclutador" element={<PageRegisterCompany />} />
-      <Route path="/StepComponent" element={<StepComponent />}/>
+      <Route path="/actualiza-alumno" element={<PageLoginStudentUpdate />}/>
       <Route path="/empresas" element={<PageCompany />} />
       <Route path="comunicados" element={<PageReleases />}>
         <Route path=":t202_id_announcement" element={<ModalRelease />} />

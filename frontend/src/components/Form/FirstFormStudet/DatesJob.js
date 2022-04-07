@@ -8,43 +8,30 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 
 
 
-const DatesJob = ({hardSkills,setHardSkills,softSkills,setSoftSkills,AllResults,form,handleChange}) =>  {
-  let soft = new Array();
-  let hard = new Array();
-  const [localhardSkills, setLocalHardSkill] = useState(hardSkills);
-  const [localsoftSkills, setLocalSoftSkill] = useState(softSkills);
-  /*console.log("Allskills", hardSkills,softSkills);
-  console.log("hard skills: ", localhardSkills);
-  console.log("hard skills: ", localsoftSkills);*/
-  const [value, setValue] = React.useState("")
+const DatesJob = ({form,handleChange}) =>  {
+      return (
+      <div className={styles.containerPage}>
+        <form>
 
 
-  AllResults.map((dato)=>{
-    if(dato['c116_type']=='H'){
-      hard.push(dato); 
-    }
-    if(dato['c116_type']=='s'){
-      soft.push(dato);
-    }
-  }  
-  );
-  
-  /*const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-  console.log(value);*/
+        <div className={styles.inputGroup}>
+           <TextField
+                label="¿Cuanto te gustaria ganar?"
+                name="t100_target_salary"
+                id="t100_target_salary"
+                inputProps={{ min: 7000,
+                  max: 99999,
+                  type: 'number',}} 
+                value={form.t100_target_salary}
+                onChange={handleChange}
+                sx={{ width: 400, maxWidth: "100%" }}
+              />
+            </div>   
 
-    return (
-      <div>
-         
-            {/* input para la eleccion de trabjo
-            TODO: cambiar el HTMLFOR*/}
-            <div className={styles.conCheckbox}>
-              <div className={styles.text}><h6>Preferirias un trabajo ??</h6></div>
-              <div className={styles.checkbox}>
+            <div className={styles.inputGroupCheckbox}>
+              <div className={styles.text}>Preferirias un trabajo ??</div>
               <RadioGroup
                 row
-                aria-labelledby="demo-controlled-radio-buttons-group"
                 id="t100_modalities"
                 name="t100_modalities"
                 value={form.t100_modalities}
@@ -53,56 +40,9 @@ const DatesJob = ({hardSkills,setHardSkills,softSkills,setSoftSkills,AllResults,
                 <FormControlLabel value="Hibrodo" control={<Radio />} label="Hibrido" />
                 <FormControlLabel value="Home office" control={<Radio />} label="Home office" />
                 <FormControlLabel value="Presencial" control={<Radio />} label="Presencial" />
-          </RadioGroup>
-              </div>
+              </RadioGroup>
             </div>
-            <div>
-            <Autocomplete
-                name="hardskills"
-                value={localhardSkills}
-                onChange={(event, newValue) => {
-                  setLocalHardSkill(newValue);                                
-                  setHardSkills(newValue);
-                }}
-                multiple
-                id="hardskills"
-                options={hard}
-                getOptionLabel={(option) => option.c116_description}
-                defaultValue={[hard[13]]}
-                filterSelectedOptions
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    label="Hard skills"
-                    placeholder="Selecciona "
-                  />
-                )}
-            />              
-            </div>
-
-            <div>
-            <Autocomplete
-                name="softskills"
-                value={localsoftSkills}
-                onChange={(event, newValue) => {
-                  setLocalSoftSkill(newValue);                                
-                  setSoftSkills(newValue);
-                }}
-                multiple
-                id="softskills"
-                options={soft}
-                getOptionLabel={(option) => option.c116_description}
-                defaultValue={[soft[13]]}
-                filterSelectedOptions
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    label="Soft skills"
-                    placeholder="Selecciona "
-                  />
-                )}
-            />              
-            </div>
+          </form>
               
       </div>
     );
