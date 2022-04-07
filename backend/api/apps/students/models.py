@@ -35,20 +35,17 @@ class AcademicState(models.Model):
 	def __str__(self) -> str:
 		return self.c109_description
 
-#C108 Area estudio
-class StudyArea(models.Model):
-	c108_id_study_area = models.AutoField(primary_key=True)
-	c108_study_area = models.CharField(max_length=60,null=False,blank=False)
-	c108_generic_carreer = models.CharField(max_length=100,null=False,blank=False)
-	c108_specific_carreer = models.CharField(max_length=100,null=False,blank=False)
-	c108_description = models.CharField(max_length=60,blank=True,null=True)	
+#C108 Puesto de interes
+class InterestJob(models.Model):
+	c108_id_job = models.AutoField(primary_key=True)
+	c108_job = models.CharField(max_length=60,null=False,blank=False,default="no definido")
 
 	class Meta:
-		verbose_name = 'StudyArea'
-		db_table = 'c108_area_estudio'
+		verbose_name = 'InterestJob'
+		db_table = 'c108_puesto_interes'
 	
 	def __str__(self) -> str:
-		return self.c108_description		
+		return self.c108_job
 
 
 #C115 Plataformas
