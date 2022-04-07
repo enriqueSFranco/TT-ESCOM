@@ -41,9 +41,17 @@ export const useForm = (initialForm, validateForm) => {
       createAccountStudent(form)
         .then(response => {
           setLoading(false);
-          setResponse(response);
-          navigate("/alumno")
-        });
+          // console.log('->',response);
+          if (response.data.status === 200 || response.data.status === 201) {
+            setResponse(response);
+              setTimeout(() => {
+                navigate("/alumno")
+              }, 5000);
+          } else {
+          }
+        })
+        .catch(() => setResponse(response.data.message))
+        .finally(() => setLoading(false));
     } else {
       return;
     }
