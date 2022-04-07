@@ -18,14 +18,13 @@ class AnnouncementViewSet(viewsets.GenericViewSet):
 		self.queryset = self.model.objects\
 				.filter(t202_id_announcement = pk)\
 				.all()
-				#values('t202_id_announcement','t202_announcement','t202_description','t202_publish_date','t202_close_date')		
 		return self.queryset
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.all()#values('t202_id_announcement','t202_announcement','t202_description','t202_publish_date','t202_close_date')
+				.all()
 		return self.queryset
 
 
@@ -53,9 +52,9 @@ class AnnouncementViewSet(viewsets.GenericViewSet):
 		return Response(announcement_serializer.data)
 
 	def destroy(self, request, pk):
-		announcement_destroy = self.model.objects.filter(t202_id_announcement=pk).delete()
-		#SI lo borra pero no se como indicar que se realizo con exito
-		if announcement_destroy == 1:
+		announcement_destroy = self.model.objects.filter(t202_id_announcement=pk).first()		
+		if announcement_destroy:
+			announcement_destroy = self.model.objects.filter(t202_id_announcement=pk).delete()
 			return Response({
 				'message': 'Comunicado eliminado correctamente'
 			})

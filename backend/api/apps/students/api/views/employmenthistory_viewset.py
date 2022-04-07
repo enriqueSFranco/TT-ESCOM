@@ -18,14 +18,14 @@ class EmploymentViewSet(viewsets.GenericViewSet):
 	def get_object(self, pk):        		  
 		self.queryset = self.model.objects\
 			.filter(t100_boleta=pk)\
-			.all()#values('t103_id_registrer','t100_boleta','t103_corporation','t103_employment','t103_description','t103_start_date','t103_end_date')
-		return self.queryset#get_object_or_404(self.model,pk=pk)
+			.all()
+		return self.queryset
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.all()#values('t103_id_registrer','t100_boleta','t103_corporation','t103_employment','t103_description','t103_start_date')#,'t103_end_date')
+				.all()
 		return self.queryset
   
 
@@ -68,9 +68,9 @@ class EmploymentViewSet(viewsets.GenericViewSet):
 
 	def destroy(self, request, pk):
 		print(request.data)		
-		employment_destroy = self.model.objects.filter(t103_id_registrer=pk).delete()
-        #SI lo borra pero no se como indicar que se realizo con exito
-		if employment_destroy == 1:
+		employment_destroy = self.model.objects.filter(t103_id_registrer=pk).first()
+		if employment_destroy:
+			employment_destroy = self.model.objects.filter(t103_id_registrer=pk).delete()
 			return Response({
 				'message': 'Historial del alumno eliminado correctamente'
 			})

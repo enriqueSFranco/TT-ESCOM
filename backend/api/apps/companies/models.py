@@ -94,7 +94,7 @@ class Ubication(models.Model):
         db_table = 't302_ubicacion'
 
     def __str__(self) -> str:
-        return super().__str__()
+        return self.t300_id_company
 
 class Recruiter(models.Model):
     t301_id_recruiter = models.AutoField(primary_key=True)

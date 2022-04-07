@@ -20,7 +20,7 @@ class CompanyUbicationViewSet(viewsets.GenericViewSet):
 			self.queryset = self.model.objects\
 				.filter(t300_id_company = pk)\
 				.values('t300_id_company','t302_state','t302_municipality','t302_locality','t302_street','t302_cp','t302_ext','t302_int')
-		return  self.queryset #get_object_or_404(self.model,pk=pk)
+		return  self.queryset
 
 	def get_queryset(self):
 		if self.queryset is None:
@@ -68,10 +68,10 @@ class CompanyUbicationViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk):
-		ubication_destroy = self.model.objects.filter(t300_id_company=pk).delete()
-		print(ubication_destroy)
-		#SI lo borra pero no se como indicar que se realizo con exito
-		if ubication_destroy == 1:
+		ubication_destroy = self.model.objects.filter(t300_id_company=pk).first()
+		print(ubication_destroy)		
+		if ubication_destroy:
+			ubication_destroy = self.model.objects.filter(t300_id_company=pk).delete()
 			return Response({
 				'message': 'Compañia eliminada correctamente'
 			})

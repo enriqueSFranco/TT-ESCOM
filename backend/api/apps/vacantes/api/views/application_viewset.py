@@ -54,14 +54,14 @@ class ApplicationViewSet(viewsets.GenericViewSet):
 		return Response(applications_serializer.data)
 
 	def destroy(self, request, pk):
-		applicaction_destroy = self.model.objects.filter(t201_id_application=pk).delete()
-		#SI lo borra pero no se como indicar que se realizo con exito
-		if applicaction_destroy == 1:
+		applicaction_destroy = self.model.objects.filter(t201_id_application=pk).first()		
+		if applicaction_destroy:
+			applicaction_destroy = self.model.objects.filter(t201_id_application=pk).delete()
 			return Response({
-				'message': 'Comunicado eliminado correctamente'
+				'message': 'Aplicación eliminado correctamente'
 			})
 		return Response({
-			'message': 'No existe el comunicado que desea eliminar'
+			'message': 'No existe la aplicación que desea eliminar'
 		}, status=status.HTTP_404_NOT_FOUND)
 
 	def update(self, request, pk):

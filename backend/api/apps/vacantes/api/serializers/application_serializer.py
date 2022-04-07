@@ -30,7 +30,7 @@ class ApplicationListSerializer(serializers.ModelSerializer):
 class UpdateApplicationSerializer(serializers.ModelSerializer):
         class Meta:
             model = Application
-            fields = '__all__'#('t201_id_application','t100_boleta','c205_id_application_state','t201_date_application','t201_cv')
+            fields = ('c205_id_application_state','t201_date_application','t201_cv')
         
         def update(self,instance,validate_data):
             u_aplication = super().update(instance,validate_data)
