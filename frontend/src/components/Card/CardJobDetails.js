@@ -51,7 +51,7 @@ const JobCardDetails = () => {
               <ul className={`${styles.flex}`}>
                 <li className={styles.flex}>
                   <FaIcon.FaBuilding />
-                  <span>{job[0]?.t300_id_company ?? 'Anonima'}</span>
+                  <span>{job[0]?.t300_id_company?.t300_name ?? 'Anonima'}</span>
                 </li>
                 <li className={styles.flex}>
                   <MdIcon.MdOutlineAttachMoney />

@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion" ;
-// import { helpHttp } from "../../../utils/helpHttp";
 import FormUpdateDataStudent from "../../Form/FormUpdateDataStudent";
 import Avatar from "../../Avatar/Avatar";
 import * as MdIcon from "react-icons/md";
@@ -13,25 +12,6 @@ const CardProfileStudent = () => {
   const [student, setStudent] = useState({});
   const [residence, setResidencce] = useState({});
   const [linksSocialNewtworks, setLinksSocialNetworks] = useState([]);
-
-  useEffect(() => {
-    // uploadPhotoStudent()
-    // const fetchData = async () => {
-    //   const studentUrl = `/api/Students/2014/`;
-    //   const studentResidenceUrl = `/api/Residence/2014`;
-    //   const socialNetworksUrl = `/api/Links/2014/`;
-      
-    //   const [studentRes, studentResidenceRes, socialNetworksRes] = await Promise.all([
-    //     helpHttp().GET(studentUrl),
-    //     helpHttp().GET(studentResidenceUrl),
-    //     helpHttp().GET(socialNetworksUrl)
-    //   ]);
-    //   setStudent(studentRes)
-    //   setResidencce(studentResidenceRes)
-    //   setLinksSocialNetworks(socialNetworksRes);
-    // }
-    // fetchData();
-  }, []);
   
   const handleEdit = (e) => {
     let isEdit = state === "edit" ? "profile" : "edit";
