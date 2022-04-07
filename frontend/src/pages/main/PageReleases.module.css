@@ -1,5 +1,7 @@
 .heroReleases {
-  background-color: #000;
+  background-image: url(../../images/bgComunicado.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
   height: 250px;
 }
 
@@ -11,35 +13,49 @@
 .gridReleases {
   box-shadow: #00000029 0px 1px 4px;
   background-color: #f6f8fb;
-  width: 70%;
-  position: absolute;
-  top: 25rem;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: relative;
+  top: 3rem;
+  height: 100%;
+  width: 90%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   justify-content: center;
   justify-items: center;
-  gap: 1rem;
+  gap: 2rem;
   padding: 1rem;
 }
 
 .title {
-  color: #fff;
+  color: #039ebd;
   font-weight: bold;
+  font-size: 3rem;
   letter-spacing: 2px;
-  text-align: center;
   text-transform: uppercase;
   position: relative;
   top: 5rem;
+  left: 50rem;
+  display: block;
+  width: 14.5ch;
+  white-space: nowrap;
+  border-right: 4px solid;
 
+  animation: typing 2s steps(14), blink .5s infinite step-end alternate;
+  overflow: hidden;
 }
 
 .wrapperReleases {
   position: relative;
   top: 4rem;
-  max-height: 100vh;
-  height: 93.4vh;
+  width: 100%;
+  background-color: #fff;
+  /* max-height: 100vh; */
+  /* height: 93.4vh; */
+}
+
+@keyframes typing {
+  from { width: 0; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
 }

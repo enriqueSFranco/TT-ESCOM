@@ -47,6 +47,11 @@
   font-weight: bold;
 }
 
+.notLogo {
+  color: #acacac;
+  font-size: 5rem;
+}
+
 .placeholder {
   width: 450px;
   background-color: #ccc;

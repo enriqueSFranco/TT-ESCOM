@@ -18,10 +18,7 @@ img {
   font-size: 2rem;
 }
 
-.details {
-  color: #fff;
-  /* background-color: bisque; */
-}
+.details { color: #fff; }
 
 .details h1 {
   font-size: 1.6rem;
@@ -38,7 +35,6 @@ img {
 .grid {
   position: relative;
   top: 5rem;
-  /* background-color: red; */
   height: auto;
   width: auto;
   display: grid;
@@ -56,9 +52,10 @@ img {
 
 .wrapper {
   position: absolute;
+  /* min-height: 100vh; */
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.822);
+  background-color: #000000de;
 }

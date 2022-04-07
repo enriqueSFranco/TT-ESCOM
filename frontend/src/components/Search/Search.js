@@ -13,16 +13,16 @@ const Search = ({ handleSearch, data, locationList }) => {
 
   const handleFilterJob = (e) => {
     const query = e.target.value;
-    setJob(query);
+    setJob(query); // controlamos el input
 
-    const newFilter = data.filter((value) => {
+    const newFilter = data.filter((value) => { // filtramos el contenido
       return value?.t200_job.toLowerCase().includes(query.toLowerCase());
     });
 
     query === "" ? setFilterData([]) : setFilterData(newFilter);
   };
 
-  const handleSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     if (!job.trim()) return;
     handleSearch(job);
@@ -35,7 +35,7 @@ const Search = ({ handleSearch, data, locationList }) => {
         <br />
         <span>y a vivir tus sueños.</span>
       </h1>
-      <form onSubmit={handleSubmit} className={styles.searchForm}>
+      <form onSubmit={onSubmit} className={styles.searchForm}>
         <div className={styles.searchInput}>
           <Label htmlFor="job">
             <Input

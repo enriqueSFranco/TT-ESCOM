@@ -7,7 +7,7 @@ const Release = ({ src, alt, nameBusiness }) => {
     <>
       <article className={styles.card}>
         <div className={styles.release}>
-          <img src={src} alt={alt} />
+          <img src={src} alt={alt}/>
         </div>
         <div className={styles.releaseCompany}>
           <p>Publicado por: {nameBusiness}</p>

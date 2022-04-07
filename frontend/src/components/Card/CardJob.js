@@ -1,6 +1,7 @@
 import * as GiIcon from "react-icons/gi";
 import * as BsIcon from "react-icons/bs";
 import * as MdIcon from "react-icons/md";
+import * as IoIcon from "react-icons/io";
 import styles from "./CardJob.module.css";
 
 const JobCard = ({ job }) => {
@@ -42,12 +43,16 @@ const JobCard = ({ job }) => {
             </p>
           </div>
           <div className={styles.logoBusiness}>
-            <img src={job?.t300_id_company?.t300_logo} alt={job?.t300_id_company?.t300_name} />
+            {job?.t300_id_company?.t300_logo ? (
+              <img src={job?.t300_id_company?.t300_logo} alt={job?.t300_id_company?.t300_name} />
+            ) : (
+              <IoIcon.IoMdBusiness className={styles.notLogo} />
+            )}
           </div>
         </div>
       </div>
     </article>
-  );
+  )
 };
 
 export default JobCard;

@@ -14,10 +14,11 @@ const PageCompany = () => {
   const { data, loading } = useFetch(API_COMPANY);
 
   const searchCompany = (query) => {
-    if (query !== "") {
-      setSearch(query);
+    let input = query.toLowerCase().trim();
+    if (input !== "") {
+      setSearch(input);
       let matches = data.filter((company) => {
-        let regex = new RegExp(`${query}`, "gi");
+        let regex = new RegExp(`^${input}`, "gi");
         return company.t300_name.match(regex);
       });
       setCompanyMatch(matches);
@@ -29,8 +30,9 @@ const PageCompany = () => {
   if (!data) return null;
 
   return (
-    <div className={`${styles.wrapperListCompanies}`}>
+    <section className={`${styles.wrapperListCompanies}`}>
       <div className={styles.search}>
+        <div className={styles.background}></div>
         <h1 className={styles.title}>Empresas registradas</h1>
         <form className={styles.searchForm}>
           <Label htmlFor="company">
@@ -47,7 +49,7 @@ const PageCompany = () => {
       <div className={`container ${styles.grid}`}>
         {loading ? (
           <Skeleton type="business" />
-        ) : search.length > 1 ? (
+        ) : search.length > 0 ? (
           companyMatch.map((company) => (
             <CardCompany
               key={company?.t300_id_company}
@@ -71,7 +73,7 @@ const PageCompany = () => {
           ))
         )}
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -17,8 +17,6 @@ const ModalRelease = () => {
   
   const [release] = data; // destructuramos el arreglo de objetos
 
-  console.log(release)
-
   return (
     <motion.article 
       initial={{opacity: 0}}
@@ -35,11 +33,12 @@ const ModalRelease = () => {
           <h1>{release?.t202_description}</h1>
           <div className={styles.releaseDescription}>
             <p>
+              {release?.t202_description}
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui deserunt in sint perspiciatis iste nemo eveniet, quasi ratione molestiae quaerat incidunt vero sit, officiis minus consectetur vitae natus nisi assumenda.
             </p>
           </div>
           <span>publicado el dia: {release?.t202_publish_date}</span>
-          <a href={release?.t_202_link}>Enlace de registro</a>
+          <a href={release?.t202_link} target="_blank" rel="noreferrer">Enlace de registro</a>
         </div>
       </div>
     </motion.article>

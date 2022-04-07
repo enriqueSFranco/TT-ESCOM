@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { getAllJobs } from "../../services/jobs/getAllJobs";
-import { getImageCompany } from "../../services/businnes/getImageCompany";
 import Search from "../../components/Search/Search";
 import FilterProfile from "../../components/Filter/FilterProfile";
 import FilterCompany from "../../components/Filter/FilterCompany";
@@ -11,7 +10,7 @@ import Footer from "../../components/Footer/Footer";
 import homeStyles from "./PageHome.module.css";
 
 const Home = () => {
-  const [, setSearch] = useState(""); // estado de la busqueda
+  const [search, setSearch] = useState(""); // estado de la busqueda
   const [dataList, setDataList] = useState([]); // lista de vacantes
   const [isFiltered, setIsFiltered] = useState(false); // boolean para saber si la informacion se tiene que filtrar
   const [data, setData] = useState(null); // lista filtrada
@@ -26,18 +25,16 @@ const Home = () => {
    * @param {String} value
    **/
   const filteredData = (value) => {
-    const lowerCaseValue = value.toLowerCase().trim();
-    let count = 0;
-    if (lowerCaseValue === "") {
+    // const lowerCaseValue = value.toLowerCase().trim();
+    setSearch(value);
+    if (value === "") {
       setData(dataList);
     } else {
       const filteredData = dataList.filter((el) => {
-        if (el?.t200_job.toLowerCase().includes(value.toLowerCase())) {
-          count = count + 1;
-          setTotalJobs(count);
-          return el;
-        } else return false;
+        let regex = new RegExp(`${value}`, 'gi');
+        return el?.t200_job.match(regex);
       });
+      setTotalJobs(filteredData.length);
       setData(filteredData);
     }
   };
@@ -53,10 +50,6 @@ const Home = () => {
     
       return () => null;
   }, []);
-
-  // useEffect(() => {
-  //   getImageCompany()
-  // }, []);
 
   const handleSearch = (value) => {
     setSearch(value);
@@ -108,9 +101,9 @@ const Home = () => {
     }
   };
 
-
   if (!dataList && !data) return null;
 
+  console.log(search)
 
   return (
     <main className={homeStyles.home}>

@@ -3,7 +3,7 @@ import * as IoIcon from "react-icons/io";
 import styles from "./CardCompany.module.css";
 
 const CardNormal = ({ name, webSite, logo, setIsOpen }) => {
-  console.log(logo)
+
   return (
     <motion.div className={styles.card} layoutId="cardExpand">
         <motion.div layoutId="cardExpand-img" className={styles.cardLogo}>

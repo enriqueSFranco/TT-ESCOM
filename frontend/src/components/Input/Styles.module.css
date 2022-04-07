@@ -28,7 +28,7 @@
   box-sizing: border-box;
   display: block;
   width: 400px;
-  border: 1px solid currentColor;
+  border: 1px solid #ccc;
   padding: calc(var(--size-bezel) * 1.5) var(--size-bezel);
   color: currentColor;
   background: #fff;
@@ -37,7 +37,7 @@
 
 .inputField:focus + .inputLabel, .inputField:not(:placeholder-shown) + .inputLabel {
   transform: translate(0.25rem, -65%) scale(0.8);
-  color: #90314b;
+  color: #1976d2;
 }
 
 

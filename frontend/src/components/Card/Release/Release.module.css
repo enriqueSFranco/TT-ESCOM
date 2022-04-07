@@ -1,24 +1,8 @@
-.gridReleases {
-  box-shadow: #00000029 0px 1px 4px;
-  background-color: #f6f8fb;
-  width: 70%;
-  position: relative;
-  top: 3rem;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-columns: repeat(4, 1fr);
-  justify-content: center;
-  justify-items: center;
-  gap: 1rem;
-  padding: 1rem;
-}
-
-
 .card {
   width: 260px;
-  height: 300px;
-  outline: 1px solid #ccc;
-  background-color: #fff;
+  height: 270px;
+  outline: 1px solid rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.808);
   border-radius: 4px;
   position: relative;
   display: flex;
@@ -50,6 +34,7 @@
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
+  color: #fff;
 }
 
 .releaseCompany button {
