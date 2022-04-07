@@ -1,16 +1,34 @@
 .bg {
+  position: relative;
   background-image: url(../../images/loginStudent.jpeg);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  backdrop-filter: calc(10px);
 }
 
-.bg h1 {
+.bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.534);
+}
+
+.bg blockquote {
   width: 350px;
   backdrop-filter: blur(10px);
   font-weight: bold;
   color: #fff;
   padding: 1rem;
+  position: relative;
+  font-size: 2.5rem;
+}
+
+.bg blockquote em {
+  color: #04c8eb;
 }
 
 .btLogin { 
@@ -46,7 +64,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: red; */
 }
 
 .formLogin {
@@ -78,7 +95,7 @@
 .welcome h2 {
   text-transform: uppercase;
   font-weight: bold;
-  color: #a8dee7;
+  color: #222;
   letter-spacing: 2px;
   padding: 0;
   margin: 0;
@@ -95,10 +112,37 @@
   top: 10rem;
 }
 
-.linkCreateAccount {
+.login {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login span, a {
+  color: #fff;
+  font-size: 1rem;
+}
+
+.login a {
   position: relative;
-  left: 5rem;
-  top: -3rem;
+  right: 1.9rem;
+}
+
+.login a:hover {
+  color: #fff;
+}
+
+.linkToLogin {
+  color: #04c8eb;
+  position: relative;
+  left: 0;
 }
 
 /* ESTILOS DEL FORMULARIO DE CREAR CUENTA EMPRESA */

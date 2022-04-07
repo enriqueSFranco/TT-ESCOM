@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "../../hooks/useForm";
 import { motion } from "framer-motion" ;
+// import { updateStudent } from "../../services/students/updateStudent";
 import TextField from "@mui/material/TextField";
 import Label from "../Input/Label";
 import Switch from "../Input/Switch";
@@ -22,6 +23,31 @@ const validateForm = form => {
 const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
   const { form, handleChange, handleChecked } = useForm(updateStudentInitialForm, validateForm);
   const [file, setfile] = useState(null);
+
+//   useEffect(() => {
+//     updateStudent("2021")
+//       .then(response => {
+//         console.log(response);
+//       })
+//       .catch(error => console.log(error));
+//   // uploadPhotoStudent()
+//   // const fetchData = async () => {
+//   //   const studentUrl = `/api/Students/2014/`;
+//   //   const studentResidenceUrl = `/api/Residence/2014`;
+//   //   const socialNetworksUrl = `/api/Links/2014/`;
+    
+//   //   const [studentRes, studentResidenceRes, socialNetworksRes] = await Promise.all([
+//   //     helpHttp().GET(studentUrl),
+//   //     helpHttp().GET(studentResidenceUrl),
+//   //     helpHttp().GET(socialNetworksUrl)
+//   //   ]);
+//   //   setStudent(studentRes)
+//   //   setResidencce(studentResidenceRes)
+//   //   setLinksSocialNetworks(socialNetworksRes);
+//   // }
+//   // fetchData();
+// }, []);
+
 
   return (
     <>

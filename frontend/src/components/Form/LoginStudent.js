@@ -20,14 +20,23 @@ const Form = () => {
         <div
           className={`${styles.bg} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
         >
-          <h1>
-            Un paso más cerca de tu nuevo{" "}
-            <span className={styles.work}>trabajo.</span>
-          </h1>
+          <div className={`${styles.login}`}>
+            <blockquote>
+              Un paso más cerca de tu nuevo{" "}
+              <em>trabajo</em>.
+            </blockquote>
+              <span>
+                No tines cuenta? <Link className={`${styles.linkToLogin}`} to="/registro-alumno">Registrate</Link>
+              </span>
+              <br />
+              <span>
+                <a href="/#">Recuperar contraseña</a>
+              </span>
+            </div>
         </div>
         <div className={`col bg-white p-5 rounded-end ${styles.formLogin}`}>
           <div className={styles.welcome}>
-            <h2>Bienvenido</h2>
+            <h2>iniciar sesion</h2>
             <span>Bienvenido! Porfavor introduce tus datos.</span>
           </div>
           <form onSubmit={login}>
@@ -61,15 +70,6 @@ const Form = () => {
               >
                 Iniciar sesión
               </button>
-            </div>
-            <div className={styles.createAccount}>
-              <span>
-                No tines cuenta? <Link to="/registro-alumno">Registrate</Link>
-              </span>
-              <br />
-              <span>
-                <a href="/#">Recuperar contraseña</a>
-              </span>
             </div>
           </form>
         </div>

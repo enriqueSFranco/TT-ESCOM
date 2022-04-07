@@ -4,7 +4,7 @@ export const studentInitialForm = {
   t100_name: "",
   t100_boleta: "",
   t100_email: "",
-  t100_password: "",
+  password: "",
 };
 
 export const updateStudentInitialForm = {
