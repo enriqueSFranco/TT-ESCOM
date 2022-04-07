@@ -13,7 +13,10 @@ ReactDOM.render((
   </Router>
 ), document.getElementById('app')
 );
+<<<<<<< HEAD
 
+=======
+>>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
