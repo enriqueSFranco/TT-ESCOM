@@ -73,7 +73,7 @@
 .profile {
   background-color: #e9edfc;
   height: 1.5rem;
-  width: 170px;
+  width: 177px;
   color: #0f6dfb;
   display: flex;
   align-items: center;
@@ -85,7 +85,7 @@
 }
 
 .publicationTime {
-  width: 240px;
+  width: 245px;
   justify-content: flex-start;
   margin-top: .3rem;
   padding-left: .5rem;
@@ -100,7 +100,7 @@
   background-color: #e9f4ef;
   color: #0b9e48;
   border-radius: 1rem;
-  width: 250px;
+  width: 235px;
   height: 1.5rem;
   display: flex;
   align-items: center;

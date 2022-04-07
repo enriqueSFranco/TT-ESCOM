@@ -31,7 +31,7 @@ const JobCard = ({ job }) => {
             </p> */}
             <p className={`${styles.salary} ${styles.tag}`}>
               <GiIcon.GiMoneyStack />
-              Sueldo: ${job?.t200_min_salary} a ${job?.t200_max_salary}
+              Sueldo: ${job?.t200_min_salary} a ${job?.t200_max_salary} al mes
             </p>
             {/* <p className={`${styles.location} ${styles.tag}`}>
               Ubicacion: {job?.locationJob}
