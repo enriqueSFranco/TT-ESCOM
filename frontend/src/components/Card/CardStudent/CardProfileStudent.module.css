@@ -57,9 +57,16 @@ img {
   align-items: center;
 }
 
-.flexColumn {
+.cv {
+  height: 100px;
   display: flex;
   align-items: center;
+  gap: 1rem;
+}
+
+.cv svg {
+  font-size: 1.8rem;
+  color: #79e878;
 }
 
 .flex p {
