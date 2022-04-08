@@ -17,12 +17,12 @@ const Avatar = ({ student }) => {
     console.log(data);
   };
 
-  // console.log(student);
-
-  if (student !== undefined) {
-    const name = student?.t100_boleta?.t100_name;
-    const lastName = student?.t100_boleta?.t100_last_name;
-
+  // console.log(student)
+  if (student.length > 0) {
+    const name = student[0]?.t100_name;
+    const lastName = student[0]?.t100_last_name;
+    console.log(name, lastName);
+    
     return (
       <div className={styles.wrapperAvatar}>
         <form onSubmit={upload}>
