@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { getStudent } from "../../../services/students/getStudent";
 import { getSocialNetwork } from "../../../services/students/getSocialNetwork";
 import { uuid } from "../../../utils/uuid";
 import FormUpdateDataStudent from "../../Form/FormUpdateDataStudent";
@@ -11,6 +12,7 @@ import styles from "./CardProfileStudent.module.css";
 
 const CardProfileStudent = () => {
   const [state, setState] = useState("profile");
+  const [student, setStudent] = useState([]);
   const [socialNetworks, setSocialNetworks] = useState([]);
 
   const handleEdit = (e) => {
@@ -18,17 +20,26 @@ const CardProfileStudent = () => {
     setState(isEdit);
   };
 
+  
+  const id = "2017";
   useEffect(() => {
-    getSocialNetwork("2017")
-      .then((response) => {
-        setSocialNetworks(response);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+    const fetchData = async () => {
+      const [studentRes, linksRes] = await Promise.all([
+        getStudent(id),
+        getSocialNetwork(id)
+      ]);
+      setStudent(studentRes);
+      setSocialNetworks(linksRes);
+    };
+    fetchData();
 
-  if (!socialNetworks) return null;
+    return () => { // nos desuscribimos de la peticion a la API
+      setStudent([]);
+      setSocialNetworks([])
+    }
+  }, [id]);
 
-  const student = socialNetworks[1];
+  // console.log(student, socialNetworks);
 
   return (
     <>
@@ -58,12 +69,12 @@ const CardProfileStudent = () => {
                 <Avatar student={student} />
                 <div className={styles.nameHolder}>
                   <h3>
-                    {student?.t100_boleta?.t100_name}
+                    {student[0]?.t100_name}
                     <span className={styles.username}>
-                      {student?.t100_boleta?.t100_username ?? ""}
+                      {student[0]?.t100_username ?? ""}
                     </span>
                   </h3>
-                  <h4>{student?.t100_boleta?.t100_speciality ?? ""}</h4>
+                  <h4>{student[0]?.t100_speciality ?? ""}</h4>
                 </div>
               </div>
             </header>
@@ -85,18 +96,24 @@ const CardProfileStudent = () => {
               </div>
               <div className={`${styles.socialNetworks} ${styles.separator}`}>
                 <h4 className={styles.label}>redes solicales</h4>
-                {socialNetworks.map(({ t113_link, c115_id_plataform }) => {
-                  return (
-                    <a
-                      href={`${t113_link}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      key={uuid()}
-                    >
-                      {c115_id_plataform?.c115_description}
-                    </a>
-                  );
-                })}
+                {
+                  socialNetworks.length > 0 ? (
+                    socialNetworks.map(({ t113_link, c115_id_plataform }) => {
+                      return (
+                        <a
+                          href={`${t113_link}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          key={uuid()}
+                        >
+                          {c115_id_plataform?.c115_description}
+                        </a>
+                      );
+                    })
+                  ) : (
+                    <h3>Sin redes sociales</h3>
+                  )
+                }
               </div>
               <div className={`${styles.cv} py-4`}>
                 <IoIcon.IoIosCheckmarkCircle />
