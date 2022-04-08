@@ -105,19 +105,6 @@
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 1,
-        "fields": {
-            "c116_description": "No definido",
-            "c116_type": "U"
-        }
-    },
-    {
-        "model": "students.Skills",
-        "pk": 2,
-        "fields": {
-=======
         "model" :"students.AcademicState",
         "pk":7,
 	    "fields": {                        
@@ -129,7 +116,6 @@
         "model":"students.Skills",        
         "pk":2,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "JavaScript",
             "c116_type": "H"
         }
@@ -623,985 +609,558 @@
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 64,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":64,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Storytelling",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 65,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":65,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Verbal communication",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 66,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":66,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Visual communication",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 67,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":67,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Writing reports and proposals",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 68,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":68,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Writing skills",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 69,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":69,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Adaptability",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 70,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":70,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Artistic aptitude",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 71,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":71,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Creativity",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 72,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":72,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Critical observation",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 73,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":73,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Critical thinking",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 74,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":74,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Design aptitude",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 75,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":75,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Desire to learn",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 76,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":76,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Flexibility",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 77,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":77,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Innovation",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 78,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":78,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Logical thinking",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 79,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":79,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Problem solving",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 80,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":80,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Research",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 81,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":81,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Resourcefulness",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 82,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":82,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Thinking outside the box",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 83,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":83,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Tolerance of change and uncertainty",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 84,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":84,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Troubleshooting",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 85,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":85,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Value education",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 86,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":86,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Willingness to learn",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 87,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":87,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Conflict management",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 88,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":88,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Conflict resolution",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 89,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":89,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Deal making",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 90,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":90,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Decision making",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 91,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":91,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Delegation",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 92,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":92,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Dispute resolution",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 93,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":93,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Facilitation",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 94,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":94,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Giving clear feedback",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 95,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":95,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Inspiring people",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 96,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":96,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Leadership",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 97,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":97,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Management",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 98,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":98,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Managing difficult conversations",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 99,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":99,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Managing remote/virtual teams",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 100,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":100,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Meeting management",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 101,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":101,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Mentoring",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 102,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":102,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Motivating",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 103,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":103,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Project management",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 104,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":104,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Resolving issues",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 105,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":105,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Successful coaching",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 106,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":106,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Supervising",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 107,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":107,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Talent management",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 108,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":108,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Confidence",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 109,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":109,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Cooperation",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 110,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":110,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Courtesy",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 111,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":111,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Energy",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 112,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":112,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Enthusiasm",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 113,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":113,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Friendliness",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 114,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":114,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Honesty",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 115,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":115,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Humorous",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 116,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":116,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Patience",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 117,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":117,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Respectability",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 118,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":118,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Respectfulness",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 119,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":119,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Accepting feedback",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 120,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":120,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Collaboration",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 121,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":121,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Customer service",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 122,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":122,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Dealing with difficult situations",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 123,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":123,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Dealing with office politics",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 124,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":124,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Disability awareness",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 125,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":125,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Diversity awareness",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 126,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":126,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Emotional intelligence",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 127,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":127,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Empathy",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 128,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":128,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Establishing interpersonal relationships",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 129,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":129,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Dealing with difficult personalities",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 130,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":130,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Intercultural competence",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 131,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":131,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Interpersonal skills",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 132,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":132,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Influence",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 133,
-        "fields": {
-            "c116_description": "Networking",
-            "c116_type": "s"
-        }
-    },
-    {
-        "model": "students.Skills",
-        "pk": 134,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":133,
         "fields":{
@@ -1613,63 +1172,38 @@
         "model":"students.Skills",        
         "pk":134,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Self-awareness",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 135,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":135,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Selling skills",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 136,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":136,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Social skills",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 137,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":137,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Team building",
             "c116_type": "s"
         }
     },
     {
-<<<<<<< HEAD
-        "model": "students.Skills",
-        "pk": 138,
-        "fields": {
-=======
         "model":"students.Skills",        
         "pk":138,
         "fields":{
->>>>>>> e49af52f42f1184d8936ac5fc668a08126052795
             "c116_description": "Teamwork",
             "c116_type": "s"
         }
