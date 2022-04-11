@@ -42,11 +42,13 @@ class CompanyViewSet(viewsets.GenericViewSet):
 		if company_serializer.is_valid():
 			company_serializer.save()
 			return Response({
-				'message': 'Compañia registrada correctamente.'
+				'message': 'Compañia registrada correctamente.',
+				'succes': True
 			}, status=status.HTTP_201_CREATED)
 		return Response({
 			'message': 'Hay errores en el registro',
-			'errors': company_serializer.errors
+			'errors': company_serializer.errors,
+			'succes': False 
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def retrieve(self, request, pk):
