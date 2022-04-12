@@ -4,7 +4,7 @@ from apps.students.models import Student
 class StudentImageSerializer(serializers.ModelSerializer):
         class Meta:
             model = Student
-            fields = ('t100_boleta','t100_profile_picture')
+            fields = ('t100_id_student','t100_profile_picture')
         
         def update(self,instance,validate_data):
             u_profile_pic = super().update(instance,validate_data)
@@ -14,7 +14,7 @@ class StudentImageSerializer(serializers.ModelSerializer):
 class CVSerializer(serializers.ModelSerializer):
         class Meta:
             model = Student
-            fields = ('t100_boleta','t100_cv')
+            fields = ('t100_id_student','t100_email','t100_cv')
         
         def update(self,instance,validate_data):
             u_cv = super().update(instance,validate_data)

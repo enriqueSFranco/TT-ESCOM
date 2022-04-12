@@ -17,8 +17,8 @@ class StudentViewSet(viewsets.GenericViewSet):
 	def get_object(self, pk):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
-				.filter(pk=pk)\
-				.values('t100_boleta','t100_name','t100_last_name','t100_username','t100_cv','t100_email','t100_gender','t100_date_of_birth',
+				.filter(t100_id_student=pk)\
+				.values('t100_id_student','t100_boleta','t100_name','t100_last_name','t100_username','t100_cv','t100_email','t100_gender','t100_date_of_birth',
 				't100_personal_objectives','t100_phonenumber','t100_residence','t100_modalities','t100_speciality','t100_target_salary','t100_travel',
 				't100_profile_picture','is_active','password')
 		return self.queryset
@@ -26,7 +26,7 @@ class StudentViewSet(viewsets.GenericViewSet):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t100_boleta','t100_name','t100_last_name','t100_username','t100_cv','t100_email','t100_gender','t100_date_of_birth',
+				.values('t100_id_student','t100_boleta','t100_name','t100_last_name','t100_username','t100_cv','t100_email','t100_gender','t100_date_of_birth',
 				't100_personal_objectives','t100_phonenumber','t100_residence','t100_modalities','t100_speciality','t100_target_salary','t100_travel',
 				't100_profile_picture','is_active','password')
 		return self.queryset
@@ -73,7 +73,7 @@ class StudentViewSet(viewsets.GenericViewSet):
 		return Response(student_serializer.data)
 
 	def update(self, request, pk):
-		student = self.model.objects.filter(t100_boleta=pk).first()
+		student = self.model.objects.filter(t100_id_student=pk).first()
 		student_serializer = UpdateStudentSerializer(student, data=request.data)
 		if student_serializer.is_valid():
 			student_serializer.save()
@@ -86,9 +86,9 @@ class StudentViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk):
-		student_destroy = self.model.objects.filter(t100_boleta=pk).first()
+		student_destroy = self.model.objects.filter(t100_id_student=pk).first()
 		if student_destroy:
-			student_destroy = self.model.objects.filter(t100_boleta=pk).delete()
+			student_destroy = self.model.objects.filter(t100_id_student=pk).delete()
 			return Response({
 				'message': 'Alumno eliminado correctamente'
 			})

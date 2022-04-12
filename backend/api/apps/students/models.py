@@ -4,7 +4,7 @@ from django.contrib.auth.models import  AbstractBaseUser,PermissionsMixin
 from django.db import models
 
 def upload_image_profile(instance, filename):
-    return f"{instance.t100_boleta}-{filename}"
+    return f"profile_pictures/{instance.t100_boleta}-{filename}"
 
 def upload_cv(instance, filename):
     return f"{instance.t100_boleta}-{filename}"	
@@ -94,12 +94,13 @@ class Lenguage(models.Model):
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
 #T100 Alumno
 class Student(AbstractBaseUser):	
-	t100_boleta = models.CharField(primary_key=True,max_length=12, null=False, blank=False)
+	t100_id_student = models.AutoField(primary_key=True)
+	t100_boleta = models.CharField(max_length=14, null=False, blank=False)
 	t100_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_last_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_username = models.CharField(max_length=40, null=True, blank=True)
 	t100_cv = models.FileField(null=True, blank=True,default="",upload_to=upload_cv)
-	t100_email = models.EmailField(max_length=50, null=False, blank=False)
+	t100_email = models.EmailField(unique=True,max_length=50, null=False, blank=False)
 	genders = [
 		('F', 'Femenino'),
 		('M', 'Masculino')
@@ -116,10 +117,9 @@ class Student(AbstractBaseUser):
 	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to=upload_image_profile)
 	is_active = models.BooleanField(default=True)
 
-	USERNAME_FIELD = 't100_boleta'
-	REQUIRED_FIELDS = ['t100_boleta','t100_password']
-	class Meta:
-		unique_together = ['t100_boleta', 't100_email']
+	USERNAME_FIELD = 't100_username'
+	REQUIRED_FIELDS = ['t100_email','password']
+	class Meta:		
 		verbose_name = 'Student'
 		verbose_name_plural = 'Students'
 		db_table = "t100_alumno"
