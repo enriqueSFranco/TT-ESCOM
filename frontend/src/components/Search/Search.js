@@ -1,38 +1,44 @@
 import { useState } from "react";
-import Input from "../Input/Input";
-import Label from "../Input/Label";
-import Span from "../Input/Span";
+import { uuid } from "utils/uuid";
+import Loader from "components/Loader/Loader";
+import Input from "components/Element/Input/Input";
+import Label from "components/Element/Label/Label";
+import Span from "components/Element/Span/Span";
 import styles from "./Search.module.css";
 
-const Search = ({ handleSearch, data, locationList }) => {
-  const [job, setJob] = useState("");
-  const [location, setLocation] = useState("");
-  const [filterData, setFilterData] = useState([]);
+const Search = ({ handleSearch, data }) => {
+  // const {search} = useLocation();
+  const [queryJob, setQueryJob] = useState("");
+  const [locationJob, setLocationJob] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [filterData, setFilterData] = useState(data);
+  // const query = new URLSearchParams(search)
 
   const handleFilterJob = (e) => {
     const query = e.target.value;
-    setJob(query);
+    setQueryJob(query); // controlamos el input
 
-    const newFilter = data.filter((value) => {
-      return value?.t200_job.toLowerCase().includes(query.toLowerCase());
-    });
-    
+    const newFilter = data.filter(({ t200_job }) =>
+      t200_job.toLowerCase().includes(query.toLowerCase())
+    );
+
     query === "" ? setFilterData([]) : setFilterData(newFilter);
   };
 
-  // const handleFilteredLocation = (e) => {
-  //   const query = e.target;
-  //   setLocation(query);
+  const handleClick = (job) => {
+    setQueryJob(job);
+  };
 
-  //   const newFilter = data.filter((value) => {
-  //     return value?.
-  //   })
-  // }
-
-  const handleSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    if (!job.trim() || !location.trim()) return;
-    handleSearch(job);
+    if (!queryJob.trim()) return;
+
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+      handleSearch(queryJob);
+    }, 3000);
   };
 
   return (
@@ -42,47 +48,68 @@ const Search = ({ handleSearch, data, locationList }) => {
         <br />
         <span>y a vivir tus sueños.</span>
       </h1>
-      <form onSubmit={handleSubmit} className={styles.searchForm}>
+      <form onSubmit={onSubmit} className={styles.searchForm}>
         <div className={styles.searchInput}>
+          {/* TODO pasar los elementos de autocompletado a componentes. */}
           <Label htmlFor="job">
             <Input
               type="text"
+              list="data"
               id="job"
               name="job"
-              value={job}
-              onBlur={() => { setTimeout(() => {
-                setFilterData([])
-              },1000)}}
+              value={queryJob}
+              onBlur={() => {
+                setTimeout(() => {
+                  setFilterData([]);
+                }, 300);
+              }}
               onChange={handleFilterJob}
             />
             <Span content="Buscar una vacante" />
           </Label>
           {filterData.length !== 0 && (
-            <div className={styles.dataResultsJobs}>
-              {filterData.slice(0,15).map((value, index) => {
-                return <p onClick={e => setJob(value?.t200_job)} className={styles.dataItem} key={index}>{value?.t200_job}</p>;
-              })}
-            </div>
+            <ul className={styles.dataResultsJobs}>
+              {filterData.slice(0, 15).map((value) => (
+                <li
+                  key={uuid()}
+                  value={value?.t200_job}
+                  onClick={() => handleClick(value?.t200_job)}
+                  className={styles.dataItem}
+                >
+                  {value?.t200_job}
+                </li>
+              ))}
+            </ul>
           )}
         </div>
+        {/* TODO pasar los elementos de autocompletado a componentes. */}
         <div className={styles.searchInput}>
           <Label htmlFor="location">
             <Input
               type="text"
               id="location"
               name="location"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
+              value={locationJob}
+              onChange={(e) => setLocationJob(e.target.value)}
             />
             <Span content="Ubicacion" />
           </Label>
           <div>{/* lista de estados, municipios */}</div>
         </div>
-        <input
-          type="submit"
-          value="Buscar Vacante"
-          className={`${styles.btnSearch} btn btn-primary`}
-        />
+        <div className={styles.searchInput}>
+          <button
+            type="submit"
+            disabled={isLoading}
+            className={`${styles.btnSearch} btn btn-primary`}
+          >
+            {isLoading && <Loader />}
+            {!isLoading && "Buscar vacante"}
+            {isLoading && "Buscando"}
+          </button>
+        </div>
+        {/* <Link to="empleos" className={`${styles.btnSearch} btn btn-primary`}>
+          Buscar Empleo
+        </Link> */}
       </form>
     </div>
   );

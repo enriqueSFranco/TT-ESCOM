@@ -1,60 +1,43 @@
-import React, { Component } from 'react';
+import React, { useState } from "react";
+import Checkbox from "@mui/material/Checkbox";
+import TextField from "@mui/material/TextField";
+import styles from "./StylesStepper.module.css";
 
-import Label from "../../Input/Label"
-import Span from "../../Input/Span"
-import Input from "../../Input/Input"
+function DatesPersonal({ form, handleChange }) {
+  const [checked, setChecked] = useState(false);
 
-import styles from "./Styles.module.css";
+  const checkChanged = (state) => {
+    setChecked(!checked);
+    //setTravel(!checked);
+    //console.log(!checked);
+  };
 
-export class DatesPersonal extends Component {
-  render() {
-    return (
-      <div className={styles.conJob}>
-        <form>
-        {/* input para Nombre*/}
-          <div>
-            <Label htmlFor="name">
-              <Input
-                type="text"
-              />
-              <Span content="Tu Nombre" />
-            </Label>        
-          </div>
+  return (
+    <div className={styles.containerPage}>
+      <form>
+        <div className={styles.inputGroup}>
+          <TextField
+            label="¿Donde te ubicas?"
+            name="t100_residence"
+            id="t100_residence"
+            value={form.t100_residence}
+            onChange={handleChange}
+            sx={{ width: 400, maxWidth: "100%" }}
+          />
+        </div>
 
-          {/* input para Ubicacion TODO: CAMBIAR EL HTMLFOR*/}
-          <div>
-            <Label htmlFor="name">
-              <Input
-                type="text"
-              />
-              <Span content="¿Donde Vives?" />
-            </Label>
-          </div>
-          
-          {/* input para Telefono TODO: CAMBIAR EL HTMLFOR*/}
-          <div>
-            <Label htmlFor="name">
-              <Input
-                type="tel"
-              />
-              <Span content="WhatsApp" />
-            </Label>
-          </div>
-                            
-          {/* input para E-mail TODO: CAMBIAR EL HTMLFOR*/}
-          <div>
-            <Label htmlFor="name">
-              <Input
-                type="email"
-              />
-              <Span content="E-mail" />
-            </Label>
-          </div>
-                        
-        </form>
-      </div>
-    );
-  }
+        <div className={styles.inputCheckbox}>
+          Dispuesto a reubicarte?
+          <Checkbox
+            value={(form.t100_travel = checked)}
+            checked={checked}
+            onChange={checkChanged}
+            size="small"
+          />
+        </div>
+      </form>
+    </div>
+  );
 }
 
 export default DatesPersonal;

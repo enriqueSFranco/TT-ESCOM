@@ -15,8 +15,9 @@ class ApplicationListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
         fields = '__all__'
+        depth = 2
 
-    def to_representation(self,instance):
+    """def to_representation(self,instance):
         print(instance)
         return{
             't201_id_application' : instance['t201_id_application'],
@@ -24,12 +25,12 @@ class ApplicationListSerializer(serializers.ModelSerializer):
             't201_cv' : instance['t201_cv'],
             'c205_id_application_state' : instance['c205_id_application_state'],
             't201_date_application' : instance['t201_date_application']
-        }
+        }"""
 
 class UpdateApplicationSerializer(serializers.ModelSerializer):
         class Meta:
             model = Application
-            fields = ('t201_id_application','t100_boleta','c205_id_application_state','t201_date_application','t201_cv')
+            fields = ('c205_id_application_state','t201_date_application','t201_cv')
         
         def update(self,instance,validate_data):
             u_aplication = super().update(instance,validate_data)

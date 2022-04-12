@@ -1,20 +1,25 @@
-from distutils.command.upload import upload
 from django.db import models
 from apps.administration.models import Admin
+
+def upload_image_banner(instance, filename):
+    return f"{instance.t300_id_company}-{filename}"
+
+def upload_image_logo(instance, filename):
+    return f"{instance.t300_id_company}-{filename}"
 
 class Company(models.Model):
     t300_id_company = models.AutoField(primary_key=True)
     t300_name = models.CharField(max_length=100,blank=False,null=False,default="Sin")
     t300_rfc = models.CharField(max_length=20,blank=False,null=False,default="Sin")
-    t300_nss = models.PositiveIntegerField()
+    t300_nss = models.PositiveBigIntegerField(null=False,blank=False,default=000000)
     t300_email =  models.EmailField(null=True,blank=True)
     t300_bussiness_name = models.CharField(max_length=100,blank=True,null=True)
     t300_web_page = models.CharField(max_length=100,blank=True,null=True,default="http://")
     t300_mision = models.TextField(blank=True,null=True)
     t300_vision = models.TextField(blank=True,null=True)
     t300_objective = models.TextField(blank=True,null=True)
-    t300_logo = models.ImageField(null=True,blank=True)
-    t300_banner = models.ImageField(upload_to='', null=True,blank=True)
+    t300_logo = models.ImageField(upload_to=upload_image_logo, null=True,blank=True)
+    t300_banner = models.ImageField(upload_to=upload_image_banner, null=True,blank=True)
     t400_id_admin = models.ForeignKey(
         Admin,
         null=True,
@@ -89,7 +94,7 @@ class Ubication(models.Model):
         db_table = 't302_ubicacion'
 
     def __str__(self) -> str:
-        return super().__str__()
+        return self.t300_id_company
 
 class Recruiter(models.Model):
     t301_id_recruiter = models.AutoField(primary_key=True)

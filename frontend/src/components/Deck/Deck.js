@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import React from 'react';
-import { motion } from 'framer-motion/dist/framer-motion';
+import { motion } from 'framer-motion';
 import Comunicado from './Comunicado';
 import comunicados from './comunicados';
 import styles from "./Deck.module.css";
@@ -46,4 +45,32 @@ const Deck = () => {
   )
 }
 
-export default Deck;
+export default function LazyDeck() {
+  const [show, setShow] = useState(false);
+  const elementRef = useRef(null);
+
+  /**
+   * @param {Array} entries
+   **/ 
+  const onChange = (entries, observer) => {
+    const element = entries[0];
+    if (element.isIntersecting) {
+      console.log(element.isIntersecting)
+      setShow(true);
+      observer.disconnect();
+    }
+  };
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(onChange, {
+      rootMargin: '150px'
+    })
+    observer.observe(elementRef.current);
+
+    return () => observer.disconnect();
+  });
+
+  return <div ref={elementRef}>
+    { show ? <Deck /> : null}
+  </div>
+};

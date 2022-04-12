@@ -19,14 +19,14 @@ class CompanyViewSet(viewsets.GenericViewSet):
 		if self.queryset == None:
 			self.queryset = self.model.objects\
 				.filter(t300_id_company = pk)\
-				.values('t300_id_company','t300_name','t300_rfc','t300_nss','t300_email','t300_bussiness_name','t300_web_page','t300_mision','t300_vision','t300_objective','t300_logo','t300_banner','t400_id_admin','t300_create_date')
-		return  self.queryset #get_object_or_404(self.model,pk=pk)
+				.all()
+		return  self.queryset
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t300_id_company','t300_name','t300_rfc','t300_nss','t300_email','t300_bussiness_name','t300_web_page','t300_mision','t300_vision','t300_objective','t300_logo','t300_banner','t400_id_admin','t300_create_date')
+				.all()
 		return self.queryset
   
 
@@ -42,11 +42,13 @@ class CompanyViewSet(viewsets.GenericViewSet):
 		if company_serializer.is_valid():
 			company_serializer.save()
 			return Response({
-				'message': 'Compñia registrada correctamente.'
+				'message': 'Compañia registrada correctamente.',
+				'succes': True
 			}, status=status.HTTP_201_CREATED)
 		return Response({
 			'message': 'Hay errores en el registro',
-			'errors': company_serializer.errors
+			'errors': company_serializer.errors,
+			'succes': False 
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def retrieve(self, request, pk):
@@ -68,10 +70,9 @@ class CompanyViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk):
-		company_destroy = self.model.objects.filter(t300_id_company=pk).delete()
-		print(company_destroy)
-		#SI lo borra pero no se como indicar que se realizo con exito
-		if company_destroy == 1:
+		company_destroy = self.model.objects.filter(t300_id_company=pk).first()		
+		if company_destroy:
+			company_destroy = self.model.objects.filter(t300_id_company=pk).delete()
 			return Response({
 				'message': 'Compañia eliminada correctamente'
 			})

@@ -18,14 +18,14 @@ class UbicationViewSet(viewsets.GenericViewSet):
 	def get_object(self, pk):	
 		self.queryset = self.model.objects\
 				.filter(t200_id_vacant = pk)\
-				.values('t200_id_vacant','t213_state','t213_mucipality','t213_locality','t213_street','t213_cp','t213_interior_number','t213_exterior_number')
+				.all()#values('t200_id_vacant','t213_state','t213_mucipality','t213_locality','t213_street','t213_cp','t213_interior_number','t213_exterior_number')
 		return self.queryset
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t200_id_vacant','t213_state','t213_mucipality','t213_locality','t213_street','t213_cp','t213_interior_number','t213_exterior_number')
+				.all()#values('t200_id_vacant','t213_state','t213_mucipality','t213_locality','t213_street','t213_cp','t213_interior_number','t213_exterior_number')
 		return self.queryset
 
 
@@ -54,9 +54,9 @@ class UbicationViewSet(viewsets.GenericViewSet):
 		return Response(ubication_serializer.data)
 
 	def destroy(self, request, pk):
-		ubication_destroy = self.model.objects.filter(t200_id_vacant=pk).delete()
-		#SI lo borra pero no se como indicar que se realizo con exito
-		if ubication_destroy == 1:
+		ubication_destroy = self.model.objects.filter(t200_id_vacant=pk).first()
+		if ubication_destroy:
+			ubication_destroy = self.model.objects.filter(t200_id_vacant=pk).delete()
 			return Response({
 				'message': 'Ubicacion de la vacante eliminada correctamente'
 			})

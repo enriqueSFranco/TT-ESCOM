@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import action
@@ -10,6 +10,7 @@ from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,Vac
 
 class VacantViewSet(viewsets.GenericViewSet):
 	model = Vacant
+	# permission_classes = [IsAuthenticated]
 	serializer_class = VacantSerializer
 	list_serializer_class = VacantListSerializer
 	queryset = None
@@ -18,19 +19,14 @@ class VacantViewSet(viewsets.GenericViewSet):
 		self.queryset = self.model.objects\
 				.filter(t200_id_vacant = pk)\
 				.all()
-				#values('t200_id_vacant','t200_job','t200_description','t200_check_time','t200_closing_hour','t200_work_days',
-            #'t200_min_salary','t200_max_salary','t200_gross_salary','t200_home_ofice','t200_publish_date','t200_close_date')		
 		return self.queryset
-
+	
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t200_id_vacant','t300_id_company','t200_job','t200_description','t200_check_time','t200_closing_hour','t200_work_days',
-				'c207_id_experience','t200_min_salary','t200_max_salary','t200_gross_salary','t200_home_ofice','c204_id_vacant_status','t200_publish_date',
-				't200_close_date','t301_id_recruiter','t400_id_admin')
+				.all()
 		return self.queryset
-  
 
 	def list(self, request):
 		vacants = self.get_queryset()
@@ -38,9 +34,6 @@ class VacantViewSet(viewsets.GenericViewSet):
 		return Response(vacants_serializer.data, status=status.HTTP_200_OK)
 
 	def create(self, request):
-		print(request)
-		print("Datos:")
-		print(request.data)
 		vacant_serializer = self.serializer_class(data=request.data)
 		print('request: ',request.data)
 		if vacant_serializer.is_valid():
@@ -55,14 +48,15 @@ class VacantViewSet(viewsets.GenericViewSet):
 
 	def retrieve(self, request, pk):
 		Vacant = self.get_object(pk)
-		vacant_serializer = self.serializer_class(Vacant,many=True)
+		vacant_serializer = self.list_serializer_class(Vacant,many=True)
 		return Response(vacant_serializer.data)
 
 	def destroy(self, request, pk=None):
-		vacant_destroy = self.model.objects.filter(t200_id_vacant=pk).delete()
-		if vacant_destroy == 1:
+		vacant_destroy = self.model.objects.filter(t200_id_vacant=pk).first()
+		if vacant_destroy :
+			vacant_destroy = self.model.objects.filter(t200_id_vacant=pk).delete()
 			return Response({
-				'message': 'Vacante eliminado correctamente'
+				'message': 'Vacante eliminada correctamente'
 			})
 		return Response({
 			'message': 'No existe la vacante que desea eliminar'

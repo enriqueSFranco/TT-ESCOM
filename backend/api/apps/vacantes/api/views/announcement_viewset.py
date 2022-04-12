@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-
+from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import action
@@ -10,6 +10,7 @@ from apps.vacantes.api.serializers.announcement_serializer import AnnouncementSe
 
 class AnnouncementViewSet(viewsets.GenericViewSet):
 	model = Announcement
+	permission_classes = [IsAuthenticated]
 	serializer_class = AnnouncementSerializer
 	list_serializer_class = AnnouncementListSerializer
 	queryset = None
@@ -18,14 +19,13 @@ class AnnouncementViewSet(viewsets.GenericViewSet):
 		self.queryset = self.model.objects\
 				.filter(t202_id_announcement = pk)\
 				.all()
-				#values('t202_id_announcement','t202_announcement','t202_description','t202_publish_date','t202_close_date')		
 		return self.queryset
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t202_id_announcement','t202_announcement','t202_description','t202_publish_date','t202_close_date')
+				.all()
 		return self.queryset
 
 
@@ -49,13 +49,13 @@ class AnnouncementViewSet(viewsets.GenericViewSet):
 
 	def retrieve(self, request, pk):
 		announcement = self.get_object(pk)
-		announcement_serializer = self.serializer_class(announcement,many=True)
+		announcement_serializer = self.list_serializer_class(announcement,many=True)
 		return Response(announcement_serializer.data)
 
 	def destroy(self, request, pk):
-		announcement_destroy = self.model.objects.filter(t202_id_announcement=pk).delete()
-		#SI lo borra pero no se como indicar que se realizo con exito
-		if announcement_destroy == 1:
+		announcement_destroy = self.model.objects.filter(t202_id_announcement=pk).first()		
+		if announcement_destroy:
+			announcement_destroy = self.model.objects.filter(t202_id_announcement=pk).delete()
 			return Response({
 				'message': 'Comunicado eliminado correctamente'
 			})

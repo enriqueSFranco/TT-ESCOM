@@ -6,12 +6,13 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import viewsets
 
-from apps.students.models import AcademicLevel,AcademicState,StudyArea,Plataform,Skills,Lenguage
+from apps.students.models import AcademicLevel,AcademicState,InterestJob,Plataform,Skills,Lenguage
 from apps.students.api.serializer.catalogs_serializers import AcademicLevelSerializer,AcademicLevelListSerializer
 from apps.students.api.serializer.catalogs_serializers import AcademicStateSerializer,AcademicStateListSerializer
 from apps.students.api.serializer.catalogs_serializers import PlataformSerializer,PlataformListSerializer
 from apps.students.api.serializer.catalogs_serializers import SkillsSerializer,SkillsListSerializer
 from apps.students.api.serializer.catalogs_serializers import LenguageSerializer,LenguageListSerializer
+from apps.students.api.serializer.catalogs_serializers import InterestJobSerializer,InsterestJobListSerializer
 
 
 class AcademicLevelViewSet(viewsets.GenericViewSet):
@@ -125,7 +126,7 @@ class SkillsViewSet(viewsets.GenericViewSet):
 		self.queryset= None
 		if self.queryset == None:
 			self.queryset = self.model.objects\
-				.filter(c116_id_skill = pk)\
+				.filter(c116_type = pk)\
 				.values('c116_id_skill','c116_description','c116_type')
 		return  self.queryset #get_object_or_404(self.model,pk=pk)
 		
@@ -180,3 +181,40 @@ class LenguageViewSet(viewsets.GenericViewSet):
 		s_register = self.get_object(pk)
 		register_serializer = self.list_serializer_class(s_register,many=True)
 		return Response(register_serializer.data)				
+
+
+
+
+
+
+class InterestJobViewSet(viewsets.GenericViewSet):
+	model = InterestJob
+	serializer_class = InterestJobSerializer
+	list_serializer_class = InsterestJobListSerializer
+	queryset = None
+
+	def get_object(self, pk):
+		self.queryset= None
+		if self.queryset == None:
+			self.queryset = self.model.objects\
+				.filter(c108_id_job = pk)\
+				.values('c108_id_job','c108_job')
+		return  self.queryset 
+		
+	def get_queryset(self):
+		if self.queryset is None:
+			self.queryset = self.model.objects\
+				.filter()\
+				.values('c108_id_job','c108_job')
+		return self.queryset  
+
+	def list(self, request):
+		print(request.data)
+		registers_list = self.get_queryset()
+		registers_serializer = self.list_serializer_class(registers_list, many=True)
+		return Response(registers_serializer.data, status=status.HTTP_200_OK)	
+
+	def retrieve(self, request, pk):
+		s_register = self.get_object(pk)
+		register_serializer = self.list_serializer_class(s_register,many=True)
+		return Response(register_serializer.data)

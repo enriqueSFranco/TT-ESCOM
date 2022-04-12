@@ -1,9 +1,10 @@
+from queue import Empty
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
-from apps.students.models import StudentSkill
+from apps.students.models import StudentSkill,Skills
 
 from apps.students.api.serializer.studentskill_serializer import SkillListSerializer, SkillSerializer,UpdateStudentSkillSerializer
 
@@ -23,7 +24,7 @@ class SkillViewSet(viewsets.GenericViewSet):
     if self.queryset is None:
       self.queryset = self.model.objects\
 			  .filter()\
-			  .values('t100_boleta','c116_id_skill','t102_id_registrer')
+			  .all()#values('t100_boleta','c116_id_skill','t102_id_registrer')
     return self.queryset
 
   def list(self, request):
@@ -33,7 +34,8 @@ class SkillViewSet(viewsets.GenericViewSet):
     return Response(skills_serializer.data, status=status.HTTP_200_OK)
   
   def create(self, request):
-    skill_serializer=self.serializer_class(data=request.data)
+    print(request.data)
+    skill_serializer=self.serializer_class(data=request.data)    
     if skill_serializer.is_valid():
       skill_serializer.save()
       return Response({"message": "Habilidad creada correctamente"}, status=status.HTTP_200_OK)
@@ -41,7 +43,7 @@ class SkillViewSet(viewsets.GenericViewSet):
 
   def retrieve(self, request, pk):        
     skills = self.model.objects.filter(t100_boleta=pk).all()
-    skills_serializer = self.serializer_class(skills,many=True)
+    skills_serializer = self.serializer_list_class(skills,many=True)
     return Response(skills_serializer.data)
 
   def update(self, request, pk):
@@ -58,9 +60,9 @@ class SkillViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
   def destroy(self, request, pk):
-    skill_destroy = self.model.objects.filter(t102_id_registrer=pk).delete()
-    #SI lo borra pero no se como indicar que se realizo con exito
-    if skill_destroy == 1:      
+    skill_destroy = self.model.objects.filter(t102_id_registrer=pk).first()    
+    if skill_destroy:
+      skill_destroy = self.model.objects.filter(t102_id_registrer=pk).delete()
       return Response({
 				'message': 'Habilidades del alumno eliminado correctamente'
 			})

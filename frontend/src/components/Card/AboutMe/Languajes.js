@@ -5,13 +5,9 @@ import CardLanguaje from "./CardLanguaje"
 
 const Languajes = () => {
 	return (
-		<div className={styles.CompOne}>
+		<div className={styles.wrapperLenguage}>
 			<h5>Idiomas</h5>
-			<div className={styles.contaCards}>
-				<div className={styles.Cards}>
-					<CardLanguaje></CardLanguaje>
-				</div>
-			</div>	
+				<CardLanguaje />
 		</div>
 	);
 };

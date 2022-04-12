@@ -4,7 +4,7 @@ const Message = ({ msg, bgColor }) => {
 
   return (
     <article className={styles.containerMessage}>
-      <div className={`${styles.body} ${bgColor}`}>
+      <div className={`${styles.bodyMessage} ${bgColor}`}>
         <p dangerouslySetInnerHTML={{__html: msg}} />
       </div>
     </article>

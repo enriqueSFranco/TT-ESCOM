@@ -19,14 +19,14 @@ class RecruiterViewSet(viewsets.GenericViewSet):
 		if self.queryset == None:
 			self.queryset = self.model.objects\
 				.filter(t301_id_recruiter = pk)\
-				.values('t301_id_recruiter','t301_name','t301_last_name','t301_user','t300_id_company','t301_password')
-		return  self.queryset #get_object_or_404(self.model,pk=pk)
+				.all()
+		return  self.queryset
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t301_id_recruiter','t301_name','t301_last_name','t301_user','t300_id_company','t301_password')
+				.all()
 		return self.queryset
   
 
@@ -68,10 +68,10 @@ class RecruiterViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk):
-		recruiter_destroy = self.model.objects.filter(t300_id_recruiter=pk).delete()
-		print(recruiter_destroy)
-		#SI lo borra pero no se como indicar que se realizo con exito
-		if recruiter_destroy == 1:
+		recruiter_destroy = self.model.objects.filter(t300_id_recruiter=pk).first()
+		print(recruiter_destroy)		
+		if recruiter_destroy:
+			recruiter_destroy = self.model.objects.filter(t300_id_recruiter=pk).delete()
 			return Response({
 				'message': 'Reclutador eliminado correctamente'
 			})

@@ -1,11 +1,13 @@
-from doctest import FAIL_FAST
-from email.policy import default
-from enum import unique
-from tabnanny import verbose
+from django.contrib.auth.models import  AbstractBaseUser,PermissionsMixin
 
 #from turtle import ondrag
 from django.db import models
 
+def upload_path(instance, filename):
+    return '/'.join(['profile_picture', str(instance.title), filename])
+
+def upload_cv(instance, filename):
+    return f"{instance.t100_boleta}-{filename}"	
 
 """----------------------------------------------------------- Catalogos --------------------------------------------------------"""
 
@@ -33,20 +35,17 @@ class AcademicState(models.Model):
 	def __str__(self) -> str:
 		return self.c109_description
 
-#C108 Area estudio
-class StudyArea(models.Model):
-	c108_id_study_area = models.AutoField(primary_key=True)
-	c108_study_area = models.CharField(max_length=60,null=False,blank=False)
-	c108_generic_carreer = models.CharField(max_length=100,null=False,blank=False)
-	c108_specific_carreer = models.CharField(max_length=100,null=False,blank=False)
-	c108_description = models.CharField(max_length=60,blank=True,null=True)	
+#C108 Puesto de interes
+class InterestJob(models.Model):
+	c108_id_job = models.AutoField(primary_key=True)
+	c108_job = models.CharField(max_length=60,null=False,blank=False,default="no definido")
 
 	class Meta:
-		verbose_name = 'StudyArea'
-		db_table = 'c108_area_estudio'
+		verbose_name = 'InterestJob'
+		db_table = 'c108_puesto_interes'
 	
 	def __str__(self) -> str:
-		return self.c108_description		
+		return self.c108_job
 
 
 #C115 Plataformas
@@ -94,13 +93,12 @@ class Lenguage(models.Model):
 
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
 #T100 Alumno
-class Student(models.Model):	
+class Student(AbstractBaseUser):	
 	t100_boleta = models.CharField(primary_key=True,max_length=12, null=False, blank=False)
 	t100_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_last_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_username = models.CharField(max_length=40, null=True, blank=True)
-	t100_password = models.CharField(max_length=100, null=False, blank=False)
-	t100_cv = models.FileField(null=True, blank=True)
+	t100_cv = models.FileField(null=True, blank=True,default="",upload_to=upload_cv)
 	t100_email = models.EmailField(max_length=50, null=False, blank=False)
 	genders = [
 		('F', 'Femenino'),
@@ -110,81 +108,23 @@ class Student(models.Model):
 	t100_date_of_birth = models.DateField(null=True, blank=True)
 	t100_personal_objectives = models.TextField(null=True, blank=True)
 	t100_speciality = models.CharField(max_length=100,null=True,blank=True)
-	t100_phonenumber = models.PositiveIntegerField (null=True,blank=True)
+	t100_phonenumber = models.PositiveBigIntegerField (null=True,blank=True)
 	t100_residence = models.CharField(max_length=100,null=True,blank=True)
-	t100_modalities = models.CharField(max_length=3,null=True,blank=True)
+	t100_modalities = models.CharField(max_length=20,null=True,blank=True)
 	t100_target_salary = models.PositiveIntegerField(null=True, blank=True)	
 	t100_travel = models.BooleanField(default=False)
-	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to='profiles_pictures/')
+	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to=upload_path)
 	is_active = models.BooleanField(default=True)
 
+	USERNAME_FIELD = 't100_boleta'
+	REQUIRED_FIELDS = ['t100_boleta','t100_password']
 	class Meta:
 		unique_together = ['t100_boleta', 't100_email']
 		verbose_name = 'Student'
 		verbose_name_plural = 'Students'
 		db_table = "t100_alumno"
 	def __str__(self):
-		return self.t100_name
-
-#T101 Domicilio
-class residence(models.Model):
-	estados=[
-		('AGUASCALIENTES','AGUASCALIENTES'),
-		('BAJA CALIFORNIA','BAJA CALIFORNIA'),
-		('BAJA CALIFORNIA SUR','BAJA CALIFORNIA SUR'),
-		('CAMPECHE','CAMPECHE'),
-		('COAHUILA','COAHUILA'),
-		('COLIMA','COLIMA'),
-		('CHIAPAS','CHIAPAS'),
-		('CHIHUAHUA','CHIHUAHUA'),
-		('CIUDAD DE MEXICO','CIUDAD DE MEXICO'),
-		('DURANGO','DURANGO'),
-		('GUANAJUATO','GUANAJUATO'),
-		('GUERRERO','GUERRERO'),
-		('HIDALGO','HIDALGO'),
-		('JALISCO','JALISCO'),
-		('MEXICO','MEXICO'),
-		('MICHOACAN','MICHOACAN'),
-		('MORELOS','MORELOS'),
-		('NAYARIT','NAYARIT'),
-		('NUEVO LEON','NUEVO LEON'),
-		('OAXACA','OAXACA'),
-		('PUEBLA','PUEBLA'),
-		('QUERETARO DE ARTEAGA','QUERETARO DE ARTEAGA'),
-		('QUINTANA ROO','QUINTANA ROO'),
-		('SAN LUIS POTOSI','SAN LUIS POTOSI'),
-		('SINALOA','SINALOA'),
-		('SONORA','SONORA'),
-		('TABASCO','TABASCO'),
-		('TAMAULIPAS' ,'TAMAULIPAS'),
-		('TLAXCALA' ,'TLAXCALA'),
-		('VERACRUZ' ,'VERACRUZ '),
-		('YUCATAN' ,'YUCATAN'),
-		('ZACATECAS' ,'ZACATECAS'),
-		('NO ESPECIFICADA' ,'NO ESPECIFICADA')
-	]
-	t100_boleta = models.ForeignKey(
-		Student,
-		null=False,
-		blank=False,
-		related_name='StudentResidence',
-		on_delete=models.CASCADE)
-	t101_state = models.CharField(max_length=50,choices=estados,default='NO ESPECIFICADA',null=True,blank=True)
-	t101_municipality = models.CharField(max_length=70,null=True,blank=True)
-	t101_locality = models.CharField(max_length=100,null=True,blank=True)
-
-
-class Skill(models.Model):
-	t102_id_skill = models.AutoField(primary_key=True)
-	t102_description = models.CharField(max_length=100)
-
-	class Meta:		
-		verbose_name = 'Residence'
-		db_table='t101_domicilio'
-
-	def __str__ (self):
-		return ""+self.t101_state+", "+self.t101_mucipality
-
+		return self.t100_boleta
 
 #T102 Habilidades
 class StudentSkill(models.Model):	
@@ -197,7 +137,6 @@ class StudentSkill(models.Model):
 		on_delete=models.CASCADE,
 		default=1
 	)
-
 	t100_boleta = models.ForeignKey(
 		Student, 
 		null=True, 
@@ -252,7 +191,7 @@ class AcademicHistory(models.Model):
 		db_table="t104_historial_academico"
 	
 	def __str__ (self) ->str:
-		return self.t104_academic_unit+" : "+self.t104_carreer+" , "+self.t104_carreer
+		return self.t104_academic_unit+" : "+self.t104_carreer
 
 #T113 Areas de interes
 class InterestArea(models.Model):
