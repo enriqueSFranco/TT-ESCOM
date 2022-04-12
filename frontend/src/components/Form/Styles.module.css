@@ -1,26 +1,81 @@
 .bg {
+  position: relative;
   background-image: url(../../images/loginStudent.jpeg);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+  backdrop-filter: calc(10px);
 }
 
-.bg h1 {
+.bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.534);
+}
+
+.bg blockquote {
   width: 350px;
   backdrop-filter: blur(10px);
   font-weight: bold;
   color: #fff;
   padding: 1rem;
+  position: relative;
+  font-size: 2.5rem;
 }
 
-.btLogin { width: 490px; }
+.bg blockquote em {
+  color: #04c8eb;
+}
+
+.btLogin { 
+  width: 490px; 
+  position: relative;
+  left: 4.3rem;
+  bottom: 2rem;
+}
+
+.btnPreRegister {
+  position: relative;
+  bottom: 2rem;
+  left: 4.3rem;
+}
+
+.createAccount {
+  width: 200px;
+  position: relative;
+  left: 5.3rem;
+  bottom: 1rem;
+}
+
+.error {
+  font-weight: 300;
+  color: #dc3545;
+  text-align: left;
+}
 
 .form {
   width: 700px;
-  height: 400px;
+  height: 550px;
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.formLogin {
+  width: 700px;
+  height: 450px;
+}
+
+.passwordLogin {
+  width: 300px;
+  position: relative;
+  left: 5.3rem;
+  bottom: 1rem;
 }
 
 .wrapperBtnLogin {
@@ -30,6 +85,7 @@
 
 .work {
   color: #a5d0d8;
+  font-size: 2.5rem;
 }
 
 .welcome {
@@ -39,7 +95,7 @@
 .welcome h2 {
   text-transform: uppercase;
   font-weight: bold;
-  color: #a8dee7;
+  color: #222;
   letter-spacing: 2px;
   padding: 0;
   margin: 0;
@@ -51,11 +107,52 @@
   text-align: center;
 }
 
+.wrapper {
+  position: relative;
+  top: 10rem;
+}
+
+.login {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login span, a {
+  color: #fff;
+  font-size: 1rem;
+}
+
+.login a {
+  position: relative;
+  right: 1.9rem;
+}
+
+.login a:hover {
+  color: #fff;
+}
+
+.linkToLogin {
+  color: #04c8eb;
+  position: relative;
+  left: 0;
+}
 
 /* ESTILOS DEL FORMULARIO DE CREAR CUENTA EMPRESA */
 .inputGroup {
+  position: relative;
+  left: 4.3rem;
+  top: -3rem;
   width: 490px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin: 1rem;
 }

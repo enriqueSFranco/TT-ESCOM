@@ -55,11 +55,9 @@ h3 {
   margin-left: .4rem;
 }
 
-.requirements {}
+/* .requirements {} */
 
-.requirements ul {
-  padding: 0;
-}
+.requirements ul {padding: 0;}
 
 .title {
   color: #123b66;

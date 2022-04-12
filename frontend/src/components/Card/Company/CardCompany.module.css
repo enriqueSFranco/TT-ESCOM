@@ -36,6 +36,11 @@
   object-position: center;
 }
 
+.cardLogo svg {
+  font-size: 6rem;
+  color: #afaeae;
+}
+
 .card button {
   border: none;
   background-color: #19a0ee;

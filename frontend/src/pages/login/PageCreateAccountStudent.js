@@ -1,5 +1,5 @@
-import CreateAccountStudent from '../components/Form/CreateAccountStudent';
-import styles from "./GlobalStyles.module.css";
+import CreateAccountStudent from '../../components/Form/CreateAccountStudent';
+import styles from "../GlobalStyles.module.css";
 
 const PageCreateAccountStudent = () => {
   return (

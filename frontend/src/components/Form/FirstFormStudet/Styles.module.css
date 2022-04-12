@@ -1,8 +1,13 @@
+
+
+
 .container{
+  
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+ 
     overflow: hidden;
     color: #000;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    height: 500px;
+    min-height: 250px;
     width: 40%;
     border-radius: 0 0 4px 4px;
     position: relative;
@@ -12,78 +17,110 @@
 
 }
 
-.buttons{
+
+.container2{
   display: flex;
+    justify-content: center;
   align-items: center;
-  justify-content: center;
+  text-align: center;
+    margin-left: 30px;
+    min-width: 600px;
+    
+
 }
 
-.space{
-  width: 250px;
 
-}
 .stepper{
-    margin:auto;
-    margin-top: 15px;
-
+  width: 150px;
+  display: flex;
+  margin-right: 190px;
 }
 
 .pages{
-  margin: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 60%; 
+  min-height: 180px; 
+
+}
+
+.buttons{
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  height: 50px; 
 }
 
 
-.conCheckbox{
-  display: absolute;
-  margin: 15px;
+.button{
+  padding: 1px 15px;
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 4px;
+}
+
+.button:hover {background-color: #8e0f4a1e;}
+
+.space{
+  width: 30px;
+}
+
+.containerPage{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 180px; 
+  min-width: 600px;
+}
+
+.icon{
+  vertical-align: middle;
+  font-size:14px;
+  margin-right: 3px;
+}
+
+
+.inputGroup {
+  width: 490px;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  margin: 1rem;
+}
+
+.inputCheckbox{
+  width: 490px;
+  justify-content:center;
+  align-items: center;
+  text-align: left;
+
+  margin-left: 25px;
+}
+
+
+.inputGroupCheckbox{
+  width: 490px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 1rem;
+}
+
+
+.select {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 1rem;
+  width: 490px;
 }
 
 .text{
   text-align:left;
 }
 
-.checkbox{
-  display: flex;
-}
-
-.softskills{
-  margin: 15px;
-
-}
-
-.autocomplete{
-  margin-top: 15px;
-}
 
 
-.select {
-  position: relative;
-  display: flex;
-  width: 450px;
-  height: 3rem;
-  list-style: 3;
-  background-color: #fff;
-  overflow: hidden;
-  border-radius: 3px;
-}
 
-.select::after {
-  content: '\25BC';
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
-  color: #fff;
-  height: 100%;
-  padding: 0 1rem;
-  background-color: #90314b;
-  cursor: pointer;
-  pointer-events: none;
-  transition: .2s all ease;
-}

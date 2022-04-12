@@ -1,5 +1,5 @@
-import LoginCompany from '../components/Form/LoginCompany';
-import styles from './GlobalStyles.module.css';
+import LoginCompany from '../../components/Form/LoginCompany';
+import styles from '../GlobalStyles.module.css';
 
 
 const PageLoginCompany = () => {

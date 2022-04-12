@@ -1,49 +1,64 @@
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
-import { createAccountCompany } from "../../services/businnes/createAccountCompany";
+import { companyInitialForm } from "./schemes";
 import TextField from "@mui/material/TextField";
 import styles from "./Styles.module.css";
 
-const initialForm = {
-    t300_name: "",
-    t300_rfc: "",
-    t300_nss: 0,
-    t300_bussiness_name: "",
-    t300_web_page: "https://www.company.com.mx/",
-    t300_mision: "",
-    t300_vision: "",
-    t300_objective: "",
-    t300_logo: null,
-    t300_banner: null,
-    t400_id_admin: "",
-    t300_create_date: "2022-03-24"
+/**
+ * RFC DE UNA EMPRESA
+ * EJM951103H34
+ * EJM: Iniciales de una empresa
+ * 951103: Fecha de creacion de la empresa (YY/MM/DD) 95/11/03
+ * H34: Homoclave, proporcionada por el SAT
+ **/
+
+const validateForm = (form) => {
+  let errors = {};
+  let regex = {
+    t300_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
+    t300_email: /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/,
+    t300_rfc: /^([A-ZÑ\x26]{3,4})([0-9]{6})([A-Z0-9]{3})$/,
+  };
+
+  if (!form.t300_name.trim())
+    errors.t300_name = "El campo 'Nombre' es requerido.";
+  else if (!regex.t300_name.test(form.t300_name))
+    errors.t300_name =
+      "El campo 'Empresa' solo acepta letras y espacios en blanco.";
+
+  if (!form.t300_rfc.trim()) errors.t300_rfc = "El campo 'rfc' es requerido.";
+  else if (!regex.t300_rfc.test(form.t300_rfc))
+    errors.t300_rfc = "El campo 'rfc' no es valido.";
+
+  if (!form.t300_email.trim())
+    errors.t300_email = "El campo 'Email' es requerido.";
+  else if (!regex.t300_email.test(form.t300_email))
+    errors.t300_email = "El campo 'Email' es incorrecto.";
+
+  return errors;
 };
 
 const FormCompany = () => {
-  const { form, handleChange } = useForm(initialForm);
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    createAccountCompany(form)
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => console.error(error));
-  };
+  const { form, errors, response, handleChange, hadlerValidate ,handlerSubmitCompany } = useForm(
+    companyInitialForm,
+    validateForm
+  );
 
   if (form === null) return;
 
+  // console.log(response);
+
   return (
-    <div className="container w-75 bg-primary shadow rounded">
+    <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
       <div className="row align-items-stretch">
         <div
           className={`${styles.bg} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
         >
           <h1>Bolsa de trabajo ESCOM</h1>
         </div>
-        <div className="col bg-white p-5 rounded-end">
+        <div className={`col bg-white p-5 rounded-end ${styles.form}`}>
           <h2 className={`${styles.welcome}`}>Bienvenido</h2>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={handlerSubmitCompany}>
             {/* input para el username */}
             <div className={styles.inputGroup}>
               <TextField
@@ -52,42 +67,49 @@ const FormCompany = () => {
                 name="t300_name"
                 sx={{ width: 500, maxWidth: "100%" }}
                 value={form.t300_name}
+                onBlur={hadlerValidate}
+                onKeyUp={hadlerValidate}
                 onChange={handleChange}
               />
+              {errors && <span className={styles.error}>{errors.t300_name}</span>}
             </div>
-            <div className={styles.inputGroup}> 
+            <div className={styles.inputGroup}>
               <TextField
                 label="RFC"
                 id="t300_rfc"
                 name="t300_rfc"
                 sx={{ width: 500, maxWidth: "100%" }}
                 value={form.t300_rfc}
+                onBlur={hadlerValidate}
+                onKeyUp={hadlerValidate}
                 onChange={handleChange}
               />
+              {errors && <span className={styles.error}>{errors.t300_rfc}</span>}
             </div>
-            {/* input para el password */}
-            {/* <div className={styles.inputGroup}>
+            <div className={styles.inputGroup}>
               <TextField
                 label="Correo electronico"
-                id="emailCompany"
-                name="emailCompany"
+                id="t300_email"
+                name="t300_email"
                 sx={{ width: 500, maxWidth: "100%" }}
-                value={form.emailCompany}
+                value={form.t300_email}
+                onBlur={hadlerValidate}
+                onKeyUp={hadlerValidate}
                 onChange={handleChange}
               />
-            </div> */}
+              {errors && <span className={styles.error}>{errors.t300_email}</span>}
+            </div>
             <div className={styles.wrapperBtnLogin}>
               <button
                 type="submit"
-                className={`${styles.btLogin} btn btn-primary`}
+                className={`${styles.btnPreRegister} btn btn-primary`}
               >
                 Confirmar Pre-Registro
               </button>
             </div>
-            <div className="my-3">
+            <div className={`${styles.passwordLogin}`}>
               <span>
-                Ya tines cuenta?{" "}
-                <Link to="/reclutador">Inicia sesion</Link>
+                Ya tines cuenta? <Link to="/reclutador">Inicia sesion</Link>
               </span>
               <br />
               <span>

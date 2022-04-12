@@ -2,6 +2,15 @@
   height: 50px;
 }
 
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #00000070;
+}
+
 .grid {
   box-shadow: #00000029 0px 1px 4px;
   background-color: #f6f8fb;
@@ -11,7 +20,6 @@
   top: 3rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-columns: repeat(4, 1fr);
   justify-content: center;
   justify-items: center;
   gap: 1rem;
@@ -19,10 +27,11 @@
 }
 
 .search {
-  background-image: url(../images/companyBackground.jpg);
+  background-image: url(../../images/companyBackground.jpg);
   background-size: cover;
   background-position: center 700%;
   background-attachment: fixed;
+  position: relative;
   width: 100%;
   height: 300px;
   display: flex;
@@ -32,18 +41,21 @@
 }
 
 .searchForm {
-  backdrop-ground: #fff;
   color: #000;
   font-weight: bold;
   display: flex;
   justify-content: space-around;
   align-items: center;
   border-radius: 8px;
+  height: auto;
+  width: 100%;
+  position: relative;
+  left: 0;
 }
 
 .title {
   color: #fff;
-  backdrop-filter: blur(20px);
+  /* backdrop-filter: blur(20px); */
   padding: 1rem;
   border-radius: 8px;
   text-transform: uppercase;

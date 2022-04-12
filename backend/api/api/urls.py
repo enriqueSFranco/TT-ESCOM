@@ -17,18 +17,25 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from apps.students.views import Login, Logout, UserToken
-from django.conf import settings
-from django.conf.urls.static import static
+# from apps.students.views import Login, Logout, UserToken
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('usuario/', include('apps.users.api.urls')),
-    path('iniciar-sesion/', Login.as_view(), name='iniciar-sesion'),
-    path('cerrar-sesion/', Logout.as_view(), name='cerrar-sesion'),
-    path('refresh-token/', UserToken.as_view(), name='refresh-token'),
     path('api/', include('apps.routers')),
+    path('api/user/', include('apps.users.urls')),
     path('api/catalogues/',include('apps.catalogs_routers')),
+<<<<<<< HEAD
     path('images/',include('apps.images_routers')),
     path('login/',include('apps.login_routers'))
+=======
+    # path('iniciar-sesion/', Login.as_view(), name='iniciar-sesion'),
+    # path('cerrar-sesion/', Logout.as_view(), name='cerrar-sesion'),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh-token/', TokenRefreshView.as_view(), name='refresh-token'),
+    path('images/',include('apps.images_routers'))
+>>>>>>> feature/login
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -3,41 +3,18 @@
   --size-radius: 4px;
 }
 
-/* .input {
-  position: relative;
-  margin: 1rem;
-}
-
-.inputLabel {
-  position: absolute;
-  left: 0;
-  top: 0;
-  padding: calc(var(--size-bezel) * 0.75) calc(var(--size-bezel) * .5);
-  margin: calc(var(--size-bezel) * 0.75 + 3px) calc(var(--size-bezel) * .5);
-  white-space: nowrap;
-  transform: translate(0, 0);
-  transform-origin: 0 0;
-  background-color: #fff;
-  transition: transform 120ms ease-in;
-  font-weight: normal;
-  line-height: 1.2;
-} */
-
-/* .inputField {
-  box-sizing: border-box;
-  display: block;
+.form {
+  /* background-color: aliceblue; */
   width: 100%;
-  border: 1px solid currentColor;
-  padding: calc(var(--size-bezel) * 1.5) var(--size-bezel);
-  color: currentColor;
-  background: transparent;
-  border-radius: var(--size-radius);
-} */
-
-/* .inputField:focus + .inputLabel, .inputField:not(:placeholder-shown) + .inputLabel {
-  transform: translate(0.25rem, -65%) scale(0.8);
-  color: #90314b;
-} */
+  height: 80%;
+  position: relative;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
 
 .inputFile {
   width: .1px;
@@ -95,7 +72,7 @@
 }
 
 .wrapper {
-  width: 500px;
+  width: 90%;
   height: 600px;
   border-radius: 4px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;

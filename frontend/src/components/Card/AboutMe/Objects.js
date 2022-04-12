@@ -29,7 +29,7 @@ const Objects = () => {
         <span className={styles.tex}>Remoto</span>
       </div>
       <div className={styles.edit}>
-        <Link href="/#">
+        <Link to="#">
           <i>
             <MdIcon.MdEdit onClick={openModal} size={25} />
           </i>
