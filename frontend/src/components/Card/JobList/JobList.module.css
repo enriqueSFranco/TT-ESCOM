@@ -10,6 +10,7 @@
 
 .wrapper {
   width: 70%;
+  min-height: 100vh;
   border-radius: 8px;
   background-color: #f6f8fb;
   position: relative;

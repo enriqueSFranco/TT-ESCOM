@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useSticky } from "../../hooks/useSticky";
-import { numberFormat } from "../../utils/numberFormat";
-import { getJob } from "../../services/jobs/getJob";
-import Skeleton from "../Skeleton/Skeleton";
+import { useSticky } from "hooks/useSticky";
+import { numberFormat } from "utils/numberFormat";
+import { getJob } from "services/jobs/index";
+import Skeleton from "../../Skeleton/Skeleton";
 import * as FaIcon from "react-icons/fa";
 import * as MdIcon from "react-icons/md";
 import * as IoIcon from "react-icons/io";

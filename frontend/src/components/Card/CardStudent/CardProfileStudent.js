@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { getStudent } from "../../../services/students/getStudent";
-import { getSocialNetwork } from "../../../services/students/getSocialNetwork";
-import { uuid } from "../../../utils/uuid";
-import FormUpdateDataStudent from "../../Form/FormUpdateDataStudent";
+import { getStudent, getSocialNetwork } from "services/students/index";
+import { uuid } from "utils/uuid";
+import FormUpdateDataStudent from "../../Form/updateInfoStudent/FormUpdateDataStudent";
 import Avatar from "../../Avatar/Avatar";
 import * as MdIcon from "react-icons/md";
-// import * as BsIcon from "react-icons/bs";
 import * as IoIcon from "react-icons/io";
 import styles from "./CardProfileStudent.module.css";
 
@@ -26,7 +24,8 @@ const CardProfileStudent = () => {
     const fetchData = async () => {
       const [studentRes, linksRes] = await Promise.all([
         getStudent(id),
-        getSocialNetwork(id)
+        getSocialNetwork(id),
+        // getSkill(id)
       ]);
       setStudent(studentRes);
       setSocialNetworks(linksRes);
@@ -39,8 +38,7 @@ const CardProfileStudent = () => {
     }
   }, [id]);
 
-  // console.log(student, socialNetworks);
-
+  console.log(student)
   return (
     <>
       {state === "edit" ? (
@@ -69,10 +67,7 @@ const CardProfileStudent = () => {
                 <Avatar student={student} />
                 <div className={styles.nameHolder}>
                   <h3>
-                    {student[0]?.t100_name}
-                    <span className={styles.username}>
-                      {student[0]?.t100_username ?? ""}
-                    </span>
+                    {student[0]?.t100_name} {student[0]?.t100_last_name}
                   </h3>
                   <h4>{student[0]?.t100_speciality ?? ""}</h4>
                 </div>
@@ -83,12 +78,12 @@ const CardProfileStudent = () => {
                 <h4 className={styles.label}>Ubicacion</h4>
                 <div className={styles.flex}>
                   <MdIcon.MdLocationPin className={styles.icon} />
-                  <p>{student?.t100_boleta?.t100_residence ?? "No especificado."}</p>
+                  <p>{student[0]?.t100_residence ?? "No especificado."}</p>
                 </div>
                 <div className={styles.flex}>
                   <MdIcon.MdOutlineAirplanemodeActive className={styles.icon} />
                   <p>
-                    {student?.t100_boleta?.travel
+                    {student[0]?.t100_travel
                       ? "Disponible para reubicarse."
                       : "No disponible para reubicarse." ?? "No especificado."}
                   </p>
@@ -105,6 +100,7 @@ const CardProfileStudent = () => {
                           target="_blank"
                           rel="noreferrer"
                           key={uuid()}
+                          className={styles.link}
                         >
                           {c115_id_plataform?.c115_description}
                         </a>

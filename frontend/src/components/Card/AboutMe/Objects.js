@@ -3,10 +3,10 @@ import styles from "./Objects.module.css";
 import * as MdIcon from "react-icons/md";
 import ModalForm from "../../Modal/ModalForm";
 import { useModal } from "../../../hooks/useModal";
-import Label from "../../Input/Label";
-import TextArea from "../../Input/TextArea";
-import Span from "../../Input/Span";
-import Input from "../../Input/Input";
+import Label from "../../Element/Label/Label";
+import TextArea from "../../Element/TextArea/TextArea";
+import Span from "../../Element/Span/Span";
+import Input from "../../Element/Input/Input";
 
 const Objects = () => {
   const [isOpenModal, openModal, closeModal] = useModal(false);
