@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from apps.students.models import StudentLenguage,Lenguage
-from apps.students.api.serializer.lenguage_serializer import LenguageSerializer
 
 class LenguagesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -35,7 +34,8 @@ class LenguagesListSerializer(serializers.ModelSerializer):
 class UpdateLenguagesSerializer(serializers.ModelSerializer):
         class Meta:
             model = StudentLenguage
-            fields = ('t110_id_registrer','t100_boleta','t110_written_level','t110_reading_level','t110_speaking_level','t110_comprension_level','t110_native')
+            fields = ('t110_written_level','t110_reading_level','t110_speaking_level'
+            ,'t110_comprension_level','t110_native')
      
         def update(self,instance,validate_data):
             update_Lenguages = super().update(instance,validate_data)

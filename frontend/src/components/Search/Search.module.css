@@ -1,8 +1,4 @@
-.btnSearch {
-  position: relative;
-  top: .5rem;
-  height: 50px;
-}
+.btnSearch { height: 50px; width: 140px; position: relative; right: 1rem; }
 
 .dataResultsJobs {
   position: absolute;
@@ -13,20 +9,35 @@
   max-height: 200px;
   overflow-y: scroll;
   border-radius: 0 0 8px 8px;
+  padding: 0;
   z-index: 10;
+}
+
+.dataResultsJobs::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dataResultsJobs::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+}
+
+.dataResultsJobs::-webkit-scrollbar-thumb {
+  background-color: #0b5ed7;
+  border-radius: 10px;
+  border: 2px solid #64a2ff;
 }
 
 .dataItem {
   cursor: pointer;
-  font-size: .9rem;
+  font-size: 1rem;
   padding: .8rem;
   margin: 0;
   transition: background-color .5s ease;
 }
 
 .dataItem:hover {
-  color: #fff;
-  background-color: rgb(0, 132, 255);
+  color: #000;
+  background-color: #e7e7e7;
 }
 
 .searchInput {
@@ -45,27 +56,25 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 250px;
+  height: 300px;
 }
 
 .searchForm {
-  /* modificacion inicio */
   position: absolute;
-  top: 14rem;
+  top: 18rem;
+  left: 25rem;
   background-color: #fff;
-  /* fin */
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   border-radius: 8px;
-  width: 1100px;
-  height: 100px;
+  width: 1020px;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem 1rem 0;
   margin-top: 1rem;
 }
 
-.searchForm > label { margin: 1rem 1rem 0 1rem; }
+/* .searchForm > label { margin: 1rem 1rem 0 1rem; } */
 
 .title {
   backdrop-filter: blur(30px);

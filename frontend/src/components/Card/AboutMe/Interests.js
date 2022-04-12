@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useModal } from "../../../hooks/useModal";
 import ModalForm from "../../Modal/ModalForm";
-import Input from "../../Input/Input";
-import Label from "../../Input/Label";
-import Span from "../../Input/Span";
+import Input from "../../Element/Input/Input";
+import Label from "../../Element/Label/Label";
+import Span from "../../Element/Span/Span";
 import * as BsIcon from "react-icons/bs";
 import * as MdIcon from "react-icons/md";
 import styles from "./Interests.module.css";
@@ -26,7 +26,7 @@ const Interests = () => {
           <span className={styles.tex}>Posiciones buscadas</span>
         </div>
         <div className={styles.edit}>
-          <Link href="/#">
+          <Link to="#">
             <i>
               <MdIcon.MdEdit onClick={openModal1} size={25} />
             </i>
@@ -58,7 +58,7 @@ const Interests = () => {
           <span className={styles.tex}>Soft Skills</span>
         </div>
         <div className={styles.edit}>
-          <Link href="/#">
+          <Link to="#">
             <i>
               <MdIcon.MdEdit onClick={openModal2} size={25} />
             </i>

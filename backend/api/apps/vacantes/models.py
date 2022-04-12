@@ -177,7 +177,7 @@ class Vacant(models.Model):
         db_table = "t200_vacant"
 
     def __str__(self) ->str:
-	    return str(self.t200_id_vacant)+","+self.t200_job
+	    return str(self.t200_id_vacant)
 
 #T201_applications
 class Application(models.Model):
@@ -253,7 +253,7 @@ class Announcement(models.Model):
     t202_id_announcement = models.AutoField(primary_key=True)
     t202_announcement = models.FileField(null=True,blank=True)#<-Titulo
     t202_description = models.TextField()
-    t_202_link = models.CharField(max_length=60,blank=True,null=True)#enlaces
+    t202_link = models.CharField(max_length=60,blank=True,null=True)#enlaces
     t300_id_company = models.ForeignKey(
         Company,
         blank=True,

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion/dist/framer-motion";
+import { motion } from "framer-motion" ;
 import styles from "./MenuStudent.module.css";
 
 // secciones del menu
@@ -16,6 +16,7 @@ const MenuStudent = () => {
     <nav className={styles.nav}>
       <ul className={styles.navMenu}>
         {tabs.map((item) => (
+          // console.log(item.label)
           <li className={`${item.label === selectedTab ? `${styles.selected}` : ""} ${styles.navList}`} key={item.label}>
             <Link 
               to={item.label} 

@@ -6,7 +6,6 @@ from posixpath import basename
 from rest_framework.routers import DefaultRouter
 from apps.students.api.views.student_viewsets import StudentViewSet
 from apps.students.api.views.studentskill_viewset import SkillViewSet
-from apps.students.api.views.residence_viewsets import StudentResidenceViewSet
 from apps.students.api.views.link_viewset import LinkViewSet
 from apps.students.api.views.academichistory_viewset import HistorialViewSet
 from apps.students.api.views.employmenthistory_viewset import EmploymentViewSet
@@ -27,8 +26,6 @@ router.register(r'Students', StudentViewSet, basename='Students')
 router.register(r'Student/<int:pk>', StudentViewSet, basename='Student details')
 router.register(r'Skills', SkillViewSet, basename='Students skills')
 router.register(r'Skills/<int:pk>', SkillViewSet, basename='Student skills details')
-router.register(r'Residence', StudentResidenceViewSet, basename='Students residences')
-router.register(r'Residence/<int:pk>', StudentResidenceViewSet, basename='Student residence detail')
 router.register(r'Links', LinkViewSet, basename='Students links')
 router.register(r'Links/<int:pk>', LinkViewSet, basename='Student links')
 #router.register(r'DeleteLink/<int:pk>/<str:link>', LinkViewSet, basename='delete student link')
