@@ -1,6 +1,6 @@
 import React from "react";
-import { useForm } from "../../hooks/useForm";
-import Input from "../Input/Input";
+import { useForm } from "../../../hooks/useForm";
+import Input from "../../Element/Input/Input";
 import * as MdIcon from "react-icons/md";
 import styles from "./FormLocation.module.css";
 

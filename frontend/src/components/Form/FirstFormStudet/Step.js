@@ -7,7 +7,7 @@ import DatesJob from "./DatesJob";
 import DatesSkill from "./DatesSkill";
 import DatesSoftSkill from "./DatesSoftSkills";
 // import Button from "@mui/material/Button";
-import styles from "./Styles.module.css";
+import styles from "./StylesStepper.module.css";
 import { useForm } from "../../../hooks/useForm";
 import { useFetch } from "../../../hooks/useFetch";
 import { helpHttp } from "../../../utils/helpHttp";

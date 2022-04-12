@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import TextField from "@mui/material/TextField";
-import styles from "./Styles.module.css";
+import styles from "./StylesStepper.module.css";
 
 function DatesPersonal({ form, handleChange }) {
   const [checked, setChecked] = useState(false);

@@ -8,12 +8,11 @@ export const studentInitialForm = {
 };
 
 export const updateStudentInitialForm = {
-  name: "",
-  specialty: "",
-  phone: undefined,
-  location: "",
-  travel: false,
-  file: undefined,
+  t100_name: "",
+  t100_phonenumber: "",
+  t100_residence: "",
+  t100_speciality: "",
+  t100_travel: false,
 };
 
 export const companyInitialForm = {
@@ -29,5 +28,5 @@ export const companyInitialForm = {
   t300_logo: null,
   t300_banner: null,
   t400_id_admin: "",
-  t300_create_date: "2022-03-24"
+  t300_create_date: "2022-03-24",
 };

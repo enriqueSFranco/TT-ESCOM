@@ -1,16 +1,17 @@
 import { Link } from "react-router-dom";
-import toast, { Toast } from "react-hot-toast";
-import { useForm } from "../../hooks/useForm";
-import { studentInitialForm } from "./schemes";
+import { Toaster } from "react-hot-toast";
+import { useForm } from "hooks/useForm";
+import { studentInitialForm } from "../schemes";
 import TextField from "@mui/material/TextField";
-import styles from "./Styles.module.css";
+import styles from "../Styles.module.css";
 
 const validateForm = (form) => {
   let errors = {};
   let regex = {
     t100_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/, // el campo nombre debe ser de 4 a 16 digitos
     t100_email: /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/,
-    password: /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/,
+    password:
+      /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/,
   };
 
   if (!form.t100_name.trim())
@@ -20,7 +21,7 @@ const validateForm = (form) => {
       "El campo 'Nombre' solo acepta letras y espacios en blanco.";
 
   if (!form.t100_boleta.trim())
-    errors.t100_boleta = "El campo 'Boleta' es requerido"
+    errors.t100_boleta = "El campo 'Boleta' es requerido";
 
   if (!form.t100_email.trim())
     errors.t100_email = "El campo 'Email' es requerido.";
@@ -28,7 +29,7 @@ const validateForm = (form) => {
     errors.t100_email = "El campo 'Email' es incorrecto.";
 
   if (!form.password.trim())
-    errors.password = "El campo 'Contraseña' es requerido."
+    errors.password = "El campo 'Contraseña' es requerido.";
 
   return errors;
 };
@@ -36,7 +37,6 @@ const validateForm = (form) => {
 const CreateAccount = () => {
   const {
     form,
-    response,
     errors,
     handleChange,
     hadlerValidate,
@@ -46,27 +46,33 @@ const CreateAccount = () => {
   if (form === null) return null;
 
   return (
-    <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
+    <>
+      <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
       <div className="row align-items-stretch">
         <div
           className={`${styles.bg} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
         >
           <div className={`${styles.login}`}>
-            <blockquote>Un paso más cerca de tu nuevo <em>empleo</em>.</blockquote>
-              <span>
-                Ya tines cuenta? <Link className={`${styles.linkToLogin}`} to="/alumno">Inicia sesion</Link>
-              </span>
-              <span>
-                <a href="/#">Recuperar contraseña</a>
-              </span>
-            </div>
+            <blockquote>
+              Un paso más cerca de tu nuevo <em>empleo</em>.
+            </blockquote>
+            <span>
+              Ya tines cuenta?{" "}
+              <Link className={`${styles.linkToLogin}`} to="/alumno">
+                Inicia sesion
+              </Link>
+            </span>
+            <span>
+              <a href="/#">Recuperar contraseña</a>
+            </span>
+          </div>
         </div>
         <div className={`col bg-white p-5 rounded-end ${styles.form}`}>
-        <div className={styles.welcome}>
+          <div className={styles.welcome}>
             <h2>Bienvenido</h2>
             <span>Bienvenido! Porfavor introduce tus datos.</span>
           </div>
-          <form onSubmit={handlerSubmitStudent}>
+          <form onSubmit={handlerSubmitStudent} className={styles.form}>
             {/* input para el username */}
             <div className={styles.inputGroup}>
               <TextField
@@ -83,7 +89,7 @@ const CreateAccount = () => {
                 <span className={styles.error}>{errors.t100_name}</span>
               )}
             </div>
-            <div className={styles.inputGroup}>
+            {/* <div className={styles.inputGroup}>
               <TextField
                 label="Boleta"
                 id="t100_boleta"
@@ -92,8 +98,10 @@ const CreateAccount = () => {
                 value={form.t100_boleta}
                 onChange={handleChange}
               />
-              { errors.t100_boleta && (<span className={styles.error}>{errors.t100_boleta}</span>)}
-            </div>
+              {errors.t100_boleta && (
+                <span className={styles.error}>{errors.t100_boleta}</span>
+              )}
+            </div> */}
             {/* input para el password */}
             <div className={styles.inputGroup}>
               <TextField
@@ -122,7 +130,9 @@ const CreateAccount = () => {
                 onKeyUp={hadlerValidate}
                 onChange={handleChange}
               />
-              { errors && <span className={styles.error}>{errors.password}</span>}
+              {errors && (
+                <span className={styles.error}>{errors.password}</span>
+              )}
             </div>
             <div className={styles.inputGroup}>
               <button
@@ -137,6 +147,8 @@ const CreateAccount = () => {
         </div>
       </div>
     </div>
+    <Toaster position="top-right" />
+    </>
   );
 };
 

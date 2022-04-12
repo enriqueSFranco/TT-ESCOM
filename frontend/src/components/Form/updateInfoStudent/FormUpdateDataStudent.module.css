@@ -3,13 +3,17 @@
   --size-radius: 4px;
 }
 
-.form {
-  /* background-color: aliceblue; */
-  width: 100%;
-  height: 80%;
+.actions {
   position: relative;
+  top: 1rem;
+}
+
+.form {
+  width: 100%;
+  height: 90%;
+  position: absolute;
   right: 0;
-  top: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -57,7 +61,7 @@
 }
 
 .title {
-  text-transform: capitalize;
+  text-transform: uppercase;
   text-align: center;
   font-size: 1.4rem;
   padding: 1rem 0 1rem 0;
@@ -72,6 +76,7 @@
 }
 
 .wrapper {
+  position: relative;
   width: 90%;
   height: 600px;
   border-radius: 4px;

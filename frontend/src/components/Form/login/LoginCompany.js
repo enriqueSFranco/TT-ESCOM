@@ -1,16 +1,16 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { useForm } from "../../hooks/useForm";
+import { useForm } from "../../../hooks/useForm";
+import AuthContext from "../../../context/AuthContext";
 import TextField from "@mui/material/TextField";
-import AuthContext from "../../context/AuthContext";
-import styles from "./Styles.module.css";
+import styles from "../Styles.module.css";
 
 let initialForm = {
-  t100_boleta: "",
-  t100_password: "",
+  rfc: "",
+  password: "",
 };
 
-const Form = () => {
+const LoginCompany = () => {
   const { form, handleChange } = useForm(initialForm);
   const { login } = useContext(AuthContext);
 
@@ -22,32 +22,37 @@ const Form = () => {
         >
           <div className={`${styles.login}`}>
             <blockquote>
-              Un paso más cerca de tu nuevo{" "}
-              <em>trabajo</em>.
+              Un paso más cerca de tu nuevo <em>trabajo</em>.
             </blockquote>
-              <span>
-                No tines cuenta? <Link className={`${styles.linkToLogin}`} to="/registro-alumno">Registrate</Link>
-              </span>
-              <br />
-              <span>
-                <a href="/#">Recuperar contraseña</a>
-              </span>
-            </div>
+            <span>
+              No tines cuenta?{" "}
+              <Link
+                className={`${styles.linkToLogin}`}
+                to="/registro-reclutador"
+              >
+                Registrate
+              </Link>
+            </span>
+            <br />
+            <span>
+              <a href="/#">Recuperar contraseña</a>
+            </span>
+          </div>
         </div>
-        <div className={`col bg-white p-5 rounded-end ${styles.formLogin}`}>
+        <div className={`col bg-white p-5 rounded-end`}>
           <div className={styles.welcome}>
-            <h2>iniciar sesion</h2>
+            <h2>Bienvenido</h2>
             <span>Bienvenido! Porfavor introduce tus datos.</span>
           </div>
-          <form onSubmit={login}>
-            {/* input para la boleta */}
+          <form onSubmit={login} className={styles.form}>
+            {/* input para el username */}
             <div className={styles.inputGroup}>
               <TextField
-                label="Boleta"
-                id="t100_boleta"
-                name="t100_boleta"
+                label="RFC"
+                id="rfc"
+                name="rfc"
                 sx={{ width: 500, maxWidth: "100%" }}
-                value={form.t100_boleta}
+                value={form.rfc}
                 onChange={handleChange}
               />
             </div>
@@ -55,11 +60,10 @@ const Form = () => {
             <div className={styles.inputGroup}>
               <TextField
                 label="Contraseña"
-                id="t100_password"
-                name="t100_password"
-                type="password"
+                id="password"
+                name="password"
                 sx={{ width: 500, maxWidth: "100%" }}
-                value={form.t100_password}
+                value={form.password}
                 onChange={handleChange}
               />
             </div>
@@ -78,4 +82,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default LoginCompany;

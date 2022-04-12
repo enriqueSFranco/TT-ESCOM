@@ -34,14 +34,7 @@
 .btLogin { 
   width: 490px; 
   position: relative;
-  left: 4.3rem;
-  bottom: 2rem;
-}
-
-.btnPreRegister {
-  position: relative;
-  bottom: 2rem;
-  left: 4.3rem;
+  left: 0;
 }
 
 .createAccount {
@@ -58,17 +51,12 @@
 }
 
 .form {
-  width: 700px;
-  height: 550px;
+  width: auto;
+  height: auto;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.formLogin {
-  width: 700px;
-  height: 450px;
 }
 
 .passwordLogin {
@@ -76,11 +64,6 @@
   position: relative;
   left: 5.3rem;
   bottom: 1rem;
-}
-
-.wrapperBtnLogin {
-  width: 490px;
-  margin-left: 1rem;
 }
 
 .work {
@@ -148,8 +131,7 @@
 /* ESTILOS DEL FORMULARIO DE CREAR CUENTA EMPRESA */
 .inputGroup {
   position: relative;
-  left: 4.3rem;
-  top: -3rem;
+  top: 0;
   width: 490px;
   display: flex;
   flex-direction: column;
