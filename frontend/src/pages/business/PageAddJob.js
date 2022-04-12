@@ -5,13 +5,13 @@ import { useForm } from "../../hooks/useForm";
 import { useModal } from "../../hooks/useModal";
 import { helpHttp } from "../../utils/helpHttp";
 import Modal from "../../components/Modal/Modal";
-import Label from "../../components/Input/Label";
-import Input from "../../components/Input/Input";
-import Span from "../../components/Input/Span";
+import Label from "../../components/Element/Label/Label";
+import Input from "../../components/Element/Input/Input";
+import Span from "../../components/Element/Span/Span";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import FormLocationJob from "../../components/Form/FormLocationJob";
+import FormLocationJob from "../../components/Form/postJob/FormLocationJob";
 import styles from "./PageAddJob.module.css";
 
 let now = new Date();

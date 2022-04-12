@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
-import { getAllJobs } from "../../services/jobs/getAllJobs";
-import Search from "../../components/Search/Search";
-import FilterProfile from "../../components/Filter/FilterProfile";
-import FilterCompany from "../../components/Filter/FilterCompany";
-import JobList from "../../components/Card/JobList";
-import FilterHomeOffice from "../../components/Filter/FilterHomeOffice";
-import Deck from "../../components/Deck/Deck";
-import Footer from "../../components/Footer/Footer";
+import { getAllJobs } from "services/jobs/index";
+import Search from "components/Search/Search";
+import FilterProfile from "components/Filter/FilterProfile";
+import FilterCompany from "components/Filter/FilterCompany";
+import JobList from "components/Card/JobList/JobList";
+import FilterHomeOffice from "components/Filter/FilterHomeOffice";
+import Deck from "components/Deck/Deck";
+import Footer from "components/Footer/Footer";
 import homeStyles from "./PageHome.module.css";
 
 const Home = () => {
-  const [search, setSearch] = useState(""); // estado de la busqueda
+  const [, setSearch] = useState(""); // estado de la busqueda
   const [dataList, setDataList] = useState([]); // lista de vacantes
   const [isFiltered, setIsFiltered] = useState(false); // boolean para saber si la informacion se tiene que filtrar
   const [data, setData] = useState(null); // lista filtrada
@@ -47,7 +47,7 @@ const Home = () => {
         setLoading(false); // desactivamos el modo "cargando"
       })
       .catch((error) => console.error(error));
-    
+
       return () => null;
   }, []);
 
@@ -88,7 +88,6 @@ const Home = () => {
   const filterBusiness = (e) => {
     let input = e.target.value;
     if (input === "") {
-      // console.log(dataList)
       setData(dataList);
       setTotalJobs(dataList.length);
     } else {
@@ -102,8 +101,6 @@ const Home = () => {
   };
 
   if (!dataList && !data) return null;
-
-  console.log(search)
 
   return (
     <main className={homeStyles.home}>

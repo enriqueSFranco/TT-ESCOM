@@ -1,15 +1,15 @@
-.btnSearch { height: 50px; position: relative; right: 1rem; }
+.btnSearch { height: 50px; width: 140px; position: relative; right: 1rem; }
 
 .dataResultsJobs {
   position: absolute;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   background-color: #fff;
-  outline: 1px solid #ccc;
   width: 400px;
   height: auto;
   max-height: 200px;
   overflow-y: scroll;
   border-radius: 0 0 8px 8px;
+  padding: 0;
   z-index: 10;
 }
 
@@ -27,10 +27,9 @@
   border: 2px solid #64a2ff;
 }
 
-
 .dataItem {
   cursor: pointer;
-  font-size: .9rem;
+  font-size: 1rem;
   padding: .8rem;
   margin: 0;
   transition: background-color .5s ease;
@@ -38,7 +37,7 @@
 
 .dataItem:hover {
   color: #000;
-  background-color: #f6f8fb;
+  background-color: #e7e7e7;
 }
 
 .searchInput {
@@ -62,20 +61,20 @@
 
 .searchForm {
   position: absolute;
-  top: 17.2rem;
+  top: 18rem;
   left: 25rem;
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   border-radius: 8px;
-  width: 1050px;
-  height: 100px;
+  width: 1020px;
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 1rem;
 }
 
-.searchForm > label { margin: 1rem 1rem 0 1rem; }
+/* .searchForm > label { margin: 1rem 1rem 0 1rem; } */
 
 .title {
   backdrop-filter: blur(30px);

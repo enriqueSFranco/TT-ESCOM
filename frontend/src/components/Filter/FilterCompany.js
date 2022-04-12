@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getAllBusiness } from '../../services/businnes/getAllBusiness';
+import { getAllBusiness } from 'services/businnes/index';
 import styles from './Filter.module.css';
 
 const FilterCompany = ({ onChange }) => {
