@@ -3,8 +3,8 @@ from django.contrib.auth.models import  AbstractBaseUser,PermissionsMixin
 #from turtle import ondrag
 from django.db import models
 
-def upload_image_profile(instance, filename):
-    return f"{instance.t100_boleta}-{filename}"
+def upload_path(instance, filename):
+    return '/'.join(['profile_picture', str(instance.title), filename])
 
 def upload_cv(instance, filename):
     return f"{instance.t100_boleta}-{filename}"	
@@ -113,7 +113,7 @@ class Student(AbstractBaseUser):
 	t100_modalities = models.CharField(max_length=20,null=True,blank=True)
 	t100_target_salary = models.PositiveIntegerField(null=True, blank=True)	
 	t100_travel = models.BooleanField(default=False)
-	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to=upload_image_profile)
+	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to=upload_path)
 	is_active = models.BooleanField(default=True)
 
 	USERNAME_FIELD = 't100_boleta'

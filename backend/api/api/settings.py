@@ -50,12 +50,13 @@ INSTALLED_APPS = [
     'simple_history',
     'rest_framework',
     'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
     'rest_framework.authtoken',
     'apps.administration',
     'apps.companies',    
     'apps.students',
     'apps.users',    
-    'apps.vacantes',    
+    'apps.vacantes',
 ]
 
 MIDDLEWARE = [

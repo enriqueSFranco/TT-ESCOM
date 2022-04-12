@@ -43,7 +43,12 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
         'about'), max_length=500, blank=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
-
+    ROLE_OPTIONS = (
+        ("ENCARGADO", "Encargado"),
+        ("RECLUTADOR", "Reclutador"),
+        ("ESTUDIANTE", "Estudiante")
+    )
+    role = models.CharField(max_length=30, choices=ROLE_OPTIONS, default="ESTUDIANTE")
     objects = CustomAccountManager()
 
     USERNAME_FIELD = 'email'
