@@ -4,6 +4,7 @@ import Loader from "components/Loader/Loader";
 import Input from "components/Element/Input/Input";
 import Label from "components/Element/Label/Label";
 import Span from "components/Element/Span/Span";
+import * as BiIcon from "react-icons/bi";
 import styles from "./Search.module.css";
 
 const Search = ({ handleSearch, data }) => {
@@ -103,8 +104,8 @@ const Search = ({ handleSearch, data }) => {
             className={`${styles.btnSearch} btn btn-primary`}
           >
             {isLoading && <Loader />}
-            {!isLoading && "Buscar vacante"}
-            {isLoading && "Buscando"}
+            {!isLoading && <BiIcon.BiSearch />}
+            {isLoading && ""}
           </button>
         </div>
         {/* <Link to="empleos" className={`${styles.btnSearch} btn btn-primary`}>
