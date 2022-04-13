@@ -18,7 +18,7 @@ class LenguagesViewSet(viewsets.GenericViewSet):
 
 	def get_object(self, pk):        		          
 		self.queryset = self.model.objects\
-			.filter(t100_boleta=pk)\
+			.filter(t100_id_student=pk)\
 			.all()			
 		return self.queryset
 

@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 # from apps.students.views import Login, Logout, UserToken
+from apps.students.api.views.login_viewset import Login
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -30,6 +31,7 @@ urlpatterns = [
     path('api/catalogues/',include('apps.catalogs_routers')),
     # path('iniciar-sesion/', Login.as_view(), name='iniciar-sesion'),
     # path('cerrar-sesion/', Logout.as_view(), name='cerrar-sesion'),
+    path('token/student/',Login.as_view(),name='Login student'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh-token/', TokenRefreshView.as_view(), name='refresh-token'),
     path('images/',include('apps.images_routers'))

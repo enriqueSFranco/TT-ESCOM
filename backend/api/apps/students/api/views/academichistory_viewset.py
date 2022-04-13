@@ -18,7 +18,7 @@ class HistorialViewSet(viewsets.GenericViewSet):
 		self.queryset= None
 		if self.queryset == None:
 			self.queryset = self.model.objects\
-				.filter(t100_boleta = pk)\
+				.filter(t100_id_student = pk)\
 				.all()
 		return  self.queryset
 

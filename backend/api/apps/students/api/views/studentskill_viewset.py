@@ -16,8 +16,8 @@ class SkillViewSet(viewsets.GenericViewSet):
 
   def get_object(self, pk):
     self.queryset = self.model.objects\
-			.filter(t100_boleta=pk)\
-			.values('t100_boleta','c116_id_skill','t102_id_registrer')
+			.filter(t100_id_student=pk)\
+			.values('t100_id_student','c116_id_skill','t102_id_registrer')
     return self.queryset
 
   def get_queryset(self):

@@ -87,4 +87,13 @@ class PasswordSerializer(serializers.Serializer):
 class StudentTokenSerializer(serializers.ModelSerializer):
   class Meta:
     model = Student
-    fields = ('t100_email', 'password')
+    fields = ('t100_email','password')
+
+  def validate(self,attrs):
+    print("Validando datos...")
+    t100_email=attrs.get('t100_email')
+    #password = Student.set_password(attrs.get('password'))
+    print(t100_email)
+    #print(password)
+    print(attrs)
+    return attrs
