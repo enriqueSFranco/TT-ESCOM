@@ -15,10 +15,10 @@ const Home = () => {
   const [isFiltered, setIsFiltered] = useState(false); // boolean para saber si la informacion se tiene que filtrar
   const [data, setData] = useState(null); // lista filtrada
   const [loading, setLoading] = useState(true);
-  
+
   const [isFilteredBusiness, setIsFilteredBusiness] = useState(false);
   const [isChecked, setIsChecked] = useState(false); // informacion filtrada
-  const [totalJobs, setTotalJobs] = useState(null); // estado para el total de vacantes
+  const [totalJobs, setTotalJobs] = useState(0); // estado para el total de vacantes
 
   /**
    * Funcion para filtrar las vacantes por nombre
@@ -31,7 +31,7 @@ const Home = () => {
       setData(dataList);
     } else {
       const filteredData = dataList.filter((el) => {
-        let regex = new RegExp(`${value}`, 'gi');
+        let regex = new RegExp(`${value}`, "gi");
         return el?.t200_job.match(regex);
       });
       setTotalJobs(filteredData.length);
@@ -42,8 +42,8 @@ const Home = () => {
   useEffect(() => {
     getAllJobs()
       .then((response) => {
-        setDataList(response);
-        setTotalJobs(response.length);
+        setDataList(response.data);
+        setTotalJobs(response.data.length);
         setLoading(false); // desactivamos el modo "cargando"
       })
       .catch((error) => console.error(error));
@@ -102,6 +102,8 @@ const Home = () => {
 
   if (!dataList && !data) return null;
 
+  console.log(dataList);
+
   return (
     <main className={homeStyles.home}>
       {/* barra de busqueda  */}
@@ -109,7 +111,7 @@ const Home = () => {
 
       {/* control de filtros */}
       <div className={homeStyles.filteredControls}>
-        <span>Filtros</span>
+        <span className={homeStyles.textFilter}>Filtros</span>
         <FilterProfile />
         <FilterCompany onChange={filterBusiness} />
         <FilterHomeOffice value={isChecked} onChange={handleChecked} />
@@ -117,9 +119,9 @@ const Home = () => {
 
       {/* renderizado de los empleos */}
       <article className={homeStyles.wrapperJobList}>
-        <span className={homeStyles.totalJobs}>
-          Total de vacantes: {totalJobs}
-        </span>
+        <p className={homeStyles.totalJobs}>
+          Total de vacantes: <em>{totalJobs}</em>
+        </p>
         <JobList
           jobs={
             !isFiltered && !isChecked && !isFilteredBusiness ? dataList : data
