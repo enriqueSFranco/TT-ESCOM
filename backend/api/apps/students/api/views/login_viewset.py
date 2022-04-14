@@ -9,7 +9,7 @@ from apps.students.api.serializer.student_serializer import StudentTokenSerializ
 
 class Login(ObtainAuthToken):
 
-  model = Student
+  model =Student
   queryset = None
 
   def get_queryset(self,mail):
@@ -32,19 +32,19 @@ class Login(ObtainAuthToken):
     print(login_serializer)
     print(request.user)
     print(request.data)
-    if user:
+    if login_serializer.is_valid():
       print("Paso la validación")
-      #print(login_serializer.validated_data)
+      print(login_serializer.validated_data)
       #user= login_serializer.validated_data['user']
       #if user.is_active:
-      print("Puede iniciar sesión")
-      token,created = Token.objects.get_or_create(user = user)     
-      #user_serializer = CustomUserSerializer(user)    
+      #  print("Puede iniciar sesión")
+      #  token,created = Token.objects.get_or_create(user = user)     
+      #  user_serializer = CustomUserSerializer(user)    
       #  if created:
-      return Response({'token':token.key,
-                             #'user':user_serializer.data,
-                             'message':'Inicio de sesión exitoso'},
-                  status.HTTP_201_CREATED)
+      #      return Response({'token':token.key,
+      #                       'user':user_serializer.data,
+      #                       'message':'Inicio de sesión exitoso'},
+      #            status.HTTP_201_CREATED)
       #  else:
       #    token.delete()
       #    token=Token.objects.create(user = user)

@@ -20,7 +20,7 @@ class StudentViewSet(viewsets.GenericViewSet):
 				.filter(t100_id_student=pk)\
 				.values('t100_id_student','t100_boleta','t100_name','t100_last_name','t100_username','t100_cv','t100_email','t100_gender','t100_date_of_birth',
 				't100_personal_objectives','t100_phonenumber','t100_residence','t100_modalities','t100_speciality','t100_target_salary','t100_travel',
-				't100_profile_picture','is_active')#,'password')
+				't100_profile_picture','is_active','password')
 		return self.queryset
 	def get_queryset(self):
 		if self.queryset is None:
@@ -28,7 +28,7 @@ class StudentViewSet(viewsets.GenericViewSet):
 				.filter()\
 				.values('t100_id_student','t100_boleta','t100_name','t100_last_name','t100_username','t100_cv','t100_email','t100_gender','t100_date_of_birth',
 				't100_personal_objectives','t100_phonenumber','t100_residence','t100_modalities','t100_speciality','t100_target_salary','t100_travel',
-				't100_profile_picture','is_active')#,'password')
+				't100_profile_picture','is_active','password')
 		return self.queryset
 
   # TODO terminar ruta para cambiar el password

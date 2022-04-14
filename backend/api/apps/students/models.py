@@ -7,6 +7,10 @@ from django.db import models
 def upload_image_profile(instance, filename):
     return f"profile_pictures/{instance.t100_boleta}-{filename}"
 
+def upload_project_banner(instance, filename):
+    return f"projects_pictures/{instance.t100_id_student}-{filename}"
+
+
 def upload_cv(instance, filename):
     return f"{instance.t100_boleta}-{filename}"	
 
@@ -294,3 +298,27 @@ class EmploymentHistory(models.Model):
 	def __str__(self)->str:
 		return self.t103_corporation+', '+self.t103_employment
 		
+#T117 Historial laboral
+class PersonalProjects(models.Model):
+	t117_id_registrer = models.AutoField(primary_key=True)
+	t100_id_student = models.ForeignKey(
+		Student,
+		null=True,
+		blank=True,
+		related_name='StudentProjects',
+		on_delete=models.CASCADE)
+	t117_group = models.CharField(max_length=80,null=True,blank=True)	
+	t117_job = models.CharField(max_length=80,null=True,blank=True)
+	t117_link = models.CharField(max_length=100,blank=True,null=True)
+	t117_banner = models.ImageField(blank=True,null=True,default="",upload_to=upload_project_banner)
+	t117_description = models.TextField()
+	t117_start_date = models.DateField(null=True)
+	t117_end_date = models.DateField(null=True)
+
+	class Meta:
+		unique_together = ['t100_id_student','t117_job']
+		verbose_name='Employment history'
+		db_table='t117_proyectos'
+	
+	def __str__(self)->str:
+		return self.t117_group+', '+self.t117_job
