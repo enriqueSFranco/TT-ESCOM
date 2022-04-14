@@ -1,8 +1,3 @@
-from cgitb import Hook
-from email.mime import base
-import imp
-from operator import imod
-from posixpath import basename
 from rest_framework.routers import DefaultRouter
 from apps.students.api.views.student_viewsets import StudentViewSet
 from apps.students.api.views.studentskill_viewset import SkillViewSet

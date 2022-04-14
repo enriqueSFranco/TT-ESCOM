@@ -26708,7 +26708,7 @@
 
     {
         "model":"companies.Company",
-        "pk":1,
+        "pk":10,
         "fields": {
             "t300_id_company": 1,
             "t300_name": "Pepsi Company",
@@ -26752,5 +26752,532 @@
             "t301_id_recruiter": null,
             "t400_id_admin": null
         }
+<<<<<<< HEAD:backend/api/catalogos.json
+=======
+    },
+
+    {
+        "model":"companies.Company",
+        "pk":1,
+        "fields":{
+            "t300_name": "Coca-Cola",
+            "t300_rfc": "MELM830528IH0",
+            "t300_nss": 1234,
+            "t300_email": "coca-cola@gmail.com.mx",
+            "t300_bussiness_name": "Coca-Cola",
+            "t300_web_page": "https://www.coca-cola.com.mx/",
+            "t300_mision": "Satisfacer con excelencia a los consumidores de bebidas. Ser el mejor líder total de bebidas, que genere valor económico, social y ambiental sostenible, gestionando modelos de negocio innovadores y ganadores, con los mejores colaboradores en el mundo.",
+            "t300_vision": "Ser el mejor líder total de bebidas, que genere valor económico, social y ambiental sostenible, gestionando modelos de negocio innovadores y ganadores, con los mejores colaboradores en el mundo.",
+            "t300_objective": "",
+            "t300_logo": null,
+            "t300_banner": null,
+            "t300_create_date": "1892-01-29",
+            "t400_id_admin": 1
+        }
+    },
+    {
+        "model":"companies.Company",
+        "pk":2,
+        "fields":{
+            "t300_name": "Amazon",
+            "t300_rfc": "YQXZ347247JO9",
+            "t300_nss": 543534,
+            "t300_email": "amazon@gmail.com.mx",
+            "t300_bussiness_name": "Amazon",
+            "t300_web_page": "https://www.amazon.jobs/es",
+            "t300_mision": "Nos esforzamos por ofrecer a nuestros clientes los precios más bajos posibles, la mejor selección disponible y la mayor comodidad.",
+            "t300_vision": "Ser la compañía más centrada en el cliente del mundo, donde nuestros clientes pueden encontrar y descubrir cualquier cosa que deseen comprar en línea",
+            "t300_objective": "",
+            "t300_logo": null,
+            "t300_banner": null,
+            "t300_create_date": "1994-07-05",
+            "t400_id_admin": 1
+        }
+    },
+    {
+        "model":"companies.Company",
+        "pk":3,
+        "fields":{
+            "t300_name": "Google",
+            "t300_rfc": "TYOW464134IOC",
+            "t300_nss": 45734,
+            "t300_email": "google@gmail.com.mx",
+            "t300_bussiness_name": "Google",
+            "t300_web_page": "https://careers.google.com/",
+            "t300_mision": "organizar la información en el mundo para que sea útil y accesible",
+            "t300_vision": "ser el motor de búsqueda más importante del mundo. Valores: rapidez, precisión, atención al cliente, innovación y facilidad de uso.",
+            "t300_objective": "",
+            "t300_logo": null,
+            "t300_banner": null,
+            "t300_create_date": "1998-09-04",
+            "t400_id_admin": 1
+        }
+    },
+    {
+        "model":"companies.Company",
+        "pk":4,
+        "fields":{
+            "t300_name": "Nike",
+            "t300_rfc": "NME920220KL4",
+            "t300_nss": 9809,
+            "t300_email": "nikemx@gmail.com",
+            "t300_bussiness_name": "Nike",
+            "t300_web_page": "https://jobs.nike.com/es/how-we-hire",
+            "t300_mision": "ofrecer inspiración e innovación a todos los atletas* del mundo",
+            "t300_vision": "Ser la mejor empresa nacional e internacional destacándonos por la buena calidad, servicio y comodidad a nuestros clientes. Queremos que nuestro producto sea vendido y utilizado en todas las partes del mundo.",
+            "t300_objective": "",
+            "t300_logo": null,
+            "t300_banner": null,
+            "t300_create_date": "1964-01-25",
+            "t400_id_admin": 1
+        }
+    },
+    {
+        "model":"companies.Company",
+        "pk":7,
+        "fields":{
+            "t300_name": "BBVA",
+            "t300_rfc": "BBA830831LJ2",
+            "t300_nss": 423234,
+            "t300_email": "bbva@gmail.com.mx",
+            "t300_bussiness_name": "BBVA",
+            "t300_web_page": "https://www.bbva.com/es/trabajo-empleo-empresa/empleo/",
+            "t300_mision": "Generar confianza al servir más y mejor a nuestra clientela, con transparencia e integridad, ofreciendo siempre productos de la más alta calidad.",
+            "t300_vision": "En BBVA trabajamos por un futuro mejor para las personas",
+            "t300_objective": "",
+            "t300_logo": null,
+            "t300_banner": null,
+            "t300_create_date": "1932-01-24",
+            "t400_id_admin": 1
+        }
+    },
+    {
+        "model":"companies.Company",
+        "pk":5,
+        "fields":{
+            "t300_name": "IBM",
+            "t300_rfc": "IMC9701024T5",
+            "t300_nss": 348764,
+            "t300_email": "ibm@gmail.com",
+            "t300_bussiness_name": "IBM",
+            "t300_web_page": "https://www.ibm.com/mx-es/employment/",
+            "t300_mision": "Es ayudar a los clientes a reducir costos, mejorar su productividad y obtener una ventaja competitiva, respaldados por el liderazgo mundial de un amplio portafolio de servicios de consultoría, outsourcing, infraestructura e integración de sistemas.",
+            "t300_vision": "En IBM, creemos en el progreso que cambia el mundo: la aplicación completa de la inteligencia, la razón y la ciencia para mejorar los negocios",
+            "t300_objective": "",
+            "t300_logo": null,
+            "t300_banner": null,
+            "t300_create_date": "1911-06-16",
+            "t400_id_admin": 1
+        }
+    },
+    {
+        "model":"companies.Company",
+        "pk":6,
+        "fields":{
+            "t300_name": "Bimbo",
+            "t300_rfc": "BMO451102H3R",
+            "t300_nss": 73231,
+            "t300_email": "bimbo@gmail.com",
+            "t300_bussiness_name": "Bimbo",
+            "t300_web_page": "https://www.grupobimbo.com/es/bolsa-de-trabajo",
+            "t300_mision": "Buscamos alimentar, deleitar y servir a nuestro mundo, siendo una empresa altamente productiva y plenamente humana. Día a día queremos alcanzar nuestros logros y avanzar en nuestros propósitos. Esto es lo que constituye nuestra razón de ser como empresa.",
+            "t300_vision": "Ser líder internacional en la industria de la panificación.",
+            "t300_objective": "",
+            "t300_logo": null,
+            "t300_banner": null,
+            "t300_create_date": "1945-12-02",
+            "t400_id_admin": 1
+        }
+    },
+    {
+        "model":"companies.Company",
+        "pk":9,
+        "fields":{
+            "t300_name": "Tesla",
+            "t300_rfc": "TLA20030701YE4",
+            "t300_nss": 999232,
+            "t300_email": "tesla@gmail.com.mx",
+            "t300_bussiness_name": "Tesla",
+            "t300_web_page": "https://www.tesla.com/careers",
+            "t300_mision": "La misión de Tesla es acelerar la transición del mundo hacia la energía sustentable.",
+            "t300_vision": "Un futuro donde las personas dejen de depender de los combustibles fósiles, y haya cero emisiones.",
+            "t300_objective": "",
+            "t300_logo": null,
+            "t300_banner": null,
+            "t300_create_date": "2003-07-01",
+            "t400_id_admin": null
+        }
+    },
+    {
+        "model":"companies.Company",
+        "pk":8,
+        "fields":{
+            "t300_name": "Facebook",
+            "t300_rfc": "FCB20040204H42",
+            "t300_nss": 234145,
+            "t300_email": "facebook@gmail.com",
+            "t300_bussiness_name": "Facebook",
+            "t300_web_page": "https://es-la.facebook.com/policies_center/Jobs/",
+            "t300_mision": "Dar a las personas el poder de crear comunidades y aproximar más al mundo",
+            "t300_vision": "Estamos construyendo la tecnología para brindarle a todos el poder de compartir fácilmente cualquier cosa con quien uno quiera",
+            "t300_objective": "",
+            "t300_logo": null,
+            "t300_banner": null,
+            "t300_create_date": "2004-02-04",
+            "t400_id_admin": null
+        }
+    },
+
+    {
+        "model":"vacantes.Vacant",
+        "pk":1,
+        "fields":{
+            "t200_job": "ATENCIÓN A CLIENTES BILINGÜE NIGHT SHIFT",
+            "t200_description": "CONCENTRIX MÉXICO busca talento para unirse a nuestro nuevo gran equipo\r\nQue buscamos?\r\nRepresentantes para dar servicio 100% para atención a clientes bilingüe by Voice.",
+            "t200_requirements": "Ingles avanzado o nativo (B2 or higher)\r\nBachillerato completo o trunco (al menos 50%)\r\nManejo de PC a nivel usuario\r\nExperiencia en Call Center (deseable)\r\nDisponibilidad para trabajar tiempo completo y fines de semana.\r\nEl site se encuentra en: Av. Insurgentes Sur 945, Cd. de los Deportes, Benito Juárez, 03710 Ciudad de México, CDMX. IMPORTANTE: VIVIR A NO MÁS DE HORA Y MEDIA DE DISTANCIA O TRASLADO DESDE TU CASA AL SITIO.",
+            "t200_benefits": "Contratación inmediata\r\n12,500 MXN mensuales\r\nOportunidades de crecimiento.\r\nNómina catorcenal en el banco de tu elección.\r\nPrestaciones de ley.\r\nBono en operaciones hasta $2 mil mensuales\r\nBono de graduación de 2mil pesos pago único\r\nBono de contratación de 4000 MXN\r\nVales 1065 MXN mensuales\r\nSeguro de vida\r\nSeguro gastos médicos menores\r\nCapacitación pagada 100%\r\nBono 8000 MXN por referido contratado\r\nAmbiente de trabajo amigable\r\nTransporte de la empresa\r\nTraining en sitio inicia lunes 28 de marzo 2022 de 12:00 pm a 09:00 pm lunes a viernes durante 2 semanas plus nesting\r\nOperaciones será en una ventana con horarios de servicio entre 11:00 pm y 08:00 am con disponibilidad lunes a domingo. Se descansan dos días entre semana.",
+            "t200_check_time": "09:00:00",
+            "t200_closing_hour": "18:00:00",
+            "t200_work_days": "5",
+            "t200_min_salary": 12500,
+            "t200_max_salary": 15000,
+            "t200_gross_salary": false,
+            "t200_home_ofice": false,
+            "t200_publish_date": "2022-04-06",
+            "t200_close_date": "2022-04-13",
+            "t300_id_company": 1,          
+            "c207_id_experience": 2,
+            "c206_id_profile": 2,
+            "c204_id_vacant_status":1,
+            "t301_id_recruiter": null,
+            "t400_id_admin": null
+        }
+    },
+    {
+        "model":"vacantes.Vacant",
+        "pk":2,
+        "fields":{
+            "t200_job": "Auxiliar contable",
+            "t200_description": "Jarritos solicita Auxiliar Contable para planta Tultitlan que cuente con experiencia mínima de 2 años en Contabilidad en General, asientos contables, ingresos y egresos, elaboración de pólizas, conciliaciones, bancarias, analista Contable en cualquiera de los siguientes departamentos; Cuentas por Pagar, Cuentas por cobrar, Impuestos, conocimientos en conciliaciones, cierres, depuraciones, estados de cuenta, programación de pagos, cobros, estados financieros, contabilidad en general.",
+            "t200_requirements": "Edad 23 a 40 años\r\nEscolaridad de Lic. en Contabilidad pasante ó titulado preferentemente\r\nOfrecemos sueldo base + bono + vales de despensa + prestaciones de ley y superiores.\r\nLaborar de Lunes a Viernes de 09: 00 a 19:00 hrs. y sábados de 09: 00 a 14: 00\r\nManejo de Excel intermedio.",
+            "t200_benefits": "Sueldo Competitivo\r\n- Pago Quincenal\r\n- Contratación directa por la empresa\r\n- Vales de despensa\r\n- Prestaciones desde el primer día de trabajo.\r\n- Sueldo 100% ante el IMSS\r\n- Oportunidad de Desarrollo\r\n- Incentivo mensual por productividad\r\n-Venta empleado el producto\r\n-Apoyo por defunción\r\n-Caja de ahorro",
+            "t200_check_time": "09:00:00",
+            "t200_closing_hour": "18:00:00",
+            "t200_work_days": "5",
+            "t200_min_salary": 10000,
+            "t200_max_salary": 15000,
+            "t200_gross_salary": false,
+            "t200_home_ofice": false,
+            "t200_publish_date": "2022-04-06",
+            "t200_close_date": "2022-04-13",
+            "t300_id_company": 1,
+            "c207_id_experience": 4,
+            "c206_id_profile": 3,
+            "c204_id_vacant_status": 2,
+            "t301_id_recruiter": null,
+            "t400_id_admin": null
+        }
+    },
+    {
+        "model":"vacantes.Vacant",
+        "pk":4,
+        "fields":{
+            "t200_job": "Vendedor/a Nike Factory Cancún",
+            "t200_description": "¡En NIKE ganamos como equipo, ven y gana con nosotros!\r\nAtleta (Asesor de ventas)\r\nNike Factory Store Las Plazas Cancún\r\nSomos un equipo profesional que nos encanta seguir desarrollando habilidades interpersonales que se caracteriza por siempre trabajar en equipo, con proactividad y orientación al logro, además de ofrecer un servicio premium al cliente.",
+            "t200_requirements": "¿Mi perfil se ajusta a la vacante?:\r\n·      Pasión por el deporte\r\n·      Gusto por las ventas y el servicio al cliente\r\n·      Experiencia deseable más NO NECESARIA\r\n·      Orientación para trabajar en equipo y enfoque en resultados\r\nPreferentemente vivir cerca de la tienda",
+            "t200_benefits": "Contratación DIRECTA con Nike México\r\nSUELDO base y BONO competitivo\r\nVales de despensa\r\nFondo de Ahorro\r\nSGMM y Seguro de Vida\r\nSeguro Dental\r\n9 días de vacaciones al cumplir un año\r\nUniformes sin costo\r\nDescuentos en tiendas\r\nCrecimiento laboral",
+            "t200_check_time": "09:00:00",
+            "t200_closing_hour": "18:00:00",
+            "t200_work_days": "5",
+            "t200_min_salary": 5000,
+            "t200_max_salary": 6000,
+            "t200_gross_salary": false,
+            "t200_home_ofice": false,
+            "t200_publish_date": "2022-04-06",
+            "t200_close_date": "2022-04-13",
+            "t300_id_company": 4,
+            "c207_id_experience": 3,
+            "c206_id_profile": 1,
+            "c204_id_vacant_status": 2,
+            "t301_id_recruiter": null,
+            "t400_id_admin": null
+        }
+    },
+    {
+        "model":"vacantes.Vacant",
+        "pk":5,
+        "fields":{
+            "t200_job": "Sr. Backend Developer NodeJS",
+            "t200_description": "Buscamos al mejor programador Backend en NodeJS para integrarse a la familia de Feek Technologies. y unirse a nuestro equipo para desarrollar un producto increíble de clase mundial.",
+            "t200_requirements": "Responsabilidades y actividades:\r\nDesarrollar el backend de uno de nuestros productos por salir al mercado.\r\nColaborar en un equipo multidisciplinario para la creación del producto.\r\n\r\nGenerar un código de calidad, correctamente documentado y comentado.\r\nUso de GIT como repositorio y versionario.\r\n\r\nComunicación con Servidores y el Setup de los mismos.\r\nCapacidad de cumplir metas y fechas limite\r\nUso de plataformas de manejo de proyectos como Monday.\r\nResponsabilidades y actividades:\r\n\r\nDesarrollar el backend de uno de nuestros productos por salir al mercado.\r\n\r\nColaborar en un equipo multidisciplinario para la creación del producto.\r\n\r\nGenerar un código de calidad, correctamente documentado y comentado.\r\n\r\nUso de GIT como repositorio y versionario.\r\n\r\nComunicación con Servidores y el Setup de los mismos.\r\n\r\nCapacidad de cumplir metas y fechas limite\r\nUso de plataformas de manejo de proyectos como Monday",
+            "t200_benefits": "Plan de carrera y crecimiento\r\nSeguro de gastos médicos\r\nFlex time (home office, viernes corto)",
+            "t200_check_time": "09:00:00",
+            "t200_closing_hour": "18:00:00",
+            "t200_work_days": "5",
+            "t200_min_salary": 35000,
+            "t200_max_salary": 45000,
+            "t200_gross_salary": false,
+            "t200_home_ofice": true,
+            "t200_publish_date": "2022-04-05",
+            "t200_close_date": "2022-04-13",
+            "t300_id_company": 2,
+            "c207_id_experience": 6,
+            "c206_id_profile": 5,
+            "c204_id_vacant_status": 2,
+            "t301_id_recruiter": null,
+            "t400_id_admin": null
+        }
+    },
+    {
+        "model":"vacantes.Vacant",
+        "pk":6,
+        "fields":{
+            "t200_job": "Senior Full Stack Developer (.NET)",
+            "t200_description": "Charger Logistics is a world class asset-based carrier. We specialize in delivering your assets, on time and on budget. With the diverse fleet of equipment, we can handle a range of freight, including dedicated loads, specialized hauls, temperature-controlled goods and HAZMAT cargo.\r\n\r\nCharger logistics invests time and support into its employees to provide them with the room to learn and grow their expertise and work their way up. We are entrepreneurial-minded organization that welcomes and support individual idea and strategies. Charger Logistics is seeking a well-rounded individual able to work in a fast-paced environment to join our team at the company's office in Monterrey, Mexico. We are seeking a highly skilled ASP. NET/C#/MVC developer with a strong background in building high-performance web applications.\r\nBuild new applications with .NET Core/ ASP. NET / MVC / C# / SQL Server 2019 and Web APIs.\r\nBuild and maintain Windows Services, Daemons and Console Apps with .NET core\r\nDevelop new functionality on our existing software applications.\r\nLead/mentor developers and share knowledge through knowledge-sharing presentations.\r\nParticipate in a small, experienced, energetic team on a rapid, agile development schedule.",
+            "t200_requirements": "Minimum of 5-8 years' experience as a full stack developer\r\nSuperior proficiency in C# (.NET Framework and .NET Core), JavaScript, TypeScript, SQL server,\r\nSolid understanding of building scalable web and serverless applications using WebAPI, RESTful API design, Function Apps, Worker Services, etc.\r\nExperience in building cloud-native solutions (using different services such as Storage Account, Function Apps, Azure Sql, CosmosDb, EventHub, etc).\r\nExperience working with design patterns and designing microservices.\r\nDeveloping and maintaining CD/CI pipelines for build and deployment of services and components using Azure DevOps (preferred), Jenkins, or similar systems.\r\nExperience and working knowledge of entity framework core\r\nExperience and working knowledge of relational or NoSQL databases such as CosmosDB\r\nPreferred experience using data streaming platforms such as Kafka, EventHubs, etc.\r\nPreferred experience with Docker, Kubernetes\r\nDesign and optimize tables and stored procedures",
+            "t200_benefits": "Prestaciones superiores a las de la ley\r\nPlan de carrera y crecimiento\r\nSueldo competitivo",
+            "t200_check_time": "09:00:00",
+            "t200_closing_hour": "18:30:00",
+            "t200_work_days": "5",
+            "t200_min_salary": 40000,
+            "t200_max_salary": 45000,
+            "t200_gross_salary": false,
+            "t200_home_ofice": false,
+            "t200_publish_date": "2022-04-01",
+            "t200_close_date": "2022-04-08",
+            "t300_id_company": 1,
+            "c207_id_experience": 6,
+            "c206_id_profile": 5,
+            "c204_id_vacant_status": 2,
+            "t301_id_recruiter": null,
+            "t400_id_admin": null
+        }
+    },
+    {
+        "model":"vacantes.Vacant",
+        "pk":7,
+        "fields":{
+            "t200_job": "Desarrollador-programador",
+            "t200_description": "En Grupo Formex, nos encontramos en busca de Talento, requerimos Desarrollador/programador\r\n\r\nObjetivo del Puesto:\r\n\r\nDesarrollar las soluciones apropiadas para cubrir las necesidades acuerdo con el diseño general de los sistemas de información de la organización, asi como la creación de API´s. y Web services\r\nEstablecer y asegurar la creación de programas.\r\n\r\nCreación de plataformas y bases de datos\r\n\r\nInnovar en el desarrollo de programas\r\nProgramación en sistemas",
+            "t200_requirements": "Sueldo base + mas bono\r\nPrestaciones de Ley",
+            "t200_benefits": "",
+            "t200_check_time": "09:00:00",
+            "t200_closing_hour": "18:00:00",
+            "t200_work_days": "5",
+            "t200_min_salary": 15000,
+            "t200_max_salary": 20000,
+            "t200_gross_salary": false,
+            "t200_home_ofice": true,
+            "t200_publish_date": "2022-04-04",
+            "t200_close_date": "2022-04-11",
+            "t300_id_company": 5,
+            "c207_id_experience": 6,
+            "c206_id_profile": 5,
+            "c204_id_vacant_status": 2,
+            "t301_id_recruiter": null,
+            "t400_id_admin": null
+        }
+    },
+    {
+        "model":"vacantes.Vacant",
+        "pk":8,
+        "fields":{
+            "t200_job": "Programador, Desarrollador Java",
+            "t200_description": "Acerca de la empresa\r\n\r\n\r\n\r\nCellFusion was founded in Silicon Valley, California in the United States of America in the year 1999, working with industry leaders in technology and business worldwide for more than twenty years.\r\n\r\n\r\n\r\nWe have learned from the best across all industries, from the best in various countries and on different continents, from various cultures and from many people, from top managers, leaders and workers.\r\nCellFusion is dedicated to research of advanced business strategies and development of innovative business applications, providing vertical integrated business solutions to today's and future clients across all industries world-wide.\r\n‘… intelligent and superior business solutions are not created with modern technology only, but with vision, innovation and with passion…'\r\nKersten Ellerbrock, Chief Executive Officer - CellFusion Incorporated",
+            "t200_requirements": "Conocimientos requeridos\r\n\r\n\r\n\r\nJava programming language, required   \r\nJava swing graphical programming language, required   \r\nObject oriented programming and code structuring, required   \r\nSQL language and syntax, required  \r\nCode management software, GIT/ SVN required  \r\nEclipse IDE\r\nPrincipales responsabilidades del puesto\r\n\r\n\r\n\r\nGathering requirements, converting requirements into solutions\r\nSoftware Application Design\r\nDevelop code efficiently and performant\r\nSoftware testing  \r\nDocumentation\r\nStandardization of processes, procedures and solutions\r\nHardware technology integration (Smart torque, CNC, bar and QR code, sensor and device integration)\r\nTeamwork and active communication\r\nOrganizing projects and meetings\r\nTask management",
+            "t200_benefits": "Prestaciones de ley (IMSS, vacaciones, aguinaldo)\r\nFlex time (home office, viernes corto)\r\nEstabilidad laboral",
+            "t200_check_time": "09:00:00",
+            "t200_closing_hour": "19:00:00",
+            "t200_work_days": "5",
+            "t200_min_salary": 40000,
+            "t200_max_salary": 50000,
+            "t200_gross_salary": false,
+            "t200_home_ofice": true,
+            "t200_publish_date": "2022-04-05",
+            "t200_close_date": "2022-04-10",
+            "t300_id_company": 3,
+            "c207_id_experience": 6,
+            "c206_id_profile": 5,
+            "c204_id_vacant_status": 2,
+            "t301_id_recruiter": null,
+            "t400_id_admin": null
+        }
+    },
+    {
+        "model":"vacantes.Vacant",
+        "pk":9,
+        "fields":{
+            "t200_job": "Programador, Desarrollador Java",
+            "t200_description": "Acerca de la empresa\r\n\r\n\r\n\r\nCellFusion was founded in Silicon Valley, California in the United States of America in the year 1999, working with industry leaders in technology and business worldwide for more than twenty years.\r\n\r\n\r\n\r\nWe have learned from the best across all industries, from the best in various countries and on different continents, from various cultures and from many people, from top managers, leaders and workers.\r\nCellFusion is dedicated to research of advanced business strategies and development of innovative business applications, providing vertical integrated business solutions to today's and future clients across all industries world-wide.\r\n‘… intelligent and superior business solutions are not created with modern technology only, but with vision, innovation and with passion…'\r\nKersten Ellerbrock, Chief Executive Officer - CellFusion Incorporated",
+            "t200_requirements": "Conocimientos requeridos\r\n\r\n\r\n\r\nJava programming language, required   \r\nJava swing graphical programming language, required   \r\nObject oriented programming and code structuring, required   \r\nSQL language and syntax, required  \r\nCode management software, GIT/ SVN required  \r\nEclipse IDE\r\nPrincipales responsabilidades del puesto\r\n\r\n\r\n\r\nGathering requirements, converting requirements into solutions\r\nSoftware Application Design\r\nDevelop code efficiently and performant\r\nSoftware testing  \r\nDocumentation\r\nStandardization of processes, procedures and solutions\r\nHardware technology integration (Smart torque, CNC, bar and QR code, sensor and device integration)\r\nTeamwork and active communication\r\nOrganizing projects and meetings\r\nTask management",
+            "t200_benefits": "Prestaciones de ley (IMSS, vacaciones, aguinaldo)\r\nFlex time (home office, viernes corto)\r\nEstabilidad laboral",
+            "t200_check_time": "09:00:00",
+            "t200_closing_hour": "19:00:00",
+            "t200_work_days": "5",
+            "t200_min_salary": 40000,
+            "t200_max_salary": 50000,
+            "t200_gross_salary": false,
+            "t200_home_ofice": true,
+            "t200_publish_date": "2022-04-05",
+            "t200_close_date": "2022-04-10",
+            "t300_id_company": 3,
+            "c207_id_experience": 6,
+            "c206_id_profile": 5,
+            "c204_id_vacant_status": 2,
+            "t301_id_recruiter": null,
+            "t400_id_admin": null
+        }
+    },
+    {
+        "model":"vacantes.Vacant",
+        "pk":10,
+        "fields":{
+            "t200_job": "GRUPO BIMBO BUSCA ENCARGADO DE SUCURSAL",
+            "t200_description": "GRUPO BIMBO PASTELERIA EL GLOBO SOLICITA\r\nENCARGADO MUJERES Y HOMBRES SUCURSAL",
+            "t200_requirements": "REQUISITOS:\r\n\r\n· Bachillerato concluido.\r\n\r\n· Experiencia de al menos 1 año como Encargado, Jefe de Turno o de Piso en alimentos.\r\n\r\n· Disponibilidad para laborar de lunes a domingo (un día de descanso entre semana)\r\n\r\n· Disponibilidad para rolar turno (5:30 – 2:00 Y 2:30 – 10:30)\r\n\r\n· Vivir en la zona o zona aledaña.",
+            "t200_benefits": "OFRECEMOS:\r\n\r\n· $6,600.00 MENSUAL BRUTOS\r\n\r\n· PAGO A LA CATORCENA.\r\n\r\n· CAPACITACIÓN PAGADA AL 100 %\r\n\r\n· PRESTACIONES DE LEY DESDE EL PRIMER DÍA\r\n\r\n· UNIFORMES SIN COSTO\r\n\r\nAL TERCER MES:\r\n\r\n· PRESTACIONES SUPERIORES A LAS DE LEY\r\n\r\n· VALES DE DESPENSA DE $1,500.00 AL MES\r\n\r\n· SEGURO DE VIDA\r\n\r\n· OPORTUNIDADES DE CRECIMIENTO.\r\n\r\n· BONO DE ´PRODUCTIVIDAD\r\n\r\n· CAJA Y FONDO DE AHORRO A CORTO O LARGO PLAZO",
+            "t200_check_time": "14:30:00",
+            "t200_closing_hour": "22:30:00",
+            "t200_work_days": "5",
+            "t200_min_salary": 6500,
+            "t200_max_salary": 6600,
+            "t200_gross_salary": false,
+            "t200_home_ofice": false,
+            "t200_publish_date": "2022-03-30",
+            "t200_close_date": "2022-04-05",
+            "t300_id_company": 6,
+            "c207_id_experience": 3,
+            "c206_id_profile": 1,
+            "c204_id_vacant_status": 2,
+            "t301_id_recruiter": null,
+            "t400_id_admin": null
+        }
+    },
+    {
+        "model":"vacantes.Announcement",
+        "pk":1,
+        "fields":{
+            "t202_announcement": "/media/aviso7.jpg",
+            "t202_description": "Ven y unete a nuestro equipo de trabajo.",
+            "t202_link": "https://mi_enlace.com",
+            "t202_publish_date": "2022-03-27",
+            "t202_close_date": "2022-04-01",
+            "t300_id_company": 2,
+            "t301_id_recruiter": null,
+            "t400_id_admin": null
+        }
+    },
+    {
+        "model":"vacantes.Announcement",
+        "pk":2,
+        "fields":{
+            "t202_announcement": "/media/aviso6.jpg",
+            "t202_description": "Te esperamos en nuestra platica que sera impartida por expertos en el tema.",
+            "t202_link": "https://mi_enlace.com",
+            "t202_publish_date": "2022-04-06",
+            "t202_close_date": "2022-04-13",
+            "t300_id_company": 1,
+            "t301_id_recruiter": null,
+            "t400_id_admin": null
+        }
+    },
+    {
+        "model":"vacantes.Announcement",
+        "pk":4,
+        "fields":{
+            "t202_announcement": "/media/aviso4_wVvgAnW.jpg",
+            "t202_description": "Curso de Spring",
+            "t202_link": "https://mi_enlace.com",
+            "t202_publish_date": "2022-04-04",
+            "t202_close_date": "2022-04-07",
+            "t300_id_company": 5,
+            "t301_id_recruiter": null,
+            "t400_id_admin": null
+        }
+    },
+    {
+        "model":"vacantes.Announcement",
+        "pk":5,
+        "fields":{
+            "t202_announcement": "/media/aviso3_Mcb2WIe.jpg",
+            "t202_description": "Consultor jr Oracle",
+            "t202_link": "https://mi_enlace.com",
+            "t202_publish_date": "2022-03-28",
+            "t202_close_date": "2022-04-01",
+            "t300_id_company": 6,
+            "t301_id_recruiter": null,
+            "t400_id_admin": null
+        }
+    },
+    {
+        "model":"vacantes.Announcement",
+        "pk":6,
+        "fields":{
+            "t202_announcement": "/media/aviso2_69dTsry.jpg",
+            "t202_description": "Desarrollador Backend Java",
+            "t202_link": "https://mi_enlace.com",
+            "t202_publish_date": "2022-03-21",
+            "t202_close_date": "2022-03-31",
+            "t300_id_company": 6,
+            "t301_id_recruiter": null,
+            "t400_id_admin": null
+        }
+    },
+    {
+        "model":"vacantes.Announcement",
+        "pk":7,
+        "fields":{
+            "t202_announcement": "/media/aviso1_P8uOdXe.jpg",
+            "t202_description": "Deloitte",
+            "t202_link": "https://mi_enlace.com",
+            "t202_publish_date": "2022-04-07",
+            "t202_close_date": "2022-04-14",
+            "t300_id_company": 3,
+            "t301_id_recruiter": null,
+            "t400_id_admin": null
+        }
+    },
+    {
+        "model":"vacantes.Announcement",
+        "pk":3,
+        "fields":{
+            "t202_announcement": "/media/aviso13.jpg",
+            "t202_description": "¿Te gustaría dar un salto profesional en tu carrera?\r\nEsta es tu oportunidad de ser entrenado en unos de roles con mayor demanda en el mercado. Conviértete en SALESFORCE y al finalizar el proceso podrás acceder a una gran oportunidad profesional.\r\n\r\nLo único que necesitas es:\r\nGran interés en desarrollarte como Salesforce Developer\r\nInglés Avanzado (B2 en adelante)\r\nExperiencia de 1 año como alguno de estos perfiles:\r\nDesarrollador Frontend\r\nBackend\r\nJavascript\r\nJava\r\nC#\r\n.Net\r\nProgramación Orientada a Objetos, etc.\r\n\r\nFinalizando el entrenamiento y aprobando los filtros podrás acceder a una gran oportunidad de trabajo en una de las Big Four, con un atractivo paquete de compensaciones.\r\nInteresados mandar su CV y expectativas económicas para iniciar proceso.",
+            "t202_link": "https://mi_enlace.com",
+            "t202_publish_date": "2022-04-07",
+            "t202_close_date": "2022-04-14",
+            "t300_id_company": 6,
+            "t301_id_recruiter": null,
+            "t400_id_admin": null
+        }
+    },
+    {
+        "model":"vacantes.Announcement",
+        "pk":8,
+        "fields":{
+            "t202_announcement": "/media/aviso12_auWwLt8.jpg",
+            "t202_description": "Ven y forma parte de nuestro equipo.",
+            "t202_link": "https://mi_enlace.com",
+            "t202_publish_date": "2022-04-07",
+            "t202_close_date": "2022-04-14",
+            "t300_id_company": 1,
+            "t301_id_recruiter": null,
+            "t400_id_admin": null
+        }
+    },
+    {
+        "model":"vacantes.Announcement",
+        "pk":9,
+        "fields":{
+            "t202_announcement": "/media/aviso9.jpg",
+            "t202_description": "Ven y forma parte de nuestro equipo de trabajo.",
+            "t202_link": "https://mi_enlace.com",
+            "t202_publish_date": "2022-04-07",
+            "t202_close_date": "2022-04-19",
+            "t300_id_company": 7,
+            "t301_id_recruiter": null,
+            "t400_id_admin": null
+        }
+>>>>>>> 55b2eafd18d2974f1f3aecccabd716d1f2791c65:backend/api/data.json
     }
 ]
