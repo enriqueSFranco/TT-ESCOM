@@ -1,0 +1,125 @@
+textarea { resize: none; overflow-y: scroll; }
+
+select::-ms-expand { display: none; }
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  background-image: none;
+  flex: 1;
+  padding: 0 0.5em;
+  color: #000;
+  cursor: pointer;
+  font-size: 1em;
+  font-family: "Open Sans", sans-serif;
+}
+
+
+.btn {
+  padding: .6rem;
+  width: 300px;
+  border-radius: 8px;
+}
+
+.error {
+  font-size: .8rem;
+  font-weight: 300;
+  color: #dc3545;
+  text-align: left;
+}
+
+.inputGroup {
+  /* background-color: yellow; */
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  margin: 1rem 0;
+}
+
+.form {
+  position: relative;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  width: 50%;
+  height: 790px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.groudButton {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.select {
+  position: relative;
+  display: flex;
+  width: 400px;
+  height: 3rem;
+  list-style: 3;
+  background-color: #fff;
+  overflow: hidden;
+  outline: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  height: 100%;
+  padding: 0 1rem;
+  background-color: #ccc;
+  cursor: pointer;
+  pointer-events: none;
+  transition: .2s all ease;
+}
+
+.textArea {
+  width: 100%;
+  border-radius: 8px;
+  border-color: #d4d4d6;
+  outline: none;
+  text-indent: 8px;
+}
+
+.title {
+  color: #000;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 1rem;
+  margin: 0;
+}
+
+.to {
+  color: #000;
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin: 1rem;
+}
+
+.wrapper {
+  position: relative;
+  top: 1rem;
+  width: 100%;
+  height: 100%;
+}

@@ -44,7 +44,7 @@ const FormCompany = () => {
     form,
     errors,
     handleChange,
-    hadlerValidate,
+    handleValidate,
     handlerSubmitCompany,
   } = useForm(companyInitialForm, validateForm);
 
@@ -81,8 +81,8 @@ const FormCompany = () => {
                   name="t300_name"
                   sx={{ width: 500, maxWidth: "100%" }}
                   value={form.t300_name}
-                  onBlur={hadlerValidate}
-                  onKeyUp={hadlerValidate}
+                  onBlur={handleValidate}
+                  onKeyUp={handleValidate}
                   onChange={handleChange}
                 />
                 {errors && (
@@ -96,8 +96,8 @@ const FormCompany = () => {
                   name="t300_rfc"
                   sx={{ width: 500, maxWidth: "100%" }}
                   value={form.t300_rfc}
-                  onBlur={hadlerValidate}
-                  onKeyUp={hadlerValidate}
+                  onBlur={handleValidate}
+                  onKeyUp={handleValidate}
                   onChange={handleChange}
                 />
                 {errors && (
@@ -111,8 +111,8 @@ const FormCompany = () => {
                   name="t300_email"
                   sx={{ width: 500, maxWidth: "100%" }}
                   value={form.t300_email}
-                  onBlur={hadlerValidate}
-                  onKeyUp={hadlerValidate}
+                  onBlur={handleValidate}
+                  onKeyUp={handleValidate}
                   onChange={handleChange}
                 />
                 {errors && (

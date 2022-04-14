@@ -1,17 +1,13 @@
 .container {
-
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-
   overflow: hidden;
   color: #000;
-  min-height: 250px;
-  width: 40%;
-  border-radius: 0 0 4px 4px;
+  height: 30em;
+  width: auto;
+  border-radius: 4px;
   position: relative;
   justify-content: center;
   align-items: center;
-  margin-top: 40px;
-
 }
 
 
@@ -22,10 +18,7 @@
   text-align: center;
   margin-left: 30px;
   min-width: 600px;
-
-
 }
-
 
 .stepper {
   width: 150px;
@@ -39,7 +32,6 @@
   align-items: center;
   text-align: center;
   min-height: 180px;
-
 }
 
 .buttons {
@@ -94,10 +86,8 @@
   justify-content: center;
   align-items: center;
   text-align: left;
-
   margin-left: 25px;
 }
-
 
 .inputGroupCheckbox {
   width: 490px;
@@ -107,7 +97,6 @@
   margin: 1rem;
 }
 
-
 .select {
   justify-content: center;
   align-items: center;
@@ -116,6 +105,4 @@
   width: 490px;
 }
 
-.text {
-  text-align: left;
-}
+.text { text-align: left; }

@@ -39,7 +39,7 @@ const CreateAccount = () => {
     form,
     errors,
     handleChange,
-    hadlerValidate,
+    handleValidate,
     handlerSubmitStudent,
   } = useForm(studentInitialForm, validateForm);
 
@@ -81,8 +81,8 @@ const CreateAccount = () => {
                 name="t100_name"
                 sx={{ width: 500, maxWidth: "100%" }}
                 value={form.t100_name}
-                onBlur={hadlerValidate}
-                onKeyUp={hadlerValidate}
+                onBlur={handleValidate}
+                onKeyUp={handleValidate}
                 onChange={handleChange}
               />
               {errors.t100_name && (
@@ -110,8 +110,8 @@ const CreateAccount = () => {
                 name="t100_email"
                 sx={{ width: 500, maxWidth: "100%" }}
                 value={form.t100_email}
-                onBlur={hadlerValidate}
-                onKeyUp={hadlerValidate}
+                onBlur={handleValidate}
+                onKeyUp={handleValidate}
                 onChange={handleChange}
               />
               {errors.t100_email && (
@@ -126,8 +126,8 @@ const CreateAccount = () => {
                 type="password"
                 sx={{ width: 500, maxWidth: "100%" }}
                 value={form.password}
-                onBlur={hadlerValidate}
-                onKeyUp={hadlerValidate}
+                onBlur={handleValidate}
+                onKeyUp={handleValidate}
                 onChange={handleChange}
               />
               {errors && (
