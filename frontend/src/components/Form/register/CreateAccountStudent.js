@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { useForm } from "hooks/useForm";
 import { studentInitialForm } from "../schemes";
+import Alert from "@mui/material/Alert";
 import TextField from "@mui/material/TextField";
 import styles from "../Styles.module.css";
 
@@ -11,7 +12,7 @@ const validateForm = (form) => {
     t100_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/, // el campo nombre debe ser de 4 a 16 digitos
     t100_email: /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/,
     password:
-      /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/,
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/,
   };
 
   if (!form.t100_name.trim())
@@ -30,126 +31,105 @@ const validateForm = (form) => {
 
   if (!form.password.trim())
     errors.password = "El campo 'Contraseña' es requerido.";
+  else if (!regex.password.test(form.password.trim()))
+    errors.password = "La Contraseña es incorrecta.";
 
   return errors;
 };
 
 const CreateAccount = () => {
-  const {
-    form,
-    errors,
-    handleChange,
-    handleValidate,
-    handlerSubmitStudent,
-  } = useForm(studentInitialForm, validateForm);
+  const { form, errors, handleChange, handleValidate, handleSubmitStudent } =
+    useForm(studentInitialForm, validateForm);
 
-  if (form === null) return null;
-
-  return (
-    <>
-      <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
-      <div className="row align-items-stretch">
-        <div
-          className={`${styles.bg} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
-        >
-          <div className={`${styles.login}`}>
-            <blockquote>
-              Un paso más cerca de tu nuevo <em>empleo</em>.
-            </blockquote>
-            <span>
-              Ya tines cuenta?{" "}
-              <Link className={`${styles.linkToLogin}`} to="/alumno">
-                Inicia sesion
-              </Link>
-            </span>
-            <span>
-              <a href="/#">Recuperar contraseña</a>
-            </span>
+    return (
+      <>
+        <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
+          <div className="row align-items-stretch">
+            <div
+              className={`${styles.bg} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
+            >
+              <div className={`${styles.login}`}>
+                <blockquote>
+                  Un paso más cerca de tu nuevo <em>empleo</em>.
+                </blockquote>
+                <span>
+                  Ya tines cuenta?{" "}
+                  <Link className={`${styles.linkToLogin}`} to="/alumno">
+                    Inicia sesion
+                  </Link>
+                </span>
+                <span>
+                  <a href="/#">Recuperar contraseña</a>
+                </span>
+              </div>
+            </div>
+            <div className={`col bg-white p-5 rounded-end ${styles.form}`}>
+              <div className={styles.welcome}>
+                <h2>Bienvenido</h2>
+                <span>Bienvenido! Porfavor introduce tus datos.</span>
+              </div>
+              <form onSubmit={handleSubmitStudent} className={styles.form}>
+                <div className={styles.inputGroup}>
+                  <TextField
+                    label="Nombre"
+                    id="t100_name"
+                    name="t100_name"
+                    sx={{ width: 500, maxWidth: "100%" }}
+                    value={form.t100_name}
+                    onBlur={handleValidate}
+                    onKeyUp={handleValidate}
+                    onChange={handleChange}
+                  />
+                  {errors.t100_name && (
+                    <Alert severity="error">{errors.t100_name}</Alert>
+                  )}
+                </div>
+                <div className={styles.inputGroup}>
+                  <TextField
+                    label="Correo electronico"
+                    id="t100_email"
+                    name="t100_email"
+                    sx={{ width: 500, maxWidth: "100%" }}
+                    value={form.t100_email}
+                    onBlur={handleValidate}
+                    onKeyUp={handleValidate}
+                    onChange={handleChange}
+                  />
+                  {errors.t100_email && (
+                    <Alert severity="error">{errors.t100_email}</Alert>
+                  )}
+                </div>
+                <div className={styles.inputGroup}>
+                  <TextField
+                    label="Contraseña"
+                    id="password"
+                    name="password"
+                    type="password"
+                    sx={{ width: 500, maxWidth: "100%" }}
+                    value={form.password}
+                    onBlur={handleValidate}
+                    onKeyUp={handleValidate}
+                    onChange={handleChange}
+                  />
+                  {errors.password && (
+                    <Alert severity="error">{errors.password}</Alert>
+                  )}
+                </div>
+                <div className={styles.inputGroup}>
+                  <button
+                    type="submit"
+                    className={`${styles.btnCreateAccount} btn btn-primary`}
+                  >
+                    Crear Cuenta
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-        <div className={`col bg-white p-5 rounded-end ${styles.form}`}>
-          <div className={styles.welcome}>
-            <h2>Bienvenido</h2>
-            <span>Bienvenido! Porfavor introduce tus datos.</span>
-          </div>
-          <form onSubmit={handlerSubmitStudent} className={styles.form}>
-            {/* input para el username */}
-            <div className={styles.inputGroup}>
-              <TextField
-                label="Nombre"
-                id="t100_name"
-                name="t100_name"
-                sx={{ width: 500, maxWidth: "100%" }}
-                value={form.t100_name}
-                onBlur={handleValidate}
-                onKeyUp={handleValidate}
-                onChange={handleChange}
-              />
-              {errors.t100_name && (
-                <span className={styles.error}>{errors.t100_name}</span>
-              )}
-            </div>
-            {/* <div className={styles.inputGroup}>
-              <TextField
-                label="Boleta"
-                id="t100_boleta"
-                name="t100_boleta"
-                sx={{ width: 500, maxWidth: "100%" }}
-                value={form.t100_boleta}
-                onChange={handleChange}
-              />
-              {errors.t100_boleta && (
-                <span className={styles.error}>{errors.t100_boleta}</span>
-              )}
-            </div> */}
-            {/* input para el password */}
-            <div className={styles.inputGroup}>
-              <TextField
-                label="Correo electronico"
-                id="t100_email"
-                name="t100_email"
-                sx={{ width: 500, maxWidth: "100%" }}
-                value={form.t100_email}
-                onBlur={handleValidate}
-                onKeyUp={handleValidate}
-                onChange={handleChange}
-              />
-              {errors.t100_email && (
-                <span className={styles.error}>{errors.t100_email}</span>
-              )}
-            </div>
-            <div className={styles.inputGroup}>
-              <TextField
-                label="Contraseña"
-                id="password"
-                name="password"
-                type="password"
-                sx={{ width: 500, maxWidth: "100%" }}
-                value={form.password}
-                onBlur={handleValidate}
-                onKeyUp={handleValidate}
-                onChange={handleChange}
-              />
-              {errors && (
-                <span className={styles.error}>{errors.password}</span>
-              )}
-            </div>
-            <div className={styles.inputGroup}>
-              <button
-                type="submit"
-                className={`${styles.btnCreateAccount} btn btn-primary`}
-              >
-                Crear Cuenta
-              </button>
-            </div>
-          </form>
-          {/* { response && <Message msg="Cuenta creada exitosamente" bgColor="#198754" />} */}
-        </div>
-      </div>
-    </div>
-    <Toaster position="top-right" />
-    </>
-  );
+        <Toaster position="top-right" />
+      </>
+    );
 };
 
 export default CreateAccount;

@@ -38,16 +38,19 @@ export const useForm = (initialForm, validateForm) => {
     if (Object.keys(errors).length === 0) {
       // si la longitud de las claves del objeto error es de cero, quiere decir que no hay errores.
       setLoading(true);
+    
       createAccountStudent(form)
-        .then((response) => {
-          setLoading(false);
-          setResponse(true);
-          setTimeout(() => {
-            navigate("/alumno");
-          }, 3000);
-          // clearTimeout(timer);
+        .then(response => {
+          // console.log(response.data.errors.message)
+          if (response.data.status === 200 || response.data.status === 201) {
+            setLoading(false);
+            setResponse(true);
+            setTimeout(() => {
+              navigate("/alumno");
+            }, 3000);
+          }
         })
-        .catch(() => setResponse(true))
+        .catch(() => setResponse(false))
         .finally(() => setLoading(false));
     } else {
       return;
@@ -60,7 +63,7 @@ export const useForm = (initialForm, validateForm) => {
 
     if (Object.keys(errors).length === 0) {
       // setLoading(true);
-      createAccountCompany(form)
+      createAccountCompany(form);
     }
   };
 
@@ -69,7 +72,7 @@ export const useForm = (initialForm, validateForm) => {
     setErrors(validateForm(form));
 
     if (Object.keys(errors).length === 0) {
-      setLoading(true)
+      setLoading(true);
       postJob(form)
         .then((response) => {
           console.log(response);
@@ -89,6 +92,6 @@ export const useForm = (initialForm, validateForm) => {
     handleSubmitStudent,
     handleSubmitCompany,
     handleValidate,
-    handlePostJob
+    handlePostJob,
   };
 };

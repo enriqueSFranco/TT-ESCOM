@@ -17,7 +17,7 @@ const Search = ({ handleSearch, data }) => {
 
   const handleFilterJob = (e) => {
     const query = e.target.value;
-    setQueryJob(query); // controlamos el input
+    setQueryJob(query);
 
     const newFilter = data.filter(({ t200_job }) =>
       t200_job.toLowerCase().includes(query.toLowerCase())
@@ -109,9 +109,6 @@ const Search = ({ handleSearch, data }) => {
             {isLoading && ""}
           </button>
         </div>
-        {/* <Link to="empleos" className={`${styles.btnSearch} btn btn-primary`}>
-          Buscar Empleo
-        </Link> */}
       </form>
     </div>
   );

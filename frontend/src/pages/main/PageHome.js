@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getAllJobs } from "services/jobs/index";
+import { getAllStates } from "services/catalogs/index";
 import Search from "components/Search/Search";
 import FilterProfile from "components/Filter/FilterProfile";
 import FilterCompany from "components/Filter/FilterCompany";
@@ -25,7 +26,6 @@ const Home = () => {
    * @param {String} value
    **/
   const filteredData = (value) => {
-    // const lowerCaseValue = value.toLowerCase().trim();
     setSearch(value);
     if (value === "") {
       setData(dataList);
@@ -66,6 +66,7 @@ const Home = () => {
    * @return devuelve los empleos que sean con modalidada home office
    **/
   const handleChecked = () => {
+    console.log(isChecked)
     setIsChecked(!isChecked);
     if (!isChecked) {
       // mostramos las vacantes que son home office
@@ -101,8 +102,6 @@ const Home = () => {
   };
 
   if (!dataList && !data) return null;
-
-  console.log(dataList);
 
   return (
     <main className={homeStyles.home}>

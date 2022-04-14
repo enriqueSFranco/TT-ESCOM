@@ -58,6 +58,8 @@ img {
 }
 
 .cv {
+  position: relative;
+  bottom: 1rem;
   height: 100px;
   display: flex;
   align-items: center;
@@ -107,29 +109,11 @@ img {
 }
 
 .socialNetworks {
+  position: relative;
+  bottom: 1rem;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 200px;
-}
-
-.whatsapp,
-.email,
-.github,
-.linkedin {
-  transition: color .5s ease-out;
-}
-
-.whatsapp:hover {
-  color: #79e878;
-}
-
-.email:hover {
-  color: blue;
-}
-
-.linkedin:hover {
-  color: #0966c2;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .separator {
@@ -140,7 +124,6 @@ img {
 .socialNetworks a {
   color: #000;
   padding-bottom: .5rem;
-  /* animation: fadeIn 2s ease-in; */
 }
 
 .socialNetworks span {
@@ -150,10 +133,11 @@ img {
 }
 
 .userDetails {
-  height: 400px;
+  height: 50%;
   margin: 1rem 1rem 0 1rem;
   display: grid;
-  grid-auto-rows: minmax(100px, auto);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 1.5rem;
 }
 
 .userDetails h4 {
@@ -163,12 +147,26 @@ img {
 
 .username { color: #fff;}
 
+.wrapperSkills {
+  width: 100%;
+  position: relative;
+  bottom: 1rem;
+  /* outline: 1px solid red; */
+}
+
+.skillList {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  gap: .5rem;
+}
+
 .card {
   overflow: hidden;
   color: #000;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  height: 600px;
-  width: 90%;
-  border-radius: 4px;
+  height: 700px;
+  /* width: 500px; */
+  border-radius: 6px;
   position: relative;
 }

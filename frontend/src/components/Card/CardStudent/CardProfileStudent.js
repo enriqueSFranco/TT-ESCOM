@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { getStudent, getSocialNetwork } from "services/students/index";
+import { getSkill } from "services/catalogs";
 import { uuid } from "utils/uuid";
+import Chip from "@mui/material/Chip";
 import FormUpdateDataStudent from "../../Form/updateInfoStudent/FormUpdateDataStudent";
 import Avatar from "../../Avatar/Avatar";
 import * as MdIcon from "react-icons/md";
@@ -9,39 +11,43 @@ import * as IoIcon from "react-icons/io";
 import styles from "./CardProfileStudent.module.css";
 
 const CardProfileStudent = () => {
-  const [state, setState] = useState("profile");
+  // TODO: Implementar useReducer para el manejo del estado
+  const [isProfile, setIsProfile] = useState("profile");
   const [student, setStudent] = useState([]);
+  const [skills, setSkills] = useState([]);
   const [socialNetworks, setSocialNetworks] = useState([]);
 
   const handleEdit = (e) => {
-    let isEdit = state === "edit" ? "profile" : "edit";
-    setState(isEdit);
+    let isEdit = isProfile === "edit" ? "profile" : "edit";
+    setIsProfile(isEdit);
   };
 
-  
   const id = "2017";
   useEffect(() => {
     const fetchData = async () => {
-      const [studentRes, linksRes] = await Promise.all([
+      const [studentRes, linksRes, skillsResponse] = await Promise.all([
         getStudent(id),
         getSocialNetwork(id),
-        // getSkill(id)
+        getSkill(id),
       ]);
       setStudent(studentRes);
       setSocialNetworks(linksRes);
+      setSkills(skillsResponse);
     };
     fetchData();
 
-    return () => { // nos desuscribimos de la peticion a la API
+    return () => {
+      // nos desuscribimos de la peticion a la API
       setStudent([]);
-      setSocialNetworks([])
-    }
+      setSocialNetworks([]);
+      setSkills([]);
+    };
   }, [id]);
 
-  console.log(student)
+  // console.log(skills);
   return (
     <>
-      {state === "edit" ? (
+      {isProfile === "edit" ? (
         <motion.article
           className="container"
           initial={{ scaleY: 0 }}
@@ -55,7 +61,7 @@ const CardProfileStudent = () => {
           />
         </motion.article>
       ) : (
-        <article className={`${styles.mainContainer} container`}>
+        <article className={`${styles.mainContainer}`}>
           <div className={`${styles.card}`}>
             <header className={styles.background}>
               <div className={styles.avatar}>
@@ -89,27 +95,37 @@ const CardProfileStudent = () => {
                   </p>
                 </div>
               </div>
+              <h4 className={styles.label}>redes sociales</h4>
               <div className={`${styles.socialNetworks} ${styles.separator}`}>
-                <h4 className={styles.label}>redes solicales</h4>
-                {
-                  socialNetworks.length > 0 ? (
-                    socialNetworks.map(({ t113_link, c115_id_plataform }) => {
-                      return (
-                        <a
-                          href={`${t113_link}`}
-                          target="_blank"
-                          rel="noreferrer"
-                          key={uuid()}
-                          className={styles.link}
-                        >
-                          {c115_id_plataform?.c115_description}
-                        </a>
-                      );
-                    })
-                  ) : (
-                    <h3>Sin redes sociales</h3>
-                  )
-                }
+                {socialNetworks.length > 0 ? (
+                  socialNetworks.map(({ t113_link, c115_id_plataform }) => {
+                    return (
+                      <a
+                        href={`${t113_link}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        key={uuid()}
+                        className={styles.link}
+                      >
+                        {c115_id_plataform?.c115_description}
+                      </a>
+                    );
+                  })
+                ) : (
+                  <h3>Sin redes sociales</h3>
+                )}
+              </div>
+              <div className={`${styles.wrapperSkills} ${styles.separator}`}>
+                <h4 className={styles.label}>Skills</h4>
+                <ul className={styles.skillList}>
+                  {skills.map(({ c116_id_skill }) => (
+                    <Chip
+                      key={uuid()}
+                      label={c116_id_skill?.c116_description}
+                      variant="outlined"
+                    />
+                  ))}
+                </ul>
               </div>
               <div className={`${styles.cv} py-4`}>
                 <IoIcon.IoIosCheckmarkCircle />

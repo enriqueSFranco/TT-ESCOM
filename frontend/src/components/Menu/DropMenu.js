@@ -1,7 +1,7 @@
-import { useRef } from "react";
+import { useRef } from 'react';
 import { useDetectClick } from "../../hooks/useDetectClick";
 import { Link } from 'react-router-dom';
-import * as IoIcon from 'react-icons/io';
+import * as IoIcon from 'react-icons/io'
 import styles from './Dropdown.module.css';
 
 const DropMenu = () => {

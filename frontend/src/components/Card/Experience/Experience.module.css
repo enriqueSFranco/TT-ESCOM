@@ -1,0 +1,62 @@
+.actions {
+  color: #000;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.editAction, .deleteAction { color: #363636;  transition: color .5s ease;}
+
+.editAction:hover {
+  color: #0000ff;
+}
+.deleteAction:hover {
+  color: #ff0000;
+}
+
+.actions button {
+  margin-bottom: .5rem;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  width: 30px;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.detailsProject a { color: #5c5c5c; font-size: .78rem; }
+
+.detailsProject {
+  /* background-color: red; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 2px solid #eee;
+}
+
+.descriptionProject {
+  width: 400px;
+  height: 70px;
+  overflow: hidden;
+  margin: 0 1rem;
+  /* outline: 1px solid red; */
+}
+
+.logoProject {
+  width: 80px;
+  height: 80px;
+  margin-left: 1rem;
+  border-radius: 50%;
+}
+
+.wrapper {
+  position: absolute;
+  width: 100%;
+  height: 90%;
+  overflow-y: scroll;
+  border-radius: 6px;
+}
