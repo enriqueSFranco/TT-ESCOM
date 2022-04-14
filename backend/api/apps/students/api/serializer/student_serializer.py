@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.contrib import auth
 from django.contrib.auth import get_user_model
 from apps.students.models import Student
 
@@ -91,9 +92,19 @@ class StudentTokenSerializer(serializers.ModelSerializer):
 
   def validate(self,attrs):
     print("Validando datos...")
-    t100_email=attrs.get('t100_email')
-    #password = Student.set_password(attrs.get('password'))
-    print(t100_email)
-    #print(password)
+    correo=attrs.get('t100_email')    
+    password = attrs.get('password')    
+    print("Buscando usuario ....")
+    try:
+      user = Student.objects.filter(t100_email=correo).values('t100_email','password')
+      return True
+    except:
+      print("NO encontre ese usuario")
+      user = ""
+      return False
+    print("Lo que encontre")
+    print(correo)
+    print(user)
+    print(password)
     print(attrs)
     return attrs

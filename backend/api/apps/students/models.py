@@ -1,4 +1,5 @@
 from django.contrib.auth.models import  AbstractBaseUser,PermissionsMixin
+from apps.users.models import Users
 
 #from turtle import ondrag
 from django.db import models
@@ -94,6 +95,7 @@ class Lenguage(models.Model):
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
 #T100 Alumno
 class Student(AbstractBaseUser):	
+	#user = models.OneToOneField(Users,on_delete=models.CASCADE)
 	t100_id_student = models.AutoField(primary_key=True)
 	t100_boleta = models.CharField(max_length=14, null=False, blank=False)
 	t100_name = models.CharField(max_length=50, null=True, blank=True)
@@ -118,7 +120,7 @@ class Student(AbstractBaseUser):
 	is_active = models.BooleanField(default=True)
 
 	USERNAME_FIELD = 't100_email'
-	REQUIRED_FIELDS = ['t100_email','password']
+	REQUIRED_FIELDS = ['password']
 	class Meta:		
 		verbose_name = 'Student'
 		verbose_name_plural = 'Students'
