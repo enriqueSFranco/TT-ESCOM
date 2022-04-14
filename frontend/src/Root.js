@@ -1,27 +1,31 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { ROLE } from "./routes/roles";
-import PageHome from "./pages/main/PageHome";
-import PageCompany from "./pages/main/PageCompany";
-import PageLoginStudent from "./pages/login/PageLoginStudent";
-import PageReleases from "./pages/main/PageReleases";
-import PageCreateAccountStudent from "./pages/login/PageCreateAccountStudent";
-import PageLoginCompany from "./pages/login/PageLoginCompany";
-import PageRegisterCompany from "./pages/login/PageRegisterCompany";
-import PageProfileStudent from "./pages/student/PageProfileStudent";
-import PrivateRoute from "./routes/PrivateRoute";
-import AboutMe from "./components/Card/AboutMe/AboutMe";
-import CardJobDetails from "./components/Card/CardJobDetails/CardJobDetails";
-import PageAddJob from "./pages/business/PageAddJob";
-import ModalRelease from "./components/Modal/ModalRelease";
-import PageLoginStudentUpdate from "./pages/login/PageLoginStudentUpdate";
+import { ROLE } from "routes/roles";
+import PageHome from "pages/main/PageHome";
+import PageCompany from "pages/main/PageCompany";
+import PageLoginStudent from "pages/login/PageLoginStudent";
+import PageReleases from "pages/main/PageReleases";
+import PageCreateAccountStudent from "pages/login/PageCreateAccountStudent";
+import PageLoginCompany from "pages/login/PageLoginCompany";
+import PageRegisterCompany from "pages/login/PageRegisterCompany";
+import PageProfileStudent from "pages/student/PageProfileStudent";
+import PrivateRoute from "routes/PrivateRoute";
+import Experience from "components/Card/Experience/Experience";
+import Certifications from "components/Card/Certifications/Certifications";
+import AcademicRecord from "components/Card/AcademicRecord/AcademicRecord";
+import ModalRelease from "components/Modal/ModalRelease";
+import CardJobDetails from "components/Card/CardJobDetails/CardJobDetails";
+import PageAddJob from "pages/business/PageAddJob";
+import PageLoginStudentUpdate from "pages/login/PageLoginStudentUpdate";
 
 const Root = () => {
   return (
     <Routes>
       {/* Indice de rutas publicas */}
       <Route path="/" element={<PageHome />}>
-        <Route path=":t200_id_vacant" element={<CardJobDetails />} />
+        <Route path="vacante">
+          <Route path=":t200_id_vacant" element={<CardJobDetails />} />
+        </Route>
       </Route>
 
       {/* FEATURE:  */}
@@ -44,16 +48,16 @@ const Root = () => {
 
       {/* TODO Hacer ruta privada */}
       <Route path="/perfil" element={<PageProfileStudent />}>
-        <Route path="editar" element={<h4>Editar perfil</h4>} />
-        <Route path="sobreMi" element={<AboutMe />} />
-        <Route path="experiencia" element={<h4>experiencia</h4>} />
-        <Route path="certificaciones" element={<h4>certificaciones</h4>} />
+        <Route path="historial-academico" element={<AcademicRecord />} />
+        <Route path="experiencia" element={<Experience />} />
+        <Route path="certificaciones" element={<Certifications />} />
       </Route>
+      
+      <Route path="/actualiza-alumno" element={<PageLoginStudentUpdate />}/>
 
-      {/* Indice de rutas privadas para un alumno */}
-      <Route element={<PrivateRoute roles={ROLE.STUDENT} />}>
-        <Route path="/actualiza-alumno" element={<PageLoginStudentUpdate />}/>
-      </Route>
+      {/* Indice de rutas privadas para un alumno si funciona */}
+      {/* <Route element={<PrivateRoute roles={ROLE.STUDENT} />}>
+      </Route> */}
 
       {/* Indice de rutas privadas para un reclutador */}
       <Route element={<PrivateRoute roles={ROLE.RECRUITER} />}>
