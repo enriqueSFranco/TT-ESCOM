@@ -34,7 +34,7 @@ class CustomAccountManager(BaseUserManager):
         return user
 
 
-class Users(AbstractUser, PermissionsMixin):
+class User(AbstractUser, PermissionsMixin):
     is_student = models.BooleanField(default=False)
     is_recruiter = models.BooleanField(default=False)
     is_moderator = models.BooleanField(default=False)
@@ -42,7 +42,7 @@ class Users(AbstractUser, PermissionsMixin):
 
     #objects = CustomAccountManager()
     class Meta:
-        db_table = 'auth_user'
+        db_table = 'usuarios'
 
     def __str__(self):
         return "Funciona.... creo"

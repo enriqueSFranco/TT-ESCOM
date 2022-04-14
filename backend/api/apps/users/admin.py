@@ -1,5 +1,5 @@
 from django.contrib import admin
-from apps.users.models import Users
+from apps.users.models import User
 from django.contrib.auth.admin import UserAdmin
 from django.forms import TextInput, Textarea, CharField
 from django import forms

@@ -20,3 +20,7 @@ makemigrations: restore_inits
 
 migrate: makemigrations
 	python3.10 manage.py migrate	
+
+superuser:
+	python3.10 manage.py createsuperuser
+	
