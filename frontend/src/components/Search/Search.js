@@ -39,7 +39,7 @@ const Search = ({ handleSearch, data }) => {
     setTimeout(() => {
       setIsLoading(false);
       handleSearch(queryJob);
-    }, 3000);
+    }, 2000);
   };
 
   return (
@@ -59,6 +59,7 @@ const Search = ({ handleSearch, data }) => {
               id="job"
               name="job"
               value={queryJob}
+              autoFocus={true}
               onBlur={() => {
                 setTimeout(() => {
                   setFilterData([]);
