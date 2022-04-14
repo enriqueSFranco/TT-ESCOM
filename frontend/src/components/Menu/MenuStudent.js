@@ -5,7 +5,7 @@ import styles from "./MenuStudent.module.css";
 
 // secciones del menu
 let tabs = [
-  { label: "sobreMi" },
+  { label: "historial-academico"},
   { label: "experiencia" },
   { label: "certificaciones" },
 ];
