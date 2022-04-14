@@ -26752,8 +26752,6 @@
             "t301_id_recruiter": null,
             "t400_id_admin": null
         }
-<<<<<<< HEAD:backend/api/catalogos.json
-=======
     },
 
     {
@@ -27278,6 +27276,5 @@
             "t301_id_recruiter": null,
             "t400_id_admin": null
         }
->>>>>>> 55b2eafd18d2974f1f3aecccabd716d1f2791c65:backend/api/data.json
     }
 ]
