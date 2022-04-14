@@ -8,10 +8,14 @@ h3 {
 .body { height: 700px; }
 
 .positionSticky {
+  /* margin-top: 140px; */
+  font-family: sans-serif;
   position: sticky;
-  top: 5rem;
-  right: 13.1rem;
-  height: 700px;
+  top: 100px;
+}
+
+.expandCard {
+  background-color: red;
 }
 
 .actions {
