@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createAccountCompany } from "services/businnes/index";
 import { createAccountStudent } from "services/students/index";
+import { postJob } from "services/jobs";
 
 export const useForm = (initialForm, validateForm) => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ export const useForm = (initialForm, validateForm) => {
     });
   };
 
-  const hadlerValidate = (e) => {
+  const handleValidate = (e) => {
     handleChange(e);
     setErrors(validateForm(form));
   };
@@ -30,7 +31,7 @@ export const useForm = (initialForm, validateForm) => {
     });
   };
 
-  const handlerSubmitStudent = (e) => {
+  const handleSubmitStudent = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
 
@@ -53,13 +54,28 @@ export const useForm = (initialForm, validateForm) => {
     }
   };
 
-  const handlerSubmitCompany = (e) => {
+  const handleSubmitCompany = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
 
     if (Object.keys(errors).length === 0) {
       // setLoading(true);
       createAccountCompany(form)
+    }
+  };
+
+  const handlePostJob = (e) => {
+    e.preventDefault();
+    setErrors(validateForm(form));
+
+    if (Object.keys(errors).length === 0) {
+      setLoading(true)
+      postJob(form)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false));
     }
   };
 
@@ -70,8 +86,9 @@ export const useForm = (initialForm, validateForm) => {
     response,
     handleChange,
     handleChecked,
-    handlerSubmitStudent,
-    handlerSubmitCompany,
-    hadlerValidate,
+    handleSubmitStudent,
+    handleSubmitCompany,
+    handleValidate,
+    handlePostJob
   };
 };
