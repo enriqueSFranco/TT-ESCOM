@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSticky } from "hooks/useSticky";
-import { numberFormat } from "utils/numberFormat";
 import { getJob } from "services/jobs/index";
 import Skeleton from "../../Skeleton/Skeleton";
 import * as FaIcon from "react-icons/fa";
@@ -55,7 +54,7 @@ const JobCardDetails = () => {
                 </li>
                 <li className={styles.flex}>
                   <MdIcon.MdOutlineAttachMoney />
-                  <span>{numberFormat(job[0]?.t200_max_salary) ?? 'No especificado'}</span>
+                  <span>{job[0]?.t200_max_salary ?? 'No especificado'}</span>
                 </li>
                 <li className={styles.flex}>
                   <FaIcon.FaLocationArrow />
