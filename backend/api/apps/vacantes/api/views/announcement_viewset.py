@@ -10,7 +10,7 @@ from apps.vacantes.api.serializers.announcement_serializer import AnnouncementSe
 
 class AnnouncementViewSet(viewsets.GenericViewSet):
 	model = Announcement
-	permission_classes = [IsAuthenticated]
+	#permission_classes = [IsAuthenticated]
 	serializer_class = AnnouncementSerializer
 	list_serializer_class = AnnouncementListSerializer
 	queryset = None

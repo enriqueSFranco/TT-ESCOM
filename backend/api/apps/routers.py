@@ -14,9 +14,11 @@ from apps.administration.api.views.admin_viewset import AdminViewSet
 from apps.companies.api.views.company_viewset import CompanyViewSet
 from apps.companies.api.views.ubication_viewset import CompanyUbicationViewSet
 from apps.companies.api.views.recruiter_viewset import RecruiterViewSet
+from apps.students.api.views.projects_viewset import ProjectsViewSet
+from apps.users.views import UserViewSet
 
 router = DefaultRouter()
-
+router.register(r'users',UserViewSet,basename='Registred users')
 router.register(r'Students', StudentViewSet, basename='Students')
 router.register(r'Student/<int:pk>', StudentViewSet, basename='Student details')
 router.register(r'Skills', SkillViewSet, basename='Students skills')
@@ -30,6 +32,8 @@ router.register(r'EmploymentHistorial',EmploymentViewSet,basename='Students empl
 router.register(r'EmploymentHistorial/<int:pk>',EmploymentViewSet,basename='Student employment historial')
 router.register(r'StudentsLenguages',LenguagesViewSet,basename='Students lenguages')
 router.register(r'StudentLenguages/<int:pk>',LenguagesViewSet,basename='Student lenguages details')
+router.register(r'StudentsProjects',ProjectsViewSet,basename='Students personal projects')
+router.register(r'StudentsProject/<int:pk>',ProjectsViewSet,basename='Student personal projects')
 router.register(r'Vacants', VacantViewSet, basename='Vacants')
 router.register(r'Vacant/<int:pk>', VacantViewSet, basename='Vacant detail')
 router.register(r'Announcements',AnnouncementViewSet,basename='Announcements')

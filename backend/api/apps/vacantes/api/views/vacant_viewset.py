@@ -10,7 +10,11 @@ from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,Vac
 
 class VacantViewSet(viewsets.GenericViewSet):
 	model = Vacant
+<<<<<<< HEAD
 	# permission_classes = [IsAuthenticated]
+=======
+	#permission_classes = [IsAuthenticated]
+>>>>>>> 594f648ffc7dc54b18a0c7963102b71626f3d954
 	serializer_class = VacantSerializer
 	list_serializer_class = VacantListSerializer
 	queryset = None

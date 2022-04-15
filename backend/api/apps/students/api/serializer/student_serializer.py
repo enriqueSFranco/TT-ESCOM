@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.contrib import auth
 from django.contrib.auth import get_user_model
 from apps.students.models import Student
 
@@ -32,7 +33,7 @@ class StudentListSerializer(serializers.ModelSerializer):
   #skills=StudentSkill(many=True)
   class Meta:
     model = Student
-    fields = ('t100_boleta','t100_name','t100_last_name','t100_username','t100_email',
+    fields = ('t100_id_student','t100_boleta','t100_name','t100_last_name','t100_username','t100_email',
     't100_gender','t100_date_of_birth','t100_personal_objectives','t100_phonenumber','t100_residence',
     't100_modalities','t100_speciality','t100_target_salary','t100_travel','is_active','password')
     depth = 2
@@ -87,4 +88,23 @@ class PasswordSerializer(serializers.Serializer):
 class StudentTokenSerializer(serializers.ModelSerializer):
   class Meta:
     model = Student
-    fields = ('t100_boleta', 't100_name', 't100_last_name', 't100_username', 't100_email', 'password')
+    fields = ('t100_email','password')
+
+  def validate(self,attrs):
+    print("Validando datos...")
+    correo=attrs.get('t100_email')    
+    password = attrs.get('password')    
+    print("Buscando usuario ....")
+    try:
+      user = Student.objects.filter(t100_email=correo).values('t100_email','password')
+      return True
+    except:
+      print("NO encontre ese usuario")
+      user = ""
+      return False
+    print("Lo que encontre")
+    print(correo)
+    print(user)
+    print(password)
+    print(attrs)
+    return attrs

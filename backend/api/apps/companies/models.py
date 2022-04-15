@@ -2,10 +2,10 @@ from django.db import models
 from apps.administration.models import Admin
 
 def upload_image_banner(instance, filename):
-    return f"{instance.t300_id_company}-{filename}"
+    return f"/banners/{instance.t300_id_company}-{filename}"
 
 def upload_image_logo(instance, filename):
-    return f"{instance.t300_id_company}-{filename}"
+    return f"logos/{instance.t300_id_company}-{filename}"
 
 class Company(models.Model):
     t300_id_company = models.AutoField(primary_key=True)
