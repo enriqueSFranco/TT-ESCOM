@@ -4,7 +4,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import APIView
 from rest_framework.authtoken.views import ObtainAuthToken
 from apps.students.models import Student
-from apps.users.api.serializers import CustomUserSerializer
+from apps.users.api.serializers import UserSerializer
 from apps.students.api.serializer.student_serializer import StudentTokenSerializer
 
 class Login(ObtainAuthToken):
