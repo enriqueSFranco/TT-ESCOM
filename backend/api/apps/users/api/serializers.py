@@ -11,17 +11,30 @@ class UserSerializer(serializers.ModelSerializer):
     #password = serializers.CharField(min_length=8, write_only=True)
     class Meta:
         model = User
-        fields = ('password','is_superuser','username','first_name','last_name','email','is_staff','date_joined',
+        fields = ('password','is_superuser','username','first_name','last_name','email','is_staff',
         'is_student','is_recruiter','is_moderator','is_active')
-        #extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validate_data):
         new_user = User(**validate_data)
         new_user.set_password(validate_data['password']) 
         print(new_user)
         # generar token de autenticacion
-        User.save() # guardamos al usuario
+        new_user.save() # guardamos al usuario
         return new_user
+
+class ListUserSerializer(serializers.ModelSerializer):
+    """
+    Currently unused in preference of the below.
+    """
+    #email = serializers.EmailField(required=True)
+    #user_name = serializers.CharField(required=True)
+    #password = serializers.CharField(min_length=8, write_only=True)
+    class Meta:
+        model = User
+        fields = '__all__'
+
+
+
 class UpdateUserSerializer(serializers.ModelSerializer):
   # skills=SkillSerializer(many=True)
   class Meta:
@@ -52,4 +65,4 @@ class PasswordSerializer(serializers.Serializer):
     #    if password is not None:
     #        instance.set_password(password)
     #    instance.save()
-    #    return 
+    #    return  

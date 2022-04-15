@@ -6,10 +6,12 @@ from rest_framework.decorators import action
 from rest_framework import viewsets
 
 from apps.students.models import Student
+from apps.users.api.serializers import UserSerializer
 from apps.students.api.serializer.student_serializer import StudentSerializer, StudentListSerializer, PasswordSerializer, UpdateStudentSerializer
 
 class StudentViewSet(viewsets.GenericViewSet):
 	model = Student
+	user_serializer = UserSerializer
 	serializer_class = StudentSerializer
 	list_serializer_class = StudentListSerializer
 	queryset = None
@@ -55,10 +57,35 @@ class StudentViewSet(viewsets.GenericViewSet):
 		return Response(students_serializer.data, status=status.HTTP_200_OK)
 
 	def create(self, request):
+		user_data={
+   				"password": request.data['password'],
+   				"is_superuser": False,
+   				"username": request.data['t100_email'],
+   				"first_name": request.data['t100_name'],
+   				"last_name": request.data['t100_last_name'],
+   				"email": request.data['t100_email'],
+   				"is_staff": False,
+   				"is_student": True,
+   				"is_recruiter": False,
+   				"is_moderator": False,
+   				"is_active": True
+		}
 		student_serializer = self.serializer_class(data=request.data)
 		print('request: ',request.data)
 		if student_serializer.is_valid():
 			student_serializer.save()
+			#user_data['password']=request.data['password']
+			print(user_data)
+			student_user= self.user_serializer(data = user_data)
+			if student_user.is_valid():
+				user = student_user.save()
+				if user:
+					return Response({
+						'message': 'Alumno y usuario registrado correctamente.'
+						}, status=status.HTTP_201_CREATED)
+						##Crear Token
+					#json = UserSerializer.data
+					#return Response(json, status=status.HTTP_201_CREATED)
 			return Response({
 				'message': 'Alumno registrado correctamente.'
 			}, status=status.HTTP_201_CREATED)
