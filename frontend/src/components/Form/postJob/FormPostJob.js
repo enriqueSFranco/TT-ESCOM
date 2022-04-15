@@ -5,6 +5,7 @@ import {
   getAllCatalogueExperience,
   getAllCandidateProfile,
 } from "services/catalogs/index";
+import Alert from "@mui/material/Alert";
 import Checkbox from "@mui/material/Checkbox";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -104,7 +105,7 @@ const FormPostJob = () => {
               />
               <Span content="Titulo de la vacante" />
             </Label>
-            {errors && <span className={styles.error}>{errors.t200_job}</span>}
+            {errors.t200_job && <Alert severity="error">{errors.t200_job}</Alert>}
           </div>
           {/* <Label>
             <Input

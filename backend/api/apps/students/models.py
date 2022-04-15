@@ -130,7 +130,7 @@ class Student(AbstractBaseUser):
 		verbose_name_plural = 'Students'
 		db_table = "t100_alumno"
 	def __str__(self):
-		return self.t100_boleta+": "+self.t100_name+" "+self.t100_last_name
+		return self.t100_boleta+" "+self.t100_name+" "+self.t100_last_name
 
 #T102 Habilidades
 class StudentSkill(models.Model):	

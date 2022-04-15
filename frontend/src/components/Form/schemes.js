@@ -4,6 +4,7 @@ let now = new Date();
 
 export const studentInitialForm = {
   t100_name: "",
+  t100_boleta: "",
   t100_email: "",
   password: "",
 };

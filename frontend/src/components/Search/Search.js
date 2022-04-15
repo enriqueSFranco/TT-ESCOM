@@ -8,39 +8,38 @@ import * as BiIcon from "react-icons/bi";
 import styles from "./Search.module.css";
 
 const Search = ({ handleSearch, data }) => {
-  // const {search} = useLocation();
   const [queryJob, setQueryJob] = useState("");
   const [locationJob, setLocationJob] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [filterData, setFilterData] = useState(data);
-  // const query = new URLSearchParams(search)
 
   const handleFilterJob = (e) => {
     const query = e.target.value;
     setQueryJob(query);
 
-    const newFilter = data.filter(({ t200_job }) =>
-      t200_job.toLowerCase().includes(query.toLowerCase())
-    );
+    const newFilter = data.filter(({ t200_job }) => {
+      let regex = new RegExp(`${query}`, "gi");
+      return t200_job.match(regex);
+    });
 
     query === "" ? setFilterData([]) : setFilterData(newFilter);
   };
 
-  const handleClick = (job) => {
-    setQueryJob(job);
-  };
+  const handleClick = (job) => setQueryJob(job);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!queryJob.trim()) return;
+    if (queryJob === "") return setFilterData(data);
 
     setIsLoading(true);
 
     setTimeout(() => {
       setIsLoading(false);
-      handleSearch(queryJob);
+      handleSearch(queryJob === "" ? setFilterData(data) : queryJob);
     }, 2000);
   };
+
+  // console.log(data)
 
   return (
     <div className={`${styles.searchContainer}`}>

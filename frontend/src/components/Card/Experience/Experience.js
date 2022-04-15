@@ -3,6 +3,7 @@ import Tooltip from "@mui/material/Tooltip";
 import * as GoIcon from "react-icons/go";
 import * as MdIcon from "react-icons/md";
 import * as FaIcon from "react-icons/fa"
+import logoProject from "images/project.svg";
 import styles from "./Experience.module.css";
 
 const Experence = ({ links }) => {
@@ -12,8 +13,8 @@ const Experence = ({ links }) => {
         <div style={{display: "flex", justifyContent: "space-between", margin: ".5rem 0"}}>
           <img
             className={styles.logoProject}
-            src="https://placeimg.com/100/100/any"
-            alt="any"
+            src={logoProject}
+            alt="projectLogo"
           />
           <a href="#/" className={styles.descriptionProject}>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi

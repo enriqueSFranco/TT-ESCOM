@@ -22,7 +22,7 @@ const LoginCompany = () => {
         >
           <div className={`${styles.login}`}>
             <blockquote>
-              Un paso más cerca de tu nuevo <em>trabajo</em>.
+              <em>Crea tu cuenta</em> y publica tus vacantes con nosotros.
             </blockquote>
             <span>
               No tines cuenta?{" "}

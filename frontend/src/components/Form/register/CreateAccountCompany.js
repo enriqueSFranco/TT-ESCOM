@@ -3,6 +3,10 @@ import { useForm } from "hooks/useForm";
 import { Toaster } from "react-hot-toast";
 import { companyInitialForm } from "../schemes";
 import TextField from "@mui/material/TextField";
+import Tooltip from "@mui/material/Tooltip";
+import Label from "components/Element/Label/Label";
+import * as BsIcon from "react-icons/bs";
+import * as BiIcon from "react-icons/bi";
 import styles from "../Styles.module.css";
 
 /**
@@ -40,38 +44,34 @@ const validateForm = (form) => {
 };
 
 const FormCompany = () => {
-  const {
-    form,
-    errors,
-    handleChange,
-    handleValidate,
-    handlerSubmitCompany,
-  } = useForm(companyInitialForm, validateForm);
+  const { form, errors, handleChange, handleValidate, handlerSubmitCompany } =
+    useForm(companyInitialForm, validateForm);
 
   return (
     <>
-      <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
+      <div
+        className={`container bg-primary shadow rounded ${styles.wrapperCreateAccountCompany}`}
+      >
         <div className="row align-items-stretch">
-          <div
-            className={`${styles.bg} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
-          >
-            <div className={`${styles.login}`}>
+          <div className={`${styles.bgCreateAccountCompany} col rounded`}>
+            <div className={styles.recoverAccount}>
               <blockquote>
-                Un paso más cerca de tu nuevo <em>empleo</em>.
+                <em>Crea tu cuenta</em> y publica tus vacantes con nosotros.
               </blockquote>
-              <span>
-                Ya tines cuenta?{" "}
-                <Link className={`${styles.linkToLogin}`} to="/reclutador">
-                  Inicia sesion
-                </Link>
-              </span>
-              <span>
-                <a href="/#">Recuperar contraseña</a>
-              </span>
             </div>
           </div>
           <div className={`col bg-white p-5 rounded-end`}>
-            <h2 className={`${styles.welcome}`}>Bienvenido</h2>
+            <div className={`${styles.welcome}`}>
+              <h2>
+                Datos de la empresa{" "}
+                <Tooltip title="Datos de la empresa">
+                  <BsIcon.BsQuestionCircle />
+                </Tooltip>
+              </h2>
+              <a style={{ color: "#000" }} href="#/">
+                Tu empresa ya esta registrada con nosotros ?
+              </a>
+            </div>
             <form onSubmit={handlerSubmitCompany} className={styles.form}>
               {/* input para el username */}
               <div className={styles.inputGroup}>
@@ -103,21 +103,95 @@ const FormCompany = () => {
                 {errors && (
                   <span className={styles.error}>{errors.t300_rfc}</span>
                 )}
-              </div>
-              <div className={styles.inputGroup}>
+
                 <TextField
-                  label="Correo electronico"
-                  id="t300_email"
-                  name="t300_email"
+                  label="Razon Social"
+                  id="t300_social"
+                  name="t300_social"
                   sx={{ width: 500, maxWidth: "100%" }}
-                  value={form.t300_email}
+                  value={form.t300_social}
                   onBlur={handleValidate}
                   onKeyUp={handleValidate}
                   onChange={handleChange}
                 />
-                {errors && (
-                  <span className={styles.error}>{errors.t300_email}</span>
-                )}
+              </div>
+              <div className={styles.inputGroup}>
+                <p>
+                  Proporcionanos el documento que valide que tu empresa esta
+                  constituida.
+                </p>
+                <input
+                  type="file"
+                  name="cv"
+                  id="cv"
+                  className={`${styles.inputFile}`}
+                  value={form.file}
+                  onChange={handleChange}
+                />
+                <Label htmlFor="cv">
+                  <BiIcon.BiCloudUpload />
+                  subir cv
+                </Label>
+              </div>
+
+              <div className={styles.personalContact}>
+                <h2>Datos Personales</h2>
+                <div className={styles.inputGroup}>
+                  <TextField
+                    label="Nombre(s)"
+                    id="t300_email"
+                    name="t300_email"
+                    sx={{ width: 500, maxWidth: "100%" }}
+                    value={form.t300_email}
+                    onBlur={handleValidate}
+                    onKeyUp={handleValidate}
+                    onChange={handleChange}
+                  />
+                  {errors && (
+                    <span className={styles.error}>{errors.t300_email}</span>
+                  )}
+                  <TextField
+                    label="Apellidos"
+                    id="t300_email"
+                    name="t300_email"
+                    sx={{ width: 500, maxWidth: "100%" }}
+                    value={form.t300_email}
+                    onBlur={handleValidate}
+                    onKeyUp={handleValidate}
+                    onChange={handleChange}
+                  />
+                  {errors && (
+                    <span className={styles.error}>{errors.t300_email}</span>
+                  )}
+                </div>
+                <div className={styles.inputGroup}>
+                  <TextField
+                    label="Correo electronico"
+                    id="t300_email"
+                    name="t300_email"
+                    sx={{ width: 500, maxWidth: "100%" }}
+                    value={form.t300_email}
+                    onBlur={handleValidate}
+                    onKeyUp={handleValidate}
+                    onChange={handleChange}
+                  />
+                  {errors && (
+                    <span className={styles.error}>{errors.t300_email}</span>
+                  )}
+                  <TextField
+                    label="Telefono"
+                    id="t300_email"
+                    name="t300_email"
+                    sx={{ width: 500, maxWidth: "100%" }}
+                    value={form.t300_email}
+                    onBlur={handleValidate}
+                    onKeyUp={handleValidate}
+                    onChange={handleChange}
+                  />
+                  {errors && (
+                    <span className={styles.error}>{errors.t300_email}</span>
+                  )}
+                </div>
               </div>
               <div className="d-grid">
                 <button
@@ -127,6 +201,15 @@ const FormCompany = () => {
                   Confirmar Pre-Registro
                 </button>
               </div>
+              <span>
+                Ya tines cuenta?{" "}
+                <Link className={`${styles.linkToLogin}`} to="/reclutador">
+                  Inicia sesion
+                </Link>
+              </span>
+              <span>
+                <a href="/#">Recuperar contraseña</a>
+              </span>
             </form>
           </div>
         </div>

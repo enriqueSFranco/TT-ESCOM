@@ -21,14 +21,14 @@ const CardProfileStudent = () => {
     let isEdit = isProfile === "edit" ? "profile" : "edit";
     setIsProfile(isEdit);
   };
-
-  const id = "2017";
+  console.log(student)
+  const id = student[0]?.t100_id_student;
   useEffect(() => {
     const fetchData = async () => {
       const [studentRes, linksRes, skillsResponse] = await Promise.all([
-        getStudent(id),
-        getSocialNetwork(id),
-        getSkill(id),
+        getStudent("1"),
+        getSocialNetwork("1"),
+        getSkill("1"),
       ]);
       setStudent(studentRes);
       setSocialNetworks(linksRes);
@@ -43,6 +43,8 @@ const CardProfileStudent = () => {
       setSkills([]);
     };
   }, [id]);
+
+  console.log(skills)
 
   // console.log(skills);
   return (
@@ -115,7 +117,7 @@ const CardProfileStudent = () => {
                   <h3>Sin redes sociales</h3>
                 )}
               </div>
-              <div className={`${styles.wrapperSkills} ${styles.separator}`}>
+              {/* <div className={`${styles.wrapperSkills} ${styles.separator}`}>
                 <h4 className={styles.label}>Skills</h4>
                 <ul className={styles.skillList}>
                   {skills.map(({ c116_id_skill }) => (
@@ -126,7 +128,7 @@ const CardProfileStudent = () => {
                     />
                   ))}
                 </ul>
-              </div>
+              </div> */}
               <div className={`${styles.cv} py-4`}>
                 <IoIcon.IoIosCheckmarkCircle />
                 <p>

@@ -29,15 +29,10 @@ urlpatterns = [
     path('api/', include('apps.routers')),
     path('users/', include('apps.users_routers')),
     path('api/catalogues/',include('apps.catalogs_routers')),
-<<<<<<< HEAD
-    path('images/',include('apps.images_routers')),
-    path('login/',include('apps.login_routers'))
-=======
     # path('iniciar-sesion/', Login.as_view(), name='iniciar-sesion'),
     # path('cerrar-sesion/', Logout.as_view(), name='cerrar-sesion'),    
     path('token/student/',Login.as_view(),name='Login student'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh-token/', TokenRefreshView.as_view(), name='refresh-token'),
     path('images/',include('apps.images_routers'))
->>>>>>> 594f648ffc7dc54b18a0c7963102b71626f3d954
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
