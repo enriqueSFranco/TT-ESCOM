@@ -1,8 +1,16 @@
+from pyexpat import model
 from django.db import models
 from django.utils import timezone
 # from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
+class Rol(models.Model):
+    """Define el rol para un usuario"""
+    id = models.AutoField(primary_key=True)
+    rol = models.CharField('Rol', max_length=50, unique=True)
+
+    def __str__(self):
+        return self.rol
 
 class CustomAccountManager(BaseUserManager):
 
@@ -43,12 +51,7 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
         'about'), max_length=500, blank=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
-    ROLE_OPTIONS = (
-        ("ENCARGADO", "Encargado"),
-        ("RECLUTADOR", "Reclutador"),
-        ("ESTUDIANTE", "Estudiante")
-    )
-    role = models.CharField(max_length=30, choices=ROLE_OPTIONS, default="ESTUDIANTE")
+    role = models.ForeignKey(Rol, on_delete=models.Case, blank=True, null=True)
     objects = CustomAccountManager()
 
     USERNAME_FIELD = 'email'

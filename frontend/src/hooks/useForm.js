@@ -11,6 +11,8 @@ export const useForm = (initialForm, validateForm) => {
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
 
+  console.log(form)
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({
@@ -33,6 +35,7 @@ export const useForm = (initialForm, validateForm) => {
 
   const handleSubmitStudent = (e) => {
     e.preventDefault();
+
     setErrors(validateForm(form));
 
     if (Object.keys(errors).length === 0) {
@@ -41,7 +44,7 @@ export const useForm = (initialForm, validateForm) => {
     
       createAccountStudent(form)
         .then(response => {
-          // console.log(response.data.errors.message)
+          console.log(response.data.errors.message)
           if (response.data.status === 200 || response.data.status === 201) {
             setLoading(false);
             setResponse(true);
@@ -49,8 +52,12 @@ export const useForm = (initialForm, validateForm) => {
               navigate("/alumno");
             }, 3000);
           }
+          setForm(initialForm)
         })
-        .catch(() => setResponse(false))
+        .catch((error) => {
+          setResponse(false)
+          console.log(error)
+        })
         .finally(() => setLoading(false));
     } else {
       return;

@@ -15,7 +15,6 @@ const JobCardDetails = () => {
   const [job, setJob] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  
   useEffect(() => {
     setLoading(true);
     getJob(t200_id_vacant)

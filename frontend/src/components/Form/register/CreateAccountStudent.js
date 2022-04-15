@@ -21,9 +21,6 @@ const validateForm = (form) => {
     errors.t100_name =
       "El campo 'Nombre' solo acepta letras y espacios en blanco.";
 
-  if (!form.t100_boleta.trim())
-    errors.t100_boleta = "El campo 'Boleta' es requerido";
-
   if (!form.t100_email.trim())
     errors.t100_email = "El campo 'Email' es requerido.";
   else if (!regex.t100_email.test(form.t100_email.trim()))
