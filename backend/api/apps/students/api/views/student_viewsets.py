@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404
-
+from rest_framework.authtoken.models import Token
+from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import action
@@ -61,34 +62,53 @@ class StudentViewSet(viewsets.GenericViewSet):
    				"password": request.data['password'],
    				"is_superuser": False,
    				"username": request.data['t100_email'],
-   				"first_name": request.data['t100_name'],
-   				"last_name": request.data['t100_last_name'],
+   				"first_name": "",
+   				"last_name": "",
    				"email": request.data['t100_email'],
    				"is_staff": False,
-   				"is_student": True,
-   				"is_recruiter": False,
-   				"is_moderator": False,
-   				"is_active": True
+   				"user_type": "STUDENT",
+   				"is_active": True,
+				"user_id":0
+		}
+		credentials={
+			"username" : request.data['t100_email'],
+			"password" : request.data['password']
 		}
 		student_serializer = self.serializer_class(data=request.data)
-		print('request: ',request.data)
-		if student_serializer.is_valid():
-			student_serializer.save()
-			#user_data['password']=request.data['password']
+		#print('request: ',request.data)
+		if student_serializer.is_valid():#Validar datos
+			student_serializer.save()#Crear estudiantes
 			print(user_data)
+			id_student = self.model.objects.filter(t100_email=request.data['t100_email']).values('t100_id_student','t100_email')
+			print("ID DEL NUEVO ESTUDIANTE", id_student[0]['t100_id_student'])
+			user_data['user_id']=id_student[0]['t100_id_student']
+			print(user_data)
+			#student_serializer = self.serializer_class(id_student,many=True)
 			student_user= self.user_serializer(data = user_data)
-			if student_user.is_valid():
-				user = student_user.save()
+			if student_user.is_valid():#Validar datos de usuario
+				user = student_user.save()#Guardar usuario				
 				if user:
-					return Response({
-						'message': 'Alumno y usuario registrado correctamente.'
-						}, status=status.HTTP_201_CREATED)
-						##Crear Token
+					print("Usuario creado")
+					credentials_serializer = ObtainAuthToken.serializer_class(data = credentials, context = {'request':request})
+					if credentials_serializer.is_valid():
+						print("Credenciales correctas")
+						user= credentials_serializer.validated_data['user']
+						token,created = Token.objects.get_or_create(user = user)     
+						user_serializer = UserSerializer(user)    
+						if created:
+							print("Token creado")
+							return Response({'token':token.key,
+                             'user':user_serializer.data,
+                             'message':'Inicio de sesión exitoso'},
+                  			 status.HTTP_201_CREATED)						
+						else:
+							return Response({'error':'No se pudo crear el token'},status = status.HTTP_400_BAD_REQUEST)
+					#Crear token
 					#json = UserSerializer.data
 					#return Response(json, status=status.HTTP_201_CREATED)
-			return Response({
-				'message': 'Alumno registrado correctamente.'
-			}, status=status.HTTP_201_CREATED)
+			#return Response({
+			#	'message': 'Alumno registrado correctamente.'
+			#}, status=status.HTTP_201_CREATED)
 		return Response({
 			'message': 'Hay errores en el registro',
 			'errors': student_serializer.errors

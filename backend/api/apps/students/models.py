@@ -121,7 +121,7 @@ class Student(AbstractBaseUser):
 	t100_target_salary = models.PositiveIntegerField(null=True, blank=True)	
 	t100_travel = models.BooleanField(default=False)
 	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to=upload_image_profile)
-	is_active = models.BooleanField(default=True)
+	is_active = models.BooleanField(default=False)
 
 	USERNAME_FIELD = 't100_email'
 	REQUIRED_FIELDS = ['password']
@@ -130,7 +130,11 @@ class Student(AbstractBaseUser):
 		verbose_name_plural = 'Students'
 		db_table = "t100_alumno"
 	def __str__(self):
+<<<<<<< HEAD
 		return self.t100_boleta+" "+self.t100_name+" "+self.t100_last_name
+=======
+		return self.t100_email
+>>>>>>> 11afc36b678ee66015ae201e933ed47bb9258a61
 
 #T102 Habilidades
 class StudentSkill(models.Model):	
