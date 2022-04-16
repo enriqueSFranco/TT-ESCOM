@@ -15,9 +15,9 @@ const PageCreateAccountStudent = () => {
   return (
     <>
       <section style={Container}>
-        <article style={Form}>
           <CreateAccountStudent />
-        </article>
+        {/* <article style={Form}>
+        </article> */}
       </section>
     </>
   )

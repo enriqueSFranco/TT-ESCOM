@@ -117,7 +117,7 @@ const CardProfileStudent = () => {
                   <h3>Sin redes sociales</h3>
                 )}
               </div>
-              {/* <div className={`${styles.wrapperSkills} ${styles.separator}`}>
+              <div className={`${styles.wrapperSkills} ${styles.separator}`}>
                 <h4 className={styles.label}>Skills</h4>
                 <ul className={styles.skillList}>
                   {skills.map(({ c116_id_skill }) => (
@@ -128,7 +128,7 @@ const CardProfileStudent = () => {
                     />
                   ))}
                 </ul>
-              </div> */}
+              </div>
               <div className={`${styles.cv} py-4`}>
                 <IoIcon.IoIosCheckmarkCircle />
                 <p>

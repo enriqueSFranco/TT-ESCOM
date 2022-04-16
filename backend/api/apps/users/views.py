@@ -2,7 +2,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from apps.users.api.serializers import UserSerializer
+from apps.users.api.serializers import UserSerializer,ListUserSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny
 from rest_framework import viewsets
@@ -38,8 +38,8 @@ class BlacklistTokenUpdateView(APIView):
 
 class UserViewSet(viewsets.GenericViewSet):
 	model = User
-	serializer_class = UserCreate
-	#list_serializer_class = StudentListSerializer
+	serializer_class = UserSerializer
+	list_serializer_class = ListUserSerializer
 	queryset = None
 
 	def get_object(self, pk):
@@ -53,29 +53,28 @@ class UserViewSet(viewsets.GenericViewSet):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('is_superuser','username','first_name','last_name','email','is_staff','date_joined',
-        'is_student','is_recruiter','is_moderator','is_active')
+				.all()
 		return self.queryset
 
 	def list(self, request):
 		print(request.data)
 		users = self.get_queryset()
-		users_serializer = self.serializer_class(users, many=True)
+		users_serializer = self.list_serializer_class(users, many=True)
 		return Response(users_serializer.data, status=status.HTTP_200_OK)
 
-	#def create(self, request):
-	#	student_serializer = self.serializer_class(data=request.data)
-	#	print('request: ',request.data)
-	#	if student_serializer.is_valid():
-	#		student_serializer.save()
-	#		return Response({
-	#			'message': 'Alumno registrado correctamente.'
-	#		}, status=status.HTTP_201_CREATED)
-	#	return Response({
-	#		'message': 'Hay errores en el registro',
-	#		'errors': student_serializer.errors
-	#	}, status=status.HTTP_400_BAD_REQUEST)
-#
+	def create(self, request):        
+		user_serializer = self.serializer_class(data=request.data)        
+		print('request: ',request.data)
+		if user_serializer.is_valid():
+			user_serializer.save()
+			return Response({
+				'message': 'Usuario registrado correctamente.'
+			}, status=status.HTTP_201_CREATED)
+		return Response({
+			'message': 'Hay errores en el registro',
+			'errors': user_serializer.errors
+		}, status=status.HTTP_400_BAD_REQUEST)
+
 	#def retrieve(self, request, pk):
 	#	student = self.get_object(pk)
 	#	student_serializer = self.serializer_class(student,many=True)

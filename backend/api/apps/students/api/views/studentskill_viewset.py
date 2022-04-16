@@ -42,7 +42,7 @@ class SkillViewSet(viewsets.GenericViewSet):
     return Response({"message": "Hay errores en el registro"}, status=status.HTTP_400_BAD_REQUEST)
 
   def retrieve(self, request, pk):        
-    skills = self.model.objects.filter(t100_boleta=pk).all()
+    skills = self.model.objects.filter(t100_id_student=pk).all()
     skills_serializer = self.serializer_list_class(skills,many=True)
     return Response(skills_serializer.data)
 

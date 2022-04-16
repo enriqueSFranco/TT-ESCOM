@@ -9,9 +9,9 @@
 
 .bgCreateAccountCompany {
   position: relative;
-  background-image: url(../../images/crearCuentaEmpresa.jpg);
+  /* background-image: url(../../images/crearCuentaEmpresa.jpg); */
   background-size: cover;
-  background-position: center center;
+  background-position: -20rem center;
   background-repeat: no-repeat;
 }
 
@@ -35,9 +35,7 @@
   font-size: 2.5rem;
 }
 
-.bg blockquote em {
-  color: #04c8eb;
-}
+.bg blockquote em { color: #04c8eb; }
 
 .btLogin { 
   width: 490px; 
@@ -61,7 +59,7 @@
 .form {
   width: auto;
   height: auto;
-  padding: 1rem;
+  /* padding: 1rem; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,22 +72,44 @@
   bottom: 1rem;
 }
 
+.companyInfo { text-align: left; }
+
+.personalContact { height: 370px; }
+
+.yohaveAccount {
+  background-color: red;
+  position: relative;
+  right: 0rem;
+  display: flex;
+  justify-content: flex-start;
+  /* width: 100%; */
+  flex-direction: column;
+}
+
 .work {
   color: #a5d0d8;
   font-size: 2.5rem;
 }
 
-.welcome {
-  text-align: center;
-}
+.welcome { margin-bottom: 1rem; }
 
-.welcome h2 {
+.welcome h2, .personalContact h2 {
   text-transform: uppercase;
   font-weight: bold;
+  font-size: 1.5rem;
   color: #222;
   letter-spacing: 2px;
   padding: 0;
-  margin: 0;
+  position: relative;
+}
+
+.welcome svg {
+  font-size: .8rem;
+  position: absolute;
+  top: 0;
+  margin-left: .2rem;
+  font-weight: bold;
+  color: #90314b;
 }
 
 .welcome span {
@@ -98,6 +118,9 @@
   text-align: center;
 }
 
+.welcome a { color: #000; transition: color .3s ease-in; }
+.welcome a:hover { color: #90314b; }
+
 .wrapper {
   position: relative;
   top: 10rem;
@@ -105,7 +128,13 @@
 
 .wrapperCreateAccountCompany {
   position: relative;
-  top: 6rem;
+  top: 2rem;
+}
+
+.wrapperYouHaveAccount {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
 }
 
 .login {
@@ -131,9 +160,7 @@
   right: 1.9rem;
 }
 
-.login a:hover {
-  color: #fff;
-}
+.login a:hover { color: #fff; }
 
 .linkToLogin {
   color: #04c8eb;
@@ -141,13 +168,11 @@
   left: 0;
 }
 
-.recoverAccount { 
-  margin-top: 1rem;
-  text-align: center; 
-  font-size: 2rem;
-}
+.recoverAccount {  margin-top: 2rem;  }
 
-.recoverAccount blockquote > em {
+.recoverAccount h1 {
+  font-size: 2rem;
+  text-align: center;
   color: #90314b;
   font-weight: bold;
 }
@@ -157,12 +182,20 @@
   position: relative;
   top: 0;
   width: 490px;
+  height: 85px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flexRow {
+  position: relative;
+  top: 0;
+  width: 490px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: .5rem;
-  margin: 1rem;
 }
+
 
 /* input file */
 .inputFile {
@@ -184,8 +217,6 @@
   display: inline-block;
   overflow: hidden;
   padding: .65rem 1.25rem;
-  /* position: relative;
-  left: -1rem; */
   border-radius: var(--size-radius);
 }
 
@@ -201,6 +232,5 @@
 
 .inputFile + label {
   color: #fff;
-  /* margin: 1rem; */
   background-color: #90314b;
 }
