@@ -35,10 +35,10 @@ class CustomAccountManager(BaseUserManager):
 
 
 class User(AbstractUser, PermissionsMixin):
-    is_student = models.BooleanField(default=False)
-    is_recruiter = models.BooleanField(default=False)
-    is_moderator = models.BooleanField(default=False)
+    user_type = models.CharField(max_length=15,blank=False,null=True)
     is_active = models.BooleanField(default=False)
+    user_id = models.PositiveBigIntegerField(blank=False,null=False)
+
 
     #objects = CustomAccountManager()
     class Meta:

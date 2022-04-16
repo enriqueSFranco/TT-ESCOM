@@ -47,7 +47,7 @@ class UserViewSet(viewsets.GenericViewSet):
 			self.queryset = self.model.objects\
 				.filter(id=pk)\
 				.values('is_superuser','username','first_name','last_name','email','is_staff','date_joined',
-        'is_student','is_recruiter','is_moderator','is_active')
+                'user_type','is_active')
 		return self.queryset
 	def get_queryset(self):
 		if self.queryset is None:

@@ -11,8 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
     #password = serializers.CharField(min_length=8, write_only=True)
     class Meta:
         model = User
-        fields = ('password','is_superuser','username','first_name','last_name','email','is_staff',
-        'is_student','is_recruiter','is_moderator','is_active')
+        fields = ('password','is_superuser','username','first_name','last_name','email','is_staff','user_type','is_active','user_id')
 
     def create(self, validate_data):
         new_user = User(**validate_data)
@@ -39,8 +38,7 @@ class UpdateUserSerializer(serializers.ModelSerializer):
   # skills=SkillSerializer(many=True)
   class Meta:
     model = User
-    fields = ('is_superuser','username','first_name','last_name','email','is_staff','date_joined',
-        'is_student','is_recruiter','is_moderator','is_active')
+    fields = ('is_superuser','username','first_name','last_name','email','is_staff','date_joined','user_type','is_active')
       # encriptamos el password cuando el usuario quiera actualizar su informacion
     def update(self, instance, validate_data):
       update_user = super().update(instance, validate_data)
