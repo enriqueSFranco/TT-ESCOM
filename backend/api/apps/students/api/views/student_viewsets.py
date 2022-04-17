@@ -7,11 +7,13 @@ from rest_framework.decorators import action
 from rest_framework import viewsets
 
 from apps.students.models import Student
+from apps.users.models import User
 from apps.users.api.serializers import UserSerializer
 from apps.students.api.serializer.student_serializer import StudentSerializer, StudentListSerializer, PasswordSerializer, UpdateStudentSerializer
 
 class StudentViewSet(viewsets.GenericViewSet):
 	model = Student
+	user_model = User
 	user_serializer = UserSerializer
 	serializer_class = StudentSerializer
 	list_serializer_class = StudentListSerializer
@@ -134,8 +136,12 @@ class StudentViewSet(viewsets.GenericViewSet):
 
 	def destroy(self, request, pk):
 		student_destroy = self.model.objects.filter(t100_id_student=pk).first()
-		if student_destroy:
+		print(student_destroy)
+		user_destroy = self.user_model.objects.filter(username=student_destroy).first()
+		print(user_destroy)
+		if student_destroy and user_destroy:
 			student_destroy = self.model.objects.filter(t100_id_student=pk).delete()
+			user_destroy = self.user_model.objects.filter(username=student_destroy).delete()
 			return Response({
 				'message': 'Alumno eliminado correctamente'
 			})

@@ -2,7 +2,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from apps.users.api.serializers import UserSerializer,ListUserSerializer
+from apps.users.api.serializers import UserSerializer,ListUserSerializer,UpdateUserSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny
 from rest_framework import viewsets
@@ -46,8 +46,9 @@ class UserViewSet(viewsets.GenericViewSet):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter(id=pk)\
-				.values('is_superuser','username','first_name','last_name','email','is_staff','date_joined',
-                'user_type','is_active')
+				.all()
+				#.values('is_superuser','username','first_name','last_name','email','is_staff','date_joined',
+                #'user_type','is_active')
 		return self.queryset
 	def get_queryset(self):
 		if self.queryset is None:
@@ -75,23 +76,23 @@ class UserViewSet(viewsets.GenericViewSet):
 			'errors': user_serializer.errors
 		}, status=status.HTTP_400_BAD_REQUEST)
 
-	#def retrieve(self, request, pk):
-	#	student = self.get_object(pk)
-	#	student_serializer = self.serializer_class(student,many=True)
-	#	return Response(student_serializer.data)
-#
-	#def update(self, request, pk):
-	#	student = self.model.objects.filter(t100_id_student=pk).first()
-	#	student_serializer = UpdateStudentSerializer(student, data=request.data)
-	#	if student_serializer.is_valid():
-	#		student_serializer.save()
-	#		return Response({
-	#			'message': 'Alumno actualizado correctamente'
-	#		}, status=status.HTTP_200_OK)
-	#	return Response({
-	#		'message': 'Hay errores en la actualización',
-	#		'errors': student_serializer.errors
-	#	}, status=status.HTTP_400_BAD_REQUEST)
+	def retrieve(self, request, pk):
+		get_user = self.get_object(pk)
+		user_serializer = self.serializer_class(get_user,many=True)
+		return Response(user_serializer.data)
+
+	def update(self, request, pk):
+		get_user = self.model.objects.filter(t100_id_student=pk).first()
+		user_serializer = UpdateUserSerializer(get_user, data=request.data)
+		if user_serializer.is_valid():
+			user_serializer.save()
+			return Response({
+				'message': 'Usuario actualizado correctamente'
+			}, status=status.HTTP_200_OK)
+		return Response({
+			'message': 'Hay errores en la actualización',
+			'errors': user_serializer.errors
+		}, status=status.HTTP_400_BAD_REQUEST)
 #
 	#def destroy(self, request, pk):
 	#	student_destroy = self.model.objects.filter(t100_id_student=pk).first()

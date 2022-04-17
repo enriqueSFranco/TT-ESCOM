@@ -8,9 +8,10 @@ class StudentSerializer(serializers.ModelSerializer):
   #skills=serializers.StringRelatedField(many=True)
   class Meta:
     model = Student
-    fields = ('t100_boleta','t100_name','t100_last_name','t100_username','t100_email',
-    't100_gender','t100_date_of_birth','t100_personal_objectives','t100_phonenumber','t100_residence',
-    't100_modalities','t100_speciality','t100_target_salary','t100_travel','is_active','password')
+    fields = ('t100_id_student','t100_boleta','t100_name','t100_last_name','t100_username','t100_cv','t100_email',
+          't100_gender','t100_date_of_birth','t100_personal_objectives','t100_phonenumber','t100_residence',
+          't100_modalities','t100_speciality','t100_target_salary','t100_travel','t100_profile_picture','is_active',
+          'password')
 
   # encriptamos el password al momento de que se crea un usuario
   def create(self, validate_data):
