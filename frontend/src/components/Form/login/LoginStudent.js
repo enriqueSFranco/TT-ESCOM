@@ -7,7 +7,7 @@ import styles from "../Styles.module.css";
 
 let initialForm = {
   t100_email: "",
-  t100_password: "",
+  password: "",
 };
 
 const Form = () => {
@@ -55,11 +55,11 @@ const Form = () => {
             <div className={styles.inputGroup}>
               <TextField
                 label="Contraseña"
-                id="t100_password"
-                name="t100_password"
+                id="password"
+                name="password"
                 type="password"
                 sx={{ width: 500, maxWidth: "100%" }}
-                value={form.t100_password}
+                value={form.password}
                 onChange={handleChange}
               />
             </div>

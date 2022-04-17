@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { useForm } from "hooks/useForm";
 import { studentInitialForm } from "../schemes";
-import Alert from "@mui/material/Alert";
 import TextField from "@mui/material/TextField";
+import * as MdIcon from "react-icons/md";
 import styles from "../Styles.module.css";
 
 const validateForm = (form) => {
@@ -37,13 +37,13 @@ const validateForm = (form) => {
 const CreateAccount = () => {
   const { form, errors, handleChange, handleValidate, handleSubmitStudent } =
     useForm(studentInitialForm, validateForm);
-
+    
     return (
       <>
-        <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
-          <div className="row align-items-stretch">
+        <div className={`container bg-primary shadow rounded ${styles.wrapperCreateAccountStudent}`}>
+          <div className="row">
             <div
-              className={`${styles.bg} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
+              className={`${styles.bg} col rounded`}
             >
               <div className={`${styles.login}`}>
                 <blockquote>
@@ -60,13 +60,13 @@ const CreateAccount = () => {
                 </span>
               </div>
             </div>
-            <div className={`col bg-white p-5 rounded-end ${styles.form}`}>
+            <div className={`col bg-white p-3 text-center rounded-end ${styles.createAccountStudentForm}`}>
               <div className={styles.welcome}>
                 <h2>Bienvenido</h2>
                 <span>Bienvenido! Porfavor introduce tus datos.</span>
               </div>
               <form onSubmit={handleSubmitStudent} className={styles.form}>
-                <div className={styles.inputGroup}>
+                <div className={styles.inputGroupCreatAccountStudent}>
                   <TextField
                     label="Nombre"
                     id="t100_name"
@@ -78,10 +78,10 @@ const CreateAccount = () => {
                     onChange={handleChange}
                   />
                   {errors.t100_name && (
-                    <Alert severity="error">{errors.t100_name}</Alert>
+                    <span className={styles.error}><MdIcon.MdOutlineErrorOutline />{errors.t100_name}</span>
                   )}
                 </div>
-                <div className={styles.inputGroup}>
+                <div className={styles.inputGroupCreatAccountStudent}>
                   <TextField
                     label="Correo electronico"
                     id="t100_email"
@@ -93,10 +93,10 @@ const CreateAccount = () => {
                     onChange={handleChange}
                   />
                   {errors.t100_email && (
-                    <Alert severity="error">{errors.t100_email}</Alert>
+                    <span className={styles.error}><MdIcon.MdOutlineErrorOutline />{errors.t100_email}</span>
                   )}
                 </div>
-                <div className={styles.inputGroup}>
+                <div className={styles.inputGroupCreatAccountStudent}>
                   <TextField
                     label="Contraseña"
                     id="password"
@@ -109,10 +109,10 @@ const CreateAccount = () => {
                     onChange={handleChange}
                   />
                   {errors.password && (
-                    <Alert severity="error">{errors.password}</Alert>
+                    <span className={styles.error}><MdIcon.MdOutlineErrorOutline />{errors.password}</span>
                   )}
                 </div>
-                <div className={styles.inputGroup}>
+                <div className={styles.inputGroupCreatAccountStudent}>
                   <button
                     type="submit"
                     className={`${styles.btnCreateAccount} btn btn-primary`}

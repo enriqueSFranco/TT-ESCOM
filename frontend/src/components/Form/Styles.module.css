@@ -52,13 +52,31 @@
 
 .error {
   font-weight: 300;
-  color: #dc3545;
+  color: #5f2120;
   text-align: left;
+  padding: .3rem;
+  background-color: #fceded;
+  border-radius: 0 0 4px 4px;
+}
+
+.error svg {
+  color: #ef6360;
+  font-size: 1.2rem;
+  margin-right: .4rem;
 }
 
 .form {
   width: auto;
   height: auto;
+  /* padding: 1rem; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.createAccountStudentForm {
+  width: auto;
+  height: 480px;
   /* padding: 1rem; */
   display: flex;
   flex-direction: column;
@@ -74,7 +92,7 @@
 
 .companyInfo { text-align: left; }
 
-.personalContact { height: 370px; }
+.personalContact { height: 450px; }
 
 .yohaveAccount {
   background-color: red;
@@ -124,6 +142,12 @@
 .wrapper {
   position: relative;
   top: 10rem;
+}
+
+.wrapperCreateAccountStudent {
+  position: relative;
+  top: 12rem;
+  /* height: 500px; */
 }
 
 .wrapperCreateAccountCompany {
@@ -185,6 +209,17 @@
   height: 85px;
   display: flex;
   flex-direction: column;
+  margin-bottom: .5rem;
+}
+
+.inputGroupCreatAccountStudent {
+  position: relative;
+  top: 0;
+  width: 490px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  /* margin-bottom: 1.4rem; */
 }
 
 .flexRow {
@@ -233,4 +268,29 @@
 .inputFile + label {
   color: #fff;
   background-color: #90314b;
+}
+
+
+.wrapperButtons {
+  /* outline: 1px solid red; */
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.btnBack, 
+.btnRegister, 
+.btnNext {
+  background-color: #90314b;
+  color: #fff;
+  outline: none;
+  border: none;
+  padding: .5rem;
+  width: 150px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.btnRegister {
+  width: 190px;
 }

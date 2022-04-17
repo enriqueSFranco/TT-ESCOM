@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import AuthContext from "context/AuthContext";
 import { motion } from "framer-motion";
 import { getStudent, getSocialNetwork } from "services/students/index";
 import { getSkill } from "services/catalogs";
@@ -16,19 +17,20 @@ const CardProfileStudent = () => {
   const [student, setStudent] = useState([]);
   const [skills, setSkills] = useState([]);
   const [socialNetworks, setSocialNetworks] = useState([]);
-
+  const { user } = useContext(AuthContext);
   const handleEdit = (e) => {
     let isEdit = isProfile === "edit" ? "profile" : "edit";
     setIsProfile(isEdit);
   };
-  console.log(student)
-  const id = student[0]?.t100_id_student;
+  let newUser = JSON.parse(user);
+  const id = newUser?.user?.user_id;
+
   useEffect(() => {
     const fetchData = async () => {
       const [studentRes, linksRes, skillsResponse] = await Promise.all([
-        getStudent("1"),
-        getSocialNetwork("1"),
-        getSkill("1"),
+        getStudent(id),
+        getSocialNetwork(id),
+        getSkill(id),
       ]);
       setStudent(studentRes);
       setSocialNetworks(linksRes);
@@ -44,9 +46,6 @@ const CardProfileStudent = () => {
     };
   }, [id]);
 
-  console.log(skills)
-
-  // console.log(skills);
   return (
     <>
       {isProfile === "edit" ? (
@@ -120,13 +119,19 @@ const CardProfileStudent = () => {
               <div className={`${styles.wrapperSkills} ${styles.separator}`}>
                 <h4 className={styles.label}>Skills</h4>
                 <ul className={styles.skillList}>
-                  {skills.map(({ c116_id_skill }) => (
-                    <Chip
-                      key={uuid()}
-                      label={c116_id_skill?.c116_description}
-                      variant="outlined"
-                    />
-                  ))}
+                  {
+                    skills.length > 0 ? (
+                      skills.map(({ c116_id_skill }) => (
+                        <Chip
+                          key={uuid()}
+                          label={c116_id_skill?.c116_description}
+                          variant="outlined"
+                        />
+                      ))
+                    ) : (
+                      <h3>Sin skills</h3>
+                    )
+                  }
                 </ul>
               </div>
               <div className={`${styles.cv} py-4`}>

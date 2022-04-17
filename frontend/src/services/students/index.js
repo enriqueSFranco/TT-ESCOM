@@ -1,3 +1,5 @@
+// @ts-check
+
 import axios from "axios";
 import toast from "react-hot-toast";
 import {
@@ -6,9 +8,14 @@ import {
   API_PHOTO_STUDENT,
 } from "../settings";
 
-export const getStudent = (id) => {
+export const getStudent = (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
   return axios
-    .get(`${API_STUDENT}/${id}/`)
+    .get(`${API_STUDENT}/${token}/`, config)
     .then((response) => {
       const { data } = response;
       return data;
@@ -30,10 +37,15 @@ export const getSocialNetwork = (id) => {
     });
 };
 
-export const updateStudent = (id, body = {}) => {
+/**
+ * @param {Object} payload objeto que contiene la informacion que se enviara para crear la cuenta de un alumno
+ * @param {Number} id identificador de un alumno
+ * @return {Promise}
+ **/
+export const updateStudent = (id, payload = {}) => {
   return toast.promise(
     axios
-      .put(`${API_STUDENT}${id}/`, body, {
+      .put(`${API_STUDENT}${id}/`, payload, {
         headers: {
           "Content-Type": "application/json",
           accept: "application/json",
@@ -56,28 +68,31 @@ export const updateStudent = (id, body = {}) => {
   );
 };
 
-export const createAccountStudent = ({
-  t100_name,
-  t100_email,
-  password,
-} = {}) => {
-  return axios
-    .post(
-      API_STUDENT,
-      { t100_name, t100_email, password },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          accept: "application/json",
-        },
-      }
-    )
-    .then((response) => {
-      const { data } = response;
-      return data;
-    })
-    .catch((error) => error.response.data.message);
+/**
+ * @param {Object} payload objeto que contiene la informacion que se enviara para crear la cuenta de un alumno
+ * @returns {Promise}
+ **/
+export const createAccountStudent = async (payload) => {
+  try {
+    const response = await axios.post(API_STUDENT, payload, {
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json",
+      },
+    });
+    return response;
+  } catch (error) {
+    if (error.response) {
+      return error.response.data.errors;
+    }
+  }
 };
+
+/**
+ * @param {Object} payload
+ * @return {Promise}
+ **/
+export const loginStudent = async (payload) => {};
 
 export const uploadPhotoStudent = (id, img) => {
   const formData = new FormData();

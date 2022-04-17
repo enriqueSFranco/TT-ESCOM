@@ -4,7 +4,7 @@ import CardJob from "../CardJob/CardJob";
 import styles from "./JobList.module.css";
 
 const JobList = ({ jobs = [], loading }) => {
-
+  console.log(jobs)
   return (
     <article className={`${styles.wrapper} ${styles.grid}`}>
       <div style={{ width: "500px" }}>
