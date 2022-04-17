@@ -1,5 +1,6 @@
 from django.db import models
 from apps.administration.models import Admin
+from django.contrib.auth.models import  AbstractBaseUser
 
 def upload_image_banner(instance, filename):
     return f"/banners/{instance.t300_id_company}-{filename}"
@@ -96,18 +97,23 @@ class Ubication(models.Model):
     def __str__(self) -> str:
         return self.t300_id_company
 
-class Recruiter(models.Model):
+class Recruiter(AbstractBaseUser):
     t301_id_recruiter = models.AutoField(primary_key=True)
     t301_name = models.CharField(max_length=60,null=True,blank=True)
     t301_last_name = models.CharField(max_length=100,null=True,blank=True)
     t301_user = models.CharField(max_length=60,null=True,blank=True)
+    t301_email = models.EmailField(unique=True,blank=False,null=False)
+    t301_phonenumber = models.PositiveBigIntegerField(blank=True,null=True)
     t300_id_company = models.ForeignKey(
         Company,
         null=False,
         blank=False,
         related_name='RecuiterCompany',
         on_delete=models.CASCADE)
-    t301_password = models.CharField(max_length=100,null=True,blank=True)
+    is_active= models.BooleanField(default=False)    
+
+    USERNAME_FIELD = 't301_email'
+    REQUIRED_FIELDS = ['password']
 
     class Meta:
         verbose_name = 'Recruiter'
@@ -115,4 +121,4 @@ class Recruiter(models.Model):
         db_table = 't301_reclutadores'
 
     def __str__(self) -> str:
-        return self.t301_name+' '+self.t301_last_name
+        return self.t301_email

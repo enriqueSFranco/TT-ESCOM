@@ -37,6 +37,7 @@ class CompanyViewSet(viewsets.GenericViewSet):
 		return Response(companies_serializer.data, status=status.HTTP_200_OK)
 
 	def create(self, request):
+		print(request.data)
 		company_serializer = self.serializer_class(data=request.data)
 		print(company_serializer.is_valid())
 		if company_serializer.is_valid():

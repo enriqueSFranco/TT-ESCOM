@@ -45,7 +45,7 @@ class User(AbstractUser, PermissionsMixin):
         db_table = 'usuarios'
 
     def __str__(self):
-        return "Funciona.... creo"
+        return self.username+": "+self.user_type
 
 # from django.db import models
 # from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
