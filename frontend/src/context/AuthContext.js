@@ -1,25 +1,26 @@
-import { createContext, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext(); // creamos el contecto
 
 // Provider
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(() => window.localStorage.getItem('token') ? window.localStorage.getItem('token') : null) ;
-  const [token, setToken] = useState(() => window.localStorage.getItem('token') ? JSON.parse(window.localStorage.getItem('token')) : null);
+  const [user, setUser] = useState(() => window.sessionStorage.getItem('token')) ;
+  const [token, setToken] = useState(() => window.sessionStorage.getItem('token'));
   let navigate = useNavigate();
 
-  const login = async (e) => {
+  const login = useCallback(async (e) => {
     e.preventDefault();
+
     try {      
-      const response = await fetch('/iniciar-sesion/', {
+      const response = await fetch('/token/student/', {
         method: 'POST',
         headers: {
-          'content-type': 'application/json',
+          'Content-Type': 'application/json',
           accept: 'application/json',
         },
         body: JSON.stringify({
-          "username": (e.target.username.value).trim(),
+          "username": (e.target.t100_email.value).trim(),
           "password": (e.target.password.value).trim()
         })
       });
@@ -33,27 +34,32 @@ const AuthProvider = ({ children }) => {
       }
       const json = await response.json();
       console.log(json)
+
       const { token, user } = json;
-      console.log(user)
+      console.log(user);
+      let objUser = {username: user?.username, type: user?.user_type};
+      console.log(objUser);
+
       if (response.status === 200 || response.status === 201) {
-        setUser(user);
+        setUser(objUser);
         setToken(token);
-        window.localStorage.setItem('token', JSON.stringify(json))
+        window.sessionStorage.setItem('token', JSON.stringify(json))
         navigate('/');
       } else {
         console.log(`error: ${response.error}`);
+        window.sessionStorage.removeItem('token', JSON.stringify(json))
       }
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [setToken]);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     setUser(null);
     setToken(null);
-    window.localStorage.removeItem('token');
+    window.sessionStorage.removeItem('token');
     navigate('/');
-  }
+  }, [setToken]);
 
   const data = {
     user,

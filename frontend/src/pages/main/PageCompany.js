@@ -1,17 +1,17 @@
 import { useState } from "react";
-import { useFetch } from "../../hooks/useFetch";
-import Label from "../../components/Input/Label";
-import Input from "../../components/Input/Input";
-import Span from "../../components/Input/Span";
-import Skeleton from "../../components/Skeleton/Skeleton";
-import CardCompany from "../../components/Card/Company/CardCompany";
-import { API_COMPANY } from "../../services/settings";
+import { useFetch } from "hooks/useFetch";
+import Label from "components/Element/Label/Label";
+import Input from "components/Element/Input/Input";
+import Span from "components/Element/Span/Span";
+import Skeleton from "components/Skeleton/Skeleton";
+import CardCompany from "components/Card/Company/CardCompany";
+import { API_COMPANY } from "services/settings";
 import styles from "./PageCompany.module.css";
 
 const PageCompany = () => {
   const [search, setSearch] = useState("");
   const [companyMatch, setCompanyMatch] = useState([]);
-  const { data, loading } = useFetch(API_COMPANY);
+  const { data, error, loading } = useFetch(API_COMPANY);
 
   const searchCompany = (query) => {
     let input = query.toLowerCase().trim();
@@ -28,7 +28,7 @@ const PageCompany = () => {
   };
 
   if (!data) return null;
-
+  console.log(error)
   return (
     <section className={`${styles.wrapperListCompanies}`}>
       <div className={styles.search}>
@@ -60,7 +60,7 @@ const PageCompany = () => {
               logo={company?.t300_logo}
             />
           ))
-        ) : (
+        ) : data.length > 0 ? (
           data.map((company) => (
             <CardCompany
               key={company?.t300_id_company}
@@ -71,6 +71,8 @@ const PageCompany = () => {
               logo={company?.t300_logo}
             />
           ))
+        ) : (
+          <h2>No hay empresas registradas</h2>
         )}
       </div>
     </section>

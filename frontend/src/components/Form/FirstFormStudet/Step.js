@@ -6,11 +6,10 @@ import DatesPersonal from "./DatesPersonal";
 import DatesJob from "./DatesJob";
 import DatesSkill from "./DatesSkill";
 import DatesSoftSkill from "./DatesSoftSkills";
-// import Button from "@mui/material/Button";
-import styles from "./Styles.module.css";
-import { useForm } from "../../../hooks/useForm";
-import { useFetch } from "../../../hooks/useFetch";
-import { helpHttp } from "../../../utils/helpHttp";
+import { useForm } from "hooks/useForm";
+import { useFetch } from "hooks/useFetch";
+import { helpHttp } from "utils/helpHttp";
+import styles from "./StylesStepper.module.css";
 
 let initialForm = {
   t100_boleta: "2015090419",
@@ -39,6 +38,7 @@ const StepComponent = () => {
   const [softSkills, setSoftSkills] = React.useState([]);
   const { form, handleChange } = useForm(initialForm);
   const { data } = useFetch("/api/catalogues/CatalogueSkills/");
+  
   if (!data && !form) {
     return;
   }
@@ -139,10 +139,9 @@ const StepComponent = () => {
   const steps = ["1", "2 ", "3", "4"];
 
   return (
-    <div className="col bg-white p-5 rounded-end">
+    <div className="container">
       <div className={styles.container}>
         <div className={styles.pages}>{PageDisplay()}</div>
-
         <div className={styles.container2}>
           <div className={styles.stepper}>
             <Stepper activeStep={activeStep} alternativeLabel>
