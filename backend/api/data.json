@@ -26760,7 +26760,8 @@
             "t300_logo": null,
             "t300_banner": null,
             "t300_create_date": "2022-04-05",
-            "t400_id_admin": 1
+            "t400_id_admin": 1,
+            "t300_verified": true
         }
     },
 
@@ -26807,7 +26808,8 @@
             "t300_logo": "/logos/cocacola.jpeg",
             "t300_banner": null,
             "t300_create_date": "1892-01-29",
-            "t400_id_admin": 1
+            "t400_id_admin": 1,
+            "t300_verified": true
         }
     },
     {
@@ -26826,7 +26828,8 @@
             "t300_logo": "/logos/amazon.jpeg",
             "t300_banner": null,
             "t300_create_date": "1994-07-05",
-            "t400_id_admin": 1
+            "t400_id_admin": 1,
+            "t300_verified": true
         }
     },
     {
@@ -26845,7 +26848,8 @@
             "t300_logo": "/logos/google.jpeg",
             "t300_banner": null,
             "t300_create_date": "1998-09-04",
-            "t400_id_admin": 1
+            "t400_id_admin": 1,
+            "t300_verified": true
         }
     },
     {
@@ -26864,7 +26868,8 @@
             "t300_logo": "/logos/nike.jpeg",
             "t300_banner": null,
             "t300_create_date": "1964-01-25",
-            "t400_id_admin": 1
+            "t400_id_admin": 1,
+            "t300_verified": true
         }
     },
     {
@@ -26883,7 +26888,8 @@
             "t300_logo": "/logos/bbva.jpeg",
             "t300_banner": null,
             "t300_create_date": "1932-01-24",
-            "t400_id_admin": 1
+            "t400_id_admin": 1,
+            "t300_verified": true
         }
     },
     {
@@ -26902,7 +26908,8 @@
             "t300_logo": "/logos/ibm.jpeg",
             "t300_banner": null,
             "t300_create_date": "1911-06-16",
-            "t400_id_admin": 1
+            "t400_id_admin": 1,
+            "t300_verified": true
         }
     },
     {
@@ -26921,7 +26928,8 @@
             "t300_logo": null,
             "t300_banner": null,
             "t300_create_date": "1945-12-02",
-            "t400_id_admin": 1
+            "t400_id_admin": 1,
+            "t300_verified": true
         }
     },
     {
@@ -26940,7 +26948,8 @@
             "t300_logo": "/logos/amazon.jpeg",
             "t300_banner": null,
             "t300_create_date": "2003-07-01",
-            "t400_id_admin": null
+            "t400_id_admin": null,
+            "t300_verified": true
         }
     },
     {
@@ -26959,7 +26968,8 @@
             "t300_logo": "/logos/facebook.jpeg",
             "t300_banner": null,
             "t300_create_date": "2004-02-04",
-            "t400_id_admin": null
+            "t400_id_admin": null,
+            "t300_verified": true
         }
     },
 
