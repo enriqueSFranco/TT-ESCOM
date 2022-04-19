@@ -1,3 +1,4 @@
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import status
 from rest_framework.response import Response
@@ -104,3 +105,19 @@ class UserViewSet(viewsets.GenericViewSet):
 	#	return Response({
 	#		'message': 'No existe el alumno que desea eliminar'
 	#	}, status=status.HTTP_404_NOT_FOUND)
+
+
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+
+        # Add custom claims
+        #token['username'] = user.username		
+        # ...
+
+        return token
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer

@@ -23,6 +23,7 @@ from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+from apps.users.views import MyTokenObtainPairView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,7 +33,7 @@ urlpatterns = [
     # path('iniciar-sesion/', Login.as_view(), name='iniciar-sesion'),
     # path('cerrar-sesion/', Logout.as_view(), name='cerrar-sesion'),    
     path('token/student/',Login.as_view(),name='Login student'),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh-token/', TokenRefreshView.as_view(), name='refresh-token'),
     path('images/',include('apps.images_routers'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

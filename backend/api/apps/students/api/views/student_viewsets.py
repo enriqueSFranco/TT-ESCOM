@@ -1,3 +1,4 @@
+from lib2to3.pgen2 import token
 from django.shortcuts import get_object_or_404
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
@@ -8,6 +9,8 @@ from rest_framework import viewsets
 
 from apps.students.models import Student
 from apps.users.models import User
+from rest_framework_simplejwt.tokens import RefreshToken
+from apps.users.views import MyTokenObtainPairSerializer
 from apps.users.api.serializers import UserSerializer
 from apps.students.api.serializer.student_serializer import StudentSerializer, StudentListSerializer, PasswordSerializer, UpdateStudentSerializer
 
@@ -18,6 +21,13 @@ class StudentViewSet(viewsets.GenericViewSet):
 	serializer_class = StudentSerializer
 	list_serializer_class = StudentListSerializer
 	queryset = None
+
+	def get_tokens_for_user(self,user):
+		refresh = RefreshToken.for_user(user)
+		return {
+        	'refresh': str(refresh),
+        	'access': str(refresh.access_token),
+	    }
 
 	def get_object(self, pk):
 		if self.queryset is None:
@@ -95,11 +105,14 @@ class StudentViewSet(viewsets.GenericViewSet):
 					if credentials_serializer.is_valid():
 						print("Credenciales correctas")
 						user= credentials_serializer.validated_data['user']
-						token,created = Token.objects.get_or_create(user = user)     
+						tokens = self.get_tokens_for_user(user)
+						print(tokens)
+						#token,created = Token.objects.get_or_create(user = user)     
 						user_serializer = UserSerializer(user)    
-						if created:
+						if tokens:
 							print("Token creado")
-							return Response({'token':token.key,
+							return Response({'access':tokens['access'],
+							 'refresh':tokens['refresh'],
                              'user':user_serializer.data,
                              'message':'Inicio de sesión exitoso'},
                   			 status.HTTP_201_CREATED)						
