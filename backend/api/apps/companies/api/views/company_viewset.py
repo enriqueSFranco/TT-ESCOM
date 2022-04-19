@@ -5,13 +5,15 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import viewsets
 
-from apps.companies.models import Company
+from apps.companies.models import Company, Recruiter
+from apps.companies.api.serializer.recruiter_serializer import RecruiterSerializer
 from apps.companies.api.serializer.company_serializer import CompanySerializer,CompanyListSerializer,UpdateCompanySerializer
 
 class CompanyViewSet(viewsets.GenericViewSet):
 	model = Company
 	serializer_class = CompanySerializer
 	list_serializer_class = CompanyListSerializer
+	recruiter_serializer_class = RecruiterSerializer
 	queryset = None
 
 	def get_object(self, pk):
@@ -37,15 +39,36 @@ class CompanyViewSet(viewsets.GenericViewSet):
 		return Response(companies_serializer.data, status=status.HTTP_200_OK)
 
 	def create(self, request):
+		company={
+			't300_name': request.data['t300_name'],
+			't300_rfc': request.data['t300_rfc'], 
+			't300_bussiness_name': request.data['t300_bussiness_name'],
+			't300_create_date': request.data['t300_create_date'],
+			't300_verified': False
+		}
+		recruiter={
+			"t301_name":request.data["t301_name"],
+    		"t301_last_name":request.data["t301_last_name"],
+    		"t301_email": request.data["t301_email"],    
+    		"t301_phonenumber":request.data["t301_phonenumber"]
+		}
 		print(request.data)
-		company_serializer = self.serializer_class(data=request.data)
+		company_serializer = self.serializer_class(data=company)
 		print(company_serializer.is_valid())
 		if company_serializer.is_valid():
 			company_serializer.save()
-			return Response({
-				'message': 'Compañia registrada correctamente.',
-				'succes': True
-			}, status=status.HTTP_201_CREATED)
+			recruiter_serializer = self.serializer_class(data=recruiter)
+			if recruiter_serializer.is_valid():
+				recruiter_serializer.save()
+				return Response({
+					'message': 'Compañia y reclutador registrados correctamente.',
+					'succes': True
+					}, status=status.HTTP_201_CREATED)
+			else:
+				return Response({
+					'message': 'Compañia registrada.',
+					'succes': False
+					}, status=status.HTTP_400_BAD_REQUEST)
 		return Response({
 			'message': 'Hay errores en el registro',
 			'errors': company_serializer.errors,

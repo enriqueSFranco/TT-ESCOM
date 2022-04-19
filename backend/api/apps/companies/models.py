@@ -10,11 +10,11 @@ def upload_image_logo(instance, filename):
 
 class Company(models.Model):
     t300_id_company = models.AutoField(primary_key=True)
-    t300_name = models.CharField(max_length=100,blank=False,null=False,default="Sin")
-    t300_rfc = models.CharField(max_length=20,blank=False,null=False,default="Sin")
-    t300_nss = models.PositiveBigIntegerField(null=False,blank=False,default=000000)
+    t300_name = models.CharField(max_length=100,blank=False,null=False,default="Sin datos")
+    t300_rfc = models.CharField(unique=True,max_length=20,blank=False,null=False,default="Sin datos")
+    t300_nss = models.PositiveBigIntegerField(null=True,blank=True)
     t300_email =  models.EmailField(null=True,blank=True)
-    t300_bussiness_name = models.CharField(max_length=100,blank=True,null=True)
+    t300_bussiness_name = models.CharField(max_length=100,blank=False,null=False,default="Sin datos")
     t300_web_page = models.CharField(max_length=100,blank=True,null=True,default="http://")
     t300_mision = models.TextField(blank=True,null=True)
     t300_vision = models.TextField(blank=True,null=True)
@@ -28,10 +28,10 @@ class Company(models.Model):
         related_name='AdminCreate',
         on_delete=models.CASCADE
     )
-    t300_create_date = models.DateField()
+    t300_verified = models.BooleanField(default=False)
+    t300_create_date = models.DateField()    
 
-    class Meta:
-        unique_together = ['t300_rfc','t300_nss','t300_email']
+    class Meta:        
         verbose_name = 'Company'
         verbose_name_plural = 'Companies'
         db_table = 't300_empresa'

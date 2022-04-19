@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import datetime
 from pathlib import Path
 from pickle import TRUE
 from datetime import timedelta
@@ -137,14 +138,24 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 SIMPLE_JWT = {
+<<<<<<< HEAD
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+=======
+    #'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=15),
+    #'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=15),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
+>>>>>>> 4f958a06cc2145ac05d972e343b09776be127aa6
     'REFRESH_TOKEN_LIFETIME': timedelta(days=90),
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
     'UPDATE_LAST_LOGIN': False,
 
     'ALGORITHM': 'HS256',
+<<<<<<< HEAD
 
+=======
+    #'SIGNING_KEY': SECRET_KEY,
+>>>>>>> 4f958a06cc2145ac05d972e343b09776be127aa6
     'VERIFYING_KEY': None,
     'AUDIENCE': None,
     'ISSUER': None,
