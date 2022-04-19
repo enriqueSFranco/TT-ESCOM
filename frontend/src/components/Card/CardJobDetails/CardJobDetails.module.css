@@ -1,3 +1,7 @@
+/* * {
+  outline: 2px solid red;
+} */
+
 h3 {
   font-size: 1rem;
   font-weight: bold;
@@ -5,17 +9,13 @@ h3 {
   letter-spacing: 1;
 }
 
-.body { height: 700px; }
+.body { height: 647px; overflow-y: scroll; padding-top: 1rem; }
 
 .positionSticky {
   /* margin-top: 140px; */
   font-family: sans-serif;
   position: sticky;
   top: 100px;
-}
-
-.expandCard {
-  background-color: red;
 }
 
 .actions {
@@ -41,21 +41,30 @@ h3 {
 
 .flex {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   padding: 0;
 }
 
-.flex ul {
-  margin-top: .5rem;
-}
+.flex ul { margin-top: .5rem; }
 
-.flex li > span {
-  margin-left: .4rem;
+.header {
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  margin: 0;
+  width: 100%;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
+  border-bottom: 2px solid rgba(0,0,0,.08);
 }
 
 .requirements ul {
   padding: 0;
+}
+
+.tagsBody {
+  /* outline: 2px solid blue; */
+  width: 400px;
 }
 
 .title {
@@ -68,12 +77,11 @@ h3 {
 .wrapper {
   background-color: #fff;
   font-family: sans-serif;
-  height: 700px;
-  width: 700px;
+  height: 800px;
+  width: 100%;
   border-radius: 8px;
-  overflow-y: scroll;
   outline: 1px solid #ccc;
-  padding: 1rem;
+  padding: .4rem 0 1rem 0;
 }
 
 .wrapper::-webkit-scrollbar { width: 8px; }

@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { getStudent, getSocialNetwork } from "services/students/index";
 import { getSkill } from "services/catalogs";
 import { uuid } from "utils/uuid";
-import Chip from "@mui/material/Chip";
 import FormUpdateDataStudent from "../../Form/updateInfoStudent/FormUpdateDataStudent";
 import Avatar from "../../Avatar/Avatar";
 import * as MdIcon from "react-icons/md";
@@ -22,15 +21,18 @@ const CardProfileStudent = () => {
     let isEdit = isProfile === "edit" ? "profile" : "edit";
     setIsProfile(isEdit);
   };
-  let newUser = JSON.parse(user);
-  const id = newUser?.user?.user_id;
+  console.log(user)
+
+
+  // let newUser = JSON.parse(user);
+  // const id = newUser?.user?.user_id;
 
   useEffect(() => {
     const fetchData = async () => {
       const [studentRes, linksRes, skillsResponse] = await Promise.all([
-        getStudent(id),
-        getSocialNetwork(id),
-        getSkill(id),
+        getStudent("12"),
+        getSocialNetwork("12"),
+        getSkill("12"),
       ]);
       setStudent(studentRes);
       setSocialNetworks(linksRes);
@@ -44,8 +46,8 @@ const CardProfileStudent = () => {
       setSocialNetworks([]);
       setSkills([]);
     };
-  }, [id]);
-
+  }, []);
+  console.log(student)
   return (
     <>
       {isProfile === "edit" ? (
@@ -119,7 +121,7 @@ const CardProfileStudent = () => {
               <div className={`${styles.wrapperSkills} ${styles.separator}`}>
                 <h4 className={styles.label}>Skills</h4>
                 <ul className={styles.skillList}>
-                  {
+                  {/* {
                     skills.length > 0 ? (
                       skills.map(({ c116_id_skill }) => (
                         <Chip
@@ -131,7 +133,7 @@ const CardProfileStudent = () => {
                     ) : (
                       <h3>Sin skills</h3>
                     )
-                  }
+                  } */}
                 </ul>
               </div>
               <div className={`${styles.cv} py-4`}>

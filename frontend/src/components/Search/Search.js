@@ -13,7 +13,7 @@ const Search = ({ handleSearch, data }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [filterData, setFilterData] = useState(data);
 
-  const handleFilterJob = (e) => {
+  const handleFilterJob = e => {
     const query = e.target.value;
     setQueryJob(query);
 
@@ -38,8 +38,6 @@ const Search = ({ handleSearch, data }) => {
       handleSearch(queryJob === "" ? setFilterData(data) : queryJob);
     }, 2000);
   };
-
-  // console.log(data)
 
   return (
     <div className={`${styles.searchContainer}`}>

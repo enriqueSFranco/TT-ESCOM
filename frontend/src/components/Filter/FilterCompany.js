@@ -11,14 +11,15 @@ const FilterCompany = ({ onChange }) => {
         setBusiness(response);
       })
       .catch(error => console.error(error))
+    return () => null;
   }, []);
 
   return (
     <div className={styles.select}>
-      <select name="profile" id="profile" defaultValue="" onChange={onChange}>
-        <option value="">Empresas</option>
-        {business && business.map(company => (
-          <option key={company?.t300_id_company} value={company?.t300_name}>{company?.t300_name}</option>
+      <select name="business" id="business" onChange={onChange}>
+        <option value="allBusiness">Empresas</option>
+        {business && business.map(({t300_id_company, t300_name}) => (
+          <option key={t300_id_company} value={t300_name}>{t300_name}</option>
         ))}
       </select>
     </div>

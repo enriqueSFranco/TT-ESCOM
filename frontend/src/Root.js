@@ -38,7 +38,9 @@ const Root = () => {
       <Route path="/reclutador" element={<PageLoginCompany />} />
       <Route path="/registro-reclutador" element={<PageRegisterCompany />} />
       {/* <Route path="/actualiza-alumno" element={<PageLoginStudentUpdate />}/> */}
-      <Route path="/empresas" element={<PageCompany />} />
+      <Route path="empresas" element={<PageCompany />}>
+        <Route path=":t301_id_company" element={<ModalRelease />} />
+      </Route>
       <Route path="comunicados" element={<PageReleases />}>
         <Route path=":t202_id_announcement" element={<ModalRelease />} />
       </Route>

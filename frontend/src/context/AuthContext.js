@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
       console.log(user);
       let objUser = {username: user?.username, type: user?.user_type};
       console.log(objUser);
-
+      console.log(response)
       if (response.status === 200 || response.status === 201) {
         setUser(objUser);
         setToken(token);

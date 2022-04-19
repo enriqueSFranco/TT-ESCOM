@@ -35,7 +35,11 @@ export const getAllCandidateProfile = () => {
       return data;
     })
     .catch(error => error);
-}
+};
+
+export const getAllMunicipality = () => {
+  
+};
 
 export const getAllStates = async () => {
   try {
@@ -45,4 +49,4 @@ export const getAllStates = async () => {
     if (error.response)
       return error.response.message;
   }
-}
+};

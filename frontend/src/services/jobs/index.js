@@ -1,6 +1,7 @@
 import axios from "axios";
-import { toast } from "react-hot-toast";
 import { API_JOBS } from "../settings";
+
+// /api/Vacants/?page=2
 
 export const getAllJobs = async() => {
   try {

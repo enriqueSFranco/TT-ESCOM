@@ -1,6 +1,6 @@
 .card {
   width: 200px;
-  height: 180px;
+  height: 140px;
   background-color: #fff;
   outline: 1px solid #ccc;
   border-radius: 4px;
@@ -84,4 +84,33 @@
   font-size: 13px;
   padding: .3rem;
   margin: 0;
+}
+
+
+/*  */
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.grid {
+  background-color: #19a0ee;
+  position: relative;
+  top: 5rem;
+  height: 90vh;
+  width: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-content: center;
+  justify-items: center;
+  color: #fff;
+  font-size: 3rem;
+}
+
+.description {
+  margin-top: 3rem;
+  height: auto;
+  font-size: 1.1rem;
 }

@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { useForm } from "hooks/useForm";
 import TextField from "@mui/material/TextField";
 import AuthContext from "context/AuthContext";
+import { InputAdornment } from "@mui/material";
+import { MdOutlineMail } from "react-icons/md";
+import { RiLockPasswordLine } from "react-icons/ri";
 import styles from "../Styles.module.css";
 
 let initialForm = {
@@ -16,9 +19,9 @@ const Form = () => {
 
   return (
     <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
-      <div className="row align-items-stretch">
+      <div className="row">
         <div
-          className={`${styles.bg} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
+          className={`${styles.bg} col rounded`}
         >
           <div className={`${styles.login}`}>
             <blockquote>
@@ -34,7 +37,7 @@ const Form = () => {
               </span>
             </div>
         </div>
-        <div className={`col bg-white p-5 rounded-end ${styles.formLogin}`}>
+        <div className={`col text-center bg-white p-3 rounded-end ${styles.formLogin}`}>
           <div className={styles.welcome}>
             <h2>iniciar sesion</h2>
             <span>Bienvenido! Porfavor introduce tus datos.</span>
@@ -47,6 +50,13 @@ const Form = () => {
                 id="t100_email"
                 name="t100_email"
                 sx={{ width: 500, maxWidth: "100%" }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <MdOutlineMail />
+                    </InputAdornment>
+                  )
+                }}
                 value={form.t100_email}
                 onChange={handleChange}
               />
@@ -58,6 +68,13 @@ const Form = () => {
                 id="password"
                 name="password"
                 type="password"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <RiLockPasswordLine />
+                    </InputAdornment>
+                  )
+                }}
                 sx={{ width: 500, maxWidth: "100%" }}
                 value={form.password}
                 onChange={handleChange}
