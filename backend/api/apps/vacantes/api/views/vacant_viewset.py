@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import viewsets
 
+from apps.vacantes.pagination import CustomPagination
 from apps.vacantes.models import Vacant
 from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,VacantListSerializer,UpdateVacantSerializer
 
@@ -12,6 +13,7 @@ class VacantViewSet(viewsets.GenericViewSet):
 	model = Vacant
 	#permission_classes = [IsAuthenticated]
 	serializer_class = VacantSerializer
+	pagination_class = CustomPagination
 	list_serializer_class = VacantListSerializer
 	queryset = None
 
@@ -30,8 +32,12 @@ class VacantViewSet(viewsets.GenericViewSet):
 
 	def list(self, request):
 		vacants = self.get_queryset()
+		page = self.paginate_queryset(vacants)
+		if page is not None:
+			vacants_serializer = self.list_serializer_class(page, many=True)
+			return self.get_paginated_response(vacants_serializer.data)
 		vacants_serializer = self.list_serializer_class(vacants, many=True)
-		return Response(vacants_serializer.data, status=status.HTTP_200_OK)
+		return Response(vacants_serializer.data)
 
 	def create(self, request):
 		vacant_serializer = self.serializer_class(data=request.data)
