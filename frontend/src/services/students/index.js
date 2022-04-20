@@ -15,7 +15,7 @@ export const getStudent = (token) => {
     },
   };
   return axios
-    .get(`${API_STUDENT}/${token}/`, config)
+    .get(`${API_STUDENT}/${token}`, config)
     .then((response) => {
       const { data } = response;
       return data;
