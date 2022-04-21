@@ -8,6 +8,9 @@ class CustomPagination(PageNumberPagination):
         'next': self.get_next_link(),
         'previous': self.get_previous_link()
       },
+      'pagination': self.page.paginator.count,
+      'page_size': self.page.paginator.per_page,
+      'page': self.page.start_index(),
       'count': self.page.paginator.count,
       'result': data
     })
