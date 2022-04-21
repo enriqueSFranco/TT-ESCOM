@@ -17,7 +17,7 @@ class Login(ObtainAuthToken):
     if login_serializer.is_valid():
       #print("Paso la validación")
       #print(login_serializer.validated_data)
-      user= login_serializer.validated_data['user']
+      user= login_serializer.validated_data['user']      
       if user.is_active:
         #print("Puede iniciar sesión")
         token,created = Token.objects.get_or_create(user = user)     
@@ -36,7 +36,9 @@ class Login(ObtainAuthToken):
                   status.HTTP_201_CREATED)
       else :
         #print("No puede iniciar sesión")
-        return Response({'error':'Este usuario no puede iniciar sesión'},status = status.HTTP_401_UNAUTHORIZED)
+        return Response({'message':'Este usuario no puede iniciar sesión',
+                         'error':'Usuario inactivo'}
+                         ,status = status.HTTP_401_UNAUTHORIZED)
     else:
       #print("No paso validación")
       return Response({'error':'Nombre de usuario o contraseña incorrecta'},status = status.HTTP_400_BAD_REQUEST)    

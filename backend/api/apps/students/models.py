@@ -10,6 +10,8 @@ def upload_image_profile(instance, filename):
 def upload_project_banner(instance, filename):
     return f"projects_pictures/{instance.t100_id_student}-{filename}"
 
+def upload_platoform_icon(instance, filename):
+    return f"icons/{instance.t100_id_student}-{filename}"
 
 def upload_cv(instance, filename):
     return f"{instance.t100_boleta}-{filename}"	
@@ -120,6 +122,7 @@ class Student(AbstractBaseUser):
 	t100_modalities = models.CharField(max_length=20,null=True,blank=True)
 	t100_target_salary = models.PositiveIntegerField(null=True, blank=True)	
 	t100_travel = models.BooleanField(default=False)
+	t100_interest_job = models.CharField(max_length=70,null=True,blank=True)
 	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to=upload_image_profile)
 	is_active = models.BooleanField(default=False)
 
@@ -233,6 +236,7 @@ class Link(models.Model):
 		related_name='PlataformDescription',
 		on_delete=models.CASCADE,
 		default=1)
+	t114_icon = models.FileField(blank=True,null=True,default="",upload_to=upload_platoform_icon)
 
 	class Meta:
 		unique_together = ['t100_id_student','c115_id_plataform']

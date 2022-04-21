@@ -114,20 +114,22 @@ class StudentViewSet(viewsets.GenericViewSet):
 							return Response({'access':tokens['access'],
 							 'refresh':tokens['refresh'],
                              'user':user_serializer.data,
-                             'message':'Inicio de sesión exitoso'},
+                             'message':'Cuenta registrada con éxito'},
                   			 status.HTTP_201_CREATED)						
 						else:
 							return Response({'error':'No se pudo crear el token'},status = status.HTTP_400_BAD_REQUEST)
-					#Crear token
-					#json = UserSerializer.data
-					#return Response(json, status=status.HTTP_201_CREATED)
-			#return Response({
-			#	'message': 'Alumno registrado correctamente.'
-			#}, status=status.HTTP_201_CREATED)
-		return Response({
-			'message': 'Hay errores en el registro',
-			'errors': student_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+					else:
+						student_destroy = self.model.objects.filter(t100_email=request.data['t100_email']).delete()
+						return Response({
+							'message': 'Hay errores en el registro',
+							'errors': credentials_serializer.errors
+						}, status=status.HTTP_400_BAD_REQUEST)
+		else:	
+			student_destroy = self.model.objects.filter(t100_email=request.data['t100_email']).delete()
+			return Response({
+				'message': 'Hay errores en el registro',
+				'errors': student_serializer.errors
+			}, status=status.HTTP_400_BAD_REQUEST)
 
 	def retrieve(self, request, pk):
 		student = self.get_object(pk)

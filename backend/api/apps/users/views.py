@@ -108,16 +108,42 @@ class UserViewSet(viewsets.GenericViewSet):
 
 
 
-class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):	    
     @classmethod
     def get_token(cls, user):
-        token = super().get_token(user)
+        return RefreshToken.for_user(user)
+
+    def validate(self,attrs):
+        """data={
+			'access':'',
+			'refresh':'',
+			'user':{
+				'username':'',
+				'email':'',
+				'user_id':''
+			},
+			'message':'Inicio de sesión exitoso'
+		}"""
+        data = super().validate(attrs)
+        token = self.get_token(self.user) #super().get_token(user)        
+        print(self.user.user_id)
+        #print(token)
+        #print(student_user.data)
 
         # Add custom claims
         #token['username'] = user.username		
         # ...
+        data['refresh']=str(token)
+        data['access']=str(token.access_token)
+        user={
+			'user_id':self.user.user_id,
+			'username':self.user.username,
+			'email':self.user.email
+		}
+        data['user']=user        
+        print (data)
 
-        return token
+        return data
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer

@@ -29,7 +29,8 @@ class Company(models.Model):
         on_delete=models.CASCADE
     )
     t300_verified = models.BooleanField(default=False)
-    t300_create_date = models.DateField()    
+    t300_create_date = models.DateField()   
+    is_active = models.BooleanField(default=False) 
 
     class Meta:        
         verbose_name = 'Company'
@@ -110,7 +111,7 @@ class Recruiter(AbstractBaseUser):
         blank=False,
         related_name='RecuiterCompany',
         on_delete=models.CASCADE)
-    is_active= models.BooleanField(default=False)    
+    is_active= models.BooleanField(default=False)       
 
     USERNAME_FIELD = 't301_email'
     REQUIRED_FIELDS = ['password']
