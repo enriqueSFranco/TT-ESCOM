@@ -4,7 +4,9 @@ from apps.vacantes.models import Application
 class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
-        fields = '__all__'
+        fields = ('t200_id_vacant','t100_id_student','t201_cv','c205_id_application_state'
+        ,'t201_date_application')
+        #'__all__'
     
     def create(self,validate_data):
         aplication = Application(**validate_data)
@@ -14,7 +16,9 @@ class ApplicationSerializer(serializers.ModelSerializer):
 class ApplicationListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
-        fields = '__all__'
+        fields = ('t201_id_application','t200_id_vacant','t100_id_student','t201_cv','c205_id_application_state'
+        ,'t201_date_application')
+        #'__all__'
         depth = 2
 
     """def to_representation(self,instance):

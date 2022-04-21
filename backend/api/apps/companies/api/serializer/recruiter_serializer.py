@@ -28,5 +28,19 @@ class UpdateRecruiterSerializer(serializers.ModelSerializer):
             u_recruiter.save()
             return u_recruiter
 
+#Hacer serializador para activar el usuario y asignarle contraseña
+
+class UpdateRecruiterSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = Recruiter
+            fields = ('is_active','password')
+        
+        def update(self,instance,validate_data):
+            u_recruiter = super().update(instance,validate_data)
+            #Crear contraseña perrona
+            u_recruiter.set_password("contraseñaSecreta")
+            u_recruiter.save()
+            return u_recruiter
+#Hacer serializador para cambiar contraseña
 
 

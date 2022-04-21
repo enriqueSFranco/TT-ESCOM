@@ -26771,7 +26771,8 @@
             "c206_id_profile": 2,
             "c204_id_vacant_status": 2,
             "t301_id_recruiter": null,
-            "t400_id_admin": null
+            "t400_id_admin": null,
+            "t200_state":"Ciudad de México"
         }
     },
 
@@ -26978,7 +26979,8 @@
             "c206_id_profile": 2,
             "c204_id_vacant_status":1,
             "t301_id_recruiter": null,
-            "t400_id_admin": null
+            "t400_id_admin": null,
+            "t200_state":"Ciudad de México"
         }
     },
     {
@@ -27003,7 +27005,8 @@
             "c206_id_profile": 3,
             "c204_id_vacant_status": 2,
             "t301_id_recruiter": null,
-            "t400_id_admin": null
+            "t400_id_admin": null,
+            "t200_state":"Ciudad de México"
         }
     },
     {
@@ -27028,7 +27031,8 @@
             "c206_id_profile": 1,
             "c204_id_vacant_status": 2,
             "t301_id_recruiter": null,
-            "t400_id_admin": null
+            "t400_id_admin": null,
+            "t200_state":"Ciudad de México"
         }
     },
     {
@@ -27053,7 +27057,8 @@
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "t301_id_recruiter": null,
-            "t400_id_admin": null
+            "t400_id_admin": null,
+            "t200_state":"Ciudad de México"
         }
     },
     {
@@ -27078,7 +27083,8 @@
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "t301_id_recruiter": null,
-            "t400_id_admin": null
+            "t400_id_admin": null,
+            "t200_state":"Ciudad de México"
         }
     },
     {
@@ -27103,7 +27109,8 @@
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "t301_id_recruiter": null,
-            "t400_id_admin": null
+            "t400_id_admin": null,
+            "t200_state":"Ciudad de México"
         }
     },
     {
@@ -27128,7 +27135,8 @@
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "t301_id_recruiter": null,
-            "t400_id_admin": null
+            "t400_id_admin": null,
+            "t200_state":"Ciudad de México"
         }
     },
     {
@@ -27153,7 +27161,8 @@
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "t301_id_recruiter": null,
-            "t400_id_admin": null
+            "t400_id_admin": null,
+            "t200_state":"Ciudad de México"
         }
     },
     {
@@ -27178,7 +27187,8 @@
             "c206_id_profile": 1,
             "c204_id_vacant_status": 2,
             "t301_id_recruiter": null,
-            "t400_id_admin": null
+            "t400_id_admin": null,
+            "t200_state":"Ciudad de México"
         }
     },
     {
