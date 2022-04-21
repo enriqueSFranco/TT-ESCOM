@@ -1,14 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "context/AuthContext";
 import { motion } from "framer-motion";
+import { API_STUDENT } from "services/settings";
 import { getStudent, getSocialNetwork } from "services/students/index";
 import { getSkill } from "services/catalogs";
 import { uuid } from "utils/uuid";
+import Chip from "@mui/material/Chip"
 import FormUpdateDataStudent from "../../Form/updateInfoStudent/FormUpdateDataStudent";
 import Avatar from "../../Avatar/Avatar";
 import * as MdIcon from "react-icons/md";
 import * as IoIcon from "react-icons/io";
 import styles from "./CardProfileStudent.module.css";
+import { customFetch } from "utils/fetchInstance";
 
 const CardProfileStudent = () => {
   // TODO: Implementar useReducer para el manejo del estado
@@ -17,26 +20,28 @@ const CardProfileStudent = () => {
   const [skills, setSkills] = useState([]);
   const [socialNetworks, setSocialNetworks] = useState([]);
   const { user } = useContext(AuthContext);
+  
   const handleEdit = (e) => {
     let isEdit = isProfile === "edit" ? "profile" : "edit";
     setIsProfile(isEdit);
   };
-  console.log(user)
 
-
-  // let newUser = JSON.parse(user);
-  // const id = newUser?.user?.user_id;
-
+  console.log(user?.user_id)
+  
   useEffect(() => {
     const fetchData = async () => {
-      const [studentRes, linksRes, skillsResponse] = await Promise.all([
-        getStudent("12"),
-        getSocialNetwork("12"),
-        getSkill("12"),
-      ]);
-      setStudent(studentRes);
-      setSocialNetworks(linksRes);
-      setSkills(skillsResponse);
+      const { response } = await customFetch(`${API_STUDENT}${user?.user_id}/`);
+      console.log(response)
+      setStudent(response.data);
+      if (response.status === 200) {
+        const [linksRes, skillsResponse] = await Promise.all([
+          // getStudent(user.user_id),
+          getSocialNetwork(user?.user_id),
+          getSkill(user?.user_id),
+        ]);
+        setSocialNetworks(linksRes);
+        setSkills(skillsResponse);
+      }
     };
     fetchData();
 
@@ -46,8 +51,10 @@ const CardProfileStudent = () => {
       setSocialNetworks([]);
       setSkills([]);
     };
-  }, []);
-  console.log(student)
+  }, [user.user_id]);
+  
+  console.log(skills)
+
   return (
     <>
       {isProfile === "edit" ? (
@@ -121,7 +128,7 @@ const CardProfileStudent = () => {
               <div className={`${styles.wrapperSkills} ${styles.separator}`}>
                 <h4 className={styles.label}>Skills</h4>
                 <ul className={styles.skillList}>
-                  {/* {
+                  {
                     skills.length > 0 ? (
                       skills.map(({ c116_id_skill }) => (
                         <Chip
@@ -133,7 +140,7 @@ const CardProfileStudent = () => {
                     ) : (
                       <h3>Sin skills</h3>
                     )
-                  } */}
+                  }
                 </ul>
               </div>
               <div className={`${styles.cv} py-4`}>

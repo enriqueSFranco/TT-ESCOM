@@ -6,7 +6,7 @@ import {
   API_SKILLS
 } from "services/settings";
 
-export const getSkill = id => {
+export const getSkill = async (id) => {
   return axios.get(`${API_SKILLS}${id}/`)
     .then(response => {
       const { data } = response;

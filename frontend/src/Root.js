@@ -63,7 +63,7 @@ const Root = () => {
 
       {/* Indice de rutas privadas para un reclutador */}
       <Route element={<PrivateRoute roles={ROLE.RECRUITER} />}>
-
+        
       </Route>
 
     </Routes>

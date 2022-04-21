@@ -1,6 +1,8 @@
 // @ts-check
 
 import axios from "axios";
+import dayjs from "dayjs";
+import jwt_decode from "jwt-decode";
 import toast from "react-hot-toast";
 import {
   API_STUDENT,
@@ -8,22 +10,57 @@ import {
   API_PHOTO_STUDENT,
 } from "../settings";
 
-export const getStudent = (token) => {
+// let token = window.sessionStorage.getItem('token') ? JSON.parse(window.sessionStorage.getItem('token')) : null;
+
+// const refreshToken = (newToken = {}) => {
+//   console.log(newToken)
+//   return axios.post('/api/token/refresh-token/', JSON.stringify({'refresh': newToken}), {
+//     headers: {
+//       'Content-Type': 'application/json',
+//       'Accept': 'application/json',
+//     }
+//   })
+//     .then(response => {
+//       const { data } = response;
+//       window.sessionStorage.setItem('token', JSON.stringify(data));
+//       return data;
+//     })
+//     .catch(error => {
+//       if (error.response) return error.reposne.data.message;
+//     });
+// };
+
+export const getStudent = async (id) => {
+  // const student = jwt_decode(token.access);
+  // const isExpired = dayjs.unix(student?.exp).diff(dayjs()) < 1;
+  // console.log(token)
+  // if (isExpired) {
+  //   token = await refreshToken(token?.refresh);
+  // }
+
   const config = {
     headers: {
-      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+      // 'Authorization': `Bearer ${token?.access}`,
+      'Accept': 'application/json',
     },
   };
   return axios
-    .get(`${API_STUDENT}/${token}/`, config)
+    .get(`${API_STUDENT}${id}/`, config)
     .then((response) => {
       const { data } = response;
       return data;
     })
-    .catch((error) => error);
+    .catch((error) => {
+      if (error.response) {
+        return error.response.data.errors;
+      }
+    }
+    );
 };
 
-export const getSocialNetwork = (id) => {
+
+export const getSocialNetwork = async (id) => {
   return axios
     .get(`${API_SOCIAL_NETWORK}/${id}/`)
     .then((response) => {

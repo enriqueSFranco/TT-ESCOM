@@ -39,6 +39,8 @@ const Search = ({ handleSearch, data }) => {
     }, 2000);
   };
 
+  // console.log(data);
+
   return (
     <div className={`${styles.searchContainer}`}>
       <h1 className={styles.title}>

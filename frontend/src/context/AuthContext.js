@@ -1,19 +1,21 @@
-import { createContext, useCallback, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 const AuthContext = createContext(); // creamos el contecto
 
 // Provider
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(() => window.sessionStorage.getItem('token')) ;
-  const [token, setToken] = useState(() => window.sessionStorage.getItem('token'));
+  const [user, setUser] = useState(() => window.sessionStorage.getItem('token') ? jwt_decode(window.sessionStorage.getItem('token')) : null);
+  const [token, setToken] = useState(() => window.sessionStorage.getItem('token') ? JSON.parse(window.sessionStorage.getItem('token')) : null);
+  const [loading, setLoading] = useState(true);
   let navigate = useNavigate();
 
-  const login = useCallback(async (e) => {
+  const login = async (e) => {
     e.preventDefault();
 
-    try {      
-      const response = await fetch('/token/student/', {
+    try {
+      const response = await fetch('/api/token/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -32,34 +34,30 @@ const AuthProvider = ({ children }) => {
         };
         throw error;
       }
-      const json = await response.json();
-      console.log(json)
+      const data = await response.json();
+      console.log(data)
 
-      const { token, user } = json;
-      console.log(user);
-      let objUser = {username: user?.username, type: user?.user_type};
-      console.log(objUser);
-      console.log(response)
+      
       if (response.status === 200 || response.status === 201) {
-        setUser(objUser);
-        setToken(token);
-        window.sessionStorage.setItem('token', JSON.stringify(json))
+        setUser(jwt_decode(data?.access));
+        setToken(data);
+        window.sessionStorage.setItem('token', JSON.stringify(data))
         navigate('/');
       } else {
         console.log(`error: ${response.error}`);
-        window.sessionStorage.removeItem('token', JSON.stringify(json))
+        window.sessionStorage.removeItem('token', JSON.stringify(data))
       }
     } catch (error) {
       console.log(error);
     }
-  }, [setToken]);
+  };
 
-  const logout = useCallback(() => {
+  const logout = () => {
     setUser(null);
     setToken(null);
     window.sessionStorage.removeItem('token');
     navigate('/');
-  }, [setToken]);
+  };
 
   const data = {
     user,
@@ -68,9 +66,15 @@ const AuthProvider = ({ children }) => {
     logout,
   };
 
+  useEffect(() => {
+    if (token)
+      setUser(jwt_decode(token?.access));
+    setLoading(false);
+  }, [token, loading]);
+
   return (
     <AuthContext.Provider value={data}>
-      { children }
+      {loading ? null : children }
     </AuthContext.Provider>
   )
 };

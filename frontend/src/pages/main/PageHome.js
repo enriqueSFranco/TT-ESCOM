@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { getAllJobs } from "services/jobs/index";
+import { useState } from "react";
+import { useJobs } from "hooks/useJobs";
 import Search from "components/Search/Search";
 import FilterProfile from "components/Filter/FilterProfile";
 import FilterCompany from "components/Filter/FilterCompany";
@@ -10,29 +10,16 @@ import Footer from "components/Footer/Footer";
 import homeStyles from "./PageHome.module.css";
 
 const Home = () => {
-  const [dataList, setDataList] = useState([]); // lista de vacantes sin filtrar
+  const {loading, jobs} = useJobs();
   const [data, setData] = useState([]); // lista de vacantes filtrada
   const [isFiltered, setIsFiltered] = useState(false); // bandera para saber si la informacion se tiene que filtrar
-  const [loading, setLoading] = useState(true); // bandera para saber si la peticion esta cargando
 
   const [isChecked, setIsChecked] = useState(false); // informacion filtrada
   const [totalJobs, setTotalJobs] = useState(0); // estado para el total de vacantes
 
-  useEffect(() => {
-    getAllJobs()
-      .then(response => {
-        setDataList(response.data.result);
-        // setTotalJobs(response.data.result.length);
-        setLoading(false);
-      })
-      .catch((error) => console.error(error));
-
-    return () => null;
-  }, []);
-
   const filteredData = (value) => {
     if (value !== "") {
-      const filteredData = dataList.filter((el) => {
+      const filteredData = jobs?.result.filter((el) => {
         let regex = new RegExp(`${value}`, "gi");
         return el?.t200_job.match(regex);
       });
@@ -52,14 +39,14 @@ const Home = () => {
     if (!isChecked) {
       // checkbox activado
       setIsFiltered(true);
-      const newData = filterForHomeOffice(dataList);
+      const newData = filterForHomeOffice(jobs);
       setData(newData);
       setTotalJobs(newData.length);
     } else if (isChecked) {
       // checkbox desactivado
       setIsFiltered(false);
-      setDataList(dataList);
-      setTotalJobs(dataList.length);
+      setData(jobs);
+      setTotalJobs(jobs.length);
     }
   };
 
@@ -85,11 +72,11 @@ const Home = () => {
 
     if (value === "allBusiness") {
       setIsFiltered(false);
-      setData(dataList);
-      setTotalJobs(dataList.length);
+      setData(jobs);
+      setTotalJobs(jobs.length);
     } else if (value !== "") {
       setIsFiltered(true);
-      const newData = filterForBusiness(dataList, value);
+      const newData = filterForBusiness(jobs, value);
       setData(newData);
       setTotalJobs(newData.length);
     }
@@ -102,23 +89,21 @@ const Home = () => {
 
     if (value === "allProfile") {
       setIsFiltered(false);
-      setData(dataList);
-      setTotalJobs(dataList.length);
+      setData(jobs);
+      setTotalJobs(jobs.length);
     }else if (value !== "") {
       setIsFiltered(true);
-      const newData = filterForProfile(dataList, value);
+      const newData = filterForProfile(jobs, value);
       setData(newData);
       setTotalJobs(newData.length);
     }
   };
 
-  // if (!dataList.result && !data) return null;
-  if (data.length < 0 || dataList.length < 0) return null;
-  console.log(data, dataList)
-
+  if (data.length < 0 || jobs.length < 0) return null;
+  // console.log(jobs)
   return (
     <main className={homeStyles.home}>
-      <Search handleSearch={handleSearch} data={dataList} />
+      <Search handleSearch={handleSearch} data={jobs} />
 
       <div className={homeStyles.filteredControls}>
         <span className={homeStyles.textFilter}>Filtros</span>
@@ -131,7 +116,7 @@ const Home = () => {
         <p className={homeStyles.totalJobs}>
           Total de vacantes: <em>{totalJobs}</em>
         </p>
-        <JobList jobs={isFiltered ? data : dataList} loading={loading} />
+        <JobList jobs={isFiltered ? data : jobs} loading={loading} />
       </section>
 
       <section className={`${homeStyles.wrapperDeck}`}>

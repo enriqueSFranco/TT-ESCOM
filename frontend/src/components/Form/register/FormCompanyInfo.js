@@ -13,10 +13,13 @@ const FormCompanyInfo = ({
   handleChange,
   handleValidate,
 }) => {
+
   const continueStep = (e) => {
     e.preventDefault();
     nextStep();
   };
+
+  console.log(errors);
 
   return (
     <div className={styles.companyInfo}>
@@ -67,14 +70,20 @@ const FormCompanyInfo = ({
       <div className={styles.inputGroup}>
         <TextField
           label="Razon Social"
-          id="t300_social"
-          name="t300_social"
+          id="t300_bussiness_name"
+          name="t300_bussiness_name"
           sx={{ width: 500, maxWidth: "100%" }}
-          value={form.t300_social}
+          value={form.t300_bussiness_name}
           onBlur={handleValidate}
           onKeyUp={handleValidate}
           onChange={handleChange}
         />
+        {errors.t300_bussiness_name && (
+          <span className={styles.error}>
+            <MdIcon.MdOutlineErrorOutline />
+            {errors.t300_bussiness_name}
+          </span>
+        )}
       </div>
       <div className={styles.flexRow}>
         <p style={{ marginBottom: "1rem" }}>
