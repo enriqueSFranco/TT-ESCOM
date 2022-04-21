@@ -2,38 +2,6 @@ import React, { useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import TextField from "@mui/material/TextField";
 import styles from "./StylesStepper.module.css";
-import PropTypes from 'prop-types';
-import NumberFormat from 'react-number-format';
-
-
-const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
-  props,
-  ref
-) {
-  const { onChange, ...other } = props;
-
-  return (
-    <NumberFormat
-      {...other}
-      getInputRef={ref}
-      onValueChange={(values) => {
-        onChange({
-          target: {
-            name: props.name,
-            value: values.value,
-          },
-        });
-      }}
-      isNumericString
-      format="### ### ####"
-    />
-  );
-});
-
-NumberFormatCustom.propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
 
 function DatesPersonal({ form, handleChange }) {
   const [checked, setChecked] = useState(false);
@@ -46,7 +14,7 @@ function DatesPersonal({ form, handleChange }) {
 
   return (
     <div >
-    <form>
+      <form>
       <div className={styles.inputGroup}>
           <TextField
             label="¿Donde te ubicas?"
@@ -68,19 +36,7 @@ function DatesPersonal({ form, handleChange }) {
           />
         </div>
 
-        <div className={styles.inputGroup}>
-        <TextField
-        label="Telefono de contacto"
-        value={form.t100_phonenumber}
-        onChange={handleChange}
-        name="t100_phonenumber"
-        id="t100_phonenumber"
-        InputProps={{
-          inputComponent: NumberFormatCustom,
-        }}
-      />
-        </div>
-  </form>
+      </form>
     </div>
   );
 }

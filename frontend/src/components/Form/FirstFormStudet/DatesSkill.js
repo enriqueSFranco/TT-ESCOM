@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import styles from "./Styles.module.css";
+import styles from "./StylesStepper.module.css";
 // import Label from "../../Input/Label"
 // import Span from "../../Input/Span"
 // import Input from "../../Input/Input"

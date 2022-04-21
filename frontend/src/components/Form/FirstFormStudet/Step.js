@@ -7,7 +7,7 @@ import DatesJob from "./DatesJob";
 import DatesSkill from "./DatesSkill";
 import DatesSoftSkill from "./DatesSoftSkills";
 // import Button from "@mui/material/Button";
-import styles from "./Styles.module.css";
+import styles from "./StylesStepper.module.css";
 import { useForm } from "../../../hooks/useForm";
 import { useFetch } from "../../../hooks/useFetch";
 import { helpHttp } from "../../../utils/helpHttp";
@@ -15,7 +15,7 @@ import { helpHttp } from "../../../utils/helpHttp";
 let initialForm = {
   t100_boleta: "2015090419",
   t100_name: "",
-  t100_password: "",
+  t100_password: "123456",
   t100_last_name: "",
   t100_username: "",
   t100_cv: null,
@@ -179,7 +179,7 @@ const StepComponent = () => {
               </button>
             </div>
           </div>
-        </div>
+              </div>
       </div>
     </div>
   );

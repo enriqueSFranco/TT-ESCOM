@@ -4,12 +4,21 @@ import TextField from "@mui/material/TextField";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import styles from "./Styles.module.css";
+import styles from "./StylesStepper.module.css";
 
 const DatesJob = ({ form, handleChange }) => {
   return (
     <div className={styles.containerPage}>
-      <form>
+        {/*<div className={styles.inputGroup}>
+          <Autocomplete
+            id="free-solo-demo"
+            freeSolo
+            options={top100Films.map((option) => option.title)}
+            renderInput={(params) => <TextField {...params} label="freeSolo" />}
+          />
+  </div>*/}
+
+
         <div className={styles.inputGroup}>
           <TextField
             label="¿Cuanto te gustaria ganar?"
@@ -48,7 +57,6 @@ const DatesJob = ({ form, handleChange }) => {
             />
           </RadioGroup>
         </div>
-      </form>
     </div>
   );
 };

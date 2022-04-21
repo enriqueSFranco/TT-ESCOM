@@ -25,7 +25,7 @@ const Avatar = ({ student }) => {
 
     return (
       <div className={styles.wrapperAvatar}>
-        <form onSubmit={upload}>
+        <form  className={styles.form} onSubmit={upload}>
           <input
             type="file"
             id="avatar"

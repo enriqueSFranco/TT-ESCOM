@@ -1,31 +1,25 @@
-
-
-
 .container{
-  
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
- 
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    background-color: aqua;
     overflow: hidden;
     color: #000;
-    min-height: 250px;
-    width: 40%;
     border-radius: 0 0 4px 4px;
     position: relative;
     justify-content: center;
     align-items: center;
     margin-top: 40px;
+    width: 600px;
+    height: 250px;
 
 }
 
 
 .container2{
   display: flex;
-    justify-content: center;
-  align-items: center;
-  text-align: center;
-    margin-left: 30px;
-    min-width: 600px;
-    
+  margin-left: 30px;
+  min-width: 600px;
+  min-height: 250px;
+ 
 
 }
 
