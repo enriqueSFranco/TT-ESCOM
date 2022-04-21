@@ -17,7 +17,7 @@ class ApplicationViewSet(viewsets.GenericViewSet):
 
 	def get_object(self, pk):	
 		self.queryset = self.model.objects\
-				.filter(t100_boleta = pk)\
+				.filter(t100_id_student = pk)\
 				.all()#values('t201_id_application','t100_boleta','c205_id_application_state','t201_date_application','t201_cv')		
 		return self.queryset
 

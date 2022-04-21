@@ -1,32 +1,45 @@
 import { useState } from "react";
-import Input from "../Input/Input";
-import Label from "../Input/Label";
-import Span from "../Input/Span";
+import { uuid } from "utils/uuid";
+import Loader from "components/Loader/Loader";
+import Input from "components/Element/Input/Input";
+import Label from "components/Element/Label/Label";
+import Span from "components/Element/Span/Span";
+import * as BiIcon from "react-icons/bi";
 import styles from "./Search.module.css";
 
-const Search = ({ handleSearch, data, locationList }) => {
-  // const {search} = useLocation();
-  const [job, setJob] = useState("");
+const Search = ({ handleSearch, data }) => {
+  const [queryJob, setQueryJob] = useState("");
   const [locationJob, setLocationJob] = useState("");
-  const [filterData, setFilterData] = useState([]);
-  // const query = new URLSearchParams(search)
+  const [isLoading, setIsLoading] = useState(false);
+  const [filterData, setFilterData] = useState(data);
 
   const handleFilterJob = (e) => {
     const query = e.target.value;
-    setJob(query); // controlamos el input
+    setQueryJob(query);
 
-    const newFilter = data.filter((value) => { // filtramos el contenido
-      return value?.t200_job.toLowerCase().includes(query.toLowerCase());
+    const newFilter = data.filter(({ t200_job }) => {
+      let regex = new RegExp(`${query}`, "gi");
+      return t200_job.match(regex);
     });
 
     query === "" ? setFilterData([]) : setFilterData(newFilter);
   };
 
+  const handleClick = (job) => setQueryJob(job);
+
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!job.trim()) return;
-    handleSearch(job);
+    if (queryJob === "") return setFilterData(data);
+
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+      handleSearch(queryJob === "" ? setFilterData(data) : queryJob);
+    }, 2000);
   };
+
+  // console.log(data)
 
   return (
     <div className={`${styles.searchContainer}`}>
@@ -37,37 +50,40 @@ const Search = ({ handleSearch, data, locationList }) => {
       </h1>
       <form onSubmit={onSubmit} className={styles.searchForm}>
         <div className={styles.searchInput}>
+          {/* TODO pasar los elementos de autocompletado a componentes. */}
           <Label htmlFor="job">
             <Input
               type="text"
+              list="data"
               id="job"
               name="job"
-              value={job}
+              value={queryJob}
+              autoFocus={true}
               onBlur={() => {
                 setTimeout(() => {
                   setFilterData([]);
-                }, 1000);
+                }, 300);
               }}
               onChange={handleFilterJob}
             />
             <Span content="Buscar una vacante" />
           </Label>
           {filterData.length !== 0 && (
-            <div className={styles.dataResultsJobs}>
-              {filterData.slice(0, 15).map((value, index) => {
-                return (
-                  <p
-                    onClick={(e) => setJob(value?.t200_job)}
-                    className={styles.dataItem}
-                    key={index}
-                  >
-                    {value?.t200_job}
-                  </p>
-                );
-              })}
-            </div>
+            <ul className={styles.dataResultsJobs}>
+              {filterData.slice(0, 15).map((value) => (
+                <li
+                  key={uuid()}
+                  value={value?.t200_job}
+                  onClick={() => handleClick(value?.t200_job)}
+                  className={styles.dataItem}
+                >
+                  {value?.t200_job}
+                </li>
+              ))}
+            </ul>
           )}
         </div>
+        {/* TODO pasar los elementos de autocompletado a componentes. */}
         <div className={styles.searchInput}>
           <Label htmlFor="location">
             <Input
@@ -81,14 +97,17 @@ const Search = ({ handleSearch, data, locationList }) => {
           </Label>
           <div>{/* lista de estados, municipios */}</div>
         </div>
-        <input
-          type="submit"
-          value="Buscar Vacante"
-          className={`${styles.btnSearch} btn btn-primary`}
-        />
-        {/* <Link to="empleos" className={`${styles.btnSearch} btn btn-primary`}>
-          Buscar Empleo
-        </Link> */}
+        <div className={styles.searchInput}>
+          <button
+            type="submit"
+            disabled={isLoading}
+            className={`${styles.btnSearch} btn btn-primary`}
+          >
+            {isLoading && <Loader />}
+            {!isLoading && <BiIcon.BiSearch />}
+            {isLoading && ""}
+          </button>
+        </div>
       </form>
     </div>
   );

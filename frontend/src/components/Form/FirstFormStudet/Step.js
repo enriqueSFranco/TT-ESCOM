@@ -39,6 +39,7 @@ const StepComponent = () => {
   const [softSkills, setSoftSkills] = React.useState([]);
   const { form, handleChange } = useForm(initialForm);
   const { data } = useFetch("/api/catalogues/CatalogueSkills/");
+  
   if (!data && !form) {
     return;
   }
@@ -139,10 +140,9 @@ const StepComponent = () => {
   const steps = ["1", "2 ", "3", "4"];
 
   return (
-    <div className="col bg-white p-5 rounded-end">
+    <div className="container">
       <div className={styles.container}>
         <div className={styles.pages}>{PageDisplay()}</div>
-
         <div className={styles.container2}>
           <div className={styles.stepper}>
             <Stepper activeStep={activeStep} alternativeLabel>

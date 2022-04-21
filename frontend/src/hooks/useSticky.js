@@ -1,20 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
-export const useSticky = (defaultValue = false) => {
-  const [sticky, setSticky] = useState(defaultValue);
+export const useSticky = (distanceFromTop, elementRef) => {
+  const [sticky, setSticky] = useState(null);
 
-  const handleScroll = () => {
-    const scrolled = window.scrollY;
-    scrolled >= 392 ? setSticky(true) : setSticky(false);
-  };
+  let onScroll = useCallback(() => {
+    let box = elementRef.current.getBoundingClientRect();
+    console.log(box)
+    setSticky(box.top);
+  }, [elementRef]);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll, true);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [onScroll]);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll, true);
-    };
-  }, [sticky]);
-
-  return [sticky];
-}
+  return Math.trunc(sticky) === distanceFromTop;
+};

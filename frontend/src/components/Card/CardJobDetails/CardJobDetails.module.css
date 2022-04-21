@@ -1,0 +1,86 @@
+h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1;
+}
+
+.body { height: 700px; }
+
+.positionSticky {
+  /* margin-top: 140px; */
+  font-family: sans-serif;
+  position: sticky;
+  top: 100px;
+}
+
+.expandCard {
+  background-color: red;
+}
+
+.actions {
+  width: 70px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+}
+
+.btnApplyEmployment {
+  background-color: transparent;
+  border: none;
+  outline: 2px solid #90314b;
+  padding: .6rem;
+  border-radius: 3px;
+  transition: background-color .3s ease-in;
+}
+
+.btnApplyEmployment:hover {
+  background-color: #90314b;
+  color: #fff;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.flex ul {
+  margin-top: .5rem;
+}
+
+.flex li > span {
+  margin-left: .4rem;
+}
+
+.requirements ul {
+  padding: 0;
+}
+
+.title {
+  color: #123b66;
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.wrapper {
+  background-color: #fff;
+  font-family: sans-serif;
+  height: 700px;
+  width: 700px;
+  border-radius: 8px;
+  overflow-y: scroll;
+  outline: 1px solid #ccc;
+  padding: 1rem;
+}
+
+.wrapper::-webkit-scrollbar { width: 8px; }
+
+.wrapper::-webkit-scrollbar-track { background-color: #d8d8d8; }
+
+.wrapper::-webkit-scrollbar-thumb {
+  background-color: #90314b;
+  border-radius: 20px;
+}

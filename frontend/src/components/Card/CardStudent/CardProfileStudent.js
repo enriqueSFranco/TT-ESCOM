@@ -1,38 +1,54 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import AuthContext from "context/AuthContext";
 import { motion } from "framer-motion";
-import { getSocialNetwork } from "../../../services/students/getSocialNetwork";
-import { uuid } from "../../../utils/uuid";
-import FormUpdateDataStudent from "../../Form/FormUpdateDataStudent";
+import { getStudent, getSocialNetwork } from "services/students/index";
+import { getSkill } from "services/catalogs";
+import { uuid } from "utils/uuid";
+import Chip from "@mui/material/Chip";
+import FormUpdateDataStudent from "../../Form/updateInfoStudent/FormUpdateDataStudent";
 import Avatar from "../../Avatar/Avatar";
 import * as MdIcon from "react-icons/md";
-// import * as BsIcon from "react-icons/bs";
 import * as IoIcon from "react-icons/io";
 import styles from "./CardProfileStudent.module.css";
 
 const CardProfileStudent = () => {
-  const [state, setState] = useState("profile");
+  // TODO: Implementar useReducer para el manejo del estado
+  const [isProfile, setIsProfile] = useState("profile");
+  const [student, setStudent] = useState([]);
+  const [skills, setSkills] = useState([]);
   const [socialNetworks, setSocialNetworks] = useState([]);
-
+  const { user } = useContext(AuthContext);
   const handleEdit = (e) => {
-    let isEdit = state === "edit" ? "profile" : "edit";
-    setState(isEdit);
+    let isEdit = isProfile === "edit" ? "profile" : "edit";
+    setIsProfile(isEdit);
   };
+  let newUser = JSON.parse(user);
+  const id = newUser?.user?.user_id;
 
   useEffect(() => {
-    getSocialNetwork("2017")
-      .then((response) => {
-        setSocialNetworks(response);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+    const fetchData = async () => {
+      const [studentRes, linksRes, skillsResponse] = await Promise.all([
+        getStudent(id),
+        getSocialNetwork(id),
+        getSkill(id),
+      ]);
+      setStudent(studentRes);
+      setSocialNetworks(linksRes);
+      setSkills(skillsResponse);
+    };
+    fetchData();
 
-  if (!socialNetworks) return null;
-
-  const student = socialNetworks[1];
+    return () => {
+      // nos desuscribimos de la peticion a la API
+      setStudent([]);
+      setSocialNetworks([]);
+      setSkills([]);
+    };
+  }, [id]);
 
   return (
     <>
-      {state === "edit" ? (
+      {isProfile === "edit" ? (
         <motion.article
           className="container"
           initial={{ scaleY: 0 }}
@@ -46,7 +62,7 @@ const CardProfileStudent = () => {
           />
         </motion.article>
       ) : (
-        <article className={`${styles.mainContainer} container`}>
+        <article className={`${styles.mainContainer}`}>
           <div className={`${styles.card}`}>
             <header className={styles.background}>
               <div className={styles.avatar}>
@@ -58,12 +74,9 @@ const CardProfileStudent = () => {
                 <Avatar student={student} />
                 <div className={styles.nameHolder}>
                   <h3>
-                    {student?.t100_boleta?.t100_name}
-                    <span className={styles.username}>
-                      {student?.t100_boleta?.t100_username ?? ""}
-                    </span>
+                    {student[0]?.t100_name} {student[0]?.t100_last_name}
                   </h3>
-                  <h4>{student?.t100_boleta?.t100_speciality ?? ""}</h4>
+                  <h4>{student[0]?.t100_speciality ?? ""}</h4>
                 </div>
               </div>
             </header>
@@ -72,31 +85,54 @@ const CardProfileStudent = () => {
                 <h4 className={styles.label}>Ubicacion</h4>
                 <div className={styles.flex}>
                   <MdIcon.MdLocationPin className={styles.icon} />
-                  <p>{student?.t100_boleta?.t100_residence ?? "No especificado."}</p>
+                  <p>{student[0]?.t100_residence ?? "No especificado."}</p>
                 </div>
                 <div className={styles.flex}>
                   <MdIcon.MdOutlineAirplanemodeActive className={styles.icon} />
                   <p>
-                    {student?.t100_boleta?.travel
+                    {student[0]?.t100_travel
                       ? "Disponible para reubicarse."
                       : "No disponible para reubicarse." ?? "No especificado."}
                   </p>
                 </div>
               </div>
+              <h4 className={styles.label}>redes sociales</h4>
               <div className={`${styles.socialNetworks} ${styles.separator}`}>
-                <h4 className={styles.label}>redes solicales</h4>
-                {socialNetworks.map(({ t113_link, c115_id_plataform }) => {
-                  return (
-                    <a
-                      href={`${t113_link}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      key={uuid()}
-                    >
-                      {c115_id_plataform?.c115_description}
-                    </a>
-                  );
-                })}
+                {socialNetworks.length > 0 ? (
+                  socialNetworks.map(({ t113_link, c115_id_plataform }) => {
+                    return (
+                      <a
+                        href={`${t113_link}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        key={uuid()}
+                        className={styles.link}
+                      >
+                        {c115_id_plataform?.c115_description}
+                      </a>
+                    );
+                  })
+                ) : (
+                  <h3>Sin redes sociales</h3>
+                )}
+              </div>
+              <div className={`${styles.wrapperSkills} ${styles.separator}`}>
+                <h4 className={styles.label}>Skills</h4>
+                <ul className={styles.skillList}>
+                  {
+                    skills.length > 0 ? (
+                      skills.map(({ c116_id_skill }) => (
+                        <Chip
+                          key={uuid()}
+                          label={c116_id_skill?.c116_description}
+                          variant="outlined"
+                        />
+                      ))
+                    ) : (
+                      <h3>Sin skills</h3>
+                    )
+                  }
+                </ul>
               </div>
               <div className={`${styles.cv} py-4`}>
                 <IoIcon.IoIosCheckmarkCircle />

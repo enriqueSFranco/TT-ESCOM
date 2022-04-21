@@ -1,44 +1,66 @@
 from rest_framework import serializers
 from apps.users.models import User
 
-# creamos el serializador para el modelo usuario
+
 class UserSerializer(serializers.ModelSerializer):
+    """
+    Currently unused in preference of the below.
+    """
+    #email = serializers.EmailField(required=True)
+    #user_name = serializers.CharField(required=True)
+    #password = serializers.CharField(min_length=8, write_only=True)
+    class Meta:
+        model = User
+        fields = ('password','is_superuser','username','first_name','last_name','email','is_staff','user_type','is_active','user_id')
+
+    def create(self, validate_data):
+        new_user = User(**validate_data)
+        new_user.set_password(validate_data['password']) 
+        print(new_user)
+        # generar token de autenticacion
+        new_user.save() # guardamos al usuario
+        return new_user
+
+class ListUserSerializer(serializers.ModelSerializer):
+    """
+    Currently unused in preference of the below.
+    """
+    #email = serializers.EmailField(required=True)
+    #user_name = serializers.CharField(required=True)
+    #password = serializers.CharField(min_length=8, write_only=True)
+    class Meta:
+        model = User
+        fields = '__all__'
+
+
+
+class UpdateUserSerializer(serializers.ModelSerializer):
+  # skills=SkillSerializer(many=True)
   class Meta:
     model = User
-    fields = '__all__'
-  # encriptamos el password al momento de que se crea un usuario
-  def create(self, validate_data):
-    user = User(**validate_data)
-    user.set_password(validate_data["password"]) # encriptamos el password
-    user.save()
-    return user
+    fields = ('is_superuser','username','first_name','last_name','email','is_staff','date_joined','user_type','is_active')
+      # encriptamos el password cuando el usuario quiera actualizar su informacion
+    def update(self, instance, validate_data):
+      update_user = super().update(instance, validate_data)
+      #update_student.set_password(validate_data['password'])
+      update_user.save()
+      return update_user
 
-  # encriptamos el password cuando el usuario quiera actualizar su informacion
-  def update(self, instance, validate_data):
-    update_user = super().update(instance, validate_data)
-    update_user.set_password(validate_data['password'])
-    update_user.save()
-    return update_user
+class PasswordSerializer(serializers.Serializer):
+  password = serializers.CharField(max_length=128, min_length=6, write_only=True)
+  password2 = serializers.CharField(max_length=128, min_length=6, write_only=True)
 
-class UserListSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = User
-  
-  def to_representation(self, instance):
-    return {
-      'id': instance['id'],
-      'username': instance['username'],
-      'email': instance['email'],
-      'password': instance['password'],
-      'role': instance['role'],
-    }
-
-class CustomUserSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = User
-    fields = ('username', 'email', 'password', 'role')
-
-class UserTokenSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = User
-    fields = ('id', 'username', 'email', 'name', 'last_name', 'role')
+  def validate(self, data):
+    if data['password'] != data['password2']:
+      raise serializers.ValidationError(
+        {'password': 'Debe ingresar ambas contraseñas iguales'}
+      )
+    return data
+    #def create(self, validated_data):
+    #    password = validated_data.pop('password', None)
+        # as long as the fields are the same, we can just use this
+    #    instance = self.Meta.model(**validated_data)
+    #    if password is not None:
+    #        instance.set_password(password)
+    #    instance.save()
+    #    return  

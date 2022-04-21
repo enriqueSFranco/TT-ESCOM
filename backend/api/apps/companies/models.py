@@ -1,19 +1,20 @@
 from django.db import models
 from apps.administration.models import Admin
+from django.contrib.auth.models import  AbstractBaseUser
 
 def upload_image_banner(instance, filename):
-    return f"{instance.t300_id_company}-{filename}"
+    return f"/banners/{instance.t300_id_company}-{filename}"
 
 def upload_image_logo(instance, filename):
-    return f"{instance.t300_id_company}-{filename}"
+    return f"logos/{instance.t300_id_company}-{filename}"
 
 class Company(models.Model):
     t300_id_company = models.AutoField(primary_key=True)
-    t300_name = models.CharField(max_length=100,blank=False,null=False,default="Sin")
-    t300_rfc = models.CharField(max_length=20,blank=False,null=False,default="Sin")
-    t300_nss = models.PositiveBigIntegerField(null=False,blank=False,default=000000)
+    t300_name = models.CharField(max_length=100,blank=False,null=False,default="Sin datos")
+    t300_rfc = models.CharField(unique=True,max_length=20,blank=False,null=False,default="Sin datos")
+    t300_nss = models.PositiveBigIntegerField(null=True,blank=True)
     t300_email =  models.EmailField(null=True,blank=True)
-    t300_bussiness_name = models.CharField(max_length=100,blank=True,null=True)
+    t300_bussiness_name = models.CharField(max_length=100,blank=False,null=False,default="Sin datos")
     t300_web_page = models.CharField(max_length=100,blank=True,null=True,default="http://")
     t300_mision = models.TextField(blank=True,null=True)
     t300_vision = models.TextField(blank=True,null=True)
@@ -27,10 +28,11 @@ class Company(models.Model):
         related_name='AdminCreate',
         on_delete=models.CASCADE
     )
-    t300_create_date = models.DateField()
+    t300_verified = models.BooleanField(default=False)
+    t300_create_date = models.DateField()   
+    is_active = models.BooleanField(default=False) 
 
-    class Meta:
-        unique_together = ['t300_rfc','t300_nss','t300_email']
+    class Meta:        
         verbose_name = 'Company'
         verbose_name_plural = 'Companies'
         db_table = 't300_empresa'
@@ -96,18 +98,23 @@ class Ubication(models.Model):
     def __str__(self) -> str:
         return self.t300_id_company
 
-class Recruiter(models.Model):
+class Recruiter(AbstractBaseUser):
     t301_id_recruiter = models.AutoField(primary_key=True)
     t301_name = models.CharField(max_length=60,null=True,blank=True)
     t301_last_name = models.CharField(max_length=100,null=True,blank=True)
     t301_user = models.CharField(max_length=60,null=True,blank=True)
+    t301_email = models.EmailField(unique=True,blank=False,null=False)
+    t301_phonenumber = models.PositiveBigIntegerField(blank=True,null=True)
     t300_id_company = models.ForeignKey(
         Company,
         null=False,
         blank=False,
         related_name='RecuiterCompany',
         on_delete=models.CASCADE)
-    t301_password = models.CharField(max_length=100,null=True,blank=True)
+    is_active= models.BooleanField(default=False)       
+
+    USERNAME_FIELD = 't301_email'
+    REQUIRED_FIELDS = ['password']
 
     class Meta:
         verbose_name = 'Recruiter'
@@ -115,4 +122,4 @@ class Recruiter(models.Model):
         db_table = 't301_reclutadores'
 
     def __str__(self) -> str:
-        return self.t301_name+' '+self.t301_last_name
+        return self.t301_email

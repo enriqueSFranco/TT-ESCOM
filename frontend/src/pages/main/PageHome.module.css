@@ -1,5 +1,6 @@
 .home {
   height: 100vh;
+  overflow-x: hidden;
 }
 
 .filteredControls {
@@ -14,11 +15,16 @@
   /* outline: 1px solid #ccc; */
 }
 
+.textFilter {
+  font-size: 1rem;
+  color: #000;
+}
+
 .totalJobs {
   position: relative;
   left: 18.5rem;
   font-weight: 500;
-  color: #636363;
+  color: #000;
 }
 
 .wrapperJobList {

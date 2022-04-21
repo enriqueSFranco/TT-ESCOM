@@ -1,5 +1,5 @@
 .nav {
-  background: #fdfdfd;
+  background-color: #eee;
   border-radius: 10px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -27,11 +27,12 @@
 }
 
 .navList {
+  outline: 1px solid #dadada;
   border-radius: 5px 5px 0 0;
   width: 100%;
   padding: 10px 15px;
   position: relative;
-  background: white;
+  background-color: #fff;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -49,8 +50,8 @@
 .navLink:hover { color: #000; }
 
 .navList.selected {
-  background-color: rgba(230, 231, 231, 0.685);
-  color: #fff;
+  background-color: #e6e7e7;
+  color: #000;
 }
 
 .underline {
@@ -58,6 +59,7 @@
   bottom: -1px;
   left: 0;
   right: 0;
-  height: 1px;
-  background-color: #90314b;
+  height: 5px;
+  background-color: blue;
+  border-radius: 8px 8px 0 0;
 }

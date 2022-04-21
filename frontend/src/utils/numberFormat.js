@@ -1,7 +1,7 @@
-export const numberFormat = (number) => {
+export const numberFormat = (input) => {
   const formatMoney = new Intl.NumberFormat("es-MX", {
     style: "currency",
     currency: "MXM"
-  }).format(number);
+  }).format(input.value);
   return formatMoney;
 };

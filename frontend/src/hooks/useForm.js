@@ -1,24 +1,27 @@
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { createAccountCompany } from "../services/businnes/createAccountCompany";
-import { createAccountStudent } from "../services/students/createAccountStudent";
+import { createBusiness } from "services/businnes/index";
+import { createAccountStudent } from "services/students/index";
+import { postRecruiter } from "services/recruiter/index"
+import { postJob } from "services/jobs/index";
 
 export const useForm = (initialForm, validateForm) => {
   const navigate = useNavigate();
-  const[form, setForm] = useState(initialForm);
+  const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     setForm({
       ...form,
       [name]: value,
     });
   };
-  
-  const hadlerValidate = (e) => {
+
+  const handleValidate = (e) => {
     handleChange(e);
     setErrors(validateForm(form));
   };
@@ -30,45 +33,56 @@ export const useForm = (initialForm, validateForm) => {
     });
   };
 
-  // PASAR A LOS COMPONENTES DE REGISTRO
+  const handleSubmitStudent = (e) => {
+    e.preventDefault(); // cancelamos el comporamiento del formulario que tiene por defecto
 
-  const handlerSubmitStudent = (e) => {
-    e.preventDefault();
-    setErrors(validateForm(form));
-    
+    setErrors(validateForm(form)); // verificamos si hay error en los campos del formulario
     if (Object.keys(errors).length === 0) { // si la longitud de las claves del objeto error es de cero, quiere decir que no hay errores.
       setLoading(true);
-      createAccountStudent(form)
+      createAccountStudent(form).then((response) => {
+        if (response.status === 201) {
+          toast.success(response.data.message);
+          setTimeout(() => {
+            navigate("/alumno");
+          }, 3000);
+          setForm(initialForm);
+        } else {
+          setErrors({t100_email: "El email ya esta en uso"})
+          // toast.error(response.t100_email[0])
+        }
+      });
+    } else return;
+  };
+
+  const handleSubmitCompany = (e) => {
+    e.preventDefault();
+    setErrors(validateForm(form));
+
+    if (Object.keys(errors).length === 0) {
+      createBusiness(form)
         .then(response => {
-          setLoading(false);
-          // console.log('->',response);
-          if (response.data.status === 200 || response.data.status === 201) {
-            setResponse(response);
-              setTimeout(() => {
-                navigate("/alumno")
-              }, 5000);
-          } else {
-          }
+          console.log(response);
         })
-        .catch(() => setResponse(response.data.message))
-        .finally(() => setLoading(false));
-    } else {
-      return;
+      
+      postRecruiter(form)
+        .then(reponse => {
+          console.log(response)
+        })
     }
   };
 
-  const handlerSubmitCompany = (e) => {
+  const handlePostJob = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
 
     if (Object.keys(errors).length === 0) {
       setLoading(true);
-      createAccountCompany(form)
-      .then(response => {
-        setLoading(false);
-        setResponse(response);
-      })
-      .catch(error => console.error(error));
+      postJob(form)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false));
     }
   };
 
@@ -79,8 +93,9 @@ export const useForm = (initialForm, validateForm) => {
     response,
     handleChange,
     handleChecked,
-    handlerSubmitStudent,
-    handlerSubmitCompany,
-    hadlerValidate
+    handleSubmitStudent,
+    handleSubmitCompany,
+    handleValidate,
+    handlePostJob,
   };
 };

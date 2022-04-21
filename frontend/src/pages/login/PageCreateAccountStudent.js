@@ -1,11 +1,23 @@
-import CreateAccountStudent from '../../components/Form/CreateAccountStudent';
-import styles from "../GlobalStyles.module.css";
+import CreateAccountStudent from 'components/Form/register/CreateAccountStudent';
+
+const Container = {
+  fontFamily: 'sans-serif',
+  width: '100%',
+  height: '100vh'
+};
+
+const Form = {
+  position: 'relative',
+  top: '3rem',
+}
 
 const PageCreateAccountStudent = () => {
   return (
     <>
-      <section className={styles.wrapperPage}>
-        <CreateAccountStudent />
+      <section style={Container}>
+          <CreateAccountStudent />
+        {/* <article style={Form}>
+        </article> */}
       </section>
     </>
   )
