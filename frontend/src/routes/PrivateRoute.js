@@ -1,13 +1,15 @@
 import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import AuthContext from "context/AuthContext";
-import { ROLE } from "./roles";
+// import Unauthorized from "pages/404/Unauthorized";
+// import { ROLE } from "./roles";
 
-const PrivateRoute = ({roles = {}}) => {
+const PrivateRoute = ({role}) => {
+  console.log(role)
   const { user } = useContext(AuthContext);
-  const userHasRequiredRole = user && roles.includes(user.role) ? true : false;
+  const userHasRequiredRole = user && role.includes(user?.user_type) ? true : false;
   
-  if (!userHasRequiredRole) return <h1>Acceso denegado.</h1>
+  if (!userHasRequiredRole) return <Navigate to="/registro-alumno" />
   
   return user ? <Outlet /> : <Navigate to="/registro-alumno" />
 };

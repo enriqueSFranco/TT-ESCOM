@@ -59,12 +59,17 @@ const Root = () => {
 
       {/* Indice de rutas privadas para un alumno si funciona */}
       {/* <Route element={<PrivateRoute roles={ROLE.STUDENT} />}>
+        <Route path="/perfil" element={<PageProfileStudent />}>
+          <Route path="historial-academico" element={<AcademicRecord />} />
+          <Route path="experiencia" element={<Experience />} />
+          <Route path="certificaciones" element={<Certifications />} />
+        </Route>
       </Route> */}
 
       {/* Indice de rutas privadas para un reclutador */}
-      <Route element={<PrivateRoute roles={ROLE.RECRUITER} />}>
+      {/* <Route element={<PrivateRoute roles={ROLE.RECRUITER} />}>
         
-      </Route>
+      </Route> */}
 
     </Routes>
   );
