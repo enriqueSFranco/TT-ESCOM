@@ -19,10 +19,11 @@ const Home = () => {
 
   const filteredData = (value) => {
     if (value !== "") {
-      const filteredData = jobs?.result.filter((el) => {
+      const filteredData = jobs.filter((el) => {
         let regex = new RegExp(`${value}`, "gi");
         return el?.t200_job.match(regex);
       });
+      console.log(filteredData)
       setData(filteredData);
       setTotalJobs(filteredData.length);
     }
@@ -30,7 +31,7 @@ const Home = () => {
 
   const handleSearch = (value) => {
     filteredData(value);
-    setIsFiltered(value !== "");
+    setIsFiltered(value !== "" ? true : false);
   };
 
   const handleFilterHomeOffice = e => {
@@ -100,7 +101,8 @@ const Home = () => {
   };
 
   if (data.length < 0 || jobs.length < 0) return null;
-  // console.log(jobs)
+  console.log(data)
+
   return (
     <main className={homeStyles.home}>
       <Search handleSearch={handleSearch} data={jobs} />
