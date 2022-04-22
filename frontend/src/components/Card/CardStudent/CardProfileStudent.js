@@ -2,16 +2,16 @@ import { useContext, useEffect, useState } from "react";
 import AuthContext from "context/AuthContext";
 import { motion } from "framer-motion";
 import { API_STUDENT } from "services/settings";
-import { getStudent, getSocialNetwork } from "services/students/index";
+import { customFetch } from "utils/fetchInstance";
+import { getSocialNetwork } from "services/students/index";
 import { getSkill } from "services/catalogs";
 import { uuid } from "utils/uuid";
 import Chip from "@mui/material/Chip"
 import FormUpdateDataStudent from "../../Form/updateInfoStudent/FormUpdateDataStudent";
-import Avatar from "../../Avatar/Avatar";
+import CustomAvatar from "../../Avatar/Avatar";
 import * as MdIcon from "react-icons/md";
 import * as IoIcon from "react-icons/io";
 import styles from "./CardProfileStudent.module.css";
-import { customFetch } from "utils/fetchInstance";
 
 const CardProfileStudent = () => {
   // TODO: Implementar useReducer para el manejo del estado
@@ -26,7 +26,7 @@ const CardProfileStudent = () => {
     setIsProfile(isEdit);
   };
 
-  console.log(user?.user_id)
+  // console.log(user?.user_id)
   
   useEffect(() => {
     const fetchData = async () => {
@@ -53,7 +53,7 @@ const CardProfileStudent = () => {
     };
   }, [user.user_id]);
   
-  console.log(skills)
+  // console.log(skills)
 
   return (
     <>
@@ -80,7 +80,7 @@ const CardProfileStudent = () => {
                   onClick={handleEdit}
                 />
                 {/* <img src="https://placeimg.com/640/480/any" alt="user" /> */}
-                <Avatar student={student} />
+                <CustomAvatar student={student} width="80px" height="80px" fontSize="2rem" />
                 <div className={styles.nameHolder}>
                   <h3>
                     {student[0]?.t100_name} {student[0]?.t100_last_name}
