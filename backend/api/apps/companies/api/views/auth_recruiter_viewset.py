@@ -6,12 +6,17 @@ from rest_framework.decorators import action
 from rest_framework import viewsets
 
 from apps.companies.models import Recruiter
+from apps.companies.models import Company
+from apps.users.api.serializers import UserSerializer
+from apps.users.models import User
 from apps.companies.api.serializer.recruiter_serializer import RecruiterSerializer,RecruiterListSerializer,ValidateRecruiterSerializer
 
 class ValidateRecruiterViewSet(viewsets.GenericViewSet):
 	model = Recruiter
+	company_model =  Company
 	serializer_class = RecruiterSerializer
 	list_serializer_class = RecruiterListSerializer
+	user_serializer = UserSerializer
 	queryset = None
 
 	def get_object(self, pk):
@@ -54,26 +59,55 @@ class ValidateRecruiterViewSet(viewsets.GenericViewSet):
    				"is_active": True,
 				"user_id":pk
 		}
-		credentials={
-			"username" : "",
-			"password" : ""
-		}
-		u_recruiter = self.model.objects.filter(t301_id_recruiter = pk).first()
+		id_company=""
 		print(request.data['is_active'])
-		#Generar contraseña
-		password='Contraseña perrona'
-		recruiter_serializer = ValidateRecruiterSerializer(u_recruiter, data={
-																			"is_active":request.data['is_active'],
-																			"password":password})
-		if recruiter_serializer.is_valid():#Activar el usuario
-			recruiter_serializer.save()
-			#crear el usuario
-
+		if (request.data['is_active']=='true'):
+			print("Si paso")
+			u_recruiter = self.model.objects.filter(t301_id_recruiter = pk).first()		
+			#Generar contraseña
+			password='Contraseña perrona'
+			recruiter_serializer = ValidateRecruiterSerializer(u_recruiter, data={
+																				"is_active":request.data['is_active'],
+																				"password":password})
+			if recruiter_serializer.is_valid():#Activar el usuario
+				recruiter_serializer.save()				
+				#Crear el usuario
+				recruiter_data = self.model.objects.filter(t301_id_recruiter = pk).values('t301_name','t301_email','t301_last_name','t300_id_company')
+				print(recruiter_data[0]['t301_name'])
+				user_data['password'] = password
+				user_data['username'] = recruiter_data[0]['t301_email']
+				user_data["first_name"] = recruiter_data[0]['t301_name']
+				user_data["last_name"] = recruiter_data[0]['t301_last_name']
+				id_company=recruiter_data[0]['t300_id_company']				
+				recruiter_user= self.user_serializer(data = user_data)
+				if recruiter_user.is_valid():#Validar datos de usuario
+					user = recruiter_user.save()#Guardar usuario	
+					#Activar empresa
+					data_company = self.company_model.objects.filter(t300_id_company=id_company)
+					return Response({
+						'message': 'Reclutador autorizado',
+						'password':password
+					}, status=status.HTTP_200_OK)
+				else:
+					Response({
+						'message': 'No se pudo crear el usuario del reclutador',
+						'errors': recruiter_user.errors
+						}, status=status.HTTP_400_BAD_REQUEST)
 			return Response({
-				'message': 'Reclutador autorizado',
-				'password':password
+				'message': 'Hay errores en la actualización',
+				'errors': recruiter_serializer.errors
+			}, status=status.HTTP_400_BAD_REQUEST)
+		else:
+			#Desactivar user			
+			u_recruiter = self.model.objects.filter(t301_id_recruiter = pk).first()					
+			password=''
+			recruiter_serializer = ValidateRecruiterSerializer(u_recruiter, data={
+																				"is_active":request.data['is_active'],
+																				"password":password})
+			recruiter_data = self.model.objects.filter(t301_id_recruiter = pk).values('t301_name','t301_email','t301_last_name','t300_id_company')																				
+			recruiter_destroy = User.objects.filter(username=recruiter_data[0]['t301_email']).delete()
+			#Eliminar empresa nueva
+			#Eliminar 
+			return Response({
+				'message': 'Registro rechazado'				
 			}, status=status.HTTP_200_OK)
-		return Response({
-			'message': 'Hay errores en la actualización',
-			'errors': recruiter_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)

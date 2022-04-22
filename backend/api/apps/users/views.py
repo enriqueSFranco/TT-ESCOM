@@ -134,11 +134,12 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         #token['username'] = user.username		
         # ...
         data['refresh']=str(token)
-        data['access']=str(token.access_token)
+        data['access']=str(token.access_token)		
         user={
 			'user_id':self.user.user_id,
 			'username':self.user.username,
-			'email':self.user.email
+			'email':self.user.email,
+			'user_type':self.user.user_type
 		}
         data['user']=user        
         print (data)
