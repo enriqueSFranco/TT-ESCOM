@@ -1,20 +1,19 @@
 import { Link, Outlet } from "react-router-dom";
-import { useJobs } from "hooks/useJobs";
-// import Pagination from '@mui/material/Pagination';
+// import { useJobs } from "hooks/useJobs";
 import Skeleton from "../../Skeleton/Skeleton";
 import CardJob from "../CardJob/CardJob";
 import styles from "./JobList.module.css";
 
-const JobList = () => {
-  const { loading, jobs, setPage } = useJobs();
+const JobList = ({jobs = [], loading}) => {
+  // const { loading, setPage } = useJobs();
 
-  const nextPage = () => {
-    setPage(prevState => prevState + 1);
-  }
+  // const nextPage = () => {
+  //   setPage(prevState => prevState + 1);
+  // }
 
-  const prevPage = () => {
-    setPage(prevState => prevState - 1)
-  };
+  // const prevPage = () => {
+  //   setPage(prevState => prevState - 1)
+  // };
 
   return (
     <>
