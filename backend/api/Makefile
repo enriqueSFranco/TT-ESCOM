@@ -1,4 +1,7 @@
 run:
+	python3.10 manage.py makemigrations
+	python3.10 manage.py migrate
+	python3.10 manage.py loaddata data.json
 	python3.10 manage.py runserver
 
 restore: migrate
@@ -19,7 +22,7 @@ makemigrations: restore_inits
 	python3.10 manage.py makemigrations
 
 migrate: makemigrations
-	python3.10 manage.py migrate	
+	python3.10 manage.py migrate
 
 superuser:
 	python3.10 manage.py createsuperuser
