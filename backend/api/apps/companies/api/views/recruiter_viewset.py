@@ -55,7 +55,7 @@ class RecruiterViewSet(viewsets.GenericViewSet):
 		return Response(recruiter_serializer.data)
 
 	def update(self, request, pk):
-		u_recruiter = self.model.objects.filter(t300_id_recruiter = pk).first()
+		u_recruiter = self.model.objects.filter(t301_id_recruiter = pk).first()
 		recruiter_serializer = UpdateRecruiterSerializer(u_recruiter, data=request.data)
 		if recruiter_serializer.is_valid():
 			recruiter_serializer.save()
@@ -68,10 +68,10 @@ class RecruiterViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk):
-		recruiter_destroy = self.model.objects.filter(t300_id_recruiter=pk).first()
+		recruiter_destroy = self.model.objects.filter(t301_id_recruiter=pk).first()
 		print(recruiter_destroy)		
 		if recruiter_destroy:
-			recruiter_destroy = self.model.objects.filter(t300_id_recruiter=pk).delete()
+			recruiter_destroy = self.model.objects.filter(t301_id_recruiter=pk).delete()
 			return Response({
 				'message': 'Reclutador eliminado correctamente'
 			})
