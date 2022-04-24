@@ -8,7 +8,6 @@ from apps.students.api.views.studentlenguages_viewset import LenguagesViewSet
 from apps.vacantes.api.views.announcement_viewset import AnnouncementViewSet
 from apps.vacantes.api.views.application_viewset import ApplicationViewSet
 from apps.vacantes.api.views.report_viewset import ReportViewSet
-from apps.vacantes.api.views.ubication_viewset import UbicationViewSet
 from apps.vacantes.api.views.vacant_viewset import  VacantViewSet
 from apps.administration.api.views.admin_viewset import AdminViewSet
 from apps.companies.api.views.company_viewset import CompanyViewSet
@@ -44,8 +43,6 @@ router.register(r'Applications',ApplicationViewSet,basename='Students Applicatio
 router.register(r'Applications/<int:pk>',ApplicationViewSet,basename='Student Applications details')
 router.register(r'Reports',ReportViewSet,basename="Reports")
 router.register(r'Reports/<int:pk>',ReportViewSet,basename="Report details")
-router.register(r'VacantsUbications',UbicationViewSet,basename="Vacants ubications")
-router.register(r'VacantsUbications/<int:pk>',UbicationViewSet,basename="Vacant ubication details")
 router.register(r'Administrators',AdminViewSet,basename='Adminstrators')
 router.register(r'Administrator/<int:pk>',AdminViewSet,basename='Administrator Details')
 router.register(r'Companies',CompanyViewSet,basename='Companies')
