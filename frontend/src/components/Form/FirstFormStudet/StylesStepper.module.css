@@ -1,15 +1,14 @@
 .container{
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    background-color: aqua;
+    
     overflow: hidden;
     color: #000;
     border-radius: 0 0 4px 4px;
     position: relative;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
-    width: 600px;
-    height: 250px;
+    width: 700px;
+    height: 440px;
 
 }
 
@@ -18,8 +17,8 @@
   display: flex;
   margin-left: 30px;
   min-width: 600px;
-  min-height: 250px;
- 
+  min-height: 400px;
+  
 
 }
 
@@ -35,6 +34,7 @@
   align-items: center;
   text-align: center;
   min-height: 180px;
+  margin-top: 1rem;
 }
 
 .buttons {
@@ -64,9 +64,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  min-height: 180px;
+  text-align: left;
+  height: 370px;
   min-width: 600px;
+  
 }
 
 .icon {
@@ -77,19 +78,57 @@
 
 
 .inputGroup {
-  width: 490px;
   justify-content: center;
   align-items: center;
   text-align: left;
   margin: 1rem;
+  
 }
 
+.inputGroupP {
+  display: flex;
+  margin:1em;
+}
+
+.inputGroupP1 {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
+  margin: 1rem;
+}
+
+
+.Col1{
+  display: flex;
+  margin-right:1em;
+}
+.Col2{
+  text-align: left;
+}
+
+.Col4{
+  margin-right: 2em;
+}
+
+.Col3{
+
+  text-align: left;
+}
+
+.Col21{
+  margin:30px;
+}
+
+.texto{
+  margin-bottom: 7px;
+}
+
+
 .inputCheckbox {
-  width: 490px;
   justify-content: center;
   align-items: center;
   text-align: left;
-  margin-left: 25px;
 }
 
 .inputGroupCheckbox {

@@ -1,9 +1,9 @@
 run:
-	python3.10 manage.py runserver
+	python3 manage.py runserver
 
 restore: migrate
-	python3.10 manage.py loaddata data.json
-	python3.10 manage.py runserver
+	python3 manage.py loaddata data.json
+	python3 manage.py runserver
 
 clean:	
 	rm -rf apps/*/migrations/*
@@ -16,11 +16,11 @@ restore_inits: clean
 	touch apps/vacantes/migrations/__init__.py
 
 makemigrations: restore_inits
-	python3.10 manage.py makemigrations
+	python3 manage.py makemigrations
 
 migrate: makemigrations
-	python3.10 manage.py migrate	
+	python3 manage.py migrate	
 
 superuser:
-	python3.10 manage.py createsuperuser
+	python3 manage.py createsuperuser
 	

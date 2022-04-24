@@ -25,7 +25,7 @@ const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
         });
       }}
       isNumericString
-      format="### ### ####"
+      format="## ## ## ## ##"
     />
   );
 });
@@ -45,36 +45,90 @@ function DatesPersonal({ form, handleChange }) {
   };
 
   return (
-    <div >
+    <div className={styles.containerPage}>
     <form>
+    <h5>Proporcionanos algunos datos para terminar tu regsitro </h5>
       <div className={styles.inputGroup}>
           <TextField
+            label="Nombre"
+            name="t100_name"
+            id="t100_name"
+            value={form.t100_name}
+            onChange={handleChange}
+            sx={{ width: 300, maxWidth: "100%" , marginRight:2}}
+          />
+          <TextField
+            label="Apellido(s)"
+            name="t100_last_name"
+            id="t100_last_name"
+            value={form.t100_last_name}
+            onChange={handleChange}
+            sx={{ width: 300, maxWidth: "100%" }}
+          />
+      </div>
+      
+      
+
+      <div className={styles.inputGroup}>
+        <TextField
+          label="Telefono de contacto"
+          value={form.t100_phonenumber}
+          onChange={handleChange}
+          name="t100_phonenumber"
+          id="t100_phonenumber"
+          InputProps={{
+            inputComponent: NumberFormatCustom,
+          }}
+        />
+      </div>
+
+
+
+      <div className={styles.inputGroupP}>
+        <div className={styles.Col1}>
+        <TextField
             label="¿Donde te ubicas?"
             name="t100_residence"
             id="t100_residence"
             value={form.t100_residence}
             onChange={handleChange}
             sx={{ width: 400, maxWidth: "100%" }}
+            
           />
+
+        </div>
+        
+        <div className={styles.Col2}>
+          <div className={styles.Col21}>
+          </div>
+           <div className={styles.inputCheckbox}>
+           Dispuesto a reubicarte?
+            <Checkbox
+              value={(form.t100_travel = checked)}
+              checked={checked}
+              onChange={checkChanged}
+              size="small"
+            />
+  
+  
+           </div>
         </div>
 
-        <div className={styles.inputCheckbox}>
-          Dispuesto a reubicarte?
-          <Checkbox
-            value={(form.t100_travel = checked)}
-            checked={checked}
-            onChange={checkChanged}
-            size="small"
-          />
-        </div>
+          
+
+          
+      </div>
+
 
         <div className={styles.inputGroup}>
+        <div>¿Eres comunidad del IPN?   Ingresa tu número de boleta...</div>
         <TextField
-        label="Telefono de contacto"
-        value={form.t100_phonenumber}
+        label="Boleta"
+        value={form.t100_boleta}
         onChange={handleChange}
-        name="t100_phonenumber"
-        id="t100_phonenumber"
+        name="t100_boleta"
+        id="t100_boleta"
+        sx={{ width: 300, maxWidth: "100%" }}
         InputProps={{
           inputComponent: NumberFormatCustom,
         }}

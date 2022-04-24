@@ -5,7 +5,7 @@ import StepLabel from "@mui/material/StepLabel";
 import DatesPersonal from "./DatesPersonal";
 import DatesJob from "./DatesJob";
 import DatesSkill from "./DatesSkill";
-import DatesSoftSkill from "./DatesSoftSkills";
+import DatesSchool from "./DatesSchool";
 // import Button from "@mui/material/Button";
 import styles from "./StylesStepper.module.css";
 import { useForm } from "../../../hooks/useForm";
@@ -13,9 +13,9 @@ import { useFetch } from "../../../hooks/useFetch";
 import { helpHttp } from "../../../utils/helpHttp";
 
 let initialForm = {
-  t100_boleta: "2015090419",
+  t100_boleta: "",
   t100_name: "",
-  t100_password: "123456",
+  t100_password: "",
   t100_last_name: "",
   t100_username: "",
   t100_cv: null,
@@ -51,21 +51,17 @@ const StepComponent = () => {
       return <DatesPersonal form={form} handleChange={handleChange} />;
     }
     if (activeStep === 1) {
-      return <DatesJob form={form} handleChange={handleChange} />;
+      return <DatesSchool form={form} handleChange={handleChange} />;
     }
     if (activeStep === 2) {
-      return (
-        <DatesSkill
-          hardSkills={hardSkills}
-          setHardSkills={setHardSkills}
-          AllResults={AllResults}
-        />
-      );
+      return <DatesJob form={form} handleChange={handleChange} />;
     }
     if (activeStep === 3) {
       return (
-        <DatesSoftSkill
+        <DatesSkill
           softSkills={softSkills}
+          hardSkills={hardSkills}
+          setHardSkills={setHardSkills}
           setSoftSkills={setSoftSkills}
           AllResults={AllResults}
         />
@@ -140,9 +136,10 @@ const StepComponent = () => {
   const steps = ["1", "2 ", "3", "4"];
 
   return (
-    <div className="container">
+    <div >
       <div className={styles.container}>
         <div className={styles.pages}>{PageDisplay()}</div>
+
         <div className={styles.container2}>
           <div className={styles.stepper}>
             <Stepper activeStep={activeStep} alternativeLabel>
