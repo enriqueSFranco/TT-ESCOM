@@ -30,7 +30,37 @@ const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
   );
 });
 
+
+const BoletaC = React.forwardRef(function NumberFormatCustom(
+  props,
+  ref
+) {
+  const { onChange, ...other } = props;
+
+  return (
+    <NumberFormat
+      {...other}
+      getInputRef={ref}
+      onValueChange={(values) => {
+        onChange({
+          target: {
+            name: props.name,
+            value: values.value,
+          },
+        });
+      }}
+      isNumericString
+      format="##########"
+    />
+  );
+});
+
 NumberFormatCustom.propTypes = {
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+
+BoletaC.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
@@ -121,7 +151,7 @@ function DatesPersonal({ form, handleChange }) {
 
 
         <div className={styles.inputGroup}>
-        <div>¿Eres comunidad del IPN?   Ingresa tu número de boleta...</div>
+        <p>¿Eres comunidad del IPN?   Ingresa tu número de boleta...</p>
         <TextField
         label="Boleta"
         value={form.t100_boleta}
@@ -130,7 +160,7 @@ function DatesPersonal({ form, handleChange }) {
         id="t100_boleta"
         sx={{ width: 300, maxWidth: "100%" }}
         InputProps={{
-          inputComponent: NumberFormatCustom,
+          inputComponent: BoletaC,
         }}
       />
         </div>

@@ -69,6 +69,22 @@ const StepComponent = () => {
     }
   };
 
+  const PageImage = () => {
+    if (activeStep === 0) {
+      return (<div className={styles.bg}></div>);
+    }
+    if (activeStep === 1) {
+      return (<div className={styles.bg}></div>);
+    }
+    if (activeStep === 2) {
+      return (<div className={styles.bg}></div>);
+    }
+    if (activeStep === 3) {
+      return (<div className={styles.bg}></div>);
+    }
+  };
+
+
   const nextStep = () => {
     if (activeStep < 3) {
       //console.log((activeStep));
@@ -136,11 +152,13 @@ const StepComponent = () => {
   const steps = ["1", "2 ", "3", "4"];
 
   return (
-    <div >
-      <div className={styles.container}>
-        <div className={styles.pages}>{PageDisplay()}</div>
+    <div className={styles.container}>
+      <div className={styles.container1}>{PageImage()}</div>
 
-        <div className={styles.container2}>
+      <div className={styles.container2}>
+        <div className={styles.pages}>{PageDisplay()}</div>
+      
+        <div className={styles.container3}>
           <div className={styles.stepper}>
             <Stepper activeStep={activeStep} alternativeLabel>
               {steps.map((label) => (
@@ -163,7 +181,9 @@ const StepComponent = () => {
                 Anterior
               </button>
             </div>
+
             <div className={styles.space}></div>
+
             <div className={styles.button2}>
               <button
                 className={styles.button}
@@ -176,8 +196,9 @@ const StepComponent = () => {
               </button>
             </div>
           </div>
-              </div>
+        </div>
       </div>
+       
     </div>
   );
 };
