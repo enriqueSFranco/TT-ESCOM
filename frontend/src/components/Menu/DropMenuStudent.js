@@ -1,18 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "context/AuthContext";
-import { Avatar } from "@mui/material";
+import CustomAvatar from "components/Avatar/Avatar";
 import { IoMdSettings, IoMdLogOut, IoMdBriefcase } from "react-icons/io";
 import styles from "./MenuStudent.module.css";
+import { getStudent } from "services/students";
 
 const DropMenuStudent = ({student}) => {
   const { logout } = useContext(AuthContext);
+  const [user, setUser] = useState([]);
+  console.log(student?.user_id)
+
+  useEffect(() => {
+    getStudent(student?.user_id)
+      .then(response => {
+        setUser(response)
+      })
+  }, [student?.user_id])
 
   return (
     <>
       <li className={styles.menuItemStudent}>
         <Link className={styles.menuLinkStudent} to="/perfil">
-          <Avatar width="35px" height="35px" />
+          <CustomAvatar student={user} width="35px" height="35px" />
           Perfil
         </Link>
       </li>

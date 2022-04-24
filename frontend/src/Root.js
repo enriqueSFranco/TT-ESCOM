@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import PrivateRoute from "routes/PrivateRoute";
 import { ROLE } from "routes/roles";
 import PageHome from "pages/main/PageHome";
 import PageCompany from "pages/main/PageCompany";
@@ -9,7 +10,6 @@ import PageCreateAccountStudent from "pages/login/PageCreateAccountStudent";
 import PageLoginCompany from "pages/login/PageLoginCompany";
 import PageRegisterCompany from "pages/login/PageRegisterCompany";
 import PageProfileStudent from "pages/student/PageProfileStudent";
-import PrivateRoute from "routes/PrivateRoute";
 import Experience from "components/Card/Experience/Experience";
 import Certifications from "components/Card/Certifications/Certifications";
 import AcademicRecord from "components/Card/AcademicRecord/AcademicRecord";
@@ -17,6 +17,9 @@ import ModalRelease from "components/Modal/ModalRelease";
 import CardJobDetails from "components/Card/CardJobDetails/CardJobDetails";
 import PageAddJob from "pages/business/PageAddJob";
 import PageLoginStudentUpdate from "pages/login/PageLoginStudentUpdate";
+import PageDashBoard from "pages/business/PageDashBoard";
+import PageHistory from "pages/business/PageHistory";
+import PageMyJobs from "pages/business/PageMyJobs";
 
 const Root = () => {
   return (
@@ -46,7 +49,11 @@ const Root = () => {
       </Route>
 
       {/* TODO Hacer ruta privada  */}
-      <Route path="/publicar-vacante" element={<PageAddJob />} />
+      <Route path="/historial" element={<PageHistory />}>
+        <Route path="dashboard" element={<PageDashBoard />} />
+        <Route path="publicar-vacante" element={<PageAddJob />} />
+        <Route path="mis-vacantes" element={<PageMyJobs />} />
+      </Route>
 
       {/* TODO Hacer ruta privada */}
       <Route path="/perfil" element={<PageProfileStudent />}>

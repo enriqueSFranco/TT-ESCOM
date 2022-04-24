@@ -1,6 +1,21 @@
 import axios from "axios";
 import { API_RECRUITER } from "../settings";
 
+/**
+ * @param {Number} t301_id_recruiter
+ * @return {Promise}
+ **/
+export const getRecruiter = async (t301_id_recruiter) => {
+  return axios.get(`${API_RECRUITER}${t301_id_recruiter}/`)
+    .then(response => {
+      return response;
+    })
+    .catch(error => {
+      return error;
+    })
+};
+
+
 export const postRecruiter = async (payload = {}) => {
   try {
     const config = {

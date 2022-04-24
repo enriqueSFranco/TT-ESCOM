@@ -1,9 +1,7 @@
 import axios from "axios";
 import { API_JOBS } from "../settings";
 
-// /api/Vacants/?page=1
-
-export const getAllJobs = async({page = 1}) => {
+export const getAllJobs = async(page) => {
   try {
     const response = await axios.get(`/api/Vacants/?page=${page}`);
     return response;

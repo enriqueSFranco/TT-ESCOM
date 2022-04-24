@@ -60,11 +60,12 @@ export const useForm = (initialForm, validateForm) => {
     if (Object.keys(errors).length === 0) {
       createBusiness(form)
         .then(response => {
-          console.log(response);
-        })
-        .catch(error => {
-          if (error.response)
-            console.log(error.response.data.message);
+          console.log(response)
+          if (response.status === 201) {
+            toast.success(response?.data?.message);
+          } else if (response.status === 400) {
+            toast.error(response.data.message);
+          }
         })
     }
   };

@@ -19,8 +19,6 @@ const FormCompanyInfo = ({
     nextStep();
   };
 
-  console.log(errors);
-
   return (
     <div className={styles.companyInfo}>
       <div className={`${styles.welcome}`}>
