@@ -42,23 +42,37 @@ class AcademicState(models.Model):
 	def __str__(self) -> str:
 		return self.c109_description
 
-#C108 Puesto de interes
+#C108 Unidades academicas
+class AcademicUnit(models.Model):
+	c108_id_academic_unit = models.AutoField(primary_key=True)
+	c108_academic_unit = models.CharField(max_length=150,null=True,blank=True)
+
+	class Meta: 
+		verbose_name = "Acadmic Units"
+		db_table = "c108_unidades_academicas"
+
+	def __str__(self) -> str:
+		return self.c108_academic_unit
+
+
+#C111 Puesto de interes
 class InterestJob(models.Model):
-	c108_id_job = models.AutoField(primary_key=True)
-	c108_job = models.CharField(max_length=60,null=False,blank=False,default="no definido")
+	c111_id_job = models.AutoField(primary_key=True)
+	c111_job = models.CharField(max_length=60,null=False,blank=False,default="no definido")
 
 	class Meta:
 		verbose_name = 'InterestJob'
-		db_table = 'c108_puesto_interes'
+		db_table = 'c111_puesto_interes'
 	
 	def __str__(self) -> str:
-		return self.c108_job
+		return self.c111_job
 
 
 #C115 Plataformas
 class Plataform(models.Model):
 	c115_id_plataform = models.AutoField(primary_key=True)
-	c115_description = models.CharField(max_length=60,blank=True,null=True)	
+	c115_description = models.CharField(max_length=60,blank=True,null=True)
+	c115_icon = models.ImageField(blank=True,null=True,default="",upload_to=upload_platoform_icon)
 
 	class Meta:
 		verbose_name = 'Plataform'
@@ -172,7 +186,7 @@ class AcademicHistory(models.Model):
 		blank=True,
 		related_name='StudentAcademics',
 		on_delete=models.CASCADE)
-	t104_academic_unit = models.CharField(max_length=100,null=True,blank=True)
+	t104_academic_unit = models.CharField(max_length=150,null=True,blank=True)
 	t104_carreer = models.CharField(max_length=100,null=True,blank=True)
 	c107_id_academic_level = models.ForeignKey(
 		AcademicLevel,
@@ -235,8 +249,7 @@ class Link(models.Model):
 		blank=False,
 		related_name='PlataformDescription',
 		on_delete=models.CASCADE,
-		default=1)
-	t114_icon = models.FileField(blank=True,null=True,default="",upload_to=upload_platoform_icon)
+		default=1)	
 
 	class Meta:
 		unique_together = ['t100_id_student','c115_id_plataform']

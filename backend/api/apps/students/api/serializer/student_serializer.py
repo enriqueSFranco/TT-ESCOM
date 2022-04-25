@@ -65,13 +65,12 @@ class UpdateStudentSerializer(serializers.ModelSerializer):
   # skills=SkillSerializer(many=True)
   class Meta:
     model = Student
-    fields = ('t100_boleta','t100_name','t100_last_name','t100_username','t100_email',
-    't100_gender','t100_date_of_birth','t100_personal_objectives','t100_phonenumber','t100_residence',
-    't100_modalities','t100_speciality','t100_target_salary','t100_travel','is_active')    
+    fields = ('t100_boleta','t100_name','t100_last_name','t100_gender','t100_date_of_birth','t100_personal_objectives',
+    't100_phonenumber','t100_residence','t100_modalities','t100_speciality','t100_target_salary','t100_travel','is_active')    
       # encriptamos el password cuando el usuario quiera actualizar su informacion
     def update(self, instance, validate_data):
       update_student = super().update(instance, validate_data)
-      update_student.set_password(validate_data['password'])
+      #update_student.set_password(validate_data['password'])
       update_student.save()
       return update_student
 

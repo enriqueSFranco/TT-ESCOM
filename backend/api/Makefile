@@ -1,9 +1,22 @@
 run:
+<<<<<<< HEAD
 	python3 manage.py runserver
 
 restore: migrate
 	python3 manage.py loaddata data.json
 	python3 manage.py runserver
+=======
+	python3.10 manage.py makemigrations
+	python3.10 manage.py migrate
+	python3.10 manage.py runserver
+
+restore: migrate	
+	python3.10 manage.py runserver
+>>>>>>> 4ed22ceff0db225ccf4cbeea37ddefe4abc7b5d6
+
+data:
+	python3.10 manage.py loaddata data.json
+	python3.10 manage.py loaddata cp.json 
 
 clean:	
 	rm -rf apps/*/migrations/*
@@ -19,7 +32,11 @@ makemigrations: restore_inits
 	python3 manage.py makemigrations
 
 migrate: makemigrations
+<<<<<<< HEAD
 	python3 manage.py migrate	
+=======
+	python3.10 manage.py migrate
+>>>>>>> 4ed22ceff0db225ccf4cbeea37ddefe4abc7b5d6
 
 superuser:
 	python3 manage.py createsuperuser
