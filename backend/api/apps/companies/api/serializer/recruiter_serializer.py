@@ -30,7 +30,7 @@ class UpdateRecruiterSerializer(serializers.ModelSerializer):
 
 #Hacer serializador para activar el usuario y asignarle contraseña
 
-class UpdateRecruiterSerializer(serializers.ModelSerializer):
+class ValidateRecruiterSerializer(serializers.ModelSerializer):
         class Meta:
             model = Recruiter
             fields = ('is_active','password')

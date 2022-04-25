@@ -1,9 +1,14 @@
 run:
+	python3 manage.py makemigrations
+	python3 manage.py migrate
 	python3 manage.py runserver
 
-restore: migrate
-	python3 manage.py loaddata data.json
+restore: migrate	
 	python3 manage.py runserver
+
+data:
+	python3 manage.py loaddata data.json
+	python3 manage.py loaddata cp.json 
 
 clean:	
 	rm -rf apps/*/migrations/*

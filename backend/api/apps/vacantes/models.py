@@ -80,37 +80,20 @@ class ReportState(models.Model):
     def __str__(self) -> str:
         return self.c220_description
 
-#c225 Estados
-class MState(models.Model):
-	c221_id_state = models.IntegerField(primary_key=True)
-	c221_state = models.CharField(max_length=50)
+#c222 CP
+class Locality(models.Model):	
+	c222_id = models.AutoField(primary_key=True)
+	c222_cp = models.IntegerField(null=False,blank=False)
+	c222_state = models.CharField(max_length=70, null=False,blank=False)
+	c222_municipality = models.CharField(max_length=170, null=False,blank=False)
+	c222_locality = models.CharField(max_length=170, null=False,blank=False)
 	class Meta:
-		verbose_name = 'State'
-		verbose_name_plural = 'States'
-		db_table = 'c221_estado'
+		verbose_name = 'locality'
+		verbose_name_plural = 'localities'
+		db_table = 'c222_localidades'
     
 	def __str__(self) -> str:
-		return self.c221_state
-
-#c222 Municipios
-class Municipality(models.Model):
-	c221_id_state = models.ForeignKey(
-        MState,  
-        null=True,
-        blank=True,
-        related_name="MuncipalState",
-        on_delete=models.CASCADE
-    )
-	c222_id_municipality = models.IntegerField(null=False,blank=False)
-	c222_municipality = models.CharField(max_length=70, null=False,blank=False)
-	c222_inegi_key = models.IntegerField(primary_key=True,null=False,blank=False,default=0)
-	class Meta:
-		verbose_name = 'Municipality'
-		verbose_name_plural = 'Municipalities'
-		db_table = 'c222_municipios'
-    
-	def __str__(self) -> str:
-		return self.c222_municipality
+		return self.c222_cp+":"+self.c222_state+","+self.c222_municipality+","+self.c222_locality
 
 
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
@@ -222,41 +205,6 @@ class Application(models.Model):
 
     def __str__(self) ->str:
 	    return str(self.t201_id_application)
-
-#T213 Ubicacion
-class Ubication(models.Model):    
-    t200_id_vacant = models.ForeignKey(
-		Vacant,
-		null=True,
-		blank=True,
-		related_name='ApplicationUbication',
-		on_delete=models.CASCADE)
-    t213_state = models.ForeignKey(
-        MState,
-        null=True,
-        blank=True,
-        related_name="UbicationState",
-        on_delete=models.CASCADE
-    )
-    t213_mucipality = models.ForeignKey(
-        Municipality,
-        null=True,
-        blank=True,
-        related_name='UbicationMuncipality',
-        on_delete=models.CASCADE
-    )
-    t213_locality = models.CharField(max_length=100,null=False,blank=False,default='No definido')
-    t213_street = models.CharField(max_length=60,null=True,blank=True)
-    t213_cp = models.IntegerField(blank=True,null=True)
-    t213_interior_number = models.CharField(max_length=20,blank=True,null=True)
-    t213_exterior_number = models.CharField(max_length=20,blank=True,null=True)
-
-    class Meta:
-        verbose_name = 'Ubication'
-        db_table = 't213_ubicacion'
-    
-    def __str__(self)->str:
-        return self.t213_state+","+self.t213_mucipality+","+self.t213_locality
 
 #T202 Comunicados
 class Announcement(models.Model):

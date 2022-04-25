@@ -8,7 +8,6 @@ from apps.students.api.views.studentlenguages_viewset import LenguagesViewSet
 from apps.vacantes.api.views.announcement_viewset import AnnouncementViewSet
 from apps.vacantes.api.views.application_viewset import ApplicationViewSet
 from apps.vacantes.api.views.report_viewset import ReportViewSet
-from apps.vacantes.api.views.ubication_viewset import UbicationViewSet
 from apps.vacantes.api.views.vacant_viewset import  VacantViewSet
 from apps.administration.api.views.admin_viewset import AdminViewSet
 from apps.companies.api.views.company_viewset import CompanyViewSet
@@ -16,8 +15,8 @@ from apps.companies.api.views.ubication_viewset import CompanyUbicationViewSet
 from apps.companies.api.views.recruiter_viewset import RecruiterViewSet
 from apps.students.api.views.projects_viewset import ProjectsViewSet
 from apps.companies.api.views.company_viewset import ActivateCompanyViewSet
-from apps.companies.api.views.auth_recruiter_viewset import ActivateRecruiterViewSet
 from apps.users.views import UserViewSet
+from apps.companies.api.views.auth_recruiter_viewset import ValidateRecruiterViewSet
 
 router = DefaultRouter()
 router.register(r'users',UserViewSet,basename='Registred users')
@@ -44,8 +43,6 @@ router.register(r'Applications',ApplicationViewSet,basename='Students Applicatio
 router.register(r'Applications/<int:pk>',ApplicationViewSet,basename='Student Applications details')
 router.register(r'Reports',ReportViewSet,basename="Reports")
 router.register(r'Reports/<int:pk>',ReportViewSet,basename="Report details")
-router.register(r'VacantsUbications',UbicationViewSet,basename="Vacants ubications")
-router.register(r'VacantsUbications/<int:pk>',UbicationViewSet,basename="Vacant ubication details")
 router.register(r'Administrators',AdminViewSet,basename='Adminstrators')
 router.register(r'Administrator/<int:pk>',AdminViewSet,basename='Administrator Details')
 router.register(r'Companies',CompanyViewSet,basename='Companies')
@@ -56,8 +53,8 @@ router.register(r'CompaniesUbication',CompanyUbicationViewSet,basename='Companie
 router.register(r'CompaniesUbication/<int:pk>',CompanyUbicationViewSet,basename='Company ubication')
 router.register(r'Recruiters',RecruiterViewSet,basename='Companies recruiters')
 router.register(r'Recruiters/<int:pk>',RecruiterViewSet,basename='Company recruiters details')
-router.register(r'ValidateRecruiter',ActivateRecruiterViewSet,basename='Companies recruiters')
-router.register(r'ValidateRecruiter/<int:pk>',ActivateRecruiterViewSet,basename='Companies recruiters')
+router.register(r'ValidateRecruiter',ValidateRecruiterViewSet,basename='Invalid recruiters')
+router.register(r'ValidateRecruiter/<int:pk>',ValidateRecruiterViewSet,basename='Validate recruite')
 
 
 

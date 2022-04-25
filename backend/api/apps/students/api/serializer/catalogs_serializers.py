@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.students.models import AcademicLevel,AcademicState,InterestJob,Plataform,Skills,Lenguage
+from apps.students.models import AcademicLevel,AcademicState,AcademicUnit,InterestJob,Plataform,Skills,Lenguage
 
 class AcademicLevelSerializer(serializers.ModelSerializer):
     class Meta:
@@ -46,6 +46,28 @@ class AcademicStateListSerializer(serializers.ModelSerializer):
         }
 
 
+class AcademicUnitSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AcademicUnit
+        fields = '__all__'
+    
+    def create(self,validate_data):
+        register = AcademicUnit(**validate_data)
+        register.save()
+        return register
+    
+class AcademicUnitListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AcademicUnit
+        fields = '__all__'
+
+    def to_representation(self,instance):
+        return{
+            'c108_id_academic_unit' : instance['c108_id_academic_unit'],
+	        'c108_academic_unit' : instance['c108_academic_unit']
+        }        
+
+
 class InterestJobSerializer(serializers.ModelSerializer):
     class Meta:
         model = InterestJob
@@ -63,8 +85,8 @@ class InsterestJobListSerializer(serializers.ModelSerializer):
 
     def to_representation(self,instance):
         return{
-            'c108_id_job' : instance['c108_id_job'],
-	        'c108_job' : instance['c108_job']
+            'c111_id_job' : instance['c111_id_job'],
+	        'c111_job' : instance['c111_job']
         }
 
 

@@ -3,7 +3,8 @@ import {
   API_CATALOGUE_CANDIDATE_PROFILE, 
   API_CATALOGUE_EXPERIENCE,
   API_CATALOGUE_STATES,
-  API_SKILLS
+  API_SKILLS,
+  API_CP
 } from "services/settings";
 
 export const getSkill = id => {
@@ -46,3 +47,16 @@ export const getAllStates = async () => {
       return error.response.message;
   }
 }
+
+export const getLocalities = cp => {
+  return axios.get(`${API_CP}${cp}/`)
+    .then(response => {
+      const { data } = response;
+      return data;
+    })
+    .catch(error => {
+      if (error.response) {
+        return error.response.data;
+      }
+    })
+};
