@@ -5,14 +5,21 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import Autocomplete from "@mui/material/Autocomplete";
+import { useForm } from "../../../hooks/useForm";
 import styles from "./StylesStepper.module.css";
 import Checkbox from "@mui/material/Checkbox";
 // import Label from "../../Input/Label"
 // import Span from "../../Input/Span"
 // import Input from "../../Input/Input"
 
-function DatesSchool({ form, handleChange}) {
+
+function DatesSchool({ academicHistorial, setAcademicHistorial,academicUnit,setAcademicUnits}) {
   const [mes, setMes] = React.useState('');
+  const { form, handleChange } = useForm(academicHistorial);
+
+  console.log(form);
+  console.log(academicHistorial);
+  setAcademicHistorial(form);
 
   const handleChangek = (event) => {
     setMes(event.target.value);
@@ -96,6 +103,7 @@ const MenuPropsM = {
     1990,
   ];
 
+
   return (
     <div className={styles.containerPage}>
       <form>
@@ -105,10 +113,10 @@ const MenuPropsM = {
         <p>¿Que estudiaste o estas estudiando?</p>
             <TextField
               label="Carrera"
-              /*name=""
-              id=""
-              value={}
-              onChange={}*/
+              name="t104_carreer"
+              id="t104_carreer"
+              value={form.t104_carreer}
+              onChange={handleChange}
               sx={{ width: 500, maxWidth: "100%" , marginRight:15}}
               
             />
@@ -116,15 +124,26 @@ const MenuPropsM = {
         
         <div className={styles.inputGroup}>
         <p>¿En que institución?</p>
-            <TextField
+            <div className={styles.inputGroup}>
+              <Autocomplete
+                id="t104_academic_unit"
+                name="t104_academic_unit"
+                freeSolo
+                onChange={handleChange}
+                options={academicUnit.map((option) => option.c108_academic_unit)}
+                renderInput={(params) => <TextField {...params} label="Unidad Ácademica" />}
+              />
+            </div>*
+
+            {/*<TextField
               label="Carrera"
               /*name=""
               id=""
               value={}
-              onChange={}*/
+              onChange={}
               sx={{ width: 500, maxWidth: "100%" , marginRight:15}}
               
-            />
+            />*/}
         </div>
 
         <div className={styles.inputGroupP1}>

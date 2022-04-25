@@ -15,3 +15,5 @@ export const API_STUDENT = "/api/Students/";
 export const API_PHOTO_STUDENT = "/images/StudentPic/";
 
 export const API_CP = "/api/catalogues/Localities/"
+export const API_ACADEMIC_UNITS = "/api/catalogues/AcademicUnits/"
+export const API_INTEREST_JOBS = "/api/catalogues/CatalogueJobs/"

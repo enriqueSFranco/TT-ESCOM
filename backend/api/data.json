@@ -1,6 +1,50 @@
 
 [
     {
+        "model" : "students.Student",
+        "pk" : 1,
+        "fields":{
+            "t100_boleta": null,
+            "t100_name": "",
+            "t100_last_name": null,
+            "t100_username": null,
+            "t100_email": "joel_kratos@hotmail.com",
+            "t100_gender": "F",
+            "t100_date_of_birth": null,
+            "t100_personal_objectives": null,
+            "t100_phonenumber": null,
+            "t100_residence": null,
+            "t100_modalities": null,
+            "t100_speciality": null,
+            "t100_target_salary": null,
+            "t100_travel": false,
+            "is_active": false,
+            "password": "pbkdf2_sha256$320000$o9eYPJhBKIa2w2vQsDFlld$5tvevbcIik/rMeAVNAKt9oI9mV+aWS3vHoQ6ytueUEU="
+        }
+    },
+
+    {
+        "model" : "users.User",
+        "pk" : 1,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$q2hM0ylazDZb68qcK0jjT9$StaYleM6xdrM5kHH54aIA4nJHQ938vnlhs/m2t1CF88=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "joel_kratos@hotmail.com",
+            "first_name": "",
+            "last_name": "",
+            "email": "joel_kratos@hotmail.com",
+            "is_staff": false,
+            "date_joined": "2022-04-25T06:25:37.005568Z",
+            "user_type": "STUDENT",
+            "is_active": true,
+            "user_id": 1,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+
+    {
         "model" :"students.AcademicLevel",   
         "pk":1,
 	    "fields": {                        
