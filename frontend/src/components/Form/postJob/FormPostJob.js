@@ -4,6 +4,7 @@ import { postJobInitialForm } from "../schemes";
 import {
   getAllCatalogueExperience,
   getAllCandidateProfile,
+  getLocalities
 } from "services/catalogs/index";
 import Alert from "@mui/material/Alert";
 import Checkbox from "@mui/material/Checkbox";
@@ -67,6 +68,12 @@ const FormPostJob = () => {
 
   if (!form || !profiles || !experience) return null;
 
+  console.log(form);
+
+  const getLocalityData = (e) =>{
+    console.log("Aqui va el CP");
+  };
+
   /*console.log(options[2]['c116_description']);
   let datos = new Array();
   let hard = new Array();
@@ -119,6 +126,72 @@ const FormPostJob = () => {
             <Span content="Ubicacion del empleo" />
           </Label> */}
         </div>
+
+        <h3>Ubicación</h3>
+        <div className={styles.inputGroup}>
+          <div style={flex}>
+            <Label>
+              <Input
+                type="text"
+                id="c222_cp"
+                name="c222_cp"
+                placeholder=" "
+                value={form.c222_cp}                
+                onChange={getLocalityData/*handleChange*/}
+              />
+              <Span content="Código Postal"/>
+            </Label>
+            <FormControlLabel
+              control={<Checkbox />}
+              label="Trabajo remoto"
+              name="t200_home_ofice"
+              id="t200_home_ofice"
+              value={form.t200_home_ofice}
+              onChange={handleChecked}
+            />
+            <div className={`${styles.inputGroup}`}>
+              <Input
+                type="text"
+                id="c222_state"
+                name="c222_state"
+                placeholder=" "
+                value={form.c222_state}                
+                onChange={handleChange}
+              />
+              <Span content="Estado"/>    
+              <Input
+                type="text"
+                id="c222_municipality"
+                name="c222_municipality"
+                placeholder=" "
+                value={form.c222_municipality}                
+                onChange={handleChange}
+              />
+              <Span content="Municipio"/>
+              <Input
+                type="text"
+                id="c222_locality"
+                name="c222_locality"
+                placeholder=" "
+                value={form.c222_locality}                
+                onChange={handleChange}
+              />
+              <Span content="Localidad"/>
+            </div>
+          </div>
+          {/* <Label>
+            <Input
+              type="text"
+              id="t200_location"
+              name="t200_location"
+              placeholder=" "
+              value=""
+              onChange={handleChange}
+            />
+            <Span content="Ubicacion del empleo" />
+          </Label> */}
+        </div>
+
         <h3>Perfil y Experiencia</h3>
         <div className={styles.inputGroup}>
           <div className={styles.select}>
@@ -215,15 +288,7 @@ const FormPostJob = () => {
           id="t200_gross_salary"
           value={form.t200_gross_salary}
           onChange={handleChecked}
-        />
-        <FormControlLabel
-          control={<Checkbox />}
-          label="Trabajo remoto"
-          name="t200_home_ofice"
-          id="t200_home_ofice"
-          value={form.t200_home_ofice}
-          onChange={handleChecked}
-        />
+        />        
         <br />
         <TextareaAutosize
           className={styles.textArea}

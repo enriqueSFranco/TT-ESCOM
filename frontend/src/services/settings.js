@@ -13,3 +13,5 @@ export const API_SOCIAL_NETWORK = "/api/Links/";
 export const API_SKILLS = "/api/Skills/";
 export const API_STUDENT = "/api/Students/";
 export const API_PHOTO_STUDENT = "/images/StudentPic/";
+
+export const API_CP = "/api/catalogues/Localities/"
