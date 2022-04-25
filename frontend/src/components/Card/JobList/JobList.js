@@ -7,34 +7,29 @@ import styles from "./JobList.module.css";
 
 const JobList = ({jobs, loading, page, setPage}) => {
   
-  let maxLenPage = useMemo(() => Math.ceil(jobs?.count / jobs?.page_size), [jobs?.count, jobs?.page_size]);
-  // const next = () => setPage((currentPage) => Math.min(currentPage + 1, maxLenPage));
-  // const prev = () => setPage((currentPage) => Math.max(currentPage - 1, 1));
-  
+  // let maxLenPage = useMemo(() => Math.ceil(jobs?.count / jobs?.page_size), [jobs?.count, jobs?.page_size]);
+
   const handlePagination = (e, value) => {
     setPage(value)
   };
   
-  if (Object.keys(jobs).length < 0) return null;
+  // if (jobs.length < 0) return null;
   
-  
+  console.log(jobs)
   return (
     <>
       <article className={`${styles.wrapper} ${styles.grid}`}>
         <div style={{ width: "500px" }}>
           {loading ? (
             <Skeleton type="feed" />
-          ) : Object.keys(jobs).length > 0 ? (
-            jobs?.result?.map((job) => (
-              <Link
-                to={`vacante/${job?.t200_id_vacant}`}
-                key={job?.t200_id_vacant}
-              >
-                <CardJob job={job} />
-              </Link>
-            ))
-          ) : (
-            <h3>Sin vacantes</h3>
+          ) : jobs?.map((job) => (
+            <Link
+              to={`vacante/${job?.t200_id_vacant}`}
+              key={job?.t200_id_vacant}
+            >
+              <CardJob job={job} />
+            </Link>
+          )
           )}
         </div>
         <Outlet />
@@ -42,7 +37,7 @@ const JobList = ({jobs, loading, page, setPage}) => {
       <div className={styles.pagination}>
         {/* <button onClick={prev}>prev</button>
         <button onClick={next}>next</button> */}
-        <Pagination count={isNaN(maxLenPage) ? 1 : maxLenPage} color="primary" page={page} onChange={handlePagination} />
+        <Pagination count={3} color="primary" page={page} onChange={handlePagination} />
       </div>
     </>
   );

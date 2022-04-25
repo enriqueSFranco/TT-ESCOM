@@ -56,6 +56,7 @@ const Home = () => {
       // checkbox activado
       setIsFiltered(true);
       const newData = filterForHomeOffice(jobs?.result);
+      console.log(newData);
       setData(newData);
       // setTotalJobs(newData.length);
     } else if (isChecked) {
@@ -131,7 +132,7 @@ const Home = () => {
         <p className={homeStyles.totalJobs}>
           Total de vacantes: <em>{totalJobs}</em>
         </p>
-        <JobList jobs={isFiltered ? data : jobs} loading={loading} page={page} setPage={setPage} />
+        <JobList jobs={isFiltered ? data : jobs?.result} loading={loading} page={page} setPage={setPage} />
       </section>
 
       <section className={`${homeStyles.wrapperDeck}`}>
