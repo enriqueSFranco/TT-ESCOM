@@ -10,6 +10,17 @@ const DatesJob = ({ form, handleChange }) => {
   return (
     <div className={styles.containerPage}>
       <form>
+      <h5>¿Como son tus metas Profesionales?</h5>
+        {/*<div className={styles.inputGroup}>
+          <Autocomplete
+            id="free-solo-demo"
+            freeSolo
+            options={top100Films.map((option) => option.title)}
+            renderInput={(params) => <TextField {...params} label="freeSolo" />}
+          />
+  </div>*/}
+
+
         <div className={styles.inputGroup}>
           <TextField
             label="¿Cuanto te gustaria ganar?"
@@ -48,7 +59,7 @@ const DatesJob = ({ form, handleChange }) => {
             />
           </RadioGroup>
         </div>
-      </form>
+        </form>
     </div>
   );
 };
