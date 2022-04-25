@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { getAllJobs } from "services/jobs";
 import Search from "components/Search/Search";
 import FilterProfile from "components/Filter/FilterProfile";
@@ -18,6 +18,8 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [isChecked, setIsChecked] = useState(false); // informacion filtrada
   const [totalJobs, setTotalJobs] = useState(0); // estado para el total de vacantes
+  let maxLenPage = useMemo(() => Math.ceil(jobs?.count / jobs?.page_size), [jobs?.count, jobs?.page_size]);
+
   
   useEffect(() => {
     setLoading(true);
@@ -115,6 +117,8 @@ const Home = () => {
       setTotalJobs(newData.length);
     }
   };
+
+
   if (Object.keys(data).length < 0|| Object.keys(jobs).length < 0) return null;
   
   return (
@@ -132,7 +136,7 @@ const Home = () => {
         <p className={homeStyles.totalJobs}>
           Total de vacantes: <em>{totalJobs}</em>
         </p>
-        <JobList jobs={isFiltered ? data : jobs?.result} loading={loading} page={page} setPage={setPage} />
+        <JobList jobs={isFiltered ? data : jobs?.result} loading={loading} page={page} setPage={setPage} maxLenPage={maxLenPage} />
       </section>
 
       <section className={`${homeStyles.wrapperDeck}`}>

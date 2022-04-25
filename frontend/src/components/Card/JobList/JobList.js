@@ -5,9 +5,8 @@ import Skeleton from "../../Skeleton/Skeleton";
 import CardJob from "../CardJob/CardJob";
 import styles from "./JobList.module.css";
 
-const JobList = ({jobs, loading, page, setPage}) => {
+const JobList = ({jobs, loading, page, setPage, maxLenPage}) => {
   
-  // let maxLenPage = useMemo(() => Math.ceil(jobs?.count / jobs?.page_size), [jobs?.count, jobs?.page_size]);
 
   const handlePagination = (e, value) => {
     setPage(value)
@@ -37,7 +36,7 @@ const JobList = ({jobs, loading, page, setPage}) => {
       <div className={styles.pagination}>
         {/* <button onClick={prev}>prev</button>
         <button onClick={next}>next</button> */}
-        <Pagination count={3} color="primary" page={page} onChange={handlePagination} />
+        <Pagination count={isNaN(maxLenPage) ? 1 : maxLenPage} color="primary" page={page} onChange={handlePagination} />
       </div>
     </>
   );
