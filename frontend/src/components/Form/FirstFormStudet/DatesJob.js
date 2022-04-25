@@ -17,7 +17,9 @@ const DatesJob = ({ form, handleChange, interestJobs, setInterestJobs }) => {
             id="t100_interest_job"
             name="t100_interest_job"
             value={form.t100_interest_job}
-            onChange={handleChange}         
+            onChange={(event, newValue) => {
+              form.t100_interest_job=newValue;
+            }}    
             freeSolo
             options={interestJobs.map((option) => option.c111_job)}
             renderInput={(params) => <TextField {...params} label="Puesto de Interés" />}

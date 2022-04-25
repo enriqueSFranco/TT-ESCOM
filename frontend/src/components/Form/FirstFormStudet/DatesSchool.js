@@ -15,6 +15,8 @@ import Checkbox from "@mui/material/Checkbox";
 
 function DatesSchool({ academicHistorial, setAcademicHistorial,academicUnit,setAcademicUnits}) {
   const [mes, setMes] = React.useState('');
+  const [year, setYear] = React.useState('');
+  let inicio =""
   const { form, handleChange } = useForm(academicHistorial);
 
   console.log(form);
@@ -23,11 +25,18 @@ function DatesSchool({ academicHistorial, setAcademicHistorial,academicUnit,setA
 
   const handleChangek = (event) => {
     setMes(event.target.value);
-  };
-
-  const [year, setYear] = React.useState('');
+  };  
 
   const handleChangey = (event) => {
+    setYear(event.target.value);
+  };
+
+
+  const handleChangeq = (event) => {
+    setMes(event.target.value);
+  };
+
+  const handleChangex = (event) => {
     setYear(event.target.value);
   };
 
@@ -123,17 +132,18 @@ const MenuPropsM = {
         </div>
         
         <div className={styles.inputGroup}>
-        <p>¿En que institución?</p>
-            <div className={styles.inputGroup}>
+        <p>¿En que institución?</p>            
               <Autocomplete
                 id="t104_academic_unit"
                 name="t104_academic_unit"
                 freeSolo
-                onChange={handleChange}
+                onChange={(event, newValue) => {
+                  academicHistorial.t104_academic_unit=newValue;
+                }}
+                value={form.t104_academic_unit}
                 options={academicUnit.map((option) => option.c108_academic_unit)}
                 renderInput={(params) => <TextField {...params} label="Unidad Ácademica" />}
               />
-            </div>*
 
             {/*<TextField
               label="Carrera"
@@ -151,10 +161,10 @@ const MenuPropsM = {
           <div className={styles.Col4}> 
           <div className={styles.texto}>Fecha en que iniciaste</div>
             <FormControl > 
-            <InputLabel id="mes-inicio">Mes</InputLabel>
+            <InputLabel id="mes-inicio-1">Mes</InputLabel>
             <Select
-              labelId="mes-inicio"
-              id="mes-inicio"
+              labelId="mes-inicio-1"
+              id="mes-inicio-1"
               value={mes}
               label="Año"
               onChange={handleChangek}
@@ -168,10 +178,10 @@ const MenuPropsM = {
           </FormControl>
 
           <FormControl >
-            <InputLabel id="anio-inicio">Año</InputLabel>
+            <InputLabel id="anio-inicio-1">Año</InputLabel>
             <Select
-              labelId="anio-inicio"
-              id="anio-inicio"
+              labelId="anio-inicio-1"
+              id="anio-inicio-1"
               value={year}
               label="Año"
               onChange={handleChangey}
@@ -189,10 +199,10 @@ const MenuPropsM = {
         <div className={styles.Col3}>
         <div className={styles.texto}>Fecha en que concluyes o vas a concluir</div>
         <FormControl >
-          <InputLabel id="mes-final">Mes</InputLabel>
+          <InputLabel id="mes-final-2">Mes</InputLabel>
           <Select
-            labelId="mes-final"
-            id="mes-final"
+            labelId="mes-final-2"
+            id="mes-final-2"
             value={mes}
             label="Mes"
             onChange={handleChangek}
@@ -206,10 +216,10 @@ const MenuPropsM = {
         </FormControl>
 
         <FormControl >
-          <InputLabel id="anio-final">Año</InputLabel>
+          <InputLabel id="anio-final-2">Año</InputLabel>
           <Select
-            labelId="anio-final"
-            id="anio-final"
+            labelId="anio-final-2"
+            id="anio-final-2"
             value={year}
             label="Año"
             onChange={handleChangey}
