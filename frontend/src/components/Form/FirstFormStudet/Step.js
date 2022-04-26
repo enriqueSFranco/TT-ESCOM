@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
@@ -16,6 +17,7 @@ import {
   getAllAcademicUnits,
   getAllJobs
 } from "services/catalogs/index";
+import { Navigate } from "react-router-dom";
 
 let id_student = 1;
 
@@ -45,11 +47,15 @@ let AcademicFormat = {
     t104_start_date: "",
     t104_end_date: "",
     t100_id_student: id_student,
-    c107_id_academic_level: null,
-    c109_id_academic_state: null
+    c107_id_academic_level: "4",
+    c109_id_academic_state: "6"
 }
 
 const StepComponent = () => {
+  const [startMonth, setStartMonth] = React.useState(1);
+  const [startYear, setStartYear] = React.useState(1999);
+  const [endMonth, setEndMonth] = React.useState(1);
+  const [endYear, setEndYear] = React.useState(1999);
   const [activeStep, setActiveStep] = React.useState(0);
   const [hardSkills, setHardSkills] = React.useState([]);
   const [softSkills, setSoftSkills] = React.useState([]);
@@ -58,6 +64,8 @@ const StepComponent = () => {
   const { form, handleChange } = useForm(initialForm);
   const [academicHistorial, setAcademicHistorial] = React.useState(AcademicFormat); 
   const { data } = useFetch("/api/catalogues/CatalogueSkills/");  
+  let navigate = useNavigate();
+  let errors = false;
   
   useEffect(() => {
     getAllAcademicUnits()
@@ -91,7 +99,15 @@ const StepComponent = () => {
           academicHistorial={academicHistorial} 
           setAcademicHistorial={setAcademicHistorial} 
           academicUnit={academicUnit}
-          setAcademicUnits={setAcademicUnits}/>);
+          setAcademicUnits={setAcademicUnits}
+          startMonth={startMonth} 
+          setStartMonth={setStartMonth}
+          startYear={startYear}
+          setStartYear={setStartYear}
+          endMonth={endMonth}
+          setEndMonth={setEndMonth}
+          endYear={endYear}
+          setEndYear={setEndYear} />);
     }
     if (activeStep === 2) {
       return (
@@ -136,7 +152,9 @@ const StepComponent = () => {
       setActiveStep((currentStep) => currentStep + 1);
     }
     if (activeStep >= 3) {
-      updateData();
+      updateData();      
+      if (!errors)
+        navigate("/perfil");
     }
   };
 
@@ -155,15 +173,10 @@ const StepComponent = () => {
       .PUT(endpoint, options)
       .then((response) => {
         if (!response.err) {
-          console.log(response);
-
-          /*hardSkills.map((dato)=>{
-            console.log(dato);
-          })*/
-
+          console.log(response);          
+          ///Agreegar skills del alumno
           const endpoint = "/api/Skills/";
           const skilssall = hardSkills.concat(softSkills);
-
           skilssall.map((dato) => {
             //console.log(dato);
             let options = {
@@ -181,13 +194,38 @@ const StepComponent = () => {
               .then((response) => {
                 if (!response.err) {
                   console.log(response);
-                }
+                  //navigate("/perfil");
+                }                
               })
               .catch((err) => console.error(err));
           });
+
+          ///Agregar historial academico
+          if (AcademicFormat.t104_carreer!=""){
+              const endpointAcademic = "api/AcademicHistorial/";
+              console.log(startMonth);
+              AcademicFormat.t104_start_date = startYear+"-"+startMonth+"-01"          
+              AcademicFormat.t104_end_date = endYear+"-"+endMonth+"-01"          
+              console.log(AcademicFormat);
+              let options = {
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                },
+                body: academicHistorial,
+              };
+              helpHttp()
+                .POST(endpointAcademic, options)
+                .then((response) => {
+                  if (!response.err) {
+                    console.log(response);                    
+                  }
+                })
+                .catch((err) => console.error(err));
+          }
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err));          
   };
 
   const previousStep = () => {
