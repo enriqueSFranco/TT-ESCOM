@@ -1,24 +1,28 @@
 import { useEffect, useContext, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSticky } from "hooks/useSticky";
+import { useModal } from "hooks/useModal";
 import { getJob } from "services/jobs/index";
 import { applyJob } from "services/students/index";
 import { numberFormat } from "utils/numberFormat";
 import AuthContext from "context/AuthContext";
+import Modal from "components/Modal/Modal";
 import Chip from "@mui/material/Chip";
 import Skeleton from "../../Skeleton/Skeleton";
-import { MdBusinessCenter } from "react-icons/md"
+import { MdBusinessCenter } from "react-icons/md";
 import * as FaIcon from "react-icons/fa";
 import * as MdIcon from "react-icons/md";
 import * as IoIcon from "react-icons/io";
 import styles from "./CardJobDetails.module.css";
+import Confirm from "components/Alert/Confirm/Confirm";
 
 const JobCardDetails = () => {
   let elementRef = useRef(null);
   let isSticky = useSticky(100, elementRef);
   let { t200_id_vacant } = useParams();
   let navigate = useNavigate();
-  const {token} = useContext(AuthContext);
+  const { token } = useContext(AuthContext);
+  const [isOpen, openModal, closeModal] = useModal();
   const [job, setJob] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -33,16 +37,11 @@ const JobCardDetails = () => {
       .finally(() => setLoading(false));
   }, [t200_id_vacant]);
 
-  // useEffect(() => {
-  //   applyJob()
-  //     .then(response => {
+  const handleApplyJob = () => {
+    console.log("ya puedes aplicar");
+  };
 
-  //     })
-  // }, []);
-  
   if (!job) return null;
-
-  console.log(token)
 
   return (
     <>
@@ -60,26 +59,42 @@ const JobCardDetails = () => {
               </h1>
             </div>
             <div className={`${styles.flex}`}>
-              <div style={{width: "500px"}}>
+              <div style={{ width: "500px" }}>
                 <ul className={`${styles.flex} ${styles.tagsBody}`}>
                   <li className={styles.flex}>
-                    <Chip 
+                    <Chip
                       label={job[0]?.t300_id_company?.t300_name ?? "Anonima"}
                       icon={<FaIcon.FaBuilding />}
                     />
                   </li>
                   <li className={styles.flex}>
-                    <Chip 
-                      label={`${numberFormat(job[0]?.t200_max_salary).slice(3)} MXM` ?? "No especificado"}
-                      icon={<MdIcon.MdOutlineAttachMoney style={{fontSize: "1rem"}} />}
+                    <Chip
+                      label={
+                        `${numberFormat(job[0]?.t200_max_salary).slice(
+                          3
+                        )} MXM` ?? "No especificado"
+                      }
+                      icon={
+                        <MdIcon.MdOutlineAttachMoney
+                          style={{ fontSize: "1rem" }}
+                        />
+                      }
                     />
                   </li>
                   <li className={styles.flex}>
-                    <Chip 
-                      label={job[0]?.t200_home_ofice
-                        ? `Remoto`
-                        : "Presencial" ?? "No especificado"}
-                      icon={job[0]?.t200_home_ofice ? <IoIcon.IoMdHome style={{fontSize: "1rem"}} /> : <MdBusinessCenter style={{fontSize: "1rem"}} />}
+                    <Chip
+                      label={
+                        job[0]?.t200_home_ofice
+                          ? `Remoto`
+                          : "Presencial" ?? "No especificado"
+                      }
+                      icon={
+                        job[0]?.t200_home_ofice ? (
+                          <IoIcon.IoMdHome style={{ fontSize: "1rem" }} />
+                        ) : (
+                          <MdBusinessCenter style={{ fontSize: "1rem" }} />
+                        )
+                      }
                     />
                   </li>
                 </ul>
@@ -88,19 +103,25 @@ const JobCardDetails = () => {
                 </p>
               </div>
               <div className={styles.flex}>
-                {
-                  token !== null ? (
-                    <button onClick={() => console.log("ya puedes aplicar")} className={styles.btnApplyEmployment}>
+                {token !== null ? (
+                  <button
+                    onClick={openModal}
+                    className={styles.btnApplyEmployment}
+                  >
                     <IoIcon.IoIosRocket />
-                    Aplicar
+                    <span>Aplicar</span>
                   </button>
-                  ) : (
-                  <button onClick={() => navigate("/alumno")} className={styles.btnApplyEmployment}>
+                ) : (
+                  <button
+                    onClick={() => navigate("/alumno")}
+                    className={styles.btnApplyEmployment}
+                  >
                     <IoIcon.IoIosRocket />
-                    Aplicar
+                    <span>
+                      Aplicar
+                    </span>
                   </button>
-                  )
-                }
+                )}
               </div>
             </div>
           </header>
@@ -175,6 +196,9 @@ const JobCardDetails = () => {
           </article>
         </div>
       )}
+      <Modal isOpen={isOpen} closeModal={closeModal}>
+        <Confirm applyJob={handleApplyJob} job={job[0]?.t200_job} />
+      </Modal>
     </>
   );
 };

@@ -11,14 +11,13 @@ import homeStyles from "./PageHome.module.css";
 
 const Home = () => {
   const [jobs, setJobs] = useState([]);
+  let maxLenPage = useMemo(() => Math.ceil(jobs?.count / jobs?.page_size), [jobs?.count, jobs?.page_size]);
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]); // lista de vacantes filtrada
   const [isFiltered, setIsFiltered] = useState(false); // bandera para saber si la informacion se tiene que filtrar
   const [loading, setLoading] = useState(false);
   const [isChecked, setIsChecked] = useState(false); // informacion filtrada
   const [totalJobs, setTotalJobs] = useState(0); // estado para el total de vacantes
-  let maxLenPage = useMemo(() => Math.ceil(jobs?.count / jobs?.page_size), [jobs?.count, jobs?.page_size]);
-
   
   useEffect(() => {
     setLoading(true);
@@ -119,6 +118,8 @@ const Home = () => {
 
 
   if (Object.keys(data).length < 0|| Object.keys(jobs).length < 0) return null;
+
+  console.log(page)
   
   return (
     <main className={homeStyles.home}>

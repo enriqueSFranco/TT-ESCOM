@@ -12,7 +12,6 @@ h3 {
 .body { height: 670px; overflow-y: scroll; padding-top: 1rem; }
 
 .positionSticky {
-  /* margin-top: 140px; */
   font-family: sans-serif;
   position: sticky;
   top: 100px;
@@ -30,8 +29,35 @@ h3 {
   border: none;
   outline: 2px solid #90314b;
   padding: .6rem;
-  border-radius: 3px;
+  border-radius: 10px;
+  position: relative;
+  width: 90px;
+  top: .5rem;
   transition: background-color .3s ease-in;
+}
+
+.btnApplyEmployment svg {
+  /* outline: 3px solid blue; */
+  color: #000;
+  margin-right: .05rem;
+  transition: transform .5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.btnApplyEmployment span {
+  /* outline: 3px solid blue; */
+  color: #000;
+  font-weight: 300;
+  transition: transform .5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.btnApplyEmployment:hover svg {
+  color: #fff;
+  transform: translateX(5px) rotate(45deg);
+}
+
+.btnApplyEmployment:hover span {
+  color: #fff;
+  transform: translateX(7px);
 }
 
 .btnApplyEmployment:hover {

@@ -46,7 +46,7 @@ const Form = () => {
                 </span>
               </div>
           </div>
-          <div className={`col text-center bg-white p-3 rounded-end ${styles.formLogin}`}>
+          <div className={`col text-center bg-white p-3 rounded-end`}>
             <div className={styles.welcome}>
               <h2>iniciar sesion</h2>
               <span>Bienvenido! Porfavor introduce tus datos.</span>

@@ -1,20 +1,20 @@
-import { useMemo } from "react";
 import { Link, Outlet } from "react-router-dom";
-import Pagination from "@mui/material/Pagination";
+// import Pagination from "@mui/material/Pagination";
 import Skeleton from "../../Skeleton/Skeleton";
 import CardJob from "../CardJob/CardJob";
 import styles from "./JobList.module.css";
 
 const JobList = ({jobs, loading, page, setPage, maxLenPage}) => {
-  
+  // const handlePagination = value => setPage(value);
 
-  const handlePagination = (e, value) => {
-    setPage(value)
+  const prevPage = () => {
+    setPage((currentPage) => Math.max(currentPage - 1, 1));
   };
-  
-  // if (jobs.length < 0) return null;
-  
-  console.log(jobs)
+
+  const nextPage = () => {
+    setPage((currentPage) => Math.min(currentPage + 1, maxLenPage));
+  };
+
   return (
     <>
       <article className={`${styles.wrapper} ${styles.grid}`}>
@@ -34,9 +34,9 @@ const JobList = ({jobs, loading, page, setPage, maxLenPage}) => {
         <Outlet />
       </article>
       <div className={styles.pagination}>
-        {/* <button onClick={prev}>prev</button>
-        <button onClick={next}>next</button> */}
-        <Pagination count={isNaN(maxLenPage) ? 1 : maxLenPage} color="primary" page={page} onChange={handlePagination} />
+        <button onClick={prevPage}>prev</button>
+        <button onClick={nextPage}>next</button>
+        {/* <Pagination count={isNaN(maxLenPage) ? 1 : maxLenPage} color="primary" page={page} onChange={handlePagination} /> */}
       </div>
     </>
   );
