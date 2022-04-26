@@ -9,6 +9,7 @@ restore: migrate
 data:
 	python3 manage.py loaddata data.json
 	python3 manage.py loaddata cp.json 
+	python3 manage.py loaddata academic_units.json
 
 clean:	
 	rm -rf apps/*/migrations/*

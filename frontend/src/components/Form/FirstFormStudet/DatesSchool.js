@@ -21,7 +21,11 @@ function DatesSchool({ academicHistorial, setAcademicHistorial,academicUnit,setA
 
   console.log(form);
   console.log(academicHistorial);
-  setAcademicHistorial(form);
+
+  const handleChangeA = (event) =>{  
+    handleChange(form);
+    setAcademicHistorial(form);
+  }
 
   const handleChangek = (event) => {
     setMes(event.target.value);
@@ -125,7 +129,7 @@ const MenuPropsM = {
               name="t104_carreer"
               id="t104_carreer"
               value={form.t104_carreer}
-              onChange={handleChange}
+              onChange={handleChangeA}
               sx={{ width: 500, maxWidth: "100%" , marginRight:15}}
               
             />
