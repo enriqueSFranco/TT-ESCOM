@@ -1,11 +1,9 @@
 import { Link, Outlet } from "react-router-dom";
-// import Pagination from "@mui/material/Pagination";
 import Skeleton from "../../Skeleton/Skeleton";
 import CardJob from "../CardJob/CardJob";
 import styles from "./JobList.module.css";
 
-const JobList = ({jobs, loading, page, setPage, maxLenPage}) => {
-  // const handlePagination = value => setPage(value);
+const JobList = ({jobs, loading, setPage, maxLenPage}) => {
 
   const prevPage = () => {
     setPage((currentPage) => Math.max(currentPage - 1, 1));

@@ -35,7 +35,7 @@ const LoginCompany = () => {
             </span>
           </div>
         </div>
-        <div className={`col bg-white p-5 rounded-end`}>
+        <div className={`col bg-white text-center p-5 rounded-end`}>
           <div className={styles.welcome}>
             <h2>Bienvenido</h2>
             <span>Bienvenido! Porfavor introduce tus datos.</span>
@@ -44,11 +44,11 @@ const LoginCompany = () => {
             {/* input para el username */}
             <div className={styles.inputGroup}>
               <TextField
-                label="RFC"
-                id="rfc"
-                name="rfc"
+                label="Correo electronico"
+                id="t301_email"
+                name="t301_email"
                 sx={{ width: 500, maxWidth: "100%" }}
-                value={form.rfc}
+                value={form.t301_email}
                 onChange={handleChange}
               />
             </div>

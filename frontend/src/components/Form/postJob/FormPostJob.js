@@ -133,20 +133,6 @@ const FormPostJob = () => {
   //     .catch((error) => console.error(error));
   // };
   return (
-<<<<<<< HEAD
-    <div className={styles.wrapper}>
-      <form onSubmit={handlePostJob} className={styles.form}>
-        <div className={styles.boxForm}>
-        <h3>Titulo de la vacante y Ubicacion</h3>
-        <div className={styles.inputGroup}>
-          <div style={flex}>
-            <Label>
-              <Input
-                type="text"
-                id="t200_job"
-                name="t200_job"
-                placeholder=" "
-=======
     <div className={styles.container}>
       <div><h4>Publicar vacante</h4></div>
       <div className={styles.containerform}>
@@ -155,7 +141,6 @@ const FormPostJob = () => {
             <div className={styles.inputGroup}>
               <TextField
                 label="Titulo de la vacante"
->>>>>>> e8e8da7891e82345f92bf379417b448928a449cb
                 value={form.t200_job}
                 onChange={handleChange}
                 name="t200_job"
@@ -355,14 +340,9 @@ const FormPostJob = () => {
             Publicar Vacante
           </button>
         </div>
-<<<<<<< HEAD
-        </div>
-      </form>
-=======
 
         </div>
       
->>>>>>> e8e8da7891e82345f92bf379417b448928a449cb
     </div>
   );
 };

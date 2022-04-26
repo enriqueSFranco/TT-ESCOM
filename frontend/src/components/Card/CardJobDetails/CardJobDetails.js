@@ -37,8 +37,18 @@ const JobCardDetails = () => {
       .finally(() => setLoading(false));
   }, [t200_id_vacant]);
 
-  const handleApplyJob = () => {
+  console.log(token?.user);
+
+  const handleApplyJob = async () => {
     console.log("ya puedes aplicar");
+    // const response = await applyJob({
+    //   t200_id_vacant: null,
+    //   t100_id_student: null,
+    //   t201_cv: null,
+    //   c205_id_application_state: null,
+    //   t201_date_application: null
+    // })
+    
   };
 
   if (!job) return null;
