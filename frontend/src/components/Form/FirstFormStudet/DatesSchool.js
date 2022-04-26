@@ -13,38 +13,27 @@ import Checkbox from "@mui/material/Checkbox";
 // import Input from "../../Input/Input"
 
 
-function DatesSchool({ academicHistorial, setAcademicHistorial,academicUnit,setAcademicUnits}) {
-  const [startMonth, setStartMonth] = React.useState('');
-  const [startYear, setStartYear] = React.useState('');
-  const [endMonth, setEndMonth] = React.useState('');
-  const [endYear, setEndYear] = React.useState('');
+function DatesSchool({ academicHistorial, setAcademicHistorial,academicUnit,setAcademicUnits,startMonth, setStartMonth,startYear, setStartYear,endMonth, setEndMonth,endYear, setEndYear}) {
+  
   let inicio ="";
   let fin="";
   const { form, handleChange } = useForm(academicHistorial);
 
   const handleChangek = (event) => {
     setStartMonth(event.target.value);
-    inicio =startYear+"-"+startMonth+"-01";
-    academicHistorial.t104_start_date =inicio;
   };  
 
   const handleChangey = (event) => {
     setStartYear(event.target.value);
-    inicio =startYear+"-"+startMonth+"-01";
-    academicHistorial.t104_start_date =inicio;
   };
 
 
   const handleChangeq = (event) => {
     setEndMonth(event.target.value);
-    fin =endYear+"-"+endMonth+"-01";
-    academicHistorial.t104_end_date =fin;
   };
 
   const handleChangex = (event) => {
     setEndYear(event.target.value);
-    fin =endYear+"-"+endMonth+"-01";
-    academicHistorial.t104_end_date =fin;
   };
 
   console.log(form);

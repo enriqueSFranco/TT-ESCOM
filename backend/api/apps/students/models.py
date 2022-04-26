@@ -209,7 +209,7 @@ class AcademicHistory(models.Model):
 	t104_end_date = models.DateField(null=True,blank=True)
 
 	class Meta:
-		unique_together = ['t100_id_student','t104_carreer']
+		unique_together = ['t100_id_student','t104_carreer','t104_academic_unit']
 		verbose_name="Academic history"
 		db_table="t104_historial_academico"
 	

@@ -139,7 +139,8 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 			'user_id':self.user.user_id,
 			'username':self.user.username,
 			'email':self.user.email,
-			'user_type':self.user.user_type
+			'user_type':self.user.user_type,
+			'first_name':self.user.first_name
 		}
         data['user']=user        
         print (data)

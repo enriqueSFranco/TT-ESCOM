@@ -45,6 +45,44 @@
     },
 
     {
+        "model":"companies.Recruiter",
+        "pk":1,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$RiPoxXGsCVLO04U3Ps9nys$gjzTJp4eRilm2jvKV7reAC/9kevVwvN7zdwdfgHPCH0=",
+            "last_login": null,
+            "t301_name": "Eduardo",
+            "t301_last_name": "Heras",
+            "t301_user": "eduardoH",
+            "t301_email": "jcruzh1301@alumno.ipn.mx",
+            "t301_phonenumber": 5543925511,
+            "is_active": true,
+            "t300_id_company": 1
+        }
+
+    },
+
+    {
+        "model" : "users.User",
+        "pk" : 2,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$IW1Bp9IQGZP5yu2cY0eKuO$K4vXpOuGbWbTgsUYZEIXuhZWp9Xtyyc9Adojuqxx0zE=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "jcruzh1301@alumno.ipn.mx",
+            "first_name": "Eduardo",
+            "last_name": "Heras",
+            "email": "",
+            "is_staff": false,
+            "date_joined": "2022-04-25T06:25:37.005568Z",
+            "user_type": "RECRUITER",
+            "is_active": true,
+            "user_id": 1,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+
+    {
         "model" :"students.AcademicLevel",   
         "pk":1,
 	    "fields": {                        
@@ -2033,6 +2071,8 @@
         }
     },
 
+    
+
     {
         "model":"vacantes.Vacant",
         "pk":1,
@@ -2054,7 +2094,7 @@
             "c207_id_experience": 2,
             "c206_id_profile": 2,
             "c204_id_vacant_status":1,
-            "t301_id_recruiter": null,
+            "t301_id_recruiter": 1,
             "t400_id_admin": null,
             "t200_state":"Ciudad de México"
         }
@@ -2080,7 +2120,7 @@
             "c207_id_experience": 4,
             "c206_id_profile": 3,
             "c204_id_vacant_status": 2,
-            "t301_id_recruiter": null,
+            "t301_id_recruiter": 1,
             "t400_id_admin": null,
             "t200_state":"Ciudad de México"
         }
@@ -2158,7 +2198,7 @@
             "c207_id_experience": 6,
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
-            "t301_id_recruiter": null,
+            "t301_id_recruiter": 1,
             "t400_id_admin": null,
             "t200_state":"Ciudad de México"
         }
