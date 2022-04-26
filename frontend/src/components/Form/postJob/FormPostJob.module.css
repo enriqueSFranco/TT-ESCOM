@@ -14,7 +14,7 @@ select {
   color: #000;
   cursor: pointer;
   font-size: 1em;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 
@@ -24,20 +24,25 @@ select {
   border-radius: 8px;
 }
 
+.boxForm {
+  outline: 1px solid blue;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .error {
   font-size: .8rem;
   font-weight: 300;
   color: #dc3545;
   text-align: left;
+  font-family: 'Poppins', sans-serif;
 }
 
 .inputGroup {
-  /* background-color: yellow; */
   width: 100%;
   height: auto;
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
   margin: 1rem 0;
 }
 
@@ -46,8 +51,9 @@ select {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  width: 50%;
-  height: 790px;
+  width: 90%;
+  /* outline: 1px solid red; */
+  height: 800px;
   margin: 0 auto;
   padding: 1rem;
 }
@@ -122,4 +128,5 @@ select {
   top: 1rem;
   width: 100%;
   height: 100%;
+  /* outline: 2px solid blue; */
 }

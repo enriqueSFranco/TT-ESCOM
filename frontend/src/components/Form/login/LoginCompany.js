@@ -1,17 +1,13 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { useForm } from "../../../hooks/useForm";
-import AuthContext from "../../../context/AuthContext";
+import { useForm } from "hooks/useForm";
+import { loginFormCompany } from "../schemes";
+import AuthContext from "context/AuthContext";
 import TextField from "@mui/material/TextField";
 import styles from "../Styles.module.css";
 
-let initialForm = {
-  rfc: "",
-  password: "",
-};
-
 const LoginCompany = () => {
-  const { form, handleChange } = useForm(initialForm);
+  const { form, handleChange } = useForm(loginFormCompany);
   const { login } = useContext(AuthContext);
 
   return (

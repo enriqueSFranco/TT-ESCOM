@@ -20,6 +20,8 @@ import PageLoginStudentUpdate from "pages/login/PageLoginStudentUpdate";
 import PageDashBoard from "pages/business/PageDashBoard";
 import PageHistory from "pages/business/PageHistory";
 import PageMyJobs from "pages/business/PageMyJobs";
+import PageSuccesCompany from "pages/login/PageSuccesCompany";
+import PageValidateRecruiter from "pages/admin/PageValidateRecruiter";
 
 const Root = () => {
   return (
@@ -36,11 +38,15 @@ const Root = () => {
         <Route path=":t200_id_vacant" element={<CardJobDetails />} />
       </Route> */}
 
+      {/* RUTAS DEL ADMINISTRADOR */}
+      <Route path="/validar-reclutador" element={<PageValidateRecruiter />} />
+
+
       <Route path="/alumno" element={<PageLoginStudent />} />
       <Route path="/registro-alumno" element={<PageCreateAccountStudent />} />
       <Route path="/reclutador" element={<PageLoginCompany />} />
       <Route path="/registro-reclutador" element={<PageRegisterCompany />} />
-      {/* <Route path="/actualiza-alumno" element={<PageLoginStudentUpdate />}/> */}
+      <Route path="/pre-registro" element={<PageSuccesCompany />} />
       <Route path="empresas" element={<PageCompany />}>
         <Route path=":t301_id_company" element={<ModalRelease />} />
       </Route>
@@ -54,24 +60,16 @@ const Root = () => {
         <Route path="publicar-vacante" element={<PageAddJob />} />
         <Route path="mis-vacantes" element={<PageMyJobs />} />
       </Route>
-
-      {/* TODO Hacer ruta privada */}
-      <Route path="/perfil" element={<PageProfileStudent />}>
-        <Route path="historial-academico" element={<AcademicRecord />} />
-        <Route path="experiencia" element={<Experience />} />
-        <Route path="certificaciones" element={<Certifications />} />
-      </Route>
-      
       <Route path="/actualiza-alumno" element={<PageLoginStudentUpdate />}/>
 
       {/* Indice de rutas privadas para un alumno si funciona */}
-      {/* <Route element={<PrivateRoute roles={ROLE.STUDENT} />}>
+      <Route element={<PrivateRoute role={ROLE.STUDENT} />}>
         <Route path="/perfil" element={<PageProfileStudent />}>
           <Route path="historial-academico" element={<AcademicRecord />} />
           <Route path="experiencia" element={<Experience />} />
           <Route path="certificaciones" element={<Certifications />} />
         </Route>
-      </Route> */}
+      </Route>
 
       {/* Indice de rutas privadas para un reclutador */}
       {/* <Route element={<PrivateRoute roles={ROLE.RECRUITER} />}>

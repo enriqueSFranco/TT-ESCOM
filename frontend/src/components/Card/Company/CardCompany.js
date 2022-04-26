@@ -18,6 +18,7 @@ const CardNormal = ({ name, logo, banner, mision, vision, title }) => {
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
+        disableEnforceFocus
       >
         <div className={`container ${styles.grid}`}>
           <img src={banner} alt={name} />

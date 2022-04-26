@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useContext, useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSticky } from "hooks/useSticky";
 import { getJob } from "services/jobs/index";
+import { applyJob } from "services/students/index";
 import { numberFormat } from "utils/numberFormat";
+import AuthContext from "context/AuthContext";
 import Chip from "@mui/material/Chip";
 import Skeleton from "../../Skeleton/Skeleton";
 import { MdBusinessCenter } from "react-icons/md"
@@ -15,6 +17,8 @@ const JobCardDetails = () => {
   let elementRef = useRef(null);
   let isSticky = useSticky(100, elementRef);
   let { t200_id_vacant } = useParams();
+  let navigate = useNavigate();
+  const {token} = useContext(AuthContext);
   const [job, setJob] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -28,8 +32,17 @@ const JobCardDetails = () => {
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   }, [t200_id_vacant]);
+
+  // useEffect(() => {
+  //   applyJob()
+  //     .then(response => {
+
+  //     })
+  // }, []);
   
   if (!job) return null;
+
+  console.log(token)
 
   return (
     <>
@@ -75,10 +88,19 @@ const JobCardDetails = () => {
                 </p>
               </div>
               <div className={styles.flex}>
-                <button type="submit" className={styles.btnApplyEmployment}>
-                  <IoIcon.IoIosRocket />
-                  Aplicar
-                </button>
+                {
+                  token !== null ? (
+                    <button onClick={() => console.log("ya puedes aplicar")} className={styles.btnApplyEmployment}>
+                    <IoIcon.IoIosRocket />
+                    Aplicar
+                  </button>
+                  ) : (
+                  <button onClick={() => navigate("/alumno")} className={styles.btnApplyEmployment}>
+                    <IoIcon.IoIosRocket />
+                    Aplicar
+                  </button>
+                  )
+                }
               </div>
             </div>
           </header>

@@ -9,7 +9,6 @@ import { getStudent } from "services/students";
 const DropMenuStudent = ({student}) => {
   const { logout } = useContext(AuthContext);
   const [user, setUser] = useState([]);
-  console.log(student?.user_id)
 
   useEffect(() => {
     getStudent(student?.user_id)
@@ -38,7 +37,7 @@ const DropMenuStudent = ({student}) => {
         </Link>
       </li>
       <li className={styles.menuItemStudent}>
-        <Link className={styles.menuLinkStudent} to="/">
+        <Link className={styles.menuLinkStudent} to="/configuracion">
           <IoMdSettings />
           Configuracion
         </Link>

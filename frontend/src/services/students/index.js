@@ -97,11 +97,6 @@ export const createAccountStudent = async (payload) => {
   }
 };
 
-/**
- * @param {Object} payload
- * @return {Promise}
- **/
-export const loginStudent = async (payload) => {};
 
 export const uploadPhotoStudent = (id, img) => {
   const formData = new FormData();
@@ -115,4 +110,24 @@ export const uploadPhotoStudent = (id, img) => {
       return data;
     })
     .catch((error) => error);
+};
+
+/**
+ * @param {Object} payload
+ * @return {Promise}
+ **/
+export const applyJob = (payload) => {
+  return axios.post(`/api/Applications/`, payload, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+  })
+    .then(response => {
+      console.log(response);
+      return response;
+    })
+    .catch(error => {
+      if (error.response) return error.response;
+    })
 };

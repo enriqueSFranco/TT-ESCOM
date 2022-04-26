@@ -51,9 +51,12 @@ const validateForm = (form) => {
 };
 
 const FormCompany = () => {
-  const { form, errors, handleChange, handleValidate, handleSubmitCompany } =
-    useForm(companyInitialForm, validateForm);
-
+  const { 
+    form, 
+    errors, 
+    handleChange, 
+    handleValidate, 
+    handleSubmitCompany } = useForm(companyInitialForm, validateForm);
   const [step, setStep] = useState(1);
 
   const nextStep = () => setStep(step + 1);

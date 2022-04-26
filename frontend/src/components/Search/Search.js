@@ -45,6 +45,7 @@ const Search = ({ handleSearch, data }) => {
 
   return (
     <div className={`${styles.searchContainer}`}>
+      <div className={styles.searchBackdrop}></div>
       <h1 className={styles.title}>
         Ayudandote a conseguir un <span>trabajo</span>
         <br />

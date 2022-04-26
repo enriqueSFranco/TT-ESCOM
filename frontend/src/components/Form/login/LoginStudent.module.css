@@ -1,0 +1,129 @@
+.bg {
+  position: relative;
+  background-image: url(../../../images/loginStudent.jpeg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  backdrop-filter: calc(10px);
+}
+
+.bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.534);
+}
+
+.bg blockquote {
+  width: 350px;
+  backdrop-filter: blur(10px);
+  font-weight: bold;
+  color: #fff;
+  padding: 1rem;
+  position: relative;
+  font-size: 2.5rem;
+}
+
+.bg blockquote em { color: #04c8eb; }
+
+.btLogin { 
+  width: 490px; 
+  position: relative;
+  left: 0;
+  bottom: 3rem;
+}
+
+.formLogin {
+}
+
+.form {
+  width: auto;
+  height: calc(100vh - 30rem);
+  /* padding: 1rem; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* outline: 2px solid red; */
+}
+
+.inputGroup {
+  /* outline: 2px solid red; */
+  position: relative;
+  bottom: 5rem;
+  width: 490px;
+  height: 85px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.linkToLogin {
+  color: #04c8eb;
+  position: relative;
+  left: 0;
+}
+
+.login {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login span, a {
+  color: #fff;
+  font-size: 1rem;
+}
+
+.login a {
+  position: relative;
+  right: 1.9rem;
+}
+
+.login a:hover { color: #fff; }
+
+.welcome { margin-bottom: 1rem; }
+
+.welcome h2, .personalContact h2 {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #222;
+  letter-spacing: 2px;
+  padding: 0;
+  position: relative;
+}
+
+.welcome svg {
+  font-size: .8rem;
+  position: absolute;
+  top: 0;
+  margin-left: .2rem;
+  font-weight: bold;
+  color: #90314b;
+}
+
+.welcome span {
+  color: #b9b9b9;
+  font-size: .9rem;
+  text-align: center;
+}
+
+.welcome a { color: #000; transition: color .3s ease-in; }
+.welcome a:hover { color: #90314b; }
+
+
+.wrapper {
+  position: relative;
+  top: 5rem;
+}

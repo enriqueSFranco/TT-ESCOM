@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import { toast } from "react-hot-toast"
 import { loginService } from "services/auth/index";
 
 const AuthContext = createContext(); // creamos el contexto
@@ -18,6 +19,7 @@ const AuthProvider = ({ children }) => {
       : null
   );
   const [loading, setLoading] = useState(true);
+  const [errors, setErrors] = useState(null);
   let navigate = useNavigate();
 
   const login = async (e) => {
@@ -27,19 +29,19 @@ const AuthProvider = ({ children }) => {
       "password": e.target.password.value.trim(),
     })
       .then((response) => {
-        // console.log(response)
         if (response.status === 200 || response.status === 201) {
           setUser(jwt_decode(response?.data?.access));
           setToken(response?.data);
           window.sessionStorage.setItem("token", JSON.stringify(response?.data));
           navigate("/");
         } else {
-          console.log(`error: ${response.error}`);
+          setErrors(response)
+          toast.error("correo o password incorrectos.");
           window.sessionStorage.removeItem('token', JSON.stringify(response?.data))
         }
       })
       .catch((error) => {
-        if (error.response) console.log(error.response.data);
+        return error;
       });
   };
 
@@ -53,6 +55,7 @@ const AuthProvider = ({ children }) => {
   const data = {
     user,
     token,
+    errors,
     login,
     logout,
   };

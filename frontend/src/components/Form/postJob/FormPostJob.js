@@ -31,7 +31,6 @@ const validateForm = (form) => {
 };
 
 const flex = {
-  // width: "400px",
   display: "flex",
   flexDirection: "column",
 };
@@ -87,8 +86,8 @@ const FormPostJob = () => {
 
   return (
     <div className={styles.wrapper}>
-      <h1 className={styles.title}>Publicar vacante</h1>
       <form onSubmit={handlePostJob} className={styles.form}>
+        <div className={styles.boxForm}>
         <h3>Titulo de la vacante y Ubicacion</h3>
         <div className={styles.inputGroup}>
           <div style={flex}>
@@ -240,6 +239,7 @@ const FormPostJob = () => {
           <button type="submit" className={`${styles.btn} btn btn-primary`}>
             Publicar Vacante
           </button>
+        </div>
         </div>
       </form>
     </div>

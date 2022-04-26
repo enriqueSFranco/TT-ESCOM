@@ -10,7 +10,6 @@ import Footer from "components/Footer/Footer";
 import homeStyles from "./PageHome.module.css";
 
 const Home = () => {
-  // const {loading, jobs} = useJobs();
   const [jobs, setJobs] = useState([]);
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]); // lista de vacantes filtrada
