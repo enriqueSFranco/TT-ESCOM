@@ -1,9 +1,12 @@
 import axios from "axios";
-import { 
+import {   
   API_CATALOGUE_CANDIDATE_PROFILE, 
   API_CATALOGUE_EXPERIENCE,
   API_CATALOGUE_STATES,
-  API_SKILLS
+  API_ACADEMIC_UNITS,
+  API_INTEREST_JOBS,
+  API_SKILLS,
+  API_CP
 } from "services/settings";
 
 export const getSkill = async (id) => {
@@ -49,4 +52,37 @@ export const getAllStates = async () => {
     if (error.response)
       return error.response.message;
   }
-};
+}
+
+export const getLocality = cp => {
+  return axios.get(`${API_CP}${cp}/`)
+    .then(response => {
+      const { data } = response;
+      return data;
+    })
+    .catch(error => {
+      if (error.response) {
+        return error.response.data;
+      }
+    })
+}
+
+export const getAllAcademicUnits = async () => {
+  try {
+    const { data } = await axios.get(API_ACADEMIC_UNITS);
+    return data;
+  } catch (error) {
+    if (error.response)
+      return error.response.message;
+  }
+}
+
+export const getAllJobs = async () => {
+  try {
+    const { data } = await axios.get(API_INTEREST_JOBS);
+    return data;
+  } catch (error) {
+    if (error.response)
+      return error.response.message;
+  }
+}

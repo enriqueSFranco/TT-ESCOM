@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect, useRef } from "react";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
@@ -11,6 +12,12 @@ import styles from "./StylesStepper.module.css";
 import { useForm } from "../../../hooks/useForm";
 import { useFetch } from "../../../hooks/useFetch";
 import { helpHttp } from "../../../utils/helpHttp";
+import {
+  getAllAcademicUnits,
+  getAllJobs
+} from "services/catalogs/index";
+
+let id_student = 1;
 
 let initialForm = {
   t100_boleta: "",
@@ -18,7 +25,6 @@ let initialForm = {
   t100_password: "",
   t100_last_name: "",
   t100_username: "",
-  t100_cv: null,
   t100_email: "",
   t100_gender: null,
   t100_date_of_birth: null,
@@ -26,35 +32,74 @@ let initialForm = {
   t100_speciality: "",
   t100_target_salary: "",
   t100_travel: false,
-  t100_profile_picture: null,
   is_active: false,
   t100_phonenumber: "",
   t100_residence: "",
   t100_modalities: "",
+  t100_interest_job: ""
 };
+
+let AcademicFormat = {
+    t104_academic_unit: "",
+    t104_carreer: "",
+    t104_start_date: "",
+    t104_end_date: "",
+    t100_id_student: id_student,
+    c107_id_academic_level: null,
+    c109_id_academic_state: null
+}
 
 const StepComponent = () => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [hardSkills, setHardSkills] = React.useState([]);
   const [softSkills, setSoftSkills] = React.useState([]);
+  const [academicUnit,setAcademicUnits] = React.useState([]);
+  const [interestJobs,setInterestJobs] = React.useState([]); 
   const { form, handleChange } = useForm(initialForm);
-  const { data } = useFetch("/api/catalogues/CatalogueSkills/");
+  const [academicHistorial, setAcademicHistorial] = React.useState(AcademicFormat); 
+  const { data } = useFetch("/api/catalogues/CatalogueSkills/");  
   
-  if (!data && !form) {
-    return;
-  }
+  useEffect(() => {
+    getAllAcademicUnits()
+      .then((response) => {
+        setAcademicUnits(response);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  useEffect(() => {
+    getAllJobs()
+      .then((response) => {
+        setInterestJobs(response);
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   let AllResults = data;
+
+  if (!data && !form) {
+    return;
+  }  
 
   const PageDisplay = () => {
     if (activeStep === 0) {
       return <DatesPersonal form={form} handleChange={handleChange} />;
     }
-    if (activeStep === 1) {
-      return <DatesSchool form={form} handleChange={handleChange} />;
+    if (activeStep === 1) {    
+      return (          
+        <DatesSchool 
+          academicHistorial={academicHistorial} 
+          setAcademicHistorial={setAcademicHistorial} 
+          academicUnit={academicUnit}
+          setAcademicUnits={setAcademicUnits}/>);
     }
     if (activeStep === 2) {
-      return <DatesJob form={form} handleChange={handleChange} />;
+      return (
+        <DatesJob 
+          form={form} 
+          handleChange={handleChange}
+          interestJobs = {interestJobs}
+          setInterestJobs = {setInterestJobs} />);
     }
     if (activeStep === 3) {
       return (
@@ -97,7 +142,7 @@ const StepComponent = () => {
 
   const updateData = () => {
     console.log(form);
-    const endpoint = "/api/Students/2015090419/";
+    const endpoint = "/api/Students/"+id_student+"/";
 
     let options = {
       headers: {
@@ -127,7 +172,7 @@ const StepComponent = () => {
                 Accept: "application/json",
               },
               body: {
-                t100_boleta: "2015090419",
+                t100_id_student: id_student,
                 c116_id_skill: dato["c116_id_skill"],
               },
             };
