@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { getAllJobs } from "services/jobs/index";
+import { useState } from "react";
+import { useJobs } from "hooks/useJobs";
 import Search from "components/Search/Search";
 import FilterProfile from "components/Filter/FilterProfile";
 import FilterCompany from "components/Filter/FilterCompany";
@@ -10,121 +10,121 @@ import Footer from "components/Footer/Footer";
 import homeStyles from "./PageHome.module.css";
 
 const Home = () => {
-  // const [_, setSearch] = useState(""); // estado de la busqueda
-  const [dataList, setDataList] = useState([]); // lista de vacantes
-  const [isFiltered, setIsFiltered] = useState(false); // boolean para saber si la informacion se tiene que filtrar
-  const [data, setData] = useState(null); // lista filtrada
-  const [loading, setLoading] = useState(true);
+  const {loading, jobs} = useJobs();
+  const [data, setData] = useState([]); // lista de vacantes filtrada
+  const [isFiltered, setIsFiltered] = useState(false); // bandera para saber si la informacion se tiene que filtrar
 
-  const [isFilteredBusiness, setIsFilteredBusiness] = useState(false);
   const [isChecked, setIsChecked] = useState(false); // informacion filtrada
   const [totalJobs, setTotalJobs] = useState(0); // estado para el total de vacantes
 
   const filteredData = (value) => {
-    // setSearch(value);
-    if (value === "") {
-      setData(dataList);
-    } else {
-      const filteredData = dataList.filter((el) => {
+    if (value !== "") {
+      const filteredData = jobs.filter((el) => {
         let regex = new RegExp(`${value}`, "gi");
         return el?.t200_job.match(regex);
       });
-      setTotalJobs(filteredData.length);
+      console.log(filteredData)
       setData(filteredData);
+      setTotalJobs(filteredData.length);
     }
   };
 
-  useEffect(() => {
-    getAllJobs()
-      .then((response) => {
-        setDataList(response.data);
-        setTotalJobs(response.data.length);
-        setLoading(false); // desactivamos el modo "cargando"
-      })
-      .catch((error) => console.error(error));
-
-      return () => null;
-  }, []);
-
   const handleSearch = (value) => {
-    // setSearch(value);
     filteredData(value);
-    setIsFiltered(value !== "");
+    setIsFiltered(value !== "" ? true : false);
+  };
+
+  const handleFilterHomeOffice = e => {
+    const { checked } = e.target;
+    setIsChecked(checked);
+    if (!isChecked) {
+      // checkbox activado
+      setIsFiltered(true);
+      const newData = filterForHomeOffice(jobs);
+      setData(newData);
+      setTotalJobs(newData.length);
+    } else if (isChecked) {
+      // checkbox desactivado
+      setIsFiltered(false);
+      setData(jobs);
+      setTotalJobs(jobs.length);
+    }
   };
 
   /**
-   * Filtra los empleos que tengan la etiqueta t200_home_office === true
-   * @return devuelve los empleos que sean con modalidada home office
+   * @param {Array} set conjunto de datos para filtrar por nombre de una empresa
+   * @param {String} name nombre de la empresa
+   * @return {Array} retorna el conjunto filtrado
    **/
-  const handleChecked = () => {
-    console.log(isChecked)
-    setIsChecked(!isChecked);
-    if (!isChecked) {
-      // mostramos las vacantes que son home office
-      let newData = dataList.filter((data) => {
-        return data?.t200_home_ofice;
-      });
-      setData(newData);
-      setTotalJobs(newData.length);
-    } else {
-      // mostramos todas las vacantes
-      setDataList(dataList);
-      setTotalJobs(dataList.length);
-    }
-  };
+  const filterForBusiness = (set, name) => set.filter(item => item?.t300_id_company?.t300_name === name)
+
+  /**
+   * @param {Array} set conjunto de datos para filtrar por modalidad de empleo
+   * @return {Array} retorna el conjunto filtrado
+   **/
+  const filterForHomeOffice = set => set.filter(item => item?.t200_home_ofice === true)
 
   /**
    * Filtra los empleos por empresa
    * @return devuleve los empleos publicados por una empresa seleccionada
    **/
-  const filterBusiness = (e) => {
-    let input = e.target.value;
-    if (input === "") {
-      setData(dataList);
-      setTotalJobs(dataList.length);
-    } else {
-      setIsFilteredBusiness(true);
-      let newData = dataList.filter((data) => {
-        return data?.t300_id_company.t300_name === input;
-      });
+  const handleFilterBusiness = e => {
+    const { value } = e.target;
+
+    if (value === "allBusiness") {
+      setIsFiltered(false);
+      setData(jobs);
+      setTotalJobs(jobs.length);
+    } else if (value !== "") {
+      setIsFiltered(true);
+      const newData = filterForBusiness(jobs, value);
       setData(newData);
       setTotalJobs(newData.length);
     }
   };
 
-  if (!dataList && !data) return null;
+  const filterForProfile = (set, value) => set.filter(item => item?.c206_id_profile?.c206_description === value);
+
+  const handleFilterProfile = e => {
+    const { value } = e.target;
+
+    if (value === "allProfile") {
+      setIsFiltered(false);
+      setData(jobs);
+      setTotalJobs(jobs.length);
+    }else if (value !== "") {
+      setIsFiltered(true);
+      const newData = filterForProfile(jobs, value);
+      setData(newData);
+      setTotalJobs(newData.length);
+    }
+  };
+
+  if (data.length < 0 || jobs.length < 0) return null;
+  console.log(data)
 
   return (
     <main className={homeStyles.home}>
-      {/* barra de busqueda  */}
-      <Search handleSearch={handleSearch} data={dataList} />
+      <Search handleSearch={handleSearch} data={jobs} />
 
-      {/* control de filtros */}
       <div className={homeStyles.filteredControls}>
         <span className={homeStyles.textFilter}>Filtros</span>
-        <FilterProfile />
-        <FilterCompany onChange={filterBusiness} />
-        <FilterHomeOffice value={isChecked} onChange={handleChecked} />
+        <FilterProfile onChange={handleFilterProfile} />
+        <FilterCompany onChange={handleFilterBusiness} />
+        <FilterHomeOffice value={isChecked} handleChecked={handleFilterHomeOffice} />
       </div>
 
-      {/* renderizado de los empleos */}
-      <article className={homeStyles.wrapperJobList}>
+      <section className={homeStyles.wrapperJobList}>
         <p className={homeStyles.totalJobs}>
           Total de vacantes: <em>{totalJobs}</em>
         </p>
-        <JobList
-          jobs={
-            !isFiltered && !isChecked && !isFilteredBusiness ? dataList : data
-          }
-          loading={loading}
-        />
-      </article>
+        <JobList jobs={isFiltered ? data : jobs} loading={loading} />
+      </section>
 
-      {/* comunicados */}
-      <article className={`${homeStyles.wrapperDeck}`}>
+      <section className={`${homeStyles.wrapperDeck}`}>
         <h2>Comunicados Recientes</h2>
         <Deck />
-      </article>
+      </section>
 
       {/* pie de pagina */}
       <Footer />

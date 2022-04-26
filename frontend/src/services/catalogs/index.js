@@ -9,7 +9,7 @@ import {
   API_CP
 } from "services/settings";
 
-export const getSkill = id => {
+export const getSkill = async (id) => {
   return axios.get(`${API_SKILLS}${id}/`)
     .then(response => {
       const { data } = response;
@@ -38,7 +38,11 @@ export const getAllCandidateProfile = () => {
       return data;
     })
     .catch(error => error);
-}
+};
+
+export const getAllMunicipality = () => {
+  
+};
 
 export const getAllStates = async () => {
   try {
@@ -61,7 +65,7 @@ export const getLocality = cp => {
         return error.response.data;
       }
     })
-};
+}
 
 export const getAllAcademicUnits = async () => {
   try {

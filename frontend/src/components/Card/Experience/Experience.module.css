@@ -1,10 +1,13 @@
 .actions {
   color: #000;
-  width: 100px;
+  width: 60px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  /* outline: 1px solid red; */
+  position: absolute;
+  top: 1rem;
+  right: .5rem;
 }
 
 .editAction, .deleteAction { color: #363636;  transition: color .5s ease;}
@@ -31,19 +34,28 @@
 
 .detailsProject {
   /* background-color: red; */
+  position: relative;
+  left: 0;
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  /* align-items: center; */
+  /* justify-content: space-around; */
   border-bottom: 2px solid #eee;
 }
 
 .descriptionProject {
-  width: 400px;
-  height: 70px;
+  width: 450px;
+  height: auto;
   overflow: hidden;
-  margin: 0 1rem;
   /* outline: 1px solid red; */
+}
+
+.detailsProject a {
+  transition: color .3s ease-in-out;
+}
+
+.descriptionProject a:hover {
+  color: #0000ff;
 }
 
 .logoProject {

@@ -17,20 +17,15 @@ export const updateStudentInitialForm = {
 };
 
 export const companyInitialForm = {
-  t300_name: "",
-  t300_rfc: "",
-  t300_nss: 0,
-  t300_email: "company@company.mx",
-  t300_bussiness_name: "",
-  t300_web_page: "https://www.company.com.mx/",
-  t300_mision: "",
-  t300_vision: "",
-  t300_objective: "",
-  t300_logo: null,
-  t300_banner: null,
-  t400_id_admin: "",
-  t300_create_date: "2022-03-24",
-};
+  t300_name:"",
+  t300_rfc:"",
+  t300_bussiness_name:"",
+  t300_create_date:"2022-04-15",
+  t301_name:"",
+  t301_last_name:"",
+  t301_email:"",    
+  t301_phonenumber:""
+}
 
 export const postJobInitialForm = {
   t200_job: "",

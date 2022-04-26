@@ -8,22 +8,31 @@ import {
   API_PHOTO_STUDENT,
 } from "../settings";
 
-export const getStudent = (token) => {
+export const getStudent = async (id) => {
+
   const config = {
     headers: {
-      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+      // 'Authorization': `Bearer ${token?.access}`,
+      'Accept': 'application/json',
     },
   };
   return axios
-    .get(`${API_STUDENT}/${token}`, config)
+    .get(`${API_STUDENT}/${id}`, config)
     .then((response) => {
       const { data } = response;
       return data;
     })
-    .catch((error) => error);
+    .catch((error) => {
+      if (error.response) {
+        return error.response.data.errors;
+      }
+    }
+    );
 };
 
-export const getSocialNetwork = (id) => {
+
+export const getSocialNetwork = async (id) => {
   return axios
     .get(`${API_SOCIAL_NETWORK}/${id}/`)
     .then((response) => {

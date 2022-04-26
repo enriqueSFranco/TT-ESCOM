@@ -55,7 +55,6 @@ export default function LazyDeck() {
   const onChange = (entries, observer) => {
     const element = entries[0];
     if (element.isIntersecting) {
-      console.log(element.isIntersecting)
       setShow(true);
       observer.disconnect();
     }

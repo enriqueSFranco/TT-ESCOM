@@ -3,7 +3,6 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { createBusiness } from "services/businnes/index";
 import { createAccountStudent } from "services/students/index";
-import { postRecruiter } from "services/recruiter/index"
 import { postJob } from "services/jobs/index";
 
 export const useForm = (initialForm, validateForm) => {
@@ -63,10 +62,9 @@ export const useForm = (initialForm, validateForm) => {
         .then(response => {
           console.log(response);
         })
-      
-      postRecruiter(form)
-        .then(reponse => {
-          console.log(response)
+        .catch(error => {
+          if (error.response)
+            console.log(error.response.data.message);
         })
     }
   };

@@ -1,7 +1,7 @@
 export const API_RECRUITER = "/api/Recruiters/";
 export const API_COMPANY = "/api/Companies/";
 export const API_PHOTO_COMPANY = "/images/CompanyLogo/";
-export const API_JOBS = "/api/Vacants/";
+export let API_JOBS = `/api/Vacants/`;
 
 export const API_CATALOGUE_EXPERIENCE = "/api/catalogues/CatalogueExperience/";
 export const API_CATALOGUE_STATES = "/api/catalogues/States/";
@@ -17,3 +17,4 @@ export const API_PHOTO_STUDENT = "/images/StudentPic/";
 export const API_CP = "/api/catalogues/Localities/"
 export const API_ACADEMIC_UNITS = "/api/catalogues/AcademicUnits/"
 export const API_INTEREST_JOBS = "/api/catalogues/CatalogueJobs/"
+export const API_LOGIN = "/api/token/";

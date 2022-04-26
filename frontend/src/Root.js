@@ -38,7 +38,9 @@ const Root = () => {
       <Route path="/reclutador" element={<PageLoginCompany />} />
       <Route path="/registro-reclutador" element={<PageRegisterCompany />} />
       {/* <Route path="/actualiza-alumno" element={<PageLoginStudentUpdate />}/> */}
-      <Route path="/empresas" element={<PageCompany />} />
+      <Route path="empresas" element={<PageCompany />}>
+        <Route path=":t301_id_company" element={<ModalRelease />} />
+      </Route>
       <Route path="comunicados" element={<PageReleases />}>
         <Route path=":t202_id_announcement" element={<ModalRelease />} />
       </Route>
@@ -57,12 +59,17 @@ const Root = () => {
 
       {/* Indice de rutas privadas para un alumno si funciona */}
       {/* <Route element={<PrivateRoute roles={ROLE.STUDENT} />}>
+        <Route path="/perfil" element={<PageProfileStudent />}>
+          <Route path="historial-academico" element={<AcademicRecord />} />
+          <Route path="experiencia" element={<Experience />} />
+          <Route path="certificaciones" element={<Certifications />} />
+        </Route>
       </Route> */}
 
       {/* Indice de rutas privadas para un reclutador */}
-      <Route element={<PrivateRoute roles={ROLE.RECRUITER} />}>
-
-      </Route>
+      {/* <Route element={<PrivateRoute roles={ROLE.RECRUITER} />}>
+        
+      </Route> */}
 
     </Routes>
   );

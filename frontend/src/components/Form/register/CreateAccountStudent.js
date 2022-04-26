@@ -3,7 +3,10 @@ import { Toaster } from "react-hot-toast";
 import { useForm } from "hooks/useForm";
 import { studentInitialForm } from "../schemes";
 import TextField from "@mui/material/TextField";
-import * as MdIcon from "react-icons/md";
+import { InputAdornment } from "@mui/material";
+import { BiUser } from "react-icons/bi";
+import { RiLockPasswordLine } from "react-icons/ri";
+import { MdOutlineMail, MdOutlineErrorOutline } from "react-icons/md";
 import styles from "../Styles.module.css";
 
 const validateForm = (form) => {
@@ -33,6 +36,7 @@ const validateForm = (form) => {
 
   return errors;
 };
+
 
 const CreateAccount = () => {
   const { form, errors, handleChange, handleValidate, handleSubmitStudent } =
@@ -72,13 +76,20 @@ const CreateAccount = () => {
                     id="t100_name"
                     name="t100_name"
                     sx={{ width: 500, maxWidth: "100%" }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <BiUser />
+                        </InputAdornment>
+                      )
+                    }}
                     value={form.t100_name}
                     onBlur={handleValidate}
                     onKeyUp={handleValidate}
                     onChange={handleChange}
                   />
                   {errors.t100_name && (
-                    <span className={styles.error}><MdIcon.MdOutlineErrorOutline />{errors.t100_name}</span>
+                    <span className={styles.error}><MdOutlineErrorOutline />{errors.t100_name}</span>
                   )}
                 </div>
                 <div className={styles.inputGroupCreatAccountStudent}>
@@ -87,13 +98,20 @@ const CreateAccount = () => {
                     id="t100_email"
                     name="t100_email"
                     sx={{ width: 500, maxWidth: "100%" }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <MdOutlineMail />
+                        </InputAdornment>
+                      )
+                    }}
                     value={form.t100_email}
                     onBlur={handleValidate}
                     onKeyUp={handleValidate}
                     onChange={handleChange}
                   />
                   {errors.t100_email && (
-                    <span className={styles.error}><MdIcon.MdOutlineErrorOutline />{errors.t100_email}</span>
+                    <span className={styles.error}><MdOutlineErrorOutline />{errors.t100_email}</span>
                   )}
                 </div>
                 <div className={styles.inputGroupCreatAccountStudent}>
@@ -103,13 +121,20 @@ const CreateAccount = () => {
                     name="password"
                     type="password"
                     sx={{ width: 500, maxWidth: "100%" }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <RiLockPasswordLine />
+                        </InputAdornment>
+                      )
+                    }}
                     value={form.password}
                     onBlur={handleValidate}
                     onKeyUp={handleValidate}
                     onChange={handleChange}
                   />
                   {errors.password && (
-                    <span className={styles.error}><MdIcon.MdOutlineErrorOutline />{errors.password}</span>
+                    <span className={styles.error}><MdOutlineErrorOutline />{errors.password}</span>
                   )}
                 </div>
                 <div className={styles.inputGroupCreatAccountStudent}>

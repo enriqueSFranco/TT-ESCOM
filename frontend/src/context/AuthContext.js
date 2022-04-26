@@ -1,65 +1,54 @@
-import { createContext, useCallback, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode";
+import { loginService } from "services/auth/index";
 
-const AuthContext = createContext(); // creamos el contecto
+const AuthContext = createContext(); // creamos el contexto
 
 // Provider
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(() => window.sessionStorage.getItem('token')) ;
-  const [token, setToken] = useState(() => window.sessionStorage.getItem('token'));
+  const [user, setUser] = useState(() =>
+    window.sessionStorage.getItem("token")
+      ? jwt_decode(window.sessionStorage.getItem("token"))
+      : null
+  );
+  const [token, setToken] = useState(() =>
+    window.sessionStorage.getItem("token")
+      ? JSON.parse(window.sessionStorage.getItem("token"))
+      : null
+  );
+  const [loading, setLoading] = useState(true);
   let navigate = useNavigate();
 
-  const login = useCallback(async (e) => {
+  const login = async (e) => {
     e.preventDefault();
-
-    try {      
-      const response = await fetch('/token/student/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          accept: 'application/json',
-        },
-        body: JSON.stringify({
-          "username": (e.target.t100_email.value).trim(),
-          "password": (e.target.password.value).trim()
-        })
+    loginService({
+      "username": e.target.t100_email.value.trim(),
+      "password": e.target.password.value.trim(),
+    })
+      .then((response) => {
+        // console.log(response)
+        if (response.status === 200 || response.status === 201) {
+          setUser(jwt_decode(response?.data?.access));
+          setToken(response?.data);
+          window.sessionStorage.setItem("token", JSON.stringify(response?.data));
+          navigate("/");
+        } else {
+          console.log(`error: ${response.error}`);
+          window.sessionStorage.removeItem('token', JSON.stringify(response?.data))
+        }
+      })
+      .catch((error) => {
+        if (error.response) console.log(error.response.data);
       });
-      if (!response.ok) {
-        let error = {
-          err: true,
-          status: response.status || "00",
-          statusText: response.statusText || "opps, ha ocurrido un error"
-        };
-        throw error;
-      }
-      const json = await response.json();
-      console.log(json)
+  };
 
-      const { token, user } = json;
-      console.log(user);
-      let objUser = {username: user?.username, type: user?.user_type};
-      console.log(objUser);
-
-      if (response.status === 200 || response.status === 201) {
-        setUser(objUser);
-        setToken(token);
-        window.sessionStorage.setItem('token', JSON.stringify(json))
-        navigate('/');
-      } else {
-        console.log(`error: ${response.error}`);
-        window.sessionStorage.removeItem('token', JSON.stringify(json))
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }, [setToken]);
-
-  const logout = useCallback(() => {
+  const logout = () => {
     setUser(null);
     setToken(null);
-    window.sessionStorage.removeItem('token');
-    navigate('/');
-  }, [setToken]);
+    window.sessionStorage.removeItem("token");
+    navigate("/");
+  };
 
   const data = {
     user,
@@ -68,11 +57,16 @@ const AuthProvider = ({ children }) => {
     logout,
   };
 
+  useEffect(() => {
+    if (token) setUser(jwt_decode(token?.access));
+    setLoading(false);
+  }, [token, loading]);
+
   return (
     <AuthContext.Provider value={data}>
-      { children }
+      {loading ? null : children}
     </AuthContext.Provider>
-  )
+  );
 };
 
 export { AuthProvider };

@@ -2,7 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSticky } from "hooks/useSticky";
 import { getJob } from "services/jobs/index";
+import { numberFormat } from "utils/numberFormat";
+import Chip from "@mui/material/Chip";
 import Skeleton from "../../Skeleton/Skeleton";
+import { MdBusinessCenter } from "react-icons/md"
 import * as FaIcon from "react-icons/fa";
 import * as MdIcon from "react-icons/md";
 import * as IoIcon from "react-icons/io";
@@ -35,34 +38,36 @@ const JobCardDetails = () => {
       ) : (
         <div
           ref={elementRef}
-          className={`container ${styles.wrapper} ${styles.positionSticky}`}
+          className={`${styles.wrapper} ${styles.positionSticky}`}
         >
-          <header className="container">
+          <header className={`${styles.header} container`}>
             <div className={`${styles.flex}`}>
               <h1 className={styles.title}>
                 {job[0]?.t200_job ?? "Sin nombre de vacante"}
               </h1>
             </div>
             <div className={`${styles.flex}`}>
-              <div>
-                <ul className={`${styles.flex}`}>
+              <div style={{width: "500px"}}>
+                <ul className={`${styles.flex} ${styles.tagsBody}`}>
                   <li className={styles.flex}>
-                    <FaIcon.FaBuilding />
-                    <span>
-                      {job[0]?.t300_id_company?.t300_name ?? "Anonima"}
-                    </span>
+                    <Chip 
+                      label={job[0]?.t300_id_company?.t300_name ?? "Anonima"}
+                      icon={<FaIcon.FaBuilding />}
+                    />
                   </li>
                   <li className={styles.flex}>
-                    <MdIcon.MdOutlineAttachMoney />
-                    <span>{job[0]?.t200_max_salary ?? "No especificado"}</span>
+                    <Chip 
+                      label={`${numberFormat(job[0]?.t200_max_salary).slice(3)} MXM` ?? "No especificado"}
+                      icon={<MdIcon.MdOutlineAttachMoney style={{fontSize: "1rem"}} />}
+                    />
                   </li>
                   <li className={styles.flex}>
-                    <FaIcon.FaLocationArrow />
-                    <span>
-                      {job[0]?.t200_home_ofice
-                        ? "Remoto"
+                    <Chip 
+                      label={job[0]?.t200_home_ofice
+                        ? `Remoto`
                         : "Presencial" ?? "No especificado"}
-                    </span>
+                      icon={job[0]?.t200_home_ofice ? <IoIcon.IoMdHome style={{fontSize: "1rem"}} /> : <MdBusinessCenter style={{fontSize: "1rem"}} />}
+                    />
                   </li>
                 </ul>
                 <p>
