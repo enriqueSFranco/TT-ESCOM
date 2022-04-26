@@ -14,35 +14,43 @@ import Checkbox from "@mui/material/Checkbox";
 
 
 function DatesSchool({ academicHistorial, setAcademicHistorial,academicUnit,setAcademicUnits}) {
-  const [mes, setMes] = React.useState('');
-  const [year, setYear] = React.useState('');
-  let inicio =""
+  const [startMonth, setStartMonth] = React.useState('');
+  const [startYear, setStartYear] = React.useState('');
+  const [endMonth, setEndMonth] = React.useState('');
+  const [endYear, setEndYear] = React.useState('');
+  let inicio ="";
+  let fin="";
   const { form, handleChange } = useForm(academicHistorial);
 
-  console.log(form);
-  console.log(academicHistorial);
-
-  const handleChangeA = (event) =>{  
-    handleChange(form);
-    setAcademicHistorial(form);
-  }
-
   const handleChangek = (event) => {
-    setMes(event.target.value);
+    setStartMonth(event.target.value);
+    inicio =startYear+"-"+startMonth+"-01";
+    academicHistorial.t104_start_date =inicio;
   };  
 
   const handleChangey = (event) => {
-    setYear(event.target.value);
+    setStartYear(event.target.value);
+    inicio =startYear+"-"+startMonth+"-01";
+    academicHistorial.t104_start_date =inicio;
   };
 
 
   const handleChangeq = (event) => {
-    setMes(event.target.value);
+    setEndMonth(event.target.value);
+    fin =endYear+"-"+endMonth+"-01";
+    academicHistorial.t104_end_date =fin;
   };
 
   const handleChangex = (event) => {
-    setYear(event.target.value);
+    setEndYear(event.target.value);
+    fin =endYear+"-"+endMonth+"-01";
+    academicHistorial.t104_end_date =fin;
   };
+
+  console.log(form);
+  console.log(academicHistorial);
+  
+  setAcademicHistorial(form);
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -129,7 +137,7 @@ const MenuPropsM = {
               name="t104_carreer"
               id="t104_carreer"
               value={form.t104_carreer}
-              onChange={handleChangeA}
+              onChange={handleChange}
               sx={{ width: 500, maxWidth: "100%" , marginRight:15}}
               
             />
@@ -148,94 +156,86 @@ const MenuPropsM = {
                 options={academicUnit.map((option) => option.c108_academic_unit)}
                 renderInput={(params) => <TextField {...params} label="Unidad Ácademica" />}
               />
-
-            {/*<TextField
-              label="Carrera"
-              /*name=""
-              id=""
-              value={}
-              onChange={}
-              sx={{ width: 500, maxWidth: "100%" , marginRight:15}}
-              
-            />*/}
         </div>
 
         <div className={styles.inputGroupP1}>
         
           <div className={styles.Col4}> 
-          <div className={styles.texto}>Fecha en que iniciaste</div>
+            <div className={styles.texto}>Fecha en que iniciaste</div>
             <FormControl > 
-            <InputLabel id="mes-inicio-1">Mes</InputLabel>
-            <Select
-              labelId="mes-inicio-1"
-              id="mes-inicio-1"
-              value={mes}
-              label="Año"
-              onChange={handleChangek}
-              sx={{ width: 150, marginRight:1}}
-              MenuProps={MenuPropsM}
-            >
-              {meses.map((mes) => (
-                <MenuItem key={mes["id"]} value={mes["id"]}>{mes["name"]}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+              <InputLabel id="mes-inicio-1">Mes</InputLabel>
+              <Select
+                labelId="mes-inicio-1"
+                id="mes-inicio-1"
+                value={startMonth}
+                label="Año"
+                onChange={handleChangek}
+                sx={{ width: 150, marginRight:1}}
+                MenuProps={MenuPropsM}
+              >
+                {meses.map((mes) => (
+                  <MenuItem key={mes["id"]} value={mes["id"]}>{mes["name"]}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
 
-          <FormControl >
-            <InputLabel id="anio-inicio-1">Año</InputLabel>
-            <Select
-              labelId="anio-inicio-1"
-              id="anio-inicio-1"
-              value={year}
-              label="Año"
-              onChange={handleChangey}
-              sx={{ width: 100}}
-              MenuProps={MenuProps}
-            >
-              {years.map((anio) => (
-                <MenuItem key={anio} value={anio}>{anio}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+            <FormControl >
+              <InputLabel id="anio-inicio-1">Año</InputLabel>
+              <Select
+                labelId="anio-inicio-1"
+                id="anio-inicio-1"
+                value={startYear}
+                label="Año"
+                onChange={handleChangey}
+                sx={{ width: 100}}
+                MenuProps={MenuProps}
+              >
+                {years.map((anio) => (
+                  <MenuItem key={anio} value={anio}>{anio}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
 
-        </div>
+          </div>
+
+          <div className={styles.Col3}>
+            <div className={styles.texto}>Fecha en que concluyes o vas a concluir</div>
+            <FormControl >
+              <InputLabel id="mes-final-2">Mes</InputLabel>
+              <Select
+                labelId="mes-final-2"
+                id="mes-final-2"
+                value={endMonth}
+                label="Mes"
+                onChange={handleChangeq}
+                sx={{ width: 150,marginRight:1}}
+                MenuProps={MenuPropsM}
+              >
+                {meses.map((mes) => (
+                  <MenuItem key={mes["id"]} value={mes["id"]}>{mes["name"]}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+            <FormControl >
+              <InputLabel id="anio-final-2">Año</InputLabel>
+              <Select
+                labelId="anio-final-2"
+                id="anio-final-2"
+                value={endYear}
+                label="Año"
+                onChange={handleChangex}
+                sx={{ width: 100}}
+                MenuProps={MenuProps}
+                  >
+                {years.map((anio) => (
+                  <MenuItem key={anio} value={anio}>{anio}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+          </div>
         
-        <div className={styles.Col3}>
-        <div className={styles.texto}>Fecha en que concluyes o vas a concluir</div>
-        <FormControl >
-          <InputLabel id="mes-final-2">Mes</InputLabel>
-          <Select
-            labelId="mes-final-2"
-            id="mes-final-2"
-            value={mes}
-            label="Mes"
-            onChange={handleChangek}
-            sx={{ width: 150,marginRight:1}}
-            MenuProps={MenuPropsM}
-          >
-            {meses.map((mes) => (
-              <MenuItem key={mes["id"]} value={mes["id"]}>{mes["name"]}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-
-        <FormControl >
-          <InputLabel id="anio-final-2">Año</InputLabel>
-          <Select
-            labelId="anio-final-2"
-            id="anio-final-2"
-            value={year}
-            label="Año"
-            onChange={handleChangey}
-            sx={{ width: 100}}
-            MenuProps={MenuProps}
-          >
-            {years.map((anio) => (
-              <MenuItem key={anio} value={anio}>{anio}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        </div>
         </div>
 
         <div className={styles.inputGroup}>
