@@ -11,7 +11,7 @@ from apps.students.models import Student
 from apps.users.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 from apps.users.views import MyTokenObtainPairSerializer
-from apps.users.api.serializers import UserSerializer
+from apps.users.api.serializers import UserSerializer,UpdateUserSerializer
 from apps.students.api.serializer.student_serializer import StudentSerializer, StudentListSerializer, PasswordSerializer, UpdateStudentSerializer
 
 class StudentViewSet(viewsets.GenericViewSet):
@@ -133,17 +133,28 @@ class StudentViewSet(viewsets.GenericViewSet):
 
 	def retrieve(self, request, pk):
 		student = self.get_object(pk)
-		student_serializer = self.serializer_class(student,many=True)
+		student_serializer = self.list_serializer_class(student,many=True)
 		return Response(student_serializer.data)
 
 	def update(self, request, pk):
+		user_update ={
+			"first_name":request.data['t100_name'],
+			"last_name":request.data['t100_last_name']
+		}
+		print(request.data)
 		student = self.model.objects.filter(t100_id_student=pk).first()
 		student_serializer = UpdateStudentSerializer(student, data=request.data)
+		print(student)
 		if student_serializer.is_valid():
 			student_serializer.save()
-			return Response({
-				'message': 'Alumno actualizado correctamente'
-			}, status=status.HTTP_200_OK)
+			student_user = self.user_model.objects.filter(username = student).first()
+			print(student_user)
+			student_user_serializer = UpdateUserSerializer(student_user,data = user_update)
+			if student_user_serializer.is_valid():
+				student_user_serializer.save()
+				return Response({
+					'message': 'Alumno actualizado correctamente'
+				}, status=status.HTTP_200_OK)
 		return Response({
 			'message': 'Hay errores en la actualización',
 			'errors': student_serializer.errors

@@ -43,6 +43,35 @@ const AuthProvider = ({ children }) => {
       });
   };
 
+  const loginStudent = async (e) => {
+    e.preventDefault();
+    loginService({
+      "username": e.target.t100_email.value.trim(),
+      "password": e.target.password.value.trim(),
+    })
+      .then((response) => {
+        // console.log(response)
+        if (response.status === 200 || response.status === 201) {
+          setUser(jwt_decode(response?.data?.access));
+          setToken(response?.data);
+          window.sessionStorage.setItem("token", JSON.stringify(response?.data));
+          console.log(response.data['user']);
+          console.log(response.data['user']['first_name']);
+          console.log(user);          
+          if (response.data['user']['first_name'] != "")
+              navigate("/perfil");
+          else
+              navigate("/actualiza-alumno");
+        } else {
+          console.log(`error: ${response.error}`);
+          window.sessionStorage.removeItem('token', JSON.stringify(response?.data))
+        }
+      })
+      .catch((error) => {
+        if (error.response) console.log(error.response.data);
+      });
+  };
+
   const logout = () => {
     setUser(null);
     setToken(null);
@@ -55,6 +84,7 @@ const AuthProvider = ({ children }) => {
     token,
     login,
     logout,
+    loginStudent,
   };
 
   useEffect(() => {

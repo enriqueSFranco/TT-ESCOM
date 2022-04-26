@@ -15,7 +15,7 @@ let initialForm = {
 
 const Form = () => {
   const { form, handleChange } = useForm(initialForm);
-  const { login } = useContext(AuthContext);
+  const { loginStudent } = useContext(AuthContext);
 
   return (
     <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
@@ -42,7 +42,7 @@ const Form = () => {
             <h2>iniciar sesion</h2>
             <span>Bienvenido! Porfavor introduce tus datos.</span>
           </div>
-          <form onSubmit={login} className={styles.form}>
+          <form onSubmit={loginStudent} className={styles.form}>
             {/* input para la boleta */}
             <div className={styles.inputGroup}>
               <TextField

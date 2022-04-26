@@ -8,6 +8,7 @@ const AboutMe = () => {
   const [aboutMe, setAboutMe] = useState({});
   const { user } = useContext(AuthContext);
   let idStudent = user.user_id;
+  
 
   useEffect(() => {
     getStudent(idStudent)
