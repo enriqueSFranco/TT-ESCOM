@@ -18,9 +18,10 @@ export const getStudent = async (id) => {
     },
   };
   return axios
-    .get(`${API_STUDENT}/${id}`, config)
+    .get(`${API_STUDENT}/${id}/`, config)
     .then((response) => {
       const { data } = response;
+      console.log(data);
       return data;
     })
     .catch((error) => {
@@ -131,3 +132,11 @@ export const applyJob = (payload) => {
       if (error.response) return error.response;
     })
 };
+
+/*
+    "t200_id_vacant": null,
+    "t100_id_student": null,
+    "t201_cv": null,
+    "c205_id_application_state": null,
+    "t201_date_application": null
+*/

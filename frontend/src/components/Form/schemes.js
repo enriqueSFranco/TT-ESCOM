@@ -3,7 +3,7 @@ let now = new Date();
 
 
 export const loginFormCompany = {
-  rfc: "",
+  t301_email: "",
   password: "",
 };
 

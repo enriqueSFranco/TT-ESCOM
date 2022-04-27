@@ -15,16 +15,19 @@ import * as MdIcon from "react-icons/md";
 import * as IoIcon from "react-icons/io";
 import styles from "./CardJobDetails.module.css";
 import Confirm from "components/Alert/Confirm/Confirm";
+import axios from "axios";
 
 const JobCardDetails = () => {
   let elementRef = useRef(null);
   let isSticky = useSticky(100, elementRef);
   let { t200_id_vacant } = useParams();
   let navigate = useNavigate();
+  let now = new Date();
   const { token } = useContext(AuthContext);
   const [isOpen, openModal, closeModal] = useModal();
   const [job, setJob] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [applications, setApplications] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -37,18 +40,25 @@ const JobCardDetails = () => {
       .finally(() => setLoading(false));
   }, [t200_id_vacant]);
 
-  console.log(token?.user);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await axios.get("/api/Applications/");
+  //     setApplications(response.data);
+  //   };
+  //   fetchData();
+  // }, []);
 
   const handleApplyJob = async () => {
     console.log("ya puedes aplicar");
-    // const response = await applyJob({
-    //   t200_id_vacant: null,
-    //   t100_id_student: null,
-    //   t201_cv: null,
-    //   c205_id_application_state: null,
-    //   t201_date_application: null
-    // })
-    
+    const response = await applyJob({
+      t200_id_vacant,
+      t100_id_student: token?.user?.user_id,
+      t201_cv: null,
+      c205_id_application_state: 1,
+      t201_date_application: now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay()
+    })
+    console.log(response.data);
   };
 
   if (!job) return null;

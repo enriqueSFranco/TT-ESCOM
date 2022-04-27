@@ -8,7 +8,9 @@ import styles from "../Styles.module.css";
 
 const LoginCompany = () => {
   const { form, handleChange } = useForm(loginFormCompany);
-  const { login } = useContext(AuthContext);
+  const { loginRecruiter, token } = useContext(AuthContext);
+
+  console.log(token)
 
   return (
     <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
@@ -40,7 +42,7 @@ const LoginCompany = () => {
             <h2>Bienvenido</h2>
             <span>Bienvenido! Porfavor introduce tus datos.</span>
           </div>
-          <form onSubmit={login} className={styles.form}>
+          <form onSubmit={loginRecruiter} className={styles.form}>
             {/* input para el username */}
             <div className={styles.inputGroup}>
               <TextField

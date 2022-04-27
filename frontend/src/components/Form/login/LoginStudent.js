@@ -20,13 +20,8 @@ const validateForm = (form) => {
 };
 
 const Form = () => {
-<<<<<<< HEAD
   const { form, handleChange } = useForm(initialForm, validateForm);
   const { login } = useContext(AuthContext);
-=======
-  const { form, handleChange } = useForm(initialForm);
-  const { loginStudent } = useContext(AuthContext);
->>>>>>> cfab1e9fabc732cae93308deab7b8945e9fca7ff
 
   // console.log(errors);
 
@@ -51,50 +46,10 @@ const Form = () => {
                 </span>
               </div>
           </div>
-<<<<<<< HEAD
           <div className={`col text-center bg-white p-3 rounded-end`}>
             <div className={styles.welcome}>
               <h2>iniciar sesion</h2>
               <span>Bienvenido! Porfavor introduce tus datos.</span>
-=======
-          <form onSubmit={loginStudent} className={styles.form}>
-            {/* input para la boleta */}
-            <div className={styles.inputGroup}>
-              <TextField
-                label="Correo electronico"
-                id="t100_email"
-                name="t100_email"
-                sx={{ width: 500, maxWidth: "100%" }}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <MdOutlineMail />
-                    </InputAdornment>
-                  )
-                }}
-                value={form.t100_email}
-                onChange={handleChange}
-              />
-            </div>
-            {/* input para el password */}
-            <div className={styles.inputGroup}>
-              <TextField
-                label="Contraseña"
-                id="password"
-                name="password"
-                type="password"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <RiLockPasswordLine />
-                    </InputAdornment>
-                  )
-                }}
-                sx={{ width: 500, maxWidth: "100%" }}
-                value={form.password}
-                onChange={handleChange}
-              />
->>>>>>> cfab1e9fabc732cae93308deab7b8945e9fca7ff
             </div>
             <form onSubmit={login} className={styles.form}>
               {/* input para la boleta */}

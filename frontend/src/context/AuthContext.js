@@ -44,6 +44,29 @@ const AuthProvider = ({ children }) => {
         return error;
       });
   };
+  
+  const loginRecruiter = async (e) => {
+    e.preventDefault();
+    loginService({
+      "username": e.target.t301_email.value.trim(),
+      "password": e.target.password.value.trim(),
+    })
+      .then((response) => {
+        if (response.status === 200 || response.status === 201) {
+          setUser(jwt_decode(response?.data?.access));
+          setToken(response?.data);
+          window.sessionStorage.setItem("token", JSON.stringify(response?.data));
+          navigate("/");
+        } else {
+          setErrors(response)
+          toast.error("correo o password incorrectos.");
+          window.sessionStorage.removeItem('token', JSON.stringify(response?.data))
+        }
+      })
+      .catch((error) => {
+        return error;
+      });
+  };
 
   const loginStudent = async (e) => {
     e.preventDefault();
@@ -88,6 +111,7 @@ const AuthProvider = ({ children }) => {
     login,
     logout,
     loginStudent,
+    loginRecruiter
   };
 
   useEffect(() => {

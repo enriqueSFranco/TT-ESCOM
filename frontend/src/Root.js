@@ -22,6 +22,7 @@ import PageHistory from "pages/business/PageHistory";
 import PageMyJobs from "pages/business/PageMyJobs";
 import PageSuccesCompany from "pages/login/PageSuccesCompany";
 import PageValidateRecruiter from "pages/admin/PageValidateRecruiter";
+import PageApplications from "pages/business/PageApplications";
 
 const Root = () => {
   return (
@@ -55,11 +56,6 @@ const Root = () => {
       </Route>
 
       {/* TODO Hacer ruta privada  */}
-      <Route path="/historial" element={<PageHistory />}>
-        <Route path="dashboard" element={<PageDashBoard />} />
-        <Route path="publicar-vacante" element={<PageAddJob />} />
-        <Route path="mis-vacantes" element={<PageMyJobs />} />
-      </Route>
       <Route path="/actualiza-alumno" element={<PageLoginStudentUpdate />}/>
 
       {/* Indice de rutas privadas para un alumno si funciona */}
@@ -72,9 +68,14 @@ const Root = () => {
       </Route>
 
       {/* Indice de rutas privadas para un reclutador */}
-      {/* <Route element={<PrivateRoute roles={ROLE.RECRUITER} />}>
-        
-      </Route> */}
+      <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>   
+        <Route path="/historial" element={<PageHistory />}>
+          <Route path="dashboard" element={<PageDashBoard />} />
+          <Route path="mis-vacantes" element={<PageMyJobs />} />
+          <Route path="solicitudes" element={<PageApplications />} />
+          <Route path="publicar-vacante" element={<PageAddJob />} />
+        </Route>
+      </Route>
 
     </Routes>
   );
