@@ -10,29 +10,289 @@
 \ProvidesPackage{cdt/cdtTheme}[2017/04/27, v1.2 CDT-ESCOM-IPN Plantilla para definir el estilo de la documentación de CDT]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\RequirePackage[utf8]{inputenc}                      % Codificación de caracteres en UTF-8.
-\RequirePackage[spanish]{babel}                      % Cambia las variables del documento a español.
-\RequirePackage[scaled]{berasans}                    % Paquete para acomodar el tipo de fuente
-\RequirePackage{marvosym}                            % Algunos símbolos.
-\RequirePackage{graphicx}                            % Manejo de imágenes.
-\RequirePackage[usenames,dvipsnames]{xcolor}         % Para usar y definir colores.
-\RequirePackage{wallpaper}                           % Colocar imágenes en el fondo del documento.
-\RequirePackage{fancyhdr}                            % Manejo de encabezados.
-\RequirePackage[a4paper, lmargin=3cm, rmargin=2cm, tmargin=2cm, bmargin=2cm, bottom=2.0cm]{geometry} % Manejo de márgenes del documento.
-\RequirePackage[Sonny]{fncychap}                     % Manejo de capítulos: Sonny, Lenny, Glenn, Conny, Rejne and Bjarne.
-\RequirePackage[pdftex,bookmarks,colorlinks]{hyperref} % Manejo de vinculos o links
-\pagestyle{plain}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[spanish, es-tabla]{babel}
+\RequirePackage[a4paper, lmargin=3cm, rmargin=2cm, tmargin=2cm, bmargin=2cm]{geometry}
+\RequirePackage[Sonny]{fncychap}
+\RequirePackage{enumitem}
+\RequirePackage{graphicx}
+\RequirePackage{longtable}
+\RequirePackage{fancyhdr}
+\RequirePackage{cmbright}
+\RequirePackage{wrapfig}
+\RequirePackage[colorlinks]{hyperref}
+\RequirePackage{xcolor}
+\RequirePackage{longtable}
+\RequirePackage{subcaption}
+\RequirePackage{multicol}
+\RequirePackage{multirow}
+\RequirePackage{colortbl}
+\RequirePackage{marvosym}
+\RequirePackage{xifthen}
+\RequirePackage{xstring}
+\RequirePackage{datatool}
+\RequirePackage{keystroke}
+\RequirePackage{MnSymbol}
+\RequirePackage{mdframed}
+\RequirePackage{tikz}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\RequirePackage{adjustbox}
+\RequirePackage{float}
+\RequirePackage{datatool}
+\RequirePackage{pgfkeys}
+\RequirePackage{xstring}
+\RequirePackage{xifthen}
+\RequirePackage{environ}
+\RequirePackage{chapterfolder}
+\RequirePackage{keystroke}
 
-%=====================================================
-% Package Bera Sans: Poner el tipo de fuente sans-serif como default
-%=====================================================
-\renewcommand*\familydefault{\sfdefault}
+\newcommand*\circled[3]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,fill=#1!#2,inner sep=2pt] (char) {#3};}}
+
+\definecolor{bluea}{rgb}{0.0, 0.53, 0.74}
+\definecolor{principal}{HTML}{3E3E3F}
+\definecolor{secundario}{HTML}{004C99}
+\definecolor{complementario}{HTML}{004C99}
+\definecolor{azul}{HTML}{DAE8FC}
+\definecolor{amarillo}{HTML}{FFE6CC}
+\definecolor{azulFuerte}{HTML}{B726FF}
+\definecolor{verdeFuerte}{HTML}{60A917}
+\definecolor{comment}{HTML}{A9A9A9} % Color usuado para comentarios
+\definecolor{entity}{HTML}{98E1F9}
+\definecolor{catalog}{HTML}{FFDC8C}
+\definecolor{state}{HTML}{FF7C9B}
+\definecolor{manytomany}{HTML}{C5C4B0}
+\definecolor{nodata}{HTML}{F5B67A}
+
+\newcommand*\dbentity{
+    \begin{tikzpicture}
+            \filldraw[fill=entity!100!white, draw=black] (0,0) rectangle (1,0.3);
+            \filldraw[fill=entity!100!white, draw=black] (0,0) rectangle (1,-0.4);
+    \end{tikzpicture}
+}
+
+\newcommand*\dbcatalog{
+    \begin{tikzpicture}
+            \filldraw[fill=catalog!100!white, draw=black] (0,0) rectangle (1,0.3);
+            \filldraw[fill=catalog!100!white, draw=black] (0,0) rectangle (1,-0.4);
+    \end{tikzpicture}
+}
+
+\newcommand*\dbstate{
+    \begin{tikzpicture}
+            \filldraw[fill=state!100!white, draw=black] (0,0) rectangle (1,0.3);
+            \filldraw[fill=state!100!white, draw=black] (0,0) rectangle (1,-0.4);
+    \end{tikzpicture}
+}
+
+\newcommand*\dbmanytomany{
+    \begin{tikzpicture}
+            \filldraw[fill=manytomany!100!white, draw=black] (0,0) rectangle (1,0.3);
+            \filldraw[fill=manytomany!100!white, draw=black] (0,0) rectangle (1,-0.4);
+    \end{tikzpicture}
+}
+
+\newcommand*\nodata{
+    \begin{tikzpicture}
+            \filldraw[fill=nodata!100!white, draw=black] (0,0) rectangle (1,0.3);
+            \filldraw[fill=nodata!100!white, draw=black] (0,0) rectangle (1,-0.4);
+    \end{tikzpicture}
+}
+
+\hypersetup{%
+	colorlinks=true,
+	linkcolor=principal,
+	urlcolor=secundario,
+    citecolor=secundario
+}%
+
+\pagestyle{fancy}
+
+%\newcommand\UCactor{\raisebox{-1mm}{\includegraphics[height=11pt]{ch/images/actor}}}
+%\newcommand\UCsist{\raisebox{-1mm}{\includegraphics[height=11pt]{ch/images/usecase}}}
+\renewcommand{\labelitemi}{\color{secundario}\textbullet}
+\renewcommand{\labelitemii}{\color{secundario}$\circ$}
+
+\newcommand{\varSection}[1]{}
+\let\varSection=\section
+\renewcommand{\section}[1]{{\color{secundario}\varSection{#1}}}
+
+\newcommand{\varSubSection}[1]{}
+\let\varSubSection=\subsection
+\renewcommand{\subsection}[1]{{\color{complementario}\varSubSection{#1}}}
+
+
+\newcommand{\varSubSubSection}[1]{}
+\let\varSubSubSection=\subsubsection
+\renewcommand{\subsubsection}[1]{{\color{complementario}\varSubSubSection{#1}}}
+
+
+\mdfdefinestyle{advertisment}{
+    linecolor=bluea,
+    skipabove = \topskip,
+    tikzsetting={
+        draw=yellow,line 
+        width=3pt,
+        dashed,
+        dash pattern= on 10pt off 3pt
+    }
+}
+
+\newcommand{\varAutorUno}{}  % Alumno 1
+\newcommand{\varAutorDos}{}  % Alumno 2
+\newcommand{\varAutorTres}{}  % Alumno 3
+
+\newcommand{\directorUno}{}  % Director 1
+\newcommand{\directorDos}{}  % Director 2
+
+\newcommand{\autores}[3]{%  Define a los autores del trabajo terminal
+    \renewcommand{\varAutorUno}{#1}%
+    \renewcommand{\varAutorDos}{#2}%
+    \renewcommand{\varAutorTres}{#3}%
+}%
+
+\newcommand{\directores}[2]{%  Define a los directores del trabajo termina
+    \renewcommand{\directorUno}{#1}
+    \renewcommand{\directorDos}{#2}
+}
+
+\newcommand{\varTT}{}
+\newcommand{\TT}[1]{
+    \renewcommand{\varTT}{#1}
+}
+
+
+\newcommand{\varTitle}{}
+\let\varTitle=\title
+\renewcommand{\title}[1]{
+   \varTitle{%
+        {%
+            {\begin{minipage}{.1\textwidth}%
+            \centering
+                \includegraphics[width=0.8\textwidth]{Plantilla/images/index.png}\\%
+                {\textcolor{bluea}{\rule{.05\textwidth}{.7\textheight}}}\hspace{.7mm}%
+                {\textcolor{bluea}{\rule{.1\textwidth}{.7\textheight}}}\hspace{.7mm}%
+                {\textcolor{bluea}{\rule{.05\textwidth}{.7\textheight}}}\\%
+                \includegraphics[width=\textwidth]{Plantilla/images/logoESCOM2x.png}%
+            \end{minipage}}%
+            {\begin{minipage}{0.9\textwidth}
+                \centering
+                {\bf\rmfamily\huge{INSTITUTO POLITÉCNICO NACIONAL}}\\%
+                {\bf\rmfamily\LARGE{ESCUELA SUPERIOR DE CÓMPUTO}}\\\vspace{2cm}%
+                {\bf\rmfamily\huge{ESCOM}}\\\vspace{2cm}%
+                {\rmfamily\textit{Trabajo Terminal}}\\%
+                {\rmfamily\textbf{#1}}\\%
+                {\rmfamily\textit{\varTT}}\\\vspace{2cm}%
+                {\rmfamily\textit{Presentan}}\\%
+                {\rmfamily\textbf{%
+                    \varAutorUno\\%
+                    \varAutorDos\\%
+                    \varAutorTres%
+                }}\\\vspace{2cm}%
+                {\rmfamily\textit{Directores}}\\%
+                {%
+                    \textbf{\normalsize\rmfamily\directorUno\hspace{6mm}\directorDos}%
+                }\\\vspace{1cm}%
+                {%
+                    \hfill\rmfamily\small\large\ 30 de Abril,2022%
+                }%
+            \end{minipage}}
+        }%
+    }%
+}
+
+
+\newcommand{\advertisment}{
+    {   
+        \begin{center}
+        {
+        \vfill%
+        {\rmfamily\huge\textbf{Advertencia}}\\
+        {\rmfamily
+            \begin{mdframed}[style=advertisment]
+             \textit{"Este documento contiene información desarrollada por la Escuela Superior de Cómputo del Instituto Politécnico Nacional, a partir de datos y documentos con derecho de propiedad y por lo tanto, su uso quedará restringido a las aplicaciones que explícitamente se convengan.”}\\\\
+             La aplicación no convenida exime a la escuela su responsabilidad
+             técnica y da lugar a las consecuencias legales que para tal efecto se determinen.\\\\
+             Información adicional sobre este reporte técnico podrá obtenerse en: La Subdirección Académica de la Escuela Superior de Cómputo del Instituto Politécnico Nacional, situada en Av. Juan de Dios Bátiz s/n Teléfono: 57296000, extensión 52000. 
+            \end{mdframed}
+        }%
+        }%
+        \end{center}
+    }
+}
+
+\newcommand{\responsiveletter}{%
+    {%
+        \newpage%
+        \small%
+        \begin{center}%
+            \vfill%
+            {\huge Carta Responsiva}\\\bigskip%
+            {\parbox{0.85\textwidth}{\tiny \centering Que otorga visto bueno y avala la conclusión de documentación del Trabajo Terminal bajo los lineamientos establecidos por la Comisión Académica de Trabajos Terminales (CATT)}}\\\bigskip\bigskip%
+            {%
+                \parbox{\textwidth}{\raggedleft CDMX, a	7	de	Septiembre	de 2021}%
+            }\\\bigskip\bigskip%
+            {%
+                \parbox{\textwidth}{\raggedright%
+                \textbf{M EN C. ANDRÉS ORTIGOZA CAMPOS\\%
+                PRESIDENTE DE LA COMISIÓN ACADÉMICA DE TRABAJOS TERMINALES\\%
+                P R E S E N T E}}%
+            }\\\bigskip%
+            {%
+                \parbox{\textwidth}{%
+                    \raggedleft%
+                    \textbf{EN ATENCIÓN A:}\\%
+                    M. EN E. ELIA TZINDEJHÉ RAMÍREZ MARTÍNEZ\\%
+                    SECRETARIA EJECUTIVA\\%
+                }%
+            }\\\bigskip%
+            {%
+                \parbox{\textwidth}{Por medio de la presente, se informa que el Trabajo Terminal Núm. 2020-140A Que lleva por Título: Herramienta Colaborativa para la Especificación de Requerimientos: CORETool
+                }%
+            }\\\bigskip%
+            {%
+                \parbox{\textwidth}{%
+                    Fue concluido satisfactoriamente por:%
+                    \begin{itemize}%
+                        \item[] \begin{center}Mejía Mendoza Diana Laura\end{center}%
+                        \item[] \begin{center}Mera Torres Francisco Isidoro\end{center}%
+                        \item[] \begin{center}Tinoco Hernández Héctor Manuel\end{center}%
+                    \end{itemize}%
+                }%
+            }\\\bigskip%
+            {%
+                \parbox{\textwidth}{
+                    Se avala que la documentación entregada mediante discos en formato DVD fue \textbf{revisada de manera precisa y exhaustiva} con el propósito de asegurar que los avances desarrollados bajo la supervisión de quien o quienes suscriben, hayan cumplido con lo planteado en el protocolo original, así como en lo establecido por el Documento Rector de Operación y Evaluación para los Trabajos Terminales de la ESCOM.
+                }%
+            }\\\bigskip\bigskip%
+            {%
+                \parbox{\textwidth}{%
+                    \raggedright%
+                    \textbf{ATENTAMENTE}\\%
+                    \textbf{“LA TÉCNICA AL SERVICIO DE LA PATRIA”}\\%
+                }%
+            }\\\bigskip%
+            {%
+                \parbox{\textwidth}{%
+                    \begin{longtable}[H]{cc}%
+                        & \\%
+                        & \\%
+                        \makebox[7cm][c]{\hrulefill} & \makebox[7cm][c]{\hrulefill} \\
+                        M. en C. Edgar Armando Catalán Salgado & Ing. Ulises Velez Saldaña \\%
+                        Director & Director \\
+                    \end{longtable}%
+                }%
+            }%
+        \end{center}%
+    }%
+}%
 
 %=====================================================
 % Definición de colores.
 %=====================================================
-\definecolor{colorPrincipal}{rgb}{0.0, 0.3, 0.55}
-\definecolor{colorSecundario}{rgb}{0.0, 0.5, 0.8}
+\definecolor{colorPrincipal}{HTML}{3E3E3F}
+\definecolor{colorSecundario}{HTML}{004C99}
 \definecolor{colorGris}{rgb}{0.4, 0.4, 0.4}
 \definecolor{colorAgua}{rgb}{0.80, 0.90, .95}
 
@@ -44,16 +304,16 @@
 \hypersetup{filecolor=colorSecundario}
 \hypersetup{citecolor=colorGris}
 
-%====================================================================================================
-%========================Encabezado y pie de Pagina==================================================
+
+
+%=====================================================
+% Creacion de Encabezados y pie de página.
+%=====================================================
 \pagestyle{fancy}
-
-\fancyhead[LE]{\includegraphics[height=25pt, width=0.10\textwidth]{Plantilla/imagenes/headerImp.png}}
-\fancyhead[RO]{\includegraphics[height=25pt, width=0.10\textwidth]{Plantilla/imagenes/headerPar.png}}
+\fancyhead[LE]{\includegraphics[width=0.55\textwidth]{Plantilla/images/ttpar.png}}
+\fancyhead[RO]{\includegraphics[width=0.55\textwidth]{Plantilla/images/ttimpar.png}}
 \fancyhead[RE,LO]{}
-\setlength{\headheight}{30pt}
-
-%====================================================================================================
+ 
 
 %%=====================================================
 %% Estilo para los Capítulos y secciones
@@ -65,3 +325,39 @@
 \renewcommand{\@startsection}[6]{\LaTeX@startsection%
 {#1}{#2}{#3}{#4}{#5}{\color{colorPrincipal}\raggedright #6}}
 
+%=====================================================
+% Texto para el índice y los pies de las tablas.
+%=====================================================
+\AtBeginDocument{%
+    \renewcommand{\tablename}{Tabla}% could be outside
+    \renewcommand{\listtablename}{Índice de tablas}% could be outside
+}
+
+
+
+%=====================================================
+% Estilo para las viñetas
+% mathabx \bigstar \sqbullet \blackdiamond
+% wasysym \Box \Diamond
+% pifont \ding{220} \ding{228} \ding{238}  flechas
+% bbding \PencilRight
+% pifont \ding{47} \ding{49}  lápiz
+% dingbat \leftpointright
+% bbding \HandRight
+% pifont \ding{167}
+%=====================================================
+\renewcommand\textbullet{\ensuremath{\bullet}} % Usado para evitar warnings de fuentes
+\renewcommand{\labelitemi}{\color{colorPrincipal}\textbullet}
+\renewcommand{\labelitemii}{\color{colorSecundario}\textbullet}
+\renewcommand{\labelitemiii}{\color{colorSecundario}$\circ$}
+\renewcommand{\labelitemiv}{\color{colorSecundario}\textbullet}
+
+
+%Comando: \cdtSetCompileMode
+%Propósito: Cambiar el modo de compilación
+%========================
+\newcommand{\cdtVarCompileMode}{gendoc}%
+\newcommand{\cdtSetCompileMode}[1]{%
+		\renewcommand{\cdtVarCompileMode}{#1}%
+	}%
+	

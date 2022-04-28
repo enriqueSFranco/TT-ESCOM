@@ -1,0 +1,54 @@
+\documentclass[11pt, twopages]{book}
+\usepackage[adminView]{cdt/cdtAnalisis}
+%\usepackage{comment}
+
+\date{}
+\title{Bolsa de Trabajo ESCOM}
+\author{}
+\autores{Cruz Heras Joel Antonio}{Martínez González Iris Yonitzi}{Salinas Franco Carlos Enrique}
+\directores{M. en C. Edgar Armando Catalán Salgado}{Ing. Ulises Velez Saldaña }
+\TT{2022-B049}
+\cdtSetCompileMode{gendoc}
+        
+%\input{LIT/config}
+\input{iconos/iconos}
+\begin{document}
+    \frontmatter
+        \maketitle
+        %\advertisment
+        %\responsiveletter
+        \tableofcontents
+        %\listoffigures
+        %\listoftables
+    \mainmatter
+    
+
+    \chapter{Introducción}
+    \input{aloneparts/introduccion.tex}
+    \label{aloneparts:intro}
+
+    \chapter{Antecedentes}
+    \label{aloneparts:antecedentes}
+    \input{aloneparts/antecedentes.tex}
+%    
+    \part{Análisis y Diseño}
+
+        \chapter{Solución Propuesta}
+        \label{aloneparts:propuesta}
+        \input{analisisydiseno/propuesta.tex}
+        \input{analisisydiseno/entregables.tex}
+        \input{analisisydiseno/casosuso.tex}
+    
+    \part{Modelo de negocio}
+        \input{analisisydiseno/modelo.tex}
+        \label{ch:modelo}
+        \chapter{Casos de Uso}
+        \label{ch:cus}
+        \input{analisisydiseno/CasosdeUso/GRL-CU01/cu.tex}
+        \input{analisisydiseno/CasosdeUso/GRL-CU01/iu.tex}
+
+    \part{Anexos}
+        \chapter{Modelo de Datos}
+        \input{anexos/db.tex}
+        
+\end{document}

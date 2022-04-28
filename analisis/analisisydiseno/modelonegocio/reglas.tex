@@ -1,0 +1,102 @@
+\clearpage
+\chapter{Reglas de negocio}
+                                             
+En esta sección de van a describir las reglas de negocio identificadas en el sistema..
+Cada regla de negocio indica los siguientes atributos:
+
+\begin{description}
+	\item[Identificador:] Es el identificador de la regla de negocio con el cual se podrá referenciar a lo largo del documento.
+	\item[Nombre:] Indica el nombre de la regla de negocio el cual describe la regla.
+%	\item[Tipo:] Indica el tipo de regla de negocio de acuerdo a como se aplica.
+%		\begin{itemize}
+%			\item \textbf{Habilitadora}: Permite realizar el proceso en el que la regla se ve involucrada.
+%			\item \textbf{Cronometrada}: Recibe parámetros y con respecto a eso realiza el proceso.
+%			\item \textbf{Ejecutiva}: Es aquella que se debe llevar a cabo cuando una autoridad se ve involucrada para que el proceso concluya.
+%		\end{itemize}
+	\item[Descripción:] Especifica la regla de negocio en lenguaje natural.
+	
+	\item[Sentencia:] Descripción formal o matemática de la regla de negocio.
+	\item[Ejemplo:] En algunos casos se describen ejemplos en los que la regla se cumple, o bien, ejemplos en los que la regla no se cumple indicando que esos casos no deberían de darse.
+\end{description}
+
+%-----------------------BR-001---------------------------
+\begin{BusinessRule}[]{RN-N001}{Campos obligatorios}
+	\BRsection[control]{Atributos}
+	\BRitem[admin]{Clase}{\bcIntegridad}%
+%         % Valores de Clase
+%         %   \bcCondition
+%         %   \bcIntegridad
+%         %   \bcAutorization
+%         %   \bcDerivation
+
+	\BRitem{Descripción}{%
+		Los campos marcados como obligatorios solicitados dentro del sistema no se deben omitir, puesto que es información importante para el correcto funcionamiento del sistema. Debe considerarse que también existen campos obligatorios que se deben seleccionar o ingresar pero estos no tienen la marca establecida como campos obligatorios, pero que es necesario ingresarlos para poder continuar con el proceso pertinente.
+	}
+	\BRitem{Sentencia}{%
+		Sea $campo$ un atributo de una $Entidad$, tal que $campo.obligatorio = true$ entonces
+		$ \forall campo \Rightarrow campo.valor \neq \emptyset $	
+	}
+	%\BRitem{Motivación}{ Evitar que se realicen registros de los eventos en fechas ya transcurridas.}
+	%\BRitem{Ejemplo positivo}{Considerando que la fecha y hora de inicio del evento que se quiere registrar en el sistema es el 15/Enero/2020, 15:00 y la fecha y hora actual es el 10/Enero/2020, 12:00:El actor podrá registrar o eliminar el evento.}
+	%\BRitem{Ejemplo negativo}{Considerando que la fecha y hora de inicio del evento que se quiere registrar en el sistema es el 10/Enero/2020, 15:00 y la fecha y hora actual es el 15/Enero/2020, 12:00:El actor no podrá registrar o eliminar el evento.}
+\end{BusinessRule}
+
+%-----------------------BR-002---------------------------
+\begin{BusinessRule}[]{RN-N002}{Formato válido para el correo electrónico}
+	\BRsection[control]{Atributos}%
+	\BRitem[admin]{Clase}{\blControlling}%
+	\BRitem{Descripción}{%
+		Para realizar una verificación exitosa del correo electrónico debe cumplir con el siguiente formato:
+		\begin{itemize}
+			\item Debe tener por lo menos un caracter alfanumérico al principio de la cadena.
+			\item Seguido de un @.
+			\item Seguido del nombre del dominio que son caracteres alfanumericos(letras minúsculas).
+			\item Seguido de un punto.
+			\item Finalmente tener una extensión que va desde los 2 a los 6 caracteres alfabeticos o puntos. 
+		\end{itemize}
+	}
+	\BRitem{Sentencia}{%
+		Sea $Correo_{elect}$ el correo electrónico ingresado en el sistema, debe cumplir con la siguiente expresión:
+		$\hat{}$([a-z0-9\_.-]+)@([a-z.-]+).([a-z.]\{2,6\})\$
+	}
+	\BRitem{Ejemplo}{%
+	
+		\textbf{Caso correcto:}  ejemplo1@dominio.com 
+		
+		\textbf{Caso incorrecto:} ejemplo@DOminio.invalido
+	}
+	
+\end{BusinessRule}
+
+%-----------------------BR-003---------------------------
+\begin{BusinessRule}[]{RN-N003}{Formato de campos}
+	\BRsection[control]{Atributos}%
+	\BRitem[admin]{Clase}{\bcIntegridad}%
+	\BRitem{Descripción}{%
+		Todos los datos que son solicitados y proporcionados al sistema deben respetar el formato establecido en el modelo de información.
+	}
+	\BRitem{Sentencia}{%
+		Sea $formato$ la expresión regular que determina el formato de un campo, $Leng_{gen}$ el lenguaje que genera $formato$ y $campo$ un campo introducido por el actor, entonces
+		$ \forall campo \Rightarrow campo \in Leng_{gen} $
+	}
+	
+\end{BusinessRule}
+
+%-----------------------BR-004---------------------------
+\begin{BusinessRule}[]{RN-N004}{Unicidad de los elementos registrados}
+	\BRsection[control]{Atributos}%
+	\BRitem[admin]{Clase}{\blControlling}%
+	\BRitem{Descripción}{%
+		Existen elementos que requieren de unicidad en algunos de sus campos para poder ser  registrados o asociados en el sistema o en otra entidad, dicha información dependerá de la entidad pertinente.
+	}
+	\BRitem{Sentencia}{%
+	Si el identificador y nombre de un elemento que se requiere registrar en el sistema, es distinto a cualquier identificador y nombre de un elemento registrado en el sistema, entonces se podrá registrar el elemento en el sistema tal que para todo elemento existe un único identificador y nombre en el sistema. \\
+
+	Sea $Entidad_x$ el identificador y nombre que se requiere registrar y $Elementos_n$ el conjunto de identificadores y nombres de los elementos que estan registrados en el servicio, entonces: \\
+
+	Si $IdNombre_x \neq Elementos_n \Rightarrow True
+   \mid \forall Elem \in  (Sistema)\exists ! Identificador \& Nombre$  
+
+	}
+	
+\end{BusinessRule}

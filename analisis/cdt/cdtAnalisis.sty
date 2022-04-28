@@ -275,12 +275,8 @@
 	\resetTable%
         \addtoTable{all}{\rowcolor{black}}%
         \UCitem{\color{white}Caso de Uso}{\color{white}#2 #3}%
-        \UCsection[control]{Datos para el control Interno}
-        \UCitem[control]{Autor}{\Autor}
-        \UCitem[control]{Versión}{\Version}
-        \UCitem[control]{Estado}{\Estado}
 }{%
-    \begin{longtable}{| p{.17\textwidth} | p{.75\textwidth} |}%
+    \begin{longtable}{| p{.25\textwidth} | p{.65\textwidth} |}%
         \tablecontent
     \end{longtable}%
     \subsection{Trayectorias del Caso de Uso}
@@ -306,7 +302,6 @@
 %     @required Condición, indica la condición
 %     @required Resultado, Indica el resultado producido por el error
     \textbf{#1:} \hypertarget{\arabic{counterUC}:err#1} #2 #3
-    \newline
 }
 
 %==============================================

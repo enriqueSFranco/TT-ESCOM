@@ -272,8 +272,8 @@
 % COMANDOS PARA IMPRIMIR LAS ENTRADAS DE LOS CASOS DE USO
 %===============================================================================================--------------------------------
 \newcommand{\loadUseCasesIO}{%
-    \IfFileExists{output/cdtUseCasesIO.csv}{%
-        \DTLloadrawdb{R.UseCasesIO}{output/cdtUseCasesIO.csv}%
+    \IfFileExists{cdtUseCasesIO.csv}{%
+        \DTLloadrawdb{R.UseCasesIO}{cdtUseCasesIO.csv}%
         \DTLforeach*{R.UseCasesIO}{\id=id,\inputs=inputs,\outputs=outputs,\reglas=reglas}{%
             %\pgfkeysgsetvalue{/UseCase/\id/entrada}{\inputs}%
             \pgfkeysglet{/UseCase/\id/entrada}{\inputs}%
@@ -473,8 +473,8 @@
 %    @required family: Actor, BR, IU, ...
 %    @required DB<sufix-name>: Actores, BusinessRules, Interfaces
 %
-    \IfFileExists{output/cdt#2.csv}{%
-        \DTLloaddb{R.#2}{output/cdt#2.csv}%
+    \IfFileExists{cdt#2.csv}{%
+        \DTLloaddb{R.#2}{cdt#2.csv}%
         \DTLforeach*{R.#2}{\id=id,\name=name}{%
             \pgfkeysglet{/#1/\id}{\name}%
         }%
@@ -489,9 +489,10 @@
     \load{BR}{BusinessRules}%
     \load{Term}{Terminos}%
     \load{Element}{Elements}%
-    \load{UseCase}{UseCases}%
-    \load{MSG}{Messages}%
     \load{IU}{Interfaces}%
+    
+    \load{MSG}{Messages}%
+    \load{UseCase}{UseCases}%
     \load{Actor}{Actores}%
     \loadUseCasesIO%
 }
@@ -509,13 +510,13 @@
 %    @required Macro<Array>: \Actores \BusinessRules \Interfaces ...
 %    @required DB<sufix-name>: Actores, BusinessRules, Interfaces
 %
-    \DTLnewdb{#3}%
+    \DTLgnewdb{#3}%
     \DTLaddcolumn{#3}{id}%
     \DTLaddcolumn{#3}{name}%
     \DTLaddcolumn{#3}{author}%
     \DTLaddcolumn{#3}{version}%
     \DTLaddcolumn{#3}{status}%
-%
+    %
     \foreach \item in #2 {
         \ifthenelse{ \equal{}{\item} \OR \equal{}{\pgfkeysvalueof{/#1/\item}} }{}{% PGFKEYS
         % if( item!=""  && pgfkeyvalueof(item)!=""
@@ -529,16 +530,26 @@
         }%
     }
     \message{^^JInfo Se han guardado \DTLrowcount{#3} #3}%
-    \DTLsavedb{#3}{cdt#3.csv}%
+    \begingroup
+        \let\SavedOpenout\openout
+        \let\SavedWrite\write
+        \def\openout{\immediate\SavedOpenout}%
+        \def\write{\immediate\SavedWrite}%
+        \DTLsavedb{#3}{cdt#3.csv}%
+    \endgroup
+    
 }
 
+
 \AtEndDocument{%
-    \save{BR}{\BusinessRules}{BusinessRules}
-    \save{Term}{\Terminos}{Terminos}%
-    \save{Element}{\OtrosElementos}{Elements}
-    \save{UseCase}{\UseCases}{UseCases}
-    \save{MSG}{\Messages}{Messages}
-    \save{IU}{\Interfaces}{Interfaces}
-    \save{Actor}{\Actores}{Actores}
+\save{IU}{\Interfaces}{Interfaces}
+\save{BR}{\BusinessRules}{BusinessRules}
+\save{Term}{\Terminos}{Terminos}%
+\save{Element}{\OtrosElementos}{Elements}
+\save{UseCase}{\UseCases}{UseCases}
+\save{MSG}{\Messages}{Messages}
+
+\save{Actor}{\Actores}{Actores}
+    
     \saveUseCaseIO%
 }

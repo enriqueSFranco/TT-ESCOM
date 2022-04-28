@@ -1,0 +1,90 @@
+\begin{UseCase}[]{GRL-CU02}{Enviar Pre-Registro.}{
+	Permite al actor registrarse como en el sistema y ası́ posteriormente gestionar el perfil de la empresa, 
+	publicar  vacantes, consultar perfiles de candidatos y gestionar sus solicitudes.
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		Reglutador. 
+	}
+	\UCitem[admin]{Prioridad}{
+		Alta
+	}
+	\UCitem[admin]{Complejidad}{
+		Alta
+	}
+	\UCitem{Precondiciones}{
+		El correo electrónico del usuario no debe estar registrado en el sistema.
+	}
+	\UCitem{Postcondiciones}{
+		El actor pordra gestionar su perfil publicar vacantes y gestionar sus solicitudes.
+	}
+	\UCitems{Entradas}{
+	}
+	\UCitems{Salidas}{
+	}   
+	\UCitem{Destino}{
+	}
+	\UCitem{Reglas de Negocio}{
+	}
+
+	\UCitem{Viene de}{
+		Caso de uso primario.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Presiona el botón \textbf{Eres Reclutador} desde la pantalla GRL-IU00.
+    \UCpaso [\UCsist] Muestra la pantalla GRL-IU02.
+	\UCpaso [\UCactor] Ingresa los datos de la empresa:Nombre de la empresa, RFC, razon social, documento del SAT de la empresa.\label{cu02-grl1}\refTray{A}
+	\UCpaso [\UCactor] Ingresa los datos de contacto:Nombre, apellidos, correo electrónico empresarial y un telefono de contacto.
+	\UCpaso [\UCactor] Acepta los terminos de privacidad y condiciones del sistema.
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Enviar Pre-Registro}. \refTray{B}
+    \UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la
+	regla de negocio \refIdElem{RN-N001}.\refTray{C}
+	\UCpaso [\UCsist] Verifica que el RFC ingresado cumpla con el formato correcto de acuerdo a las reglas de negocio  \refIdElem{RN-N006}, \refIdElem{RN-N003}.\refTray{D}
+	\UCpaso [\UCsist] Verifica que el RFC ingresado no coincida con otro registrado en el sistema de acuerdo a la regla de negocio  \refIdElem{RN-N005}.\refTray{E}
+	\UCpaso [\UCsist] Verifica que el correo electronico ingresado cumpla con el formato correcto de acuerdo a las reglas de negocio  \refIdElem{RN-N002} y \refIdElem{RN-N003} .\refTray{D} \label{cu02-grl2}
+	\UCpaso [\UCsist] Verifica que el correo electronico ingresado no coincida con otro registrado en el sistema deacuedo a la regla de negocio  \refIdElem{RN-N005}.\refTray{E}
+	\UCpaso [\UCsist] Envia una notificación al encargado y colaboradores del sistema indicando que hay una nieva empresa por validar.
+    \UCpaso [\UCsist] Muestra la pantalla GRL-IU04.
+\end{UCtrayectoria}
+
+ \clearpage
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor indica que su empresa ya esta registrada en el sistema.}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Tu empresa ya esta registrada con nosotros?}.
+	\UCpaso [\UCsist] Muestra la pantalla GRL-IU03.
+	\UCpaso [\UCactor] Ingresa los datos de la empresa:Nombre de la empresa.
+	\UCpaso [\UCactor] Ingresa los datos de contacto: Nombre, apellidos, correo electrónico empresarial y un telefono de contacto.
+	\UCpaso [\UCactor] Acepta los terminos de privacidad y condiciones del sistema.
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Enviar Pre-Registro}. 
+	\UCpaso [\UCsist] Continúa en el paso \ref{cu02-grl2} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin del caso de uso]{B}{El actor decide cancelar el registro de un usuario.}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Cancelar}.
+	\UCpaso [\UCsist] Muestra la pantalla GRL-IU00.
+\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin del caso de uso]{C}{El actor no ingresó uno o más datos obligatorios.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG1} en los campos que no
+	fueron ingresados.
+	\UCpaso [\UCsist] Continúa en el paso \ref{cu02-grl1} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin del caso de uso]{D}{El actor ingresó el dato con formato incorrecto.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG2}.
+	\UCpaso [\UCsist] Continúa en el paso \ref{cu02-grl1} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin del caso de uso]{E}{El actor ingresó uun correo electrónico ya registrado en el sistema.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG3}.
+	\UCpaso [\UCsist] Continúa en el paso \ref{cu02-grl1} de la trayectoria principal.
+\end{UCtrayectoriaA} 

@@ -1,0 +1,145 @@
+\clearpage
+\chapter{Mensajes del sistema}
+
+En esta sección se describen los mensajes utilizados en el prototipo actual del sistema.
+Los mensajes se refieren a todos aquellos avisos que el sistema muestra al actor para comunicar la ocurrencia de algún evento 
+tal como un error o una operación exitosa. Estos mensajes se pueden mostrar a través de diversos canales, por ejemplo, pantalla 
+o correo electrónico.
+
+Cuando un mensaje es recurrente se parametrizan sus elementos, por ejemplo los mensajes: ``Aún no existen registros de tus
+\textit{vacantes} en el sistema.'', ``Aún no existen registros de \textit{candidatos} en el sistema.'', 
+tienen una estructura similar por lo que, con el objetivo de que el mensaje sea genérico y pueda utilizarse en todos los 
+casos de uso que se considere necesario, se utilizan parámetros para definir el mensaje.\\
+
+Los parámetros también se utilizan cuando la redacción del mensaje tiene datos que son ingresados por el actor o que dependen del 
+resultado de la operación, por ejemplo: 
+``La \textit{Unidad Académica ESCOM} ha sido \textit{modificada} exitosamente.''. 
+En este caso la redacción se presenta parametrizada de la forma: \newline
+``$<DETERMINADO> <ENTIDAD> <VALOR>$ ha sido $<OPERACION>$ exitosamente.'' \newline
+Y los parámetros se describen de la siguiente forma:
+
+\begin{itemize}
+	\item DETERMINADO ENTIDAD: Es un artículo determinado más el nombre de la entidad sobre la cual se realizó la acción.
+	\item VALOR: Es el valor asignado al atributo de la entidad, generalmente es el nombre o la clave.
+	\item OPERACIÓN: Es la acción que el actor solicitó realizar.
+\end{itemize}
+
+En el ejemplo anterior se hace referencia a $<VALOR>$, es decir: \textit{ESCOM} es el \textbf{valor} de la \textbf{entidad} 
+\textit{escuela}. Cada mensaje enlista los parámetros  que utiliza, sin embargo aquí se definen los más comunes a fin de 
+simplificar la descripción de los mensajes:
+
+\begin{description}
+	\item [$<ARTICULO>$:] Se refiere a un {\em artículo} el cual puede ser DETERMINADO (El $\mid$ La $\mid$ Lo $\mid$ Los $\mid$ Las) o INDETERMINADO (Un $\mid$ Una $\mid$ 
+	Uno $\mid$ Unos $\mid$Unas) se aplica generalmente sobre una ENTIDAD, ATRIBUTO o VALOR.
+	
+	\item [$<CAMPO>$:] Se refiere a un campo del formulario. Por lo regular es el nombre de un atributo en una entidad.
+
+	\item [$<CONDICION>$:] Define una expresión booleana cuyo resultado deriva en {\em falso} o {\em verdadero} y suele ser la causa del mensaje.
+	
+	\item [$<DATO>$:] Es un sustantivo y generalmente se refiere a un atributo de una entidad descrito en el modelo estructural del negocio, por ejemplo: nombre de la unidad de aprendizaje, nombre del alumno, RFC del profesor, etc. %ATRIBUTO
+	
+	\item [$<ENTIDAD>$:] Es un sustantivo y generalmente se refiere a una entidad del modelo estructural del negocio, por ejemplo: programa académico, alumno, profesor, etc.
+	\item [$<OPERACION>$:] Se refiere a una acción que se debe realizar sobre los datos de una o varias entidades. Por ejemplo: registrar, eliminar, actualizar, por mencionar algunos. Comúnmente la OPERACIÓN va concatenada con el sustantivo, por ejemplo: Registro de un nuevo beneficio, registro de una actividad, eliminar una tarea y demás.
+	
+	\item [$<VALOR>$:] Es un sustantivo concreto y generalmente se refiere a un valor en específico. Por ejemplo: \textit{Histología I} es un \textbf{valor} concreto de la \textbf{entidad} \textit{Unidad de Aprendizaje}.
+	
+\end{description}
+%___________________________Plantilla_______________________________
+%===========================  MSGX ==================================
+%\begin{mensaje}{MSGX}{}{}
+%	\item[Canal:] 
+%	\item[Propósito:] 
+%	\item[Redacción:]
+%	\item[Parámetros:] 
+%	\begin{itemize}
+%		\item 
+%	\end{itemize}
+%	\item[Ejemplo:]  
+%	\item[Referenciado por: ]
+%\end{mensaje}
+
+
+%===========================  MSG6 ==================================
+\begin{mensaje}{MSG1}{Operación exitosa}{Mensaje de éxito en pantalla}
+  
+    %   \item[Redacción:] $<ARTICULO>$ $ENTIDAD$ se ha(n) $OPERACION$ exitosamente.
+    %
+    %    \item[Parámetros:] 
+    %    \begin{itemize}
+    %        \item $<ARTICULO>$: Se refiere a un {\em artículo} el cual puede ser DETERMINADO (El $\mid$
+    %            La $\mid$ Lo $\mid$ Los $\mid$ Las) o INDETERMINADO (Un $\mid$ Una $\mid$ Uno $\mid$
+    %            Unos $\mid$Unas).
+    %        \item $<ENTIDAD>$: Se refiere a la entidad o atributo en el cual estamos realizando la operación. Por ejemplo: evento, supervisor, sustentante, etc.
+    %        \item $<OPERACION>$: Se refiere a una acción que se debe realizar sobre los datos de una o varias entidades, el verbo puede tener una conjugación en participio. Por ejemplo: finalizado, registrado, eliminado, actualizado, por mencionar algunos.
+    %    \end{itemize}   
+    %
+    %    \item[Ejemplo:] \textit{El} \textit{evento} se ha \textit{registrado} exitosamente.  
+      
+        \item[Redacción:] $ENTIDAD$ $OPERACION$.
+    
+        \item[Parámetros:] 
+        \begin{itemize}
+    %        \item $<ARTICULO>$: Se refiere a un {\em artículo} el cual puede ser DETERMINADO (El $\mid$
+    %            La $\mid$ Lo $\mid$ Los $\mid$ Las) o INDETERMINADO (Un $\mid$ Una $\mid$ Uno $\mid$
+    %            Unos $\mid$Unas).
+            \item $<ENTIDAD>$: Se refiere a la entidad o atributo en el cual estamos realizando la operación. Por ejemplo: evento, supervisor, sustentante, etc.
+            \item $<OPERACION>$: Se refiere a una acción que se debe realizar sobre los datos de una o varias entidades, el verbo puede tener una conjugación en participio. Por ejemplo: finalizado, registrado, eliminado, actualizado, por mencionar algunos.
+        \end{itemize}   
+    
+        \item[Ejemplo:] \textit{Evento} \textit{registrado}.
+    \end{mensaje}
+
+ 
+%%====================  MSG2 =====================
+\begin{mensaje}{MSG2}{Formato de campo inválido}{Mensaje de error}
+	\item[Redacción:] Favor de ingresar un $<CAMPO>$  válido.
+    \item[Parámetros:] 
+    \begin{itemize}
+        
+        \item $<CAMPO>$: Se refiere al nombre del campo que se ha ingresado y no es válido. Por ejemplo: número de teléfono, correo electrónico, etc.
+    \end{itemize}   
+
+    \item[Ejemplo:]  \begin{itemize}
+        \item  Favor de ingresar un número de teléfono  válido.
+        \item  Favor de ingresar un correo electrónico válido.
+    \end{itemize} 
+\end{mensaje}
+
+
+%===========================  MSG3 ==================================
+\begin{mensaje}{MSG3}{Dato ingresado ya registrado}{Mensaje de error}
+	\item[Redacción:] Ya existe un $<elemento>$ registrado con la información ingresada.
+	
+	%el $<DATO>$ $<ACCION>$	
+	
+	\item[Parámetros:] 
+    \begin{itemize}
+      %  \item $<DATO>$: Se refiere a la información que esta siendo ingresada nuevamente. Por ejemplo: CURP, correo electrónico, etc.
+     %   \item $<ACCION>$: Se refiere a la operación que esta siendo ejecutada de nueva cuenta, entre las cuales se encuentran: registrado, ingresado, confirmado, etc. 
+        \item $<ACTOR>$: Se refiere a la persona que está siendo afectado por la acción. Por ejemplo: sustentante, supervisor potencial, supervisor, enlace institucional, etc.
+    \end{itemize}   
+
+    \item[Ejemplo:]  
+    \begin{itemize}
+        \item  Ya existe un $correo electronico$ registrado con la información ingresada.
+	
+        \item  Ya existe un $correo electronico$ registrado con la información ingresada.
+	
+    \end{itemize} 
+\end{mensaje}
+
+   
+%===========================  MSG1 ==================================
+\begin{mensaje}{MSG4}{Dato obligatorio faltante}{Mensaje de error en campo}
+	\item[Redacción:] Campo obligatorio, favor de $<OPERACION>$.
+    \item[Parámetros:] $<OPERACION>$: Se refiere a una acción que se debe realizar sobre los campos marcados como obligatorios. Por ejemplo: ingresarlo, seleccionarlo.
+    
+
+    \item[Ejemplo:]\begin{itemize}
+        
+        \item Campo obligatorio, favor de ingresarlo.  
+        \item Campo obligatorio, favor de seleccionarlo.
+    \end{itemize} 
+\end{mensaje}
+
+

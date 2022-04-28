@@ -1,0 +1,82 @@
+\begin{UseCase}{GRL-CU01}{Crear Cuenta.}{
+	Permite al actor registrarse como en el sistema y ası́ gestionar su perfil y aplicar a las vacantes
+	de su elección.
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		Alumno. 
+	}
+	\UCitem{Prioridad}{
+		Alta
+	}
+	\UCitem{Complejidad}{
+		Alta
+	}
+	\UCitem{Precondiciones}{
+		El correo electrónico del usuario no debe estar registrado en el sistema.
+	}
+	\UCitem{Postcondiciones}{
+		EL actor pordra gestionar su perfil y aplicar a las vacantes publicadas en el sistema.
+	}
+	\UCitem{Entradas}{
+		\imprimeUC{entrada}
+	}
+	  
+	\UCitem{Destino}{
+		\refIdElem{GRL-IU01}
+		
+	}
+	\UCitem{Reglas de Negocio}{
+		\Titem \refElem{RN-N001}
+		\Titem \refElem{RN-N002}
+		\Titem \refElem{RN-N003}
+		\Titem \refElem{RN-N004}
+	}
+
+	\UCitem{Viene de}{
+		Caso de uso primario.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Presiona el botón \textbf{Crea tu cuenta} desde la pantalla \refElem{GRL-IU00}.
+    \UCpaso [\UCsist] Muestra la pantalla \refElem{GRL-IU01}.
+	\UCpaso [\UCactor] Ingresa el \entrada[correo electrónico]{users.username} y \entrada[contraseña]{users.password} del usuario en los compos correspondientes.\label{cu01-grl}
+	\UCpaso [\UCactor] Acepta los terminos de privacidad y condiciones del sistema.
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Crear Cuenta}. \refTray{A}
+    \UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la
+	regla de negocio \refIdElem{RN-N001}.\refTray{B}
+	\UCpaso [\UCsist] Verifica que el correo electrónico ingresado cumpla con el formato correcto de acuerdo a las reglas de negocio  \refIdElem{RN-N002} y \refIdElem{RN-N003} .\refTray{C}
+	\UCpaso [\UCsist] Verifica que el correo electrónico ingresado no coincida con otro registrado en el sistema deacuedo a la regla de negocio  \refIdElem{RN-N004} Unicidad de datos.\refTray{D}
+	\UCpaso [\UCsist] Verifica que la contraseña cumpla con el formato correcto de acuerdo a la reglas de negocio \refIdElem{RN-N002} y \refIdElem{RN-N003} .\refTray{C}
+	\UCpaso [\UCsist] Asigna los permisos correspondientes de un usuario tipo Alumno a la cuenta creada.
+    \UCpaso [\UCsist] Muestra la pantalla del Home del Alumno.
+\end{UCtrayectoria}
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor decide cancelar el registro de un usuario.}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Cancelar}.
+	\UCpaso [\UCsist] Muestra la pantalla \refElem{GRL-IU00}.
+\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin del caso de uso]{B}{El actor no ingresó uno o más datos obligatorios.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG1} en los campos que no
+	fueron ingresados.
+	\UCpaso [\UCsist] Continúa en el paso \ref{cu01-grl} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin del caso de uso]{C}{El actor ingresó el dato con formato incorrecto.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG2}.
+	\UCpaso [\UCsist] Continúa en el paso \ref{cu01-grl} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin del caso de uso]{D}{El actor ingresó uun correo electrónico ya registrado en el sistema.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG3}.
+	\UCpaso [\UCsist] Continúa en el paso \ref{cu01-grl} de la trayectoria principal.
+\end{UCtrayectoriaA} 
