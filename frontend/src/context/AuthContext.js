@@ -108,6 +108,7 @@ const AuthProvider = ({ children }) => {
     user,
     token,
     errors,
+    loading,
     login,
     logout,
     loginStudent,

@@ -14,16 +14,9 @@ let initialForm = {
   password: "",
 };
 
-const validateForm = (form) => {
-  let error = {};
-  let regex = {};
-};
-
 const Form = () => {
-  const { form, handleChange } = useForm(initialForm, validateForm);
+  const { form, handleChange } = useForm(initialForm);
   const { login } = useContext(AuthContext);
-
-  // console.log(errors);
 
   return (
     <>

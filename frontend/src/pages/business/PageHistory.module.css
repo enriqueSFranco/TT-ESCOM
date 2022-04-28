@@ -1,7 +1,6 @@
 .boxSearch {
   width: 400px;
   height: 50px;
-  outline: 2px solid red;
   position: relative;
   display: flex;
   justify-content: center;
@@ -11,7 +10,6 @@
 .boxSearch > svg {
   position: absolute;
   z-index: 1;
-  outline: 1px solid red;
   right: 1rem;
   cursor: pointer;
 }
@@ -69,13 +67,13 @@
 }
 
 .menu {
-  height: 450px;
+  height: 500px;
   padding-top: .5rem;
   font-family: 'Poppins', sans-serif;
 }
 
 .menu ul {
-  height: 434px;
+  height: 494px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

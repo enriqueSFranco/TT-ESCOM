@@ -8,9 +8,9 @@ import styles from "../Styles.module.css";
 
 const LoginCompany = () => {
   const { form, handleChange } = useForm(loginFormCompany);
-  const { loginRecruiter, token } = useContext(AuthContext);
+  const { loginRecruiter } = useContext(AuthContext);
 
-  console.log(token)
+  // console.log(token)
 
   return (
     <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>

@@ -4,9 +4,11 @@ import AuthContext from "context/AuthContext";
 import { Avatar } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
 import { MdSpaceDashboard, MdBusinessCenter } from "react-icons/md";
-import { IoMdLogOut } from "react-icons/io";
+import { IoMdLogOut, IoMdSettings } from "react-icons/io";
 import { FaUserTie } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
+import { GrAnnounce } from "react-icons/gr";
+import { CgNotes } from "react-icons/cg";
 import styles from "./PageHistory.module.css";
 
 const PageHistory = () => {
@@ -54,7 +56,13 @@ const PageHistory = () => {
               </Link>
             </li>
             <li>
-              <Link to="publicar-vacante">Publicar vacante</Link>
+              <Link to="publicar-vacante"><CgNotes />Publicar vacante</Link>
+            </li>
+            <li>
+              <Link to="publicar-comunicado"><GrAnnounce />Publicar comunicado</Link>
+            </li>
+            <li>
+              <Link to="configuracion"><IoMdSettings />Configuracion</Link>
             </li>
             <li>
               <Link to="/">

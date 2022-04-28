@@ -18,23 +18,8 @@ img {
   font-size: 2rem;
 }
 
-.details { 
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
-}
+.body { font-family: 'Poppins', sans-serif; }
 
-.details h1 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.details span {
-  display: block;
-  color: #fff;
-  text-align: left;
-  margin-bottom: .7rem;
-}
 
 .grid {
   position: relative;
@@ -49,13 +34,9 @@ img {
   justify-items: center;
 }
 
-.releaseDescription {
-  margin-top: 3rem;
-  height: auto;
-  font-size: 1.1rem;
-}
 
 .wrapper {
+  color: #fff;
   position: fixed;
   top: 3rem;
   bottom: 0;

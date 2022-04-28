@@ -23,6 +23,8 @@ import PageMyJobs from "pages/business/PageMyJobs";
 import PageSuccesCompany from "pages/login/PageSuccesCompany";
 import PageValidateRecruiter from "pages/admin/PageValidateRecruiter";
 import PageApplications from "pages/business/PageApplications";
+import PagePostRelease from "pages/business/PagePostRelease";
+import ModalBusiness from "components/Modal/ModalBusiness";
 
 const Root = () => {
   return (
@@ -48,9 +50,11 @@ const Root = () => {
       <Route path="/reclutador" element={<PageLoginCompany />} />
       <Route path="/registro-reclutador" element={<PageRegisterCompany />} />
       <Route path="/pre-registro" element={<PageSuccesCompany />} />
+      
       <Route path="empresas" element={<PageCompany />}>
-        <Route path=":t301_id_company" element={<ModalRelease />} />
+        <Route path=":t301_id_company" element={<ModalBusiness />} />
       </Route>
+      
       <Route path="comunicados" element={<PageReleases />}>
         <Route path=":t202_id_announcement" element={<ModalRelease />} />
       </Route>
@@ -74,6 +78,7 @@ const Root = () => {
           <Route path="mis-vacantes" element={<PageMyJobs />} />
           <Route path="solicitudes" element={<PageApplications />} />
           <Route path="publicar-vacante" element={<PageAddJob />} />
+          <Route path="publicar-comunicado" element={<PagePostRelease />} />
         </Route>
       </Route>
 
