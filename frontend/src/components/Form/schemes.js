@@ -59,7 +59,7 @@ export const postJobInitialForm = {
     t200_cp : "",
     t200_interior_number : "",
     t200_exterior_number : "",
-    t200_vacancy : "",
+    t200_vacancy : "1",
     t200_contract_type : "",
     t301_id_recruiter : "",
     t400_id_admin : ""
