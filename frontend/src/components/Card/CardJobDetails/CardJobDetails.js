@@ -83,8 +83,8 @@ const JobCardDetails = () => {
                     <Chip
                       label={
                         `${numberFormat(job[0]?.t200_max_salary).slice(
-                          3
-                        )} MXM` ?? "No especificado"
+                          4
+                        )} MXN` ?? "No especificado"
                       }
                       icon={
                         <MdIcon.MdOutlineAttachMoney

@@ -9,7 +9,12 @@ h3 {
   letter-spacing: 1;
 }
 
-.body { height: 670px; overflow-y: scroll; padding-top: 1rem; }
+.body { 
+  height: 670px; 
+  overflow-y: scroll; 
+  padding-top: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
 
 .positionSticky {
   font-family: sans-serif;

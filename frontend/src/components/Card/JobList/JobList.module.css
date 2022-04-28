@@ -13,6 +13,27 @@
   justify-content: center;
 }
 
+.pagination button {
+  position: relative;
+  border: none;
+  width: 120px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 8px;
+  margin: .5rem;
+  background-color: #2687ab;
+  color: #fff;
+  z-index: 1;
+  transition: background-color .3s ease;
+}
+
+.icon {
+  font-size: 1.3rem;
+  color: #fff;
+}
+
 .wrapper {
   width: 70%;
   min-height: 100vh;

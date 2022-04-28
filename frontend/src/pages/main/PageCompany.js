@@ -52,14 +52,16 @@ const PageCompany = () => {
           <Skeleton type="business" />
         ) : search.length > 0 ? (
           companyMatch.map((company) => (
-            <CardCompany
-              key={company?.t300_id_company}
-              name={company?.t300_name}
-              mision={company?.t300_mision}
-              vision={company?.t300_vision}
-              webSite={company?.t300_web_page}
-              logo={company?.t300_logo}
-            />
+            <Link className={styles.linkCard} to={`${company?.t300_id_company}`} key={company?.t300_id_company}>
+              <CardCompany
+                key={company?.t300_id_company}
+                name={company?.t300_name}
+                mision={company?.t300_mision}
+                vision={company?.t300_vision}
+                webSite={company?.t300_web_page}
+                logo={company?.t300_logo}
+              />
+            </Link>
           ))
         ) : data.length > 0 ? (
           data.map((company) => (

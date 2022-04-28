@@ -2,7 +2,6 @@ import React from "react";
 import Tooltip from "@mui/material/Tooltip";
 import * as GoIcon from "react-icons/go";
 import * as MdIcon from "react-icons/md";
-import * as FaIcon from "react-icons/fa"
 import logoProject from "images/project.svg";
 import styles from "./Experience.module.css";
 
