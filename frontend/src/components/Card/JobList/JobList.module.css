@@ -8,6 +8,11 @@
   grid-template-columns: 1fr 1fr;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
 .wrapper {
   width: 70%;
   min-height: 100vh;

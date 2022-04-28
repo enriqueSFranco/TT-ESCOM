@@ -36,11 +36,11 @@ const PageCompany = () => {
         <div className={styles.background}></div>
         <h1 className={styles.title}>Empresas registradas</h1>
         <form className={styles.searchForm}>
-          <Label htmlFor="company">
+          <Label htmlFor="t300_id_company">
             <Input
               type="text"
-              id="company"
-              name="company"
+              id="t300_id_company"
+              name="t300_id_company"
               onChange={(e) => searchCompany(e.target.value)}
             />
             <Span content="Buscar una empresa" />

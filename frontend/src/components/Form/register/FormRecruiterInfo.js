@@ -67,7 +67,7 @@ const FormRecruiterInfo = ({ prevStep, form, errors, handleSubmitCompany, handle
           </span>
         )}
         </div>
-        <div className={styles.inputGroup}>
+        {/* <div className={styles.inputGroup}>
           <TextField
             label="Contraseña"
             type="password"
@@ -85,22 +85,22 @@ const FormRecruiterInfo = ({ prevStep, form, errors, handleSubmitCompany, handle
             {errors.t301_password}
           </span>
         )}
-        </div>
+        </div> */}
         <div className={styles.inputGroup}>
           <TextField
             label="Telefono"
-            id="t300_phone"
-            name="t300_phone"
+            id="t301_phonenumber"
+            name="t301_phonenumber"
             sx={{ width: 500, maxWidth: "100%" }}
-            value={form.t300_phone}
+            value={form.t301_phonenumber}
             onBlur={handleValidate}
             onKeyUp={handleValidate}
             onChange={handleChange}
           />
-          {errors.t301_phone && (
+          {errors.t301_phonenumber && (
           <span className={styles.error}>
             <MdIcon.MdOutlineErrorOutline />
-            {errors.t301_phone}
+            {errors.t301_phonenumber}
           </span>
         )}
         </div>

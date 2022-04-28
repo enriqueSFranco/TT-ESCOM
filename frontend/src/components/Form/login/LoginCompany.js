@@ -1,18 +1,16 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { useForm } from "../../../hooks/useForm";
-import AuthContext from "../../../context/AuthContext";
+import { useForm } from "hooks/useForm";
+import { loginFormCompany } from "../schemes";
+import AuthContext from "context/AuthContext";
 import TextField from "@mui/material/TextField";
 import styles from "../Styles.module.css";
 
-let initialForm = {
-  rfc: "",
-  password: "",
-};
-
 const LoginCompany = () => {
-  const { form, handleChange } = useForm(initialForm);
-  const { login } = useContext(AuthContext);
+  const { form, handleChange } = useForm(loginFormCompany);
+  const { loginRecruiter } = useContext(AuthContext);
+
+  // console.log(token)
 
   return (
     <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
@@ -39,20 +37,20 @@ const LoginCompany = () => {
             </span>
           </div>
         </div>
-        <div className={`col bg-white p-5 rounded-end`}>
+        <div className={`col bg-white text-center p-5 rounded-end`}>
           <div className={styles.welcome}>
             <h2>Bienvenido</h2>
             <span>Bienvenido! Porfavor introduce tus datos.</span>
           </div>
-          <form onSubmit={login} className={styles.form}>
+          <form onSubmit={loginRecruiter} className={styles.form}>
             {/* input para el username */}
             <div className={styles.inputGroup}>
               <TextField
-                label="RFC"
-                id="rfc"
-                name="rfc"
+                label="Correo electronico"
+                id="t301_email"
+                name="t301_email"
                 sx={{ width: 500, maxWidth: "100%" }}
-                value={form.rfc}
+                value={form.t301_email}
                 onChange={handleChange}
               />
             </div>

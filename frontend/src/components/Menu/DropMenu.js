@@ -2,12 +2,13 @@ import { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useDetectClick } from "hooks/useDetectClick";
 import AuthContext from "context/AuthContext";
+import DropMenuStudent from "./DropMenuStudent";
+import DropMenuRecruiter from "./DropMenuRecruiter";
 import { IoMdMenu } from "react-icons/io";
 import styles from "./Dropdown.module.css";
-import DropMenuStudent from "./DropMenuStudent";
 
 const DropMenu = () => {
-  const { user } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useDetectClick(dropdownRef, false);
 
@@ -26,7 +27,13 @@ const DropMenu = () => {
       >
         <ul className={styles.menuList}>
           {user ? (
-            <DropMenuStudent student={user} />
+            <>
+              {token?.user?.user_type === "STUDENT" ? (
+                <DropMenuStudent student={user} />
+              ) : (
+                <DropMenuRecruiter recruiter={token} />
+              )}
+            </>
           ) : (
             <>
               <li>

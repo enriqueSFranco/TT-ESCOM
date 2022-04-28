@@ -5,7 +5,7 @@ import { studentInitialForm } from "../schemes";
 import TextField from "@mui/material/TextField";
 import { InputAdornment } from "@mui/material";
 import { BiUser } from "react-icons/bi";
-import { RiLockPasswordLine } from "react-icons/ri";
+import { RiLockPasswordLine } from "react-icons/ri"
 import { MdOutlineMail, MdOutlineErrorOutline } from "react-icons/md";
 import styles from "../Styles.module.css";
 
@@ -37,11 +37,10 @@ const validateForm = (form) => {
   return errors;
 };
 
-
 const CreateAccount = () => {
   const { form, errors, handleChange, handleValidate, handleSubmitStudent } =
     useForm(studentInitialForm, validateForm);
-    
+  
     return (
       <>
         <div className={`container bg-primary shadow rounded ${styles.wrapperCreateAccountStudent}`}>
@@ -83,6 +82,7 @@ const CreateAccount = () => {
                         </InputAdornment>
                       )
                     }}
+                    color={errors.t100_name ? "warning" : "success"}
                     value={form.t100_name}
                     onBlur={handleValidate}
                     onKeyUp={handleValidate}
@@ -105,6 +105,7 @@ const CreateAccount = () => {
                         </InputAdornment>
                       )
                     }}
+                    color={errors.t100_email ? "warning" : "success"}
                     value={form.t100_email}
                     onBlur={handleValidate}
                     onKeyUp={handleValidate}
@@ -120,6 +121,10 @@ const CreateAccount = () => {
                     id="password"
                     name="password"
                     type="password"
+                    value={form.password}
+                    onBlur={handleValidate}
+                    onKeyUp={handleValidate}
+                    onChange={handleChange}
                     sx={{ width: 500, maxWidth: "100%" }}
                     InputProps={{
                       startAdornment: (
@@ -128,10 +133,7 @@ const CreateAccount = () => {
                         </InputAdornment>
                       )
                     }}
-                    value={form.password}
-                    onBlur={handleValidate}
-                    onKeyUp={handleValidate}
-                    onChange={handleChange}
+                    color={errors.password ? "warning" : "success"}
                   />
                   {errors.password && (
                     <span className={styles.error}><MdOutlineErrorOutline />{errors.password}</span>

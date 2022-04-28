@@ -2,6 +2,11 @@
 let now = new Date();
 
 
+export const loginFormCompany = {
+  t301_email: "",
+  password: "",
+};
+
 export const studentInitialForm = {
   t100_name: "",
   t100_email: "",
@@ -59,4 +64,3 @@ export const postJobInitialForm = {
     t301_id_recruiter : "",
     t400_id_admin : ""
 };
-

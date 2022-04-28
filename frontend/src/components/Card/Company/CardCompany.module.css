@@ -96,16 +96,13 @@ img {
 }
 
 .grid {
-  background-color: #19a0ee;
   position: relative;
-  top: 5rem;
-  height: 90vh;
-  width: auto;
+  top: 0rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-content: center;
   justify-items: center;
-  color: #fff;
+  color: #000;
   font-size: 3rem;
 }
 

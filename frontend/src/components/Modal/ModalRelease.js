@@ -2,17 +2,16 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useFetch } from '../../hooks/useFetch';
 import { motion } from 'framer-motion';
-import * as AiIcon from 'react-icons/ai';
+import { AiOutlineCloseCircle } from "react-icons/ai";
 import styles from './ModalRelease.module.css';
 
 const ModalRelease = () => {
   const { t202_id_announcement } = useParams();
   const { data } = useFetch(`/api/Announcements/${t202_id_announcement}/`);
   const navigate = useNavigate();
-  const closeModal = () => {
-    navigate("/comunicados");
-  };
   
+  const closeModal = () => navigate("/comunicados");
+
   if (!data) return null; // evitamos renderizados adicionales
   
   const [release] = data; // destructuramos el arreglo de objetos
@@ -25,7 +24,7 @@ const ModalRelease = () => {
       className={styles.wrapper}
     >
       <button className={styles.btnClose} onClick={closeModal}>
-        <AiIcon.AiOutlineCloseSquare />
+        <AiOutlineCloseCircle />
       </button>
       <div className={`container ${styles.grid}`}>
         <img src={release?.t202_announcement} alt={release?.t300_id_company?.t300_name} />

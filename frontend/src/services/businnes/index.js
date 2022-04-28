@@ -48,12 +48,9 @@ export const createBusiness = (payload = {}) => {
 
   return axios.post(API_COMPANY, payload, config)
     .then((response) => {
-      const { data } = response;
-      return data;
+      return response;
     })
     .catch(error => {
-      if (error.response) {
-        return error.response.data.message;
-      }
+      if (error.response) return error.response;
     })
 };

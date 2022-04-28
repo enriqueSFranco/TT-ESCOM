@@ -18,9 +18,10 @@ export const getStudent = async (id) => {
     },
   };
   return axios
-    .get(`${API_STUDENT}/${id}`, config)
+    .get(`${API_STUDENT}/${id}/`, config)
     .then((response) => {
       const { data } = response;
+      console.log(data);
       return data;
     })
     .catch((error) => {
@@ -97,11 +98,6 @@ export const createAccountStudent = async (payload) => {
   }
 };
 
-/**
- * @param {Object} payload
- * @return {Promise}
- **/
-export const loginStudent = async (payload) => {};
 
 export const uploadPhotoStudent = (id, img) => {
   const formData = new FormData();
@@ -116,3 +112,31 @@ export const uploadPhotoStudent = (id, img) => {
     })
     .catch((error) => error);
 };
+
+/**
+ * @param {Object} payload
+ * @return {Promise}
+ **/
+export const applyJob = (payload) => {
+  return axios.post(`/api/Applications/`, payload, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+  })
+    .then(response => {
+      console.log(response);
+      return response;
+    })
+    .catch(error => {
+      if (error.response) return error.response;
+    })
+};
+
+/*
+    "t200_id_vacant": null,
+    "t100_id_student": null,
+    "t201_cv": null,
+    "c205_id_application_state": null,
+    "t201_date_application": null
+*/

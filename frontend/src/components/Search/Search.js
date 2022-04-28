@@ -13,11 +13,13 @@ const Search = ({ handleSearch, data }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [filterData, setFilterData] = useState(data);
 
+  // console.log(data)
+
   const handleFilterJob = e => {
     const query = e.target.value;
     setQueryJob(query);
 
-    const newFilter = data.filter(({ t200_job }) => {
+    const newFilter = data?.result.filter(({ t200_job }) => {
       let regex = new RegExp(`${query}`, "gi");
       return t200_job.match(regex);
     });
@@ -39,10 +41,11 @@ const Search = ({ handleSearch, data }) => {
     }, 2000);
   };
 
-  // console.log(data);
+  if (Object.keys(data).length < 0) return null;
 
   return (
     <div className={`${styles.searchContainer}`}>
+      <div className={styles.searchBackdrop}></div>
       <h1 className={styles.title}>
         Ayudandote a conseguir un <span>trabajo</span>
         <br />
