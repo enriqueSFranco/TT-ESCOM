@@ -41,13 +41,13 @@ export const postJobInitialForm = {
     t200_check_time : "00:00:00",
     t200_closing_hour : "00:00:00",
     t200_work_days : "",
-    c207_id_experience : "",
+    c207_id_experience : 1,
     t200_min_salary : "",
     t200_max_salary : "",
     t200_gross_salary : "",
     t200_home_ofice : "",
-    c206_id_profile : "",
-    c204_id_vacant_status : "",
+    c206_id_profile : 1,
+    c204_id_vacant_status : 1,
     t200_publish_date : 
       now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay(),
     t200_close_date : 

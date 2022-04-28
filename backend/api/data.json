@@ -1376,56 +1376,64 @@
         "model":"students.Plataform",        
         "pk":1,
         "fields":{
-            "c115_description": "GitHub"
+            "c115_description": "GitHub",
+            "c115_icon":"/logos/github.png"
         }
     },
     {
         "model":"students.Plataform",        
         "pk":2,
         "fields":{
-            "c115_description": "GitLab"
+            "c115_description": "GitLab",
+            "c115_icon":"/logos/gitlab.png"
         }
     },
     {
         "model":"students.Plataform",        
         "pk":3,
         "fields":{
-            "c115_description": "Facebook"
+            "c115_description": "Facebook",
+            "c115_icon":"/logos/facebook.png"
         }
     },
     {
         "model":"students.Plataform",        
         "pk":4,
         "fields":{
-            "c115_description": "Twitter"
+            "c115_description": "Twitter",
+            "c115_icon":"/logos/twitter.png"
         }
     },
     {
         "model":"students.Plataform",        
         "pk":5,
         "fields":{
-            "c115_description": "Google"
+            "c115_description": "Google",
+            "c115_icon":"/logos/google.png"
         }
     },
     {
         "model":"students.Plataform",        
         "pk":6,
         "fields":{
-            "c115_description": "Gmail"
+            "c115_description": "Gmail",
+            "c115_icon":"/logos/gmail.png"
         }
     },
     {
         "model":"students.Plataform",        
         "pk":7,
         "fields":{
-            "c115_description": "Outlook"
+            "c115_description": "Outlook",
+            "c115_icon":"/logos/outlook.png"
         }
     },
     {
         "model":"students.Plataform",        
         "pk":8,
         "fields":{
-            "c115_description": "Linkedin"
+            "c115_description": "Linkedin",
+            "c115_icon":"/logos/linkedIn.png"
         }
     },
 

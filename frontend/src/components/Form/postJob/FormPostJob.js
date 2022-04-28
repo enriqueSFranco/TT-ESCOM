@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef  } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import PropTypes from 'prop-types';
 import NumberFormat from 'react-number-format';
 import Autocomplete from "@mui/material/Autocomplete";
 import { useForm } from "hooks/useForm";
+import AuthContext from "context/AuthContext";
 import { postJobInitialForm } from "../schemes";
 import {
   getAllCatalogueExperience,
@@ -45,7 +46,6 @@ const flex = {
 };
 const starlocality ={
   c222_cp: "",
-  c222_id: "",
   c222_locality: "Maravillas Ceylán",
   c222_municipality: "Tlalnepantla de Baz",
   c222_state: "México"
@@ -98,7 +98,9 @@ const FormPostJob = () => {
   } = useForm(postJobInitialForm, validateForm);
   const [profiles, setProfiles] = useState(null); // Estado para los perfiles buscados
   const [experience, setExperience] = useState(null); // Estado para el catalogo de experiencia
-  const [localities, setLocalities] = useState([{c222_state:"",c222_municipality:"",c222_locality:""}]);// Estado para el catalogo de localidades por CP  
+  const [localities, setLocalities] = useState(starlocality);// Estado para el catalogo de localidades por CP  
+  const { user } = useContext(AuthContext);
+  console.log(user);
   const minRef = useRef(null);  
   let postalCode = 54173;
 
@@ -329,9 +331,12 @@ const FormPostJob = () => {
                         value={form.c206_id_profile}
                         onChange={(event, newValue) => {
                           console.log(event.target);
+                          form.c206_id_profile = newValue.value;
                         }}         
                         freeSolo
                         options={profiles.map((option) => option.c206_description)}
+                        defaultValue={profiles[0]}
+                        filterSelectedOptions
                         renderInput={(params) => <TextField {...params} label="Perfil del Canditado" />}
                         sx={{ width: 350}}
                       />

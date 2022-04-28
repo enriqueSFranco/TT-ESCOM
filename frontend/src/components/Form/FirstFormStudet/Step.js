@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef ,useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -8,6 +8,7 @@ import DatesPersonal from "./DatesPersonal";
 import DatesJob from "./DatesJob";
 import DatesSkill from "./DatesSkill";
 import DatesSchool from "./DatesSchool";
+import AuthContext from "context/AuthContext";
 // import Button from "@mui/material/Button";
 import styles from "./StylesStepper.module.css";
 import { useForm } from "../../../hooks/useForm";
@@ -19,7 +20,7 @@ import {
 } from "services/catalogs/index";
 import { Navigate } from "react-router-dom";
 
-let id_student = 1;
+
 
 let initialForm = {
   t100_boleta: "",
@@ -46,7 +47,7 @@ let AcademicFormat = {
     t104_carreer: "",
     t104_start_date: "",
     t104_end_date: "",
-    t100_id_student: id_student,
+    t100_id_student: "",
     c107_id_academic_level: "4",
     c109_id_academic_state: "6"
 }
@@ -64,8 +65,12 @@ const StepComponent = () => {
   const { form, handleChange } = useForm(initialForm);
   const [academicHistorial, setAcademicHistorial] = React.useState(AcademicFormat); 
   const { data } = useFetch("/api/catalogues/CatalogueSkills/");  
+  const { user } = useContext(AuthContext);
   let navigate = useNavigate();
   let errors = false;
+  
+  let id_student = user.user_id;
+  AcademicFormat.t100_id_student = id_student;
   
   useEffect(() => {
     getAllAcademicUnits()
