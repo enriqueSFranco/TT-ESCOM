@@ -7,7 +7,7 @@ import { postJobInitialForm } from "../schemes";
 import {
   getAllCatalogueExperience,
   getAllCandidateProfile,
-  getLocalities
+  getLocality
 } from "services/catalogs/index";
 import Alert from "@mui/material/Alert";
 import TextField from "@mui/material/TextField";
@@ -20,6 +20,7 @@ import Span from "components/Element/Span/Span";
 import styles from "./FormPostJob.module.css";
 import * as BiIcon from "react-icons/bi";
 import * as IoIcon from "react-icons/io";
+import { helpHttp } from "../../../utils/helpHttp";
 
 const validateForm = (form) => {
   let errors = {};
@@ -42,6 +43,13 @@ const flex = {
   display: "flex",
   flexDirection: "column",
 };
+const starlocality ={
+  c222_cp: "",
+  c222_id: "",
+  c222_locality: "Maravillas Ceylán",
+  c222_municipality: "Tlalnepantla de Baz",
+  c222_state: "México"
+}
 
 const CP = React.forwardRef(function NumberFormatCustom(
   props,
@@ -90,7 +98,9 @@ const FormPostJob = () => {
   } = useForm(postJobInitialForm, validateForm);
   const [profiles, setProfiles] = useState(null); // Estado para los perfiles buscados
   const [experience, setExperience] = useState(null); // Estado para el catalogo de experiencia
-  const minRef = useRef(null);
+  const [localities, setLocalities] = useState(null);// Estado para el catalogo de localidades por CP  
+  const minRef = useRef(null);  
+  let postalCode = 54173;
 
   useEffect(() => {
     getAllCandidateProfile()
@@ -108,12 +118,39 @@ const FormPostJob = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  if (!form || !profiles || !experience) return null;
+
+  /*useEffect(() => {
+    getLocality(postalCode)
+      .then((response) => {
+        setLocalities(response);          
+      })
+      .catch((error) => console.error(error));
+  }, []);    */
+
+  if (!form || !profiles || !experience ) return null;
 
   console.log(form);
 
-  const getLocalityData = (e) =>{
-    console.log("Aqui va el CP");
+  const GetLocalityData = (e) =>{        
+    console.log("Aqui va el CP");    
+    form.t200_cp = e.target.value;  
+    if (e.target.value < 10000)
+      console.log(e.target.value);
+    else  {
+      console.log("Si es valido");   
+      //setLocalities(null);             
+      helpHttp()
+              .GET("/api/catalogues/Localities/"+form.t200_cp)
+              .then((response) => {
+                if (!response.err) {                  
+                  setLocalities(response);                  
+                  //console.log(response);
+                }                
+              })
+              .catch((err) => console.error(err));
+    }
+    console.log(form.t200_cp);        
+    console.log(localities[0]);
   };
 
   /*console.log(options[2]['c116_description']);
@@ -168,12 +205,12 @@ const FormPostJob = () => {
 
             <div >
               <div><BiIcon.BiCurrentLocation/>Ubicación</div>
-              {/*<div className={styles.form2}>
+              <div className={styles.form2}>
                 <div className={styles.inputGroup}>
                   <TextField
                     label="Código Postal"
                     value={form.c222_cp}
-                    onChange={handleChange}
+                    onChange={GetLocalityData}
                     name="c222_cp"
                     id="c222_cp"
                     sx={{ width: 200, maxWidth: "100%" , marginRight:2}}
@@ -193,7 +230,7 @@ const FormPostJob = () => {
                   />
                 </div>
 
-                  </div>*/}
+                  </div>
                 <div className={styles.form1}>
                   <div className={styles.inputGroup}>
                     <TextField
@@ -229,7 +266,7 @@ const FormPostJob = () => {
                   </div>
                 </div>
 
-                <div>
+                {/*<div>
                   <div><BiIcon.BiUser/>La vacante va dirijida a</div>
                   <div className={styles.form1}>
                     <div className={styles.inputGroup}>
@@ -309,7 +346,7 @@ const FormPostJob = () => {
                       />
                     </div>
                   </div>
-                </div>
+                </div>*/}
             </div>
 
               <div className={styles.form2}>

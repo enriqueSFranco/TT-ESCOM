@@ -28,26 +28,35 @@ export const companyInitialForm = {
 }
 
 export const postJobInitialForm = {
-  t200_job: "",
-  t200_description: "",
-  t200_requirements: "",
-  t200_benefits: "",
-  t200_check_time: "00:00:00",
-  t200_closing_hour: "00:00:00",
-  t200_work_days: "0000000",
-  t200_min_salary: 0,
-  t200_max_salary: 0,
-  t200_gross_salary: false,
-  t200_home_ofice: false,
-  t200_publish_date:
-    now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay(),
-  t200_close_date:
-    now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay(),
-  t300_id_company: 1,
-  c207_id_experience: 1,
-  c206_id_profile: 1,
-  c204_id_vacant_status: 1,
-  t301_id_recruiter: 1,
-  t400_id_admin: null,
+    t300_id_company : "",
+    t200_job : "",
+    t200_description : "",
+    t200_requirements : "",
+    t200_benefits : "",
+    t200_check_time : "00:00:00",
+    t200_closing_hour : "00:00:00",
+    t200_work_days : "",
+    c207_id_experience : "",
+    t200_min_salary : "",
+    t200_max_salary : "",
+    t200_gross_salary : "",
+    t200_home_ofice : "",
+    c206_id_profile : "",
+    c204_id_vacant_status : "",
+    t200_publish_date : 
+      now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay(),
+    t200_close_date : 
+      now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay(),
+    t200_state : "",
+    t200_mucipality : "",
+    t200_locality : "",
+    t200_street : "",
+    t200_cp : "",
+    t200_interior_number : "",
+    t200_exterior_number : "",
+    t200_vacancy : "",
+    t200_contract_type : "",
+    t301_id_recruiter : "",
+    t400_id_admin : ""
 };
 
