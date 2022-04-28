@@ -1,5 +1,5 @@
 \begin{UseCase}[]{GRL-CU02}{Enviar Pre-Registro.}{
-	Permite al actor registrarse como en el sistema y ası́ posteriormente gestionar el perfil de la empresa, 
+	Permite al actor registrarse como en el sistema y así posteriormente gestionar el perfil de la empresa, 
 	publicar  vacantes, consultar perfiles de candidatos y gestionar sus solicitudes.
 }
 	%----------------------------------------------------------------
@@ -15,30 +15,31 @@
 		Alta
 	}
 	\UCitem{Precondiciones}{
-		El correo electrónico del usuario no debe estar registrado en el sistema.
+		El correo electrónico del reclutador no debe estar registrado en el sistema.
 	}
 	\UCitem{Postcondiciones}{
-		El actor pordra gestionar su perfil publicar vacantes y gestionar sus solicitudes.
+		El actor pordra gestionar su perfil, publicar vacantes y gestionar sus solicitudes.
 	}
 	\UCitems{Entradas}{
+		\imprimeUC{entrada}
 	}
 	\UCitems{Salidas}{
+		\imprimeUC{salida}
 	}   
 	\UCitem{Destino}{
 	}
 	\UCitem{Reglas de Negocio}{
 	}
-
 	\UCitem{Viene de}{
-		Caso de uso primario.
+		%Caso de uso primario.
 	}	
 \end{UseCase}
 
 %Trayectoria Principal
 \begin{UCtrayectoria}
-	\UCpaso [\UCactor] Presiona el botón \textbf{Eres Reclutador} desde la pantalla GRL-IU00.
-    \UCpaso [\UCsist] Muestra la pantalla GRL-IU02.
-	\UCpaso [\UCactor] Ingresa los datos de la empresa:Nombre de la empresa, RFC, razon social, documento del SAT de la empresa.\label{cu02-grl1}\refTray{A}
+	\UCpaso [\UCactor] Presiona el botón \textbf{Crear Cuenta} desde la pantalla GRL-IU04.
+    \UCpaso [\UCsist] Muestra la pantalla GRL-IU05.
+	\UCpaso [\UCactor] Ingresa los datos de la empresa: Nombre de la empresa, RFC, razon social, documento del SAT de la empresa.\label{cu02-grl1}\refTray{A}
 	\UCpaso [\UCactor] Ingresa los datos de contacto:Nombre, apellidos, correo electrónico empresarial y un telefono de contacto.
 	\UCpaso [\UCactor] Acepta los terminos de privacidad y condiciones del sistema.
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Enviar Pre-Registro}. \refTray{B}
