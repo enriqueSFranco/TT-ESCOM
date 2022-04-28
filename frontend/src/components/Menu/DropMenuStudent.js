@@ -26,7 +26,7 @@ const DropMenuStudent = ({student}) => {
         </Link>
       </li>
       <li className={styles.menuItemStudent}>
-        <Link className={styles.menuLinkStudent} to="/">
+        <Link className={styles.menuLinkStudent} to="/mis-postulaciones">
           <IoMdBriefcase />
           Mis Postulaciones
         </Link>
