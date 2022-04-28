@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import PrivateRoute from "routes/PrivateRoute";
 import { ROLE } from "routes/roles";
+import PrivateRoute from "routes/PrivateRoute";
 import PageHome from "pages/main/PageHome";
 import PageCompany from "pages/main/PageCompany";
 import PageLoginStudent from "pages/login/PageLoginStudent";
@@ -10,11 +10,6 @@ import PageCreateAccountStudent from "pages/login/PageCreateAccountStudent";
 import PageLoginCompany from "pages/login/PageLoginCompany";
 import PageRegisterCompany from "pages/login/PageRegisterCompany";
 import PageProfileStudent from "pages/student/PageProfileStudent";
-import Experience from "components/Card/Experience/Experience";
-import Certifications from "components/Card/Certifications/Certifications";
-import AcademicRecord from "components/Card/AcademicRecord/AcademicRecord";
-import ModalRelease from "components/Modal/ModalRelease";
-import CardJobDetails from "components/Card/CardJobDetails/CardJobDetails";
 import PageAddJob from "pages/business/PageAddJob";
 import PageLoginStudentUpdate from "pages/login/PageLoginStudentUpdate";
 import PageDashBoard from "pages/business/PageDashBoard";
@@ -24,7 +19,13 @@ import PageSuccesCompany from "pages/login/PageSuccesCompany";
 import PageValidateRecruiter from "pages/admin/PageValidateRecruiter";
 import PageApplications from "pages/business/PageApplications";
 import PagePostRelease from "pages/business/PagePostRelease";
+import PageApplicationsStudent from "pages/student/PageApplicationsStudent";
+import Experience from "components/Card/Experience/Experience";
+import Certifications from "components/Card/Certifications/Certifications";
+import AcademicRecord from "components/Card/AcademicRecord/AcademicRecord";
+import ModalRelease from "components/Modal/ModalRelease";
 import ModalBusiness from "components/Modal/ModalBusiness";
+import CardJobDetails from "components/Card/CardJobDetails/CardJobDetails";
 
 const Root = () => {
   return (
@@ -69,6 +70,7 @@ const Root = () => {
           <Route path="experiencia" element={<Experience />} />
           <Route path="certificaciones" element={<Certifications />} />
         </Route>
+        <Route path="mis-postulaciones" element={<PageApplicationsStudent />} />
       </Route>
 
       {/* Indice de rutas privadas para un reclutador */}
