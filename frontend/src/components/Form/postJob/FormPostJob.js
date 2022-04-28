@@ -7,7 +7,11 @@ import { postJobInitialForm } from "../schemes";
 import {
   getAllCatalogueExperience,
   getAllCandidateProfile,
+<<<<<<< HEAD
   getLocalities,
+=======
+  getLocality
+>>>>>>> c10b694b669f06eedd0a4e0d355957d6e8994659
 } from "services/catalogs/index";
 import Alert from "@mui/material/Alert";
 import TextField from "@mui/material/TextField";
@@ -19,7 +23,11 @@ import Input from "components/Element/Input/Input";
 import Span from "components/Element/Span/Span";
 import * as BiIcon from "react-icons/bi";
 import * as IoIcon from "react-icons/io";
+<<<<<<< HEAD
 import styles from "./FormPostJob.module.css";
+=======
+import { helpHttp } from "../../../utils/helpHttp";
+>>>>>>> c10b694b669f06eedd0a4e0d355957d6e8994659
 
 const validateForm = (form) => {
   let errors = {};
@@ -41,6 +49,13 @@ const flex = {
   display: "flex",
   flexDirection: "column",
 };
+const starlocality ={
+  c222_cp: "",
+  c222_id: "",
+  c222_locality: "Maravillas Ceylán",
+  c222_municipality: "Tlalnepantla de Baz",
+  c222_state: "México"
+}
 
 const CP = React.forwardRef(function NumberFormatCustom(props, ref) {
   const { onChange, ...other } = props;
@@ -85,7 +100,9 @@ const FormPostJob = () => {
   } = useForm(postJobInitialForm, validateForm);
   const [profiles, setProfiles] = useState(null); // Estado para los perfiles buscados
   const [experience, setExperience] = useState(null); // Estado para el catalogo de experiencia
-  const minRef = useRef(null);
+  const [localities, setLocalities] = useState(null);// Estado para el catalogo de localidades por CP  
+  const minRef = useRef(null);  
+  let postalCode = 54173;
 
   useEffect(() => {
     getAllCandidateProfile()
@@ -103,12 +120,44 @@ const FormPostJob = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  if (!form || !profiles || !experience) return null;
+
+  /*useEffect(() => {
+    getLocality(postalCode)
+      .then((response) => {
+        setLocalities(response);          
+      })
+      .catch((error) => console.error(error));
+  }, []);    */
+
+  if (!form || !profiles || !experience ) return null;
 
   console.log(form);
 
+<<<<<<< HEAD
   const getLocalityData = (e) => {
     console.log("Aqui va el CP");
+=======
+  const GetLocalityData = (e) =>{        
+    console.log("Aqui va el CP");    
+    form.t200_cp = e.target.value;  
+    if (e.target.value < 10000)
+      console.log(e.target.value);
+    else  {
+      console.log("Si es valido");   
+      //setLocalities(null);             
+      helpHttp()
+              .GET("/api/catalogues/Localities/"+form.t200_cp)
+              .then((response) => {
+                if (!response.err) {                  
+                  setLocalities(response);                  
+                  //console.log(response);
+                }                
+              })
+              .catch((err) => console.error(err));
+    }
+    console.log(form.t200_cp);        
+    console.log(localities[0]);
+>>>>>>> c10b694b669f06eedd0a4e0d355957d6e8994659
   };
 
   /*console.log(options[2]['c116_description']);
@@ -163,17 +212,23 @@ const FormPostJob = () => {
             </div>
           </div>
 
+<<<<<<< HEAD
           <div>
             <div>
               <BiIcon.BiCurrentLocation />
               Ubicación
             </div>
             {/*<div className={styles.form2}>
+=======
+            <div >
+              <div><BiIcon.BiCurrentLocation/>Ubicación</div>
+              <div className={styles.form2}>
+>>>>>>> c10b694b669f06eedd0a4e0d355957d6e8994659
                 <div className={styles.inputGroup}>
                   <TextField
                     label="Código Postal"
                     value={form.c222_cp}
-                    onChange={handleChange}
+                    onChange={GetLocalityData}
                     name="c222_cp"
                     id="c222_cp"
                     sx={{ width: 200, maxWidth: "100%" , marginRight:2}}
@@ -193,6 +248,7 @@ const FormPostJob = () => {
                   />
                 </div>
 
+<<<<<<< HEAD
                   </div>*/}
             <div className={styles.form1}>
               <div className={styles.inputGroup}>
@@ -247,6 +303,59 @@ const FormPostJob = () => {
                     sx={{ width: 350 }}
                   />
                 </div>
+=======
+                  </div>
+                <div className={styles.form1}>
+                  <div className={styles.inputGroup}>
+                    <TextField
+                      label="Estado"
+                      value={form.c222_state}
+                      onChange={handleChange}
+                      name="c222_state"
+                      id="c222_state"
+                      sx={{ width: 350, maxWidth: "100%"}}
+                    
+                    />
+                  </div>
+                  <div className={styles.inputGroup}>
+                    <TextField
+                      label="Municipio"
+                      value={form.c222_municipality}
+                      onChange={handleChange}
+                      name="c222_municipality"
+                      id="c222_municipality"
+                      sx={{ width: 350, maxWidth: "100%"}}
+                      
+                    />
+                  </div>
+                  <div className={styles.inputGroup}>
+                    <TextField
+                      label="Localidad"
+                      value={form.c222_locality}
+                      onChange={handleChange}
+                      name="c222_locality"
+                      id="c222_locality"
+                      sx={{ width: 350, maxWidth: "100%"}}
+                    />
+                  </div>
+                </div>
+
+                {/*<div>
+                  <div><BiIcon.BiUser/>La vacante va dirijida a</div>
+                  <div className={styles.form1}>
+                    <div className={styles.inputGroup}>
+                      <Autocomplete            
+                        id="c206_id_profile"
+                        name="c206_id_profile"
+                        value={form.c206_id_profile}
+                        onChange={handleChange}         
+                        freeSolo
+                        options={profiles.map((option) => option.c206_description)}
+                        renderInput={(params) => <TextField {...params} label="Perfil del Canditado" />}
+                        sx={{ width: 350}}
+                      />
+                    </div>
+>>>>>>> c10b694b669f06eedd0a4e0d355957d6e8994659
 
                 <div className={styles.inputGroup}>
                   <Autocomplete
@@ -305,6 +414,7 @@ const FormPostJob = () => {
                   />
                 </div>
 
+<<<<<<< HEAD
                 <div className={`${styles.inputGroup} `}>
                   <TextField
                     label="Salida"
@@ -316,6 +426,20 @@ const FormPostJob = () => {
                   />
                 </div>
               </div>
+=======
+                    <div className={`${styles.inputGroup} `}>
+                      <TextField
+                        label="Salida"
+                        type="time"
+                        name="t200_closing_hour"
+                        id="t200_closing_hour"
+                        value={form.t200_closing_hour}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                </div>*/}
+>>>>>>> c10b694b669f06eedd0a4e0d355957d6e8994659
             </div>
           </div>
 

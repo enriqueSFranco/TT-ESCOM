@@ -148,6 +148,8 @@ class Vacant(models.Model):
     t200_cp = models.IntegerField(blank=True,null=True)
     t200_interior_number = models.CharField(max_length=20,blank=True,null=True)
     t200_exterior_number = models.CharField(max_length=20,blank=True,null=True)    
+    t200_vacancy = models.PositiveIntegerField(default=1)
+    t200_contract_type = models.CharField(max_length=50, default="Se acuerda en entrevista")
     t301_id_recruiter = models.ForeignKey(
         Recruiter,
         null=True,
@@ -162,7 +164,6 @@ class Vacant(models.Model):
         related_name='AdminVacant',
         on_delete=models.CASCADE
     )    
-    #t200_vacancy    
 
     class Meta:
         verbose_name = 'Vacant'
