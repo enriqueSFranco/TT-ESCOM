@@ -6,8 +6,8 @@ import styles from "./AboutMe.module.css";
 
 const AboutMe = () => {
   const [aboutMe, setAboutMe] = useState({});
-  const { user } = useContext(AuthContext);
-  let idStudent = user.user_id;
+  const { token } = useContext(AuthContext);
+  let idStudent = token?.user?.user_id;
   
 
   useEffect(() => {

@@ -71,9 +71,9 @@ const CreateAccount = () => {
               <form onSubmit={handleSubmitStudent} className={styles.form}>
                 <div className={styles.inputGroupCreatAccountStudent}>
                   <TextField
-                    label="Nombre"
-                    id="t100_name"
-                    name="t100_name"
+                    label="Nombre de usuario"
+                    id="t100_username"
+                    name="t100_username"
                     sx={{ width: 500, maxWidth: "100%" }}
                     InputProps={{
                       startAdornment: (

@@ -8,7 +8,7 @@ export const loginFormCompany = {
 };
 
 export const studentInitialForm = {
-  t100_name: "",
+  t100_username: "",
   t100_email: "",
   password: "",
 };

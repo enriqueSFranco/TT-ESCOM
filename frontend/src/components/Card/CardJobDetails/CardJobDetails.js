@@ -39,7 +39,6 @@ const JobCardDetails = () => {
   }, [t200_id_vacant]);
 
   const handleApplyJob = async () => {
-    console.log("ya puedes aplicar");
     const response = await applyJob({
       t200_id_vacant,
       t100_id_student: token?.user?.user_id,
@@ -53,7 +52,7 @@ const JobCardDetails = () => {
 
   if (!job) return null;
   let typeUser = token?.user?.user_type;
-  console.log(typeUser);
+  // console.log(typeUser);
 
   return (
     <>

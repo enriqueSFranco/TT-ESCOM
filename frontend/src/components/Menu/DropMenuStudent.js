@@ -10,12 +10,14 @@ const DropMenuStudent = ({student}) => {
   const { logout } = useContext(AuthContext);
   const [user, setUser] = useState([]);
 
+  // console.log(student)
+
   useEffect(() => {
-    getStudent(student?.user_id)
+    getStudent(student?.user?.user_id)
       .then(response => {
         setUser(response)
       })
-  }, [student?.user_id])
+  }, [student?.user?.user_id])
 
   return (
     <>
