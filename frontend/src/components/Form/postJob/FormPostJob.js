@@ -1,16 +1,43 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import PropTypes from 'prop-types';
 import NumberFormat from 'react-number-format';
+=======
+import React, { useState, useEffect, useRef, useContext } from "react";
+import PropTypes from 'prop-types';
+import NumberFormat from 'react-number-format';
+import Autocomplete from "@mui/material/Autocomplete";
+>>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
 import { useForm } from "hooks/useForm";
+import AuthContext from "context/AuthContext";
 import { postJobInitialForm } from "../schemes";
+<<<<<<< HEAD
 import { getAllCatalogueExperience, getAllCandidateProfile } from "services/catalogs/index";
+=======
+import {
+  getAllCatalogueExperience,
+  getAllCandidateProfile,
+  getLocality
+} from "services/catalogs/index";
+>>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
 import Alert from "@mui/material/Alert";
 import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
+<<<<<<< HEAD
 import { helpHttp } from "utils/helpHttp";
 import * as BiIcon from "react-icons/bi";
 import styles from "./FormPostJob.module.css";
+=======
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Label from "components/Element/Label/Label";
+import Input from "components/Element/Input/Input";
+import Span from "components/Element/Span/Span";
+import styles from "./FormPostJob.module.css";
+import * as BiIcon from "react-icons/bi";
+import * as IoIcon from "react-icons/io";
+import { helpHttp } from "../../../utils/helpHttp";
+>>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
 
 const validateForm = (form) => {
   let errors = {};
@@ -28,6 +55,7 @@ const validateForm = (form) => {
   return errors;
 };
 
+<<<<<<< HEAD
 // const flex = {
 //   // width: "400px",
 //   display: "flex",
@@ -40,6 +68,19 @@ const validateForm = (form) => {
 //   c222_municipality: "Tlalnepantla de Baz",
 //   c222_state: "México"
 // }
+=======
+const flex = {
+  // width: "400px",
+  display: "flex",
+  flexDirection: "column",
+};
+const starlocality ={
+  c222_cp: "",
+  c222_locality: "Maravillas Ceylán",
+  c222_municipality: "Tlalnepantla de Baz",
+  c222_state: "México"
+}
+>>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
 
 const CP = React.forwardRef(function NumberFormatCustom(
   props,
@@ -81,9 +122,17 @@ const FormPostJob = () => {
   const { form, errors, handleChange } = useForm(postJobInitialForm, validateForm);
   const [profiles, setProfiles] = useState(null); // Estado para los perfiles buscados
   const [experience, setExperience] = useState(null); // Estado para el catalogo de experiencia
+<<<<<<< HEAD
   const [localities, setLocalities] = useState(null);// Estado para el catalogo de localidades por CP  
   // const minRef = useRef(null);  
   // let postalCode = 54173;
+=======
+  const [localities, setLocalities] = useState(starlocality);// Estado para el catalogo de localidades por CP  
+  const { user } = useContext(AuthContext);
+  console.log(user);
+  const minRef = useRef(null);  
+  let postalCode = 54173;
+>>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
 
   useEffect(() => {
     getAllCandidateProfile()
@@ -103,12 +152,14 @@ const FormPostJob = () => {
 
 
   /*useEffect(() => {
-    getLocality(postalCode)
+    getLocality(54173)
       .then((response) => {
         setLocalities(response);          
       })
       .catch((error) => console.error(error));
   }, []);    */
+
+
 
   if (!form || !profiles || !experience ) return null;
 
@@ -121,16 +172,22 @@ const FormPostJob = () => {
       console.log(e.target.value);
     else  {
       console.log("Si es valido");   
-      //setLocalities(null);             
-      helpHttp()
-              .GET("/api/catalogues/Localities/"+form.t200_cp)
-              .then((response) => {
-                if (!response.err) {                  
-                  setLocalities(response);                  
-                  //console.log(response);
-                }                
-              })
-              .catch((err) => console.error(err));
+      //setLocalities(null);  
+      form.c222_municipality = "";
+      if(form.c222_municipality == "")    {
+          getLocality(form.t200_cp)
+          .then((response) => {
+            setLocalities(response);        
+            console.log(localities);
+            console.log(localities[0]['c222_state']);
+            console.log(localities[0]['c222_municipality']);
+            console.log(localities[0]['c222_locality']);
+            form.c222_state = localities[0]['c222_state'];
+            form.c222_municipality = localities[0]['c222_municipality'];
+            form.c222_locality = localities[0]['c222_locality'];
+          })
+          .catch((error) => console.error(error));
+      }
     }
     console.log(form.t200_cp);        
     console.log(localities[0]);
@@ -157,7 +214,7 @@ const FormPostJob = () => {
     <div className={styles.container}>
       <div><h4>Publicar vacante</h4></div>
       <div className={styles.containerform}>
-        <form>
+        <form  onSubmit={handlePostJob}>
           <div className={styles.form1}>
             <div className={styles.inputGroup}>
               <TextField
@@ -175,11 +232,15 @@ const FormPostJob = () => {
                 label="# Plazas"
                 type="number"
                 sx={{ width: 100, maxWidth: "100%" , marginRight:2}}
+<<<<<<< HEAD
                 /*value={}
+=======
+                value={form.t200_vacancy}
+>>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
                 onChange={handleChange}
-                name="t200_"
-                id="t200_"
-                InputProps={{
+                name="t200_vacancy"
+                id="t200_vacancy"
+                /*InputProps={{
                   inputComponent: NumberFormatCustom,
                 }}*/
               />
@@ -238,18 +299,63 @@ const FormPostJob = () => {
                     />
                   </div>
                   <div className={styles.inputGroup}>
-                    <TextField
+                    {/*<TextField
                       label="Localidad"
                       value={form.c222_locality}
                       onChange={handleChange}
                       name="c222_locality"
                       id="c222_locality"
                       sx={{ width: 350, maxWidth: "100%"}}
+                    />*/}
+                    <Autocomplete            
+                        id="c222_locality"
+                        name="c222_locality"
+                        value={form.c222_locality}
+                        onChange={handleChange}         
+                        freeSolo
+                        options={localities.map((option) => option.c222_locality)}
+                        renderInput={(params) => <TextField {...params} label="Localidad" />}
+                        sx={{ width: 350}}
+                      />
+                  </div>
+                </div>
+
+                <div className={styles.form1}>
+                  <div className={styles.inputGroup}>
+                    <TextField
+                      label="Calle"
+                      value={form.t200_street}
+                      onChange={handleChange}
+                      name="t200_street"
+                      id="t200_street"
+                      sx={{ width: 350, maxWidth: "100%"}}
+                    
+                    />
+                  </div>
+                  <div className={styles.inputGroup}>
+                    <TextField
+                      label="Num. Exterior"
+                      value={form.t200_exterior_number}
+                      onChange={handleChange}
+                      name="t200_exterior_number"
+                      id="t200_exterior_number"
+                      sx={{ width: 350, maxWidth: "50%"}}
+                      
+                    />
+                  </div>
+                  <div className={styles.inputGroup}>
+                    <TextField
+                      label="Num. Interior"
+                      value={form.t200_interior_number}
+                      onChange={handleChange}
+                      name="t200_interior_number"
+                      id="t200_interior_number"
+                      sx={{ width: 350, maxWidth: "50%"}}
                     />
                   </div>
                 </div>
 
-                {/*<div>
+                <div>
                   <div><BiIcon.BiUser/>La vacante va dirijida a</div>
                   <div className={styles.form1}>
                     <div className={styles.inputGroup}>
@@ -257,13 +363,22 @@ const FormPostJob = () => {
                         id="c206_id_profile"
                         name="c206_id_profile"
                         value={form.c206_id_profile}
-                        onChange={handleChange}         
+                        onChange={(event, newValue) => {
+                          console.log(event.target);
+                          form.c206_id_profile = newValue.value;
+                        }}         
                         freeSolo
                         options={profiles.map((option) => option.c206_description)}
+                        defaultValue={profiles[0]}
+                        filterSelectedOptions
                         renderInput={(params) => <TextField {...params} label="Perfil del Canditado" />}
                         sx={{ width: 350}}
                       />
                     </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
                     <div className={styles.inputGroup}>
                       <Autocomplete            
                         id="c207_id_experience"
@@ -277,6 +392,10 @@ const FormPostJob = () => {
                       />
                     </div>
                   </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
                   <div>Rango salarial y Horario</div>
                   <div className={styles.form1}>
                     <div className={styles.inputGroup}>
@@ -290,6 +409,10 @@ const FormPostJob = () => {
                         sx={{ width: 150}}
                       />
                     </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
                     <div className={styles.inputGroup}>
                       <TextField
                         label="Salario máximo"
@@ -301,6 +424,10 @@ const FormPostJob = () => {
                         sx={{ width: 150}}
                       />
                     </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
                     <div className={`${styles.inputGroup} `}>
                       De:
                       <TextField
@@ -313,6 +440,10 @@ const FormPostJob = () => {
                         sx={{ width: 150,marginRight:2}}
                       />
                     </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
                     <div className={`${styles.inputGroup} `}>
                       <TextField
                         label="Salida"
@@ -324,7 +455,11 @@ const FormPostJob = () => {
                       />
                     </div>
                   </div>
+<<<<<<< HEAD
                 </div>*/}
+=======
+                </div>
+>>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
             </div>
 
               <div className={styles.form2}>
@@ -345,11 +480,22 @@ const FormPostJob = () => {
             </div>
 
         
+<<<<<<< HEAD
+=======
+            <div className={styles.form2}>
+              <div className={`${styles.groudButton}`}>
+                <button type="submit" className={`${styles.btn} btn btn-primary`}>
+                Publicar Vacante
+                </button>
+              </div>
+            </div>
+>>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
           
         </form>
         
         
       </div>
+<<<<<<< HEAD
       <div className={styles.form2}>
         <div className={`${styles.groudButton}`}>
           <button type="submit" className={`${styles.btn} btn btn-primary`}>
@@ -358,6 +504,9 @@ const FormPostJob = () => {
         </div>
 
         </div>
+=======
+      
+>>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
       
     </div>
   );

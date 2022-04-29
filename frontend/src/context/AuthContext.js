@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
   const [errors, setErrors] = useState(null);
   let navigate = useNavigate();
 
-  const login = async (e) => {
+  /*const login = async (e) => {
     e.preventDefault();
     loginService({
       "username": e.target.t100_email.value.trim(),
@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
       .catch((error) => {
         return error;
       });
-  };
+  };*/
   
   const loginRecruiter = async (e) => {
     e.preventDefault();
@@ -68,7 +68,7 @@ const AuthProvider = ({ children }) => {
       });
   };
 
-  const loginStudent = async (e) => {
+  const login = async (e) => {
     e.preventDefault();
     loginService({
       "username": e.target.t100_email.value.trim(),
@@ -83,7 +83,11 @@ const AuthProvider = ({ children }) => {
           console.log(response.data['user']);
           console.log(response.data['user']['first_name']);
           console.log(user);          
+<<<<<<< HEAD
           if (response.data['user']['first_name'] !== "")
+=======
+          if (response.data['user']['last_name'] != "")
+>>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
               navigate("/perfil");
           else
               navigate("/actualiza-alumno");
@@ -111,7 +115,6 @@ const AuthProvider = ({ children }) => {
     loading,
     login,
     logout,
-    loginStudent,
     loginRecruiter
   };
 
