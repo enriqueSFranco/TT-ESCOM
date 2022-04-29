@@ -1,43 +1,21 @@
-<<<<<<< HEAD
-import React, { useState, useEffect } from "react";
-import PropTypes from 'prop-types';
-import NumberFormat from 'react-number-format';
-=======
 import React, { useState, useEffect, useRef, useContext } from "react";
 import PropTypes from 'prop-types';
 import NumberFormat from 'react-number-format';
 import Autocomplete from "@mui/material/Autocomplete";
->>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
 import { useForm } from "hooks/useForm";
 import AuthContext from "context/AuthContext";
 import { postJobInitialForm } from "../schemes";
-<<<<<<< HEAD
-import { getAllCatalogueExperience, getAllCandidateProfile } from "services/catalogs/index";
-=======
 import {
   getAllCatalogueExperience,
   getAllCandidateProfile,
   getLocality
 } from "services/catalogs/index";
->>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
 import Alert from "@mui/material/Alert";
 import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
-<<<<<<< HEAD
-import { helpHttp } from "utils/helpHttp";
 import * as BiIcon from "react-icons/bi";
 import styles from "./FormPostJob.module.css";
-=======
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Label from "components/Element/Label/Label";
-import Input from "components/Element/Input/Input";
-import Span from "components/Element/Span/Span";
-import styles from "./FormPostJob.module.css";
-import * as BiIcon from "react-icons/bi";
-import * as IoIcon from "react-icons/io";
-import { helpHttp } from "../../../utils/helpHttp";
->>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
 
 const validateForm = (form) => {
   let errors = {};
@@ -55,32 +33,18 @@ const validateForm = (form) => {
   return errors;
 };
 
-<<<<<<< HEAD
 // const flex = {
 //   // width: "400px",
 //   display: "flex",
 //   flexDirection: "column",
 // };
-// const starlocality ={
-//   c222_cp: "",
-//   c222_id: "",
-//   c222_locality: "Maravillas Ceylán",
-//   c222_municipality: "Tlalnepantla de Baz",
-//   c222_state: "México"
-// }
-=======
-const flex = {
-  // width: "400px",
-  display: "flex",
-  flexDirection: "column",
-};
+
 const starlocality ={
   c222_cp: "",
   c222_locality: "Maravillas Ceylán",
   c222_municipality: "Tlalnepantla de Baz",
   c222_state: "México"
 }
->>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
 
 const CP = React.forwardRef(function NumberFormatCustom(
   props,
@@ -122,17 +86,11 @@ const FormPostJob = () => {
   const { form, errors, handleChange } = useForm(postJobInitialForm, validateForm);
   const [profiles, setProfiles] = useState(null); // Estado para los perfiles buscados
   const [experience, setExperience] = useState(null); // Estado para el catalogo de experiencia
-<<<<<<< HEAD
-  const [localities, setLocalities] = useState(null);// Estado para el catalogo de localidades por CP  
-  // const minRef = useRef(null);  
-  // let postalCode = 54173;
-=======
   const [localities, setLocalities] = useState(starlocality);// Estado para el catalogo de localidades por CP  
   const { user } = useContext(AuthContext);
   console.log(user);
   const minRef = useRef(null);  
   let postalCode = 54173;
->>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
 
   useEffect(() => {
     getAllCandidateProfile()
@@ -214,7 +172,7 @@ const FormPostJob = () => {
     <div className={styles.container}>
       <div><h4>Publicar vacante</h4></div>
       <div className={styles.containerform}>
-        <form  onSubmit={handlePostJob}>
+        <form>
           <div className={styles.form1}>
             <div className={styles.inputGroup}>
               <TextField
@@ -232,11 +190,7 @@ const FormPostJob = () => {
                 label="# Plazas"
                 type="number"
                 sx={{ width: 100, maxWidth: "100%" , marginRight:2}}
-<<<<<<< HEAD
-                /*value={}
-=======
                 value={form.t200_vacancy}
->>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
                 onChange={handleChange}
                 name="t200_vacancy"
                 id="t200_vacancy"
@@ -375,10 +329,6 @@ const FormPostJob = () => {
                         sx={{ width: 350}}
                       />
                     </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
                     <div className={styles.inputGroup}>
                       <Autocomplete            
                         id="c207_id_experience"
@@ -392,10 +342,6 @@ const FormPostJob = () => {
                       />
                     </div>
                   </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
                   <div>Rango salarial y Horario</div>
                   <div className={styles.form1}>
                     <div className={styles.inputGroup}>
@@ -409,10 +355,6 @@ const FormPostJob = () => {
                         sx={{ width: 150}}
                       />
                     </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
                     <div className={styles.inputGroup}>
                       <TextField
                         label="Salario máximo"
@@ -424,10 +366,6 @@ const FormPostJob = () => {
                         sx={{ width: 150}}
                       />
                     </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
                     <div className={`${styles.inputGroup} `}>
                       De:
                       <TextField
@@ -440,10 +378,6 @@ const FormPostJob = () => {
                         sx={{ width: 150,marginRight:2}}
                       />
                     </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
                     <div className={`${styles.inputGroup} `}>
                       <TextField
                         label="Salida"
@@ -455,11 +389,7 @@ const FormPostJob = () => {
                       />
                     </div>
                   </div>
-<<<<<<< HEAD
-                </div>*/}
-=======
                 </div>
->>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
             </div>
 
               <div className={styles.form2}>
@@ -480,8 +410,6 @@ const FormPostJob = () => {
             </div>
 
         
-<<<<<<< HEAD
-=======
             <div className={styles.form2}>
               <div className={`${styles.groudButton}`}>
                 <button type="submit" className={`${styles.btn} btn btn-primary`}>
@@ -489,24 +417,12 @@ const FormPostJob = () => {
                 </button>
               </div>
             </div>
->>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
           
         </form>
         
         
       </div>
-<<<<<<< HEAD
-      <div className={styles.form2}>
-        <div className={`${styles.groudButton}`}>
-          <button type="submit" className={`${styles.btn} btn btn-primary`}>
-            Publicar Vacante
-          </button>
-        </div>
-
-        </div>
-=======
       
->>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
       
     </div>
   );

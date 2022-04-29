@@ -45,7 +45,7 @@ const CardProfileStudent = () => {
       })
   }, [token?.user?.user_id]);
 
-  console.log(socialNetworks)
+  // console.log(student)
 
   return (
     <>

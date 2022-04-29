@@ -15,6 +15,7 @@ export const studentInitialForm = {
 
 export const updateStudentInitialForm = {
   t100_name: "",
+  t100_last_name: "",
   t100_phonenumber: "",
   t100_residence: "",
   t100_speciality: "",
@@ -63,4 +64,14 @@ export const postJobInitialForm = {
     t200_contract_type : "",
     t301_id_recruiter : "",
     t400_id_admin : ""
+};
+
+export const AcademicFormat = {
+  t104_academic_unit: "",
+  t104_carreer: "",
+  t104_start_date: "",
+  t104_end_date: "",
+  t100_id_student: "",
+  c107_id_academic_level: "4",
+  c109_id_academic_state: "6"
 };

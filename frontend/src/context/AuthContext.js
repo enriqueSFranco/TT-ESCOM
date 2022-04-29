@@ -83,11 +83,7 @@ const AuthProvider = ({ children }) => {
           console.log(response.data['user']);
           console.log(response.data['user']['first_name']);
           console.log(user);          
-<<<<<<< HEAD
-          if (response.data['user']['first_name'] !== "")
-=======
-          if (response.data['user']['last_name'] != "")
->>>>>>> b8e901c8039113d3400c3e9d73a28d221a4a0e55
+          if (response.data['user']['last_name'] !== "")
               navigate("/perfil");
           else
               navigate("/actualiza-alumno");

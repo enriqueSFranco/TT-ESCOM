@@ -1,6 +1,6 @@
+import { useContext, useState } from "react";
 import { useForm } from "hooks/useForm";
-import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import AuthContext from "context/AuthContext";
 import { Toaster } from "react-hot-toast";
 import { updateStudent } from "services/students/index";
 import { updateStudentInitialForm } from "../schemes";
@@ -9,6 +9,8 @@ import Button from "@mui/material/Button";
 import Label from "../../Element/Label/Label";
 import Switch from "../../Element/Switch/Switch";
 import * as BiIcon from "react-icons/bi";
+import { GrUpdate } from "react-icons/gr";
+import { MdKeyboardBackspace } from "react-icons/md";
 import styles from "./FormUpdateDataStudent.module.css";
 
 const validateForm = (form) => {
@@ -22,19 +24,24 @@ const validateForm = (form) => {
 };
 
 const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
-  const navigate = useNavigate();
-  const { form, handleChange, handleChecked } = useForm(
+  const { token } = useContext(AuthContext);
+  const [travel, setTravel] = useState(
+    window.localStorage.getItem("travel") === "false"
+  );
+  const { form, handleChange } = useForm(
     updateStudentInitialForm,
     validateForm
   );
+
   let studentCopy = {
     ...form,
     t100_boleta: student[0]?.t100_boleta,
     t100_email: student[0]?.t100_email,
   };
-  let id = student[0]?.t100_boleta;
 
-  // TODO redireccion despues de haber actualizado los datos del alumno.
+  let id = token?.user?.user_id;
+
+  //TODO: redireccion despues de haber actualizado los datos del alumno.
   function handleSubmit(e) {
     e.preventDefault();
     updateStudent(id, studentCopy)
@@ -48,34 +55,48 @@ const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
 
   return (
     <>
-      <motion.div
-        className={styles.wrapper}
-        initial={{ scaleY: 0 }}
-        animate={{ scaleY: 1 }}
-        exit={{ scaleY: 0 }}
-        duration={{ duration: 0.5 }}
-      >
-        <h1 className={styles.title}>editar informacion</h1>
+      <div className={styles.wrapper}>
+        <header className={styles.header}>
+          <button
+            className={styles.btnGoBackProfile}
+            onClick={handleBackToProfile}
+          >
+            <MdKeyboardBackspace />
+          </button>
+          <h1 className={styles.title}>editar perfil</h1>
+        </header>
         <form onSubmit={handleSubmit} className={`container ${styles.form}`}>
           <div className={styles.inputGroup}>
-            <TextField
-              label="Nombre"
-              id="t100_name"
-              name="t100_name"
-              autoComplete="off"
-              sx={{ width: 480, maxWidth: "100%" }}
-              // defaultValue={student[0]?.t100_name}
-              value={form.t100_name}
-              onChange={handleChange}
-            />
+            <div className={styles.inputGroupFelx}>
+              <TextField
+                label="Nombre"
+                id="t100_name"
+                name="t100_name"
+                autoComplete="off"
+                sx={{ width: 280, maxWidth: "100%" }}
+                defaultValue={student[0]?.t100_name}
+                // value={form.t100_name}
+                onChange={handleChange}
+              />
+              <TextField
+                label="Apellido"
+                id="t100_last_name"
+                name="t100_last_name"
+                autoComplete="off"
+                sx={{ width: 280, maxWidth: "100%" }}
+                defaultValue={student[0]?.t100_last_name}
+                // value={form.t100_name}
+                onChange={handleChange}
+              />
+            </div>
             <TextField
               label="Especialidad"
               id="t100_speciality"
               name="t100_speciality"
               autoComplete="off"
-              sx={{ width: 480, maxWidth: "100%" }}
-              // defaultValue={student[0]?.t100_speciality}
-              value={form.t100_speciality}
+              sx={{ width: "100%", maxWidth: "100%" }}
+              defaultValue={student[0]?.t100_speciality ?? ""}
+              // value={form.t100_speciality}
               onChange={handleChange}
             />
             <TextField
@@ -83,9 +104,9 @@ const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
               id="t100_residence"
               name="t100_residence"
               autoComplete="off"
-              sx={{ width: 480, maxWidth: "100%" }}
-              // defaultValue={student[0]?.t100_residence}
-              value={form.t100_residence}
+              sx={{ width: "100%", maxWidth: "100%" }}
+              defaultValue={student[0]?.t100_residence ?? ""}
+              // value={form.t100_residence}
               onChange={handleChange}
             />
             <Switch
@@ -93,7 +114,12 @@ const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
               name="t100_travel"
               id="t100_travel"
               value={form.t100_travel}
-              onChange={handleChecked}
+              checked={travel}
+              onChange={(e) => {
+                window.localStorage.setItem("travel", `${e.target.checked}`);
+                setTravel(e.target.checked);
+                console.log(e.target.value);
+              }}
             />
             <TextField
               type="text"
@@ -101,7 +127,7 @@ const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
               id="t100_phonenumber"
               name="t100_phonenumber"
               autoComplete="off"
-              sx={{ width: 480, maxWidth: "100%" }}
+              sx={{ width: "100%", maxWidth: "100%" }}
               // defaultValue={student[0]?.t100_phonenumber}
               value={form.t100_phonenumber}
               onChange={handleChange}
@@ -120,15 +146,26 @@ const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
             </Label>
           </div>
           <div className={`${styles.actions}`}>
-            <Button variant="outlined" type="submit">
+            <Button
+              sx={{ width: "60%" }}
+              startIcon={
+                <GrUpdate
+                  style={{
+                    fontSize: "1rem",
+                    position: "relative",
+                    right: ".3rem",
+                    color: "#fff",
+                  }}
+                />
+              }
+              variant="contained"
+              type="submit"
+            >
               Actualizar
-            </Button>
-            <Button variant="outlined" onClick={handleBackToProfile}>
-              Cancelar
             </Button>
           </div>
         </form>
-      </motion.div>
+      </div>
       <Toaster />
     </>
   );
