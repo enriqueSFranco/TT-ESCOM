@@ -1377,7 +1377,7 @@
         "pk":1,
         "fields":{
             "c115_description": "GitHub",
-            "c115_icon":"/logos/github.png"
+            "c115_icon":"/icons/github.png"
         }
     },
     {
@@ -1385,7 +1385,7 @@
         "pk":2,
         "fields":{
             "c115_description": "GitLab",
-            "c115_icon":"/logos/gitlab.png"
+            "c115_icon":"/icons/gitlab.png"
         }
     },
     {
@@ -1393,7 +1393,7 @@
         "pk":3,
         "fields":{
             "c115_description": "Facebook",
-            "c115_icon":"/logos/facebook.png"
+            "c115_icon":"/icons/facebook.png"
         }
     },
     {
@@ -1401,7 +1401,7 @@
         "pk":4,
         "fields":{
             "c115_description": "Twitter",
-            "c115_icon":"/logos/twitter.png"
+            "c115_icon":"/icons/twitter.png"
         }
     },
     {
@@ -1409,7 +1409,7 @@
         "pk":5,
         "fields":{
             "c115_description": "Google",
-            "c115_icon":"/logos/google.png"
+            "c115_icon":"/icons/google.png"
         }
     },
     {
@@ -1417,7 +1417,7 @@
         "pk":6,
         "fields":{
             "c115_description": "Gmail",
-            "c115_icon":"/logos/gmail.png"
+            "c115_icon":"/icons/gmail.png"
         }
     },
     {
@@ -1425,7 +1425,7 @@
         "pk":7,
         "fields":{
             "c115_description": "Outlook",
-            "c115_icon":"/logos/outlook.png"
+            "c115_icon":"/icons/outlook.png"
         }
     },
     {
@@ -1433,7 +1433,7 @@
         "pk":8,
         "fields":{
             "c115_description": "Linkedin",
-            "c115_icon":"/logos/linkedIn.png"
+            "c115_icon":"/icons/linkedIn.png"
         }
     },
 
