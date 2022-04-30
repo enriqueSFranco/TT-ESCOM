@@ -223,87 +223,19 @@ Cada dato puede tener restricciones adicionales, entre las que se encuentran:
 	   
 \end{cdtEntidad}
 
-%---------------------Usuario-----------------------------
-
-\begin{cdtEntidad}{t300_empresa}{Empresa}{
-    %Es un periodo de tiempo, generalmente de 12 meses donde las Alcaldías, Dependencias, Órganos Desconcentrados y Entidades, cuadran las cuentas de sus actividades financieras y contables.}
-
-	    \brAttr{t300_id_empresa}{Id}{tInt}{
-	        %Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	        %Restricciones adicionales:
-            \begin{Citemize}
-                \item \refElem{tPrimaryKey}
-                \item \refElem{tUnico}
-            \end{Citemize}
-        }{\datRequerido}
-
-        \brAttr{t300_nombre}{Nombre}{tVarchar}{
-	        %Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-        }{\datRequerido}
-
-        \brAttr{t300_rfc}{RFC}{tVarchar}{
-	        %Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	        %Restricciones adicionales:
-            %\begin{Citemize}
-            %    \item \refElem{tUnico}
-            %\end{Citemize}
-        }{\datRequerido}
-
-        \brAttr{t300_nss}{Número de seguro social }{tInt}{
-	   %     Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	   %     Restricciones adicionales:
-       %     \begin{Citemize}
-       %         \item \refElem{tPrimaryKey}
-       %         \item \refElem{tUnico}
-       %     \end{Citemize}
-        }{\datOpcional}
-
-        \brAttr{t300_page_web}{Página Web}{tVarchar}{
-	   %     Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	   %     Restricciones adicionales:
-       %     \begin{Citemize}
-       %         \item \refElem{tPrimaryKey}
-       %         \item \refElem{tUnico}
-       %     \end{Citemize}
-        }{\datOpcional}
-
-        \brAttr{t300_mision}{Misión}{tVarchar}{
-	   %     Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	   %     Restricciones adicionales:
-       %     \begin{Citemize}
-       %         \item \refElem{tPrimaryKey}
-       %         \item \refElem{tUnico}
-       %     \end{Citemize}
-        }{\datOpcional}
-
-        \brAttr{t300_vision}{Vision}{tVarchar}{
-	   %     Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	   %     Restricciones adicionales:
-       %     \begin{Citemize}
-       %         \item \refElem{tPrimaryKey}
-      %          \item \refElem{tUnico}
-       %     \end{Citemize}
-        }{\datOpcional}
-
-        \brAttr{t300_razon_social}{Razon Social}{tVarchar}{
-	   %     Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	   %     Restricciones adicionales:
-       %     \begin{Citemize}
-       %         \item \refElem{tPrimaryKey}
-      %          \item \refElem{tUnico}
-       %     \end{Citemize}
-        }{\datOpcional}
-
-        \brAttr{t300_fecha_alta}{Fecha de alta}{tDate}{
-	   %     Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	   %     Restricciones adicionales:
-       %     \begin{Citemize}
-       %         \item \refElem{tPrimaryKey}
-       %         \item \refElem{tUnico}
-       %     \end{Citemize}
-        }{\datOpcional}
-
-        \brAttr{t400_id_admin}{Id del administrador}{tVarchar}{
+%---------------------Empresa-----------------------------
+\begin{cdtEntidad}{t300-empresa}{Empresa}{
+    desc}
+    \brAttr{t300-id-impresa}{Id}{tInt}{Descripción}{\datRequerido} 
+    \brAttr{t300-nombre}{Nombre}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{t300-rfc}{RFC}{tVarchar}{}{\datRequerido}
+    \brAttr{t300-nss}{Número de seguro social }{tInt}{}{\datOpcional}
+    \brAttr{t300-page-web}{Página Web}{tVarchar}{}{\datOpcional}
+    \brAttr{t300-mision}{Misión}{tVarchar}{}{\datOpcional}
+    \brAttr{t300-vision}{Vision}{tVarchar}{}{\datOpcional}
+    \brAttr{t300-razon-social}{Razon Social}{tVarchar}{}{\datOpcional}
+    \brAttr{t300-fecha-alta}{Fecha de alta}{tDate}{}{\datOpcional}
+    \brAttr{t400-id-admin}{Id del administrador}{tVarchar}{
 	   %     Es el correo del alumno con el cual se identificara como unico dentro del sistema.
 	   %     Restricciones adicionales:
             \begin{Citemize}
@@ -311,50 +243,52 @@ Cada dato puede tener restricciones adicionales, entre las que se encuentran:
                 \item \refElem{tUnico}
             \end{Citemize}
         }{\datRequerido}
-
-	   
 \end{cdtEntidad}
 
+%---------------------Reclutador-----------------------------
+\begin{cdtEntidad}{t301-empresa}{Reclutador}{desc}
+    \brAttr{t301-id-reclutador}{Id}{tInt}{Descripción}{\datRequerido} 
+    \brAttr{t301-nombre}{Nombre}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{t301-paterno}{Apellido Paterno}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{t301-materno}{Apellido Materno}{tInt}{Descripción}{\datOpcional}
+    \brAttr{t301-email}{Correo electrónico}{tVarchar}{Descripción}{\datOpcional}
+    \brAttr{t301-password}{Contraseña}{tVarchar}{Descripción}{\datOpcional}
+    \brAttr{t300-id-impresa}{Id}{tInt}{Descripción}{\datOpcional}
+    \brAttr{t400-id-admin}{Id}{tInt}{Descripción}{\datOpcional}
+\end{cdtEntidad}
 
-\begin{cdtEntidad}{t301_reclutador}{Reclutador}{
-    %Es un periodo de tiempo, generalmente de 12 meses donde las Alcaldías, Dependencias, Órganos Desconcentrados y Entidades, cuadran las cuentas de sus actividades financieras y contables.}
+%---------------------Vacantes-----------------------------
+\begin{cdtEntidad}{t200-vacante}{Vacante}{desc}
+    \brAttr{t200-id-vacante}{Id}{tInt}{Descripción}{\datRequerido} 
+    \brAttr{t200-puesto}{Puesto}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{t200-hora-entrada}{Hora de entrada}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{t200-hora-salida}{Hora de salida}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{t200-dias-laborales}{Días laborales}{tChar}{Descripción}{\datRequerido}
+    \brAttr{t200-pago-min}{Pago minímo}{tNumeric}{Descripción}{\datOpcional}
+    \brAttr{t200-pago-max}{Pago máximo}{tNumeric}{Descripción}{\datOpcional}
+    \brAttr{t200-pago-neto}{Pago neto}{tBool}{Descripción}{\datOpcional}
+    \brAttr{t200-remoto}{Trabajo remoto}{tBool}{Descripción}{\datOpcional}
+    \brAttr{t200-fecha-cierre}{Fecha de cierre}{tDate}{Descripción}{\datRequerido}
+    \brAttr{t200-fecha-publicacion}{Fecha de publicación}{tDate}{Descripción}{\datRequerido}
+    
+    \brAttr{t300-id-impresa}{Id}{tInt}{Descripción}{\datRequerido}
+    \brAttr{t106-id-carrera}{Id}{tInt}{Descripción}{\datRequerido}
+    \brAttr{t106-id-perfil-candidato}{Id}{tInt}{Descripción}{\datRequerido}
+    \brAttr{t209-id-experiencia}{Id}{tInt}{Descripción}{\datRequerido}
+    \brAttr{t204-id-estado}{Id}{tInt}{EStado de la vacante}{\datRequerido}
+    \brAttr{t301-id-reclutador}{Id}{tInt}{Descripción}{\datRequerido}
+\end{cdtEntidad}
 
-	    \brAttr{t301_id_reclutador}{Id}{tInt}{
-	        %Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	        %Restricciones adicionales:
-            \begin{Citemize}
-                \item \refElem{tPrimaryKey}
-                \item \refElem{tUnico}
-            \end{Citemize}
-        }{\datRequerido}
-
-        \brAttr{t301_nombre}{Nombre}{tVarchar}{
-	        %Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-        }{\datRequerido}
-
-        \brAttr{t301_paterno}{Apellido Paterno}{tVarchar}{
-	        %Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	        %Restricciones adicionales:
-            %\begin{Citemize}
-            %    \item \refElem{tUnico}
-            %\end{Citemize}
-        }{\datRequerido}
-
-        \brAttr{t301_materno}{Apellido Materno}{tVarchar}{
-	        %Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	        %Restricciones adicionales:
-            %\begin{Citemize}
-            %    \item \refElem{tUnico}
-            %\end{Citemize}
-        }{\datOpcional}
-
-       % \brAttr{t301_usuario}{Número de seguro social }{tInt}{
-	   %     Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	   %     Restricciones adicionales:
-       %     \begin{Citemize}
-       %         \item \refElem{tPrimaryKey}
-       %         \item \refElem{tUnico}
-       %     \end{Citemize}
-        %}{\datOpcional}	   
+%---------------------Alumno-----------------------------
+\begin{cdtEntidad}{t100-alumno}{Alumno}{desc}
+    \brAttr{t100-id-alumno}{Id}{tInt}{Descripción}{\datRequerido} 
+    \brAttr{t100-boleta}{Estado}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{t100-nombre}{Nombre}{tVarchar}{Descripción}{\datRequeridoMunicipio}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{t100-apellidos}{Colonia}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{t302-calle}{Calle}{tChar}{tVarchar}{\datRequerido}
+    \brAttr{t302-cp}{Codigo Postal}{tNumeric}{Descripción}{\datRequerido}
+    \brAttr{t302-num-ext}{Número Exterior}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{t302-num-int}{Número Interior}{tVarchar}{Descripción}{\datOpcional}
+    \brAttr{t302-telefono}{Telefono}{tNumeric}{Descripción}{\datRequerido}
 \end{cdtEntidad}
 
