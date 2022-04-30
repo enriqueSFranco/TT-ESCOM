@@ -6,8 +6,7 @@ class Admin(models.Model):
     t400_name = models.CharField(max_length=60,blank=True,null=True)
     t400_last_names = models.CharField(max_length=70, blank=True,null=True)
     t400_email = models.EmailField(null=False,blank=False,default="")
-    t400_password = models.CharField(max_length=100,blank=False,null=False)
-    t400_position = models.CharField(max_length=60,blank=True,null=True)
+    t400_admin = models.CharField(max_length=60,blank=True,null=True)
 
     class Meta:
         verbose_name = 'Amdmin'

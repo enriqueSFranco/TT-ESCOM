@@ -69,6 +69,7 @@ const StepComponent = () => {
   let navigate = useNavigate();
   let errors = false;
   
+  console.log(user);
   let id_student = user.user_id;
   AcademicFormat.t100_id_student = id_student;
   

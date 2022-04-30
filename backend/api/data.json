@@ -1843,8 +1843,8 @@
         "fields":{
             "t400_name": "Francisco",
             "t400_last_names": "Hernandez",
-            "t400_password": "paco123",
-            "t400_position": "Jefe de Area"
+            "t400_email":"ex_ap_escom@ipn.mx",
+            "t400_admin": "true"
         }
     },
 
