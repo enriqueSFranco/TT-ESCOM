@@ -30,8 +30,8 @@ const AboutMe = () => {
       <p className={styles.professionalObjective}>
         {aboutMe.personalObjective === null ? "Sin descripcion" : aboutMe.personalObjective}
       </p>
-      <p className={styles.salary}>Sueldo deseado: {aboutMe?.salary === null ? "No especificado" : `$${numberFormat(aboutMe?.salary)}MXN`}</p>
-      <p className={styles.employmentModality}>Modalidad de trabajo: {aboutMe?.salary === null ? "No especificado" : `$${numberFormat(aboutMe?.modality)}MXN`}</p>
+      <p className={styles.salary}>Sueldo deseado: {aboutMe?.salary === null ? "No especificado" : `$${numberFormat(aboutMe?.salary).slice(4,)}MXN`}</p>
+      <p className={styles.employmentModality}>Modalidad de trabajo: {aboutMe?.salary === null ? "No especificado" : `${aboutMe?.modality}`}</p>
     </div>
   );
 };

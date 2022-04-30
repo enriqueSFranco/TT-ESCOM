@@ -21,11 +21,12 @@ const JobCardDetails = () => {
   let isSticky = useSticky(100, elementRef);
   let { t200_id_vacant } = useParams();
   let navigate = useNavigate();
-  let now = new Date();
   const { token } = useContext(AuthContext);
   const [isOpen, openModal, closeModal] = useModal();
   const [job, setJob] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isApplyJob, setIsApplyJob] = useState({});
+  let now = new Date();
 
   useEffect(() => {
     setLoading(true);
@@ -47,7 +48,9 @@ const JobCardDetails = () => {
       t201_date_application:
         now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay(),
     });
-    console.log(response.data);
+    if (response.status === 201)
+      setIsApplyJob({succes: response.status, message: response.data.message});
+    else setIsApplyJob({success: response.status, message: response.data.message})
   };
 
   if (!job) return null;
@@ -215,7 +218,7 @@ const JobCardDetails = () => {
         </div>
       )}
       <Modal isOpen={isOpen} closeModal={closeModal}>
-        <Confirm applyJob={handleApplyJob} job={job[0]?.t200_job} />
+        <Confirm applyJob={handleApplyJob} isApplyJob={isApplyJob} job={job[0]?.t200_job} />
       </Modal>
     </>
   );

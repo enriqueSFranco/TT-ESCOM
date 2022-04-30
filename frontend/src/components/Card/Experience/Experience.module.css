@@ -4,7 +4,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* outline: 1px solid red; */
   position: absolute;
   top: 1rem;
   right: .5rem;
@@ -33,13 +32,10 @@
 .detailsProject a { color: #5c5c5c; font-size: .78rem; }
 
 .detailsProject {
-  /* background-color: red; */
   position: relative;
   left: 0;
   width: 100%;
   display: flex;
-  /* align-items: center; */
-  /* justify-content: space-around; */
   border-bottom: 2px solid #eee;
 }
 
@@ -47,7 +43,6 @@
   width: 450px;
   height: auto;
   overflow: hidden;
-  /* outline: 1px solid red; */
 }
 
 .detailsProject a {
@@ -63,6 +58,24 @@
   height: 80px;
   margin-left: 1rem;
   border-radius: 50%;
+}
+
+.btnAddProject {
+  position: absolute;
+  bottom: .5rem;
+  right: .5rem;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #166dfb;
+  z-index: 99;
 }
 
 .wrapper {

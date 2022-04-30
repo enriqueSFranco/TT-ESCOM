@@ -1,10 +1,13 @@
 import React from "react";
-import * as GoIcon from "react-icons/go";
-import * as MdIcon from "react-icons/md";
+import { useModal } from "hooks/useModal";
 import logoProject from "images/project.svg";
+import { GoTrashcan } from "react-icons/go";
+import { MdAdd, MdEdit } from "react-icons/md"
 import styles from "./Experience.module.css";
 
-const Experence = ({ links }) => {
+const Experence = () => {
+  const [,openModalProject,] = useModal();
+
   return (
     <article className={styles.wrapper}>
       <div className={styles.detailsProject}>
@@ -26,13 +29,14 @@ const Experence = ({ links }) => {
         </div>
         <div className={styles.actions}>
             <button className={`${styles.btnTrash}`}>
-              <GoIcon.GoTrashcan className={styles.deleteAction} />
+              <GoTrashcan className={styles.deleteAction} />
             </button>
             <button>
-              <MdIcon.MdEdit className={styles.editAction} />
+              <MdEdit className={styles.editAction} />
             </button>
         </div>
       </div>
+      <button className={styles.btnAddProject} onClick={openModalProject}><MdAdd /></button>
     </article>
   );
 };

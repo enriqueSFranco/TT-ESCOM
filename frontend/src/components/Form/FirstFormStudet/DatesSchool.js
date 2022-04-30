@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "hooks/useForm";
-import { AcademicFormat } from "../schemes"
+import { AcademicFormat } from "../schemes";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -104,9 +104,7 @@ function DatesSchool({
             id="t104_academic_unit"
             name="t104_academic_unit"
             freeSolo
-            onChange={newValue => {
-              form.academicHistorial.t104_academic_unit = newValue;
-            }}
+            onChange={handleChange}
             value={form.t104_academic_unit}
             options={academicUnit.map((option) => option.c108_academic_unit)}
             renderInput={(params) => (

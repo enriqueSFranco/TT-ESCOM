@@ -1,11 +1,19 @@
 import { Outlet } from "react-router-dom";
+import { useModal } from "hooks/useModal";
+import Modal from "components/Modal/Modal";
 import AboutMe from "components/Card/AboutMe/AboutMe";
 import MenuStudent from "components/Menu/MenuStudent";
 import CardProfileStudent from "components/Card/CardStudent/CardProfileStudent";
 import styles from "./PageProfileStudent.module.css";
 
 const PageProfileStudent = () => {
+
+  const [isOpenModalProject, ,closeModalProject] = useModal();
+
+  console.log(isOpenModalProject)
+
   return (
+    <>
     <section className={`${styles.wrapperProfile} container`}>
       <article className={`${styles.grid}`}>
         <div className={styles.profileCard}>
@@ -20,6 +28,10 @@ const PageProfileStudent = () => {
           </div>
       </article>
     </section>
+      <Modal isOpen={isOpenModalProject} closeModal={closeModalProject}>
+        <h1>Experiencia por proyecto</h1>
+      </Modal>
+    </>
   );
 };
 

@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import { useForm } from "hooks/useForm";
 import { loginFormCompany } from "../schemes";
 import AuthContext from "context/AuthContext";
+import { InputAdornment } from "@mui/material";
 import TextField from "@mui/material/TextField";
+import { RiLockPasswordLine } from "react-icons/ri";
+import { MdOutlineMail } from "react-icons/md";
 import styles from "../Styles.module.css";
 
 const LoginCompany = () => {
@@ -52,6 +55,13 @@ const LoginCompany = () => {
                 sx={{ width: 500, maxWidth: "100%" }}
                 value={form.t301_email}
                 onChange={handleChange}
+                InputProps={{
+                  startAdornment: form.t301_email && (
+                    <InputAdornment position="start">
+                      <MdOutlineMail />
+                    </InputAdornment>
+                  ),
+                }}
               />
             </div>
             {/* input para el password */}
@@ -63,6 +73,13 @@ const LoginCompany = () => {
                 sx={{ width: 500, maxWidth: "100%" }}
                 value={form.password}
                 onChange={handleChange}
+                InputProps={{
+                  startAdornment: form.password && (
+                    <InputAdornment position="start">
+                      <RiLockPasswordLine />
+                    </InputAdornment>
+                  ),
+                }}
               />
             </div>
             <div className={styles.wrapperBtnLogin}>

@@ -19,7 +19,7 @@ export const updateStudentInitialForm = {
   t100_phonenumber: "",
   t100_residence: "",
   t100_speciality: "",
-  t100_travel: false,
+  t100_travel: window.localStorage.getItem("travel") === "false",
 };
 
 export const companyInitialForm = {
