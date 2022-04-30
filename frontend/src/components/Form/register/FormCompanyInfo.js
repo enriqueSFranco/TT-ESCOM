@@ -1,6 +1,9 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
+import { InputAdornment } from "@mui/material";
 import Label from "components/Element/Label/Label";
+import { IoIosBusiness } from "react-icons/io";
+import { HiOutlineIdentification } from "react-icons/hi";
 import * as BsIcon from "react-icons/bs";
 import * as BiIcon from "react-icons/bi";
 import * as MdIcon from "react-icons/md";
@@ -39,6 +42,13 @@ const FormCompanyInfo = ({
           onBlur={handleValidate}
           onKeyUp={handleValidate}
           onChange={handleChange}
+          InputProps={{
+            startAdornment: form.t300_name && (
+              <InputAdornment position="start">
+                <IoIosBusiness />
+              </InputAdornment>
+            )
+          }}
         />
         {errors.t300_name && (
           <span className={styles.error}>
@@ -57,6 +67,13 @@ const FormCompanyInfo = ({
           onBlur={handleValidate}
           onKeyUp={handleValidate}
           onChange={handleChange}
+          InputProps={{
+            startAdornment: form.t300_rfc && (
+              <InputAdornment position="start">
+                <HiOutlineIdentification />
+              </InputAdornment>
+            )
+          }}
         />
         {errors.t300_rfc && (
           <span className={styles.error}>

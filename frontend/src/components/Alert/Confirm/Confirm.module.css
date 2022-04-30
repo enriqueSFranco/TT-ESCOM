@@ -2,7 +2,6 @@
   width: 120px;
   height: 3rem;
   border: none;
-  outline: none;
   background-color: transparent;
   margin: 0 auto;
   border-radius: 3rem;
@@ -29,6 +28,26 @@
 
 .btnApplyJob:hover::before {
   width: 120px;
+}
+
+.message {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.goToApplicationJob {
+  /* position: absolute;
+  right: .5rem;
+  bottom: 1rem; */
+  color: #000;
+  width: 190px;
+  outline: 1px solid #0fd850;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0 .4rem;
+  margin: 0 auto;
 }
 
 .title {

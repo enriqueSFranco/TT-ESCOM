@@ -45,7 +45,7 @@ const CardProfileStudent = () => {
       })
   }, [token?.user?.user_id]);
 
-  // console.log(student)
+  console.log(student)
 
   return (
     <>
@@ -77,7 +77,7 @@ const CardProfileStudent = () => {
                   <h3>
                     {student[0]?.t100_name} {student[0]?.t100_last_name}
                   </h3>
-                  <h4>{student[0]?.t100_speciality ?? ""}</h4>
+                  <h4>{student[0]?.t100_interest_job ?? ""}</h4>
                 </div>
               </div>
             </header>

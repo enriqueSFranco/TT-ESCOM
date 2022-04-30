@@ -1,6 +1,8 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
-import * as MdIcon from "react-icons/md";
+import InputAdornment from "@mui/material/InputAdornment";
+import { BiUser } from "react-icons/bi";
+import { MdOutlineMail, MdOutlineErrorOutline, MdLocalPhone } from "react-icons/md";
 import styles from "../Styles.module.css";
 
 const FormRecruiterInfo = ({ prevStep, form, errors, handleSubmitCompany, handleChange, handleValidate }) => {
@@ -21,10 +23,17 @@ const FormRecruiterInfo = ({ prevStep, form, errors, handleSubmitCompany, handle
               onBlur={handleValidate}
               onKeyUp={handleValidate}
               onChange={handleChange}
+              InputProps={{
+                startAdornment: form.t301_name && (
+                  <InputAdornment position="start">
+                    <BiUser />
+                  </InputAdornment>
+                )
+              }}
             />
             {errors.t301_name && (
             <span className={styles.error}>
-              <MdIcon.MdOutlineErrorOutline />
+              <MdOutlineErrorOutline />
               {errors.t301_name}
             </span>
           )}
@@ -40,10 +49,17 @@ const FormRecruiterInfo = ({ prevStep, form, errors, handleSubmitCompany, handle
               onBlur={handleValidate}
               onKeyUp={handleValidate}
               onChange={handleChange}
+              InputProps={{
+                startAdornment: form.t301_last_name && (
+                  <InputAdornment position="start">
+                    <BiUser />
+                  </InputAdornment>
+                )
+              }}
             />
             {errors.t301_last_name && (
               <span className={styles.error}>
-                <MdIcon.MdOutlineErrorOutline />
+                <MdOutlineErrorOutline />
                 {errors.t301_last_name}
               </span>
           )}
@@ -59,33 +75,21 @@ const FormRecruiterInfo = ({ prevStep, form, errors, handleSubmitCompany, handle
             onBlur={handleValidate}
             onKeyUp={handleValidate}
             onChange={handleChange}
+            InputProps={{
+              startAdornment: form.t301_email && (
+                <InputAdornment position="start">
+                  <MdOutlineMail />
+                </InputAdornment>
+              )
+            }}
           />
           {errors.t301_email && (
           <span className={styles.error}>
-            <MdIcon.MdOutlineErrorOutline />
+            <MdOutlineErrorOutline />
             {errors.t301_email}
           </span>
         )}
         </div>
-        {/* <div className={styles.inputGroup}>
-          <TextField
-            label="Contraseña"
-            type="password"
-            id="t301_password"
-            name="t301_password"
-            sx={{ width: 500, maxWidth: "100%" }}
-            value={form.t301_password}
-            onBlur={handleValidate}
-            onKeyUp={handleValidate}
-            onChange={handleChange}
-          />
-          {errors.t301_password && (
-          <span className={styles.error}>
-            <MdIcon.MdOutlineErrorOutline />
-            {errors.t301_password}
-          </span>
-        )}
-        </div> */}
         <div className={styles.inputGroup}>
           <TextField
             label="Telefono"
@@ -96,10 +100,17 @@ const FormRecruiterInfo = ({ prevStep, form, errors, handleSubmitCompany, handle
             onBlur={handleValidate}
             onKeyUp={handleValidate}
             onChange={handleChange}
+            InputProps={{
+              startAdornment: form.t301_phonenumber && (
+                <InputAdornment position="start">
+                  <MdLocalPhone />
+                </InputAdornment>
+              )
+            }}
           />
           {errors.t301_phonenumber && (
           <span className={styles.error}>
-            <MdIcon.MdOutlineErrorOutline />
+            <MdOutlineErrorOutline />
             {errors.t301_phonenumber}
           </span>
         )}

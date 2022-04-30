@@ -12,17 +12,17 @@ import styles from "../Styles.module.css";
 const validateForm = (form) => {
   let errors = {};
   let regex = {
-    t100_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/, // el campo nombre debe ser de 4 a 16 digitos
+    t100_username: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/, // el campo nombre debe ser de 4 a 16 digitos
     t100_email: /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/,
     password:
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/,
   };
 
-  if (!form.t100_name.trim())
-    errors.t100_name = "El campo 'Nombre' es requerido.";
-  else if (!regex.t100_name.test(form.t100_name.trim()))
-    errors.t100_name =
-      "El campo 'Nombre' solo acepta letras y espacios en blanco.";
+  if (!form.t100_username.trim())
+    errors.t100_username = "El campo 'username' es requerido.";
+  else if (!regex.t100_username.test(form.t100_username.trim()))
+    errors.t100_username =
+      "El campo 'username' solo acepta letras y espacios en blanco.";
 
   if (!form.t100_email.trim())
     errors.t100_email = "El campo 'Email' es requerido.";
@@ -76,13 +76,12 @@ const CreateAccount = () => {
                     name="t100_username"
                     sx={{ width: 500, maxWidth: "100%" }}
                     InputProps={{
-                      startAdornment: (
+                      startAdornment: form.t100_username && (
                         <InputAdornment position="start">
                           <BiUser />
                         </InputAdornment>
                       )
                     }}
-                    color={errors.t100_name ? "warning" : "success"}
                     value={form.t100_name}
                     onBlur={handleValidate}
                     onKeyUp={handleValidate}
@@ -99,7 +98,7 @@ const CreateAccount = () => {
                     name="t100_email"
                     sx={{ width: 500, maxWidth: "100%" }}
                     InputProps={{
-                      startAdornment: (
+                      startAdornment: form.t100_email && (
                         <InputAdornment position="start">
                           <MdOutlineMail />
                         </InputAdornment>
@@ -127,7 +126,7 @@ const CreateAccount = () => {
                     onChange={handleChange}
                     sx={{ width: 500, maxWidth: "100%" }}
                     InputProps={{
-                      startAdornment: (
+                      startAdornment: form.password && (
                         <InputAdornment position="start">
                           <RiLockPasswordLine />
                         </InputAdornment>

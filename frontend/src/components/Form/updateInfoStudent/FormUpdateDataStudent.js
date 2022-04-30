@@ -21,6 +21,13 @@ const validateForm = (form) => {
     t100_location: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
     t100_phone: "",
   };
+
+  if (!form.t100_name.trim())
+    errors.t100_name = "";
+  else if (!regex.t100_name.test(form.t100_name.trim()))
+    errors.t100_name = "";
+
+  return errors;
 };
 
 const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
@@ -28,7 +35,7 @@ const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
   const [travel, setTravel] = useState(
     window.localStorage.getItem("travel") === "false"
   );
-  const { form, handleChange } = useForm(
+  const { form, handleChange, handleChecked } = useForm(
     updateStudentInitialForm,
     validateForm
   );
@@ -67,15 +74,15 @@ const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
         </header>
         <form onSubmit={handleSubmit} className={`container ${styles.form}`}>
           <div className={styles.inputGroup}>
-            <div className={styles.inputGroupFelx}>
+            <div className={styles.inputGroupFlex}>
               <TextField
                 label="Nombre"
                 id="t100_name"
                 name="t100_name"
                 autoComplete="off"
                 sx={{ width: 280, maxWidth: "100%" }}
-                defaultValue={student[0]?.t100_name}
-                // value={form.t100_name}
+                // defaultValue={student[0]?.t100_name}
+                value={form.t100_name}
                 onChange={handleChange}
               />
               <TextField
@@ -84,8 +91,8 @@ const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
                 name="t100_last_name"
                 autoComplete="off"
                 sx={{ width: 280, maxWidth: "100%" }}
-                defaultValue={student[0]?.t100_last_name}
-                // value={form.t100_name}
+                // defaultValue={student[0]?.t100_last_name}
+                value={form.t100_last_name}
                 onChange={handleChange}
               />
             </div>
@@ -95,8 +102,8 @@ const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
               name="t100_speciality"
               autoComplete="off"
               sx={{ width: "100%", maxWidth: "100%" }}
-              defaultValue={student[0]?.t100_speciality ?? ""}
-              // value={form.t100_speciality}
+              // defaultValue={student[0]?.t100_speciality ?? ""}
+              value={form.t100_speciality}
               onChange={handleChange}
             />
             <TextField
@@ -105,22 +112,32 @@ const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
               name="t100_residence"
               autoComplete="off"
               sx={{ width: "100%", maxWidth: "100%" }}
-              defaultValue={student[0]?.t100_residence ?? ""}
-              // value={form.t100_residence}
+              // defaultValue={student[0]?.t100_residence ?? ""}
+              value={form.t100_residence}
               onChange={handleChange}
             />
-            <Switch
-              label="Disponibilidad para viajar"
-              name="t100_travel"
-              id="t100_travel"
-              value={form.t100_travel}
-              checked={travel}
-              onChange={(e) => {
-                window.localStorage.setItem("travel", `${e.target.checked}`);
-                setTravel(e.target.checked);
-                console.log(e.target.value);
-              }}
-            />
+            <div className={styles.flexInput}>
+              <Switch
+                label="Disponibilidad para viajar"
+                name="t100_travel"
+                id="t100_travel"
+                value={form.t100_travel}
+                onChange={handleChecked}
+                checked={form.t100_travel}
+              />
+              <input
+                type="file"
+                name="cv"
+                id="cv"
+                className={`${styles.inputFile}`}
+                value={form.file}
+                onChange={handleChange}
+              />
+              <Label htmlFor="cv">
+                <BiIcon.BiCloudUpload />
+                subir cv
+              </Label>
+            </div>
             <TextField
               type="text"
               label="Telefono/Whatsapp"
@@ -132,18 +149,6 @@ const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
               value={form.t100_phonenumber}
               onChange={handleChange}
             />
-            <input
-              type="file"
-              name="cv"
-              id="cv"
-              className={`${styles.inputFile}`}
-              value={form.file}
-              onChange={handleChange}
-            />
-            <Label htmlFor="cv">
-              <BiIcon.BiCloudUpload />
-              subir cv
-            </Label>
           </div>
           <div className={`${styles.actions}`}>
             <Button

@@ -1,11 +1,10 @@
-import React from "react";
+import ReactDOM from "react-dom";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import styles from "./Modal.module.css";
 
 
 const Modal = ({ children, isOpen, closeModal }) => {
-  return (
-    <>
+  return ReactDOM.createPortal(
       <article
         className={`${styles.modal} ${isOpen && styles.isOpen}`}
         // onClick={closeModal}
@@ -14,8 +13,8 @@ const Modal = ({ children, isOpen, closeModal }) => {
           <button className={styles.modalClose} onClick={closeModal}><AiOutlineCloseCircle /></button>
           {children}
         </div>
-      </article>
-    </>
+      </article>,
+      document.getElementById("modal")
   );
 };
 

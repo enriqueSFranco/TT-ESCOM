@@ -58,12 +58,11 @@ const StepComponent = () => {
   const { form, handleChange } = useForm(initialForm);
   const [academicHistorial, setAcademicHistorial] = useState(AcademicFormat); 
   const { data } = useFetch("/api/catalogues/CatalogueSkills/");  
-  const { user } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
   let navigate = useNavigate();
   let errors = false;
   
-  console.log(user);
-  let id_student = user.user_id;
+  let id_student = token?.user?.user_id;
   AcademicFormat.t100_id_student = id_student;
   
   useEffect(() => {
