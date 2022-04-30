@@ -35,7 +35,7 @@ function DatesSchool({
   const handleChangex = (event) => setEndYear(event.target.value);
 
   // console.log(form);
-  // console.log(academicHistorial);
+   console.log(form.academicHistorial);
 
   // setAcademicHistorial(form);
 
