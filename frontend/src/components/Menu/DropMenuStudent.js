@@ -10,12 +10,14 @@ const DropMenuStudent = ({student}) => {
   const { logout } = useContext(AuthContext);
   const [user, setUser] = useState([]);
 
+  // console.log(student)
+
   useEffect(() => {
-    getStudent(student?.user_id)
+    getStudent(student?.user?.user_id)
       .then(response => {
         setUser(response)
       })
-  }, [student?.user_id])
+  }, [student?.user?.user_id])
 
   return (
     <>
@@ -26,7 +28,7 @@ const DropMenuStudent = ({student}) => {
         </Link>
       </li>
       <li className={styles.menuItemStudent}>
-        <Link className={styles.menuLinkStudent} to="/">
+        <Link className={styles.menuLinkStudent} to="/mis-postulaciones">
           <IoMdBriefcase />
           Mis Postulaciones
         </Link>

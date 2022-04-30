@@ -1,0 +1,21 @@
+.nameJob {
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.paragraph {
+  margin: .4rem 0 0 0;
+}
+
+.tags {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper {
+  text-align: left;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 370px;
+  padding: .5rem;
+}

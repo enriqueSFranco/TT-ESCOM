@@ -1,8 +1,6 @@
 import React from "react";
-import Tooltip from "@mui/material/Tooltip";
 import * as GoIcon from "react-icons/go";
 import * as MdIcon from "react-icons/md";
-import * as FaIcon from "react-icons/fa"
 import logoProject from "images/project.svg";
 import styles from "./Experience.module.css";
 
@@ -27,16 +25,12 @@ const Experence = ({ links }) => {
           </div>
         </div>
         <div className={styles.actions}>
-          <Tooltip title="Eliminar">
             <button className={`${styles.btnTrash}`}>
               <GoIcon.GoTrashcan className={styles.deleteAction} />
             </button>
-          </Tooltip>
-          <Tooltip title="Editar">
             <button>
               <MdIcon.MdEdit className={styles.editAction} />
             </button>
-          </Tooltip>
         </div>
       </div>
     </article>

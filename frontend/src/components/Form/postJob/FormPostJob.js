@@ -14,14 +14,8 @@ import Alert from "@mui/material/Alert";
 import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Label from "components/Element/Label/Label";
-import Input from "components/Element/Input/Input";
-import Span from "components/Element/Span/Span";
-import styles from "./FormPostJob.module.css";
 import * as BiIcon from "react-icons/bi";
-import * as IoIcon from "react-icons/io";
-import { helpHttp } from "../../../utils/helpHttp";
+import styles from "./FormPostJob.module.css";
 
 const validateForm = (form) => {
   let errors = {};
@@ -39,11 +33,12 @@ const validateForm = (form) => {
   return errors;
 };
 
-const flex = {
-  // width: "400px",
-  display: "flex",
-  flexDirection: "column",
-};
+// const flex = {
+//   // width: "400px",
+//   display: "flex",
+//   flexDirection: "column",
+// };
+
 const starlocality ={
   c222_cp: "",
   c222_locality: "Maravillas Ceylán",
@@ -88,14 +83,7 @@ const FormPostJob = () => {
     setChecked(!checked);
   };
 
-  const {
-    form,
-    errors,
-    handleChange,
-    handleValidate,
-    handlePostJob,
-    handleChecked,
-  } = useForm(postJobInitialForm, validateForm);
+  const { form, errors, handleChange } = useForm(postJobInitialForm, validateForm);
   const [profiles, setProfiles] = useState(null); // Estado para los perfiles buscados
   const [experience, setExperience] = useState(null); // Estado para el catalogo de experiencia
   const [localities, setLocalities] = useState(starlocality);// Estado para el catalogo de localidades por CP  
@@ -184,7 +172,7 @@ const FormPostJob = () => {
     <div className={styles.container}>
       <div><h4>Publicar vacante</h4></div>
       <div className={styles.containerform}>
-        <form  onSubmit={handlePostJob}>
+        <form>
           <div className={styles.form1}>
             <div className={styles.inputGroup}>
               <TextField
@@ -341,7 +329,6 @@ const FormPostJob = () => {
                         sx={{ width: 350}}
                       />
                     </div>
-
                     <div className={styles.inputGroup}>
                       <Autocomplete            
                         id="c207_id_experience"
@@ -355,7 +342,6 @@ const FormPostJob = () => {
                       />
                     </div>
                   </div>
-
                   <div>Rango salarial y Horario</div>
                   <div className={styles.form1}>
                     <div className={styles.inputGroup}>
@@ -369,7 +355,6 @@ const FormPostJob = () => {
                         sx={{ width: 150}}
                       />
                     </div>
-
                     <div className={styles.inputGroup}>
                       <TextField
                         label="Salario máximo"
@@ -381,7 +366,6 @@ const FormPostJob = () => {
                         sx={{ width: 150}}
                       />
                     </div>
-
                     <div className={`${styles.inputGroup} `}>
                       De:
                       <TextField
@@ -394,7 +378,6 @@ const FormPostJob = () => {
                         sx={{ width: 150,marginRight:2}}
                       />
                     </div>
-
                     <div className={`${styles.inputGroup} `}>
                       <TextField
                         label="Salida"

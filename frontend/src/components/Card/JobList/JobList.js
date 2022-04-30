@@ -1,6 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import Skeleton from "../../Skeleton/Skeleton";
 import CardJob from "../CardJob/CardJob";
+import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 import styles from "./JobList.module.css";
 
 const JobList = ({jobs, loading, setPage, maxLenPage}) => {
@@ -32,8 +33,8 @@ const JobList = ({jobs, loading, setPage, maxLenPage}) => {
         <Outlet />
       </article>
       <div className={styles.pagination}>
-        <button onClick={prevPage}>prev</button>
-        <button onClick={nextPage}>next</button>
+        <button onClick={prevPage}><GrFormPreviousLink className={styles.icon} />Anterior</button>
+        <button onClick={nextPage}>Siguiente <GrFormNextLink className={styles.icon} /></button>
         {/* <Pagination count={isNaN(maxLenPage) ? 1 : maxLenPage} color="primary" page={page} onChange={handlePagination} /> */}
       </div>
     </>

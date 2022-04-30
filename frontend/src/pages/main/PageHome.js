@@ -17,7 +17,7 @@ const Home = () => {
   const [isFiltered, setIsFiltered] = useState(false); // bandera para saber si la informacion se tiene que filtrar
   const [loading, setLoading] = useState(false);
   const [isChecked, setIsChecked] = useState(false); // informacion filtrada
-  const [totalJobs, setTotalJobs] = useState(0); // estado para el total de vacantes
+  // const [totalJobs, setTotalJobs] = useState(0); // estado para el total de vacantes
   
   useEffect(() => {
     setLoading(true);
@@ -38,9 +38,9 @@ const Home = () => {
         let regex = new RegExp(`${value}`, "gi");
         return el?.t200_job.match(regex);
       });
-      console.log(filteredData)
+      // console.log(filteredData)
       setData(filteredData);
-      setTotalJobs(filteredData.length);
+      // setTotalJobs(filteredData.length);
     }
   };
 
@@ -56,14 +56,14 @@ const Home = () => {
       // checkbox activado
       setIsFiltered(true);
       const newData = filterForHomeOffice(jobs?.result);
-      console.log(newData);
+      // console.log(newData);
       setData(newData);
       // setTotalJobs(newData.length);
     } else if (isChecked) {
       // checkbox desactivado
       setIsFiltered(false);
       setData(jobs);
-      setTotalJobs(jobs.length);
+      // setTotalJobs(jobs.length);
     }
   };
 
@@ -90,12 +90,12 @@ const Home = () => {
     if (value === "allBusiness") {
       setIsFiltered(false);
       setData(jobs?.result);
-      setTotalJobs(jobs?.result.length);
+      // setTotalJobs(jobs?.result.length);
     } else if (value !== "") {
       setIsFiltered(true);
       const newData = filterForBusiness(jobs?.result, value);
       setData(newData);
-      setTotalJobs(newData.length);
+      // setTotalJobs(newData.length);
     }
   };
 
@@ -107,19 +107,19 @@ const Home = () => {
     if (value === "allProfile") {
       setIsFiltered(false);
       setData(jobs);
-      setTotalJobs(jobs.length);
+      // setTotalJobs(jobs.length);
     }else if (value !== "") {
       setIsFiltered(true);
       const newData = filterForProfile(jobs, value);
       setData(newData);
-      setTotalJobs(newData.length);
+      // setTotalJobs(newData.length);
     }
   };
 
 
   if (Object.keys(data).length < 0|| Object.keys(jobs).length < 0) return null;
 
-  console.log(page)
+  // console.log(page)
   
   return (
     <main className={homeStyles.home}>
@@ -133,9 +133,6 @@ const Home = () => {
       </div>
 
       <section className={homeStyles.wrapperJobList}>
-        <p className={homeStyles.totalJobs}>
-          Total de vacantes: <em>{totalJobs}</em>
-        </p>
         <JobList jobs={isFiltered ? data : jobs?.result} loading={loading} page={page} setPage={setPage} maxLenPage={maxLenPage} />
       </section>
 

@@ -15,7 +15,6 @@ import * as MdIcon from "react-icons/md";
 import * as IoIcon from "react-icons/io";
 import styles from "./CardJobDetails.module.css";
 import Confirm from "components/Alert/Confirm/Confirm";
-import axios from "axios";
 
 const JobCardDetails = () => {
   let elementRef = useRef(null);
@@ -27,7 +26,6 @@ const JobCardDetails = () => {
   const [isOpen, openModal, closeModal] = useModal();
   const [job, setJob] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [applications, setApplications] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -40,28 +38,21 @@ const JobCardDetails = () => {
       .finally(() => setLoading(false));
   }, [t200_id_vacant]);
 
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const response = await axios.get("/api/Applications/");
-  //     setApplications(response.data);
-  //   };
-  //   fetchData();
-  // }, []);
-
   const handleApplyJob = async () => {
-    console.log("ya puedes aplicar");
     const response = await applyJob({
       t200_id_vacant,
       t100_id_student: token?.user?.user_id,
       t201_cv: null,
       c205_id_application_state: 1,
-      t201_date_application: now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay()
-    })
+      t201_date_application:
+        now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay(),
+    });
     console.log(response.data);
   };
 
   if (!job) return null;
+  let typeUser = token?.user?.user_type;
+  // console.log(typeUser);
 
   return (
     <>
@@ -91,8 +82,8 @@ const JobCardDetails = () => {
                     <Chip
                       label={
                         `${numberFormat(job[0]?.t200_max_salary).slice(
-                          3
-                        )} MXM` ?? "No especificado"
+                          4
+                        )} MXN` ?? "No especificado"
                       }
                       icon={
                         <MdIcon.MdOutlineAttachMoney
@@ -124,22 +115,29 @@ const JobCardDetails = () => {
               </div>
               <div className={styles.flex}>
                 {token !== null ? (
-                  <button
-                    onClick={openModal}
-                    className={styles.btnApplyEmployment}
-                  >
-                    <IoIcon.IoIosRocket />
-                    <span>Aplicar</span>
-                  </button>
+                  <>
+                    {typeUser === "STUDENT" ? (
+                      <button
+                        onClick={openModal}
+                        className={styles.btnApplyEmployment}
+                      >
+                        <IoIcon.IoIosRocket />
+                        <span>Aplicar</span>
+                      </button>
+                    ) : (
+                      <button disabled>
+                        <IoIcon.IoIosRocket />
+                        <span>Aplicar</span>
+                      </button>
+                    )}
+                  </>
                 ) : (
                   <button
                     onClick={() => navigate("/alumno")}
                     className={styles.btnApplyEmployment}
                   >
                     <IoIcon.IoIosRocket />
-                    <span>
-                      Aplicar
-                    </span>
+                    <span>Aplicar</span>
                   </button>
                 )}
               </div>

@@ -29,7 +29,7 @@ const DropMenu = () => {
           {user ? (
             <>
               {token?.user?.user_type === "STUDENT" ? (
-                <DropMenuStudent student={user} />
+                <DropMenuStudent student={token} />
               ) : (
                 <DropMenuRecruiter recruiter={token} />
               )}

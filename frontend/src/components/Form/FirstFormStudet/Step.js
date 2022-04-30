@@ -1,6 +1,9 @@
-import React from "react";
-import { useState, useEffect, useRef ,useContext } from "react";
+import React, { useEffect ,useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "hooks/useForm";
+import { useFetch } from "hooks/useFetch";
+import { helpHttp } from "utils/helpHttp";
+import { getAllAcademicUnits, getAllJobs } from "services/catalogs/index";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
@@ -9,17 +12,7 @@ import DatesJob from "./DatesJob";
 import DatesSkill from "./DatesSkill";
 import DatesSchool from "./DatesSchool";
 import AuthContext from "context/AuthContext";
-// import Button from "@mui/material/Button";
 import styles from "./StylesStepper.module.css";
-import { useForm } from "../../../hooks/useForm";
-import { useFetch } from "../../../hooks/useFetch";
-import { helpHttp } from "../../../utils/helpHttp";
-import {
-  getAllAcademicUnits,
-  getAllJobs
-} from "services/catalogs/index";
-import { Navigate } from "react-router-dom";
-
 
 
 let initialForm = {
@@ -53,17 +46,17 @@ let AcademicFormat = {
 }
 
 const StepComponent = () => {
-  const [startMonth, setStartMonth] = React.useState(1);
-  const [startYear, setStartYear] = React.useState(1999);
-  const [endMonth, setEndMonth] = React.useState(1);
-  const [endYear, setEndYear] = React.useState(1999);
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [hardSkills, setHardSkills] = React.useState([]);
-  const [softSkills, setSoftSkills] = React.useState([]);
-  const [academicUnit,setAcademicUnits] = React.useState([]);
-  const [interestJobs,setInterestJobs] = React.useState([]); 
+  const [startMonth, setStartMonth] = useState(1);
+  const [startYear, setStartYear] = useState(1999);
+  const [endMonth, setEndMonth] = useState(1);
+  const [endYear, setEndYear] = useState(1999);
+  const [activeStep, setActiveStep] = useState(0);
+  const [hardSkills, setHardSkills] = useState([]);
+  const [softSkills, setSoftSkills] = useState([]);
+  const [academicUnit,setAcademicUnits] = useState([]);
+  const [interestJobs,setInterestJobs] = useState([]); 
   const { form, handleChange } = useForm(initialForm);
-  const [academicHistorial, setAcademicHistorial] = React.useState(AcademicFormat); 
+  const [academicHistorial, setAcademicHistorial] = useState(AcademicFormat); 
   const { data } = useFetch("/api/catalogues/CatalogueSkills/");  
   const { user } = useContext(AuthContext);
   let navigate = useNavigate();
@@ -102,8 +95,6 @@ const StepComponent = () => {
     if (activeStep === 1) {    
       return (          
         <DatesSchool 
-          academicHistorial={academicHistorial} 
-          setAcademicHistorial={setAcademicHistorial} 
           academicUnit={academicUnit}
           setAcademicUnits={setAcademicUnits}
           startMonth={startMonth} 
@@ -207,7 +198,7 @@ const StepComponent = () => {
           });
 
           ///Agregar historial academico
-          if (AcademicFormat.t104_carreer!=""){
+          if (AcademicFormat.t104_carreer !== ""){
               const endpointAcademic = "api/AcademicHistorial/";
               console.log(startMonth);
               AcademicFormat.t104_start_date = startYear+"-"+startMonth+"-01"          
