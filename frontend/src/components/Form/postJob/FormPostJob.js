@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import PropTypes from "prop-types";
-// import NumberFormat from "react-number-format";
 import { useForm } from "hooks/useForm";
 import { postJobInitialForm } from "../schemes";
 import {
@@ -11,14 +9,14 @@ import {
 import { uuid } from "utils/uuid";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
+import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import Alert from "@mui/material/Alert";
 import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import Select from "@mui/material/Select";
-import * as BiIcon from "react-icons/bi";
-import { MdPublish } from "react-icons/md";
+import { BiCurrentLocation, BiUser } from "react-icons/bi";
+import { MdPublish, MdOutlineWork, MdAttachMoney, MdOutlineErrorOutline } from "react-icons/md";
 import styles from "./FormPostJob.module.css";
 
 const validateForm = (form) => {
@@ -37,31 +35,6 @@ const validateForm = (form) => {
   return errors;
 };
 
-// const CP = React.forwardRef(function NumberFormatCustom(props, ref) {
-//   const { onChange, ...other } = props;
-
-//   return (
-//     <NumberFormat
-//       {...other}
-//       getInputRef={ref}
-//       onValueChange={(values) => {
-//         onChange({
-//           target: {
-//             name: props.name,
-//             value: values.value,
-//           },
-//         });
-//       }}
-//       isNumericString
-//       format="#####"
-//     />
-//   );
-// });
-
-// CP.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   onChange: PropTypes.func.isRequired,
-// };
 
 const FormPostJob = () => {
   const [cp, setCP] = useState("");
@@ -70,7 +43,7 @@ const FormPostJob = () => {
   const [profiles, setProfiles] = useState([]); // Estado para los perfiles buscados
   const [experience, setExperience] = useState([]); // Estado para el catalogo de experiencia
   const [localities, setLocalities] = useState([]); // Estado para el catalogo de localidades por CP
-  const { form, errors, handleChange, handleChecked } = useForm(
+  const { form, errors, handleChange, handleChecked, onSubmitPostJob } = useForm(
     postJobInitialForm,
     validateForm
   );
@@ -111,7 +84,8 @@ const FormPostJob = () => {
 
   return (
     <div className={`container ${styles.wrapper}`}>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={onSubmitPostJob}>
+        <h3 className={styles.title}><MdOutlineWork /> Detalles de la vacante</h3>
         <div className={styles.groupFormTitleJob}>
           <TextField
             label="Titulo de la vacante"
@@ -121,7 +95,9 @@ const FormPostJob = () => {
             id="t200_job"
             sx={{ width: 400, maxWidth: "100%", marginRight: 2 }}
           />
-          {errors.t200_job && <Alert severity="error">{errors.t200_job}</Alert>}
+          {errors.t200_job && (
+            <span className={styles.error}><MdOutlineErrorOutline />{errors.t200_job}</span>
+          )}
           <TextField
             label="# Plazas"
             type="number"
@@ -131,18 +107,10 @@ const FormPostJob = () => {
             name="t200_vacancy"
             id="t200_vacancy"
           />
-          <div className={styles.checkHomeOffice}>
-            <Checkbox
-              value={form.t200_home_ofice}
-              onChange={handleChecked}
-              size="small"
-            />
-            <span>Vacante Remota</span>
-          </div>
+          <FormControlLabel control={<Checkbox value={form.t200_home_ofice} onChange={handleChecked} size="small" />} label="Vacante Remota" />
         </div>
         <div>
-          <BiIcon.BiCurrentLocation />
-          <span>Ubicación</span>
+          <h3 className={styles.title}><BiCurrentLocation /> Ubicación</h3>
           <div className={styles.inputGroup}>
             <TextField
               label="Codigo postal"
@@ -176,6 +144,7 @@ const FormPostJob = () => {
                 label="Localidad"
                 onChange={handleChange}
               >
+                <MenuItem disabled>Seleccione una localidad</MenuItem>
                 {localities?.map((township) => (
                   <MenuItem key={uuid()} value={township?.c222_locality}>
                     {township?.c222_locality}
@@ -214,8 +183,7 @@ const FormPostJob = () => {
           </div>
           <div>
             <div className={styles.form1}>
-              <BiIcon.BiUser />
-              <span>La vacante va dirijida a</span>
+              <h3 className={styles.title}><BiUser /> La vacante va dirijida a</h3>
               <div className={styles.inputGroup}>
                 <FormControl sx={{ width: 300 }}>
                   <InputLabel id="c206_id_profile">Perfil</InputLabel>
@@ -253,7 +221,7 @@ const FormPostJob = () => {
               </div>
             </div>
             <div>
-              <span>Rango salarial y Horario</span>
+              <h3 className={styles.title}><MdAttachMoney/> Rango salarial y Horario</h3>
             </div>
             <div className={styles.form1}>
               <div className={styles.inputGroup}>
@@ -292,6 +260,7 @@ const FormPostJob = () => {
                   value={form.t200_closing_hour}
                   onChange={handleChange}
                 />
+                {/* dias laborales */}
               </div>
             </div>
           </div>
