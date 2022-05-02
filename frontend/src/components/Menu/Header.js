@@ -8,7 +8,7 @@ const Header = () => {
       <header className={styles.header}>
         <nav className={styles.nav}>
           <Link to="/" className={styles.navLogo}>
-            BTESCOM
+            BT<span>ESCOM</span>
           </Link>
           <ul className={styles.navList}>
             {/* inicio */}

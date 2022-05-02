@@ -4,20 +4,32 @@
 }
 
 .actions {
-  position: relative;
-  top: 1rem;
+  width: 300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btnGoBackProfile {
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 1.5rem;
+  position: absolute;
 }
 
 .form {
   width: 100%;
   height: 90%;
-  position: absolute;
-  right: 0;
-  bottom: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  justify-content: space-around;
+  /* outline: 2px solid blue; */
+}
+
+.header {
+  position: relative;
+  background-color: #90314b;
 }
 
 .inputFile {
@@ -39,8 +51,6 @@
   display: inline-block;
   overflow: hidden;
   padding: .65rem 1.25rem;
-  /* position: relative;
-  left: -1rem; */
   border-radius: var(--size-radius);
 }
 
@@ -56,8 +66,27 @@
 
 .inputFile + label {
   color: #fff;
-  /* margin: 1rem; */
   background-color: #90314b;
+}
+
+.inputGroup {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* align-items: stretch; */
+}
+
+.flexInput {
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputGroupFlex {
+  display: flex;
+  justify-content: space-between;
+  /* outline: 2px solid red; */
 }
 
 .title {
@@ -66,7 +95,6 @@
   font-size: 1.4rem;
   padding: 1rem 0 1rem 0;
   color: #fff;
-  background-color: #90314b;
   border-radius: 4px 4px 0 0;
 }
 
@@ -77,8 +105,8 @@
 
 .wrapper {
   position: relative;
-  width: 90%;
-  height: 600px;
+  font-family: 'Poppins', sans-serif;
+  height: 700px;
   border-radius: 4px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }

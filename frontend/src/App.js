@@ -1,10 +1,7 @@
 import React from "react"
-
-/*import { createTheme, ThemeProvider } from '@mui/material'*/
-
 import Root from "./Root";
-import Header from "./components/Menu/Header";
-import { AuthProvider } from "./context/AuthContext";
+import Header from "components/Menu/Header";
+import { AuthProvider } from "context/AuthContext";
 
 function App() {
 

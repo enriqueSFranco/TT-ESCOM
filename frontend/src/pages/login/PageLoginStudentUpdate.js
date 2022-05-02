@@ -1,16 +1,28 @@
-import LoginStudentUpdateInformation from "../../components/Form/FirstFormStudet/Step";
-import styles from '../GlobalStyles.module.css';
+import LoginStudentUpdateInformation from "components/Form/FirstFormStudet/Step";
 
+const Container = {
+  // backgroundColor: "blue",
+  fontFamily: "sans-serif",
+  width: "100%",
+  height: "100vh",
+};
+
+const Form = {
+  height: "100vh",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  // backgroundColor: "green"
+};
 
 const PageLoginStudent = () => {
-
   return (
-    <>
-      <section className={styles.wrapperPage}>
+    <section style={Container}>
+      <article style={Form}>
         <LoginStudentUpdateInformation />
-      </section>
-    </>
-  )
-}
+      </article>
+    </section>
+  );
+};
 
 export default PageLoginStudent;

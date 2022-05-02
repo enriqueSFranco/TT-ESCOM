@@ -1,35 +1,61 @@
+// @ts-check
+
 import axios from "axios";
 import toast from "react-hot-toast";
-import { API_STUDENT, API_SOCIAL_NETWORK, API_PHOTO_STUDENT } from "../settings";
+import {
+  API_STUDENT,
+  API_SOCIAL_NETWORK,
+  API_PHOTO_STUDENT,
+} from "../settings";
 
+export const getStudent = async (id) => {
 
-export const getStudent = id => {
-  return axios.get(`${API_STUDENT}/${id}/`)
-    .then(response => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      // 'Authorization': `Bearer ${token?.access}`,
+      'Accept': 'application/json',
+    },
+  };
+  return axios
+    .get(`${API_STUDENT}/${id}/`, config)
+    .then((response) => {
       const { data } = response;
+      console.log(data);
       return data;
     })
-    .catch(error => error);
+    .catch((error) => {
+      if (error.response) {
+        return error.response.data.errors;
+      }
+    }
+    );
 };
 
 
-export const getSocialNetwork = id => {
-  return axios.get(`${API_SOCIAL_NETWORK}/${id}/`)
-    .then(response => {
+export const getSocialNetwork = async (id) => {
+  return axios
+    .get(`${API_SOCIAL_NETWORK}/${id}/`)
+    .then((response) => {
       const { data } = response;
       return data;
     })
-    .catch(error => {
+    .catch((error) => {
       if (error.response) {
         return error.response.status;
       }
     });
 };
 
-export const updateStudent = (id, body = {}) => {
+/**
+ * @param {Object} payload objeto que contiene la informacion que se enviara para crear la cuenta de un alumno
+ * @param {Number} id identificador de un alumno
+ * @return {Promise}
+ **/
+export const updateStudent = (id, payload = {}) => {
   return toast.promise(
     axios
-      .put(`${API_STUDENT}${id}/`, body, {
+      .put(`${API_STUDENT}${id}/`, payload, {
         headers: {
           "Content-Type": "application/json",
           accept: "application/json",
@@ -43,45 +69,33 @@ export const updateStudent = (id, body = {}) => {
         if (error.response) {
           return error.response.data;
         }
-      })
-    , {
+      }),
+    {
       loading: "Actualizando Perfil",
       success: "Tu perfil se ha actualizado correctamente",
-      error: "Hubo erro en la actualizacion"
+      error: "Hubo erro en la actualizacion",
     }
   );
 };
 
-
-export const createAccountStudent = ({
-  t100_boleta,
-  t100_name,
-  t100_email,
-  password,
-} = {}) => {
-  return toast.promise(
-    axios
-      .post(
-        API_STUDENT,
-        { t100_boleta, t100_name, t100_email, password },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            accept: "application/json",
-          },
-        }
-      )
-      .then((response) => {
-        const { data } = response;
-        return data;
-      })
-      .catch((error) => error.response)
-    , {
-      loading: "Validando Datos",
-      success: "Cuenta creada con exito",
-      error: error => error.response.data.message,
+/**
+ * @param {Object} payload objeto que contiene la informacion que se enviara para crear la cuenta de un alumno
+ * @returns {Promise}
+ **/
+export const createAccountStudent = async (payload) => {
+  try {
+    const response = await axios.post(API_STUDENT, payload, {
+      headers: {
+        "Content-Type": "application/json",
+        accept: "application/json",
+      },
+    });
+    return response;
+  } catch (error) {
+    if (error.response) {
+      return error.response.data.errors;
     }
-  )
+  }
 };
 
 
@@ -90,10 +104,39 @@ export const uploadPhotoStudent = (id, img) => {
 
   formData.append("photo", img);
 
-  return axios.put(`${API_PHOTO_STUDENT}/${id}/`, formData)
-    .then(response => {
+  return axios
+    .put(`${API_PHOTO_STUDENT}/${id}/`, formData)
+    .then((response) => {
       const { data } = response;
       return data;
     })
-    .catch(error => error);
+    .catch((error) => error);
 };
+
+/**
+ * @param {Object} payload
+ * @return {Promise}
+ **/
+export const applyJob = (payload) => {
+  return axios.post(`/api/Applications/`, payload, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+  })
+    .then(response => {
+      console.log(response);
+      return response;
+    })
+    .catch(error => {
+      if (error.response) return error.response;
+    })
+};
+
+/*
+    "t200_id_vacant": null,
+    "t100_id_student": null,
+    "t201_cv": null,
+    "c205_id_application_state": null,
+    "t201_date_application": null
+*/

@@ -17,7 +17,7 @@ class LinkViewSet(viewsets.GenericViewSet):
 	def get_object(self, pk):
 		if self.queryset is None:        
 			self.queryset = self.model.objects\
-				.filter(t100_boleta=pk)\
+				.filter(t100_id_student=pk)\
 				.all()
 		return self.queryset
 

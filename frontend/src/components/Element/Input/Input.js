@@ -1,32 +1,22 @@
-import React from "react"
+import React from "react";
 
 import styles from "../Styles.module.css";
 
-const Input = ({
-  type,
-  id,
-  name,
-  value,
-  onChange,
-  onBlur,
-  text,
-  rest
-}) => {
-  return (
-    <input
-      type={type}
-      autoComplete="off"
-      id={id}
-      name={name}
-      placeholder=" "
-      className={styles.inputField}
-      value={value}
-      onBlur={onBlur}
-      onChange={onChange}
-      {...rest}
-    >{text}</input>
-
-  )
-}
+const Input = React.forwardRef((props, ref) => (
+  <input
+    type={props.type}
+    autoComplete="off"
+    id={props.id}
+    name={props.name}
+    placeholder=" "
+    className={styles.inputField}
+    value={props.value}
+    autoFocus={props.autoFocus}
+    onChange={props.onChange}
+    onBlur={props.onBlur}
+    onKeyUp={props.onKeyUp}
+    ref={ref}
+  />
+));
 
 export default Input;

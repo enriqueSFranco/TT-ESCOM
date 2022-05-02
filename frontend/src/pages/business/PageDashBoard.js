@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import dashboardSyle from './PageDashboard.module.css';
 
 const PageDashBoard = () => {
   return (
-    <div>PageDashBoard</div>
+    <section className={dashboardSyle.wrapper}>
+      <h1>PageDashBoard</h1>
+    </section>
   )
 }
 

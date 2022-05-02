@@ -1,4 +1,5 @@
 import CreateAccountCompany from 'components/Form/register/CreateAccountCompany';
+import { Toaster } from 'react-hot-toast';
 
 const Container = {
   // backgroundColor: 'blue',
@@ -14,11 +15,14 @@ const Form = {
 
 const PageRegisterCompany = () => {
   return (
-    <section style={Container}>
-      <article style={Form}>
-        <CreateAccountCompany />
-      </article>
-    </section>
+    <>
+      <section style={Container}>
+        <article style={Form}>
+          <CreateAccountCompany />
+        </article>
+      </section>
+      <Toaster position='top-right' toastOptions={{duration: 5000}} />
+    </>
   )
 }
 

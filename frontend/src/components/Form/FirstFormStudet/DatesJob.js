@@ -1,15 +1,32 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
-// import Autocomplete from "@mui/material/Autocomplete";
+import Autocomplete from "@mui/material/Autocomplete";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import styles from "./StylesStepper.module.css";
 
-const DatesJob = ({ form, handleChange }) => {
+const DatesJob = ({ form, handleChange, interestJobs, setInterestJobs }) => {
+  console.log(form);
   return (
     <div className={styles.containerPage}>
       <form>
+      <h5>¿Como son tus metas Profesionales?</h5>
+        <div className={styles.inputGroup}>
+          <Autocomplete            
+            id="t100_interest_job"
+            name="t100_interest_job"
+            value={form.t100_interest_job}
+            onChange={(event, newValue) => {
+              form.t100_interest_job=newValue;
+            }}    
+            freeSolo
+            options={interestJobs.map((option) => option.c111_job)}
+            renderInput={(params) => <TextField {...params} label="Puesto de Interés" />}
+          />
+        </div>
+
+
         <div className={styles.inputGroup}>
           <TextField
             label="¿Cuanto te gustaria ganar?"
@@ -48,7 +65,7 @@ const DatesJob = ({ form, handleChange }) => {
             />
           </RadioGroup>
         </div>
-      </form>
+        </form>
     </div>
   );
 };

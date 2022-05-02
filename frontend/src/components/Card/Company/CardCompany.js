@@ -1,30 +1,20 @@
-import { useState } from "react";
-import { AnimateSharedLayout } from "framer-motion";
-import CardExpand from "./CardExpand";
-import CardNormal from "./CardNormal";
+import { useModal } from "hooks/useModal";
+import * as IoIcon from "react-icons/io";
+import styles from "./CardCompany.module.css";
 
-const CardCompany = ({ id,name, webSite, logo, banner, mision, vision }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const CardNormal = ({ name, logo, banner, mision, vision, title }) => {
+  const [,openModal,] = useModal();
 
   return (
     <>
-      <AnimateSharedLayout>
-        {isOpen ? (
-          <CardExpand 
-            setIsOpen={setIsOpen} 
-            mision={mision} 
-            vision={vision} 
-          />
-        ) : (
-          <CardNormal 
-            name={name} 
-            webSite={webSite}
-            logo={logo}
-            setIsOpen={setIsOpen} />
-        )}
-      </AnimateSharedLayout>
+      <div className={styles.card} layoutId="cardExpand">
+        <div layoutId="cardExpand-img" className={styles.cardLogo}>
+          {logo ? <img src={logo} alt={name} /> : <IoIcon.IoMdBusiness />}
+        </div>
+        <button onClick={openModal}>Ver mas</button>
+      </div>
     </>
   );
 };
 
-export default CardCompany;
+export default CardNormal;

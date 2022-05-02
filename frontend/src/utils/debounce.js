@@ -1,18 +1,9 @@
-/* eslint-disable no-undef */
-
-/**
- * @param {Function} fn
- * @param {Number} delay
- * @returns
- **/
-export const debounce = (fn, delay) => {
+export const debounce = (callback, timeout = 300) => {
   let timer;
-  return () => {
-    const self = this;
-    const args = arguments;
+  return (...args) => {
     clearTimeout(timer);
     timer = setTimeout(() => {
-      fn.apply(self, args);
-    }, delay);
+      callback.apply(this, args);
+    }, timeout);
   };
 };

@@ -1,8 +1,16 @@
+from pyexpat import model
 from django.db import models
 from django.utils import timezone
 # from django.utils.translation import gettext_lazy as _
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.contrib.auth.models import AbstractUser, PermissionsMixin, BaseUserManager
 
+class Rol(models.Model):
+    """Define el rol para un usuario"""
+    id = models.AutoField(primary_key=True)
+    rol = models.CharField('Rol', max_length=50, unique=True)
+
+    def __str__(self):
+        return self.rol
 
 class CustomAccountManager(BaseUserManager):
 
@@ -34,28 +42,18 @@ class CustomAccountManager(BaseUserManager):
         return user
 
 
-class NewUser(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(('email address'), unique=True)
-    user_name = models.CharField(max_length=150, unique=True)
-    first_name = models.CharField(max_length=150, blank=True)
-    start_date = models.DateTimeField(default=timezone.now)
-    about = models.TextField((
-        'about'), max_length=500, blank=True)
-    is_staff = models.BooleanField(default=False)
+class User(AbstractUser, PermissionsMixin):
+    user_type = models.CharField(max_length=15,blank=False,null=True)
     is_active = models.BooleanField(default=False)
-    ROLE_OPTIONS = (
-        ("ENCARGADO", "Encargado"),
-        ("RECLUTADOR", "Reclutador"),
-        ("ESTUDIANTE", "Estudiante")
-    )
-    role = models.CharField(max_length=30, choices=ROLE_OPTIONS, default="ESTUDIANTE")
-    objects = CustomAccountManager()
+    user_id = models.PositiveBigIntegerField(blank=False,null=False)
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['user_name', 'first_name']
+
+    #objects = CustomAccountManager()
+    class Meta:
+        db_table = 'usuarios'
 
     def __str__(self):
-        return self.user_name
+        return self.username+": "+self.user_type
 
 # from django.db import models
 # from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin

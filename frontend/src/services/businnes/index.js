@@ -1,8 +1,7 @@
 import axios from "axios";
-import toast from "react-hot-toast";
 import { API_COMPANY, API_PHOTO_COMPANY } from "../settings";
 
-export const getImageCompany = async (id) => {
+export const getImageBusiness = async (id) => {
   try {
     const response = await axios.get(`${API_PHOTO_COMPANY}/${id}/`);
     if (!response.status) {
@@ -39,55 +38,19 @@ export const getBusiness = (id) => {
 };
 
 
-export const createAccountCompany = ({
-  t300_name,
-  t300_rfc,
-  t300_nss,
-  t300_email,
-  t300_bussiness_name,
-  t300_web_page,
-  t300_mision,
-  t300_vision,
-  t300_objective,
-  t300_logo,
-  t300_banner,
-  t400_id_admin,
-  t300_create_date,
-} = {}) => {
-  toast.promise(
-    axios
-      .post(
-        API_COMPANY,
-        {
-          t300_name,
-          t300_rfc,
-          t300_nss,
-          t300_email,
-          t300_bussiness_name,
-          t300_web_page,
-          t300_mision,
-          t300_vision,
-          t300_objective,
-          t300_logo,
-          t300_banner,
-          t400_id_admin,
-          t300_create_date,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        }
-      )
-      .then((response) => {
-        const { data } = response;
-        return data;
-      })
-    , {
-      loading: 'Enviando Pre-Registro.',
-      success: 'Pre-Registro enviado.',
-      error: error => error.response.data.message
-    }
-  );
+export const createBusiness = (payload = {}) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+    },
+  };
+
+  return axios.post(API_COMPANY, payload, config)
+    .then((response) => {
+      return response;
+    })
+    .catch(error => {
+      if (error.response) return error.response;
+    })
 };

@@ -18,28 +18,33 @@ img {
   font-size: 2rem;
 }
 
-.details { color: #fff; }
+.details { 
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
 
 .details h1 {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 700;
+  text-transform: uppercase;
 }
 
 .details span {
   display: block;
   color: #fff;
   text-align: left;
-  margin-bottom: 1rem;
+  margin-bottom: .7rem;
 }
 
 .grid {
   position: relative;
-  top: 5rem;
-  height: auto;
-  width: auto;
+  top: 6rem;
+  left: 0;
+  height: 800px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+  overflow-y: auto;
   align-content: center;
   justify-items: center;
 }
@@ -51,8 +56,8 @@ img {
 }
 
 .wrapper {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 3rem;
   bottom: 0;
   left: 0;
   right: 0;

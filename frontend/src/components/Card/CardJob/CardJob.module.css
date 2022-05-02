@@ -2,7 +2,7 @@
 
 .card {
   position: relative;
-  width: 500px;
+  width: 550px;
   height: auto;
   margin-bottom:1rem;
   background-color: #fff;
@@ -61,64 +61,6 @@
   animation-iteration-count: infinite;
 }
 
-.tag {
-  font-size: .8rem;
-  color: #222;
-  font-weight: bold;
-}
-
-.timeWork,
-.salary,
-.location,
-.publicationTime { margin-bottom: .2rem; }
-
-.timeWork, 
-.location, 
-.publicationTime, 
-.profile {
-  background-color: #e9edfc;
-  height: 1.5rem;
-  width: 177px;
-  color: #0f6dfb;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  border-radius: 1rem;
-  font-weight: bold;
-  padding-left: .5rem;
-  margin: 0;
-}
-
-.publicationTime {
-  width: 245px;
-  justify-content: flex-start;
-  margin-top: .3rem;
-  padding-left: .5rem;
-}
-
-.publicationTime svg, .timeWork svg {
-  margin-right: .3rem;
-  color: #0f6dfb;
-}
-
-.salary {
-  background-color: #e9f4ef;
-  color: #0b9e48;
-  border-radius: 1rem;
-  width: 235px;
-  height: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding-left: .5rem;
-  margin-top: .3rem;
-}
-
-.salary svg {
-  color: #0b9e48;
-  margin-right: .3rem;
-}
-
 .title {
   font-size: .9rem;
   font-weight: 600;
@@ -126,13 +68,26 @@
 }
 
 .wrapper {
-  width: 460px;
+  width: 520px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-family: 'Poppins', sans-serif;
 }
 
-.wrapperTags { width: 300px; }
+.wrapperTags { 
+  width: 350px; 
+  height: 90px; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: baseline; 
+  justify-content: space-between; 
+}
+
+.wrapperTags span {
+  font-weight: 400;
+  color: #000;
+}
 
 .logoBusiness {
   position: relative;

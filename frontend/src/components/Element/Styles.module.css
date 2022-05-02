@@ -87,6 +87,8 @@
 .label {
   margin-left: .5rem;
   font-size: 1rem;
+  font-weight: 500;
+  color: #000;
 }
 
 .checkbox{

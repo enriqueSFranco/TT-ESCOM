@@ -1,0 +1,132 @@
+.groupFormTitleJob {
+  width: 800px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form1 { width: 700px; }
+
+.inputCheckbox {
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  width:200px;
+}
+
+.btn {
+  padding: .6rem;
+  width: 300px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn svg {
+  margin-right: .4rem;
+  font-size: 1.2rem;
+}
+
+.boxForm {
+  outline: 1px solid blue;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.error {
+  font-size: .8rem;
+  font-weight: 300;
+  color: #dc3545;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+}
+
+.inputGroup {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.form {
+  position: relative;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  width: 100%;
+  height: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.groudButton {
+  bottom: 0;
+  right: 0;
+  width: 30%;
+  margin: 0 auto;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.select {
+  position: relative;
+  display: flex;
+  width: 400px;
+  height: 3rem;
+  list-style: 3;
+  background-color: #fff;
+  overflow: hidden;
+  outline: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  height: 100%;
+  padding: 0 1rem;
+  background-color: #ccc;
+  cursor: pointer;
+  pointer-events: none;
+  transition: .2s all ease;
+}
+
+.textArea {
+  width: 100%;
+  border-radius: 8px;
+  border-color: #d4d4d6;
+  outline: none;
+  text-indent: 8px;
+}
+
+.title {
+  color: #000;
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0;
+  text-align: center;
+}
+
+.to {
+  color: #000;
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin: 1rem;
+}
+
+.wrapper {
+  position: relative;
+  top: 1rem;
+  width: 75%;
+  /* outline: 2px solid blue; */
+  font-family: 'Poppins', sans-serif;
+}

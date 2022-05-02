@@ -5,8 +5,9 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #8E0F4B;
+  background-color: #000;
   z-index: 10;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* NAV */
@@ -15,6 +16,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: 'Poppins', sans-serif;
 }
 
 .navList {
@@ -25,8 +27,16 @@
 
 .navLogo {
   color: #fff;
+  width: 110px;
   margin-left: 1rem;
   font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.navLogo span {
+  color: #018dd4;
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
 .navLogo:hover { color: #fff; }

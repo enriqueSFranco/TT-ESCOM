@@ -17,7 +17,7 @@ class StudentImageViewSet(viewsets.GenericViewSet):
 		self.queryset= None
 		if self.queryset == None:
 			self.queryset = self.model.objects\
-				.filter(t100_boleta = pk)\
+				.filter(t100_id_student = pk)\
 				.all()
 		return  self.queryset
 
@@ -43,7 +43,7 @@ class StudentImageViewSet(viewsets.GenericViewSet):
 
 	def update(self, request, pk):
 		print(request.data)
-		u_image = self.model.objects.filter(t100_boleta = pk).first()
+		u_image = self.model.objects.filter(t100_id_student = pk).first()
 		image_serializer = self.serializer_class(u_image, data=request.data)
 		if image_serializer.is_valid():
 			image_serializer.save()
@@ -56,9 +56,9 @@ class StudentImageViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk):
-		image_destroy = self.model.objects.filter(t100_boleta=pk).first()				
+		image_destroy = self.model.objects.filter(t100_id_student=pk).first()				
 		if image_destroy:
-			image_destroy = self.model.objects.filter(t100_boleta=pk).update(t100_profile_picture="")
+			image_destroy = self.model.objects.filter(t100_id_student=pk).update(t100_profile_picture="")
 			#Eliminar imagenes del backend
 			return Response({
 				'message': 'Foto de perfil eliminada correctamente'
@@ -77,15 +77,15 @@ class CVViewSet(viewsets.GenericViewSet):
 		self.queryset= None
 		if self.queryset == None:
 			self.queryset = self.model.objects\
-				.filter(t100_boleta = pk)\
-				.values('t100_boleta','t100_cv')
+				.filter(t100_id_student = pk)\
+				.values('t100_id_student','t100_email','t100_cv')
 		return  self.queryset
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t100_boleta','t100_cv')
+				.values('t100_boleta','t100_email','t100_cv')
 		return self.queryset
   
 
@@ -103,7 +103,7 @@ class CVViewSet(viewsets.GenericViewSet):
 
 	def update(self, request, pk):
 		print(request.data)
-		u_cv = self.model.objects.filter(t100_boleta = pk).first()
+		u_cv = self.model.objects.filter(t100_id_student = pk).first()
 		cv_serializer = self.serializer_class(u_cv, data=request.data)
 		if cv_serializer.is_valid():
 			cv_serializer.save()
@@ -116,9 +116,9 @@ class CVViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk):
-		cv_destroy = self.model.objects.filter(t100_boleta=pk).first()				
+		cv_destroy = self.model.objects.filter(t100_id_student=pk).first()				
 		if cv_destroy:
-			cv_destroy = self.model.objects.filter(t100_boleta=pk).update(t100_cv="")
+			cv_destroy = self.model.objects.filter(t100_id_student=pk).update(t100_cv="")
 			#Eliminar imagenes del backend
 			return Response({
 				'message': 'CV eliminado correctamente'
