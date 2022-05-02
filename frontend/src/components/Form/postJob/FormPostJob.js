@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import PropTypes from "prop-types";
 // import NumberFormat from "react-number-format";
-import Autocomplete from "@mui/material/Autocomplete";
 import { useForm } from "hooks/useForm";
 import { postJobInitialForm } from "../schemes";
 import {
@@ -9,17 +8,18 @@ import {
   getAllCandidateProfile,
   getLocality,
 } from "services/catalogs/index";
-import MenuItem from '@mui/material/MenuItem';
+import { uuid } from "utils/uuid";
+import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Alert from "@mui/material/Alert";
 import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
+import Select from "@mui/material/Select";
 import * as BiIcon from "react-icons/bi";
 import { MdPublish } from "react-icons/md";
 import styles from "./FormPostJob.module.css";
-import { Select } from "@mui/material";
 
 const validateForm = (form) => {
   let errors = {};
@@ -64,7 +64,6 @@ const validateForm = (form) => {
 // };
 
 const FormPostJob = () => {
-  // const [checked, setChecked] = useState(false);
   const [cp, setCP] = useState("");
   const [state, setState] = useState("");
   const [town, setTown] = useState("");
@@ -75,8 +74,6 @@ const FormPostJob = () => {
     postJobInitialForm,
     validateForm
   );
-
-  // const checkChanged = () => setChecked(!checked);
 
   useEffect(() => {
     getAllCandidateProfile()
@@ -101,19 +98,16 @@ const FormPostJob = () => {
     if (input !== "") {
       getLocality(input)
         .then((response) => {
-          console.log(response)
+          console.log(response);
           setLocalities(response);
           setState(response[0]?.c222_state);
-          setTown(response[0]?.c222_municipality)
+          setTown(response[0]?.c222_municipality);
         })
         .catch((error) => console.error(error));
     }
   };
 
   if (!form || !profiles || !experience) return null;
-
-  console.log(localities);
-  console.log(state);
 
   return (
     <div className={`container ${styles.wrapper}`}>
@@ -150,14 +144,13 @@ const FormPostJob = () => {
           <BiIcon.BiCurrentLocation />
           <span>Ubicación</span>
           <div className={styles.inputGroup}>
-            <TextField 
+            <TextField
               label="Codigo postal"
               id="cp"
               name="cp"
               value={cp ? parseInt(cp) : ""}
               onChange={getLocalityData}
               sx={{ width: 130, marginRight: 2 }}
-            
             />
             <TextField
               label="Estado"
@@ -174,17 +167,19 @@ const FormPostJob = () => {
               value={town ? town : ""}
               sx={{ width: 300, maxWidth: "100%" }}
             />
-            <FormControl sx={{width: 300}}>
+            <FormControl sx={{ width: 300 }}>
               <InputLabel id="c222_localit">Localidad</InputLabel>
               <Select
                 labelId="c222_localit"
                 id="c222_localit"
-                value={form.c222_localit}
+                defaultValue=""
                 label="Localidad"
                 onChange={handleChange}
               >
-                {localities?.map(township => (
-                  <MenuItem value={township?.c222_locality}>{township?.c222_locality}</MenuItem>
+                {localities?.map((township) => (
+                  <MenuItem key={uuid()} value={township?.c222_locality}>
+                    {township?.c222_locality}
+                  </MenuItem>
                 ))}
               </Select>
             </FormControl>
@@ -222,34 +217,39 @@ const FormPostJob = () => {
               <BiIcon.BiUser />
               <span>La vacante va dirijida a</span>
               <div className={styles.inputGroup}>
-                {/* <Autocomplete
-                  id="c206_id_profile"
-                  name="c206_id_profile"
-                  value={form.c206_id_profile}
-                  onChange={(event, newValue) => {
-                    form.c206_id_profile = newValue.value;
-                  }}
-                  freeSolo
-                  options={profiles.map((option) => option.c206_description)}
-                  defaultValue={profiles[0]}
-                  filterSelectedOptions
-                  renderInput={(params) => (
-                    <TextField {...params} label="Perfil del Canditado" />
-                  )}
-                  sx={{ width: 300 }}
-                />
-                <Autocomplete
-                  id="c207_id_experience"
-                  name="c207_id_experience"
-                  value={form.c207_id_experience}
-                  onChange={handleChange}
-                  freeSolo
-                  options={experience.map((option) => option.c207_description)}
-                  renderInput={(params) => (
-                    <TextField {...params} label="Experiencia" />
-                  )}
-                  sx={{ width: 300 }}
-                /> */}
+                <FormControl sx={{ width: 300 }}>
+                  <InputLabel id="c206_id_profile">Perfil</InputLabel>
+                  <Select
+                    id="c206_id_profile"
+                    name="c206_id_profile"
+                    defaultValue=""
+                    onChange={handleChange}
+                    label="Perfil"
+                  >
+                    {profiles?.map((profile) => (
+                      <MenuItem key={uuid()} value={profile?.c206_description}>
+                        {profile?.c206_description}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+
+                <FormControl sx={{ width: 300 }}>
+                  <InputLabel id="c207_description">Experiencia</InputLabel>
+                  <Select
+                    id="c207_description"
+                    name="c207_description"
+                    defaultValue=""
+                    onChange={handleChange}
+                    label="Experiencia"
+                  >
+                    {experience?.map((exp) => (
+                      <MenuItem key={uuid()} value={exp?.c207_description}>
+                        {exp?.c207_description}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               </div>
             </div>
             <div>
