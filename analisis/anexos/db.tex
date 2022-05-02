@@ -224,18 +224,20 @@ Cada dato puede tener restricciones adicionales, entre las que se encuentran:
 \end{cdtEntidad}
 
 %---------------------Empresa-----------------------------
-\begin{cdtEntidad}{t300-empresa}{Empresa}{
-    desc}
-    \brAttr{t300-id-impresa}{Id}{tInt}{Descripción}{\datRequerido} 
-    \brAttr{t300-nombre}{Nombre}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{t300-rfc}{RFC}{tVarchar}{}{\datRequerido}
-    \brAttr{t300-nss}{Número de seguro social }{tInt}{}{\datOpcional}
-    \brAttr{t300-page-web}{Página Web}{tVarchar}{}{\datOpcional}
-    \brAttr{t300-mision}{Misión}{tVarchar}{}{\datOpcional}
-    \brAttr{t300-vision}{Vision}{tVarchar}{}{\datOpcional}
-    \brAttr{t300-razon-social}{Razon Social}{tVarchar}{}{\datOpcional}
-    \brAttr{t300-fecha-alta}{Fecha de alta}{tDate}{}{\datOpcional}
-    \brAttr{t400-id-admin}{Id del administrador}{tVarchar}{
+\begin{cdtEntidad}{empresa}{Empresa}{
+    Empresa constituida que publica vacantes en el sistema siempre y cuando lo haya permitido el 
+    encargado/colaborador del sistema.
+    }
+    \brAttr{id}{Id}{tInt}{Descripción}{\datRequerido} 
+    \brAttr{nombre}{Nombre}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{rfc}{RFC}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{nss}{Número de seguro social }{tInt}{Descripción}{\datOpcional}
+    \brAttr{pageweb}{Página Web}{tVarchar}{Descripción}{\datOpcional}
+    \brAttr{mision}{Misión}{tVarchar}{Descripción}{\datOpcional}
+    \brAttr{vision}{Vision}{tVarchar}{Descripción}{\datOpcional}
+    \brAttr{razon-social}{Razon Social}{tVarchar}{Descripción}{\datOpcional}
+    \brAttr{fecha-alta}{Fecha de alta}{tDate}{Descripción}{\datOpcional}
+    \brAttr{id-admin}{Id del administrador}{tVarchar}{
 	   %     Es el correo del alumno con el cual se identificara como unico dentro del sistema.
 	   %     Restricciones adicionales:
             \begin{Citemize}
@@ -246,49 +248,42 @@ Cada dato puede tener restricciones adicionales, entre las que se encuentran:
 \end{cdtEntidad}
 
 %---------------------Reclutador-----------------------------
-\begin{cdtEntidad}{t301-empresa}{Reclutador}{desc}
-    \brAttr{t301-id-reclutador}{Id}{tInt}{Descripción}{\datRequerido} 
-    \brAttr{t301-nombre}{Nombre}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{t301-paterno}{Apellido Paterno}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{t301-materno}{Apellido Materno}{tInt}{Descripción}{\datOpcional}
-    \brAttr{t301-email}{Correo electrónico}{tVarchar}{Descripción}{\datOpcional}
-    \brAttr{t301-password}{Contraseña}{tVarchar}{Descripción}{\datOpcional}
-    \brAttr{t300-id-impresa}{Id}{tInt}{Descripción}{\datOpcional}
-    \brAttr{t400-id-admin}{Id}{tInt}{Descripción}{\datOpcional}
+\begin{cdtEntidad}{reclutador}{Reclutador}{desc}
+    \brAttr{id-reclutador}{Id}{tInt}{Descripción}{\datRequerido} 
+    \brAttr{nombre}{Nombre}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{apellidos}{Apellidos}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{email}{Correo electrónico}{tVarchar}{Descripción}{\datOpcional}
+    \brAttr{telefono}{Correo electrónico}{tVarchar}{Descripción}{\datOpcional}
+    \brAttr{password}{Contraseña}{tVarchar}{Descripción}{\datOpcional}
+    \brAttr{id-impresa}{Id}{tInt}{Descripción}{\datOpcional}
+    \brAttr{id-admin}{Id}{tInt}{Descripción}{\datOpcional}
 \end{cdtEntidad}
-
-%---------------------Vacantes-----------------------------
-\begin{cdtEntidad}{t200-vacante}{Vacante}{desc}
-    \brAttr{t200-id-vacante}{Id}{tInt}{Descripción}{\datRequerido} 
-    \brAttr{t200-puesto}{Puesto}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{t200-hora-entrada}{Hora de entrada}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{t200-hora-salida}{Hora de salida}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{t200-dias-laborales}{Días laborales}{tChar}{Descripción}{\datRequerido}
-    \brAttr{t200-pago-min}{Pago minímo}{tNumeric}{Descripción}{\datOpcional}
-    \brAttr{t200-pago-max}{Pago máximo}{tNumeric}{Descripción}{\datOpcional}
-    \brAttr{t200-pago-neto}{Pago neto}{tBool}{Descripción}{\datOpcional}
-    \brAttr{t200-remoto}{Trabajo remoto}{tBool}{Descripción}{\datOpcional}
-    \brAttr{t200-fecha-cierre}{Fecha de cierre}{tDate}{Descripción}{\datRequerido}
-    \brAttr{t200-fecha-publicacion}{Fecha de publicación}{tDate}{Descripción}{\datRequerido}
-    
-    \brAttr{t300-id-impresa}{Id}{tInt}{Descripción}{\datRequerido}
-    \brAttr{t106-id-carrera}{Id}{tInt}{Descripción}{\datRequerido}
-    \brAttr{t106-id-perfil-candidato}{Id}{tInt}{Descripción}{\datRequerido}
-    \brAttr{t209-id-experiencia}{Id}{tInt}{Descripción}{\datRequerido}
-    \brAttr{t204-id-estado}{Id}{tInt}{EStado de la vacante}{\datRequerido}
-    \brAttr{t301-id-reclutador}{Id}{tInt}{Descripción}{\datRequerido}
-\end{cdtEntidad}
-
 %---------------------Alumno-----------------------------
-\begin{cdtEntidad}{t100-alumno}{Alumno}{desc}
-    \brAttr{t100-id-alumno}{Id}{tInt}{Descripción}{\datRequerido} 
-    \brAttr{t100-boleta}{Estado}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{t100-nombre}{Nombre}{tVarchar}{Descripción}{\datRequeridoMunicipio}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{t100-apellidos}{Colonia}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{t302-calle}{Calle}{tChar}{tVarchar}{\datRequerido}
-    \brAttr{t302-cp}{Codigo Postal}{tNumeric}{Descripción}{\datRequerido}
-    \brAttr{t302-num-ext}{Número Exterior}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{t302-num-int}{Número Interior}{tVarchar}{Descripción}{\datOpcional}
-    \brAttr{t302-telefono}{Telefono}{tNumeric}{Descripción}{\datRequerido}
+\begin{cdtEntidad}{estudiante}{Alumno}{desc}
+    \brAttr{id-alumno}{Id}{tInt}{Descripción}{\datRequerido} 
+    \brAttr{boleta}{Estado}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{nombre}{Nombre}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{apellidos}{Colonia}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{residencia}{Residencia}{tChar}{tVarchar}{\datRequerido}
+    \brAttr{viajar}{Disponibilidad para viajar}{tNumeric}{Descripción}{\datRequerido}
+    \brAttr{puesto-deseado}{Puesto deseado}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{salario}{Salario deseado}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{modalidad}{Tipo de trabajo}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{telefono}{Telefono}{tNumeric}{Descripción}{\datRequerido}
 \end{cdtEntidad}
 
+%---------------------Historial Academico-----------------------------
+\begin{cdtEntidad}{hacademico}{Historial Academico}{desc}
+    \brAttr{id-vacante}{Id}{tInt}{Descripción}{\datRequerido} 
+    \brAttr{carrera}{Carrera}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{inicio}{Fecha de inicio}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{fin}{Fecha final}{tVarchar}{Descripción}{\datRequerido}
+    
+\end{cdtEntidad}
+
+%---------------------Habilidades----------------------------
+\begin{cdtEntidad}{habilidad}{Catalogo Habilidades}{desc}
+    \brAttr{id-habilidad}{Id}{tInt}{Descripción}{\datRequerido} 
+    \brAttr{descripcion}{Carrera}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{tipo}{Fecha de inicio}{tVarchar}{Descripción}{\datRequerido}
+\end{cdtEntidad}

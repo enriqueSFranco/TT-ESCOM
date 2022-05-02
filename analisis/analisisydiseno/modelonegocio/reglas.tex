@@ -100,3 +100,74 @@ Cada regla de negocio indica los siguientes atributos:
 	}
 	
 \end{BusinessRule}
+
+%-----------------------BR-005---------------------------
+\begin{BusinessRule}[]{RN-N005}{Formato de un RFC}
+	\BRsection[control]{Atributos}%
+	\BRitem[admin]{Clase}{\bcIntegridad}%
+	\BRitem{Descripción}{%
+		Para realizar una verificación exitosa del RFC de una empresa debe cumplir con el siguiente formato:
+		\begin{itemize}
+			\item Debe tener unicamente letras mayúsculas.
+			\item La cadena sebe ser de 12 caracteres.
+		\end{itemize}
+	}
+	\BRitem{Sentencia}{%
+		Sea $RFC_ep$ el RFC ingresado en el sistema, debe cumplir con la siguiente expresión:
+		$\hat{}$([a-z0-9\_.-]+)@([a-z.-]+).([a-z.]\{2,6\})\$
+	}
+	%\BRitem{Ejemplo}{%
+	
+	%	\textbf{Caso correcto:}  ejemplo1@dominio.com 
+		
+	%	\textbf{Caso incorrecto:} ejemplo@DOminio.invalido
+	%}
+\end{BusinessRule}
+
+
+%-----------------------BR-006---------------------------
+\begin{BusinessRule}[]{RN-N006}{Formato de la contraseña}
+	\BRsection[control]{Atributos}%
+	\BRitem[admin]{Clase}{\bcIntegridad}%
+	\BRitem{Descripción}{%
+		Para realizar un cambio de contraseña exitoso, debe cumplir con el siguiente formato:
+		\begin{itemize}
+			\item Debe tener al menos una letra mayúscula y una minúscula.
+			\item Debe de tener al menos un número.
+			\item Debe de tener al menos un caracte especial.
+		\end{itemize}
+	}
+	\BRitem{Sentencia}{%
+		Sea $Password_ep$ la contraseña ingresada en el sistema, debe cumplir con la siguiente expresión:
+		$\hat{}$([a-z0-9\_.-]+)@([a-z.-]+).([a-z.]\{2,6\})\$
+	}
+	%\BRitem{Ejemplo}{%
+	
+	%	\textbf{Caso correcto:}  ejemplo1@dominio.com 
+		
+	%	\textbf{Caso incorrecto:} ejemplo@DOminio.invalido
+	%}
+\end{BusinessRule}
+
+%-----------------------BR-007---------------------------
+\begin{BusinessRule}[]{RN-N007}{Credenciales válidas de aceso}
+	\BRsection[control]{Atributos}%
+	\BRitem[admin]{Clase}{\blControlling}%
+	\BRitem{Descripción}{%
+	Para ingresar al sistema mediante el navegador web se debe verificar que las credenciales sean las correctas, es decir, que en el usuario y la contraseña tengan un registro dentro del sistema y que la contraseña sea encuentre asociada al folio o usuario que quiere ingresar.
+		
+	}
+	\BRitem{Sentencia}{%
+	Sea $username$: el nombre de usuario del actor que quiere ingresar al sistema, $Usuarios_{registrados}$: la lista de id's y usuarios que se encuentran registrados en el sistema y $Password$: la contraseña que debe estar asociada al 
+	usuario. \\
+	
+	Si $username$ $\subset$ $Usuarios_{registrados}$ $\bigwedge$ $Contrasena$ $\in$ $username$ $\Rightarrow$ Ingreso al sistema exitosamente.
+	}
+	%\BRitem{Ejemplo}{%
+	
+	%	\textbf{Caso correcto:}  ejemplo1@dominio.com 
+		
+	%	\textbf{Caso incorrecto:} ejemplo@DOminio.invalido
+	%}
+\end{BusinessRule}
+

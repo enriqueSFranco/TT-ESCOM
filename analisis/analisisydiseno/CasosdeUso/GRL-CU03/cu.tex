@@ -1,0 +1,96 @@
+\begin{UseCase}[]{GRL-CU03}{Iniciar Sesión}{
+	Permite al actor ingresar al sistema por medio de su cuenta de usuario para poder acceder a las
+acciones que tiene permitidas dentro del sistema de acuerdo a su tipo de usuario.
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		\Titem Reglutador.
+		\Titem Alumno.
+		\Titem Encargado del sistema.
+		\Titem Colaborador del sistema. 
+	}
+	\UCitem[admin]{Prioridad}{
+		Alta
+	}
+	\UCitem[admin]{Complejidad}{
+		Alta
+	}
+	\UCitem{Precondiciones}{
+		El usuario debe de tener una cuenta dentro del sistema.
+	}
+	\UCitem{Postcondiciones}{
+		
+		
+	}
+	\UCitems{Entradas}{
+		\imprimeUC{entradas}
+	}
+	\UCitem{Destino}{
+		\Titem \refElem{GRL-IU03}
+	}
+	\UCitem{Reglas de Negocio}{
+		\Titem \refIdElem{RN-N001}
+		\Titem \refIdElem{RN-N002}
+		\Titem \refIdElem{RN-N006}
+		
+	}
+	\UCitem{Viene de}{
+		Caso de uso primario.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Eres alumno?} desde la interfaz \refElem{GRL-IU00}.\refTray{A}
+    \UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU03}.
+	\UCpaso [\UCactor] Ingresa el \entrada[correo electrónico]{users.username} y \entrada[contraseña]{users.password}.\label{cu03-grl1}\refTray{A}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Iniciar Sesión}. \refTray{B} \refTray{C} 
+	\UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la
+	regla de negocio \refIdElem{RN-N001}.\refTray{D}
+	\UCpaso [\UCsist] Verifica que el correo electrónico ingresado cumpla con el formato correcto de acuerdo a la regla de negocio  \refIdElem{RN-N002}.  \refTray{E}
+	\UCpaso [\UCsist] Verifica que la contraseña ingresada cumpla con el formato correcto de acuerdo a la regla de negocio  \refIdElem{RN-N006}.\refTray{E}
+	\UCpaso [\UCsist] Verifica que los datos ingresados cumplan con la regla de negocio \refIdElem{RN-N007}. \refTray{F}
+    \UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU03-1}. %\refTray{G} \refTray{H}
+\end{UCtrayectoria}
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{A}{El actor presiona el botón \IUbutton{Eres reclutador?}.}
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU03}.
+	\UCpaso [\UCsist] Continúa en el paso \ref{cu03-grl1} de la trayectoria principal.
+\end{UCtrayectoriaA}
+
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{B}{El actor desea crear una cuenta y es alumno.}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{¿No tienes una cuenta?}
+	\extendUC{GRL-CU01}.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{C}{El actor desea crear una cuenta y es reclutador.}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{¿No tienes una cuenta?}
+	\extendUC{GRL-CU02}.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{D}{El actor no ingresó uno o más datos obligatorios.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG4} en los campos que no
+	fueron ingresados.
+	\UCpaso [\UCsist] Continúa en el paso \ref{cu03-grl1} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{E}{El actor ingresó el dato con formato incorrecto.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG2}.
+	\UCpaso [\UCsist] Continúa en el paso \ref{cu03-grl1} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{F}{El actor ingresó un correo y contrasela validos.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG5}.
+	\UCpaso [\UCsist] Continúa en el paso \ref{cu03-grl1} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+
+
+
+\subsubsection{Puntos de extensión}
+
+\UCExtensionPoint{Crear cuenta}{El actor requiere registrarse en el sistema}{En el paso  de la trayectoria alternativa B}{\refIdElem{GRL-CU01}}
+\UCExtensionPoint{Enviar Pre-Registro}{El actor requiere registrarse en el sistema}{En el paso  de la trayectoria alternativa C}{\refIdElem{GRL-CU02}}

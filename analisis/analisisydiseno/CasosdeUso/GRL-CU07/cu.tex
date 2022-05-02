@@ -1,0 +1,59 @@
+\begin{UseCase}[]{GRL-CU07}{Crear perfil}{
+	Permite al alumno subir por prumera vez información general de su perfil al sistema.
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		estudiante. 
+	}
+	\UCitem[admin]{Prioridad}{
+		Alta
+	}
+	\UCitem[admin]{Complejidad}{
+		Alta
+	}
+	\UCitem{Precondiciones}{
+		\Titem El alumno debe de tener una cuenta en el sistema.
+		\Titem Debe de ser la primera vez que el alumno inicie sesion en el sistema.
+	}
+	\UCitems{Entradas}{
+		\imprimeUC{entrada}
+	}
+	\UCitem{Destino}{
+		\Titem \refElem{GRL-IU07}
+	}
+	\UCitem{Reglas de Negocio}{
+		\Titem \refIdElem{RN-N001}
+		
+	}
+	\UCitem{Viene de}{
+		Caso de uso primario.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Presiona inisia sesion exitosamente desde la pantalla \refElem{GRL-IU03}.
+    \UCpaso [\UCsist] Valida que sea su primer inisio de sesion despues de haber creado su cuenta.
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU07}.
+	\UCpaso [\UCactor] Ingresa el \entrada[nombre]{estudiante.nombre}, \entrada[nombre]{estudiante.apellidos}, \entrada[ubicación]{estudiante.residencia}, 
+	indica si tiene \entrada[disponibilidad para viajar]{estudiante.viajar} e ingresa su \entrada[telefono]{estudiante.telefono}.
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Siguiente}.
+	\UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la
+	regla de negocio \refIdElem{RN-N001}.
+	\UCpaso [\UCsist] Verifica que el telefono ingresado cumpla con el formato correcto de acuerdo a la regla de negocio  \refIdElem{RN-N007}.  \refTray{E}
+	\UCpaso [\UCactor] Ingresa la \entrada[carrera]{hacademico.carrera}, selecciona la \entrada[institución]{hacademico.carrera} y selecciona
+	la fecha en la que \entrada[inicio]{hacademico.inicio} y \entrada[final]{hacademico.fin} la carrera.
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Siguiente}.
+	\UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la
+	regla de negocio \refIdElem{RN-N001}.
+	\UCpaso [\UCactor] Ingresa el  \entrada[puesto deseado]{estudiante.puesto-deseado}, el \entrada[salario deseado]{estudiante.salario} y selecciona
+	el  \entrada[tipo de trabajo]{estudiante.modalidad} deseado.
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Siguiente}.
+	\UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la
+	regla de negocio \refIdElem{RN-N001}.
+	\UCpaso [\UCactor] Selecciona almenos una \entrada[hard skill]{habilidad.descripcion} y \entrada[habilidad.descripcion]{habilidad.descripcion}.
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Finalizar}.
+	\UCpaso [\UCsist] Muestra la pantalla \refElem{GRL-IU03-1}. %\refTray{G} \refTray{H}
+\end{UCtrayectoria}
