@@ -2319,7 +2319,7 @@
         "model":"vacantes.Announcement",
         "pk":1,
         "fields":{
-            "t202_announcement": "/media/aviso7.jpg",
+            "t202_announcement": "/comunicates/1.jpeg",
             "t202_description": "Ven y unete a nuestro equipo de trabajo.",
             "t202_link": "https://mi_enlace.com",
             "t202_publish_date": "2022-03-27",
@@ -2333,7 +2333,7 @@
         "model":"vacantes.Announcement",
         "pk":2,
         "fields":{
-            "t202_announcement": "/media/aviso6.jpg",
+            "t202_announcement": "/comunicates/2.jpeg",
             "t202_description": "Te esperamos en nuestra platica que sera impartida por expertos en el tema.",
             "t202_link": "https://mi_enlace.com",
             "t202_publish_date": "2022-04-06",
@@ -2347,7 +2347,7 @@
         "model":"vacantes.Announcement",
         "pk":4,
         "fields":{
-            "t202_announcement": "/media/aviso4_wVvgAnW.jpg",
+            "t202_announcement": "/comunicates/3.jpeg",
             "t202_description": "Curso de Spring",
             "t202_link": "https://mi_enlace.com",
             "t202_publish_date": "2022-04-04",
@@ -2361,7 +2361,7 @@
         "model":"vacantes.Announcement",
         "pk":5,
         "fields":{
-            "t202_announcement": "/media/aviso3_Mcb2WIe.jpg",
+            "t202_announcement": "/comunicates/4.jpeg",
             "t202_description": "Consultor jr Oracle",
             "t202_link": "https://mi_enlace.com",
             "t202_publish_date": "2022-03-28",
@@ -2375,7 +2375,7 @@
         "model":"vacantes.Announcement",
         "pk":6,
         "fields":{
-            "t202_announcement": "/media/aviso2_69dTsry.jpg",
+            "t202_announcement": "/comunicates/5.jpeg",
             "t202_description": "Desarrollador Backend Java",
             "t202_link": "https://mi_enlace.com",
             "t202_publish_date": "2022-03-21",
@@ -2389,7 +2389,7 @@
         "model":"vacantes.Announcement",
         "pk":7,
         "fields":{
-            "t202_announcement": "/media/aviso1_P8uOdXe.jpg",
+            "t202_announcement": "/comunicates/6.jpeg",
             "t202_description": "Deloitte",
             "t202_link": "https://mi_enlace.com",
             "t202_publish_date": "2022-04-07",
@@ -2403,7 +2403,7 @@
         "model":"vacantes.Announcement",
         "pk":3,
         "fields":{
-            "t202_announcement": "/media/aviso13.jpg",
+            "t202_announcement": "/comunicates/7.jpeg",
             "t202_description": "¿Te gustaría dar un salto profesional en tu carrera?\r\nEsta es tu oportunidad de ser entrenado en unos de roles con mayor demanda en el mercado. Conviértete en SALESFORCE y al finalizar el proceso podrás acceder a una gran oportunidad profesional.\r\n\r\nLo único que necesitas es:\r\nGran interés en desarrollarte como Salesforce Developer\r\nInglés Avanzado (B2 en adelante)\r\nExperiencia de 1 año como alguno de estos perfiles:\r\nDesarrollador Frontend\r\nBackend\r\nJavascript\r\nJava\r\nC#\r\n.Net\r\nProgramación Orientada a Objetos, etc.\r\n\r\nFinalizando el entrenamiento y aprobando los filtros podrás acceder a una gran oportunidad de trabajo en una de las Big Four, con un atractivo paquete de compensaciones.\r\nInteresados mandar su CV y expectativas económicas para iniciar proceso.",
             "t202_link": "https://mi_enlace.com",
             "t202_publish_date": "2022-04-07",
@@ -2417,7 +2417,7 @@
         "model":"vacantes.Announcement",
         "pk":8,
         "fields":{
-            "t202_announcement": "/media/aviso12_auWwLt8.jpg",
+            "t202_announcement": "/comunicates/8.jpeg",
             "t202_description": "Ven y forma parte de nuestro equipo.",
             "t202_link": "https://mi_enlace.com",
             "t202_publish_date": "2022-04-07",
@@ -2431,7 +2431,7 @@
         "model":"vacantes.Announcement",
         "pk":9,
         "fields":{
-            "t202_announcement": "/media/aviso9.jpg",
+            "t202_announcement": "/comunicates/9.jpeg",
             "t202_description": "Ven y forma parte de nuestro equipo de trabajo.",
             "t202_link": "https://mi_enlace.com",
             "t202_publish_date": "2022-04-07",
