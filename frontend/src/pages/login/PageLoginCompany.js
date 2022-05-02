@@ -1,7 +1,6 @@
 import LoginCompany from 'components/Form/login/LoginCompany';
 
 const Container = {
-  backgroundColor: 'blue',
   fontFamily: 'sans-serif',
   width: '100%',
   height: '100vh'

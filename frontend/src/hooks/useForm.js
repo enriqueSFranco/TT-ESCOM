@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { createAccountCompany } from "services/businnes/index";
+import { createBusiness } from "services/businnes/index";
 import { createAccountStudent } from "services/students/index";
+import { postJob } from "services/jobs/index";
+import { duration } from "@mui/material";
 
 export const useForm = (initialForm, validateForm) => {
   const navigate = useNavigate();
@@ -18,7 +21,7 @@ export const useForm = (initialForm, validateForm) => {
     });
   };
 
-  const hadlerValidate = (e) => {
+  const handleValidate = (e) => {
     handleChange(e);
     setErrors(validateForm(form));
   };
@@ -30,36 +33,59 @@ export const useForm = (initialForm, validateForm) => {
     });
   };
 
-  const handlerSubmitStudent = (e) => {
-    e.preventDefault();
-    setErrors(validateForm(form));
+  const handleSubmitStudent = (e) => {
+    e.preventDefault(); // cancelamos el comporamiento del formulario que tiene por defecto
 
-    if (Object.keys(errors).length === 0) {
-      // si la longitud de las claves del objeto error es de cero, quiere decir que no hay errores.
+    setErrors(validateForm(form)); // verificamos si hay error en los campos del formulario
+    if (Object.keys(errors).length === 0) { // si la longitud de las claves del objeto error es de cero, quiere decir que no hay errores.
       setLoading(true);
-      createAccountStudent(form)
-        .then((response) => {
-          setLoading(false);
-          setResponse(true);
+      createAccountStudent(form).then((response) => {
+        if (response.status === 201) {
+          toast.success(response.data.message);
           setTimeout(() => {
             navigate("/alumno");
           }, 3000);
-          // clearTimeout(timer);
-        })
-        .catch(() => setResponse(true))
-        .finally(() => setLoading(false));
-    } else {
-      return;
-    }
+          setForm(initialForm);
+        } else {
+          setErrors({t100_email: "El email ya esta en uso"})
+          // toast.error(response.t100_email[0])
+        }
+      });
+    } else return;
   };
 
-  const handlerSubmitCompany = (e) => {
+  const handleSubmitCompany = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
 
     if (Object.keys(errors).length === 0) {
-      // setLoading(true);
-      createAccountCompany(form)
+      createBusiness(form)
+        .then(response => {
+          console.log(response)
+          if (response.status === 201) {
+            toast.success(response?.data?.message);
+            setTimeout(() => {
+              navigate("/pre-registro");
+            }, 3000);
+          } else if (response.status === 400) {
+            toast.error(response.data.message);
+          }
+        })
+    }
+  };
+
+  const handlePostJob = (e) => {
+    e.preventDefault();
+    setErrors(validateForm(form));
+
+    if (Object.keys(errors).length === 0) {
+      setLoading(true);
+      postJob(form)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => console.error(error))
+        .finally(() => setLoading(false));
     }
   };
 
@@ -70,8 +96,9 @@ export const useForm = (initialForm, validateForm) => {
     response,
     handleChange,
     handleChecked,
-    handlerSubmitStudent,
-    handlerSubmitCompany,
-    hadlerValidate,
+    handleSubmitStudent,
+    handleSubmitCompany,
+    handleValidate,
+    handlePostJob,
   };
 };

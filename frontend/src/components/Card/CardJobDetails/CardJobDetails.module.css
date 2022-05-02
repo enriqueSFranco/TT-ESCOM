@@ -1,3 +1,7 @@
+/* * {
+  outline: 2px solid red;
+} */
+
 h3 {
   font-size: 1rem;
   font-weight: bold;
@@ -5,13 +9,17 @@ h3 {
   letter-spacing: 1;
 }
 
-.body { height: 700px; }
+.body { 
+  height: 670px; 
+  overflow-y: scroll; 
+  padding-top: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
 
 .positionSticky {
+  font-family: sans-serif;
   position: sticky;
-  top: 5rem;
-  right: 13.1rem;
-  height: 700px;
+  top: 100px;
 }
 
 .actions {
@@ -26,8 +34,35 @@ h3 {
   border: none;
   outline: 2px solid #90314b;
   padding: .6rem;
-  border-radius: 3px;
+  border-radius: 10px;
+  position: relative;
+  width: 90px;
+  top: .5rem;
   transition: background-color .3s ease-in;
+}
+
+.btnApplyEmployment svg {
+  /* outline: 3px solid blue; */
+  color: #000;
+  margin-right: .05rem;
+  transition: transform .5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.btnApplyEmployment span {
+  /* outline: 3px solid blue; */
+  color: #000;
+  font-weight: 300;
+  transition: transform .5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.btnApplyEmployment:hover svg {
+  color: #fff;
+  transform: translateX(5px) rotate(45deg);
+}
+
+.btnApplyEmployment:hover span {
+  color: #fff;
+  transform: translateX(7px);
 }
 
 .btnApplyEmployment:hover {
@@ -37,23 +72,30 @@ h3 {
 
 .flex {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   padding: 0;
 }
 
-.flex ul {
-  margin-top: .5rem;
-}
+.flex ul { margin-top: .5rem; }
 
-.flex li > span {
-  margin-left: .4rem;
+.header {
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  margin: 0;
+  width: 100%;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
+  border-bottom: 2px solid rgba(0,0,0,.08);
 }
-
-.requirements {}
 
 .requirements ul {
   padding: 0;
+}
+
+.tagsBody {
+  /* outline: 2px solid blue; */
+  width: 400px;
 }
 
 .title {
@@ -66,12 +108,11 @@ h3 {
 .wrapper {
   background-color: #fff;
   font-family: sans-serif;
-  height: 700px;
-  width: 700px;
+  height: 800px;
+  width: 100%;
   border-radius: 8px;
-  overflow-y: scroll;
   outline: 1px solid #ccc;
-  padding: 1rem;
+  padding: .4rem 0 1rem 0;
 }
 
 .wrapper::-webkit-scrollbar { width: 8px; }

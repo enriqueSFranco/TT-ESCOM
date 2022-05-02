@@ -1,36 +1,46 @@
-.container {
-
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-
+.container{
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; 
   overflow: hidden;
   color: #000;
-  min-height: 250px;
-  width: 40%;
   border-radius: 0 0 4px 4px;
   position: relative;
   justify-content: center;
   align-items: center;
-  margin-top: 40px;
-
+  width: 1200px;
+  height: 480px;
+  display: flex;
 }
 
+.container1{
+  background-color:aqua;
+  width: 40%;
+}
+
+.bg {
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  backdrop-filter: calc(10px);
+  height: 460px;
+  width: 100%;
+  background-image: url(../../../images/escom1.jpeg);
+}
 
 .container2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin-left: 30px;
-  min-width: 600px;
-
-
+  margin: 1em;
 }
 
+.container3 {
+  display: flex;
+  margin: 1em;
+}
 
 .stepper {
   width: 150px;
   display: flex;
   margin-right: 190px;
+  align-items: center;
 }
 
 .pages {
@@ -39,26 +49,25 @@
   align-items: center;
   text-align: center;
   min-height: 180px;
-
+  margin-top: 1rem;
 }
 
 .buttons {
   display: flex;
   align-items: center;
   justify-content: right;
-  height: 50px;
 }
 
 
 .button {
-  padding: 1px 15px;
+  padding: 5px 35px;
   background-color: white;
-  border: 2px solid white;
-  border-radius: 4px;
+  border: 1px solid rgb(0, 128, 255);
+  border-radius: 5px;
 }
 
 .button:hover {
-  background-color: #8e0f4a1e;
+  background-color: #7d7d7d1e;
 }
 
 .space {
@@ -69,9 +78,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  min-height: 180px;
+  text-align: left;
+  height: 370px;
   min-width: 600px;
+  
 }
 
 .icon {
@@ -82,22 +92,58 @@
 
 
 .inputGroup {
-  width: 490px;
   justify-content: center;
   align-items: center;
   text-align: left;
   margin: 1rem;
+  
 }
 
+.inputGroupP {
+  display: flex;
+  margin:1em;
+}
+
+.inputGroupP1 {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  text-align: left;
+  margin: 1rem;
+}
+
+
+.Col1{
+  display: flex;
+  margin-right:1em;
+}
+.Col2{
+  text-align: left;
+}
+
+.Col4{
+  margin-right: 2em;
+}
+
+.Col3{
+
+  text-align: left;
+}
+
+.Col21{
+  margin:30px;
+}
+
+.texto{
+  margin-bottom: 7px;
+}
+
+
 .inputCheckbox {
-  width: 490px;
   justify-content: center;
   align-items: center;
   text-align: left;
-
-  margin-left: 25px;
 }
-
 
 .inputGroupCheckbox {
   width: 490px;
@@ -107,7 +153,6 @@
   margin: 1rem;
 }
 
-
 .select {
   justify-content: center;
   align-items: center;
@@ -116,6 +161,4 @@
   width: 490px;
 }
 
-.text {
-  text-align: left;
-}
+.text { text-align: left; }

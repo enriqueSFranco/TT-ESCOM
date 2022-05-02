@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "hooks/useForm";
-import { Toaster } from "react-hot-toast";
 import { companyInitialForm } from "../schemes";
-import TextField from "@mui/material/TextField";
+import FormCompanyInfo from "./FormCompanyInfo";
+import FormRecruiterInfo from "./FormRecruiterInfo";
 import styles from "../Styles.module.css";
 
 /**
@@ -17,12 +18,16 @@ const validateForm = (form) => {
   let errors = {};
   let regex = {
     t300_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
-    t300_email: /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/,
     t300_rfc: /^([A-ZÑ\x26]{3,4})([0-9]{6})([A-Z0-9]{3})$/,
+    t300_bussiness_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,255}$/,
+    t301_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
+    t301_last_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
+    t301_email: /^(\w+[/./-]?){1,}@[A-Za-z]+[/.]\w{2,}$/,
+    t301_phonenumber: /\x2b[0-9]+/,
   };
 
   if (!form.t300_name.trim())
-    errors.t300_name = "El campo 'Nombre' es requerido.";
+    errors.t300_name = "El campo 'Nombre de la empresa' es requerido.";
   else if (!regex.t300_name.test(form.t300_name))
     errors.t300_name =
       "El campo 'Empresa' solo acepta letras y espacios en blanco.";
@@ -31,30 +36,38 @@ const validateForm = (form) => {
   else if (!regex.t300_rfc.test(form.t300_rfc))
     errors.t300_rfc = "El campo 'rfc' no es valido.";
 
-  if (!form.t300_email.trim())
-    errors.t300_email = "El campo 'Email' es requerido.";
-  else if (!regex.t300_email.test(form.t300_email))
-    errors.t300_email = "El campo 'Email' es incorrecto.";
+  if (!form.t300_bussiness_name.trim())
+    errors.t300_bussiness_name = "El campo 'razon social' es requerido";
+  else if (!regex.t300_bussiness_name.test(form.t300_bussiness_name))
+    errors.t300_bussiness_name =
+      "El campo 'razon social' solo acepta letras y espacion en blanco";
+
+  if (!form.t301_email.trim())
+    errors.t301_email = "El campo 'Email' es requerido.";
+  else if (!regex.t301_email.test(form.t301_email))
+    errors.t301_email = "El campo 'Email' es incorrecto.";
 
   return errors;
 };
 
 const FormCompany = () => {
-  const {
-    form,
-    errors,
-    handleChange,
-    hadlerValidate,
-    handlerSubmitCompany,
-  } = useForm(companyInitialForm, validateForm);
+  const { 
+    form, 
+    errors, 
+    handleChange, 
+    handleValidate, 
+    handleSubmitCompany } = useForm(companyInitialForm, validateForm);
+  const [step, setStep] = useState(1);
 
-  return (
-    <>
+  const nextStep = () => setStep(step + 1);
+
+  const prevStep = () => setStep(step - 1);
+
+  if (step === 1)
+    return (
       <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
-        <div className="row align-items-stretch">
-          <div
-            className={`${styles.bg} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
-          >
+        <div className="row text-center">
+          <div className={`${styles.bg} col rounded`}>
             <div className={`${styles.login}`}>
               <blockquote>
                 Un paso más cerca de tu nuevo <em>empleo</em>.
@@ -72,68 +85,53 @@ const FormCompany = () => {
           </div>
           <div className={`col bg-white p-5 rounded-end`}>
             <h2 className={`${styles.welcome}`}>Bienvenido</h2>
-            <form onSubmit={handlerSubmitCompany} className={styles.form}>
-              {/* input para el username */}
-              <div className={styles.inputGroup}>
-                <TextField
-                  label="Nombre de su empresa"
-                  id="t300_name"
-                  name="t300_name"
-                  sx={{ width: 500, maxWidth: "100%" }}
-                  value={form.t300_name}
-                  onBlur={hadlerValidate}
-                  onKeyUp={hadlerValidate}
-                  onChange={handleChange}
-                />
-                {errors && (
-                  <span className={styles.error}>{errors.t300_name}</span>
-                )}
-              </div>
-              <div className={styles.inputGroup}>
-                <TextField
-                  label="RFC"
-                  id="t300_rfc"
-                  name="t300_rfc"
-                  sx={{ width: 500, maxWidth: "100%" }}
-                  value={form.t300_rfc}
-                  onBlur={hadlerValidate}
-                  onKeyUp={hadlerValidate}
-                  onChange={handleChange}
-                />
-                {errors && (
-                  <span className={styles.error}>{errors.t300_rfc}</span>
-                )}
-              </div>
-              <div className={styles.inputGroup}>
-                <TextField
-                  label="Correo electronico"
-                  id="t300_email"
-                  name="t300_email"
-                  sx={{ width: 500, maxWidth: "100%" }}
-                  value={form.t300_email}
-                  onBlur={hadlerValidate}
-                  onKeyUp={hadlerValidate}
-                  onChange={handleChange}
-                />
-                {errors && (
-                  <span className={styles.error}>{errors.t300_email}</span>
-                )}
-              </div>
-              <div className="d-grid">
-                <button
-                  type="submit"
-                  className={`${styles.btnPreRegister} btn btn-primary`}
-                >
-                  Confirmar Pre-Registro
-                </button>
-              </div>
-            </form>
+            <FormCompanyInfo
+              nextStep={nextStep}
+              form={form}
+              errors={errors}
+              handleChange={handleChange}
+              handleValidate={handleValidate}
+            />
           </div>
         </div>
       </div>
-      <Toaster position="top-right" />
-    </>
-  );
+    );
+  else if (step === 2)
+    return (
+      <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
+        <div className="row">
+          <div
+            className={`${styles.bg} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
+          >
+            <div className={`${styles.login}`}>
+              <blockquote>
+                Crea tu cuenta y publica tus vacantes con nosotros.
+              </blockquote>
+              <span>
+                Ya tines cuenta?{" "}
+                <Link className={`${styles.linkToLogin}`} to="/reclutador">
+                  Inicia sesion
+                </Link>
+              </span>
+              <span>
+                <a href="/#">Recuperar contraseña</a>
+              </span>
+            </div>
+          </div>
+          <div className={`col bg-white p-5 rounded-end`}>
+            <h2 className={`${styles.welcome}`}>Bienvenido</h2>
+            <FormRecruiterInfo
+              prevStep={prevStep}
+              form={form}
+              errors={errors}
+              handleSubmitCompany={handleSubmitCompany}
+              handleChange={handleChange}
+              handleValidate={handleValidate}
+            />
+          </div>
+        </div>
+      </div>
+    );
 };
 
 export default FormCompany;

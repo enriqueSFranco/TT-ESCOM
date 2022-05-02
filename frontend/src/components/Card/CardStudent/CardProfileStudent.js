@@ -1,47 +1,55 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import AuthContext from "context/AuthContext";
 import { motion } from "framer-motion";
-import { getStudent, getSocialNetwork } from "services/students/index";
+import { getSocialNetwork, getStudent } from "services/students/index";
+import { getSkill } from "services/catalogs";
 import { uuid } from "utils/uuid";
+import Chip from "@mui/material/Chip"
 import FormUpdateDataStudent from "../../Form/updateInfoStudent/FormUpdateDataStudent";
-import Avatar from "../../Avatar/Avatar";
+import CustomAvatar from "../../Avatar/Avatar";
 import * as MdIcon from "react-icons/md";
 import * as IoIcon from "react-icons/io";
 import styles from "./CardProfileStudent.module.css";
 
 const CardProfileStudent = () => {
-  const [state, setState] = useState("profile");
+  // TODO: Implementar useReducer para el manejo del estado
+  const [isProfile, setIsProfile] = useState("profile");
   const [student, setStudent] = useState([]);
+  const [skills, setSkills] = useState([]);
   const [socialNetworks, setSocialNetworks] = useState([]);
+  const { token } = useContext(AuthContext);
 
   const handleEdit = (e) => {
-    let isEdit = state === "edit" ? "profile" : "edit";
-    setState(isEdit);
+    let isEdit = isProfile === "edit" ? "profile" : "edit";
+    setIsProfile(isEdit);
   };
 
-  
-  const id = "2017";
   useEffect(() => {
-    const fetchData = async () => {
-      const [studentRes, linksRes] = await Promise.all([
-        getStudent(id),
-        getSocialNetwork(id),
-        // getSkill(id)
-      ]);
-      setStudent(studentRes);
-      setSocialNetworks(linksRes);
-    };
-    fetchData();
+    getStudent(token?.user?.user_id)
+      .then(response => {
+        setStudent(response);
+      })
+  }, [token?.user?.user_id]);
 
-    return () => { // nos desuscribimos de la peticion a la API
-      setStudent([]);
-      setSocialNetworks([])
-    }
-  }, [id]);
+  useEffect(() => {
+    getSkill(token?.user?.user_id)
+      .then(response => {
+        setSkills(response)
+      })
+  }, [token?.user?.user_id]);
+
+  useEffect(() => {
+    getSocialNetwork(token?.user?.user_id)
+      .then(response => {
+        setSocialNetworks(response);
+      })
+  }, [token?.user?.user_id]);
 
   console.log(student)
+
   return (
     <>
-      {state === "edit" ? (
+      {isProfile === "edit" ? (
         <motion.article
           className="container"
           initial={{ scaleY: 0 }}
@@ -55,7 +63,7 @@ const CardProfileStudent = () => {
           />
         </motion.article>
       ) : (
-        <article className={`${styles.mainContainer} container`}>
+        <article className={`${styles.mainContainer}`}>
           <div className={`${styles.card}`}>
             <header className={styles.background}>
               <div className={styles.avatar}>
@@ -64,12 +72,12 @@ const CardProfileStudent = () => {
                   onClick={handleEdit}
                 />
                 {/* <img src="https://placeimg.com/640/480/any" alt="user" /> */}
-                <Avatar student={student} />
+                <CustomAvatar student={student} width="80px" height="80px" fontSize="2rem" />
                 <div className={styles.nameHolder}>
                   <h3>
                     {student[0]?.t100_name} {student[0]?.t100_last_name}
                   </h3>
-                  <h4>{student[0]?.t100_speciality ?? ""}</h4>
+                  <h4>{student[0]?.t100_interest_job ?? ""}</h4>
                 </div>
               </div>
             </header>
@@ -89,27 +97,43 @@ const CardProfileStudent = () => {
                   </p>
                 </div>
               </div>
+              <h4 className={styles.label}>redes sociales</h4>
               <div className={`${styles.socialNetworks} ${styles.separator}`}>
-                <h4 className={styles.label}>redes solicales</h4>
-                {
-                  socialNetworks.length > 0 ? (
-                    socialNetworks.map(({ t113_link, c115_id_plataform }) => {
-                      return (
-                        <a
-                          href={`${t113_link}`}
-                          target="_blank"
-                          rel="noreferrer"
+                {socialNetworks.length > 0 ? (
+                  socialNetworks.map(({ t113_link, c115_id_plataform }) => {
+                    return (
+                      <a
+                        href={`${t113_link}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        key={uuid()}
+                        className={styles.link}
+                      >
+                        {c115_id_plataform?.c115_description}
+                      </a>
+                    );
+                  })
+                ) : (
+                  <h3>Sin redes sociales</h3>
+                )}
+              </div>
+              <div className={`${styles.wrapperSkills} ${styles.separator}`}>
+                <h4 className={styles.label}>Skills</h4>
+                <ul className={styles.skillList}>
+                  {
+                    skills.length > 0 ? (
+                      skills.map(({ c116_id_skill }) => (
+                        <Chip
                           key={uuid()}
-                          className={styles.link}
-                        >
-                          {c115_id_plataform?.c115_description}
-                        </a>
-                      );
-                    })
-                  ) : (
-                    <h3>Sin redes sociales</h3>
-                  )
-                }
+                          label={c116_id_skill?.c116_description}
+                          variant="outlined"
+                        />
+                      ))
+                    ) : (
+                      <h3>Sin skills</h3>
+                    )
+                  }
+                </ul>
               </div>
               <div className={`${styles.cv} py-4`}>
                 <IoIcon.IoIosCheckmarkCircle />

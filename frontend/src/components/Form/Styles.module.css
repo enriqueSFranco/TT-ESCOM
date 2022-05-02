@@ -7,6 +7,14 @@
   backdrop-filter: calc(10px);
 }
 
+.bgCreateAccountCompany {
+  position: relative;
+  /* background-image: url(../../images/crearCuentaEmpresa.jpg); */
+  background-size: cover;
+  background-position: -20rem center;
+  background-repeat: no-repeat;
+}
+
 .bg::before {
   content: '';
   position: absolute;
@@ -27,9 +35,7 @@
   font-size: 2.5rem;
 }
 
-.bg blockquote em {
-  color: #04c8eb;
-}
+.bg blockquote em { color: #04c8eb; }
 
 .btLogin { 
   width: 490px; 
@@ -46,14 +52,32 @@
 
 .error {
   font-weight: 300;
-  color: #dc3545;
+  color: #5f2120;
   text-align: left;
+  padding: .3rem;
+  background-color: #fceded;
+  border-radius: 0 0 4px 4px;
+}
+
+.error svg {
+  color: #ef6360;
+  font-size: 1.2rem;
+  margin-right: .4rem;
 }
 
 .form {
   width: auto;
   height: auto;
-  padding: 1rem;
+  /* padding: 1rem; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.createAccountStudentForm {
+  width: auto;
+  height: 480px;
+  /* padding: 1rem; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -66,22 +90,44 @@
   bottom: 1rem;
 }
 
+.companyInfo { text-align: left; }
+
+.personalContact { height: 450px; }
+
+.yohaveAccount {
+  background-color: red;
+  position: relative;
+  right: 0rem;
+  display: flex;
+  justify-content: flex-start;
+  /* width: 100%; */
+  flex-direction: column;
+}
+
 .work {
   color: #a5d0d8;
   font-size: 2.5rem;
 }
 
-.welcome {
-  text-align: center;
-}
+.welcome { margin-bottom: 1rem; }
 
-.welcome h2 {
+.welcome h2, .personalContact h2 {
   text-transform: uppercase;
   font-weight: bold;
+  font-size: 1.5rem;
   color: #222;
   letter-spacing: 2px;
   padding: 0;
-  margin: 0;
+  position: relative;
+}
+
+.welcome svg {
+  font-size: .8rem;
+  position: absolute;
+  top: 0;
+  margin-left: .2rem;
+  font-weight: bold;
+  color: #90314b;
 }
 
 .welcome span {
@@ -90,9 +136,29 @@
   text-align: center;
 }
 
+.welcome a { color: #000; transition: color .3s ease-in; }
+.welcome a:hover { color: #90314b; }
+
 .wrapper {
   position: relative;
   top: 10rem;
+}
+
+.wrapperCreateAccountStudent {
+  position: relative;
+  top: 12rem;
+  /* height: 500px; */
+}
+
+.wrapperCreateAccountCompany {
+  position: relative;
+  top: 2rem;
+}
+
+.wrapperYouHaveAccount {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
 }
 
 .login {
@@ -118,9 +184,7 @@
   right: 1.9rem;
 }
 
-.login a:hover {
-  color: #fff;
-}
+.login a:hover { color: #fff; }
 
 .linkToLogin {
   color: #04c8eb;
@@ -128,13 +192,105 @@
   left: 0;
 }
 
+.recoverAccount {  margin-top: 2rem;  }
+
+.recoverAccount h1 {
+  font-size: 2rem;
+  text-align: center;
+  color: #90314b;
+  font-weight: bold;
+}
+
 /* ESTILOS DEL FORMULARIO DE CREAR CUENTA EMPRESA */
 .inputGroup {
   position: relative;
   top: 0;
   width: 490px;
+  height: 85px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  margin: 1rem;
+  margin-bottom: .5rem;
+}
+
+.inputGroupCreatAccountStudent {
+  position: relative;
+  top: 0;
+  width: 490px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  /* margin-bottom: 1.4rem; */
+}
+
+.flexRow {
+  position: relative;
+  top: 0;
+  width: 490px;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+
+/* input file */
+.inputFile {
+  width: .1px;
+  height: .1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.inputFile + label {
+  max-width: 150px;
+  font-size: .9rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  padding: .65rem 1.25rem;
+  border-radius: var(--size-radius);
+}
+
+.inputFile + label svg {
+  width: 1rem;
+  height: 1rem;
+  color: #fff;
+  vertical-align: middle;
+  fill: currentColor;
+  margin-top: -.25rem;
+  margin-right: .25rem;
+}
+
+.inputFile + label {
+  color: #fff;
+  background-color: #90314b;
+}
+
+
+.wrapperButtons {
+  /* outline: 1px solid red; */
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.btnBack, 
+.btnRegister, 
+.btnNext {
+  background-color: #90314b;
+  color: #fff;
+  outline: none;
+  border: none;
+  padding: .5rem;
+  width: 150px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.btnRegister {
+  width: 190px;
 }

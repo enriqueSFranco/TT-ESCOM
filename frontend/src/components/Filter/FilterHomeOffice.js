@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Filter.module.css";
 
-const FilterHomeOffice = ({ value, onChange }) => {
+const FilterHomeOffice = ({ value, handleChecked }) => {
 
   return (
     <>
@@ -9,10 +9,10 @@ const FilterHomeOffice = ({ value, onChange }) => {
         <input
           className={styles.inputSwitch}
           type="checkbox"
-          name="homeOffice"
-          id="homeOffice"
+          name="t200_home_ofice"
+          id="t200_home_ofice"
           value={value}
-          onChange={onChange}
+          onChange={handleChecked}
         />
         <span className={`${styles.sliderSwitch} ${styles.check}`}></span>
         <span className={styles.label}>Remoto</span>

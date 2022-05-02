@@ -1,0 +1,6 @@
+.wrapper {
+  width: 100%;
+  height: calc(100% - 2rem);
+  position: relative;
+  top: 2rem;
+}

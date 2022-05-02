@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.vacantes.models import VacantStatus,CandidateProfile,Experience,ApplicationState,ReportType,ReportState,MState,Municipality
+from apps.vacantes.models import VacantStatus,CandidateProfile,Experience,ApplicationState,ReportType,ReportState,Locality
 
 class VacantStatusSerializer(serializers.ModelSerializer):
     class Meta:
@@ -140,47 +140,26 @@ class ReportStateListSerializer(serializers.ModelSerializer):
         }
 
 
-class StateSerializer(serializers.ModelSerializer):
+class LocalitySerializer(serializers.ModelSerializer):
     class Meta:
-        model = MState
+        model = Locality
         fields = '__all__'
     
     def create(self,validate_data):
-        register = MState(**validate_data)
+        register = Locality(**validate_data)
         register.save()
         return register
     
-class StateListSerializer(serializers.ModelSerializer):
+class LocalityListSerializer(serializers.ModelSerializer):
     class Meta:
-        model = MState
+        model = Locality
         fields = '__all__'
 
     def to_representation(self,instance):
         return{
-            'c221_id_state' : instance['c221_id_state'],
-	        'c221_state' : instance['c221_state']
-        }        
-
-
-
-class MunicipalitySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Municipality
-        fields = '__all__'
-    
-    def create(self,validate_data):
-        register = Municipality(**validate_data)
-        register.save()
-        return register
-    
-class MunicipalityListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Municipality
-        fields = '__all__'
-
-    def to_representation(self,instance):
-        return{
-            'c221_id_state' : instance['c221_id_state'],
-	        'c222_id_municipality' : instance['c222_id_municipality'],
-            'c222_municipality' : instance['c222_municipality']
-        }        
+            'c222_id' : instance['c222_id'],
+            'c222_cp' : instance['c222_cp'],
+            'c222_state' : instance['c222_state'],
+            'c222_municipality' : instance['c222_municipality'],
+            'c222_locality' : instance['c222_locality']
+        }

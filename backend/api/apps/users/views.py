@@ -1,17 +1,20 @@
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from apps.users.api.serializers import CustomUserSerializer
+from apps.users.api.serializers import UserSerializer,ListUserSerializer,UpdateUserSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny
+from rest_framework import viewsets
+from apps.users.models import User
 
 
-class CustomUserCreate(APIView):
+class UserCreate(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request, format='json'):
-        serializer = CustomUserSerializer(data=request.data)
+        serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
             if user:
@@ -34,78 +37,115 @@ class BlacklistTokenUpdateView(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-# from datetime import datetime
-# from django.contrib.sessions.models import Session
-# from rest_framework.authtoken.views import ObtainAuthToken
-# from rest_framework.authtoken.models import Token
-# from rest_framework.response import Response
-# from rest_framework.permissions import AllowAny
-# from rest_framework import status
+class UserViewSet(viewsets.GenericViewSet):
+	model = User
+	serializer_class = UserSerializer
+	list_serializer_class = ListUserSerializer
+	queryset = None
 
-# from apps.users.api.serializers import UserTokenSerializer
-# class UserToken(APIView):
-#   def get(self, request, *args, **kwargs):
-#     username = request.GET.get('username')
-#     try:
-#       user_token = Token.objects.get(user=UserTokenSerializer().Meta.model.objects.filter(username=username).first())
-#       return Response({'token': user_token.key})
-#     except:
-#       return Response({'error': 'Credenciales incorrectas'}, status=status.HTTP_400_BAD_REQUEST)
+	def get_object(self, pk):
+		if self.queryset is None:
+			self.queryset = self.model.objects\
+				.filter(id=pk)\
+				.all()
+				#.values('is_superuser','username','first_name','last_name','email','is_staff','date_joined',
+                #'user_type','is_active')
+		return self.queryset
+	def get_queryset(self):
+		if self.queryset is None:
+			self.queryset = self.model.objects\
+				.filter()\
+				.all()
+		return self.queryset
 
-# # 28
-# class Login(ObtainAuthToken):
-#   permission_classes = [AllowAny]
-#   def post(self, request, *args, **kwargs):
-#     login_serializer = self.serializer_class(data=request.data, context={'request':request})
-#     print(login_serializer.validated_data['user'])
-#     if login_serializer.is_valid():
-#       user = login_serializer.validated_data['user']
-#       if user.is_active:
-#         token, created = Token.objects.get_or_create(user=user)
-#         user_serializer = UserTokenSerializer(user)
-#         if created:
-#           return Response({
-#             'token': token.key,
-#             # 'user': user_serializer.data,
-#             'message': 'Inicio de sesion correcto',
-#             'authenticatedUser': {
-#               'email': user_serializer.data['t100_email'],
-#             }
-#           }, status=status.HTTP_201_CREATED)
-#         else: # si inicia sesion en otro navegador le borramos el token actual y le creamos uno nuevo
-#           token.delete()
-#           token = Token.objects.create(user=user)
-#           return Response({
-#             'token': token.key,
-#             'user': user_serializer.data,
-#             'message': 'Inicio de sesion correcto'
-#           }, status=status.HTTP_201_CREATED)
-#       else:
-#         return Response({'error': 'Este usuario no puede inicar sesion'}, status=status.HTTP_401_UNAUTHORIZED)
-#     else:
-#       Response({'error': 'Nombre de usuario o password incorrectos'}, status=status.HTTP_400_BAD_REQUEST)
-#     return Response({'error': 'Contraseña o nombre de usuario incorrectos', 'status':status.HTTP_400_BAD_REQUEST})
+	def list(self, request):
+		print(request.data)
+		users = self.get_queryset()
+		users_serializer = self.list_serializer_class(users, many=True)
+		return Response(users_serializer.data, status=status.HTTP_200_OK)
 
-# class Logout(APIView):
-#   def get(self, request, *args, **kwargs):
-#     try:
-#       token = request.GET.get('token')
-#       token = Token.objects.filter(key=token).first()
-#       if token:
-#         user = token.user
-        
-#         all_sessions = Session.objects.filter(expire_date__gte=datetime.now())
-#         if all_sessions.exists():
-#           for session in all_sessions:
-#             session_data = session.get_decoded()
-#             if user.id == int(session_data.get('_auth_user_id')):
-#               session.delete()
-        
-#         token.delete()
-#         session_message = 'sesiones de usuario eliminadas'
-#         token_messsage = 'token eliminado'
+	def create(self, request):        
+		user_serializer = self.serializer_class(data=request.data)        
+		print('request: ',request.data)
+		if user_serializer.is_valid():
+			user_serializer.save()
+			return Response({
+				'message': 'Usuario registrado correctamente.'
+			}, status=status.HTTP_201_CREATED)
+		return Response({
+			'message': 'Hay errores en el registro',
+			'errors': user_serializer.errors
+		}, status=status.HTTP_400_BAD_REQUEST)
 
-#         return Response({'token_message': token_messsage, 'session_message': session_message}, status=status.HTTP_200_OK)
-#       return Response({'error': 'No se encontro un usuario con estas credenciales'}, status=status.HTTP_400_BAD_REQUEST)
-#     except:
-#       return Response({'error': 'No se ha encontrado token en la peticion'}, status=status.HTTP_409_CONFLICT)
+	def retrieve(self, request, pk):
+		get_user = self.get_object(pk)
+		user_serializer = self.serializer_class(get_user,many=True)
+		return Response(user_serializer.data)
+
+	def update(self, request, pk):
+		get_user = self.model.objects.filter(t100_id_student=pk).first()
+		user_serializer = UpdateUserSerializer(get_user, data=request.data)
+		if user_serializer.is_valid():
+			user_serializer.save()
+			return Response({
+				'message': 'Usuario actualizado correctamente'
+			}, status=status.HTTP_200_OK)
+		return Response({
+			'message': 'Hay errores en la actualización',
+			'errors': user_serializer.errors
+		}, status=status.HTTP_400_BAD_REQUEST)
+#
+	#def destroy(self, request, pk):
+	#	student_destroy = self.model.objects.filter(t100_id_student=pk).first()
+	#	if student_destroy:
+	#		student_destroy = self.model.objects.filter(t100_id_student=pk).delete()
+	#		return Response({
+	#			'message': 'Alumno eliminado correctamente'
+	#		})
+	#	return Response({
+	#		'message': 'No existe el alumno que desea eliminar'
+	#	}, status=status.HTTP_404_NOT_FOUND)
+
+
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):	    
+    @classmethod
+    def get_token(cls, user):
+        return RefreshToken.for_user(user)
+
+    def validate(self,attrs):
+        """data={
+			'access':'',
+			'refresh':'',
+			'user':{
+				'username':'',
+				'email':'',
+				'user_id':''
+			},
+			'message':'Inicio de sesión exitoso'
+		}"""
+        data = super().validate(attrs)
+        token = self.get_token(self.user) #super().get_token(user)        
+        print(self.user.user_id)
+        #print(token)
+        #print(student_user.data)
+
+        # Add custom claims
+        #token['username'] = user.username		
+        # ...
+        data['refresh']=str(token)
+        data['access']=str(token.access_token)		
+        user={
+			'user_id':self.user.user_id,
+			'username':self.user.username,
+			'email':self.user.email,
+			'user_type':self.user.user_type,
+			'first_name':self.user.first_name
+		}
+        data['user']=user        
+        print (data)
+
+        return data
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer

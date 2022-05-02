@@ -1,10 +1,17 @@
 from django.contrib.auth.models import  AbstractBaseUser,PermissionsMixin
+from apps.users.models import User
 
 #from turtle import ondrag
 from django.db import models
 
-def upload_path(instance, filename):
-    return '/'.join(['profile_picture', str(instance.title), filename])
+def upload_image_profile(instance, filename):
+    return f"profile_pictures/{instance.t100_boleta}-{filename}"
+
+def upload_project_banner(instance, filename):
+    return f"projects_pictures/{instance.t100_id_student}-{filename}"
+
+def upload_platoform_icon(instance, filename):
+    return f"icons/{instance.t100_id_student}-{filename}"
 
 def upload_cv(instance, filename):
     return f"{instance.t100_boleta}-{filename}"	
@@ -35,23 +42,37 @@ class AcademicState(models.Model):
 	def __str__(self) -> str:
 		return self.c109_description
 
-#C108 Puesto de interes
+#C108 Unidades academicas
+class AcademicUnit(models.Model):
+	c108_id_academic_unit = models.AutoField(primary_key=True)
+	c108_academic_unit = models.CharField(max_length=150,null=True,blank=True)
+
+	class Meta: 
+		verbose_name = "Acadmic Units"
+		db_table = "c108_unidades_academicas"
+
+	def __str__(self) -> str:
+		return self.c108_academic_unit
+
+
+#C111 Puesto de interes
 class InterestJob(models.Model):
-	c108_id_job = models.AutoField(primary_key=True)
-	c108_job = models.CharField(max_length=60,null=False,blank=False,default="no definido")
+	c111_id_job = models.AutoField(primary_key=True)
+	c111_job = models.CharField(max_length=60,null=False,blank=False,default="no definido")
 
 	class Meta:
 		verbose_name = 'InterestJob'
-		db_table = 'c108_puesto_interes'
+		db_table = 'c111_puesto_interes'
 	
 	def __str__(self) -> str:
-		return self.c108_job
+		return self.c111_job
 
 
 #C115 Plataformas
 class Plataform(models.Model):
 	c115_id_plataform = models.AutoField(primary_key=True)
-	c115_description = models.CharField(max_length=60,blank=True,null=True)	
+	c115_description = models.CharField(max_length=60,blank=True,null=True)
+	c115_icon = models.ImageField(blank=True,null=True,default="",upload_to=upload_platoform_icon)
 
 	class Meta:
 		verbose_name = 'Plataform'
@@ -94,12 +115,14 @@ class Lenguage(models.Model):
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
 #T100 Alumno
 class Student(AbstractBaseUser):	
-	t100_boleta = models.CharField(primary_key=True,max_length=12, null=False, blank=False)
+	#user = models.OneToOneField(User,on_delete=models.CASCADE)
+	t100_id_student = models.AutoField(primary_key=True)
+	t100_boleta = models.CharField(max_length=14, null=True, blank=True)
 	t100_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_last_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_username = models.CharField(max_length=40, null=True, blank=True)
 	t100_cv = models.FileField(null=True, blank=True,default="",upload_to=upload_cv)
-	t100_email = models.EmailField(max_length=50, null=False, blank=False)
+	t100_email = models.EmailField(unique=True,max_length=50, null=False, blank=False)
 	genders = [
 		('F', 'Femenino'),
 		('M', 'Masculino')
@@ -113,18 +136,18 @@ class Student(AbstractBaseUser):
 	t100_modalities = models.CharField(max_length=20,null=True,blank=True)
 	t100_target_salary = models.PositiveIntegerField(null=True, blank=True)	
 	t100_travel = models.BooleanField(default=False)
-	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to=upload_path)
-	is_active = models.BooleanField(default=True)
+	t100_interest_job = models.CharField(max_length=70,null=True,blank=True)
+	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to=upload_image_profile)
+	is_active = models.BooleanField(default=False)
 
-	USERNAME_FIELD = 't100_boleta'
-	REQUIRED_FIELDS = ['t100_boleta','t100_password']
-	class Meta:
-		unique_together = ['t100_boleta', 't100_email']
+	USERNAME_FIELD = 't100_email'
+	REQUIRED_FIELDS = ['password']
+	class Meta:		
 		verbose_name = 'Student'
 		verbose_name_plural = 'Students'
 		db_table = "t100_alumno"
 	def __str__(self):
-		return self.t100_boleta
+		return self.t100_email
 
 #T102 Habilidades
 class StudentSkill(models.Model):	
@@ -137,7 +160,7 @@ class StudentSkill(models.Model):
 		on_delete=models.CASCADE,
 		default=1
 	)
-	t100_boleta = models.ForeignKey(
+	t100_id_student = models.ForeignKey(
 		Student, 
 		null=True, 
 		blank=True, 
@@ -146,24 +169,24 @@ class StudentSkill(models.Model):
 	)
 
 	class Meta:
-		unique_together = ['t100_boleta','c116_id_skill']
+		unique_together = ['t100_id_student','c116_id_skill']
 		verbose_name = "StudentSkill"
 		verbose_name_plural = "StudentSkills"
 		db_table = "t102_habilidades"
 
 	def __str__(self) -> str:
-		return str(self.t102_id_registrer)+","+str(self.t100_boleta)
+		return str(self.t102_id_registrer)+","+str(self.t100_id_student)
 
 #T104 Historial academico
 class AcademicHistory(models.Model):
 	t104_id_registrer = models.AutoField(primary_key=True)
-	t100_boleta = models.ForeignKey(
+	t100_id_student = models.ForeignKey(
 		Student,
 		null=True,
 		blank=True,
 		related_name='StudentAcademics',
 		on_delete=models.CASCADE)
-	t104_academic_unit = models.CharField(max_length=100,null=True,blank=True)
+	t104_academic_unit = models.CharField(max_length=150,null=True,blank=True)
 	t104_carreer = models.CharField(max_length=100,null=True,blank=True)
 	c107_id_academic_level = models.ForeignKey(
 		AcademicLevel,
@@ -186,7 +209,7 @@ class AcademicHistory(models.Model):
 	t104_end_date = models.DateField(null=True,blank=True)
 
 	class Meta:
-		unique_together = ['t100_boleta','t104_carreer']
+		unique_together = ['t100_id_student','t104_carreer','t104_academic_unit']
 		verbose_name="Academic history"
 		db_table="t104_historial_academico"
 	
@@ -196,13 +219,13 @@ class AcademicHistory(models.Model):
 #T113 Areas de interes
 class InterestArea(models.Model):
 	t113_id_registrer = models.AutoField(primary_key=True)
-	t100_boleta = models.ForeignKey(
+	t100_id_student = models.ForeignKey(
 		Student,
 		null=True,
 		blank=True,
 		related_name='StudentInterests',
 		on_delete=models.CASCADE)
-	#c108_id_area=
+	
 
 	class Meta:
 		verbose_name="Areas of interest"
@@ -213,7 +236,7 @@ class InterestArea(models.Model):
 #T114 Enlaces
 class Link(models.Model):
 	t114_id_registrer = models.AutoField(primary_key=True)
-	t100_boleta = models.ForeignKey(
+	t100_id_student = models.ForeignKey(
 		Student,
 		null=True,
 		blank=True,
@@ -226,10 +249,10 @@ class Link(models.Model):
 		blank=False,
 		related_name='PlataformDescription',
 		on_delete=models.CASCADE,
-		default=1)
+		default=1)	
 
 	class Meta:
-		unique_together = ['t100_boleta','c115_id_plataform']
+		unique_together = ['t100_id_student','c115_id_plataform']
 		verbose_name="Link"
 		verbose_name_plural="Links"
 		db_table='t114_enlaces'
@@ -240,7 +263,7 @@ class Link(models.Model):
 #T110 Idiomas
 class StudentLenguage(models.Model):
 	t110_id_registrer = models.AutoField(primary_key=True)
-	t100_boleta = models.ForeignKey(
+	t100_id_student = models.ForeignKey(
 		Student,
 		null=True,
 		blank=True,
@@ -261,7 +284,7 @@ class StudentLenguage(models.Model):
 	t110_native = models.BooleanField(default=False)
 
 	class Meta:
-		unique_together = ['t100_boleta','c111_id_language']
+		unique_together = ['t100_id_student','c111_id_language']
 		verbose_name='StudentLenguage'
 		verbose_name_plural='StudentLenguages'
 		db_table='t110_idiomas'
@@ -272,7 +295,7 @@ class StudentLenguage(models.Model):
 #T103 Historial laboral
 class EmploymentHistory(models.Model):
 	t103_id_registrer = models.AutoField(primary_key=True)
-	t100_boleta = models.ForeignKey(
+	t100_id_student = models.ForeignKey(
 		Student,
 		null=True,
 		blank=True,
@@ -285,10 +308,34 @@ class EmploymentHistory(models.Model):
 	t103_end_date = models.DateField(null=True)
 
 	class Meta:
-		unique_together = ['t100_boleta','t103_corporation']
+		unique_together = ['t100_id_student','t103_corporation']
 		verbose_name='Employment history'
 		db_table='t103_historial_laboral'
 	
 	def __str__(self)->str:
 		return self.t103_corporation+', '+self.t103_employment
 		
+#T117 Historial laboral
+class PersonalProjects(models.Model):
+	t117_id_registrer = models.AutoField(primary_key=True)
+	t100_id_student = models.ForeignKey(
+		Student,
+		null=True,
+		blank=True,
+		related_name='StudentProjects',
+		on_delete=models.CASCADE)
+	t117_group = models.CharField(max_length=80,null=True,blank=True)	
+	t117_job = models.CharField(max_length=80,null=True,blank=True)
+	t117_link = models.CharField(max_length=100,blank=True,null=True)
+	t117_banner = models.ImageField(blank=True,null=True,default="",upload_to=upload_project_banner)
+	t117_description = models.TextField()
+	t117_start_date = models.DateField(null=True)
+	t117_end_date = models.DateField(null=True)
+
+	class Meta:
+		unique_together = ['t100_id_student','t117_job']
+		verbose_name='Employment history'
+		db_table='t117_proyectos'
+	
+	def __str__(self)->str:
+		return self.t117_group+', '+self.t117_job

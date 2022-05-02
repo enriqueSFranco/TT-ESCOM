@@ -5,7 +5,7 @@ import styles from "./MenuStudent.module.css";
 
 // secciones del menu
 let tabs = [
-  { label: "sobreMi" },
+  { label: "historial-academico"},
   { label: "experiencia" },
   { label: "certificaciones" },
 ];
@@ -16,7 +16,6 @@ const MenuStudent = () => {
     <nav className={styles.nav}>
       <ul className={styles.navMenu}>
         {tabs.map((item) => (
-          // console.log(item.label)
           <li className={`${item.label === selectedTab ? `${styles.selected}` : ""} ${styles.navList}`} key={item.label}>
             <Link 
               to={item.label} 

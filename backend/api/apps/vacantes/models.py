@@ -3,6 +3,9 @@ from  apps.students.models import Student
 from apps.administration.models import Admin
 from apps.companies.models import Company,Recruiter
 
+def upload_comunicate(instance, filename):
+    return f"comunicates/{instance.t300_id_company}-{filename}"
+
 """----------------------------------------------------------- Catalogos --------------------------------------------------------"""
 
 #C204 Estado vacante
@@ -77,37 +80,20 @@ class ReportState(models.Model):
     def __str__(self) -> str:
         return self.c220_description
 
-#c225 Estados
-class MState(models.Model):
-	c221_id_state = models.IntegerField(primary_key=True)
-	c221_state = models.CharField(max_length=50)
+#c222 CP
+class Locality(models.Model):	
+	c222_id = models.AutoField(primary_key=True)
+	c222_cp = models.IntegerField(null=False,blank=False)
+	c222_state = models.CharField(max_length=70, null=False,blank=False)
+	c222_municipality = models.CharField(max_length=170, null=False,blank=False)
+	c222_locality = models.CharField(max_length=170, null=False,blank=False)
 	class Meta:
-		verbose_name = 'State'
-		verbose_name_plural = 'States'
-		db_table = 'c221_estado'
+		verbose_name = 'locality'
+		verbose_name_plural = 'localities'
+		db_table = 'c222_localidades'
     
 	def __str__(self) -> str:
-		return self.c221_state
-
-#c222 Municipios
-class Municipality(models.Model):
-	c221_id_state = models.ForeignKey(
-        MState,  
-        null=True,
-        blank=True,
-        related_name="MuncipalState",
-        on_delete=models.CASCADE
-    )
-	c222_id_municipality = models.IntegerField(null=False,blank=False)
-	c222_municipality = models.CharField(max_length=70, null=False,blank=False)
-	c222_inegi_key = models.IntegerField(primary_key=True,null=False,blank=False,default=0)
-	class Meta:
-		verbose_name = 'Municipality'
-		verbose_name_plural = 'Municipalities'
-		db_table = 'c222_municipios'
-    
-	def __str__(self) -> str:
-		return self.c222_municipality
+		return self.c222_cp+":"+self.c222_state+","+self.c222_municipality+","+self.c222_locality
 
 
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
@@ -155,6 +141,15 @@ class Vacant(models.Model):
         on_delete=models.CASCADE)
     t200_publish_date = models.DateField()
     t200_close_date = models.DateField()
+    t200_state = models.CharField(max_length=50,null=True,blank=True)
+    t200_mucipality = models.CharField(max_length=100,null=True,blank=True)
+    t200_locality = models.CharField(max_length=100,null=False,blank=False,default='No definido')
+    t200_street = models.CharField(max_length=60,null=True,blank=True)
+    t200_cp = models.IntegerField(blank=True,null=True)
+    t200_interior_number = models.CharField(max_length=20,blank=True,null=True)
+    t200_exterior_number = models.CharField(max_length=20,blank=True,null=True)    
+    t200_vacancy = models.PositiveIntegerField(default=1)
+    t200_contract_type = models.CharField(max_length=50, default="Se acuerda en entrevista")
     t301_id_recruiter = models.ForeignKey(
         Recruiter,
         null=True,
@@ -169,7 +164,6 @@ class Vacant(models.Model):
         related_name='AdminVacant',
         on_delete=models.CASCADE
     )    
-    #t200_vacancy    
 
     class Meta:
         verbose_name = 'Vacant'
@@ -186,9 +180,9 @@ class Application(models.Model):
 		Vacant,
 		null=True,
 		blank=True,
-		related_name='StudentApplication',
+		related_name='VacantApplicated',
 		on_delete=models.CASCADE)
-    t100_boleta = models.ForeignKey(        
+    t100_id_student = models.ForeignKey(        
 		Student,
 		null=True,
 		blank=True,
@@ -213,45 +207,11 @@ class Application(models.Model):
     def __str__(self) ->str:
 	    return str(self.t201_id_application)
 
-#T213 Ubicacion
-class Ubication(models.Model):    
-    t200_id_vacant = models.ForeignKey(
-		Vacant,
-		null=True,
-		blank=True,
-		related_name='ApplicationUbication',
-		on_delete=models.CASCADE)
-    t213_state = models.ForeignKey(
-        MState,
-        null=True,
-        blank=True,
-        related_name="UbicationState",
-        on_delete=models.CASCADE
-    )
-    t213_mucipality = models.ForeignKey(
-        Municipality,
-        null=True,
-        blank=True,
-        related_name='UbicationMuncipality',
-        on_delete=models.CASCADE
-    )
-    t213_locality = models.CharField(max_length=100,null=False,blank=False,default='No definido')
-    t213_street = models.CharField(max_length=60,null=True,blank=True)
-    t213_cp = models.IntegerField(blank=True,null=True)
-    t213_interior_number = models.CharField(max_length=20,blank=True,null=True)
-    t213_exterior_number = models.CharField(max_length=20,blank=True,null=True)
-
-    class Meta:
-        verbose_name = 'Ubication'
-        db_table = 't213_ubicacion'
-    
-    def __str__(self)->str:
-        return self.t213_state+","+self.t213_mucipality+","+self.t213_locality
-
 #T202 Comunicados
 class Announcement(models.Model):
     t202_id_announcement = models.AutoField(primary_key=True)
-    t202_announcement = models.FileField(null=True,blank=True)#<-Titulo
+    t202_title = models.CharField(max_length=50,blank=False,null=False)#<-Titulo
+    t202_announcement = models.FileField(null=True,blank=True,upload_to=upload_comunicate)
     t202_description = models.TextField()
     t202_link = models.CharField(max_length=60,blank=True,null=True)#enlaces
     t300_id_company = models.ForeignKey(
@@ -295,8 +255,8 @@ class Report(models.Model):
 		blank=True,
 		related_name='Report',
 		on_delete=models.CASCADE)
-    t203_publish_type = models.BooleanField(default=True)#True->Vacante,False->Comunicado
-    t100_boleta = models.ForeignKey(        
+    t203_publish_type = models.CharField(max_length=15,blank=True,null=True)#Vacante/Comunicado
+    t100_id_student = models.ForeignKey(        
 		Student,
 		null=True,
 		blank=True,
