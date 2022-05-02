@@ -13,7 +13,7 @@ const DropMenuRecruiter = ({recruiter}) => {
   console.log(recruiter);
   
   return (
-    <ul>
+    <ul className={styles.menuList}>
       <li className={styles.menuItemStudent}>
         <Link to="/historial" className={styles.menuLinkStudent}>
           <MdSpaceDashboard />Dashboard

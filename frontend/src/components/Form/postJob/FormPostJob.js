@@ -261,6 +261,7 @@ const FormPostJob = () => {
                   onChange={handleChange}
                 />
                 {/* dias laborales */}
+
               </div>
             </div>
           </div>

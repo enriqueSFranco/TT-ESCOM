@@ -9,8 +9,7 @@
 .inputCheckbox {
   justify-content: center;
   align-items: center;
-  text-align: left;
-  width:200px;
+  text-align: left;  
 }
 
 .btn {
@@ -42,7 +41,7 @@
 }
 
 .inputGroup {
-  width: 100%;
+  margin-right: 20;
   height: auto;
   display: flex;
   justify-content: space-between;

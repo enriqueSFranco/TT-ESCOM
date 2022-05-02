@@ -20,8 +20,10 @@ function DatesSchool({
   setEndMonth,
   endYear,
   setEndYear,
+  academicHistorial,
+  setAcademicHistorial
 }) {
-  const { form, handleChange } = useForm(AcademicFormat);
+  const { form, handleChange } = useForm(academicHistorial);
 
   // let inicio ="";
   // let fin="";
@@ -33,11 +35,18 @@ function DatesSchool({
   const handleChangeq = (event) => setEndMonth(event.target.value);
 
   const handleChangex = (event) => setEndYear(event.target.value);
+  
+  const handleAutocomplete = (event) => {  
+                form.t104_academic_unit =event.target.value;              
+                setAcademicHistorial(form);
+              }
+  
+  const handleText = (event) => {                
+              setAcademicHistorial(form);
+              }              
+              
 
-  // console.log(form);
-  // console.log(academicHistorial);
-
-  // setAcademicHistorial(form);
+   console.log(form);
 
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
@@ -104,7 +113,7 @@ function DatesSchool({
             id="t104_academic_unit"
             name="t104_academic_unit"
             freeSolo
-            onChange={handleChange}
+            onChange={handleAutocomplete}
             value={form.t104_academic_unit}
             options={academicUnit.map((option) => option.c108_academic_unit)}
             renderInput={(params) => (
