@@ -35,7 +35,6 @@ const JobList = ({jobs, loading, setPage, maxLenPage}) => {
       <div className={styles.pagination}>
         <button onClick={prevPage}><GrFormPreviousLink className={styles.icon} />Anterior</button>
         <button onClick={nextPage}>Siguiente <GrFormNextLink className={styles.icon} /></button>
-        {/* <Pagination count={isNaN(maxLenPage) ? 1 : maxLenPage} color="primary" page={page} onChange={handlePagination} /> */}
       </div>
     </>
   );

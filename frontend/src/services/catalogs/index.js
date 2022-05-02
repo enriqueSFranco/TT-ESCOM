@@ -40,9 +40,9 @@ export const getAllCandidateProfile = () => {
     .catch(error => error);
 };
 
-export const getAllMunicipality = () => {
+// export const getAllMunicipality = () => {
   
-};
+// };
 
 export const getAllStates = async () => {
   try {

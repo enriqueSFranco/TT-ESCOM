@@ -57,7 +57,6 @@ const Search = ({ handleSearch, data }) => {
           <Label htmlFor="job">
             <Input
               type="text"
-              list="data"
               id="job"
               name="job"
               value={queryJob}
