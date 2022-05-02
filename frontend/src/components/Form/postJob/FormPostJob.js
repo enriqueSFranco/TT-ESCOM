@@ -83,6 +83,17 @@ const FormPostJob = () => {
   );
 
   // const checkChanged = () => setChecked(!checked);
+  const ITEM_HEIGHT = 48;
+  const ITEM_PADDING_TOP = 8;
+
+  const MenuPropsM = {
+    PaperProps: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        width: 150,
+      },
+    },
+  };
 
   useEffect(() => {
     getAllCandidateProfile()
@@ -230,7 +241,47 @@ const FormPostJob = () => {
           <div className={styles.form1}>
             <BiIcon.BiUser />
             <span>La vacante va dirijida a</span>
-            <div className={styles.inputGroup}>               
+            <div className={styles.inputGroup}>
+              <FormControl>
+                <InputLabel id="c206_id_profile">Perfil</InputLabel>
+                <Select            
+                  id="c206_id_profile"
+                  name="c206_id_profile"
+                  label="Perfil"
+                  onChange={(event, newValue) => {
+                    form.c206_id_profile=newValue;
+                  }}
+                  MenuProps={MenuPropsM}
+                  //renderInput={(params) => <TextField {...params} label="Experiencia" />}
+                  sx={{ width: 350}}
+                >
+                  {profiles.map((option) => (
+                    <MenuItem key={option["c206_id_profile"]} value={option["c206_id_profile"]}>
+                      {option["c206_description"]}
+                    </MenuItem>                      
+                  ))}
+                </Select>
+              </FormControl>
+              <FormControl>
+                <InputLabel id="c207_id_experience">Experiencia</InputLabel>
+                <Select            
+                  id="c207_id_experience"
+                  name="c207_id_experience"
+                  label="Experiencia"
+                  onChange={(event, newValue) => {
+                    form.c207_id_experience=newValue;
+                  }}
+                  MenuProps={MenuPropsM}
+                  //renderInput={(params) => <TextField {...params} label="Experiencia" />}
+                  sx={{ width: 350}}
+                >
+                  {experience.map((option) => (
+                    <MenuItem key={option["c207_id_experience"]} value={option["c207_id_experience"]}>
+                      {option["c207_description"]}
+                    </MenuItem>                      
+                  ))}
+                </Select>
+              </FormControl>
             </div>
           </div>
           <div>
