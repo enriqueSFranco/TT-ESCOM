@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { stringToColor } from "utils/stringToColor";
 import AuthContext from "context/AuthContext";
 import { Avatar } from "@mui/material";
 import { deepPurple } from "@mui/material/colors";
@@ -32,7 +33,7 @@ const PageHistory = () => {
         <nav className={styles.menu}>
           <ul>
             <li className={styles.itemAvatar}>
-              <Avatar sx={{ bgcolor: deepPurple[500] }}>
+              <Avatar sx={{ bgcolor: stringToColor(token?.user?.first_name) }}>
                 {(token?.user?.first_name).slice(0, 1)}
               </Avatar>
               {token?.user?.first_name}

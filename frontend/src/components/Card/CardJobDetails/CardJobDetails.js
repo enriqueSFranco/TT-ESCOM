@@ -16,7 +16,7 @@ import * as IoIcon from "react-icons/io";
 import styles from "./CardJobDetails.module.css";
 import Confirm from "components/Alert/Confirm/Confirm";
 
-const JobCardDetails = () => {
+const CardJobDetails = () => {
   let elementRef = useRef(null);
   let isSticky = useSticky(100, elementRef);
   let { t200_id_vacant } = useParams();
@@ -224,4 +224,4 @@ const JobCardDetails = () => {
   );
 };
 
-export default JobCardDetails;
+export default CardJobDetails;

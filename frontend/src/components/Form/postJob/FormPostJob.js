@@ -7,14 +7,15 @@ import { postJobInitialForm } from "../schemes";
 import {
   getAllCatalogueExperience,
   getAllCandidateProfile,
-  getLocality
+  getLocality,
 } from "services/catalogs/index";
+import MenuItem from '@mui/material/MenuItem';
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
 import Alert from "@mui/material/Alert";
 import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Label from "components/Element/Label/Label";
 import Input from "components/Element/Input/Input";
@@ -23,6 +24,8 @@ import styles from "./FormPostJob.module.css";
 import * as BiIcon from "react-icons/bi";
 import * as IoIcon from "react-icons/io";
 import { helpHttp } from "../../../utils/helpHttp";
+import { MdPublish } from "react-icons/md";
+import { Select } from "@mui/material";
 
 const validateForm = (form) => {
   let errors = {};
@@ -40,81 +43,46 @@ const validateForm = (form) => {
   return errors;
 };
 
-const flex = {
-  // width: "400px",
-  display: "flex",
-  flexDirection: "column",
-};
-const starlocality ={
-  c222_cp: "",
-  c222_id: "",
-  c222_locality: "Maravillas Ceylán",
-  c222_municipality: "Tlalnepantla de Baz",
-  c222_state: "México"
-}
+// const CP = React.forwardRef(function NumberFormatCustom(props, ref) {
+//   const { onChange, ...other } = props;
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
+//   return (
+//     <NumberFormat
+//       {...other}
+//       getInputRef={ref}
+//       onValueChange={(values) => {
+//         onChange({
+//           target: {
+//             name: props.name,
+//             value: values.value,
+//           },
+//         });
+//       }}
+//       isNumericString
+//       format="#####"
+//     />
+//   );
+// });
 
-const MenuPropsM = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 150,
-    },
-  },
-};
-
-const CP = React.forwardRef(function NumberFormatCustom(
-  props,
-  ref
-) {
-  const { onChange, ...other } = props;
-
-  return (
-    <NumberFormat
-      {...other}
-      getInputRef={ref}
-      onValueChange={(values) => {
-        onChange({
-          target: {
-            name: props.name,
-            value: values.value,
-          },
-        });
-      }}
-      isNumericString
-      format="#####"
-    />
-  );
-});
-
-CP.propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
-
+// CP.propTypes = {
+//   name: PropTypes.string.isRequired,
+//   onChange: PropTypes.func.isRequired,
+// };
 
 const FormPostJob = () => {
-  const [checked, setChecked] = useState(false);
+  // const [checked, setChecked] = useState(false);
+  const [cp, setCP] = useState("");
+  const [state, setState] = useState("");
+  const [town, setTown] = useState("");
+  const [profiles, setProfiles] = useState([]); // Estado para los perfiles buscados
+  const [experience, setExperience] = useState([]); // Estado para el catalogo de experiencia
+  const [localities, setLocalities] = useState([]); // Estado para el catalogo de localidades por CP
+  const { form, errors, handleChange, handleChecked } = useForm(
+    postJobInitialForm,
+    validateForm
+  );
 
-  const checkChanged = (state) => {
-    setChecked(!checked);
-  };
-
-  const {
-    form,
-    errors,
-    handleChange,
-    handleValidate,
-    handlePostJob,
-    handleChecked,
-  } = useForm(postJobInitialForm, validateForm);
-  const [profiles, setProfiles] = useState(null); // Estado para los perfiles buscados
-  const [experience, setExperience] = useState(null); // Estado para el catalogo de experiencia
-  const [localities, setLocalities] = useState([{c222_state:"",c222_municipality:"",c222_locality:""}]);// Estado para el catalogo de localidades por CP  
-  const minRef = useRef(null);  
-  let postalCode = 54173;
+  // const checkChanged = () => setChecked(!checked);
 
   useEffect(() => {
     getAllCandidateProfile()
@@ -132,245 +100,180 @@ const FormPostJob = () => {
       .catch((error) => console.error(error));
   }, []);
 
+  const getLocalityData = (e) => {
+    setCP(e.target.value);
+    let input = e.target.value;
 
-  /*useEffect(() => {
-    getLocality(54173)
-      .then((response) => {
-        setLocalities(response);          
-      })
-      .catch((error) => console.error(error));
-  }, []);    */
-
-
-
-  if (!form || !profiles || !experience ) return null;
-
-  console.log(form);
-
-  const GetLocalityData = (e) =>{        
-    console.log("Aqui va el CP");    
-    form.t200_cp = e.target.value;  
-    if (e.target.value < 10000)
-      console.log(e.target.value);
-    else  {
-      console.log("Si es valido");   
-      //setLocalities(null);  
-      form.c222_municipality = "";
-      if(form.c222_municipality == "")    {
-          getLocality(form.t200_cp)
-          .then((response) => {
-            setLocalities(response);        
-            console.log(localities);
-            console.log(localities[0]['c222_state']);
-            console.log(localities[0]['c222_municipality']);
-            console.log(localities[0]['c222_locality']);
-            form.c222_state = localities[0]['c222_state'];
-            form.c222_municipality = localities[0]['c222_municipality'];
-            form.c222_locality = localities[0]['c222_locality'];
-          })
-          .catch((error) => console.error(error));
-      }
+    if (input !== "") {
+      getLocality(input)
+        .then((response) => {
+          console.log(response)
+          setLocalities(response);
+          setState(response[0]?.c222_state);
+          setTown(response[0]?.c222_municipality)
+        })
+        .catch((error) => console.error(error));
     }
-    console.log(form.t200_cp);        
-    console.log(localities[0]);
   };
 
-  /*console.log(options[2]['c116_description']);
-  let datos = new Array();
-  let hard = new Array();
-  options.map((dato)=> {
-    if (dato['c116_type']=='H'){
-    hard.push(dato); }
-  }  );
-  console.log(hard);  */
+  if (!form || !profiles || !experience) return null;
 
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-  //   postJob(form)
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((error) => console.error(error));
-  // };
+  console.log(localities);
+  console.log(state);
+
   return (
-    <div className={styles.container}>
-      <div><h4>Publicar vacante</h4></div>
-      <div className={styles.containerform}>
-        <form  onSubmit={handlePostJob}>
-          <div className={styles.formTitle}>
-            <div className={styles.inputGroup}>
-              <TextField
-                label="Titulo de la vacante"
-                value={form.t200_job}
+    <div className={`container ${styles.wrapper}`}>
+      <form className={styles.form}>
+        <div className={styles.groupFormTitleJob}>
+          <TextField
+            label="Titulo de la vacante"
+            value={form.t200_job}
+            onChange={handleChange}
+            name="t200_job"
+            id="t200_job"
+            sx={{ width: 400, maxWidth: "100%", marginRight: 2 }}
+          />
+          {errors.t200_job && <Alert severity="error">{errors.t200_job}</Alert>}
+          <TextField
+            label="# Plazas"
+            type="number"
+            sx={{ width: 100, maxWidth: "100%", marginRight: 2 }}
+            value={form.t200_vacancy}
+            onChange={handleChange}
+            name="t200_vacancy"
+            id="t200_vacancy"
+          />
+          <div className={styles.checkHomeOffice}>
+            <Checkbox
+              value={form.t200_home_ofice}
+              onChange={handleChecked}
+              size="small"
+            />
+            <span>Vacante Remota</span>
+          </div>
+        </div>
+
+        <div>
+          <BiIcon.BiCurrentLocation />
+          <span>Ubicación</span>
+          <div className={styles.inputGroup}>
+            <TextField 
+              label="Codigo postal"
+              id="cp"
+              name="cp"
+              value={cp ? parseInt(cp) : ""}
+              onChange={getLocalityData}
+              sx={{ width: 130, marginRight: 2 }}
+            />
+            <TextField
+              label="Estado"
+              onChange={handleChange}
+              name="c222_state"
+              id="c222_state"
+              value={state ? state : ""}
+              sx={{ width: 300, maxWidth: "100%" }}
+            />
+            <TextField
+              label="Municipio"
+              name="c222_municipality"
+              id="c222_municipality"
+              value={town ? town : ""}
+              sx={{ width: 300, maxWidth: "100%" }}
+            />
+            <FormControl sx={{width: 300}}>
+              <InputLabel id="c222_localit">Localidad</InputLabel>
+              <Select
+                labelId="c222_localit"
+                id="c222_localit"
+                value={form.c222_localit}
+                label="Localidad"
                 onChange={handleChange}
-                name="t200_job"
-                id="t200_job"
-                sx={{ width: 500, maxWidth: "100%" , marginRight:2}}
-              />
-              {errors.t200_job && <Alert severity="error">{errors.t200_job}</Alert>}
-            </div>
-            <div className={styles.inputGroup}>
-              <TextField
-                label="# Plazas"
-                type="number"
-                sx={{ width: 100, maxWidth: "100%" , marginRight:2}}
-                value={form.t200_vacancy}
-                onChange={handleChange}
-                name="t200_vacancy"
-                id="t200_vacancy"
-                /*InputProps={{
-                  inputComponent: NumberFormatCustom,
-                }}*/
-              />
+              >
+              {localities?.map(township => (
+                <MenuItem value={township?.c222_locality}>{township?.c222_locality}</MenuItem>
+              ))}
+              </Select>
+            </FormControl>
+          </div>
+        </div>
+
+        <div className={styles.form1}>
+          <div className={styles.inputGroup}>
+            <TextField
+              label="Calle"
+              value={form.t200_street}
+              onChange={handleChange}
+              name="t200_street"
+              id="t200_street"
+              sx={{ width: 300, maxWidth: "100%" }}
+            />
+            <TextField
+              label="Num. Exterior"
+              value={form.t200_exterior_number}
+              onChange={handleChange}
+              name="t200_exterior_number"
+              id="t200_exterior_number"
+              sx={{ width: 150, maxWidth: "50%" }}
+            />
+            <TextField
+              label="Num. Interior"
+              value={form.t200_interior_number}
+              onChange={handleChange}
+              name="t200_interior_number"
+              id="t200_interior_number"
+              sx={{ width: 150, maxWidth: "50%" }}
+            />
+          </div>
+        </div>
+
+        <div>
+          <div className={styles.form1}>
+            <BiIcon.BiUser />
+            <span>La vacante va dirijida a</span>
+            <div className={styles.inputGroup}>               
             </div>
           </div>
-
           <div>
-            <div><BiIcon.BiCurrentLocation/>Ubicación</div>
-            <div className={styles.formLocation}>
-              <div className={styles.inputGroup}>
-                  <TextField
-                    label="Código Postal"
-                    value={form.c222_cp}
-                    onChange={GetLocalityData}
-                    name="c222_cp"
-                    id="c222_cp"
-                    sx={{ width: 200 ,marginLeft:2}}
-                    InputProps={{
-                      inputComponent: CP,
-                    }}
-                  />
-              </div>
-
-              <div className={styles.inputCheckbox}>
-                Vacante remota?
-                <Checkbox
-                  value={(form.t200_home_ofice = checked)}
-                  checked={checked}
-                  onChange={checkChanged}
-                  size="small"
-                />
-              </div>
-              <div className={styles.form1}>
-                <div className={styles.inputGroup}>
-                  <TextField
-                    label="Estado"
-                    value={form.c222_state}
-                    onChange={handleChange}
-                    name="c222_state"
-                    id="c222_state"
-                    sx={{ width: 350, maxWidth: "100%",marginRight:3}}
-                  />
-                </div>
-                <div className={styles.inputGroup}>
-                  <TextField
-                    label="Municipio"
-                    value={form.c222_municipality}
-                    onChange={handleChange}
-                    name="c222_municipality"
-                    id="c222_municipality"
-                    sx={{ width: 350, maxWidth: "100%",marginRight:3}}
-                  />
-                </div>
-                <div className={styles.inputGroup}>
-                  <Autocomplete            
-                    id="c222_locality"
-                      name="c222_locality"
-                      value={form.c222_locality}
-                      onChange={handleChange}         
-                      freeSolo
-                      options={localities.map((option) => option.c222_locality)}
-                      renderInput={(params) => <TextField {...params} label="Localidad" />}
-                      sx={{ width: 350}}
-                  />
-                </div>
-              </div>
-              <div className={styles.form1}>
-                <div className={styles.inputGroup}>
-                  <TextField
-                    label="Calle"
-                    value={form.t200_street}
-                    onChange={handleChange}
-                    name="t200_street"
-                    id="t200_street"
-                    sx={{ width: 350, maxWidth: "100%",marginRight:3}}
-                  />
-                </div>
-                <div className={styles.inputGroup}>
-                  <TextField
-                    label="Num. Exterior"
-                    value={form.t200_exterior_number}
-                    onChange={handleChange}
-                    name="t200_exterior_number"
-                    id="t200_exterior_number"
-                    sx={{ width: 150,marginRight:3}}    
-                  />
-                </div>
-                <div className={styles.inputGroup}>
-                  <TextField
-                    label="Num. Interior"
-                    value={form.t200_interior_number}
-                    onChange={handleChange}
-                    name="t200_interior_number"
-                    id="t200_interior_number"
-                    sx={{ width: 150,marginRight:3}}
-                  />
-                </div>
-              </div>
-            </div>
+            <span>Rango salarial y Horario</span>
           </div>
-
-          <div>
-            <div>Rango salarial y Horario</div>
-              <div className={styles.form1}>
-                <div className={styles.inputGroup}>
-                  <TextField
-                    label="Salario Mínimo"
-                    name="t200_min_salary"
-                    id="t200_min_salary"
-                    inputProps={{ min: 7000, max: 99999, type: "number" }}
-                    value={form.t200_min_salary}
-                    onChange={handleChange}
-                    sx={{ width: 300}}
-                  />
-                </div>
-
-                <div className={styles.inputGroup}>
-                  <TextField
-                    label="Salario máximo"
-                    name="t200_max_salary"
-                    id="t200_max_salary"
-                    inputProps={{ min: 7000, max: 99999, type: "number" }}
-                    value={form.t200_max_salary}
-                    onChange={handleChange}
-                    sx={{ width: 150}}
-                  />
-                </div>
-
-                <div className={`${styles.inputGroup} `}>
-                  De:
-                  <TextField
-                    label="Entrada"
-                    type="time"
-                    name="t200_check_time"
-                    id="t200_check_time"
-                    value={form.t200_check_time}
-                    onChange={handleChange}
-                    sx={{ width: 150,marginRight:2}}
-                  />
-                </div>
-
-                <div className={`${styles.inputGroup} `}>
-                  <TextField
-                    label="Salida"
-                    type="time"
-                    name="t200_closing_hour"
-                    id="t200_closing_hour"
-                    value={form.t200_closing_hour}
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
+          <div className={styles.form1}>
+            <div className={styles.inputGroup}>
+              <TextField
+                label="Salario Mínimo"
+                name="t200_min_salary"
+                id="t200_min_salary"
+                inputProps={{ min: 7000, max: 99999, type: "number" }}
+                value={form.t200_min_salary}
+                onChange={handleChange}
+                sx={{ width: 150 }}
+              />
+              <TextField
+                label="Salario máximo"
+                name="t200_max_salary"
+                id="t200_max_salary"
+                inputProps={{ min: 7000, max: 99999, type: "number" }}
+                value={form.t200_max_salary}
+                onChange={handleChange}
+                sx={{ width: 150 }}
+              />
+              <TextField
+                label="Entrada"
+                type="time"
+                name="t200_check_time"
+                id="t200_check_time"
+                value={form.t200_check_time}
+                onChange={handleChange}
+                sx={{ width: 150, marginRight: 2 }}
+              />
+              <TextField
+                label="Salida"
+                type="time"
+                name="t200_closing_hour"
+                id="t200_closing_hour"
+                value={form.t200_closing_hour}
+                onChange={handleChange}
+              />
+            </div>
           </div>
           <div className={styles.form2}>
             <div className={`${styles.inputGroup} `}>
@@ -387,10 +290,15 @@ const FormPostJob = () => {
               />
             </div>
           </div>
-        </form>                
-      </div>
-      
-      
+        </div>
+
+        
+        <button type="submit" className={`${styles.btn} btn btn-primary`}>
+          <MdPublish />
+          Publicar Vacante
+        </button>
+
+      </form>
     </div>
   );
 };
