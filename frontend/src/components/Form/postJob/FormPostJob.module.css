@@ -4,28 +4,35 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  outline: 2px solid blue;
 }
 
 .containerform{
   margin-left: 2em;
-  outline: 2px solid red;
 }
 
-.form1{
+.formProfile{
   display: flex;
 }
 
-.form2{
-  width:1100px;
-  display: block;
+.formDetails{
+  
+  display: flex;
+}
+
+.formTitle{ 
+  display: flex;
+}
+
+.formLocation{
+  width:1600px;
+  
+ 
 }
 
 .inputCheckbox {
   justify-content: center;
   align-items: center;
-  text-align: left;
-  width:200px;
+  text-align: left;  
 }
 
 textarea {size: none; overflow-y: scroll; }
@@ -69,7 +76,7 @@ select {
 }
 
 .inputGroup {
-  width: 100%;
+  margin-right: 20;
   height: auto;
   display: flex;
   justify-content: space-between;
@@ -158,3 +165,7 @@ select {
   height: 100%;
   outline: 2px solid blue;
 } */
+.form1{
+  outline: 2px solid purple;
+  display: flex;
+}

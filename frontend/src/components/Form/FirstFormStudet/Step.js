@@ -103,7 +103,9 @@ const StepComponent = () => {
           endMonth={endMonth}
           setEndMonth={setEndMonth}
           endYear={endYear}
-          setEndYear={setEndYear} />);
+          setEndYear={setEndYear}
+          academicHistorial={academicHistorial}
+          setAcademicHistorial={setAcademicHistorial} />);
     }
     if (activeStep === 2) {
       return (
@@ -149,8 +151,8 @@ const StepComponent = () => {
     }
     if (activeStep >= 3) {
       updateData();      
-      if (!errors)
-        navigate("/perfil");
+      //if (!errors)
+      //  navigate("/perfil");
     }
   };
 
@@ -190,7 +192,8 @@ const StepComponent = () => {
               .then((response) => {
                 if (!response.err) {
                   console.log(response);
-                  //navigate("/perfil");
+                  if (AcademicFormat.t104_carreer == "")
+                    navigate("/perfil");
                 }                
               })
               .catch((err) => console.error(err));
@@ -198,31 +201,37 @@ const StepComponent = () => {
 
           ///Agregar historial academico
           if (AcademicFormat.t104_carreer !== ""){
-              const endpointAcademic = "api/AcademicHistorial/";
-              console.log(startMonth);
-              AcademicFormat.t104_start_date = startYear+"-"+startMonth+"-01"          
-              AcademicFormat.t104_end_date = endYear+"-"+endMonth+"-01"          
-              console.log(AcademicFormat);
-              let options = {
-                headers: {
-                  "Content-Type": "application/json",
-                  Accept: "application/json",
-                },
-                body: academicHistorial,
-              };
-              helpHttp()
-                .POST(endpointAcademic, options)
-                .then((response) => {
-                  if (!response.err) {
-                    console.log(response);                    
-                  }
-                })
-                .catch((err) => console.error(err));
+            const endpointAcademic = "api/AcademicHistorial/";
+            console.log(startMonth);
+            AcademicFormat.t104_start_date = startYear+"-"+startMonth+"-01"          
+            AcademicFormat.t104_end_date = endYear+"-"+endMonth+"-01"          
+            console.log(AcademicFormat);
+            let options = {
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: academicHistorial,
+            };
+            helpHttp()
+              .POST(endpointAcademic, options)
+              .then((response) => {
+                if (!response.err) {
+                  console.log(response);     
+                  navigate("/perfil");               
+                }
+              })
+              .catch((err) => console.error(err));
           }
         }
       })
-      .catch((err) => console.error(err));          
+      .catch((err) => console.error(err));
+
+      
   };
+
+  
+  
 
   const previousStep = () => {
     if (activeStep > 0) setActiveStep((currentStep) => currentStep - 1);
