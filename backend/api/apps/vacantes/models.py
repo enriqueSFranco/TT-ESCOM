@@ -155,14 +155,13 @@ class Vacant(models.Model):
     t200_publish_date = models.DateField()
     t200_close_date = models.DateField()
     t200_state = models.CharField(max_length=50,null=True,blank=True)
-    t200_mucipality = models.CharField(max_length=100,null=True,blank=True)
+    t200_municipality = models.CharField(max_length=100,null=True,blank=True)
     t200_locality = models.CharField(max_length=100,null=False,blank=False,default='No definido')
     t200_street = models.CharField(max_length=60,null=True,blank=True)
     t200_cp = models.IntegerField(blank=True,null=True)
     t200_interior_number = models.CharField(max_length=20,blank=True,null=True)
     t200_exterior_number = models.CharField(max_length=20,blank=True,null=True)    
     t200_vacancy = models.PositiveIntegerField(default=1)
-    t200_contract_type = models.CharField(max_length=50, default="Se acuerda en entrevista")
     c208_id_contract = models.ForeignKey(
         Contract,
         null=False,
