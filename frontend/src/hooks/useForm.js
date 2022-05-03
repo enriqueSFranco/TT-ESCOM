@@ -74,7 +74,7 @@ export const useForm = (initialForm, validateForm) => {
     }
   };
 
-  const handlePostJob = (e) => {
+  const onSubmitPostJob = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
 
@@ -99,6 +99,6 @@ export const useForm = (initialForm, validateForm) => {
     handleSubmitStudent,
     handleSubmitCompany,
     handleValidate,
-    handlePostJob,
+    onSubmitPostJob,
   };
 };
