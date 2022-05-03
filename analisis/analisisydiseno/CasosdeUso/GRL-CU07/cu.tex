@@ -28,32 +28,72 @@
 		
 	}
 	\UCitem{Viene de}{
-		Caso de uso primario.
+		Caso de uso \refIdElem{GRL-CU03}.
 	}	
 \end{UseCase}
 
 %Trayectoria Principal
 \begin{UCtrayectoria}
 	\UCpaso [\UCactor] Presiona inisia sesion exitosamente desde la pantalla \refElem{GRL-IU03}.
-    \UCpaso [\UCsist] Valida que sea su primer inisio de sesion despues de haber creado su cuenta.
+    \UCpaso [\UCsist] Valida que sea su primer inicio de sesión despues de haber creado su cuenta.\refTray{A}
 	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU07}.
 	\UCpaso [\UCactor] Ingresa el \entrada[nombre]{estudiante.nombre}, \entrada[nombre]{estudiante.apellidos}, \entrada[ubicación]{estudiante.residencia}, 
-	indica si tiene \entrada[disponibilidad para viajar]{estudiante.viajar} e ingresa su \entrada[telefono]{estudiante.telefono}.
+	indica si tiene \entrada[disponibilidad para viajar]{estudiante.viajar} e ingresa su \entrada[telefono]{estudiante.telefono}.\label{cu07-grl1}
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Siguiente}.
 	\UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la
-	regla de negocio \refIdElem{RN-N001}.
-	\UCpaso [\UCsist] Verifica que el telefono ingresado cumpla con el formato correcto de acuerdo a la regla de negocio  \refIdElem{RN-N007}.  \refTray{E}
+	regla de negocio \refIdElem{RN-N001}.\refTray{B}
+	\UCpaso [\UCsist] Verifica que el telefono ingresado cumpla con el formato correcto de acuerdo a la regla de negocio  \refIdElem{RN-N007}.  \refTray{C}
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU07-1}.
 	\UCpaso [\UCactor] Ingresa la \entrada[carrera]{hacademico.carrera}, selecciona la \entrada[institución]{hacademico.carrera} y selecciona
 	la fecha en la que \entrada[inicio]{hacademico.inicio} y \entrada[final]{hacademico.fin} la carrera.
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Siguiente}.
 	\UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la
-	regla de negocio \refIdElem{RN-N001}.
+	regla de negocio \refIdElem{RN-N001}.\refTray{D}\label{cu07-grl2} 
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU07-2}.
 	\UCpaso [\UCactor] Ingresa el  \entrada[puesto deseado]{estudiante.puesto-deseado}, el \entrada[salario deseado]{estudiante.salario} y selecciona
 	el  \entrada[tipo de trabajo]{estudiante.modalidad} deseado.
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Siguiente}.
 	\UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la
-	regla de negocio \refIdElem{RN-N001}.
-	\UCpaso [\UCactor] Selecciona almenos una \entrada[hard skill]{habilidad.descripcion} y \entrada[habilidad.descripcion]{habilidad.descripcion}.
+	regla de negocio \refIdElem{RN-N001}.\refTray{E}\label{cu07-grl3} 
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU07-3}.
+	\UCpaso [\UCactor] Selecciona almenos una \entrada[hard skill]{habilidad.descripcion} y \entrada[soft skill]{habilidad.descripcion}.
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Finalizar}.
-	\UCpaso [\UCsist] Muestra la pantalla \refElem{GRL-IU03-1}. %\refTray{G} \refTray{H}
+	\UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la
+	regla de negocio \refIdElem{RN-N001}.\refTray{F}\label{cu07-grl4} 
+	\UCpaso [\UCsist] Muestra la pantalla \refElem{GRL-IU06}. %\refTray{G} \refTray{H}
 \end{UCtrayectoria}
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{No es la primera vez que inicia sesion.}
+	%\UCpaso [\UCsist] Se ejecuta el caso de uso "Listar vacantes"
+	\extendUC{GRL-CU06}.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{B}{El actor no ingresó uno o más datos obligatorios.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG4} en los campos que no
+	fueron ingresados.
+	\UCpaso [\UCsist] Continúa en el paso \ref{cu07-grl1} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{C}{El actor ingresó el dato con formato incorrecto.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG2}.
+	\UCpaso [\UCsist] Continúa en el paso \ref{cu07-grl1} de la trayectoria principal.
+\end{UCtrayectoriaA}
+
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{D}{El actor no ingresó uno o más datos obligatorios.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG4} en los campos que no
+	fueron ingresados.
+	\UCpaso [\UCsist] Continúa en el paso \ref{cu07-grl2} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{E}{El actor no ingresó uno o más datos obligatorios.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG4} en los campos que no
+	fueron ingresados.
+	\UCpaso [\UCsist] Continúa en el paso \ref{cu07-grl3} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{F}{El actor no ingresó uno o más datos obligatorios.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG4} en los campos que no
+	fueron ingresados.
+	\UCpaso [\UCsist] Continúa en el paso \ref{cu07-grl4} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+

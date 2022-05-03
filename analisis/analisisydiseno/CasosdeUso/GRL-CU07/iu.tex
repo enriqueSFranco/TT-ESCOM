@@ -1,20 +1,37 @@
 \clearpage
-\subsection{GRL-IU03 Iniciar sesión}
+\subsection{GRL-IU07 Crear perfil}
 
 \subsubsection{Objetivo}
-En la figura \refElem{GRL-IU03} se muestra la interfaz correspondiente con la funcionalidad descrita en las
-trayectorias del caso de uso \refElem{GRL-CU03} , la cual permite al actor el acceso al sistema
+En la figura \refElem{GRL-IU07} se muestra la interfaz correspondiente con la funcionalidad descrita en las
+trayectorias del caso de uso \refElem{GRL-CU07} , la cual permite al actor el acceso al sistema
 siempre y cuando ingrese correctamente las credenciales de su inicio de sesión.
 
+La interfaz esta compuesta ``secciones'' y cada sección corresponde a un formulario diferente, las secciones
+son las siguientes:
+\begin{itemize}
+   \item \textbf{Datos personales}: esta sección tiene como objetivo preguntarle actor su información
+   personal y un dato de contacto (ver la figura \refElem{GRL-IU07}).
+   \item \textbf{Historial académico}: esta sección tiene como objetivo preguntarle actor su información
+   academica referente al ultimo grado de estudios que tiene (ver la figura \refElem{GRL-IU07-1}).
+   \item \textbf{Metas profesionales}: esta sección tiene como objetivo preguntarle actor su metas deseadas
+   en em ámbito profesional (ver la figura \refElem{GRL-IU07-2}).
+   \item \textbf{Habilidades}: esta sección tiene como objetivo preguntarle actor sus conocimientos
+   y habilidades con los que cuenta (ver la figura \refElem{GRL-IU07-3}).
+\end{itemize}
+
 \subsubsection{Comandos}
+Los siguientes comandos aparecen durante toda la interfaz es decir, cada sección los tiene.
 
 %\Titem \IUPass : Al da clic en el ícono, se muestra la contraseña de lo contrario aparecerá \IUOculto \thinspace sustituyendo cada caracter de la contraseña. \\
 
-\Titem \IUbutton{Iniciar sesión} : Cuando presiona el botón, muestra la interfaz %\refElem{GRL-IU02-2}.
-\Titem \IUbutton{¿No tienes una cuenta?} : Cuando presiona el botón, muestra la interfaz \refElem{GRL-IU01} o \refElem{GRL-IU02} segun el caso.
+\Titem \IUbutton{Siguiente} : Cuando presiona el botón, muestra la siguiente sección %\refElem{GRL-IU02-2}.
+\Titem \IUbutton{Atras} : Cuando presiona el botón, muestra la sección anterior.%\refElem{GRL-IU02-2}.
+\Titem \IUbutton{Finalizar} : Cuando presiona el botón en la seccion \refIdElem{GRL-IU07-3} , guarda los datos ingresados muestra la interfaz \refIdElem{GRL-IU06}.
 
-   \IUfig{.9}{analisisydiseno/CasosdeUso/GRL-CU03/imagenes/GRL-IU03-1.png}{GRL-IU03}{Iniciar sesión}  
-%\IUfig{.9}{./CTRL-USR-CU3/images/LoginEmpresa.png}{GRAL-USR-IU1-2}{Inicio de sesión: Empresa}
+\IUfig{.9}{analisisydiseno/CasosdeUso/GRL-CU07/imagenes/GRL-IU07.png}{GRL-IU07}{Crear perfil}  
+\IUfig{.9}{analisisydiseno/CasosdeUso/GRL-CU07/imagenes/GRL-IU07-1.png}{GRL-IU07-1}{Historial académico}
+\IUfig{.9}{analisisydiseno/CasosdeUso/GRL-CU07/imagenes/GRL-IU07-2.png}{GRL-IU07-2}{Metas profesionales}  
+\IUfig{.9}{analisisydiseno/CasosdeUso/GRL-CU07/imagenes/GRL-IU07-3.png}{GRL-IU07-3}{Habilidades}  
 
 
 \clearpage

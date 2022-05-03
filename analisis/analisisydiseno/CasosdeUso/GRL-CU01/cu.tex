@@ -42,7 +42,7 @@
 
 %Trayectoria Principal
 \begin{UCtrayectoria}
-	\UCpaso [\UCactor] Presiona el botón \IUbutton{Crea tu cuenta} desde la interfaz \refElem{GRL-IU00}.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Crea tu cuenta} desde la interfaz \refElem{GRL-IU06}.
     \UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU01}.
 	\UCpaso [\UCactor] Ingresa el \entrada[correo electrónico]{users.username} y \entrada[contraseña]{users.password} del usuario en los compos correspondientes.\label{cu01-grl}
 	\UCpaso [\UCactor] Acepta los terminos de privacidad y condiciones del sistema.
@@ -53,13 +53,13 @@
 	\UCpaso [\UCsist] Verifica que el correo electrónico ingresado no coincida con otro registrado en el sistema de acuerdo a la regla de negocio  \refIdElem{RN-N004}.\refTray{D}
 	\UCpaso [\UCsist] Verifica que la contraseña cumpla con el formato correcto de acuerdo a la reglas de negocio \refIdElem{RN-N002} y \refIdElem{RN-N003} .\refTray{C}
 	\UCpaso [\UCsist] Asigna los permisos correspondientes de un usuario tipo Alumno a la cuenta creada.
-    \UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU00}..
+    \UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU06}..
 \end{UCtrayectoria}
 
 %Trayectorias Alternativas
 \begin{UCtrayectoriaA}[Fin de la trayectoria]{A}{El actor decide cancelar el registro de un usuario.}
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Cancelar}.
-	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU00}.
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU06}.
 \end{UCtrayectoriaA} 
 
 %Trayectorias Alternativas

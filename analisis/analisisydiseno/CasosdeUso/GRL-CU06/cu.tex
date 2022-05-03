@@ -1,0 +1,51 @@
+\begin{UseCase}[]{GRL-CU06}{Listar vacantes}{
+	Permite al alumno subir por prumera vez información general de su perfil al sistema.
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		\Titem Alumno
+		\Titem Reclutador
+		\Titem Colaborador
+		\Titem Encargado
+
+	}
+	\UCitem[admin]{Prioridad}{
+		Media
+	}
+	\UCitem[admin]{Complejidad}{
+		Alta
+	}
+	\UCitem{Precondiciones}{
+		Ninguna
+	}
+	\UCitems{Salidas}{
+		\imprimeUC{salida}
+	}
+	\UCitem{Destino}{
+		\Titem \refElem{GRL-IU07}
+	}
+	\UCitem{Reglas de Negocio}{
+		Ninguna
+		
+	}
+	\UCitem{Viene de}{
+		Caso de uso \refIdElem{GRL-CU03}.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Vacantes} desde el muenú (AGREGAR IMGANE).
+    \UCpaso [\UCsist] Verifica que exista almenos un registro de una vacante en la base de datos.\refTray{A}
+	\UCpaso [\UCsist] Optiene el \salida[titulo]{vacante.titulo}, \salida[empresa]{empresa.nombre}, \salida[salario minímo]{vacante.salario-min}
+	, \salida[salario maximo]{vacante.saralio-max} y la \salida[descripción]{vacante.descripcion}  de las vacantes.
+	\UCpaso [\UCsist] Lista la información optenida en la parte derecha de la interfaz \refElem{GRL-IU06}
+\end{UCtrayectoria}
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{No hay vacantes registradas en el sistema.}
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU06-1}.
+\end{UCtrayectoriaA}
+

@@ -1,0 +1,46 @@
+\clearpage
+\subsection{GRL-IU06 Listar vacantes}
+
+\subsubsection{Objetivo}
+En la figura \refElem{GRL-IU06} se muestra la interfaz correspondiente con la funcionalidad descrita en las
+trayectorias del caso de uso \refElem{GRL-CU06} , la cual permite al actor registrado o no dentro del sistema consultar 
+las vacantes publicadas.
+
+La interfaz esta dividida en dos ``secciones'':
+\begin{itemize}
+   \item \textbf{Listado de vacantes}: esta sección tiene como objetivo listar cada una de las vacantesque hay en el sistema.
+   \item \textbf{Consulta de vacante}: esta sección tiene como objetivo mostrar la información de una sola vacante, la cual se explica en 
+   la interfaz \refIdElem{GRL-IU06-1}.
+\end{itemize}
+
+\IUfig{.9}{analisisydiseno/CasosdeUso/GRL-CU06/imagenes/GRL-IU06.png}{GRL-IU06}{Listar vacantes} 
+
+\subsubsection{Listado de vacantes}
+Cada vacante listada se muestra por un componente llamando ``card'' el cual se puede ver en la figura \refElem{GRL-IU06-2}, la informacion que 
+muestra es la sigueinte: 
+\begin{itemize}
+   \item Titulo de la vacante (1).
+   \item Logo y nombre de la empresa (2).
+   \item Salario de la vacante (3).
+   \item Ubicación de la vacante (4).
+   \item Idioma obligatorio (5): este dato es opcional siempre y cuando el reclutador no haya indicado que es requisito obligatorio 
+   para la vacante.
+   \item Estado de la publicación (si tiene menos de 3 día publicada) (6).
+   \item Número de plazas que tiene la vacante (7).
+   \item Dias que lleva publicada la vacante (8).
+\end{itemize}
+
+\IUfig{.9}{analisisydiseno/CasosdeUso/GRL-CU06/imagenes/GRL-IU06-2.png}{GRL-IU06-2}{Card de una vacante} 
+
+%\Titem \IUPass : Al da clic en el ícono, se muestra la contraseña de lo contrario aparecerá \IUOculto \thinspace sustituyendo cada caracter de la contraseña. \\
+
+%\Titem \IUbutton{Siguiente} : Cuando presiona el botón, muestra la siguiente sección %\refElem{GRL-IU02-2}.
+%\Titem \IUbutton{Atras} : Cuando presiona el botón, muestra la sección anterior.%\refElem{GRL-IU02-2}.
+%\Titem \IUbutton{Finalizar} : Cuando presiona el botón en la seccion \refIdElem{GRL-IU07-3} , guarda los datos ingresados muestra la interfaz LISTAR VACANTES.
+
+ 
+
+Cuando no se tienen vacantes registradas en el sistema se muestra la siguiente interfaz:
+\IUfig{.9}{analisisydiseno/CasosdeUso/GRL-CU06/imagenes/GRL-IU06-1.png}{GRL-IU06-1}{Listar vacantes} 
+
+\clearpage
