@@ -1844,7 +1844,8 @@
             "t400_name": "Francisco",
             "t400_last_names": "Hernandez",
             "t400_email":"ex_ap_escom@ipn.mx",
-            "t400_admin": "true"
+            "t400_admin": "true",
+            "t400_position": "Jefe de departamento"
         }
     },
 
@@ -2442,12 +2443,11 @@
         }
     },
 
-
     {
         "model":"vacantes.Contract",        
         "pk":1,
         "fields":{
-            "c208_description": "Tiempo determinado"
+            "c208_description": "Se acuerda en entrevista"
         }
     },
 
@@ -2455,7 +2455,7 @@
         "model":"vacantes.Contract",        
         "pk":2,
         "fields":{
-            "c208_description": "Tiempo indeterminado"
+            "c208_description": "Tiempo determinado"
         }
     },
 
@@ -2463,7 +2463,7 @@
         "model":"vacantes.Contract",        
         "pk":3,
         "fields":{
-            "c208_description": "Temporal"
+            "c208_description": "Tiempo indeterminado"
         }
     },
 
@@ -2471,7 +2471,7 @@
         "model":"vacantes.Contract",        
         "pk":4,
         "fields":{
-            "c208_description": "Capacitación inicial"
+            "c208_description": "Temporal"
         }
     },
 
@@ -2479,7 +2479,7 @@
         "model":"vacantes.Contract",        
         "pk":5,
         "fields":{
-            "c208_description": "Periodo de prueba"
+            "c208_description": "Capacitación inicial"
         }
     },
 
@@ -2487,7 +2487,16 @@
         "model":"vacantes.Contract",        
         "pk":6,
         "fields":{
+            "c208_description": "Periodo de prueba"
+        }
+    },
+
+    {
+        "model":"vacantes.Contract",        
+        "pk":7,
+        "fields":{
             "c208_description": "Honorario"
         }
     }
+
 ]
