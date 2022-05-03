@@ -119,7 +119,7 @@ const Home = () => {
 
   if (Object.keys(data).length < 0|| Object.keys(jobs).length < 0) return null;
 
-  // console.log(page)
+  // console.log(jobs.result)
   
   return (
     <main className={homeStyles.home}>

@@ -106,6 +106,8 @@ const FormPostJob = () => {
 
   if (!form || !profiles || !experience) return null;
 
+  console.log(form);
+
   return (
     <div className={`container ${styles.wrapper}`}>
       <form className={styles.form} onSubmit={onSubmitPostJob}>
@@ -133,7 +135,6 @@ const FormPostJob = () => {
           />
           <FormControlLabel control={<Checkbox value={form.t200_home_ofice} onChange={handleChecked} size="small" />} label="Vacante Remota" />
         </div>
-
         <div>
           <h3 className={styles.title}><BiCurrentLocation /> Ubicación</h3>
           <div className={styles.inputGroup}>
@@ -178,149 +179,136 @@ const FormPostJob = () => {
               </Select>
             </FormControl>
           </div>
-        </div>
-
-        <div className={styles.form1}>
-          <div className={styles.inputGroup}>
-            <TextField
-              label="Calle"
-              value={form.t200_street}
-              onChange={handleChange}
-              name="t200_street"
-              id="t200_street"
-              sx={{ width: 300, maxWidth: "100%" }}
-            />
-            <TextField
-              label="Num. Exterior"
-              value={form.t200_exterior_number}
-              onChange={handleChange}
-              name="t200_exterior_number"
-              id="t200_exterior_number"
-              sx={{ width: 150, maxWidth: "50%" }}
-            />
-            <TextField
-              label="Num. Interior"
-              value={form.t200_interior_number}
-              onChange={handleChange}
-              name="t200_interior_number"
-              id="t200_interior_number"
-              sx={{ width: 150, maxWidth: "50%" }}
-            />
-          </div>
-        </div>
-
-        <div>
           <div className={styles.form1}>
-            <BiIcon.BiUser />
-            <span>La vacante va dirijida a</span>
             <div className={styles.inputGroup}>
-              <FormControl>
-                <InputLabel id="c206_id_profile">Perfil</InputLabel>
-                <Select            
-                  id="c206_id_profile"
-                  name="c206_id_profile"
-                  label="Perfil"
-                  onChange={(event, newValue) => {
-                    form.c206_id_profile=newValue;
-                  }}
-                  MenuProps={MenuPropsM}
-                  //renderInput={(params) => <TextField {...params} label="Experiencia" />}
-                  sx={{ width: 350}}
-                >
-                  {profiles?.map((option) => (
-                    <MenuItem key={option["c206_id_profile"]} value={option["c206_id_profile"]}>
-                      {option["c206_description"]}
-                    </MenuItem>                      
-                  ))}
-                </Select>
-              </FormControl>
-              <FormControl>
-                <InputLabel id="c207_id_experience">Experiencia</InputLabel>
-                <Select            
-                  id="c207_id_experience"
-                  name="c207_id_experience"
-                  label="Experiencia"
-                  onChange={(event, newValue) => {
-                    form.c207_id_experience=newValue;
-                  }}
-                  MenuProps={MenuPropsM}
-                  //renderInput={(params) => <TextField {...params} label="Experiencia" />}
-                  sx={{ width: 350}}
-                >
-                  {experience?.map((option) => (
-                    <MenuItem key={option["c207_id_experience"]} value={option["c207_id_experience"]}>
-                      {option["c207_description"]}
-                    </MenuItem>                      
-                  ))}
-                </Select>
-              </FormControl>
+              <TextField
+                label="Calle"
+                value={form.t200_street}
+                onChange={handleChange}
+                name="t200_street"
+                id="t200_street"
+                sx={{ width: 300, maxWidth: "100%" }}
+              />
+              <TextField
+                label="Num. Exterior"
+                value={form.t200_exterior_number}
+                onChange={handleChange}
+                name="t200_exterior_number"
+                id="t200_exterior_number"
+                sx={{ width: 150, maxWidth: "50%" }}
+              />
+              <TextField
+                label="Num. Interior"
+                value={form.t200_interior_number}
+                onChange={handleChange}
+                name="t200_interior_number"
+                id="t200_interior_number"
+                sx={{ width: 150, maxWidth: "50%" }}
+              />
             </div>
           </div>
           <div>
-            <span>Rango salarial y Horario</span>
-          </div>
-          <div className={styles.form1}>
-            <div className={styles.inputGroup}>
-              <TextField
-                label="Salario Mínimo"
-                name="t200_min_salary"
-                id="t200_min_salary"
-                inputProps={{ min: 7000, max: 99999, type: "number" }}
-                value={form.t200_min_salary}
-                onChange={handleChange}
-                sx={{ width: 150 }}
-              />
-              <TextField
-                label="Salario máximo"
-                name="t200_max_salary"
-                id="t200_max_salary"
-                inputProps={{ min: 7000, max: 99999, type: "number" }}
-                value={form.t200_max_salary}
-                onChange={handleChange}
-                sx={{ width: 150 }}
-              />
-              <TextField
-                label="Entrada"
-                type="time"
-                name="t200_check_time"
-                id="t200_check_time"
-                value={form.t200_check_time}
-                onChange={handleChange}
-                sx={{ width: 150, marginRight: 2 }}
-              />
-              <TextField
-                label="Salida"
-                type="time"
-                name="t200_closing_hour"
-                id="t200_closing_hour"
-                value={form.t200_closing_hour}
-                onChange={handleChange}
-              />
+            <div className={styles.form1}>
+              <h3 className={styles.title}><BiUser /> La vacante va dirijida a</h3>
+              <div className={styles.inputGroup}>
+                <FormControl sx={{ width: 300 }}>
+                  <InputLabel id="c206_id_profile">Perfil</InputLabel>
+                  <Select
+                    id="c206_id_profile"
+                    name="c206_id_profile"
+                    defaultValue=""
+                    onChange={handleChange}
+                    label="Perfil"
+                  >
+                    {profiles?.map((profile) => (
+                      <MenuItem key={uuid()} value={profile?.c206_description}>
+                        {profile?.c206_description}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+
+                <FormControl sx={{ width: 300 }}>
+                  <InputLabel id="c207_description">Experiencia</InputLabel>
+                  <Select
+                    id="c207_description"
+                    name="c207_description"
+                    defaultValue=""
+                    onChange={handleChange}
+                    label="Experiencia"
+                  >
+                    {experience?.map((exp) => (
+                      <MenuItem key={uuid()} value={exp?.c207_description}>
+                        {exp?.c207_description}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </div>
             </div>
-          </div>
-          <div className={styles.form2}>
-            <div className={`${styles.inputGroup} `}>
-              <TextareaAutosize
-                className={styles.textArea}
-                name="t200_description"
-                id="t200_description"
-                aria-label="maximum height"
-                placeholder="Detalles de la vacante"
-                minRows={5}
-                style={{ width: "100%", height: 220 }}
-                value={form.t200_description}
-                onChange={handleChange}
-              />
+            <div>
+              <h3 className={styles.title}><MdAttachMoney/> Rango salarial y Horario</h3>
+            </div>
+            <div className={styles.form1}>
+              <div className={styles.inputGroup}>
+                <TextField
+                  label="Salario Mínimo"
+                  name="t200_min_salary"
+                  id="t200_min_salary"
+                  inputProps={{ min: 7000, max: 99999, type: "number" }}
+                  value={form.t200_min_salary}
+                  onChange={handleChange}
+                  sx={{ width: 150 }}
+                />
+                <TextField
+                  label="Salario máximo"
+                  name="t200_max_salary"
+                  id="t200_max_salary"
+                  inputProps={{ min: 7000, max: 99999, type: "number" }}
+                  value={form.t200_max_salary}
+                  onChange={handleChange}
+                  sx={{ width: 150 }}
+                />
+                <TextField
+                  label="Entrada"
+                  type="time"
+                  name="t200_check_time"
+                  id="t200_check_time"
+                  value={form.t200_check_time}
+                  onChange={handleChange}
+                  sx={{ width: 150, marginRight: 2 }}
+                />
+                <TextField
+                  label="Salida"
+                  type="time"
+                  name="t200_closing_hour"
+                  id="t200_closing_hour"
+                  value={form.t200_closing_hour}
+                  onChange={handleChange}
+                />
+                {/* dias laborales */}
+
+              </div>
             </div>
           </div>
         </div>
-
-        
+        <div className={`${styles.inputGroup} `}>
+          <TextareaAutosize
+            className={styles.textArea}
+            name="t200_description"
+            id="t200_description"
+            aria-label="maximum height"
+            placeholder="Detalles de la vacante"
+            minRows={5}
+            style={{ width: "100%", height: 220 }}
+            value={form.t200_description}
+            onChange={handleChange}
+          />
+        </div>
         <button type="submit" className={`${styles.btn} btn btn-primary`}>
           <MdPublish />
           Publicar Vacante
         </button>
-
       </form>
     </div>
   );
