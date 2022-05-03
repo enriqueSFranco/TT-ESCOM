@@ -97,8 +97,11 @@ const FormPostJob = () => {
         .then((response) => {
           console.log(response);
           setLocalities(response);
-          setState(response[0]?.c222_state);
+          setState(response[0]?.c222_state);          
           setTown(response[0]?.c222_municipality);
+          form.t200_cp = e.target.value;
+          form.t200_state = response[0]?.c222_state;
+          form.t200_municipality = response[0]?.c222_municipality;
         })
         .catch((error) => console.error(error));
     }
@@ -140,8 +143,8 @@ const FormPostJob = () => {
           <div className={styles.inputGroup}>
             <TextField
               label="Codigo postal"
-              id="cp"
-              name="cp"
+              id="t200_cp"
+              name="t200_cp"
               value={cp ? parseInt(cp) : ""}
               onChange={getLocalityData}
               sx={{ width: 130, marginRight: 2 }}
@@ -149,23 +152,24 @@ const FormPostJob = () => {
             <TextField
               label="Estado"
               onChange={handleChange}
-              name="c222_state"
-              id="c222_state"
+              name="t200_state"
+              id="t200_state"
               value={state ? state : ""}
               sx={{ width: 300, maxWidth: "100%" }}
             />
             <TextField
               label="Municipio"
-              name="c222_municipality"
-              id="c222_municipality"
+              name="t200_mucipality"
+              id="t200_mucipality"
+              onChange={handleChange}
               value={town ? town : ""}
               sx={{ width: 300, maxWidth: "100%" }}
             />
             <FormControl sx={{ width: 300 }}>
-              <InputLabel id="c222_localit">Localidad</InputLabel>
+              <InputLabel id="t200_locality">Localidad</InputLabel>
               <Select
-                labelId="c222_localit"
-                id="c222_localit"
+                name="t200_locality"
+                id="t200_locality"
                 defaultValue=""
                 label="Localidad"
                 onChange={handleChange}
@@ -221,7 +225,7 @@ const FormPostJob = () => {
                     label="Perfil"
                   >
                     {profiles?.map((profile) => (
-                      <MenuItem key={uuid()} value={profile?.c206_description}>
+                      <MenuItem key={uuid()} value={profile?.c206_id_profile}>
                         {profile?.c206_description}
                       </MenuItem>
                     ))}
@@ -238,7 +242,7 @@ const FormPostJob = () => {
                     label="Experiencia"
                   >
                     {experience?.map((exp) => (
-                      <MenuItem key={uuid()} value={exp?.c207_description}>
+                      <MenuItem key={uuid()} value={exp?.c207_id_experience}>
                         {exp?.c207_description}
                       </MenuItem>
                     ))}

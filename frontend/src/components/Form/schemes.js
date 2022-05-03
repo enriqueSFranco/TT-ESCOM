@@ -52,17 +52,16 @@ export const postJobInitialForm = {
   t200_publish_date:
     now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay(),
   t200_close_date:
-    now.getFullYear() + "-" + now.getMonth()+1 + "-" + now.getDay(),
+    now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay(),
   t200_state:"",
-  t200_mucipality:"",
+  t200_municipality:"",
   t200_locality:"",
   t200_street:"",
   t200_cp:"",
   t200_interior_number:"",
   t200_exterior_number:"",
   t200_vacancy:"1",
-  t200_contract_type:"",
-  c208_id_contract:"",
+  c208_id_contract:1,
   t301_id_recruiter:"",
   t400_id_admin:""
 };
