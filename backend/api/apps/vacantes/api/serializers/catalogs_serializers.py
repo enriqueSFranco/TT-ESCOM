@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.vacantes.models import VacantStatus,CandidateProfile,Experience,ApplicationState,ReportType,ReportState,Locality
+from apps.vacantes.models import VacantStatus,CandidateProfile,Experience,ApplicationState,ReportType,ReportState,Locality,Contract
 
 class VacantStatusSerializer(serializers.ModelSerializer):
     class Meta:
@@ -163,3 +163,24 @@ class LocalityListSerializer(serializers.ModelSerializer):
             'c222_municipality' : instance['c222_municipality'],
             'c222_locality' : instance['c222_locality']
         }
+
+class ContractSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contract
+        fields = '__all__'
+    
+    def create(self,validate_data):
+        register = Contract(**validate_data)
+        register.save()
+        return register
+    
+class ContractListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contract
+        fields = '__all__'
+
+    def to_representation(self,instance):
+        return{
+            'c208_id_contract' : instance['c208_id_contract'],
+            'c208_description' : instance['c208_description']
+        }        

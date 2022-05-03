@@ -2440,5 +2440,54 @@
             "t301_id_recruiter": null,
             "t400_id_admin": null
         }
+    },
+
+
+    {
+        "model":"vacantes.Contract",        
+        "pk":1,
+        "fields":{
+            "c208_description": "Tiempo determinado"
+        }
+    },
+
+    {
+        "model":"vacantes.Contract",        
+        "pk":2,
+        "fields":{
+            "c208_description": "Tiempo indeterminado"
+        }
+    },
+
+    {
+        "model":"vacantes.Contract",        
+        "pk":3,
+        "fields":{
+            "c208_description": "Temporal"
+        }
+    },
+
+    {
+        "model":"vacantes.Contract",        
+        "pk":4,
+        "fields":{
+            "c208_description": "Capacitación inicial"
+        }
+    },
+
+    {
+        "model":"vacantes.Contract",        
+        "pk":5,
+        "fields":{
+            "c208_description": "Periodo de prueba"
+        }
+    },
+
+    {
+        "model":"vacantes.Contract",        
+        "pk":6,
+        "fields":{
+            "c208_description": "Honorario"
+        }
     }
 ]
