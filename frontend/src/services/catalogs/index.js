@@ -5,6 +5,7 @@ import {
   API_CATALOGUE_STATES,
   API_ACADEMIC_UNITS,
   API_INTEREST_JOBS,
+  API_CONTRACT,
   API_SKILLS,
   API_CP
 } from "services/settings";
@@ -80,6 +81,17 @@ export const getAllAcademicUnits = async () => {
 export const getAllJobs = async () => {
   try {
     const { data } = await axios.get(API_INTEREST_JOBS);
+    return data;
+  } catch (error) {
+    if (error.response)
+      return error.response.message;
+  }
+}
+
+
+export const getAllContracTypes = async () => {
+  try {
+    const { data } = await axios.get(API_CONTRACT);
     return data;
   } catch (error) {
     if (error.response)
