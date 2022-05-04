@@ -19,6 +19,7 @@ from apps.users.views import UserViewSet
 from apps.companies.api.views.auth_recruiter_viewset import ValidateRecruiterViewSet
 from apps.vacantes.api.views.vacant_viewset import RecruiterVacantViewSet
 from apps.vacantes.api.views.vacant_viewset import AdminVacantViewSet
+from apps.vacantes.api.views.application_viewset import VacantApplicationsViewSet
 
 router = DefaultRouter()
 router.register(r'users',UserViewSet,basename='Registred users')
@@ -47,6 +48,8 @@ router.register(r'Announcements',AnnouncementViewSet,basename='Announcements')
 router.register(r'Announcement/<int:pk>',AnnouncementViewSet,basename='Announcement details')
 router.register(r'Applications',ApplicationViewSet,basename='Students Applications')
 router.register(r'Applications/<int:pk>',ApplicationViewSet,basename='Student Applications details')
+router.register(r'VacantApplications',VacantApplicationsViewSet,basename='Vacants Applications')
+router.register(r'VacantApplications/<int:pk>',VacantApplicationsViewSet,basename='Vacant Applications')
 router.register(r'Reports',ReportViewSet,basename="Reports")
 router.register(r'Reports/<int:pk>',ReportViewSet,basename="Report details")
 router.register(r'Administrators',AdminViewSet,basename='Adminstrators')

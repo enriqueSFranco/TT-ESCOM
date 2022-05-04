@@ -4,7 +4,7 @@ from apps.vacantes.models import Application
 class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
-        fields = ('t200_id_vacant','t100_id_student','t201_cv','c205_id_application_state'
+        fields = ('t200_id_vacant','t100_id_student','c205_id_application_state'
         ,'t201_date_application')
         #'__all__'
     
@@ -16,7 +16,7 @@ class ApplicationSerializer(serializers.ModelSerializer):
 class ApplicationListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
-        fields = ('t201_id_application','t200_id_vacant','t100_id_student','t201_cv','c205_id_application_state'
+        fields = ('t201_id_application','t200_id_vacant','t100_id_student','c205_id_application_state'
         ,'t201_date_application')
         #'__all__'
         depth = 2
@@ -34,7 +34,7 @@ class ApplicationListSerializer(serializers.ModelSerializer):
 class UpdateApplicationSerializer(serializers.ModelSerializer):
         class Meta:
             model = Application
-            fields = ('c205_id_application_state','t201_date_application','t201_cv')
+            fields = ('c205_id_application_state','t201_date_application')
         
         def update(self,instance,validate_data):
             u_aplication = super().update(instance,validate_data)

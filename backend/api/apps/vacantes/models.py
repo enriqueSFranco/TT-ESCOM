@@ -207,7 +207,6 @@ class Application(models.Model):
 		blank=True,
 		related_name='AppliedStudent',
 		on_delete=models.CASCADE)    
-    t201_cv = models.FileField(null=True,blank=True)
     c205_id_application_state = models.ForeignKey(
         ApplicationState,
         null=False,
