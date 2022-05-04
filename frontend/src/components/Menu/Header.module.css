@@ -20,7 +20,7 @@
 }
 
 .navList {
-  width: 500px;
+  width: 600px;
   display: flex;
   align-items: center;
 }
@@ -52,4 +52,10 @@
   padding-left: 0;
   margin-bottom: 0;
   justify-content: space-around;
+}
+
+
+.notifyBell {
+  font-size: 1.3rem;
+  color: #fff;
 }

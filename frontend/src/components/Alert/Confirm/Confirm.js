@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import burrito from 'images/emoji_cool.jpg'
 import styles from './Confirm.module.css';
 
 /**
@@ -18,9 +19,9 @@ const Confirm = ({ applyJob, isApplyJob, job }) => {
         </>
       ) : (
         <>
-
           <p className={styles.message}>Postulacion enviada</p>
           <p className={styles.message}>Mucho exito!</p>
+          <img src={burrito} alt="burrito_ipn" className={styles.imgBurrito} />
           <Link to="/mis-postulaciones" className={styles.goToApplicationJob}>ir a mis postulaciones</Link>
         </>
       )

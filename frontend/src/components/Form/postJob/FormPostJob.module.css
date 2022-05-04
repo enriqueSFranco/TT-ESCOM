@@ -1,10 +1,11 @@
 .groupFormTitleJob {
-  width: 800px;
+  width: 700px;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2rem;
 }
 
-.form1 { width: 700px; }
+.form1 { width: 700px; margin-top: 2rem; }
 
 .inputCheckbox {
   justify-content: center;
@@ -14,7 +15,8 @@
 
 .btn {
   padding: .6rem;
-  width: 300px;
+  /* margin-right: 1rem; */
+  width: 200px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -30,6 +32,23 @@
   outline: 1px solid blue;
   width: 100%;
   margin: 0 auto;
+}
+
+.btnNextForm {
+  /* outline: 1px solid red; */
+  width: 150px;
+  height: 3rem;
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+}
+
+.btnNextForm button {
+  width: 100%;
+  height: 3rem;
+  background-color: blue;
+  color: #fff;
+  border: 1px solid blue;
 }
 
 .error {
@@ -48,14 +67,22 @@
   margin: 1rem 0;
 }
 
+.wrapperCP {
+  /* outline: 1px solid red; */
+  width: 350px;
+  margin-right: 20;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
 .form {
   position: relative;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   width: 100%;
   height: 830px;
-  margin: 0 auto;
   padding: 1rem;
 }
 
@@ -121,8 +148,36 @@
 
 .wrapper {
   position: relative;
-  top: 1rem;
-  width: 75%;
+  top: 0;
+  width: 100%;
   /* outline: 2px solid blue; */
   font-family: 'Poppins', sans-serif;
+}
+
+.wrapperGroupInput { width: 100%; }
+
+.wrapperTown {
+  width: 700px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapperNumberLocation {
+  margin-top: 1rem;
+  width: 700px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapperButtons {
+  /* outline: 1px solid red; */
+  width: 430px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapperFormJobDetails {
+  position: relative;
+  top: 1rem;
+  height: 100%;
 }
