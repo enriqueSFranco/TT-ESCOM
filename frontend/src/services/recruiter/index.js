@@ -32,3 +32,16 @@ export const postRecruiter = async (payload = {}) => {
     }
   }
 };
+
+export const getRecruiterInfo = async (id) => {
+  return axios.get(`${API_RECRUITER}${id}/`)
+    .then(response => {
+      const { data } = response;
+      return data;
+    })
+    .catch(error => {
+      if (error.response) {
+        return error.response.data;
+      }
+    })
+};

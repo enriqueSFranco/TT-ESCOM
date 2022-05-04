@@ -54,7 +54,19 @@ class ApplicationState(models.Model):
         db_table = 'c205_estado_solicitud'
     
     def __str__(self) ->str:
-	    return self.c205_description        
+	    return self.c205_description     
+
+#C208 Tipo de contratacion
+class Contract(models.Model):
+    c208_id_contract = models.AutoField(primary_key=True)
+    c208_description = models.TextField(max_length=50)
+    
+    class Meta:
+        verbose_name = 'Contract'
+        db_table = "c208_tipo_contrato"
+
+    def __str__(self) ->str:
+	    return self.c208_description           
 
 #C210 Tipo reporte
 class ReportType(models.Model):
@@ -113,7 +125,7 @@ class Vacant(models.Model):
     t200_benefits = models.TextField(null=True,blank=True)    
     t200_check_time = models.TimeField(auto_now=False)
     t200_closing_hour = models.TimeField(auto_now=False)
-    t200_work_days = models.CharField(max_length=7)  
+    t200_work_days = models.CharField(max_length=7,blank=True,null=True,default="1111100")  
     c207_id_experience = models.ForeignKey(
         Experience,
         null=False,
@@ -129,6 +141,7 @@ class Vacant(models.Model):
         CandidateProfile,
         null=True,
         blank=True,
+        default=1,
         related_name='ProfileRequired',
         on_delete=models.CASCADE
     )
@@ -142,14 +155,20 @@ class Vacant(models.Model):
     t200_publish_date = models.DateField()
     t200_close_date = models.DateField()
     t200_state = models.CharField(max_length=50,null=True,blank=True)
-    t200_mucipality = models.CharField(max_length=100,null=True,blank=True)
+    t200_municipality = models.CharField(max_length=100,null=True,blank=True)
     t200_locality = models.CharField(max_length=100,null=False,blank=False,default='No definido')
     t200_street = models.CharField(max_length=60,null=True,blank=True)
     t200_cp = models.IntegerField(blank=True,null=True)
     t200_interior_number = models.CharField(max_length=20,blank=True,null=True)
     t200_exterior_number = models.CharField(max_length=20,blank=True,null=True)    
     t200_vacancy = models.PositiveIntegerField(default=1)
-    t200_contract_type = models.CharField(max_length=50, default="Se acuerda en entrevista")
+    c208_id_contract = models.ForeignKey(
+        Contract,
+        null=False,
+		blank=False,
+        default=1,
+		related_name='ContractType',
+        on_delete=models.CASCADE)
     t301_id_recruiter = models.ForeignKey(
         Recruiter,
         null=True,
@@ -188,7 +207,6 @@ class Application(models.Model):
 		blank=True,
 		related_name='AppliedStudent',
 		on_delete=models.CASCADE)    
-    t201_cv = models.FileField(null=True,blank=True)
     c205_id_application_state = models.ForeignKey(
         ApplicationState,
         null=False,

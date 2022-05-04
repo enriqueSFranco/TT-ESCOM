@@ -76,3 +76,36 @@ class ApplicationViewSet(viewsets.GenericViewSet):
                 'message': 'Hay errores en la actualización',
                 'errors': application_serializer.errors
             }, status=status.HTTP_400_BAD_REQUEST)
+
+
+class VacantApplicationsViewSet(viewsets.GenericViewSet):
+	model = Application
+	serializer_class = ApplicationSerializer
+	list_serializer_class = ApplicationListSerializer
+	queryset = None
+
+	def get_object(self, pk):	
+		self.queryset = self.model.objects\
+				.filter(t200_id_vacant = pk)\
+				.all()#values('t201_id_application','t100_boleta','c205_id_application_state','t201_date_application','t201_cv')		
+		return self.queryset
+
+	def get_queryset(self):
+		if self.queryset is None:
+			self.queryset = self.model.objects\
+				.filter()\
+				.all()#values('t201_id_application','t100_boleta','c205_id_application_state','t201_date_application','t201_cv')
+		return self.queryset
+
+
+	def list(self, request):
+        #print(request.data)
+		applications = self.get_queryset()
+		applications_serializer = self.list_serializer_class(applications, many=True)        
+		return Response(applications_serializer.data, status=status.HTTP_200_OK)
+		
+	def retrieve(self, request, pk):
+		applications = self.get_object(pk)
+		applications_serializer = self.list_serializer_class(applications,many=True)
+		return Response(applications_serializer.data)
+
