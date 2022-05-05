@@ -6,7 +6,7 @@ import { MdAdd, MdEdit } from "react-icons/md"
 import styles from "./Experience.module.css";
 
 const Experence = () => {
-  const [,openModalProject,] = useModal();
+  const [ ,openModalProject, ] = useModal();
 
   return (
     <article className={styles.wrapper}>

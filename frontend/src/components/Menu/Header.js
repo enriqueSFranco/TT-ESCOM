@@ -29,7 +29,7 @@ const Header = () => {
                   </Link>
                 </li>
                 <li className={styles.menuItemStudent}>
-                  <Link to="/comunicados" className={styles.menuLinkStudent}>
+                  <Link to="/publicar-comunicado" className={styles.menuLinkStudent}>
                     Comunicados
                   </Link>
                 </li>

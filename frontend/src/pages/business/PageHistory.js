@@ -1,5 +1,8 @@
+import { useContext, useEffect, useState } from "react";
+import AuthContext from "context/AuthContext";
 import { useModal } from "hooks/useModal";
 import { uuid } from "utils/uuid";
+import { getJobsForRecruiter } from "services/recruiter/index";
 import ApplicationJob from "components/Card/ApplicationJob/ApplicationJob";
 import { BiSearch } from "react-icons/bi";
 import { GrAdd } from "react-icons/gr";
@@ -8,8 +11,21 @@ import ModalForm from "components/Modal/ModalForm";
 import FormPostJob from "components/Form/postJob/FormPostJob";
 
 const PageHistory = () => {
-
+  const { token } = useContext(AuthContext);
+  const [listJobs, setListJobs] = useState(null);
   const [isOpenModalForm, openModalForm, closeModalForm] = useModal();
+  let id = token?.user?.user_id;
+
+  useEffect(() => {
+    getJobsForRecruiter(id)
+      .then(response => {
+        // console.log(response.data);
+        setListJobs(response.data)
+      })
+      .catch(error => {
+        console.error(error);
+      })
+  }, [id]);
 
   return (
     <>
@@ -35,15 +51,21 @@ const PageHistory = () => {
           </header>
           {/* lista de vacantes */}
           <article className={styles.wrapperListJobs}>
-            <ApplicationJob 
-              key={uuid()}
-              nameJob="Desarrollador Web"
-              salary="30000"
-              madality="Remoto"
-              nameBusisness="Facebook"
-              typeBusiness=""
-              workingHours="Lunes a Viernes de 9:00am - 6:30pm"
-            />
+            {
+              listJobs && (
+                listJobs?.map(listJobs => (
+                  <ApplicationJob 
+                    key={uuid()}
+                    nameJob={listJobs?.t200_job}
+                    salary={listJobs?.t200_max_salary}
+                    madality={listJobs?.t200_home_ofice}
+                    nameBusisness={listJobs?.t300_id_company?.t300_name}
+                    typeBusiness=""
+                    workingHours="Lunes a Viernes de 9:00am - 6:30pm"
+                  />
+                ))
+              )
+            }
           </article>
         </aside>
         <article>

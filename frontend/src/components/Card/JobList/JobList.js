@@ -15,9 +15,10 @@ const JobList = ({jobs, loading, setPage, maxLenPage}) => {
     setPage((currentPage) => Math.min(currentPage + 1, maxLenPage));
   };
 
+
   return (
     <>
-    {jobs ? (
+    {jobs?.length > 0 ? (
       <>
         <article className={`${styles.wrapper} ${styles.grid}`}>
           <div style={{ width: "500px" }}>
