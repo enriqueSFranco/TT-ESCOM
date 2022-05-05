@@ -37,7 +37,6 @@ export const postJobInitialForm = {
   t300_id_company:"",
   t200_job:"",
   t200_description:"",
-  t200_requirements:"",
   t200_benefits:"",
   t200_check_time : "00:00:00",
   t200_closing_hour : "00:00:00",

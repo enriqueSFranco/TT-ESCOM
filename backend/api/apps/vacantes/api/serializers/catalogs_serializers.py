@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.vacantes.models import VacantStatus,CandidateProfile,Experience,ApplicationState,ReportType,ReportState,Locality,Contract
+from apps.vacantes.models import VacantStatus,CandidateProfile,Experience,ApplicationState,ReportType,ReportState,Locality,Contract,ReportState,Modality
 
 class VacantStatusSerializer(serializers.ModelSerializer):
     class Meta:
@@ -135,8 +135,8 @@ class ReportStateListSerializer(serializers.ModelSerializer):
 
     def to_representation(self,instance):
         return{
-            'c220_id_report_state' : instance['c220_id_report_state'],
-	        'c220_description' : instance['c220_description']
+            'c209_id_state' : instance['c209_id_state'],
+	        'c209_description' : instance['c209_description']
         }
 
 
@@ -184,3 +184,47 @@ class ContractListSerializer(serializers.ModelSerializer):
             'c208_id_contract' : instance['c208_id_contract'],
             'c208_description' : instance['c208_description']
         }        
+
+      
+class ReportStateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ReportState
+        fields = '__all__'
+    
+    def create(self,validate_data):
+        register = ReportState(**validate_data)
+        register.save()
+        return register
+    
+class ReportStateListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ReportState
+        fields = '__all__'
+
+    def to_representation(self,instance):
+        return{
+            'c209_id_state' : instance['c209_id_state'],
+            'c209_description' : instance['c209_description']
+        }     
+
+        
+class ModalitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Modality
+        fields = '__all__'
+    
+    def create(self,validate_data):
+        register = Modality(**validate_data)
+        register.save()
+        return register
+    
+class ModalityListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Modality
+        fields = '__all__'
+
+    def to_representation(self,instance):
+        return{
+            'c214_id_modality' : instance['c214_id_modality'],
+            'c214_description' : instance['c214_description']
+        }

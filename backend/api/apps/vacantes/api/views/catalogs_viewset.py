@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import viewsets
 
-from apps.vacantes.models import VacantStatus,CandidateProfile,Experience,ApplicationState,ReportType,ReportState,Locality,Contract
+from apps.vacantes.models import VacantStatus,CandidateProfile,Experience,ApplicationState,ReportType,ReportState,Locality,Contract,ReportState,Modality
 from apps.vacantes.api.serializers.catalogs_serializers import VacantStatusSerializer,VacantStatusListSerializer
 from apps.vacantes.api.serializers.catalogs_serializers import CandidateProfileSerializer,CandidateProfileListSerializer
 from apps.vacantes.api.serializers.catalogs_serializers import ExperienceSerializer,ExperienceListSerializer
@@ -15,6 +15,8 @@ from apps.vacantes.api.serializers.catalogs_serializers import ReportTypeSeriali
 from apps.vacantes.api.serializers.catalogs_serializers import ReportStateSerializer,ReportStateListSerializer
 from apps.vacantes.api.serializers.catalogs_serializers import LocalitySerializer,LocalityListSerializer
 from apps.vacantes.api.serializers.catalogs_serializers import ContractSerializer,ContractListSerializer
+from apps.vacantes.api.serializers.catalogs_serializers import ReportStateSerializer,ReportStateListSerializer
+from apps.vacantes.api.serializers.catalogs_serializers import ModalitySerializer,ModalityListSerializer
 
 class VacantStatusViewSet(viewsets.GenericViewSet):
 	model = VacantStatus
@@ -195,15 +197,15 @@ class ReportStateViewSet(viewsets.GenericViewSet):
 		self.queryset= None
 		if self.queryset == None:
 			self.queryset = self.model.objects\
-				.filter(c220_id_report_state = pk)\
-				.values('c220_id_report_state','c220_description')
+				.filter(c209_id_state = pk)\
+				.values('c209_id_state','c209_description')
 		return  self.queryset #get_object_or_404(self.model,pk=pk)
 		
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('c220_id_report_state','c220_description')
+				.values('c209_id_state','c209_description')
 		return self.queryset  
 
 	def list(self, request):
@@ -270,6 +272,72 @@ class ContractViewSet(viewsets.GenericViewSet):
 			self.queryset = self.model.objects\
 				.filter()\
 				.values('c208_id_contract','c208_description')[:100]
+		return self.queryset  
+
+	def list(self, request):
+		print(request.data)
+		registers_list = self.get_queryset()
+		registers_serializer = self.list_serializer_class(registers_list, many=True)
+		return Response(registers_serializer.data, status=status.HTTP_200_OK)	
+
+	def retrieve(self, request, pk):
+		s_register = self.get_object(pk)
+		register_serializer = self.list_serializer_class(s_register,many=True)
+		return Response(register_serializer.data)	
+
+
+class ReportStateViewSet(viewsets.GenericViewSet):
+	model = ReportState
+	serializer_class = ReportStateSerializer
+	list_serializer_class = ReportStateListSerializer
+	queryset = None
+
+	def get_object(self, pk):
+		self.queryset= None
+		if self.queryset == None:
+			self.queryset = self.model.objects\
+				.filter(c209_id_state = pk)\
+				.values('c209_id_state','c209_description')
+		return  self.queryset #get_object_or_404(self.model,pk=pk)
+		
+	def get_queryset(self):
+		if self.queryset is None:
+			self.queryset = self.model.objects\
+				.filter()\
+				.values('c209_id_state','c209_description')[:100]
+		return self.queryset  
+
+	def list(self, request):
+		print(request.data)
+		registers_list = self.get_queryset()
+		registers_serializer = self.list_serializer_class(registers_list, many=True)
+		return Response(registers_serializer.data, status=status.HTTP_200_OK)	
+
+	def retrieve(self, request, pk):
+		s_register = self.get_object(pk)
+		register_serializer = self.list_serializer_class(s_register,many=True)
+		return Response(register_serializer.data)	
+
+#Modality	
+class ModalityViewSet(viewsets.GenericViewSet):
+	model = Modality
+	serializer_class = ModalitySerializer
+	list_serializer_class = ModalityListSerializer
+	queryset = None
+
+	def get_object(self, pk):
+		self.queryset= None
+		if self.queryset == None:
+			self.queryset = self.model.objects\
+				.filter(c214_id_modality = pk)\
+				.values('c214_id_modality','c214_description')
+		return  self.queryset #get_object_or_404(self.model,pk=pk)
+		
+	def get_queryset(self):
+		if self.queryset is None:
+			self.queryset = self.model.objects\
+				.filter()\
+				.values('c214_id_modality','c214_description')[:100]
 		return self.queryset  
 
 	def list(self, request):
