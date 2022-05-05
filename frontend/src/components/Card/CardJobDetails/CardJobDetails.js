@@ -162,7 +162,7 @@ const CardJobDetails = () => {
             </div>
             <div className={styles.requirements}>
               <h3>Requerimientos de la vacante</h3>
-              {job[0]?.t200_requirements}
+              {/*job[0]?.t200_requirements*/}
             </div>
             <div>
               <h3>OFRECEMOS</h3>
