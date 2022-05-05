@@ -1,5 +1,6 @@
 .wrapper {
+  position: absolute;
+  top: 4rem;
   width: 100%;
-  height: 100%;
-  /* background-color: salmon; */
+  height: calc(100% - 4rem);
 }

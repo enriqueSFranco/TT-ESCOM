@@ -36,6 +36,13 @@ const Root = () => {
           <Route path=":t200_id_vacant" element={<CardJobDetails />} />
         </Route>
       </Route>
+      <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>   
+        <Route path="/dashboard" element={<PageDashBoard />} />
+        <Route path="/mis-vacantes" element={<PageHistory />} />
+        <Route path="/solicitudes" element={<PageApplications />} />
+        <Route path="/comunicados" element={<PagePostRelease />} />
+        {/* <Route path="/candidatos" element={<PageApplications />} /> */}
+      </Route>
 
       {/* FEATURE:  */}
       {/* <Route path="empleos" element={<PageJobs />}>
@@ -74,7 +81,7 @@ const Root = () => {
       </Route>
 
       {/* Indice de rutas privadas para un reclutador */}
-      <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>   
+      {/* <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>   
         <Route path="/historial" element={<PageHistory />}>
           <Route path="dashboard" element={<PageDashBoard />} />
           <Route path="mis-vacantes" element={<PageMyJobs />} />
@@ -82,7 +89,7 @@ const Root = () => {
           <Route path="publicar-vacante" element={<PageAddJob />} />
           <Route path="publicar-comunicado" element={<PagePostRelease />} />
         </Route>
-      </Route>
+      </Route> */}
 
     </Routes>
   );

@@ -1,7 +1,6 @@
 // Objetos que inicializan los formularios
 let now = new Date();
 
-
 export const loginFormCompany = {
   t301_email: "",
   password: "",
@@ -23,15 +22,15 @@ export const updateStudentInitialForm = {
 };
 
 export const companyInitialForm = {
-  t300_name:"",
-  t300_rfc:"",
-  t300_bussiness_name:"",
-  t300_create_date:"2022-04-15",
-  t301_name:"",
-  t301_last_name:"",
-  t301_email:"",    
-  t301_phonenumber:""
-}
+  t300_name: "",
+  t300_rfc: "",
+  t300_bussiness_name: "",
+  t300_create_date: "2022-04-15",
+  t301_name: "",
+  t301_last_name: "",
+  t301_email: "",
+  t301_phonenumber: "",
+};
 
 export const postJobInitialForm = {
   t300_id_company:"",
@@ -72,5 +71,5 @@ export const AcademicFormat = {
   t104_end_date: "",
   t100_id_student: "",
   c107_id_academic_level: "4",
-  c109_id_academic_state: "6"
+  c109_id_academic_state: "6",
 };

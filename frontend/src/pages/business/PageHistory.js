@@ -1,83 +1,59 @@
-import { useContext } from "react";
-import { Link, Outlet } from "react-router-dom";
-import { stringToColor } from "utils/stringToColor";
-import AuthContext from "context/AuthContext";
-import { Avatar } from "@mui/material";
-import { deepPurple } from "@mui/material/colors";
-import { MdSpaceDashboard, MdBusinessCenter } from "react-icons/md";
-import { IoMdLogOut, IoMdSettings } from "react-icons/io";
-import { FaUserTie } from "react-icons/fa";
+import { useModal } from "hooks/useModal";
+import { uuid } from "utils/uuid";
+import ApplicationJob from "components/Card/ApplicationJob/ApplicationJob";
 import { BiSearch } from "react-icons/bi";
-import { GrAnnounce } from "react-icons/gr";
-import { CgNotes } from "react-icons/cg";
+import { GrAdd } from "react-icons/gr";
 import styles from "./PageHistory.module.css";
+import ModalForm from "components/Modal/ModalForm";
+import FormPostJob from "components/Form/postJob/FormPostJob";
 
 const PageHistory = () => {
-  const { token } = useContext(AuthContext);
+
+  const [isOpenModalForm, openModalForm, closeModalForm] = useModal();
 
   return (
-    <section className={styles.wrapper}>
-      <form className={styles.formSearch}>
-        <div className={styles.boxSearch}>
-          <BiSearch />
-          <input
-            type="search"
-            name=""
-            id=""
-            placeholder="ej. kikesf"
-            className={styles.inputSearch}
-          />
-        </div>
-      </form>
-      <aside className={styles.sidebar}>
-        <nav className={styles.menu}>
-          <ul>
-            <li className={styles.itemAvatar}>
-              <Avatar sx={{ bgcolor: stringToColor(token?.user?.first_name) }}>
-                {(token?.user?.first_name).slice(0, 1)}
-              </Avatar>
-              {token?.user?.first_name}
-            </li>
-            <li>
-              <Link to="dashboard">
-                <MdSpaceDashboard />
-                Dashboard
-              </Link>
-            </li>
-            <li>
-              <Link to="mis-vacantes">
-                <MdBusinessCenter />
-                Mis vacantes
-              </Link>
-            </li>
-            <li>
-              <Link to="solicitudes">
-                <FaUserTie />
-                Solicitudes
-              </Link>
-            </li>
-            <li>
-              <Link to="publicar-vacante"><CgNotes />Publicar vacante</Link>
-            </li>
-            <li>
-              <Link to="publicar-comunicado"><GrAnnounce />Publicar comunicado</Link>
-            </li>
-            <li>
-              <Link to="configuracion"><IoMdSettings />Configuracion</Link>
-            </li>
-            <li>
-              <Link to="/">
-                <IoMdLogOut />
-                Cerrar sesion
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-      <article className={styles.main}>
-        <Outlet />
-      </article>
-    </section>
+    <>
+      <section className={styles.wrapper}>
+          {/* seccion izquierda */}
+        <aside className={styles.sidebar}>
+          <header className={styles.header}>
+            <form>
+              <div className={styles.boxSearch}>
+                <BiSearch />
+                <input
+                  type="search"
+                  name=""
+                  id=""
+                  placeholder="Buscar vacante"
+                  className={styles.inputSearch}
+                />
+              </div>
+            </form>
+            <button className={styles.btnAddJob} onClick={openModalForm}>
+              <GrAdd />
+            </button>
+          </header>
+          {/* lista de vacantes */}
+          <article className={styles.wrapperListJobs}>
+            <ApplicationJob 
+              key={uuid()}
+              nameJob="Desarrollador Web"
+              salary="30000"
+              madality="Remoto"
+              nameBusisness="Facebook"
+              typeBusiness=""
+              workingHours="Lunes a Viernes de 9:00am - 6:30pm"
+            />
+          </article>
+        </aside>
+        <article>
+          {/* seccion derecha */}
+        </article>
+      </section>
+      <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
+        <FormPostJob />
+      </ModalForm>
+    </>
   );
 };
 

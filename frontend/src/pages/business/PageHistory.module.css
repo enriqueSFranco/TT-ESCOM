@@ -14,15 +14,23 @@
   cursor: pointer;
 }
 
+.btnAddJob {
+  color: #000;
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+}
 
-.formSearch {
-  position: absolute;
-  left: 250px;
-  width: calc(100% - 250px);
+.header {
+  /* outline: 1px solid red; */
+  width: 100%;
   height: 4rem;
+  position: absolute;
+  top: 1rem;
+  padding: 0 1rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -43,7 +51,7 @@
 
 .inputSearch::placeholder {
   font-weight: 300;
-  color: #000;
+  color: #686868;
 }
 
 .itemAvatar {
@@ -123,14 +131,26 @@
 }
 
 .sidebar {
-  width: 250px;
+  position: relative;
+  width: 600px;
   height: calc(100vh - 4rem);
   border-right: 1px solid #cccccc;
-  background-image: linear-gradient(to left top, #0456ec, #0073f6, #008bf7, #00a0f3, #0fb3ec);
+  /* background-image: linear-gradient(to left top, #0456ec, #0073f6, #008bf7, #00a0f3, #0fb3ec); */
 }
 
 .wrapper {
   position: relative;
   top: 4rem;
   height: calc(100vh - 4rem);
+}
+
+.wrapperListJobs {
+  position: absolute;
+  top: 6rem;
+  width: 100%;
+  height: calc(100% - 6rem);
+  overflow-y: auto;
+  border-radius: 0 6px 0 0;
+  background-color: #f6f8fb;
+  padding: 1rem;
 }

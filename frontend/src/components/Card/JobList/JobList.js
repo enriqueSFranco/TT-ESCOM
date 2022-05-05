@@ -5,7 +5,7 @@ import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 import burrito from "images/emoji_angustiado.jpg"
 import styles from "./JobList.module.css";
 
-const JobList = ({jobs = [], loading, setPage, maxLenPage}) => {
+const JobList = ({jobs, loading, setPage, maxLenPage}) => {
 
   const prevPage = () => {
     setPage((currentPage) => Math.max(currentPage - 1, 1));
@@ -17,7 +17,7 @@ const JobList = ({jobs = [], loading, setPage, maxLenPage}) => {
 
   return (
     <>
-    {jobs.length > 0 ? (
+    {jobs ? (
       <>
         <article className={`${styles.wrapper} ${styles.grid}`}>
           <div style={{ width: "500px" }}>
@@ -43,7 +43,7 @@ const JobList = ({jobs = [], loading, setPage, maxLenPage}) => {
     ) : (
       <article className={`container ${styles.notJobs}`}>
         <div className={styles.bodyNotJobs}>
-          <h2>Upps, no tenemos vacantes registras.</h2>
+          <h2>¡Upps, no tenemos vacantes registradas!</h2>
           <img src={burrito} alt="burrito_ipn" />
         </div>
       </article>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import AuthContext from "context/AuthContext";
 import { IoMdLogOut } from "react-icons/io";
 import { MdSpaceDashboard } from "react-icons/md"
+import { BiCog } from "react-icons/bi";
 import styles from "./Dropdown.module.css"
 
 const DropMenuRecruiter = ({recruiter}) => {
@@ -10,13 +11,13 @@ const DropMenuRecruiter = ({recruiter}) => {
 
   // if (Object.keys(recruiter).length === 0) return null;
   
-  console.log(recruiter);
+  // console.log(recruiter);
   
   return (
     <ul className={styles.menuList}>
       <li className={styles.menuItemStudent}>
         <Link to="/historial" className={styles.menuLinkStudent}>
-          <MdSpaceDashboard />Dashboard
+          <BiCog />Configuracion
         </Link>
       </li>
       <li className={styles.menuItemStudent}>

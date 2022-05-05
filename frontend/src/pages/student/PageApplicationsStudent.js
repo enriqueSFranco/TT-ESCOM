@@ -19,7 +19,7 @@ const PageApplicationsStudent = () => {
 
   if (!data) return null;
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <section className={styles.wrapper}>

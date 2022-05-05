@@ -4,3 +4,9 @@
   background-color: red;
   /* background-color: salmon; */
 }
+
+.wrapperBody {
+  /* outline: 1px solid red; */
+  overflow-y: scroll;
+  height: 740px;
+}
