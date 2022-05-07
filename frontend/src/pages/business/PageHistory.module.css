@@ -154,3 +154,36 @@
   background-color: #f6f8fb;
   padding: 1rem;
 }
+
+.notJobs {
+  position: absolute;
+  width: 100%;
+  top: 6rem;
+  min-height: 100vh;
+  border-radius: 8px;
+  background-color: #fff;
+  position: relative;
+  background-color:#68013b;
+  background-image: linear-gradient(
+    160deg, #9e005a, #018dd4, rgb(211, 211, 211)
+  );
+}
+
+.bodyNotJobs  {
+  position: absolute;
+  left: 0;
+  background-color: #fff;
+  height: calc(100% - .7rem);
+  width: calc(100% - .7rem);
+  margin: .3rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bodyNotJobs img{
+  position: center;
+  height: 50%;
+}

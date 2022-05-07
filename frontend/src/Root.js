@@ -40,7 +40,7 @@ const Root = () => {
         <Route path="/dashboard" element={<PageDashBoard />} />
         <Route path="/mis-vacantes" element={<PageHistory />} />
         <Route path="/solicitudes" element={<PageApplications />} />
-        <Route path="/comunicados" element={<PagePostRelease />} />
+        <Route path="/publicar-comunicado" element={<PagePostRelease />} />
         {/* <Route path="/candidatos" element={<PageApplications />} /> */}
       </Route>
 

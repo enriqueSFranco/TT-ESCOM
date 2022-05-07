@@ -416,6 +416,95 @@
             "c115_icon":"/icons/linkedIn.png"
         }
     },
+
+
+    {
+        "model":"vacantes.VacantStatus",        
+        "pk":1,
+        "fields":{
+            "c204_description": "Sin información"
+        }
+    },
+    {
+        "model":"vacantes.VacantStatus",        
+        "pk":2,
+        "fields":{
+            "c204_description": "Publicada Visible"
+        }
+    },
+    {
+        "model":"vacantes.VacantStatus",        
+        "pk":3,
+        "fields":{
+            "c204_description": "Publicada en revisión"
+        }
+    },
+    {
+        "model":"vacantes.VacantStatus",        
+        "pk":4,
+        "fields":{
+            "c204_description": "Publicada no Visible"
+        }
+    },
+    {
+        "model":"vacantes.VacantStatus",        
+        "pk":5,
+        "fields":{
+            "c204_description": "Cerrada"
+        }
+    },
+    {
+        "model":"vacantes.VacantStatus",        
+        "pk":6,
+        "fields":{
+            "c204_description": "Publicada desactivada"
+        }
+    },
+
+
+    {
+        "model":"vacantes.ApplicationState",        
+        "pk":1,
+        "fields":{
+            "c205_description": "Sin información"
+        }
+    },
+    {
+        "model":"vacantes.ApplicationState",        
+        "pk":2,
+        "fields":{
+            "c205_description": "En revisión"
+        }
+    },
+    {
+        "model":"vacantes.ApplicationState",        
+        "pk":3,
+        "fields":{
+            "c205_description": "Aceptado"
+        }
+    },
+    {
+        "model":"vacantes.ApplicationState",        
+        "pk":4,
+        "fields":{
+            "c205_description": "Información incompleta"
+        }
+    },
+    {
+        "model":"vacantes.ApplicationState",        
+        "pk":5,
+        "fields":{
+            "c205_description": "Rechazada CV corrompido"
+        }
+    },
+    {
+        "model":"vacantes.ApplicationState",        
+        "pk":6,
+        "fields":{
+            "c205_description": "Rechazada"
+        }
+    },
+
     
     {
         "model":"vacantes.ReportState",        
@@ -610,6 +699,156 @@
             "c210_description": "Información de la vacante falsa"
         }
     },    
+
+    {
+        "model":"students.InterestJob",        
+        "pk":1,
+        "fields":{
+            "c111_job": "Aplicaciones Software Developer"
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":2,
+        "fields":{
+            "c111_job": "Ingeniero de hardware de computadora"
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":3,
+        "fields":{
+            "c111_job": "Desarrollador web"
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":4,
+        "fields":{
+            "c111_job": "Desarrollador de software de sistemas"
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":5,
+        "fields":{
+            "c111_job": "Analista de Sistemas Computacionales "
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":6,
+        "fields":{
+            "c111_job": "Administrador de redes y sistemas informáticos"
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":7,
+        "fields":{
+            "c111_job": "Analista cuantitativo"
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":8,
+        "fields":{
+            "c111_job": "Analista de Informática Forense"
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":9,
+        "fields":{
+            "c111_job": "Artista multimedia "
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":10,
+        "fields":{
+            "c111_job": "Animador"
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":11,
+        "fields":{
+            "c111_job": "Investigador en Informática e Información."
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":12,
+        "fields":{
+            "c111_job": "Administrador de base de datos relacionales"
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":13,
+        "fields":{
+            "c111_job": "Desarrollador frontend"
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":14,
+        "fields":{
+            "c111_job": "Dessarollador backend"
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":15,
+        "fields":{
+            "c111_job": "Desarrollador de API's"
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":16,
+        "fields":{
+            "c111_job": "Analista de requerimientos"
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":17,
+        "fields":{
+            "c111_job": "SCRUM master"
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":18,
+        "fields":{
+            "c111_job": "Consultor de software"
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":19,
+        "fields":{
+            "c111_job": "Administrador de bases de datos no relacionales"
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":20,
+        "fields":{
+            "c111_job": "Data scientist"
+        }
+    },
+    {
+        "model":"students.InterestJob",        
+        "pk":21,
+        "fields":{
+            "c111_job": "Diseñador de hardware"
+        }
+    },
+
+
 
     {
         "model":"administration.Admin",

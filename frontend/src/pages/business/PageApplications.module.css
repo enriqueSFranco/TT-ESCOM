@@ -1,12 +1,8 @@
 .wrapper {
+  background-color: #fff;
+  position: absolute;
+  top: 4rem;
   width: 100%;
-  height: 100%;
-  background-color: red;
-  /* background-color: salmon; */
-}
-
-.wrapperBody {
-  /* outline: 1px solid red; */
-  overflow-y: scroll;
-  height: 740px;
+  padding: 1rem;
+  height: calc(100% - 4rem);
 }
