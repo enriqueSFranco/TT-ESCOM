@@ -10,7 +10,7 @@ import Footer from "components/Footer/Footer";
 import homeStyles from "./PageHome.module.css";
 
 const Home = () => {
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState(null);
   let maxLenPage = useMemo(() => Math.ceil(jobs?.count / jobs?.page_size), [jobs?.count, jobs?.page_size]);
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]); // lista de vacantes filtrada
@@ -21,7 +21,6 @@ const Home = () => {
   
   useEffect(() => {
     setLoading(true);
-    console.log(page)
     getAllJobs(page)
       .then(response => {
         if (response.status === 200) {
@@ -116,14 +115,11 @@ const Home = () => {
     }
   };
 
+  if (!jobs) return null;
 
-  if (Object.keys(data).length < 0|| Object.keys(jobs).length < 0) return null;
-
-  console.log(jobs.result, data);
-  
   return (
     <main className={homeStyles.home}>
-      <Search handleSearch={handleSearch} data={jobs} />
+      <Search handleSearch={handleSearch} />
 
       <div className={homeStyles.filteredControls}>
         <span className={homeStyles.textFilter}>Filtros</span>

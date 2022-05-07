@@ -11,6 +11,7 @@ import FormPostJob from "components/Form/postJob/FormPostJob";
 import { BiSearch } from "react-icons/bi";
 import { GrAdd } from "react-icons/gr";
 import { FiUsers } from "react-icons/fi";
+import applicationsIcon from "images/applications.png"
 import styles from "./PageHistory.module.css";
 
 const PageHistory = () => {
@@ -27,7 +28,7 @@ const PageHistory = () => {
   useEffect(() => {
     getJobsForRecruiter(id)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setListJobs(response.data);
       })
       .catch((error) => {
@@ -39,7 +40,7 @@ const PageHistory = () => {
     if (t200_id_vacant !== undefined) {
       getApplicationsJobs(t200_id_vacant)
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           setTotalApplications(response.length);
         })
         .catch((error) => console.log(error));
@@ -151,9 +152,15 @@ const PageHistory = () => {
                 )}
               </article>
             ) : (
-              <div>
-                <h3>Selecciona una vacante para ver sus detalles</h3>
-                <h4>No hay nada seleccionado.</h4>
+              <div className={styles.noContentJob}>
+                <figure>
+                  <figcaption>
+                    Selecciona una vacante para ver sus detalles
+                    <br />
+                    No hay nada seleccionado.
+                  </figcaption>
+                  <img src={applicationsIcon} alt="iconJob" className={styles.image} />
+                </figure>
               </div>
             )}
           </div>
