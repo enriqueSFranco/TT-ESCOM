@@ -17,6 +17,8 @@ let initialForm = {
 const FormLocationJob = () => {
   const { form, handleChange } = useForm(initialForm);
 
+  console.log(form);
+
   return (
     <div className={styles.container}>
       <div className={`${styles.title}`}>

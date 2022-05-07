@@ -18,6 +18,9 @@ const validateForm = (form) => {
     errors.t200_job =
       "El campo 'Titulo de la vacante' solo acepta letras y espacios en blanco.";
 
+  if(!form.t200_cp)
+    errors.t200_cp = "El códigó postal es incorrecto"
+
   return errors;
 };
 

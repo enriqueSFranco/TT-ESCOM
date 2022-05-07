@@ -55,6 +55,10 @@ const FormPostJobLocation = ({ form, errors, handleChecked, handleChange, nextSt
           setLocalities(response);
           setState(response[0]?.c222_state);
           setTown(response[0]?.c222_municipality);
+          form.t200_cp = input;
+          form.t200_state = response[0]?.c222_state;
+          form.t200_municipality = response[0]?.c222_municipality;          
+          console.log(form);
         })
         .catch((error) => console.error(error));
     }
@@ -97,12 +101,17 @@ const FormPostJobLocation = ({ form, errors, handleChecked, handleChange, nextSt
         <div className={styles.wrapperCP}>
           <TextField
             label="Codigo postal"
-            id="cp"
-            name="cp"
+            id="t200_cp"
+            name="t200_cp"
             value={cp ? parseInt(cp) : ""}
             onChange={getLocalityData}
             sx={{ width: 130, marginRight: 2 }}
-          />
+          />{errors.t200_cp && (
+            <span className={styles.error}>
+              <MdOutlineErrorOutline />
+              {errors.t200_cp}
+            </span>
+          )}
           <FormControlLabel
             control={
               <Checkbox
@@ -118,23 +127,24 @@ const FormPostJobLocation = ({ form, errors, handleChecked, handleChange, nextSt
           <TextField
             label="Estado"
             onChange={handleChange}
-            name="c222_state"
-            id="c222_state"
+            name="t200_state"
+            id="t200_state"
             value={state ? state : ""}
             sx={{ width: 200, maxWidth: "100%" }}
           />
           <TextField
             label="Municipio"
-            name="c222_municipality"
-            id="c222_municipality"
+            name="t200_municipality"
+            id="t200_municipality"
             value={town ? town : ""}
             sx={{ width: 200, maxWidth: "100%" }}
           />
           <FormControl sx={{ width: 250 }}>
-            <InputLabel id="c222_localit">Localidad</InputLabel>
+            <InputLabel id="t200_locality">Localidad</InputLabel>
             <Select
-              labelId="c222_localit"
-              id="c222_localit"
+              name = "t200_locality"
+              labelId="t200_locality"
+              id="t200_locality"
               defaultValue=""
               label="Localidad"
               onChange={handleChange}
@@ -191,7 +201,7 @@ const FormPostJobLocation = ({ form, errors, handleChecked, handleChange, nextSt
                 label="Perfil"
               >
                 {profiles?.map((profile) => (
-                  <MenuItem key={uuid()} value={profile?.c206_description}>
+                  <MenuItem key={uuid()} value={profile?.c206_id_profile}>
                     {profile?.c206_description}
                   </MenuItem>
                 ))}
@@ -208,7 +218,7 @@ const FormPostJobLocation = ({ form, errors, handleChecked, handleChange, nextSt
                 label="Experiencia"
               >
                 {experience?.map((exp) => (
-                  <MenuItem key={uuid()} value={exp?.c207_description}>
+                  <MenuItem key={uuid()} value={exp?.c207_id_experience}>
                     {exp?.c207_description}
                   </MenuItem>
                 ))}
