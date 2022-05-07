@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { memo, useContext } from 'react';
 import { useFetch } from 'hooks/useFetch';
 import AuthContext from 'context/AuthContext';
 import { API_APPLICATIONS_JOB_STUDENT } from 'services/settings';
@@ -10,16 +10,15 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-// import Paper from '@mui/material/Paper';
+import { IoIosBusiness } from 'react-icons/io'
 import styles from './PageApplicationsStudent.module.css';
+
 
 const PageApplicationsStudent = () => {
   const { token } = useContext(AuthContext);
   const { data } = useFetch(`${API_APPLICATIONS_JOB_STUDENT}${token?.user?.user_id}/`); 
 
   if (!data) return null;
-
-  // console.log(data);
 
   return (
     <section className={styles.wrapper}>
@@ -28,6 +27,7 @@ const PageApplicationsStudent = () => {
         <Table sx={{ width: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
+              <TableCell>Empresa</TableCell>
               <TableCell>Detalles de la vacante</TableCell>
               <TableCell align='center' >Fecha de postulacion</TableCell>
             </TableRow>
@@ -36,6 +36,14 @@ const PageApplicationsStudent = () => {
             {
               data?.map(row => (
               <TableRow key={uuid()}>
+                <TableCell sx={{width: 400}}>
+                  {
+                    row?.t200_id_vacant?.t300_id_company?.t300_logo !== null ? 
+                      <img src={row?.t200_id_vacant?.t300_id_company?.t300_logo} alt={row?.t200_id_vacant?.t300_id_company} className={styles.image} />
+                    : <IoIosBusiness className={styles.noImage} />
+                  }
+                  
+                </TableCell>
                 <TableCell align='center' component="th" scope="row">
                   <ApplicationJob 
                     nameJob={row?.t200_id_vacant?.t200_job} 

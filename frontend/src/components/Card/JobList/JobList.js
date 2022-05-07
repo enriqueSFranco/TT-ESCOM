@@ -21,7 +21,7 @@ const JobList = ({jobs, loading, setPage, maxLenPage}) => {
     {jobs?.length > 0 ? (
       <>
         <article className={`${styles.wrapper} ${styles.grid}`}>
-          <div style={{ width: "500px" }}>
+          <div style={{ width: "550px" }}>
             {loading ? (
               <Skeleton type="feed" />
             ) : jobs?.map((job) => (

@@ -27,6 +27,7 @@ const CardJobDetails = () => {
   const [loading, setLoading] = useState(true);
   const [isApplyJob, setIsApplyJob] = useState({});
   let now = new Date();
+  let typeUser = token?.user?.user_type;
 
   useEffect(() => {
     setLoading(true);
@@ -54,8 +55,6 @@ const CardJobDetails = () => {
   };
 
   if (!job) return null;
-  let typeUser = token?.user?.user_type;
-  // console.log(typeUser);
 
   return (
     <>
@@ -112,9 +111,7 @@ const CardJobDetails = () => {
                     />
                   </li>
                 </ul>
-                <p>
-                  Tiempo completo de 9:00am - 6:00 pm, por tiempo indefinido
-                </p>
+                <p>Ubicacion: {`${job[0]?.t200_municipality}, ${job[0]?.t200_state}, ${job[0]?.t200_locality}` ?? "No especificada"}</p>
               </div>
               <div className={styles.flex}>
                 {token !== null ? (
@@ -162,19 +159,12 @@ const CardJobDetails = () => {
             </div>
             <div className={styles.requirements}>
               <h3>Requerimientos de la vacante</h3>
-              {/*job[0]?.t200_requirements*/}
+              {job[0]?.t200_requirements}
             </div>
             <div>
               <h3>OFRECEMOS</h3>
               <p>
-                Salario Competitivo,más prestaciones superiores a las que marca
-                la ley como: 30 días de Aguinaldo, 10% en Vales de Despensa, 13%
-                de Fondo de Ahorro, 12 días de vacaciones al primer año, Prima
-                Vacacional, Seguro de Gastos Médicos Mayores, Seguro de Vida
-              </p>
-              <p>
-                La contratación es directamente por la empresa. Contrato de
-                planta
+                {job[0]?.t200_benefits}
               </p>
             </div>
             <div>
@@ -193,10 +183,6 @@ const CardJobDetails = () => {
                   ${job[0]?.t200_max_salary ?? "No especificado"} al mes
                 </span>
               </p>
-            </div>
-            <div>
-              <h3>Beneficios</h3>
-              {job[0]?.t200_benefits}
             </div>
             <div>
               <p>
