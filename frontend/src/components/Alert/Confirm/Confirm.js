@@ -7,7 +7,6 @@ import styles from './Confirm.module.css';
  * @param {Function} applyJob es la funcion que desencadenara la accion de postularte a una vacante.
  **/
 const Confirm = ({ applyJob, isApplyJob, job }) => {
-  // console.log(isApplyJob);
 
   return (
     <div className={styles.wrapper}>

@@ -5,17 +5,29 @@
   margin-bottom: 2rem;
 }
 
-.form1 { width: 700px; margin-top: 2rem; }
+.closeJob {
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form1 {
+  width: 700px;
+  margin-top: 2rem;
+}
 
 .inputCheckbox {
   justify-content: center;
   align-items: center;
-  text-align: left;  
+  text-align: left;
 }
 
 .btn {
   padding: .6rem;
   /* margin-right: 1rem; */
+  border: none;
+  outline: none;
   width: 200px;
   border-radius: 8px;
   display: flex;
@@ -123,6 +135,94 @@
   transition: .2s all ease;
 }
 
+/* inicio */
+.switch {
+  --button-width: 3em;
+  --button-height: 1.5em;
+  --toggle-diameter: 1em;
+  --button-toggle-offset: calc((var(--button-height) - var(--toggle-diameter)) / 2);
+  --toggle-shadow-offset: 10px;
+  --toggle-wider: 3em;
+  --color-grey: #cccccc;
+  --color-green: #3a3c3d;
+}
+
+.slider {
+  display: inline-block;
+  width: var(--button-width);
+  height: var(--button-height);
+  background-color: var(--color-grey);
+  border-radius: calc(var(--button-height) / 2);
+  position: relative;
+  transition: 0.3s all ease-in-out;
+}
+
+.slider::after {
+  content: "";
+  display: inline-block;
+  width: var(--toggle-diameter);
+  height: var(--toggle-diameter);
+  background-color: #fff;
+  border-radius: calc(var(--toggle-diameter) / 2);
+  position: absolute;
+  left: 0;
+  top: var(--button-toggle-offset);
+  transform: translateX(var(--button-toggle-offset));
+  box-shadow: var(--toggle-shadow-offset) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
+  transition: 0.3s all ease-in-out;
+}
+
+.switch input[type="checkbox"]:checked+.slider {
+  background-color: var(--color-green);
+}
+
+.switch input[type="checkbox"]:checked+.slider::after {
+  transform: translateX(calc(var(--button-width) - var(--toggle-diameter) - var(--button-toggle-offset)));
+  box-shadow: calc(var(--toggle-shadow-offset) * -1) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
+}
+
+.switch input[type="checkbox"] {
+  display: none;
+}
+
+.switch input[type="checkbox"]:active+.slider::after {
+  width: var(--toggle-wider);
+}
+
+.switch input[type="checkbox"]:checked:active+.slider::after {
+  transform: translateX(calc(var(--button-width) - var(--toggle-wider) - var(--button-toggle-offset)));
+}
+
+.closeJobDate {
+  background-color: #0d75d7;
+  color: #000;
+  width: 140px;
+  height: 2.2rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: .9rem;
+  font-weight: 400;
+  text-align: center;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.closeJobDate:focus {
+  outline:none;
+  border-color:#3acfff;
+  box-shadow:0 0 0 0.25rem rgba(0, 120, 250, 0.1);
+}
+
+::-webkit-calendar-picker-indicator {
+  background-color: #fff;
+  border-radius: .2rem;
+  cursor: pointer;
+  margin-right: .2rem;
+}
+
+/* fin */
+
 .textArea {
   width: 100%;
   border-radius: 8px;
@@ -154,7 +254,9 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.wrapperGroupInput { width: 100%; }
+.wrapperGroupInput {
+  width: 100%;
+}
 
 .wrapperTown {
   width: 700px;
@@ -171,6 +273,9 @@
 
 .wrapperButtons {
   /* outline: 1px solid red; */
+  position: absolute;
+  bottom: .5rem;
+  right: 0;
   width: 430px;
   display: flex;
   justify-content: space-between;
@@ -178,6 +283,14 @@
 
 .wrapperFormJobDetails {
   position: relative;
-  top: 1rem;
-  height: 100%;
+  top: 2rem;
+  height: 350px;
+  /* background-color: rebeccapurple; */
+}
+
+.wrapperSwitch {
+  /* outline: 2px solid red; */
+  width: 160px;
+  display: flex;
+  gap: .4rem;
 }

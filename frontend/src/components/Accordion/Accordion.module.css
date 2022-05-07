@@ -1,5 +1,36 @@
-.summary {
+.goToJobs {
+  color: #000;
+}
+
+.goToJobs > svg {
+  font-size: 1.4rem;
+}
+
+.descriptionJob {
+  font-family: 'Poppins', sans-serif;
+  padding: 1rem;
+}
+
+.listItem {
   display: flex;
-  align-items: center;
-  gap: .5rem;
+  margin-top: 1rem;
+  padding: 0;
+}
+
+.item {
+  margin-right: 1rem;
+  font-size: .9rem;
+  color: #00008b;
+  font-family: 'Poppins', sans-serif;
+}
+
+.summaryJob {
+  outline: 2px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.headerJob {
+  font-family: 'Poppins', sans-serif;
+  padding: 1rem 1rem 0 1rem;
 }

@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { stringToColor } from "utils/stringToColor";
+import { uuid } from "utils/uuid";
+import { getSkill } from "services/catalogs";
 import Chip from "@mui/material/Chip";
 import Avatar from "@mui/material/Avatar";
 import { BiDislike } from "react-icons/bi";
@@ -9,8 +11,25 @@ import styles from "./Table.module.css";
 
 const TableRow = ({ children, user }) => {
   const [open, setOpen] = useState(false);
+  const [skills, setSkills] = useState(null);
 
   const handleClick = () => setOpen(!open);
+
+  useEffect(() => {
+    if (user !== null) {
+      let idUserSkill = user[0]?.t100_id_student?.t100_id_student;
+      if (idUserSkill !== undefined) {
+        getSkill(idUserSkill)
+          .then((response) => {
+            setSkills(response);
+          })
+          .catch((error) => console.log(error));
+      }
+    }
+  }, [user]);
+
+  if (!user) return null;
+  console.log(user);
 
   return (
     <>
@@ -24,36 +43,36 @@ const TableRow = ({ children, user }) => {
         </td>
         <td className={styles.td}>
           <div className={styles.wrapperAvatar}>
-            <Avatar sx={{ bgcolor: stringToColor("Carlos Enrique") }}>
-              CE
+            <Avatar
+              sx={{
+                bgcolor: stringToColor(
+                  user[0]?.t100_id_student?.t100_name ?? ""
+                ),
+              }}
+            >
+              {user &&
+                `${(user[0]?.t100_id_student?.t100_name).slice(
+                  0,
+                  1
+                )}${(user[0]?.t100_id_student?.t100_last_name).slice(0, 1)}`}
             </Avatar>
-            <h3 className={styles.nameUser}>Enrique Salinas Franco</h3>
+            <h3
+              className={styles.nameUser}
+            >{`${user[0]?.t100_id_student?.t100_name} ${user[0]?.t100_id_student?.t100_last_name}`}</h3>
           </div>
         </td>
         <td className={styles.td}>Ingenieria en Sistemas Computacionales</td>
         <td className={styles.td}>
           <ul className={styles.listItem}>
-            <li>
-              <Chip size="small" label="HTML" />
-            </li>
-            <li>
-              <Chip size="small" label="CSS" />
-            </li>
-            <li>
-              <Chip size="small" label="JavaScript" />
-            </li>
-            <li>
-              <Chip size="small" label="Node js" />
-            </li>
-            <li>
-              <Chip size="small" label="React js" />
-            </li>
-            <li>
-              <Chip size="small" label="React Native" />
-            </li>
-            <li>
-              <Chip size="small" label="Python" />
-            </li>
+            {skills &&
+              skills?.map((skill) => (
+                <li key={uuid()}>
+                  <Chip
+                    size="small"
+                    label={skill?.c116_id_skill?.c116_description}
+                  />
+                </li>
+              ))}
           </ul>
         </td>
         <td className={styles.td}>no</td>
@@ -79,13 +98,7 @@ const TableRow = ({ children, user }) => {
           </button>
         </td>
       </tr>
-      <tr>
-        {open && (
-          <td colSpan="7">
-            {children}
-          </td>
-        )}
-      </tr>
+      <tr>{open && <td colSpan="7">{children}</td>}</tr>
     </>
   );
 };

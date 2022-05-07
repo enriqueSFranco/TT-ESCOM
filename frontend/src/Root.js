@@ -22,6 +22,7 @@ import PagePostRelease from "pages/business/PagePostRelease";
 import PageApplicationsStudent from "pages/student/PageApplicationsStudent";
 import Experience from "components/Card/Experience/Experience";
 import Certifications from "components/Card/Certifications/Certifications";
+import Accordion from "components/Accordion/Accordion";
 import AcademicRecord from "components/Card/AcademicRecord/AcademicRecord";
 import ModalRelease from "components/Modal/ModalRelease";
 import ModalBusiness from "components/Modal/ModalBusiness";
@@ -36,10 +37,15 @@ const Root = () => {
           <Route path=":t200_id_vacant" element={<CardJobDetails />} />
         </Route>
       </Route>
+      
       <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>   
         <Route path="/dashboard" element={<PageDashBoard />} />
-        <Route path="/mis-vacantes" element={<PageHistory />} />
-        <Route path="/solicitudes" element={<PageApplications />} />
+        <Route path="/mis-vacantes" element={<PageHistory />}>
+          <Route path=":t200_id_vacant" element={<CardJobDetails />} />
+        </Route>
+        <Route path="/solicitudes" element={<PageApplications />}>
+          <Route path=":t200_id_vacant" element={<Accordion />} />
+        </Route>
         <Route path="/publicar-comunicado" element={<PagePostRelease />} />
         {/* <Route path="/candidatos" element={<PageApplications />} /> */}
       </Route>

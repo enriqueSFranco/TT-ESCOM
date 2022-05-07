@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { uuid } from "utils/uuid";
+import { getSkill } from "services/catalogs";
 import Chip from "@mui/material/Chip";
 import { BiUser } from "react-icons/bi";
 import { SiGmail } from "react-icons/si";
@@ -6,14 +9,24 @@ import { MdLocationPin, MdOutlineLocalAirport } from "react-icons/md";
 import { BsWhatsapp, BsLinkedin, BsGithub } from "react-icons/bs";
 import styles from "./Table.module.css";
 
-const RowExpand = ({
-  summary,
-  location,
-  travel,
-  skills,
-  lenguage,
-  socialNetworks,
-}) => {
+const RowExpand = ({user}) => {
+  const [skills, setSkills] = useState(null);
+
+  useEffect(() => {
+    if (user !== null) {
+      let idUserSkill = user[0]?.t100_id_student?.t100_id_student
+      getSkill(idUserSkill)
+        .then(response => {
+          console.log(response);
+          setSkills(response);
+        })
+        .catch(error => console.log(error))
+    }
+  }, [user]);
+  
+  if (!user) return null;
+  console.log(user[0]?.t100_id_student?.t100_residence);
+
   return (
     <article className={styles.wrapperDetailsUser}>
       <div className={styles.grid_2}>
@@ -43,11 +56,11 @@ const RowExpand = ({
         <div className={styles.wrapperPinAirport}>
           <span className={`${styles.wrapperTags}`}>
             <MdLocationPin className={styles.icon} />
-            Naucalpan, Edo Mex
+            {user && user[0]?.t100_id_student?.t100_residence}
           </span>
           <span className={`${styles.wrapperTags}`}>
             <MdOutlineLocalAirport className={styles.icon} />
-            Disponible para reubicarse
+            {user && (user[0]?.t100_id_student?.t100_travel ? "Disponible para reubicarse" : "No disponible para reubicarse")}
           </span>
         </div>
         <ul className={styles.listItemLinks}>
@@ -68,27 +81,15 @@ const RowExpand = ({
       <div className={styles.wrapperSkills}>
         <p className={styles.titleSkills}>Skills</p>
         <ul className={styles.listItemsSkill}>
-          <li>
-            <Chip size="small" label="HTML" />
-          </li>
-          <li>
-            <Chip size="small" label="CSS" />
-          </li>
-          <li>
-            <Chip size="small" label="JavaScript" />
-          </li>
-          <li>
-            <Chip size="small" label="Node js" />
-          </li>
-          <li>
-            <Chip size="small" label="React js" />
-          </li>
-          <li>
-            <Chip size="small" label="React Native" />
-          </li>
-          <li>
-            <Chip size="small" label="Python" />
-          </li>
+          {
+            skills && (
+              skills?.map(skill => (
+                <li key={uuid()}>
+                  <Chip size="small" label={skill?.c116_id_skill?.c116_description} />
+                </li>
+              ))
+            )
+          }
         </ul>
       </div>
       <Link to="/" className={styles.link}>
