@@ -65,6 +65,22 @@
   justify-content: space-between;
 }
 
+.noContentJob {
+  height: calc(100vh - 12rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.noContentJob figure {
+  width: 750px;
+  font-size: 2rem;
+  color: #686868;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
 .header {
   /* outline: 1px solid red; */
   width: 100%;
@@ -81,8 +97,11 @@
 .headerRight {
   position: relative;
   top: -7rem;
-  /* width: 70%; */
-  /* background-color: red; */
+}
+
+.image {
+  width: 250px;
+  height: 300px;
 }
 
 .inputSearch {
@@ -116,8 +135,6 @@
   /* outline: 1px solid red; */
   margin-right: .5rem;
 }
-
-
 
 .main {
   position: absolute;

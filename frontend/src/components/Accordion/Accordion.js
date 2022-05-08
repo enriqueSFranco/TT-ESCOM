@@ -28,6 +28,7 @@ const Accordion = () => {
         setUser(response);
       })
       .catch(error => console.log(error));
+    
   }, [t200_id_vacant]);
 
   return (
