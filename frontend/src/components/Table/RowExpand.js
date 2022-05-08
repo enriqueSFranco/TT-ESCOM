@@ -9,46 +9,68 @@ import { MdLocationPin, MdOutlineLocalAirport } from "react-icons/md";
 import { BsWhatsapp, BsLinkedin, BsGithub } from "react-icons/bs";
 import styles from "./Table.module.css";
 
-const RowExpand = ({user}) => {
+const RowExpand = ({ user }) => {
   const [skills, setSkills] = useState(null);
 
   useEffect(() => {
     if (user !== null) {
-      let idUserSkill = user[0]?.t100_id_student?.t100_id_student
+      let idUserSkill = user?.t100_id_student?.t100_id_student;
       getSkill(idUserSkill)
-        .then(response => {
-          console.log(response);
+        .then((response) => {
+          // console.log(response);
           setSkills(response);
         })
-        .catch(error => console.log(error))
+        .catch((error) => console.log(error));
     }
   }, [user]);
-  
-  if (!user) return null;
-  console.log(user[0]?.t100_id_student?.t100_residence);
 
+  if (!user) return null;
+
+  // console.log(user);
+
+  // TODO: hacer dinamica la informacion
   return (
-    <article className={styles.wrapperDetailsUser}>
+    <article key={uuid()} className={styles.wrapperDetailsUser}>
       <div className={styles.grid_2}>
         <p className={styles.wrapperObjectPersonal}>
           Deseo formalizar mi preparacion en: Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Quia, sit dolore ratione assumenda eveniet
-          cumque quae harum quaerat possimus sed corporis tenetur nostrum
-          reprehenderit optio repellat dolor? Assumenda, unde optio!
+          consectetur adipisicing elit. Quia, sit dolore ratione assumenda
+          eveniet cumque quae harum quaerat possimus sed corporis tenetur
+          nostrum reprehenderit optio repellat dolor? Assumenda, unde optio!
         </p>
         <div className={styles.wrapperLenguages}>
           <p className={styles.languages}>Idiomas:</p>
           <ul className={styles.listItemsSkill}>
-            <li><Chip size="small" label="Ingles" /></li>
-            <li><Chip size="small" label="Ingles" /></li>
-            <li><Chip size="small" label="Ingles" /></li>
-            <li><Chip size="small" label="Ingles" /></li>
-            <li><Chip size="small" label="Ingles" /></li>
-            <li><Chip size="small" label="Ingles" /></li>
-            <li><Chip size="small" label="Ingles" /></li>
-            <li><Chip size="small" label="Ingles" /></li>
-            <li><Chip size="small" label="Ingles" /></li>
-            <li><Chip size="small" label="Ingles" /></li>
+            <li>
+              <Chip size="small" label="Ingles" />
+            </li>
+            <li>
+              <Chip size="small" label="Ingles" />
+            </li>
+            <li>
+              <Chip size="small" label="Ingles" />
+            </li>
+            <li>
+              <Chip size="small" label="Ingles" />
+            </li>
+            <li>
+              <Chip size="small" label="Ingles" />
+            </li>
+            <li>
+              <Chip size="small" label="Ingles" />
+            </li>
+            <li>
+              <Chip size="small" label="Ingles" />
+            </li>
+            <li>
+              <Chip size="small" label="Ingles" />
+            </li>
+            <li>
+              <Chip size="small" label="Ingles" />
+            </li>
+            <li>
+              <Chip size="small" label="Ingles" />
+            </li>
           </ul>
         </div>
       </div>
@@ -56,11 +78,14 @@ const RowExpand = ({user}) => {
         <div className={styles.wrapperPinAirport}>
           <span className={`${styles.wrapperTags}`}>
             <MdLocationPin className={styles.icon} />
-            {user && user[0]?.t100_id_student?.t100_residence}
+            {user?.t100_id_student?.t100_residence}
           </span>
           <span className={`${styles.wrapperTags}`}>
             <MdOutlineLocalAirport className={styles.icon} />
-            {user && (user[0]?.t100_id_student?.t100_travel ? "Disponible para reubicarse" : "No disponible para reubicarse")}
+            {user &&
+              (user?.t100_id_student?.t100_travel
+                ? "Disponible para reubicarse"
+                : "No disponible para reubicarse")}
           </span>
         </div>
         <ul className={styles.listItemLinks}>
@@ -81,15 +106,15 @@ const RowExpand = ({user}) => {
       <div className={styles.wrapperSkills}>
         <p className={styles.titleSkills}>Skills</p>
         <ul className={styles.listItemsSkill}>
-          {
-            skills && (
-              skills?.map(skill => (
-                <li key={uuid()}>
-                  <Chip size="small" label={skill?.c116_id_skill?.c116_description} />
-                </li>
-              ))
-            )
-          }
+          {skills &&
+            skills?.map((skill) => (
+              <li key={uuid()}>
+                <Chip
+                  size="small"
+                  label={skill?.c116_id_skill?.c116_description}
+                />
+              </li>
+            ))}
         </ul>
       </div>
       <Link to="/" className={styles.link}>
