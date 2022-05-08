@@ -20,12 +20,21 @@ import * as GiIcon from "react-icons/gi";
 import * as BsIcon from "react-icons/bs";
 import * as MdIcon from "react-icons/md";
 
+const vacantApplicationsData = {
+    "applications":0,
+    "hired":0,
+    "inProcess":0,
+    "rejected":0,
+    "unseen":0
+};
+
 const PageHistory = () => {
   const { token } = useContext(AuthContext);
   const { t200_id_vacant } = useParams();
-  const [totalApplications, setTotalApplications] = useState(0);
+  const [totalApplications, setTotalApplications] = useState([]);
   const [initialContent, setInitialContent] = useState(true);
   const [listJobs, setListJobs] = useState(null);
+  //const [vacantApplicationsData,setVacantApplicationsData] =useState(start);
   const [job, setJob] = useState(null);
   const [isOpenModalForm, openModalForm, closeModalForm] = useModal();
   let id = token?.user?.user_id;
@@ -43,11 +52,21 @@ const PageHistory = () => {
   }, [id]);
 
   useEffect(() => {
-    if (t200_id_vacant !== undefined) {
-      getApplicationsJobs(t200_id_vacant)
+    if (t200_id_vacant !== undefined) {      
+      vacantApplicationsData.hired = 0;
+      vacantApplicationsData.inProcess = 0;
+      vacantApplicationsData.rejected = 0;
+      vacantApplicationsData.unseen = 0;
+      getApplicationsJobs(t200_id_vacant)      
         .then((response) => {
-          // console.log(response);
-          setTotalApplications(response.length);
+          console.log(response);
+          setTotalApplications(response);
+          vacantApplicationsData.applications = response.length;          
+          console.log(response);
+          console.log(totalApplications);
+          console.log(vacantApplicationsData);
+          
+          totalApplications.forEach(getData);
         })
         .catch((error) => console.log(error));
     }
@@ -68,6 +87,35 @@ const PageHistory = () => {
 
   const handleInitialContent = () => {
     setInitialContent(false);
+  };
+
+  const getData = (application) =>{    
+    /*if (application?.c205_id_application_state == 1){
+      vacantApplicationsData.unseen++;
+    }
+    else if (application?.c205_id_application_state == 6){
+      vacantApplicationsData.rejected++;
+    }*/
+    switch(application?.c205_id_application_state){
+      case 1:
+        vacantApplicationsData.unseen++;
+        break;
+      case 2:
+        vacantApplicationsData.inProcess++;
+        break;
+      case 3:
+        vacantApplicationsData.rejected++;
+        break;
+      case 4: 
+        vacantApplicationsData.hired++;
+        break;
+      case 5:
+        vacantApplicationsData.rejected++;
+        break;
+      case 6:
+        vacantApplicationsData.rejected++;
+        break;
+    }
   };
 
   return (
@@ -135,25 +183,25 @@ const PageHistory = () => {
                           <i>
                             <FiUsers />
                           </i>
-                          <h3><span className={styles.notify}>{totalApplications >= 9 ? "+9" : totalApplications}</span> Recibida(s)</h3>
+                          <h3><span className={styles.notify}>{vacantApplicationsData.applications}</span> Recibida(s)</h3>
                           <Link to={`/solicitudes/${t200_id_vacant}`}>
                             Ver postulaciones
                           </Link>
                         </div>
                         <div className={`${styles.box}`}>
-                          <span>2/{job[0]?.t200_vacancy}</span>
+                          <span>{vacantApplicationsData.hired}/{job[0]?.t200_vacancy}</span>
                           <h3>Contratados</h3>
                         </div>
                         <div className={`${styles.box}`}>
-                          <span>8</span>
+                          <span>{vacantApplicationsData.inProcess}</span>
                           <h3>En seguimiento</h3>
                         </div>
                         <div className={`${styles.box}`}>
-                          <span>3</span>
+                          <span>{vacantApplicationsData.rejected}</span>
                           <h3>Descartadas</h3>
                         </div>
                         <div className={`${styles.box}`}>
-                          <span>8</span>
+                          <span>{vacantApplicationsData.unseen}</span>
                           <h3>Sin consultar</h3>
                         </div>
                       </nav>
