@@ -247,3 +247,22 @@
   position: center;
   height: 50%;
 }
+
+.card {
+  position: relative;
+  width: 90%;
+  height: auto;
+  margin-bottom:1rem;
+  margin-left: 5%;
+  background-color: #fff;
+  border: 1px solid #dadada;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: box-shadow .3s ease-in;
+  color: #222;
+  padding: .4rem 0 .4rem 1rem;
+  font-family: sans-serif;
+}
+
+.card .cardHeader h3 { width: 450px; }
+

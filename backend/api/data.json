@@ -461,50 +461,6 @@
         }
     },
 
-
-    {
-        "model":"vacantes.ApplicationState",        
-        "pk":1,
-        "fields":{
-            "c205_description": "Sin información"
-        }
-    },
-    {
-        "model":"vacantes.ApplicationState",        
-        "pk":2,
-        "fields":{
-            "c205_description": "En revisión"
-        }
-    },
-    {
-        "model":"vacantes.ApplicationState",        
-        "pk":3,
-        "fields":{
-            "c205_description": "Aceptado"
-        }
-    },
-    {
-        "model":"vacantes.ApplicationState",        
-        "pk":4,
-        "fields":{
-            "c205_description": "Información incompleta"
-        }
-    },
-    {
-        "model":"vacantes.ApplicationState",        
-        "pk":5,
-        "fields":{
-            "c205_description": "Rechazada CV corrompido"
-        }
-    },
-    {
-        "model":"vacantes.ApplicationState",        
-        "pk":6,
-        "fields":{
-            "c205_description": "Rechazada"
-        }
-    },
-
     
     {
         "model":"vacantes.ReportState",        

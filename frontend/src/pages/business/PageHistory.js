@@ -3,6 +3,8 @@ import { Link, useParams } from "react-router-dom";
 import AuthContext from "context/AuthContext";
 import { useModal } from "hooks/useModal";
 import { uuid } from "utils/uuid";
+import { numberFormat } from "utils/numberFormat";
+import Chip from "@mui/material/Chip";
 import { getJob, getApplicationsJobs } from "services/jobs/index";
 import { getJobsForRecruiter } from "services/recruiter/index";
 import ApplicationJob from "components/Card/ApplicationJob/ApplicationJob";
@@ -12,7 +14,10 @@ import { BiSearch } from "react-icons/bi";
 import { GrAdd } from "react-icons/gr";
 import { FiUsers } from "react-icons/fi";
 import styles from "./PageHistory.module.css";
-import burrito from "images/emoji_donador.jpg"
+import burrito from "images/emoji_donador.jpg";
+import * as GiIcon from "react-icons/gi";
+import * as BsIcon from "react-icons/bs";
+import * as MdIcon from "react-icons/md";
 
 const PageHistory = () => {
   const { token } = useContext(AuthContext);
@@ -135,7 +140,7 @@ const PageHistory = () => {
                           </Link>
                         </div>
                         <div className={`${styles.box}`}>
-                          <span>2/3</span>
+                          <span>2/{job[0]?.t200_vacancy}</span>
                           <h3>Contratados</h3>
                         </div>
                         <div className={`${styles.box}`}>
@@ -152,17 +157,35 @@ const PageHistory = () => {
                         </div>
                       </nav>
                     </header>
-                    <div className={styles.detailsJob}>
-                      <h1>{job[0]?.t200_job}</h1>
+                    <div>
+                      <article className={`${styles.card}`}>
+                        <header className={styles.cardHeader}>
+                          <h3 className={`${styles.nameCompany}`}>{job[0]?.t200_job}</h3>
+                        </header>
+                          <div className={styles.wrapperTags}>
+                            <Chip label={`Modalidad: ${job?.t200_home_ofice ? "Remoto" : "Presencial"}`} size="small" icon={<MdIcon.MdBusinessCenter />} />
+
+                            <Chip label={`Sueldo: ${numberFormat(job?.t200_min_salary).slice(4,)}MXN a ${numberFormat(job?.t200_max_salary).slice(4,)}MXN al mes`} size="small" icon={<GiIcon.GiMoneyStack />} />
+
+                            <Chip label={`Fecha de publicacion: ${job?.t200_publish_date}`} size="small" icon={<BsIcon.BsCalendarDate />} />
+                          </div>                          
+                       
+                        <div>
+                          <div className={styles.summary}>
+                            <p className={`${styles.lineClamp}`}>{job[0]?.t200_description}</p>
+                          </div>
+                          
+                        </div>
+                      </article>
                     </div>
                   </>
                 )}
               </article>
             ) : (
-              <div>
-                <h3>Selecciona una vacante para ver sus detalles</h3>
-                <h4>No hay nada seleccionado.</h4>
-              </div>
+                <div>
+                  <h3>Selecciona una vacante para ver sus detalles</h3>
+                  <h4>No hay nada seleccionado.</h4>
+                </div>
             )}
           </div>
         </article>

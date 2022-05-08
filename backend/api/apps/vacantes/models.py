@@ -266,7 +266,13 @@ class Application(models.Model):
 		null=True,
 		blank=True,
 		related_name='AppliedStudent',
-		on_delete=models.CASCADE)       
+		on_delete=models.CASCADE)
+    c205_id_application_state = models.ForeignKey(
+		ApplicationState,
+		null=True,
+		blank=True,
+		related_name='ApplicationStatus',
+        on_delete=models.CASCADE)       
     t201_date_application = models.DateField()
 
     class Meta:
@@ -280,7 +286,7 @@ class Application(models.Model):
 #T216 Estado Solicitud
 class ApplicationStateHistory(models.Model):
     t216_id_state = models.AutoField(primary_key=True)
-    t201_id_application = models.ForeignKey(
+    t201_id_application= models.ForeignKey(
 		Application,
 		null=True,
 		blank=True,
@@ -290,7 +296,7 @@ class ApplicationStateHistory(models.Model):
 		ApplicationState,
 		null=True,
 		blank=True,
-		related_name='ApplicationStatus',
+		related_name='ApplicationStatuses',
         on_delete=models.CASCADE)
     t216_modify_date = models.DateField()        
     
