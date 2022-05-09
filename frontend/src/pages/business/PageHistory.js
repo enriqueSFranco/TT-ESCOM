@@ -60,13 +60,13 @@ const PageHistory = () => {
       getApplicationsJobs(t200_id_vacant)      
         .then((response) => {
           console.log(response);
-          setTotalApplications(response);
+          /*setTotalApplications(response);
           vacantApplicationsData.applications = response.length;          
           console.log(response);
           console.log(totalApplications);
           console.log(vacantApplicationsData);
           
-          totalApplications.forEach(getData);
+          totalApplications.forEach(getData);*/
         })
         .catch((error) => console.log(error));
     }

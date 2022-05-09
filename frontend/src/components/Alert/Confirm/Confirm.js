@@ -13,10 +13,8 @@ const Confirm = ({ applyJob, isApplyJob, job }) => {
   let message = '';
   if (isApplyJob.message==="Aplicación registrada correctamente.")
     message = "Mucho exito!!!";
-  else if (isApplyJob.type === "Ya hay una postulación activa")
+  else if (isApplyJob.message === "Ya hay una postulación activa")
     message = "Ya te has postulado a esta vacante";
-  else if (isApplyJob.type == 3)
-    message = "Lo sentimos, vuelve a intentarlo :C";
   return (
     <div className={styles.wrapper}>
     {
