@@ -60,7 +60,8 @@ const PageHistory = () => {
       getApplicationsJobs(t200_id_vacant)      
         .then((response) => {
           console.log(response);
-          /*setTotalApplications(response);
+          setTotalApplications(response.length);
+          /*
           vacantApplicationsData.applications = response.length;          
           console.log(response);
           console.log(totalApplications);
@@ -89,13 +90,13 @@ const PageHistory = () => {
     setInitialContent(false);
   };
 
-  const getData = (application) =>{    
+  /*const getData = (application) =>{    
     /*if (application?.c205_id_application_state == 1){
       vacantApplicationsData.unseen++;
     }
     else if (application?.c205_id_application_state == 6){
       vacantApplicationsData.rejected++;
-    }*/
+    }
     switch(application?.c205_id_application_state){
       case 1:
         vacantApplicationsData.unseen++;
@@ -116,7 +117,7 @@ const PageHistory = () => {
         vacantApplicationsData.rejected++;
         break;
     }
-  };
+  };*/
 
   return (
     <>
