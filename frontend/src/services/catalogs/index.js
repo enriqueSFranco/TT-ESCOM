@@ -2,6 +2,7 @@ import axios from "axios";
 import {   
   API_CATALOGUE_CANDIDATE_PROFILE, 
   API_CATALOGUE_EXPERIENCE,
+  API_STUDENT_LENGUAGES,
   API_CATALOGUE_STATES,
   API_ACADEMIC_UNITS,
   API_INTEREST_JOBS,
@@ -12,6 +13,19 @@ import {
 
 export const getSkill = async (id) => {
   return axios.get(`${API_SKILLS}${id}/`)
+    .then(response => {
+      const { data } = response;
+      return data;
+    })
+    .catch(error => {
+      if (error.response) {
+        return error.response.data;
+      }
+    })
+};
+
+export const getLenguages = async (id) => {
+  return axios.get(`${API_STUDENT_LENGUAGES}${id}/`)
     .then(response => {
       const { data } = response;
       return data;

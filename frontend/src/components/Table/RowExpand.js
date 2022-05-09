@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { uuid } from "utils/uuid";
-import { getSkill } from "services/catalogs";
+import { getSkill, getLenguages } from "services/catalogs";
 import Chip from "@mui/material/Chip";
 import { BiUser } from "react-icons/bi";
 import { SiGmail } from "react-icons/si";
@@ -11,6 +11,7 @@ import styles from "./Table.module.css";
 
 const RowExpand = ({ user }) => {
   const [skills, setSkills] = useState(null);
+  const [lenguages,setLenguages] = useState(null);
 
   useEffect(() => {
     if (user !== null) {
@@ -24,23 +25,42 @@ const RowExpand = ({ user }) => {
     }
   }, [user]);
 
+  useEffect(() => {
+    if (user !== null) {
+      let idUserLenguage = user?.t100_id_student?.t100_id_student;
+      getLenguages(idUserLenguage)
+        .then((response) => {
+           console.log(response);
+          setLenguages(response);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [user]);
+
   if (!user) return null;
 
-  // console.log(user);
+  console.log(user?.t100_id_student?.t100_personal_objectives);
+  console.log(lenguages[0].c111_id_lenguage);
 
   // TODO: hacer dinamica la informacion
   return (
     <article key={uuid()} className={styles.wrapperDetailsUser}>
       <div className={styles.grid_2}>
         <p className={styles.wrapperObjectPersonal}>
-          Deseo formalizar mi preparacion en: Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Quia, sit dolore ratione assumenda
-          eveniet cumque quae harum quaerat possimus sed corporis tenetur
-          nostrum reprehenderit optio repellat dolor? Assumenda, unde optio!
+          {user?.t100_id_student?.t100_personal_objectives}
         </p>
         <div className={styles.wrapperLenguages}>
           <p className={styles.languages}>Idiomas:</p>
           <ul className={styles.listItemsSkill}>
+            {lenguages &&
+              lenguages?.map((lenguage) => (
+                <li key={uuid()}>
+                  <Chip
+                    size="small"
+                    label={lenguage?.c111_id_lenguage?.c111_description}
+                  />
+                </li>
+            ))}
             <li>
               <Chip size="small" label="Ingles" />
             </li>
