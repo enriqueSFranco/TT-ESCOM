@@ -10,6 +10,7 @@ restore: migrate
 
 data:
 	python3 manage.py loaddata data.json
+	python3 manage.py loaddata skills.json
 	python3 manage.py loaddata interestJobs.json
 	python3 manage.py loaddata academic_units.json
 	python3 manage.py loaddata cp.json 	
@@ -49,6 +50,7 @@ restore3: migrate3
 
 data3:
 	python3.10 manage.py loaddata data.json
+	python3.10 manage.py loaddata skills.json
 	python3.10 manage.py loaddata interestJobs.json
 	python3.10 manage.py loaddata academic_units.json
 	python3.10 manage.py loaddata cp.json

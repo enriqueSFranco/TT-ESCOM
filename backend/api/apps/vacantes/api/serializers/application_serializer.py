@@ -15,7 +15,7 @@ class ApplicationListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
         fields = '__all__'
-        #depth = 2
+        depth = 2
 
 class UpdateApplicationSerializer(serializers.ModelSerializer):
         class Meta:

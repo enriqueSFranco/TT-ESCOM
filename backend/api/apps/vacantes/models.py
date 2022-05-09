@@ -137,7 +137,7 @@ class Vacant(models.Model):
     t200_benefits = models.TextField(null=True,blank=True)    
     t200_check_time = models.TimeField(auto_now=False)
     t200_closing_hour = models.TimeField(auto_now=False)
-    t200_work_days = models.CharField(max_length=7,blank=True,null=True,default="1111100")  
+    t200_work_days = models.CharField(max_length=50,blank=True,null=True,default="Sin horario")  
     c207_id_experience = models.ForeignKey(
         Experience,
         null=False,
