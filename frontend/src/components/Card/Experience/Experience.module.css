@@ -9,15 +9,6 @@
   right: .5rem;
 }
 
-.editAction, .deleteAction { color: #363636;  transition: color .5s ease;}
-
-.editAction:hover {
-  color: #0000ff;
-}
-.deleteAction:hover {
-  color: #ff0000;
-}
-
 .actions button {
   margin-bottom: .5rem;
   outline: none;
@@ -29,35 +20,15 @@
   justify-content: center;
 }
 
-.detailsProject a { color: #5c5c5c; font-size: .78rem; }
 
-.detailsProject {
-  position: relative;
-  left: 0;
-  width: 100%;
-  display: flex;
-  border-bottom: 2px solid #eee;
-}
+.btn {
+  width: 170px;
+  height: 3rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
 
-.descriptionProject {
-  width: 450px;
-  height: auto;
-  overflow: hidden;
-}
-
-.detailsProject a {
-  transition: color .3s ease-in-out;
-}
-
-.descriptionProject a:hover {
-  color: #0000ff;
-}
-
-.logoProject {
-  width: 80px;
-  height: 80px;
-  margin-left: 1rem;
-  border-radius: 50%;
 }
 
 .btnAddProject {
@@ -78,10 +49,141 @@
   z-index: 99;
 }
 
+.editAction, .deleteAction { color: #363636;  transition: color .5s ease;}
+
+.editAction:hover {
+  color: #0000ff;
+}
+.deleteAction:hover {
+  color: #ff0000;
+}
+
+.detailsProject a { color: #5c5c5c; font-size: .78rem; }
+
+.detailsProject {
+  position: relative;
+  left: 0;
+  width: 100%;
+  display: flex;
+  border-bottom: 2px solid #eee;
+}
+
+.descriptionProject {
+  width: 450px;
+  height: auto;
+  overflow: hidden;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: flex-start; */
+}
+
+.detailsProject a {
+  position: absolute;
+  right: 1rem;
+  bottom: 0;
+  padding-bottom: .3rem;
+  font-size: 1rem;
+  color: #000;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  text-transform: capitalize;
+  transition: color .3s ease-in-out;
+}
+
+.descriptionProject a:hover {
+  color: #0000ff;
+}
+
+.desription {
+  color: #5c5c5c;
+  font-weight: 500;
+  height: auto;
+}
+
+.groupDetails {
+  width: 500px;
+  height: 70px;
+  font-family: 'Poppins', sans-serif;
+  /* background-color: red; */
+}
+
+.groupDetails h3 {
+  margin: 0;
+  color: #363636;
+}
+
+.groupDetails span {
+  font-weight: 400;
+}
+
+.speciality {
+  font-weight: 700;
+  color: #028dd4;
+  /* background-color: red; */
+}
+
+.logoProject {
+  width: 80px;
+  height: 80px;
+  margin-left: 1rem;
+  border-radius: 50%;
+}
+
+.nav {
+  width: 370px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.notProjects {
+  height: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  /* background-color: red; */
+}
+.notProjects h3 {
+  color: #04547e;
+  text-align: center;
+  font-size: 1.4rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.titleModal {
+  font-size: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+}
+
 .wrapper {
   position: absolute;
   width: 100%;
   height: 90%;
-  overflow-y: scroll;
+  overflow-y: auto;
   border-radius: 6px;
+}
+
+.wrapperMain {
+  position: relative;
+  top: 2.5rem;
+  height: 300px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.wrapperForm {
+  outline: 2px solid red;
+  position: relative;
+  top: 2rem
+  
+}
+
+/* ESTILOS PARA FORMULARIO DE EXPERIENCIA PERSONAL */
+.form, .formWorkExperience {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 500px;
 }

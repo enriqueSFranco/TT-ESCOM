@@ -1456,6 +1456,21 @@
         "fields":{
             "c208_description": "Honorario"
         }
-    }
+    },
 
+    {
+        "model":"students.ProjectType",        
+        "pk":1,
+        "fields":{
+            "c118_description": "Proyecto personal"
+        }
+    },
+
+    {
+        "model":"students.ProjectType",        
+        "pk":2,
+        "fields":{
+            "c118_description": "Proyecto laboral"
+        }
+    }
 ]

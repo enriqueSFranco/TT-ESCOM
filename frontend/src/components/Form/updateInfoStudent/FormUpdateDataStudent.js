@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useForm } from "hooks/useForm";
 import AuthContext from "context/AuthContext";
 import { Toaster } from "react-hot-toast";
@@ -32,9 +32,7 @@ const validateForm = (form) => {
 
 const FormUpdateDataStudent = ({ student, handleBackToProfile }) => {
   const { token } = useContext(AuthContext);
-  const [travel, setTravel] = useState(
-    window.localStorage.getItem("travel") === "false"
-  );
+
   const { form, handleChange, handleChecked } = useForm(
     updateStudentInitialForm,
     validateForm

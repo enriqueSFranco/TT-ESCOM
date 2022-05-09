@@ -6,8 +6,13 @@ import {
   API_STUDENT,
   API_SOCIAL_NETWORK,
   API_PHOTO_STUDENT,
+  API_PROJECT_STUDENT,
 } from "../settings";
 
+/**
+ * @param {Number} id identificador para obtner un alumno en especifico
+ * @returns {Promise}
+ **/
 export const getStudent = async (id) => {
 
   const config = {
@@ -32,7 +37,10 @@ export const getStudent = async (id) => {
     );
 };
 
-
+/**
+ * @param {Number} id identificador de un alumno para obtener sus skills
+ * @returns {Promise}
+ **/
 export const getSocialNetwork = async (id) => {
   return axios
     .get(`${API_SOCIAL_NETWORK}/${id}/`)
@@ -98,7 +106,7 @@ export const createAccountStudent = async (payload) => {
   }
 };
 
-
+// TODO:terminar la funcion para subir una imagen
 export const uploadPhotoStudent = (id, img) => {
   const formData = new FormData();
 
@@ -133,10 +141,25 @@ export const applyJob = (payload) => {
     })
 };
 
-/*
-    "t200_id_vacant": null,
-    "t100_id_student": null,
-    "t201_cv": null,
-    "c205_id_application_state": null,
-    "t201_date_application": null
-*/
+/**
+ * @param {Number} id identificador de un alumno
+ * @returns {Promise}
+ **/
+export const getProjects = (id) => {
+  return axios.get(`${API_PROJECT_STUDENT}${id}/`)
+    .then(response => {
+      const { data } = response;
+      return data;
+    })
+    .catch(error => {
+      return error;
+    })
+};
+
+/**
+ * @param {Number} id identificador de un alumno
+ * @param {Object} payload objeto con los campos a enviar
+ **/
+// export const addProject = (id, payload = {}) => {
+//   return axios.post(API_PROJECT_STUDENT)
+// };

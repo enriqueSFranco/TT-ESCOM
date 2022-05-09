@@ -21,7 +21,7 @@ class ProjectListSerializer(serializers.ModelSerializer):
 class UpdateProjectSerializer(serializers.ModelSerializer):
         class Meta:
             model = PersonalProjects
-            fields =('t100_id_student','t117_group','t117_job','t117_link','t117_description','t117_start_date','t117_end_date')
+            exclude = ('t117_id_registrer','t100_id_student','t117_project_type')
         
         def update(self,instance,validate_data):
             update_project = super().update(instance,validate_data)
