@@ -5,6 +5,7 @@ import { IoMdLogOut } from "react-icons/io";
 import { MdSpaceDashboard } from "react-icons/md"
 import { BiCog } from "react-icons/bi";
 import styles from "./Dropdown.module.css"
+import { Avatar } from "@mui/material";
 
 const DropMenuRecruiter = ({recruiter}) => {
   const { logout } = useContext(AuthContext);
