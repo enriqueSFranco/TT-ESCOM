@@ -111,6 +111,20 @@ class Lenguage(models.Model):
 		return self.c111_description
 
 
+#C118 Idiomas
+class ProjectType(models.Model):
+	c118_id_type = models.AutoField(primary_key=True)
+	c118_description = models.CharField(max_length=60,blank=True,null=True)	
+
+	class Meta:
+		verbose_name = 'Project type'
+		verbose_name_plural = 'Project types'
+		db_table = 'c118_tipo_proyecto'
+	
+	def __str__(self) -> str:
+		return self.c118_description		
+
+
 
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
 #T100 Alumno
@@ -318,6 +332,7 @@ class EmploymentHistory(models.Model):
 #T117 Historial laboral
 class PersonalProjects(models.Model):
 	t117_id_registrer = models.AutoField(primary_key=True)
+	t117_project_name = models.CharField(max_length=100,blank=True,null=True)
 	t100_id_student = models.ForeignKey(
 		Student,
 		null=True,
@@ -330,10 +345,15 @@ class PersonalProjects(models.Model):
 	t117_banner = models.ImageField(blank=True,null=True,default="",upload_to=upload_project_banner)
 	t117_description = models.TextField()
 	t117_start_date = models.DateField(null=True)
-	t117_end_date = models.DateField(null=True)
+	t117_end_date = models.DateField(null=True)	
+	c118_project_type = models.ForeignKey(
+		ProjectType,
+		null=True,
+		blank=True,
+		related_name='ProjectType',
+		on_delete=models.CASCADE)
 
-	class Meta:
-		unique_together = ['t100_id_student','t117_job']
+	class Meta:		
 		verbose_name='Employment history'
 		db_table='t117_proyectos'
 	
