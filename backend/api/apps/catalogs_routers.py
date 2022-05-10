@@ -4,7 +4,7 @@ import imp
 from operator import imod
 from posixpath import basename
 from rest_framework.routers import DefaultRouter
-from apps.students.api.views.catalogs_viewset import AcademicLevelViewSet,AcademicStateViewSet,PlataformViewSet,SkillsViewSet,LenguageViewSet,InterestJobViewSet,AcademicUnitViewSet
+from apps.students.api.views.catalogs_viewset import AcademicLevelViewSet,AcademicStateViewSet,PlataformViewSet,SkillsViewSet,LenguageViewSet,InterestJobViewSet,AcademicUnitViewSet,ProjectTypeViewSet
 from apps.vacantes.api.views.catalogs_viewset import VacantStatusViewSet,CandidateProfileViewSet,ExperienceViewSet,ApplicationStateViewSet,ReportTypeViewSet,ReportStateViewSet,LocalityViewSet,ContractViewSet,ReportStateViewSet,ModalityViewSet
 
 router = DefaultRouter()
@@ -37,5 +37,8 @@ router.register(r'Localities',LocalityViewSet,basename='Localities')
 router.register(r'Localities/<int:pk>',LocalityViewSet,basename='Localities by cp')
 router.register(r'Contracts',ContractViewSet,basename='Contract types')
 router.register(r'Contracts/<int:pk>',ContractViewSet,basename='Contract type')
+router.register(r'ProjectType',ProjectTypeViewSet,basename='Project types')
+router.register(r'ProjectType/<int:pk>',ProjectTypeViewSet,basename='Project type')
+
 
 urlpatterns=router.urls

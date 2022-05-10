@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.students.models import AcademicLevel,AcademicState,AcademicUnit,InterestJob,Plataform,Skills,Lenguage
+from apps.students.models import AcademicLevel,AcademicState,AcademicUnit,InterestJob,Plataform,Skills,Lenguage,ProjectType
 
 class AcademicLevelSerializer(serializers.ModelSerializer):
     class Meta:
@@ -159,4 +159,27 @@ class LenguageListSerializer(serializers.ModelSerializer):
         return{
             'c111_id_lenguage' : instance['c111_id_lenguage'],
 	        'c111_description' : instance['c111_description']
+        }
+
+#ProjectType
+
+class ProjectTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProjectType
+        fields = '__all__'
+    
+    def create(self,validate_data):
+        register = ProjectType(**validate_data)
+        register.save()
+        return register
+    
+class ProjectTypeListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProjectType
+        fields = '__all__'
+
+    def to_representation(self,instance):
+        return{
+            'c118_id_type' : instance['c118_id_type'],
+	        'c118_description' : instance['c118_description']
         }
