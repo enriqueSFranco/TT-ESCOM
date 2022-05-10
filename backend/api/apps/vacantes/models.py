@@ -132,7 +132,7 @@ class Vacant(models.Model):
         related_name='CompanyOffering',
         on_delete=models.CASCADE
     )
-    t200_job = models.CharField(max_length=70)
+    t200_job = models.CharField(max_length=125)
     t200_description = models.TextField(null=True,blank=True) 
     t200_benefits = models.TextField(null=True,blank=True)    
     t200_check_time = models.TimeField(auto_now=False)
