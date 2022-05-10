@@ -61,7 +61,6 @@ export const postJobInitialForm = {
   t200_vacancy:"1",
   c208_id_contract:1,
   t301_id_recruiter:"",
-  t400_id_admin:""
 };
 
 export const AcademicFormat = {

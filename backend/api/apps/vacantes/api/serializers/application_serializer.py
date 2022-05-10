@@ -1,11 +1,10 @@
 from rest_framework import serializers
-from apps.vacantes.models import Application
+from apps.vacantes.models import Application,ApplicationStateHistory
 
 class ApplicationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
-        fields = ('t200_id_vacant','t100_id_student'
-        ,'t201_date_application')        
+        fields = ('t200_id_vacant','t100_id_student','c205_id_application_state','t201_date_application')        
     
     def create(self,validate_data):
         aplication = Application(**validate_data)
@@ -18,20 +17,10 @@ class ApplicationListSerializer(serializers.ModelSerializer):
         fields = '__all__'
         depth = 2
 
-    """def to_representation(self,instance):
-        print(instance)
-        return{
-            't201_id_application' : instance['t201_id_application'],
-            't100_boleta' : instance['t100_boleta'],
-            't201_cv' : instance['t201_cv'],
-            'c205_id_application_state' : instance['c205_id_application_state'],
-            't201_date_application' : instance['t201_date_application']
-        }"""
-
 class UpdateApplicationSerializer(serializers.ModelSerializer):
         class Meta:
             model = Application
-            fields = ('t100_id_student','t201_date_application')
+            exclude = ('t201_id_application','t100_id_student','t201_date_application')
         
         def update(self,instance,validate_data):
             u_aplication = super().update(instance,validate_data)
@@ -39,4 +28,19 @@ class UpdateApplicationSerializer(serializers.ModelSerializer):
             return u_aplication
 
 
+class ApplicationStateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ApplicationStateHistory
+        fields = ('t201_id_application','c205_id_application_state','t216_modify_date')        
+    
+    def create(self,validate_data):
+        aplication = ApplicationStateHistory(**validate_data)
+        aplication.save()
+        return aplication
+    
+class ApplicationStateListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Application
+        fields = '__all__'
+        
 

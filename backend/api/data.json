@@ -4,21 +4,21 @@
         "model" : "students.Student",
         "pk" : 1,
         "fields":{
-            "t100_boleta": null,
-            "t100_name": "",
-            "t100_last_name": null,
-            "t100_username": null,
+            "t100_boleta": "2014080325",
+            "t100_name": "Joel Antonio",
+            "t100_last_name": "Cruz Heras",
+            "t100_username": "JoelHeras",
             "t100_email": "joel_kratos@hotmail.com",
-            "t100_gender": "F",
-            "t100_date_of_birth": null,
-            "t100_personal_objectives": null,
-            "t100_phonenumber": null,
-            "t100_residence": null,
-            "t100_modalities": null,
-            "t100_speciality": null,
-            "t100_target_salary": null,
+            "t100_gender": "M",
+            "t100_date_of_birth": "1998-08-28",
+            "t100_personal_objectives": "Deseo aumentar mis capacidades como ingeniero, ya que soy un recién egresado y quiero entrar al campo laboral. Mi expectativa de empleo es ser un miembro funcional de un equipo de trabajo de tecnolgias y me permita implementar todos mis conocimientos.",
+            "t100_phonenumber": "5540182513",
+            "t100_residence": "Tlalnepantla de Baz, Estado de México",
+            "t100_modalities": "Hibrido",
+            "t100_speciality": "Sistemas computacionales",
+            "t100_target_salary": "16000",
             "t100_travel": false,
-            "is_active": false,
+            "is_active": true,
             "password": "pbkdf2_sha256$320000$o9eYPJhBKIa2w2vQsDFlld$5tvevbcIik/rMeAVNAKt9oI9mV+aWS3vHoQ6ytueUEU="
         }
     },
@@ -31,8 +31,8 @@
             "last_login": null,
             "is_superuser": false,
             "username": "joel_kratos@hotmail.com",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Joel Antonio",
+            "last_name": "Cruz Heras",
             "email": "joel_kratos@hotmail.com",
             "is_staff": false,
             "date_joined": "2022-04-25T06:25:37.005568Z",
@@ -458,50 +458,6 @@
         "pk":6,
         "fields":{
             "c204_description": "Publicada desactivada"
-        }
-    },
-
-
-    {
-        "model":"vacantes.ApplicationState",        
-        "pk":1,
-        "fields":{
-            "c205_description": "Sin información"
-        }
-    },
-    {
-        "model":"vacantes.ApplicationState",        
-        "pk":2,
-        "fields":{
-            "c205_description": "En revisión"
-        }
-    },
-    {
-        "model":"vacantes.ApplicationState",        
-        "pk":3,
-        "fields":{
-            "c205_description": "Aceptado"
-        }
-    },
-    {
-        "model":"vacantes.ApplicationState",        
-        "pk":4,
-        "fields":{
-            "c205_description": "Información incompleta"
-        }
-    },
-    {
-        "model":"vacantes.ApplicationState",        
-        "pk":5,
-        "fields":{
-            "c205_description": "Rechazada CV corrompido"
-        }
-    },
-    {
-        "model":"vacantes.ApplicationState",        
-        "pk":6,
-        "fields":{
-            "c205_description": "Rechazada"
         }
     },
 

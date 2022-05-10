@@ -27,6 +27,7 @@ const TableRow = ({ children, user, idSkills, index }) => {
           getSkill(idSkills)
             .then((response) => {
               setSkills(response);
+              console.log(response);
             })
             .catch((error) => console.log(error));
         }
@@ -37,7 +38,7 @@ const TableRow = ({ children, user, idSkills, index }) => {
   }, [idSkills, user]);
 
   if (!user) return null;
-  // console.log(user);
+   console.log(user);
 
   return (
     <>

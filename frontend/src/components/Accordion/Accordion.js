@@ -22,7 +22,7 @@ const Accordion = () => {
   useEffect(() => {
     getApplicationsJobs(t200_id_vacant)
       .then((response) => {
-        // console.log(response);
+        console.log(response);
         setUser(response);
       })
       .catch((error) => console.log(error));

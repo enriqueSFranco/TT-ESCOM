@@ -35,6 +35,7 @@ const CardJobDetails = () => {
       .then((response) => {
         setLoading(false);
         setJob(response);
+        setIsApplyJob({});
       })
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
@@ -44,7 +45,6 @@ const CardJobDetails = () => {
     const response = await applyJob({
       t200_id_vacant,
       t100_id_student: token?.user?.user_id,
-      t201_cv: null,
       c205_id_application_state: 1,
       t201_date_application:
         now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay(),
