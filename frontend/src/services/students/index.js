@@ -23,7 +23,7 @@ export const getStudent = async (id) => {
     },
   };
   return axios
-    .get(`${API_STUDENT}/${id}/`, config)
+    .get(`${API_STUDENT}${id}/`, config)
     .then((response) => {
       const { data } = response;
       console.log(data);

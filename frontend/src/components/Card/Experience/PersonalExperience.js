@@ -9,7 +9,7 @@ const PersonalExperience = ({ setTypeProject }) => {
     <div className={styles.wrapperForm}>
       <h2 className={styles.titleModal}>Experiencia por proyecto</h2>
       <form className={styles.form}>
-        <div className={styles.inputGroup}>
+        <div className={styles.inputGroup_1_2}>
           <TextField
             sx={{ width: "200px" }}
             label="Nombre de tu proyecto"
@@ -33,7 +33,7 @@ const PersonalExperience = ({ setTypeProject }) => {
         
         <input type="submit" value="Agregar" />
       </form>
-      <button onClick={handleClick}>Regresar</button>
+      <button className={styles.btnGoToMain} onClick={handleClick}>Regresar</button>
     </div>
   );
 };
