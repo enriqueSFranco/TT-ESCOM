@@ -40,7 +40,7 @@ const RowExpand = ({ user }) => {
   if (!user) return null;
 
   console.log(user?.t100_id_student?.t100_personal_objectives);
-  console.log(lenguages[0].c111_id_lenguage);
+  console.log(lenguages);
 
   // TODO: hacer dinamica la informacion
   return (
@@ -57,40 +57,10 @@ const RowExpand = ({ user }) => {
                 <li key={uuid()}>
                   <Chip
                     size="small"
-                    label={lenguage?.c111_id_lenguage?.c111_description}
+                    label={lenguage?.c111_id_language?.c111_description}
                   />
                 </li>
-            ))}
-            <li>
-              <Chip size="small" label="Ingles" />
-            </li>
-            <li>
-              <Chip size="small" label="Ingles" />
-            </li>
-            <li>
-              <Chip size="small" label="Ingles" />
-            </li>
-            <li>
-              <Chip size="small" label="Ingles" />
-            </li>
-            <li>
-              <Chip size="small" label="Ingles" />
-            </li>
-            <li>
-              <Chip size="small" label="Ingles" />
-            </li>
-            <li>
-              <Chip size="small" label="Ingles" />
-            </li>
-            <li>
-              <Chip size="small" label="Ingles" />
-            </li>
-            <li>
-              <Chip size="small" label="Ingles" />
-            </li>
-            <li>
-              <Chip size="small" label="Ingles" />
-            </li>
+              ))}
           </ul>
         </div>
       </div>
