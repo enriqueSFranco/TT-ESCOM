@@ -21,6 +21,7 @@ from apps.vacantes.api.views.vacant_viewset import RecruiterVacantViewSet
 from apps.vacantes.api.views.vacant_viewset import AdminVacantViewSet
 from apps.vacantes.api.views.application_viewset import VacantApplicationsViewSet
 from apps.vacantes.api.views.application_viewset import StudentApplicationsViewSet
+from apps.vacantes.api.views.vacant_viewset import VacantInfoViewSet
 
 router = DefaultRouter()
 router.register(r'users',UserViewSet,basename='Registred users')
@@ -67,8 +68,8 @@ router.register(r'Recruiters',RecruiterViewSet,basename='Companies recruiters')
 router.register(r'Recruiters/<int:pk>',RecruiterViewSet,basename='Company recruiters details')
 router.register(r'ValidateRecruiter',ValidateRecruiterViewSet,basename='Invalid recruiters')
 router.register(r'ValidateRecruiter/<int:pk>',ValidateRecruiterViewSet,basename='Validate recruite')
-
-
+router.register(r'VacantInfo',VacantInfoViewSet,basename='Vavcants info')
+router.register(r'VacantInfo/<int:pk>',VacantInfoViewSet,basename='Vavcant info')
 
 
 urlpatterns=router.urls

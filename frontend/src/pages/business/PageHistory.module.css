@@ -232,6 +232,10 @@
   padding: 1rem;
 }
 
+.jobMiniCard{
+  background-color: green;
+}
+
 .notJobs {
   position: absolute;
   width: 100%;

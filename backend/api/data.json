@@ -416,51 +416,6 @@
             "c115_icon":"/icons/linkedIn.png"
         }
     },
-
-
-    {
-        "model":"vacantes.VacantStatus",        
-        "pk":1,
-        "fields":{
-            "c204_description": "Sin información"
-        }
-    },
-    {
-        "model":"vacantes.VacantStatus",        
-        "pk":2,
-        "fields":{
-            "c204_description": "Publicada Visible"
-        }
-    },
-    {
-        "model":"vacantes.VacantStatus",        
-        "pk":3,
-        "fields":{
-            "c204_description": "Publicada en revisión"
-        }
-    },
-    {
-        "model":"vacantes.VacantStatus",        
-        "pk":4,
-        "fields":{
-            "c204_description": "Publicada no Visible"
-        }
-    },
-    {
-        "model":"vacantes.VacantStatus",        
-        "pk":5,
-        "fields":{
-            "c204_description": "Cerrada"
-        }
-    },
-    {
-        "model":"vacantes.VacantStatus",        
-        "pk":6,
-        "fields":{
-            "c204_description": "Publicada desactivada"
-        }
-    },
-
     
     {
         "model":"vacantes.ReportState",        

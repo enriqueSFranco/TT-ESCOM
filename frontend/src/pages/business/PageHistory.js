@@ -5,7 +5,7 @@ import { useModal } from "hooks/useModal";
 import { uuid } from "utils/uuid";
 import { numberFormat } from "utils/numberFormat";
 import Chip from "@mui/material/Chip";
-import { getJob, getApplicationsJobs } from "services/jobs/index";
+import { getJob, getApplicationsJobs, getVacantInfo } from "services/jobs/index";
 import { getJobsForRecruiter } from "services/recruiter/index";
 import ApplicationJob from "components/Card/ApplicationJob/ApplicationJob";
 import ModalForm from "components/Modal/ModalForm";
@@ -43,7 +43,7 @@ const PageHistory = () => {
   useEffect(() => {
     getJobsForRecruiter(id)
       .then((response) => {
-        // console.log(response.data);
+        console.log(response.data);
         setListJobs(response.data);
       })
       .catch((error) => {
@@ -59,15 +59,8 @@ const PageHistory = () => {
       vacantApplicationsData.unseen = 0;
       getApplicationsJobs(t200_id_vacant)      
         .then((response) => {
-          console.log(response);
-          setTotalApplications(response.length);
-          /*
-          vacantApplicationsData.applications = response.length;          
-          console.log(response);
-          console.log(totalApplications);
-          console.log(vacantApplicationsData);
-          
-          totalApplications.forEach(getData);*/
+          //console.log(response);
+          setTotalApplications(response.length);          
         })
         .catch((error) => console.log(error));
     }
@@ -78,7 +71,46 @@ const PageHistory = () => {
     if (t200_id_vacant !== undefined) {
       getJob(t200_id_vacant)
         .then((response) => {
+          console.log(response);
           setJob(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [t200_id_vacant]);
+
+  // efecto para obtener los detalles de las aplicaciones de una vacante en especifico
+  useEffect(() => {
+    if (t200_id_vacant !== undefined) {
+      getVacantInfo(t200_id_vacant)
+        .then((response) => {
+          //console.log(response);
+          response.map((data) =>{
+            //console.log(data?.id_state);
+            switch(data?.id_state){
+              case 1:
+                vacantApplicationsData.unseen = data?.total;
+                break;
+              case 2:
+                vacantApplicationsData.inProcess = data?.total;
+                break;
+              case 3:
+                vacantApplicationsData.rejected = data?.total;
+                break;  
+              case 4:
+                vacantApplicationsData.hired = data?.total;
+                break;
+              case 5:
+                vacantApplicationsData.rejected = data?.total;
+                break;
+              case 6:
+                vacantApplicationsData.rejected = data?.total;
+                break;
+              default:
+                break;
+            }
+          });
         })
         .catch((error) => {
           console.log(error);
@@ -88,36 +120,9 @@ const PageHistory = () => {
 
   const handleInitialContent = () => {
     setInitialContent(false);
-  };
+  };  
 
-  /*const getData = (application) =>{    
-    /*if (application?.c205_id_application_state == 1){
-      vacantApplicationsData.unseen++;
-    }
-    else if (application?.c205_id_application_state == 6){
-      vacantApplicationsData.rejected++;
-    }
-    switch(application?.c205_id_application_state){
-      case 1:
-        vacantApplicationsData.unseen++;
-        break;
-      case 2:
-        vacantApplicationsData.inProcess++;
-        break;
-      case 3:
-        vacantApplicationsData.rejected++;
-        break;
-      case 4: 
-        vacantApplicationsData.hired++;
-        break;
-      case 5:
-        vacantApplicationsData.rejected++;
-        break;
-      case 6:
-        vacantApplicationsData.rejected++;
-        break;
-    }
-  };*/
+  console.log(job);
 
   return (
     <>
@@ -144,12 +149,12 @@ const PageHistory = () => {
           {/* lista de vacantes */}
           {listJobs?.length > 0?(
           <article className={styles.wrapperListJobs}>
-            {listJobs &&
+            {listJobs &&    
               listJobs?.map((listJobs) => (
                 <Link
                   to={`${listJobs?.t200_id_vacant}`}
                   key={uuid()}
-                  style={{ color: "#000" }}
+                  style={{ color: "#000"}}
                   onClick={handleInitialContent}
                 >
                   <ApplicationJob
@@ -159,6 +164,7 @@ const PageHistory = () => {
                     nameBusisness={listJobs?.t300_id_company?.t300_name}
                     typeBusiness=""
                     workingHours="Lunes a Viernes de 9:00am - 6:30pm"
+                    vacantState={listJobs?.c204_id_vacant_status?.c204_description}
                   />
                 </Link>
               ))}
@@ -184,25 +190,25 @@ const PageHistory = () => {
                           <i>
                             <FiUsers />
                           </i>
-                          <h3><span className={styles.notify}>{vacantApplicationsData.applications}</span> Recibida(s)</h3>
+                          <h3><span className={styles.notify}>{totalApplications >= 9 ? "+9" : totalApplications}</span> Recibida(s)</h3>
                           <Link to={`/solicitudes/${t200_id_vacant}`}>
                             Ver postulaciones
                           </Link>
                         </div>
                         <div className={`${styles.box}`}>
-                          <span>{vacantApplicationsData.hired}/{job[0]?.t200_vacancy}</span>
+                          <span>{vacantApplicationsData?.hired}/{job[0]?.t200_vacancy}</span>
                           <h3>Contratados</h3>
                         </div>
                         <div className={`${styles.box}`}>
-                          <span>{vacantApplicationsData.inProcess}</span>
+                          <span>{vacantApplicationsData?.inProcess}</span>
                           <h3>En seguimiento</h3>
                         </div>
                         <div className={`${styles.box}`}>
-                          <span>{vacantApplicationsData.rejected}</span>
+                          <span>{vacantApplicationsData?.rejected}</span>
                           <h3>Descartadas</h3>
                         </div>
                         <div className={`${styles.box}`}>
-                          <span>{vacantApplicationsData.unseen}</span>
+                          <span>{vacantApplicationsData?.unseen}</span>
                           <h3>Sin consultar</h3>
                         </div>
                       </nav>
@@ -213,11 +219,16 @@ const PageHistory = () => {
                           <h3 className={`${styles.nameCompany}`}>{job[0]?.t200_job}</h3>
                         </header>
                           <div className={styles.wrapperTags}>
-                            <Chip label={`Modalidad: ${job?.t200_home_ofice ? "Remoto" : "Presencial"}`} size="small" icon={<MdIcon.MdBusinessCenter />} />
+                          <Chip 
+                              label={`Sueldo: ${numberFormat(job[0]?.t200_min_salary).slice(4,)}MXN
+                                    ${job[0]?.t200_max_salary==0 ? "" : `a ${numberFormat(job[0]?.t200_max_salary).slice(4,)}MXN `}
+                                     al mes ${job[0]?.t200_salary_negotiable ? "Negociable" : "No negociable"}`} 
+                              size="small" icon={<GiIcon.GiMoneyStack />} 
+                            />
 
-                            <Chip label={`Sueldo: ${numberFormat(job?.t200_min_salary).slice(4,)}MXN a ${numberFormat(job?.t200_max_salary).slice(4,)}MXN al mes`} size="small" icon={<GiIcon.GiMoneyStack />} />
+                            <Chip label={`Modalidad: ${job[0]?.t200_home_ofice ? job[0]?.t200_locality ? "Hibrída": "Remota" : "Presencial"}`} size="small" icon={<MdIcon.MdBusinessCenter />} />                            
 
-                            <Chip label={`Fecha de publicacion: ${job?.t200_publish_date}`} size="small" icon={<BsIcon.BsCalendarDate />} />
+                            <Chip label={`Fecha de cierre programada: ${job[0]?.t200_close_date}`} size="small" icon={<BsIcon.BsCalendarDate />} />
                           </div>                          
                        
                         <div>

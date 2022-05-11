@@ -5,7 +5,7 @@ import {GiMoneyStack} from 'react-icons/gi';
 import { MdBusinessCenter, MdHomeWork } from 'react-icons/md';
 import styles from './ApplicationJob.module.css';
 
-const ApplicationJob = ({nameJob, salary, modality, nameBusisness, typeBusiness, workingHours}) => {
+const ApplicationJob = ({nameJob, salary, modality, nameBusisness, typeBusiness, workingHours, vacantState}) => {
   return (
     <article className={styles.wrapper}>
       <h1 className={styles.nameJob}>{nameJob}</h1>
@@ -16,6 +16,7 @@ const ApplicationJob = ({nameJob, salary, modality, nameBusisness, typeBusiness,
       </div>
       <p className={styles.paragraph}>Empresa: {nameBusisness}</p>
       <p className={styles.paragraph}>Horario: {workingHours}</p>
+      <p className={styles.state}> Estado: {vacantState}</p>
     </article>
   )
 };
