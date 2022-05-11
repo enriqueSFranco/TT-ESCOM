@@ -22,6 +22,7 @@ from apps.vacantes.api.views.vacant_viewset import AdminVacantViewSet
 from apps.vacantes.api.views.application_viewset import VacantApplicationsViewSet
 from apps.vacantes.api.views.application_viewset import StudentApplicationsViewSet
 from apps.vacantes.api.views.vacant_viewset import VacantInfoViewSet
+from apps.students.api.views.certifcation_viewset import CertificationViewSet
 
 router = DefaultRouter()
 router.register(r'users',UserViewSet,basename='Registred users')
@@ -40,6 +41,8 @@ router.register(r'StudentsLenguages',LenguagesViewSet,basename='Students lenguag
 router.register(r'StudentLenguages/<int:pk>',LenguagesViewSet,basename='Student lenguages details')
 router.register(r'StudentsProjects',ProjectsViewSet,basename='Students personal projects')
 router.register(r'StudentsProject/<int:pk>',ProjectsViewSet,basename='Student personal projects')
+router.register(r'StudentsCertifications',CertificationViewSet,basename='Students certifications')
+router.register(r'StudentsCertifications/<int:pk>',CertificationViewSet,basename='Student certifications')
 router.register(r'StudentsApplications',StudentApplicationsViewSet,basename='Students applications')
 router.register(r'StudentsApplications/<int:pk>',StudentApplicationsViewSet,basename='Student applications')
 router.register(r'Vacants', VacantViewSet, basename='Vacants')
