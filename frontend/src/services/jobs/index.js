@@ -51,4 +51,18 @@ export const postJob = (body) => {
     return data;
   })
   .catch(error => error);
-}
+};
+
+export const deleteJob = async (id) => {
+  return axios
+    .delete(`${API_JOBS}/${id}/`)
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => {
+      if (error.response) {
+        return error.response.status;
+      }
+    });
+};

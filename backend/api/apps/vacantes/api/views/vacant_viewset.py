@@ -64,7 +64,7 @@ class VacantViewSet(viewsets.GenericViewSet):
 			vacant_destroy = self.model.objects.filter(t200_id_vacant=pk).delete()
 			return Response({
 				'message': 'Vacante eliminada correctamente'
-			})
+			}, status=status.HTTP_200_OK)
 		return Response({
 			'message': 'No existe la vacante que desea eliminar'
 		}, status=status.HTTP_404_NOT_FOUND)

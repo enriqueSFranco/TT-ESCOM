@@ -45,11 +45,11 @@
 .contentDetailsJob {
   /* outline: 2px solid red; */
   background-color: #f6f8fb;
-  width: calc(100% - 600px);
+  width: calc(100% - 480px);
   height: 100%;
   position: absolute;
   top: 0;
-  left: 600px;
+  left: 480px;
 }
 
 .containerRight {
@@ -202,7 +202,7 @@
 
 .sidebar {
   position: relative;
-  width: 600px;
+  width: 480px;
   height: calc(100vh - 4rem);
   border-right: 1px solid #cccccc;
   /* background-image: linear-gradient(to left top, #0456ec, #0073f6, #008bf7, #00a0f3, #0fb3ec); */
@@ -215,7 +215,7 @@
 }
 
 .wrapperDetailsJob {
-  width: 100%;
+  width: 900%;
   position: absolute;
   left: 0;
   /* outline: 2px solid red; */

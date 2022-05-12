@@ -36,8 +36,8 @@ function DatesSchool({
 
   const handleChangex = (event) => setEndYear(event.target.value);
   
-  const handleAutocomplete = (event) => {  
-                form.t104_academic_unit =event.target.value;              
+  const handleAutocomplete = (event,newValue) => {  
+                form.c108_academic_unit =newValue;              
                 setAcademicHistorial(form);
               }
   
@@ -109,13 +109,12 @@ function DatesSchool({
         <div className={styles.inputGroup}>
           <p>¿En que institución?</p>
           <Autocomplete
-            disablePortal
             id="t104_academic_unit"
             name="t104_academic_unit"
             freeSolo
             onChange={handleAutocomplete}
             value={form.t104_academic_unit}
-            options={academicUnit.map((option) => option.c108_academic_unit)}
+            options={academicUnit.map((option) => option?.c108_academic_unit)}
             renderInput={(params) => (
               <TextField {...params} label="Unidad Ácademica" />
             )}

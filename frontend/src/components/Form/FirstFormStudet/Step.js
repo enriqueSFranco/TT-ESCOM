@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "hooks/useForm";
 import { useFetch } from "hooks/useFetch";
 import { helpHttp } from "utils/helpHttp";
+import { AcademicFormat } from "../schemes";
 import { getAllAcademicUnits, getAllJobs } from "services/catalogs/index";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -34,16 +35,6 @@ let initialForm = {
   t100_modalities: "",
   t100_interest_job: ""
 };
-
-let AcademicFormat = {
-    t104_academic_unit: "",
-    t104_carreer: "",
-    t104_start_date: "",
-    t104_end_date: "",
-    t100_id_student: "",
-    c107_id_academic_level: "4",
-    c109_id_academic_state: "6"
-}
 
 const StepComponent = () => {
   const [startMonth, setStartMonth] = useState(1);

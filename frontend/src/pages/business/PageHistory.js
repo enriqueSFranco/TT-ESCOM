@@ -10,8 +10,9 @@ import { MdEdit } from "react-icons/md";
 import { getJob, getApplicationsJobs, getVacantInfo } from "services/jobs/index";
 import { getJobsForRecruiter } from "services/recruiter/index";
 import ApplicationJob from "components/Card/ApplicationJob/ApplicationJob";
-import ModalForm from "components/Modal/ModalForm";
+import ModalForm from "components/Modal/ModalVacants";
 import FormPostJob from "components/Form/postJob/FormPostJob";
+import ConfirmDelete from "components/Alert/Confirm/ConfirmDelete";
 import { BiSearch } from "react-icons/bi";
 import { GrAdd } from "react-icons/gr";
 import { FiUsers } from "react-icons/fi";
@@ -21,6 +22,7 @@ import burrito from "images/emoji_donador.jpg";
 import * as GiIcon from "react-icons/gi";
 import * as BsIcon from "react-icons/bs";
 import * as MdIcon from "react-icons/md";
+import { deleteJob } from "services/jobs/index";
 
 const vacantApplicationsData = {
     "applications":0,
@@ -36,7 +38,8 @@ const PageHistory = () => {
   const [totalApplications, setTotalApplications] = useState([]);
   const [initialContent, setInitialContent] = useState(true);
   const [listJobs, setListJobs] = useState(null);
-  //const [vacantApplicationsData,setVacantApplicationsData] =useState(start);
+  const [ modalType,setModalType] = useState(null);
+  const [isDeletedJob, setIsDeletedJob] = useState({});
   const [job, setJob] = useState(null);
   const [isOpenModalForm, openModalForm, closeModalForm] = useModal();
   let id = token?.user?.user_id;
@@ -124,7 +127,26 @@ const PageHistory = () => {
     setInitialContent(false);
   };  
 
+  const setModal1 = () => {
+    setModalType(1);
+    openModalForm();
+  };
+
+  const setModal2 = () => {
+    setModalType(2);
+    openModalForm();
+  };
+
+  const handleDeleteJob = async () => {
+    const response = await deleteJob(job[0]?.t200_id_vacant);
+    console.log(response);
+    if (response.status === 200)
+      setIsDeletedJob({succes: response.status, message: response.message});
+    else setIsDeletedJob({success: response.status, message: response.message})
+  };
+
   console.log(job);
+  console.log(isDeletedJob);
 
   return (
     <>
@@ -144,7 +166,7 @@ const PageHistory = () => {
                 />
               </div>
             </form>
-            <button className={styles.btnAddJob} onClick={openModalForm}>
+            <button className={styles.btnAddJob} onClick={setModal1}>
               <GrAdd />
             </button>
           </header>
@@ -240,13 +262,13 @@ const PageHistory = () => {
                                   <MdEdit className={styles.editAction} />
                                 </button>
                                 <button className={`${styles.btnTrash}`}>
-                                  <GoTrashcan className={styles.deleteAction} />
+                                  <GoTrashcan className={styles.deleteAction} onClick={setModal2}/>
                                 </button>                                
                               </div>                            
                               ):
                               (<div className={styles.actions}>  
                                 <button className={`${styles.btnTrash}`}>
-                                  <GoTrashcan className={styles.deleteAction} />
+                                  <GoTrashcan className={styles.deleteAction} onClick={setModal2}/>
                                 </button>
                               </div>)}                          
 
@@ -274,10 +296,18 @@ const PageHistory = () => {
             )}
           </div>
         </article>
-      </section>
-      <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
-        <FormPostJob />
-      </ModalForm>
+      </section>      
+      { modalType == 1 || modalType ==2 ? 
+        (modalType == 1 ? 
+          (<ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
+            <FormPostJob />
+          </ModalForm>): 
+          (modalType == 2 ? 
+            (<ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
+              <ConfirmDelete deleteJob={handleDeleteJob} isDeletedJob={isDeletedJob} job={job[0]?.t200_job}/>
+            </ModalForm>): null )
+        ) : null}
+        
     </>
   );
 };
