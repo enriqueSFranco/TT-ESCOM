@@ -102,7 +102,6 @@ export const getAllJobs = async () => {
   }
 }
 
-
 export const getAllContracTypes = async () => {
   try {
     const { data } = await axios.get(API_CONTRACT);

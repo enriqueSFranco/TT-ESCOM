@@ -47,11 +47,18 @@ const CardJobDetails = () => {
       t100_id_student: token?.user?.user_id,
       c205_id_application_state: 1,
       t201_date_application:
-        now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay(),
+        now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate(),
     });
     if (response.status === 201)
-      setIsApplyJob({succes: response.status, message: response.data.message});
-    else setIsApplyJob({success: response.status, message: response.data.message})
+      setIsApplyJob({
+        succes: response.status,
+        message: response.data.message,
+      });
+    else
+      setIsApplyJob({
+        success: response.status,
+        message: response.data.message,
+      });
   };
 
   if (!job) return null;
@@ -111,7 +118,11 @@ const CardJobDetails = () => {
                     />
                   </li>
                 </ul>
-                <p>Ubicacion: {`${job[0]?.t200_municipality}, ${job[0]?.t200_state}, ${job[0]?.t200_locality}` ?? "No especificada"}</p>
+                <p>
+                  Ubicacion:{" "}
+                  {`${job[0]?.t200_municipality}, ${job[0]?.t200_state}, ${job[0]?.t200_locality}` ??
+                    "No especificada"}
+                </p>
               </div>
               <div className={styles.flex}>
                 {token !== null ? (
@@ -163,9 +174,7 @@ const CardJobDetails = () => {
             </div>
             <div>
               <h3>OFRECEMOS</h3>
-              <p>
-                {job[0]?.t200_benefits}
-              </p>
+              <p>{job[0]?.t200_benefits}</p>
             </div>
             <div>
               <h3>Postúlate</h3>
@@ -204,7 +213,11 @@ const CardJobDetails = () => {
         </div>
       )}
       <Modal isOpen={isOpen} closeModal={closeModal}>
-        <Confirm applyJob={handleApplyJob} isApplyJob={isApplyJob} job={job[0]?.t200_job} />
+        <Confirm
+          applyJob={handleApplyJob}
+          isApplyJob={isApplyJob}
+          job={job[0]?.t200_job}
+        />
       </Modal>
     </>
   );

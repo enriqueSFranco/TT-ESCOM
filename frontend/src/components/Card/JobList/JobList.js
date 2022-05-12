@@ -8,8 +8,6 @@ import styles from "./JobList.module.css";
 
 const JobList = ({jobs, loading, setPage, maxLenPage}) => {
 
-  const [showContent, setShowContent] = useState(JSON.parse(window.localStorage.getItem("showContent")));
-
   const prevPage = () => {
     setPage((currentPage) => Math.max(currentPage - 1, 1));
   };
@@ -18,17 +16,6 @@ const JobList = ({jobs, loading, setPage, maxLenPage}) => {
     setPage((currentPage) => Math.min(currentPage + 1, maxLenPage));
   };
   
-  
-  const handleClick = () => {
-    try {
-      setShowContent(true);
-      window.localStorage.setItem("showContent", JSON.stringify(true));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  console.log(showContent)
 
   return (
     <>
@@ -42,16 +29,13 @@ const JobList = ({jobs, loading, setPage, maxLenPage}) => {
               <Link
                 to={`vacante/${job?.t200_id_vacant}`}
                 key={job?.t200_id_vacant}
-                onClick={handleClick}
               >
                 <CardJob job={job} />
               </Link>
             )
             )}
           </div>
-          {
-            !showContent ? (<h1>Contenido inicial</h1>) : <Outlet />
-          }
+          <Outlet />
         </article>
         <div className={styles.pagination}>
           <button onClick={prevPage}><GrFormPreviousLink className={styles.icon} />Anterior</button>

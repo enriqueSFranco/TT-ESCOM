@@ -1,6 +1,5 @@
 import React from "react";
 import { useForm } from "hooks/useForm";
-import { AcademicFormat } from "../schemes";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -21,12 +20,9 @@ function DatesSchool({
   endYear,
   setEndYear,
   academicHistorial,
-  setAcademicHistorial
+  setAcademicHistorial,
 }) {
   const { form, handleChange } = useForm(academicHistorial);
-
-  // let inicio ="";
-  // let fin="";
 
   const handleChangek = (event) => setStartMonth(event.target.value);
 
@@ -35,18 +31,13 @@ function DatesSchool({
   const handleChangeq = (event) => setEndMonth(event.target.value);
 
   const handleChangex = (event) => setEndYear(event.target.value);
-  
-  const handleAutocomplete = (event) => {  
-                form.t104_academic_unit =event.target.value;              
-                setAcademicHistorial(form);
-              }
-  
-  const handleText = (event) => {                
-              setAcademicHistorial(form);
-              }              
-              
 
-   console.log(form);
+  const handleAutocomplete = (event) => {
+    form.t104_academic_unit = event.target.value;
+    setAcademicHistorial(form);
+  };
+
+  console.log(form)
 
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;

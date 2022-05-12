@@ -13,12 +13,15 @@ export const studentInitialForm = {
 };
 
 export const updateStudentInitialForm = {
+  // t100_id_student: null,
   t100_name: "",
   t100_last_name: "",
-  t100_phonenumber: "",
-  t100_residence: "",
   t100_speciality: "",
-  t100_travel: window.localStorage.getItem("travel") === "false",
+  t100_residence: "",
+  t100_travel: false,
+  t100_phonenumber: "",
+  t113_link: "",
+  c115_id_plataform: "",
 };
 
 export const companyInitialForm = {
@@ -64,7 +67,7 @@ export const postJobInitialForm = {
 };
 
 export const AcademicFormat = {
-  t104_academic_unit: "",
+  c108_academic_unit: "",
   t104_carreer: "",
   t104_start_date: "",
   t104_end_date: "",

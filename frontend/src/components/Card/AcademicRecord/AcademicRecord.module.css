@@ -16,6 +16,24 @@
   justify-content: space-between;
 }
 
+.btnAddProject {
+  position: absolute;
+  bottom: .5rem;
+  right: .5rem;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  color: #028dd4;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #028ed43f;
+  z-index: 99;
+}
+
 .editAction, .deleteAction { color: #363636;  transition: color .5s ease;}
 
 .editAction:hover {
@@ -54,8 +72,6 @@
   justify-content: center;
 }
 
-
-
 .logoProject {
   width: 80px;
   height: 80px;
@@ -67,6 +83,6 @@
   position: absolute;
   width: 100%;
   height: 90%;
-  overflow-y: scroll;
+  overflow-y: auto;
   border-radius: 6px;
 }

@@ -1,5 +1,9 @@
 /* ESTILOS DEL COMPONENTE CARD JOB */
 
+.card:focus {
+  background-color: red;
+}
+
 .card {
   position: relative;
   width: 550px;

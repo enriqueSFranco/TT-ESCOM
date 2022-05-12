@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import PersonalExperience from "./PersonalExperience";
 import WorkExperience from "./WorkExperience";
 import image from "images/experience.png";
+import { BsPersonBadgeFill } from "react-icons/bs";
+import { MdBusinessCenter } from "react-icons/md";
 import styles from "./Experience.module.css";
 
 const TypeExperience = () => {
@@ -25,12 +27,14 @@ const TypeExperience = () => {
               className={styles.btn}
               onClick={() => handleClick("personalExperience")}
             >
+              <BsPersonBadgeFill style={{color: "#028dd4"}} />
               Proyecto personal
             </button>
             <button
               className={styles.btn}
               onClick={() => handleClick("workExperience")}
             >
+              <MdBusinessCenter style={{color: "#78909c"}} />
               Puesto laboral
             </button>
           </nav>

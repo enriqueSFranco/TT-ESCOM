@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "context/AuthContext";
-import { motion } from "framer-motion";
+import { useModal } from "hooks/useModal";
 import { getSocialNetwork, getStudent } from "services/students/index";
 import { getSkill } from "services/catalogs";
 import { uuid } from "utils/uuid";
+import FormUpdateDataStudent from "components/Form/updateInfoStudent/FormUpdateDataStudent";
+import ModalForm from "components/Modal/ModalForm";
 import Chip from "@mui/material/Chip"
-import FormUpdateDataStudent from "../../Form/updateInfoStudent/FormUpdateDataStudent";
 import CustomAvatar from "../../Avatar/Avatar";
 import * as MdIcon from "react-icons/md";
 import * as IoIcon from "react-icons/io";
@@ -13,16 +14,11 @@ import styles from "./CardProfileStudent.module.css";
 
 const CardProfileStudent = () => {
   // TODO: Implementar useReducer para el manejo del estado
-  const [isProfile, setIsProfile] = useState("profile");
   const [student, setStudent] = useState([]);
+  const [isOpenModalFormUpdateInfoStudent, openModalFormUpdateInfoStudent, closeModalFormUpdateInfoStudent] = useModal();
   const [skills, setSkills] = useState([]);
   const [socialNetworks, setSocialNetworks] = useState([]);
   const { token } = useContext(AuthContext);
-
-  const handleEdit = (e) => {
-    let isEdit = isProfile === "edit" ? "profile" : "edit";
-    setIsProfile(isEdit);
-  };
 
   useEffect(() => {
     getStudent(token?.user?.user_id)
@@ -45,31 +41,15 @@ const CardProfileStudent = () => {
       })
   }, [token?.user?.user_id]);
 
-  console.log(student)
-
   return (
     <>
-      {isProfile === "edit" ? (
-        <motion.article
-          className="container"
-          initial={{ scaleY: 0 }}
-          animate={{ scaleY: 1 }}
-          exit={{ scaleY: 0 }}
-          duration={{ duration: 0.5 }}
-        >
-          <FormUpdateDataStudent
-            student={student}
-            handleBackToProfile={handleEdit}
-          />
-        </motion.article>
-      ) : (
-        <article className={`${styles.mainContainer}`}>
+    <article className={`${styles.mainContainer}`}>
           <div className={`${styles.card}`}>
             <header className={styles.background}>
               <div className={styles.avatar}>
                 <IoIcon.IoMdSettings
                   className={styles.config}
-                  onClick={handleEdit}
+                  onClick={openModalFormUpdateInfoStudent}
                 />
                 {/* <img src="https://placeimg.com/640/480/any" alt="user" /> */}
                 <CustomAvatar student={student} width="80px" height="80px" fontSize="2rem" />
@@ -146,7 +126,14 @@ const CardProfileStudent = () => {
             </div>
           </div>
         </article>
-      )}
+        <ModalForm 
+          isOpen={isOpenModalFormUpdateInfoStudent} 
+          closeModal={closeModalFormUpdateInfoStudent}
+          width={650}
+          height={800}
+        >
+          <FormUpdateDataStudent student={student} />
+        </ModalForm>
     </>
   );
 };

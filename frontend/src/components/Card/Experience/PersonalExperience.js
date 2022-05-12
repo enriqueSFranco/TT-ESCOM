@@ -1,6 +1,8 @@
-import { TextField } from "@mui/material";
 import React from "react";
+import { TextField } from "@mui/material";
+import { MdOutlineAdd, MdKeyboardBackspace } from "react-icons/md";
 import styles from "./Experience.module.css";
+
 
 const PersonalExperience = ({ setTypeProject }) => {
   const handleClick = () => setTypeProject(null);
@@ -11,13 +13,13 @@ const PersonalExperience = ({ setTypeProject }) => {
       <form className={styles.form}>
         <div className={styles.inputGroup_1_2}>
           <TextField
-            sx={{ width: "200px" }}
+            sx={{ width: "300px" }}
             label="Nombre de tu proyecto"
             id="outlined-size-small"
             size="small"
           />
           <TextField
-            sx={{ width: "200px" }}
+            sx={{ width: "300px" }}
             label="Enlace de tu proyecto"
             id="outlined-size-small"
             size="small"
@@ -28,12 +30,13 @@ const PersonalExperience = ({ setTypeProject }) => {
           id=""
           cols="30"
           rows="10"
-          placeholder="descripcion de tu proyecto"
+          placeholder="Descripcion de tu proyecto..."
+          className={styles.textArea}
         ></textarea>
         
-        <input type="submit" value="Agregar" />
+        <button className={styles.btnSubmit} type="submit"><MdOutlineAdd /> Agregar</button>
       </form>
-      <button className={styles.btnGoToMain} onClick={handleClick}>Regresar</button>
+      <button className={styles.btnGoToMain} onClick={handleClick}><MdKeyboardBackspace /> Regresar</button>
     </div>
   );
 };
