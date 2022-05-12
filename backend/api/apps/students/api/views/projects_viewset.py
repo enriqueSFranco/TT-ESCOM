@@ -70,7 +70,7 @@ class ProjectsViewSet(viewsets.GenericViewSet):
 		print(request.data)		
 		project_destroy = self.model.objects.filter(t117_id_registrer=pk).first()
 		if project_destroy:
-			project_destroy = self.model.objects.filter(t17_id_registrer=pk).delete()
+			project_destroy = self.model.objects.filter(t117_id_registrer=pk).delete()
 			return Response({
 				'message': 'Proyecto del alumno eliminado correctamente'
 			})

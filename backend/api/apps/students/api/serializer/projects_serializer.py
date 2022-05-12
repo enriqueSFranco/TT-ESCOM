@@ -15,7 +15,7 @@ class ProjectListSerializer(serializers.ModelSerializer):
     class Meta:
         model = PersonalProjects
         fields = '__all__'
-        depth = 2
+        #depth = 2
 
 
 class UpdateProjectSerializer(serializers.ModelSerializer):
