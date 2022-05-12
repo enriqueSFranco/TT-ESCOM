@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useForm } from "hooks/useForm";
 import { postJobInitialForm } from "../schemes";
 import FormPostJobLocation from "./FormPostJobLocation";
 import FormPostJobDetails from "./FormPostJobDetails";
 import styles from "./FormPostJob.module.css";
+import AuthContext from "context/AuthContext";
+import { getRecruiterInfo } from "services/recruiter/index";
+
 
 const validateForm = (form) => {
   let errors = {};
@@ -26,6 +29,8 @@ const validateForm = (form) => {
 
 const FormPostJob = () => {
   const [step, setStep] = useState(1);
+  const { user, token } = useContext(AuthContext);
+  const [recruiter, setRecruiter] = useState([]);
   const { 
     form, 
     errors, 
@@ -34,9 +39,23 @@ const FormPostJob = () => {
     onSubmitPostJob 
   } = useForm(postJobInitialForm, validateForm);
 
+  useEffect(() => {
+    getRecruiterInfo(token?.user?.user_id)
+      .then((response) => {
+        setRecruiter(response);
+        form.t301_id_recruiter = token?.user?.user_id;
+        form.t300_id_company  = recruiter[0]?.t300_id_company?.t300_id_company;
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
   const nextStep = () => setStep(step + 1);
 
   const prevStep = () => setStep(step - 1);
+
+  //console.log(user);
+  //console.log(token);
+  //console.log(recruiter);
 
   if (step === 1) {
     return (

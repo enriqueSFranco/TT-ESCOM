@@ -12,6 +12,7 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep }) => {
     setVisible(e.target.checked);
   };
   console.log(visible);
+  console.log(form);
 
   return (
     <div className={styles.wrapperFormJobDetails}>
@@ -40,7 +41,14 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep }) => {
           </div>
           {
             visible && (
-              <input type="date" className={styles.closeJobDate} />
+              <input 
+                type="date" 
+                className={styles.closeJobDate} 
+                name="t200_close_date"
+                id="t200_close_date"
+                onChange={handleChange}
+                value={form?.t200_close_date}
+              />
             )
           }
         </div>

@@ -4,6 +4,7 @@ import {
   getLocality,
   getAllCatalogueExperience,
   getAllCandidateProfile,
+  getAllContracTypes
 } from "services/catalogs/index";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
@@ -26,6 +27,7 @@ const FormPostJobLocation = ({ form, errors, handleChecked, handleChange, nextSt
   const [town, setTown] = useState("");
   const [profiles, setProfiles] = useState([]);
   const [experience, setExperience] = useState([]);
+  const [contractTypes, setContractTypes] = useState([]);
   const [localities, setLocalities] = useState([]);
 
   useEffect(() => {
@@ -43,6 +45,14 @@ const FormPostJobLocation = ({ form, errors, handleChecked, handleChange, nextSt
       })
       .catch((error) => console.error(error));
   }, []);
+
+useEffect(() => {
+  getAllContracTypes()
+    .then((response) => {
+      setContractTypes(response);
+    })
+    .catch((error) => console.error(error));
+}, []);
 
   const getLocalityData = (e) => {
     setCP(e.target.value);
@@ -63,6 +73,8 @@ const FormPostJobLocation = ({ form, errors, handleChecked, handleChange, nextSt
         .catch((error) => console.error(error));
     }
   };
+
+  console.log(form);
 
   return (
     <div className={styles.form}>
@@ -209,10 +221,10 @@ const FormPostJobLocation = ({ form, errors, handleChecked, handleChange, nextSt
             </FormControl>
 
             <FormControl sx={{ width: 300 }}>
-              <InputLabel id="c207_description">Experiencia</InputLabel>
+              <InputLabel id="c207_id_experience">Experiencia</InputLabel>
               <Select
-                id="c207_description"
-                name="c207_description"
+                id="c207_id_experience"
+                name="c207_id_experience"
                 defaultValue=""
                 onChange={handleChange}
                 label="Experiencia"
@@ -220,6 +232,23 @@ const FormPostJobLocation = ({ form, errors, handleChecked, handleChange, nextSt
                 {experience?.map((exp) => (
                   <MenuItem key={uuid()} value={exp?.c207_id_experience}>
                     {exp?.c207_description}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+            <FormControl sx={{ width: 300 }}>
+              <InputLabel id="c208_id_contract">Tipo de contratación</InputLabel>
+              <Select
+                id="c208_id_contract"
+                name="c208_id_contract"
+                defaultValue=""
+                onChange={handleChange}
+                label="Tipo de contratación"
+              >
+                {contractTypes?.map((contract) => (
+                  <MenuItem key={uuid()} value={contract?.c208_id_contract}>
+                    {contract?.c208_description}
                   </MenuItem>
                 ))}
               </Select>
@@ -251,23 +280,56 @@ const FormPostJobLocation = ({ form, errors, handleChecked, handleChange, nextSt
               onChange={handleChange}
               sx={{ width: 150 }}
             />
-            <TextField
-              label="Entrada"
-              type="time"
-              name="t200_check_time"
-              id="t200_check_time"
-              value={form.t200_check_time}
-              onChange={handleChange}
-              sx={{ width: 150, marginRight: 2 }}
-            />
-            <TextField
-              label="Salida"
-              type="time"
-              name="t200_closing_hour"
-              id="t200_closing_hour"
-              value={form.t200_closing_hour}
-              onChange={handleChange}
-            />
+            <div>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    value={form.t200_gross_salary}
+                    onChange={handleChecked}
+                    size="small"
+                  />
+                }
+                label="Es sueldo neto"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    value={form.t200_salary_negotiable}
+                    onChange={handleChecked}
+                    size="small"
+                  />
+                }
+                label="Negociable"
+              />
+            </div>
+              <TextField
+                label="Días laborales"
+                type="text"
+                name="t200_work_days"
+                id="t200_work_days"
+                value={form.t200_work_days}
+                onChange={handleChange}
+                sx={{ width: 300, marginRight: 2 }}
+              />            
+            <div>
+              <TextField
+                label="Entrada"
+                type="time"
+                name="t200_check_time"
+                id="t200_check_time"
+                value={form.t200_check_time}
+                onChange={handleChange}
+                sx={{ width: 150, marginRight: 2 }}
+              />
+              <TextField
+                label="Salida"
+                type="time"
+                name="t200_closing_hour"
+                id="t200_closing_hour"
+                value={form.t200_closing_hour}
+                onChange={handleChange}
+              />
+            </div>
             {/* dias laborales */}
           </div>
         </div>
