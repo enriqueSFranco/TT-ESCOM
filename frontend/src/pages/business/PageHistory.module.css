@@ -287,3 +287,32 @@
 
 .card .cardHeader h3 { width: 450px; }
 
+.editAction, .deleteAction { color: #363636;  transition: color .5s ease;}
+
+.editAction:hover {
+  color: #0000ff;
+}
+.deleteAction:hover {
+  color: #ff0000;
+}
+
+.actions {
+  color: #000;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 1rem;
+  right: .5rem;
+}
+.actions button {
+  margin-bottom: .5rem;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  width: 30px;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+}

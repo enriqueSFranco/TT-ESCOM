@@ -5,6 +5,8 @@ import { useModal } from "hooks/useModal";
 import { uuid } from "utils/uuid";
 import { numberFormat } from "utils/numberFormat";
 import Chip from "@mui/material/Chip";
+import { GoTrashcan } from "react-icons/go";
+import { MdEdit } from "react-icons/md";
 import { getJob, getApplicationsJobs, getVacantInfo } from "services/jobs/index";
 import { getJobsForRecruiter } from "services/recruiter/index";
 import ApplicationJob from "components/Card/ApplicationJob/ApplicationJob";
@@ -163,7 +165,7 @@ const PageHistory = () => {
                     madality={listJobs?.t200_home_ofice}
                     nameBusisness={listJobs?.t300_id_company?.t300_name}
                     typeBusiness=""
-                    workingHours="Lunes a Viernes de 9:00am - 6:30pm"
+                    workingHours={`Lunes a Viernes de ${listJobs?.t200_check_time} a ${listJobs?.t200_closing_hour}`}
                     vacantState={listJobs?.c204_id_vacant_status?.c204_description}
                   />
                 </Link>
@@ -231,12 +233,28 @@ const PageHistory = () => {
                             <Chip label={`Fecha de cierre programada: ${job[0]?.t200_close_date}`} size="small" icon={<BsIcon.BsCalendarDate />} />
                           </div>                          
                        
-                        <div>
-                          <div className={styles.summary}>
-                            <p className={`${styles.lineClamp}`}>{job[0]?.t200_description}</p>
+                                                    
+                            {totalApplications==0 ? 
+                              (<div className={styles.actions}>  
+                                <button>
+                                  <MdEdit className={styles.editAction} />
+                                </button>
+                                <button className={`${styles.btnTrash}`}>
+                                  <GoTrashcan className={styles.deleteAction} />
+                                </button>                                
+                              </div>                            
+                              ):
+                              (<div className={styles.actions}>  
+                                <button className={`${styles.btnTrash}`}>
+                                  <GoTrashcan className={styles.deleteAction} />
+                                </button>
+                              </div>)}                          
+
+                          <div>
+                            <div className={styles.summary}>
+                              <p className={`${styles.lineClamp}`}>{job[0]?.t200_description}</p>
+                            </div>                          
                           </div>
-                          
-                        </div>
                       </article>
                     </div>
                   </>

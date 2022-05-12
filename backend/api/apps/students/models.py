@@ -335,21 +335,20 @@ class PersonalProjects(models.Model):
 	t117_project_name = models.CharField(max_length=100,blank=True,null=True)
 	t100_id_student = models.ForeignKey(
 		Student,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
 		related_name='StudentProjects',
 		on_delete=models.CASCADE)
 	t117_group = models.CharField(max_length=80,null=True,blank=True)	
 	t117_job = models.CharField(max_length=80,null=True,blank=True)
 	t117_link = models.CharField(max_length=100,blank=True,null=True)
-	t117_banner = models.ImageField(blank=True,null=True,default="",upload_to=upload_project_banner)
 	t117_description = models.TextField()
 	t117_start_date = models.DateField(null=True)
 	t117_end_date = models.DateField(null=True)	
 	c118_project_type = models.ForeignKey(
 		ProjectType,
 		null=False,
-		blank=True,
+		blank=False,
 		related_name='ProjectType',
 		on_delete=models.CASCADE)
 
