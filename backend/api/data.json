@@ -81,68 +81,60 @@
             "user_permissions": []
         }
     },
-
-    {
-        "model" :"students.AcademicLevel",   
-        "pk":1,
-	    "fields": {                        
-            "c107_description" : "No definido"
-        }
-    },
+    
     {
         "model" :"students.AcademicLevel",                
-        "pk":2,
+        "pk":1,
 	    "fields": {                        
             "c107_description" : "Secundaria"
         }
     },
     {
         "model" :"students.AcademicLevel",                
-        "pk":3,
+        "pk":2,
 	    "fields": {                        
             "c107_description" : "Media superior"
         }
     },
     {
         "model" :"students.AcademicLevel",                
-        "pk":4,
+        "pk":3,
 	    "fields": {                        
             "c107_description" : "Linceciatura"
         }
     },
     {
         "model" :"students.AcademicLevel",                
-        "pk":5,
+        "pk":4,
 	    "fields": {                        
             "c107_description" : "Técnico Superior"
         }
     },
     {
         "model" :"students.AcademicLevel",                
-        "pk":6,
+        "pk":5,
 	    "fields": {                        
             "c107_description" : "Especialidad"
         }
     },
     {
         "model" :"students.AcademicLevel",                
-        "pk":7,
+        "pk":6,
 	    "fields": {                        
             "c107_description" : "Maestria"            
         }
     },
     {
         "model" :"students.AcademicLevel",                
-        "pk":8,
+        "pk":7,
 	    "fields": {                        
             "c107_description" : "Doctorado"            
         }
-    },
-    {
-        "model" :"students.AcademicState",                
+    },{
+        "model" :"students.AcademicState",
         "pk":1,
 	    "fields": {                        
-            "c109_description" : "No definido"            
+            "c109_description" : "En curso"            
         }
     },
     {
@@ -172,22 +164,7 @@
 	    "fields": {                        
             "c109_description" : "Titulado"            
         }
-    },
-    {
-        "model" :"students.AcademicState",
-        "pk":6,
-	    "fields": {                        
-            "c109_description" : "En curso"            
-        }
-    },
-    {
-        "model" :"students.AcademicState",
-        "pk":7,
-	    "fields": {                        
-            "c109_description" : "Dictamen"            
-        }
     },    
-
 
 
     {

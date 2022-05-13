@@ -164,8 +164,8 @@ const StepComponent = () => {
           console.log(response);          
           ///Agreegar skills del alumno
           const endpoint = "/api/Skills/";
-          const skilssall = hardSkills.concat(softSkills);
-          skilssall.map((dato) => {
+          const skillsAll = hardSkills.concat(softSkills);
+          skillsAll.map((dato) => {
             //console.log(dato);
             let options = {
               headers: {
@@ -190,7 +190,7 @@ const StepComponent = () => {
           });
 
           ///Agregar historial academico
-          if (AcademicFormat.t104_carreer !== ""){
+          
             const endpointAcademic = "api/AcademicHistorial/";
             console.log(startMonth);
             AcademicFormat.t104_start_date = startYear+"-"+startMonth+"-01"          
@@ -212,7 +212,7 @@ const StepComponent = () => {
                 }
               })
               .catch((err) => console.error(err));
-          }
+          
         }
       })
       .catch((err) => console.error(err));

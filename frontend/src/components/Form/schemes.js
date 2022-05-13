@@ -72,7 +72,7 @@ export const AcademicFormat = {
   t104_carreer: "",
   t104_start_date: "",
   t104_end_date: "",
-  t100_id_student: "",
-  c107_id_academic_level: "4",
-  c109_id_academic_state: "6",
+  t100_id_student: null,
+  c107_id_academic_level: null,
+  c109_id_academic_state: null,
 };
