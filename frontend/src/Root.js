@@ -21,7 +21,7 @@ import PageApplicationsStudent from "pages/student/PageApplicationsStudent";
 import ExperienceList from "components/Card/Experience/ExperienceList";
 import Certifications from "components/Card/Certifications/Certifications";
 import Accordion from "components/Accordion/Accordion";
-import AcademicRecord from "components/Card/AcademicRecord/AcademicRecord";
+import AcademicRecordList from "components/Card/AcademicRecord/AcademicRecordList";
 import ModalRelease from "components/Modal/ModalRelease";
 import ModalBusiness from "components/Modal/ModalBusiness";
 import CardJobDetails from "components/Card/CardJobDetails/CardJobDetails";
@@ -77,7 +77,7 @@ const Root = () => {
       {/* Indice de rutas privadas para un alumno si funciona */}
       <Route element={<PrivateRoute role={ROLE.STUDENT} />}>
         <Route path="/perfil" element={<PageProfileStudent />}>
-          <Route path="historial-academico" element={<AcademicRecord />} />
+          <Route path="historial-academico" element={<AcademicRecordList />} />
           <Route path="experiencia" element={<ExperienceList />} />
           <Route path="certificaciones" element={<Certifications />} />
         </Route>

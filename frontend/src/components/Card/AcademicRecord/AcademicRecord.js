@@ -1,46 +1,57 @@
 import React from "react";
 import { useModal } from "hooks/useModal";
 import Modal from "components/Modal/Modal";
-import FormAddAcademicRecord from "components/Form/AcademicRecord/FormAddAcademicRecord"
+import { formatDate } from "utils/formatDate";
 import { GoTrashcan } from "react-icons/go";
-import { MdSchool, MdEdit, MdAdd } from "react-icons/md";
+import { MdSchool, MdEdit } from "react-icons/md";
 import styles from "./AcademicRecord.module.css";
 
-const AcademicRecord = () => {
-  const [isOpenModalAcademicRecord, openModalAcademicRecord, closeModalAcademicRecord] = useModal();
+const AcademicRecord = ({
+  academicUnit,
+  carrer,
+  startDate,
+  endDate,
+  idStudent,
+  idAcademicLevel,
+  idAcademicState,
+}) => {
+  const [isOpenModalDeleteAcademicRecord, openModalDeleteAcademicRecord, closeModalDeleteAcademicRecord] = useModal();
+  const [isOpenModalEditAcademicRecord, openModalEditAcademicRecord, closeModalEditAcademicRecord] = useModal();
 
   return (
     <>
-      <article className={styles.wrapper}>
-        <div className={styles.body}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              margin: ".5rem 1rem",
-            }}
-          >
-            <MdSchool className={styles.icon} />
-            <div className={styles.history}>
-              <p>Ingenieria en Sistemas Computacionales</p>
-              <p>ESCOM IPN</p>
-              <p>Enero 2015-Diciembre 2021</p>
-            </div>
-          </div>
-          <div className={styles.actions}>
-            <button className={`${styles.btnTrash}`}>
-              <GoTrashcan className={styles.deleteAction} />
-            </button>
-            <button>
-              <MdEdit className={styles.editAction} />
-            </button>
+      <div className={styles.body}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            margin: ".5rem 1rem",
+          }}
+        >
+          <MdSchool className={styles.icon} />
+          <div className={styles.history}>
+            <p>{carrer}</p>
+            <p>{academicUnit}</p>
+            <p className={styles.date}>
+              {formatDate(startDate)} {" - "} {formatDate(endDate)}
+            </p>
           </div>
         </div>
-        <button onClick={openModalAcademicRecord} className={styles.btnAddProject}><MdAdd /></button>
-      </article>
-      <Modal isOpen={isOpenModalAcademicRecord} closeModal={closeModalAcademicRecord}>
-        <FormAddAcademicRecord />
+        <div className={styles.actions}>
+          <button className={`${styles.btnTrash}`} onClick={openModalDeleteAcademicRecord}>
+            <GoTrashcan className={styles.deleteAction} />
+          </button>
+          <button onClick={openModalEditAcademicRecord}>
+            <MdEdit className={styles.editAction} />
+          </button>
+        </div>
+      </div>
+      <Modal isOpen={isOpenModalDeleteAcademicRecord} closeModal={closeModalDeleteAcademicRecord}>
+          <h1>eliminar</h1>
+      </Modal>
+      <Modal isOpen={isOpenModalEditAcademicRecord} closeModal={closeModalEditAcademicRecord}>
+          <h2>Editar</h2>
       </Modal>
     </>
   );

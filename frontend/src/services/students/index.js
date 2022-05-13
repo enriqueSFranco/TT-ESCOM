@@ -192,8 +192,18 @@ export const addProject = (payload = {}) => {
     })
 };
 
+/**
+ * @param {Number} id identificador de un usuario para obtener su historial academico
+ * @returns {Promise}
+ **/
+export const getAcademicHistorial = (id) => {
+  return axios.get(API_ACADEMIC_HISTORIAL)
+    .then(response => response)
+    .catch(error => error);
+}
+
 export const postAcademicHistorial = (payload = {}) => {
-  return axios.post(API_ACADEMIC_HISTORIAL)
+  return axios.post(API_ACADEMIC_HISTORIAL, payload)
     .then(response => response)
     .catch(error => error);
 };

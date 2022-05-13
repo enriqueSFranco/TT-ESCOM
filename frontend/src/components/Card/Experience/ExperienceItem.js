@@ -29,17 +29,16 @@ const ExperenceItem = ({
   ] = useModal();
 
   const [isOpenModalEditProject, openModalEditProject, closeModalEditProject] =
-  useModal();
+    useModal();
 
   const deleteData = (id) => {
     console.log("id:", id);
-    deleteProject(id)
-      .then(response => {
-        if (data !== null)  {
-          let newData = data.filter(el => el?.t117_id_registrer !== id);
-          setListProjects(newData)
-        }
-      })
+    deleteProject(id).then((response) => {
+      if (data !== null) {
+        let newData = data.filter((el) => el?.t117_id_registrer !== id);
+        setListProjects(newData);
+      }
+    });
   };
 
   return (
@@ -87,15 +86,15 @@ const ExperenceItem = ({
           </div>
         </div>
         <div className={styles.actions}>
-        <button
-                className={`${styles.btnTrash}`}
-                onClick={openModalDeleteProject}
-              >
-                <GoTrashcan className={styles.deleteAction} />
-              </button>
-              <button onClick={openModalEditProject}>
-                <MdEdit className={styles.editAction} />
-              </button>
+          <button
+            className={`${styles.btnTrash}`}
+            onClick={openModalDeleteProject}
+          >
+            <GoTrashcan className={styles.deleteAction} />
+          </button>
+          <button onClick={openModalEditProject}>
+            <MdEdit className={styles.editAction} />
+          </button>
         </div>
       </div>
       <Modal
