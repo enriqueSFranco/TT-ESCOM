@@ -329,7 +329,7 @@ class EmploymentHistory(models.Model):
 	def __str__(self)->str:
 		return self.t103_corporation+', '+self.t103_employment
 		
-#T117 Proyectos
+#T117 Proyectos personales
 class PersonalProjects(models.Model):
 	t117_id_registrer = models.AutoField(primary_key=True)
 	t117_project_name = models.CharField(max_length=100,blank=True,null=True)

@@ -7,6 +7,7 @@ import {
   API_SOCIAL_NETWORK,
   API_PHOTO_STUDENT,
   API_PROJECT_STUDENT,
+  API_CATALOGUE_PLATAFORM
 } from "../settings";
 
 /**
@@ -23,7 +24,7 @@ export const getStudent = async (id) => {
     },
   };
   return axios
-    .get(`${API_STUDENT}/${id}/`, config)
+    .get(`${API_STUDENT}${id}/`, config)
     .then((response) => {
       const { data } = response;
       console.log(data);
@@ -54,6 +55,16 @@ export const getSocialNetwork = async (id) => {
       }
     });
 };
+
+export const getLinks = () => {
+  return axios.get(API_CATALOGUE_PLATAFORM)
+    .then(response => {
+      const { data } = response;
+      return data;
+    })
+    .catch(error => error);
+};
+
 
 /**
  * @param {Object} payload objeto que contiene la informacion que se enviara para crear la cuenta de un alumno
@@ -157,9 +168,15 @@ export const getProjects = (id) => {
 };
 
 /**
- * @param {Number} id identificador de un alumno
+ * @param {Number} id identificador de un usuario
  * @param {Object} payload objeto con los campos a enviar
  **/
-// export const addProject = (id, payload = {}) => {
-//   return axios.post(API_PROJECT_STUDENT)
-// };
+export const addProject = (id, payload = {}) => {
+  return axios.post(`${API_PROJECT_STUDENT}${id}/`, payload)
+    .then(response => {
+      return response;
+    })
+    .catch(error => {
+      return error;
+    })
+};

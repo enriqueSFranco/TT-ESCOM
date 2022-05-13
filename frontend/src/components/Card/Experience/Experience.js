@@ -35,11 +35,10 @@ const Experence = () => {
             <img src={notProjects} alt="sin proyectos" />
           </div>
         ) : (
-          <div className={styles.detailsProject}>
+          <>
             {listProjects?.map((project) => (
-              <>
+              <div className={styles.detailsProject} key={uuid()}>
                 <div
-                  key={uuid()}
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -82,9 +81,9 @@ const Experence = () => {
                     <MdEdit className={styles.editAction} />
                   </button>
                 </div>
-              </>
+              </div>
             ))}
-          </div>
+          </>
         )}
         <button className={styles.btnAddProject} onClick={openModalAddProject}>
           <MdAdd />

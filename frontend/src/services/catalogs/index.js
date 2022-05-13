@@ -4,8 +4,10 @@ import {
   API_CATALOGUE_EXPERIENCE,
   API_STUDENT_LENGUAGES,
   API_CATALOGUE_STATES,
+  API_ACADEMIC_LEVEL,
   API_ACADEMIC_UNITS,
-  API_INTEREST_JOBS,
+  API_ACADEMIC_STATE,
+  API_INTEREST_JOBS,  
   API_CONTRACT,
   API_SKILLS,
   API_CP
@@ -102,10 +104,30 @@ export const getAllJobs = async () => {
   }
 }
 
-
 export const getAllContracTypes = async () => {
   try {
     const { data } = await axios.get(API_CONTRACT);
+    return data;
+  } catch (error) {
+    if (error.response)
+      return error.response.message;
+  }
+}
+
+export const getAllAcademicStates = async () => {
+  try {
+    const { data } = await axios.get(API_ACADEMIC_STATE);
+    return data;
+  } catch (error) {
+    if (error.response)
+      return error.response.message;
+  }
+}
+
+
+export const getAllAcademicLevels = async () => {
+  try {
+    const { data } = await axios.get(API_ACADEMIC_LEVEL);
     return data;
   } catch (error) {
     if (error.response)
