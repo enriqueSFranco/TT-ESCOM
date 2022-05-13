@@ -68,11 +68,11 @@ export const postJobInitialForm = {
 };
 
 export const AcademicFormat = {
-  c108_academic_unit: "",
+  t104_academic_unit: "",
   t104_carreer: "",
   t104_start_date: "",
   t104_end_date: "",
   t100_id_student: null,
-  c107_id_academic_level: null,
-  c109_id_academic_state: null,
+  c107_id_academic_level: "",
+  c109_id_academic_state: "",
 };

@@ -55,18 +55,21 @@ useEffect(() => {
   const handleChangeq = (event) => setEndMonth(event.target.value);
 
   const handleChangex = (event) => setEndYear(event.target.value);
+
+  const handleChangeState = (event) => academicHistorial.c109_id_academic_state = event.target.value;
+
+  const handleChangeLevel = (event) => academicHistorial.c107_id_academic_level = event.target.value;
   
   const handleAutocomplete = (event,newValue) => {  
-                form.c108_academic_unit =newValue;              
-                setAcademicHistorial(form);
+                form.t104_academic_unit =newValue;              
+                setAcademicHistorial(form);            
+                academicHistorial.t104_academic_unit =newValue;              
               }
   
-  const handleText = (event) => {                
-              setAcademicHistorial(form);
-              }              
+  const handleTextC = (event) => academicHistorial.t104_carreer = event.target.value;
               
 
-   console.log(form);
+   console.log(academicHistorial);
 
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
@@ -133,7 +136,7 @@ useEffect(() => {
             name="t104_academic_unit"
             freeSolo
             onChange={handleAutocomplete}
-            value={form.t104_academic_unit}
+            value={academicHistorial.t104_academic_unit}
             options={academicUnit.map((option) => option?.c108_academic_unit)}
             renderInput={(params) => (
               <TextField {...params} label="Unidad Académica" />
@@ -151,8 +154,8 @@ useEffect(() => {
               <Select
                 id="c109_id_academic_state"
                 name="c109_id_academic_state"
-                defaultValue=""
-                onChange={handleChange}
+                defaultValue={academicHistorial.c109_id_academic_state}
+                onChange={handleChangeState}
                 label="Perfil"
               >
                 {academicStates?.map((academicState) => (
@@ -164,12 +167,12 @@ useEffect(() => {
             </FormControl>
 
             <FormControl sx={{ width: 300 }}>
-              <InputLabel id="c109_id_academic_state">Nivel academico</InputLabel>
+              <InputLabel id="c107_id_academic_level">Nivel academico</InputLabel>
               <Select
-                id="c109_id_academic_state"
-                name="c109_id_academic_state"
-                defaultValue=""
-                onChange={handleChange}
+                id="c107_id_academic_level"
+                name="c107_id_academic_level"
+                defaultValue={academicHistorial.c107_id_academic_level}
+                onChange={handleChangeLevel}
                 label="Experiencia"
               >
                 {academicLevels?.map((academicLevel) => (

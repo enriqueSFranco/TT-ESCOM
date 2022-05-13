@@ -38,9 +38,9 @@ let initialForm = {
 
 const StepComponent = () => {
   const [startMonth, setStartMonth] = useState(1);
-  const [startYear, setStartYear] = useState(1999);
+  const [startYear, setStartYear] = useState(2022);
   const [endMonth, setEndMonth] = useState(1);
-  const [endYear, setEndYear] = useState(1999);
+  const [endYear, setEndYear] = useState(2022);
   const [activeStep, setActiveStep] = useState(0);
   const [hardSkills, setHardSkills] = useState([]);
   const [softSkills, setSoftSkills] = useState([]);
@@ -53,7 +53,7 @@ const StepComponent = () => {
   let navigate = useNavigate();
   
   let id_student = token?.user?.user_id;
-  AcademicFormat.t100_id_student = id_student;
+  academicHistorial.t100_id_student = id_student;
   
   useEffect(() => {
     getAllAcademicUnits()
@@ -182,8 +182,6 @@ const StepComponent = () => {
               .then((response) => {
                 if (!response.err) {
                   console.log(response);
-                  if (AcademicFormat.t104_carreer == "")
-                    navigate("/perfil");
                 }                
               })
               .catch((err) => console.error(err));
@@ -193,9 +191,10 @@ const StepComponent = () => {
           
             const endpointAcademic = "api/AcademicHistorial/";
             console.log(startMonth);
-            AcademicFormat.t104_start_date = startYear+"-"+startMonth+"-01"          
-            AcademicFormat.t104_end_date = endYear+"-"+endMonth+"-01"          
-            console.log(AcademicFormat);
+            console.log(startYear+"-"+startMonth+"-01");
+            academicHistorial.t104_start_date = startYear+"-"+startMonth+"-01"          
+            academicHistorial.t104_end_date = endYear+"-"+endMonth+"-01"          
+            console.log(academicHistorial);
             let options = {
               headers: {
                 "Content-Type": "application/json",
