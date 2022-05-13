@@ -186,3 +186,42 @@ class VacantInfoViewSet(viewsets.GenericViewSet):
 		print(Vacant)
 		vacant_serializer = self.list_serializer_class(Vacant,many=True)
 		return Response(vacant_serializer.data)			
+
+
+class FilterVacantViewSet(viewsets.GenericViewSet):
+	model = Vacant
+	#permission_classes = [IsAuthenticated]
+	serializer_class = VacantSerializer
+	pagination_class = CustomPagination
+	list_serializer_class = VacantListSerializer
+	queryset = None
+
+	def get_object(self, id_company,id_profile,home_office):	
+		print("id_company:",id_company)		
+		self.queryset = self.model.objects
+		if (id_company):
+			self.queryset =	self.queryset.filter(t300_id_company = id_company)
+		if (id_profile):
+			self.queryset =	self.queryset.filter(c206_id_profile = id_profile)
+		if (home_office != ''):
+			self.queryset =	self.queryset.filter(t200_home_ofice = home_office)
+		self.queryset =	self.queryset.all()
+		return self.queryset
+
+
+	def create(self, request):
+		#vacant_serializer = self.serializer_class(data=request.data)
+		print('request: ',request.data)
+		vacants = self.get_object(request.data['t300_id_company'],request.data['c206_id_profile'],request.data['t200_home_ofice'])
+		page = self.paginate_queryset(vacants)
+		if page is not None:
+			vacants_serializer = self.list_serializer_class(page, many=True)
+			return self.get_paginated_response(vacants_serializer.data)
+		vacants_serializer = self.list_serializer_class(vacants, many=True)
+		#if vacant_serializer.is_valid():
+			#vacant_serializer.save()
+		#	return Response({
+		#		'message': 'Vacante registrada correctamente.'
+		#	}, status=status.HTTP_201_CREATED)
+		return Response(vacants_serializer.data)		
+		

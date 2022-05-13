@@ -17,7 +17,7 @@ class VacantListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vacant
         fields = '__all__'    
-        #depth = 2
+        depth = 2
     
 
 class UpdateVacantSerializer(serializers.ModelSerializer):
