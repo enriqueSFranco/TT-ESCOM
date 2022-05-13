@@ -26,3 +26,5 @@ export const API_INTEREST_JOBS = "/api/catalogues/CatalogueJobs/"
 export const API_LOGIN = "/api/token/";
 
 export const API_CONTRACT = "/api/catalogues/Contracts/";
+export const API_ACADEMIC_STATE = "/api/catalogues/CatalogueAcademicState/"
+export const API_ACADEMIC_LEVEL = "/api/catalogues/CatalogueAcademicLevel/"

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "hooks/useForm";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
@@ -7,6 +7,12 @@ import Select from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import Autocomplete from "@mui/material/Autocomplete";
 import styles from "./StylesStepper.module.css";
+import { uuid } from "utils/uuid";
+import { BiCurrentLocation, BiUser } from "react-icons/bi";
+import {
+  getAllAcademicStates,
+  getAllAcademicLevels
+} from "services/catalogs/index";
 
 function DatesSchool({
   academicUnit,
@@ -23,6 +29,24 @@ function DatesSchool({
   setAcademicHistorial,
 }) {
   const { form, handleChange } = useForm(academicHistorial);
+  const [academicStates, setAcademicStates] = useState([]);
+  const [academicLevels, setAcademicLevels] = useState([]);
+
+  useEffect(() => {
+    getAllAcademicStates()
+      .then((response) => {
+        setAcademicStates(response);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+useEffect(() => {
+  getAllAcademicLevels()
+    .then((response) => {
+      setAcademicLevels(response);
+    })
+    .catch((error) => console.error(error));
+}, []);
 
   const handleChangek = (event) => setStartMonth(event.target.value);
 
@@ -108,9 +132,50 @@ function DatesSchool({
             value={form.t104_academic_unit}
             options={academicUnit.map((option) => option.c108_academic_unit)}
             renderInput={(params) => (
-              <TextField {...params} label="Unidad Ácademica" />
+              <TextField {...params} label="Unidad Académica" />
             )}
           />
+        </div>
+        
+        <div className={styles.form1}>
+          <h3 className={styles.title}>
+            <BiUser /> Información académica
+          </h3>
+          <div className={styles.inputGroup}>
+            <FormControl sx={{ width: 300 }}>
+              <InputLabel id="c109_id_academic_state">Estado academico</InputLabel>
+              <Select
+                id="c109_id_academic_state"
+                name="c109_id_academic_state"
+                defaultValue=""
+                onChange={handleChange}
+                label="Perfil"
+              >
+                {academicStates?.map((academicState) => (
+                  <MenuItem key={uuid()} value={academicState?.c109_id_academic_state}>
+                    {academicState?.c109_description}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+            <FormControl sx={{ width: 300 }}>
+              <InputLabel id="c109_id_academic_state">Nivel academico</InputLabel>
+              <Select
+                id="c109_id_academic_state"
+                name="c109_id_academic_state"
+                defaultValue=""
+                onChange={handleChange}
+                label="Experiencia"
+              >
+                {academicLevels?.map((academicLevel) => (
+                  <MenuItem key={uuid()} value={academicLevel?.c107_id_academic_level}>
+                    {academicLevel?.c107_description}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
         </div>
 
         <div className={styles.inputGroupP1}>
