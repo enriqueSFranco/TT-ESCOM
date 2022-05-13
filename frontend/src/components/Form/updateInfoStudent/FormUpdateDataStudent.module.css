@@ -108,7 +108,7 @@
   /* align-items: stretch; */
 }
 
-.inputGroupFlex_1_3 { width: 550px; }
+.inputGroupFlex_1_3 { width: 500px; }
 
 .flexInput {
   height: 40px;
@@ -120,6 +120,14 @@
   display: flex;
   justify-content: space-between;
   /* outline: 2px solid red; */
+}
+
+.select {
+  outline: 1px solid #ccc;
+  border-radius: 5px;
+  max-width: 120px;
+  background-color: transparent;
+
 }
 
 .title {

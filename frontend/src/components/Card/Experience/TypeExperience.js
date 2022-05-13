@@ -11,10 +11,9 @@ const TypeExperience = () => {
 
   const handleClick = (type) => {
     type === "personalExperience"
-      ? setTypeProject("personalExperience")
-      : setTypeProject("workExperience");
+    ? setTypeProject("personalExperience") : setTypeProject("workExperience");
   };
-
+  
   return (
     <>
       {typeProject === null ? (

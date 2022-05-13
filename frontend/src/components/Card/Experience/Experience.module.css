@@ -34,9 +34,9 @@
 }
 
 .btnAddProject {
-  position: absolute;
+  position: sticky;
   bottom: .5rem;
-  right: .5rem;
+  left: 36rem;
   height: 40px;
   width: 40px;
   border-radius: 50%;
@@ -146,7 +146,6 @@
 
 .detailsProject a {
   position: absolute;
-  right: 1rem;
   bottom: 0;
   padding-bottom: .3rem;
   font-size: 1rem;

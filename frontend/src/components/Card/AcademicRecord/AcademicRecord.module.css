@@ -4,9 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: absolute;
-  top: 1rem;
-  right: .5rem;
+  margin-right: .5rem;
 }
 
 .body {
@@ -14,6 +12,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding: .5rem;
 }
 
 .btnAddProject {
@@ -32,6 +32,11 @@
   justify-content: center;
   background-color: #028ed43f;
   z-index: 99;
+}
+
+.date {
+  font-size: .7rem;
+  color: #616161;
 }
 
 .editAction, .deleteAction { color: #363636;  transition: color .5s ease;}

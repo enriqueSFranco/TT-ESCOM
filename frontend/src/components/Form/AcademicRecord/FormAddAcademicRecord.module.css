@@ -18,11 +18,14 @@
 }
 
 .inputGroup_1_2 {
+  height: 80px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  /* outline: 2px solid red; */
+  position: relative;
+  top: -2rem;
 }
 
 .subTitle {
@@ -39,6 +42,7 @@
   font-size: 1.5rem;
   font-family: 'Poppins', sans-serif;
   text-transform: uppercase;
+  margin: 0;
 }
 
 .wrapperForm {
