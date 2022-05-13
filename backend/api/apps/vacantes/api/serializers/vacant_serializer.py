@@ -17,14 +17,14 @@ class VacantListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vacant
         fields = '__all__'    
-        depth = 2
+        #depth = 2
     
 
 class UpdateVacantSerializer(serializers.ModelSerializer):
         class Meta:
             model = Vacant
             fields = ('t200_job','t200_description','t200_benefits','t200_check_time','t200_closing_hour',
-            't200_work_days','c207_id_experience','t200_min_salary','t200_max_salary','t200_gross_salary','t200_home_ofice',
+            't200_work_days','c207_id_experience','t200_min_salary','t200_max_salary','t200_gross_salary','t200_salary_negotiable','t200_home_ofice',
             'c206_id_profile','c204_id_vacant_status','t200_publish_date','t200_close_date','t200_state','t200_municipality',
             't200_locality','t200_street','t200_cp','t200_interior_number','t200_exterior_number','t200_vacancy','c208_id_contract')
         
@@ -34,4 +34,15 @@ class UpdateVacantSerializer(serializers.ModelSerializer):
             return update_vacant
 
 
+    
+class VacantInfoListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vacant
+        fields = '__all__'    
 
+    def to_representation(self,instance):
+        
+        return{
+            'id_state' : instance['c205_id_application_state'],
+            'total':instance['total']
+        }        

@@ -87,7 +87,7 @@ const AuthProvider = ({ children }) => {
           console.log(Boolean(val));
           
           if (Boolean(val))
-            navigate("/perfil");
+            navigate("/");
           else
             navigate("/actualiza-alumno");
         } else {

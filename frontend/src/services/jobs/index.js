@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_JOBS, API_VACANTS_APPLICATIONS_JOB_STUDENT } from "../settings";
+import { API_JOBS, API_VACANTS_APPLICATIONS_JOB_STUDENT, API_VACANT_INFO } from "../settings";
 
 export const getAllJobs = async(page) => {
   try {
@@ -21,6 +21,14 @@ export const getJob = (id) => {
     .catch(error => console.log(error));
 };
 
+export const getVacantInfo = (id) => {
+  return axios.get(`${API_VACANT_INFO}${id}/`)
+    .then(response => {
+      const { data } = response;
+      return data;
+    })
+    .catch(error => console.log(error));
+};
 
 export const getApplicationsJobs = (id) => {
   return axios.get(`${API_VACANTS_APPLICATIONS_JOB_STUDENT}${id}/`)
@@ -43,4 +51,18 @@ export const postJob = (body) => {
     return data;
   })
   .catch(error => error);
-}
+};
+
+export const deleteJob = async (id) => {
+  return axios
+    .delete(`${API_JOBS}/${id}/`)
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => {
+      if (error.response) {
+        return error.response.status;
+      }
+    });
+};

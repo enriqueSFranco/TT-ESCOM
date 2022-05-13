@@ -132,7 +132,7 @@ class Vacant(models.Model):
         related_name='CompanyOffering',
         on_delete=models.CASCADE
     )
-    t200_job = models.CharField(max_length=70)
+    t200_job = models.CharField(max_length=125)
     t200_description = models.TextField(null=True,blank=True) 
     t200_benefits = models.TextField(null=True,blank=True)    
     t200_check_time = models.TimeField(auto_now=False)
@@ -147,9 +147,9 @@ class Vacant(models.Model):
         on_delete=models.CASCADE)
     t200_min_salary = models.IntegerField()
     t200_max_salary = models.IntegerField()
-    t200_gross_salary = models.BooleanField()
-    t200_home_ofice = models.BooleanField(default=True)#c214_id_modality
-    #c214_id_modality = models
+    t200_gross_salary = models.BooleanField(default=False)
+    t200_salary_negotiable = models.BooleanField(default=False)
+    t200_home_ofice = models.BooleanField(default=True)#c214_id_modality    
     c206_id_profile = models.ForeignKey(
         CandidateProfile,
         null=True,
@@ -169,7 +169,7 @@ class Vacant(models.Model):
     t200_close_date = models.DateField()
     t200_state = models.CharField(max_length=50,null=True,blank=True)
     t200_municipality = models.CharField(max_length=100,null=True,blank=True)
-    t200_locality = models.CharField(max_length=100,null=False,blank=False,default='No definido')
+    t200_locality = models.CharField(max_length=100,null=True,blank=True)
     t200_street = models.CharField(max_length=60,null=True,blank=True)
     t200_cp = models.IntegerField(blank=True,null=True)
     t200_interior_number = models.CharField(max_length=20,blank=True,null=True)

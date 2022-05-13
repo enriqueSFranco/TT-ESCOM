@@ -45,11 +45,11 @@
 .contentDetailsJob {
   /* outline: 2px solid red; */
   background-color: #f6f8fb;
-  width: calc(100% - 600px);
+  width: calc(100% - 480px);
   height: 100%;
   position: absolute;
   top: 0;
-  left: 600px;
+  left: 480px;
 }
 
 .containerRight {
@@ -202,7 +202,7 @@
 
 .sidebar {
   position: relative;
-  width: 600px;
+  width: 480px;
   height: calc(100vh - 4rem);
   border-right: 1px solid #cccccc;
   /* background-image: linear-gradient(to left top, #0456ec, #0073f6, #008bf7, #00a0f3, #0fb3ec); */
@@ -215,7 +215,7 @@
 }
 
 .wrapperDetailsJob {
-  width: 100%;
+  width: 900%;
   position: absolute;
   left: 0;
   /* outline: 2px solid red; */
@@ -230,6 +230,10 @@
   border-radius: 0 6px 0 0;
   background-color: #f6f8fb;
   padding: 1rem;
+}
+
+.jobMiniCard{
+  background-color: green;
 }
 
 .notJobs {
@@ -283,3 +287,32 @@
 
 .card .cardHeader h3 { width: 450px; }
 
+.editAction, .deleteAction { color: #363636;  transition: color .5s ease;}
+
+.editAction:hover {
+  color: #0000ff;
+}
+.deleteAction:hover {
+  color: #ff0000;
+}
+
+.actions {
+  color: #000;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 1rem;
+  right: .5rem;
+}
+.actions button {
+  margin-bottom: .5rem;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  width: 30px;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+}

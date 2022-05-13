@@ -4,10 +4,11 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import viewsets
+from django.db.models import Count
 
 from apps.vacantes.pagination import CustomPagination
-from apps.vacantes.models import Vacant
-from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,VacantListSerializer,UpdateVacantSerializer
+from apps.vacantes.models import Vacant,Application
+from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,VacantListSerializer,UpdateVacantSerializer,VacantInfoListSerializer
 
 class VacantViewSet(viewsets.GenericViewSet):
 	model = Vacant
@@ -63,7 +64,7 @@ class VacantViewSet(viewsets.GenericViewSet):
 			vacant_destroy = self.model.objects.filter(t200_id_vacant=pk).delete()
 			return Response({
 				'message': 'Vacante eliminada correctamente'
-			})
+			}, status=status.HTTP_200_OK)
 		return Response({
 			'message': 'No existe la vacante que desea eliminar'
 		}, status=status.HTTP_404_NOT_FOUND)
@@ -151,3 +152,37 @@ class AdminVacantViewSet(viewsets.GenericViewSet):
 		Vacant = self.get_object(pk)
 		vacant_serializer = self.list_serializer_class(Vacant,many=True)
 		return Response(vacant_serializer.data)	
+
+class VacantInfoViewSet(viewsets.GenericViewSet):
+	model = Application
+	list_serializer_class = VacantInfoListSerializer
+	queryset = None
+
+	def get_object(self, pk):	
+		self.queryset = self.model.objects\
+				.filter(t200_id_vacant = pk)\
+				.all().values('c205_id_application_state').annotate(total=Count('c205_id_application_state'))
+		return self.queryset
+	
+	def get_queryset(self):
+		if self.queryset is None:
+			self.queryset = self.model.objects\
+				.filter()\
+				.all().values('c205_id_application_state').annotate(total=Count('c205_id_application_state'))
+		return self.queryset
+
+	def list(self, request):
+		vacants = self.get_queryset()
+		print(vacants)
+		page = self.paginate_queryset(vacants)
+		if page is not None:
+			vacants_serializer = self.list_serializer_class(page, many=True)
+			return Response(vacants_serializer.data)
+		vacants_serializer = self.list_serializer_class(vacants, many=True)
+		return Response(vacants_serializer.data)
+
+	def retrieve(self, request, pk):
+		Vacant = self.get_object(pk)
+		print(Vacant)
+		vacant_serializer = self.list_serializer_class(Vacant,many=True)
+		return Response(vacant_serializer.data)			
