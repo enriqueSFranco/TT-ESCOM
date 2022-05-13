@@ -7,7 +7,8 @@ import {
   API_SOCIAL_NETWORK,
   API_PHOTO_STUDENT,
   API_PROJECT_STUDENT,
-  API_CATALOGUE_PLATAFORM
+  API_CATALOGUE_PLATAFORM,
+  API_ACADEMIC_HISTORIAL
 } from "../settings";
 
 /**
@@ -27,7 +28,6 @@ export const getStudent = async (id) => {
     .get(`${API_STUDENT}${id}/`, config)
     .then((response) => {
       const { data } = response;
-      console.log(data);
       return data;
     })
     .catch((error) => {
@@ -64,6 +64,8 @@ export const getLinks = () => {
     })
     .catch(error => error);
 };
+
+
 
 
 /**
@@ -168,15 +170,30 @@ export const getProjects = (id) => {
 };
 
 /**
- * @param {Number} id identificador de un usuario
+ * @param {Number} id identificador de un proyecto
+ * @returns {Promise}
+ **/
+export const deleteProject = (id) => {
+  return axios.delete(`${API_PROJECT_STUDENT}${id}/`)
+    .then(response => response)
+    .catch(error => error);
+}
+
+/**
  * @param {Object} payload objeto con los campos a enviar
  **/
-export const addProject = (id, payload = {}) => {
-  return axios.post(`${API_PROJECT_STUDENT}${id}/`, payload)
+export const addProject = (payload = {}) => {
+  return axios.post(`${API_PROJECT_STUDENT}`, payload)
     .then(response => {
       return response;
     })
     .catch(error => {
       return error;
     })
+};
+
+export const postAcademicHistorial = (payload = {}) => {
+  return axios.post(API_ACADEMIC_HISTORIAL)
+    .then(response => response)
+    .catch(error => error);
 };

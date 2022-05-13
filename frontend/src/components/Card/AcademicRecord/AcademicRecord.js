@@ -8,6 +8,7 @@ import styles from "./AcademicRecord.module.css";
 
 const AcademicRecord = () => {
   const [isOpenModalAcademicRecord, openModalAcademicRecord, closeModalAcademicRecord] = useModal();
+
   return (
     <>
       <article className={styles.wrapper}>

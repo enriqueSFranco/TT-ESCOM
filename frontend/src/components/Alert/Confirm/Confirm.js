@@ -9,12 +9,13 @@ import styles from './Confirm.module.css';
 const Confirm = ({ applyJob, isApplyJob, job }) => {
 
   console.log(isApplyJob);
-  //To do: corregir casos del mensaje
+  //TODO: corregir casos del mensaje
   let message = '';
   if (isApplyJob.message==="Aplicación registrada correctamente.")
     message = "Mucho exito!!!";
   else if (isApplyJob.message === "Ya hay una postulación activa")
     message = "Ya te has postulado a esta vacante";
+  
   return (
     <div className={styles.wrapper}>
     {

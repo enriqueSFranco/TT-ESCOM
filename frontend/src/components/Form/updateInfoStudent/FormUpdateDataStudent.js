@@ -5,10 +5,6 @@ import { Toaster } from "react-hot-toast";
 import { updateStudent, getLinks } from "services/students/index";
 import { updateStudentInitialForm } from "../schemes";
 import TextField from "@mui/material/TextField";
-import FormControl from "@mui/material/FormControl";
-import MenuItem from "@mui/material/MenuItem";
-import InputLabel from "@mui/material/InputLabel";
-import Select from "@mui/material/Select";
 import Label from "../../Element/Label/Label";
 import Switch from "../../Element/Switch/Switch";
 import * as BiIcon from "react-icons/bi";
@@ -31,6 +27,7 @@ const validateForm = (form) => {
 
 const FormUpdateDataStudent = ({ student }) => {
   const [links, setLinks] = useState(null);
+  const [socialNetwork, setSocialNetwork] = useState(null);
   const { token } = useContext(AuthContext);
   const { form, handleChange, handleChecked } = useForm(
     updateStudentInitialForm,
@@ -56,6 +53,13 @@ const FormUpdateDataStudent = ({ student }) => {
   //TODO: redireccion despues de haber actualizado los datos del alumno.
   function handleSubmit(e) {
     e.preventDefault();
+    // const updatData = async () => {
+    //   const [] = await Promise.all([
+    //     updateStudent(id, studentCopy),
+    //     // actualizar links
+    //   ]);
+    // };
+    // updatData();
     updateStudent(id, studentCopy)
       .then((response) => {
         console.log(response);
@@ -63,9 +67,11 @@ const FormUpdateDataStudent = ({ student }) => {
       .catch((error) => {
         console.error(error);
       });
-  }
+  };
 
-  console.log(links);
+  const handleClickAddLink = () => {
+
+  };
 
   return (
     <>
@@ -163,33 +169,24 @@ const FormUpdateDataStudent = ({ student }) => {
             <div className={styles.inputGroupFlex_1_3}>
               <h3 className={styles.titleH3}>Cuentas con alguna red social?</h3>
               <div className={styles.flexInput}>
-                <FormControl
-                  sx={{ m: 1, minWidth: 120 }}
-                  size="small"
-                  margin="dense"
-                >
-                  <InputLabel id="c115_id_plataform">Red Social</InputLabel>
-                  <Select
-                    labelId="c115_id_plataform"
-                    id="c115_id_plataform"
-                    value={form.c115_id_plataform}
-                    label="Red Social"
-                    onChange={handleChange}
+                <select 
+                  name="c115_id_plataform" 
+                  id="c115_id_plataform"
+                  value={form?.c115_id_plataform}
+                  onChange={handleChange}
+                  className={styles.select}
                   >
-                    <MenuItem value="">
-                      <em>Red Social</em>
-                    </MenuItem>
-                    {links &&
-                      links?.map((link) => (
-                        <MenuItem
-                          key={link?.c115_description}
-                          value={link?.c115_description}
-                        >
-                          {link?.c115_description}
-                        </MenuItem>
-                      ))}
-                  </Select>
-                </FormControl>
+                    <option value="" disabled>Red Social</option>
+                  {links &&
+                    links?.map((link) => (
+                      <option
+                        key={link?.c115_description}
+                        value={link?.c115_description}
+                      >
+                        {link?.c115_description}
+                      </option>
+                    ))}
+                </select>
                 <TextField
                   sx={{ width: "300px" }}
                   size="small"
@@ -200,7 +197,7 @@ const FormUpdateDataStudent = ({ student }) => {
                   value={form?.t113_link}
                   onChange={handleChange}
                 />
-                <button type="button" className={styles.btnAdd}>
+                <button type="button" className={styles.btnAdd} onClick={handleClickAddLink}>
                   +
                 </button>
               </div>

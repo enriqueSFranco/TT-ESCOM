@@ -1,26 +1,49 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useFetch } from 'hooks/useFetch';
 import { useForm } from 'hooks/useForm';
 import { API_ACADEMIC_UNITS } from 'services/settings';
+import { postAcademicHistorial } from "services/students/index";
+import AuthContext from "context/AuthContext";
 import { TextField, Autocomplete } from '@mui/material';
 import { MdSchool } from "react-icons/md";
 import styles from './FormAddAcademicRecord.module.css';
 
 
-const initForm = {
-  t104_academic_unit: ""
+let initialForm = {
+  t104_academic_unit: "",
+  t104_carreer: "",
+  t104_start_date: "",
+  t104_end_date: "",
 }
 
 const FormAddAcademicRecord = () => {
+  const { token } = useContext(AuthContext);
   const { data } = useFetch(API_ACADEMIC_UNITS);
-  const { form, handleChange } = useForm(initForm);
+  const { form, handleChange } = useForm(initialForm);
 
   if (!data) return null;
+
+  function onSubmitAcademicHistorial(e) {
+    e.preventDefault();
+    let copyForm = {
+      ...form,
+      t100_id_student: token?.user?.user_id
+    };
+    postAcademicHistorial(copyForm)
+      .then(response => {
+        const { data } = response;
+        console.log(data);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  };
+
 
   return (
     <div className={styles.wrapperForm}>
       <h1 className={styles.title}>Agregar nueva carrera <MdSchool /></h1>
-      <form className={styles.form}>
+      <form onSubmit={onSubmitAcademicHistorial} className={styles.form}>
         <div className={styles.inputGroup_1_2}>
           <TextField size='small' label="Carrera" />
           <span className={styles.separator}>En</span>

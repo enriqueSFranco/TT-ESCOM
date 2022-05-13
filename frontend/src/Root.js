@@ -10,17 +10,15 @@ import PageCreateAccountStudent from "pages/login/PageCreateAccountStudent";
 import PageLoginCompany from "pages/login/PageLoginCompany";
 import PageRegisterCompany from "pages/login/PageRegisterCompany";
 import PageProfileStudent from "pages/student/PageProfileStudent";
-import PageAddJob from "pages/business/PageAddJob";
 import PageLoginStudentUpdate from "pages/login/PageLoginStudentUpdate";
 import PageDashBoard from "pages/business/PageDashBoard";
 import PageHistory from "pages/business/PageHistory";
-import PageMyJobs from "pages/business/PageMyJobs";
 import PageSuccesCompany from "pages/login/PageSuccesCompany";
 import PageValidateRecruiter from "pages/admin/PageValidateRecruiter";
 import PageApplications from "pages/business/PageApplications";
 import PagePostRelease from "pages/business/PagePostRelease";
 import PageApplicationsStudent from "pages/student/PageApplicationsStudent";
-import Experience from "components/Card/Experience/Experience";
+import ExperienceList from "components/Card/Experience/ExperienceList";
 import Certifications from "components/Card/Certifications/Certifications";
 import Accordion from "components/Accordion/Accordion";
 import AcademicRecord from "components/Card/AcademicRecord/AcademicRecord";
@@ -80,7 +78,7 @@ const Root = () => {
       <Route element={<PrivateRoute role={ROLE.STUDENT} />}>
         <Route path="/perfil" element={<PageProfileStudent />}>
           <Route path="historial-academico" element={<AcademicRecord />} />
-          <Route path="experiencia" element={<Experience />} />
+          <Route path="experiencia" element={<ExperienceList />} />
           <Route path="certificaciones" element={<Certifications />} />
         </Route>
         <Route path="mis-postulaciones" element={<PageApplicationsStudent />} />
