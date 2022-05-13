@@ -4,6 +4,7 @@ import styles from "./Modal.module.css";
 
 
 const Modal = ({ children, isOpen, closeModal }) => {
+
   return ReactDOM.createPortal(
       <article
         className={`${styles.modal} ${isOpen && styles.isOpen}`}

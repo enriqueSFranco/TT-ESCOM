@@ -11,7 +11,7 @@ const ApplicationJob = ({nameJob, salary, modality, nameBusisness, typeBusiness,
       <h1 className={styles.nameJob}>{nameJob}</h1>
       <div className={styles.tags}>
         <Chip label={numberFormat(salary).slice(4,)} size="small" icon={<GiMoneyStack />} />
-        <Chip label={modality ? "Remoto" : "Presencial"} size="small" icon={modality ? <MdHomeWork /> : <MdBusinessCenter />} />
+        <Chip label={modality ? "Presencial" : "Remoto"} size="small" icon={modality ? <MdBusinessCenter /> : <MdHomeWork />} />
         <Chip label="tipo de empresa" size="small" />
       </div>
       <p className={styles.paragraph}>Empresa: {nameBusisness}</p>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { getAllReleases } from "../../services/release/getAllReleases";
-import Release from "../../components/Card/Release/Release";
+import { getAllReleases } from "services/release/getAllReleases";
+import Release from "components/Card/Release/Release";
 import styles from "./PageReleases.module.css";
 
 const PageReleases = () => {

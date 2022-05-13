@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { createBusiness } from "services/businnes/index";
 import { createAccountStudent } from "services/students/index";
 import { postJob } from "services/jobs/index";
-import { duration } from "@mui/material";
 
 export const useForm = (initialForm, validateForm) => {
   const navigate = useNavigate();
@@ -74,7 +73,7 @@ export const useForm = (initialForm, validateForm) => {
     }
   };
 
-  const handlePostJob = (e) => {
+  const onSubmitPostJob = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
 
@@ -99,6 +98,6 @@ export const useForm = (initialForm, validateForm) => {
     handleSubmitStudent,
     handleSubmitCompany,
     handleValidate,
-    handlePostJob,
+    onSubmitPostJob,
   };
 };

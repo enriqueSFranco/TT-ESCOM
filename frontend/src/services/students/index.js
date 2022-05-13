@@ -6,8 +6,15 @@ import {
   API_STUDENT,
   API_SOCIAL_NETWORK,
   API_PHOTO_STUDENT,
+  API_PROJECT_STUDENT,
+  API_CATALOGUE_PLATAFORM,
+  API_ACADEMIC_HISTORIAL
 } from "../settings";
 
+/**
+ * @param {Number} id identificador para obtner un alumno en especifico
+ * @returns {Promise}
+ **/
 export const getStudent = async (id) => {
 
   const config = {
@@ -18,10 +25,9 @@ export const getStudent = async (id) => {
     },
   };
   return axios
-    .get(`${API_STUDENT}/${id}/`, config)
+    .get(`${API_STUDENT}${id}/`, config)
     .then((response) => {
       const { data } = response;
-      console.log(data);
       return data;
     })
     .catch((error) => {
@@ -32,7 +38,10 @@ export const getStudent = async (id) => {
     );
 };
 
-
+/**
+ * @param {Number} id identificador de un alumno para obtener sus skills
+ * @returns {Promise}
+ **/
 export const getSocialNetwork = async (id) => {
   return axios
     .get(`${API_SOCIAL_NETWORK}/${id}/`)
@@ -46,6 +55,18 @@ export const getSocialNetwork = async (id) => {
       }
     });
 };
+
+export const getLinks = () => {
+  return axios.get(API_CATALOGUE_PLATAFORM)
+    .then(response => {
+      const { data } = response;
+      return data;
+    })
+    .catch(error => error);
+};
+
+
+
 
 /**
  * @param {Object} payload objeto que contiene la informacion que se enviara para crear la cuenta de un alumno
@@ -98,7 +119,7 @@ export const createAccountStudent = async (payload) => {
   }
 };
 
-
+// TODO:terminar la funcion para subir una imagen
 export const uploadPhotoStudent = (id, img) => {
   const formData = new FormData();
 
@@ -133,10 +154,56 @@ export const applyJob = (payload) => {
     })
 };
 
-/*
-    "t200_id_vacant": null,
-    "t100_id_student": null,
-    "t201_cv": null,
-    "c205_id_application_state": null,
-    "t201_date_application": null
-*/
+/**
+ * @param {Number} id identificador de un alumno
+ * @returns {Promise}
+ **/
+export const getProjects = (id) => {
+  return axios.get(`${API_PROJECT_STUDENT}${id}/`)
+    .then(response => {
+      const { data } = response;
+      return data;
+    })
+    .catch(error => {
+      return error;
+    })
+};
+
+/**
+ * @param {Number} id identificador de un proyecto
+ * @returns {Promise}
+ **/
+export const deleteProject = (id) => {
+  return axios.delete(`${API_PROJECT_STUDENT}${id}/`)
+    .then(response => response)
+    .catch(error => error);
+}
+
+/**
+ * @param {Object} payload objeto con los campos a enviar
+ **/
+export const addProject = (payload = {}) => {
+  return axios.post(`${API_PROJECT_STUDENT}`, payload)
+    .then(response => {
+      return response;
+    })
+    .catch(error => {
+      return error;
+    })
+};
+
+/**
+ * @param {Number} id identificador de un usuario para obtener su historial academico
+ * @returns {Promise}
+ **/
+export const getAcademicHistorial = (id) => {
+  return axios.get(API_ACADEMIC_HISTORIAL)
+    .then(response => response)
+    .catch(error => error);
+}
+
+export const postAcademicHistorial = (payload = {}) => {
+  return axios.post(API_ACADEMIC_HISTORIAL, payload)
+    .then(response => response)
+    .catch(error => error);
+};

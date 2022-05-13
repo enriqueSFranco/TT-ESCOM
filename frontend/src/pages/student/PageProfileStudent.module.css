@@ -27,7 +27,8 @@
 
 .wrapperProfile {
   position: relative;
-  top: 6rem;
-  width: 80%;
+  top: 4rem;
+  width: 100%;
+  height: calc(100vh - 4rem);
   /* background-color: red; */
 }

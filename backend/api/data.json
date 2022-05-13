@@ -4,21 +4,21 @@
         "model" : "students.Student",
         "pk" : 1,
         "fields":{
-            "t100_boleta": null,
-            "t100_name": "",
-            "t100_last_name": null,
-            "t100_username": null,
+            "t100_boleta": "2014080325",
+            "t100_name": "Joel Antonio",
+            "t100_last_name": "Cruz Heras",
+            "t100_username": "JoelHeras",
             "t100_email": "joel_kratos@hotmail.com",
-            "t100_gender": "F",
-            "t100_date_of_birth": null,
-            "t100_personal_objectives": null,
-            "t100_phonenumber": null,
-            "t100_residence": null,
-            "t100_modalities": null,
-            "t100_speciality": null,
-            "t100_target_salary": null,
+            "t100_gender": "M",
+            "t100_date_of_birth": "1998-08-28",
+            "t100_personal_objectives": "Deseo aumentar mis capacidades como ingeniero, ya que soy un recién egresado y quiero entrar al campo laboral. Mi expectativa de empleo es ser un miembro funcional de un equipo de trabajo de tecnolgias y me permita implementar todos mis conocimientos.",
+            "t100_phonenumber": "5540182513",
+            "t100_residence": "Tlalnepantla de Baz, Estado de México",
+            "t100_modalities": "Hibrido",
+            "t100_speciality": "Sistemas computacionales",
+            "t100_target_salary": "16000",
             "t100_travel": false,
-            "is_active": false,
+            "is_active": true,
             "password": "pbkdf2_sha256$320000$o9eYPJhBKIa2w2vQsDFlld$5tvevbcIik/rMeAVNAKt9oI9mV+aWS3vHoQ6ytueUEU="
         }
     },
@@ -31,8 +31,8 @@
             "last_login": null,
             "is_superuser": false,
             "username": "joel_kratos@hotmail.com",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Joel Antonio",
+            "last_name": "Cruz Heras",
             "email": "joel_kratos@hotmail.com",
             "is_staff": false,
             "date_joined": "2022-04-25T06:25:37.005568Z",
@@ -60,7 +60,7 @@
         }
 
     },
-
+ 
     {
         "model" : "users.User",
         "pk" : 2,
@@ -186,1112 +186,92 @@
 	    "fields": {                        
             "c109_description" : "Dictamen"            
         }
-    },
-    
+    },    
+
+
+
     {
-        "model":"students.Skills",        
+        "model":"vacantes.VacantStatus",        
         "pk":1,
         "fields":{
-            "c116_description": "No definido",
-            "c116_type": "U"
+            "c204_description": "Abierta"
         }
     },
+
     {
-        "model":"students.Skills",        
+        "model":"vacantes.VacantStatus",        
         "pk":2,
         "fields":{
-            "c116_description": "JavaScript",
-            "c116_type":"H"
+            "c204_description": "Ocupada"
         }
     },
+
     {
-        "model":"students.Skills",        
+        "model":"vacantes.VacantStatus",        
         "pk":3,
         "fields":{
-            "c116_description": "Python",
-            "c116_type":"H"
+            "c204_description": "Cerrada"
         }
     },
+
     {
-        "model":"students.Skills",        
+        "model":"vacantes.VacantStatus",        
         "pk":4,
         "fields":{
-            "c116_description": "Java",
-            "c116_type":"H"
+            "c204_description": "Cerrada por reporte"
         }
     },
+
     {
-        "model":"students.Skills",        
+        "model":"vacantes.VacantStatus",        
         "pk":5,
         "fields":{
-            "c116_description": "TypeScript",
-            "c116_type":"H"
+            "c204_description": "Reportada"
         }
     },
+
+
+
     {
-        "model":"students.Skills",        
-        "pk":6,
+        "model":"vacantes.ApplicationState",        
+        "pk":1,
         "fields":{
-            "c116_description": "C#",
-            "c116_type":"H"
+            "c205_description": "Enviada"
         }
     },
+
     {
-        "model":"students.Skills",        
-        "pk":7,
+        "model":"vacantes.ApplicationState",        
+        "pk":2,
         "fields":{
-            "c116_description": "PHP",
-            "c116_type":"H"
+            "c205_description": "En seguimiento"
         }
     },
+
     {
-        "model":"students.Skills",        
-        "pk":8,
+        "model":"vacantes.ApplicationState",        
+        "pk":3,
         "fields":{
-            "c116_description": "C++",
-            "c116_type":"H"
+            "c205_description": "Descartada"
         }
     },
+
     {
-        "model":"students.Skills",        
-        "pk":9,
+        "model":"vacantes.ApplicationState",        
+        "pk":4,
         "fields":{
-            "c116_description": "C",
-            "c116_type":"H"
+            "c205_description": "Contratado"
         }
     },
+
     {
-        "model":"students.Skills",        
-        "pk":10,
+        "model":"vacantes.ApplicationState",        
+        "pk":5,
         "fields":{
-            "c116_description": "Shell",
-            "c116_type":"H"
+            "c205_description": "No contratado"
         }
     },
-    {
-        "model":"students.Skills",        
-        "pk":11,
-        "fields":{
-            "c116_description": "Ruby",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":12,
-        "fields":{
-            "c116_description": "Go (Goland)",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":13,
-        "fields":{
-            "c116_description": "Swift",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":14,
-        "fields":{
-            "c116_description": "R",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":15,
-        "fields":{
-            "c116_description": "Visual Basic",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":16,
-        "fields":{
-            "c116_description": "Kotlin",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":17,
-        "fields":{
-            "c116_description": "MATLAB",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":18,
-        "fields":{
-            "c116_description": "Groovy",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":19,
-        "fields":{
-            "c116_description": "SQL",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":20,
-        "fields":{
-            "c116_description": "HTML",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":21,
-        "fields":{
-            "c116_description": "CSS",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":22,
-        "fields":{
-            "c116_description": "Microsoft Access",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":23,
-        "fields":{
-            "c116_description": "Microsoft SQL Server",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":24,
-        "fields":{
-            "c116_description": "MySQL",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":25,
-        "fields":{
-            "c116_description": "Oracle Database",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":26,
-        "fields":{
-            "c116_description": "OrientDB",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":27,
-        "fields":{
-            "c116_description": "CouchDB",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":28,
-        "fields":{
-            "c116_description": "Db2 de IBM",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":29,
-        "fields":{
-            "c116_description": "IMS de IBM",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":30,
-        "fields":{
-            "c116_description": "IBM Informix",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":31,
-        "fields":{
-            "c116_description": "MariaDB",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":32,
-        "fields":{
-            "c116_description": "Sybase ASE",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":33,
-        "fields":{
-            "c116_description": "MongoDB",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":34,
-        "fields":{
-            "c116_description": "PostgreSQL",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":35,
-        "fields":{
-            "c116_description": "Firebird",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":36,
-        "fields":{
-            "c116_description": "InterSystems Caché",
-            "c116_type":""
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":37,
-        "fields":{
-            "c116_description": "InterSystems IRIS",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":38,
-        "fields":{
-            "c116_description": "React",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":39,
-        "fields":{
-            "c116_description": "Angular",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":40,
-        "fields":{
-            "c116_description": "Vuejs",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":41,
-        "fields":{
-            "c116_description": "jQuery",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":42,
-        "fields":{
-            "c116_description": "Emberjs",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":43,
-        "fields":{
-            "c116_description": "Django",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":44,
-        "fields":{
-            "c116_description": "Laravel",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":45,
-        "fields":{
-            "c116_description": "Cake PHP",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":46,
-        "fields":{
-            "c116_description": "Express JS",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":47,
-        "fields":{
-            "c116_description": "Ember",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":48,
-        "fields":{
-            "c116_description": "Qooxdoo",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":49,
-        "fields":{
-            "c116_description": "Dojo Toolkit",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":50,
-        "fields":{
-            "c116_description": "iOS/Swift",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":51,
-        "fields":{
-            "c116_description": "Symfony",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":52,
-        "fields":{
-            "c116_description": "Flask",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":53,
-        "fields":{
-            "c116_description": "Ruby on Rails",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":54,
-        "fields":{
-            "c116_description": "Spring",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":55,
-        "fields":{
-            "c116_description": "Express",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":56,
-        "fields":{
-            "c116_description": "ASP.NET Core",
-            "c116_type":"H"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":57,
-        "fields":{
-            "c116_description": "Listening",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":58,
-        "fields":{
-            "c116_description": "Negotiation",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":59,
-        "fields":{
-            "c116_description": "Nonverbal communication",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":60,
-        "fields":{
-            "c116_description": "Persuasion",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":61,
-        "fields":{
-            "c116_description": "Presentation",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":62,
-        "fields":{
-            "c116_description": "Public speaking",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":63,
-        "fields":{
-            "c116_description": "Reading body language",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":64,
-        "fields":{
-            "c116_description": "Storytelling",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":65,
-        "fields":{
-            "c116_description": "Verbal communication",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":66,
-        "fields":{
-            "c116_description": "Visual communication",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":67,
-        "fields":{
-            "c116_description": "Writing reports and proposals",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":68,
-        "fields":{
-            "c116_description": "Writing skills",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":69,
-        "fields":{
-            "c116_description": "Adaptability",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":70,
-        "fields":{
-            "c116_description": "Artistic aptitude",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":71,
-        "fields":{
-            "c116_description": "Creativity",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":72,
-        "fields":{
-            "c116_description": "Critical observation",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":73,
-        "fields":{
-            "c116_description": "Critical thinking",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":74,
-        "fields":{
-            "c116_description": "Design aptitude",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":75,
-        "fields":{
-            "c116_description": "Desire to learn",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":76,
-        "fields":{
-            "c116_description": "Flexibility",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":77,
-        "fields":{
-            "c116_description": "Innovation",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":78,
-        "fields":{
-            "c116_description": "Logical thinking",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":79,
-        "fields":{
-            "c116_description": "Problem solving",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":80,
-        "fields":{
-            "c116_description": "Research",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":81,
-        "fields":{
-            "c116_description": "Resourcefulness",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":82,
-        "fields":{
-            "c116_description": "Thinking outside the box",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":83,
-        "fields":{
-            "c116_description": "Tolerance of change and uncertainty",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":84,
-        "fields":{
-            "c116_description": "Troubleshooting",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":85,
-        "fields":{
-            "c116_description": "Value education",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":86,
-        "fields":{
-            "c116_description": "Willingness to learn",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":87,
-        "fields":{
-            "c116_description": "Conflict management",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":88,
-        "fields":{
-            "c116_description": "Conflict resolution",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":89,
-        "fields":{
-            "c116_description": "Deal making",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":90,
-        "fields":{
-            "c116_description": "Decision making",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":91,
-        "fields":{
-            "c116_description": "Delegation",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":92,
-        "fields":{
-            "c116_description": "Dispute resolution",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":93,
-        "fields":{
-            "c116_description": "Facilitation",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":94,
-        "fields":{
-            "c116_description": "Giving clear feedback",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":95,
-        "fields":{
-            "c116_description": "Inspiring people",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":96,
-        "fields":{
-            "c116_description": "Leadership",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":97,
-        "fields":{
-            "c116_description": "Management",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":98,
-        "fields":{
-            "c116_description": "Managing difficult conversations",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":99,
-        "fields":{
-            "c116_description": "Managing remote/virtual teams",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":100,
-        "fields":{
-            "c116_description": "Meeting management",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":101,
-        "fields":{
-            "c116_description": "Mentoring",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":102,
-        "fields":{
-            "c116_description": "Motivating",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":103,
-        "fields":{
-            "c116_description": "Project management",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":104,
-        "fields":{
-            "c116_description": "Resolving issues",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":105,
-        "fields":{
-            "c116_description": "Successful coaching",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":106,
-        "fields":{
-            "c116_description": "Supervising",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":107,
-        "fields":{
-            "c116_description": "Talent management",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":108,
-        "fields":{
-            "c116_description": "Confidence",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":109,
-        "fields":{
-            "c116_description": "Cooperation",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":110,
-        "fields":{
-            "c116_description": "Courtesy",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":111,
-        "fields":{
-            "c116_description": "Energy",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":112,
-        "fields":{
-            "c116_description": "Enthusiasm",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":113,
-        "fields":{
-            "c116_description": "Friendliness",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":114,
-        "fields":{
-            "c116_description": "Honesty",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":115,
-        "fields":{
-            "c116_description": "Humorous",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":116,
-        "fields":{
-            "c116_description": "Patience",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":117,
-        "fields":{
-            "c116_description": "Respectability",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":118,
-        "fields":{
-            "c116_description": "Respectfulness",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":119,
-        "fields":{
-            "c116_description": "Accepting feedback",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":120,
-        "fields":{
-            "c116_description": "Collaboration",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":121,
-        "fields":{
-            "c116_description": "Customer service",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":122,
-        "fields":{
-            "c116_description": "Dealing with difficult situations",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":123,
-        "fields":{
-            "c116_description": "Dealing with office politics",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":124,
-        "fields":{
-            "c116_description": "Disability awareness",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":125,
-        "fields":{
-            "c116_description": "Diversity awareness",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":126,
-        "fields":{
-            "c116_description": "Emotional intelligence",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":127,
-        "fields":{
-            "c116_description": "Empathy",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":128,
-        "fields":{
-            "c116_description": "Establishing interpersonal relationships",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":129,
-        "fields":{
-            "c116_description": "Dealing with difficult personalities",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":130,
-        "fields":{
-            "c116_description": "Intercultural competence",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":131,
-        "fields":{
-            "c116_description": "Interpersonal skills",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":132,
-        "fields":{
-            "c116_description": "Influence",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":133,
-        "fields":{
-            "c116_description": "Networking",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":134,
-        "fields":{
-            "c116_description": "Self-awareness",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":135,
-        "fields":{
-            "c116_description": "Selling skills",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":136,
-        "fields":{
-            "c116_description": "Social skills",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":137,
-        "fields":{
-            "c116_description": "Team building",
-            "c116_type":"s"
-        }
-    },
-    {
-        "model":"students.Skills",        
-        "pk":138,
-        "fields":{
-            "c116_description": "Teamwork",
-            "c116_type":"s"
-        }
-    },
+
 
     
     {
@@ -1481,116 +461,102 @@
         }
     },
 
-
-    {
-        "model":"vacantes.ApplicationState",        
-        "pk":1,
-        "fields":{
-            "c205_description": "Sin información"
-        }
-    },
-    {
-        "model":"vacantes.ApplicationState",        
-        "pk":2,
-        "fields":{
-            "c205_description": "En revisión"
-        }
-    },
-    {
-        "model":"vacantes.ApplicationState",        
-        "pk":3,
-        "fields":{
-            "c205_description": "Aceptado"
-        }
-    },
-    {
-        "model":"vacantes.ApplicationState",        
-        "pk":4,
-        "fields":{
-            "c205_description": "Información incompleta"
-        }
-    },
-    {
-        "model":"vacantes.ApplicationState",        
-        "pk":5,
-        "fields":{
-            "c205_description": "Rechazada CV corrompido"
-        }
-    },
-    {
-        "model":"vacantes.ApplicationState",        
-        "pk":6,
-        "fields":{
-            "c205_description": "Rechazada"
-        }
-    },
-
     
     {
         "model":"vacantes.ReportState",        
         "pk":1,
         "fields":{
-            "c220_description": "Sin atender"
+            "c209_description": "Sin atender"
         }
     },
     {
         "model":"vacantes.ReportState",        
         "pk":2,
         "fields":{
-            "c220_description": "Se requiere mas información"
+            "c209_description": "Se requiere mas información"
         }
     },
     {
         "model":"vacantes.ReportState",        
         "pk":3,
         "fields":{
-            "c220_description": "En revisión"
+            "c209_description": "En revisión"
         }
     },
     {
         "model":"vacantes.ReportState",        
         "pk":4,
         "fields":{
-            "c220_description": "Reporte falso"
+            "c209_description": "Reporte falso"
         }
     },
     {
         "model":"vacantes.ReportState",        
         "pk":5,
         "fields":{
-            "c220_description": "Reporte invalido"
+            "c209_description": "Reporte invalido"
         }
     },
     {
         "model":"vacantes.ReportState",        
         "pk":6,
         "fields":{
-            "c220_description": "Atendido"
+            "c209_description": "Atendido"
         }
     },
 
 
+    {
+        "model":"vacantes.Modality",        
+        "pk":1,
+        "fields":{
+            "c214_description": "Presencial"
+        }
+    },
+
+    {
+        "model":"vacantes.Modality",        
+        "pk":2,
+        "fields":{
+            "c214_description": "Remoto"
+        }
+    },
+
+    {
+        "model":"vacantes.Modality",        
+        "pk":3,
+        "fields":{
+            "c214_description": "Híbrido"
+        }
+    },
+
+
+
+    
     {
         "model":"vacantes.CandidateProfile",        
         "pk":1,
         "fields":{
-            "c206_description": "No definido"
+            "c206_description": "Cursando"
         }
     },
+
     {
         "model":"vacantes.CandidateProfile",        
         "pk":2,
         "fields":{
-            "c206_description": "Estudiante"
+            "c206_description": "Trunco"
         }
     },
+
     {
         "model":"vacantes.CandidateProfile",        
         "pk":3,
         "fields":{
-            "c206_description": "Becario"
+            "c206_description": "En proceso de titulación"
         }
     },
+
     {
         "model":"vacantes.CandidateProfile",        
         "pk":4,
@@ -1598,6 +564,7 @@
             "c206_description": "Pasante"
         }
     },
+
     {
         "model":"vacantes.CandidateProfile",        
         "pk":5,
@@ -1605,6 +572,8 @@
             "c206_description": "Titulado"
         }
     },
+
+
 
 
     {
@@ -1843,8 +812,9 @@
         "fields":{
             "t400_name": "Francisco",
             "t400_last_names": "Hernandez",
-            "t400_password": "paco123",
-            "t400_position": "Jefe de Area"
+            "t400_email":"ex_ap_escom@ipn.mx",
+            "t400_admin": "true",
+            "t400_position": "Jefe de departamento"
         }
     },
 
@@ -1876,8 +846,7 @@
         "fields":{
             "t200_id_vacant": 1,
             "t200_job": "Programador",
-            "t200_description": "Programación de backend para aplicaciones web",
-            "t200_requirements": "-Python\r\n-Rest",
+            "t200_description": "Programación de backend para aplicaciones web\n\n-Python\r\n-Rest",        
             "t200_benefits": "Paga quincenal \r\nIMSS",
             "t200_check_time": "09:00:00",
             "t200_closing_hour": "19:00:00",
@@ -1885,7 +854,7 @@
             "t200_min_salary": 10000,
             "t200_max_salary": 150000,
             "t200_gross_salary": false,
-            "t200_home_ofice": true,
+               
             "t200_publish_date": "2022-04-05",
             "t200_close_date": "2022-04-30",
             "t300_id_company": 1,
@@ -1893,7 +862,7 @@
             "c206_id_profile": 2,
             "c204_id_vacant_status": 2,
             "t301_id_recruiter": null,
-            "t400_id_admin": null,
+             
             "t200_state":"Ciudad de México"
         }
     },
@@ -2086,8 +1055,7 @@
         "pk":1,
         "fields":{
             "t200_job": "ATENCIÓN A CLIENTES BILINGÜE NIGHT SHIFT",
-            "t200_description": "CONCENTRIX MÉXICO busca talento para unirse a nuestro nuevo gran equipo\r\nQue buscamos?\r\nRepresentantes para dar servicio 100% para atención a clientes bilingüe by Voice.",
-            "t200_requirements": "Ingles avanzado o nativo (B2 or higher)\r\nBachillerato completo o trunco (al menos 50%)\r\nManejo de PC a nivel usuario\r\nExperiencia en Call Center (deseable)\r\nDisponibilidad para trabajar tiempo completo y fines de semana.\r\nEl site se encuentra en: Av. Insurgentes Sur 945, Cd. de los Deportes, Benito Juárez, 03710 Ciudad de México, CDMX. IMPORTANTE: VIVIR A NO MÁS DE HORA Y MEDIA DE DISTANCIA O TRASLADO DESDE TU CASA AL SITIO.",
+            "t200_description": "CONCENTRIX MÉXICO busca talento para unirse a nuestro nuevo gran equipo\r\nQue buscamos?\r\nRepresentantes para dar servicio 100% para atención a clientes bilingüe by Voice.\n\nIngles avanzado o nativo (B2 or higher)\r\nBachillerato completo o trunco (al menos 50%)\r\nManejo de PC a nivel usuario\r\nExperiencia en Call Center (deseable)\r\nDisponibilidad para trabajar tiempo completo y fines de semana.\r\nEl site se encuentra en: Av. Insurgentes Sur 945, Cd. de los Deportes, Benito Juárez, 03710 Ciudad de México, CDMX. IMPORTANTE: VIVIR A NO MÁS DE HORA Y MEDIA DE DISTANCIA O TRASLADO DESDE TU CASA AL SITIO.",
             "t200_benefits": "Contratación inmediata\r\n12,500 MXN mensuales\r\nOportunidades de crecimiento.\r\nNómina catorcenal en el banco de tu elección.\r\nPrestaciones de ley.\r\nBono en operaciones hasta $2 mil mensuales\r\nBono de graduación de 2mil pesos pago único\r\nBono de contratación de 4000 MXN\r\nVales 1065 MXN mensuales\r\nSeguro de vida\r\nSeguro gastos médicos menores\r\nCapacitación pagada 100%\r\nBono 8000 MXN por referido contratado\r\nAmbiente de trabajo amigable\r\nTransporte de la empresa\r\nTraining en sitio inicia lunes 28 de marzo 2022 de 12:00 pm a 09:00 pm lunes a viernes durante 2 semanas plus nesting\r\nOperaciones será en una ventana con horarios de servicio entre 11:00 pm y 08:00 am con disponibilidad lunes a domingo. Se descansan dos días entre semana.",
             "t200_check_time": "09:00:00",
             "t200_closing_hour": "18:00:00",
@@ -2095,7 +1063,7 @@
             "t200_min_salary": 12500,
             "t200_max_salary": 15000,
             "t200_gross_salary": false,
-            "t200_home_ofice": false,
+               
             "t200_publish_date": "2022-04-06",
             "t200_close_date": "2022-04-13",
             "t300_id_company": 1,          
@@ -2103,7 +1071,7 @@
             "c206_id_profile": 2,
             "c204_id_vacant_status":1,
             "t301_id_recruiter": 1,
-            "t400_id_admin": null,
+             
             "t200_state":"Ciudad de México"
         }
     },
@@ -2112,8 +1080,7 @@
         "pk":2,
         "fields":{
             "t200_job": "Auxiliar contable",
-            "t200_description": "Jarritos solicita Auxiliar Contable para planta Tultitlan que cuente con experiencia mínima de 2 años en Contabilidad en General, asientos contables, ingresos y egresos, elaboración de pólizas, conciliaciones, bancarias, analista Contable en cualquiera de los siguientes departamentos; Cuentas por Pagar, Cuentas por cobrar, Impuestos, conocimientos en conciliaciones, cierres, depuraciones, estados de cuenta, programación de pagos, cobros, estados financieros, contabilidad en general.",
-            "t200_requirements": "Edad 23 a 40 años\r\nEscolaridad de Lic. en Contabilidad pasante ó titulado preferentemente\r\nOfrecemos sueldo base + bono + vales de despensa + prestaciones de ley y superiores.\r\nLaborar de Lunes a Viernes de 09: 00 a 19:00 hrs. y sábados de 09: 00 a 14: 00\r\nManejo de Excel intermedio.",
+            "t200_description": "Jarritos solicita Auxiliar Contable para planta Tultitlan que cuente con experiencia mínima de 2 años en Contabilidad en General, asientos contables, ingresos y egresos, elaboración de pólizas, conciliaciones, bancarias, analista Contable en cualquiera de los siguientes departamentos; Cuentas por Pagar, Cuentas por cobrar, Impuestos, conocimientos en conciliaciones, cierres, depuraciones, estados de cuenta, programación de pagos, cobros, estados financieros, contabilidad en general.\n\nEdad 23 a 40 años\r\nEscolaridad de Lic. en Contabilidad pasante ó titulado preferentemente\r\nOfrecemos sueldo base + bono + vales de despensa + prestaciones de ley y superiores.\r\nLaborar de Lunes a Viernes de 09: 00 a 19:00 hrs. y sábados de 09: 00 a 14: 00\r\nManejo de Excel intermedio.",
             "t200_benefits": "Sueldo Competitivo\r\n- Pago Quincenal\r\n- Contratación directa por la empresa\r\n- Vales de despensa\r\n- Prestaciones desde el primer día de trabajo.\r\n- Sueldo 100% ante el IMSS\r\n- Oportunidad de Desarrollo\r\n- Incentivo mensual por productividad\r\n-Venta empleado el producto\r\n-Apoyo por defunción\r\n-Caja de ahorro",
             "t200_check_time": "09:00:00",
             "t200_closing_hour": "18:00:00",
@@ -2121,7 +1088,7 @@
             "t200_min_salary": 10000,
             "t200_max_salary": 15000,
             "t200_gross_salary": false,
-            "t200_home_ofice": false,
+               
             "t200_publish_date": "2022-04-06",
             "t200_close_date": "2022-04-13",
             "t300_id_company": 1,
@@ -2129,7 +1096,7 @@
             "c206_id_profile": 3,
             "c204_id_vacant_status": 2,
             "t301_id_recruiter": 1,
-            "t400_id_admin": null,
+             
             "t200_state":"Ciudad de México"
         }
     },
@@ -2138,8 +1105,7 @@
         "pk":4,
         "fields":{
             "t200_job": "Vendedor/a Nike Factory Cancún",
-            "t200_description": "¡En NIKE ganamos como equipo, ven y gana con nosotros!\r\nAtleta (Asesor de ventas)\r\nNike Factory Store Las Plazas Cancún\r\nSomos un equipo profesional que nos encanta seguir desarrollando habilidades interpersonales que se caracteriza por siempre trabajar en equipo, con proactividad y orientación al logro, además de ofrecer un servicio premium al cliente.",
-            "t200_requirements": "¿Mi perfil se ajusta a la vacante?:\r\n·      Pasión por el deporte\r\n·      Gusto por las ventas y el servicio al cliente\r\n·      Experiencia deseable más NO NECESARIA\r\n·      Orientación para trabajar en equipo y enfoque en resultados\r\nPreferentemente vivir cerca de la tienda",
+            "t200_description": "¡En NIKE ganamos como equipo, ven y gana con nosotros!\r\nAtleta (Asesor de ventas)\r\nNike Factory Store Las Plazas Cancún\r\nSomos un equipo profesional que nos encanta seguir desarrollando habilidades interpersonales que se caracteriza por siempre trabajar en equipo, con proactividad y orientación al logro, además de ofrecer un servicio premium al cliente.\n\n¿Mi perfil se ajusta a la vacante?:\r\n·      Pasión por el deporte\r\n·      Gusto por las ventas y el servicio al cliente\r\n·      Experiencia deseable más NO NECESARIA\r\n·      Orientación para trabajar en equipo y enfoque en resultados\r\nPreferentemente vivir cerca de la tienda",
             "t200_benefits": "Contratación DIRECTA con Nike México\r\nSUELDO base y BONO competitivo\r\nVales de despensa\r\nFondo de Ahorro\r\nSGMM y Seguro de Vida\r\nSeguro Dental\r\n9 días de vacaciones al cumplir un año\r\nUniformes sin costo\r\nDescuentos en tiendas\r\nCrecimiento laboral",
             "t200_check_time": "09:00:00",
             "t200_closing_hour": "18:00:00",
@@ -2147,7 +1113,7 @@
             "t200_min_salary": 5000,
             "t200_max_salary": 6000,
             "t200_gross_salary": false,
-            "t200_home_ofice": false,
+               
             "t200_publish_date": "2022-04-06",
             "t200_close_date": "2022-04-13",
             "t300_id_company": 4,
@@ -2155,7 +1121,7 @@
             "c206_id_profile": 1,
             "c204_id_vacant_status": 2,
             "t301_id_recruiter": null,
-            "t400_id_admin": null,
+             
             "t200_state":"Ciudad de México"
         }
     },
@@ -2164,8 +1130,7 @@
         "pk":5,
         "fields":{
             "t200_job": "Sr. Backend Developer NodeJS",
-            "t200_description": "Buscamos al mejor programador Backend en NodeJS para integrarse a la familia de Feek Technologies. y unirse a nuestro equipo para desarrollar un producto increíble de clase mundial.",
-            "t200_requirements": "Responsabilidades y actividades:\r\nDesarrollar el backend de uno de nuestros productos por salir al mercado.\r\nColaborar en un equipo multidisciplinario para la creación del producto.\r\n\r\nGenerar un código de calidad, correctamente documentado y comentado.\r\nUso de GIT como repositorio y versionario.\r\n\r\nComunicación con Servidores y el Setup de los mismos.\r\nCapacidad de cumplir metas y fechas limite\r\nUso de plataformas de manejo de proyectos como Monday.\r\nResponsabilidades y actividades:\r\n\r\nDesarrollar el backend de uno de nuestros productos por salir al mercado.\r\n\r\nColaborar en un equipo multidisciplinario para la creación del producto.\r\n\r\nGenerar un código de calidad, correctamente documentado y comentado.\r\n\r\nUso de GIT como repositorio y versionario.\r\n\r\nComunicación con Servidores y el Setup de los mismos.\r\n\r\nCapacidad de cumplir metas y fechas limite\r\nUso de plataformas de manejo de proyectos como Monday",
+            "t200_description": "Buscamos al mejor programador Backend en NodeJS para integrarse a la familia de Feek Technologies. y unirse a nuestro equipo para desarrollar un producto increíble de clase mundial.\n\nResponsabilidades y actividades:\r\nDesarrollar el backend de uno de nuestros productos por salir al mercado.\r\nColaborar en un equipo multidisciplinario para la creación del producto.\r\n\r\nGenerar un código de calidad, correctamente documentado y comentado.\r\nUso de GIT como repositorio y versionario.\r\n\r\nComunicación con Servidores y el Setup de los mismos.\r\nCapacidad de cumplir metas y fechas limite\r\nUso de plataformas de manejo de proyectos como Monday.\r\nResponsabilidades y actividades:\r\n\r\nDesarrollar el backend de uno de nuestros productos por salir al mercado.\r\n\r\nColaborar en un equipo multidisciplinario para la creación del producto.\r\n\r\nGenerar un código de calidad, correctamente documentado y comentado.\r\n\r\nUso de GIT como repositorio y versionario.\r\n\r\nComunicación con Servidores y el Setup de los mismos.\r\n\r\nCapacidad de cumplir metas y fechas limite\r\nUso de plataformas de manejo de proyectos como Monday",
             "t200_benefits": "Plan de carrera y crecimiento\r\nSeguro de gastos médicos\r\nFlex time (home office, viernes corto)",
             "t200_check_time": "09:00:00",
             "t200_closing_hour": "18:00:00",
@@ -2173,7 +1138,7 @@
             "t200_min_salary": 35000,
             "t200_max_salary": 45000,
             "t200_gross_salary": false,
-            "t200_home_ofice": true,
+               
             "t200_publish_date": "2022-04-05",
             "t200_close_date": "2022-04-13",
             "t300_id_company": 2,
@@ -2181,7 +1146,7 @@
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "t301_id_recruiter": null,
-            "t400_id_admin": null,
+             
             "t200_state":"Ciudad de México"
         }
     },
@@ -2190,8 +1155,7 @@
         "pk":6,
         "fields":{
             "t200_job": "Senior Full Stack Developer (.NET)",
-            "t200_description": "Charger Logistics is a world class asset-based carrier. We specialize in delivering your assets, on time and on budget. With the diverse fleet of equipment, we can handle a range of freight, including dedicated loads, specialized hauls, temperature-controlled goods and HAZMAT cargo.\r\n\r\nCharger logistics invests time and support into its employees to provide them with the room to learn and grow their expertise and work their way up. We are entrepreneurial-minded organization that welcomes and support individual idea and strategies. Charger Logistics is seeking a well-rounded individual able to work in a fast-paced environment to join our team at the company's office in Monterrey, Mexico. We are seeking a highly skilled ASP. NET/C#/MVC developer with a strong background in building high-performance web applications.\r\nBuild new applications with .NET Core/ ASP. NET / MVC / C# / SQL Server 2019 and Web APIs.\r\nBuild and maintain Windows Services, Daemons and Console Apps with .NET core\r\nDevelop new functionality on our existing software applications.\r\nLead/mentor developers and share knowledge through knowledge-sharing presentations.\r\nParticipate in a small, experienced, energetic team on a rapid, agile development schedule.",
-            "t200_requirements": "Minimum of 5-8 years' experience as a full stack developer\r\nSuperior proficiency in C# (.NET Framework and .NET Core), JavaScript, TypeScript, SQL server,\r\nSolid understanding of building scalable web and serverless applications using WebAPI, RESTful API design, Function Apps, Worker Services, etc.\r\nExperience in building cloud-native solutions (using different services such as Storage Account, Function Apps, Azure Sql, CosmosDb, EventHub, etc).\r\nExperience working with design patterns and designing microservices.\r\nDeveloping and maintaining CD/CI pipelines for build and deployment of services and components using Azure DevOps (preferred), Jenkins, or similar systems.\r\nExperience and working knowledge of entity framework core\r\nExperience and working knowledge of relational or NoSQL databases such as CosmosDB\r\nPreferred experience using data streaming platforms such as Kafka, EventHubs, etc.\r\nPreferred experience with Docker, Kubernetes\r\nDesign and optimize tables and stored procedures",
+            "t200_description": "Charger Logistics is a world class asset-based carrier. We specialize in delivering your assets, on time and on budget. With the diverse fleet of equipment, we can handle a range of freight, including dedicated loads, specialized hauls, temperature-controlled goods and HAZMAT cargo.\r\n\r\nCharger logistics invests time and support into its employees to provide them with the room to learn and grow their expertise and work their way up. We are entrepreneurial-minded organization that welcomes and support individual idea and strategies. Charger Logistics is seeking a well-rounded individual able to work in a fast-paced environment to join our team at the company's office in Monterrey, Mexico. We are seeking a highly skilled ASP. NET/C#/MVC developer with a strong background in building high-performance web applications.\r\nBuild new applications with .NET Core/ ASP. NET / MVC / C# / SQL Server 2019 and Web APIs.\r\nBuild and maintain Windows Services, Daemons and Console Apps with .NET core\r\nDevelop new functionality on our existing software applications.\r\nLead/mentor developers and share knowledge through knowledge-sharing presentations.\r\nParticipate in a small, experienced, energetic team on a rapid, agile development schedule.\n\nMinimum of 5-8 years' experience as a full stack developer\r\nSuperior proficiency in C# (.NET Framework and .NET Core), JavaScript, TypeScript, SQL server,\r\nSolid understanding of building scalable web and serverless applications using WebAPI, RESTful API design, Function Apps, Worker Services, etc.\r\nExperience in building cloud-native solutions (using different services such as Storage Account, Function Apps, Azure Sql, CosmosDb, EventHub, etc).\r\nExperience working with design patterns and designing microservices.\r\nDeveloping and maintaining CD/CI pipelines for build and deployment of services and components using Azure DevOps (preferred), Jenkins, or similar systems.\r\nExperience and working knowledge of entity framework core\r\nExperience and working knowledge of relational or NoSQL databases such as CosmosDB\r\nPreferred experience using data streaming platforms such as Kafka, EventHubs, etc.\r\nPreferred experience with Docker, Kubernetes\r\nDesign and optimize tables and stored procedures",
             "t200_benefits": "Prestaciones superiores a las de la ley\r\nPlan de carrera y crecimiento\r\nSueldo competitivo",
             "t200_check_time": "09:00:00",
             "t200_closing_hour": "18:30:00",
@@ -2199,7 +1163,7 @@
             "t200_min_salary": 40000,
             "t200_max_salary": 45000,
             "t200_gross_salary": false,
-            "t200_home_ofice": false,
+               
             "t200_publish_date": "2022-04-01",
             "t200_close_date": "2022-04-08",
             "t300_id_company": 1,
@@ -2207,7 +1171,7 @@
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "t301_id_recruiter": 1,
-            "t400_id_admin": null,
+             
             "t200_state":"Ciudad de México"
         }
     },
@@ -2216,8 +1180,7 @@
         "pk":7,
         "fields":{
             "t200_job": "Desarrollador-programador",
-            "t200_description": "En Grupo Formex, nos encontramos en busca de Talento, requerimos Desarrollador/programador\r\n\r\nObjetivo del Puesto:\r\n\r\nDesarrollar las soluciones apropiadas para cubrir las necesidades acuerdo con el diseño general de los sistemas de información de la organización, asi como la creación de API´s. y Web services\r\nEstablecer y asegurar la creación de programas.\r\n\r\nCreación de plataformas y bases de datos\r\n\r\nInnovar en el desarrollo de programas\r\nProgramación en sistemas",
-            "t200_requirements": "Sueldo base + mas bono\r\nPrestaciones de Ley",
+            "t200_description": "En Grupo Formex, nos encontramos en busca de Talento, requerimos Desarrollador/programador\r\n\r\nObjetivo del Puesto:\r\n\r\nDesarrollar las soluciones apropiadas para cubrir las necesidades acuerdo con el diseño general de los sistemas de información de la organización, asi como la creación de API´s. y Web services\r\nEstablecer y asegurar la creación de programas.\r\n\r\nCreación de plataformas y bases de datos\r\n\r\nInnovar en el desarrollo de programas\r\nProgramación en sistemas\n\nSueldo base + mas bono\r\nPrestaciones de Ley",
             "t200_benefits": "",
             "t200_check_time": "09:00:00",
             "t200_closing_hour": "18:00:00",
@@ -2225,7 +1188,7 @@
             "t200_min_salary": 15000,
             "t200_max_salary": 20000,
             "t200_gross_salary": false,
-            "t200_home_ofice": true,
+               
             "t200_publish_date": "2022-04-04",
             "t200_close_date": "2022-04-11",
             "t300_id_company": 5,
@@ -2233,7 +1196,7 @@
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "t301_id_recruiter": null,
-            "t400_id_admin": null,
+             
             "t200_state":"Ciudad de México"
         }
     },
@@ -2242,8 +1205,7 @@
         "pk":8,
         "fields":{
             "t200_job": "Programador, Desarrollador Java",
-            "t200_description": "Acerca de la empresa\r\n\r\n\r\n\r\nCellFusion was founded in Silicon Valley, California in the United States of America in the year 1999, working with industry leaders in technology and business worldwide for more than twenty years.\r\n\r\n\r\n\r\nWe have learned from the best across all industries, from the best in various countries and on different continents, from various cultures and from many people, from top managers, leaders and workers.\r\nCellFusion is dedicated to research of advanced business strategies and development of innovative business applications, providing vertical integrated business solutions to today's and future clients across all industries world-wide.\r\n‘… intelligent and superior business solutions are not created with modern technology only, but with vision, innovation and with passion…'\r\nKersten Ellerbrock, Chief Executive Officer - CellFusion Incorporated",
-            "t200_requirements": "Conocimientos requeridos\r\n\r\n\r\n\r\nJava programming language, required   \r\nJava swing graphical programming language, required   \r\nObject oriented programming and code structuring, required   \r\nSQL language and syntax, required  \r\nCode management software, GIT/ SVN required  \r\nEclipse IDE\r\nPrincipales responsabilidades del puesto\r\n\r\n\r\n\r\nGathering requirements, converting requirements into solutions\r\nSoftware Application Design\r\nDevelop code efficiently and performant\r\nSoftware testing  \r\nDocumentation\r\nStandardization of processes, procedures and solutions\r\nHardware technology integration (Smart torque, CNC, bar and QR code, sensor and device integration)\r\nTeamwork and active communication\r\nOrganizing projects and meetings\r\nTask management",
+            "t200_description": "Acerca de la empresa\r\n\r\n\r\n\r\nCellFusion was founded in Silicon Valley, California in the United States of America in the year 1999, working with industry leaders in technology and business worldwide for more than twenty years.\r\n\r\n\r\n\r\nWe have learned from the best across all industries, from the best in various countries and on different continents, from various cultures and from many people, from top managers, leaders and workers.\r\nCellFusion is dedicated to research of advanced business strategies and development of innovative business applications, providing vertical integrated business solutions to today's and future clients across all industries world-wide.\r\n‘… intelligent and superior business solutions are not created with modern technology only, but with vision, innovation and with passion…'\r\nKersten Ellerbrock, Chief Executive Officer - CellFusion Incorporated\n\nConocimientos requeridos\r\n\r\n\r\n\r\nJava programming language, required   \r\nJava swing graphical programming language, required   \r\nObject oriented programming and code structuring, required   \r\nSQL language and syntax, required  \r\nCode management software, GIT/ SVN required  \r\nEclipse IDE\r\nPrincipales responsabilidades del puesto\r\n\r\n\r\n\r\nGathering requirements, converting requirements into solutions\r\nSoftware Application Design\r\nDevelop code efficiently and performant\r\nSoftware testing  \r\nDocumentation\r\nStandardization of processes, procedures and solutions\r\nHardware technology integration (Smart torque, CNC, bar and QR code, sensor and device integration)\r\nTeamwork and active communication\r\nOrganizing projects and meetings\r\nTask management",
             "t200_benefits": "Prestaciones de ley (IMSS, vacaciones, aguinaldo)\r\nFlex time (home office, viernes corto)\r\nEstabilidad laboral",
             "t200_check_time": "09:00:00",
             "t200_closing_hour": "19:00:00",
@@ -2251,7 +1213,7 @@
             "t200_min_salary": 40000,
             "t200_max_salary": 50000,
             "t200_gross_salary": false,
-            "t200_home_ofice": true,
+               
             "t200_publish_date": "2022-04-05",
             "t200_close_date": "2022-04-10",
             "t300_id_company": 3,
@@ -2259,7 +1221,7 @@
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "t301_id_recruiter": null,
-            "t400_id_admin": null,
+             
             "t200_state":"Ciudad de México"
         }
     },
@@ -2268,8 +1230,7 @@
         "pk":9,
         "fields":{
             "t200_job": "Programador, Desarrollador Java",
-            "t200_description": "Acerca de la empresa\r\n\r\n\r\n\r\nCellFusion was founded in Silicon Valley, California in the United States of America in the year 1999, working with industry leaders in technology and business worldwide for more than twenty years.\r\n\r\n\r\n\r\nWe have learned from the best across all industries, from the best in various countries and on different continents, from various cultures and from many people, from top managers, leaders and workers.\r\nCellFusion is dedicated to research of advanced business strategies and development of innovative business applications, providing vertical integrated business solutions to today's and future clients across all industries world-wide.\r\n‘… intelligent and superior business solutions are not created with modern technology only, but with vision, innovation and with passion…'\r\nKersten Ellerbrock, Chief Executive Officer - CellFusion Incorporated",
-            "t200_requirements": "Conocimientos requeridos\r\n\r\n\r\n\r\nJava programming language, required   \r\nJava swing graphical programming language, required   \r\nObject oriented programming and code structuring, required   \r\nSQL language and syntax, required  \r\nCode management software, GIT/ SVN required  \r\nEclipse IDE\r\nPrincipales responsabilidades del puesto\r\n\r\n\r\n\r\nGathering requirements, converting requirements into solutions\r\nSoftware Application Design\r\nDevelop code efficiently and performant\r\nSoftware testing  \r\nDocumentation\r\nStandardization of processes, procedures and solutions\r\nHardware technology integration (Smart torque, CNC, bar and QR code, sensor and device integration)\r\nTeamwork and active communication\r\nOrganizing projects and meetings\r\nTask management",
+            "t200_description": "Acerca de la empresa\r\n\r\n\r\n\r\nCellFusion was founded in Silicon Valley, California in the United States of America in the year 1999, working with industry leaders in technology and business worldwide for more than twenty years.\r\n\r\n\r\n\r\nWe have learned from the best across all industries, from the best in various countries and on different continents, from various cultures and from many people, from top managers, leaders and workers.\r\nCellFusion is dedicated to research of advanced business strategies and development of innovative business applications, providing vertical integrated business solutions to today's and future clients across all industries world-wide.\r\n‘… intelligent and superior business solutions are not created with modern technology only, but with vision, innovation and with passion…'\r\nKersten Ellerbrock, Chief Executive Officer - CellFusion Incorporated\n\nConocimientos requeridos\r\n\r\n\r\n\r\nJava programming language, required   \r\nJava swing graphical programming language, required   \r\nObject oriented programming and code structuring, required   \r\nSQL language and syntax, required  \r\nCode management software, GIT/ SVN required  \r\nEclipse IDE\r\nPrincipales responsabilidades del puesto\r\n\r\n\r\n\r\nGathering requirements, converting requirements into solutions\r\nSoftware Application Design\r\nDevelop code efficiently and performant\r\nSoftware testing  \r\nDocumentation\r\nStandardization of processes, procedures and solutions\r\nHardware technology integration (Smart torque, CNC, bar and QR code, sensor and device integration)\r\nTeamwork and active communication\r\nOrganizing projects and meetings\r\nTask management",
             "t200_benefits": "Prestaciones de ley (IMSS, vacaciones, aguinaldo)\r\nFlex time (home office, viernes corto)\r\nEstabilidad laboral",
             "t200_check_time": "09:00:00",
             "t200_closing_hour": "19:00:00",
@@ -2277,7 +1238,7 @@
             "t200_min_salary": 40000,
             "t200_max_salary": 50000,
             "t200_gross_salary": false,
-            "t200_home_ofice": true,
+               
             "t200_publish_date": "2022-04-05",
             "t200_close_date": "2022-04-10",
             "t300_id_company": 3,
@@ -2285,7 +1246,7 @@
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "t301_id_recruiter": null,
-            "t400_id_admin": null,
+             
             "t200_state":"Ciudad de México"
         }
     },
@@ -2294,8 +1255,7 @@
         "pk":10,
         "fields":{
             "t200_job": "GRUPO BIMBO BUSCA ENCARGADO DE SUCURSAL",
-            "t200_description": "GRUPO BIMBO PASTELERIA EL GLOBO SOLICITA\r\nENCARGADO MUJERES Y HOMBRES SUCURSAL",
-            "t200_requirements": "REQUISITOS:\r\n\r\n· Bachillerato concluido.\r\n\r\n· Experiencia de al menos 1 año como Encargado, Jefe de Turno o de Piso en alimentos.\r\n\r\n· Disponibilidad para laborar de lunes a domingo (un día de descanso entre semana)\r\n\r\n· Disponibilidad para rolar turno (5:30 – 2:00 Y 2:30 – 10:30)\r\n\r\n· Vivir en la zona o zona aledaña.",
+            "t200_description": "GRUPO BIMBO PASTELERIA EL GLOBO SOLICITA\r\nENCARGADO MUJERES Y HOMBRES SUCURSAL \nREQUISITOS:\r\n\r\n· Bachillerato concluido.\r\n\r\n· Experiencia de al menos 1 año como Encargado, Jefe de Turno o de Piso en alimentos.\r\n\r\n· Disponibilidad para laborar de lunes a domingo (un día de descanso entre semana)\r\n\r\n· Disponibilidad para rolar turno (5:30 – 2:00 Y 2:30 – 10:30)\r\n\r\n· Vivir en la zona o zona aledaña.",            
             "t200_benefits": "OFRECEMOS:\r\n\r\n· $6,600.00 MENSUAL BRUTOS\r\n\r\n· PAGO A LA CATORCENA.\r\n\r\n· CAPACITACIÓN PAGADA AL 100 %\r\n\r\n· PRESTACIONES DE LEY DESDE EL PRIMER DÍA\r\n\r\n· UNIFORMES SIN COSTO\r\n\r\nAL TERCER MES:\r\n\r\n· PRESTACIONES SUPERIORES A LAS DE LEY\r\n\r\n· VALES DE DESPENSA DE $1,500.00 AL MES\r\n\r\n· SEGURO DE VIDA\r\n\r\n· OPORTUNIDADES DE CRECIMIENTO.\r\n\r\n· BONO DE ´PRODUCTIVIDAD\r\n\r\n· CAJA Y FONDO DE AHORRO A CORTO O LARGO PLAZO",
             "t200_check_time": "14:30:00",
             "t200_closing_hour": "22:30:00",
@@ -2303,7 +1263,7 @@
             "t200_min_salary": 6500,
             "t200_max_salary": 6600,
             "t200_gross_salary": false,
-            "t200_home_ofice": false,
+               
             "t200_publish_date": "2022-03-30",
             "t200_close_date": "2022-04-05",
             "t300_id_company": 6,
@@ -2311,7 +1271,7 @@
             "c206_id_profile": 1,
             "c204_id_vacant_status": 2,
             "t301_id_recruiter": null,
-            "t400_id_admin": null,
+             
             "t200_state":"Ciudad de México"
         }
     },
@@ -2319,7 +1279,7 @@
         "model":"vacantes.Announcement",
         "pk":1,
         "fields":{
-            "t202_announcement": "/media/aviso7.jpg",
+            "t202_announcement": "/comunicates/1.jpeg",
             "t202_description": "Ven y unete a nuestro equipo de trabajo.",
             "t202_link": "https://mi_enlace.com",
             "t202_publish_date": "2022-03-27",
@@ -2333,7 +1293,7 @@
         "model":"vacantes.Announcement",
         "pk":2,
         "fields":{
-            "t202_announcement": "/media/aviso6.jpg",
+            "t202_announcement": "/comunicates/2.jpeg",
             "t202_description": "Te esperamos en nuestra platica que sera impartida por expertos en el tema.",
             "t202_link": "https://mi_enlace.com",
             "t202_publish_date": "2022-04-06",
@@ -2347,7 +1307,7 @@
         "model":"vacantes.Announcement",
         "pk":4,
         "fields":{
-            "t202_announcement": "/media/aviso4_wVvgAnW.jpg",
+            "t202_announcement": "/comunicates/3.jpeg",
             "t202_description": "Curso de Spring",
             "t202_link": "https://mi_enlace.com",
             "t202_publish_date": "2022-04-04",
@@ -2361,7 +1321,7 @@
         "model":"vacantes.Announcement",
         "pk":5,
         "fields":{
-            "t202_announcement": "/media/aviso3_Mcb2WIe.jpg",
+            "t202_announcement": "/comunicates/4.jpeg",
             "t202_description": "Consultor jr Oracle",
             "t202_link": "https://mi_enlace.com",
             "t202_publish_date": "2022-03-28",
@@ -2375,7 +1335,7 @@
         "model":"vacantes.Announcement",
         "pk":6,
         "fields":{
-            "t202_announcement": "/media/aviso2_69dTsry.jpg",
+            "t202_announcement": "/comunicates/5.jpeg",
             "t202_description": "Desarrollador Backend Java",
             "t202_link": "https://mi_enlace.com",
             "t202_publish_date": "2022-03-21",
@@ -2389,7 +1349,7 @@
         "model":"vacantes.Announcement",
         "pk":7,
         "fields":{
-            "t202_announcement": "/media/aviso1_P8uOdXe.jpg",
+            "t202_announcement": "/comunicates/6.jpeg",
             "t202_description": "Deloitte",
             "t202_link": "https://mi_enlace.com",
             "t202_publish_date": "2022-04-07",
@@ -2403,7 +1363,7 @@
         "model":"vacantes.Announcement",
         "pk":3,
         "fields":{
-            "t202_announcement": "/media/aviso13.jpg",
+            "t202_announcement": "/comunicates/7.jpeg",
             "t202_description": "¿Te gustaría dar un salto profesional en tu carrera?\r\nEsta es tu oportunidad de ser entrenado en unos de roles con mayor demanda en el mercado. Conviértete en SALESFORCE y al finalizar el proceso podrás acceder a una gran oportunidad profesional.\r\n\r\nLo único que necesitas es:\r\nGran interés en desarrollarte como Salesforce Developer\r\nInglés Avanzado (B2 en adelante)\r\nExperiencia de 1 año como alguno de estos perfiles:\r\nDesarrollador Frontend\r\nBackend\r\nJavascript\r\nJava\r\nC#\r\n.Net\r\nProgramación Orientada a Objetos, etc.\r\n\r\nFinalizando el entrenamiento y aprobando los filtros podrás acceder a una gran oportunidad de trabajo en una de las Big Four, con un atractivo paquete de compensaciones.\r\nInteresados mandar su CV y expectativas económicas para iniciar proceso.",
             "t202_link": "https://mi_enlace.com",
             "t202_publish_date": "2022-04-07",
@@ -2417,7 +1377,7 @@
         "model":"vacantes.Announcement",
         "pk":8,
         "fields":{
-            "t202_announcement": "/media/aviso12_auWwLt8.jpg",
+            "t202_announcement": "/comunicates/8.jpeg",
             "t202_description": "Ven y forma parte de nuestro equipo.",
             "t202_link": "https://mi_enlace.com",
             "t202_publish_date": "2022-04-07",
@@ -2431,7 +1391,7 @@
         "model":"vacantes.Announcement",
         "pk":9,
         "fields":{
-            "t202_announcement": "/media/aviso9.jpg",
+            "t202_announcement": "/comunicates/9.jpeg",
             "t202_description": "Ven y forma parte de nuestro equipo de trabajo.",
             "t202_link": "https://mi_enlace.com",
             "t202_publish_date": "2022-04-07",
@@ -2439,6 +1399,78 @@
             "t300_id_company": 7,
             "t301_id_recruiter": null,
             "t400_id_admin": null
+        }
+    },
+
+    {
+        "model":"vacantes.Contract",        
+        "pk":1,
+        "fields":{
+            "c208_description": "Se acuerda en entrevista"
+        }
+    },
+
+    {
+        "model":"vacantes.Contract",        
+        "pk":2,
+        "fields":{
+            "c208_description": "Tiempo determinado"
+        }
+    },
+
+    {
+        "model":"vacantes.Contract",        
+        "pk":3,
+        "fields":{
+            "c208_description": "Tiempo indeterminado"
+        }
+    },
+
+    {
+        "model":"vacantes.Contract",        
+        "pk":4,
+        "fields":{
+            "c208_description": "Temporal"
+        }
+    },
+
+    {
+        "model":"vacantes.Contract",        
+        "pk":5,
+        "fields":{
+            "c208_description": "Capacitación inicial"
+        }
+    },
+
+    {
+        "model":"vacantes.Contract",        
+        "pk":6,
+        "fields":{
+            "c208_description": "Periodo de prueba"
+        }
+    },
+
+    {
+        "model":"vacantes.Contract",        
+        "pk":7,
+        "fields":{
+            "c208_description": "Honorario"
+        }
+    },
+
+    {
+        "model":"students.ProjectType",        
+        "pk":1,
+        "fields":{
+            "c118_description": "Proyecto personal"
+        }
+    },
+
+    {
+        "model":"students.ProjectType",        
+        "pk":2,
+        "fields":{
+            "c118_description": "Proyecto laboral"
         }
     }
 ]

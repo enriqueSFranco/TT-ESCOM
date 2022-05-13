@@ -10,26 +10,57 @@
   justify-content: space-around;
 }
 
-.btnGoBackProfile {
+.btnAdd {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
   border: none;
-  background-color: transparent;
-  color: #fff;
+  outline: none;
+  color: #028dd4;
   font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #028ed43f;
+  z-index: 99;
+}
+
+.btnUpdate {
   position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  border: none;
+  outline: none;
+  height: 3rem;
+  width: 120px;
+}
+
+.datalist {
+  width: 130px;
+  border: 1px solid #b9b9b9;
+  border-radius: 5px;
+  outline: none;
+  text-indent: .5rem;
+}
+
+.datalist:focus {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
 .form {
   width: 100%;
-  height: 90%;
+  height: calc(100% - 2rem);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: start;
   /* outline: 2px solid blue; */
 }
 
 .header {
+  font-family: 'Poppins', sans-serif;
   position: relative;
-  background-color: #90314b;
+  color: #000;
+  /* background-color: #90314b; */
 }
 
 .inputFile {
@@ -73,9 +104,11 @@
   height: 80%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   /* align-items: stretch; */
 }
+
+.inputGroupFlex_1_3 { width: 500px; }
 
 .flexInput {
   height: 40px;
@@ -89,13 +122,25 @@
   /* outline: 2px solid red; */
 }
 
+.select {
+  outline: 1px solid #ccc;
+  border-radius: 5px;
+  max-width: 120px;
+  background-color: transparent;
+
+}
+
 .title {
   text-transform: uppercase;
   text-align: center;
   font-size: 1.4rem;
-  padding: 1rem 0 1rem 0;
-  color: #fff;
+  padding: 0;
+  /* color: #fff; */
   border-radius: 4px 4px 0 0;
+}
+
+.titleH3 {
+  margin-bottom: 1.5rem;
 }
 
 .travel {
@@ -105,8 +150,9 @@
 
 .wrapper {
   position: relative;
+  top: 2rem;
   font-family: 'Poppins', sans-serif;
   height: 700px;
-  border-radius: 4px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  /* border-radius: 4px; */
+  /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
 }

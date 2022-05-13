@@ -19,6 +19,8 @@ from apps.users.views import UserViewSet
 from apps.companies.api.views.auth_recruiter_viewset import ValidateRecruiterViewSet
 from apps.vacantes.api.views.vacant_viewset import RecruiterVacantViewSet
 from apps.vacantes.api.views.vacant_viewset import AdminVacantViewSet
+from apps.vacantes.api.views.application_viewset import VacantApplicationsViewSet
+from apps.vacantes.api.views.application_viewset import StudentApplicationsViewSet
 
 router = DefaultRouter()
 router.register(r'users',UserViewSet,basename='Registred users')
@@ -37,6 +39,8 @@ router.register(r'StudentsLenguages',LenguagesViewSet,basename='Students lenguag
 router.register(r'StudentLenguages/<int:pk>',LenguagesViewSet,basename='Student lenguages details')
 router.register(r'StudentsProjects',ProjectsViewSet,basename='Students personal projects')
 router.register(r'StudentsProject/<int:pk>',ProjectsViewSet,basename='Student personal projects')
+router.register(r'StudentsApplications',StudentApplicationsViewSet,basename='Students applications')
+router.register(r'StudentsApplications/<int:pk>',StudentApplicationsViewSet,basename='Student applications')
 router.register(r'Vacants', VacantViewSet, basename='Vacants')
 router.register(r'Vacant/<int:pk>', VacantViewSet, basename='Vacant detail')
 router.register(r'RecruiterVacants', RecruiterVacantViewSet, basename='Recruiters Vacants')
@@ -47,6 +51,8 @@ router.register(r'Announcements',AnnouncementViewSet,basename='Announcements')
 router.register(r'Announcement/<int:pk>',AnnouncementViewSet,basename='Announcement details')
 router.register(r'Applications',ApplicationViewSet,basename='Students Applications')
 router.register(r'Applications/<int:pk>',ApplicationViewSet,basename='Student Applications details')
+router.register(r'VacantApplications',VacantApplicationsViewSet,basename='Vacants Applications')
+router.register(r'VacantApplications/<int:pk>',VacantApplicationsViewSet,basename='Vacant Applications')
 router.register(r'Reports',ReportViewSet,basename="Reports")
 router.register(r'Reports/<int:pk>',ReportViewSet,basename="Report details")
 router.register(r'Administrators',AdminViewSet,basename='Adminstrators')

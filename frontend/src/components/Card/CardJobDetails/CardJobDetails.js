@@ -27,6 +27,7 @@ const CardJobDetails = () => {
   const [loading, setLoading] = useState(true);
   const [isApplyJob, setIsApplyJob] = useState({});
   let now = new Date();
+  let typeUser = token?.user?.user_type;
 
   useEffect(() => {
     setLoading(true);
@@ -34,6 +35,7 @@ const CardJobDetails = () => {
       .then((response) => {
         setLoading(false);
         setJob(response);
+        setIsApplyJob({});
       })
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
@@ -43,19 +45,23 @@ const CardJobDetails = () => {
     const response = await applyJob({
       t200_id_vacant,
       t100_id_student: token?.user?.user_id,
-      t201_cv: null,
       c205_id_application_state: 1,
       t201_date_application:
-        now.getFullYear() + "-" + now.getMonth() + "-" + now.getDay(),
+        now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate(),
     });
     if (response.status === 201)
-      setIsApplyJob({succes: response.status, message: response.data.message});
-    else setIsApplyJob({success: response.status, message: response.data.message})
+      setIsApplyJob({
+        succes: response.status,
+        message: response.data.message,
+      });
+    else
+      setIsApplyJob({
+        success: response.status,
+        message: response.data.message,
+      });
   };
 
   if (!job) return null;
-  let typeUser = token?.user?.user_type;
-  // console.log(typeUser);
 
   return (
     <>
@@ -113,7 +119,9 @@ const CardJobDetails = () => {
                   </li>
                 </ul>
                 <p>
-                  Tiempo completo de 9:00am - 6:00 pm, por tiempo indefinido
+                  Ubicacion:{" "}
+                  {`${job[0]?.t200_municipality}, ${job[0]?.t200_state}, ${job[0]?.t200_locality}` ??
+                    "No especificada"}
                 </p>
               </div>
               <div className={styles.flex}>
@@ -166,16 +174,7 @@ const CardJobDetails = () => {
             </div>
             <div>
               <h3>OFRECEMOS</h3>
-              <p>
-                Salario Competitivo,más prestaciones superiores a las que marca
-                la ley como: 30 días de Aguinaldo, 10% en Vales de Despensa, 13%
-                de Fondo de Ahorro, 12 días de vacaciones al primer año, Prima
-                Vacacional, Seguro de Gastos Médicos Mayores, Seguro de Vida
-              </p>
-              <p>
-                La contratación es directamente por la empresa. Contrato de
-                planta
-              </p>
+              <p>{job[0]?.t200_benefits}</p>
             </div>
             <div>
               <h3>Postúlate</h3>
@@ -193,10 +192,6 @@ const CardJobDetails = () => {
                   ${job[0]?.t200_max_salary ?? "No especificado"} al mes
                 </span>
               </p>
-            </div>
-            <div>
-              <h3>Beneficios</h3>
-              {job[0]?.t200_benefits}
             </div>
             <div>
               <p>
@@ -218,7 +213,11 @@ const CardJobDetails = () => {
         </div>
       )}
       <Modal isOpen={isOpen} closeModal={closeModal}>
-        <Confirm applyJob={handleApplyJob} isApplyJob={isApplyJob} job={job[0]?.t200_job} />
+        <Confirm
+          applyJob={handleApplyJob}
+          isApplyJob={isApplyJob}
+          job={job[0]?.t200_job}
+        />
       </Modal>
     </>
   );
