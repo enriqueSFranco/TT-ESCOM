@@ -120,7 +120,10 @@ const CardJobDetails = () => {
                 </ul>
                 <p>
                   Ubicacion:{" "}
-                  {`${job[0]?.t200_municipality}, ${job[0]?.t200_state}, ${job[0]?.t200_locality}` ??
+                  {`${job[0]?.t200_municipality === null || job[0]?.t200_municipality === '' ? '' : job[0]?.t200_municipality+',' } 
+                    ${job[0]?.t200_state === null || job[0]?.t200_state === '' ? '' : job[0]?.t200_state+',' }
+                    ${job[0]?.t200_locality === null || job[0]?.t200_locality === '' ? '' : job[0]?.t200_locality+',' }`
+                     ??
                     "No especificada"}
                 </p>
               </div>
