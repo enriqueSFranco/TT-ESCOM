@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_JOBS } from "../settings";
+import { API_JOBS, API_VACANTS_APPLICATIONS_JOB_STUDENT } from "../settings";
 
 export const getAllJobs = async(page) => {
   try {
@@ -20,6 +20,16 @@ export const getJob = (id) => {
     })
     .catch(error => console.log(error));
 };
+
+
+export const getApplicationsJobs = (id) => {
+  return axios.get(`${API_VACANTS_APPLICATIONS_JOB_STUDENT}${id}/`)
+    .then(response => {
+      const { data } = response;
+      return data;
+    })
+    .catch(error => error);
+}
 
 export const postJob = (body) => {
   return axios.post(API_JOBS, body, {

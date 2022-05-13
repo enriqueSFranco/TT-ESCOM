@@ -10,19 +10,18 @@ import PageCreateAccountStudent from "pages/login/PageCreateAccountStudent";
 import PageLoginCompany from "pages/login/PageLoginCompany";
 import PageRegisterCompany from "pages/login/PageRegisterCompany";
 import PageProfileStudent from "pages/student/PageProfileStudent";
-import PageAddJob from "pages/business/PageAddJob";
 import PageLoginStudentUpdate from "pages/login/PageLoginStudentUpdate";
 import PageDashBoard from "pages/business/PageDashBoard";
 import PageHistory from "pages/business/PageHistory";
-import PageMyJobs from "pages/business/PageMyJobs";
 import PageSuccesCompany from "pages/login/PageSuccesCompany";
 import PageValidateRecruiter from "pages/admin/PageValidateRecruiter";
 import PageApplications from "pages/business/PageApplications";
 import PagePostRelease from "pages/business/PagePostRelease";
 import PageApplicationsStudent from "pages/student/PageApplicationsStudent";
-import Experience from "components/Card/Experience/Experience";
+import ExperienceList from "components/Card/Experience/ExperienceList";
 import Certifications from "components/Card/Certifications/Certifications";
-import AcademicRecord from "components/Card/AcademicRecord/AcademicRecord";
+import Accordion from "components/Accordion/Accordion";
+import AcademicRecordList from "components/Card/AcademicRecord/AcademicRecordList";
 import ModalRelease from "components/Modal/ModalRelease";
 import ModalBusiness from "components/Modal/ModalBusiness";
 import CardJobDetails from "components/Card/CardJobDetails/CardJobDetails";
@@ -35,6 +34,18 @@ const Root = () => {
         <Route path="vacante">
           <Route path=":t200_id_vacant" element={<CardJobDetails />} />
         </Route>
+      </Route>
+      
+      <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>   
+        <Route path="/dashboard" element={<PageDashBoard />} />
+        <Route path="/mis-vacantes" element={<PageHistory />}>
+          <Route path=":t200_id_vacant" element={<CardJobDetails />} />
+        </Route>
+        <Route path="/solicitudes" element={<PageApplications />}>
+          <Route path=":t200_id_vacant" element={<Accordion />} />
+        </Route>
+        <Route path="/publicar-comunicado" element={<PagePostRelease />} />
+        {/* <Route path="/candidatos" element={<PageApplications />} /> */}
       </Route>
 
       {/* FEATURE:  */}
@@ -66,15 +77,15 @@ const Root = () => {
       {/* Indice de rutas privadas para un alumno si funciona */}
       <Route element={<PrivateRoute role={ROLE.STUDENT} />}>
         <Route path="/perfil" element={<PageProfileStudent />}>
-          <Route path="historial-academico" element={<AcademicRecord />} />
-          <Route path="experiencia" element={<Experience />} />
+          <Route path="historial-academico" element={<AcademicRecordList />} />
+          <Route path="experiencia" element={<ExperienceList />} />
           <Route path="certificaciones" element={<Certifications />} />
         </Route>
         <Route path="mis-postulaciones" element={<PageApplicationsStudent />} />
       </Route>
 
       {/* Indice de rutas privadas para un reclutador */}
-      <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>   
+      {/* <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>   
         <Route path="/historial" element={<PageHistory />}>
           <Route path="dashboard" element={<PageDashBoard />} />
           <Route path="mis-vacantes" element={<PageMyJobs />} />
@@ -82,7 +93,7 @@ const Root = () => {
           <Route path="publicar-vacante" element={<PageAddJob />} />
           <Route path="publicar-comunicado" element={<PagePostRelease />} />
         </Route>
-      </Route>
+      </Route> */}
 
     </Routes>
   );

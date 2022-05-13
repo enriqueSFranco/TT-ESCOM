@@ -1,5 +1,5 @@
 from django.db import models
-from  apps.students.models import Student
+from  apps.students.models import Student,Skills,Lenguage
 from apps.administration.models import Admin
 from apps.companies.models import Company,Recruiter
 
@@ -54,7 +54,31 @@ class ApplicationState(models.Model):
         db_table = 'c205_estado_solicitud'
     
     def __str__(self) ->str:
-	    return self.c205_description        
+	    return self.c205_description     
+
+#C208 Tipo de contratacion
+class Contract(models.Model):
+    c208_id_contract = models.AutoField(primary_key=True)
+    c208_description = models.TextField(max_length=50)
+    
+    class Meta:
+        verbose_name = 'Contract'
+        db_table = "c208_tipo_contrato"
+
+    def __str__(self) ->str:
+	    return self.c208_description      
+
+#C209 Estado del Reporte
+class ReportState(models.Model):
+    c209_id_state = models.AutoField(primary_key=True)
+    c209_description = models.TextField(max_length=50,null=True,blank=True)
+    
+    class Meta:
+        verbose_name = 'ReportState'
+        db_table = "c209_estado_reporte"
+
+    def __str__(self) ->str:
+	    return self.c209_description                   
 
 #C210 Tipo reporte
 class ReportType(models.Model):
@@ -68,17 +92,18 @@ class ReportType(models.Model):
     def __str__(self) -> str:
         return self.c210_description
 
-#C220 Estado reporte
-class ReportState(models.Model):
-    c220_id_report_state = models.AutoField(primary_key=True)
-    c220_description = models.CharField(max_length=60,null=True,blank=True)
+#C214 Modalidad de Trabajo
+class Modality(models.Model):
+    c214_id_modality = models.AutoField(primary_key=True)
+    c214_description = models.CharField(max_length=50,null=True,blank=True)
 
     class Meta:
-        verbose_name = 'ReporteState'
-        db_table = 'c220_estado_reporte'
-
+        verbose_name = 'ReportType'
+        db_table = 'c214_modalidad_trabajo'
+    
     def __str__(self) -> str:
-        return self.c220_description
+        return self.c214_description        
+
 
 #c222 CP
 class Locality(models.Model):	
@@ -108,12 +133,11 @@ class Vacant(models.Model):
         on_delete=models.CASCADE
     )
     t200_job = models.CharField(max_length=70)
-    t200_description = models.TextField(null=True,blank=True)    
-    t200_requirements = models.TextField(null=True,blank=True)
+    t200_description = models.TextField(null=True,blank=True) 
     t200_benefits = models.TextField(null=True,blank=True)    
     t200_check_time = models.TimeField(auto_now=False)
     t200_closing_hour = models.TimeField(auto_now=False)
-    t200_work_days = models.CharField(max_length=7)  
+    t200_work_days = models.CharField(max_length=50,blank=True,null=True,default="Sin horario")  
     c207_id_experience = models.ForeignKey(
         Experience,
         null=False,
@@ -124,11 +148,13 @@ class Vacant(models.Model):
     t200_min_salary = models.IntegerField()
     t200_max_salary = models.IntegerField()
     t200_gross_salary = models.BooleanField()
-    t200_home_ofice = models.BooleanField()
+    t200_home_ofice = models.BooleanField(default=True)#c214_id_modality
+    #c214_id_modality = models
     c206_id_profile = models.ForeignKey(
         CandidateProfile,
         null=True,
         blank=True,
+        default=1,
         related_name='ProfileRequired',
         on_delete=models.CASCADE
     )
@@ -142,14 +168,20 @@ class Vacant(models.Model):
     t200_publish_date = models.DateField()
     t200_close_date = models.DateField()
     t200_state = models.CharField(max_length=50,null=True,blank=True)
-    t200_mucipality = models.CharField(max_length=100,null=True,blank=True)
+    t200_municipality = models.CharField(max_length=100,null=True,blank=True)
     t200_locality = models.CharField(max_length=100,null=False,blank=False,default='No definido')
     t200_street = models.CharField(max_length=60,null=True,blank=True)
     t200_cp = models.IntegerField(blank=True,null=True)
     t200_interior_number = models.CharField(max_length=20,blank=True,null=True)
     t200_exterior_number = models.CharField(max_length=20,blank=True,null=True)    
     t200_vacancy = models.PositiveIntegerField(default=1)
-    t200_contract_type = models.CharField(max_length=50, default="Se acuerda en entrevista")
+    c208_id_contract = models.ForeignKey(
+        Contract,
+        null=False,
+		blank=False,
+        default=1,
+		related_name='ContractType',
+        on_delete=models.CASCADE)
     t301_id_recruiter = models.ForeignKey(
         Recruiter,
         null=True,
@@ -157,21 +189,68 @@ class Vacant(models.Model):
         related_name='RecruiterVacant',
         on_delete=models.CASCADE
     )
-    t400_id_admin = models.ForeignKey(
-        Admin,
-        null=True,
-        blank=True,
-        related_name='AdminVacant',
-        on_delete=models.CASCADE
-    )    
 
     class Meta:
         verbose_name = 'Vacant'
         verbose_name_plural = 'Vacants'
-        db_table = "t200_vacant"
+        db_table = "t200_vacante"
 
     def __str__(self) ->str:
 	    return str(self.t200_id_vacant)
+
+#T214 Requerimiento
+class Requirement(models.Model):
+    t214_id_requirement = models.AutoField(primary_key=True)
+    t200_id_vacant = models.ForeignKey(
+		Vacant,
+		null=True,
+		blank=True,
+		related_name='VacantRequirement',
+		on_delete=models.CASCADE)
+    c116_id_skill = models.ForeignKey(
+		Skills,
+		null=False,
+		blank=False,
+		related_name='SkillRequired',
+		on_delete=models.CASCADE
+	)
+    class Meta:
+        verbose_name = 'Requirement'
+        verbose_name_plural = 'Requierements'
+        db_table = "t214_requerimiento"
+
+    def __str__(self) ->str:
+	    return str(self.t214_id_requirement)
+
+
+#T215 Idioma 
+class LenguageRequired (models.Model):
+    t215_id_lenguage = models.AutoField(primary_key=True)
+    t200_id_vacant = models.ForeignKey(
+		Vacant,
+		null=True,
+		blank=True,
+		related_name='VacantLenguange',
+		on_delete=models.CASCADE)
+    c111_id_language = models.ForeignKey(
+		Lenguage,#"Lenguage.c111_id_lenguage",
+		null=False,
+		blank=False,
+		related_name='LenguageRequired',
+		on_delete=models.CASCADE
+	)
+    t215_written_level = models.PositiveSmallIntegerField(null=True, blank=True)
+    t215_reading_level = models.PositiveSmallIntegerField(null=True, blank=True)
+    t215_speaking_level = models.PositiveSmallIntegerField(null=True, blank=True)
+    t215_comprension_level = models.PositiveSmallIntegerField(null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'LenguageRequired'
+        verbose_name_plural = 'LenguagesRequired'
+        db_table = "t215_idioma"
+
+    def __str__(self) ->str:
+	    return str(self.t215_id_lenguage)
 
 #T201_applications
 class Application(models.Model):
@@ -187,25 +266,47 @@ class Application(models.Model):
 		null=True,
 		blank=True,
 		related_name='AppliedStudent',
-		on_delete=models.CASCADE)    
-    t201_cv = models.FileField(null=True,blank=True)
+		on_delete=models.CASCADE)
     c205_id_application_state = models.ForeignKey(
-        ApplicationState,
-        null=False,
-		blank=False,
-        default=1,
-		related_name='ApplicationState',
-        on_delete=models.CASCADE
-    )
+		ApplicationState,
+		null=True,
+		blank=True,
+		related_name='ApplicationStatus',
+        on_delete=models.CASCADE)       
     t201_date_application = models.DateField()
 
     class Meta:
         verbose_name = 'Application'
         verbose_name_plural = 'Applications'
-        db_table = "t201_application"
+        db_table = "t201_solicitud"
 
     def __str__(self) ->str:
 	    return str(self.t201_id_application)
+
+#T216 Estado Solicitud
+class ApplicationStateHistory(models.Model):
+    t216_id_state = models.AutoField(primary_key=True)
+    t201_id_application= models.ForeignKey(
+		Application,
+		null=True,
+		blank=True,
+		related_name='ApplicationRegister',
+        on_delete=models.CASCADE)
+    c205_id_application_state = models.ForeignKey(
+		ApplicationState,
+		null=True,
+		blank=True,
+		related_name='ApplicationStatuses',
+        on_delete=models.CASCADE)
+    t216_modify_date = models.DateField()        
+    
+    class Meta:
+        verbose_name = 'ApplicationState'
+        verbose_name_plural = 'ApplicationsStates'
+        db_table = "t216_estado_solicitud"
+
+    def __str__(self) ->str:
+	    return str(self.t216_id_state)
 
 #T202 Comunicados
 class Announcement(models.Model):
@@ -241,7 +342,7 @@ class Announcement(models.Model):
     class Meta:
         verbose_name = 'Annuncement'
         verbose_name_plural = 'Annuncements'
-        db_table = 't202_comunicados'
+        db_table = 't202_comunicado'
 
     def __str__ (self)->str:
         return self.t202_id_announcement+": "+self.t202_announcement
@@ -299,7 +400,7 @@ class Report(models.Model):
     class Meta:
         verbose_name = 'Report'
         verbose_name_plural = 'Reports'
-        db_table = 't203_reportes'
+        db_table = 't203_reporte'
 
     def __str__(self) -> str:
         return self.t203_id_report    

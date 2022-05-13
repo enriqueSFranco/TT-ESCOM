@@ -9,15 +9,6 @@
   right: .5rem;
 }
 
-.editAction, .deleteAction { color: #363636;  transition: color .5s ease;}
-
-.editAction:hover {
-  color: #0000ff;
-}
-.deleteAction:hover {
-  color: #ff0000;
-}
-
 .actions button {
   margin-bottom: .5rem;
   outline: none;
@@ -29,7 +20,115 @@
   justify-content: center;
 }
 
-.detailsProject a { color: #5c5c5c; font-size: .78rem; }
+
+.btn {
+  height: 3rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .2rem;
+}
+
+.btnAddProject {
+  position: sticky;
+  bottom: .5rem;
+  left: 36rem;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  color: #028dd4;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #028ed43f;
+  z-index: 99;
+}
+
+.btnGoToMain {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.btnGoToMain {
+  width: 150px;
+  position: absolute;
+  right: 12rem;
+  bottom: 7rem;
+  border-radius: 5px;
+  border: none;
+  height: 3rem;
+  font-family: 'Poppins', sans-serif;
+
+}
+
+.btnSubmit {
+  width: 150px;
+  position: absolute;
+  right: 1rem;
+  bottom: 7rem;
+  border-radius: 5px;
+  border: none;
+  height: 3rem;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnSubmitWorkExperience {
+  width: 100px;
+  position: absolute;
+  right: 1rem;
+  bottom: -1rem;
+  border: none;
+  height: 3rem;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.btnGoBack {
+  width: 100px;
+  position: absolute;
+  right: 9rem;
+  bottom: -1rem;
+  border: none;
+  height: 3rem;
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container  > h4 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  /* outline: 2px solid blue; */
+}
+
+.editAction,
+.deleteAction {
+  color: #363636;
+  transition: color .5s ease;
+}
+
+.editAction:hover {
+  color: #028dd4;
+}
+
+.deleteAction:hover {
+  color: #ff0000;
+}
+
+.detailsProject a {
+  color: #5c5c5c;
+  font-size: .78rem;
+}
 
 .detailsProject {
   position: relative;
@@ -46,11 +145,47 @@
 }
 
 .detailsProject a {
+  position: absolute;
+  bottom: 0;
+  padding-bottom: .3rem;
+  font-size: 1rem;
+  color: #000;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  text-transform: capitalize;
   transition: color .3s ease-in-out;
 }
 
 .descriptionProject a:hover {
   color: #0000ff;
+}
+
+.desription {
+  color: #5c5c5c;
+  font-weight: 500;
+  height: auto;
+}
+
+.groupDetails {
+  width: 500px;
+  height: 70px;
+  font-family: 'Poppins', sans-serif;
+  /* background-color: red; */
+}
+
+.groupDetails h3 {
+  margin: 0;
+  color: #363636;
+}
+
+.groupDetails span {
+  font-weight: 400;
+}
+
+.speciality {
+  font-weight: 700;
+  color: #028dd4;
+  /* background-color: red; */
 }
 
 .logoProject {
@@ -60,28 +195,85 @@
   border-radius: 50%;
 }
 
-.btnAddProject {
-  position: absolute;
-  bottom: .5rem;
-  right: .5rem;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  border: none;
-  outline: none;
-  color: #fff;
-  font-size: 1.5rem;
+.nav {
+  width: 370px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #166dfb;
-  z-index: 99;
+  justify-content: space-between;
+}
+
+.notProjects {
+  height: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  /* background-color: red; */
+}
+
+.notProjects h3 {
+  color: #04547e;
+  text-align: center;
+  font-size: 1.4rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.titleModal {
+  font-size: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.textArea {
+  resize: none;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 8px;
+  margin-top: .7rem;
+  border-color: #9e9e9e;
 }
 
 .wrapper {
   position: absolute;
   width: 100%;
   height: 90%;
-  overflow-y: scroll;
+  overflow-y: auto;
   border-radius: 6px;
 }
+
+.wrapperMain {
+  position: relative;
+  top: 2.5rem;
+  height: 300px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.wrapperForm {
+  position: relative;
+  top: 2rem;
+}
+
+.wrapperInput {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ESTILOS PARA FORMULARIO DE EXPERIENCIA PERSONAL */
+.form,
+.formWorkExperience {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 500px;
+}
+
+.inputGroup_1_2 {
+  /* background-color: red; */
+  display: flex;
+  gap: 1rem;
+}
+

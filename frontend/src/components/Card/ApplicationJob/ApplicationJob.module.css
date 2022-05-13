@@ -15,7 +15,9 @@
 .wrapper {
   text-align: left;
   border: 1px solid #ccc;
+  background-color: #fff;
   border-radius: 8px;
   width: 370px;
   padding: .5rem;
+  margin-bottom: .5rem;
 }

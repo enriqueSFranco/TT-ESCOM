@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "hooks/useForm";
 import { useFetch } from "hooks/useFetch";
 import { helpHttp } from "utils/helpHttp";
+import { AcademicFormat } from "../schemes";
 import { getAllAcademicUnits, getAllJobs } from "services/catalogs/index";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -35,15 +36,6 @@ let initialForm = {
   t100_interest_job: ""
 };
 
-let AcademicFormat = {
-    t104_academic_unit: "",
-    t104_carreer: "",
-    t104_start_date: "",
-    t104_end_date: "",
-    t100_id_student: "",
-    c107_id_academic_level: "4",
-    c109_id_academic_state: "6"
-}
 
 const StepComponent = () => {
   const [startMonth, setStartMonth] = useState(1);
@@ -58,9 +50,8 @@ const StepComponent = () => {
   const { form, handleChange } = useForm(initialForm);
   const [academicHistorial, setAcademicHistorial] = useState(AcademicFormat); 
   const { data } = useFetch("/api/catalogues/CatalogueSkills/");  
-  const { user, token } = useContext(AuthContext);
+  const { token } = useContext(AuthContext);
   let navigate = useNavigate();
-  let errors = false;
   
   let id_student = token?.user?.user_id;
   AcademicFormat.t100_id_student = id_student;
@@ -103,7 +94,9 @@ const StepComponent = () => {
           endMonth={endMonth}
           setEndMonth={setEndMonth}
           endYear={endYear}
-          setEndYear={setEndYear} />);
+          setEndYear={setEndYear}
+          academicHistorial={academicHistorial}
+          setAcademicHistorial={setAcademicHistorial} />);
     }
     if (activeStep === 2) {
       return (
@@ -149,8 +142,8 @@ const StepComponent = () => {
     }
     if (activeStep >= 3) {
       updateData();      
-      if (!errors)
-        navigate("/perfil");
+      //if (!errors)
+      //  navigate("/perfil");
     }
   };
 
@@ -190,7 +183,8 @@ const StepComponent = () => {
               .then((response) => {
                 if (!response.err) {
                   console.log(response);
-                  //navigate("/perfil");
+                  if (AcademicFormat.t104_carreer == "")
+                    navigate("/perfil");
                 }                
               })
               .catch((err) => console.error(err));
@@ -198,31 +192,37 @@ const StepComponent = () => {
 
           ///Agregar historial academico
           if (AcademicFormat.t104_carreer !== ""){
-              const endpointAcademic = "api/AcademicHistorial/";
-              console.log(startMonth);
-              AcademicFormat.t104_start_date = startYear+"-"+startMonth+"-01"          
-              AcademicFormat.t104_end_date = endYear+"-"+endMonth+"-01"          
-              console.log(AcademicFormat);
-              let options = {
-                headers: {
-                  "Content-Type": "application/json",
-                  Accept: "application/json",
-                },
-                body: academicHistorial,
-              };
-              helpHttp()
-                .POST(endpointAcademic, options)
-                .then((response) => {
-                  if (!response.err) {
-                    console.log(response);                    
-                  }
-                })
-                .catch((err) => console.error(err));
+            const endpointAcademic = "api/AcademicHistorial/";
+            console.log(startMonth);
+            AcademicFormat.t104_start_date = startYear+"-"+startMonth+"-01"          
+            AcademicFormat.t104_end_date = endYear+"-"+endMonth+"-01"          
+            console.log(AcademicFormat);
+            let options = {
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: academicHistorial,
+            };
+            helpHttp()
+              .POST(endpointAcademic, options)
+              .then((response) => {
+                if (!response.err) {
+                  console.log(response);     
+                  navigate("/perfil");               
+                }
+              })
+              .catch((err) => console.error(err));
           }
         }
       })
-      .catch((err) => console.error(err));          
+      .catch((err) => console.error(err));
+
+      
   };
+
+  
+  
 
   const previousStep = () => {
     if (activeStep > 0) setActiveStep((currentStep) => currentStep - 1);

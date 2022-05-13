@@ -149,6 +149,7 @@ class StudentViewSet(viewsets.GenericViewSet):
 			student_serializer.save()
 			student_user = self.user_model.objects.filter(username = student).first()
 			print(student_user)
+			print(user_update)
 			student_user_serializer = UpdateUserSerializer(student_user,data = user_update)
 			if student_user_serializer.is_valid():
 				student_user_serializer.save()

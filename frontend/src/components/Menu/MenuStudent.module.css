@@ -30,7 +30,7 @@
   outline: 1px solid #dadada;
   border-radius: 5px 5px 0 0;
   width: 100%;
-  padding: 10px 15px;
+  height: 2.5rem;
   position: relative;
   background-color: #fff;
   cursor: pointer;
@@ -44,22 +44,32 @@
 }
 
 .navLink {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 2.5rem;
   color: #000;
   text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* outline: 2px solid red; */
 }
 .navLink:hover { color: #000; }
 
 .navList.selected {
-  background-color: #e6e7e7;
+  background-color: #ebebeb;
   color: #000;
 }
 
 .underline {
   position: absolute;
-  bottom: -1px;
+  bottom: -2px;
   left: 0;
   right: 0;
   height: 5px;
-  background-color: blue;
+  background-color: #028dd4;
   border-radius: 8px 8px 0 0;
 }

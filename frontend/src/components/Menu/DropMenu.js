@@ -1,7 +1,9 @@
 import { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useDetectClick } from "hooks/useDetectClick";
+import { stringToColor } from "utils/stringToColor";
 import AuthContext from "context/AuthContext";
+import Avatar from "@mui/material/Avatar";
 import DropMenuStudent from "./DropMenuStudent";
 import DropMenuRecruiter from "./DropMenuRecruiter";
 import { IoMdMenu } from "react-icons/io";
@@ -18,9 +20,18 @@ const DropMenu = () => {
 
   return (
     <div className={styles.dropdown}>
-      <button className={styles.trigger} onClick={onClick}>
-        <IoMdMenu style={{ color: "#fff" }} />
-      </button>
+      {
+        token?.user?.user_type === "RECRUITER" ? (
+            <button className={`${styles.avatarRecruiter}`} onClick={onClick}>
+              <IoMdMenu style={{ color: "#fff" }} />
+              <Avatar sx={{ width: 34, height: 34, bgcolor: stringToColor(token?.user?.first_name) }}>{(token?.user?.first_name).slice(0,1)}</Avatar>
+            </button>
+        ) : (
+          <button className={styles.trigger} onClick={onClick}>
+            <IoMdMenu style={{ color: "#fff" }} />
+          </button>
+        )
+      }
       <nav
         ref={dropdownRef}
         className={`${styles.menu} ${isActive ? `${styles.active}` : ""}`}

@@ -3,24 +3,27 @@ import { useFetch } from 'hooks/useFetch';
 import AuthContext from 'context/AuthContext';
 import { API_APPLICATIONS_JOB_STUDENT } from 'services/settings';
 import ApplicationJob from 'components/Card/ApplicationJob/ApplicationJob';
-import { uuid } from 'utils/uuid';
+import { uuid, } from 'utils/uuid';
+import { formatDate } from 'utils/formatDate';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-// import Paper from '@mui/material/Paper';
+import { IoIosBusiness } from 'react-icons/io'
 import styles from './PageApplicationsStudent.module.css';
 
 const PageApplicationsStudent = () => {
   const { token } = useContext(AuthContext);
-  const { data } = useFetch(`${API_APPLICATIONS_JOB_STUDENT}${token?.user?.user_id}/`); 
+  const { data } = useFetch(`${API_APPLICATIONS_JOB_STUDENT}${token?.user?.user_id}/`);
+
 
   if (!data) return null;
 
-  console.log(data);
+  // console.log(formatDate("2022-04-04"))
 
+  // TODO: ELIMINAR ELEMENTOS DUPLICADOS DE LA LISTA DE VACANTES EN RELACION AL CAMPO T200_JOB
   return (
     <section className={styles.wrapper}>
       <h1 className={styles.title}>Mis Postulaciones</h1>
@@ -28,6 +31,7 @@ const PageApplicationsStudent = () => {
         <Table sx={{ width: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
+              <TableCell>Empresa</TableCell>
               <TableCell>Detalles de la vacante</TableCell>
               <TableCell align='center' >Fecha de postulacion</TableCell>
             </TableRow>
@@ -35,7 +39,15 @@ const PageApplicationsStudent = () => {
           <TableBody>
             {
               data?.map(row => (
-              <TableRow key={uuid()}>
+                <TableRow key={uuid()}>
+                <TableCell sx={{width: 400}}>
+                  {
+                    row?.t200_id_vacant?.t300_id_company?.t300_logo !== null ? 
+                      <img src={row?.t200_id_vacant?.t300_id_company?.t300_logo} alt={row?.t200_id_vacant?.t300_id_company} className={styles.image} />
+                    : <IoIosBusiness className={styles.noImage} />
+                  }
+                  
+                </TableCell>
                 <TableCell align='center' component="th" scope="row">
                   <ApplicationJob 
                     nameJob={row?.t200_id_vacant?.t200_job} 
@@ -45,8 +57,8 @@ const PageApplicationsStudent = () => {
                     workingHours={`${row?.t200_id_vacant?.t200_check_time}am-${row?.t200_id_vacant?.t200_closing_hour}pm`}
                   />
                 </TableCell>
-                <TableCell align='center'>Abr/28/2022</TableCell>
-              </TableRow>
+                <TableCell align='center'>{formatDate(row?.t201_date_application)}</TableCell>
+              </TableRow> 
               ))
             }
           </TableBody>

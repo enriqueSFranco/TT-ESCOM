@@ -1,6 +1,7 @@
 import React from "react";
 import Chip from "@mui/material/Chip";
 import { numberFormat } from "utils/numberFormat";
+import { formatDate } from "utils/formatDate";
 import * as GiIcon from "react-icons/gi";
 import * as BsIcon from "react-icons/bs";
 import * as MdIcon from "react-icons/md";
@@ -9,7 +10,7 @@ import styles from "./CardJob.module.css";
 
 
 const JobCard = ({ job }) => {
-
+  
   if (!job) return null;
 
   return (
@@ -27,7 +28,7 @@ const JobCard = ({ job }) => {
 
             <Chip label={`Sueldo: ${numberFormat(job?.t200_min_salary).slice(4,)}MXN a ${numberFormat(job?.t200_max_salary).slice(4,)}MXN al mes`} size="small" icon={<GiIcon.GiMoneyStack />} />
 
-            <Chip label={`Fecha de publicacion: ${job?.t200_publish_date}`} size="small" icon={<BsIcon.BsCalendarDate />} />
+            <Chip label={`Fecha de publicacion: ${formatDate(job?.t200_publish_date)}`} size="small" icon={<BsIcon.BsCalendarDate />} />
           </div>
           <div className={styles.logoBusiness}>
             {job?.t300_id_company?.t300_logo ? (

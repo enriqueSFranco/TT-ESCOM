@@ -80,13 +80,16 @@ const AuthProvider = ({ children }) => {
           setUser(jwt_decode(response?.data?.access));
           setToken(response?.data);
           window.sessionStorage.setItem("token", JSON.stringify(response?.data));
-          console.log(response.data['user']);
-          console.log(response.data['user']['first_name']);
-          console.log(user);          
-          if (response.data['user']['last_name'] !== "")
-              navigate("/perfil");
+          //console.log(response.data['user']);
+          //console.log(response.data['user']['first_name']);                   
+          let val = response.data['user']['first_name'];
+          console.log(val);
+          console.log(Boolean(val));
+          
+          if (Boolean(val))
+            navigate("/perfil");
           else
-              navigate("/actualiza-alumno");
+            navigate("/actualiza-alumno");
         } else {
           console.log(`error: ${response.error}`);
           window.sessionStorage.removeItem('token', JSON.stringify(response?.data))
