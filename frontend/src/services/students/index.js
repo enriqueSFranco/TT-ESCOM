@@ -8,7 +8,8 @@ import {
   API_PHOTO_STUDENT,
   API_PROJECT_STUDENT,
   API_CATALOGUE_PLATAFORM,
-  API_ACADEMIC_HISTORIAL
+  API_ACADEMIC_HISTORIAL,
+  API_CERTIFICATIONS
 } from "../settings";
 
 /**
@@ -64,8 +65,6 @@ export const getLinks = () => {
     })
     .catch(error => error);
 };
-
-
 
 
 /**
@@ -207,3 +206,33 @@ export const postAcademicHistorial = (payload = {}) => {
     .then(response => response)
     .catch(error => error);
 };
+
+/**
+ * @param {Number} id identificador de una unidad academica
+ * @returns {Promise}
+ **/
+export const deleteAcademicHistorial = (id) => {
+  return axios.delete(`${API_ACADEMIC_HISTORIAL}${id}/`)
+    .then(response => response)
+    .catch(error => error);
+}
+
+/**
+ * @param {Number} id identificador de un estudiante para obtener sus certificaciones
+ * @returns {Promise}
+ **/
+export const getStudentCertifications = (id) => {
+  return axios.get(`${API_CERTIFICATIONS}/${id}/`)
+    .then(response => response)
+    .catch(error => error);
+}
+
+/**
+ * @param {Object} payload informacion que llevara el cuerpo de la peticion
+ * @returns {Promise}
+ **/
+export const postCertification = (payload = {}) => {
+  return axios.post(API_CERTIFICATIONS, payload)
+    .then(response => response)
+    .catch(error => error);
+}

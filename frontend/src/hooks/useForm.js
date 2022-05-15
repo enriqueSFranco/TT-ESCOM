@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { createBusiness } from "services/businnes/index";
 import { createAccountStudent } from "services/students/index";
 import { postJob } from "services/jobs/index";
+import { postCertification } from "services/students/index";
 
 export const useForm = (initialForm, validateForm) => {
   const navigate = useNavigate();
@@ -56,7 +57,7 @@ export const useForm = (initialForm, validateForm) => {
   const handleSubmitCompany = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
-
+    console.log(form);
     if (Object.keys(errors).length === 0) {
       createBusiness(form)
         .then(response => {
@@ -88,6 +89,25 @@ export const useForm = (initialForm, validateForm) => {
     }
   };
 
+  const onSubmitPostCertification = (e) => {
+    e.preventDefault();
+    setErrors(validateForm(form));
+
+    if (Object.keys(errors).length === 0) {
+      setLoading(true);
+      postCertification(form)
+        .then(response => {
+          if (response.status === 201) {
+            const { data } = response;
+            setResponse(data);
+            setLoading(false);
+          } else {
+            setLoading(false);
+          }
+        })
+    }
+  }
+
   return {
     form,
     errors,
@@ -99,5 +119,6 @@ export const useForm = (initialForm, validateForm) => {
     handleSubmitCompany,
     handleValidate,
     onSubmitPostJob,
+    onSubmitPostCertification
   };
 };

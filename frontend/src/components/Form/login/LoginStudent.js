@@ -16,7 +16,7 @@ let initialForm = {
 
 const Form = () => {
   const { form, handleChange } = useForm(initialForm);
-  const { login } = useContext(AuthContext);
+  const { login } = useContext(AuthContext)
 
   return (
     <>

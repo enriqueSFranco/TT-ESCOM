@@ -19,7 +19,7 @@ import PageApplications from "pages/business/PageApplications";
 import PagePostRelease from "pages/business/PagePostRelease";
 import PageApplicationsStudent from "pages/student/PageApplicationsStudent";
 import ExperienceList from "components/Card/Experience/ExperienceList";
-import Certifications from "components/Card/Certifications/Certifications";
+import CertificationList from "components/Card/Certifications/CertificationList";
 import Accordion from "components/Accordion/Accordion";
 import AcademicRecordList from "components/Card/AcademicRecord/AcademicRecordList";
 import ModalRelease from "components/Modal/ModalRelease";
@@ -79,7 +79,7 @@ const Root = () => {
         <Route path="/perfil" element={<PageProfileStudent />}>
           <Route path="historial-academico" element={<AcademicRecordList />} />
           <Route path="experiencia" element={<ExperienceList />} />
-          <Route path="certificaciones" element={<Certifications />} />
+          <Route path="certificaciones" element={<CertificationList />} />
         </Route>
         <Route path="mis-postulaciones" element={<PageApplicationsStudent />} />
       </Route>

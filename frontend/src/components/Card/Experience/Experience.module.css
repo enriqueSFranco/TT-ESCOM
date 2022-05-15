@@ -35,8 +35,9 @@
 
 .btnAddProject {
   position: sticky;
+  top: 22rem;
+  left: 37rem;
   bottom: .5rem;
-  left: 36rem;
   height: 40px;
   width: 40px;
   border-radius: 50%;
@@ -105,6 +106,38 @@
   font-family: 'Poppins', sans-serif;
 }
 
+.btnDeleteExperience {
+  border: none;
+  height: 3rem;
+  width: 120px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  background-color: #232436;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  /* box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px; */
+  transition: background-color .3s ease;
+}
+
+.btnDeleteExperience:hover {
+  background-color: #ff0000;
+  color: #fff;
+}
+
+.circleDelete {
+  height: 8rem;
+  width: 8rem;
+  /* position: absolute; */
+  margin: 0 auto;
+  border-radius: 50%;
+  background-color: #fc1f39;
+}
+
 .container  > h4 {
   font-size: 1rem;
   margin-bottom: 1rem;
@@ -122,7 +155,7 @@
 }
 
 .deleteAction:hover {
-  color: #ff0000;
+  color: #fc1f39;
 }
 
 .detailsProject a {
@@ -202,7 +235,7 @@
 }
 
 .notProjects {
-  height: 100%;
+  height: 90%;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -222,6 +255,11 @@
   margin-bottom: 3rem;
   text-transform: uppercase;
   font-weight: bold;
+}
+
+.tittleProjectExperience {
+  font-family: 'Poppins', sans-serif;
+  margin-top: 2rem;
 }
 
 .textArea {
@@ -262,7 +300,38 @@
   justify-content: space-between;
 }
 
-/* ESTILOS PARA FORMULARIO DE EXPERIENCIA PERSONAL */
+.wrapperCircle {
+  /* outline: 2px solid red; */
+  position: relative;
+  width: 8rem;
+  height: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.mainWrapper {
+  /* outline: 2px solid red; */
+  position: absolute;
+  top: 3rem;
+  width: calc(100% - 2rem);
+  height: calc(100% - 4rem);
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.mainWrapper svg {
+  color: #fc1f39;
+  font-size: 7rem;
+  height: 7.5rem;
+  width: 7.5rem;
+  border-radius: 50%;
+  background-color: #fff;
+  position: absolute;
+  padding: 1rem;
+}
+
 .form,
 .formWorkExperience {
   display: flex;
