@@ -155,8 +155,8 @@ export const applyJob = (payload) => {
     })
 };
 
-export const changeApplyState = (id,payload) => {
-  return axios.post(`API_JOB_APPLICATIONS${id}/`, payload, {
+export const changeApplyState = (id,payload) => {  
+  return axios.put(`${API_JOB_APPLICATIONS}${id}/`, payload, {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',

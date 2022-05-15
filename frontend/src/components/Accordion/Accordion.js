@@ -29,7 +29,7 @@ const Accordion = () => {
       .catch((error) => console.log(error));
   }, [t200_id_vacant]);
 
-  // console.log(user);
+  console.log(job);
 
   return (
     <>
@@ -51,10 +51,7 @@ const Accordion = () => {
           )}
         </header>
         <div className={styles.descriptionJob}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-          sapiente dicta repudiandae excepturi doloribus qui nemo molestiae
-          iste, necessitatibus totam nulla laboriosam et ex consectetur harum
-          quis, aspernatur officia nesciunt.
+          {`To do: Porque obtener esto {job[0]?.t200_description} da como nulo????`}
         </div>
       </article>
       <Table>
