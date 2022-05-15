@@ -1,0 +1,247 @@
+[
+    {
+        "model":"companies.Company",
+        "pk":1,
+        "fields":{
+            "t300_name": "Coca-Cola",
+            "t300_rfc": "MELM830528IH0",
+            "t300_nss": 1234,
+            "t300_email": "coca-cola@gmail.com.mx",
+            "t300_bussiness_name": "Coca-Cola",
+            "t300_web_page": "https://www.coca-cola.com.mx/",
+            "t300_mision": "Satisfacer con excelencia a los consumidores de bebidas. Ser el mejor líder total de bebidas, que genere valor económico, social y ambiental sostenible, gestionando modelos de negocio innovadores y ganadores, con los mejores colaboradores en el mundo.",
+            "t300_vision": "Ser el mejor líder total de bebidas, que genere valor económico, social y ambiental sostenible, gestionando modelos de negocio innovadores y ganadores, con los mejores colaboradores en el mundo.",
+            "t300_objective": "",
+            "t300_logo": "/logos/cocacola.jpeg",
+            "t300_banner": null,
+            "t300_create_date": "1892-01-29",
+            "t400_id_admin": 1,
+            "t300_verified": true
+        }
+    },
+    {
+        "model":"companies.Company",
+        "pk":2,
+        "fields":{
+            "t300_name": "Amazon",
+            "t300_rfc": "YQXZ347247JO9",
+            "t300_nss": 543534,
+            "t300_email": "amazon@gmail.com.mx",
+            "t300_bussiness_name": "Amazon",
+            "t300_web_page": "https://www.amazon.jobs/es",
+            "t300_mision": "Nos esforzamos por ofrecer a nuestros clientes los precios más bajos posibles, la mejor selección disponible y la mayor comodidad.",
+            "t300_vision": "Ser la compañía más centrada en el cliente del mundo, donde nuestros clientes pueden encontrar y descubrir cualquier cosa que deseen comprar en línea",
+            "t300_objective": "",
+            "t300_logo": "/logos/amazon.jpeg",
+            "t300_banner": null,
+            "t300_create_date": "1994-07-05",
+            "t400_id_admin": 1,
+            "t300_verified": true
+        }
+    },
+    {
+        "model":"companies.Company",
+        "pk":3,
+        "fields":{
+            "t300_name": "Google",
+            "t300_rfc": "TYOW464134IOC",
+            "t300_nss": 45734,
+            "t300_email": "google@gmail.com.mx",
+            "t300_bussiness_name": "Google",
+            "t300_web_page": "https://careers.google.com/",
+            "t300_mision": "organizar la información en el mundo para que sea útil y accesible",
+            "t300_vision": "ser el motor de búsqueda más importante del mundo. Valores: rapidez, precisión, atención al cliente, innovación y facilidad de uso.",
+            "t300_objective": "",
+            "t300_logo": "/logos/google.jpeg",
+            "t300_banner": null,
+            "t300_create_date": "1998-09-04",
+            "t400_id_admin": 1,
+            "t300_verified": true
+        }
+    },
+    {
+        "model":"companies.Company",
+        "pk":4,
+        "fields":{
+            "t300_name": "Nike",
+            "t300_rfc": "NME920220KL4",
+            "t300_nss": 9809,
+            "t300_email": "nikemx@gmail.com",
+            "t300_bussiness_name": "Nike",
+            "t300_web_page": "https://jobs.nike.com/es/how-we-hire",
+            "t300_mision": "ofrecer inspiración e innovación a todos los atletas* del mundo",
+            "t300_vision": "Ser la mejor empresa nacional e internacional destacándonos por la buena calidad, servicio y comodidad a nuestros clientes. Queremos que nuestro producto sea vendido y utilizado en todas las partes del mundo.",
+            "t300_objective": "",
+            "t300_logo": "/logos/nike.jpeg",
+            "t300_banner": null,
+            "t300_create_date": "1964-01-25",
+            "t400_id_admin": 1,
+            "t300_verified": true
+        }
+    },
+
+    {
+        "model":"companies.Company",
+        "pk":5,
+        "fields":{
+            "t300_name": "IBM",
+            "t300_rfc": "IMC9701024T5",
+            "t300_nss": 348764,
+            "t300_email": "ibm@gmail.com",
+            "t300_bussiness_name": "IBM",
+            "t300_web_page": "https://www.ibm.com/mx-es/employment/",
+            "t300_mision": "Es ayudar a los clientes a reducir costos, mejorar su productividad y obtener una ventaja competitiva, respaldados por el liderazgo mundial de un amplio portafolio de servicios de consultoría, outsourcing, infraestructura e integración de sistemas.",
+            "t300_vision": "En IBM, creemos en el progreso que cambia el mundo: la aplicación completa de la inteligencia, la razón y la ciencia para mejorar los negocios",
+            "t300_objective": "",
+            "t300_logo": "/logos/ibm.jpeg",
+            "t300_banner": null,
+            "t300_create_date": "1911-06-16",
+            "t400_id_admin": 1,
+            "t300_verified": true
+        }
+    },
+
+    {
+        "model":"companies.Company",
+        "pk":6,
+        "fields":{
+            "t300_name": "Bimbo",
+            "t300_rfc": "BMO451102H3R",
+            "t300_nss": 73231,
+            "t300_email": "bimbo@gmail.com",
+            "t300_bussiness_name": "Bimbo",
+            "t300_web_page": "https://www.grupobimbo.com/es/bolsa-de-trabajo",
+            "t300_mision": "Buscamos alimentar, deleitar y servir a nuestro mundo, siendo una empresa altamente productiva y plenamente humana. Día a día queremos alcanzar nuestros logros y avanzar en nuestros propósitos. Esto es lo que constituye nuestra razón de ser como empresa.",
+            "t300_vision": "Ser líder internacional en la industria de la panificación.",
+            "t300_objective": "",
+            "t300_logo": null,
+            "t300_banner": null,
+            "t300_create_date": "1945-12-02",
+            "t400_id_admin": 1,
+            "t300_verified": true
+        }
+    },
+
+
+    {
+        "model":"companies.Company",
+        "pk":7,
+        "fields":{
+            "t300_name": "BBVA",
+            "t300_rfc": "BBA830831LJ2",
+            "t300_nss": 423234,
+            "t300_email": "bbva@gmail.com.mx",
+            "t300_bussiness_name": "BBVA",
+            "t300_web_page": "https://www.bbva.com/es/trabajo-empleo-empresa/empleo/",
+            "t300_mision": "Generar confianza al servir más y mejor a nuestra clientela, con transparencia e integridad, ofreciendo siempre productos de la más alta calidad.",
+            "t300_vision": "En BBVA trabajamos por un futuro mejor para las personas",
+            "t300_objective": "",
+            "t300_logo": "/logos/bbva.jpeg",
+            "t300_banner": null,
+            "t300_create_date": "1932-01-24",
+            "t400_id_admin": 1,
+            "t300_verified": true
+        }
+    },
+
+    {
+        "model":"companies.Company",
+        "pk":8,
+        "fields":{
+            "t300_name": "Facebook",
+            "t300_rfc": "FCB20040204H42",
+            "t300_nss": 234145,
+            "t300_email": "facebook@gmail.com",
+            "t300_bussiness_name": "Facebook",
+            "t300_web_page": "https://es-la.facebook.com/policies_center/Jobs/",
+            "t300_mision": "Dar a las personas el poder de crear comunidades y aproximar más al mundo",
+            "t300_vision": "Estamos construyendo la tecnología para brindarle a todos el poder de compartir fácilmente cualquier cosa con quien uno quiera",
+            "t300_objective": "",
+            "t300_logo": "/logos/facebook.jpeg",
+            "t300_banner": null,
+            "t300_create_date": "2004-02-04",
+            "t400_id_admin": null,
+            "t300_verified": true
+        }
+    },
+
+    {
+        "model":"companies.Company",
+        "pk":9,
+        "fields":{
+            "t300_name": "Tesla",
+            "t300_rfc": "TLA20030701YE4",
+            "t300_nss": 999232,
+            "t300_email": "tesla@gmail.com.mx",
+            "t300_bussiness_name": "Tesla",
+            "t300_web_page": "https://www.tesla.com/careers",
+            "t300_mision": "La misión de Tesla es acelerar la transición del mundo hacia la energía sustentable.",
+            "t300_vision": "Un futuro donde las personas dejen de depender de los combustibles fósiles, y haya cero emisiones.",
+            "t300_objective": "",
+            "t300_logo": "/logos/amazon.jpeg",
+            "t300_banner": null,
+            "t300_create_date": "2003-07-01",
+            "t400_id_admin": null,
+            "t300_verified": true
+        }
+    },
+    {
+        "model":"companies.Company",
+        "pk":10,
+        "fields": {
+            "t300_id_company": 1,
+            "t300_name": "Pepsi Company",
+            "t300_rfc": "pepsi122344",
+            "t300_nss": 3122331,
+            "t300_email": "pepsi@pepsico.com",
+            "t300_bussiness_name": "Empresa de bebidas embotelladas",
+            "t300_web_page": "www.pepsi.com.mx",
+            "t300_mision": "Refrescar al mundo",
+            "t300_vision": "",
+            "t300_objective": "",
+            "t300_logo": null,
+            "t300_banner": null,
+            "t300_create_date": "2022-04-05",
+            "t400_id_admin": 1,
+            "t300_verified": true
+        }
+    },
+    
+    {
+        "model":"companies.Recruiter",
+        "pk":1,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$RiPoxXGsCVLO04U3Ps9nys$gjzTJp4eRilm2jvKV7reAC/9kevVwvN7zdwdfgHPCH0=",
+            "last_login": null,
+            "t301_name": "Eduardo",
+            "t301_last_name": "Heras",
+            "t301_user": "eduardoH",
+            "t301_email": "jcruzh1301@alumno.ipn.mx",
+            "t301_phonenumber": 5543925511,
+            "is_active": true,
+            "t300_id_company": 1
+        }
+
+    },
+ 
+    {
+        "model" : "users.User",
+        "pk" : 2,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$IW1Bp9IQGZP5yu2cY0eKuO$K4vXpOuGbWbTgsUYZEIXuhZWp9Xtyyc9Adojuqxx0zE=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "jcruzh1301@alumno.ipn.mx",
+            "first_name": "Eduardo",
+            "last_name": "Heras",
+            "email": "",
+            "is_staff": false,
+            "date_joined": "2022-04-25T06:25:37.005568Z",
+            "user_type": "RECRUITER",
+            "is_active": true,
+            "user_id": 1,
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]
