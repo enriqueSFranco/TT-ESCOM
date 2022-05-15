@@ -1,6 +1,6 @@
-\begin{UseCase}[]{GRL-CU03}{Iniciar Sesión}{
+\begin{UseCase}[]{GRL-CU03}{Iniciar sesión}{
 	Permite al actor ingresar al sistema por medio de su cuenta de usuario para poder acceder a las
-acciones que tiene permitidas dentro del sistema de acuerdo a su tipo de usuario.
+acciones que tiene permitidas dentro del sistema de acuerdo a su tipo de cuenta.
 }
 	%----------------------------------------------------------------
 	% Datos generales del CU:
@@ -21,11 +21,10 @@ acciones que tiene permitidas dentro del sistema de acuerdo a su tipo de usuario
 		El usuario debe de tener una cuenta dentro del sistema.
 	}
 	\UCitem{Postcondiciones}{
-		
-		
+		Ninguna.		
 	}
 	\UCitems{Entradas}{
-		\imprimeUC{entradas}
+		\imprimeUC{entrada}
 	}
 	\UCitem{Destino}{
 		\Titem \refElem{GRL-IU03}
@@ -45,7 +44,7 @@ acciones que tiene permitidas dentro del sistema de acuerdo a su tipo de usuario
 \begin{UCtrayectoria}
 	\UCpaso [\UCactor] Presiona el botón \IUbutton{Eres alumno?} desde la interfaz \refElem{GRL-IU06}.\refTray{A}
     \UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU03}.
-	\UCpaso [\UCactor] Ingresa el \entrada[correo electrónico]{users.username} y \entrada[contraseña]{users.password}.\label{cu03-grl1}\refTray{A}
+	\UCpaso [\UCactor] Ingresa el \entrada[correo electrónico]{users.email} y \entrada[contraseña]{users.password}.\label{cu03-grl1}\refTray{A}
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Iniciar Sesión}. \refTray{B} \refTray{C} 
 	\UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la
 	regla de negocio \refIdElem{RN-N001}.\refTray{D}

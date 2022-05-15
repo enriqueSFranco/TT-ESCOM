@@ -1,21 +1,21 @@
-\begin{UseCase}[]{GRL-CU02}{Enviar Pre-Registro}{
-	Permite al actor registrarse como en el sistema y así posteriormente gestionar el perfil de la empresa, 
-	publicar  vacantes, consultar perfiles de candidatos y gestionar sus solicitudes.
+\begin{UseCase}[]{GRL-CU02}{Enviar pre-registro}{
+	Permite al actor enviar una solicitud a los encargados y colaboradores del sistema para que se les proporcione un usuario y contraseña
+	para posteriormente ser validados 
 }
 	%----------------------------------------------------------------
 	% Datos generales del CU:
 	\UCsection{Atributos}
 	\UCitem{Actor(es)}{
-		Reglutador. 
+		Cualquier persona que pueda acceder a la página del sistema. 
 	}
 	\UCitem[admin]{Prioridad}{
-		Alta
+		Alta.
 	}
 	\UCitem[admin]{Complejidad}{
-		Alta
+		Alta.
 	}
 	\UCitem{Precondiciones}{
-		El correo electrónico del reclutador no debe estar registrado en el sistema.
+		Ninguna.
 	}
 	\UCitem{Postcondiciones}{
 		\Titem La empresa y el reclutador quedarán en espera de validación. (REF a la Maquina de estados)
@@ -33,7 +33,6 @@
 	\UCitem{Reglas de Negocio}{
 		\Titem \refIdElem{RN-N001}
 		\Titem \refIdElem{RN-N002}
-		\Titem \refIdElem{RN-N003}
 		\Titem \refIdElem{RN-N004}
 		\Titem \refIdElem{RN-N005}
 		\Titem \refIdElem{RN-N006}
@@ -46,19 +45,19 @@
 
 %Trayectoria Principal
 \begin{UCtrayectoria}
-	\UCpaso [\UCactor] Presiona el botón \IUbutton{Crear Cuenta} desde la interfaz \refElem{GRL-IU06}.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Crear Cuenta} desde la interfaz \refElem{GRL-IU00}.
     \UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU02}.
 	\UCpaso [\UCactor] Ingresa los datos de la empresa: \entrada[nombre]{empresa.nombre}, \entrada[RFC]{empresa.rfc}, 
-	\entrada[Razón social]{empresa.razon-social}, documento del SAT de la empresa.\label{cu02-grl1}\refTray{A}
+	\entrada[Razón social]{empresa.razon-social}.\label{cu02-grl1}\refTray{A}
 	\UCpaso [\UCactor] Ingresa los datos de contacto:\entrada[nombre]{reclutador.nombre}, \entrada[apellidos]{reclutador.apellidos}, 
 	\entrada[correo electrónico]{reclutador.email} y \entrada[telefono]{reclutador.telefono}.
-	\UCpaso [\UCactor] Acepta los terminos de privacidad y condiciones del sistema.
+	%\UCpaso [\UCactor] Acepta los terminos de privacidad y condiciones del sistema.
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Enviar Pre-Registro}. \refTray{B}
     \UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la regla de negocio \refIdElem{RN-N001}.\refTray{C}
-	\UCpaso [\UCsist] Verifica que el \entrada[RFC]{empresa.rfc} ingresado cumpla con el formato correcto de acuerdo a las reglas de negocio  \refIdElem{RN-N004}, \refIdElem{RN-N005}.\refTray{D}
-	\UCpaso [\UCsist] Verifica que el \entrada[RFC]{empresa.rfc} ingresado no coincida con otro registrado en el sistema de acuerdo a la regla de negocio  \refIdElem{RN-N003}.\refTray{E}
-	\UCpaso [\UCsist] Verifica que el \entrada[correo electrónico]{reclutador.email} ingresado cumpla con el formato correcto de acuerdo a las reglas de negocio  \refIdElem{RN-N002} y \refIdElem{RN-N004} .\refTray{D} \label{cu02-grl2}
-	\UCpaso [\UCsist] Verifica que el correo electrónico ingresado no coincida con otro registrado en el sistema deacuedo a la regla de negocio  \refIdElem{RN-N006} y \refIdElem{RN-N004}.\refTray{E}
+	\UCpaso [\UCsist] Verifica que el RFC ingresado cumpla con el formato correcto de acuerdo a las reglas de negocio  \refIdElem{RN-N004}, \refIdElem{RN-N005}.\refTray{D}
+	\UCpaso [\UCsist] Verifica que el RFC ingresado no coincida con otro registrado en el sistema de acuerdo a la regla de negocio \refIdElem{RN-N004}.\refTray{E}
+	\UCpaso [\UCsist] Verifica que el correo electrónico ingresado cumpla con el formato correcto de acuerdo a las reglas de negocio  \refIdElem{RN-N002}.\refTray{D} \label{cu02-grl2}
+	\UCpaso [\UCsist] Verifica que el correo electrónico ingresado no coincida con otro registrado en el sistema deacuedo a la regla de negocio  \refIdElem{RN-N004}.\refTray{E}
 	\UCpaso [\UCsist] Envia una notificación al encargado y colaboradores del sistema indicando que hay una nueva empresa por validar.
     \UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU02-2}.
 \end{UCtrayectoria}
@@ -69,7 +68,7 @@
 	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU02-1}.
 	\UCpaso [\UCactor] Ingresa el nombre de la empresa.
 	\UCpaso [\UCactor] Ingresa los datos de contacto: nombre, apellidos, correo electrónico empresarial y un telefono de contacto.
-	\UCpaso [\UCactor] Acepta los terminos de privacidad y condiciones del sistema.
+	%\UCpaso [\UCactor] Acepta los terminos de privacidad y condiciones del sistema.
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Enviar Pre-Registro}. 
 	\UCpaso [\UCsist] Continúa en el paso \ref{cu02-grl2} de la trayectoria principal.
 \end{UCtrayectoriaA} 
@@ -77,12 +76,12 @@
 %Trayectorias Alternativas
 \begin{UCtrayectoriaA}[Fin de la trayectoria]{B}{El actor decide cancelar el pre-registro.}
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Cancelar}.
-	\UCpaso [\UCsist] Muestra la interfaz GRL-IU06.
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU00}.
 \end{UCtrayectoriaA} 
 
 %Trayectorias Alternativas
 \begin{UCtrayectoriaA}[Fin de la trayectoria]{C}{El actor no ingresó uno o más datos obligatorios.}
-	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG1} en los campos que no
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG4} en los campos que no
 	fueron ingresados.
 	\UCpaso [\UCsist] Continúa en el paso \ref{cu02-grl1} de la trayectoria principal.
 \end{UCtrayectoriaA} 
@@ -94,7 +93,7 @@
 \end{UCtrayectoriaA} 
 
 %Trayectorias Alternativas
-\begin{UCtrayectoriaA}[Fin de la trayectoria]{E}{El actor ingresó uun correo electrónico ya registrado en el sistema.}
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{E}{El actor ingresó un correo electrónico ya registrado en el sistema.}
 	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG3}.
 	\UCpaso [\UCsist] Continúa en el paso \ref{cu02-grl1} de la trayectoria principal.
 \end{UCtrayectoriaA} 

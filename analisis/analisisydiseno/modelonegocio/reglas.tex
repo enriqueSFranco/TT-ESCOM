@@ -57,7 +57,7 @@ Cada regla de negocio indica los siguientes atributos:
 	}
 	\BRitem{Sentencia}{%
 		Sea $Correo_{elect}$ el correo electrónico ingresado en el sistema, debe cumplir con la siguiente expresión:
-		$\hat{}$([a-z0-9\_.-]+)@([a-z.-]+).([a-z.]\{2,6\})\$
+		$\hat{}$(w+[/./-]?){1,}@[A-Za-z]+[/.]\textbackslash{}w{2,}\$
 	}
 	\BRitem{Ejemplo}{%
 	
@@ -102,7 +102,7 @@ Cada regla de negocio indica los siguientes atributos:
 \end{BusinessRule}
 
 %-----------------------BR-005---------------------------
-\begin{BusinessRule}[]{RN-N005}{Formato de un RFC}
+\begin{BusinessRule}[]{RN-N005}{Formato válido para del RFC}
 	\BRsection[control]{Atributos}%
 	\BRitem[admin]{Clase}{\bcIntegridad}%
 	\BRitem{Descripción}{%
@@ -114,7 +114,7 @@ Cada regla de negocio indica los siguientes atributos:
 	}
 	\BRitem{Sentencia}{%
 		Sea $RFC_ep$ el RFC ingresado en el sistema, debe cumplir con la siguiente expresión:
-		$\hat{}$([a-z0-9\_.-]+)@([a-z.-]+).([a-z.]\{2,6\})\$
+		$\hat{}$([A-ZÑ\textbackslash{}x26]{3,4})([0-9]{6})([A-Z0-9]{3})\$
 	}
 	%\BRitem{Ejemplo}{%
 	
@@ -126,7 +126,7 @@ Cada regla de negocio indica los siguientes atributos:
 
 
 %-----------------------BR-006---------------------------
-\begin{BusinessRule}[]{RN-N006}{Formato de la contraseña}
+\begin{BusinessRule}[]{RN-N006}{Formato válido para de la contraseña}
 	\BRsection[control]{Atributos}%
 	\BRitem[admin]{Clase}{\bcIntegridad}%
 	\BRitem{Descripción}{%
@@ -139,7 +139,7 @@ Cada regla de negocio indica los siguientes atributos:
 	}
 	\BRitem{Sentencia}{%
 		Sea $Password_ep$ la contraseña ingresada en el sistema, debe cumplir con la siguiente expresión:
-		$\hat{}$([a-z0-9\_.-]+)@([a-z.-]+).([a-z.]\{2,6\})\$
+		$\hat{}$(?=.[a-z])(?=.[A-Z])(?=.\textbackslash{}d)(?=.[\$@\$!\%?\&])([A-Za-z\textbackslash{}d\$@\$!\%?\&]|[$\hat{}$ ]){8,15}\$
 	}
 	%\BRitem{Ejemplo}{%
 	

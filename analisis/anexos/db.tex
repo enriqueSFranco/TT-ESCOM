@@ -127,100 +127,58 @@ Cada dato puede tener restricciones adicionales, entre las que se encuentran:
 
 %---------------------Usuario-----------------------------
 \begin{cdtEntidad}{users}{Usuario}{
-    Es un periodo de tiempo, generalmente de 12 meses donde las Alcaldías, Dependencias, Órganos Desconcentrados y Entidades, cuadran las cuentas de sus actividades financieras y contables.}
-
-	    \brAttr{id}{Id}{tInt}{
-	        Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	        Restricciones adicionales:
+        Esta entidad es generada por Django. 
+    }
+	    \brAttr{id}{Id de usuario}{tInt}{
+	        Identificador único para cada registro de la entidad usuarios.
+            Restricciones adicionales:
             \begin{Citemize}
                 \item \refElem{tPrimaryKey}
                 \item \refElem{tUnico}
             \end{Citemize}
         }{\datRequerido}
 
-        \brAttr{password}{Contraseña}{tVarchar}{
-	        Es el correo del alumno con el cual se identificara como unico dentro del sistema.
+        \brAttr{nombre}{Nombre}{tVarchar}{
+	        Es el nombre de la persona con el cual se registra dentro del sistema.
         }{\datRequerido}
 
-        \brAttr{username}{User Name}{tVarchar}{
+        \brAttr{email}{Correo electrónico}{tEmail}{
 	        Es el correo del alumno con el cual se identificara como unico dentro del sistema.
 	        Restricciones adicionales:
             \begin{Citemize}
                 \item \refElem{tUnico}
             \end{Citemize}
         }{\datRequerido}
+    
+        \brAttr{password}{Contraseña}{tVarchar}{
+	        Es la contraseña de acceso al sistema para el usuario.
+            Restricciones adicionales:
+            \begin{Citemize}
+                \item Debe de cumplir con el formato correcto de acuerdo a \refIdElem{RN-N006}
+            \end{Citemize}
+        }{\datRequerido}
 
-       % \brAttr{t100_email}{Nombre }{tEmail}{
-	   %     Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	   %     Restricciones adicionales:
-       %     \begin{Citemize}
-       %         \item \refElem{tPrimaryKey}
-       %         \item \refElem{tUnico}
-       %     \end{Citemize}
-       % }{\datRequerido}
+        \brAttr{fecharegis}{Fecha de registro}{tDate}{
+	        Es la fecha en la que el usuario crea su cuenta en el sistema y el propio sistema 
+            la registra.
+        }{\datRequerido}
 
-      %  \brAttr{t100_email}{Apellidos}{tEmail}{
-	   %     Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	   %     Restricciones adicionales:
-       %     \begin{Citemize}
-       %         \item \refElem{tPrimaryKey}
-       %         \item \refElem{tUnico}
-       %     \end{Citemize}
-       % }{\datRequerido}
+        \brAttr{ultsesion}{Ultima sesión}{tDate}{
+	        Es la fecha en la que el usuario inició sesión en el sistema (se registra automáticamente).
+        }{\datRequerido}
 
-       % \brAttr{t100_email}{Fecha de registro}{tEmail}{
-	   %     Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	   %     Restricciones adicionales:
-       %     \begin{Citemize}
-       %         \item \refElem{tPrimaryKey}
-       %         \item \refElem{tUnico}
-       %     \end{Citemize}
-       % }{\datRequerido}
+        \brAttr{idtipo}{Id de tipo}{tNumeric}{
+            Es la referencia a la entidad \refElem{users}
+            Restricciones adicionales:
+            \begin{Citemize}
+                \item \refElem{tForeignKey}
+                \item \refElem{tUnico}
+            \end{Citemize}
+        }{\datRequerido}
 
-       % \brAttr{t100_email}{Last login}{tdate}{
-	   %     Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	   %     Restricciones adicionales:
-       %     \begin{Citemize}
-       %         \item \refElem{tPrimaryKey}
-      %          \item \refElem{tUnico}
-       %     \end{Citemize}
-       % }{\datRequerido}
-
-       % \brAttr{t100_email}{Super usuario}{bolean}{
-	   %     Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	   %     Restricciones adicionales:
-       %     \begin{Citemize}
-       %         \item \refElem{tPrimaryKey}
-       %         \item \refElem{tUnico}
-       %     \end{Citemize}
-       % }{\datRequerido}
-
-       % \brAttr{t100_email}{Stado}{bolean}{
-	   %     Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	   %     Restricciones adicionales:
-       %     \begin{Citemize}
-       %         \item \refElem{tPrimaryKey}
-       %         \item \refElem{tUnico}
-       %     \end{Citemize}
-       % }{\datRequerido}
-
-       % \brAttr{t100_email}{user_id}{bolean}{
-	   %    
-       %     \begin{Citemize}
-       %         \item \refElem{tPrimaryKey}
-       %         \item \refElem{tUnico}
-       %     \end{Citemize}
-       % }{\datRequerido}
-        
-       % \brAttr{t100_email}{user_type}{bolean}{
-	    %   
-        %    \begin{Citemize}
-       %         \item \refElem{tPrimaryKey}
-       %         \item \refElem{tUnico}
-       %     \end{Citemize}
-       % }{\datRequerido}
-
-	   
+        \brAttr{status}{Activo}{tBool}{
+	        Es el estado de la cuenta del usuario dentro del sistema.
+        }{\datRequerido}
 \end{cdtEntidad}
 
 %---------------------Empresa-----------------------------
@@ -228,53 +186,235 @@ Cada dato puede tener restricciones adicionales, entre las que se encuentran:
     Empresa constituida que publica vacantes en el sistema siempre y cuando lo haya permitido el 
     encargado/colaborador del sistema.
     }
-    \brAttr{id}{Id}{tInt}{Descripción}{\datRequerido} 
-    \brAttr{nombre}{Nombre}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{rfc}{RFC}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{nss}{Número de seguro social }{tInt}{Descripción}{\datOpcional}
-    \brAttr{pageweb}{Página Web}{tVarchar}{Descripción}{\datOpcional}
-    \brAttr{mision}{Misión}{tVarchar}{Descripción}{\datOpcional}
-    \brAttr{vision}{Vision}{tVarchar}{Descripción}{\datOpcional}
-    \brAttr{razon-social}{Razon Social}{tVarchar}{Descripción}{\datOpcional}
-    \brAttr{fecha-alta}{Fecha de alta}{tDate}{Descripción}{\datOpcional}
-    \brAttr{id-admin}{Id del administrador}{tVarchar}{
+
+    \brAttr{id}{Id de la empresa}{tInt}{
+	    Identificador único para cada registro de la empresa.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido} 
+
+    \brAttr{nombre}{Nombre}{tVarchar}{
+        Nombre de la empresa con el que se registra en el sistema.
+    }{\datRequerido}
+
+    \brAttr{rfc}{RFC}{tVarchar}{
+        RFC de la empresa.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item Debe de cumplir con la regla de negocio ...
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{razonsocial}{Razón social}{tVarchar}{
+        Razon social de la empresa.
+    }{\datRequerido}
+
+    \brAttr{pageweb}{Página Web}{tVarchar}{
+        Es el URL de la oágina de la empresa.
+    }{\datOpcional}
+
+    %\brAttr{mision}{Misión}{tVarchar}{Descripción}{\datOpcional}
+    %\brAttr{vision}{Vision}{tVarchar}{Descripción}{\datOpcional}
+    %\brAttr{fecha-alta}{Fecha de alta}{tDate}{Descripción}{\datOpcional}
+    %\brAttr{id-admin}{Id del administrador}{tVarchar}{
 	   %     Es el correo del alumno con el cual se identificara como unico dentro del sistema.
 	   %     Restricciones adicionales:
-            \begin{Citemize}
-                \item \refElem{tForeignKey}
-                \item \refElem{tUnico}
-            \end{Citemize}
-        }{\datRequerido}
+     %       \begin{Citemize}
+      %          \item \refElem{tForeignKey}
+      %          \item \refElem{tUnico}
+      %      \end{Citemize}
+      %  }{\datRequerido}
 \end{cdtEntidad}
 
 %---------------------Reclutador-----------------------------
-\begin{cdtEntidad}{reclutador}{Reclutador}{desc}
-    \brAttr{id-reclutador}{Id}{tInt}{Descripción}{\datRequerido} 
-    \brAttr{nombre}{Nombre}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{apellidos}{Apellidos}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{email}{Correo electrónico}{tVarchar}{Descripción}{\datOpcional}
-    \brAttr{telefono}{Correo electrónico}{tVarchar}{Descripción}{\datOpcional}
-    \brAttr{password}{Contraseña}{tVarchar}{Descripción}{\datOpcional}
-    \brAttr{id-impresa}{Id}{tInt}{Descripción}{\datOpcional}
-    \brAttr{id-admin}{Id}{tInt}{Descripción}{\datOpcional}
+\begin{cdtEntidad}{reclutador}{Reclutador}{
+    Es el personal de recursos humanos de la empresa que ya esta registrada en el sistema.}
+    \brAttr{id}{Id de reclutador}{tInt}{
+        Identificador único para cada registro de un reclutador.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido} 
+
+    \brAttr{nombre}{Nombre}{tChar}{
+        Nombre del reclutador con el cual se registra en el sistema.
+        Restricciones adicionales:
+            \begin{Citemize}
+                \item No debe de execer de 50 caracteres.
+            \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{papellido}{Primer apellido}{tChar}{
+        Primer apellido del reclutador con el cual se registra en el sistema.
+        Restricciones adicionales:
+            \begin{Citemize}
+                \item No debe de execer de 60 caracteres.
+            \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{sapellido}{Segundo apellido}{tChar}{
+        Segundo apellido del reclutador con el cual se registra en el sistema.
+        Restricciones adicionales:
+            \begin{Citemize}
+                \item No debe de execer de 60 caracteres.
+            \end{Citemize}
+    }{\datOpcional}
+
+    \brAttr{telefono}{Telefono}{tNumeric}{
+        Número del telefono del reclutador.
+        Restricciones adicionales:
+            \begin{Citemize}
+                \item Tiene que ser exactamente de 10 dígitos.
+            \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{email}{Correo electrónico}{tEmail}{
+	    Es el correo del reclutador.
+	    Restricciones adicionales:
+            \begin{Citemize}
+                \item \refElem{tUnico}
+            \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{id-impresa}{Id}{tInt}{
+        Es la referencia al id del registro de la empresa.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+        \end{Citemize}
+    
+    }{\datOpcional}
+    %\brAttr{id-admin}{Id}{tInt}{Descripción}{\datOpcional}
 \end{cdtEntidad}
 %---------------------Alumno-----------------------------
 \begin{cdtEntidad}{estudiante}{Alumno}{desc}
-    \brAttr{id-alumno}{Id}{tInt}{Descripción}{\datRequerido} 
-    \brAttr{boleta}{Estado}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{nombre}{Nombre}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{apellidos}{Colonia}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{residencia}{Residencia}{tChar}{tVarchar}{\datRequerido}
-    \brAttr{viajar}{Disponibilidad para viajar}{tNumeric}{Descripción}{\datRequerido}
-    \brAttr{puesto-deseado}{Puesto deseado}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{salario}{Salario deseado}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{modalidad}{Tipo de trabajo}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{telefono}{Telefono}{tNumeric}{Descripción}{\datRequerido}
+    Un alumno es un tipo de usuario dentro del sistema 
+    \brAttr{id-alumno}{Id}{tInt}{
+        Identificador único para cada registro de la entidad alumno.
+            Restricciones adicionales:
+            \begin{Citemize}
+                \item \refElem{tPrimaryKey}
+                \item \refElem{tUnico}
+            \end{Citemize}
+    }{\datRequerido} 
+
+    \brAttr{boleta}{Número de boleta}{tNumeric}{
+        Es el número de boleta de los alumnos del Instituto Politécnico Nacional.
+            Restricciones adicionales:
+            \begin{Citemize}
+                \item Debe de cumplir con la regla de negocio ...
+                \item \refElem{tUnico}
+            \end{Citemize}
+    }{\datOpcional}
+
+    \brAttr{nombre}{Nombre}{tChar}{
+        Nombre del alumno con el cual se registra en el sistema.
+        Restricciones adicionales:
+            \begin{Citemize}
+                \item No debe de execer de 50 caracteres.
+            \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{papellido}{Primer apellido}{tChar}{
+        Primer apellido del alumno con el cual se registra en el sistema.
+        Restricciones adicionales:
+            \begin{Citemize}
+                \item No debe de execer de 60 caracteres.
+            \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{sapellido}{Segundo apellido}{tChar}{
+        Segundo apellido del alumno con el cual se registra en el sistema.
+        Restricciones adicionales:
+            \begin{Citemize}
+                \item No debe de execer de 60 caracteres.
+            \end{Citemize}
+    }{\datOpcional}
+
+    \brAttr{pdfcv}{CV/Resume}{tVarchar}{
+        Archivo en formato \textbf{.pdf} del alumno.
+        Restricciones adicionales:
+            \begin{Citemize}
+                \item No debe de execer de 100 caracteres.
+            \end{Citemize}
+    }{\datOpcional}
+
+    \brAttr{email}{Correo electrónico}{tEmail}{
+	    Es el correo del alumno.
+	    Restricciones adicionales:
+            \begin{Citemize}
+                \item \refElem{tUnico}
+            \end{Citemize}
+    }{\datRequerido}
+    
+    \brAttr{objetivospersonales}{Objetivos personales}{tVarchar}{
+        Descripción de los objetivos personales del alumno.
+    }{\datOpcional}
+    
+    \brAttr{puestodeseado}{Puesto deseado}{tChar}{
+        Nombre del puesto deseado del alumno.
+        Restricciones adicionales:
+            \begin{Citemize}
+                \item No debe de execer de 70 caracteres.
+            \end{Citemize}
+    }{\datOpcional}
+    
+    \brAttr{telefono}{Telefono}{tNumeric}{
+        Número del telefono del alumno.
+        Restricciones adicionales:
+            \begin{Citemize}
+                \item Tiene que ser exactamente de 10 dígitos.
+            \end{Citemize}
+    }{\datRequerido}
+    
+    \brAttr{recidencia}{Recidencia}{tVarchar}{
+        Lugar donde se ubica el alumno.
+    }{\datRequerido}
+
+    \brAttr{salario}{Salario deseado}{tNumeric}{
+        Cantidad salarial que desea percibir el alumno.
+    }{\datOpcional}
+
+    \brAttr{reubicable}{Reubicable}{tBool}{
+        Indica si el alumno esta dispuesto a cambiar de lugar de recidencia o no.
+    }{\datOpcional}
+
+    \brAttr{imagenperfil}{Imagen de perfil}{tVarchar}{
+        Es la imagen del perfil del alumno:
+        Los tipos de archivos que se permiten son:
+            \begin{Citemize}
+                \item .png
+                \item .jpg
+                \item .jpge
+            \end{Citemize}
+    }{\datOpcional}
+
+    \brAttr{status}{Activo}{tBool}{
+	        Es el estado de la cuenta del usuario dentro del sistema.
+    }{\datOpcional}
+   
+    \brAttr{modalidad}{Tipo de trabajo}{tVarchar}{
+       Es el tipo de trabajo que prefiere el alumno.
+       Los valores posibles son:
+            \begin{Citemize}
+                \item Hibrido
+                \item Presencial
+                \item Home oficce
+            \end{Citemize}
+    }{\datOpcional}
+
 \end{cdtEntidad}
 
 %---------------------Historial Academico-----------------------------
 \begin{cdtEntidad}{hacademico}{Historial Academico}{desc}
     \brAttr{id-vacante}{Id}{tInt}{Descripción}{\datRequerido} 
+    \brAttr{intitucion}{Institucion}{tVarchar}{Descripción}{\datRequerido}
     \brAttr{carrera}{Carrera}{tVarchar}{Descripción}{\datRequerido}
     \brAttr{inicio}{Fecha de inicio}{tVarchar}{Descripción}{\datRequerido}
     \brAttr{fin}{Fecha final}{tVarchar}{Descripción}{\datRequerido}
@@ -290,11 +430,14 @@ Cada dato puede tener restricciones adicionales, entre las que se encuentran:
 
 
 %---------------------Vacante----------------------------
-\begin{cdtEntidad}{vacante}{Vacante}{desc}
+\begin{cdtEntidad}{vacante}{Vacante}{
+    Vacante publicada por un reclutador de una empresa.
+}
     \brAttr{id}{Id}{tInt}{Descripción}{\datRequerido} 
     \brAttr{titulo}{Titulo}{tVarchar}{Descripción}{\datRequerido}
     \brAttr{descripcion}{Fecha de inicio}{tVarchar}{Descripción}{\datRequerido}
     \brAttr{salario-min}{Salario mínimo}{tVarchar}{Descripción}{\datRequerido}
     \brAttr{saralio-max}{Salario maximo}{tVarchar}{Descripción}{\datRequerido}
+    \brAttr{ubicacion}{Salario maximo}{tVarchar}{Descripción}{\datRequerido}
 \end{cdtEntidad}
 

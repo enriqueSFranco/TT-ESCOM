@@ -268,10 +268,10 @@
         \noindent{\includegraphics[width=\textwidth]{cdt/uc/rules/UCRule}}%
     \vspace*{-2\baselineskip}%
     
-    \section{#2 #3}%
+    \subsection{#2 #3}%
     \hypertarget{#2}{}%
-    \subsection{Resumen}{#4}
-    \subsection{Descripción}%
+    \subsubsection{Resumen}{#4}
+    \subsubsection{Descripción}%
 	\resetTable%
         \addtoTable{all}{\rowcolor{black}}%
         \UCitem{\color{white}Caso de Uso}{\color{white}#2 #3}%
@@ -279,7 +279,7 @@
     \begin{longtable}{| p{.25\textwidth} | p{.65\textwidth} |}%
         \tablecontent
     \end{longtable}%
-    \subsection{Trayectorias del Caso de Uso}
+    \subsubsection{Trayectorias del Caso de Uso}
 }
 
 %=====================================================
@@ -371,7 +371,7 @@
 %
 \newcommand{\UCpaso}[1][\UCsist]{\item {#1} }
 \newenvironment{UCtrayectoria}{%
-    \bigskip\noindent {\large {\bf Trayectoria principal}\\}%
+    \bigskip\noindent { {\bf Trayectoria principal}\\}%
     \renewcommand{\varCurrentIdTray}{}%
     \renewcommand{\labelenumi}{\textcolor{black}{\bf \theenumi}}%
     \begin{enumerate}\addtolength{\itemsep}{-0.5\baselineskip}%
@@ -446,7 +446,7 @@
 \newenvironment{UCtrayectoriaA}[3][Fin de la trayectoria]{%
     \renewcommand{\varCurrentFinTray}{#1}%
     \renewcommand{\varCurrentIdTray}{#2}%
-    \bigskip\noindent \hypertarget{tray:\arabic{counterUC}#2}{\large {\bf Trayectoria alternativa #2:}}\\%
+    \bigskip\noindent \hypertarget{tray:\arabic{counterUC}#2}{ {\bf Trayectoria alternativa #2:}}\\%
     {\small{\em\bf Condición:} {\em {#3}}}%
     \renewcommand{\labelenumi}{\textcolor{black}{\bf {#2}-\theenumi}}%
     \normalsize\begin{enumerate}\addtolength{\itemsep}{-0.5\baselineskip}%

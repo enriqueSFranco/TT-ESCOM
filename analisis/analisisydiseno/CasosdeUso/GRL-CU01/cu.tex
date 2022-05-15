@@ -1,4 +1,4 @@
-\begin{UseCase}{GRL-CU01}{Crear Cuenta}{
+\begin{UseCase}{GRL-CU01}{Crear cuenta}{
 	Permite al actor registrarse como nuevo usuario en el sistema y así gestionar su perfil y aplicar a las vacantes
 	de su elección.
 }
@@ -6,19 +6,22 @@
 	% Datos generales del CU:
 	\UCsection{Atributos}
 	\UCitem{Actor(es)}{
-		Alumno. 
+		Cualquier persona que pueda acceder a la página del sistema. 
 	}
 	\UCitem{Prioridad}{
-		Alta
+		Alta.
 	}
 	\UCitem{Complejidad}{
-		Alta
+		Media.
 	}
 	\UCitem{Precondiciones}{
-		El correo electrónico del usuario no debe estar registrado en el sistema.
+		Ninguna.
+		%El correo electrónico del nuevo usuario no debe estar registrado en el sistema.
 	}
 	\UCitem{Postcondiciones}{
-		El actor podrá gestionar su perfil y aplicar a las vacantes publicadas en el sistema.
+		El actor podrá gestionar su perfil, consultar, postularse y/o reportar vacantes publicadas,
+		consultar comunicados y las empresas registradas  en el sistema, así como consultar el estado 
+		de sus postulaciones.
 	}
 	\UCitem{Entradas}{
 		\imprimeUC{entrada}
@@ -42,24 +45,23 @@
 
 %Trayectoria Principal
 \begin{UCtrayectoria}
-	\UCpaso [\UCactor] Presiona el botón \IUbutton{Crea tu cuenta} desde la interfaz \refElem{GRL-IU06}.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Crea tu cuenta} desde la interfaz \refElem{GRL-IU00}.
     \UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU01}.
-	\UCpaso [\UCactor] Ingresa el \entrada[correo electrónico]{users.username} y \entrada[contraseña]{users.password} del usuario en los compos correspondientes.\label{cu01-grl}
-	\UCpaso [\UCactor] Acepta los terminos de privacidad y condiciones del sistema.
+	\UCpaso [\UCactor] Ingresa el \entrada[correo electrónico]{users.email} y \entrada[contraseña]{users.password} del usuario en los compos correspondientes.\label{cu01-grl}
+	%\UCpaso [\UCactor] Acepta los terminos de privacidad y condiciones del sistema.
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Crear Cuenta}. \refTray{A}
-    \UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la
-	regla de negocio \refIdElem{RN-N001}.\refTray{B}
-	\UCpaso [\UCsist] Verifica que el correo electrónico ingresado cumpla con el formato correcto de acuerdo a las reglas de negocio  \refIdElem{RN-N002} y \refIdElem{RN-N003} .\refTray{C}
-	\UCpaso [\UCsist] Verifica que el correo electrónico ingresado no coincida con otro registrado en el sistema de acuerdo a la regla de negocio  \refIdElem{RN-N004}.\refTray{D}
-	\UCpaso [\UCsist] Verifica que la contraseña cumpla con el formato correcto de acuerdo a la reglas de negocio \refIdElem{RN-N002} y \refIdElem{RN-N003} .\refTray{C}
-	\UCpaso [\UCsist] Asigna los permisos correspondientes de un usuario tipo Alumno a la cuenta creada.
-    \UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU06}..
+    \UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la regla de negocio \refIdElem{RN-N001}.\refTray{B}
+	\UCpaso [\UCsist] Verifica que el correo electrónico ingresado cumpla con el formato correcto de acuerdo a las reglas de negocio  \refIdElem{RN-N002}.\refTray{C}
+	\UCpaso [\UCsist] Verifica que la contraseña cumpla con el formato correcto de acuerdo a la reglas de negocio \refIdElem{RN-N006}.\refTray{C}
+	\UCpaso [\UCsist] Verifica que el correo electrónico ingresado no coincida con otro registrado en el sistema de acuerdo a la regla de negocio \refIdElem{RN-N004}.\refTray{D}
+	%\UCpaso [\UCsist] Asigna los permisos correspondientes de un usuario tipo Alumno a la cuenta creada.
+    \UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU03-1}.
 \end{UCtrayectoria}
 
 %Trayectorias Alternativas
-\begin{UCtrayectoriaA}[Fin de la trayectoria]{A}{El actor decide cancelar el registro de un usuario.}
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{A}{El actor decide cancelar el registro.}
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Cancelar}.
-	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU06}.
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU00}.
 \end{UCtrayectoriaA} 
 
 %Trayectorias Alternativas
