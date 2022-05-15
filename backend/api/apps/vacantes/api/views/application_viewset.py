@@ -122,7 +122,7 @@ class VacantApplicationsViewSet(viewsets.GenericViewSet):
 
 	def get_object(self, pk):	
 		self.queryset = self.model.objects\
-				.filter(t200_id_vacant = pk)\
+				.filter(t200_id_vacant = pk, c205_id_application_state__in=['1','2','4'])\
 				.all()#values('t201_id_application','t100_boleta','c205_id_application_state','t201_date_application','t201_cv')		
 		return self.queryset
 

@@ -127,8 +127,8 @@ class Vacant(models.Model):
     t200_id_vacant = models.AutoField(primary_key=True)
     t300_id_company = models.ForeignKey(
         Company,
-        blank=True,
-        null=True,
+        blank=False,
+        null=False,
         related_name='CompanyOffering',
         on_delete=models.CASCADE
     )
@@ -148,12 +148,20 @@ class Vacant(models.Model):
     t200_min_salary = models.IntegerField()
     t200_max_salary = models.IntegerField()
     t200_gross_salary = models.BooleanField(default=False)
-    t200_salary_negotiable = models.BooleanField(default=False)
-    t200_home_ofice = models.BooleanField(default=True)#c214_id_modality    
+    t200_salary_negotiable = models.BooleanField(default=False)    
+    c214_id_modality = models.ForeignKey(
+        Modality,
+        null=False,
+        blank=False,
+        default=1,
+        related_name='WorkModality',
+        on_delete=models.CASCADE
+    )
+
     c206_id_profile = models.ForeignKey(
         CandidateProfile,
-        null=True,
-        blank=True,
+        null=False,
+        blank=False,
         default=1,
         related_name='ProfileRequired',
         on_delete=models.CASCADE
@@ -203,8 +211,8 @@ class Requirement(models.Model):
     t214_id_requirement = models.AutoField(primary_key=True)
     t200_id_vacant = models.ForeignKey(
 		Vacant,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
 		related_name='VacantRequirement',
 		on_delete=models.CASCADE)
     c116_id_skill = models.ForeignKey(
@@ -228,8 +236,8 @@ class LenguageRequired (models.Model):
     t215_id_lenguage = models.AutoField(primary_key=True)
     t200_id_vacant = models.ForeignKey(
 		Vacant,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
 		related_name='VacantLenguange',
 		on_delete=models.CASCADE)
     c111_id_language = models.ForeignKey(
@@ -257,20 +265,20 @@ class Application(models.Model):
     t201_id_application = models.AutoField(primary_key=True)
     t200_id_vacant = models.ForeignKey(
 		Vacant,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
 		related_name='VacantApplicated',
 		on_delete=models.CASCADE)
     t100_id_student = models.ForeignKey(        
 		Student,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
 		related_name='AppliedStudent',
 		on_delete=models.CASCADE)
     c205_id_application_state = models.ForeignKey(
 		ApplicationState,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
 		related_name='ApplicationStatus',
         on_delete=models.CASCADE)       
     t201_date_application = models.DateField()
@@ -288,14 +296,14 @@ class ApplicationStateHistory(models.Model):
     t216_id_state = models.AutoField(primary_key=True)
     t201_id_application= models.ForeignKey(
 		Application,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
 		related_name='ApplicationRegister',
         on_delete=models.CASCADE)
     c205_id_application_state = models.ForeignKey(
 		ApplicationState,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
 		related_name='ApplicationStatuses',
         on_delete=models.CASCADE)
     t216_modify_date = models.DateField()        
@@ -317,8 +325,8 @@ class Announcement(models.Model):
     t202_link = models.CharField(max_length=60,blank=True,null=True)#enlaces
     t300_id_company = models.ForeignKey(
         Company,
-        blank=True,
-        null=True,
+        blank=False,
+        null=False,
         related_name='CompanyCommunicate',
         on_delete=models.CASCADE
     )
@@ -326,15 +334,15 @@ class Announcement(models.Model):
     t202_close_date = models.DateField(null=True)
     t301_id_recruiter = models.ForeignKey(
         Recruiter,
-        null=True,
-        blank=True,
+        null=False,
+        blank=False,
         related_name='RecruiterCommunicate',
         on_delete=models.CASCADE
     )
     t400_id_admin = models.ForeignKey(
         Admin,
-        null=True,
-        blank=True,
+        null=False,
+        blank=False,
         related_name='AdminCommunicate',
         on_delete=models.CASCADE
     ) 
@@ -352,21 +360,21 @@ class Report(models.Model):
     t203_id_report = models.AutoField(primary_key=True)
     t200_id_vacant = models.ForeignKey(
 		Vacant,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
 		related_name='Report',
 		on_delete=models.CASCADE)
     t203_publish_type = models.CharField(max_length=15,blank=True,null=True)#Vacante/Comunicado
     t100_id_student = models.ForeignKey(        
 		Student,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
 		related_name='ReportStudent',
 		on_delete=models.CASCADE)    
     t300_id_company = models.ForeignKey(
         Company,
-        blank=True,
-        null=True,
+        blank=False,
+        null=False,
         related_name='CompanyReport',
         on_delete=models.CASCADE
     )

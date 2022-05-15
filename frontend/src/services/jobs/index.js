@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_JOBS, API_VACANTS_APPLICATIONS_JOB_STUDENT, API_VACANT_INFO } from "../settings";
+import { API_JOBS, API_VACANTS_APPLICATIONS_JOB_STUDENT, API_VACANT_INFO, API_JOB_APPLICATIONS } from "../settings";
 
 export const getAllJobs = async(page) => {
   try {

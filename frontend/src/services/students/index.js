@@ -8,7 +8,8 @@ import {
   API_PHOTO_STUDENT,
   API_PROJECT_STUDENT,
   API_CATALOGUE_PLATAFORM,
-  API_ACADEMIC_HISTORIAL
+  API_ACADEMIC_HISTORIAL,
+  API_JOB_APPLICATIONS
 } from "../settings";
 
 /**
@@ -139,7 +140,23 @@ export const uploadPhotoStudent = (id, img) => {
  * @return {Promise}
  **/
 export const applyJob = (payload) => {
-  return axios.post(`/api/Applications/`, payload, {
+  return axios.post(API_JOB_APPLICATIONS, payload, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+  })
+    .then(response => {
+      console.log(response);
+      return response;
+    })
+    .catch(error => {
+      if (error.response) return error.response;
+    })
+};
+
+export const changeApplyState = (id,payload) => {
+  return axios.post(`API_JOB_APPLICATIONS${id}/`, payload, {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',

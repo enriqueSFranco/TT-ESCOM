@@ -48,7 +48,7 @@ export const postJobInitialForm = {
   t200_max_salary:"",
   t200_gross_salary:false,
   t200_salary_negotiable:false,
-  t200_home_ofice:false,
+  c214_id_modality:null,
   c206_id_profile: null,
   c204_id_vacant_status: 1,
   c208_id_contract: null,
