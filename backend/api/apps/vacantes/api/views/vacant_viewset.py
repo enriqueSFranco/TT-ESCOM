@@ -195,24 +195,52 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 	pagination_class = CustomPagination
 	list_serializer_class = VacantListSerializer
 	queryset = None
+	filters ={
+		'id_company' : '',
+		'id_profile' : '',
+		'home_office' : '',
+	}
 
-	def get_object(self, id_company,id_profile,home_office):	
-		print("id_company:",id_company)		
+	def get_object(self):	
 		self.queryset = self.model.objects
-		if (id_company):
-			self.queryset =	self.queryset.filter(t300_id_company = id_company)
-		if (id_profile):
-			self.queryset =	self.queryset.filter(c206_id_profile = id_profile)
-		if (home_office != ''):
-			self.queryset =	self.queryset.filter(t200_home_ofice = home_office)
+		if (self.filters['id_company']):
+			self.queryset =	self.queryset.filter(t300_id_company = self.filters['id_company'])
+		if (self.filters['id_profile']):
+			self.queryset =	self.queryset.filter(c206_id_profile = self.filters['id_profile'])
+		if (self.filters['home_office'] != ''):
+			self.queryset =	self.queryset.filter(t200_home_ofice = self.filters['home_office'])
 		self.queryset =	self.queryset.all()
 		return self.queryset
+
+	def get_queryset(self):
+		self.queryset = self.model.objects
+		if (self.filters['id_company']):
+			self.queryset =	self.queryset.filter(t300_id_company = self.filters['id_company'])
+		if (self.filters['id_profile']):
+			self.queryset =	self.queryset.filter(c206_id_profile = self.filters['id_profile'])
+		if (self.filters['home_office'] != ''):
+			self.queryset =	self.queryset.filter(t200_home_ofice = self.filters['home_office'])
+		self.queryset =	self.queryset.all()
+		return self.queryset	
+
+	def list(self, request):
+		vacants = self.get_queryset()
+		page = self.paginate_queryset(vacants)
+		if page is not None:
+			vacants_serializer = self.list_serializer_class(page, many=True)
+			return self.get_paginated_response(vacants_serializer.data)
+		vacants_serializer = self.list_serializer_class(vacants, many=True)
+		return Response(vacants_serializer.data)
 
 
 	def create(self, request):
 		#vacant_serializer = self.serializer_class(data=request.data)
 		print('request: ',request.data)
-		vacants = self.get_object(request.data['t300_id_company'],request.data['c206_id_profile'],request.data['t200_home_ofice'])
+		self.filters['id_company'] = request.data['t300_id_company']
+		self.filters['id_profile'] = request.data['c206_id_profile']
+		self.filters['home_office']  = request.data['t200_home_ofice']
+		print(self.filters)
+		vacants = self.get_object()
 		page = self.paginate_queryset(vacants)
 		if page is not None:
 			vacants_serializer = self.list_serializer_class(page, many=True)
