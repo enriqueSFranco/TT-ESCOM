@@ -10,6 +10,7 @@ const menu = [
   {label: "Conocimientos Tecnicos"},
   {label: "Experiencia"},
   {label: "Certificaciones"},
+  {label: "Estado"},
   {label: "Acciones"},
 ]
 

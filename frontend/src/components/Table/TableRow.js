@@ -143,13 +143,22 @@ const TableRow = ({ children, user, idSkills, index }) => {
           </ul>
         </td>
         <td className={styles.td}>
-          <button className={`btn ${styles.actionsBtn} ${styles.accept}` } onClick = {onClickAcceptApply}>
-            <FaHandshake/>
-          </button>
-          <button className={`btn ${styles.actionsBtn} ${styles.dismiss}`} onClick = {onClickDennyApply}>
-            <BiDislike />
-          </button>
+          {user?.c205_id_application_state?.c205_id_application_state == 1 ? "Sin revisar" : user?.c205_id_application_state?.c205_description}
         </td>
+        
+          {user?.c205_id_application_state?.c205_id_application_state == 4 ? (
+           <td className={styles.td}>
+           </td>)
+          : 
+          (<td className={styles.td}>
+            <button className={`btn ${styles.actionsBtn} ${styles.accept}` } onClick = {onClickAcceptApply}>
+              <FaHandshake/>
+            </button>
+            <button className={`btn ${styles.actionsBtn} ${styles.dismiss}`} onClick = {onClickDennyApply}>
+              <BiDislike />
+            </button>
+            </td>
+          )}        
       </tr>
       {open === index ? (
         <tr>

@@ -202,7 +202,7 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 	}
 
 	def get_object(self):	
-		self.queryset = self.model.objects
+		self.queryset = self.model.objects.filter(c204_id_vacant_status='1')
 		if (self.filters['id_company']):
 			self.queryset =	self.queryset.filter(t300_id_company = self.filters['id_company'])
 		if (self.filters['id_profile']):
@@ -213,7 +213,7 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 		return self.queryset
 
 	def get_queryset(self):
-		self.queryset = self.model.objects
+		self.queryset = self.model.objects.filter(c204_id_vacant_status='1')
 		if (self.filters['id_company']):
 			self.queryset =	self.queryset.filter(t300_id_company = self.filters['id_company'])
 		if (self.filters['id_profile']):
