@@ -1,7 +1,6 @@
 // @ts-check
 
 import axios from "axios";
-import { helpHttp } from "utils/helpHttp";
 import toast from "react-hot-toast";
 import {
   API_STUDENT,
@@ -10,11 +9,8 @@ import {
   API_PROJECT_STUDENT,
   API_CATALOGUE_PLATAFORM,
   API_ACADEMIC_HISTORIAL,
-<<<<<<< HEAD
+  API_JOB_APPLICATIONS,
   API_CERTIFICATIONS
-=======
-  API_JOB_APPLICATIONS
->>>>>>> b32551941d9ee7797c60034a5d0cd87d8a1363e8
 } from "../settings";
 
 
