@@ -303,7 +303,7 @@ const PageHistory = () => {
             <FormPostJob />
           </ModalForm>): 
           (modalType == 2 ? 
-            (<ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
+            (<ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm} >
               <ConfirmDelete deleteJob={handleDeleteJob} isDeletedJob={isDeletedJob} job={job[0]?.t200_job}/>
             </ModalForm>): null )
         ) : null}

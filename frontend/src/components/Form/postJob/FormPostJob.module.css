@@ -81,7 +81,7 @@
 
 .wrapperCP {
   /* outline: 1px solid red; */
-  width: 350px;
+  width: 800px;
   margin-right: 20;
   height: auto;
   display: flex;
@@ -293,4 +293,12 @@
   width: 160px;
   display: flex;
   gap: .4rem;
+}
+
+.inputGroupCheckbox {
+  width: 700px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 1rem;
 }

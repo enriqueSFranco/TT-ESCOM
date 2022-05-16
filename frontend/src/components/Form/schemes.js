@@ -53,9 +53,9 @@ export const postJobInitialForm = {
   c204_id_vacant_status: 1,
   c208_id_contract: null,
   t200_publish_date:
-    now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate(),
-  t200_close_date:
     now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate(),
+  t200_close_date:
+    now.getFullYear() + "-" + (now.getMonth()+2) + "-" + now.getDate(),
   t200_state:"",
   t200_municipality:"",
   t200_locality:"",

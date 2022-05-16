@@ -83,6 +83,7 @@ export const useForm = (initialForm, validateForm) => {
       postJob(form)
         .then((response) => {
           console.log(response);
+          navigate("/mis-vacantes");
         })
         .catch((error) => console.error(error))
         .finally(() => setLoading(false));
