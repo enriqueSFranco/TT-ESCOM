@@ -1,6 +1,7 @@
 // @ts-check
 
 import axios from "axios";
+import { helpHttp } from "utils/helpHttp";
 import toast from "react-hot-toast";
 import {
   API_STUDENT,
@@ -9,8 +10,15 @@ import {
   API_PROJECT_STUDENT,
   API_CATALOGUE_PLATAFORM,
   API_ACADEMIC_HISTORIAL,
+<<<<<<< HEAD
+  API_CERTIFICATIONS
+=======
   API_JOB_APPLICATIONS
+>>>>>>> b32551941d9ee7797c60034a5d0cd87d8a1363e8
 } from "../settings";
+
+
+const controller = new AbortController();
 
 /**
  * @param {Number} id identificador para obtner un alumno en especifico
@@ -65,8 +73,6 @@ export const getLinks = () => {
     })
     .catch(error => error);
 };
-
-
 
 
 /**
@@ -224,3 +230,33 @@ export const postAcademicHistorial = (payload = {}) => {
     .then(response => response)
     .catch(error => error);
 };
+
+/**
+ * @param {Number} id identificador de una unidad academica
+ * @returns {Promise}
+ **/
+export const deleteAcademicHistorial = (id) => {
+  return axios.delete(`${API_ACADEMIC_HISTORIAL}${id}/`)
+    .then(response => response)
+    .catch(error => error);
+}
+
+/**
+ * @param {Number} id identificador de un estudiante para obtener sus certificaciones
+ * @returns {Promise}
+ **/
+export const getStudentCertifications = (id) => {
+  return axios.get(`${API_CERTIFICATIONS}/${id}/`)
+    .then(response => response)
+    .catch(error => error);
+}
+
+/**
+ * @param {Object} payload informacion que llevara el cuerpo de la peticion
+ * @returns {Promise}
+ **/
+export const postCertification = (payload = {}) => {
+  return axios.post(API_CERTIFICATIONS, payload)
+    .then(response => response)
+    .catch(error => error);
+}

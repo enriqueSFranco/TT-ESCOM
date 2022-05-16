@@ -1,4 +1,4 @@
-import React, { useEffect ,useContext, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "hooks/useForm";
 import { useFetch } from "hooks/useFetch";
@@ -14,7 +14,6 @@ import DatesSkill from "./DatesSkill";
 import DatesSchool from "./DatesSchool";
 import AuthContext from "context/AuthContext";
 import styles from "./StylesStepper.module.css";
-
 
 let initialForm = {
   t100_boleta: "",
@@ -33,7 +32,7 @@ let initialForm = {
   t100_phonenumber: "",
   t100_residence: "",
   t100_modalities: "",
-  t100_interest_job: ""
+  t100_interest_job: "",
 };
 
 const StepComponent = () => {
@@ -44,17 +43,17 @@ const StepComponent = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [hardSkills, setHardSkills] = useState([]);
   const [softSkills, setSoftSkills] = useState([]);
-  const [academicUnit,setAcademicUnits] = useState([]);
-  const [interestJobs,setInterestJobs] = useState([]); 
+  const [academicUnit, setAcademicUnits] = useState([]);
+  const [interestJobs, setInterestJobs] = useState([]);
   const { form, handleChange } = useForm(initialForm);
-  const [academicHistorial, setAcademicHistorial] = useState(AcademicFormat); 
-  const { data } = useFetch("/api/catalogues/CatalogueSkills/");  
+  const [academicHistorial, setAcademicHistorial] = useState(AcademicFormat);
+  const { data } = useFetch("/api/catalogues/CatalogueSkills/");
   const { token } = useContext(AuthContext);
   let navigate = useNavigate();
-  
+
   let id_student = token?.user?.user_id;
   academicHistorial.t100_id_student = id_student;
-  
+
   useEffect(() => {
     getAllAcademicUnits()
       .then((response) => {
@@ -75,18 +74,18 @@ const StepComponent = () => {
 
   if (!data && !form) {
     return;
-  }  
+  }
 
   const PageDisplay = () => {
     if (activeStep === 0) {
       return <DatesPersonal form={form} handleChange={handleChange} />;
     }
-    if (activeStep === 1) {    
-      return (          
-        <DatesSchool 
+    if (activeStep === 1) {
+      return (
+        <DatesSchool
           academicUnit={academicUnit}
           setAcademicUnits={setAcademicUnits}
-          startMonth={startMonth} 
+          startMonth={startMonth}
           setStartMonth={setStartMonth}
           startYear={startYear}
           setStartYear={setStartYear}
@@ -95,15 +94,19 @@ const StepComponent = () => {
           endYear={endYear}
           setEndYear={setEndYear}
           academicHistorial={academicHistorial}
-          setAcademicHistorial={setAcademicHistorial} />);
+          setAcademicHistorial={setAcademicHistorial}
+        />
+      );
     }
     if (activeStep === 2) {
       return (
-        <DatesJob 
-          form={form} 
+        <DatesJob
+          form={form}
           handleChange={handleChange}
-          interestJobs = {interestJobs}
-          setInterestJobs = {setInterestJobs} />);
+          interestJobs={interestJobs}
+          setInterestJobs={setInterestJobs}
+        />
+      );
     }
     if (activeStep === 3) {
       return (
@@ -118,21 +121,21 @@ const StepComponent = () => {
     }
   };
 
+  // Control de imagenes del step
   const PageImage = () => {
     if (activeStep === 0) {
-      return (<div className={styles.bg}></div>);
+      return <div className={`${styles.bg1} ${styles.bg}`}></div>;
     }
     if (activeStep === 1) {
-      return (<div className={styles.bg}></div>);
+      return <div className={`${styles.bg2} ${styles.bg}`}></div>;
     }
     if (activeStep === 2) {
-      return (<div className={styles.bg}></div>);
+      return <div className={`${styles.bg3} ${styles.bg}`}></div>;
     }
     if (activeStep === 3) {
-      return (<div className={styles.bg}></div>);
+      return <div className={`${styles.bg4} ${styles.bg}`}></div>;
     }
   };
-
 
   const nextStep = () => {
     if (activeStep < 3) {
@@ -140,7 +143,7 @@ const StepComponent = () => {
       setActiveStep((currentStep) => currentStep + 1);
     }
     if (activeStep >= 3) {
-      updateData();      
+      updateData();
       //if (!errors)
       //  navigate("/perfil");
     }
@@ -148,7 +151,7 @@ const StepComponent = () => {
 
   const updateData = () => {
     console.log(form);
-    const endpoint = "/api/Students/"+id_student+"/";
+    const endpoint = "/api/Students/" + id_student + "/";
 
     let options = {
       headers: {
@@ -161,7 +164,7 @@ const StepComponent = () => {
       .PUT(endpoint, options)
       .then((response) => {
         if (!response.err) {
-          console.log(response);          
+          console.log(response);
           ///Agreegar skills del alumno
           const endpoint = "/api/Skills/";
           const skillsAll = hardSkills.concat(softSkills);
@@ -182,45 +185,40 @@ const StepComponent = () => {
               .then((response) => {
                 if (!response.err) {
                   console.log(response);
-                }                
+                }
               })
               .catch((err) => console.error(err));
           });
 
           ///Agregar historial academico
-          
-            const endpointAcademic = "api/AcademicHistorial/";
-            console.log(startMonth);
-            console.log(startYear+"-"+startMonth+"-01");
-            academicHistorial.t104_start_date = startYear+"-"+startMonth+"-01"          
-            academicHistorial.t104_end_date = endYear+"-"+endMonth+"-01"          
-            console.log(academicHistorial);
-            let options = {
-              headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-              },
-              body: academicHistorial,
-            };
-            helpHttp()
-              .POST(endpointAcademic, options)
-              .then((response) => {
-                if (!response.err) {
-                  console.log(response);     
-                  navigate("/perfil");               
-                }
-              })
-              .catch((err) => console.error(err));
-          
+
+          const endpointAcademic = "api/AcademicHistorial/";
+          console.log(startMonth);
+          console.log(startYear + "-" + startMonth + "-01");
+          academicHistorial.t104_start_date =
+            startYear + "-" + startMonth + "-01";
+          academicHistorial.t104_end_date = endYear + "-" + endMonth + "-01";
+          console.log(academicHistorial);
+          let options = {
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: academicHistorial,
+          };
+          helpHttp()
+            .POST(endpointAcademic, options)
+            .then((response) => {
+              if (!response.err) {
+                console.log(response);
+                navigate("/perfil");
+              }
+            })
+            .catch((err) => console.error(err));
         }
       })
       .catch((err) => console.error(err));
-
-      
   };
-
-  
-  
 
   const previousStep = () => {
     if (activeStep > 0) setActiveStep((currentStep) => currentStep - 1);
@@ -234,7 +232,7 @@ const StepComponent = () => {
 
       <div className={styles.container2}>
         <div className={styles.pages}>{PageDisplay()}</div>
-      
+
         <div className={styles.container3}>
           <div className={styles.stepper}>
             <Stepper activeStep={activeStep} alternativeLabel>
@@ -275,7 +273,6 @@ const StepComponent = () => {
           </div>
         </div>
       </div>
-       
     </div>
   );
 };

@@ -80,9 +80,13 @@ const ExperenceItem = ({
             <div className={styles.desription}>
               <p>{description}</p>
             </div>
-            <a href={link} target="_blank" rel="noreferrer">
-              ver proyecto
-            </a>
+            {
+              typeProject === 1 ? (
+                <a href={link} target="_blank" rel="noreferrer">
+                  ver proyecto
+                </a>
+              ) : null
+            }
           </div>
         </div>
         <div className={styles.actions}>
@@ -101,8 +105,16 @@ const ExperenceItem = ({
         isOpen={isOpenModalDeleteProject}
         closeModal={closeModalDeleteProject}
       >
-        <h1>{nameProject}</h1>
-        <button onClick={() => deleteData(id)}>Eliminar</button>
+        <div className={styles.mainWrapper}>
+          <div className={styles.wrapperCircle}>
+            <div className={styles.circleDelete}></div>
+            <GoTrashcan />
+          </div>
+          <h3 className={styles.tittleProjectExperience}>
+            Estas seguro de eliminar el proyecto <span>"{nameProject}"</span> de tu historial de experiencia ?
+          </h3>
+          <button className={styles.btnDeleteExperience} onClick={() => deleteData(id)}>Si, Eliminar</button>
+        </div>
       </Modal>
 
       <Modal isOpen={isOpenModalEditProject} closeModal={closeModalEditProject}>

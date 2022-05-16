@@ -57,7 +57,7 @@ const CardProfileStudent = () => {
                   <h3>
                     {student[0]?.t100_name} {student[0]?.t100_last_name}
                   </h3>
-                  <h4>{student[0]?.t100_interest_job ?? ""}</h4>
+                  <h4>{student[0]?.t100_speciality ?? "No especificado"}</h4>
                 </div>
               </div>
             </header>
@@ -139,3 +139,4 @@ const CardProfileStudent = () => {
 };
 
 export default CardProfileStudent;
+

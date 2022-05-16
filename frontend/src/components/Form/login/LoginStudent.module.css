@@ -18,16 +18,18 @@
 }
 
 .bg blockquote {
-  width: 350px;
-  backdrop-filter: blur(10px);
+  width: 100%;
+  height: 100%;
   font-weight: bold;
   color: #fff;
   padding: 1rem;
   position: relative;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  /* outline: 2px solid blue; */
 }
 
-.bg blockquote em { color: #04c8eb; }
+.bg blockquote span { color: #04c8eb; font-size: 2.2rem; }
 
 .btLogin { 
   width: 490px; 
@@ -59,22 +61,21 @@
 }
 
 .linkToLogin {
-  color: #04c8eb;
+  color: #028dd4;
   position: relative;
   left: 0;
 }
 
 .login {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  backdrop-filter: blur(2px);
+  position: relative;
+  height: 100%;
+  width: 100%;
+  /* backdrop-filter: blur(2px); */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* outline: 2px solid red; */
 }
 
 .login span, a {
@@ -88,6 +89,12 @@
 }
 
 .login a:hover { color: #fff; }
+
+.noAccount {
+  /* outline: 2px solid red; */
+  font-size: 1rem;
+  color: #000;
+}
 
 .welcome { margin-bottom: 1rem; }
 

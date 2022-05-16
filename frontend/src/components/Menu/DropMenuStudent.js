@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getStudent } from "services/students";
 import AuthContext from "context/AuthContext";
 import CustomAvatar from "components/Avatar/Avatar";
 import { IoMdSettings, IoMdLogOut, IoMdBriefcase } from "react-icons/io";
 import styles from "./MenuStudent.module.css";
-import { getStudent } from "services/students";
 
 const DropMenuStudent = ({student}) => {
   const { logout } = useContext(AuthContext);
@@ -31,11 +31,6 @@ const DropMenuStudent = ({student}) => {
         <Link className={styles.menuLinkStudent} to="/mis-postulaciones">
           <IoMdBriefcase />
           Mis Postulaciones
-        </Link>
-      </li>
-      <li className={styles.menuItemStudent}>
-        <Link className={styles.menuLinkStudent} to="/">
-          Modo Oscuro
         </Link>
       </li>
       <li className={styles.menuItemStudent}>

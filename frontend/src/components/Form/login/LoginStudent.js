@@ -22,22 +22,12 @@ const Form = () => {
     <>
       <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
         <div className="row">
-          <div
-            className={`${styles.bg} col rounded`}
-          >
+          <div className={`${styles.bg} col rounded`}>
             <div className={`${styles.login}`}>
               <blockquote>
-                Un paso más cerca de tu nuevo{" "}
-                <em>trabajo</em>.
+                Un paso más cerca de tu nuevo <span>trabajo</span>.
               </blockquote>
-                <span>
-                  No tines cuenta? <Link className={`${styles.linkToLogin}`} to="/registro-alumno">Registrate</Link>
-                </span>
-                <br />
-                <span>
-                  <a href="/#">Recuperar contraseña</a>
-                </span>
-              </div>
+            </div>
           </div>
           <div className={`col text-center bg-white p-3 rounded-end`}>
             <div className={styles.welcome}>
@@ -60,7 +50,7 @@ const Form = () => {
                       <InputAdornment position="start">
                         <MdOutlineMail />
                       </InputAdornment>
-                    )
+                    ),
                   }}
                 />
               </div>
@@ -79,7 +69,7 @@ const Form = () => {
                       <InputAdornment position="start">
                         <RiLockPasswordLine />
                       </InputAdornment>
-                    )
+                    ),
                   }}
                   sx={{ width: 500, maxWidth: "100%" }}
                 />
@@ -92,6 +82,12 @@ const Form = () => {
                   Iniciar sesión
                 </button>
               </div>
+            <span className={styles.noAccount}>
+              No tines cuenta?{" "}
+              <Link className={`${styles.linkToLogin}`} to="/registro-alumno">
+                Registrate aqui.
+              </Link>
+            </span>
             </form>
           </div>
         </div>

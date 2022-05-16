@@ -30,7 +30,7 @@ const RowExpand = ({ user }) => {
       let idUserLenguage = user?.t100_id_student?.t100_id_student;
       getLenguages(idUserLenguage)
         .then((response) => {
-           console.log(response);
+          //  console.log(response);
           setLenguages(response);
         })
         .catch((error) => console.log(error));
@@ -42,7 +42,6 @@ const RowExpand = ({ user }) => {
   console.log(user?.t100_id_student?.t100_personal_objectives);
   console.log(lenguages);
 
-  // TODO: hacer dinamica la informacion
   return (
     <article key={uuid()} className={styles.wrapperDetailsUser}>
       <div className={styles.grid_2}>

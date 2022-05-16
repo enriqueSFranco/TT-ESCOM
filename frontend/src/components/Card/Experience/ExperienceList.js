@@ -28,10 +28,10 @@ const ExperenceList = () => {
 
   return (
     <article className={styles.wrapper}>
-      {listProjects === null ? (
+      {listProjects.length === 0 ? (
         <div className={styles.notProjects}>
           <h3>Sin Proyectos</h3>
-          <img src={notProjects} alt="sin proyectos" />
+          <img className={styles.notProjects} src={notProjects} alt="sin proyectos" />
         </div>
       ) : (
         <>
