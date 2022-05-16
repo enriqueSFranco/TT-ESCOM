@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
-import FormControlLabel from "@mui/material/FormControl";
-import Checkbox from "@mui/material/Checkbox";
 import { MdPublish } from "react-icons/md";
 import styles from "./FormPostJob.module.css";
 
@@ -11,8 +9,6 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep }) => {
   const handleChecked = (e) => {
     setVisible(e.target.checked);
   };
-  console.log(visible);
-  console.log(form);
 
   return (
     <div className={styles.wrapperFormJobDetails}>

@@ -240,28 +240,33 @@
   position: absolute;
   width: 100%;
   top: 6rem;
-  min-height: 100vh;
+  height: calc(100vh - 12rem);
   border-radius: 8px;
   background-color: #fff;
-  position: relative;
-  background-color:#68013b;
-  background-image: linear-gradient(
-    160deg, #9e005a, #018dd4, rgb(211, 211, 211)
-  );
+  /* outline: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .bodyNotJobs  {
   position: absolute;
   left: 0;
   background-color: #fff;
-  height: calc(100% - .7rem);
-  width: calc(100% - .7rem);
   margin: .3rem;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.bodyNotJobs h2 {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.3rem;
+  color: #686868;
+  font-family: 'Poppins', sans-serif;
 }
 
 .bodyNotJobs img{
@@ -315,4 +320,36 @@
   font-size: 1.3rem;
   display: flex;
   justify-content: center;
+}
+
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: color .3s ease;
+}
+
+.tooltip:hover .tooltipBox {
+  display: inline-block;
+}
+
+.tooltipBox {
+  width: 150px;
+  font-size: .7rem;
+  font-weight: 400;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  left: 2rem;
+  top: 1.4rem;
+  background-color: #222222e3;
+  color: #fff;
+  z-index: 500;
+  display: none;
 }

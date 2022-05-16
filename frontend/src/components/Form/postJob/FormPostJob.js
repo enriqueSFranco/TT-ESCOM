@@ -29,7 +29,7 @@ const validateForm = (form) => {
 
 const FormPostJob = () => {
   const [step, setStep] = useState(1);
-  const { user, token } = useContext(AuthContext);
+  const { token } = useContext(AuthContext);
   const [recruiter, setRecruiter] = useState([]);
   const { 
     form, 

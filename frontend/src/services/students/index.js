@@ -14,8 +14,6 @@ import {
 } from "../settings";
 
 
-const controller = new AbortController();
-
 /**
  * @param {Number} id identificador para obtner un alumno en especifico
  * @returns {Promise}
