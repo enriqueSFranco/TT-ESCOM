@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "hooks/useForm";
+import { generateYears } from "utils/generateYears";
+import { months } from "interface/months";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -8,10 +10,10 @@ import FormControl from "@mui/material/FormControl";
 import Autocomplete from "@mui/material/Autocomplete";
 import styles from "./StylesStepper.module.css";
 import { uuid } from "utils/uuid";
-import { BiCurrentLocation, BiUser } from "react-icons/bi";
+import { BiUser } from "react-icons/bi";
 import {
   getAllAcademicStates,
-  getAllAcademicLevels
+  getAllAcademicLevels,
 } from "services/catalogs/index";
 
 function DatesSchool({
@@ -40,13 +42,13 @@ function DatesSchool({
       .catch((error) => console.error(error));
   }, []);
 
-useEffect(() => {
-  getAllAcademicLevels()
-    .then((response) => {
-      setAcademicLevels(response);
-    })
-    .catch((error) => console.error(error));
-}, []);
+  useEffect(() => {
+    getAllAcademicLevels()
+      .then((response) => {
+        setAcademicLevels(response);
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   const handleChangek = (event) => setStartMonth(event.target.value);
 
@@ -56,20 +58,17 @@ useEffect(() => {
 
   const handleChangex = (event) => setEndYear(event.target.value);
 
-  const handleChangeState = (event) => academicHistorial.c109_id_academic_state = event.target.value;
+  const handleChangeState = (event) =>
+    (academicHistorial.c109_id_academic_state = event.target.value);
 
-  const handleChangeLevel = (event) => academicHistorial.c107_id_academic_level = event.target.value;
-  
-  const handleAutocomplete = (event,newValue) => {  
-                form.t104_academic_unit =newValue;              
-                setAcademicHistorial(form);            
-                academicHistorial.t104_academic_unit =newValue;              
-              }
-  
-  const handleTextC = (event) => academicHistorial.t104_carreer = event.target.value;
-              
+  const handleChangeLevel = (event) =>
+    (academicHistorial.c107_id_academic_level = event.target.value);
 
-   console.log(academicHistorial);
+  const handleAutocomplete = (event, newValue) => {
+    form.t104_academic_unit = newValue;
+    setAcademicHistorial(form);
+    academicHistorial.t104_academic_unit = newValue;
+  };
 
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
@@ -92,35 +91,17 @@ useEffect(() => {
     },
   };
 
-  const meses = [
-    { id: 1, name: "Enero" },
-    { id: 2, name: "Febrero" },
-    { id: 3, name: "Marzo" },
-    { id: 4, name: "Abril" },
-    { id: 5, name: "Mayo" },
-    { id: 6, name: "Junio" },
-    { id: 7, name: "Julio" },
-    { id: 8, name: "Agosto" },
-    { id: 9, name: "Septiembre" },
-    { id: 10, name: "Octubre" },
-    { id: 11, name: "Noviembre" },
-    { id: 12, name: "Diciembre" },
-  ];
-
-  const years = [
-    2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012,
-    2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000,
-    1999, 1998, 1997, 1996, 1995, 1994, 1993, 1992, 1991, 1990,
-  ];
-
   return (
     <div className={styles.containerPage}>
-      <form>
-        <h5>Platicanos un poco sobre tus estudios</h5>
+      <h5 className={styles.formTitleDataSchool}>
+        Platicanos un poco sobre tus estudios.
+      </h5>
+      <form className={styles.formDataSchool}>
         <div className={styles.inputGroup}>
-          <p>¿Que estudiaste o estas estudiando?</p>
+          <p className={styles.titleParagraph}>¿Que estudia/estudiaste?</p>
           <TextField
             label="Carrera"
+            size="small"
             name="t104_carreer"
             id="t104_carreer"
             value={form.t104_carreer}
@@ -130,8 +111,12 @@ useEffect(() => {
         </div>
 
         <div className={styles.inputGroup}>
-          <p>¿En que institución?</p>
+          <p className={styles.titleParagraph}>
+            ¿En que institución estudias/estudiaste?
+          </p>
           <Autocomplete
+            sx={{ width: 400 }}
+            size="small"
             id="t104_academic_unit"
             name="t104_academic_unit"
             freeSolo
@@ -143,40 +128,52 @@ useEffect(() => {
             )}
           />
         </div>
-        
+
         <div className={styles.form1}>
           <h3 className={styles.title}>
             <BiUser /> Información académica
           </h3>
-          <div className={styles.inputGroup}>
-            <FormControl sx={{ width: 300 }}>
-              <InputLabel id="c109_id_academic_state">Estado academico</InputLabel>
+          <div className={styles.inputGroup_1_2}>
+            <FormControl sx={{ width: 250 }}>
+              <InputLabel id="c109_id_academic_state">
+                Estado academico
+              </InputLabel>
               <Select
+                size="small"
                 id="c109_id_academic_state"
                 name="c109_id_academic_state"
-                defaultValue={academicHistorial.c109_id_academic_state}
+                value={academicHistorial.c109_id_academic_state}
                 onChange={handleChangeState}
-                label="Perfil"
+                label="Estado academico"
               >
                 {academicStates?.map((academicState) => (
-                  <MenuItem key={uuid()} value={academicState?.c109_id_academic_state}>
+                  <MenuItem
+                    key={uuid()}
+                    value={academicState?.c109_id_academic_state}
+                  >
                     {academicState?.c109_description}
                   </MenuItem>
                 ))}
               </Select>
             </FormControl>
 
-            <FormControl sx={{ width: 300 }}>
-              <InputLabel id="c107_id_academic_level">Nivel academico</InputLabel>
+            <FormControl sx={{ width: 250 }}>
+              <InputLabel id="c107_id_academic_level">
+                Nivel academico
+              </InputLabel>
               <Select
+                size="small"
                 id="c107_id_academic_level"
                 name="c107_id_academic_level"
-                defaultValue={academicHistorial.c107_id_academic_level}
+                value={academicHistorial.c107_id_academic_level}
                 onChange={handleChangeLevel}
-                label="Experiencia"
+                label="Nivel academico"
               >
                 {academicLevels?.map((academicLevel) => (
-                  <MenuItem key={uuid()} value={academicLevel?.c107_id_academic_level}>
+                  <MenuItem
+                    key={uuid()}
+                    value={academicLevel?.c107_id_academic_level}
+                  >
                     {academicLevel?.c107_description}
                   </MenuItem>
                 ))}
@@ -187,10 +184,11 @@ useEffect(() => {
 
         <div className={styles.inputGroupP1}>
           <div className={styles.Col4}>
-            <div className={styles.texto}>Fecha en que iniciaste</div>
+            <p className={styles.titleParagraph}>Fecha en que iniciaste</p>
             <FormControl>
               <InputLabel id="mes-inicio-1">Mes</InputLabel>
               <Select
+                size="small"
                 labelId="mes-inicio-1"
                 id="mes-inicio-1"
                 value={startMonth}
@@ -199,7 +197,7 @@ useEffect(() => {
                 sx={{ width: 150, marginRight: 1 }}
                 MenuProps={MenuPropsM}
               >
-                {meses.map((mes) => (
+                {months.map((mes) => (
                   <MenuItem key={mes["id"]} value={mes["id"]}>
                     {mes["name"]}
                   </MenuItem>
@@ -210,6 +208,7 @@ useEffect(() => {
             <FormControl>
               <InputLabel id="anio-inicio-1">Año</InputLabel>
               <Select
+                size="small"
                 labelId="anio-inicio-1"
                 id="anio-inicio-1"
                 value={startYear}
@@ -218,9 +217,9 @@ useEffect(() => {
                 sx={{ width: 100 }}
                 MenuProps={MenuProps}
               >
-                {years.map((anio) => (
-                  <MenuItem key={anio} value={anio}>
-                    {anio}
+                {generateYears().map((year) => (
+                  <MenuItem key={year} value={year}>
+                    {year}
                   </MenuItem>
                 ))}
               </Select>
@@ -228,12 +227,13 @@ useEffect(() => {
           </div>
 
           <div className={styles.Col3}>
-            <div className={styles.texto}>
+            <p className={styles.titleParagraph}>
               Fecha en que concluyes o vas a concluir
-            </div>
+            </p>
             <FormControl>
               <InputLabel id="mes-final-2">Mes</InputLabel>
               <Select
+                size="small"
                 labelId="mes-final-2"
                 id="mes-final-2"
                 value={endMonth}
@@ -242,7 +242,7 @@ useEffect(() => {
                 sx={{ width: 150, marginRight: 1 }}
                 MenuProps={MenuPropsM}
               >
-                {meses.map((mes) => (
+                {months.map((mes) => (
                   <MenuItem key={mes["id"]} value={mes["id"]}>
                     {mes["name"]}
                   </MenuItem>
@@ -253,6 +253,7 @@ useEffect(() => {
             <FormControl>
               <InputLabel id="anio-final-2">Año</InputLabel>
               <Select
+                size="small"
                 labelId="anio-final-2"
                 id="anio-final-2"
                 value={endYear}
@@ -261,17 +262,15 @@ useEffect(() => {
                 sx={{ width: 100 }}
                 MenuProps={MenuProps}
               >
-                {years.map((anio) => (
-                  <MenuItem key={anio} value={anio}>
-                    {anio}
+                {generateYears().map((year) => (
+                  <MenuItem key={year} value={year}>
+                    {year}
                   </MenuItem>
                 ))}
               </Select>
             </FormControl>
           </div>
         </div>
-
-        <div className={styles.inputGroup}></div>
       </form>
     </div>
   );

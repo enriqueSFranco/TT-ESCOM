@@ -1,6 +1,7 @@
 // @ts-check
 
 import axios from "axios";
+import { helpHttp } from "utils/helpHttp";
 import toast from "react-hot-toast";
 import {
   API_STUDENT,
@@ -11,6 +12,9 @@ import {
   API_ACADEMIC_HISTORIAL,
   API_CERTIFICATIONS
 } from "../settings";
+
+
+const controller = new AbortController();
 
 /**
  * @param {Number} id identificador para obtner un alumno en especifico

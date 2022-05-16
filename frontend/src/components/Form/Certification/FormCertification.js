@@ -22,7 +22,11 @@ const validateForm = (form) => {
   };
 };
 
-const FormCertification = () => {
+const FormCertification = ({
+  updateData,
+  dataToEdit,
+  setDataToEdit
+}) => {
   const { token } = useContext(AuthContext);
   const [isVisibleLink, setIsVisibleLink] = useState(false);
   const { form, handleChange, handleChecked, onSubmitPostCertification } = useForm({

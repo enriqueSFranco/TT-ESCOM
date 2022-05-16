@@ -87,8 +87,8 @@ const CreateAccount = () => {
                     onKeyUp={handleValidate}
                     onChange={handleChange}
                   />
-                  {errors.t100_name && (
-                    <span className={styles.error}><MdOutlineErrorOutline />{errors.t100_name}</span>
+                  {errors.t100_username && (
+                    <span className={styles.error}><MdOutlineErrorOutline />{errors.t100_username}</span>
                   )}
                 </div>
                 <div className={styles.inputGroupCreatAccountStudent}>

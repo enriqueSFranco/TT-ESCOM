@@ -17,6 +17,7 @@ const initialForm = {
 
 const PersonalExperience = ({ setTypeProject }) => {
   const navigate = useNavigate();
+  const [totalChar, setTotalChar] = useState(0);
   const [succes, setSucces] = useState(null);
   const [message, setMessage] = useState("");
   const { token } = useContext(AuthContext);
@@ -43,6 +44,10 @@ const PersonalExperience = ({ setTypeProject }) => {
         }
       })
       .catch(error => setSucces(false));
+  };
+
+  function  updatTotalChar(e) {
+    setTotalChar(e.target.value.length);
   }
 
   return (
@@ -76,16 +81,23 @@ const PersonalExperience = ({ setTypeProject }) => {
               onChange={handleChange}
             />
           </div>
-          <textarea
-            name="t117_description"
-            id="t117_description"
-            value={form?.t117_description}
-            onChange={handleChange}
-            cols="30"
-            rows="10"
-            placeholder="Descripcion de tu proyecto..."
-            className={styles.textArea}
-          ></textarea>
+          <div className={styles.wraperDescriptionProject}>
+            <textarea
+              name="t117_description"
+              id="t117_description"
+              value={form?.t117_description}
+              onChange={handleChange}
+              onKeyUp={updatTotalChar}
+              cols="30"
+              rows="10"
+              placeholder="Descripcion de tu proyecto..."
+              className={styles.textArea}
+            />
+            <div className={styles.flex_1_2}>
+              <p>Por favor, Escribe la descripcion de tu proyecto.</p>
+              <span>{totalChar}/255</span>
+            </div>
+          </div>
           
           <button className={styles.btnSubmit} type="submit"><MdOutlineAdd /> Agregar</button>
         </form>

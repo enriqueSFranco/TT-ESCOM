@@ -38,8 +38,11 @@ const CertificationList = () => {
     <article className={styles.wrapper}>
       {
         data && data?.map(certification => (
-          <CertificationItem 
-            idStudent={certification?.t100_id_student_t100_id_student}
+          <CertificationItem
+            key={certification?.t119_id_registrer}
+            data={data}
+            setData={setData}
+            idCertification={certification?.t119_id_registrer}
             title={certification?.t119_certification}
             partnership={certification?.t119_company}
             endDate={certification?.t119_end_date}

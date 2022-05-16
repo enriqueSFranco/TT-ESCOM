@@ -40,6 +40,7 @@ export const useForm = (initialForm, validateForm) => {
     if (Object.keys(errors).length === 0) { // si la longitud de las claves del objeto error es de cero, quiere decir que no hay errores.
       setLoading(true);
       createAccountStudent(form).then((response) => {
+        console.log(response)
         if (response.status === 201) {
           toast.success(response.data.message);
           setTimeout(() => {
@@ -47,8 +48,7 @@ export const useForm = (initialForm, validateForm) => {
           }, 3000);
           setForm(initialForm);
         } else {
-          setErrors({t100_email: "El email ya esta en uso"})
-          // toast.error(response.t100_email[0])
+          setErrors({t100_email: "El email ya esta en uso"});
         }
       });
     } else return;

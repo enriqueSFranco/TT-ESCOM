@@ -13,8 +13,6 @@ const LoginCompany = () => {
   const { form, handleChange } = useForm(loginFormCompany);
   const { loginRecruiter } = useContext(AuthContext);
 
-  // console.log(token)
-
   return (
     <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
       <div className="row align-items-stretch">
