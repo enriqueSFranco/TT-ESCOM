@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { stringToColor } from "utils/stringToColor";
 import { uuid } from "utils/uuid";
 import { getSkill } from "services/catalogs";
-import { changeApplyState } from "services/students/index";
+import { changeApplyState, getStudentCertifications } from "services/students/index";
 import Chip from "@mui/material/Chip";
 import Avatar from "@mui/material/Avatar";
 import { BiDislike } from "react-icons/bi";
@@ -13,6 +13,7 @@ import styles from "./Table.module.css";
 const TableRow = ({ children, user, idSkills, index }) => {
   const [open, setOpen] = useState(false);
   const [skills, setSkills] = useState(null);
+  const [certifications , setCertifications] = useState(false);
 
   const toggle = (index) => {
     console.log("index: ", index);
@@ -37,6 +38,19 @@ const TableRow = ({ children, user, idSkills, index }) => {
       isUnmountend = false;
     };
   }, [idSkills, user]);
+
+  useEffect(() => {
+    getStudentCertifications(user?.t100_id_student?.t100_id_student)
+      .then(response => {
+        if (response.status === 200) {
+          const { data } = response;
+          setCertifications(data);
+        } else {
+          setCertifications(null);
+        }
+      })
+      .catch(error => error);
+  }, [user?.t100_id_student?.t100_id_student]);
 
   const onClickAcceptApply = (e) => {
     e.preventDefault();
@@ -83,7 +97,7 @@ const TableRow = ({ children, user, idSkills, index }) => {
   };
 
   if (!user) return null;
-   console.log(user);
+   console.log(certifications);
 
   return (
     <>
@@ -131,25 +145,30 @@ const TableRow = ({ children, user, idSkills, index }) => {
         <td className={styles.td}>no</td>
         <td className={styles.td}>
           <ul className={styles.listItem}>
-            <li>
-              <Chip size="small" label="Azure" />
+            {certifications && certifications?.map((certification)=>(
+              <li>
+              <Chip size="small" label={certification?.t119_certification} />
             </li>
-            <li>
-              <Chip size="small" label="AWS" />
-            </li>
-            <li>
-              <Chip size="small" label="Google Cloud" />
-            </li>
+            ))}
           </ul>
         </td>
         <td className={styles.td}>
-          <button className={`btn ${styles.actionsBtn} ${styles.accept}` } onClick = {onClickAcceptApply}>
-            <FaHandshake/>
-          </button>
-          <button className={`btn ${styles.actionsBtn} ${styles.dismiss}`} onClick = {onClickDennyApply}>
-            <BiDislike />
-          </button>
+          {user?.c205_id_application_state?.c205_id_application_state == 1 ? "Sin revisar" : user?.c205_id_application_state?.c205_description}
         </td>
+        
+          {user?.c205_id_application_state?.c205_id_application_state == 4 ? (
+           <td className={styles.td}>
+           </td>)
+          : 
+          (<td className={styles.td}>
+            <button className={`btn ${styles.actionsBtn} ${styles.accept}` } onClick = {onClickAcceptApply}>
+              <FaHandshake/>
+            </button>
+            <button className={`btn ${styles.actionsBtn} ${styles.dismiss}`} onClick = {onClickDennyApply}>
+              <BiDislike />
+            </button>
+            </td>
+          )}        
       </tr>
       {open === index ? (
         <tr>

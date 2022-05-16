@@ -346,17 +346,15 @@ class Announcement(models.Model):
     t202_close_date = models.DateField(null=True)
     t301_id_recruiter = models.ForeignKey(
         Recruiter,
-        null=False,
-        blank=False,
-        default=1,
+        null=True,
+        blank=True,
         related_name='RecruiterCommunicate',
         on_delete=models.CASCADE
     )
     t400_id_admin = models.ForeignKey(
         Admin,
-        null=False,
-        blank=False,
-        default=1,
+        null=True,
+        blank=True,
         related_name='AdminCommunicate',
         on_delete=models.CASCADE
     ) 
