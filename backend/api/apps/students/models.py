@@ -178,6 +178,7 @@ class StudentSkill(models.Model):
 		Student, 
 		null=False, 
 		blank=False, 
+		default=1,
 		related_name='StudentSkills',
 		on_delete=models.CASCADE
 	)
@@ -196,8 +197,9 @@ class AcademicHistory(models.Model):
 	t104_id_registrer = models.AutoField(primary_key=True)
 	t100_id_student = models.ForeignKey(
 		Student,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+		default=1,
 		related_name='StudentAcademics',
 		on_delete=models.CASCADE)
 	t104_academic_unit = models.CharField(max_length=150,null=True,blank=True)
@@ -205,7 +207,7 @@ class AcademicHistory(models.Model):
 	c107_id_academic_level = models.ForeignKey(
 		AcademicLevel,
 		null=False,
-		blank=False,
+		blank=False,		
 		related_name='AcademicLevel',
 		on_delete=models.CASCADE,
 		default=1
@@ -237,6 +239,7 @@ class InterestArea(models.Model):
 		Student,
 		null=False,
 		blank=False,
+		default=1,
 		related_name='StudentInterests',
 		on_delete=models.CASCADE)
 	
@@ -254,6 +257,7 @@ class Link(models.Model):
 		Student,
 		null=False,
 		blank=False,
+		default=1,
 		related_name='StudentLinks',
 		on_delete=models.CASCADE)
 	t113_link = models.CharField(max_length=100,blank=True,null=True)
@@ -261,9 +265,9 @@ class Link(models.Model):
 		Plataform,
 		null=False,
 		blank=False,
+		default=1,
 		related_name='PlataformDescription',
-		on_delete=models.CASCADE,
-		default=1)	
+		on_delete=models.CASCADE)	
 
 	class Meta:
 		unique_together = ['t100_id_student','c115_id_plataform']
@@ -281,16 +285,16 @@ class StudentLenguage(models.Model):
 		Student,
 		null=False,
 		blank=False,
+		default=1,
 		related_name='StudentLenguages',
 		on_delete=models.CASCADE)
 	c111_id_language = models.ForeignKey(
 		Lenguage,#"Lenguage.c111_id_lenguage",
 		null=False,
 		blank=False,
+		default=1,
 		related_name='LenguageDescription',
-		on_delete=models.CASCADE,
-		default=1
-	)
+		on_delete=models.CASCADE)
 	t110_written_level = models.PositiveSmallIntegerField(null=True, blank=True)
 	t110_reading_level = models.PositiveSmallIntegerField(null=True, blank=True)
 	t110_speaking_level = models.PositiveSmallIntegerField(null=True, blank=True)
@@ -313,6 +317,7 @@ class EmploymentHistory(models.Model):
 		Student,
 		null=False,
 		blank=False,
+		default=1,
 		related_name='StudentEmployments',
 		on_delete=models.CASCADE)
 	t103_corporation = models.CharField(max_length=80,null=True,blank=True)	
@@ -337,6 +342,7 @@ class PersonalProjects(models.Model):
 		Student,
 		null=False,
 		blank=False,
+		default=1,
 		related_name='StudentProjects',
 		on_delete=models.CASCADE)
 	t117_group = models.CharField(max_length=80,null=True,blank=True)	
@@ -349,6 +355,7 @@ class PersonalProjects(models.Model):
 		ProjectType,
 		null=False,
 		blank=False,
+		default=1,
 		related_name='ProjectType',
 		on_delete=models.CASCADE)
 
@@ -367,6 +374,7 @@ class Certifications(models.Model):
 		Student,
 		null=False,
 		blank=False,
+		default=1,
 		related_name='StudentCertification',
 		on_delete=models.CASCADE)
 	t119_certification = models.CharField(max_length=150,null=False,blank=False)

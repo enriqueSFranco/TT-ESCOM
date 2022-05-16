@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { stringToColor } from "utils/stringToColor";
 import { uuid } from "utils/uuid";
 import { getSkill } from "services/catalogs";
+import { changeApplyState } from "services/students/index";
 import Chip from "@mui/material/Chip";
 import Avatar from "@mui/material/Avatar";
 import { BiDislike } from "react-icons/bi";
@@ -36,6 +37,50 @@ const TableRow = ({ children, user, idSkills, index }) => {
       isUnmountend = false;
     };
   }, [idSkills, user]);
+
+  const onClickAcceptApply = (e) => {
+    e.preventDefault();
+    console.log(e);
+    let now = new Date();
+    let nextState = "";
+    if (user?.c205_id_application_state?.c205_id_application_state == 1)
+      nextState = "2";
+    else if(user?.c205_id_application_state?.c205_id_application_state == 2)
+      nextState = "4"
+    let data ={
+      c205_id_application_state: nextState,
+      t201_date_application: now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate(),
+    }
+
+    changeApplyState(user?.t201_id_application,data)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => console.error(error));
+    
+  };
+
+  const onClickDennyApply = (e) => {
+    e.preventDefault();
+    console.log(e);
+    let now = new Date();
+    let nextState = "";
+    if (user?.c205_id_application_state?.c205_id_application_state == 1)
+      nextState = "3";
+    else if(user?.c205_id_application_state?.c205_id_application_state == 2)
+      nextState = "5"
+    let data ={
+      c205_id_application_state: nextState,
+      t201_date_application: now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate(),
+    }
+
+    changeApplyState(user?.t201_id_application,data)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => console.error(error));
+    
+  };
 
   if (!user) return null;
    console.log(user);
@@ -98,10 +143,10 @@ const TableRow = ({ children, user, idSkills, index }) => {
           </ul>
         </td>
         <td className={styles.td}>
-          <button className={`btn ${styles.actionsBtn} ${styles.accept}`}>
-            <FaHandshake />
+          <button className={`btn ${styles.actionsBtn} ${styles.accept}` } onClick = {onClickAcceptApply}>
+            <FaHandshake/>
           </button>
-          <button className={`btn ${styles.actionsBtn} ${styles.dismiss}`}>
+          <button className={`btn ${styles.actionsBtn} ${styles.dismiss}`} onClick = {onClickDennyApply}>
             <BiDislike />
           </button>
         </td>

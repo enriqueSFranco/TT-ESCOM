@@ -31,3 +31,4 @@ export const API_VACANT_INFO = "/api/VacantInfo/";
 export const API_CONTRACT = "/api/catalogues/Contracts/";
 export const API_ACADEMIC_STATE = "/api/catalogues/CatalogueAcademicState/"
 export const API_ACADEMIC_LEVEL = "/api/catalogues/CatalogueAcademicLevel/"
+export const API_JOB_APPLICATIONS = "/api/Applications/"

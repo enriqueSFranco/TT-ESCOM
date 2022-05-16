@@ -5,6 +5,7 @@ import Table from "components/Table/Table";
 import TableRow from "components/Table/TableRow";
 import { TiArrowBackOutline } from "react-icons/ti";
 import styles from "./Accordion.module.css";
+import { numberFormat } from "utils/numberFormat";
 import RowExpand from "components/Table/RowExpand";
 
 const Accordion = () => {
@@ -28,7 +29,7 @@ const Accordion = () => {
       .catch((error) => console.log(error));
   }, [t200_id_vacant]);
 
-  // console.log(user);
+  console.log(job);
 
   return (
     <>
@@ -40,20 +41,17 @@ const Accordion = () => {
           {job && (
             <ul className={styles.listItem}>
               <li className={styles.item}>{job[0]?.t200_job}</li>
-              <li className={styles.item}>$ Negociable</li>
-              <li className={styles.item}>Remoto</li>
-              <li className={styles.item}>Tipo de contratacion:</li>
-              <li className={styles.item}>
-                Timepo completo de 9:00am - 6:00pm, por tiempo indefinido
-              </li>
+              <li className={styles.item}>{`$ ${numberFormat(job[0]?.t200_min_salary).slice(4,)}MXN
+                                    ${job[0]?.t200_max_salary==0 ? "" : `a ${numberFormat(job[0]?.t200_max_salary).slice(4,)}MXN `}
+                                     al mes ${job[0]?.t200_salary_negotiable ? "Negociable" : "No negociable"}`}</li>
+              <li className={styles.item}>{job[0]?.c214_id_modality?.c214_description}</li>
+              <li className={styles.item}>{`Tipo de contratacion: ${job[0]?.c208_id_contract?.c208_description}`}</li>
+              <li className={styles.item}>{`Lunes a Viernes de ${job[0]?.t200_check_time} a ${job[0]?.t200_closing_hour}`}</li>
             </ul>
           )}
         </header>
         <div className={styles.descriptionJob}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-          sapiente dicta repudiandae excepturi doloribus qui nemo molestiae
-          iste, necessitatibus totam nulla laboriosam et ex consectetur harum
-          quis, aspernatur officia nesciunt.
+          {`To do: Porque obtener esto {job[0]?.t200_description} da como nulo????`}
         </div>
       </article>
       <Table>

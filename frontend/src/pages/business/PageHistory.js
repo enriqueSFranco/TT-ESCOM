@@ -250,7 +250,7 @@ const PageHistory = () => {
                               size="small" icon={<GiIcon.GiMoneyStack />} 
                             />
 
-                            <Chip label={`Modalidad: ${job[0]?.t200_home_ofice ? job[0]?.t200_locality ? "Hibrída": "Remota" : "Presencial"}`} size="small" icon={<MdIcon.MdBusinessCenter />} />                            
+                            <Chip label={`Modalidad: ${job[0]?.c214_id_modality?.c214_description} `} size="small" icon={<MdIcon.MdBusinessCenter />} />                            
 
                             <Chip label={`Fecha de cierre programada: ${job[0]?.t200_close_date}`} size="small" icon={<BsIcon.BsCalendarDate />} />
                           </div>                          
