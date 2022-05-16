@@ -19,7 +19,7 @@
             "t300_id_company": 1,
             "c207_id_experience": 2,
             "c206_id_profile": 2,
-            "c204_id_vacant_status": 2,
+            "c204_id_vacant_status": 1,
             "t301_id_recruiter": null,
              
             "t200_state":"Ciudad de México"
@@ -28,7 +28,7 @@
 
     {
         "model":"vacantes.Vacant",
-        "pk":1,
+        "pk":2,
         "fields":{
             "t200_job": "ATENCIÓN A CLIENTES BILINGÜE NIGHT SHIFT",
             "t200_description": "CONCENTRIX MÉXICO busca talento para unirse a nuestro nuevo gran equipo\r\nQue buscamos?\r\nRepresentantes para dar servicio 100% para atención a clientes bilingüe by Voice.\n\nIngles avanzado o nativo (B2 or higher)\r\nBachillerato completo o trunco (al menos 50%)\r\nManejo de PC a nivel usuario\r\nExperiencia en Call Center (deseable)\r\nDisponibilidad para trabajar tiempo completo y fines de semana.\r\nEl site se encuentra en: Av. Insurgentes Sur 945, Cd. de los Deportes, Benito Juárez, 03710 Ciudad de México, CDMX. IMPORTANTE: VIVIR A NO MÁS DE HORA Y MEDIA DE DISTANCIA O TRASLADO DESDE TU CASA AL SITIO.",
@@ -53,7 +53,7 @@
     },
     {
         "model":"vacantes.Vacant",
-        "pk":2,
+        "pk":3,
         "fields":{
             "t200_job": "Auxiliar contable",
             "t200_description": "Jarritos solicita Auxiliar Contable para planta Tultitlan que cuente con experiencia mínima de 2 años en Contabilidad en General, asientos contables, ingresos y egresos, elaboración de pólizas, conciliaciones, bancarias, analista Contable en cualquiera de los siguientes departamentos; Cuentas por Pagar, Cuentas por cobrar, Impuestos, conocimientos en conciliaciones, cierres, depuraciones, estados de cuenta, programación de pagos, cobros, estados financieros, contabilidad en general.\n\nEdad 23 a 40 años\r\nEscolaridad de Lic. en Contabilidad pasante ó titulado preferentemente\r\nOfrecemos sueldo base + bono + vales de despensa + prestaciones de ley y superiores.\r\nLaborar de Lunes a Viernes de 09: 00 a 19:00 hrs. y sábados de 09: 00 a 14: 00\r\nManejo de Excel intermedio.",
@@ -70,7 +70,7 @@
             "t300_id_company": 1,
             "c207_id_experience": 4,
             "c206_id_profile": 3,
-            "c204_id_vacant_status": 2,
+            "c204_id_vacant_status": 1,
             "t301_id_recruiter": 1,
              
             "t200_state":"Ciudad de México"
@@ -95,7 +95,7 @@
             "t300_id_company": 4,
             "c207_id_experience": 3,
             "c206_id_profile": 1,
-            "c204_id_vacant_status": 2,
+            "c204_id_vacant_status": 1,
             "t301_id_recruiter": null,
              
             "t200_state":"Ciudad de México"
@@ -120,7 +120,7 @@
             "t300_id_company": 2,
             "c207_id_experience": 6,
             "c206_id_profile": 5,
-            "c204_id_vacant_status": 2,
+            "c204_id_vacant_status": 1,
             "t301_id_recruiter": null,
              
             "t200_state":"Ciudad de México"
@@ -145,7 +145,7 @@
             "t300_id_company": 1,
             "c207_id_experience": 6,
             "c206_id_profile": 5,
-            "c204_id_vacant_status": 2,
+            "c204_id_vacant_status": 1,
             "t301_id_recruiter": 1,
              
             "t200_state":"Ciudad de México"
@@ -170,7 +170,7 @@
             "t300_id_company": 5,
             "c207_id_experience": 6,
             "c206_id_profile": 5,
-            "c204_id_vacant_status": 2,
+            "c204_id_vacant_status": 3,
             "t301_id_recruiter": null,
              
             "t200_state":"Ciudad de México"
@@ -195,7 +195,7 @@
             "t300_id_company": 3,
             "c207_id_experience": 6,
             "c206_id_profile": 5,
-            "c204_id_vacant_status": 2,
+            "c204_id_vacant_status": 3,
             "t301_id_recruiter": null,
              
             "t200_state":"Ciudad de México"
@@ -220,7 +220,7 @@
             "t300_id_company": 3,
             "c207_id_experience": 6,
             "c206_id_profile": 5,
-            "c204_id_vacant_status": 2,
+            "c204_id_vacant_status": 1,
             "t301_id_recruiter": null,
              
             "t200_state":"Ciudad de México"
@@ -245,7 +245,7 @@
             "t300_id_company": 6,
             "c207_id_experience": 3,
             "c206_id_profile": 1,
-            "c204_id_vacant_status": 2,
+            "c204_id_vacant_status": 1,
             "t301_id_recruiter": null,
              
             "t200_state":"Ciudad de México"
