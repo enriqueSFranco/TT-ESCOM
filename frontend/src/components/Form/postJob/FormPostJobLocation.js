@@ -13,6 +13,8 @@ import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
 import Select from "@mui/material/Select";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
 import { BiCurrentLocation, BiUser } from "react-icons/bi";
 import {
   MdOutlineWork,
@@ -124,16 +126,31 @@ useEffect(() => {
               {errors.t200_cp}
             </span>
           )}
-          <FormControlLabel
-            control={
-              <Checkbox
-                value={form.t200_home_ofice}
-                onChange={handleChecked}
-                size="small"
+          <div className={styles.inputGroupCheckbox}>          
+            <RadioGroup
+              row
+              id="c214_id_modality"
+              name="c214_id_modality"
+              value={form.c214_id_modality}
+              onChange={handleChange}
+            >
+              <FormControlLabel
+                value="3"
+                control={<Radio />}
+                label="Hibrido"
               />
-            }
-            label="Vacante Remota"
-          />
+              <FormControlLabel
+                value="2"
+                control={<Radio />}
+                label="Home office"
+              />
+              <FormControlLabel
+                value="1"
+                control={<Radio />}
+                label="Presencial"
+              />
+            </RadioGroup>
+            </div>
         </div>
         <div className={styles.wrapperTown}>
           <TextField
@@ -262,73 +279,79 @@ useEffect(() => {
         </div>
         <div className={styles.form1}>
           <div className={styles.inputGroup}>
-            <TextField
-              label="Salario Mínimo"
-              name="t200_min_salary"
-              id="t200_min_salary"
-              inputProps={{ min: 7000, max: 99999, type: "number" }}
-              value={form.t200_min_salary}
-              onChange={handleChange}
-              sx={{ width: 150 }}
-            />
-            <TextField
-              label="Salario máximo"
-              name="t200_max_salary"
-              id="t200_max_salary"
-              inputProps={{ min: 7000, max: 99999, type: "number" }}
-              value={form.t200_max_salary}
-              onChange={handleChange}
-              sx={{ width: 150 }}
-            />
             <div>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    value={form.t200_gross_salary}
-                    onChange={handleChecked}
-                    size="small"
-                  />
-                }
-                label="Es sueldo neto"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    value={form.t200_salary_negotiable}
-                    onChange={handleChecked}
-                    size="small"
-                  />
-                }
-                label="Negociable"
-              />
+              <div>
+                <TextField
+                  label="Salario Mínimo"
+                  name="t200_min_salary"
+                  id="t200_min_salary"
+                  inputProps={{ min: 7000, max: 99999, type: "number" }}
+                  value={form.t200_min_salary}
+                  onChange={handleChange}
+                  sx={{ width: 150 }}
+                />
+                <TextField
+                  label="Salario máximo"
+                  name="t200_max_salary"
+                  id="t200_max_salary"
+                  inputProps={{ min: 0, max: 99999, type: "number", marginLeft: 20}}
+                  value={form.t200_max_salary}
+                  onChange={handleChange}
+                  sx={{ width: 150 }}
+                />
+              </div>
+              <div>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      value={form.t200_gross_salary}
+                      onChange={handleChecked}
+                      size="small"
+                    />
+                  }
+                  label="Es sueldo neto"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      value={form.t200_salary_negotiable}
+                      onChange={handleChecked}
+                      size="small"
+                    />
+                  }
+                  label="Negociable"
+                />
+              </div>
             </div>
-              <TextField
-                label="Días laborales"
-                type="text"
-                name="t200_work_days"
-                id="t200_work_days"
-                value={form.t200_work_days}
-                onChange={handleChange}
-                sx={{ width: 300, marginRight: 2 }}
-              />            
-            <div>
-              <TextField
-                label="Entrada"
-                type="time"
-                name="t200_check_time"
-                id="t200_check_time"
-                value={form.t200_check_time}
-                onChange={handleChange}
-                sx={{ width: 150, marginRight: 2 }}
-              />
-              <TextField
-                label="Salida"
-                type="time"
-                name="t200_closing_hour"
-                id="t200_closing_hour"
-                value={form.t200_closing_hour}
-                onChange={handleChange}
-              />
+              <div >
+                <TextField 
+                  label="Días laborales"
+                  type="text"
+                  name="t200_work_days"
+                  id="t200_work_days"
+                  value={form.t200_work_days}
+                  onChange={handleChange}
+                  sx={{ width: 300, marginBottom: 3 }}
+                />            
+              <div>
+                <TextField
+                  label="Entrada"
+                  type="time"
+                  name="t200_check_time"
+                  id="t200_check_time"
+                  value={form.t200_check_time}
+                  onChange={handleChange}
+                  sx={{ width: 150, marginRight: 2 }}
+                />
+                <TextField
+                  label="Salida"
+                  type="time"
+                  name="t200_closing_hour"
+                  id="t200_closing_hour"
+                  value={form.t200_closing_hour}
+                  onChange={handleChange}
+                />
+              </div>
             </div>
             {/* dias laborales */}
           </div>

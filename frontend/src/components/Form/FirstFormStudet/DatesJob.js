@@ -51,7 +51,7 @@ const DatesJob = ({ form, handleChange, interestJobs, setInterestJobs }) => {
             onChange={handleChange}
           >
             <FormControlLabel
-              value="Hibrodo"
+              value="Hibrido"
               control={<Radio />}
               label="Hibrido"
             />
