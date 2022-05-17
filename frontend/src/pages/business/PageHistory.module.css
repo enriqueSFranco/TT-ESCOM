@@ -248,7 +248,7 @@
 }
 
 .wrapperCard {
-  /* outline: 2px solid red; */
+  outline: 2px solid red;
   position: relative;
   top: -4rem;
 }
@@ -276,7 +276,7 @@
   /* outline: 2px solid yellow; */
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 
 .jobMiniCard{

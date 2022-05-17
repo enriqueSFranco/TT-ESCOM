@@ -7,7 +7,7 @@ import { MdBusinessCenter, MdHomeWork } from 'react-icons/md';
 import styles from './ApplicationJob.module.css';
 
 const ApplicationJob = ({nameJob, salary, modality, nameBusisness, typeBusiness, workingHours, vacantState}) => {
-  console.log(vacantState)
+
   return (
     <article className={styles.wrapper}>
       <h1 className={styles.nameJob}>{nameJob}</h1>

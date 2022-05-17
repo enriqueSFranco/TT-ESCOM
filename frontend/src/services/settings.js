@@ -3,7 +3,8 @@ export const API_RECRUITERVACANTS = "/api/RecruiterVacants/";
 export const API_COMPANY = "/api/Companies/";
 export const API_PHOTO_COMPANY = "/images/CompanyLogo/";
 export const API_JOBS = `/api/Vacants/`;
-export const API_VACANTS_APPLICATIONS_JOB_STUDENT = `/api/VacantApplications/`;
+export const API_VACANTS_APPLICATIONS_JOB_STUDENT = "/api/VacantApplications/";
+export const API_VACANTS_FILTER = "/api/FilterVacants/";
 
 export const API_CATALOGUE_EXPERIENCE = "/api/catalogues/CatalogueExperience/";
 export const API_CATALOGUE_STATES = "/api/catalogues/States/";

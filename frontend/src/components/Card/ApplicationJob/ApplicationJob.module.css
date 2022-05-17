@@ -8,8 +8,12 @@
 }
 
 .tags {
+  /* outline: 2px solid red; */
+  width: 400px;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .5rem;
+  /* justify-content: space-between; */
 }
 
 .wrapper {
@@ -23,6 +27,7 @@
   padding: .5rem;
   margin-bottom: .5rem;
 }
+
 
 .state {
   font-weight: 400;

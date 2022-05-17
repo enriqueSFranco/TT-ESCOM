@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { getAllJobs } from "services/jobs";
+import { getAllJobs, getVacantsFilter } from "services/jobs";
 import Search from "components/Search/Search";
 import FilterProfile from "components/Filter/FilterProfile";
 import FilterCompany from "components/Filter/FilterCompany";
@@ -51,6 +51,7 @@ const Home = () => {
   const handleFilterHomeOffice = e => {
     const { checked } = e.target;
     setIsChecked(checked);
+
     if (!isChecked) {
       // checkbox activado
       setIsFiltered(true);
@@ -66,12 +67,24 @@ const Home = () => {
     }
   };
 
+  
+
   /**
    * @param {Array} set conjunto de datos para filtrar por nombre de una empresa
    * @param {String} name nombre de la empresa
    * @return {Array} retorna el conjunto filtrado
    **/
-  const filterForBusiness = (set, name) => set.filter(item => item?.t300_id_company?.t300_name === name)
+  const filterForBusiness = (set, business) => {
+    getVacantsFilter({
+      t300_id_company: 1,
+      c206_id_profile: "",
+      t200_home_ofice: ""
+    }).then(response => {
+      console.log(response)
+    })
+    .catch(error => console.log(error));
+    // set.filter(item => item?.t300_id_company?.t300_name === name);
+  }
 
   /**
    * @param {Array} set conjunto de datos para filtrar por modalidad de empleo
@@ -92,7 +105,8 @@ const Home = () => {
       // setTotalJobs(jobs?.result.length);
     } else if (value !== "") {
       setIsFiltered(true);
-      const newData = filterForBusiness(jobs?.result, value);
+
+      const newData = filterForBusiness()
       setData(newData);
       // setTotalJobs(newData.length);
     }
