@@ -215,6 +215,21 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 		print(query + join + clauses)
 		return self.queryset
 
+	def get_queryset(self):	
+		query ="""SELECT t200_vacante.* FROM t200_vacante\n"""
+		join = ""
+		clauses = "\nWHERE t200_vacante.c204_id_vacant_status_id = 1"
+		if (self.filters['company_name']):
+			join = "JOIN t300_empresa ON t200_vacante.t300_id_company_id = t300_empresa.t300_id_company "
+			clauses = clauses + "\nAND t300_empresa.t300_name = '"+self.filters['company_name']+"'"
+		if (self.filters['id_profile']):
+			clauses = clauses +"\nAND t200_vacante.c206_id_profile_id = "+self.filters['id_profile'] + " "
+		if (self.filters['id_modality']):
+			clauses = clauses +"\nAND t200_vacante.c214_id_modality_id = "+self.filters['id_modality'] + " "
+		self.queryset =	self.model.objects.raw(query + join + clauses)
+		print(query + join + clauses)
+		return self.queryset
+
 	def list(self, request):
 		vacants = self.get_queryset()
 		page = self.paginate_queryset(vacants)
