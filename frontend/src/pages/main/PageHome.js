@@ -11,23 +11,27 @@ import homeStyles from "./PageHome.module.css";
 
 const Home = () => {
   const [jobs, setJobs] = useState(null);
-  let maxLenPage = useMemo(() => Math.ceil(jobs?.count / jobs?.page_size), [jobs?.count, jobs?.page_size]);
+  let maxLenPage = useMemo(
+    () => Math.ceil(jobs?.count / jobs?.page_size),
+    [jobs?.count, jobs?.page_size]
+  );
+  const [search, setSearch] = useState(null);
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]); // lista de vacantes filtrada
   const [isFiltered, setIsFiltered] = useState(false); // bandera para saber si la informacion se tiene que filtrar
   const [loading, setLoading] = useState(false);
   const [isChecked, setIsChecked] = useState(false); // informacion filtrada
   // const [totalJobs, setTotalJobs] = useState(0); // estado para el total de vacantes
-  
+
   useEffect(() => {
     setLoading(true);
     getAllJobs(page)
-      .then(response => {
+      .then((response) => {
         if (response.status === 200) {
-          setJobs(response.data)
+          setJobs(response.data);
         }
       })
-      .catch(error => console.log(error))
+      .catch((error) => console.log(error))
       .finally(() => setLoading(false));
   }, [page]);
 
@@ -45,10 +49,11 @@ const Home = () => {
 
   const handleSearch = (value) => {
     filteredData(value);
+    setSearch(value);
     setIsFiltered(value !== "" ? true : false);
   };
 
-  const handleFilterHomeOffice = e => {
+  const handleFilterHomeOffice = (e) => {
     const { checked } = e.target;
     setIsChecked(checked);
 
@@ -67,36 +72,31 @@ const Home = () => {
     }
   };
 
-  
-
   /**
    * @param {Array} set conjunto de datos para filtrar por nombre de una empresa
    * @param {String} name nombre de la empresa
    * @return {Array} retorna el conjunto filtrado
    **/
   const filterForBusiness = (set, business) => {
-    getVacantsFilter({
-      t300_id_company: 1,
-      c206_id_profile: "",
-      t200_home_ofice: ""
-    }).then(response => {
-      console.log(response)
-    })
-    .catch(error => console.log(error));
-    // set.filter(item => item?.t300_id_company?.t300_name === name);
-  }
+    const filtered = set.filter(
+      (item) => item?.t300_id_company?.t300_name === business
+    );
+    console.log(filtered);
+    return filtered;
+  };
 
   /**
    * @param {Array} set conjunto de datos para filtrar por modalidad de empleo
    * @return {Array} retorna el conjunto filtrado
    **/
-  const filterForHomeOffice = set => set.filter(item => item?.t200_home_ofice === true);
+  const filterForHomeOffice = (set) =>
+    set.filter((item) => item?.t200_home_ofice === true);
 
   /**
    * Filtra los empleos por empresa
    * @return devuleve los empleos publicados por una empresa seleccionada
    **/
-  const handleFilterBusiness = e => {
+  const handleFilterBusiness = (e) => {
     const { value } = e.target;
 
     if (value === "allBusiness") {
@@ -106,22 +106,23 @@ const Home = () => {
     } else if (value !== "") {
       setIsFiltered(true);
 
-      const newData = filterForBusiness()
+      const newData = filterForBusiness(jobs?.result, value);
       setData(newData);
       // setTotalJobs(newData.length);
     }
   };
 
-  const filterForProfile = (set, value) => set.filter(item => item?.c206_id_profile?.c206_description === value);
+  const filterForProfile = (set, value) =>
+    set.filter((item) => item?.c206_id_profile?.c206_description === value);
 
-  const handleFilterProfile = e => {
+  const handleFilterProfile = (e) => {
     const { value } = e.target;
 
     if (value === "allProfile") {
       setIsFiltered(false);
       setData(jobs);
       // setTotalJobs(jobs.length);
-    }else if (value !== "") {
+    } else if (value !== "") {
       setIsFiltered(true);
       const newData = filterForProfile(jobs, value);
       setData(newData);
@@ -131,6 +132,8 @@ const Home = () => {
 
   if (!jobs) return null;
 
+  // console.log(search)
+
   return (
     <main className={homeStyles.home}>
       <Search handleSearch={handleSearch} />
@@ -139,11 +142,21 @@ const Home = () => {
         <span className={homeStyles.textFilter}>Filtros</span>
         <FilterProfile onChange={handleFilterProfile} />
         <FilterCompany onChange={handleFilterBusiness} />
-        <FilterHomeOffice value={isChecked} handleChecked={handleFilterHomeOffice} />
+        <FilterHomeOffice
+          value={isChecked}
+          handleChecked={handleFilterHomeOffice}
+        />
       </div>
 
       <section className={homeStyles.wrapperJobList}>
-        <JobList jobs={isFiltered ? data : jobs?.result} loading={loading} page={page} setPage={setPage} maxLenPage={maxLenPage} />
+        <JobList
+          search={search}
+          jobs={isFiltered ? data : jobs?.result}
+          loading={loading}
+          page={page}
+          setPage={setPage}
+          maxLenPage={maxLenPage}
+        />
       </section>
 
       <section className={`${homeStyles.wrapperDeck}`}>
