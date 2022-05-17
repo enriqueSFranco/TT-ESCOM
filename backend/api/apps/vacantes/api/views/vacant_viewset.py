@@ -190,38 +190,30 @@ class VacantInfoViewSet(viewsets.GenericViewSet):
 
 class FilterVacantViewSet(viewsets.GenericViewSet):
 	model = Vacant
-	#permission_classes = [IsAuthenticated]
 	serializer_class = VacantSerializer
 	pagination_class = CustomPagination
 	list_serializer_class = VacantListSerializer
 	queryset = None
 	filters ={
-		'id_company' : '',
+		'company_name' : '',
 		'id_profile' : '',
-		'home_office' : '',
+		'id_modality' : '',
 	}
 
 	def get_object(self):	
-		self.queryset = self.model.objects.filter(c204_id_vacant_status='1')
-		if (self.filters['id_company']):
-			self.queryset =	self.queryset.filter(t300_id_company = self.filters['id_company'])
+		query ="""SELECT t200_vacante.* FROM t200_vacante\n"""
+		join = ""
+		clauses = "\nWHERE t200_vacante.c204_id_vacant_status_id = 1"
+		if (self.filters['company_name']):
+			join = "JOIN t300_empresa ON t200_vacante.t300_id_company_id = t300_empresa.t300_id_company "
+			clauses = clauses + "\nAND t300_empresa.t300_name = '"+self.filters['company_name']+"'"
 		if (self.filters['id_profile']):
-			self.queryset =	self.queryset.filter(c206_id_profile = self.filters['id_profile'])
-		if (self.filters['home_office'] != ''):
-			self.queryset =	self.queryset.filter(t200_home_ofice = self.filters['home_office'])
-		self.queryset =	self.queryset.all()
+			clauses = clauses +"\nAND t200_vacante.c206_id_profile_id = "+self.filters['id_profile'] + " "
+		if (self.filters['id_modality']):
+			clauses = clauses +"\nAND t200_vacante.c214_id_modality_id = "+self.filters['id_modality'] + " "
+		self.queryset =	self.model.objects.raw(query + join + clauses)
+		print(query + join + clauses)
 		return self.queryset
-
-	def get_queryset(self):
-		self.queryset = self.model.objects.filter(c204_id_vacant_status='1')
-		if (self.filters['id_company']):
-			self.queryset =	self.queryset.filter(t300_id_company = self.filters['id_company'])
-		if (self.filters['id_profile']):
-			self.queryset =	self.queryset.filter(c206_id_profile = self.filters['id_profile'])
-		if (self.filters['home_office'] != ''):
-			self.queryset =	self.queryset.filter(t200_home_ofice = self.filters['home_office'])
-		self.queryset =	self.queryset.all()
-		return self.queryset	
 
 	def list(self, request):
 		vacants = self.get_queryset()
@@ -234,11 +226,10 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 
 
 	def create(self, request):
-		#vacant_serializer = self.serializer_class(data=request.data)
 		print('request: ',request.data)
-		self.filters['id_company'] = request.data['t300_id_company']
+		self.filters['company_name'] = request.data['company_name']
 		self.filters['id_profile'] = request.data['c206_id_profile']
-		self.filters['home_office']  = request.data['t200_home_ofice']
+		self.filters['id_modality']  = request.data['id_modality']
 		print(self.filters)
 		vacants = self.get_object()
 		page = self.paginate_queryset(vacants)
@@ -246,10 +237,5 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 			vacants_serializer = self.list_serializer_class(page, many=True)
 			return self.get_paginated_response(vacants_serializer.data)
 		vacants_serializer = self.list_serializer_class(vacants, many=True)
-		#if vacant_serializer.is_valid():
-			#vacant_serializer.save()
-		#	return Response({
-		#		'message': 'Vacante registrada correctamente.'
-		#	}, status=status.HTTP_201_CREATED)
 		return Response(vacants_serializer.data)		
 		
