@@ -1,0 +1,63 @@
+\section{Requerimientos del sistema}
+Esta sección describe todos los requerimientos necesarios para el funcionamiento del sistema con base en las responsabilidades de cada
+usuarios, descritas en la sección anterior.
+Los requerimientos utilizan una clave para ser identificados:
+
+\begin{itemize}
+	\item Para los requerimientos \textbf{fucionales} se utliza el formato \textbf{RF-X}, donde:
+    \begin{itemize}
+        \item \textbf{RF} Es la clave para todos los requerimientos funcionales.
+        \item \textbf{X} Es un número consecutivo: 01, 02, 03, ...
+    \end{itemize}
+
+    \item Para los requerimientos \textbf{no fucionales} se utliza el formato \textbf{RNF-X}, donde:
+    \begin{itemize}
+        \item \textbf{RNF} Es la clave para todos los requerimientos funcionales.
+        \item \textbf{X} Es un número consecutivo: 01, 02, 03, ...
+    \end{itemize}
+
+\end{itemize}
+
+	\begin{requerimientos}{funcionales}
+		\RFitem{RF-01}{Iniciar sesión }{El sistema debe proporcionar un mecanismo que permita al actor acceder al sistema mediante un correo y una contraseña.}
+        \RFitem{RF-02}{Crear cuenta}{El sistema debe proporcionar un mecanismo que permita al actor registrarse como nuevo usuario en el sistema.}
+        \RFitem{RF-03}{Recuperar contraseña}{El sistema debe proporcionar un mecanismo que permita al actor recuperar su contraseña en caso de haberla olvidado.}
+        \RFitem{RF-04}{Consultar perfil}{El sistema debe permitir al actor acceder a su perfil para consultar la información registrada.}
+        \RFitem{RF-05}{Editar perfil}{El sistema debe permitir al actor modificar la información registrada en su perfil, como nombre, apellidos, información de contacto y si el usuario es un candidato, debe de permitir modificar su información académica y datos de habilidades y conocimientos del mismo.}
+        \RFitem{RF-06}{Cambiar contraseña}{El sistema debe permitir al actor modificar su contraseña actual por una nueva en el momento que él lo requiera.}
+        \RFitem{RF-07}{Eliminar cuenta}{El sistema debe proporcionar un mecanismo que permita eliminar la cuenta de un actor, ya sea que el propio actor la elimine o si en dado caso es el encargado o colaborador la pueda eliminar.}
+        \RFitem{RF-08}{Recuperar cuenta}{El sistema debe proporcionar  un mecanismo que le permita al actor recuperar su cuenta que anteriormente haya eliminado.}
+        \RFitem{RF-09}{Consultar vacantes}{El sistema debe permitir a cualquier persona consultar las vacantes que se tengan registradas siempre y cuando aun estén abiertas.}
+        \RFitem{RF-10}{Publicar vacantes }{El sistema debe permitir  a los usuarios registrados publicar vacantes.}
+        \RFitem{RF-11}{Editar vacantes}{El sistema debe permitir a los usuarios editar las vacantes que ellos hayan publicado.}
+        \RFitem{RF-12}{Reportar vacantes}{El sistema debe permitir a los usuarios reportar vacantes publicadas si es que el usuario lo crea necesario.}
+        \RFitem{RF-13}{Eliminar vacantes}{El sistema debe permitir a los usuarios eliminar las vacantes que ellos hayan publicado.}
+        \RFitem{RF-14}{Postularse a vacantes}{El sistema debe permitir a los usuarios registrados enviar postularse a  las vacantes que esté abiertas.}
+        \RFitem{RF-15}{Consultar el estado de postulaciones}{El sistema debe permitir al actor consultar el estado de su o sus postulaciones que haya hecho.}
+        \RFitem{RF-16}{Dar seguimiento a postulaciones}{El sistema debe permitir al actor indicar  el estado de las postulaciones que tiene según sus vacantes publicadas.}
+        \RFitem{RF-17}{Consultar postulaciones}{El sistema debe permitir a los actores registrados consultar las postulaciones que se hayan hecho de acuerdo a cada vacante.}
+        \RFitem{RF-18}{Consultar candidatos}{El sistema debe permitir a los actores registrados consultar los candidatos registrados hayan o no postulado a una vacante.}
+        \RFitem{RF-19}{Publicar comunicados}{El sistema debe permitir publicar comunicados a los actores que tengan cuenta. }
+        \RFitem{RF-20}{Consultar comunicados}{El sistema debe permitir consultar todos los comunicados que se tengan registrados y que aún están vigentes}
+        \RFitem{RF-21}{Modificar comunicados}{El sistema debe permitir editar todos los comunicados que se tengan registrados y que aún están vigentes}
+        \RFitem{RF-22}{Eliminar comunicados}{El sistema debe permitir eliminar todos los comunicados que se tengan registrados.}
+        \RFitem{RF-23}{Editar información de la empresa}{El sistema debe proporcionar un mecanismo para editar la información general de una empres: misión, visión, objetivos, nombre, RFC  y razón social}
+        \RFitem{RF-24}{Enviar solicitud para acceder al sistema}{El sistema debe proporcionar un mecanismo para que al representante de una empresa pueda enviar una solicitud o pre-registro de poder acceder y publicar vacantes.}
+        \RFitem{RF-25}{Consultar empresas }{El sistema debe proporcionar un mecanismo para consultar la información general de una empres: misión, visión, objetivos, nombre, RFC  y razón social}
+        \RFitem{RF-26}{Validar empresas}{El sistema debe proporcionar un mecanismo para validar la información general de una empresa y así corroborar que sean empresas constituidas}
+        \RFitem{RF-27}{Validar reclutadores}{El sistema debe proporcionar un mecanismo para validar la información de un reclutador y así corroborar que trabajen para la empresa que representan.}
+        \RFitem{RF-28}{Generar reportes de estado}{El sistema debe proporcionar un mecanismo generar reportes sobre vacantes, cuentas, empresas, candidatos, reclutadores, postulaciones y uso de la plataforma.}
+        \RFitem{RF-29}{Gestionar vacantes reportadas}{El sistema debe proporcionar un mecanismo para dar solución a los casos de vacantes reportadas por los propios usuarios}
+        \RFitem{RF-30}{Gestionar cuentas de usuarios}{El sistema debe proporcionar un mecanismo para que los colaboradores y el encargado puedan gestionar las cuentas de otros usuario es decir, eliminarlas, crearlas y recuperarlas si así lo requiere.}
+        \RFitem{RF-31}{Agregar colaboradores}{El sistema debe proporcionar un mecanismo para validar la información de un reclutador y así corroborar que trabajen para la empresa que representan.}
+        \RFitem{RF-32}{Recomendar candidatos}{El sistema debe proporcionar un mecanismo para recomendar y filtrar candidatos a los reclutadores, con base en las características y requerimientos de las vacantes publicadas por el propio reclutador  }
+        \RFitem{RF-33}{Recomendar vacantes}{El sistema debe proporcionar un mecanismo para recomendar y filtrar vacantes a los candidatos, con base en las características, habilidades, conocimientos y preferencias del candidato.}
+        \RFitem{RF-34}{Generar el pdf de perfil }{El sistema debe proporcionar un mecanismo para generar un curriculum en pdf con la información registrada del perfil de un candidato}
+        \RFitem{RF-35}{Enviar notificaciones de estado}{El sistema debe proporcionar un mecanismo para enviar notificaciones a los usuarios sobre los estados de sus vacantes, publicaciones, reportes y actividad en general de su cuenta.}
+        \RFitem{RF-36}{Enviar correos de confirmación de cuenta}{El sistema debe proporcionar un mecanismo para confirmar por medio de correos el envío de credenciales para las cuentas de reclutadores, recuperar contraseñas y recuperar cuentas}
+        \RFitem{RF-37}{Guardar historial de cuentas}{El sistema debe proporcionar un mecanismo para guardar todos los registros de las cuentas creadas, eliminadas y recuperadas de los últimos 5 años}
+        \RFitem{RF-38}{Guardar historial de uso }{El sistema debe proporcionar un mecanismo para guardar todos los registros de las vacantes, empresas, postulaciones y reportes de los últimos 5 años}
+        \RFitem{RF-39}{Descargar archivos }{El sistema debe proporcionar un mecanismo para descargar y subir archivos según lo requieran los actores}
+        \RFitem{RF-40}{Crear credenciales de acceso}{El sistema debe proporcionar un mecanismo para crear usuarios y contraseñas de nuevas cuentas}
+	\end{requerimientos}
+

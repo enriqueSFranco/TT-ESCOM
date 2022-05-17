@@ -1,18 +1,27 @@
-En este capítulo se  el modelo de información del sistema, en el que podrá encontrar las diferentes entidades que son de interés dentro del sistema, estas entidades son cualquier concepto del que se requiera llevar registro, estas entidades pueden ser:
 
-    \begin{bGlosario}
-        \bTerm{tPersonas}{Personas} Tales como cliente, profesor, alumno, etc.
-        \bTerm{tEventos}{Eventos}   Tales como compra, venta, inscipción, cita, etc
-        \bTerm{tObjetos}{Objetos}   Tales como producto, mueble, etc.
-        \bTerm{tLugar}{Lugar}       Ciudad, Pais,etc.
-        \bTerm{tConcepto}{Concepto} Cuenta, curso, etc.
-    \end{bGlosario}
+
+\chapter{Modelo de datos}
+En este anexo vamos a utilizar un diagrama para mostrar como se encuentra la estructura del sistema a nivel de base de datos. 
+También se especifica el código de colores se ultiza para identificar diferentes tipos de entidades.
+
+\section{Código de colores y atributos}
+
+El código de colores permite identificar el tipo de información que guarda una entidad o tabla:
+
+
+\begin{itemize}
+    \item \IUEntidaB\hspace{0.2cm} Este color se utiliza para representar entidades relacionadas al negocio.
+    \item \IUEntidaA\hspace{0.2cm} Este color se utiliza para representar entidades de tipo catálogo es decir, tiene información definida 
+    y que no puede ser alterada por medio del sistema.
+    \item \IUEntidaC\hspace{0.2cm} Este color se utiliza para representar entidades de tipo catálogo editables es decir, tiene información definida 
+    y que puede ser alterada por medio del sistema.
+    \item \IUEntidaD\hspace{0.2cm} Este color se utiliza para representar entidades de tipo estado.
+\end{itemize}
 
 Cada dato que nos interese de una entidad se coloca en forma de atributo, acompañado de su respectiva descripción y tipo de dato. Con ello, se busca indicar la naturaleza del atributo y restringir sus valores posibles. Entre los tipos de dato más comunes, encontramos los siguientes:
 
     \begin{bGlosario}
-
-	    \bTerm{tBool}{bool}
+	\bTerm{tBool}{bool}
 	    Valor booleano, es decir, toma únicamente los valores 0 y 1.
 
         \bTerm{tInt}{int}
@@ -24,21 +33,14 @@ Cada dato que nos interese de una entidad se coloca en forma de atributo, acompa
             
         \bTerm{tChar}{Char}
             Cadena de caracteres de la longitud indicada, si se guarda una cadena de menor
-            tamaño, los caracteres no utilizados serán espacios en blanco, por ejemplo si
-            se ingresó el texto ‘edgar’ en un atributo de longitud 50, además de sus 5 caracteres
-            tendrá 45 espacios en blanco al final, así su longitud siempre será 50.
+            tamaño, los caracteres no utilizados serán espacios en blanco.
             
         \bTerm{tVarchar}{varchar} (longitud)
-            Cadena de caracteres de longitud variable. Por ejemplo, si se ingresa el texto 'edgar'
-            en un atributo de longitud 50, entonces tendrá solo 5 caracteres.
+            Cadena de caracteres de longitud variable. 
+        \bTerm{tEmail}{email} (longitud)
             
         \bTerm{tDate}{date} Fecha
         \bTerm{tTime}{time} Hora
-        \bTerm{tTimestamp}{timestamp} Fecha y hora
-        \bTerm{tMoney}{money} Unidades monetarias en moneda nacional
-        \bTerm{tEmail}{E-mail}
-    
-        Solo valores enteros, incluido el 0
     \end{bGlosario}
 
 Cada dato puede tener restricciones adicionales, entre las que se encuentran:
@@ -65,43 +67,25 @@ Cada dato puede tener restricciones adicionales, entre las que se encuentran:
             Indica el atributo o conjunto de éstos que son llave foránea y apuntan a otra
             tabla, esto es, sus valores posibles solo pueden ser aquellos que existan en la
             llave primaria a la que apuntan. FK(Tabla.atributo).
-            
-        \bTerm{tCHECK}{CHECK} (condicionACumplir)
-            Indica que se debe cumplir una condición sobre un atributo en particular para
-            que se permita el registro o actualización de datos.
-            
-        \bTerm{tRango}{Rango} [LimiteInf, LimiteSuperior]
-            Indica que los valores posibles deben estar dentro de ese rango.
-            
-        \bTerm{tNumCaracteres}{NumCaracteres}[NumInf, NumSup]
-            Indica que el número de caracteres debe estar en el rango especificado.
-            
-        \bTerm{tExpresionRegular}{ExpresionRegular} (expresion)
-            Indica que se debe de cumplir con la expresión indicada.
-
-        \bTerm{talfanum}{Caracteres alfanuméricos} 
-            Es el conjunto de caracteres numéricos y alfabéticos.
-
-        \bTerm{tcespecia}{Caracteres especiales} 
-            El sistema puede aceptar los siquientes caracteres: \$ , \& , \# , \% , \_ , \~ , entre otros.
 
             
     \end{bGlosario}
     
-\clearpage
 
-\section{Diagrama de base de datos}
+\section{Diagrama Relacional}
 
-\begin{figure}[hbtp!]
-    \begin{center}
-           % \includegraphics[width=.65\textwidth]{negocio/images/MI-POA-CH}
-            \includegraphics[width=.6\textwidth]{anexos/imagenes/Usuarios.jpeg}
-            
-    \end{center}
-        \label{fig:MI-Planeacion}
-            \caption{Diagrama de base de datos del módulo de Usuarios}
-    
-    \end{figure}
+En la figura \textbf{ref} se muestra el diagrama de datos con base en el análisis de requerimientos que
+del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
+%\begin{figure}[hbtp!]
+%5    \begin{center}
+%           % \includegraphics[width=.65\textwidth]{negocio/images/MI-POA-CH}
+%            \includegraphics[width=.6\textwidth]{anexos/imagenes/Usuarios.jpeg}
+%            
+%    \end{center}
+%        \label{fig:MI-Planeacion}
+%            \caption{Diagrama de base de datos del módulo de Usuarios}
+%    
+%    \end{figure}
 
 % En la figura  \ref{fig:MI-PlaneacionI}
 %\begin{figure}[hbtp!]
@@ -180,7 +164,6 @@ Cada dato puede tener restricciones adicionales, entre las que se encuentran:
 	        Es el estado de la cuenta del usuario dentro del sistema.
         }{\datRequerido}
 \end{cdtEntidad}
-
 %---------------------Empresa-----------------------------
 \begin{cdtEntidad}{empresa}{Empresa}{
     Empresa constituida que publica vacantes en el sistema siempre y cuando lo haya permitido el 
@@ -229,7 +212,6 @@ Cada dato puede tener restricciones adicionales, entre las que se encuentran:
       %      \end{Citemize}
       %  }{\datRequerido}
 \end{cdtEntidad}
-
 %---------------------Reclutador-----------------------------
 \begin{cdtEntidad}{reclutador}{Reclutador}{
     Es el personal de recursos humanos de la empresa que ya esta registrada en el sistema.}
@@ -410,34 +392,86 @@ Cada dato puede tener restricciones adicionales, entre las que se encuentran:
     }{\datOpcional}
 
 \end{cdtEntidad}
-
 %---------------------Historial Academico-----------------------------
-\begin{cdtEntidad}{hacademico}{Historial Academico}{desc}
-    \brAttr{id-vacante}{Id}{tInt}{Descripción}{\datRequerido} 
-    \brAttr{intitucion}{Institucion}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{carrera}{Carrera}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{inicio}{Fecha de inicio}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{fin}{Fecha final}{tVarchar}{Descripción}{\datRequerido}
+%\begin{cdtEntidad}{hacademico}{Historial Academico}{desc}
+ %   \brAttr{id-vacante}{Id}{tInt}{Descripción}{\datRequerido} 
+ %   \brAttr{intitucion}{Institucion}{tVarchar}{Descripción}{\datRequerido}
+ %   \brAttr{carrera}{Carrera}{tVarchar}{Descripción}{\datRequerido}
+ %   \brAttr{inicio}{Fecha de inicio}{tVarchar}{Descripción}{\datRequerido}
+ %   \brAttr{fin}{Fecha final}{tVarchar}{Descripción}{\datRequerido}
     
-\end{cdtEntidad}
-
+%\end{cdtEntidad}
 %---------------------Habilidades----------------------------
-\begin{cdtEntidad}{habilidad}{Catalogo Habilidades}{desc}
-    \brAttr{id-habilidad}{Id}{tInt}{Descripción}{\datRequerido} 
-    \brAttr{descripcion}{Carrera}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{tipo}{Fecha de inicio}{tVarchar}{Descripción}{\datRequerido}
-\end{cdtEntidad}
-
-
+%\begin{cdtEntidad}{habilidad}{Catalogo Habilidades}{desc}
+ %   \brAttr{id-habilidad}{Id}{tInt}{Descripción}{\datRequerido} 
+ %   \brAttr{descripcion}{Carrera}{tVarchar}{Descripción}{\datRequerido}
+ %   \brAttr{tipo}{Fecha de inicio}{tVarchar}{Descripción}{\datRequerido}
+%\end{cdtEntidad}
 %---------------------Vacante----------------------------
 \begin{cdtEntidad}{vacante}{Vacante}{
-    Vacante publicada por un reclutador de una empresa.
-}
-    \brAttr{id}{Id}{tInt}{Descripción}{\datRequerido} 
-    \brAttr{titulo}{Titulo}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{descripcion}{Fecha de inicio}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{salario-min}{Salario mínimo}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{saralio-max}{Salario maximo}{tVarchar}{Descripción}{\datRequerido}
-    \brAttr{ubicacion}{Salario maximo}{tVarchar}{Descripción}{\datRequerido}
+    Vacante publicada por un reclutador de una empresa.}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de cada vacante publicada en el sistema.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido} 
+
+    \brAttr{puesto}{Puesto}{tVarchar}{
+        Texto breve el cual describe el puesto de la vacante que publica el sistema.
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+       Es la descripción de la vacante, la cual puede contener:
+       \begin{Citemize}
+            \item Requisitos de la vacante.
+            \item Actividades que va realizar.
+            \item Idiomas, habilidades y conocimientos.
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{ubicacion}{Lolidad}{tVarchar}{
+        Indica la ubicación de la vacante, siempre y cuando sea presencial o hibrida.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{fechap}{Fecha de publicación}{tDate}{
+        Indica la fecha en la que se publico la vacante.
+    }{\datRequerido}
+
+    \brAttr{fechac}{Fecha de cierre}{tDate}{
+        Indica la fecha en la que se cierra o se va cerrar la vacante, por 
+        defecto la decha de cierre es un mes despues de su fecha de publicación
+        si el reclutador de la vacante no lo indica.
+    }{\datRequerido}
+
+    \brAttr{salariomin}{Salario mínimo}{tNumeric}{
+        Salario minimo que puede percibir el candidato a la vacante.
+    }{\datOpcional}
+
+    \brAttr{saraliomax}{Salario máximo}{tNumeric}{
+        Salario máximo que puede percibir el candidato a la vacante.
+    }{\datOpcional}
+
+    \brAttr{diaslab}{Días laborales}{tVarchar}{
+        Indica los días en los que el candidato debe trabajar en dado casos
+        que sea contratado.
+    }{\datOpcional}
+
+    \brAttr{horaentra}{Horario de entrada}{tTime}{
+        Indica la hora de entrada de trabajo de la vacante.
+    }{\datOpcional}
+    
+    \brAttr{horasal}{Horario de salida}{tTime}{
+        Indica la hora de salida de trabajo de la vacante.
+    }{\datOpcional}
+
+
+    
 \end{cdtEntidad}
 

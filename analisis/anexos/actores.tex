@@ -1,0 +1,59 @@
+\chapter{Usuarios}
+En esta sección vamos explicar el flujo del sistema y los usuarios que interactuan con el.
+
+Cualquier persona puede interactuar con el sistema, pero tenemos diferentes tipos de cuenta los cuales listamos a continuación,
+cada cuenta se describe con la siguiente estructura:
+
+\begin{description}
+	\item[Nombre:] Nombre con el que se le conoce al usuario.
+	\item[Descripción:] Descripción breve del puesto o rol que juega dentro del sistema
+	\item[Responsabilidades:] Se listan las responsabilidades oficiales o relacionadas con el Calmécac según aplique. En el caso de las descripciones tomadas de la normatividad se listan todas.
+\end{description}
+
+\begin{actor}{aReclutador}{Reclutador}{%
+   Es el representante del area de recursos humanos de una empresa,es el primer punto de contacto entre su empresa y su nuevo empleado.}
+    \item[Responsabilidades:] \hfill
+    \begin{itemize}
+        \item  Revisar y analizar currículums de las postulaciones de sus vacantes.
+        \item  Buscar candidatos potenciales y ponerse en contacto con ellos personalmente.
+        \item  Redactar de la mejor manera posible las vacantes que el requiera publicar, para evitar malas interpretaciones 
+        en su redacción y descripciones ambiguas.
+        \item Dar solución a los reportes de sus vacantes hechos por los otros usuarios del sistema.
+    \end{itemize}
+\end{actor}
+
+\begin{actor}{aCandidato}{Candidato}{%
+    Es el usuario que desea aplicar a cualquier vacante registrada por un reclutador dentro del sistema, no necesariamente
+    tiene que ser un alumno del IPN, puede ser cualqueir persona que se registre dentro del sistema como candidato.}
+     \item[Responsabilidades:] \hfill
+     \begin{itemize}
+         \item  Actualizar su perfil o almenos tener su currículum actualizado.
+         \item  Reportar alguna vacante siempre y cuando lo concidere necesario.
+     \end{itemize}
+ \end{actor}
+
+ \begin{actor}{aColaborador}{Colaborador}{%
+    Es el encargado de administrar el sistema.}
+    \item[Responsabilidades:] \hfill
+    \begin{itemize}
+        \item Validar la información de las solicitudes de empresas y reclutadores que envian.
+        \item Eliminar y crear cuentas de reclutadores o candidatos si es que lo requiere.
+        \item Generar reportes de estado del sistema.
+        \item Consultar y revisar las vacantes y sus reportes si es que asi lo requiere.
+    \end{itemize}
+
+\end{actor}
+
+\begin{actor}{aEncargado}{Encargado}{%
+    Dentro del sistema solo puede existir un único encargado, este usuario tendrá el control sobre todos los demás usuarios y cuentas.
+   }   
+   \item[Responsabilidades:] \hfill
+    \begin{itemize}
+        \item Validar la información de las solicitudes de empresas y reclutadores que envian.
+        \item Eliminar y crear cuentas de reclutadores o candidatos si es que lo requiere.
+        \item Eliminar y crear cuentas de colaboradores.
+        \item Generar reportes de estado del sistema.
+        \item Consultar y revisar las vacantes y sus reportes si es que asi lo requiere.
+    \end{itemize}
+
+\end{actor}

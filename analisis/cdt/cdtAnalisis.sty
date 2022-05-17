@@ -47,11 +47,11 @@
 %    @required   Nombre, indica el nombre para el requerimiento funcional
 %    @required   Descripción, contiene información detallada acerca del requerimiento funcional
 %
-\newenvironment{requerimientos}[1][Requerimientos iniciales para el sistema]{%
+\newenvironment{requerimientos}[1]{%
     \arrayrulecolor{colorPrincipal}%
-    \par\begin{longtable}{| p{.05\textwidth} | p{.2\textwidth} | p{.67\textwidth} |}%
+    \par\begin{longtable}{| p{.1\textwidth} | p{.2\textwidth} | p{.6\textwidth} |}%
         \arrayrulecolor{colorPrincipal}\hline%
-        \rowcolor{colorPrincipal}\multicolumn{3}{|c|}{\bf\color{colorPrincipal}#1}\\% estilo
+        \rowcolor{colorPrincipal}\multicolumn{3}{|c|}{\bf\color{white} Requerimientos #1}\\% estilo
         \arrayrulecolor{white}%
         \rowcolor{colorPrincipal}%
         \RFitem{\color{white}\bf Id}{\color{white}\bf Nombre}{\color{white}\bf Descripción}\endhead%
@@ -134,9 +134,9 @@
 \newenvironment{actor}[4][]{%
     \CrearVariablesInternas{#1}%
     \cdtAddElement{#2}{#3}{\Autor}{\Version}{\Estado}%
-    \subsection{Actor #3}%
+    \section{Actor #3}%
         \hypertarget{#2}{}%
-        \noindent{\includegraphics[width=\textwidth]{cdt/uc/rules/ActorRule}}
+        %\noindent{\includegraphics[width=\textwidth]{cdt/uc/rules/ActorRule}}
         \begin{description}%
             \item[Descripción:] {#4}%
 }{%
@@ -564,3 +564,8 @@
 %    \hyperlink{#1}{#1 #2}%
 %}
 \newcommand{\extendUC}[1]{\UCpaso[] {\bf Extiende:} \refIdElem{#1}}
+
+\newcommand{\IUEntidaA}{\raisebox{-1mm}{\includegraphics[height=20pt]{anexos/imagenes/entidad1.jpeg}}}
+\newcommand{\IUEntidaB}{\raisebox{-1mm}{\includegraphics[height=20pt]{anexos/imagenes/entidad2.jpeg}}}
+\newcommand{\IUEntidaC}{\raisebox{-1mm}{\includegraphics[height=20pt]{anexos/imagenes/entidad3.jpeg}}}
+\newcommand{\IUEntidaD}{\raisebox{-1mm}{\includegraphics[height=20pt]{anexos/imagenes/entidad4.jpeg}}}

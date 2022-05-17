@@ -1,25 +1,22 @@
-\section{Entregables y Sprits}
-Como resultado final del desarrollo del proyecto se espera que éste concluya con un sistema web de la siguiente forma:
-\begin{enumerate}
-    \item Usuarios: Este módulo se encargará de la gestión de los candidatos, administradores y
-    reclutadores
-    \begin{enumerate}
-        \item Candidatos: Estos podrán crear un perfil, realizar búsquedas y aplicar a vacantes.
-        \item Reclutador: Estos podrán crear un perfil, publicar, modificar, eliminar vacantes y administrar el
-        proceso de selección.
-        \item Administrador: Este podrá consultar, dar de alta, modificar y eliminar a un reclutador y a colaboradores para 
-        la gestión de la bolsa de trabajo.
-    \end{enumerate}
+En este caítulo se presentan los avances que se tienen del sistema en análisis y diseño por cada sprint ...
 
-    \item Administración de Solicitudes: En este módulo se implementará un mecanismo para la administración
-    de las solicitudes.
-    \item Módulo Currículum: En este módulo se implementará el generado automático de currículums y las
-    sugerencias para el si es que las requiere.
-    \item Administración y Filtro de Vacantes: Este módulo permite a los reclutadores gestionar las
-    vacantes de la empresa a la que pertenece y a los candidatos consultarlas según sus aptitudes y habilidades.
-\end{enumerate}
+\section{Sprits del proyecto}
+En casi todos sprints se cubren requerimientos funcionales del sistema, estos requerimientos utilizan una 
+clave para ser identificados:
 
-Los Sprits que se trabajarón durante TT-1 son:
+\begin{itemize}
+	\item Para los requerimientos \textbf{fucionales} se utliza el formato \textbf{RF-X}, donde:
+    \begin{itemize}
+        \item \textbf{RF} Es la clave para todos los requerimientos funcionales.
+        \item \textbf{X} Es un número consecutivo: 01, 02, 03, ...
+    \end{itemize}
+
+    \item Para los requerimientos \textbf{no fucionales} se utliza el formato \textbf{RNF-X}, donde:
+    \begin{itemize}
+        \item \textbf{RNF} Es la clave para todos los requerimientos funcionales.
+        \item \textbf{X} Es un número consecutivo: 01, 02, 03, ...
+    \end{itemize}
+\end{itemize}
 
 \subsection{Sprint 1: Pruebas de concepto}
 Esta iteración tuvo como propósito capacitarnos en las tecnologías que se van ha estar utilizando 
@@ -29,82 +26,111 @@ a lo largo del desarrollo del sistema.La actividades que se realizaron las sigui
     \item Crear el product backlog así como elementos de apoyo para dar prioridad y seguimiento.
     \item Especificar el lugar físico en el que el código del proyecto se va almacenar y que permita que
     todos los miembros del equipo puedan darle mantenimiento.
-    \item Configurar las diferentes plataformas y tecnologías necesarias para el proyectot.
+    \item Configurar las diferentes plataformas y tecnologías necesarias para el proyecto.
 \end{enumerate}
 
-\subsection{Sprint 2: Análisis y Planificación general del sistema Product Backlog}
+\subsection{Sprint 2: Análisis y planificación general del sistema}
 Esta iteración tuvo como establecer los fundamentos teóricos y prácticos para su desarrollo.Las actividades que se realizaron 
 de manera general fueron las siguientes:
 \begin{enumerate}
-    \item Implementar los requerimientos de prioridad alta.
-    \item Diseñar e implementar las interfaces de usuario para la gestión de autenticación y gestión de
-    participantes.
-    \item Especificar los requerimientos mediante casos de uso y sus respectivas interfaces de usuario.
-    \item Para este sprint se definieron los requerimientos funcionales para llevar a cabo los módulos
-    correspondientes al desarrollo de esta iteración.
+    \item Se hizo el levantamiento de requerimientos a travez de juntas con el personal de la bolsa de trabajo de ESCOM.
+    \item Se adquirieron las licencias de Balsamiq Cloud y Visual Paradigm  para todo el análisis de
+    requerimientos y de diseño.
+    \item Se creo un repositorio usando el Sistema de Control de Versiones Git para almacenar el código y la documentación del proyecto
+    utilizando la prataforma de GitHub.
+    \item Se configuró el proyecto en front end utilizando React Js con la versión 17.0.2.
 \end{enumerate} 
 
+
 \subsection{Sprint 3: Gestión de Usuarios}
-Esta iteración tuvo como propósito implementar un mecanismo que permita a
-los usuarios del sistema autenticarse o crear cuentas para acceder al sistema, así como definir los
-roles y los participantes del proyecto.
+Esta iteración tuvo como propósito implementar un mecanismo que permita a los usuarios del sistema autenticarse y/o crear cuentas
+para acceder al mismo, las actividades realizadas fueron:
+\begin{enumerate}
+    \item Se diseñó e implementó las interfaces de usuario para la gestión de cuentas y accesos.
+    \item Se especificaron los requerimientos mediante casos de uso con sus respectivas interfaces de usuario.
+    \item Se elaboró el a de casos de uso para este sprint.
+    \item Se elaboró la maquina de estados de un reclutador.
+\end{enumerate} 
 
+Los requerimientos funcionales de este sprint se muestran en la siguiente tabla.
+\begin{requerimientos}{funcionales}
+    \RFitem{RF-01}{Iniciar sesión }{El sistema debe proporcionar un mecanismo que permita al actor acceder al sistema mediante un correo y una contraseña.}
+    \RFitem{RF-02}{Crear cuenta}{El sistema debe proporcionar un mecanismo que permita al actor registrarse como nuevo usuario en el sistema.}
+    \RFitem{RF-04}{Consultar perfil}{El sistema debe permitir al actor acceder a su perfil para consultar la información registrada.}
+    \RFitem{RF-05}{Editar perfil}{El sistema debe permitir al actor modificar la información registrada en su perfil, como nombre, apellidos, información de contacto y si el usuario es un candidato, debe de permitir modificar su información académica y datos de habilidades y conocimientos del mismo.}
+    \RFitem{RF-24}{Enviar solicitud para acceder al sistema}{El sistema debe proporcionar un mecanismo para que al representante de una empresa pueda enviar una solicitud o pre-registro de poder acceder y publicar vacantes.}
+\end{requerimientos}
 
-Los requerimientos funcionales de este sprint son:
-
-\begin{longtable}{| p{0.15\textwidth}  | p{0.30\textwidth} | p{0.45\textwidth}  |}
-
-    \label{table:herramientasSimilares}
-        \rowcolor{black}
-        %\multicolumn{7}{ |c| }{\bf\cellcolor{black}\color{white}{Herramientas para la especificación de requerimientos}} \\ \hline
-        \bf\color{white} ID & \bf \color{white}Nombre	& \bf \color{white}Descripción \\ \hline
-    \endhead
-    RF-001 &Iniciar sesión & \\ \hline
-    RF-002 &Crear cuenta & \\ \hline
-    RF-003 &Enviar pre-registro & \\ \hline
-    RF-004 &Configurar perfil & \\ \hline
-    %\caption{Comparación Plataformas para buscar empleo}
-\end{longtable}
-
+Los casos de uso que se implementaron en este sprint fueron:
+\begin{enumerate}
+    \item \refElem{GRL-CU01}
+    \item \refElem{GRL-CU02}
+    \item \refElem{GRL-CU03}
+    %\item \refElem{USR-CU02-2}
+\end{enumerate} 
 
 
 \subsection{Sprint 4: Gestión de Vacantes}
 
-Esta iteración tuvo como propósito implementar un mecanismo para gestionar las vacantes dentro del sistema.
+Esta iteración tuvo como propósito implementar un mecanismo para la gestión de vacantes dentro del sistema, las actividades 
+realizadas fueron:
+\begin{enumerate}
+    \item Se diseñó e implementó las interfaces de usuario para la gestión de vacantes ú el tipo de cuenta.
+    \item Se especificaron los requerimientos mediante casos de uso con sus respectivas interfaces de usuario.
+    \item Se elaboró el a de casos de uso para este sprint.
+    \item Se elaboró la maquina de estados de una vacante.
+\end{enumerate} 
+
+Los requerimientos funcionales de este sprint se muestran en la siguiente tabla.
+\begin{requerimientos}{funcionales}
+    \RFitem{RF-09}{Consultar vacantes}{El sistema debe permitir a cualquier persona consultar las vacantes que se tengan registradas siempre y cuando aun estén abiertas.}
+    \RFitem{RF-10}{Publicar vacantes }{El sistema debe permitir  a los usuarios registrados publicar vacantes.}
+    \RFitem{RF-11}{Editar vacantes}{El sistema debe permitir a los usuarios editar las vacantes que ellos hayan publicado.}
+    \RFitem{RF-12}{Reportar vacantes}{El sistema debe permitir a los usuarios reportar vacantes publicadas si es que el usuario lo crea necesario.}
+    \RFitem{RF-13}{Eliminar vacantes}{El sistema debe permitir a los usuarios eliminar las vacantes que ellos hayan publicado.}
+\end{requerimientos}
+
+Los casos de uso que se implementaron en este sprint fueron:
+\begin{enumerate}
+    \item VCT-CU01 Buscar vacantes
+    \item VCT-CU03-1 Cerrar vacante
+    \item VCT-CU06 Listar vacantes
+    \item VCT-CU06-1 Consultar vacante
+    \item VCT-CU03-2 Editar vacante
+    \item VCT-CU03-3 Elimnar vacante
+    \item VCT-CU03 Publicar vacante
+\end{enumerate} 
 
 
-Los requerimientos funcionales de este sprint son:
-\begin{longtable}{| p{0.15\textwidth}  | p{0.30\textwidth} | p{0.45\textwidth}  |}
-
-    \label{table:herramientasSimilares}
-        \rowcolor{black}
-        %\multicolumn{7}{ |c| }{\bf\cellcolor{black}\color{white}{Herramientas para la especificación de requerimientos}} \\ \hline
-        \bf\color{white} ID & \bf \color{white}Nombre	& \bf \color{white}Descripción \\ \hline
-    \endhead
-    RF-006 &Publicar vacante& \\ \hline
-    RF-011 &Consultar vacante & \\ \hline
-    RF-012 &Listar vacante & \\ \hline
-    %\caption{Comparación Plataformas para buscar empleo}
-\end{longtable}
 
 \subsection{Sprint 5: Gestión de Postulaciones}
 
-Esta iteración tuvo como propósito implementar un mecanismo para gestionar las postulaciones dentro del sistema.
+Esta iteración tuvo como propósito implementar un mecanismo para gestionar las postulaciones de los usuarios registrdos dentro del 
+sistema, las actividades realizadas fueron:
+\begin{enumerate}
+    \item Se diseñó e implementó las interfaces de usuario para la gestión de posutlaciones según el tipo de cuenta.
+    \item Se especificaron los requerimientos mediante casos de uso con sus respectivas interfaces de usuario.
+    \item Se elaboró el diagrama de casos de uso para este sprint.
+    \item Se elaboró la maquina de estados de una postulaciones.
+\end{enumerate} 
+
+Los requerimientos funcionales de este sprint se muestran en la siguiente tabla.
+\begin{requerimientos}{funcionales}
+    \RFitem{RF-14}{Postularse a vacantes}{El sistema debe permitir a los usuarios registrados enviar postularse a  las vacantes que esté abiertas.}
+    \RFitem{RF-15}{Consultar el estado de postulaciones}{El sistema debe permitir al actor consultar el estado de su o sus postulaciones que haya hecho.}
+    \RFitem{RF-16}{Dar seguimiento a postulaciones}{El sistema debe permitir al actor indicar  el estado de las postulaciones que tiene según sus vacantes publicadas.}
+    \RFitem{RF-17}{Consultar postulaciones}{El sistema debe permitir a los actores registrados consultar las postulaciones que se hayan hecho de acuerdo a cada vacante.}
+        
+\end{requerimientos}
 
 
-Los requerimientos funcionales de este sprint son:
+Los casos de uso que se implementaron en este sprint fueron:
+\begin{enumerate}
+    \item PST-CU1 Consultar postulaciones
+    \item PST-CU2 Postularse a una vacante
+    \item PST-CU1-2 Rechazar postulación
+\end{enumerate} 
 
-\begin{longtable}{| p{0.15\textwidth}  | p{0.30\textwidth} | p{0.45\textwidth}  |}
-
-    \label{table:herramientasSimilares}
-        \rowcolor{black}
-        %\multicolumn{7}{ |c| }{\bf\cellcolor{black}\color{white}{Herramientas para la especificación de requerimientos}} \\ \hline
-        \bf\color{white} ID & \bf \color{white}Nombre	& \bf \color{white}Descripción
-    \endhead
-    RF-013 &Enviar Postulación& \\ \hline
-    RF-016 &Listar Postulaciones & \\ \hline
-    %\caption{Comparación Plataformas para buscar empleo}
-\end{longtable}
 
 \section{Casos de uso}
 
@@ -114,7 +140,7 @@ Los requerimientos funcionales de este sprint son:
 %\input{analisisydiseno/CasosdeUso/GRL-CU01/iu.tex}
 
 Los casos de uso son una herramienta usada para representar las transacciones entre un actor y el sistema, las cuales siempre tendrán un valor agregado o un propósito para que el actor las realice.
-En estos se representan a traves de diagramas los cuales se conforan por los siguientes elementos:
+En estos se representan a traves de aas los cuales se conforan por los siguientes elementos:
 
 \begin{itemize}
 	 \UCpaso Representa al sistema mediante un óvalo.
@@ -144,48 +170,38 @@ Los casos de uso se encontrarán dentro de paquetes (representados por carpetas)
 \end{figure}
 
 \pagebreak
-
-\subsection{Identificadores de casos de uso}
-
-Los casos de uso se identificarán de acuerdo a la siguiente nomenclatura:
-
+\subsection{Diagrama de casos de uso Sprint 3}
 \begin{figure}[hbtp!]
 	\begin{center}
-		\includegraphics[width=.7\textwidth]{LIT/UCnombre}
+		\includegraphics[width=.5\textwidth]{propuesta/imagenes/sprint3.jpeg}
 	\end{center}
-	\label{fig:nomenclatura}
+	\label{fig:acUC}
+	\caption{Interacción del actor con el caso de uso}
 \end{figure}
 
-%\subsection{Modelado de Máquinas de Estados}
-  %      \label{sec:ModMaquinas}
+\subsection{Diagrama de casos de uso Sprint 4}
+\begin{figure}[hbtp!]
+	\begin{center}
+		\includegraphics[width=.5\textwidth]{propuesta/imagenes/sprin4R.png}
+	\end{center}
+	\label{fig:acUC}
+	\caption{Interacción del actor con el caso de uso}
+\end{figure}
 
-%\subsection{Modelado de Actores}
- %       \label{sec:ModActores}
-%- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\subsection{Especificación de casos de uso}
-
-Para poder entender un caso de uso más allá de un diagrama, se lleva a cabo la tarea de especificar cada uno de los casos de uso identificados en el sistema con el fin de describir las secuencias de acciones que realiza el sistema y que lleva a un resultado de valor a un actor específico. Los casos de uso tienen atributos los cuales se describen a continuación:
-
-\begin{description}
-	\item[Id] Identificador del caso de uso, el cual debe ser único.
-	\item[Nombre] Nombre del caso de uso el cual es descriptivo basándose en la transacción que se realiza.
-	\item[Resumen] Es una descripción resumida en la que se especifica la transacción realizada por el caso de uso.
-	\item[Actores] Lista de los actores que interactúan con el caso de uso.
-	\item[Entradas] Lista los datos de entrada que el caso de uso recibe, los cuales harán referencia al modelo de información.
-	\item[Salidas] Lista los datos de salida que el caso de uso genera, por ejemplo: 
-	\item[Destino] Indica a dónde se dirigen los datos de salida, por ejemplo: pantalla, impresora, repositorio, hacia un servidor o un archivo.
-	\item[Precondiciones] Enlista las cosas que deben haber sucedido para que el caso  de uso se lleve a cabo.
-	\item[Postcondiciones] Enlista las cosas que suceden en el sistema o negocio de forma inmediata o a corto plazo una vez que se ejecute el caso de uso.
-	\item[Reglas de Negocio] Lista las reglas de negocio que se van a ejecutar en el caso de uso.
-	\item[Viene de] Indica cuando el caso de uso se extiende de otro o se incluye en otro.
-	\item[Trayectoria principal] Secuencia de pasos que llevan al caso de uso al éxito.
-	\item[Trayectoria(s) alternativa(s)] Secuencias de pasos que llevan al caso de uso al éxito o al fracaso.
-	\item[Puntos de extensión] Cuando existen casos de uso que pueden ejecutarse a partir del caso de uso en proceso.
-\end{description}
+\subsection{Diagrama de casos de uso Sprint 5}
+\begin{figure}[hbtp!]
+	\begin{center}
+		\includegraphics[width=.5\textwidth]{propuesta/imagenes/Sprint5.png}
+	\end{center}
+	\label{fig:acUC}
+	\caption{Interacción del actor con el caso de uso}
+\end{figure}
 
 
 %---------------------------------------------------------
 \subsection{Modelado de casos de uso}
+A continuación se listas los componentes que conformam un caso de uso completo las cuales se pueden consultar en
+el apendice de este documento.
 
 \subsubsection{Modelo de estados}
 
@@ -196,19 +212,21 @@ maquina de estados.\\
 \subsubsection{Actores del sistema}
  Se definen los actores identificados como participantes en los procesos del sistema. 
  Estos actores son los encargados de llevar a cabo determinadas tareas dentro de cada proceso.\\
- 
+
  \subsubsection{Reglas de negocio}
 
  Se van describir las reglas de negocio identificadas en el sistema las cuales son una condición que 
  se debe satisfacer cuando se realiza una actividad de negocio.\\
+ \subsubsection{Reglas del sistema ???}
  
 \subsubsection{Casos de uso}
 
-Las funcionalidades del sistema son representadas mediante casos de uso. Un caso de uso es una transacción entre un actor y el sistema que tiene un valor agregado o un propósito para que el actor las realice. Los casos de uso se modelan a partir de dos elementos: un diagrama de casos de uso y la
+Las funcionalidades del sistema son representadas mediante casos de uso. Un caso de uso es una transacción entre un actor y el sistema que tiene un valor agregado o un propósito para que el actor las realice. Los casos de uso se modelan a partir de dos elementos: un aa de casos de uso y la
 descripción del caso de uso.\\
+
+
 
 \subsubsection{Mensajes del sistema}
 
 Los mensajes se refieren a todos aquellos avisos que el sistema muestra al actor para comunicar la ocurrencia de algún evento tal como un error o una operación exitosa. 
-
 
