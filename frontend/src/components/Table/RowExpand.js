@@ -46,7 +46,7 @@ const RowExpand = ({ user }) => {
     <article key={uuid()} className={styles.wrapperDetailsUser}>
       <div className={styles.grid_2}>
         <p className={styles.wrapperObjectPersonal}>
-          {user?.t100_id_student?.t100_personal_objectives == "" ? "Sin objetivos profesionales guardados" : user?.t100_id_student?.t100_personal_objectives}
+          {user?.t100_id_student?.t100_personal_objectives === "" ? "Sin objetivos profesionales guardados" : user?.t100_id_student?.t100_personal_objectives}
         </p>
         <div className={styles.wrapperLenguages}>
           <p className={styles.languages}>Idiomas:</p>

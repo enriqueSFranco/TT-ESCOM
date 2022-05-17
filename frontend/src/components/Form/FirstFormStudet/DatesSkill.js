@@ -19,6 +19,8 @@ function DatesSkill({ softSkills, setSoftSkills,hardSkills, setHardSkills, AllRe
     }
   });
 
+  console.log(AllResults)
+
   return (
     <div className={styles.containerPage}>
       <h4 className={styles.formTitleSkills}>Para Finalizar...</h4>

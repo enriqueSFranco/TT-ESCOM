@@ -92,21 +92,21 @@ export const useForm = (initialForm, validateForm) => {
 
   const onSubmitPostCertification = (e) => {
     e.preventDefault();
-    setErrors(validateForm(form));
+    // setErrors(validateForm(form));
 
-    if (Object.keys(errors).length === 0) {
-      setLoading(true);
-      postCertification(form)
-        .then(response => {
-          if (response.status === 201) {
-            const { data } = response;
-            setResponse(data);
-            setLoading(false);
-          } else {
-            setLoading(false);
-          }
-        })
-    }
+    postCertification(form)
+      .then(response => {
+        if (response.status === 201) {
+          const { data } = response;
+          setResponse(data);
+          setLoading(false);
+        } else {
+          setLoading(false);
+        }
+      })
+    // if (Object.keys(errors).length === 0) {
+    //   setLoading(true);
+    // }
   }
 
   return {

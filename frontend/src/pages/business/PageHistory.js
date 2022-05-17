@@ -19,13 +19,20 @@ import FormPostJob from "components/Form/postJob/FormPostJob";
 import ConfirmDelete from "components/Alert/Confirm/ConfirmDelete";
 import { BiSearch } from "react-icons/bi";
 import { GrAdd } from "react-icons/gr";
-import { FiUsers } from "react-icons/fi";
+
+import Candidate from "images/candidate.png";
+import Application from "images/application.png";
+import Review from "images/review.png";
+import Steps from "images/steps.png";
+import Reject from "images/reject.png";
+
 import applicationsIcon from "images/applications.png";
 import styles from "./PageHistory.module.css";
 import burrito from "images/emoji_angustiado.jpg";
 import * as GiIcon from "react-icons/gi";
 import * as BsIcon from "react-icons/bs";
 import * as MdIcon from "react-icons/md";
+import { FaHandshake } from "react-icons/fa";
 import { deleteJob } from "services/jobs/index";
 
 const vacantApplicationsData = {
@@ -150,9 +157,6 @@ const PageHistory = () => {
       setIsDeletedJob({ success: response.status, message: response.message });
   };
 
-  console.log(job);
-  console.log(isDeletedJob);
-
   return (
     <>
       <section className={styles.wrapper}>
@@ -171,9 +175,14 @@ const PageHistory = () => {
                 />
               </div>
             </form>
-            <button className={`${styles.btnAddJob} ${styles.tooltip}`} onClick={setModal1}>
+            <button
+              className={`${styles.btnAddJob} ${styles.tooltip}`}
+              onClick={setModal1}
+            >
               <GrAdd />
-              <span className={styles.tooltipBox}>Agregar una nueva vacante.</span>
+              <span className={styles.tooltipBox}>
+                Agregar una nueva vacante.
+              </span>
             </button>
           </header>
           {/* lista de vacantes */}
@@ -192,7 +201,9 @@ const PageHistory = () => {
                       salary={listJobs?.t200_max_salary}
                       madality={listJobs?.t200_home_ofice}
                       nameBusisness={listJobs?.t300_id_company?.t300_name}
-                      typeBusiness=""
+                      typeBusiness={
+                        listJobs?.t300_id_company?.t300_bussiness_name
+                      }
                       workingHours={`Lunes a Viernes de ${listJobs?.t200_check_time} a ${listJobs?.t200_closing_hour}`}
                       vacantState={
                         listJobs?.c204_id_vacant_status?.c204_description
@@ -220,44 +231,83 @@ const PageHistory = () => {
                   <>
                     <header className={styles.headerRight}>
                       <nav className={styles.nav}>
-                        <div className={`${styles.box} ${styles.applications}`}>
-                          <i>
-                            <FiUsers />
-                          </i>
-                          <h3>
-                            <span className={styles.notify}>
-                              {totalApplications >= 9
-                                ? "+9"
-                                : totalApplications}
-                            </span>{" "}
-                            Recibida(s)
-                          </h3>
+                        <div className={`${styles.box}`}>
+                          <figure className={styles.applicationsBox}>
+                            <img src={Application} alt="candidatos" />
+                            <figcaption>
+                              <span className={styles.notify}>
+                                {totalApplications >= 9
+                                  ? "+9"
+                                  : totalApplications}{" "}
+                                Recibida(s)
+                              </span>
+                            </figcaption>
+                          </figure>
                           <Link to={`/solicitudes/${t200_id_vacant}`}>
                             Ver postulaciones
                           </Link>
                         </div>
+
                         <div className={`${styles.box}`}>
-                          <span>
-                            {vacantApplicationsData?.hired}/
-                            {job[0]?.t200_vacancy}
-                          </span>
-                          <h3>Contratados</h3>
+                          <figure className={styles.applicationsBox}>
+                            <img src={Candidate} alt="contratados" />
+                            <figcaption>
+                              <span className={styles.notify}>
+                                {vacantApplicationsData?.hired}/
+                                {job[0]?.t200_vacancy} Contratados
+                              </span>
+                            </figcaption>
+                          </figure>
+                          <Link to={`/solicitudes/${t200_id_vacant}`}>
+                            Ver Contratados
+                          </Link>
                         </div>
+
                         <div className={`${styles.box}`}>
-                          <span>{vacantApplicationsData?.inProcess}</span>
-                          <h3>En seguimiento</h3>
+                          <figure className={styles.applicationsBox}>
+                            <img src={Steps} alt="enSeguimiento" />
+                            <figcaption>
+                              <span className={styles.notify}>
+                                {vacantApplicationsData?.inProcess} En
+                                seguimiento
+                              </span>
+                            </figcaption>
+                          </figure>
+                          <Link to={`/solicitudes/${t200_id_vacant}`}>
+                            Ver Seguimiento
+                          </Link>
                         </div>
+
                         <div className={`${styles.box}`}>
-                          <span>{vacantApplicationsData?.rejected}</span>
-                          <h3>Descartadas</h3>
+                          <figure className={styles.applicationsBox}>
+                            <img src={Reject} alt="enSeguimiento" />
+                            <figcaption>
+                              <span className={styles.notify}>
+                                {vacantApplicationsData?.rejected} Descartadas
+                              </span>
+                            </figcaption>
+                          </figure>
+                          <Link to={`/solicitudes/${t200_id_vacant}`}>
+                            Ver Descartadas
+                          </Link>
                         </div>
+
                         <div className={`${styles.box}`}>
-                          <span>{vacantApplicationsData?.unseen}</span>
-                          <h3>Sin consultar</h3>
+                          <figure className={styles.applicationsBox}>
+                            <img src={Review} alt="enSeguimiento" />
+                            <figcaption>
+                              <span className={styles.notify}>
+                                {vacantApplicationsData?.unseen} En Revision
+                              </span>
+                            </figcaption>
+                          </figure>
+                          <Link to={`/solicitudes/${t200_id_vacant}`}>
+                            Ver Sin Consultar
+                          </Link>
                         </div>
                       </nav>
                     </header>
-                    <div>
+                    <div className={styles.wrapperCard}>
                       <article className={`${styles.card}`}>
                         <header className={styles.cardHeader}>
                           <h3 className={`${styles.nameCompany}`}>
@@ -266,7 +316,7 @@ const PageHistory = () => {
                         </header>
                         <div className={styles.wrapperTags}>
                           <Chip
-                            label={`Sueldo: ${numberFormat(
+                            label={`${numberFormat(
                               job[0]?.t200_min_salary
                             ).slice(4)}MXN
                                     ${
@@ -281,20 +331,20 @@ const PageHistory = () => {
                                         ? "Negociable"
                                         : "No negociable"
                                     }`}
-                            size="small"
-                            icon={<GiIcon.GiMoneyStack />}
+                            // size="small"
+                            icon={<GiIcon.GiMoneyStack style={{color: "green", fontSize:"1rem"}} />}
                           />
 
                           <Chip
                             label={`Modalidad: ${job[0]?.c214_id_modality?.c214_description} `}
-                            size="small"
-                            icon={<MdIcon.MdBusinessCenter />}
+                            // size="small"
+                            icon={<MdIcon.MdBusinessCenter style={{color: "#78909c", fontSize:"1rem"}} />}
                           />
 
                           <Chip
                             label={`Fecha de cierre programada: ${job[0]?.t200_close_date}`}
-                            size="small"
-                            icon={<BsIcon.BsCalendarDate />}
+                            // size="small"
+                            icon={<BsIcon.BsCalendarDate style={{color: "red", fontSize:"1rem"}} />}
                           />
                         </div>
 
@@ -320,7 +370,7 @@ const PageHistory = () => {
                             </button>
                           </div>
                         )}
-
+                        {/* Descripcion de la vacante */}
                         <div>
                           <div className={styles.summary}>
                             <p className={`${styles.lineClamp}`}>
