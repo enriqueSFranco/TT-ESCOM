@@ -22,8 +22,6 @@ const FormRecruiterInfo = ({
 
   const handleClick = () => setIsAcitve(!isActive);
 
-  console.log("isAcitve:",isActive)
-
   return (
     <div className={styles.personalContact}>
       {!isActive ? (
@@ -33,7 +31,7 @@ const FormRecruiterInfo = ({
             color: "#028dd4",
           }}
         >
-          Datos Personales
+          Datos Personales del reclutador
         </h2>
       ) : <h2 style={{color: "#028dd4", textAlign: "left"}}>Datos Personales</h2>}
       <form onSubmit={handleSubmitCompany}>

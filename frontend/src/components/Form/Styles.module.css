@@ -1,10 +1,21 @@
-.bg {
+.bg, .bgCompany, .bgRecruiter {
   position: relative;
-  background-image: url(../../images/loginStudent.jpeg);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  backdrop-filter: calc(10px);
+  /* backdrop-filter: calc(10px); */
+}
+
+.bg {
+  background-image: url(../../images/loginStudent.jpeg);
+}
+
+.bgCompany {
+  background-image: url(../../images/bgCompany.jpg);
+}
+
+.bgRecruiter {
+  background-image: url(../../images/bgRecruiter2.jpg);
 }
 
 .bgCreateAccountCompany {
@@ -177,6 +188,8 @@
 }
 
 .autocomplete {
+  position: relative;
+  right: 3.2rem;
   margin-bottom: 1.5rem;
 }
 
@@ -186,7 +199,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  backdrop-filter: blur(2px);
+  /* backdrop-filter: blur(2px); */
   display: flex;
   flex-direction: column;
   align-items: center;

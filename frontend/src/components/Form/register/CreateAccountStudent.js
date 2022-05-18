@@ -65,7 +65,7 @@ const CreateAccount = () => {
             </div>
             <div className={`col bg-white p-3 text-center rounded-end ${styles.createAccountStudentForm}`}>
               <div className={styles.welcome}>
-                <h2>Bienvenido</h2>
+                <h2>crea tu cuenta y aplica ya</h2>
                 <span>Bienvenido! Porfavor introduce tus datos.</span>
               </div>
               <form onSubmit={handleSubmitStudent} className={styles.form}>

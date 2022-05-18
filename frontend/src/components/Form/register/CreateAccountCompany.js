@@ -4,7 +4,7 @@ import { useForm } from "hooks/useForm";
 import { useFetch } from "hooks/useFetch";
 import { API_COMPANY } from "services/settings";
 import { companyInitialForm } from "../schemes";
-import { TextField, Autocomplete } from "@mui/material";
+import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import FormCompanyInfo from "./FormCompanyInfo";
 import FormRecruiterInfo from "./FormRecruiterInfo";
 import styles from "../Styles.module.css";
@@ -66,6 +66,7 @@ const validateForm = (form) => {
 const FormCompany = () => {
   const { form, errors, handleChange, handleValidate, handleSubmitCompany } =
     useForm(companyInitialForm, validateForm);
+  const [idCompany, setIdCompany] = useState(0);
   const [step, setStep] = useState(1);
   const [isActive, setIsActive] = useState(false);
   const { data } = useFetch(API_COMPANY);
@@ -80,10 +81,10 @@ const FormCompany = () => {
     return (
       <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
         <div className="row text-center">
-          <div className={`${styles.bg} col rounded`}>
+          <div className={`${styles.bgCompany} col rounded`}>
             <div className={`${styles.login}`}>
               <blockquote>
-                Un paso más cerca de tu nuevo <em>empleo</em>.
+                Crea tu cuenta y publica tus vacantes con nosotros.
               </blockquote>
               <span>
                 Ya tines cuenta?{" "}
@@ -96,9 +97,7 @@ const FormCompany = () => {
               </span>
             </div>
           </div>
-          <div
-            className={`col bg-white rounded-end ${styles.wrapperColumn}`}
-          >
+          <div className={`col bg-white rounded-end ${styles.wrapperColumn}`}>
             {!isActive ? (
               <FormCompanyInfo
                 data={data}
@@ -113,17 +112,34 @@ const FormCompany = () => {
               />
             ) : (
               <article className={styles.wrapperForm3}>
-                <h2 style={{textTransform: "uppercase", fontSize: "1.5rem", fontWeight:"bold", color: "#028dd4", marginBottom: ".8rem"}}>Proporcionanos el nombre de la empresa.</h2>
+                <h2
+                  style={{
+                    textTransform: "uppercase",
+                    fontSize: "1.5rem",
+                    fontWeight: "bold",
+                    color: "#028dd4",
+                    marginBottom: ".8rem",
+                  }}
+                >
+                  Proporcionanos el nombre de la empresa.
+                </h2>
                 <div className={styles.autocomplete}>
-                  <Autocomplete
-                    sx={{ width: 490 }}
-                    disablePortal
-                    id="business"
-                    options={data?.map((company) => company?.t300_name)}
-                    renderInput={(params) => (
-                      <TextField {...params} label="Empresa" />
-                    )}
-                  />
+                  <FormControl sx={{ minWidth: 490, textAlign:"left" }}>
+                    <InputLabel id="t300_id_company">Empresas</InputLabel>
+                    <Select
+                      labelId="t300_id_company"
+                      id="t300_id_company"
+                      name="t300_id_company"
+                      value={form.t300_id_company}
+                      label="Empresas Registradas"
+                      onChange={handleChange}
+                    >
+                      {data &&
+                      data?.map(({t300_id_company, t300_name}) => (
+                        <MenuItem key={t300_name} value={t300_id_company}>{t300_name}</MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
                 </div>
                 <FormRecruiterInfo
                   form={form}
@@ -145,7 +161,7 @@ const FormCompany = () => {
       <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
         <div className="row">
           <div
-            className={`${styles.bg} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
+            className={`${styles.bgRecruiter} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
           >
             <div className={`${styles.login}`}>
               <blockquote>

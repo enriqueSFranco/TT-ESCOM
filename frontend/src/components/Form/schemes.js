@@ -25,6 +25,7 @@ export const updateStudentInitialForm = {
 };
 
 export const companyInitialForm = {
+  t300_id_company: undefined,
   t300_name: "",
   t300_rfc: "",
   t300_bussiness_name: "",
@@ -34,6 +35,7 @@ export const companyInitialForm = {
   t301_email: "",
   t301_phonenumber: "",
 };
+
 
 export const postJobInitialForm = {
   t300_id_company:"",
