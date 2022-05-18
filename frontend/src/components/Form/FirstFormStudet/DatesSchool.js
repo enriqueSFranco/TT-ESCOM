@@ -142,7 +142,6 @@ function DatesSchool({
                 size="small"
                 id="c109_id_academic_state"
                 name="c109_id_academic_state"
-                value={academicHistorial.c109_id_academic_state}
                 onChange={handleChangeState}
                 label="Estado academico"
               >
@@ -165,7 +164,7 @@ function DatesSchool({
                 size="small"
                 id="c107_id_academic_level"
                 name="c107_id_academic_level"
-                value={academicHistorial.c107_id_academic_level}
+                
                 onChange={handleChangeLevel}
                 label="Nivel academico"
               >
