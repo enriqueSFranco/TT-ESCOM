@@ -432,7 +432,7 @@ const PageHistory = () => {
         </ModalForm>}
         { modalType == 3 &&  
           <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
-            <FormUpdateJob idJob ={job[0]}/>
+            <FormUpdateJob job ={job}/>
           </ModalForm>}        
     </>
   );
