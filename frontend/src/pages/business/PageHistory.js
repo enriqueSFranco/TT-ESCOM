@@ -12,7 +12,7 @@ import {
   getApplicationsJobs,
   getVacantInfo,
 } from "services/jobs/index";
-import { getJobsForRecruiter } from "services/recruiter/index";
+import { getJobsForRecruiter, getRecruiterInfo } from "services/recruiter/index";
 import ApplicationJob from "components/Card/ApplicationJob/ApplicationJob";
 import ModalForm from "components/Modal/ModalVacants";
 import FormPostJob from "components/Form/postJob/FormPostJob";
@@ -53,6 +53,7 @@ const PageHistory = () => {
   const [modalType, setModalType] = useState(null);
   const [isDeletedJob, setIsDeletedJob] = useState({});
   const [job, setJob] = useState(null);
+  const [recruiter, setRecruiter] = useState([]);
   const [isOpenModalForm, openModalForm, closeModalForm] = useModal();
   let id = token?.user?.user_id;
 
@@ -134,6 +135,18 @@ const PageHistory = () => {
         });
     }
   }, [t200_id_vacant]);
+
+  useEffect(() => {
+    getRecruiterInfo(token?.user?.user_id)
+      .then((response) => {
+        setRecruiter(response);
+        console.log(response)        
+        //form.t300_id_company  = recruiter[0]?.t300_id_company?.t300_id_company;
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  console.log(recruiter);
 
   const handleInitialContent = () => {
     setInitialContent(false);
@@ -347,25 +360,6 @@ const PageHistory = () => {
                             icon={<MdIcon.MdBusinessCenter style={{color: "#78909c", fontSize:"1rem"}} />}
                           />
 
-                            <Chip label={`Fecha de cierre programada: ${job[0]?.t200_close_date}`} size="small" icon={<BsIcon.BsCalendarDate />} />
-                          </div>                          
-                       
-                                                    
-                            {totalApplications==0 ? 
-                              (<div className={styles.actions}>  
-                                <button>
-                                  <MdEdit className={styles.editAction} onClick={setModal3}/>
-                                </button>
-                                <button className={`${styles.btnTrash}`}>
-                                  <GoTrashcan className={styles.deleteAction} onClick={setModal2}/>
-                                </button>                                
-                              </div>                            
-                              ):
-                              (<div className={styles.actions}>  
-                                <button className={`${styles.btnTrash}`}>
-                                  <GoTrashcan className={styles.deleteAction} onClick={setModal2}/>
-                                </button>
-                              </div>)}                          
                           <Chip
                             label={`Fecha de cierre programada: ${job[0]?.t200_close_date}`}
                             // size="small"
@@ -376,7 +370,8 @@ const PageHistory = () => {
                         {totalApplications === 0 ? (
                           <div className={styles.actions}>
                             <button>
-                              <MdEdit className={styles.editAction} />
+                              <MdEdit className={styles.editAction} 
+                                      onClick={setModal3}/>
                             </button>
                             <button className={`${styles.btnTrash}`}>
                               <GoTrashcan
@@ -429,7 +424,7 @@ const PageHistory = () => {
       </section>      
       { modalType == 1 &&  
           <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
-            <FormPostJob/>
+            <FormPostJob idCompany = {recruiter[0]?.t300_id_company?.t300_id_company}/>
           </ModalForm>}
       { modalType == 2 &&  
         <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
