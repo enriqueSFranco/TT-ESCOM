@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { useForm } from "hooks/useForm";
 import { postJobInitialForm } from "../schemes";
 import FormPostJobLocation from "./FormPostJobLocation";
+import { getJob } from "services/jobs/index";
 import FormPostJobDetails from "./FormPostJobDetails";
 import styles from "./FormPostJob.module.css";
 import AuthContext from "context/AuthContext";
@@ -27,10 +28,11 @@ const validateForm = (form) => {
   return errors;
 };
 
-const FormPostJob = () => {
+const FormUpdateJob = ({job}) => {
   const [step, setStep] = useState(1);
   const { user, token } = useContext(AuthContext);
   const [recruiter, setRecruiter] = useState([]);
+  const [jobInfo, setJobInfo] = useState([]);
   const { 
     form, 
     errors, 
@@ -50,14 +52,32 @@ const FormPostJob = () => {
       .catch((error) => console.error(error));
   }, []);
 
+  /*useEffect(() => {
+    if (idJob) {
+      getJob(idJob)
+        .then((response) => {
+          console.log(response);
+          setJobInfo(response);          
+          setJobData(jobInfo[0]);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [idJob]);*/
+
   const nextStep = () => setStep(step + 1);
 
   const prevStep = () => setStep(step - 1);
 
-  //console.log(form);
+  console.log(form);
   //console.log(token);
-  //console.log(recruiter);  
-    
+  //console.log(recruiter);
+  console.log(job);
+  console.log(jobInfo);
+
+  if (job && !form)
+    return null;
 
   if (step === 1) {
     return (
@@ -83,4 +103,4 @@ const FormPostJob = () => {
   }
 };
 
-export default FormPostJob;
+export default FormUpdateJob;

@@ -12,6 +12,7 @@ import { getJobsForRecruiter } from "services/recruiter/index";
 import ApplicationJob from "components/Card/ApplicationJob/ApplicationJob";
 import ModalForm from "components/Modal/ModalVacants";
 import FormPostJob from "components/Form/postJob/FormPostJob";
+import FormUpdateJob from "components/Form/postJob/FormUpdateJob";
 import ConfirmDelete from "components/Alert/Confirm/ConfirmDelete";
 import { BiSearch } from "react-icons/bi";
 import { GrAdd } from "react-icons/gr";
@@ -137,6 +138,11 @@ const PageHistory = () => {
     openModalForm();
   };
 
+  const setModal3 = () => {
+    setModalType(3);
+    openModalForm();
+  };
+
   const handleDeleteJob = async () => {
     const response = await deleteJob(job[0]?.t200_id_vacant);
     console.log(response);
@@ -259,7 +265,7 @@ const PageHistory = () => {
                             {totalApplications==0 ? 
                               (<div className={styles.actions}>  
                                 <button>
-                                  <MdEdit className={styles.editAction} />
+                                  <MdEdit className={styles.editAction} onClick={setModal3}/>
                                 </button>
                                 <button className={`${styles.btnTrash}`}>
                                   <GoTrashcan className={styles.deleteAction} onClick={setModal2}/>
@@ -297,17 +303,18 @@ const PageHistory = () => {
           </div>
         </article>
       </section>      
-      { modalType == 1 || modalType ==2 ? 
-        (modalType == 1 ? 
-          (<ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
-            <FormPostJob />
-          </ModalForm>): 
-          (modalType == 2 ? 
-            (<ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm} >
-              <ConfirmDelete deleteJob={handleDeleteJob} isDeletedJob={isDeletedJob} job={job[0]?.t200_job}/>
-            </ModalForm>): null )
-        ) : null}
-        
+      { modalType == 1 &&  
+          <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
+            <FormPostJob/>
+          </ModalForm>}
+      { modalType == 2 &&  
+        <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
+          <ConfirmDelete deleteJob={handleDeleteJob} isDeletedJob={isDeletedJob} job={job[0]?.t200_job}/>
+        </ModalForm>}
+        { modalType == 3 &&  
+          <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
+            <FormUpdateJob idJob ={job[0]}/>
+          </ModalForm>}        
     </>
   );
 };
