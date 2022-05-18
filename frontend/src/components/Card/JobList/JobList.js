@@ -8,17 +8,12 @@ import styles from "./JobList.module.css";
 const JobList = ({search, jobs, loading, page, setPage, maxLenPage}) => {
 
   const prevPage = () => {
-    // if (jobs.filter(job => job?.t200_job.includes(search)).length > page + 5)
-    setPage((currentPage) => Math.max(currentPage - 1, 1));
-    
+    setPage((currentPage) => Math.max(currentPage - 1, 1))
   };
 
   const nextPage = () => {
-    setPage((currentPage) => Math.min(currentPage + 1, maxLenPage));
+    setPage((currentPage) => Math.min(currentPage + 1, maxLenPage))
   };
-
-  console.log(jobs)
-  
 
   return (
     <>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { useFetch } from "hooks/useFetch";
 import { API_COMPANY } from "services/settings";
+import { getVacantsFilter } from "services/jobs";
 import Label from "components/Element/Label/Label";
 import Input from "components/Element/Input/Input";
 import Span from "components/Element/Span/Span";
@@ -11,7 +12,7 @@ import styles from "./PageCompany.module.css";
 
 const PageCompany = () => {
   const [search, setSearch] = useState("");
-  const [companyMatch, setCompanyMatch] = useState([]);
+  const [companyMatch, setCompanyMatch] = useState(null);
   const { data, loading } = useFetch(API_COMPANY);
 
   const searchCompany = (query) => {
@@ -29,7 +30,7 @@ const PageCompany = () => {
   };
 
   if (!data) return null;
-  console.log(data);
+
   return (
     <section className={`${styles.wrapperListCompanies}`}>
       <div className={styles.search}>
@@ -60,20 +61,22 @@ const PageCompany = () => {
                 vision={company?.t300_vision}
                 webSite={company?.t300_web_page}
                 logo={company?.t300_logo}
+                totalPost="10"
               />
             </Link>
           ))
         ) : data.length > 0 ? (
           data.map((company) => (
             <Link className={styles.linkCard} to={`${company?.t300_id_company}`} key={company?.t300_id_company}>
-            <CardCompany
-              name={company?.t300_name}
-              mision={company?.t300_mision}
-              vision={company?.t300_vision}
-              webSite={company?.t300_web_page}
-              logo={company?.t300_logo}
-              banner={company?.t300_banner}
-            />
+              <CardCompany
+                name={company?.t300_name}
+                mision={company?.t300_mision}
+                vision={company?.t300_vision}
+                webSite={company?.t300_web_page}
+                logo={company?.t300_logo}
+                banner={company?.t300_banner}
+                totalPost="10"
+              />
             </Link>
           ))
         ) : (

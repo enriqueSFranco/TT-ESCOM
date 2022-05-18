@@ -1,23 +1,16 @@
 import React from "react";
 import styles from "./Filter.module.css";
 
-const FilterHomeOffice = ({ value, handleChecked }) => {
+const FilterHomeOffice = ({ onChange }) => {
 
   return (
-    <>
-      <label className={styles.wrapperSwitch}>
-        <input
-          className={styles.inputSwitch}
-          type="checkbox"
-          name="t200_home_ofice"
-          id="t200_home_ofice"
-          value={value}
-          onChange={handleChecked}
-        />
-        <span className={`${styles.sliderSwitch} ${styles.check}`}></span>
-        <span className={styles.label}>Remoto</span>
-      </label>
-    </>
+      <div className={`${styles.select} ${styles.selectModalityJob}`}>
+      <select name="business" id="business" onChange={onChange}>
+        <option value={1}>Presencial</option>
+        <option value={2}>Remoto</option>
+        <option value={3}>Hibrido</option>
+      </select>
+    </div>
   );
 };
 
