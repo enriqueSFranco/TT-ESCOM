@@ -34,7 +34,7 @@ const AuthProvider = ({ children }) => {
           setToken(response?.data);
           toast.success("Inicio de secion correcto");
           window.sessionStorage.setItem("token", JSON.stringify(response?.data));
-          navigate("/");
+          navigate("mis-vacantes");
         } else {
           toast.error("correo o password incorrectos.");
           window.sessionStorage.removeItem('token', JSON.stringify(response?.data))

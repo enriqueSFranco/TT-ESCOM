@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import Skeleton from "../../Skeleton/Skeleton";
 import CardJob from "../CardJob/CardJob";
@@ -6,15 +5,19 @@ import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 import burrito from "images/emoji_angustiado.jpg"
 import styles from "./JobList.module.css";
 
-const JobList = ({jobs, loading, setPage, maxLenPage}) => {
+const JobList = ({search, jobs, loading, page, setPage, maxLenPage}) => {
 
   const prevPage = () => {
+    // if (jobs.filter(job => job?.t200_job.includes(search)).length > page + 5)
     setPage((currentPage) => Math.max(currentPage - 1, 1));
+    
   };
 
   const nextPage = () => {
     setPage((currentPage) => Math.min(currentPage + 1, maxLenPage));
   };
+
+  console.log(jobs)
   
 
   return (

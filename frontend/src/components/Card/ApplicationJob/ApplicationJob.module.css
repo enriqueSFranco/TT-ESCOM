@@ -8,20 +8,36 @@
 }
 
 .tags {
+  /* outline: 2px solid red; */
+  width: 400px;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .5rem;
+  /* justify-content: space-between; */
 }
 
 .wrapper {
+  font-size: .9rem;
+  font-family: 'Poppins', sans-serif;
   text-align: left;
   border: 1px solid #ccc;
   background-color: #fff;
   border-radius: 8px;
-  width: 370px;
+  width: 440px;
   padding: .5rem;
   margin-bottom: .5rem;
 }
 
+
 .state {
+  font-weight: 400;
   text-align: right;
+  /* outline: 2px solid red; */
+  position: relative;
+  top: 1rem;
+  right: 1rem;
+}
+
+.green {
+  color: #008000;
 }

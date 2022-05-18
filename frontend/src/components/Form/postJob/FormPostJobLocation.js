@@ -76,7 +76,7 @@ useEffect(() => {
     }
   };
 
-  console.log(form);
+  console.log(cp);
 
   return (
     <div className={styles.form}>

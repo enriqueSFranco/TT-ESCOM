@@ -72,9 +72,9 @@ const StepComponent = () => {
 
   let AllResults = data;
 
-  if (!data && !form) {
-    return;
-  }
+  if (!data && !form) return null;
+
+  console.log(AllResults)
 
   const PageDisplay = () => {
     if (activeStep === 0) {

@@ -32,7 +32,7 @@ const FormCertification = ({
   const { form, handleChange, handleChecked, onSubmitPostCertification } = useForm({
     ...initialForm,
     t100_id_student: token?.user?.user_id,
-  }, validateForm);
+  });
 
   console.log(form)
 

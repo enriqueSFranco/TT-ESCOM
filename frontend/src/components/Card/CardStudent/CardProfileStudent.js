@@ -41,6 +41,8 @@ const CardProfileStudent = () => {
       })
   }, [token?.user?.user_id]);
 
+  console.log(student)
+
   return (
     <>
     <article className={`${styles.mainContainer}`}>

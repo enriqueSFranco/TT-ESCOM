@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { stringToColor } from "utils/stringToColor";
 import { uuid } from "utils/uuid";
 import { getSkill } from "services/catalogs";
-import { changeApplyState, getStudentCertifications } from "services/students/index";
+import {
+  changeApplyState,
+  getStudentCertifications,
+} from "services/students/index";
 import Chip from "@mui/material/Chip";
 import Avatar from "@mui/material/Avatar";
 import { BiDislike } from "react-icons/bi";
@@ -13,10 +16,10 @@ import styles from "./Table.module.css";
 const TableRow = ({ children, user, idSkills, index }) => {
   const [open, setOpen] = useState(false);
   const [skills, setSkills] = useState(null);
-  const [certifications , setCertifications] = useState(false);
+  const [certifications, setCertifications] = useState(false);
 
   const toggle = (index) => {
-    console.log("index: ", index);
+    // console.log("index: ", index);
     if (open === index) return setOpen(null);
     return setOpen(index);
   };
@@ -41,7 +44,7 @@ const TableRow = ({ children, user, idSkills, index }) => {
 
   useEffect(() => {
     getStudentCertifications(user?.t100_id_student?.t100_id_student)
-      .then(response => {
+      .then((response) => {
         if (response.status === 200) {
           const { data } = response;
           setCertifications(data);
@@ -49,7 +52,7 @@ const TableRow = ({ children, user, idSkills, index }) => {
           setCertifications(null);
         }
       })
-      .catch(error => error);
+      .catch((error) => error);
   }, [user?.t100_id_student?.t100_id_student]);
 
   const onClickAcceptApply = (e) => {
@@ -57,21 +60,21 @@ const TableRow = ({ children, user, idSkills, index }) => {
     console.log(e);
     let now = new Date();
     let nextState = "";
-    if (user?.c205_id_application_state?.c205_id_application_state == 1)
+    if (user?.c205_id_application_state?.c205_id_application_state === 1)
       nextState = "2";
-    else if(user?.c205_id_application_state?.c205_id_application_state == 2)
-      nextState = "4"
-    let data ={
+    else if (user?.c205_id_application_state?.c205_id_application_state === 2)
+      nextState = "4";
+    let data = {
       c205_id_application_state: nextState,
-      t201_date_application: now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate(),
-    }
+      t201_date_application:
+        now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate(),
+    };
 
-    changeApplyState(user?.t201_id_application,data)
+    changeApplyState(user?.t201_id_application, data)
       .then((response) => {
         console.log(response);
       })
       .catch((error) => console.error(error));
-    
   };
 
   const onClickDennyApply = (e) => {
@@ -79,25 +82,25 @@ const TableRow = ({ children, user, idSkills, index }) => {
     console.log(e);
     let now = new Date();
     let nextState = "";
-    if (user?.c205_id_application_state?.c205_id_application_state == 1)
+    if (user?.c205_id_application_state?.c205_id_application_state === 1)
       nextState = "3";
-    else if(user?.c205_id_application_state?.c205_id_application_state == 2)
-      nextState = "5"
-    let data ={
+    else if (user?.c205_id_application_state?.c205_id_application_state === 2)
+      nextState = "5";
+    let data = {
       c205_id_application_state: nextState,
-      t201_date_application: now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate(),
-    }
+      t201_date_application:
+        now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate(),
+    };
 
-    changeApplyState(user?.t201_id_application,data)
+    changeApplyState(user?.t201_id_application, data)
       .then((response) => {
         console.log(response);
       })
       .catch((error) => console.error(error));
-    
   };
 
   if (!user) return null;
-   console.log(certifications);
+  console.log(certifications);
 
   return (
     <>
@@ -113,9 +116,7 @@ const TableRow = ({ children, user, idSkills, index }) => {
           <div className={styles.wrapperAvatar}>
             <Avatar
               sx={{
-                bgcolor: stringToColor(
-                  user?.t100_id_student?.t100_name ?? ""
-                ),
+                bgcolor: stringToColor(user?.t100_id_student?.t100_name ?? ""),
               }}
             >
               {`${(user.t100_id_student?.t100_name).slice(
@@ -145,34 +146,45 @@ const TableRow = ({ children, user, idSkills, index }) => {
         <td className={styles.td}>no</td>
         <td className={styles.td}>
           <ul className={styles.listItem}>
-            {certifications && certifications?.map((certification)=>(
-              <li>
-              <Chip size="small" label={certification?.t119_certification} />
-            </li>
-            ))}
+            {certifications &&
+              certifications?.map((certification) => (
+                <li>
+                  <Chip
+                    size="small"
+                    label={certification?.t119_certification}
+                  />
+                </li>
+              ))}
           </ul>
         </td>
         <td className={styles.td}>
-          {user?.c205_id_application_state?.c205_id_application_state == 1 ? "Sin revisar" : user?.c205_id_application_state?.c205_description}
+          {user?.c205_id_application_state?.c205_id_application_state === 1
+            ? "Sin revisar"
+            : user?.c205_id_application_state?.c205_description}
         </td>
-        
-          {user?.c205_id_application_state?.c205_id_application_state == 4 ? (
-           <td className={styles.td}>
-           </td>)
-          : 
-          (<td className={styles.td}>
-            <button className={`btn ${styles.actionsBtn} ${styles.accept}` } onClick = {onClickAcceptApply}>
-              <FaHandshake/>
+
+        {user?.c205_id_application_state?.c205_id_application_state === 4 ? (
+          <td className={styles.td}></td>
+        ) : (
+          <td className={styles.td}>
+            <button
+              className={`btn ${styles.actionsBtn} ${styles.accept}`}
+              onClick={onClickAcceptApply}
+            >
+              <FaHandshake />
             </button>
-            <button className={`btn ${styles.actionsBtn} ${styles.dismiss}`} onClick = {onClickDennyApply}>
+            <button
+              className={`btn ${styles.actionsBtn} ${styles.dismiss}`}
+              onClick={onClickDennyApply}
+            >
               <BiDislike />
             </button>
-            </td>
-          )}        
+          </td>
+        )}
       </tr>
       {open === index ? (
         <tr>
-          <td colSpan="7">{children}</td>
+          <td colSpan="8">{children}</td>
         </tr>
       ) : null}
     </>

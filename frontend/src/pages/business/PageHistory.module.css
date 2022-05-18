@@ -1,11 +1,39 @@
+.applicationsBox, .acceptBox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: .5rem;
+  /* height: 200px; */
+  /* justify-content: center; */
+}
+
+.applicationsBox  > img {
+  font-size: 4rem;
+  color: #028dd4;
+  text-align: center;
+  height: 80px;
+}
+
+.applicationsBox > a:hover {
+  color: #00aaff;
+}
+
 .box {
+  position: relative;
+  font-family: 'Poppins', sans-serif;
   width: 400px;
-  height: 100px;
+  height: 150px;
   outline: 2px solid #ccc;
   background-color: #fff;
   margin: .5rem;
   padding: .5rem;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .box > a { color: #028dd4; }
@@ -200,6 +228,11 @@
   margin-right: .3rem;
 }
 
+.notify {
+  font-size: .8rem;
+  color: #000;
+}
+
 .sidebar {
   position: relative;
   width: 480px;
@@ -212,6 +245,12 @@
   position: relative;
   top: 4rem;
   height: calc(100vh - 4rem);
+}
+
+.wrapperCard {
+  outline: 2px solid red;
+  position: relative;
+  top: -4rem;
 }
 
 .wrapperDetailsJob {
@@ -232,6 +271,14 @@
   padding: 1rem;
 }
 
+.wrapperTags {
+  width: 900px;
+  /* outline: 2px solid yellow; */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: .5rem;
+}
+
 .jobMiniCard{
   background-color: green;
 }
@@ -240,28 +287,33 @@
   position: absolute;
   width: 100%;
   top: 6rem;
-  min-height: 100vh;
+  height: calc(100vh - 12rem);
   border-radius: 8px;
   background-color: #fff;
-  position: relative;
-  background-color:#68013b;
-  background-image: linear-gradient(
-    160deg, #9e005a, #018dd4, rgb(211, 211, 211)
-  );
+  /* outline: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .bodyNotJobs  {
   position: absolute;
   left: 0;
   background-color: #fff;
-  height: calc(100% - .7rem);
-  width: calc(100% - .7rem);
   margin: .3rem;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.bodyNotJobs h2 {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.3rem;
+  color: #686868;
+  font-family: 'Poppins', sans-serif;
 }
 
 .bodyNotJobs img{
@@ -315,4 +367,36 @@
   font-size: 1.3rem;
   display: flex;
   justify-content: center;
+}
+
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: color .3s ease;
+}
+
+.tooltip:hover .tooltipBox {
+  display: inline-block;
+}
+
+.tooltipBox {
+  width: 150px;
+  font-size: .7rem;
+  font-weight: 400;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  left: 2rem;
+  top: 1.4rem;
+  background-color: #222222e3;
+  color: #fff;
+  z-index: 500;
+  display: none;
 }
