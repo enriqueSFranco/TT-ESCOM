@@ -430,40 +430,33 @@
         "model":"vacantes.Experience",        
         "pk":1,
         "fields":{
-            "c207_description": "No definido"
+            "c207_description": "Sin experiencia"
         }
     },
     {
         "model":"vacantes.Experience",        
         "pk":2,
         "fields":{
-            "c207_description": "Sin experiencia"
+            "c207_description": "0 - 6 meses"
         }
     },
     {
         "model":"vacantes.Experience",        
         "pk":3,
         "fields":{
-            "c207_description": "0 - 6 meses"
+            "c207_description": "6 meses - 1 año"
         }
     },
     {
         "model":"vacantes.Experience",        
         "pk":4,
         "fields":{
-            "c207_description": "6 meses - 1 año"
-        }
-    },
-    {
-        "model":"vacantes.Experience",        
-        "pk":5,
-        "fields":{
             "c207_description": "1 - 2 años"
         }
     },
     {
         "model":"vacantes.Experience",        
-        "pk":6,
+        "pk":5,
         "fields":{
             "c207_description": "más de 2 años"
         }
