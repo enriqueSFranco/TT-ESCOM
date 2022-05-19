@@ -25,6 +25,7 @@ import AcademicRecordList from "components/Card/AcademicRecord/AcademicRecordLis
 import ModalRelease from "components/Modal/ModalRelease";
 import ModalBusiness from "components/Modal/ModalBusiness";
 import CardJobDetails from "components/Card/CardJobDetails/CardJobDetails";
+import FullProfileUser from "components/Card/CardStudent/FullProfileUser";
 
 const Root = () => {
   return (
@@ -44,6 +45,7 @@ const Root = () => {
         <Route path="/solicitudes" element={<PageApplications />}>
           <Route path=":t200_id_vacant" element={<Accordion />} />
         </Route>
+          <Route path="/perfil-del-candidato" element={<FullProfileUser />} />
         <Route path="/publicar-comunicado" element={<PagePostRelease />} />
         {/* <Route path="/candidatos" element={<PageApplications />} /> */}
       </Route>
@@ -83,18 +85,6 @@ const Root = () => {
         </Route>
         <Route path="mis-postulaciones" element={<PageApplicationsStudent />} />
       </Route>
-
-      {/* Indice de rutas privadas para un reclutador */}
-      {/* <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>   
-        <Route path="/historial" element={<PageHistory />}>
-          <Route path="dashboard" element={<PageDashBoard />} />
-          <Route path="mis-vacantes" element={<PageMyJobs />} />
-          <Route path="solicitudes" element={<PageApplications />} />
-          <Route path="publicar-vacante" element={<PageAddJob />} />
-          <Route path="publicar-comunicado" element={<PagePostRelease />} />
-        </Route>
-      </Route> */}
-
     </Routes>
   );
 };

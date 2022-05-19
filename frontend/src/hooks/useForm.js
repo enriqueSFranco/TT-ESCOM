@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { createBusiness } from "services/businnes/index";
+import { createBusiness, createBusinessRecruiter } from "services/businnes/index";
 import { createAccountStudent } from "services/students/index";
 import { postJob } from "services/jobs/index";
 import { postCertification } from "services/students/index";
@@ -73,6 +73,17 @@ export const useForm = (initialForm, validateForm) => {
         })
     }
   };
+
+  const handleSubmitCompanyRecruiter = e => {
+    e.preventDefault();
+    createBusinessRecruiter(form)
+    .then(response => {
+      console.log(response)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
 
   const onSubmitPostJob = (e) => {
     e.preventDefault();
@@ -152,6 +163,7 @@ export const useForm = (initialForm, validateForm) => {
     handleSubmitCompany,
     handleValidate,
     onSubmitPostJob,
-    onSubmitPostCertification
+    onSubmitPostCertification,
+    handleSubmitCompanyRecruiter
   };
 };

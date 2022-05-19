@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import { getJob, getApplicationsJobs } from "services/jobs/index";
 import { numberFormat } from "utils/numberFormat";
 import Chip from "@mui/material/Chip";

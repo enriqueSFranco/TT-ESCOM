@@ -1,6 +1,5 @@
 import React from "react";
-import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
+import {TextField, InputAdornment} from "@mui/material/";
 import { BiUser } from "react-icons/bi";
 import {
   MdOutlineMail,
@@ -21,7 +20,7 @@ const FormRecruiterInfo = ({
 }) => {
 
   const handleClick = () => setIsAcitve(!isActive);
-
+  // console.log(form)
   return (
     <div className={styles.personalContact}>
       {!isActive ? (

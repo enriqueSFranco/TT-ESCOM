@@ -2,7 +2,6 @@ import React from 'react';
 import { numberFormat } from 'utils/numberFormat';
 import Chip from '@mui/material/Chip';
 import {GiMoneyStack} from 'react-icons/gi';
-// import { IoBusiness } from 'react-icons/io5';
 import { MdBusinessCenter, MdHomeWork } from 'react-icons/md';
 import styles from './ApplicationJobStudent.module.css';
 

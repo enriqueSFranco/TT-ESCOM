@@ -7,11 +7,17 @@ import { BiUser } from "react-icons/bi";
 import { SiGmail } from "react-icons/si";
 import { MdLocationPin, MdOutlineLocalAirport } from "react-icons/md";
 import { BsWhatsapp, BsLinkedin, BsGithub } from "react-icons/bs";
+import github from "images/github.png";
+import twitter from "images/gorjeo.png";
+import gmail from "images/gmail.png";
+import telegram from "images/telegrama.png";
+import facebook from "images/facebook.png";
+
 import styles from "./Table.module.css";
 
 const RowExpand = ({ user }) => {
   const [skills, setSkills] = useState(null);
-  const [lenguages,setLenguages] = useState(null);
+  const [lenguages, setLenguages] = useState(null);
 
   useEffect(() => {
     if (user !== null) {
@@ -46,7 +52,9 @@ const RowExpand = ({ user }) => {
     <article key={uuid()} className={styles.wrapperDetailsUser}>
       <div className={styles.grid_2}>
         <p className={styles.wrapperObjectPersonal}>
-          {user?.t100_id_student?.t100_personal_objectives === "" ? "Sin objetivos profesionales guardados" : user?.t100_id_student?.t100_personal_objectives}
+          {user?.t100_id_student?.t100_personal_objectives === ""
+            ? "Sin objetivos profesionales guardados"
+            : user?.t100_id_student?.t100_personal_objectives}
         </p>
         <div className={styles.wrapperLenguages}>
           <p className={styles.languages}>Idiomas:</p>
@@ -79,16 +87,76 @@ const RowExpand = ({ user }) => {
         </div>
         <ul className={styles.listItemLinks}>
           <li>
-            <BsWhatsapp />
+            <img
+              className={styles.iconSocialNetwork}
+              width={34}
+              height={64}
+              src={github}
+              alt="github"
+            />
           </li>
           <li>
-            <BsLinkedin />
+            <img
+              className={styles.iconSocialNetwork}
+              width={34}
+              height={64}
+              src={twitter}
+              alt="github"
+            />
           </li>
           <li>
-            <SiGmail />
+            <img
+              className={styles.iconSocialNetwork}
+              width={34}
+              height={64}
+              src={gmail}
+              alt="github"
+            />
           </li>
           <li>
-            <BsGithub />
+            <img
+              className={styles.iconSocialNetwork}
+              width={34}
+              height={64}
+              src={telegram}
+              alt="github"
+            />
+          </li>
+          <li>
+            <img
+              className={styles.iconSocialNetwork}
+              width={34}
+              height={64}
+              src={facebook}
+              alt="github"
+            />
+          </li>
+          <li>
+            <img
+              className={styles.iconSocialNetwork}
+              width={34}
+              height={64}
+              src={facebook}
+              alt="github"
+            />
+          </li>
+          <li>
+            <img
+              className={styles.iconSocialNetwork}
+              width={34}
+              height={64}
+              src={facebook}
+              alt="github"
+            />
+          </li>
+          <li>
+            <img
+              className={styles.iconSocialNetwork}
+              width={34}
+              height={64}
+              src={facebook}
+              alt="github"
+            />
           </li>
         </ul>
       </div>
@@ -106,8 +174,8 @@ const RowExpand = ({ user }) => {
             ))}
         </ul>
       </div>
-      <Link to="/" className={styles.link}>
-        <BiUser /> Ver perfil conpleto
+      <Link to="/perfil-del-candidato" className={styles.link}>
+        <BiUser /> Ver perfil completo
       </Link>
     </article>
   );

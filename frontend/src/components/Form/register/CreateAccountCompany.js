@@ -2,10 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "hooks/useForm";
 import { useFetch } from "hooks/useFetch";
-import { TextField, Autocomplete } from "@mui/material/";
+// import { TextField, Autocomplete, FormControl } from "@mui/material/";
 import { API_COMPANY } from "services/settings";
 import { companyInitialForm } from "../schemes";
-import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import FormBusinessRecruiter from "./FormBusinessRecruiter";
 import FormCompanyInfo from "./FormCompanyInfo";
 import FormRecruiterInfo from "./FormRecruiterInfo";
 import styles from "../Styles.module.css";
@@ -67,9 +67,10 @@ const validateForm = (form) => {
 const FormCompany = () => {
   const { form, errors, handleChange, handleValidate, handleSubmitCompany } =
     useForm(companyInitialForm, validateForm);
+  const { data } = useFetch(API_COMPANY);
+  // const [_, setIdCompany] = useState(0);
   const [step, setStep] = useState(1);
   const [isActive, setIsActive] = useState(false);
-  const { data } = useFetch(API_COMPANY);
 
   const nextStep = () => setStep(step + 1);
 
@@ -77,27 +78,24 @@ const FormCompany = () => {
 
   const handleIsActive = () => setIsActive(!isActive);
 
-  console.log(form);
-  console.log(idCompany);
-
   if (step === 1)
     return (
       <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
         <div className="row text-center">
           <div className={`${styles.bgCompany} col rounded`}>
-            <div className={`${styles.login}`}>
+            <div className={`${styles.wrapperLinkToLoginCompany}`}>
               <blockquote>
                 Crea tu cuenta y publica tus vacantes con nosotros.
               </blockquote>
               <span>
-                Ya tines cuenta?{" "}
+                ¿Ya tines cuenta?{" "}
                 <Link className={`${styles.linkToLogin}`} to="/reclutador">
                   Inicia sesion
                 </Link>
               </span>
-              <span>
+              {/* <span>
                 <a href="/#">Recuperar contraseña</a>
-              </span>
+              </span> */}
             </div>
           </div>
           <div className={`col bg-white rounded-end ${styles.wrapperColumn}`}>
@@ -126,36 +124,9 @@ const FormCompany = () => {
                 >
                   Proporcionanos el nombre de la empresa.
                 </h2>
-                <div className={styles.autocomplete}>
-                  <FormControl sx={{ minWidth: 490, textAlign:"left" }}>                                        
-                    <Autocomplete
-                      sx={{ width: 400, marginLeft: 10 }}
-                      size="small"
-                      id="t300_id_company"
-                      name="t300_id_company"
-                      freeSolo
-                      onChange={(event,newValue)=>{
-                        console.log(newValue['t300_id_company']);
-                        setIdCompany(newValue['t300_id_company'])
-                        form.t300_id_company = newValue['t300_id_company']
-                      }}
-                      value={form.t300_id_company}
-                      getOptionLabel = {(option) => option.t300_name}
-                      options={data}
-                      renderInput={(params) => (
-                        <TextField {...params} label="Empresas" />
-                      )}
-                    />
-                  </FormControl>
-                </div>
-                <FormRecruiterInfo
-                  form={form}
-                  errors={errors}
-                  handleSubmitCompany={handleSubmitCompany}
-                  handleChange={handleChange}
-                  handleValidate={handleValidate}
+                <FormBusinessRecruiter
                   isActive={isActive}
-                  setIsAcitve={setIsActive}
+                  setIsActive={setIsActive}
                 />
               </article>
             )}
@@ -165,25 +136,11 @@ const FormCompany = () => {
     );
   else if (step === 2)
     return (
-      <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
+      <div className={`container bg-white shadow rounded ${styles.wrapper}`}>
         <div className="row">
           <div
             className={`${styles.bgRecruiter} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
           >
-            <div className={`${styles.login}`}>
-              <blockquote>
-                Crea tu cuenta y publica tus vacantes con nosotros.
-              </blockquote>
-              <span>
-                Ya tines cuenta?{" "}
-                <Link className={`${styles.linkToLogin}`} to="/reclutador">
-                  Inicia sesion
-                </Link>
-              </span>
-              <span>
-                <a href="/#">Recuperar contraseña</a>
-              </span>
-            </div>
           </div>
           <div className={`col bg-white rounded-end ${styles.wrapperColumn}`}>
             <FormRecruiterInfo
@@ -196,6 +153,17 @@ const FormCompany = () => {
               isActive={isActive}
               setIsAcitve={setIsActive}
             />
+          <div className={`${styles.wrapperBottom}`}>
+              <blockquote>
+                Crea tu cuenta y publica tus vacantes con nosotros.
+              </blockquote>
+              <span>
+                Ya tines cuenta?{" "}
+                <Link className={`${styles.linkToLogin}`} to="/reclutador">
+                  Inicia sesion
+                </Link>
+              </span>
+            </div>
           </div>
         </div>
       </div>

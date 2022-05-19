@@ -21,8 +21,6 @@ const PageApplicationsStudent = () => {
 
   if (!data) return null;
 
-  // console.log(formatDate("2022-04-04"))
-
   // TODO: ELIMINAR ELEMENTOS DUPLICADOS DE LA LISTA DE VACANTES EN RELACION AL CAMPO T200_JOB
   return (
     <section className={styles.wrapper}>
