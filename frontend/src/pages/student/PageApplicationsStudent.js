@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useFetch } from 'hooks/useFetch';
 import AuthContext from 'context/AuthContext';
 import { API_APPLICATIONS_JOB_STUDENT } from 'services/settings';
-import ApplicationJob from 'components/Card/ApplicationJob/ApplicationJob';
+import ApplicationJobStudent from 'components/Card/ApplicationJob/ApplicationJobStudent';
 import { uuid, } from 'utils/uuid';
 import { formatDate } from 'utils/formatDate';
 import Table from '@mui/material/Table';
@@ -49,7 +49,7 @@ const PageApplicationsStudent = () => {
                   
                 </TableCell>
                 <TableCell align='center' component="th" scope="row">
-                  <ApplicationJob 
+                  <ApplicationJobStudent 
                     nameJob={row?.t200_id_vacant?.t200_job} 
                     salary={row?.t200_id_vacant?.t200_max_salary}
                     modality={row?.t200_id_vacant?.t200_home_ofice}

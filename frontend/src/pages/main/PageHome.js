@@ -15,12 +15,11 @@ const Home = () => {
     () => Math.ceil(jobs?.count / jobs?.page_size),
     [jobs?.count, jobs?.page_size]
   );
-  const [search, setSearch] = useState("");
+  const [_, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]); // lista de vacantes filtrada
   const [isFiltered, setIsFiltered] = useState(false); // bandera para saber si la informacion se tiene que filtrar
   const [loading, setLoading] = useState(false);
-  const [totalJobs, setTotalJobs] = useState(0);
 
   useEffect(() => {
     setLoading(true);
@@ -28,7 +27,6 @@ const Home = () => {
       .then((response) => {
         if (response.status === 200) {
           setJobs(response.data);
-          // setTotalJobs(response.data.result.length)
         }
       })
       .catch((error) => console.log(error))
@@ -36,6 +34,7 @@ const Home = () => {
   }, [page]);
 
   const filteredData = (value) => {
+
     if (value !== "") {
       const filteredData = jobs?.result.filter((el) => {
         let regex = new RegExp(`${value}`, "gi");
@@ -48,7 +47,6 @@ const Home = () => {
   };
 
   const handleSearch = (value) => {
-  
     filteredData(value);
     setSearch(value);
     setIsFiltered(value !== "" ? true : false);
@@ -70,7 +68,7 @@ const Home = () => {
       ).then(response => {
         const { data } = response;
         setData(data?.result);
-        setTotalJobs(data?.result.length);
+        // setTotalJobs(data?.result.length);
       })
     }
   };
@@ -96,7 +94,7 @@ const Home = () => {
         if (response.status === 200) {
           const { data } = response;
           setData(data?.result);
-          setTotalJobs(data?.result.length);
+          // setTotalJobs(data?.result.length);
         }
       })
       .catch(error => console.log(error));
@@ -118,7 +116,7 @@ const Home = () => {
       }).then(response => {
         const { data } = response;
         setData(data?.result);
-        setTotalJobs(data?.result.length);
+        // setTotalJobs(data?.result.length);
       })
     }
   };
@@ -141,6 +139,7 @@ const Home = () => {
         <JobList
           jobs={isFiltered ? data : jobs?.result}
           loading={loading}
+          page={page}
           setPage={setPage}
           maxLenPage={maxLenPage}
         />

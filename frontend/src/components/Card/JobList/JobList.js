@@ -8,10 +8,12 @@ import styles from "./JobList.module.css";
 const JobList = ({search, jobs, loading, page, setPage, maxLenPage}) => {
 
   const prevPage = () => {
+    console.log("prev:", page)
     setPage((currentPage) => Math.max(currentPage - 1, 1))
   };
 
   const nextPage = () => {
+    console.log("next: ",page)
     setPage((currentPage) => Math.min(currentPage + 1, maxLenPage))
   };
 
