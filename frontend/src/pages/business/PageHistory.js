@@ -12,10 +12,11 @@ import {
   getApplicationsJobs,
   getVacantInfo,
 } from "services/jobs/index";
-import { getJobsForRecruiter } from "services/recruiter/index";
+import { getJobsForRecruiter, getRecruiterInfo } from "services/recruiter/index";
 import ApplicationJob from "components/Card/ApplicationJob/ApplicationJob";
 import ModalForm from "components/Modal/ModalVacants";
 import FormPostJob from "components/Form/postJob/FormPostJob";
+import FormUpdateJob from "components/Form/postJob/FormUpdateJob";
 import ConfirmDelete from "components/Alert/Confirm/ConfirmDelete";
 import { BiSearch } from "react-icons/bi";
 import { GrAdd } from "react-icons/gr";
@@ -52,6 +53,7 @@ const PageHistory = () => {
   const [modalType, setModalType] = useState(null);
   const [isDeletedJob, setIsDeletedJob] = useState({});
   const [job, setJob] = useState(null);
+  const [recruiter, setRecruiter] = useState([]);
   const [isOpenModalForm, openModalForm, closeModalForm] = useModal();
   let id = token?.user?.user_id;
 
@@ -134,6 +136,18 @@ const PageHistory = () => {
     }
   }, [t200_id_vacant]);
 
+  useEffect(() => {
+    getRecruiterInfo(token?.user?.user_id)
+      .then((response) => {
+        setRecruiter(response);
+        console.log(response)        
+        //form.t300_id_company  = recruiter[0]?.t300_id_company?.t300_id_company;
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  console.log(recruiter);
+
   const handleInitialContent = () => {
     setInitialContent(false);
   };
@@ -145,6 +159,11 @@ const PageHistory = () => {
 
   const setModal2 = () => {
     setModalType(2);
+    openModalForm();
+  };
+
+  const setModal3 = () => {
+    setModalType(3);
     openModalForm();
   };
 
@@ -351,7 +370,8 @@ const PageHistory = () => {
                         {totalApplications === 0 ? (
                           <div className={styles.actions}>
                             <button>
-                              <MdEdit className={styles.editAction} />
+                              <MdEdit className={styles.editAction} 
+                                      onClick={setModal3}/>
                             </button>
                             <button className={`${styles.btnTrash}`}>
                               <GoTrashcan
@@ -399,22 +419,19 @@ const PageHistory = () => {
             )}
           </div>
         </article>
-      </section>
-      {modalType === 1 || modalType === 2 ? (
-        modalType === 1 ? (
+      </section>      
+      { modalType == 1 &&  
           <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
-            <FormPostJob />
-          </ModalForm>
-        ) : modalType === 2 ? (
+            <FormPostJob idCompany = {recruiter[0]?.t300_id_company?.t300_id_company}/>
+          </ModalForm>}
+      { modalType == 2 &&  
+        <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
+          <ConfirmDelete deleteJob={handleDeleteJob} isDeletedJob={isDeletedJob} job={job[0]?.t200_job}/>
+        </ModalForm>}
+        { modalType == 3 &&  
           <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
-            <ConfirmDelete
-              deleteJob={handleDeleteJob}
-              isDeletedJob={isDeletedJob}
-              job={job[0]?.t200_job}
-            />
-          </ModalForm>
-        ) : null
-      ) : null}
+            <FormUpdateJob job ={job}/>
+          </ModalForm>}        
     </>
   );
 };

@@ -226,7 +226,16 @@ class Requirement(models.Model):
 		related_name='SkillRequired',
 		on_delete=models.CASCADE
 	)
+    c207_id_experience = models.ForeignKey(
+        Experience,
+        null=False,
+		blank=False,
+        default=1,
+		related_name='RequeriedExperience',
+        on_delete=models.CASCADE)
+    t214_necesary = models.BooleanField(default=False)
     class Meta:
+        unique_together = ['t200_id_vacant','c116_id_skill']
         verbose_name = 'Requirement'
         verbose_name_plural = 'Requierements'
         db_table = "t214_requerimiento"

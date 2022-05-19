@@ -24,9 +24,9 @@ import {
 import styles from "./FormPostJob.module.css";
 
 const FormPostJobLocation = ({ form, errors, handleChecked, handleChange, nextStep }) => {
-  const [cp, setCP] = useState("");
-  const [state, setState] = useState("");
-  const [town, setTown] = useState("");
+  const [cp, setCP] = useState(form?.t200_cp);
+  const [state, setState] = useState(form?.t200_state);
+  const [town, setTown] = useState(form?.t200_municipality);
   const [profiles, setProfiles] = useState([]);
   const [experience, setExperience] = useState([]);
   const [contractTypes, setContractTypes] = useState([]);

@@ -7,8 +7,8 @@ from rest_framework import viewsets
 from django.db.models import Count
 
 from apps.vacantes.pagination import CustomPagination
-from apps.vacantes.models import Vacant,Application
-from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,VacantListSerializer,UpdateVacantSerializer,VacantInfoListSerializer
+from apps.vacantes.models import Vacant,Application,Requirement,LenguageRequired
+from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,VacantListSerializer,UpdateVacantSerializer,VacantInfoListSerializer,VacantRequirementSerializer,VacantRequirementListSerializer,VacantLenguageSerializer,VacantLenguageListSerializer
 
 class VacantViewSet(viewsets.GenericViewSet):
 	model = Vacant
@@ -81,6 +81,117 @@ class VacantViewSet(viewsets.GenericViewSet):
                 'message': 'Hay errores en la actualización',
                 'errors': vacant_serializer.errors
             }, status=status.HTTP_400_BAD_REQUEST)
+
+
+class VacantRequirementsViewSet(viewsets.GenericViewSet):
+	model = Requirement
+	#permission_classes = [IsAuthenticated]
+	serializer_class = VacantRequirementSerializer
+	list_serializer_class = VacantRequirementListSerializer
+	queryset = None
+
+	def get_object(self, pk):	
+		self.queryset = self.model.objects\
+				.filter(t200_id_vacant = pk)\
+				.all()
+		return self.queryset
+	
+	def get_queryset(self):
+		if self.queryset is None:
+			self.queryset = self.model.objects\
+				.filter()\
+				.all()
+		return self.queryset
+
+	def list(self, request):
+		requirements = self.get_queryset()				
+		requirements_serializer = self.list_serializer_class(requirements, many=True)
+		return Response(requirements_serializer.data, status=status.HTTP_200_OK)	
+
+	def create(self, request):
+		requirement_serializer = self.serializer_class(data=request.data)
+		print('request: ',request.data)
+		if requirement_serializer.is_valid():
+			requirement_serializer.save()
+			return Response({
+				'message': 'Habilidad registrada correctamente.'
+			}, status=status.HTTP_201_CREATED)
+		return Response({
+			'message': 'Hay errores en el registro',
+			'errors': requirement_serializer.errors
+		}, status=status.HTTP_400_BAD_REQUEST)
+
+	def retrieve(self, request, pk):
+		requirement = self.get_object(pk)
+		requirement_serializer = self.list_serializer_class(requirement,many=True)
+		return Response(requirement_serializer.data)
+
+	def destroy(self, request, pk=None):
+		requirement_destroy = self.model.objects.filter(t200_id_vacant=pk).first()
+		if requirement_destroy :
+			requirement_destroy = self.model.objects.filter(t200_id_vacant=pk).delete()
+			return Response({
+				'message': 'Requerimiento eliminado correctamente'
+			}, status=status.HTTP_200_OK)
+		return Response({
+			'message': 'No existe el requerimiento que desea eliminar'
+		}, status=status.HTTP_404_NOT_FOUND)
+	
+
+class VacantLenguagesViewSet(viewsets.GenericViewSet):
+	model = LenguageRequired
+	#permission_classes = [IsAuthenticated]
+	serializer_class = VacantLenguageSerializer
+	list_serializer_class = VacantLenguageListSerializer
+	queryset = None
+
+	def get_object(self, pk):	
+		self.queryset = self.model.objects\
+				.filter(t200_id_vacant = pk)\
+				.all()
+		return self.queryset
+	
+	def get_queryset(self):
+		if self.queryset is None:
+			self.queryset = self.model.objects\
+				.filter()\
+				.all()
+		return self.queryset
+
+	def list(self, request):
+		lenguages = self.get_queryset()				
+		lenguages_serializer = self.list_serializer_class(lenguages, many=True)
+		return Response(lenguages_serializer.data, status=status.HTTP_200_OK)	
+
+	def create(self, request):
+		lenguage_serializer = self.serializer_class(data=request.data)
+		print('request: ',request.data)
+		if lenguage_serializer.is_valid():
+			lenguage_serializer.save()
+			return Response({
+				'message': 'Idioma registrada correctamente.'
+			}, status=status.HTTP_201_CREATED)
+		return Response({
+			'message': 'Hay errores en el registro',
+			'errors': lenguage_serializer.errors
+		}, status=status.HTTP_400_BAD_REQUEST)
+
+	def retrieve(self, request, pk):
+		lenguages = self.get_object(pk)
+		lenguages_serializer = self.list_serializer_class(lenguages,many=True)
+		return Response(lenguages_serializer.data)
+
+	def destroy(self, request, pk=None):
+		lenguage_destroy = self.model.objects.filter(t200_id_vacant=pk).first()
+		if lenguage_destroy :
+			lenguage_destroy = self.model.objects.filter(t200_id_vacant=pk).delete()
+			return Response({
+				'message': 'Idioma eliminado correctamente'
+			}, status=status.HTTP_200_OK)
+		return Response({
+			'message': 'No existe el idioma que desea eliminar'
+		}, status=status.HTTP_404_NOT_FOUND)
+
 
 
 class RecruiterVacantViewSet(viewsets.GenericViewSet):
@@ -204,9 +315,11 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 		query ="""SELECT t200_vacante.* FROM t200_vacante\n"""
 		join = ""
 		clauses = "\nWHERE t200_vacante.c204_id_vacant_status_id = 1"
+		self.queryset = self.model.objects.filter(c204_id_vacant_status_id = 1)
 		if (self.filters['company_name']):
-			join = "JOIN t300_empresa ON t200_vacante.t300_id_company_id = t300_empresa.t300_id_company "
-			clauses = clauses + "\nAND t300_empresa.t300_name = '"+self.filters['company_name']+"'"
+			print("FIltrar empresa")
+			#join = "JOIN t300_empresa ON t200_vacante.t300_id_company_id = t300_empresa.t300_id_company "
+			#clauses = clauses + "\nAND t300_empresa.t300_name = '"+self.filters['company_name']+"'"
 		if (self.filters['id_profile']):
 			clauses = clauses +"\nAND t200_vacante.c206_id_profile_id = "+self.filters['id_profile'] + " "
 		if (self.filters['id_modality']):
