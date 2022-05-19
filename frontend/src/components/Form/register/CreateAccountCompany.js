@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "hooks/useForm";
+import { useFetch } from "hooks/useFetch";
+import { API_COMPANY } from "services/settings";
 import { companyInitialForm } from "../schemes";
+import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import FormCompanyInfo from "./FormCompanyInfo";
 import FormRecruiterInfo from "./FormRecruiterInfo";
 import styles from "../Styles.module.css";
@@ -42,6 +45,16 @@ const validateForm = (form) => {
     errors.t300_bussiness_name =
       "El campo 'razon social' solo acepta letras y espacion en blanco";
 
+  if (!form.t301_name.trim())
+    errors.t301_name = "El campo 'Nombre' es requerido";
+  else if (!regex.t301_name.test(form.t301_name))
+    errors.t301_name = "Elmm campo 'Nombre' es incorrecto";
+
+  if (!form.t301_last_name.trim())
+    errors.t301_last_name = "El campo 'Apellidos' es requerido";
+  else if (!regex.t301_last_name.test(form.t301_last_name))
+    errors.t301_last_name = "Elmm campo 'Apellidos' es incorrecto";
+
   if (!form.t301_email.trim())
     errors.t301_email = "El campo 'Email' es requerido.";
   else if (!regex.t301_email.test(form.t301_email))
@@ -51,26 +64,27 @@ const validateForm = (form) => {
 };
 
 const FormCompany = () => {
-  const { 
-    form, 
-    errors, 
-    handleChange, 
-    handleValidate, 
-    handleSubmitCompany } = useForm(companyInitialForm, validateForm);
+  const { form, errors, handleChange, handleValidate, handleSubmitCompany } =
+    useForm(companyInitialForm, validateForm);
+  const [idCompany, setIdCompany] = useState(0);
   const [step, setStep] = useState(1);
+  const [isActive, setIsActive] = useState(false);
+  const { data } = useFetch(API_COMPANY);
 
   const nextStep = () => setStep(step + 1);
 
   const prevStep = () => setStep(step - 1);
 
+  const handleIsActive = () => setIsActive(!isActive);
+
   if (step === 1)
     return (
       <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
         <div className="row text-center">
-          <div className={`${styles.bg} col rounded`}>
+          <div className={`${styles.bgCompany} col rounded`}>
             <div className={`${styles.login}`}>
               <blockquote>
-                Un paso más cerca de tu nuevo <em>empleo</em>.
+                Crea tu cuenta y publica tus vacantes con nosotros.
               </blockquote>
               <span>
                 Ya tines cuenta?{" "}
@@ -83,15 +97,61 @@ const FormCompany = () => {
               </span>
             </div>
           </div>
-          <div className={`col bg-white p-5 rounded-end`}>
-            <h2 className={`${styles.welcome}`}>Bienvenido</h2>
-            <FormCompanyInfo
-              nextStep={nextStep}
-              form={form}
-              errors={errors}
-              handleChange={handleChange}
-              handleValidate={handleValidate}
-            />
+          <div className={`col bg-white rounded-end ${styles.wrapperColumn}`}>
+            {!isActive ? (
+              <FormCompanyInfo
+                data={data}
+                nextStep={nextStep}
+                form={form}
+                errors={errors}
+                handleChange={handleChange}
+                handleValidate={handleValidate}
+                handleSubmitCompany={handleSubmitCompany}
+                isActive={isActive}
+                handleIsActive={handleIsActive}
+              />
+            ) : (
+              <article className={styles.wrapperForm3}>
+                <h2
+                  style={{
+                    textTransform: "uppercase",
+                    fontSize: "1.5rem",
+                    fontWeight: "bold",
+                    color: "#028dd4",
+                    marginBottom: ".8rem",
+                  }}
+                >
+                  Proporcionanos el nombre de la empresa.
+                </h2>
+                <div className={styles.autocomplete}>
+                  <FormControl sx={{ minWidth: 490, textAlign:"left" }}>
+                    <InputLabel id="t300_id_company">Empresas</InputLabel>
+                    <Select
+                      labelId="t300_id_company"
+                      id="t300_id_company"
+                      name="t300_id_company"
+                      value={form.t300_id_company}
+                      label="Empresas Registradas"
+                      onChange={handleChange}
+                    >
+                      {data &&
+                      data?.map(({t300_id_company, t300_name}) => (
+                        <MenuItem key={t300_name} value={t300_id_company}>{t300_name}</MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </div>
+                <FormRecruiterInfo
+                  form={form}
+                  errors={errors}
+                  handleSubmitCompany={handleSubmitCompany}
+                  handleChange={handleChange}
+                  handleValidate={handleValidate}
+                  isActive={isActive}
+                  setIsAcitve={setIsActive}
+                />
+              </article>
+            )}
           </div>
         </div>
       </div>
@@ -101,7 +161,7 @@ const FormCompany = () => {
       <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
         <div className="row">
           <div
-            className={`${styles.bg} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
+            className={`${styles.bgRecruiter} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
           >
             <div className={`${styles.login}`}>
               <blockquote>
@@ -118,8 +178,7 @@ const FormCompany = () => {
               </span>
             </div>
           </div>
-          <div className={`col bg-white p-5 rounded-end`}>
-            <h2 className={`${styles.welcome}`}>Bienvenido</h2>
+          <div className={`col bg-white rounded-end ${styles.wrapperColumn}`}>
             <FormRecruiterInfo
               prevStep={prevStep}
               form={form}
@@ -127,6 +186,8 @@ const FormCompany = () => {
               handleSubmitCompany={handleSubmitCompany}
               handleChange={handleChange}
               handleValidate={handleValidate}
+              isActive={isActive}
+              setIsAcitve={setIsActive}
             />
           </div>
         </div>

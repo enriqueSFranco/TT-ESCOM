@@ -40,7 +40,7 @@ const LoginCompany = () => {
         </div>
         <div className={`col bg-white text-center p-5 rounded-end`}>
           <div className={styles.welcome}>
-            <h2>Bienvenido</h2>
+            <h2>que bueno tenerte de vuelta</h2>
             <span>Bienvenido! Porfavor introduce tus datos.</span>
           </div>
           <form onSubmit={loginRecruiter} className={styles.form}>

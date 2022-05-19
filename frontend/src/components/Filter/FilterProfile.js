@@ -3,13 +3,14 @@ import styles from "./Filter.module.css";
 
 const FilterProfile = ({onChange}) => {
   return (
-    <div className={styles.select}>
+    <div className={`${styles.select} ${styles.selectProfile}`}>
       <select name="profile" id="profile" onChange={onChange}>
-        <option value="allProfile" disabled>Perfil</option>
-        <option value="Estudiante">Estudiante</option>
-        <option value="Becario">Becario</option>
-        <option value="Titulado">Titulado</option>
-        <option value="No definido">No definido</option>
+        <option value="allProfile">Perfil</option>
+        <option value={1}>Cursando</option>
+        <option value={2}>Trunco</option>
+        {/* <option value={3}>En proceso de Titulacion</option> */}
+        <option value={4}>Pasante</option>
+        <option value={5}>Titulado</option>
       </select>
     </div>
   )

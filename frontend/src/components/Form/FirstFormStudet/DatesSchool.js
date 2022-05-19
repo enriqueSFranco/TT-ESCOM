@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "hooks/useForm";
 import { generateYears } from "utils/generateYears";
 import { months } from "interface/months";
-import TextField from "@mui/material/TextField";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-import FormControl from "@mui/material/FormControl";
-import Autocomplete from "@mui/material/Autocomplete";
+import {
+  TextField,
+  InputLabel,
+  MenuItem,
+  Select,
+  FormControl,
+  Autocomplete,
+} from "@mui/material/";
 import styles from "./StylesStepper.module.css";
 import { uuid } from "utils/uuid";
 import { BiUser } from "react-icons/bi";

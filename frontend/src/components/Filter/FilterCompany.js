@@ -5,8 +5,6 @@ import styles from './Filter.module.css';
 const FilterCompany = ({ onChange }) => {
   const [business, setBusiness] = useState(null);
 
-  console.log(business)
-
   useEffect(() => {
     getAllBusiness()
       .then(response => {

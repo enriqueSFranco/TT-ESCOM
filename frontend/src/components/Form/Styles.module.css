@@ -1,10 +1,21 @@
-.bg {
+.bg, .bgCompany, .bgRecruiter {
   position: relative;
-  background-image: url(../../images/loginStudent.jpeg);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  backdrop-filter: calc(10px);
+  /* backdrop-filter: calc(10px); */
+}
+
+.bg {
+  background-image: url(../../images/loginStudent.jpeg);
+}
+
+.bgCompany {
+  background-image: url(../../images/bgCompany.jpg);
+}
+
+.bgRecruiter {
+  background-image: url(../../images/bgRecruiter2.jpg);
 }
 
 .bgCreateAccountCompany {
@@ -92,10 +103,10 @@
 
 .companyInfo { text-align: left; }
 
-.personalContact { height: 450px; }
+.personalContact { height: 500px;}
 
 .yohaveAccount {
-  background-color: red;
+  /* background-color: red; */
   position: relative;
   right: 0rem;
   display: flex;
@@ -109,13 +120,13 @@
   font-size: 2.5rem;
 }
 
-.welcome { margin-bottom: 1rem; }
+.welcome { margin: 1rem 0; }
 
 .welcome h2, .personalContact h2 {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1.5rem;
-  color: #222;
+  color: #0081c3;
   letter-spacing: 2px;
   padding: 0;
   position: relative;
@@ -136,12 +147,19 @@
   text-align: center;
 }
 
-.welcome a { color: #000; transition: color .3s ease-in; }
-.welcome a:hover { color: #90314b; }
+.welcome a { color: #000; transition: color .3s ease-in; font-family: 'Poppins', sans-serif; font-weight: 300; }
+.welcome a:hover { color: #016da3; }
 
 .wrapper {
   position: relative;
   top: 10rem;
+}
+
+.wrapperForm3 {
+  /* outline: 2px solid red; */
+  height: 590px;
+  padding-top: 1rem;
+  margin-left: 2rem;
 }
 
 .wrapperCreateAccountStudent {
@@ -161,13 +179,27 @@
   flex-direction: column;
 }
 
+.wrapperColumn {
+  /* background-color: red; */
+  padding-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.autocomplete {
+  position: relative;
+  right: 3.2rem;
+  margin-bottom: 1.5rem;
+}
+
 .login {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  backdrop-filter: blur(2px);
+  /* backdrop-filter: blur(2px); */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -273,24 +305,45 @@
 
 .wrapperButtons {
   /* outline: 1px solid red; */
+  width: 500px;
+  position: relative;
+  top: 1rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 1rem;
 }
 
 .btnBack, 
 .btnRegister, 
 .btnNext {
-  background-color: #90314b;
+  background-color: #0d5ed7;
   color: #fff;
   outline: none;
   border: none;
   padding: .5rem;
   width: 150px;
-  border-radius: 8px;
+  border-radius: 1rem;
   font-weight: bold;
+}
+
+.btnBack {
+  transition: background-color .3s ease-in;
+
+}
+
+.btnNext {
+  position: relative;
+  top: 1rem;
+  transition: background-color .3s ease-in;
+}
+
+.btnNext:hover,
+.btnBack:hover,
+.btnRegister:hover {
+  background-color: #039deb;
 }
 
 .btnRegister {
   width: 190px;
+  transition: background-color .3s ease-in;
 }
