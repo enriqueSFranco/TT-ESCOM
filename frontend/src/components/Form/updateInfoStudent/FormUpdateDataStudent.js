@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useForm } from "hooks/useForm";
 import AuthContext from "context/AuthContext";
 import { Toaster } from "react-hot-toast";
-import { updateStudent, getLinks } from "services/students/index";
+import { updateStudent, getLinks, postSocialNetwork } from "services/students/index";
 import { updateStudentInitialForm } from "../schemes";
 import TextField from "@mui/material/TextField";
 import Label from "../../Element/Label/Label";
@@ -27,7 +27,7 @@ const validateForm = (form) => {
 
 const FormUpdateDataStudent = ({ student }) => {
   const [links, setLinks] = useState(null);
-  const [socialNetwork, setSocialNetwork] = useState(null);
+  // const [socialNetwork, setSocialNetwork] = useState(null);
   const { token } = useContext(AuthContext);
   const { form, handleChange, handleChecked } = useForm(
     updateStudentInitialForm,
@@ -51,15 +51,9 @@ const FormUpdateDataStudent = ({ student }) => {
   }, []);
 
   //TODO: redireccion despues de haber actualizado los datos del alumno.
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    // const updatData = async () => {
-    //   const [] = await Promise.all([
-    //     updateStudent(id, studentCopy),
-    //     // actualizar links
-    //   ]);
-    // };
-    // updatData();
+    
     updateStudent(id, studentCopy)
       .then((response) => {
         console.log(response);
@@ -69,9 +63,19 @@ const FormUpdateDataStudent = ({ student }) => {
       });
   };
 
-  const handleClickAddLink = () => {
-
+  const handleClickAddLink = (e) => {
+    e.preventDefault();
+    postSocialNetwork({
+      t113_link: form.t113_link,
+      t100_id_student: id,
+      c115_id_plataform: parseInt(form.c115_id_plataform)
+    }).then(response => {
+      console.log(response.data);
+    })
+    .catch(error => console.log(error))
   };
+
+  console.log(links);
 
   return (
     <>
@@ -181,7 +185,7 @@ const FormUpdateDataStudent = ({ student }) => {
                     links?.map((link) => (
                       <option
                         key={link?.c115_description}
-                        value={link?.c115_description}
+                        value={link?.c115_id_plataform}
                       >
                         {link?.c115_description}
                       </option>

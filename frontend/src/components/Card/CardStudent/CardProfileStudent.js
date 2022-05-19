@@ -41,7 +41,7 @@ const CardProfileStudent = () => {
       })
   }, [token?.user?.user_id]);
 
-  console.log(student)
+  console.log(socialNetworks)
 
   return (
     <>
@@ -91,7 +91,11 @@ const CardProfileStudent = () => {
                         key={uuid()}
                         className={styles.link}
                       >
-                        {c115_id_plataform?.c115_description}
+                        <img 
+                          src={c115_id_plataform?.c115_icon} 
+                          alt={c115_id_plataform?.c115_icon}
+                          className={styles.iconSocialNetwork}
+                        />
                       </a>
                     );
                   })

@@ -66,7 +66,6 @@ const validateForm = (form) => {
 const FormCompany = () => {
   const { form, errors, handleChange, handleValidate, handleSubmitCompany } =
     useForm(companyInitialForm, validateForm);
-  const [idCompany, setIdCompany] = useState(0);
   const [step, setStep] = useState(1);
   const [isActive, setIsActive] = useState(false);
   const { data } = useFetch(API_COMPANY);

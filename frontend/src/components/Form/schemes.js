@@ -13,7 +13,6 @@ export const studentInitialForm = {
 };
 
 export const updateStudentInitialForm = {
-  // t100_id_student: null,
   t100_name: "",
   t100_last_name: "",
   t100_speciality: "",

@@ -307,6 +307,7 @@ const PageHistory = () => {
                         </div>
                       </nav>
                     </header>
+                    
                     <div className={styles.wrapperCard}>
                       <article className={`${styles.card}`}>
                         <header className={styles.cardHeader}>
@@ -347,7 +348,6 @@ const PageHistory = () => {
                             icon={<BsIcon.BsCalendarDate style={{color: "red", fontSize:"1rem"}} />}
                           />
                         </div>
-
                         {totalApplications === 0 ? (
                           <div className={styles.actions}>
                             <button>
@@ -371,13 +371,11 @@ const PageHistory = () => {
                           </div>
                         )}
                         {/* Descripcion de la vacante */}
-                        <div>
                           <div className={styles.summary}>
                             <p className={`${styles.lineClamp}`}>
                               {job[0]?.t200_description}
                             </p>
                           </div>
-                        </div>
                       </article>
                     </div>
                   </>
