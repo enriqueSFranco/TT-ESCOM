@@ -107,45 +107,13 @@ export const useForm = (initialForm, validateForm) => {
     // if (Object.keys(errors).length === 0) {
     //   setLoading(true);
     // }
-  }
-
-  const setJobData = (jobInfo) => {
-    
-    console.log("Hola we c:");
-    form.t200_job = jobInfo?.t200_job;
-    form.t200_description = jobInfo?.t200_description;
-    form.t200_benefits = jobInfo?.t200_benefits;
-    form.t200_check_time = jobInfo?.t200_check_time;
-    form.t200_closing_hour = jobInfo?.t200_closing_hour;
-    form.t200_work_days = jobInfo?.t200_work_days;
-    form.c207_id_experience = jobInfo?.c207_id_experience?.c207_id_experience;
-    form.t200_min_salary = jobInfo?.t200_min_salary;
-    form.t200_max_salary = jobInfo?.t200_max_salary;
-    form.t200_gross_salary = jobInfo?.t200_gross_salary;
-    form.t200_salary_negotiable = jobInfo?.t200_salary_negotiable;
-    form.c214_id_modality = jobInfo?.c214_id_modality?.c214_id_modality;
-    form.c206_id_profile = jobInfo?.c206_id_profile?.c206_id_profile;
-    form.c204_id_vacant_status = jobInfo?.c204_id_vacant_status?.c204_id_vacant_status;
-    form.c208_id_contract = jobInfo?.c208_id_contract?.c208_id_contract;
-    form.t200_publish_date = jobInfo?.t200_publish_date;
-    form.t200_close_date = jobInfo?.t200_close_date;
-    form.t200_state = jobInfo?.t200_state;
-    form.t200_municipality = jobInfo?.t200_municipality;
-    form.t200_locality = jobInfo?.t200_locality;
-    form.t200_street = jobInfo?.t200_street;
-    form.t200_cp = jobInfo?.t200_cp;
-    form.t200_interior_number = jobInfo?.t200_interior_number;
-    form.t200_exterior_number = jobInfo?.t200_exterior_number;
-    form.t200_vacancy = jobInfo?.t200_vacancy;
-    console.log("Listo");
-  }
+  } 
 
   return {
     form,
     errors,
     loading,
     response,
-    setJobData,
     handleChange,
     handleChecked,
     handleSubmitStudent,

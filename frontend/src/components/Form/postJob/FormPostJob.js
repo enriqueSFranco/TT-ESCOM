@@ -5,7 +5,7 @@ import FormPostJobLocation from "./FormPostJobLocation";
 import FormPostJobDetails from "./FormPostJobDetails";
 import styles from "./FormPostJob.module.css";
 import AuthContext from "context/AuthContext";
-
+import { useFetch } from "hooks/useFetch";
 
 const validateForm = (form) => {
   let errors = {};
@@ -29,6 +29,8 @@ const validateForm = (form) => {
 const FormPostJob = ({idCompany}) => {
   const [step, setStep] = useState(1);
   const { token } = useContext(AuthContext);
+  const { data } = useFetch("/api/catalogues/CatalogueSkills/");
+  const [ vacantSkills, setVacantSkills ] = useState([]);
   const { 
     form, 
     errors, 
@@ -67,6 +69,9 @@ const FormPostJob = ({idCompany}) => {
         handleChange={handleChange}
         onSubmit={onSubmitPostJob}
         prevStep={prevStep}
+        skills = {data}
+        vacantSkills = {vacantSkills} 
+        setVacantSkills = {setVacantSkills}
       />
     );
   }
