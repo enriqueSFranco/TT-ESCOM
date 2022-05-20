@@ -75,8 +75,7 @@ useEffect(() => {
         .catch((error) => console.error(error));
     }
   };
-
-  console.log(cp);
+  
 
   return (
     <div className={styles.form}>

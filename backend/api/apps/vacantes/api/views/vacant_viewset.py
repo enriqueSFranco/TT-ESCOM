@@ -8,6 +8,7 @@ from django.db.models import Count
 
 from apps.vacantes.pagination import CustomPagination
 from apps.vacantes.models import Vacant,Application,Requirement,LenguageRequired
+from apps.companies.models import Company
 from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,VacantListSerializer,UpdateVacantSerializer,VacantInfoListSerializer,VacantRequirementSerializer,VacantRequirementListSerializer,VacantLenguageSerializer,VacantLenguageListSerializer
 
 class VacantViewSet(viewsets.GenericViewSet):
@@ -306,41 +307,41 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 	list_serializer_class = VacantListSerializer
 	queryset = None
 	filters ={
+		'job' : '',
 		'company_name' : '',
 		'id_profile' : '',
 		'id_modality' : '',
 	}
+	def get_company(self,company_name):
+		company_data = Company.objects.filter(t300_name=company_name)
+		return company_data[0].t300_id_company
 
 	def get_object(self):	
-		query ="""SELECT t200_vacante.* FROM t200_vacante\n"""
-		join = ""
-		clauses = "\nWHERE t200_vacante.c204_id_vacant_status_id = 1"
 		self.queryset = self.model.objects.filter(c204_id_vacant_status_id = 1)
+		if (self.filters['job']):
+			self.queryset = self.queryset.filter(t200_job__icontains= self.filters['job'])
 		if (self.filters['company_name']):
-			print("FIltrar empresa")
-			#join = "JOIN t300_empresa ON t200_vacante.t300_id_company_id = t300_empresa.t300_id_company "
-			#clauses = clauses + "\nAND t300_empresa.t300_name = '"+self.filters['company_name']+"'"
+			company_id = self.get_company(self.filters['company_name'])
+			self.queryset = self.queryset.filter(t300_id_company = company_id)
 		if (self.filters['id_profile']):
-			clauses = clauses +"\nAND t200_vacante.c206_id_profile_id = "+self.filters['id_profile'] + " "
+			self.queryset = self.queryset.filter(c206_id_profile = self.filters['id_profile'])
 		if (self.filters['id_modality']):
-			clauses = clauses +"\nAND t200_vacante.c214_id_modality_id = "+self.filters['id_modality'] + " "
-		self.queryset =	self.model.objects.raw(query + join + clauses)
-		print(query + join + clauses)
+			self.queryset = self.queryset.filter(c214_id_modality = self.filters['id_modality'])
+		self.queryset =	self.queryset.all()
 		return self.queryset
 
 	def get_queryset(self):	
-		query ="""SELECT t200_vacante.* FROM t200_vacante\n"""
-		join = ""
-		clauses = "\nWHERE t200_vacante.c204_id_vacant_status_id = 1"
+		self.queryset = self.model.objects.filter(c204_id_vacant_status_id = 1)
+		if (self.filters['job']):
+			self.queryset = self.queryset.filter(t200_job__icontains= self.filters['job'])
 		if (self.filters['company_name']):
-			join = "JOIN t300_empresa ON t200_vacante.t300_id_company_id = t300_empresa.t300_id_company "
-			clauses = clauses + "\nAND t300_empresa.t300_name = '"+self.filters['company_name']+"'"
+			company_id = self.get_company(self.filters['company_name'])
+			self.queryset = self.queryset.filter(t300_id_company = company_id)
 		if (self.filters['id_profile']):
-			clauses = clauses +"\nAND t200_vacante.c206_id_profile_id = "+self.filters['id_profile'] + " "
+			self.queryset = self.queryset.filter(c206_id_profile = self.filters['id_profile'])
 		if (self.filters['id_modality']):
-			clauses = clauses +"\nAND t200_vacante.c214_id_modality_id = "+self.filters['id_modality'] + " "
-		self.queryset =	self.model.objects.raw(query + join + clauses)
-		print(query + join + clauses)
+			self.queryset = self.queryset.filter(c214_id_modality = self.filters['id_modality'])
+		self.queryset =	self.queryset.all()
 		return self.queryset
 
 	def list(self, request):
@@ -355,6 +356,7 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 
 	def create(self, request):
 		print('request: ',request.data)
+		self.filters['job'] = request.data['job']
 		self.filters['company_name'] = request.data['company_name']
 		self.filters['id_profile'] = request.data['c206_id_profile']
 		self.filters['id_modality']  = request.data['id_modality']
