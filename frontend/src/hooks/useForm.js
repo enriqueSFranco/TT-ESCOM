@@ -76,13 +76,22 @@ export const useForm = (initialForm, validateForm) => {
 
   const handleSubmitCompanyRecruiter = e => {
     e.preventDefault();
-    createBusinessRecruiter(form)
-    .then(response => {
-      console.log(response)
-    })
-    .catch(error => {
-      console.log(error)
-    })
+    if (Object.keys(errors).length === 0) {
+      setLoading(true);
+      createBusinessRecruiter(form)
+      .then(response => {
+        if (response.status === 201) {
+          toast.success("Pre-Registro enviado con exito.");
+          setTimeout(() => {
+            navigate("/pre-registro")
+          }, 3000);
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
+      .finally(() => setLoading(false));
+    }
   }
 
   const onSubmitPostJob = (e) => {
@@ -104,7 +113,6 @@ export const useForm = (initialForm, validateForm) => {
   const onSubmitPostCertification = (e) => {
     e.preventDefault();
     // setErrors(validateForm(form));
-
     postCertification(form)
       .then(response => {
         if (response.status === 201) {

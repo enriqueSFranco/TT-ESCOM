@@ -122,6 +122,10 @@
   font-family: 'Poppins', sans-serif;
 }
 
+.form {
+  position: relative;
+}
+
 .headerRight {
   position: relative;
   top: -7rem;
@@ -135,12 +139,22 @@
 .inputSearch {
   width: 400px;
   height: 100%;
-  /* margin-left: 1rem; */
   outline: 1px solid #cfcfcf;
   border: none;
   padding: .7rem;
-  border-radius: 30px;
+  border-radius: 1rem;
   position: absolute;
+}
+
+.inputSearchFocus {
+  position: absolute;
+  width: 400px;
+  height: 100%;
+  outline: 1px solid #cfcfcf;
+  border: none;
+  padding: .7rem;
+  border-radius: 1rem 1rem 0 0;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
 .inputSearch:focus {
@@ -248,7 +262,7 @@
 }
 
 .wrapperCard {
-  outline: 2px solid red;
+  /* outline: 2px solid red; */
   position: relative;
   top: -4rem;
 }
@@ -399,4 +413,40 @@
   color: #fff;
   z-index: 500;
   display: none;
+}
+
+
+/* estilos para la informacion de vacantes filtrada */
+.displayDataFiltered {
+  display: block;
+  position: absolute;
+  width: 400px;
+  left: 0;
+  outline: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 0 0 1rem 1rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  z-index: 99;
+}
+
+.displayNone {
+  display: none;
+}
+
+.listData {
+  padding: 0;
+  margin: 0;
+}
+
+.listItem {
+  /* position: relative;
+  width: 100%; */
+  padding: .5rem;
+  font-size: .9rem;
+  cursor: pointer;
+  transition: background-color .3s ease-in;
+}
+
+.listItem:hover {
+  background-color: #dadada8e;
 }

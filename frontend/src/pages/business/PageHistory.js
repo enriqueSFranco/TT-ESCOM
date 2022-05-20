@@ -12,7 +12,10 @@ import {
   getApplicationsJobs,
   getVacantInfo,
 } from "services/jobs/index";
-import { getJobsForRecruiter, getRecruiterInfo } from "services/recruiter/index";
+import {
+  getJobsForRecruiter,
+  getRecruiterInfo,
+} from "services/recruiter/index";
 import ApplicationJob from "components/Card/ApplicationJob/ApplicationJob";
 import ModalForm from "components/Modal/ModalVacants";
 import FormPostJob from "components/Form/postJob/FormPostJob";
@@ -26,15 +29,13 @@ import Application from "images/application.png";
 import Review from "images/review.png";
 import Steps from "images/steps.png";
 import Reject from "images/reject.png";
-
+import { deleteJob } from "services/jobs/index";
 import applicationsIcon from "images/applications.png";
 import styles from "./PageHistory.module.css";
 import burrito from "images/emoji_angustiado.jpg";
 import * as GiIcon from "react-icons/gi";
 import * as BsIcon from "react-icons/bs";
 import * as MdIcon from "react-icons/md";
-import { FaHandshake } from "react-icons/fa";
-import { deleteJob } from "services/jobs/index";
 
 const vacantApplicationsData = {
   applications: 0,
@@ -50,6 +51,8 @@ const PageHistory = () => {
   const [totalApplications, setTotalApplications] = useState([]);
   const [initialContent, setInitialContent] = useState(true);
   const [listJobs, setListJobs] = useState(null);
+  const [filterData, setFilterData] = useState(null);
+  const [search, setSearch] = useState("");
   const [modalType, setModalType] = useState(null);
   const [isDeletedJob, setIsDeletedJob] = useState({});
   const [job, setJob] = useState(null);
@@ -57,7 +60,7 @@ const PageHistory = () => {
   const [isOpenModalForm, openModalForm, closeModalForm] = useModal();
   let id = token?.user?.user_id;
 
-  // efecto para obtener la liste de vacantes de un reclutador
+  // efecto para obtener la lista de vacantes de un reclutador
   useEffect(() => {
     getJobsForRecruiter(id)
       .then((response) => {
@@ -140,17 +143,13 @@ const PageHistory = () => {
     getRecruiterInfo(token?.user?.user_id)
       .then((response) => {
         setRecruiter(response);
-        console.log(response)        
+        // console.log(response)
         //form.t300_id_company  = recruiter[0]?.t300_id_company?.t300_id_company;
       })
       .catch((error) => console.error(error));
-  }, []);
+  }, [token?.user?.user_id]);
 
-  console.log(recruiter);
-
-  const handleInitialContent = () => {
-    setInitialContent(false);
-  };
+  const handleInitialContent = () => setInitialContent(false);
 
   const setModal1 = () => {
     setModalType(1);
@@ -167,9 +166,30 @@ const PageHistory = () => {
     openModalForm();
   };
 
+  const handleBlur = e => {
+    e.target.classList.remove(styles.inputSearchFocus);
+    e.target.classList.add(styles.inputSearch);
+    setTimeout(() => {
+      setFilterData(null);
+    }, 200);
+  }
+
+  const handleSearchVacant = (e) => {
+    const { value } = e.target;
+    setSearch(value);
+    if (value !== "") {
+      // si hay algo en la caja de texto
+      const newData = listJobs?.filter((job) => {
+        const regex = new RegExp(`^${value}`, "gi");
+        return job?.t200_job.match(regex);
+      });
+      setFilterData(newData);
+    }
+  };
+
   const handleDeleteJob = async () => {
     const response = await deleteJob(job[0]?.t200_id_vacant);
-    console.log(response);
+
     if (response.status === 200)
       setIsDeletedJob({ succes: response.status, message: response.message });
     else
@@ -182,16 +202,32 @@ const PageHistory = () => {
         {/* seccion izquierda */}
         <aside className={styles.sidebar}>
           <header className={styles.header}>
-            <form>
+            <form className={styles.form}>
               <div className={styles.boxSearch}>
                 <BiSearch />
                 <input
-                  type="search"
-                  name=""
-                  id=""
+                  type="text"
+                  name="search"
+                  id="search"
+                  autoComplete="off"
+                  value={search}
+                  onChange={handleSearchVacant}
+                  // onFocus={handleFocus}
+                  onBlur={handleBlur}
                   placeholder="Buscar vacante"
-                  className={styles.inputSearch}
+                  className={`${search !== "" ? `${styles.inputSearchFocus}` : `${styles.inputSearch}`}`}
                 />
+              </div>
+              <div
+                className={`${
+                  search !== "" ? `${styles.displayDataFiltered}` : `${styles.displayNone}`
+                }`}
+              >
+                <ul className={styles.listData}>
+                  {filterData?.map((item) => (
+                    <li className={styles.listItem} key={item?.t200_id_vacant}>{item?.t200_job}</li>
+                  ))}
+                </ul>
               </div>
             </form>
             <button
@@ -326,7 +362,7 @@ const PageHistory = () => {
                         </div>
                       </nav>
                     </header>
-                    
+
                     <div className={styles.wrapperCard}>
                       <article className={`${styles.card}`}>
                         <header className={styles.cardHeader}>
@@ -352,26 +388,40 @@ const PageHistory = () => {
                                         : "No negociable"
                                     }`}
                             // size="small"
-                            icon={<GiIcon.GiMoneyStack style={{color: "green", fontSize:"1rem"}} />}
+                            icon={
+                              <GiIcon.GiMoneyStack
+                                style={{ color: "green", fontSize: "1rem" }}
+                              />
+                            }
                           />
 
                           <Chip
                             label={`Modalidad: ${job[0]?.c214_id_modality?.c214_description} `}
                             // size="small"
-                            icon={<MdIcon.MdBusinessCenter style={{color: "#78909c", fontSize:"1rem"}} />}
+                            icon={
+                              <MdIcon.MdBusinessCenter
+                                style={{ color: "#78909c", fontSize: "1rem" }}
+                              />
+                            }
                           />
 
                           <Chip
                             label={`Fecha de cierre programada: ${job[0]?.t200_close_date}`}
                             // size="small"
-                            icon={<BsIcon.BsCalendarDate style={{color: "red", fontSize:"1rem"}} />}
+                            icon={
+                              <BsIcon.BsCalendarDate
+                                style={{ color: "red", fontSize: "1rem" }}
+                              />
+                            }
                           />
                         </div>
                         {totalApplications === 0 ? (
                           <div className={styles.actions}>
                             <button>
-                              <MdEdit className={styles.editAction} 
-                                      onClick={setModal3}/>
+                              <MdEdit
+                                className={styles.editAction}
+                                onClick={setModal3}
+                              />
                             </button>
                             <button className={`${styles.btnTrash}`}>
                               <GoTrashcan
@@ -391,11 +441,11 @@ const PageHistory = () => {
                           </div>
                         )}
                         {/* Descripcion de la vacante */}
-                          <div className={styles.summary}>
-                            <p className={`${styles.lineClamp}`}>
-                              {job[0]?.t200_description}
-                            </p>
-                          </div>
+                        <div className={styles.summary}>
+                          <p className={`${styles.lineClamp}`}>
+                            {job[0]?.t200_description}
+                          </p>
+                        </div>
                       </article>
                     </div>
                   </>
@@ -419,19 +469,28 @@ const PageHistory = () => {
             )}
           </div>
         </article>
-      </section>      
-      { modalType == 1 &&  
-          <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
-            <FormPostJob idCompany = {recruiter[0]?.t300_id_company?.t300_id_company}/>
-          </ModalForm>}
-      { modalType == 2 &&  
+      </section>
+      {modalType == 1 && (
         <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
-          <ConfirmDelete deleteJob={handleDeleteJob} isDeletedJob={isDeletedJob} job={job[0]?.t200_job}/>
-        </ModalForm>}
-        { modalType == 3 &&  
-          <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
-            <FormUpdateJob job ={job}/>
-          </ModalForm>}        
+          <FormPostJob
+            idCompany={recruiter[0]?.t300_id_company?.t300_id_company}
+          />
+        </ModalForm>
+      )}
+      {modalType == 2 && (
+        <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
+          <ConfirmDelete
+            deleteJob={handleDeleteJob}
+            isDeletedJob={isDeletedJob}
+            job={job[0]?.t200_job}
+          />
+        </ModalForm>
+      )}
+      {modalType == 3 && (
+        <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
+          <FormUpdateJob job={job} />
+        </ModalForm>
+      )}
     </>
   );
 };

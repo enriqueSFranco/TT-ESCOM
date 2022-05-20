@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "context/AuthContext";
 import { useModal } from "hooks/useModal";
-import { getSocialNetwork, getStudent } from "services/students/index";
+import { getSocialNetwork, getStudent, getAcademicHistorial } from "services/students/index";
 import { getSkill } from "services/catalogs";
 import { uuid } from "utils/uuid";
 import FormUpdateDataStudent from "components/Form/updateInfoStudent/FormUpdateDataStudent";
@@ -17,6 +17,7 @@ const CardProfileStudent = () => {
   const [student, setStudent] = useState([]);
   const [isOpenModalFormUpdateInfoStudent, openModalFormUpdateInfoStudent, closeModalFormUpdateInfoStudent] = useModal();
   const [skills, setSkills] = useState([]);
+  const [academicHistorial, setAcademicHistorial] = useState(null);
   const [socialNetworks, setSocialNetworks] = useState([]);
   const { token } = useContext(AuthContext);
 
@@ -25,6 +26,15 @@ const CardProfileStudent = () => {
       .then(response => {
         setStudent(response);
       })
+  }, [token?.user?.user_id]);
+
+  useEffect(() => {
+    getAcademicHistorial(token?.user?.user_id)
+      .then(response => {
+        // console.log(response.data);
+        setAcademicHistorial(response.data);
+      })
+      .catch(error => error);
   }, [token?.user?.user_id]);
 
   useEffect(() => {
@@ -41,7 +51,7 @@ const CardProfileStudent = () => {
       })
   }, [token?.user?.user_id]);
 
-  console.log(socialNetworks)
+  console.log(academicHistorial)
 
   return (
     <>
@@ -53,13 +63,12 @@ const CardProfileStudent = () => {
                   className={styles.config}
                   onClick={openModalFormUpdateInfoStudent}
                 />
-                {/* <img src="https://placeimg.com/640/480/any" alt="user" /> */}
                 <CustomAvatar student={student} width="80px" height="80px" fontSize="2rem" />
                 <div className={styles.nameHolder}>
                   <h3>
                     {student[0]?.t100_name} {student[0]?.t100_last_name}
                   </h3>
-                  <h4>{student[0]?.t100_speciality ?? "No especificado"}</h4>
+                  <h4>{academicHistorial && academicHistorial[0]?.t104_carreer}</h4>
                 </div>
               </div>
             </header>

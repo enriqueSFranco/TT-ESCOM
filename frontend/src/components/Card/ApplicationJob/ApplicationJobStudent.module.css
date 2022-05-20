@@ -5,6 +5,7 @@
 
 .paragraph {
   margin: .4rem 0 0 0;
+  /* font-weight: bold; */
 }
 
 .tags {
@@ -28,7 +29,6 @@
   margin-bottom: .5rem;
 }
 
-
 .state {
   font-weight: 400;
   text-align: right;
@@ -36,8 +36,4 @@
   position: relative;
   top: 1rem;
   right: 1rem;
-}
-
-.green {
-  color: #008000;
 }

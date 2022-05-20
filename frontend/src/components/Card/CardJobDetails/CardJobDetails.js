@@ -63,6 +63,8 @@ const CardJobDetails = () => {
 
   if (!job) return null;
 
+  // console.log(job)
+
   return (
     <>
       {loading ? (
@@ -104,14 +106,13 @@ const CardJobDetails = () => {
                   <li className={styles.flex}>
                     <Chip
                       label={
-                        job[0]?.t200_home_ofice
-                          ? `Remoto`
-                          : "Presencial" ?? "No especificado"
+                        job[0]?.c214_id_modality?.c214_description
+                        
                       }
                       icon={
-                        job[0]?.t200_home_ofice ? (
+                        job[0]?.c214_id_modality?.c214_description === "Remoto" ? (
                           <IoIcon.IoMdHome style={{ fontSize: "1rem", color: "#028dd4" }} />
-                        ) : (
+                          ) : (
                           <MdBusinessCenter style={{ fontSize: "1rem", color: "#78909c" }} />
                         )
                       }

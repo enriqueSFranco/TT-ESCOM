@@ -25,26 +25,27 @@ const validateForm = (form) => {
 
   if (!form.t301_name.trim())
     errors.t301_name = "El campo 'Nombre' es requerido";
-  else if (regex.t301_name.test(form.t301_name))
-    errors.t301_name = "Elmm campo 'Nombre' es incorrecto";
+  else if (!regex.t301_name.test(form.t301_name))
+    errors.t301_name = "El campo 'Nombre' es incorrecto";
 
   if (!form.t301_email.trim())
     errors.t301_email = "El campo 'Correo electronico' es requerido";
-  else if (regex.t301_email.test(form.t301_email))
+  else if (!regex.t301_email.test(form.t301_email))
     errors.t301_email = "El campo 'Correo electronico' es incorrecto";
 
   if (!form.t301_last_name.trim())
     errors.t301_last_name = "El campo 'Apellidos' es requerido";
-  else if (regex.t301_last_name.test(form.t301_last_name))
-    errors.t301_last_name = "Elmm campo 'Apellidos' es incorrecto";
+  else if (!regex.t301_last_name.test(form.t301_last_name))
+    errors.t301_last_name = "El campo 'Apellidos' es incorrecto";
 
-  if (!form.t301_phonenumber.trim())
-    errors.t301_phonenumber = "El campo 'Telefono' es requerido";
-  else if (regex.t301_phonenumber.test(form.t301_phonenumber))
-    errors.t301_phonenumber = "Elmm campo 'Telefono' es incorrecto";
+  // if (!form.t301_phonenumber.trim())
+  //   errors.t301_phonenumber = "El campo 'Telefono' es requerido";
+  // else if (!regex.t301_phonenumber.test(form.t301_phonenumber))
+  //   errors.t301_phonenumber = "El campo 'Telefono' es incorrecto";
 
   return errors;
 };
+
 
 const FormBusinessRecruiter = ({ isActive, setIsActive }) => {
   const {
@@ -55,6 +56,9 @@ const FormBusinessRecruiter = ({ isActive, setIsActive }) => {
     handleSubmitCompanyRecruiter,
   } = useForm(initialForm, validateForm);
   const { data } = useFetch(API_COMPANY);
+
+  console.log(form)
+
 
   return (
     <>

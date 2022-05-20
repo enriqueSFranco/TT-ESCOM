@@ -1,12 +1,17 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import ThemeContext from "context/ThemeContext";
 import AuthContext from "context/AuthContext";
 import DropMenu from "./DropMenu";
 import { BsFillBellFill } from "react-icons/bs";
 import styles from "./Header.module.css";
 
 const Header = () => {
+  const { theme } = useContext(ThemeContext);
   const { token } = useContext(AuthContext);
+
+  console.log(theme)
+
 
   return (
     <>
@@ -15,7 +20,7 @@ const Header = () => {
           {token?.user?.user_type === "RECRUITER" ? (
             <>
               <Link to="/" className={styles.navLogo}>
-                BT<span>ESCOM</span>
+                BT<span className={styles.escom}>ESCOM</span>
               </Link>
               <ul className={styles.navList}>
                 <li className={styles.menuItemStudent}>

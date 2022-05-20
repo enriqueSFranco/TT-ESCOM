@@ -229,7 +229,7 @@ export const addProject = (payload = {}) => {
  * @returns {Promise}
  **/
 export const getAcademicHistorial = (id) => {
-  return axios.get(API_ACADEMIC_HISTORIAL)
+  return axios.get(`${API_ACADEMIC_HISTORIAL}${id}/`)
     .then(response => response)
     .catch(error => error);
 }

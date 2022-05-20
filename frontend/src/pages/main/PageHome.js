@@ -34,7 +34,6 @@ const Home = () => {
   }, [page]);
 
   const filteredData = (value) => {
-
     if (value !== "") {
       const filteredData = jobs?.result.filter((el) => {
         let regex = new RegExp(`${value}`, "gi");
@@ -52,26 +51,23 @@ const Home = () => {
     setIsFiltered(value !== "" ? true : false);
   };
 
-  const handleFilterHomeOffice = (e) => {
+  const handleFilterHomeOffice = useMemo(() => (e) => {
     const { value } = e.target;
     if (value === "") {
       setIsFiltered(false);
       setData(jobs?.result);
     } else if (value !== "") {
       setIsFiltered(true);
-      getVacantsFilter(
-        {
-          company_name: "",
-          c206_id_profile: "",
-          id_modality: value,
-        }
-      ).then(response => {
+      getVacantsFilter({
+        company_name: "",
+        c206_id_profile: "",
+        id_modality: value,
+      }).then((response) => {
         const { data } = response;
         setData(data?.result);
-        // setTotalJobs(data?.result.length);
-      })
+      });
     }
-  };
+  }, [jobs?.result]);
 
   /**
    * Filtra los empleos por empresa
@@ -90,14 +86,16 @@ const Home = () => {
         company_name: value,
         c206_id_profile: "",
         id_modality: "",
-      }).then(response => {
-        if (response.status === 200) {
-          const { data } = response;
-          setData(data?.result);
-          // setTotalJobs(data?.result.length);
-        }
       })
-      .catch(error => console.log(error));
+        .then((response) => {
+          if (response.status === 200) {
+            const { data } = response;
+            console.log(data?.result);
+            setData(data?.result);
+            // setTotalJobs(data?.result.length);
+          }
+        })
+        .catch((error) => console.log(error));
     }
   };
 
@@ -113,11 +111,11 @@ const Home = () => {
         company_name: "",
         c206_id_profile: "",
         id_modality: value,
-      }).then(response => {
+      }).then((response) => {
         const { data } = response;
         setData(data?.result);
         // setTotalJobs(data?.result.length);
-      })
+      });
     }
   };
 
@@ -131,8 +129,7 @@ const Home = () => {
         <span className={homeStyles.textFilter}>Filtros</span>
         <FilterProfile onChange={handleFilterProfile} />
         <FilterCompany onChange={handleFilterBusiness} />
-        <FilterHomeOffice onChange={handleFilterHomeOffice}
-        />
+        <FilterHomeOffice onChange={handleFilterHomeOffice} />
       </div>
 
       <section className={homeStyles.wrapperJobList}>

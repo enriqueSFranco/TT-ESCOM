@@ -134,6 +134,10 @@
   letter-spacing: 1px;
 }
 
+tr:nth-child(even) {
+  background-color: #90caf92c;
+}
+
 .th:nth-child(1) {
   width: 50px;
   cursor: pointer;
