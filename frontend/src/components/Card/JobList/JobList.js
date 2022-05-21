@@ -1,3 +1,4 @@
+import { useCallback, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import Skeleton from "../../Skeleton/Skeleton";
 import CardJob from "../CardJob/CardJob";
@@ -5,18 +6,28 @@ import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
 import burrito from "images/emoji_angustiado.jpg"
 import styles from "./JobList.module.css";
 
-const JobList = ({search, jobs, loading, page, setPage, maxLenPage}) => {
+const JobList = ({jobs, loading, page, setPage, maxLenPage}) => {
 
-  const prevPage = () => {
-    console.log("prev:", page)
-    setPage((currentPage) => Math.max(currentPage - 1, 1))
-  };
+  const prevPage = useCallback(() => {
+    setPage(prevState => {
 
-  const nextPage = () => {
-    console.log("next: ",page)
-    setPage((currentPage) => Math.min(currentPage + 1, maxLenPage))
-  };
+      if ((prevState - 1) > 0) {
+        return prevState - 1;
+      }
+      return prevState;
+    })
+  }, [setPage]);
 
+  const  nextPage = useCallback(() => {
+    // console.log("next: ",page)
+    setPage((prevState) => {
+      if (prevState < maxLenPage) {
+        return prevState + 1;
+      }
+      return prevState;
+    });
+  },[setPage, maxLenPage]);
+  console.log(page)
   return (
     <>
     {jobs?.length > 0 ? (
@@ -38,8 +49,8 @@ const JobList = ({search, jobs, loading, page, setPage, maxLenPage}) => {
           <Outlet />
         </article>
         <div className={styles.pagination}>
-          <button onClick={prevPage}><GrFormPreviousLink className={styles.icon} />Anterior</button>
-          <button onClick={nextPage}>Siguiente <GrFormNextLink className={styles.icon} /></button>
+          <button disabled={page <= 1} onClick={prevPage}><GrFormPreviousLink className={styles.icon} />Anterior</button>
+          <button disabled={page === maxLenPage} onClick={nextPage}>Siguiente <GrFormNextLink className={styles.icon} /></button>
         </div>
       </>
     ) : (
