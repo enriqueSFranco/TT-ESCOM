@@ -46,12 +46,14 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
     vacantSkills.push(skillData);
 
     skillData = {
+      id_vacant:0,
       skill:null,
       experience: null,
       necesary:false
     }
   
     setNewSkill(skillData);
+    form.requirements = vacantSkills;
   };
 
   console.log(newSkill);
