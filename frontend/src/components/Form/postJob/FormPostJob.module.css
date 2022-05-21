@@ -321,3 +321,8 @@
   margin-bottom: .4rem;
   /* font-size: 1.2rem; */
 }
+
+.listItemsSkill{
+  display: flex;
+  width: 700PX;
+}

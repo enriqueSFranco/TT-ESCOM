@@ -14,23 +14,22 @@ import Checkbox from "@mui/material/Checkbox";
 import Chip from "@mui/material/Chip";
 
 
-let skillData = {
-  skill:null,
-  experience: null,
-  necesary:false
-}
-
 const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, vacantSkills, setVacantSkills }) => {
   const [visible, setVisible] = useState(false);
-  const [newSkill, setNewSkill] = useState(skillData);
+  const [newSkill, setNewSkill] = useState([]);
   const [experience, setExperience] = useState([]);  
   let now = new Date();  
+  let skillData = {
+    skill:null,
+    experience: null,
+    necesary:false
+  }
 
   const handleChecked = (e) => {
     setVisible(e.target.checked);
   };
   const setIndispensable = (e) => {
-    newSkill.necesary = e.target.checked;
+    skillData.necesary = e.target.checked;
   };
 
   useEffect(() => {
@@ -43,8 +42,15 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
 
   const setSkill = (e) => {
     console.log("Agregando skill...");
-    console.log(newSkill);
-    vacantSkills.push(newSkill);
+    console.log(skillData);
+    vacantSkills.push(skillData);
+
+    skillData = {
+      skill:null,
+      experience: null,
+      necesary:false
+    }
+  
     setNewSkill(skillData);
   };
 
@@ -82,9 +88,9 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
                 freeSolo
                 onChange={(event,newValue)=>{
                   console.log(newValue);  
-                  newSkill.skill = newValue;
+                  skillData.skill = newValue;
                 }}        
-                value = {newSkill.skill ? newSkill.skill : null}      
+                value = {skillData.skill ? skillData.skill : null}      
                 getOptionLabel = {(option) => option.c116_description}
                 options={skills}
                 renderInput={(params) => (
@@ -99,7 +105,7 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
                   defaultValue=""
                   onChange={(event,newValue)=>{
                     console.log(newValue.props.value);  
-                    newSkill.experience = newValue.props.value;
+                    skillData.experience = newValue.props.value;
                   }}      
                   label="Experiencia"generica
                 >
@@ -129,12 +135,12 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
             <p className={styles.titleSkills}>Skills</p>
             <ul className={styles.listItemsSkill}>
               {vacantSkills &&
-                vacantSkills?.map((skill) => (
+                vacantSkills.map((skill) => (
                   <li key={uuid()}>
                     <Chip
                       size="small"
-                      label={skill?.skill?.c116_description}
-                    />
+                      label={skill?.skill?.c116_description}                      
+                    />                    
                   </li>
                 ))}
             </ul>
