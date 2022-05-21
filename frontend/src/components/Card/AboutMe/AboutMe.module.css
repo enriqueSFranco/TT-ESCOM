@@ -43,7 +43,7 @@
   margin-top: .2rem;
 }
 
-.salary, .employmentModality { font-weight: bold; }
+.salary, .employmentModality { font-weight: 400; }
 
 .title {
   color: #fff;
@@ -72,20 +72,22 @@
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   height: 240px;
   width: 100%;
-  background-image: url(../../../images/wave-haikei.png);
-  background-position: center;
+  background-color: #232436;
+  font-weight: 400;
+  /* background-image: url(../../../images/wave-haikei.png); */
+  /* background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 }
 
-.wrapper::before {
+/* .wrapper::before {
   content: '';
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-}
+} */
 
 .wrapperTextEdit {
   /* outline: 2px solid red; */

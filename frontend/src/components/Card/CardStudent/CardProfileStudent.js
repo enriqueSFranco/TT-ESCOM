@@ -8,7 +8,8 @@ import FormUpdateDataStudent from "components/Form/updateInfoStudent/FormUpdateD
 import ModalForm from "components/Modal/ModalForm";
 import Chip from "@mui/material/Chip"
 import CustomAvatar from "../../Avatar/Avatar";
-import * as MdIcon from "react-icons/md";
+import {MdSchool, MdLocationPin, MdOutlineAirplanemodeActive } from "react-icons/md";
+import { FaSchool } from "react-icons/fa";
 import * as IoIcon from "react-icons/io";
 import styles from "./CardProfileStudent.module.css";
 
@@ -68,24 +69,32 @@ const CardProfileStudent = () => {
                   <h3>
                     {student[0]?.t100_name} {student[0]?.t100_last_name}
                   </h3>
-                  <h4>{academicHistorial && academicHistorial[0]?.t104_carreer}</h4>
+                  <p style={{marginBottom:0}}>{academicHistorial && academicHistorial[0]?.t104_carreer}</p>
                 </div>
               </div>
             </header>
             <div className={styles.userDetails}>
               <div className={styles.separator}>
-                <h4 className={styles.label}>Ubicacion</h4>
+                <h4 className={styles.label}>Informacion Personal</h4>
                 <div className={styles.flex}>
-                  <MdIcon.MdLocationPin className={styles.icon} />
-                  <p>{student[0]?.t100_residence ?? "No especificado."}</p>
+                  <MdLocationPin style={{color: "#ee4b4a", fontWeight: "bold", fontSize: "1.3rem"}} />
+                  <p style={{fontWeight: "600"}}>{student[0]?.t100_residence ?? "No especificado."}</p>
                 </div>
                 <div className={styles.flex}>
-                  <MdIcon.MdOutlineAirplanemodeActive className={styles.icon} />
-                  <p>
+                  <MdOutlineAirplanemodeActive style={{color: "#f7b82f", fontWeight: "bold", fontSize: "1.3rem"}} />
+                  <p style={{fontWeight: "600"}}>
                     {student[0]?.t100_travel
                       ? "Disponible para reubicarse."
                       : "No disponible para reubicarse." ?? "No especificado."}
                   </p>
+                </div>
+                <div className={styles.flex}>
+                  <FaSchool style={{color: "#cccecf", fontWeight: "bold", fontSize: "1.3rem"}} />
+                  <p style={{margin:0, fontWeight: "600"}}>{academicHistorial && academicHistorial[0]?.t104_academic_unit}</p>
+                </div>
+                <div className={styles.flex}>
+                  <MdSchool />
+                  <p style={{margin:0, fontWeight: "600"}}>{academicHistorial && academicHistorial[0]?.c109_id_academic_state?.c109_description}</p>
                 </div>
               </div>
               <h4 className={styles.label}>redes sociales</h4>

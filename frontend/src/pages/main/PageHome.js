@@ -15,7 +15,7 @@ const Home = () => {
     () => Math.ceil(jobs?.count / jobs?.page_size),
     [jobs?.count, jobs?.page_size]
   );
-  const [_, setSearch] = useState("");
+  // const [_, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]); // lista de vacantes filtrada
   const [isFiltered, setIsFiltered] = useState(false); // bandera para saber si la informacion se tiene que filtrar
@@ -35,19 +35,27 @@ const Home = () => {
 
   const filteredData = (value) => {
     if (value !== "") {
-      const filteredData = jobs?.result.filter((el) => {
-        let regex = new RegExp(`${value}`, "gi");
-        return el?.t200_job.match(regex);
-      });
+      getVacantsFilter({
+        job: value,
+        company_name: "",
+        c206_id_profile: "",
+        id_modality: "",
+      }).then(response => {
+        console.log(response)
+        setData(response.data.result);
+      })
+      .catch(error => console.log(error))
+      // const filteredData = jobs?.result.filter((el) => {
+      //   let regex = new RegExp(`${value}`, "gi");
+      //   return el?.t200_job.match(regex);
+      // });
       // console.log(filteredData)
-      setData(filteredData);
       // setTotalJobs(filteredData.length);
     }
   };
 
   const handleSearch = (value) => {
     filteredData(value);
-    setSearch(value);
     setIsFiltered(value !== "" ? true : false);
   };
 
@@ -59,6 +67,7 @@ const Home = () => {
     } else if (value !== "") {
       setIsFiltered(true);
       getVacantsFilter({
+        job: "",
         company_name: "",
         c206_id_profile: "",
         id_modality: value,
@@ -83,6 +92,7 @@ const Home = () => {
     } else if (value !== "") {
       setIsFiltered(true);
       getVacantsFilter({
+        job: "",
         company_name: value,
         c206_id_profile: "",
         id_modality: "",
@@ -108,6 +118,7 @@ const Home = () => {
     } else if (value !== "") {
       setIsFiltered(true);
       getVacantsFilter({
+        job: "",
         company_name: "",
         c206_id_profile: "",
         id_modality: value,

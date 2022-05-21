@@ -255,7 +255,17 @@ export const deleteAcademicHistorial = (id) => {
  * @returns {Promise}
  **/
 export const getStudentCertifications = (id) => {
-  return axios.get(`${API_CERTIFICATIONS}/${id}/`)
+  return axios.get(`${API_CERTIFICATIONS}${id}/`)
+    .then(response => response)
+    .catch(error => error);
+}
+
+/**
+ * @param {Number} id identificador de un registro para eliminarlo
+ * @returns {Promise}
+ **/
+export const deleteStudentCertification = id => {
+  return axios.delete(`${API_CERTIFICATIONS}${id}/`)
     .then(response => response)
     .catch(error => error);
 }
