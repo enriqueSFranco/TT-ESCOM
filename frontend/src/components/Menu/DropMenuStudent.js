@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getStudent } from "services/students";
+import ThemeContext from "context/ThemeContext";
 import AuthContext from "context/AuthContext";
 import CustomAvatar from "components/Avatar/Avatar";
 import { IoMdSettings, IoMdLogOut, IoMdBriefcase } from "react-icons/io";
@@ -8,16 +9,16 @@ import styles from "./MenuStudent.module.css";
 
 const DropMenuStudent = ({student}) => {
   const { logout } = useContext(AuthContext);
-  const [user, setUser] = useState([]);
+  const { theme, handleTheme } = useContext(ThemeContext);
 
-  // console.log(student)
+  const [user, setUser] = useState([]);
 
   useEffect(() => {
     getStudent(student?.user?.user_id)
       .then(response => {
         setUser(response)
       })
-  }, [student?.user?.user_id])
+  }, [student?.user?.user_id]);
 
   return (
     <>
@@ -38,6 +39,12 @@ const DropMenuStudent = ({student}) => {
           <IoMdSettings />
           Configuracion
         </Link>
+      </li>
+      <li className={styles.menuItemStudent}>
+        <label htmlFor="theme" className={styles.labelTheme}>
+          <input type="checkbox" name="theme" id="theme" value={theme} onChange={handleTheme} />
+          Modo oscuro
+        </label>
       </li>
       <li className={styles.menuItemStudent}>
         <Link className={styles.menuLinkStudent} to="/" onClick={logout}>

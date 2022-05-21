@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { toast, Toaster } from "react-hot-toast";
 import { useModal } from "hooks/useModal";
 import { formatDate } from "utils/formatDate";
+import { deleteStudentCertification } from "services/students/index";
 import FormCertification from "components/Form/Certification/FormCertification";
 import Modal from "components/Modal/Modal";
 import logoCertification from "images/certification.jpg";
@@ -30,15 +32,19 @@ const CertificationItem = ({
   ] = useModal();
 
   const deleteData = (id) => {
-    if (data !== null) {
-      let newData = data?.filter(certification => certification?.t119_id_registrer !== id);
-      setData(newData);
-    }
+    deleteStudentCertification(id)
+      .then(response => {
+        if (data !== null) {
+          const { data } = response;
+          let newData = data.filter(certification => certification?.t119_id_registrer !== id);
+          setData(newData);
+          toast.success(data.message);
+        }
+      })
+      .catch(error => console.log(error));
   };
 
-  const updateData = (id) => {
-    
-  }
+  console.log(data)
 
   return (
     <>
@@ -106,11 +112,12 @@ const CertificationItem = ({
       >
         <h1>Editar proyecto</h1>
         <FormCertification
-          updateData={updateData}
+          // updateData={updateData}
           dataToEdit={dataToEdit}
           setDataToEdit={setDataToEdit}
         />
       </Modal>
+      <Toaster position="top-right"/>
     </>
   );
 };

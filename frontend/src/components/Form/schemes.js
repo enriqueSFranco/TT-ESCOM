@@ -13,7 +13,6 @@ export const studentInitialForm = {
 };
 
 export const updateStudentInitialForm = {
-  // t100_id_student: null,
   t100_name: "",
   t100_last_name: "",
   t100_speciality: "",
@@ -25,7 +24,7 @@ export const updateStudentInitialForm = {
 };
 
 export const companyInitialForm = {
-  t300_id_company: undefined,
+  // t300_id_company: undefined,
   t300_name: "",
   t300_rfc: "",
   t300_bussiness_name: "",

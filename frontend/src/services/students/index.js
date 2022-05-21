@@ -10,7 +10,7 @@ import {
   API_CATALOGUE_PLATAFORM,
   API_ACADEMIC_HISTORIAL,
   API_JOB_APPLICATIONS,
-  API_CERTIFICATIONS
+  API_CERTIFICATIONS,
 } from "../settings";
 
 
@@ -58,6 +58,21 @@ export const getSocialNetwork = async (id) => {
       }
     });
 };
+
+/**
+ * @param {Object} payload informacion que llevara la petcion
+ * @returns {Promise}
+ **/
+export const postSocialNetwork = (payload = {}) => {
+  return axios.post(`${API_SOCIAL_NETWORK}`, payload, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    }
+  })
+    .then(response => response)
+    .catch(error => error);
+}
 
 export const getLinks = () => {
   return axios.get(API_CATALOGUE_PLATAFORM)
@@ -214,7 +229,7 @@ export const addProject = (payload = {}) => {
  * @returns {Promise}
  **/
 export const getAcademicHistorial = (id) => {
-  return axios.get(API_ACADEMIC_HISTORIAL)
+  return axios.get(`${API_ACADEMIC_HISTORIAL}${id}/`)
     .then(response => response)
     .catch(error => error);
 }
@@ -240,7 +255,17 @@ export const deleteAcademicHistorial = (id) => {
  * @returns {Promise}
  **/
 export const getStudentCertifications = (id) => {
-  return axios.get(`${API_CERTIFICATIONS}/${id}/`)
+  return axios.get(`${API_CERTIFICATIONS}${id}/`)
+    .then(response => response)
+    .catch(error => error);
+}
+
+/**
+ * @param {Number} id identificador de un registro para eliminarlo
+ * @returns {Promise}
+ **/
+export const deleteStudentCertification = id => {
+  return axios.delete(`${API_CERTIFICATIONS}${id}/`)
     .then(response => response)
     .catch(error => error);
 }

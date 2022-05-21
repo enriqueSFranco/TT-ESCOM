@@ -45,24 +45,7 @@ const CreateAccount = () => {
       <>
         <div className={`container bg-primary shadow rounded ${styles.wrapperCreateAccountStudent}`}>
           <div className="row">
-            <div
-              className={`${styles.bg} col rounded`}
-            >
-              <div className={`${styles.login}`}>
-                <blockquote>
-                  Un paso más cerca de tu nuevo <em>empleo</em>.
-                </blockquote>
-                <span>
-                  Ya tines cuenta?{" "}
-                  <Link className={`${styles.linkToLogin}`} to="/alumno">
-                    Inicia sesion
-                  </Link>
-                </span>
-                <span>
-                  <a href="/#">Recuperar contraseña</a>
-                </span>
-              </div>
-            </div>
+            <div className={`${styles.bg} col rounded`}></div>
             <div className={`col bg-white p-3 text-center rounded-end ${styles.createAccountStudentForm}`}>
               <div className={styles.welcome}>
                 <h2>crea tu cuenta y aplica ya</h2>
@@ -147,7 +130,19 @@ const CreateAccount = () => {
                   </button>
                 </div>
               </form>
+              <div className={`${styles.login}`}>
+                <blockquote>
+                  Un paso más cerca de tu nuevo <em>empleo</em>.
+                </blockquote>
+                <span>
+                  Ya tines cuenta?{" "}
+                  <Link className={`${styles.linkToLogin}`} to="/alumno">
+                    Inicia sesion
+                  </Link>
+                </span>
+              </div>
             </div>
+            
           </div>
         </div>
         <Toaster position="top-right" />

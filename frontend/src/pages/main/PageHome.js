@@ -15,12 +15,11 @@ const Home = () => {
     () => Math.ceil(jobs?.count / jobs?.page_size),
     [jobs?.count, jobs?.page_size]
   );
-  const [search, setSearch] = useState("");
+  // const [_, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [data, setData] = useState([]); // lista de vacantes filtrada
   const [isFiltered, setIsFiltered] = useState(false); // bandera para saber si la informacion se tiene que filtrar
   const [loading, setLoading] = useState(false);
-  const [totalJobs, setTotalJobs] = useState(0);
 
   useEffect(() => {
     setLoading(true);
@@ -28,7 +27,6 @@ const Home = () => {
       .then((response) => {
         if (response.status === 200) {
           setJobs(response.data);
-          // setTotalJobs(response.data.result.length)
         }
       })
       .catch((error) => console.log(error))
@@ -37,43 +35,48 @@ const Home = () => {
 
   const filteredData = (value) => {
     if (value !== "") {
-      const filteredData = jobs?.result.filter((el) => {
-        let regex = new RegExp(`${value}`, "gi");
-        return el?.t200_job.match(regex);
-      });
+      getVacantsFilter({
+        job: value,
+        company_name: "",
+        c206_id_profile: "",
+        id_modality: "",
+      }).then(response => {
+        console.log(response)
+        setData(response.data.result);
+      })
+      .catch(error => console.log(error))
+      // const filteredData = jobs?.result.filter((el) => {
+      //   let regex = new RegExp(`${value}`, "gi");
+      //   return el?.t200_job.match(regex);
+      // });
       // console.log(filteredData)
-      setData(filteredData);
       // setTotalJobs(filteredData.length);
     }
   };
 
   const handleSearch = (value) => {
-  
     filteredData(value);
-    setSearch(value);
     setIsFiltered(value !== "" ? true : false);
   };
 
-  const handleFilterHomeOffice = (e) => {
+  const handleFilterHomeOffice = useMemo(() => (e) => {
     const { value } = e.target;
     if (value === "") {
       setIsFiltered(false);
       setData(jobs?.result);
     } else if (value !== "") {
       setIsFiltered(true);
-      getVacantsFilter(
-        {
-          company_name: "",
-          c206_id_profile: "",
-          id_modality: value,
-        }
-      ).then(response => {
+      getVacantsFilter({
+        job: "",
+        company_name: "",
+        c206_id_profile: "",
+        id_modality: value,
+      }).then((response) => {
         const { data } = response;
         setData(data?.result);
-        setTotalJobs(data?.result.length);
-      })
+      });
     }
-  };
+  }, [jobs?.result]);
 
   /**
    * Filtra los empleos por empresa
@@ -89,17 +92,20 @@ const Home = () => {
     } else if (value !== "") {
       setIsFiltered(true);
       getVacantsFilter({
+        job: "",
         company_name: value,
         c206_id_profile: "",
         id_modality: "",
-      }).then(response => {
-        if (response.status === 200) {
-          const { data } = response;
-          setData(data?.result);
-          setTotalJobs(data?.result.length);
-        }
       })
-      .catch(error => console.log(error));
+        .then((response) => {
+          if (response.status === 200) {
+            const { data } = response;
+            console.log(data?.result);
+            setData(data?.result);
+            // setTotalJobs(data?.result.length);
+          }
+        })
+        .catch((error) => console.log(error));
     }
   };
 
@@ -112,14 +118,15 @@ const Home = () => {
     } else if (value !== "") {
       setIsFiltered(true);
       getVacantsFilter({
+        job: "",
         company_name: "",
         c206_id_profile: "",
         id_modality: value,
-      }).then(response => {
+      }).then((response) => {
         const { data } = response;
         setData(data?.result);
-        setTotalJobs(data?.result.length);
-      })
+        // setTotalJobs(data?.result.length);
+      });
     }
   };
 
@@ -133,14 +140,14 @@ const Home = () => {
         <span className={homeStyles.textFilter}>Filtros</span>
         <FilterProfile onChange={handleFilterProfile} />
         <FilterCompany onChange={handleFilterBusiness} />
-        <FilterHomeOffice onChange={handleFilterHomeOffice}
-        />
+        <FilterHomeOffice onChange={handleFilterHomeOffice} />
       </div>
 
       <section className={homeStyles.wrapperJobList}>
         <JobList
           jobs={isFiltered ? data : jobs?.result}
           loading={loading}
+          page={page}
           setPage={setPage}
           maxLenPage={maxLenPage}
         />

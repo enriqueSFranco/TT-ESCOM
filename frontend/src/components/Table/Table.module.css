@@ -134,6 +134,10 @@
   letter-spacing: 1px;
 }
 
+tr:nth-child(even) {
+  background-color: #90caf92c;
+}
+
 .th:nth-child(1) {
   width: 50px;
   cursor: pointer;
@@ -216,12 +220,20 @@
 }
 .listItemLinks {
   /* outline: 2px solid blue; */
-  width: 300px;
+  width: 350px;
+  height: 100px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   margin: 0;
+  padding: 0;
   font-size: 1.3rem;
+}
+
+.iconSocialNetwork {
+  /* width: 64px; */
+  height: 64px;
 }
 
 .listItemsSkill {

@@ -1,21 +1,29 @@
-.bg, .bgCompany, .bgRecruiter {
+.bg, .bgRecruiter {
   position: relative;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  /* backdrop-filter: calc(10px); */
 }
 
 .bg {
-  background-image: url(../../images/loginStudent.jpeg);
+  background-image: url(../../images/beneficios-del-smart-working.jpg);
+}
+
+.bgLoginCompany {
+  background-image: url(../../images/reclutamiento.jpg);
+  background-size: cover;
+  background-position: center;
 }
 
 .bgCompany {
-  background-image: url(../../images/bgCompany.jpg);
+  position: relative;
+  background-image: url(../../images/Lavoro\ Agile\ sito_0.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .bgRecruiter {
-  background-image: url(../../images/bgRecruiter2.jpg);
+  background-image: url(../../images/homeoffice.png);
 }
 
 .bgCreateAccountCompany {
@@ -33,7 +41,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.534);
+  background-color: rgba(22, 150, 235, 0.062);
 }
 
 .bg blockquote {
@@ -52,6 +60,12 @@
   width: 490px; 
   position: relative;
   left: 0;
+}
+
+.linkToRegisterRecruiter {
+  /* background-color: red; */
+  position: relative;
+  top: 1rem;
 }
 
 .createAccount {
@@ -87,7 +101,7 @@
 
 .createAccountStudentForm {
   width: auto;
-  height: 480px;
+  height: 600px;
   /* padding: 1rem; */
   display: flex;
   flex-direction: column;
@@ -155,6 +169,17 @@
   top: 10rem;
 }
 
+.wrapperBottom {
+  /* outline: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 1rem;
+  right: 1.5rem;
+}
+
 .wrapperForm3 {
   /* outline: 2px solid red; */
   height: 590px;
@@ -165,7 +190,8 @@
 .wrapperCreateAccountStudent {
   position: relative;
   top: 12rem;
-  /* height: 500px; */
+  /* outline: 2px solid red; */
+  height: 600px;
 }
 
 .wrapperCreateAccountCompany {
@@ -193,33 +219,31 @@
   margin-bottom: 1.5rem;
 }
 
-.login {
+.wrapperLinkToLoginCompany {
+  background-color: #fff;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 22rem;
   right: 0;
+  left: 0;
   bottom: 0;
-  /* backdrop-filter: blur(2px); */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.login span, a {
-  color: #fff;
-  font-size: 1rem;
-}
-
-.login a {
+.login {
   position: relative;
-  right: 1.9rem;
+  bottom: 2rem;
+  /* outline: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.login a:hover { color: #fff; }
 
 .linkToLogin {
-  color: #04c8eb;
+  color: #017ec0;
   position: relative;
   left: 0;
 }

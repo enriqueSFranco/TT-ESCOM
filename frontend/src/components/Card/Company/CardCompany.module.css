@@ -43,12 +43,12 @@
   left: 3.2rem;
 }
 
-.card a, span {
+/* .card a, span {
   font-size: .9rem;
   color: #616161;
   font-weight: 600;
   text-align: center;
-}
+} */
 
 .cardExpand {
   background-color: #90314b;

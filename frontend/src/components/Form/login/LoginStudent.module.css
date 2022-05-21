@@ -1,35 +1,38 @@
-.bg {
-  position: relative;
-  background-image: url(../../../images/loginStudent.jpeg);
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  backdrop-filter: calc(10px);
-}
-
-.bg::before {
+.bgLoginStudent::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.534);
+  
+  /* background-color: #015b930e; */
 }
 
-.bg blockquote {
+.bgLoginStudent blockquote {
   width: 100%;
   height: 100%;
   font-weight: bold;
-  color: #fff;
+  color: #000;
   padding: 1rem;
   position: relative;
   font-size: 2.2rem;
   text-transform: uppercase;
-  /* outline: 2px solid blue; */
 }
 
-.bg blockquote span { color: #04c8eb; font-size: 2.2rem; }
+.bgLoginStudent blockquote span {
+  font-size: 2.2rem;
+  color: #0081c3;
+}
+
+
+.bgLoginStudent {
+  background-image: url(../../../images/teletrabajo-1024x396.png);
+  position: relative;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
 
 .btLogin { 
   width: 490px; 

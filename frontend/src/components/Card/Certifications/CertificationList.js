@@ -32,7 +32,7 @@ const CertificationList = () => {
       .catch(error => error);
   }, [idStudent]);
 
-
+  if (!data) return null;
 
   return (
     <article className={styles.wrapper}>

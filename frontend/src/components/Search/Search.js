@@ -10,7 +10,7 @@ import * as BiIcon from "react-icons/bi";
 import styles from "./Search.module.css";
 
 const Search = ({ handleSearch }) => {
-  const { data } = useFetch(API_JOBS)
+  const { data } = useFetch(API_JOBS);
   const [queryJob, setQueryJob] = useState("");
   const [locationJob, setLocationJob] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -52,7 +52,7 @@ const Search = ({ handleSearch }) => {
       </h1>
       <form onSubmit={onSubmit} className={styles.searchForm}>
         <div className={styles.searchInput}>
-          {/* TODO pasar los elementos de autocompletado a componentes. */}
+          {/* TODO: pasar los elementos de autocompletado a componentes. */}
           <Label htmlFor="job">
             <Input
               type="text"
@@ -60,10 +60,11 @@ const Search = ({ handleSearch }) => {
               name="job"
               value={queryJob}
               autoFocus={true}
+              
               onBlur={() => {
                 setTimeout(() => {
                   setFilterData([]);
-                }, 300);
+                }, 200);
               }}
               onChange={handleFilterJob}
             />

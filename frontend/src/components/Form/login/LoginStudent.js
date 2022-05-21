@@ -20,10 +20,10 @@ const Form = () => {
 
   return (
     <>
-      <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
+      <div className={`container bg-white shadow rounded ${styles.wrapper}`}>
         <div className="row">
-          <div className={`${styles.bg} col rounded`}>
-            <div className={`${styles.login}`}>
+          <div className={`${styles.bgLoginStudent} col rounded`}>
+            <div className={`${styles.wrapperTitleLogin}`}>
               <blockquote>
                 Un paso más cerca de tu nuevo <span>trabajo</span>.
               </blockquote>

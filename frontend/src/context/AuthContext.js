@@ -52,20 +52,23 @@ const AuthProvider = ({ children }) => {
       "password": e.target.password.value.trim(),
     })
       .then((response) => {
-        console.log(response)
+        // console.log(response)
         if (response.status === 200 || response.status === 201) {
           setUser(jwt_decode(response?.data?.access));
           setToken(response?.data);
           toast.success("Inicio de sesion correcto");
-          // setMessage({message: response});
           window.sessionStorage.setItem("token", JSON.stringify(response?.data));                
           let val = response.data['user']['first_name'];
           
-          if (Boolean(val)) navigate("/");
+          if (Boolean(val)){
+            new Promise(resolve => {
+              setTimeout(() => {
+                resolve(navigate("/"))
+              }, 3000);
+            });
+          }
           else navigate("/actualiza-alumno");
         } else {
-          // console.log(`error: ${response}`);
-          // setMessage({message: response});
           toast.error("correo o password incorrectos.");
           window.sessionStorage.removeItem('token', JSON.stringify(response?.data))
         }

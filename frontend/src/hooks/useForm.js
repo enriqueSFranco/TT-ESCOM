@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { createBusiness } from "services/businnes/index";
+import { createBusiness, createBusinessRecruiter } from "services/businnes/index";
 import { createAccountStudent } from "services/students/index";
 import { postJob } from "services/jobs/index";
 import { postCertification } from "services/students/index";
@@ -74,6 +74,26 @@ export const useForm = (initialForm, validateForm) => {
     }
   };
 
+  const handleSubmitCompanyRecruiter = e => {
+    e.preventDefault();
+    if (Object.keys(errors).length === 0) {
+      setLoading(true);
+      createBusinessRecruiter(form)
+      .then(response => {
+        if (response.status === 201) {
+          toast.success("Pre-Registro enviado con exito.");
+          setTimeout(() => {
+            navigate("/pre-registro")
+          }, 3000);
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
+      .finally(() => setLoading(false));
+    }
+  }
+
   const onSubmitPostJob = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
@@ -93,7 +113,6 @@ export const useForm = (initialForm, validateForm) => {
   const onSubmitPostCertification = (e) => {
     e.preventDefault();
     // setErrors(validateForm(form));
-
     postCertification(form)
       .then(response => {
         if (response.status === 201) {
@@ -120,6 +139,7 @@ export const useForm = (initialForm, validateForm) => {
     handleSubmitCompany,
     handleValidate,
     onSubmitPostJob,
-    onSubmitPostCertification
+    onSubmitPostCertification,
+    handleSubmitCompanyRecruiter
   };
 };
