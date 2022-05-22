@@ -159,28 +159,28 @@ const CardJobDetails = () => {
             </div>
           </header>
           <article className={`container ${styles.body}`}>
+            {/* <p>
+              <span>Experiencia: </span>
+              {job[0]?.c207_id_experience?.c207_description}
+            </p> */}
             <p>
-              <span>Formacion: </span>
-              ingenieria industrial, administracion o similar
+              Perfil: <span>{job[0]?.c206_id_profile?.c206_description}</span>
             </p>
             <p>
-              idiomas: <span>ingles nivel intermedio-avanzado</span>
-            </p>
-            <p>
-              software: <span>office, visio, acrobat</span>
+              Tipo de contratacion: <span>{job[0]?.c208_id_contract?.c208_description}</span>
             </p>
             <div>
               <p>{job[0]?.t200_description ?? "Sin datos"}</p>
             </div>
-            <div className={styles.requirements}>
+            {/* <div className={styles.requirements}>
               <h3>Requerimientos de la vacante</h3>
               {job[0]?.t200_requirements}
-            </div>
+            </div> */}
             <div>
               <h3>OFRECEMOS</h3>
               <p>{job[0]?.t200_benefits}</p>
             </div>
-            <div>
+            {/* <div>
               <h3>Postúlate</h3>
               <p>
                 Si estás interesado enla vacante y cubres con el perfil
@@ -196,7 +196,7 @@ const CardJobDetails = () => {
                   ${job[0]?.t200_max_salary ?? "No especificado"} al mes
                 </span>
               </p>
-            </div>
+            </div> */}
             <div>
               <p>
                 Horario:{" "}

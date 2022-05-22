@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useForm } from "hooks/useForm";
 import { postJobInitialForm } from "../schemes";
 import FormPostJobLocation from "./FormPostJobLocation";

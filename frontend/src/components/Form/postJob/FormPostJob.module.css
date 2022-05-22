@@ -10,7 +10,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background-color: red;
+  /* background-color: red; */
 }
 
 .form1 {
@@ -138,9 +138,9 @@
 
 /* inicio */
 .switch {
-  --button-width: 3em;
-  --button-height: 1.5em;
-  --toggle-diameter: 1em;
+  --button-width: 3rem;
+  --button-height: 1.5rem;
+  --toggle-diameter: 1rem;
   --button-toggle-offset: calc((var(--button-height) - var(--toggle-diameter)) / 2);
   --toggle-shadow-offset: 10px;
   --toggle-wider: 3em;
@@ -275,7 +275,7 @@
 .wrapperButtons {
   /* outline: 1px solid red; */
   position: absolute;
-  bottom: .5rem;
+  bottom: 4rem;
   right: 0;
   width: 430px;
   display: flex;
@@ -291,7 +291,7 @@
 
 .wrapperSwitch {
   /* outline: 2px solid red; */
-  width: 160px;
+  width: 170px;
   display: flex;
   gap: .4rem;
   margin-bottom: 2px;
@@ -306,12 +306,32 @@
 }
 
 .wrapperAddSkill{
+  width: 800px;
   display: flex;
 }
 
-.SkillsWrapper{
+.wrapperSkills {
   height: 200px;
-  background-color:lightblue;
+  width: 800px;
+  /* outline: 2px solid blue; */
+}
+
+.SkillsWrapper{
+  margin: 1rem 0;
+  height: 100px;
+  /* background-color:lightblue; */
+}
+
+.listItemsSkill {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.listItemsSkill > li {
+  width: auto;
+  /* outline: 2px solid red; */
 }
 
 .titleSkills {

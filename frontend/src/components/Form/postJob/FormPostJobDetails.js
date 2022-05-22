@@ -42,10 +42,11 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
   }, []);
 
   const setSkill = (e) => {
-    console.log("Agregando skill...");
-    console.log(newSkill);
+    // console.log("Agregando skill...");
+    // console.log(newSkill);
     vacantSkills.push(newSkill);
     setNewSkill(skillData);
+    // setVacantSkills([])
   };
 
   console.log(newSkill);
@@ -71,7 +72,7 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
         <div>{/*Habilidades e idiomas*/}
           <div>{/*Skills para la vacante*/}
             <h3 className={styles.title}>
-               <MdOutlineLightbulb/> Habilidades y conocimientos
+              <MdOutlineLightbulb/> Habilidades y conocimientos
             </h3>
             <div className={styles.wrapperAddSkill}> 
               <Autocomplete
@@ -96,10 +97,12 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
                 <Select
                   id="c207_id_experience"
                   name="c207_id_experience"
+                  size="small"
                   defaultValue=""
                   onChange={(event,newValue)=>{
-                    console.log(newValue.props.value);  
+                    // console.log(newValue.props.value);  
                     newSkill.experience = newValue.props.value;
+                    
                   }}      
                   label="Experiencia"generica
                 >

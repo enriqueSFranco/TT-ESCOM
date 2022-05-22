@@ -53,7 +53,6 @@ const FormUpdateDataStudent = ({ student }) => {
   //TODO: redireccion despues de haber actualizado los datos del alumno.
   async function handleSubmit(e) {
     e.preventDefault();
-    
     updateStudent(id, studentCopy)
       .then((response) => {
         console.log(response);
@@ -75,7 +74,7 @@ const FormUpdateDataStudent = ({ student }) => {
     .catch(error => console.log(error))
   };
 
-  console.log(links);
+  // console.log(links);
 
   return (
     <>
