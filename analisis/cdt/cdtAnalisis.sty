@@ -49,7 +49,7 @@
 %
 \newenvironment{requerimientos}[1]{%
     \arrayrulecolor{colorPrincipal}%
-    \par\begin{longtable}{| p{.1\textwidth} | p{.2\textwidth} | p{.6\textwidth} |}%
+    \par\begin{longtable}{| p{.15\textwidth} | p{.2\textwidth} | p{.6\textwidth} |}%
         \arrayrulecolor{colorPrincipal}\hline%
         \rowcolor{colorPrincipal}\multicolumn{3}{|c|}{\bf\color{white} Requerimientos #1}\\% estilo
         \arrayrulecolor{white}%
@@ -264,10 +264,6 @@
     \addtocounter{counterUC}{1}%
     \CrearVariablesInternas{#1}%
     \cdtAddElement{#2}{#3}{\Autor}{\Version}{\Estado}%
-    \vspace*{-2\baselineskip}%
-        \noindent{\includegraphics[width=\textwidth]{cdt/uc/rules/UCRule}}%
-    \vspace*{-2\baselineskip}%
-    
     \subsection{#2 #3}%
     \hypertarget{#2}{}%
     \subsubsection{Resumen}{#4}
@@ -569,3 +565,13 @@
 \newcommand{\IUEntidaB}{\raisebox{-1mm}{\includegraphics[height=20pt]{anexos/imagenes/entidad2.jpeg}}}
 \newcommand{\IUEntidaC}{\raisebox{-1mm}{\includegraphics[height=20pt]{anexos/imagenes/entidad3.jpeg}}}
 \newcommand{\IUEntidaD}{\raisebox{-1mm}{\includegraphics[height=20pt]{anexos/imagenes/entidad4.jpeg}}}
+
+\newcommand{\IUazul}{\raisebox{-1mm}{\includegraphics[height=15pt]{sprints/imagenes/azul.png}}}
+\newcommand{\IUblanco}{\raisebox{-1mm}{\includegraphics[height=15pt]{sprints/imagenes/blanco.png}}}
+
+\newcommand{\IUcompuT}{\raisebox{-1mm}{\includegraphics[height=20pt]{antecedentes/imagenes/compuT.png}}}
+\newcommand{\IUIneed}{\raisebox{-1mm}{\includegraphics[height=13pt]{antecedentes/imagenes/Indeed.png}}}
+\newcommand{\IUocc}{\raisebox{-1mm}{\includegraphics[height=20pt]{antecedentes/imagenes/occ.png}}}
+\newcommand{\IUsisae}{\raisebox{-1mm}{\includegraphics[height=30pt]{antecedentes/imagenes/sisae.png}}}
+%\newcommand{\IUblanco}{\raisebox{-1mm}{\includegraphics[height=10pt]{anexos/imagenes/compuT.png}}}
+%\newcommand{\IUblanco}{\raisebox{-1mm}{\includegraphics[height=10pt]{anexos/imagenes/compuT.png}}}

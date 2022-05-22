@@ -1,14 +1,7 @@
 \chapter{Casos de uso}
 
-Los casos de uso se identificarán de acuerdo a la siguiente nomenclatura:
+%Los casos de uso se identificarán de acuerdo a la siguiente nomenclatura:
 
-
-
-%\section{Modelado de Máquinas de Estados}
-  %      \label{sec:ModMaquinas}
-
-%\section{Modelado de Actores}
- %       \label{sec:ModActores}
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \section{Especificación de casos de uso}
 
@@ -20,25 +13,41 @@ Para poder entender un caso de uso más allá de un diagrama, se lleva a cabo la
 	\item[Resumen] Es una descripción resumida en la que se especifica la transacción realizada por el caso de uso.
 	\item[Actores] Lista de los actores que interactúan con el caso de uso.
 	\item[Entradas] Lista los datos de entrada que el caso de uso recibe, los cuales harán referencia al modelo de información.
-	\item[Salidas] Lista los datos de salida que el caso de uso genera, por ejemplo: 
-	\item[Destino] Indica a dónde se dirigen los datos de salida, por ejemplo: pantalla, impresora, repositorio, hacia un servidor o un archivo.
+	\item[Salidas] Lista los datos de salida que el caso de uso genera.
+	\item[Destino] Indica a dónde se dirigen los datos de salida, por ejemplo: interfaz, impresora, repositorio, hacia un servidor o un archivo.
 	\item[Precondiciones] Enlista las cosas que deben haber sucedido para que el caso  de uso se lleve a cabo.
 	\item[Postcondiciones] Enlista las cosas que suceden en el sistema o negocio de forma inmediata o a corto plazo una vez que se ejecute el caso de uso.
 	\item[Reglas de Negocio] Lista las reglas de negocio que se van a ejecutar en el caso de uso.
 	\item[Viene de] Indica cuando el caso de uso se extiende de otro o se incluye en otro.
+	\item[Casos de prueba] Indican los datos o condiciones con las que se debe probar este caso de uso.
 	\item[Trayectoria principal] Secuencia de pasos que llevan al caso de uso al éxito.
 	\item[Trayectoria(s) alternativa(s)] Secuencias de pasos que llevan al caso de uso al éxito o al fracaso.
 	\item[Puntos de extensión] Cuando existen casos de uso que pueden ejecutarse a partir del caso de uso en proceso.
 \end{description}
 
+\section{Módulo General}
+	En la figura \ref{adcu:grl} se muestra el diagrama de casos de uso del módulo general del sistema.
 
-\input{analisisydiseno/CasosdeUso/GRL-CU01/cu.tex}
-\input{analisisydiseno/CasosdeUso/GRL-CU01/iu.tex}
-\input{analisisydiseno/CasosdeUso/GRL-CU02/cu.tex}
-\input{analisisydiseno/CasosdeUso/GRL-CU02/iu.tex}
-\input{analisisydiseno/CasosdeUso/GRL-CU03/cu.tex}
-\input{analisisydiseno/CasosdeUso/GRL-CU03/iu.tex}
-\input{analisisydiseno/CasosdeUso/VCT-CU06/cu.tex}
-\input{analisisydiseno/CasosdeUso/VCT-CU06/iu.tex}
-\input{analisisydiseno/CasosdeUso/VCT-CU06-1/cu.tex}
-\input{analisisydiseno/CasosdeUso/VCT-CU06-1/iu.tex}
+	\begin{figure}[hbtp!]
+		\begin{center}
+			\includegraphics[width=.8\textwidth]{sprints/imagenes/CUGRL.png}
+		\end{center}
+		
+		\caption{Diagrama de casos de uso del \textit{Módulo General}.}
+		\label{adcu:grl}
+	\end{figure}
+
+	\begin{itemize}
+        \item Los casos de uso \IUazul{} , son aquellos que se pertenecen a esta primera entrega del proyecto.
+        \item Los casos de uso \IUblanco{}, se tienen planeados para la segunda entrega del proyecto.
+    \end{itemize} 
+
+	\input{CasosdeUso/GRL-CU01/cu.tex}
+	\input{CasosdeUso/GRL-CU01/iu.tex}
+
+	\input{CasosdeUso/GRL-CU02/cu.tex}
+	\input{CasosdeUso/GRL-CU02/iu.tex}
+
+	\input{CasosdeUso/GRL-CU03/cu.tex}
+	\input{CasosdeUso/GRL-CU03/iu.tex}
+
