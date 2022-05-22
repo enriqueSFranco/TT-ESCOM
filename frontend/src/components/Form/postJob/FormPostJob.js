@@ -65,7 +65,7 @@ const FormPostJob = ({idCompany}) => {
   } else if (step === 2) {
     return (
       <FormPostJobDetails
-        form={form}
+      baseform={form}
         handleChange={handleChange}
         onSubmit={onSubmitPostJob}
         prevStep={prevStep}

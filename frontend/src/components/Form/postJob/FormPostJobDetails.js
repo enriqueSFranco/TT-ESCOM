@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useForm } from "hooks/useForm";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import { MdPublish, MdOutlineLightbulb, MdOutlineAdd } from "react-icons/md";
 import { TextField, Autocomplete } from "@mui/material/";
@@ -13,24 +14,25 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Chip from "@mui/material/Chip";
 
-
 let skillData = {
-  skill:null,
-  experience: null,
+  id_vacant:0,
+  skill:"",
+  experience: "",
   necesary:false
 }
 
-const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, vacantSkills, setVacantSkills }) => {
+const FormPostJobDetails = ({ baseform, onSubmit, handleChange, prevStep, skills, vacantSkills, setVacantSkills }) => {
   const [visible, setVisible] = useState(false);
-  const [newSkill, setNewSkill] = useState(skillData);
+  const [newSkill, setNewSkill] = useState([]);
   const [experience, setExperience] = useState([]);  
-  let now = new Date();  
+  const { form, setForm } = useForm(skillData);
+  let now = new Date();    
 
   const handleChecked = (e) => {
     setVisible(e.target.checked);
   };
   const setIndispensable = (e) => {
-    newSkill.necesary = e.target.checked;
+    skillData.necesary = e.target.checked;
   };
 
   useEffect(() => {
@@ -42,11 +44,21 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
   }, []);
 
   const setSkill = (e) => {
+<<<<<<< HEAD
     // console.log("Agregando skill...");
     // console.log(newSkill);
     vacantSkills.push(newSkill);
     setNewSkill(skillData);
     // setVacantSkills([])
+=======
+    console.log("Agregando skill...");
+    console.log(skillData);
+    if(skillData?.skill)
+      vacantSkills.push(skillData);        
+    setNewSkill(skillData);
+    setForm(skillData)
+    baseform.requirements = vacantSkills;
+>>>>>>> 20f1830b53e05f13cfad55ba28e0e1ac8f8d6008
   };
 
   console.log(newSkill);
@@ -64,7 +76,7 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
             placeholder="Detalles de la vacante"
             minRows={5}
             style={{ width: "800px", height: 220 }}
-            value={form.t200_description}
+            value={baseform.t200_description}
             onChange={handleChange}
           />
         </div>
@@ -83,13 +95,13 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
                 freeSolo
                 onChange={(event,newValue)=>{
                   console.log(newValue);  
-                  newSkill.skill = newValue;
+                  skillData.skill = newValue;
                 }}        
-                value = {newSkill.skill ? newSkill.skill : null}      
+                value = {skillData.skill ? skillData.skill : null}      
                 getOptionLabel = {(option) => option.c116_description}
                 options={skills}
                 renderInput={(params) => (
-                  <TextField {...params} label="Habilidades" />
+                  <TextField {...params} label="Habilidad" />
                 )}
               />
               <FormControl sx={{ width: 200, marginRight:2 }}>
@@ -99,10 +111,16 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
                   name="c207_id_experience"
                   size="small"
                   defaultValue=""
+                  size="small"
                   onChange={(event,newValue)=>{
+<<<<<<< HEAD
                     // console.log(newValue.props.value);  
                     newSkill.experience = newValue.props.value;
                     
+=======
+                    console.log(newValue.props.value);  
+                    skillData.experience = newValue.props.value;
+>>>>>>> 20f1830b53e05f13cfad55ba28e0e1ac8f8d6008
                   }}      
                   label="Experiencia"generica
                 >
@@ -129,15 +147,15 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
           </div>
           <div className={styles.SkillsWrapper}>{/*Para skills agregadas*/}
           <div className={styles.wrapperSkills}>
-            <p className={styles.titleSkills}>Skills</p>
+            <p className={styles.titleSkills}></p>
             <ul className={styles.listItemsSkill}>
               {vacantSkills &&
-                vacantSkills?.map((skill) => (
+                vacantSkills.map((skill) => (
                   <li key={uuid()}>
                     <Chip
                       size="small"
-                      label={skill?.skill?.c116_description}
-                    />
+                      label={skill?.skill?.c116_description}                      
+                    />                    
                   </li>
                 ))}
             </ul>
