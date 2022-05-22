@@ -20,8 +20,9 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
   const [experience, setExperience] = useState([]);  
   let now = new Date();  
   let skillData = {
+    id_vacant:0,
     skill:null,
-    experience: null,
+    experience: 1,
     necesary:false
   }
 
@@ -43,15 +44,8 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
   const setSkill = (e) => {
     console.log("Agregando skill...");
     console.log(skillData);
-    vacantSkills.push(skillData);
-
-    skillData = {
-      id_vacant:0,
-      skill:null,
-      experience: null,
-      necesary:false
-    }
-  
+    if(skillData?.skill)
+      vacantSkills.push(skillData);        
     setNewSkill(skillData);
     form.requirements = vacantSkills;
   };
@@ -83,7 +77,7 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
             </h3>
             <div className={styles.wrapperAddSkill}> 
               <Autocomplete
-                sx={{ width: 275, marginLeft: 1, marginRight: 2 }}
+                sx={{ width: 275, marginLeft: 1, marginRight: 2, height: 15 }}
                 size="small"
                 id="skill"
                 name="skill"
@@ -96,7 +90,7 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
                 getOptionLabel = {(option) => option.c116_description}
                 options={skills}
                 renderInput={(params) => (
-                  <TextField {...params} label="Habilidades" />
+                  <TextField {...params} label="Habilidad" />
                 )}
               />
               <FormControl sx={{ width: 200, marginRight:2 }}>
@@ -134,7 +128,7 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
           </div>
           <div className={styles.SkillsWrapper}>{/*Para skills agregadas*/}
           <div className={styles.wrapperSkills}>
-            <p className={styles.titleSkills}>Skills</p>
+            <p className={styles.titleSkills}></p>
             <ul className={styles.listItemsSkill}>
               {vacantSkills &&
                 vacantSkills.map((skill) => (

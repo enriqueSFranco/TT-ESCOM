@@ -76,6 +76,13 @@ useEffect(() => {
     }
   };
   
+  const setGrossSalary = (e) => {
+    form.t200_gross_salary = e.target.checked;
+  };
+
+  const setNegotiable = (e) => {
+    form.t200_salary_negotiable = e.target.checked;
+  };
 
   return (
     <div className={styles.form}>
@@ -304,7 +311,7 @@ useEffect(() => {
                   control={
                     <Checkbox
                       value={form.t200_gross_salary}
-                      onChange={handleChecked}
+                      onChange={setGrossSalary}
                       size="small"
                     />
                   }
@@ -314,7 +321,7 @@ useEffect(() => {
                   control={
                     <Checkbox
                       value={form.t200_salary_negotiable}
-                      onChange={handleChecked}
+                      onChange={setNegotiable}
                       size="small"
                     />
                   }
