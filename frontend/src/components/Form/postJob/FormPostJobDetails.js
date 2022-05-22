@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useForm } from "hooks/useForm";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import { MdPublish, MdOutlineLightbulb, MdOutlineAdd } from "react-icons/md";
 import { TextField, Autocomplete } from "@mui/material/";
@@ -13,18 +14,19 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Chip from "@mui/material/Chip";
 
+let skillData = {
+  id_vacant:0,
+  skill:"",
+  experience: "",
+  necesary:false
+}
 
-const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, vacantSkills, setVacantSkills }) => {
+const FormPostJobDetails = ({ baseform, onSubmit, handleChange, prevStep, skills, vacantSkills, setVacantSkills }) => {
   const [visible, setVisible] = useState(false);
   const [newSkill, setNewSkill] = useState([]);
   const [experience, setExperience] = useState([]);  
-  let now = new Date();  
-  let skillData = {
-    id_vacant:0,
-    skill:null,
-    experience: 1,
-    necesary:false
-  }
+  const { form, setForm } = useForm(skillData);
+  let now = new Date();    
 
   const handleChecked = (e) => {
     setVisible(e.target.checked);
@@ -47,7 +49,8 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
     if(skillData?.skill)
       vacantSkills.push(skillData);        
     setNewSkill(skillData);
-    form.requirements = vacantSkills;
+    setForm(skillData)
+    baseform.requirements = vacantSkills;
   };
 
   console.log(newSkill);
@@ -65,7 +68,7 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
             placeholder="Detalles de la vacante"
             minRows={5}
             style={{ width: "800px", height: 220 }}
-            value={form.t200_description}
+            value={baseform.t200_description}
             onChange={handleChange}
           />
         </div>
@@ -77,7 +80,7 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
             </h3>
             <div className={styles.wrapperAddSkill}> 
               <Autocomplete
-                sx={{ width: 275, marginLeft: 1, marginRight: 2, height: 15 }}
+                sx={{ width: 275, marginLeft: 1, marginRight: 2 }}
                 size="small"
                 id="skill"
                 name="skill"
@@ -99,6 +102,7 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, va
                   id="c207_id_experience"
                   name="c207_id_experience"
                   defaultValue=""
+                  size="small"
                   onChange={(event,newValue)=>{
                     console.log(newValue.props.value);  
                     skillData.experience = newValue.props.value;
