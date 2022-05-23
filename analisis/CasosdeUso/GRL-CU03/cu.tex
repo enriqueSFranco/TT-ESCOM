@@ -15,7 +15,7 @@ acciones que tiene permitidas dentro del sistema de acuerdo a su tipo de cuenta.
 		Alta
 	}
 	\UCitem[admin]{Complejidad}{
-		Alta
+		Media
 	}
 	\UCitem{Precondiciones}{
 		El usuario debe de tener una cuenta dentro del sistema.
@@ -42,7 +42,7 @@ acciones que tiene permitidas dentro del sistema de acuerdo a su tipo de cuenta.
 
 %Trayectoria Principal
 \begin{UCtrayectoria}
-	\UCpaso [\UCactor] Presiona el botón \IUbutton{Eres alumno?} desde la interfaz \refElem{GRL-IU06}.\refTray{A}
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Iniciar sesión} desde la interfaz \refElem{GRL-IU00}.\refTray{A}
     \UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU03}.
 	\UCpaso [\UCactor] Ingresa el \entrada[correo electrónico]{users.email} y \entrada[contraseña]{users.password}.\label{cu03-grl1}\refTray{A}
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Iniciar Sesión}. \refTray{B} \refTray{C} 
@@ -51,7 +51,7 @@ acciones que tiene permitidas dentro del sistema de acuerdo a su tipo de cuenta.
 	\UCpaso [\UCsist] Verifica que el correo electrónico ingresado cumpla con el formato correcto de acuerdo a la regla de negocio  \refIdElem{RN-N002}.  \refTray{E}
 	\UCpaso [\UCsist] Verifica que la contraseña ingresada cumpla con el formato correcto de acuerdo a la regla de negocio  \refIdElem{RN-N006}.\refTray{E}
 	\UCpaso [\UCsist] Verifica que los datos ingresados cumplan con la regla de negocio \refIdElem{RN-N007}. \refTray{F}
-    \UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU03-1}. %\refTray{G} \refTray{H}
+    \UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU03-1}.\refTray{G} %\refTray{H}
 \end{UCtrayectoria}
 
 %Trayectorias Alternativas
@@ -86,10 +86,16 @@ acciones que tiene permitidas dentro del sistema de acuerdo a su tipo de cuenta.
 	\UCpaso [\UCsist] Continúa en el paso \ref{cu03-grl1} de la trayectoria principal.
 \end{UCtrayectoriaA} 
 
+\begin{UCtrayectoriaA}[Fin del caso de uso]{F}{El actor inicia sesión por primera vez.}
+	\UCpaso [\UCsist] Muestra la interfaz \refIdElem{USR-IU01}.
+	\extendUC{USR-CU01}.
+\end{UCtrayectoriaA} 
+
 
 
 
 \subsubsection{Puntos de extensión}
 
 \UCExtensionPoint{Crear cuenta}{El actor requiere registrarse en el sistema}{En el paso  de la trayectoria alternativa B}{\refIdElem{GRL-CU01}}
-\UCExtensionPoint{Enviar Pre-Registro}{El actor requiere registrarse en el sistema}{En el paso  de la trayectoria alternativa C}{\refIdElem{GRL-CU02}}
+\UCExtensionPoint{Enviar preregistro}{El actor requiere registrarse en el sistema}{En el paso  de la trayectoria alternativa C}{\refIdElem{GRL-CU02}}
+\UCExtensionPoint{Crear perfil}{El actor inicia sesión por primera vez en el sistema}{En el paso  de la trayectoria alternativa C}{\refIdElem{USR-CU01}}

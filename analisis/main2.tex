@@ -1,6 +1,9 @@
 \documentclass[11pt, twopages]{book}
 \usepackage[adminView]{cdt/cdtAnalisis}
 %\usepackage{comment}
+\usepackage{biblatex}
+
+\addbibresource{bibliografia.bib} %Import the bibliography file
 
 \date{}
 \title{Bolsa de Trabajo ESCOM}
@@ -12,6 +15,7 @@
         
 %\input{LIT/config}
 \input{iconos/iconos}
+%\bibliography{bibliografia}
 \begin{document}
     \frontmatter
         \maketitle
@@ -31,15 +35,17 @@
         \label{aloneparts:antecedentes}
         \input{antecedentes/antecedentes.tex}
 
-    %\chapter{Solución propuesta}
-    %    \label{aloneparts:propuesta}
-    %    \input{propuesta/propuesta.tex}
+    \chapter{Solución propuesta}
+        \label{aloneparts:propuesta}
+        \input{propuesta/propuesta.tex}
     
-    %\chapter{Ejecución de Sprints}
-    %\label{sprints}
-    %    \input{sprints/entregables.tex}
-    %    \input{sprints/sprint123.tex}
-    %    \input{sprints/sprint4.tex}
+    \chapter{Ejecución de Sprints}
+    \label{sprints}
+        \input{sprints/entregables.tex}
+        \input{sprints/sprint123.tex}
+        \input{sprints/sprint4.tex}
+        \input{sprints/sprint5.tex}
+        \input{sprints/sprint6.tex}
         
         %\input{analisisydiseno/casosuso.tex}
     
@@ -47,13 +53,18 @@
      %  \input{desarrollo/desarrollo.tex}
         %\label{ch:cus}
         
-    %\appendix
+    \appendix
 
-    %    \input{anexos/actores.tex}
-    %    \input{anexos/estados.tex}
-    %    \input{anexos/modelonegocio/reglas.tex}
-    %    \input{anexos/casosuso.tex}
-    %    \input{anexos/modelonegocio/mensajes.tex}
-    %    \input{anexos/db.tex}
-   
+        \input{anexos/actores.tex}
+        \input{anexos/estados.tex}
+        \input{anexos/modelonegocio/reglas.tex}
+        \input{anexos/casosuso.tex}
+        \input{anexos/modelonegocio/mensajes.tex}
+        \input{anexos/db.tex}
+
+    \medskip
+
+\printbibliography
+        %\bibliography{bibliografia}
+       % \printbibliography
 \end{document}

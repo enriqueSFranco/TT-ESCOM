@@ -1,6 +1,6 @@
 \begin{UseCase}[]{GRL-CU02}{Enviar pre-registro}{
 	Permite al actor enviar una solicitud a los encargados y colaboradores del sistema para que se les proporcione un usuario y contraseña
-	para posteriormente ser validados 
+	para posteriormente ser validados.
 }
 	%----------------------------------------------------------------
 	% Datos generales del CU:
@@ -18,7 +18,7 @@
 		Ninguna.
 	}
 	\UCitem{Postcondiciones}{
-		\Titem La empresa y el reclutador quedarán en espera de validación. (REF a la Maquina de estados)
+		\Titem La empresa y el reclutador quedarán en espera de validación con base en la \refElem{mq:empresa} y la \refElem{mq:reclutador}.
 		\Titem Los colaboradores/encargados del sistema tendrán una nueva empresa y
 		reclutador por validar.
 		
@@ -45,11 +45,12 @@
 
 %Trayectoria Principal
 \begin{UCtrayectoria}
-	\UCpaso [\UCactor] Presiona el botón \IUbutton{Crear Cuenta} desde la interfaz \refElem{GRL-IU00}.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Eres Reclutador} desde la interfaz \refElem{GRL-IU00}.
     \UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU02}.
 	\UCpaso [\UCactor] Ingresa los datos de la empresa: \entrada[nombre]{empresa.nombre}, \entrada[RFC]{empresa.rfc}, 
-	\entrada[Razón social]{empresa.razon-social}.\label{cu02-grl1}\refTray{A}
-	\UCpaso [\UCactor] Ingresa los datos de contacto:\entrada[nombre]{reclutador.nombre}, \entrada[apellidos]{reclutador.apellidos}, 
+	\entrada[Razón social]{empresa.razonsocial}.\label{cu02-grl1}\refTray{A}
+	\UCpaso [\UCactor] Ingresa los datos de contacto:\entrada[nombre]{reclutador.nombre}, \entrada[primer apellido]{reclutador.papellido}, 
+	\entrada[segundo apellido]{reclutador.sapellido}, 
 	\entrada[correo electrónico]{reclutador.email} y \entrada[telefono]{reclutador.telefono}.
 	%\UCpaso [\UCactor] Acepta los terminos de privacidad y condiciones del sistema.
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Enviar Pre-Registro}. \refTray{B}
@@ -64,7 +65,7 @@
 
 %Trayectorias Alternativas
 \begin{UCtrayectoriaA}[Fin de la trayectoria]{A}{El actor indica que su empresa ya esta registrada en el sistema.}
-	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Tu empresa ya esta registrada con nosotros?}.
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Solicitalo aquí}.
 	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU02-1}.
 	\UCpaso [\UCactor] Ingresa el nombre de la empresa.
 	\UCpaso [\UCactor] Ingresa los datos de contacto: nombre, apellidos, correo electrónico empresarial y un telefono de contacto.

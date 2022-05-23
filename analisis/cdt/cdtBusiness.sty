@@ -212,17 +212,18 @@
     \section{#2}
     \hypertarget{#1}{}
     \cdtAddElement{#1}{#2}{\Autor}{\Version}{\Estado}%
-    \subsection*{Resumen}%
+    \subsection{Resumen}%
     #3%
     \begin{center}%
-        \begin{figure}[hbtp!]%
-            \fbox{\includegraphics[width=\textwidth]{#4}}%
+        \begin{figure}[H]%
+            \includegraphics[width=\textwidth]{#4}
             \caption{#2}%
             \label{fig:#1}%
         \end{figure}%
     \end{center}%
-    \subsection*{Descripción}
+    \subsection{Descripción}
 }{}
+
 
 
 %====================================================

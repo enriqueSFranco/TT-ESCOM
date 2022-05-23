@@ -1,40 +1,45 @@
 \section{Marco conceptual}
 \subsection{Introducción a la inteligencia artificial}
+\subsection{Sistemas de recomendación}
+Los sistemas de recomendación están en todas partes. Impulsan muchos de los servicios que nos encantan y que usamos todos los días. 
+Desde hacer compras hasta el streaming y el uso de los motores de búsqueda, los sistemas de recomendación están diseñados para 
+ayudar a las personas a tener una experiencia más personalizada.\\
+\newline
+Un sistema de recomendación es aquél que produce una lista de sugerencias para un usuario. Cada objeto de la lista se llama “ítem” 
+de manera genérica, pues dichas sugerencias pueden ser artículos, películas, música, etc.\\
+\newline
+Aunque todos los sistemas de recomendación tienen el mismo objetivo final, difieren en aspectos como la información utilizada para 
+hacer recomendaciones y en el funcionamiento del algoritmo. A continuación, se presentan las clasificaciones más comunes.
 
-\subsubsection{Redes neuronales}
+\begin{description}
+    \item[Filtrado colaborativo] En esta categoría se intenta predecir la “clasificación” de un ítem para un usuario con base en las 
+    clasificaciones de otros usuarios; se encuentran personas con gustos (clasificaciones) similares al usuario y se le recomiendan 
+    ítems que les gusten a esas personas.\\
+    \newline
+Uno de los problemas más grandes en este tipo de recomendación es la falta de información, pues no todos los usuarios han 
+clasificado todos los ítems. En la mayoría de los casos, los usuarios acceden (y clasifican) los ítems que les gustan. Otro problema
+es el cold start (inicio frío); es difícil recomendar ítems nuevos debido a falta de clasificaciones y también es difícil hacer 
+ recomendaciones a un usuario nuevo por la falta de historial de clasificaciones. \cite{mc1}
+    \item[Basado en contenido] Los sistemas de recomendación basados en contenido hacen sus recomendaciones con base en descripciones de los 
+ítems y los intereses del usuario. Cada ítem tiene atributos, y se determina su similitud con otros ítems dependiendo de los 
+atributos que compartan. Por ejemplo, si a un usuario le gustan películas del género “Acción”, el sistema recomendaría más películas de ese mismo género.\\
+\newline
+Un problema con los sistemas basados en contenido es que los ítems no tengan suficientes atributos para ser diferenciados por el 
+sistema de acuerdo con un usuario. Por ejemplo, aunque al usuario le gusten las películas de acción, no quiere decir que le gusten 
+todas las películas de este género; quizá no le gustan las películas con finales tristes, pero el sistema no tenía ese atributo 
+contemplado. \cite{mc4}
 
-Las redes neuronales son más que otra forma de emular ciertas características propias de los humanos, como la capacidad de memorizar y de asociar hechos. Si se examinan con atención aquellos problemas que no pueden expresarse a través de un algoritmo, se observará que todos ellos tienen una característica en común: la experiencia. El hombre es capaz de resolver estas situaciones acudiendo a la experiencia acumulada. Así, parece claro que una forma de aproximarse al problema consista en la construcción de sistemas que sean capaces de reproducir esta característica humana. En definitiva, las redes neuronales no son más que un modelo artificial y simplificado del cerebro humano, que es el ejemplo más perfecto del que disponemos para un sistema que es capaz de adquirir conocimiento a través de la experiencia. Una red neuronal es “un nuevo sistema para el tratamiento de la información, cuya unidad básica de procesamiento está inspirada en la célula fundamental del sistema nervioso humano: la neurona”.
+\item[Demográficos] Este tipo de sistema toma en cuenta datos del perfil demográfico de un usuario. Por ejemplo, se pueden hacer recomendaciones basadas en la región o país del usuario, o recomendar con base en la edad del usuario. \cite[mc5]
 
-Todos los procesos del cuerpo humano se relacionan en alguna u otra forma con la (in)actividad de estas neuronas. Las mismas son un componente relativamente simple del ser humano, pero cuando millares de ellas se conectan en forma conjunta se hacen muy poderosas. Lo que básicamente ocurre en una neurona biológica es lo siguiente: la neurona es estimulada o excitada a través de sus entradas (inputs) y cuando se alcanza un cierto umbral, la neurona se dispara o activa, pasando una señal hacia el axon.
-
-Como ya se sabe, el pensamiento tiene lugar en el cerebro, que consta de billones de neuronas interconectadas. Así, el secreto de la “inteligencia” -sin importar como se defina- se sitúa dentro de estas neuronas interconectadas y de su interacción. También, es bien conocido que los humanos son capaces de aprender. Aprendizaje significa que aquellos problemas que inicialmente no pueden resolverse, pueden ser resueltos después de obtener más información acerca del problema. Por lo tanto, las Redes Neuronales…
-
-Consisten de unidades de procesamiento que intercambian datos o información. 
-Se utilizan para reconocer patrones, incluyendo imágenes, manuscritos y secuencias de tiempo (por ejemplo: tendencias financieras).
-Tienen capacidad de aprender y mejorar su funcionamiento.
-
-Una primera clasificación de los modelos de redes neuronales podría ser,
-atendiendo a su similitud con la realidad biológica:
-
-El modelo de tipo biológico. Este comprende las redes que tratan de simular los sistemas neuronales biológicos, así como las funciones auditivas o algunas funciones básicas de la visión.
-El modelo dirigido a aplicación. Este modelo no tiene por qué guardar similitud con los sistemas biológicos. Su arquitectura está fuertemente ligada a las necesidades de las aplicaciones para la que está diseñada.
+\item[Híbridos] Como el nombre indica, son aquellos que combinan aspectos de diferentes tipos de sistemas de recomendación. Hoy en día son el tipo más común, pues se intenta minimizar las desventajas de algún tipo con la inclusión de aspectos de otro tipo.
 
 
-\subsubsection{Definiciones de una red neuronal}
+\end{description}
 
-
-Debido a su constitución y a sus fundamentos, las redes neuronales artificiales presentan un gran número de características semejantes a las del cerebro. Por ejemplo, son capaces de aprender de la experiencia, de generalizar de casos anteriores a nuevos casos, de abstraer características esenciales a partir de entradas que representan información irrelevante, etc. Esto hace que ofrezcan numerosas ventajas y que este tipo de tecnología se esté aplicando en múltiples áreas. Entre las ventajas se incluyen: 
-Aprendizaje Adaptativo. Capacidad de aprender a realizar tareas basadas en un entrenamiento o en una experiencia inicial. 
-Auto-organización. Una red neuronal puede crear su propia organización o representación de la información que recibe mediante una etapa de aprendizaje.
-Tolerancia a fallos. La destrucción parcial de una red conduce a una degradación de su estructura; sin embargo, algunas capacidades de la red se pueden retener, incluso sufriendo un gran daño.
-Operación en tiempo real. Los cómputos neuronales pueden ser realizados en paralelo; para esto se diseñan y fabrican máquinas con hardware especial para obtener esta capacidad.
-Fácil inserción dentro de la tecnología existente. Se pueden obtener chips especializados para redes neuronales que mejoran su capacidad en ciertas tareas. Ello facilitará la integración modular en los sistemas existentes
-
-\subsubsection{Redes bayesianas}
-
-Las redes bayesianas modelan un fenómeno mediante un conjunto de variables y las relaciones de dependencia entre ellas. Dado este modelo, se puede hacer inferencia bayesiana; es decir, estimar la probabilidad posterior de las variables no conocidas, con base a las variables conocidas. Estos modelos pueden tener diversas aplicaciones, para clasificación, predicción, diagnóstico, etc. Además, pueden dar información interesante en cuanto a cómo se relacionan las variables del dominio, las cuales pueden ser interpretadas en ocasiones como relaciones de causa-efecto. 
-
-Inicialmente, estos modelos eran construidos ``a mano'' basados en un conocimiento experto, pero en los últimos años se han desarrollado diversas técnicas para aprender a partir de datos, tanto la estructura como los parámetros asociados al modelo. También es posible el combinar conocimiento experto con los datos para aprender el modelo.
+\subsection{Beneficios de implementar sistemas de recomendación}
+Los sistemas de recomendación han logrado cambiar la forma en la que consumimos nuevos contenidos y descubrimos productos nuevos. Uno de los ejemplos más claros los podemos disfrutar en las páginas de compra de productos como Amazon o Mercado Libre. Con un nivel de precisión alto, estos sistemas web con algunos pocos datos pueden proporcionarnos de sugerencias de productos adaptadas a nuestras necesidades. De igual forma sucede con las plataformas de contenidos como YouTube, Spotify o Netflix. Sus recomendaciones precisas nos ayudan a descubrir nuevas series, videos o artistas al analizar nuestros gustos y preferencias.\\
+\newline
+Esto se traduce en una mejor satisfacción de las necesidades del cliente. La experiencia del usuario se convierte en una actividad más agradable, ya que estos sistemas actúan como un asistente personal que estimula a la persona a seguir descubriendo elementos. Adicionalmente estos sistemas aportan una eficiencia excepcional a las conversiones de los sitios web. Las recomendaciones de productos personalizados acerca al cliente a lo que desea, mejorando las posibilidades de que este efectivamente compre o consuma el contenido sugerido. \cite{mc6}
 
 
 

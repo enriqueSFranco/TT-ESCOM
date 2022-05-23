@@ -28,38 +28,49 @@
     Los casos de uso que se describieron en este sprint pertenecen al \textbf{Módulo General (GRL)} el cual tiene como objetivo 
     permitir el acceso al sistema para todos los actores y al \textbf{Módulo de Usuarios (USR)} la configuración del perfil de usuario dentro del sistema.
 
-    En la figura \ref{dcu:MUSR} se puede ver el diagrama de casos de uso del \textbf{Módulo de Usuarios (USR)}:
+    En la figura \ref{dcu:MUSR} se puede ver el diagrama de casos de uso del \textbf{Módulo de General (GRL)} y en la figura 
+    \ref{dcu:CUPUSR} se puede ver el diagrama de casos de uso del \textbf{(GRL)}.
     \begin{itemize}
         \item Los casos de uso \IUazul{} , son aquellos que se van implementar en este sprint.
         \item Los casos de uso \IUblanco{}, se tienen planeados para sprints posteriores.
     \end{itemize} 
 
-   
-
     \begin{figure}[H]
         \begin{center}
             \includegraphics[width=.7\textwidth]{sprints/imagenes/CUGRL.png}
         \end{center}
-        \caption{Diagrama de casos de uso del \textit{Módulo General}.}
+        \caption{Diagrama de casos de uso del \textit{Modúlo General}.}
         \label{dcu:MUSR}
     \end{figure}
 
-    A continuación se listan los casos de uso de este sprint:
+    A continuación se listan los casos de uso de este sprint para el modúlo general:
     \begin{itemize}
         \item \refElem{GRL-CU01}
         \item \refElem{GRL-CU02}
         \item \refElem{GRL-CU03}
-        %\item \refElem{USR-CU02-2}
+    \end{itemize} 
+
+    \begin{figure}[H]
+        \begin{center}
+            \includegraphics[width=.7\textwidth]{sprints/imagenes/CUPUSR.png}
+        \end{center}
+        \caption{Diagrama de casos de uso del \textit{Módulo de Usuarios}.}
+        \label{dcu:CUPUSR}
+    \end{figure}
+
+    A continuación se listan los casos de uso de este sprint para el modúlo de usuarios:
+    \begin{itemize}
+        \item \refElem{USR-CU01}
     \end{itemize} 
 
 
     \subsection{Ejecución}
         El \textit{Módulo General} fue el primero en desarrollarse ya que permite conocer el tipo de usuario
         que está ingresando al sistema.\\ 
-        
-        Se implementó JSON Web Token basado en algoritmo HASH 256 para la creación de tokens al iniciar sesión, cuyo objetivo es 
-        autentificar la identidad del usuario.y sus datos ingresados. Fue necesario utilizar la bibliotea \textit{JSON web token} 
-        la cual es deribada de la bibliotea \textit{djangorestframework}
+        \newline        
+        En la construcción del módulo de inicio de sesión para los usuarios, se empleó el uso de JSON Web Token (JWT), este es un 
+        estándar publicado en el RFC 7519 que nos permite el intercambio seguro de datos y nos facilita el proceso de determinar la 
+        identidad de un usuario o autorizar a usuarios a realizar una acción.
         %En la figura  se muestra un diagrama de flujo en el que se describe el uso del Web Token en el sistema. 
 
         Al utilizar Django, se crea por defecto una tabla generica llamada \textit{users} la cual nosotros seleccionamos
@@ -76,7 +87,12 @@
             \label{tbdb:users}
         \end{figure}
     
-       %En la figura  se muestra el funcionamiento del  Web Token ya implentado en el sistema.
+        Por parte del frontend necesitamos el uso de dos servicios con React js para administrar el JWT, el primer servicio es para realizar una petición HTTP con el verbo POST, teniendo como payload un objeto con los datos de correo electrónico y contraseña. Una vez realizada la petición HTTP al servidor, se asignará un token de acceso y un token de actualización, el token de acceso nos ayudará para identificar si el usuario en cuestión tiene los permisos para acceder a un determinado recurso dentro del sistema o para realizar una consulta de información a la API. Por otro lado, el token de actualización es por motivos de seguridad, ya que los tokens de acceso tienen un ciclo de vida corto y una vez que caducan, la aplicación del lado del cliente puede hacer uso del token de actualización para actualizar el token de acceso, es decir, los tokens de actualización nos permite obtener nuevos tokens de acceso sin tener que pedirle al usuario que inicie sesión nuevamente.\\ 
+        \newline
+        Hasta este punto, ya tenemos nuestros tokens y podemos iniciar sesión, un problema que se presentó fue en el momento de refrescar el navegador, ya que la sesión del usuario no persistía, una solución propuesta fue usar un servicio que se encargará de interceptar la llamada a la API que no genera los tokens, esto porque debemos de saber si el token de acceso ha caducado se realice una nueva solicitud para obtener un nuevo token, el cual se le asigna a la petición original y de esta forma el usuario tendrá un token actualizado.\\ 
+        \newline
+
+        Mientras tanto en el backend se valida que el payload de las credenciales enviadas por el frontend pertenezcan a un usuario activo en la base de datos. Para el manejo de los usuarios se usaron las capacidades de la tabla “Users” disponible en Django por defecto, con los campos mínimos que posee por defecto y agregando campos propios, ya que esta tabla cuenta con las funciones de seguridad integradas necesarias para encriptar contraseñas y validar la información recibida por el frontend y empezar el intercambio de tokens entre ambas partes de forma segura. Con la generación e intercambio de tokens funcionando correctamente se implementó el uso de las tablas de los usuarios definidos por el modelado de datos utilizando una representación de especiación, siendo la tabla “Users” la tabla de usuarios en general, posteriormente en las tablas de los usuarios del sistema se hace referencia a la llave primaria del registro propio del usuario en “Users” para consultar la información del usuario y pueda hacer uso de la plataforma.
 
        \subsection{Revisión y retroalimentación}
        Antes de liberar los casos de uso programados de este sprit, fue validado su funcionamiento:
@@ -84,7 +100,6 @@
             \item Se utilizo el sistema siguiendo cada caso de uso al pie de la letra segun su descripción y trayectorias. 
             \item Se hicieron las pruebas unitarias por cada campo, validando que el tipo de dato ingresado fuera correcto y en caso de no 
             hacerlo mostrara el mensaje correcto según lo indicado en el caso de uso.
-
             \item Se hicieron las pruebas unitarias por cada botón, validando que redireccionara a la interfaz correcta y/o mostrara el mensaje
             correcto egún lo indicado en el caso de uso.
         \end{enumerate} 
