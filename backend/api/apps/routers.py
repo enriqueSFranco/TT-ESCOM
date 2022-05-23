@@ -18,7 +18,6 @@ from apps.companies.api.views.company_viewset import ActivateCompanyViewSet
 from apps.users.views import UserViewSet
 from apps.companies.api.views.auth_recruiter_viewset import ValidateRecruiterViewSet
 from apps.vacantes.api.views.vacant_viewset import RecruiterVacantViewSet
-from apps.vacantes.api.views.vacant_viewset import AdminVacantViewSet
 from apps.vacantes.api.views.vacant_viewset import VacantRequirementsViewSet,VacantLenguagesViewSet
 from apps.vacantes.api.views.application_viewset import VacantApplicationsViewSet
 from apps.vacantes.api.views.application_viewset import StudentApplicationsViewSet
@@ -55,8 +54,6 @@ router.register(r'VacantLenguages', VacantLenguagesViewSet, basename='Vacants le
 router.register(r'VacantLenguages/<int:pk>', VacantLenguagesViewSet, basename='Vacant lenguages')
 router.register(r'RecruiterVacants', RecruiterVacantViewSet, basename='Recruiters Vacants')
 router.register(r'RecruiterVacants/<int:pk>', RecruiterVacantViewSet, basename='Recruiter Vacants')
-router.register(r'AdminVacants', AdminVacantViewSet, basename='Admin Vacants')
-router.register(r'AdminVacants/<int:pk>', AdminVacantViewSet, basename='Admin Vacants')
 router.register(r'Announcements',AnnouncementViewSet,basename='Announcements')
 router.register(r'Announcement/<int:pk>',AnnouncementViewSet,basename='Announcement details')
 router.register(r'Applications',ApplicationViewSet,basename='Students Applications')

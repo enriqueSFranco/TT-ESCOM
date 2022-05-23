@@ -1,0 +1,250 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {spanish}{}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}Antecedentes}{1}{chapter.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.1}Descripción del contexto}{1}{section.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.2}Marco conceptual}{1}{section.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2.1}Introducción a la inteligencia artificial}{1}{subsection.1.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2.2}Sistemas de recomendación}{1}{subsection.1.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2.3}Beneficios de implementar sistemas de recomendación}{2}{subsection.1.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.3}Problemática}{3}{section.1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.4}Marco teórico}{4}{section.1.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.5}Estado del Arte}{7}{section.1.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}Solución propuesta}{9}{chapter.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}Objetivo}{9}{section.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.1}Objetivo general}{9}{subsection.2.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.2}Objetivos específicos}{9}{subsection.2.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}Arquitectura}{10}{section.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}Planeación del proyecto}{12}{section.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}Ejecución de Sprints}{15}{chapter.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Estructura del sprint}{15}{section.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.1}Planeación del sprint}{15}{subsection.3.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Requerimientos funcionales}{15}{section*.11}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Casos de uso}{15}{section*.12}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.2}Ejecución del sprint}{17}{subsection.3.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.3}Revisión y retroalimentación del sprint}{17}{subsection.3.1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}Sprint 1: Pruebas de concepto}{17}{section.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}Sprint 2: Análisis general del sistema}{17}{section.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.4}Sprint 3: Preparación del entorno}{17}{section.3.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.5}Sprint 4: Gestión de Usuarios}{18}{section.3.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5.1}Planeación}{18}{subsection.3.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5.2}Ejecución}{20}{subsection.3.5.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5.3}Revisión y retroalimentación}{21}{subsection.3.5.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5.4}Sprint 5: Gestión de Vacantes}{21}{subsection.3.5.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5.5}Planeación}{22}{subsection.3.5.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5.6}Ejecución}{23}{subsection.3.5.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5.7}Sprint 6: Gestión de Postulaciones}{23}{subsection.3.5.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5.8}Planeación}{24}{subsection.3.5.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.5.9}Ejecución}{25}{subsection.3.5.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {A}Usuarios}{27}{appendix.Alph1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.1}Actor Reclutador}{27}{section.Alph1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.2}Actor Candidato}{27}{section.Alph1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.3}Actor Colaborador}{28}{section.Alph1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.4}Actor Encargado}{28}{section.Alph1.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {B}Modelo de estados}{29}{appendix.Alph2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.1}Máquina de estados de una vacante}{29}{section.Alph2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {B.1.1}Resumen}{29}{subsection.Alph2.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {B.1.2}Descripción}{29}{subsection.Alph2.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.2}Máquina de estados de una postulación}{30}{section.Alph2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {B.2.1}Resumen}{30}{subsection.Alph2.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {B.2.2}Descripción}{30}{subsection.Alph2.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.3}Maquina de estados de una empresa}{30}{section.Alph2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {B.3.1}Resumen}{30}{subsection.Alph2.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {B.3.2}Descripción}{31}{subsection.Alph2.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.4}Maquina de estados de un reclutador}{31}{section.Alph2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {B.4.1}Resumen}{31}{subsection.Alph2.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {B.4.2}Descripción}{31}{subsection.Alph2.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {C}Reglas de negocio}{33}{appendix.Alph3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {C.1}{RN-N001} {Campos obligatorios}}{33}{section.Alph3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {C.2}{RN-N002} {Formato válido para el correo electrónico}}{33}{section.Alph3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {C.3}{RN-N003} {Formato de campos}}{34}{section.Alph3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {C.4}{RN-N004} {Unicidad de los elementos registrados}}{34}{section.Alph3.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {C.5}{RN-N005} {Formato válido para del RFC}}{35}{section.Alph3.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {C.6}{RN-N006} {Formato válido para de la contraseña}}{35}{section.Alph3.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {C.7}{RN-N007} {Credenciales válidas de aceso}}{35}{section.Alph3.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {D}Casos de uso}{37}{appendix.Alph4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {D.1}Especificación de casos de uso}{37}{section.Alph4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {D.2}Módulo General}{38}{section.Alph4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {D.2.1}GRL-CU01 Crear cuenta}{39}{subsection.Alph4.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Resumen}{39}{section*.27}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Descripción}{39}{section*.28}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Trayectorias del Caso de Uso}{39}{section*.29}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {D.2.2}GRL-IU01 Crear Cuenta}{41}{subsection.Alph4.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Objetivo}{41}{section*.30}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Acciones}{41}{section*.31}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {D.2.3}GRL-CU02 Enviar pre-registro}{42}{subsection.Alph4.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Resumen}{42}{section*.33}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Descripción}{42}{section*.34}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Trayectorias del Caso de Uso}{42}{section*.35}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {D.2.4}GRL-IU02 Enviar Pre-registro}{44}{subsection.Alph4.2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Objetivo}{44}{section*.36}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Acciones}{44}{section*.37}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {D.2.5}GRL-CU03 Iniciar sesión}{46}{subsection.Alph4.2.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Resumen}{46}{section*.41}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Descripción}{46}{section*.42}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Trayectorias del Caso de Uso}{46}{section*.43}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Puntos de extensión}{48}{section*.44}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {D.2.6}GRL-IU03 Iniciar sesión}{49}{subsection.Alph4.2.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Objetivo}{49}{section*.45}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Acciones}{49}{section*.46}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {D.3}Módulo de Usuarios}{50}{section.Alph4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {D.3.1}USR-CU01 Crear perfil}{51}{subsection.Alph4.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Resumen}{51}{section*.49}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Descripción}{51}{section*.50}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Trayectorias del Caso de Uso}{51}{section*.51}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {D.3.2}USR-IU01 Crear perfil}{54}{subsection.Alph4.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Objetivo}{54}{section*.52}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Comandos}{54}{section*.53}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {D.4}Módulo de Vacantes}{59}{section.Alph4.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {D.4.1}VCT-CU02 Listar vacantes}{60}{subsection.Alph4.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Resumen}{60}{section*.59}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Descripción}{60}{section*.60}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Trayectorias del Caso de Uso}{60}{section*.61}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {D.4.2}VCT-IU02 Listar vacantes}{61}{subsection.Alph4.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Objetivo}{61}{section*.62}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Listado de vacantes}{61}{section*.64}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {D.4.3}VCT-CU02-1 Consultar vacante}{64}{subsection.Alph4.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Resumen}{64}{section*.67}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Descripción}{64}{section*.68}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Trayectorias del Caso de Uso}{64}{section*.69}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {D.4.4}VCT-IU02-2 Consultar vacante}{65}{subsection.Alph4.4.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Objetivo}{65}{section*.70}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Consulta de vacante}{65}{section*.72}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {E}Mensajes del sistema}{67}{appendix.Alph5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {E.1}{MSG1}~{}{Operación exitosa}}{68}{section.Alph5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {E.2}{MSG2}~{}{Formato de campo inválido}}{68}{section.Alph5.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {E.3}{MSG3}~{}{Dato ingresado ya registrado}}{68}{section.Alph5.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {E.4}{MSG4}~{}{Dato obligatorio faltante}}{69}{section.Alph5.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {E.5}{MSG5}~{}{Credenciales incorrectas}}{69}{section.Alph5.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {F}Modelo de datos}{71}{appendix.Alph6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {F.1}Código de colores y atributos}{71}{section.Alph6.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {F.2}Diagrama Relacional}{72}{section.Alph6.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {F.2.1}Entidad: Usuario}{72}{subsection.Alph6.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {F.2.2}Entidad: Empresa}{73}{subsection.Alph6.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {F.2.3}Entidad: Reclutador}{73}{subsection.Alph6.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {F.2.4}Entidad: Alumno}{74}{subsection.Alph6.2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {F.2.5}Entidad: Historial Academico}{76}{subsection.Alph6.2.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {F.2.6}Entidad: Vacante}{76}{subsection.Alph6.2.6}%

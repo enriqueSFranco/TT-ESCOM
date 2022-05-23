@@ -222,14 +222,14 @@ class RecruiterVacantViewSet(viewsets.GenericViewSet):
 	def get_object(self, pk):	
 		self.queryset = self.model.objects\
 				.filter(t301_id_recruiter = pk)\
-				.all()
+				.all().order_by('c204_id_vacant_status')
 		return self.queryset
 	
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.all()
+				.all().order_by('c204_id_vacant_status')
 		return self.queryset
 
 	def list(self, request):
@@ -246,40 +246,6 @@ class RecruiterVacantViewSet(viewsets.GenericViewSet):
 		vacant_serializer = self.list_serializer_class(Vacant,many=True)
 		return Response(vacant_serializer.data)
 
-class AdminVacantViewSet(viewsets.GenericViewSet):
-	model = Vacant
-	#permission_classes = [IsAuthenticated]
-	serializer_class = VacantSerializer
-	pagination_class = CustomPagination
-	list_serializer_class = VacantListSerializer
-	queryset = None
-
-	def get_object(self, pk):	
-		self.queryset = self.model.objects\
-				.filter(t400_id_admin = pk)\
-				.all()
-		return self.queryset
-	
-	def get_queryset(self):
-		if self.queryset is None:
-			self.queryset = self.model.objects\
-				.filter()\
-				.all()
-		return self.queryset
-
-	def list(self, request):
-		vacants = self.get_queryset()
-		page = self.paginate_queryset(vacants)
-		if page is not None:
-			vacants_serializer = self.list_serializer_class(page, many=True)
-			return self.get_paginated_response(vacants_serializer.data)
-		vacants_serializer = self.list_serializer_class(vacants, many=True)
-		return Response(vacants_serializer.data)
-
-	def retrieve(self, request, pk):
-		Vacant = self.get_object(pk)
-		vacant_serializer = self.list_serializer_class(Vacant,many=True)
-		return Response(vacant_serializer.data)	
 
 class VacantInfoViewSet(viewsets.GenericViewSet):
 	model = Application

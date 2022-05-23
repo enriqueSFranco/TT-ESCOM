@@ -1,0 +1,91 @@
+\BOOKMARK [0][-]{chapter.1}{Antecedentes}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Descripci\363n del contexto}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Marco conceptual}{chapter.1}% 3
+\BOOKMARK [2][-]{subsection.1.2.1}{Introducci\363n a la inteligencia artificial}{section.1.2}% 4
+\BOOKMARK [2][-]{subsection.1.2.2}{Sistemas de recomendaci\363n}{section.1.2}% 5
+\BOOKMARK [2][-]{subsection.1.2.3}{Beneficios de implementar sistemas de recomendaci\363n}{section.1.2}% 6
+\BOOKMARK [1][-]{section.1.3}{Problem\341tica}{chapter.1}% 7
+\BOOKMARK [1][-]{section.1.4}{Marco te\363rico}{chapter.1}% 8
+\BOOKMARK [1][-]{section.1.5}{Estado del Arte}{chapter.1}% 9
+\BOOKMARK [0][-]{chapter.2}{Soluci\363n propuesta}{}% 10
+\BOOKMARK [1][-]{section.2.1}{Objetivo}{chapter.2}% 11
+\BOOKMARK [2][-]{subsection.2.1.1}{Objetivo general}{section.2.1}% 12
+\BOOKMARK [2][-]{subsection.2.1.2}{Objetivos espec\355ficos}{section.2.1}% 13
+\BOOKMARK [1][-]{section.2.2}{Arquitectura}{chapter.2}% 14
+\BOOKMARK [1][-]{section.2.3}{Planeaci\363n del proyecto}{chapter.2}% 15
+\BOOKMARK [0][-]{chapter.3}{Ejecuci\363n de Sprints}{}% 16
+\BOOKMARK [1][-]{section.3.1}{Estructura del sprint}{chapter.3}% 17
+\BOOKMARK [2][-]{subsection.3.1.1}{Planeaci\363n del sprint}{section.3.1}% 18
+\BOOKMARK [2][-]{subsection.3.1.2}{Ejecuci\363n del sprint}{section.3.1}% 19
+\BOOKMARK [2][-]{subsection.3.1.3}{Revisi\363n y retroalimentaci\363n del sprint}{section.3.1}% 20
+\BOOKMARK [1][-]{section.3.2}{Sprint 1: Pruebas de concepto}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.3}{Sprint 2: An\341lisis general del sistema}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.4}{Sprint 3: Preparaci\363n del entorno}{chapter.3}% 23
+\BOOKMARK [1][-]{section.3.5}{Sprint 4: Gesti\363n de Usuarios}{chapter.3}% 24
+\BOOKMARK [2][-]{subsection.3.5.1}{Planeaci\363n}{section.3.5}% 25
+\BOOKMARK [2][-]{subsection.3.5.2}{Ejecuci\363n}{section.3.5}% 26
+\BOOKMARK [2][-]{subsection.3.5.3}{Revisi\363n y retroalimentaci\363n}{section.3.5}% 27
+\BOOKMARK [2][-]{subsection.3.5.4}{Sprint 5: Gesti\363n de Vacantes}{section.3.5}% 28
+\BOOKMARK [2][-]{subsection.3.5.5}{Planeaci\363n}{section.3.5}% 29
+\BOOKMARK [2][-]{subsection.3.5.6}{Ejecuci\363n}{section.3.5}% 30
+\BOOKMARK [2][-]{subsection.3.5.7}{Sprint 6: Gesti\363n de Postulaciones}{section.3.5}% 31
+\BOOKMARK [2][-]{subsection.3.5.8}{Planeaci\363n}{section.3.5}% 32
+\BOOKMARK [2][-]{subsection.3.5.9}{Ejecuci\363n}{section.3.5}% 33
+\BOOKMARK [0][-]{appendix.Alph1}{Usuarios}{}% 34
+\BOOKMARK [1][-]{section.Alph1.1}{Actor Reclutador}{appendix.Alph1}% 35
+\BOOKMARK [1][-]{section.Alph1.2}{Actor Candidato}{appendix.Alph1}% 36
+\BOOKMARK [1][-]{section.Alph1.3}{Actor Colaborador}{appendix.Alph1}% 37
+\BOOKMARK [1][-]{section.Alph1.4}{Actor Encargado}{appendix.Alph1}% 38
+\BOOKMARK [0][-]{appendix.Alph2}{Modelo de estados}{}% 39
+\BOOKMARK [1][-]{section.Alph2.1}{M\341quina de estados de una vacante}{appendix.Alph2}% 40
+\BOOKMARK [2][-]{subsection.Alph2.1.1}{Resumen}{section.Alph2.1}% 41
+\BOOKMARK [2][-]{subsection.Alph2.1.2}{Descripci\363n}{section.Alph2.1}% 42
+\BOOKMARK [1][-]{section.Alph2.2}{M\341quina de estados de una postulaci\363n}{appendix.Alph2}% 43
+\BOOKMARK [2][-]{subsection.Alph2.2.1}{Resumen}{section.Alph2.2}% 44
+\BOOKMARK [2][-]{subsection.Alph2.2.2}{Descripci\363n}{section.Alph2.2}% 45
+\BOOKMARK [1][-]{section.Alph2.3}{Maquina de estados de una empresa}{appendix.Alph2}% 46
+\BOOKMARK [2][-]{subsection.Alph2.3.1}{Resumen}{section.Alph2.3}% 47
+\BOOKMARK [2][-]{subsection.Alph2.3.2}{Descripci\363n}{section.Alph2.3}% 48
+\BOOKMARK [1][-]{section.Alph2.4}{Maquina de estados de un reclutador}{appendix.Alph2}% 49
+\BOOKMARK [2][-]{subsection.Alph2.4.1}{Resumen}{section.Alph2.4}% 50
+\BOOKMARK [2][-]{subsection.Alph2.4.2}{Descripci\363n}{section.Alph2.4}% 51
+\BOOKMARK [0][-]{appendix.Alph3}{Reglas de negocio}{}% 52
+\BOOKMARK [1][-]{section.Alph3.1}{RN-N001 Campos obligatorios}{appendix.Alph3}% 53
+\BOOKMARK [1][-]{section.Alph3.2}{RN-N002 Formato v\341lido para el correo electr\363nico}{appendix.Alph3}% 54
+\BOOKMARK [1][-]{section.Alph3.3}{RN-N003 Formato de campos}{appendix.Alph3}% 55
+\BOOKMARK [1][-]{section.Alph3.4}{RN-N004 Unicidad de los elementos registrados}{appendix.Alph3}% 56
+\BOOKMARK [1][-]{section.Alph3.5}{RN-N005 Formato v\341lido para del RFC}{appendix.Alph3}% 57
+\BOOKMARK [1][-]{section.Alph3.6}{RN-N006 Formato v\341lido para de la contrase\361a}{appendix.Alph3}% 58
+\BOOKMARK [1][-]{section.Alph3.7}{RN-N007 Credenciales v\341lidas de aceso}{appendix.Alph3}% 59
+\BOOKMARK [0][-]{appendix.Alph4}{Casos de uso}{}% 60
+\BOOKMARK [1][-]{section.Alph4.1}{Especificaci\363n de casos de uso}{appendix.Alph4}% 61
+\BOOKMARK [1][-]{section.Alph4.2}{M\363dulo General}{appendix.Alph4}% 62
+\BOOKMARK [2][-]{subsection.Alph4.2.1}{GRL-CU01 Crear cuenta}{section.Alph4.2}% 63
+\BOOKMARK [2][-]{subsection.Alph4.2.2}{GRL-IU01 Crear Cuenta}{section.Alph4.2}% 64
+\BOOKMARK [2][-]{subsection.Alph4.2.3}{GRL-CU02 Enviar pre-registro}{section.Alph4.2}% 65
+\BOOKMARK [2][-]{subsection.Alph4.2.4}{GRL-IU02 Enviar Pre-registro}{section.Alph4.2}% 66
+\BOOKMARK [2][-]{subsection.Alph4.2.5}{GRL-CU03 Iniciar sesi\363n}{section.Alph4.2}% 67
+\BOOKMARK [2][-]{subsection.Alph4.2.6}{GRL-IU03 Iniciar sesi\363n}{section.Alph4.2}% 68
+\BOOKMARK [1][-]{section.Alph4.3}{M\363dulo de Usuarios}{appendix.Alph4}% 69
+\BOOKMARK [2][-]{subsection.Alph4.3.1}{USR-CU01 Crear perfil}{section.Alph4.3}% 70
+\BOOKMARK [2][-]{subsection.Alph4.3.2}{USR-IU01 Crear perfil}{section.Alph4.3}% 71
+\BOOKMARK [1][-]{section.Alph4.4}{M\363dulo de Vacantes}{appendix.Alph4}% 72
+\BOOKMARK [2][-]{subsection.Alph4.4.1}{VCT-CU02 Listar vacantes}{section.Alph4.4}% 73
+\BOOKMARK [2][-]{subsection.Alph4.4.2}{VCT-IU02 Listar vacantes}{section.Alph4.4}% 74
+\BOOKMARK [2][-]{subsection.Alph4.4.3}{VCT-CU02-1 Consultar vacante}{section.Alph4.4}% 75
+\BOOKMARK [2][-]{subsection.Alph4.4.4}{VCT-IU02-2 Consultar vacante}{section.Alph4.4}% 76
+\BOOKMARK [0][-]{appendix.Alph5}{Mensajes del sistema}{}% 77
+\BOOKMARK [1][-]{section.Alph5.1}{MSG1 Operaci\363n exitosa}{appendix.Alph5}% 78
+\BOOKMARK [1][-]{section.Alph5.2}{MSG2 Formato de campo inv\341lido}{appendix.Alph5}% 79
+\BOOKMARK [1][-]{section.Alph5.3}{MSG3 Dato ingresado ya registrado}{appendix.Alph5}% 80
+\BOOKMARK [1][-]{section.Alph5.4}{MSG4 Dato obligatorio faltante}{appendix.Alph5}% 81
+\BOOKMARK [1][-]{section.Alph5.5}{MSG5 Credenciales incorrectas}{appendix.Alph5}% 82
+\BOOKMARK [0][-]{appendix.Alph6}{Modelo de datos}{}% 83
+\BOOKMARK [1][-]{section.Alph6.1}{C\363digo de colores y atributos}{appendix.Alph6}% 84
+\BOOKMARK [1][-]{section.Alph6.2}{Diagrama Relacional}{appendix.Alph6}% 85
+\BOOKMARK [2][-]{subsection.Alph6.2.1}{Entidad: Usuario}{section.Alph6.2}% 86
+\BOOKMARK [2][-]{subsection.Alph6.2.2}{Entidad: Empresa}{section.Alph6.2}% 87
+\BOOKMARK [2][-]{subsection.Alph6.2.3}{Entidad: Reclutador}{section.Alph6.2}% 88
+\BOOKMARK [2][-]{subsection.Alph6.2.4}{Entidad: Alumno}{section.Alph6.2}% 89
+\BOOKMARK [2][-]{subsection.Alph6.2.5}{Entidad: Historial Academico}{section.Alph6.2}% 90
+\BOOKMARK [2][-]{subsection.Alph6.2.6}{Entidad: Vacante}{section.Alph6.2}% 91
