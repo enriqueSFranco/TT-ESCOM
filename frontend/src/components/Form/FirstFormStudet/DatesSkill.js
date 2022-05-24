@@ -25,7 +25,7 @@ function DatesSkill({ softSkills, setSoftSkills,hardSkills, setHardSkills, AllRe
     <div className={styles.containerPage}>
       <h4 className={styles.formTitleSkills}>Para Finalizar...</h4>
       <form className={styles.formSkills}>
-      <h5>Selecciona tus habilidades y conocimientos más importantes</h5>
+      <h5>Selecciona tus habilidades y conocimientos más importantes (max 10)</h5>
         <div className={styles.select}>
           <Autocomplete
             size="small"

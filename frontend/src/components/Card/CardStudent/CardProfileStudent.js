@@ -12,6 +12,7 @@ import {MdSchool, MdLocationPin, MdOutlineAirplanemodeActive } from "react-icons
 import { FaSchool } from "react-icons/fa";
 import * as IoIcon from "react-icons/io";
 import styles from "./CardProfileStudent.module.css";
+import { Toaster } from "react-hot-toast";
 
 const CardProfileStudent = () => {
   // TODO: Implementar useReducer para el manejo del estado
@@ -51,8 +52,6 @@ const CardProfileStudent = () => {
         setSocialNetworks(response);
       })
   }, [token?.user?.user_id]);
-
-  console.log(academicHistorial)
 
   return (
     <>
@@ -156,8 +155,9 @@ const CardProfileStudent = () => {
           width={650}
           height={800}
         >
-          <FormUpdateDataStudent student={student} />
+          <FormUpdateDataStudent idStudent={student[0]?.t100_id_student} />
         </ModalForm>
+        <Toaster position="top-right" />
     </>
   );
 };

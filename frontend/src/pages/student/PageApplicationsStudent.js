@@ -33,18 +33,18 @@ const PageApplicationsStudent = () => {
         <Table stickyHeader sx={{ width: "100%"}} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Empresa</StyledTableCell>
-              <StyledTableCell>Resumen de la vacante</StyledTableCell>
-              <StyledTableCell>Ubicacion de la vacante</StyledTableCell>
-              <StyledTableCell>Tipo de contratacion</StyledTableCell>
-              <StyledTableCell align='center' >Fecha de postulacion</StyledTableCell>
+              <StyledTableCell style={{fontSize: "1.2rem"}} align='center'>Empresa</StyledTableCell>
+              <StyledTableCell style={{fontSize: "1.2rem"}} align='center'>Resumen de la vacante</StyledTableCell>
+              <StyledTableCell style={{fontSize: "1.2rem"}} align='center'>Ubicacion de la vacante</StyledTableCell>
+              <StyledTableCell style={{fontSize: "1.2rem"}} align='center'>Tipo de contratacion</StyledTableCell>
+              <StyledTableCell style={{fontSize: "1.2rem"}} align='center' >Fecha de postulacion</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {
               data?.map(row => (
                 <TableRow key={uuid()}>
-                <TableCell sx={{width: 150}}>
+                <TableCell sx={{width: 150}} style={{textAlign: "center"}}>
                   {
                     row?.t200_id_vacant?.t300_id_company?.t300_logo !== null ? 
                       <img src={row?.t200_id_vacant?.t300_id_company?.t300_logo} alt={row?.t200_id_vacant?.t300_id_company} className={styles.image} />
@@ -63,9 +63,9 @@ const PageApplicationsStudent = () => {
                     workingHours={`${(row?.t200_id_vacant?.t200_check_time).slice(0,5)}am - ${(row?.t200_id_vacant?.t200_closing_hour).slice(0,5)}pm`}
                   />
                 </TableCell>
-                <TableCell sx={{width: 350}}>{`${row?.t200_id_vacant?.t200_municipality}, ${row?.t200_id_vacant?.t200_state}, ${row?.t200_id_vacant?.t200_street}`}</TableCell>
-                <TableCell>{row?.t200_id_vacant?.c208_id_contract?.c208_description}</TableCell>
-                <TableCell align='center'>{formatDate(row?.t201_date_application)}</TableCell>
+                <TableCell style={{fontSize: "1rem"}} sx={{width: 350}}>{`${row?.t200_id_vacant?.t200_municipality}, ${row?.t200_id_vacant?.t200_state}, ${row?.t200_id_vacant?.t200_street}`}</TableCell>
+                <TableCell style={{fontSize: "1rem"}}>{row?.t200_id_vacant?.c208_id_contract?.c208_description}</TableCell>
+                <TableCell style={{fontSize: "1rem"}} align='center'>{formatDate(row?.t201_date_application)}</TableCell>
               </TableRow> 
               ))
             }

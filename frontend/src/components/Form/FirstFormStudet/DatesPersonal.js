@@ -71,7 +71,7 @@ function DatesPersonal({ form, handleChange }) {
 
   return (
     <div className={styles.containerPage}>
-      <h5 className={styles.formTitle}>Proporcionanos algunos datos para completar tu registro.</h5>
+      <h5 className={styles.formTitle}>Por favor, proporcionanos los siguientes datos.</h5>
       <form className={styles.formDataPrivate}>
         <div className={styles.inputGroup}>
           <TextField

@@ -19,7 +19,6 @@ const Search = ({ handleSearch }) => {
   const handleFilterJob = e => {
     const query = e.target.value;
     setQueryJob(query);
-
     const newFilter = data?.result?.filter(({ t200_job }) => {
       let regex = new RegExp(`${query}`, "gi");
       return t200_job.match(regex);

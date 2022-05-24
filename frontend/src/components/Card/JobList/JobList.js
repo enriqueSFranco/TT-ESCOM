@@ -36,15 +36,16 @@ const JobList = ({jobs, loading, page, setPage, maxLenPage}) => {
           <div style={{ width: "550px" }}>
             {loading ? (
               <Skeleton type="feed" />
-            ) : jobs?.map((job) => (
-              <Link
+            ) : jobs?.filter(job => job?.c204_id_vacant_status?.c204_description === "Abierta")
+              .map(job => (
+                <Link
                 to={`vacante/${job?.t200_id_vacant}`}
                 key={job?.t200_id_vacant}
               >
                 <CardJob job={job} />
               </Link>
-            )
-            )}
+              ))
+            }
           </div>
           <Outlet />
         </article>

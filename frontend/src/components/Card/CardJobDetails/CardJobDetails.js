@@ -92,9 +92,7 @@ const CardJobDetails = () => {
                   <li className={styles.flex}>
                     <Chip
                       label={
-                        `${numberFormat(job[0]?.t200_max_salary).slice(
-                          4
-                        )} MXN` ?? "No especificado"
+                        `${numberFormat(job[0]?.t200_max_salary).replace(".00", "")}` ?? "No especificado"
                       }
                       icon={
                         <MdIcon.MdOutlineAttachMoney
