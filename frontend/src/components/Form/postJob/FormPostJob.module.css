@@ -274,7 +274,7 @@
 .wrapperButtons {
   /* outline: 1px solid red; */
   position: absolute;
-  bottom: 4rem;
+  bottom: 5rem;
   right: 0;
   width: 430px;
   display: flex;
@@ -283,7 +283,7 @@
 
 .wrapperFormJobDetails {
   position: relative;
-  top: 2rem;
+  /* top: 2rem; */
   height: 700px;
   /* background-color: rebeccapurple; */
 }
@@ -312,8 +312,10 @@
 }
 
 .SkillsWrapper{
-  height: 150px;  
-  flex-wrap: wrap;  
+  height: 120px;  
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  /* outline: 2px solid red; */
 }
 
 .SkillsWrapper Autocomplete{
@@ -330,7 +332,9 @@
 }
 
 .listItemsSkill{
-  display: flex;
   width: 700PX;
+  display: flex;
   flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0;
 }
