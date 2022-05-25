@@ -4,6 +4,7 @@ import {
   getLocality,
   getAllCatalogueExperience,
   getAllCandidateProfile,
+  getAllContracTypes
 } from "services/catalogs/index";
 import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
@@ -12,6 +13,8 @@ import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
 import Select from "@mui/material/Select";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
 import { BiCurrentLocation, BiUser } from "react-icons/bi";
 import {
   MdOutlineWork,
@@ -21,11 +24,12 @@ import {
 import styles from "./FormPostJob.module.css";
 
 const FormPostJobLocation = ({ form, errors, handleChecked, handleChange, nextStep }) => {
-  const [cp, setCP] = useState("");
-  const [state, setState] = useState("");
-  const [town, setTown] = useState("");
+  const [cp, setCP] = useState(form?.t200_cp);
+  const [state, setState] = useState(form?.t200_state);
+  const [town, setTown] = useState(form?.t200_municipality);
   const [profiles, setProfiles] = useState([]);
   const [experience, setExperience] = useState([]);
+  const [contractTypes, setContractTypes] = useState([]);
   const [localities, setLocalities] = useState([]);
 
   useEffect(() => {
@@ -43,6 +47,14 @@ const FormPostJobLocation = ({ form, errors, handleChecked, handleChange, nextSt
       })
       .catch((error) => console.error(error));
   }, []);
+
+useEffect(() => {
+  getAllContracTypes()
+    .then((response) => {
+      setContractTypes(response);
+    })
+    .catch((error) => console.error(error));
+}, []);
 
   const getLocalityData = (e) => {
     setCP(e.target.value);
@@ -62,6 +74,14 @@ const FormPostJobLocation = ({ form, errors, handleChecked, handleChange, nextSt
         })
         .catch((error) => console.error(error));
     }
+  };
+  
+  const setGrossSalary = (e) => {
+    form.t200_gross_salary = e.target.checked;
+  };
+
+  const setNegotiable = (e) => {
+    form.t200_salary_negotiable = e.target.checked;
   };
 
   return (
@@ -112,16 +132,31 @@ const FormPostJobLocation = ({ form, errors, handleChecked, handleChange, nextSt
               {errors.t200_cp}
             </span>
           )}
-          <FormControlLabel
-            control={
-              <Checkbox
-                value={form.t200_home_ofice}
-                onChange={handleChecked}
-                size="small"
+          <div className={styles.inputGroupCheckbox}>          
+            <RadioGroup
+              row
+              id="c214_id_modality"
+              name="c214_id_modality"
+              value={form.c214_id_modality}
+              onChange={handleChange}
+            >
+              <FormControlLabel
+                value="3"
+                control={<Radio />}
+                label="Hibrido"
               />
-            }
-            label="Vacante Remota"
-          />
+              <FormControlLabel
+                value="2"
+                control={<Radio />}
+                label="Home office"
+              />
+              <FormControlLabel
+                value="1"
+                control={<Radio />}
+                label="Presencial"
+              />
+            </RadioGroup>
+            </div>
         </div>
         <div className={styles.wrapperTown}>
           <TextField
@@ -209,10 +244,10 @@ const FormPostJobLocation = ({ form, errors, handleChecked, handleChange, nextSt
             </FormControl>
 
             <FormControl sx={{ width: 300 }}>
-              <InputLabel id="c207_description">Experiencia</InputLabel>
+              <InputLabel id="c207_id_experience">Experiencia</InputLabel>
               <Select
-                id="c207_description"
-                name="c207_description"
+                id="c207_id_experience"
+                name="c207_id_experience"
                 defaultValue=""
                 onChange={handleChange}
                 label="Experiencia"
@@ -220,6 +255,23 @@ const FormPostJobLocation = ({ form, errors, handleChecked, handleChange, nextSt
                 {experience?.map((exp) => (
                   <MenuItem key={uuid()} value={exp?.c207_id_experience}>
                     {exp?.c207_description}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
+            <FormControl sx={{ width: 300 }}>
+              <InputLabel id="c208_id_contract">Tipo de contratación</InputLabel>
+              <Select
+                id="c208_id_contract"
+                name="c208_id_contract"
+                defaultValue=""
+                onChange={handleChange}
+                label="Tipo de contratación"
+              >
+                {contractTypes?.map((contract) => (
+                  <MenuItem key={uuid()} value={contract?.c208_id_contract}>
+                    {contract?.c208_description}
                   </MenuItem>
                 ))}
               </Select>
@@ -233,41 +285,80 @@ const FormPostJobLocation = ({ form, errors, handleChecked, handleChange, nextSt
         </div>
         <div className={styles.form1}>
           <div className={styles.inputGroup}>
-            <TextField
-              label="Salario Mínimo"
-              name="t200_min_salary"
-              id="t200_min_salary"
-              inputProps={{ min: 7000, max: 99999, type: "number" }}
-              value={form.t200_min_salary}
-              onChange={handleChange}
-              sx={{ width: 150 }}
-            />
-            <TextField
-              label="Salario máximo"
-              name="t200_max_salary"
-              id="t200_max_salary"
-              inputProps={{ min: 7000, max: 99999, type: "number" }}
-              value={form.t200_max_salary}
-              onChange={handleChange}
-              sx={{ width: 150 }}
-            />
-            <TextField
-              label="Entrada"
-              type="time"
-              name="t200_check_time"
-              id="t200_check_time"
-              value={form.t200_check_time}
-              onChange={handleChange}
-              sx={{ width: 150, marginRight: 2 }}
-            />
-            <TextField
-              label="Salida"
-              type="time"
-              name="t200_closing_hour"
-              id="t200_closing_hour"
-              value={form.t200_closing_hour}
-              onChange={handleChange}
-            />
+            <div>
+              <div>
+                <TextField
+                  label="Salario Mínimo"
+                  name="t200_min_salary"
+                  id="t200_min_salary"
+                  inputProps={{ min: 7000, max: 99999, type: "number" }}
+                  value={form.t200_min_salary}
+                  onChange={handleChange}
+                  sx={{ width: 150 }}
+                />
+                <TextField
+                  label="Salario máximo"
+                  name="t200_max_salary"
+                  id="t200_max_salary"
+                  inputProps={{ min: 0, max: 99999, type: "number", marginLeft: 20}}
+                  value={form.t200_max_salary}
+                  onChange={handleChange}
+                  sx={{ width: 150 }}
+                />
+              </div>
+              <div>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      value={form.t200_gross_salary}
+                      onChange={setGrossSalary}
+                      size="small"
+                    />
+                  }
+                  label="Es sueldo neto"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      value={form.t200_salary_negotiable}
+                      onChange={setNegotiable}
+                      size="small"
+                    />
+                  }
+                  label="Negociable"
+                />
+              </div>
+            </div>
+              <div >
+                <TextField 
+                  label="Días laborales"
+                  type="text"
+                  name="t200_work_days"
+                  id="t200_work_days"
+                  value={form.t200_work_days}
+                  onChange={handleChange}
+                  sx={{ width: 300, marginBottom: 3 }}
+                />            
+              <div>
+                <TextField
+                  label="Entrada"
+                  type="time"
+                  name="t200_check_time"
+                  id="t200_check_time"
+                  value={form.t200_check_time}
+                  onChange={handleChange}
+                  sx={{ width: 150, marginRight: 2 }}
+                />
+                <TextField
+                  label="Salida"
+                  type="time"
+                  name="t200_closing_hour"
+                  id="t200_closing_hour"
+                  value={form.t200_closing_hour}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
             {/* dias laborales */}
           </div>
         </div>

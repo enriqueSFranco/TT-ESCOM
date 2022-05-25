@@ -8,8 +8,11 @@ import {
   API_PHOTO_STUDENT,
   API_PROJECT_STUDENT,
   API_CATALOGUE_PLATAFORM,
-  API_ACADEMIC_HISTORIAL
+  API_ACADEMIC_HISTORIAL,
+  API_JOB_APPLICATIONS,
+  API_CERTIFICATIONS,
 } from "../settings";
+
 
 /**
  * @param {Number} id identificador para obtner un alumno en especifico
@@ -56,6 +59,21 @@ export const getSocialNetwork = async (id) => {
     });
 };
 
+/**
+ * @param {Object} payload informacion que llevara la petcion
+ * @returns {Promise}
+ **/
+export const postSocialNetwork = (payload = {}) => {
+  return axios.post(`${API_SOCIAL_NETWORK}`, payload, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    }
+  })
+    .then(response => response)
+    .catch(error => error);
+}
+
 export const getLinks = () => {
   return axios.get(API_CATALOGUE_PLATAFORM)
     .then(response => {
@@ -64,8 +82,6 @@ export const getLinks = () => {
     })
     .catch(error => error);
 };
-
-
 
 
 /**
@@ -139,7 +155,23 @@ export const uploadPhotoStudent = (id, img) => {
  * @return {Promise}
  **/
 export const applyJob = (payload) => {
-  return axios.post(`/api/Applications/`, payload, {
+  return axios.post(API_JOB_APPLICATIONS, payload, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+  })
+    .then(response => {
+      console.log(response);
+      return response;
+    })
+    .catch(error => {
+      if (error.response) return error.response;
+    })
+};
+
+export const changeApplyState = (id,payload) => {  
+  return axios.put(`${API_JOB_APPLICATIONS}${id}/`, payload, {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -197,7 +229,7 @@ export const addProject = (payload = {}) => {
  * @returns {Promise}
  **/
 export const getAcademicHistorial = (id) => {
-  return axios.get(API_ACADEMIC_HISTORIAL)
+  return axios.get(`${API_ACADEMIC_HISTORIAL}${id}/`)
     .then(response => response)
     .catch(error => error);
 }
@@ -207,3 +239,43 @@ export const postAcademicHistorial = (payload = {}) => {
     .then(response => response)
     .catch(error => error);
 };
+
+/**
+ * @param {Number} id identificador de una unidad academica
+ * @returns {Promise}
+ **/
+export const deleteAcademicHistorial = (id) => {
+  return axios.delete(`${API_ACADEMIC_HISTORIAL}${id}/`)
+    .then(response => response)
+    .catch(error => error);
+}
+
+/**
+ * @param {Number} id identificador de un estudiante para obtener sus certificaciones
+ * @returns {Promise}
+ **/
+export const getStudentCertifications = (id) => {
+  return axios.get(`${API_CERTIFICATIONS}${id}/`)
+    .then(response => response)
+    .catch(error => error);
+}
+
+/**
+ * @param {Number} id identificador de un registro para eliminarlo
+ * @returns {Promise}
+ **/
+export const deleteStudentCertification = id => {
+  return axios.delete(`${API_CERTIFICATIONS}${id}/`)
+    .then(response => response)
+    .catch(error => error);
+}
+
+/**
+ * @param {Object} payload informacion que llevara el cuerpo de la peticion
+ * @returns {Promise}
+ **/
+export const postCertification = (payload = {}) => {
+  return axios.post(API_CERTIFICATIONS, payload)
+    .then(response => response)
+    .catch(error => error);
+}

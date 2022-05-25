@@ -1,0 +1,71 @@
+.btnAddCertification {
+  width: 150px;
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  border-radius: 5px;
+  border: none;
+  height: 3rem;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #232436;
+  color: #fff;
+  transition: background-color .3s ease-in;
+}
+
+.btnAddCertification:hover {
+  background-color: #028dd4;
+}
+
+.formCertification {
+  position: relative;
+  top: 5rem;
+  height: calc(100% - 5rem);
+  /* outline: 2px solid red; */
+}
+
+.formCertification > p {
+  margin: 0;
+  padding-bottom: .5rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.flex_1_2 {
+  /* outline: 2px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inputGroup { height: 5em; }
+
+.titleCertification {
+  /* outline: 2px solid red; */
+  position: absolute;
+  top: 2rem;
+  font-size: 1.5rem;
+  color: #333333;
+  font-family: 'Poppins', sans-serif;
+}
+
+.wrapperInCourse, .inputGroupCheckbox {
+  /* outline: 2px solid blue; */
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  color: #333333;
+}
+
+.wrapperLinkCertification {
+  /* outline: 2px solid red; */
+  position: relative;
+  top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}

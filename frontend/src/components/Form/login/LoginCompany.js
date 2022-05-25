@@ -13,36 +13,16 @@ const LoginCompany = () => {
   const { form, handleChange } = useForm(loginFormCompany);
   const { loginRecruiter } = useContext(AuthContext);
 
-  // console.log(token)
-
   return (
-    <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
+    <div className={`container bg-white shadow rounded ${styles.wrapper}`}>
       <div className="row align-items-stretch">
         <div
-          className={`${styles.bg} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
+          className={`${styles.bgLoginCompany} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
         >
-          <div className={`${styles.login}`}>
-            <blockquote>
-              <em>Crea tu cuenta</em> y publica tus vacantes con nosotros.
-            </blockquote>
-            <span>
-              No tines cuenta?{" "}
-              <Link
-                className={`${styles.linkToLogin}`}
-                to="/registro-reclutador"
-              >
-                Registrate
-              </Link>
-            </span>
-            <br />
-            <span>
-              <a href="/#">Recuperar contraseña</a>
-            </span>
-          </div>
         </div>
         <div className={`col bg-white text-center p-5 rounded-end`}>
           <div className={styles.welcome}>
-            <h2>Bienvenido</h2>
+            <h2>que bueno tenerte de vuelta</h2>
             <span>Bienvenido! Porfavor introduce tus datos.</span>
           </div>
           <form onSubmit={loginRecruiter} className={styles.form}>
@@ -91,6 +71,17 @@ const LoginCompany = () => {
               </button>
             </div>
           </form>
+          <div className={`${styles.linkToRegisterRecruiter}`}>
+            <span>
+              Aun no te has unido con nosotros?{" "}
+              <Link
+                className={`${styles.linkToLogin}`}
+                to="/registro-reclutador"
+              >
+                Registrate a qui
+              </Link>
+            </span>
+          </div>
         </div>
       </div>
     </div>

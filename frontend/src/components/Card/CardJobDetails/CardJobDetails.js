@@ -63,6 +63,8 @@ const CardJobDetails = () => {
 
   if (!job) return null;
 
+  // console.log(job)
+
   return (
     <>
       {loading ? (
@@ -84,19 +86,17 @@ const CardJobDetails = () => {
                   <li className={styles.flex}>
                     <Chip
                       label={job[0]?.t300_id_company?.t300_name ?? "Anonima"}
-                      icon={<FaIcon.FaBuilding />}
+                      icon={<FaIcon.FaBuilding style={{color: "#78909c"}} />}
                     />
                   </li>
                   <li className={styles.flex}>
                     <Chip
                       label={
-                        `${numberFormat(job[0]?.t200_max_salary).slice(
-                          4
-                        )} MXN` ?? "No especificado"
+                        `${numberFormat(job[0]?.t200_max_salary).replace(".00", "")}` ?? "No especificado"
                       }
                       icon={
                         <MdIcon.MdOutlineAttachMoney
-                          style={{ fontSize: "1rem" }}
+                          style={{ fontSize: "1rem", color: "green" }}
                         />
                       }
                     />
@@ -104,15 +104,14 @@ const CardJobDetails = () => {
                   <li className={styles.flex}>
                     <Chip
                       label={
-                        job[0]?.t200_home_ofice
-                          ? `Remoto`
-                          : "Presencial" ?? "No especificado"
+                        job[0]?.c214_id_modality?.c214_description
+                        
                       }
                       icon={
-                        job[0]?.t200_home_ofice ? (
-                          <IoIcon.IoMdHome style={{ fontSize: "1rem" }} />
-                        ) : (
-                          <MdBusinessCenter style={{ fontSize: "1rem" }} />
+                        job[0]?.c214_id_modality?.c214_description === "Remoto" ? (
+                          <IoIcon.IoMdHome style={{ fontSize: "1rem", color: "#028dd4" }} />
+                          ) : (
+                          <MdBusinessCenter style={{ fontSize: "1rem", color: "#78909c" }} />
                         )
                       }
                     />
@@ -120,7 +119,10 @@ const CardJobDetails = () => {
                 </ul>
                 <p>
                   Ubicacion:{" "}
-                  {`${job[0]?.t200_municipality}, ${job[0]?.t200_state}, ${job[0]?.t200_locality}` ??
+                  {`${job[0]?.t200_municipality === null || job[0]?.t200_municipality === '' ? '' : job[0]?.t200_municipality+',' } 
+                    ${job[0]?.t200_state === null || job[0]?.t200_state === '' ? '' : job[0]?.t200_state+',' }
+                    ${job[0]?.t200_locality === null || job[0]?.t200_locality === '' ? '' : job[0]?.t200_locality+',' }`
+                    ??
                     "No especificada"}
                 </p>
               </div>
@@ -155,28 +157,28 @@ const CardJobDetails = () => {
             </div>
           </header>
           <article className={`container ${styles.body}`}>
+            {/* <p>
+              <span>Experiencia: </span>
+              {job[0]?.c207_id_experience?.c207_description}
+            </p> */}
             <p>
-              <span>Formacion: </span>
-              ingenieria industrial, administracion o similar
+              Perfil: <span>{job[0]?.c206_id_profile?.c206_description}</span>
             </p>
             <p>
-              idiomas: <span>ingles nivel intermedio-avanzado</span>
-            </p>
-            <p>
-              software: <span>office, visio, acrobat</span>
+              Tipo de contratacion: <span>{job[0]?.c208_id_contract?.c208_description}</span>
             </p>
             <div>
               <p>{job[0]?.t200_description ?? "Sin datos"}</p>
             </div>
-            <div className={styles.requirements}>
+            {/* <div className={styles.requirements}>
               <h3>Requerimientos de la vacante</h3>
               {job[0]?.t200_requirements}
-            </div>
+            </div> */}
             <div>
               <h3>OFRECEMOS</h3>
               <p>{job[0]?.t200_benefits}</p>
             </div>
-            <div>
+            {/* <div>
               <h3>Postúlate</h3>
               <p>
                 Si estás interesado enla vacante y cubres con el perfil
@@ -192,7 +194,7 @@ const CardJobDetails = () => {
                   ${job[0]?.t200_max_salary ?? "No especificado"} al mes
                 </span>
               </p>
-            </div>
+            </div> */}
             <div>
               <p>
                 Horario:{" "}

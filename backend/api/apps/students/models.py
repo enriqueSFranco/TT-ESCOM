@@ -111,7 +111,7 @@ class Lenguage(models.Model):
 		return self.c111_description
 
 
-#C118 Idiomas
+#C118 Tipo de proyecto
 class ProjectType(models.Model):
 	c118_id_type = models.AutoField(primary_key=True)
 	c118_description = models.CharField(max_length=60,blank=True,null=True)	
@@ -176,8 +176,9 @@ class StudentSkill(models.Model):
 	)
 	t100_id_student = models.ForeignKey(
 		Student, 
-		null=True, 
-		blank=True, 
+		null=False, 
+		blank=False, 
+		default=1,
 		related_name='StudentSkills',
 		on_delete=models.CASCADE
 	)
@@ -196,8 +197,9 @@ class AcademicHistory(models.Model):
 	t104_id_registrer = models.AutoField(primary_key=True)
 	t100_id_student = models.ForeignKey(
 		Student,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+		default=1,
 		related_name='StudentAcademics',
 		on_delete=models.CASCADE)
 	t104_academic_unit = models.CharField(max_length=150,null=True,blank=True)
@@ -205,7 +207,7 @@ class AcademicHistory(models.Model):
 	c107_id_academic_level = models.ForeignKey(
 		AcademicLevel,
 		null=False,
-		blank=False,
+		blank=False,		
 		related_name='AcademicLevel',
 		on_delete=models.CASCADE,
 		default=1
@@ -235,8 +237,9 @@ class InterestArea(models.Model):
 	t113_id_registrer = models.AutoField(primary_key=True)
 	t100_id_student = models.ForeignKey(
 		Student,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+		default=1,
 		related_name='StudentInterests',
 		on_delete=models.CASCADE)
 	
@@ -252,8 +255,9 @@ class Link(models.Model):
 	t114_id_registrer = models.AutoField(primary_key=True)
 	t100_id_student = models.ForeignKey(
 		Student,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+		default=1,
 		related_name='StudentLinks',
 		on_delete=models.CASCADE)
 	t113_link = models.CharField(max_length=100,blank=True,null=True)
@@ -261,9 +265,9 @@ class Link(models.Model):
 		Plataform,
 		null=False,
 		blank=False,
+		default=1,
 		related_name='PlataformDescription',
-		on_delete=models.CASCADE,
-		default=1)	
+		on_delete=models.CASCADE)	
 
 	class Meta:
 		unique_together = ['t100_id_student','c115_id_plataform']
@@ -279,18 +283,18 @@ class StudentLenguage(models.Model):
 	t110_id_registrer = models.AutoField(primary_key=True)
 	t100_id_student = models.ForeignKey(
 		Student,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+		default=1,
 		related_name='StudentLenguages',
 		on_delete=models.CASCADE)
 	c111_id_language = models.ForeignKey(
 		Lenguage,#"Lenguage.c111_id_lenguage",
 		null=False,
 		blank=False,
+		default=1,
 		related_name='LenguageDescription',
-		on_delete=models.CASCADE,
-		default=1
-	)
+		on_delete=models.CASCADE)
 	t110_written_level = models.PositiveSmallIntegerField(null=True, blank=True)
 	t110_reading_level = models.PositiveSmallIntegerField(null=True, blank=True)
 	t110_speaking_level = models.PositiveSmallIntegerField(null=True, blank=True)
@@ -311,8 +315,9 @@ class EmploymentHistory(models.Model):
 	t103_id_registrer = models.AutoField(primary_key=True)
 	t100_id_student = models.ForeignKey(
 		Student,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+		default=1,
 		related_name='StudentEmployments',
 		on_delete=models.CASCADE)
 	t103_corporation = models.CharField(max_length=80,null=True,blank=True)	
@@ -329,27 +334,28 @@ class EmploymentHistory(models.Model):
 	def __str__(self)->str:
 		return self.t103_corporation+', '+self.t103_employment
 		
-#T117 Historial laboral
+#T117 Proyectos personales
 class PersonalProjects(models.Model):
 	t117_id_registrer = models.AutoField(primary_key=True)
 	t117_project_name = models.CharField(max_length=100,blank=True,null=True)
 	t100_id_student = models.ForeignKey(
 		Student,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+		default=1,
 		related_name='StudentProjects',
 		on_delete=models.CASCADE)
 	t117_group = models.CharField(max_length=80,null=True,blank=True)	
 	t117_job = models.CharField(max_length=80,null=True,blank=True)
 	t117_link = models.CharField(max_length=100,blank=True,null=True)
-	t117_banner = models.ImageField(blank=True,null=True,default="",upload_to=upload_project_banner)
 	t117_description = models.TextField()
 	t117_start_date = models.DateField(null=True)
 	t117_end_date = models.DateField(null=True)	
 	c118_project_type = models.ForeignKey(
 		ProjectType,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+		default=1,
 		related_name='ProjectType',
 		on_delete=models.CASCADE)
 
@@ -359,3 +365,29 @@ class PersonalProjects(models.Model):
 	
 	def __str__(self)->str:
 		return self.t117_group+', '+self.t117_job
+
+
+#T119 Certificaciones
+class Certifications(models.Model):
+	t119_id_registrer = models.AutoField(primary_key=True)	
+	t100_id_student = models.ForeignKey(
+		Student,
+		null=False,
+		blank=False,
+		default=1,
+		related_name='StudentCertification',
+		on_delete=models.CASCADE)
+	t119_certification = models.CharField(max_length=150,null=False,blank=False)
+	t119_company = models.CharField(max_length=150,blank=True,null=False)
+	t119_start_date = models.DateField(null=True,blank=True)
+	t119_end_date = models.DateField(null=True,blank=True)
+	t119_in_course = models.BooleanField(default=False)
+	t119_voucher_link = models.CharField(max_length=200,null=True,blank=True)
+	
+	class Meta:		
+		verbose_name='Certification'
+		verbose_name_plural='Certifications'
+		db_table='t119_certificacion'
+	
+	def __str__(self)->str:
+		return self.t119_certification

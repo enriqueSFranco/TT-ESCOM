@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_COMPANY, API_PHOTO_COMPANY } from "../settings";
+import { API_COMPANY, API_PHOTO_COMPANY, API_RECRUITER } from "../settings";
 
 export const getImageBusiness = async (id) => {
   try {
@@ -54,3 +54,13 @@ export const createBusiness = (payload = {}) => {
       if (error.response) return error.response;
     })
 };
+
+export const createBusinessRecruiter = (payload = {}) => {
+  return axios.post(API_RECRUITER, payload, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    }
+  }).then(response => response)
+  .catch(error => error);
+}

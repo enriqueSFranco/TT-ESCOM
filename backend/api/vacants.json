@@ -1,0 +1,254 @@
+[
+    {
+        "model": "vacantes.Vacant",
+        "pk":1,
+        "fields":{
+            "t200_id_vacant": 1,
+            "t200_job": "Programador",
+            "t200_description": "Programación de backend para aplicaciones web\n\n-Python\r\n-Rest",        
+            "t200_benefits": "Paga quincenal \r\nIMSS",
+            "t200_check_time": "09:00:00",
+            "t200_closing_hour": "19:00:00",
+            "t200_work_days": "1111100",
+            "t200_min_salary": 10000,
+            "t200_max_salary": 150000,
+            "t200_gross_salary": false,
+               
+            "t200_publish_date": "2022-04-05",
+            "t200_close_date": "2022-04-30",
+            "t300_id_company": 1,
+            "c207_id_experience": 1,
+            "c206_id_profile": 2,
+            "c204_id_vacant_status": 1,
+            "t301_id_recruiter": null,
+             
+            "t200_state":"Ciudad de México"
+        }
+    },
+
+    {
+        "model":"vacantes.Vacant",
+        "pk":2,
+        "fields":{
+            "t200_job": "ATENCIÓN A CLIENTES BILINGÜE NIGHT SHIFT",
+            "t200_description": "CONCENTRIX MÉXICO busca talento para unirse a nuestro nuevo gran equipo\r\nQue buscamos?\r\nRepresentantes para dar servicio 100% para atención a clientes bilingüe by Voice.\n\nIngles avanzado o nativo (B2 or higher)\r\nBachillerato completo o trunco (al menos 50%)\r\nManejo de PC a nivel usuario\r\nExperiencia en Call Center (deseable)\r\nDisponibilidad para trabajar tiempo completo y fines de semana.\r\nEl site se encuentra en: Av. Insurgentes Sur 945, Cd. de los Deportes, Benito Juárez, 03710 Ciudad de México, CDMX. IMPORTANTE: VIVIR A NO MÁS DE HORA Y MEDIA DE DISTANCIA O TRASLADO DESDE TU CASA AL SITIO.",
+            "t200_benefits": "Contratación inmediata\r\n12,500 MXN mensuales\r\nOportunidades de crecimiento.\r\nNómina catorcenal en el banco de tu elección.\r\nPrestaciones de ley.\r\nBono en operaciones hasta $2 mil mensuales\r\nBono de graduación de 2mil pesos pago único\r\nBono de contratación de 4000 MXN\r\nVales 1065 MXN mensuales\r\nSeguro de vida\r\nSeguro gastos médicos menores\r\nCapacitación pagada 100%\r\nBono 8000 MXN por referido contratado\r\nAmbiente de trabajo amigable\r\nTransporte de la empresa\r\nTraining en sitio inicia lunes 28 de marzo 2022 de 12:00 pm a 09:00 pm lunes a viernes durante 2 semanas plus nesting\r\nOperaciones será en una ventana con horarios de servicio entre 11:00 pm y 08:00 am con disponibilidad lunes a domingo. Se descansan dos días entre semana.",
+            "t200_check_time": "09:00:00",
+            "t200_closing_hour": "18:00:00",
+            "t200_work_days": "5",
+            "t200_min_salary": 12500,
+            "t200_max_salary": 15000,
+            "t200_gross_salary": false,
+               
+            "t200_publish_date": "2022-04-06",
+            "t200_close_date": "2022-04-13",
+            "t300_id_company": 1,          
+            "c207_id_experience": 1,
+            "c206_id_profile": 2,
+            "c204_id_vacant_status":1,
+            "t301_id_recruiter": 1,
+             
+            "t200_state":"Ciudad de México"
+        }
+    },
+    {
+        "model":"vacantes.Vacant",
+        "pk":3,
+        "fields":{
+            "t200_job": "Auxiliar contable",
+            "t200_description": "Jarritos solicita Auxiliar Contable para planta Tultitlan que cuente con experiencia mínima de 2 años en Contabilidad en General, asientos contables, ingresos y egresos, elaboración de pólizas, conciliaciones, bancarias, analista Contable en cualquiera de los siguientes departamentos; Cuentas por Pagar, Cuentas por cobrar, Impuestos, conocimientos en conciliaciones, cierres, depuraciones, estados de cuenta, programación de pagos, cobros, estados financieros, contabilidad en general.\n\nEdad 23 a 40 años\r\nEscolaridad de Lic. en Contabilidad pasante ó titulado preferentemente\r\nOfrecemos sueldo base + bono + vales de despensa + prestaciones de ley y superiores.\r\nLaborar de Lunes a Viernes de 09: 00 a 19:00 hrs. y sábados de 09: 00 a 14: 00\r\nManejo de Excel intermedio.",
+            "t200_benefits": "Sueldo Competitivo\r\n- Pago Quincenal\r\n- Contratación directa por la empresa\r\n- Vales de despensa\r\n- Prestaciones desde el primer día de trabajo.\r\n- Sueldo 100% ante el IMSS\r\n- Oportunidad de Desarrollo\r\n- Incentivo mensual por productividad\r\n-Venta empleado el producto\r\n-Apoyo por defunción\r\n-Caja de ahorro",
+            "t200_check_time": "09:00:00",
+            "t200_closing_hour": "18:00:00",
+            "t200_work_days": "5",
+            "t200_min_salary": 10000,
+            "t200_max_salary": 15000,
+            "t200_gross_salary": false,
+               
+            "t200_publish_date": "2022-04-06",
+            "t200_close_date": "2022-04-13",
+            "t300_id_company": 1,
+            "c207_id_experience": 3,
+            "c206_id_profile": 3,
+            "c204_id_vacant_status": 1,
+            "t301_id_recruiter": 1,
+             
+            "t200_state":"Ciudad de México"
+        }
+    },
+    {
+        "model":"vacantes.Vacant",
+        "pk":4,
+        "fields":{
+            "t200_job": "Vendedor/a Nike Factory Cancún",
+            "t200_description": "¡En NIKE ganamos como equipo, ven y gana con nosotros!\r\nAtleta (Asesor de ventas)\r\nNike Factory Store Las Plazas Cancún\r\nSomos un equipo profesional que nos encanta seguir desarrollando habilidades interpersonales que se caracteriza por siempre trabajar en equipo, con proactividad y orientación al logro, además de ofrecer un servicio premium al cliente.\n\n¿Mi perfil se ajusta a la vacante?:\r\n·      Pasión por el deporte\r\n·      Gusto por las ventas y el servicio al cliente\r\n·      Experiencia deseable más NO NECESARIA\r\n·      Orientación para trabajar en equipo y enfoque en resultados\r\nPreferentemente vivir cerca de la tienda",
+            "t200_benefits": "Contratación DIRECTA con Nike México\r\nSUELDO base y BONO competitivo\r\nVales de despensa\r\nFondo de Ahorro\r\nSGMM y Seguro de Vida\r\nSeguro Dental\r\n9 días de vacaciones al cumplir un año\r\nUniformes sin costo\r\nDescuentos en tiendas\r\nCrecimiento laboral",
+            "t200_check_time": "09:00:00",
+            "t200_closing_hour": "18:00:00",
+            "t200_work_days": "5",
+            "t200_min_salary": 5000,
+            "t200_max_salary": 6000,
+            "t200_gross_salary": false,
+               
+            "t200_publish_date": "2022-04-06",
+            "t200_close_date": "2022-04-13",
+            "t300_id_company": 4,
+            "c207_id_experience": 2,
+            "c206_id_profile": 1,
+            "c204_id_vacant_status": 1,
+            "t301_id_recruiter": null,
+             
+            "t200_state":"Ciudad de México"
+        }
+    },
+    {
+        "model":"vacantes.Vacant",
+        "pk":5,
+        "fields":{
+            "t200_job": "Sr. Backend Developer NodeJS",
+            "t200_description": "Buscamos al mejor programador Backend en NodeJS para integrarse a la familia de Feek Technologies. y unirse a nuestro equipo para desarrollar un producto increíble de clase mundial.\n\nResponsabilidades y actividades:\r\nDesarrollar el backend de uno de nuestros productos por salir al mercado.\r\nColaborar en un equipo multidisciplinario para la creación del producto.\r\n\r\nGenerar un código de calidad, correctamente documentado y comentado.\r\nUso de GIT como repositorio y versionario.\r\n\r\nComunicación con Servidores y el Setup de los mismos.\r\nCapacidad de cumplir metas y fechas limite\r\nUso de plataformas de manejo de proyectos como Monday.\r\nResponsabilidades y actividades:\r\n\r\nDesarrollar el backend de uno de nuestros productos por salir al mercado.\r\n\r\nColaborar en un equipo multidisciplinario para la creación del producto.\r\n\r\nGenerar un código de calidad, correctamente documentado y comentado.\r\n\r\nUso de GIT como repositorio y versionario.\r\n\r\nComunicación con Servidores y el Setup de los mismos.\r\n\r\nCapacidad de cumplir metas y fechas limite\r\nUso de plataformas de manejo de proyectos como Monday",
+            "t200_benefits": "Plan de carrera y crecimiento\r\nSeguro de gastos médicos\r\nFlex time (home office, viernes corto)",
+            "t200_check_time": "09:00:00",
+            "t200_closing_hour": "18:00:00",
+            "t200_work_days": "5",
+            "t200_min_salary": 35000,
+            "t200_max_salary": 45000,
+            "t200_gross_salary": false,
+               
+            "t200_publish_date": "2022-04-05",
+            "t200_close_date": "2022-04-13",
+            "t300_id_company": 2,
+            "c207_id_experience": 5,
+            "c206_id_profile": 5,
+            "c204_id_vacant_status": 1,
+            "t301_id_recruiter": null,
+             
+            "t200_state":"Ciudad de México"
+        }
+    },
+    {
+        "model":"vacantes.Vacant",
+        "pk":6,
+        "fields":{
+            "t200_job": "Senior Full Stack Developer (.NET)",
+            "t200_description": "Charger Logistics is a world class asset-based carrier. We specialize in delivering your assets, on time and on budget. With the diverse fleet of equipment, we can handle a range of freight, including dedicated loads, specialized hauls, temperature-controlled goods and HAZMAT cargo.\r\n\r\nCharger logistics invests time and support into its employees to provide them with the room to learn and grow their expertise and work their way up. We are entrepreneurial-minded organization that welcomes and support individual idea and strategies. Charger Logistics is seeking a well-rounded individual able to work in a fast-paced environment to join our team at the company's office in Monterrey, Mexico. We are seeking a highly skilled ASP. NET/C#/MVC developer with a strong background in building high-performance web applications.\r\nBuild new applications with .NET Core/ ASP. NET / MVC / C# / SQL Server 2019 and Web APIs.\r\nBuild and maintain Windows Services, Daemons and Console Apps with .NET core\r\nDevelop new functionality on our existing software applications.\r\nLead/mentor developers and share knowledge through knowledge-sharing presentations.\r\nParticipate in a small, experienced, energetic team on a rapid, agile development schedule.\n\nMinimum of 5-8 years' experience as a full stack developer\r\nSuperior proficiency in C# (.NET Framework and .NET Core), JavaScript, TypeScript, SQL server,\r\nSolid understanding of building scalable web and serverless applications using WebAPI, RESTful API design, Function Apps, Worker Services, etc.\r\nExperience in building cloud-native solutions (using different services such as Storage Account, Function Apps, Azure Sql, CosmosDb, EventHub, etc).\r\nExperience working with design patterns and designing microservices.\r\nDeveloping and maintaining CD/CI pipelines for build and deployment of services and components using Azure DevOps (preferred), Jenkins, or similar systems.\r\nExperience and working knowledge of entity framework core\r\nExperience and working knowledge of relational or NoSQL databases such as CosmosDB\r\nPreferred experience using data streaming platforms such as Kafka, EventHubs, etc.\r\nPreferred experience with Docker, Kubernetes\r\nDesign and optimize tables and stored procedures",
+            "t200_benefits": "Prestaciones superiores a las de la ley\r\nPlan de carrera y crecimiento\r\nSueldo competitivo",
+            "t200_check_time": "09:00:00",
+            "t200_closing_hour": "18:30:00",
+            "t200_work_days": "5",
+            "t200_min_salary": 40000,
+            "t200_max_salary": 45000,
+            "t200_gross_salary": false,
+               
+            "t200_publish_date": "2022-04-01",
+            "t200_close_date": "2022-04-08",
+            "t300_id_company": 1,
+            "c207_id_experience": 5,
+            "c206_id_profile": 5,
+            "c204_id_vacant_status": 1,
+            "t301_id_recruiter": 1,
+             
+            "t200_state":"Ciudad de México"
+        }
+    },
+    {
+        "model":"vacantes.Vacant",
+        "pk":7,
+        "fields":{
+            "t200_job": "Desarrollador-programador",
+            "t200_description": "En Grupo Formex, nos encontramos en busca de Talento, requerimos Desarrollador/programador\r\n\r\nObjetivo del Puesto:\r\n\r\nDesarrollar las soluciones apropiadas para cubrir las necesidades acuerdo con el diseño general de los sistemas de información de la organización, asi como la creación de API´s. y Web services\r\nEstablecer y asegurar la creación de programas.\r\n\r\nCreación de plataformas y bases de datos\r\n\r\nInnovar en el desarrollo de programas\r\nProgramación en sistemas\n\nSueldo base + mas bono\r\nPrestaciones de Ley",
+            "t200_benefits": "",
+            "t200_check_time": "09:00:00",
+            "t200_closing_hour": "18:00:00",
+            "t200_work_days": "5",
+            "t200_min_salary": 15000,
+            "t200_max_salary": 20000,
+            "t200_gross_salary": false,
+               
+            "t200_publish_date": "2022-04-04",
+            "t200_close_date": "2022-04-11",
+            "t300_id_company": 5,
+            "c207_id_experience": 5,
+            "c206_id_profile": 5,
+            "c204_id_vacant_status": 3,
+            "t301_id_recruiter": null,
+             
+            "t200_state":"Ciudad de México"
+        }
+    },
+    {
+        "model":"vacantes.Vacant",
+        "pk":8,
+        "fields":{
+            "t200_job": "Programador, Desarrollador Java",
+            "t200_description": "Acerca de la empresa\r\n\r\n\r\n\r\nCellFusion was founded in Silicon Valley, California in the United States of America in the year 1999, working with industry leaders in technology and business worldwide for more than twenty years.\r\n\r\n\r\n\r\nWe have learned from the best across all industries, from the best in various countries and on different continents, from various cultures and from many people, from top managers, leaders and workers.\r\nCellFusion is dedicated to research of advanced business strategies and development of innovative business applications, providing vertical integrated business solutions to today's and future clients across all industries world-wide.\r\n‘… intelligent and superior business solutions are not created with modern technology only, but with vision, innovation and with passion…'\r\nKersten Ellerbrock, Chief Executive Officer - CellFusion Incorporated\n\nConocimientos requeridos\r\n\r\n\r\n\r\nJava programming language, required   \r\nJava swing graphical programming language, required   \r\nObject oriented programming and code structuring, required   \r\nSQL language and syntax, required  \r\nCode management software, GIT/ SVN required  \r\nEclipse IDE\r\nPrincipales responsabilidades del puesto\r\n\r\n\r\n\r\nGathering requirements, converting requirements into solutions\r\nSoftware Application Design\r\nDevelop code efficiently and performant\r\nSoftware testing  \r\nDocumentation\r\nStandardization of processes, procedures and solutions\r\nHardware technology integration (Smart torque, CNC, bar and QR code, sensor and device integration)\r\nTeamwork and active communication\r\nOrganizing projects and meetings\r\nTask management",
+            "t200_benefits": "Prestaciones de ley (IMSS, vacaciones, aguinaldo)\r\nFlex time (home office, viernes corto)\r\nEstabilidad laboral",
+            "t200_check_time": "09:00:00",
+            "t200_closing_hour": "19:00:00",
+            "t200_work_days": "5",
+            "t200_min_salary": 40000,
+            "t200_max_salary": 50000,
+            "t200_gross_salary": false,
+               
+            "t200_publish_date": "2022-04-05",
+            "t200_close_date": "2022-04-10",
+            "t300_id_company": 3,
+            "c207_id_experience": 5,
+            "c206_id_profile": 5,
+            "c204_id_vacant_status": 3,
+            "t301_id_recruiter": null,
+             
+            "t200_state":"Ciudad de México"
+        }
+    },
+    {
+        "model":"vacantes.Vacant",
+        "pk":9,
+        "fields":{
+            "t200_job": "Programador, Desarrollador Java",
+            "t200_description": "Acerca de la empresa\r\n\r\n\r\n\r\nCellFusion was founded in Silicon Valley, California in the United States of America in the year 1999, working with industry leaders in technology and business worldwide for more than twenty years.\r\n\r\n\r\n\r\nWe have learned from the best across all industries, from the best in various countries and on different continents, from various cultures and from many people, from top managers, leaders and workers.\r\nCellFusion is dedicated to research of advanced business strategies and development of innovative business applications, providing vertical integrated business solutions to today's and future clients across all industries world-wide.\r\n‘… intelligent and superior business solutions are not created with modern technology only, but with vision, innovation and with passion…'\r\nKersten Ellerbrock, Chief Executive Officer - CellFusion Incorporated\n\nConocimientos requeridos\r\n\r\n\r\n\r\nJava programming language, required   \r\nJava swing graphical programming language, required   \r\nObject oriented programming and code structuring, required   \r\nSQL language and syntax, required  \r\nCode management software, GIT/ SVN required  \r\nEclipse IDE\r\nPrincipales responsabilidades del puesto\r\n\r\n\r\n\r\nGathering requirements, converting requirements into solutions\r\nSoftware Application Design\r\nDevelop code efficiently and performant\r\nSoftware testing  \r\nDocumentation\r\nStandardization of processes, procedures and solutions\r\nHardware technology integration (Smart torque, CNC, bar and QR code, sensor and device integration)\r\nTeamwork and active communication\r\nOrganizing projects and meetings\r\nTask management",
+            "t200_benefits": "Prestaciones de ley (IMSS, vacaciones, aguinaldo)\r\nFlex time (home office, viernes corto)\r\nEstabilidad laboral",
+            "t200_check_time": "09:00:00",
+            "t200_closing_hour": "19:00:00",
+            "t200_work_days": "5",
+            "t200_min_salary": 40000,
+            "t200_max_salary": 50000,
+            "t200_gross_salary": false,
+               
+            "t200_publish_date": "2022-04-05",
+            "t200_close_date": "2022-04-10",
+            "t300_id_company": 3,
+            "c207_id_experience": 5,
+            "c206_id_profile": 5,
+            "c204_id_vacant_status": 1,
+            "t301_id_recruiter": null,
+             
+            "t200_state":"Ciudad de México"
+        }
+    },
+    {
+        "model":"vacantes.Vacant",
+        "pk":10,
+        "fields":{
+            "t200_job": "GRUPO BIMBO BUSCA ENCARGADO DE SUCURSAL",
+            "t200_description": "GRUPO BIMBO PASTELERIA EL GLOBO SOLICITA\r\nENCARGADO MUJERES Y HOMBRES SUCURSAL \nREQUISITOS:\r\n\r\n· Bachillerato concluido.\r\n\r\n· Experiencia de al menos 1 año como Encargado, Jefe de Turno o de Piso en alimentos.\r\n\r\n· Disponibilidad para laborar de lunes a domingo (un día de descanso entre semana)\r\n\r\n· Disponibilidad para rolar turno (5:30 – 2:00 Y 2:30 – 10:30)\r\n\r\n· Vivir en la zona o zona aledaña.",            
+            "t200_benefits": "OFRECEMOS:\r\n\r\n· $6,600.00 MENSUAL BRUTOS\r\n\r\n· PAGO A LA CATORCENA.\r\n\r\n· CAPACITACIÓN PAGADA AL 100 %\r\n\r\n· PRESTACIONES DE LEY DESDE EL PRIMER DÍA\r\n\r\n· UNIFORMES SIN COSTO\r\n\r\nAL TERCER MES:\r\n\r\n· PRESTACIONES SUPERIORES A LAS DE LEY\r\n\r\n· VALES DE DESPENSA DE $1,500.00 AL MES\r\n\r\n· SEGURO DE VIDA\r\n\r\n· OPORTUNIDADES DE CRECIMIENTO.\r\n\r\n· BONO DE ´PRODUCTIVIDAD\r\n\r\n· CAJA Y FONDO DE AHORRO A CORTO O LARGO PLAZO",
+            "t200_check_time": "14:30:00",
+            "t200_closing_hour": "22:30:00",
+            "t200_work_days": "5",
+            "t200_min_salary": 6500,
+            "t200_max_salary": 6600,
+            "t200_gross_salary": false,
+               
+            "t200_publish_date": "2022-03-30",
+            "t200_close_date": "2022-04-05",
+            "t300_id_company": 6,
+            "c207_id_experience": 3,
+            "c206_id_profile": 1,
+            "c204_id_vacant_status": 1,
+            "t301_id_recruiter": null,
+             
+            "t200_state":"Ciudad de México"
+        }
+    }    
+]

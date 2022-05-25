@@ -45,27 +45,10 @@ const CreateAccount = () => {
       <>
         <div className={`container bg-primary shadow rounded ${styles.wrapperCreateAccountStudent}`}>
           <div className="row">
-            <div
-              className={`${styles.bg} col rounded`}
-            >
-              <div className={`${styles.login}`}>
-                <blockquote>
-                  Un paso más cerca de tu nuevo <em>empleo</em>.
-                </blockquote>
-                <span>
-                  Ya tines cuenta?{" "}
-                  <Link className={`${styles.linkToLogin}`} to="/alumno">
-                    Inicia sesion
-                  </Link>
-                </span>
-                <span>
-                  <a href="/#">Recuperar contraseña</a>
-                </span>
-              </div>
-            </div>
+            <div className={`${styles.bg} col rounded`}></div>
             <div className={`col bg-white p-3 text-center rounded-end ${styles.createAccountStudentForm}`}>
               <div className={styles.welcome}>
-                <h2>Bienvenido</h2>
+                <h2>crea tu cuenta y aplica ya</h2>
                 <span>Bienvenido! Porfavor introduce tus datos.</span>
               </div>
               <form onSubmit={handleSubmitStudent} className={styles.form}>
@@ -87,8 +70,8 @@ const CreateAccount = () => {
                     onKeyUp={handleValidate}
                     onChange={handleChange}
                   />
-                  {errors.t100_name && (
-                    <span className={styles.error}><MdOutlineErrorOutline />{errors.t100_name}</span>
+                  {errors.t100_username && (
+                    <span className={styles.error}><MdOutlineErrorOutline />{errors.t100_username}</span>
                   )}
                 </div>
                 <div className={styles.inputGroupCreatAccountStudent}>
@@ -147,7 +130,19 @@ const CreateAccount = () => {
                   </button>
                 </div>
               </form>
+              <div className={`${styles.login}`}>
+                <blockquote>
+                  Un paso más cerca de tu nuevo <em>empleo</em>.
+                </blockquote>
+                <span>
+                  Ya tines cuenta?{" "}
+                  <Link className={`${styles.linkToLogin}`} to="/alumno">
+                    Inicia sesion
+                  </Link>
+                </span>
+              </div>
             </div>
+            
           </div>
         </div>
         <Toaster position="top-right" />

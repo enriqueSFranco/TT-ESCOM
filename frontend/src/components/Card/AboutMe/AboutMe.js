@@ -1,4 +1,4 @@
-import { useEffect, useContext, useState } from "react";
+import { useEffect, useContext, useRef, useState } from "react";
 import AuthContext from "context/AuthContext";
 import { useForm } from "hooks/useForm";
 import { useModal } from "hooks/useModal";
@@ -9,6 +9,7 @@ import { MdEdit } from "react-icons/md";
 import styles from "./AboutMe.module.css";
 
 const AboutMe = () => {
+  const [totalChar, setTotalChar] = useState(0);
   const [student, setStudent] = useState(null);
   const [aboutMe, setAboutMe] = useState({});
   const { form, handleChange } = useForm({t100_personal_objectives: ""});
@@ -32,6 +33,8 @@ const AboutMe = () => {
       });
   }, [idStudent]);
 
+  const updateCount = e => setTotalChar(e.target.value.length);
+
   // Funcion para actualizar el objetivo profesional
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,41 +56,55 @@ const AboutMe = () => {
 
   return (
     <>
-      <div className={styles.wrapper}>
+      <article className={styles.wrapper}>
         <button className={styles.btnEdit} onClick={openModalEdit}>
           <MdEdit />
         </button>
-        <h1 className={styles.title}>Objetivo Profesional</h1>
+        <h1 className={styles.title}>Mi Objetivo Profesional es:</h1>
         <p className={styles.professionalObjective}>
           {aboutMe.personalObjective === ""
             ? "Sin descripcion"
             : aboutMe.personalObjective}
         </p>
-        <p className={styles.salary}>
-          Sueldo deseado:{" "}
-          {aboutMe?.salary === null
-            ? "No especificado"
-            : `$${numberFormat(aboutMe?.salary).slice(4)}MXN`}
-        </p>
-        <p className={styles.employmentModality}>
-          Modalidad de trabajo:{" "}
-          {aboutMe?.salary === null
-            ? "No especificado"
-            : `${aboutMe?.modality}`}
-        </p>
-      </div>
+        <div className={`${styles.position}`}>
+          <p className={styles.salary}>
+            Sueldo deseado:{" "}
+            {aboutMe?.salary === null
+              ? "No especificado"
+              : `$${numberFormat(aboutMe?.salary).replace(".00", "")}`}
+          </p>
+          <p className={styles.employmentModality}>
+            Modalidad de trabajo:{" "}
+            {aboutMe?.salary === null
+              ? "No especificado"
+              : `${aboutMe?.modality}`}
+          </p>
+          <p>
+            Experiencia: No especificada
+          </p>
+        </div>
+      </article>
       <ModalForm isOpen={isOpenModalEdit} closeModal={closeOpenModalEdit}>
         <form onSubmit={handleSubmit} className={styles.wrapperTextEdit}>
-          <textarea
-            name="t100_personal_objectives"
-            id="t100_personal_objectives"
-            value={form?.t100_personal_objectives}
-            onChange={handleChange}
-            cols="30"
-            rows="10"
-            className={styles.textArea}
-            placeholder="Escribe tu objetivo profesional."
-          />
+          <div className={styles.wrapperTextArea}>
+            <textarea
+              name="t100_personal_objectives"
+              id="t100_personal_objectives"
+              value={form?.t100_personal_objectives}
+              onChange={handleChange}
+              onKeyUp={updateCount}
+              cols="30"
+              rows="10"
+              maxLength="255"
+              className={styles.textArea}
+              placeholder="Escribe tu objetivo profesional."
+            />
+            <div className={styles.flex_1_2}>
+              <p className={styles.tip}>Por favor, Escribe tu objetivo profesional.</p>
+              <span className={styles.totalChar}>{totalChar}/255</span>
+            </div>
+          </div>
+
           <button type="submit" className={styles.btnSave}>
             Guardar
           </button>
