@@ -3,7 +3,7 @@ import { getAllBusiness } from 'services/businnes/index';
 import styles from './Filter.module.css';
 
 const FilterCompany = ({ onChange }) => {
-  const [business, setBusiness] = useState([]);
+  const [business, setBusiness] = useState(null);
 
   useEffect(() => {
     getAllBusiness()

@@ -7,6 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { uuid } from "utils/uuid";
+import toast, {Toaster} from "react-hot-toast";
 
 const wrapper = {
   position: "relative",
@@ -36,14 +37,15 @@ const PageValidateRecruiter = () => {
     const payload = {
       is_active: "true",
     };
-    console.log(idRecruiter)
+    // console.log(idRecruiter)
     const { data } = await axios.put(`/api/ValidateRecruiter/${idRecruiter}/`, payload, {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       }
     })
-    console.log(listRecruiter);
+    toast.success(data.message);
+    console.log(data);
   }
 
   if (listRecruiter.length === 0) return null;
@@ -80,6 +82,8 @@ const PageValidateRecruiter = () => {
           </TableBody>
         </Table>
       </TableContainer>
+
+      <Toaster position="top-right" />
     </section>
   );
 };

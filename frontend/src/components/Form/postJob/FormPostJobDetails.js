@@ -1,18 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
-import FormControlLabel from "@mui/material/FormControl";
-import Checkbox from "@mui/material/Checkbox";
-import { MdPublish } from "react-icons/md";
+import { MdPublish, MdOutlineLightbulb, MdOutlineAdd } from "react-icons/md";
+import { TextField, Autocomplete } from "@mui/material/";
 import styles from "./FormPostJob.module.css";
+import { getAllCatalogueExperience} from "services/catalogs/index";
+import { uuid } from "utils/uuid";
+import MenuItem from "@mui/material/MenuItem";
+import InputLabel from "@mui/material/InputLabel";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Chip from "@mui/material/Chip";
 
-const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep }) => {
+
+let skillData = {
+  skill:null,
+  experience: null,
+  necesary:false
+}
+
+const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep, skills, vacantSkills, setVacantSkills }) => {
   const [visible, setVisible] = useState(false);
+  const [newSkill, setNewSkill] = useState(skillData);
+  const [experience, setExperience] = useState([]);  
+  let now = new Date();  
 
   const handleChecked = (e) => {
     setVisible(e.target.checked);
   };
-  console.log(visible);
+  const setIndispensable = (e) => {
+    newSkill.necesary = e.target.checked;
+  };
 
+  useEffect(() => {
+    getAllCatalogueExperience()
+      .then((response) => {
+        setExperience(response);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  const setSkill = (e) => {
+    console.log("Agregando skill...");
+    console.log(newSkill);
+    vacantSkills.push(newSkill);
+    setNewSkill(skillData);
+  };
+
+  console.log(newSkill);
+  console.log(vacantSkills);
+  
   return (
     <div className={styles.wrapperFormJobDetails}>
       <form onSubmit={onSubmit}>
@@ -29,8 +67,86 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep }) => {
             onChange={handleChange}
           />
         </div>
-        <div className={styles.closeJob}>
-          {/* habilitar fecha de cierre */}
+
+        <div>{/*Habilidades e idiomas*/}
+          <div>{/*Skills para la vacante*/}
+            <h3 className={styles.title}>
+              <MdOutlineLightbulb/> Habilidades y conocimientos
+            </h3>
+            <div className={styles.wrapperAddSkill}> 
+              <Autocomplete
+                sx={{ width: 275, marginLeft: 1, marginRight: 2 }}
+                size="small"
+                id="skill"
+                name="skill"
+                freeSolo
+                onChange={(event,newValue)=>{
+                  console.log(newValue);  
+                  newSkill.skill = newValue;
+                }}        
+                value = {newSkill.skill ? newSkill.skill : null}      
+                getOptionLabel = {(option) => option.c116_description}
+                options={skills}
+                renderInput={(params) => (
+                  <TextField {...params} label="Habilidades" />
+                )}
+              />
+              <FormControl sx={{ width: 200, marginRight:2 }}>
+                <InputLabel id="c207_id_experience">Experiencia</InputLabel>
+                <Select
+                  id="c207_id_experience"
+                  name="c207_id_experience"
+                  size="small"
+                  defaultValue=""
+                  onChange={(event,newValue)=>{
+                    console.log(newValue.props.value);  
+                    newSkill.experience = newValue.props.value;
+                  }}      
+                  label="Experiencia"generica
+                >
+                  {experience?.map((exp) => (
+                    <MenuItem key={uuid()} value={exp?.c207_id_experience}>
+                      {exp?.c207_description}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              <FormControlLabel
+                control={
+                  <Checkbox                  
+                    onChange={setIndispensable}
+                    size="small"
+                  />
+                }
+                label="Indispensable"
+              />
+              <button type="submit" className={`${styles.btn} btn` } onClick={setSkill}>
+                <MdOutlineAdd />
+              </button>
+            </div>
+          </div>
+          <div className={styles.SkillsWrapper}>{/*Para skills agregadas*/}
+          <div className={styles.wrapperSkills}>
+            <p className={styles.titleSkills}>Skills</p>
+            <ul className={styles.listItemsSkill}>
+              {vacantSkills &&
+                vacantSkills?.map((skill) => (
+                  <li key={uuid()}>
+                    <Chip
+                      size="small"
+                      label={skill?.skill?.c116_description}
+                    />
+                  </li>
+                ))}
+            </ul>
+          </div>
+          </div>
+          <div>{/*Idiomas para la vacante*/}
+
+          </div>
+        </div>
+
+        <div className={styles.closeJob}>         
           <div className={styles.wrapperSwitch}>
             <label className={styles.switch}>
               <input type="checkbox" onChange={handleChecked} id="dateCloseJob" name="dateCloseJob" />
@@ -40,7 +156,14 @@ const FormPostJobDetails = ({ form, onSubmit, handleChange, prevStep }) => {
           </div>
           {
             visible && (
-              <input type="date" className={styles.closeJobDate} />
+              <input 
+                type="date" 
+                className={styles.closeJobDate} 
+                name="t200_close_date"
+                id="t200_close_date"
+                onChange={handleChange}
+                value={now.getFullYear() + "/" + (now.getMonth()+2) + "/" + now.getDate()}
+              />
             )
           }
         </div>

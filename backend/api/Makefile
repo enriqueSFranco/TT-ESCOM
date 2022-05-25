@@ -9,11 +9,15 @@ restore: migrate
 	python3 manage.py runserver
 
 data:
-	python3 manage.py loaddata data.json
-	python3 manage.py loaddata skills.json
+	python3 manage.py loaddata catalogues.json
+	python3 manage.py loaddata academicUnits.json
+	python3 manage.py loaddata cp.json
 	python3 manage.py loaddata interestJobs.json
-	python3 manage.py loaddata academic_units.json
-	python3 manage.py loaddata cp.json 	
+	python3 manage.py loaddata skills.json
+	python3 manage.py loaddata users.json
+	python3 manage.py loaddata companies.json
+	python3 manage.py loaddata vacants.json
+	python3 manage.py loaddata announcements.json
 
 clean:	
 	rm -rf apps/*/migrations/*
@@ -49,11 +53,15 @@ restore3: migrate3
 	python3.10 manage.py runserver
 
 data3:
-	python3.10 manage.py loaddata data.json
-	python3.10 manage.py loaddata skills.json
-	python3.10 manage.py loaddata interestJobs.json
-	python3.10 manage.py loaddata academic_units.json
+	python3.10 manage.py loaddata catalogues.json
+	python3.10 manage.py loaddata academicUnits.json
 	python3.10 manage.py loaddata cp.json
+	python3.10 manage.py loaddata interestJobs.json
+	python3.10 manage.py loaddata users.json
+	python3.10 manage.py loaddata companies.json
+	python3.10 manage.py loaddata skills.json
+	python3.10 manage.py loaddata vacants.json
+	python3.10 manage.py loaddata announcements.json
 
 makemigrations3: restore_inits
 	python3.10 manage.py makemigrations

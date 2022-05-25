@@ -31,14 +31,17 @@ h3 {
 
 .btnApplyEmployment {
   background-color: transparent;
-  border: none;
-  outline: 2px solid #90314b;
-  padding: .6rem;
-  border-radius: 10px;
-  position: relative;
-  width: 90px;
-  top: .5rem;
-  transition: background-color .3s ease-in;
+    border: none;
+    outline: 2px solid #90314b;
+    padding: 0.6rem;
+    border-radius: 10px;
+    position: relative;
+    width: 90px;
+    top: 0.5rem;
+    transition: background-color .3s ease-in;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .btnApplyEmployment svg {
@@ -95,7 +98,7 @@ h3 {
 
 .tagsBody {
   /* outline: 2px solid blue; */
-  width: 400px;
+  width: 430px;
 }
 
 .title {

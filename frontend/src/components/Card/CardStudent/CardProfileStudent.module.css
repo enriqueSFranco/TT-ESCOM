@@ -82,13 +82,23 @@ img {
   text-transform: capitalize;
   letter-spacing: 1px;
   text-transform: uppercase;
-  font-weight: bold;
-  color: #90314b;
+  font-weight: 700;
+  color: #028dd4;
 }
 
 .link {
-  width: 100px;
+  /* outline: 2px solid red;  */
+  width: 50px;
   letter-spacing: .5px;
+  position: relative;
+}
+
+.iconSocialNetwork {
+  position: absolute;
+  max-width: 100%;
+  height: 50px;
+  object-fit: contain;
+  padding-bottom: .4rem;
 }
 
 .nameHolder {
@@ -109,6 +119,9 @@ img {
 }
 
 .socialNetworks {
+  /* outline: 2px solid blue; */
+  width: 100%;
+  height: 50px;
   position: relative;
   bottom: 1rem;
   display: flex;

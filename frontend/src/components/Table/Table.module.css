@@ -16,10 +16,11 @@
 
 .wrapperDetailsUser {
   font-family: 'Poppins', sans-serif;
-  background-color: #fff;
+  border-radius: 1rem;
+  color: #000;
   position: relative;
   padding: 1rem;
-  background-color: #f0f0f0ee;
+  background-color: #f6f6f48f;
 }
 
 .wrapperTags {
@@ -123,7 +124,7 @@
   width: 100%;
   border-collapse: collapse;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  /* border: 2px solid #ccc; */
+  border-radius: 1rem;
 }
 
 .th {
@@ -133,10 +134,13 @@
   letter-spacing: 1px;
 }
 
+tr:nth-child(even) {
+  background-color: #90caf92c;
+}
+
 .th:nth-child(1) {
   width: 50px;
   cursor: pointer;
-
 }
 .th:nth-child(2) {
   width: 170px;
@@ -148,7 +152,7 @@
   width: 200px;
   /* background-color: salmon; */
 }
-.th:nth-child(4) {
+.th:nth-child(4), .th:nth-child(6) {
   width: 300px;
   text-align: center;
   /* background-color: greenyellow; */
@@ -158,16 +162,19 @@
   width: 100px;
   /* background-color: violet; */
 }
-.th:nth-child(6) {
-  text-align: center;
-  width: 200px;
-  /* background-color: blue; */
-}
+
 .th:nth-child(7) {
   text-align: center;
   width: 100px;
   /* background-color: blue; */
 }
+
+.th:nth-child(8) {
+  text-align: center;
+  width: 100px;
+  /* background-color: blue; */
+}
+
 
 .td:nth-child(1) {
   /* background-color: red; */
@@ -182,8 +189,8 @@
 }
 
 .thead {
-  background-color: #e8f0fb;
-  color: #042040;
+  background-color: #0289d4;
+  color: #fff;
   padding: 2rem;
   height: 3rem;
 }
@@ -213,12 +220,20 @@
 }
 .listItemLinks {
   /* outline: 2px solid blue; */
-  width: 300px;
+  width: 350px;
+  height: 100px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   margin: 0;
+  padding: 0;
   font-size: 1.3rem;
+}
+
+.iconSocialNetwork {
+  /* width: 64px; */
+  height: 64px;
 }
 
 .listItemsSkill {

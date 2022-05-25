@@ -124,8 +124,9 @@ class StudentViewSet(viewsets.GenericViewSet):
 							'message': 'Hay errores en el registro',
 							'errors': credentials_serializer.errors
 						}, status=status.HTTP_400_BAD_REQUEST)
+
 		else:	
-			student_destroy = self.model.objects.filter(t100_email=request.data['t100_email']).delete()
+			#student_destroy = self.model.objects.filter(t100_email=request.data['t100_email']).delete()
 			return Response({
 				'message': 'Hay errores en el registro',
 				'errors': student_serializer.errors

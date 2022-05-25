@@ -1,6 +1,5 @@
 import React from 'react';
 import { uuid } from 'utils/uuid';
-import TableRow from './TableRow';
 import styles from './Table.module.css';
 
 const menu = [
@@ -10,6 +9,7 @@ const menu = [
   {label: "Conocimientos Tecnicos"},
   {label: "Experiencia"},
   {label: "Certificaciones"},
+  {label: "Estado"},
   {label: "Acciones"},
 ]
 

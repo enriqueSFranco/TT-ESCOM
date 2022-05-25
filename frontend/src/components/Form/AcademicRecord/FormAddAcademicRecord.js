@@ -4,7 +4,7 @@ import { useForm } from "hooks/useForm";
 import { API_ACADEMIC_UNITS } from "services/settings";
 import { postAcademicHistorial } from "services/students/index";
 import AuthContext from "context/AuthContext";
-import { TextField, Autocomplete } from "@mui/material";
+import { TextField } from "@mui/material";
 import { MdSchool } from "react-icons/md";
 import styles from "./FormAddAcademicRecord.module.css";
 
@@ -36,8 +36,6 @@ const FormAddAcademicRecord = () => {
         console.log(error);
       });
   };
-
-  console.log(form);
 
   return (
     <div className={styles.wrapperForm}>

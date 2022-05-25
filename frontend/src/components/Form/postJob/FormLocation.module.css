@@ -33,3 +33,23 @@
   /* border: 1px solid red; */
   width: 100px;
 }
+
+.inputGroup {
+  margin-right: 20;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.laboralDays{
+  margin-bottom: 10px;
+}
+
+.inputGroupCheckbox {
+  width: 700px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 1rem;
+}
