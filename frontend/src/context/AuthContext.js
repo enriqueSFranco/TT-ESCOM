@@ -82,6 +82,7 @@ const AuthProvider = ({ children }) => {
     setUser(null);
     setToken(null);
     window.sessionStorage.removeItem("token");
+    toast.success("Sesion finalizada correctamente.");
     navigate("/");
   };
 

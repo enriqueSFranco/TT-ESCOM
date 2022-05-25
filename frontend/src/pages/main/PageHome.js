@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { Toaster } from "react-hot-toast";
 import { getAllJobs, getVacantsFilter } from "services/jobs";
 import Search from "components/Search/Search";
 import FilterProfile from "components/Filter/FilterProfile";
@@ -155,6 +156,8 @@ const Home = () => {
 
       {/* pie de pagina */}
       {/* <Footer /> */}
+      <Toaster position="top-right" />
+
     </main>
   );
 };
