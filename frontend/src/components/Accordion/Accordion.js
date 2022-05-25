@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getJob, getApplicationsJobs } from "services/jobs/index";
+import { numberFormat } from "utils/numberFormat";
+import Chip from "@mui/material/Chip";
 import Table from "components/Table/Table";
 import TableRow from "components/Table/TableRow";
 import { TiArrowBackOutline } from "react-icons/ti";
@@ -28,8 +30,6 @@ const Accordion = () => {
       .catch((error) => console.log(error));
   }, [t200_id_vacant]);
 
-  // console.log(user);
-
   return (
     <>
       <article className={styles.summaryJob}>
@@ -37,30 +37,63 @@ const Accordion = () => {
           <Link to="/mis-vacantes" className={styles.goToJobs}>
             <TiArrowBackOutline /> Ir a mis vacantes
           </Link>
+          <h1 className={styles.titleJob}>{job && job[0]?.t200_job}</h1>
           {job && (
             <ul className={styles.listItem}>
-              <li className={styles.item}>{job[0]?.t200_job}</li>
-              <li className={styles.item}>$ Negociable</li>
-              <li className={styles.item}>Remoto</li>
-              <li className={styles.item}>Tipo de contratacion:</li>
               <li className={styles.item}>
-                Timepo completo de 9:00am - 6:00pm, por tiempo indefinido
+                <Chip 
+                  label={`$${numberFormat(job[0]?.t200_min_salary).slice(4)}MXN
+                  ${job[0]?.t200_max_salary === 0
+                                      ? ""
+                                      : `a ${numberFormat(
+                                          job[0]?.t200_max_salary
+                                        ).slice(4)}MXN `
+                                  }
+                                  al mes ${
+                                    job[0]?.t200_salary_negotiable
+                                      ? "Negociable"
+                                      : "No negociable"
+                  }`}
+                  size="small"
+                />
               </li>
+              <li className={styles.item}>
+                <Chip 
+                  label={job[0]?.c214_id_modality?.c214_description}
+                  size="small"
+                />
+                
+              </li>
+              <li className={styles.item}>
+                <Chip 
+                  label={`Tipo de contratacion: ${job[0]?.c208_id_contract?.c208_description}`}
+                  size="small"
+                />
+                
+              </li>
+              {/* <li className={styles.item}>
+                <Chip 
+                  labe={`Lunes a Viernes de ${job[0]?.t200_check_time} a ${job[0]?.t200_closing_hour}`}
+                  size="small"
+                />
+                
+              </li> */}
             </ul>
           )}
         </header>
         <div className={styles.descriptionJob}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-          sapiente dicta repudiandae excepturi doloribus qui nemo molestiae
-          iste, necessitatibus totam nulla laboriosam et ex consectetur harum
-          quis, aspernatur officia nesciunt.
+          {job && job[0]?.t200_description}
         </div>
       </article>
       <Table>
         {user &&
           user?.map((el, index) => (
-            
-            <TableRow key={index} user={el} idSkills={el?.t100_id_student?.t100_id_student} index={index}>
+            <TableRow
+              key={index}
+              user={el}
+              idSkills={el?.t100_id_student?.t100_id_student}
+              index={index}
+            >
               <RowExpand user={el} />
             </TableRow>
           ))}

@@ -1,22 +1,25 @@
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "context/AuthContext";
 import { useModal } from "hooks/useModal";
-import { getSocialNetwork, getStudent } from "services/students/index";
+import { getSocialNetwork, getStudent, getAcademicHistorial } from "services/students/index";
 import { getSkill } from "services/catalogs";
 import { uuid } from "utils/uuid";
 import FormUpdateDataStudent from "components/Form/updateInfoStudent/FormUpdateDataStudent";
 import ModalForm from "components/Modal/ModalForm";
 import Chip from "@mui/material/Chip"
 import CustomAvatar from "../../Avatar/Avatar";
-import * as MdIcon from "react-icons/md";
+import {MdSchool, MdLocationPin, MdOutlineAirplanemodeActive } from "react-icons/md";
+import { FaSchool } from "react-icons/fa";
 import * as IoIcon from "react-icons/io";
 import styles from "./CardProfileStudent.module.css";
+import { Toaster } from "react-hot-toast";
 
 const CardProfileStudent = () => {
   // TODO: Implementar useReducer para el manejo del estado
   const [student, setStudent] = useState([]);
   const [isOpenModalFormUpdateInfoStudent, openModalFormUpdateInfoStudent, closeModalFormUpdateInfoStudent] = useModal();
   const [skills, setSkills] = useState([]);
+  const [academicHistorial, setAcademicHistorial] = useState(null);
   const [socialNetworks, setSocialNetworks] = useState([]);
   const { token } = useContext(AuthContext);
 
@@ -25,6 +28,15 @@ const CardProfileStudent = () => {
       .then(response => {
         setStudent(response);
       })
+  }, [token?.user?.user_id]);
+
+  useEffect(() => {
+    getAcademicHistorial(token?.user?.user_id)
+      .then(response => {
+        // console.log(response.data);
+        setAcademicHistorial(response.data);
+      })
+      .catch(error => error);
   }, [token?.user?.user_id]);
 
   useEffect(() => {
@@ -51,30 +63,37 @@ const CardProfileStudent = () => {
                   className={styles.config}
                   onClick={openModalFormUpdateInfoStudent}
                 />
-                {/* <img src="https://placeimg.com/640/480/any" alt="user" /> */}
                 <CustomAvatar student={student} width="80px" height="80px" fontSize="2rem" />
                 <div className={styles.nameHolder}>
                   <h3>
                     {student[0]?.t100_name} {student[0]?.t100_last_name}
                   </h3>
-                  <h4>{student[0]?.t100_interest_job ?? ""}</h4>
+                  <p style={{marginBottom:0}}>{academicHistorial && academicHistorial[0]?.t104_carreer}</p>
                 </div>
               </div>
             </header>
             <div className={styles.userDetails}>
               <div className={styles.separator}>
-                <h4 className={styles.label}>Ubicacion</h4>
+                <h4 className={styles.label}>Informacion Personal</h4>
                 <div className={styles.flex}>
-                  <MdIcon.MdLocationPin className={styles.icon} />
-                  <p>{student[0]?.t100_residence ?? "No especificado."}</p>
+                  <MdLocationPin style={{color: "#ee4b4a", fontWeight: "bold", fontSize: "1.3rem"}} />
+                  <p style={{fontWeight: "400"}}>{student[0]?.t100_residence ?? "No especificado."}</p>
                 </div>
                 <div className={styles.flex}>
-                  <MdIcon.MdOutlineAirplanemodeActive className={styles.icon} />
-                  <p>
+                  <MdOutlineAirplanemodeActive style={{color: "#f7b82f", fontWeight: "bold", fontSize: "1.3rem"}} />
+                  <p style={{fontWeight: "400"}}>
                     {student[0]?.t100_travel
                       ? "Disponible para reubicarse."
                       : "No disponible para reubicarse." ?? "No especificado."}
                   </p>
+                </div>
+                <div className={styles.flex}>
+                  <FaSchool style={{color: "#cccecf", fontWeight: "bold", fontSize: "1.3rem"}} />
+                  <p style={{margin:0, fontWeight: "400"}}>{academicHistorial && academicHistorial[0]?.t104_academic_unit}</p>
+                </div>
+                <div className={styles.flex}>
+                  <MdSchool />
+                  <p style={{margin:0, fontWeight: "400"}}>{academicHistorial && academicHistorial[0]?.c109_id_academic_state?.c109_description}</p>
                 </div>
               </div>
               <h4 className={styles.label}>redes sociales</h4>
@@ -89,12 +108,16 @@ const CardProfileStudent = () => {
                         key={uuid()}
                         className={styles.link}
                       >
-                        {c115_id_plataform?.c115_description}
+                        <img 
+                          src={c115_id_plataform?.c115_icon} 
+                          alt={c115_id_plataform?.c115_icon}
+                          className={styles.iconSocialNetwork}
+                        />
                       </a>
                     );
                   })
                 ) : (
-                  <h3>Sin redes sociales</h3>
+                  <h3>Sin redes sociales por el momento.</h3>
                 )}
               </div>
               <div className={`${styles.wrapperSkills} ${styles.separator}`}>
@@ -115,14 +138,14 @@ const CardProfileStudent = () => {
                   }
                 </ul>
               </div>
-              <div className={`${styles.cv} py-4`}>
+              {/* <div className={`${styles.cv} py-4`}>
                 <IoIcon.IoIosCheckmarkCircle />
                 <p>
                   Tu curriculum esta activo y visible para las empresas.
                   <br />
                   <em>Abierto a oportunidades.</em>
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </article>
@@ -132,10 +155,12 @@ const CardProfileStudent = () => {
           width={650}
           height={800}
         >
-          <FormUpdateDataStudent student={student} />
+          <FormUpdateDataStudent idStudent={student[0]?.t100_id_student} />
         </ModalForm>
+        <Toaster position="top-right" />
     </>
   );
 };
 
 export default CardProfileStudent;
+

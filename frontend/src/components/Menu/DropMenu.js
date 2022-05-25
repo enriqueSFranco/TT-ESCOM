@@ -16,8 +16,6 @@ const DropMenu = () => {
 
   const onClick = () => setIsActive(!isActive);
   
-  // if (user === null) return null;
-
   return (
     <div className={styles.dropdown}>
       {

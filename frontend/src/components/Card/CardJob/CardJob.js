@@ -24,11 +24,11 @@ const JobCard = ({ job }) => {
         </div>
         <div className={styles.wrapper}>
           <div className={styles.wrapperTags}>
-            <Chip label={`Modalidad: ${job?.t200_home_ofice ? "Remoto" : "Presencial"}`} size="small" icon={<MdIcon.MdBusinessCenter />} />
+            <Chip label={`Modalidad: ${job?.t200_home_ofice ? "Remoto" : "Presencial"}`} size="small" icon={<MdIcon.MdBusinessCenter style={{color: "#78909c"}} />} />
 
-            <Chip label={`Sueldo: ${numberFormat(job?.t200_min_salary).slice(4,)}MXN a ${numberFormat(job?.t200_max_salary).slice(4,)}MXN al mes`} size="small" icon={<GiIcon.GiMoneyStack />} />
+            <Chip label={`Sueldo: ${numberFormat(job?.t200_min_salary).slice(4,)}MXN a ${numberFormat(job?.t200_max_salary).slice(4,)}MXN al mes`} size="small" icon={<GiIcon.GiMoneyStack style={{color: "green"}} />} />
 
-            <Chip label={`Fecha de publicacion: ${formatDate(job?.t200_publish_date)}`} size="small" icon={<BsIcon.BsCalendarDate />} />
+            <Chip label={`Fecha de publicacion: ${formatDate(job?.t200_publish_date)}`} size="small" icon={<BsIcon.BsCalendarDate style={{color: "red"}} />} />
           </div>
           <div className={styles.logoBusiness}>
             {job?.t300_id_company?.t300_logo ? (

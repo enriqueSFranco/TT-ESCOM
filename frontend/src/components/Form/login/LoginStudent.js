@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { useForm } from "hooks/useForm";
 import TextField from "@mui/material/TextField";
 import AuthContext from "context/AuthContext";
+import { Toaster } from "react-hot-toast";
 import { InputAdornment } from "@mui/material";
 import { MdOutlineMail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import styles from "./LoginStudent.module.css";
-import { Toaster } from "react-hot-toast";
 
 let initialForm = {
   t100_email: "",
@@ -20,29 +20,19 @@ const Form = () => {
 
   return (
     <>
-      <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
+      <div className={`container bg-white shadow rounded ${styles.wrapper}`}>
         <div className="row">
-          <div
-            className={`${styles.bg} col rounded`}
-          >
-            <div className={`${styles.login}`}>
+          <div className={`${styles.bgLoginStudent} col rounded`}>
+            <div className={`${styles.wrapperTitleLogin}`}>
               <blockquote>
-                Un paso más cerca de tu nuevo{" "}
-                <em>trabajo</em>.
+                Un paso más cerca de tu nuevo <span>trabajo</span>.
               </blockquote>
-                <span>
-                  No tines cuenta? <Link className={`${styles.linkToLogin}`} to="/registro-alumno">Registrate</Link>
-                </span>
-                <br />
-                <span>
-                  <a href="/#">Recuperar contraseña</a>
-                </span>
-              </div>
+            </div>
           </div>
-          <div className={`col text-center bg-white p-3 rounded-end`}>
+          <div className={`col text-center bg-white p-3 rounded-end ${styles.contentLogin}`}>
             <div className={styles.welcome}>
-              <h2>iniciar sesion</h2>
-              <span>Bienvenido! Porfavor introduce tus datos.</span>
+              <h2>Bienvenid@ a la btescom</h2>
+              <span>Encuentra el trabajo a tu medida.</span>
             </div>
             <form onSubmit={login} className={styles.form}>
               {/* input para la boleta */}
@@ -60,7 +50,7 @@ const Form = () => {
                       <InputAdornment position="start">
                         <MdOutlineMail />
                       </InputAdornment>
-                    )
+                    ),
                   }}
                 />
               </div>
@@ -79,7 +69,7 @@ const Form = () => {
                       <InputAdornment position="start">
                         <RiLockPasswordLine />
                       </InputAdornment>
-                    )
+                    ),
                   }}
                   sx={{ width: 500, maxWidth: "100%" }}
                 />
@@ -92,7 +82,20 @@ const Form = () => {
                   Iniciar sesión
                 </button>
               </div>
+            <span className={styles.noAccount}>
+              No tines cuenta?{" "}
+              <Link className={`${styles.linkToLogin}`} to="/registro-alumno">
+                Registrate aqui.
+              </Link>
+            </span>
             </form>
+            <section className={styles.wrapperLoginRecruiter}>
+              <div className={styles.separator}></div>
+              <div style={{display: "flex", alignItems: "center", justifyContent: "center", gap: ".5rem"}}>
+                <span className={styles.postJobTitle} style={{fontSize: "1rem"}}>Quieres publicar vacantes?</span>
+                <Link className={styles.linkToRegisterRecruiter} to="/registro-reclutador">Solicitalo aqui</Link>
+              </div>
+            </section>
           </div>
         </div>
       </div>

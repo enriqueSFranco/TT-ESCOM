@@ -1,6 +1,5 @@
 import React from "react";
-import TextField from "@mui/material/TextField";
-import { InputAdornment } from "@mui/material";
+import { InputAdornment, TextField } from "@mui/material";
 import Label from "components/Element/Label/Label";
 import { IoIosBusiness } from "react-icons/io";
 import { HiOutlineIdentification } from "react-icons/hi";
@@ -10,13 +9,16 @@ import * as MdIcon from "react-icons/md";
 import styles from "../Styles.module.css";
 
 const FormCompanyInfo = ({
+  data,
   nextStep,
   form,
   errors,
   handleChange,
   handleValidate,
+  handleSubmitCompany,
+  isActive,
+  handleIsActive,
 }) => {
-
   const continueStep = (e) => {
     e.preventDefault();
     nextStep();
@@ -28,9 +30,15 @@ const FormCompanyInfo = ({
         <h2>
           Datos de la empresa <BsIcon.BsQuestionCircle />
         </h2>
-        <a className={styles.youHaveAccountComany} href="#/">
-          Tu empresa ya esta registrada con nosotros ?
-        </a>
+        {!isActive && (
+          <a
+            onClick={handleIsActive}
+            className={styles.youHaveAccountComany}
+            href="#/"
+          >
+            ¿Tu empresa ya esta registrada con nosotros ?
+          </a>
+        )}
       </div>
       <div className={styles.inputGroup}>
         <TextField
@@ -42,12 +50,13 @@ const FormCompanyInfo = ({
           onBlur={handleValidate}
           onKeyUp={handleValidate}
           onChange={handleChange}
+          // helperText="Porfavor, Escriba el nombre de su empresa."
           InputProps={{
             startAdornment: form.t300_name && (
               <InputAdornment position="start">
                 <IoIosBusiness />
               </InputAdornment>
-            )
+            ),
           }}
         />
         {errors.t300_name && (
@@ -67,12 +76,13 @@ const FormCompanyInfo = ({
           onBlur={handleValidate}
           onKeyUp={handleValidate}
           onChange={handleChange}
+          // helperText="Porfavor, Escriba el RFC de su empresa."
           InputProps={{
             startAdornment: form.t300_rfc && (
               <InputAdornment position="start">
                 <HiOutlineIdentification />
               </InputAdornment>
-            )
+            ),
           }}
         />
         {errors.t300_rfc && (
@@ -87,6 +97,7 @@ const FormCompanyInfo = ({
           label="Razon Social"
           id="t300_bussiness_name"
           name="t300_bussiness_name"
+          // helperText="Porfavor, Escriba la razon social de su empresa."
           sx={{ width: 500, maxWidth: "100%" }}
           value={form.t300_bussiness_name}
           onBlur={handleValidate}
@@ -119,7 +130,7 @@ const FormCompanyInfo = ({
         </Label>
       </div>
       <button className={styles.btnNext} type="button" onClick={continueStep}>
-        siguiente
+        Siguiente
       </button>
     </div>
   );

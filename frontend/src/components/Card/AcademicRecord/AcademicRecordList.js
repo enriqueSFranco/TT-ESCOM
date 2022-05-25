@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import AuthContext from 'context/AuthContext';
 import { useModal } from "hooks/useModal";
+import { uuid } from 'utils/uuid';
 import Modal from "components/Modal/Modal";
 import FormAddAcademicRecord from "components/Form/AcademicRecord/FormAddAcademicRecord";
 import { getAcademicHistorial } from 'services/students';
@@ -41,7 +42,10 @@ const AcademicRecordList = () => {
       {
         data && data?.map(el => (
           <AcademicRecord
-            key={el?.t100_id_student?.t100_id_studentv}
+            key={uuid()}
+            data={data}
+            setData={setData}
+            id={el?.t104_id_registrer}
             academicUnit={el?.t104_academic_unit}
             carrer={el?.t104_carreer}
             startDate={el?.t104_start_date}

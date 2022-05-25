@@ -21,22 +21,29 @@
 .btnSave {
   width: 120px;
   height: 3rem;
-  border-radius: 1rem;
-  border: 1px solid #038dd4;
-  color: #038dd4;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
   font-weight: 600;
-  background-color: transparent;
+  background-color: #232436;
   outline: none;
   transition: background-color .3s ease-in;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .btnSave:hover {
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  background-color: #038dd4;
-  color: #fff;
+  background-color: #adff2f;
+  color: #232436;
   border: none;
 }
 
+.flex_1_2 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: .2rem;
+}
+
+.salary, .employmentModality { font-weight: 400; }
 
 .title {
   color: #fff;
@@ -48,11 +55,28 @@
 .textArea {
   resize: none;
   outline: none;
-  border-color: #038dd4;
+  border: 2px solid #cccbcb;
   border-radius: 5px;
 }
+.tip, .totalChar {
+  font-size: .89rem;
+  color: #616161;
+  font-weight: 500;
+}
 
-.salary, .employmentModality { font-weight: bold; }
+.position {
+  font-size: .87rem;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.professionalObjective {
+  font-size: .9rem;
+}
 
 .wrapper {
   position: relative;
@@ -62,20 +86,10 @@
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   height: 240px;
   width: 100%;
-  background-image: url(../../../images/wave-haikei.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: #232436;
+  font-weight: 400;
 }
 
-.wrapper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
 
 .wrapperTextEdit {
   /* outline: 2px solid red; */
@@ -86,4 +100,12 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.wrapperTextArea {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* outline: 2px solid red; */
+  height: 270px;
 }

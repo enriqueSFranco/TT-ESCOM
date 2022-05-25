@@ -1,0 +1,87 @@
+.btnApplyJob {
+  width: 120px;
+  height: 3rem;
+  border: none;
+  background-color: transparent;
+  margin: 0 auto;
+  border-radius: 3rem;
+  position: relative;
+  top: 1.5rem;
+  z-index: 1;
+  overflow: hidden;
+  outline: 2px solid #06CF9C;
+  font-weight: 300;
+}
+
+.btnApplyJob::before {
+  content: '';
+  width: 0;
+  height: 3rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to right, #0fd850 0%, #f9f047 100%);
+  transition: width .5s ease;
+  display: block;
+  z-index: -1;
+}
+
+.btnApplyJob:hover::before {
+  width: 120px;
+}
+
+.message {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.imgBurrito {
+  width: 200px;
+  height: 150px;
+  margin: 0 auto;
+}
+
+.goToApplicationJob {
+  position: relative;
+  color: #000;
+  width: 190px;
+  outline: 1px solid #0fd850;
+  height: 3rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding: 0 .4rem;
+  margin: 1rem auto;
+}
+
+.goToApplicationJob::before {
+  content: '';
+  width: 0;
+  height: 3rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to right, #0fd850 0%, #f9f047 100%);
+  transition: width .5s ease;
+  display: block;
+  z-index: -1;
+}
+
+.goToApplicationJob:hover::before {
+  width: 190px;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+}
+
+.wrapper {
+  font-family: 'Poppins', sans-serif;
+  height: 370px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

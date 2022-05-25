@@ -1,0 +1,58 @@
+[
+    {
+        "model" : "students.Student",
+        "pk" : 1,
+        "fields":{
+            "t100_boleta": "2014080325",
+            "t100_name": "Joel Antonio",
+            "t100_last_name": "Cruz Heras",
+            "t100_username": "JoelHeras",
+            "t100_email": "joel_kratos@hotmail.com",
+            "t100_gender": "M",
+            "t100_date_of_birth": "1998-08-28",
+            "t100_personal_objectives": "Deseo aumentar mis capacidades como ingeniero, ya que soy un recién egresado y quiero entrar al campo laboral. Mi expectativa de empleo es ser un miembro funcional de un equipo de trabajo de tecnolgias y me permita implementar todos mis conocimientos.",
+            "t100_phonenumber": "5540182513",
+            "t100_residence": "Tlalnepantla de Baz, Estado de México",
+            "t100_modalities": "Hibrido",
+            "t100_speciality": "Sistemas computacionales",
+            "t100_target_salary": "16000",
+            "t100_travel": false,
+            "is_active": true,
+            "password": "pbkdf2_sha256$320000$o9eYPJhBKIa2w2vQsDFlld$5tvevbcIik/rMeAVNAKt9oI9mV+aWS3vHoQ6ytueUEU="
+        }
+    },
+
+    {
+        "model" : "users.User",
+        "pk" : 1,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$q2hM0ylazDZb68qcK0jjT9$StaYleM6xdrM5kHH54aIA4nJHQ938vnlhs/m2t1CF88=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "joel_kratos@hotmail.com",
+            "first_name": "Joel Antonio",
+            "last_name": "Cruz Heras",
+            "email": "joel_kratos@hotmail.com",
+            "is_staff": false,
+            "date_joined": "2022-04-25T06:25:37.005568Z",
+            "user_type": "STUDENT",
+            "is_active": true,
+            "user_id": 1,
+            "groups": [],
+            "user_permissions": []
+        }
+    },        
+
+    {
+        "model":"administration.Admin",
+        "pk": 1,
+        "fields":{
+            "t400_name": "Francisco",
+            "t400_last_names": "Hernandez",
+            "t400_email":"ex_ap_escom@ipn.mx",
+            "t400_admin": "true",
+            "t400_position": "Jefe de departamento"
+        }
+    }
+    
+]

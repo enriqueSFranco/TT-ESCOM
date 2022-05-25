@@ -18,33 +18,10 @@ const AuthProvider = ({ children }) => {
       ? JSON.parse(window.sessionStorage.getItem("token"))
       : null
   );
+  // const [message, setMessage] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [errors, setErrors] = useState(null);
   let navigate = useNavigate();
 
-  /*const login = async (e) => {
-    e.preventDefault();
-    loginService({
-      "username": e.target.t100_email.value.trim(),
-      "password": e.target.password.value.trim(),
-    })
-      .then((response) => {
-        if (response.status === 200 || response.status === 201) {
-          setUser(jwt_decode(response?.data?.access));
-          setToken(response?.data);
-          window.sessionStorage.setItem("token", JSON.stringify(response?.data));
-          navigate("/");
-        } else {
-          setErrors(response)
-          toast.error("correo o password incorrectos.");
-          window.sessionStorage.removeItem('token', JSON.stringify(response?.data))
-        }
-      })
-      .catch((error) => {
-        return error;
-      });
-  };*/
-  
   const loginRecruiter = async (e) => {
     e.preventDefault();
     loginService({
@@ -55,10 +32,10 @@ const AuthProvider = ({ children }) => {
         if (response.status === 200 || response.status === 201) {
           setUser(jwt_decode(response?.data?.access));
           setToken(response?.data);
+          toast.success("Inicio de secion correcto");
           window.sessionStorage.setItem("token", JSON.stringify(response?.data));
-          navigate("/");
+          navigate("mis-vacantes");
         } else {
-          setErrors(response)
           toast.error("correo o password incorrectos.");
           window.sessionStorage.removeItem('token', JSON.stringify(response?.data))
         }
@@ -79,24 +56,25 @@ const AuthProvider = ({ children }) => {
         if (response.status === 200 || response.status === 201) {
           setUser(jwt_decode(response?.data?.access));
           setToken(response?.data);
-          window.sessionStorage.setItem("token", JSON.stringify(response?.data));
-          //console.log(response.data['user']);
-          //console.log(response.data['user']['first_name']);                   
+          toast.success("Inicio de sesion correcto");
+          window.sessionStorage.setItem("token", JSON.stringify(response?.data));                
           let val = response.data['user']['first_name'];
-          console.log(val);
-          console.log(Boolean(val));
           
-          if (Boolean(val))
-            navigate("/perfil");
-          else
-            navigate("/actualiza-alumno");
+          if (Boolean(val)){
+            new Promise(resolve => {
+              setTimeout(() => {
+                resolve(navigate("/"))
+              }, 3000);
+            });
+          }
+          else navigate("/actualiza-alumno");
         } else {
-          console.log(`error: ${response.error}`);
+          toast.error("correo o password incorrectos.");
           window.sessionStorage.removeItem('token', JSON.stringify(response?.data))
         }
       })
       .catch((error) => {
-        if (error.response) console.log(error.response.data);
+        console.log(error);
       });
   };
 
@@ -110,7 +88,6 @@ const AuthProvider = ({ children }) => {
   const data = {
     user,
     token,
-    errors,
     loading,
     login,
     logout,

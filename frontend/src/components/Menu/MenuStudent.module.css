@@ -64,6 +64,20 @@
   color: #000;
 }
 
+.labelTheme {
+  height: 3rem;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  gap: .3rem;
+  position: relative;
+  right: 1.4rem;
+}
+
+.menuItemStudent {
+  border-bottom: 1px solid #ccc;
+}
+
 .underline {
   position: absolute;
   bottom: -2px;

@@ -7,11 +7,13 @@ from rest_framework.decorators import action
 from rest_framework import viewsets
 from datetime import datetime
 
-from apps.vacantes.models import Application, ApplicationState
+from apps.vacantes.models import Application, ApplicationState,Vacant
+from apps.vacantes.api.serializers.vacant_serializer import UpdateVacantStateSerializer
 from apps.vacantes.api.serializers.application_serializer import ApplicationSerializer,ApplicationListSerializer,UpdateApplicationSerializer,ApplicationStateSerializer,ApplicationStateListSerializer
 
 class ApplicationViewSet(viewsets.GenericViewSet):
 	model = Application
+	vacant_model = Vacant
 	status_model = ApplicationState
 	status_serializer = ApplicationStateSerializer
 	status_list_serializer = ApplicationListSerializer
@@ -45,39 +47,36 @@ class ApplicationViewSet(viewsets.GenericViewSet):
 			"c205_id_application_state":1,
 			"t216_modify_date":request.data['t201_date_application']
 		}
-		check_applications = self.model.objects.filter(t200_id_vacant=request.data['t200_id_vacant'],t100_id_student=request.data['t100_id_student'],c205_id_application_state__in=['1','2','4'])
-		print(check_applications)
+		check_applications = self.model.objects.filter(t200_id_vacant=request.data['t200_id_vacant'],
+													   t100_id_student=request.data['t100_id_student'],
+													   c205_id_application_state__in=['1','2','4'])
+		#print("Postulacion activa ?",check_applications)
 		if (check_applications):
 			print("Ya hay una postulación activa")
-			return Response({
-			'message': 'Ya hay una postulación activa'
-		}, status=status.HTTP_400_BAD_REQUEST)
+			return Response({'message': 'Ya hay una postulación activa'
+								}, status=status.HTTP_400_BAD_REQUEST)
 
 		application_serializer = self.serializer_class(data=request.data)
 		#print('request: ',request.data['t201_date_application'])
 		if application_serializer.is_valid():
-			
+			application_serializer.save()
 			application = self.model.objects.aggregate(Max('t201_id_application'))
 			print(application)
-			if (application):
-				id_application = application['t201_id_application__max']
-			else:
-				id_application ="1"			
+			id_application = application['t201_id_application__max']
 			status_data['t201_id_application'] = id_application				
 			print(status_data)
 			application_status = self.status_serializer(data=status_data)
-			if application_status.is_valid():
-				application_serializer.save()
+			if application_status.is_valid():				
 				application_status.save()
 				return Response({
 					'message': 'Aplicación registrada correctamente.',
 					'type':1
 					}, status=status.HTTP_201_CREATED)
 		return Response({
-			'message': 'Hay errores en el registro',
-			'type':3,
-			'errors': application_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+					'message': 'Hay errores en el registro',
+					'type':3,
+					'errors': application_serializer.errors
+					}, status=status.HTTP_400_BAD_REQUEST)
 
 	def retrieve(self, request, pk):
 		applications = self.get_object(pk)
@@ -102,9 +101,15 @@ class ApplicationViewSet(viewsets.GenericViewSet):
 			"t216_modify_date": datetime.now().date()
 		}
 		u_application = self.model.objects.filter(t201_id_application=pk).first()
+		print(u_application)
+		status_data['t201_id_application'] = u_application.t201_id_application
+		print(status_data)
 		application_serializer = UpdateApplicationSerializer(u_application, data=request.data)
-		if application_serializer.is_valid():
+		application_status = self.status_serializer(data=status_data)
+		if application_serializer.is_valid() and application_status.is_valid(): 
+			application_status.save()
 			application_serializer.save()
+			self.updateVacant(u_application.t200_id_vacant.t200_id_vacant)
 			return Response({
 			    'message': 'Postulación actualizado correctamente'
 				}, status=status.HTTP_200_OK)
@@ -112,6 +117,18 @@ class ApplicationViewSet(viewsets.GenericViewSet):
             'message': 'Hay errores en la actualización',
             'errors': application_serializer.errors
             }, status=status.HTTP_400_BAD_REQUEST)
+
+	def updateVacant(self,id_vacant):
+		vacant = self.vacant_model.objects.filter(t200_id_vacant = id_vacant).first()
+		applications = self.model.objects.filter(t200_id_vacant = id_vacant, c205_id_application_state = 4)
+		print(vacant)
+		print(applications.count())
+		if (vacant.t200_vacancy == applications.count()):
+			#UpdateVacantStateSerializer
+			application_serializer = UpdateVacantStateSerializer(vacant, data={"c204_id_vacant_status":"2"})
+			if application_serializer.is_valid():
+				application_serializer.save()
+			print("Ya se lleno la vacante, es hora de cerrarla XDxddd")
 
 
 class VacantApplicationsViewSet(viewsets.GenericViewSet):
@@ -122,7 +139,7 @@ class VacantApplicationsViewSet(viewsets.GenericViewSet):
 
 	def get_object(self, pk):	
 		self.queryset = self.model.objects\
-				.filter(t200_id_vacant = pk)\
+				.filter(t200_id_vacant = pk, c205_id_application_state__in=['1','2','4'])\
 				.all()#values('t201_id_application','t100_boleta','c205_id_application_state','t201_date_application','t201_cv')		
 		return self.queryset
 
