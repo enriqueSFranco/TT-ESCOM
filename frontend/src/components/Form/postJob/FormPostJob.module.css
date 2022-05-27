@@ -8,6 +8,7 @@
 .closeJob {
   height: 90px;
   display: flex;
+  width: 200px;
   flex-direction: column;
   gap: 1rem;
 }

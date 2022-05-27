@@ -1,211 +1,304 @@
 [
+    
     {
-        "model":"companies.Company",
+        "model":"companies.Company",        
         "pk":1,
         "fields":{
-            "t300_name": "Coca-Cola",
-            "t300_rfc": "MELM830528IH0",
-            "t300_nss": 1234,
-            "t300_email": "coca-cola@gmail.com.mx",
-            "t300_bussiness_name": "Coca-Cola",
-            "t300_web_page": "https://www.coca-cola.com.mx/",
-            "t300_mision": "Satisfacer con excelencia a los consumidores de bebidas. Ser el mejor líder total de bebidas, que genere valor económico, social y ambiental sostenible, gestionando modelos de negocio innovadores y ganadores, con los mejores colaboradores en el mundo.",
-            "t300_vision": "Ser el mejor líder total de bebidas, que genere valor económico, social y ambiental sostenible, gestionando modelos de negocio innovadores y ganadores, con los mejores colaboradores en el mundo.",
+            "t300_id_company": "1",
+            "t300_name": "Amazon",
+            "t300_rfc": "ASE030509UJ6",
+            "t300_nss": 0,
+            "t300_email": "primary@amazon.com.mx",
+            "t300_bussiness_name": "AMAZON SERVICES",
+            "t300_web_page": "www.amazon.com.mx",
+            "t300_mision": "La misión de Amazon consiste en ofrecer a los clientes los precios más bajos que sea imposible, obteniendo la mayor selección y disponibilidad de la forma más cómoda posible.",
+            "t300_vision": "Convertirse en la compañia más centrada en el cliente del mundo.",
             "t300_objective": "",
-            "t300_logo": "/logos/cocacola.jpeg",
-            "t300_banner": null,
-            "t300_create_date": "1892-01-29",
+            "t300_logo": "/logos/amazon.jpeg",
+            "t300_banner": "/banners/",
             "t400_id_admin": 1,
-            "t300_verified": true
+            "t300_verified": true,
+            "t300_create_date": "2022-04-15",
+            "is_active": true           
         }
     },
+
     {
-        "model":"companies.Company",
+        "model":"companies.Company",        
         "pk":2,
         "fields":{
-            "t300_name": "Amazon",
-            "t300_rfc": "YQXZ347247JO9",
-            "t300_nss": 543534,
-            "t300_email": "amazon@gmail.com.mx",
-            "t300_bussiness_name": "Amazon",
-            "t300_web_page": "https://www.amazon.jobs/es",
-            "t300_mision": "Nos esforzamos por ofrecer a nuestros clientes los precios más bajos posibles, la mejor selección disponible y la mayor comodidad.",
-            "t300_vision": "Ser la compañía más centrada en el cliente del mundo, donde nuestros clientes pueden encontrar y descubrir cualquier cosa que deseen comprar en línea",
-            "t300_objective": "",
-            "t300_logo": "/logos/amazon.jpeg",
-            "t300_banner": null,
-            "t300_create_date": "1994-07-05",
+            "t300_id_company": "2",
+            "t300_name": "Banco de México",
+            "t300_rfc": "BME821130SXA",
+            "t300_nss": 0,
+            "t300_email": "sie@banxico.org.mx",
+            "t300_bussiness_name": "Banco de México",
+            "t300_web_page": "https://www.banxico.org.mx/",
+            "t300_mision": "El Banco de México tiene el objetivo prioritario de preservar el valor de la moneda nacional a lo largo del tiempo y, de esta forma, contribuir a mejorar el bienestar económico de los mexicanos.",
+            "t300_vision": "",
+            "t300_objective": "Mantener una inflación baja y estable",
+            "t300_logo": "/logos/banxico.jpeg",
+            "t300_banner": "/banners/",
             "t400_id_admin": 1,
-            "t300_verified": true
+            "t300_verified": true,
+            "t300_create_date": "2022-04-16",
+            "is_active": true           
         }
     },
+
     {
-        "model":"companies.Company",
+        "model":"companies.Company",        
         "pk":3,
         "fields":{
-            "t300_name": "Google",
-            "t300_rfc": "TYOW464134IOC",
-            "t300_nss": 45734,
-            "t300_email": "google@gmail.com.mx",
-            "t300_bussiness_name": "Google",
-            "t300_web_page": "https://careers.google.com/",
-            "t300_mision": "organizar la información en el mundo para que sea útil y accesible",
-            "t300_vision": "ser el motor de búsqueda más importante del mundo. Valores: rapidez, precisión, atención al cliente, innovación y facilidad de uso.",
-            "t300_objective": "",
-            "t300_logo": "/logos/google.jpeg",
-            "t300_banner": null,
-            "t300_create_date": "1998-09-04",
+            "t300_id_company": "3",
+            "t300_name": "Dell México",
+            "t300_rfc": "DME9204099R6",
+            "t300_nss": 0,
+            "t300_email": "",
+            "t300_bussiness_name": "DELL COMPUTER SERVICES DE MEXICO SA DE CV",
+            "t300_web_page": "https://www.dell.com/mx",
+            "t300_mision": "Dell es crear una cultura empresarial donde la excelencia medioambiental es lasegunda naturaleza ya que los principios del ambientalismo - la eficiencia acaba con los desechos - se integran con los principios de nuestro modelo de negocio directo - la eficiencia ofrece valor delcliente.",
+            "t300_vision": "Ser la más exitosa compañía de computadoras en el mundo ofreciendo la mejor experiencia al cliente en los mercados en que nosotros servimos. Al hacerlo, Dell satisfará las expectativasde nuestros clientes en las siguientes áreas:\n* La más alta calidad\n* Tecnología de punta\n*Precios\n*Responsabilidad corporativa e individualcompetitivos\n* El mejor servicioy soporte en su clase",
+            "t300_objective": "La compañía cuenta con los siguientes objetivos:\n* La relación directa con el cliente es más eficiente, al no existir intermediarios.\n* Punto único de contacto y responsabilidad.\n* Compras a pedidopermite configurar la computadora según las necesidades de cada cliente.\n* Bajos costos, mínimo inventario.\n* Tecnologías según normas.",
+            "t300_logo": "/logos/dell.jpeg",
+            "t300_banner": "/banners/",
             "t400_id_admin": 1,
-            "t300_verified": true
+            "t300_verified": true,
+            "t300_create_date": "2022-04-17",
+            "is_active": true           
         }
     },
+
     {
-        "model":"companies.Company",
+        "model":"companies.Company",        
         "pk":4,
         "fields":{
-            "t300_name": "Nike",
-            "t300_rfc": "NME920220KL4",
-            "t300_nss": 9809,
-            "t300_email": "nikemx@gmail.com",
-            "t300_bussiness_name": "Nike",
-            "t300_web_page": "https://jobs.nike.com/es/how-we-hire",
-            "t300_mision": "ofrecer inspiración e innovación a todos los atletas* del mundo",
-            "t300_vision": "Ser la mejor empresa nacional e internacional destacándonos por la buena calidad, servicio y comodidad a nuestros clientes. Queremos que nuestro producto sea vendido y utilizado en todas las partes del mundo.",
+            "t300_id_company": "4",
+            "t300_name": "Axxis Soluciones",
+            "t300_rfc": "ASO040721S32",
+            "t300_nss": 0,
+            "t300_email": "JUAN.MATIAS@AXXIS.COM.MX",
+            "t300_bussiness_name": "AXXIS SOLUCIONES S.A. DE C.V.",
+            "t300_web_page": "http://www.axxis.com.mx/",
+            "t300_mision": "Ayudar a nuestros clientes a ser más competitivos, innovadores y flexibles, transformando y optimizando sus procesos de negocio.",
+            "t300_vision": "Ser la Firma consultora líder en soluciones de Administración de Procesos de Negocio en América Latina.",
             "t300_objective": "",
-            "t300_logo": "/logos/nike.jpeg",
-            "t300_banner": null,
-            "t300_create_date": "1964-01-25",
+            "t300_logo": "/logos/axxis.jpeg",
+            "t300_banner": "/banners/",
             "t400_id_admin": 1,
-            "t300_verified": true
+            "t300_verified": true,
+            "t300_create_date": "2022-04-18",
+            "is_active": true           
         }
     },
 
     {
-        "model":"companies.Company",
+        "model":"companies.Company",        
         "pk":5,
         "fields":{
-            "t300_name": "IBM",
-            "t300_rfc": "IMC9701024T5",
-            "t300_nss": 348764,
-            "t300_email": "ibm@gmail.com",
-            "t300_bussiness_name": "IBM",
-            "t300_web_page": "https://www.ibm.com/mx-es/employment/",
-            "t300_mision": "Es ayudar a los clientes a reducir costos, mejorar su productividad y obtener una ventaja competitiva, respaldados por el liderazgo mundial de un amplio portafolio de servicios de consultoría, outsourcing, infraestructura e integración de sistemas.",
-            "t300_vision": "En IBM, creemos en el progreso que cambia el mundo: la aplicación completa de la inteligencia, la razón y la ciencia para mejorar los negocios",
-            "t300_objective": "",
-            "t300_logo": "/logos/ibm.jpeg",
-            "t300_banner": null,
-            "t300_create_date": "1911-06-16",
-            "t400_id_admin": 1,
-            "t300_verified": true
-        }
-    },
-
-    {
-        "model":"companies.Company",
-        "pk":6,
-        "fields":{
-            "t300_name": "Bimbo",
-            "t300_rfc": "BMO451102H3R",
-            "t300_nss": 73231,
-            "t300_email": "bimbo@gmail.com",
-            "t300_bussiness_name": "Bimbo",
-            "t300_web_page": "https://www.grupobimbo.com/es/bolsa-de-trabajo",
-            "t300_mision": "Buscamos alimentar, deleitar y servir a nuestro mundo, siendo una empresa altamente productiva y plenamente humana. Día a día queremos alcanzar nuestros logros y avanzar en nuestros propósitos. Esto es lo que constituye nuestra razón de ser como empresa.",
-            "t300_vision": "Ser líder internacional en la industria de la panificación.",
-            "t300_objective": "",
-            "t300_logo": null,
-            "t300_banner": null,
-            "t300_create_date": "1945-12-02",
-            "t400_id_admin": 1,
-            "t300_verified": true
-        }
-    },
-
-
-    {
-        "model":"companies.Company",
-        "pk":7,
-        "fields":{
-            "t300_name": "BBVA",
+            "t300_id_company": "5",
+            "t300_name": "BBVA Bancomer",
             "t300_rfc": "BBA830831LJ2",
-            "t300_nss": 423234,
-            "t300_email": "bbva@gmail.com.mx",
-            "t300_bussiness_name": "BBVA",
-            "t300_web_page": "https://www.bbva.com/es/trabajo-empleo-empresa/empleo/",
-            "t300_mision": "Generar confianza al servir más y mejor a nuestra clientela, con transparencia e integridad, ofreciendo siempre productos de la más alta calidad.",
-            "t300_vision": "En BBVA trabajamos por un futuro mejor para las personas",
+            "t300_nss": 0,
+            "t300_email": "une.mx@bbva.com.",
+            "t300_bussiness_name": "BBVA Bancomer S.A., Institución de Banca Múltiple, Grupo Financiero BBVA Bancomer",
+            "t300_web_page": "https://www.bbva.mx",
+            "t300_mision": "Generar confianza al servir más y mejor a nuestra clientela, con transparencia e integridad, ofreciendo siempre productos de la más alta calidad. Proporcionar a nuestros colaboradores las mejores condiciones para su desarrollo integral. Ser solventes y ofrecer rendimientos atractivos a nuestros accionistas",
+            "t300_vision": "Trabajamos para un futuro mejor para la persona»",
             "t300_objective": "",
             "t300_logo": "/logos/bbva.jpeg",
-            "t300_banner": null,
-            "t300_create_date": "1932-01-24",
+            "t300_banner": "/banners/",
             "t400_id_admin": 1,
-            "t300_verified": true
+            "t300_verified": true,
+            "t300_create_date": "2022-04-19",
+            "is_active": true           
         }
     },
 
     {
-        "model":"companies.Company",
+        "model":"companies.Company",        
+        "pk":6,
+        "fields":{
+            "t300_id_company": "6",
+            "t300_name": "Coppel",
+            "t300_rfc": "COP920428Q20",
+            "t300_nss": 0,
+            "t300_email": "atencion@coppel.com",
+            "t300_bussiness_name": "Almacenes Coppel S.A. de C.V.",
+            "t300_web_page": "https://www.coppel.com/",
+            "t300_mision": "Acompañarte en tus necesidades y deseos, acercándote un mundo de posibilidades para que mejores tu vida.",
+            "t300_vision": "Ser la tienda omnicanal y de servicios financieros personales y digitales, favorita del mercado masivo, que ofrece una gran variedad de categorías de productos y servicios útiles, atractivos y accesibles, de marcas líderes, que atienden las necesidades, así como los deseos de sus clientes.",
+            "t300_objective": "",
+            "t300_logo": "/logos/coppel.jpeg",
+            "t300_banner": "/banners/",
+            "t400_id_admin": 1,
+            "t300_verified": true,
+            "t300_create_date": "2022-04-20",
+            "is_active": true           
+        }
+    },
+
+    {
+        "model":"companies.Company",        
+        "pk":7,
+        "fields":{
+            "t300_id_company": "7",
+            "t300_name": "Coca-Cola FEMSA",
+            "t300_rfc": "CCF9305145C9",
+            "t300_nss": 0,
+            "t300_email": "salaprensa@coca-cola.com",
+            "t300_bussiness_name": "COCA-COLA FEMSA, S.A.B. DE C.V.",
+            "t300_web_page": "https://www.coca-colamexico.com.mx/",
+            "t300_mision": "Refrescar al mundo en cuerpo, mente y espíritu. Inspirar momentos de optimismo y felicidad a través de nuestras marcas y acciones, para crear valor y dejar nuestra huella en cada uno de los lugares en los que operamos.",
+            "t300_vision": "",
+            "t300_objective": "El propósito de Coca‑Cola es refrescar al mundo y marcar la diferencia en la vida de las personas, la sociedad y el planeta. The Coca‑Cola Company nació en 1886 con el propósito de refrescar al mundo, no solo en un sentido puramente físico, sino también espiritual",
+            "t300_logo": "/logos/Coca-Cola.png",
+            "t300_banner": "/banners/bannerCoca-Cola.png",
+            "t400_id_admin": 1,
+            "t300_verified": true,
+            "t300_create_date": "2022-04-21",
+            "is_active": true           
+        }
+    },
+
+    {
+        "model":"companies.Company",        
         "pk":8,
         "fields":{
-            "t300_name": "Facebook",
-            "t300_rfc": "FCB20040204H42",
-            "t300_nss": 234145,
-            "t300_email": "facebook@gmail.com",
-            "t300_bussiness_name": "Facebook",
-            "t300_web_page": "https://es-la.facebook.com/policies_center/Jobs/",
-            "t300_mision": "Dar a las personas el poder de crear comunidades y aproximar más al mundo",
-            "t300_vision": "Estamos construyendo la tecnología para brindarle a todos el poder de compartir fácilmente cualquier cosa con quien uno quiera",
-            "t300_objective": "",
-            "t300_logo": "/logos/facebook.jpeg",
-            "t300_banner": null,
-            "t300_create_date": "2004-02-04",
-            "t400_id_admin": null,
-            "t300_verified": true
+            "t300_id_company": "8",
+            "t300_name": "Bimbo",
+            "t300_rfc": "BIM011108DJ5",
+            "t300_nss": 0,
+            "t300_email": "servicioalcliente@grupobimbo.com",
+            "t300_bussiness_name": "GRUPO BIMBO, S.A.B. DE C.V",
+            "t300_web_page": "https://www.bimbo.com.mx/es",
+            "t300_mision": "Es la guía de todas nuestras acciones. Buscamos alimentar, deleitar y servir a nuestro mundo, siendo una empresa altamente productiva y plenamente humana. Día a día queremos alcanzar nuestros logros y avanzar en nuestros propósitos. Esto es lo que constituye nuestra razón de ser como empresa.",
+            "t300_vision": "",
+            "t300_objective": "Lograr un creciente volumen y participación de nuestras marcas. Estar cerca de nuestros consumidores y clientes, ellos son nuestra razón de ser. Buscar que nuestro personal se desarrolle y realice plenamente. Orientados permanentemente a aprender.",
+            "t300_logo": "/logos/bimbo-logo.jpg",
+            "t300_banner": "/banners/BimboHero.jpg",
+            "t400_id_admin": 1,
+            "t300_verified": true,
+            "t300_create_date": "2022-04-22",
+            "is_active": true           
         }
     },
 
     {
-        "model":"companies.Company",
+        "model":"companies.Company",        
         "pk":9,
         "fields":{
-            "t300_name": "Tesla",
-            "t300_rfc": "TLA20030701YE4",
-            "t300_nss": 999232,
-            "t300_email": "tesla@gmail.com.mx",
-            "t300_bussiness_name": "Tesla",
-            "t300_web_page": "https://www.tesla.com/careers",
-            "t300_mision": "La misión de Tesla es acelerar la transición del mundo hacia la energía sustentable.",
-            "t300_vision": "Un futuro donde las personas dejen de depender de los combustibles fósiles, y haya cero emisiones.",
-            "t300_objective": "",
-            "t300_logo": "/logos/amazon.jpeg",
-            "t300_banner": null,
-            "t300_create_date": "2003-07-01",
-            "t400_id_admin": null,
-            "t300_verified": true
+            "t300_id_company": "9",
+            "t300_name": "Microsoft",
+            "t300_rfc": "MME910620Q85",
+            "t300_nss": 0,
+            "t300_email": "info@microsoft.com.mx",
+            "t300_bussiness_name": "Microsoft México, S. de R.L. de C.V",
+            "t300_web_page": "https://www.microsoft.com/es-mx/",
+            "t300_mision": "Nuestra misión es empoderar a todas las personas y organizaciones del planeta para que puedan lograr más.",
+            "t300_vision": "",
+            "t300_objective": "El objetivo de Microsoft es incrementar la productividad y la colaboración en las compañías, proporcionando acceso a las soluciones de negocio desde cualquier lugar y utilizando cualquier tipo de dispositivo",
+            "t300_logo": "/logos/Microsoft-Logo.png",
+            "t300_banner": "/banners/MicrosoftHero.jpg",
+            "t400_id_admin": 1,
+            "t300_verified": true,
+            "t300_create_date": "2022-04-23",
+            "is_active": true           
         }
     },
+
     {
-        "model":"companies.Company",
+        "model":"companies.Company",        
         "pk":10,
-        "fields": {
-            "t300_id_company": 1,
-            "t300_name": "Pepsi Company",
-            "t300_rfc": "pepsi122344",
-            "t300_nss": 3122331,
-            "t300_email": "pepsi@pepsico.com",
-            "t300_bussiness_name": "Empresa de bebidas embotelladas",
-            "t300_web_page": "www.pepsi.com.mx",
-            "t300_mision": "Refrescar al mundo",
+        "fields":{
+            "t300_id_company": "10",
+            "t300_name": "BMW",
+            "t300_rfc": "BFS011206BK7",
+            "t300_nss": 0,
+            "t300_email": "atencionbmw@bmw.com.mx",
+            "t300_bussiness_name": "Designworks",
+            "t300_web_page": "https://www.bmw.com.mx/es/index.html",
+            "t300_mision": "Proporcionar y administrar los procesos y tecnología necesarios para desarrollar las habilidades personales, profesionales y técnicas del personal e incrementar la satisfacción del cliente en las áreas de ventas y postventa dentro de la Red de Distribuidores, expandiendo nuestro liderazgo para alcanzar año con año el volumen planeado y la cuota de mercado con la más alta rentabilidad.",
+            "t300_vision": "",
+            "t300_objective": " Diseñar el futuro de la movilidad con objetivos claros",
+            "t300_logo": "/logos/BMW_logo.png",
+            "t300_banner": "/banners/BMWHero.jpg",
+            "t400_id_admin": 1,
+            "t300_verified": true,
+            "t300_create_date": "2022-04-24",
+            "is_active": true           
+        }
+    },
+
+    {
+        "model":"companies.Company",        
+        "pk":11,
+        "fields":{
+            "t300_id_company": "11",
+            "t300_name": "Audi",
+            "t300_rfc": "AAU120905KG9",
+            "t300_nss": 0,
+            "t300_email": "info@audi.com.mx",
+            "t300_bussiness_name": "Audi México, S.A. de C.V.",
+            "t300_web_page": "audi.com.mx/mx/web/es.html",
+            "t300_mision": "Satisfacer totalmente las necesidades de nuestros clientes a través de la excelencia en el servicio, el desarrollo integral de nuestros colaboradores y el compromiso con nuestro país",
+            "t300_vision": "",
+            "t300_objective": "Generar una cultura vial responsable y segura. Para combatir los elevados índices de accidentalidad vial en nuestro país.",
+            "t300_logo": "/logos/Audi_logo.png",
+            "t300_banner": "/banners/AudiBanner.jpg",
+            "t400_id_admin": 1,
+            "t300_verified": true,
+            "t300_create_date": "2022-04-25",
+            "is_active": true           
+        }
+    },
+
+    {
+        "model":"companies.Company",        
+        "pk":12,
+        "fields":{
+            "t300_id_company": "12",
+            "t300_name": "Cyberpuerta",
+            "t300_rfc": "CYB080602JSA",
+            "t300_nss": 0,
+            "t300_email": "info@cyberpuerta.mx",
+            "t300_bussiness_name": "CYBERPUERTA S.A. DE C.V",
+            "t300_web_page": "cyberpuerta.mx",
+            "t300_mision": "",
             "t300_vision": "",
             "t300_objective": "",
-            "t300_logo": null,
-            "t300_banner": null,
-            "t300_create_date": "2022-04-05",
+            "t300_logo": "/logos/",
+            "t300_banner": "/banners/",
             "t400_id_admin": 1,
-            "t300_verified": true
+            "t300_verified": true,
+            "t300_create_date": "2022-04-26",
+            "is_active": true           
         }
     },
+
+    {
+        "model":"companies.Company",        
+        "pk":13,
+        "fields":{
+            "t300_id_company": "13",
+            "t300_name": "Uber",
+            "t300_rfc": "UBV121024TN8",
+            "t300_nss": 0,
+            "t300_email": "",
+            "t300_bussiness_name": "UBER B.V.",
+            "t300_web_page": "https://www.uber.com/mx/es/",
+            "t300_mision": "Brindar transporte, para todos, en todas partes. ",
+            "t300_vision": "Transporte más inteligente con menos automóviles y mayor acceso. Transporte más seguro, económico y confiable; transporte que crea más oportunidades de trabajo y mayores ingresos para los conductores.",
+            "t300_objective": "",
+            "t300_logo": "/logos/uber.jpeg",
+            "t300_banner": "/banners/",
+            "t400_id_admin": 1,
+            "t300_verified": true,
+            "t300_create_date": "2022-04-27",
+            "is_active": true           
+        }
+    },
+
     
     {
         "model":"companies.Recruiter",
@@ -223,25 +316,201 @@
         }
 
     },
- 
+    
+    
     {
-        "model" : "users.User",
-        "pk" : 2,
+        "model":"companies.Recruiter",        
+        "pk":1,
         "fields":{
-            "password": "pbkdf2_sha256$320000$IW1Bp9IQGZP5yu2cY0eKuO$K4vXpOuGbWbTgsUYZEIXuhZWp9Xtyyc9Adojuqxx0zE=",
-            "last_login": null,
-            "is_superuser": false,
-            "username": "jcruzh1301@alumno.ipn.mx",
-            "first_name": "Eduardo",
-            "last_name": "Heras",
-            "email": "",
-            "is_staff": false,
-            "date_joined": "2022-04-25T06:25:37.005568Z",
-            "user_type": "RECRUITER",
-            "is_active": true,
-            "user_id": 1,
-            "groups": [],
-            "user_permissions": []
+            "t301_id_recruiter": "1",
+            "t301_name": "Eduardo",
+            "t301_last_name": "Cruz  Heras",
+            "t301_user": "EduardoCr",
+            "t301_email": "eduardo@amazon.com",
+            "t301_phonenumber": "5548901290",
+            "t300_id_company": "1",
+            "is_active": false           
         }
-    }
+    },
+
+    {
+        "model":"companies.Recruiter",        
+        "pk":5,
+        "fields":{
+            "t301_id_recruiter": "5",
+            "t301_name": "Kevin Alejandro",
+            "t301_last_name": "Martinez Hernandez",
+            "t301_user": "Kevin AlejandroMa",
+            "t301_email": "kevinM@banxico.org.mx",
+            "t301_phonenumber": "5589021293",
+            "t300_id_company": "2",
+            "is_active": false           
+        }
+    },
+
+    {
+        "model":"companies.Recruiter",        
+        "pk":6,
+        "fields":{
+            "t301_id_recruiter": "6",
+            "t301_name": "Carlos",
+            "t301_last_name": "Zambrano Lopez",
+            "t301_user": "CarlosZa",
+            "t301_email": "Carlos@dell.com.mx",
+            "t301_phonenumber": "5629141296",
+            "t300_id_company": "3",
+            "is_active": false           
+        }
+    },
+
+    {
+        "model":"companies.Recruiter",        
+        "pk":7,
+        "fields":{
+            "t301_id_recruiter": "7",
+            "t301_name": "Joel",
+            "t301_last_name": "Garcia Concepcion",
+            "t301_user": "JoelGa",
+            "t301_email": "Joel@AXXIS.COM.MX",
+            "t301_phonenumber": "5669261299",
+            "t300_id_company": "4",
+            "is_active": false           
+        }
+    },
+
+    {
+        "model":"companies.Recruiter",        
+        "pk":8,
+        "fields":{
+            "t301_id_recruiter": "8",
+            "t301_name": "Enrique",
+            "t301_last_name": "Fernandez Lopez",
+            "t301_user": "EnriqueFe",
+            "t301_email": "Enrique@bbva.com.",
+            "t301_phonenumber": "5709381302",
+            "t300_id_company": "5",
+            "is_active": false           
+        }
+    },
+
+    {
+        "model":"companies.Recruiter",        
+        "pk":9,
+        "fields":{
+            "t301_id_recruiter": "9",
+            "t301_name": "Hugo",
+            "t301_last_name": "Heras  Guzman",
+            "t301_user": "HugoHe",
+            "t301_email": "Hugo@coppel.com",
+            "t301_phonenumber": "5749501305",
+            "t300_id_company": "6",
+            "is_active": false           
+        }
+    },
+
+    {
+        "model":"companies.Recruiter",        
+        "pk":10,
+        "fields":{
+            "t301_id_recruiter": "10",
+            "t301_name": "Alfonso",
+            "t301_last_name": "Saias Carrillo",
+            "t301_user": "AlfonsoSa",
+            "t301_email": "Alfonso@coca-cola.com",
+            "t301_phonenumber": "5789621308",
+            "t300_id_company": "7",
+            "is_active": false           
+        }
+    },
+
+    {
+        "model":"companies.Recruiter",        
+        "pk":11,
+        "fields":{
+            "t301_id_recruiter": "11",
+            "t301_name": "Manuel",
+            "t301_last_name": "Mondragon Martnez",
+            "t301_user": "ManuelMo",
+            "t301_email": "Manuel@grupobimbo.com",
+            "t301_phonenumber": "5829741311",
+            "t300_id_company": "8",
+            "is_active": false           
+        }
+    },
+
+    {
+        "model":"companies.Recruiter",        
+        "pk":4,
+        "fields":{
+            "t301_id_recruiter": "4",
+            "t301_name": "Rafael",
+            "t301_last_name": "Flores Gonzales",
+            "t301_user": "RafaelFl",
+            "t301_email": "rafaelF@microsoft.com",
+            "t301_phonenumber": "5869861314",
+            "t300_id_company": "9",
+            "is_active": false           
+        }
+    },
+
+    {
+        "model":"companies.Recruiter",        
+        "pk":12,
+        "fields":{
+            "t301_id_recruiter": "12",
+            "t301_name": "Porfirio",
+            "t301_last_name": "Díaz Calles",
+            "t301_user": "PorfirioDí",
+            "t301_email": "Porfirio@bmw.com.mx",
+            "t301_phonenumber": "5589786746",
+            "t300_id_company": "10",
+            "is_active": false           
+        }
+    },
+
+    {
+        "model":"companies.Recruiter",        
+        "pk":3,
+        "fields":{
+            "t301_id_recruiter": "3",
+            "t301_name": "Jesus",
+            "t301_last_name": "Rivera Ortiz",
+            "t301_user": "JesusRi",
+            "t301_email": "jesusR@audi.com",
+            "t301_phonenumber": "5534674589",
+            "t300_id_company": "11",
+            "is_active": false           
+        }
+    },
+
+    {
+        "model":"companies.Recruiter",        
+        "pk":2,
+        "fields":{
+            "t301_id_recruiter": "2",
+            "t301_name": "Enrique",
+            "t301_last_name": "Salinas Franco",
+            "t301_user": "EnriqueSa",
+            "t301_email": "enrique@cyberpuerta.com",
+            "t301_phonenumber": "5611824613",
+            "t300_id_company": "12",
+            "is_active": false           
+        }
+    },
+
+    {
+        "model":"companies.Recruiter",        
+        "pk":13,
+        "fields":{
+            "t301_id_recruiter": "13",
+            "t301_name": "Lazaro",
+            "t301_last_name": "Huerta Victoriano",
+            "t301_user": "LazaroHu",
+            "t301_email": "Lazaro@uber.com.mx",
+            "t301_phonenumber": "5688974637",
+            "t300_id_company": "13",
+            "is_active": false           
+        }
+    } 
+    
 ]

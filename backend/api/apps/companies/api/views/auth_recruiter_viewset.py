@@ -65,7 +65,7 @@ class ValidateRecruiterViewSet(viewsets.GenericViewSet):
 			print("Si paso")
 			u_recruiter = self.model.objects.filter(t301_id_recruiter = pk).first()		
 			#Generar contraseña
-			password='Contraseña perrona'
+			password='Prueba'
 			recruiter_serializer = ValidateRecruiterSerializer(u_recruiter, data={
 																				"is_active":request.data['is_active'],
 																				"password":password})
