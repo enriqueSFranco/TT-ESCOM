@@ -27,7 +27,7 @@ const JobList = ({jobs, loading, page, setPage, maxLenPage}) => {
       return prevState;
     });
   },[setPage, maxLenPage]);
-  console.log(page)
+  // console.log(page)
   return (
     <>
     {jobs?.length > 0 ? (

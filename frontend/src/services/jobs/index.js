@@ -4,6 +4,7 @@ import {
   API_VACANTS_APPLICATIONS_JOB_STUDENT,
   API_VACANT_INFO,
   API_VACANTS_FILTER,
+  API_VACANT_REQUIREMENT
 } from "../settings";
 
 export const getAllJobs = async (page) => {
@@ -15,6 +16,12 @@ export const getAllJobs = async (page) => {
       return error.response;
     }
   }
+};
+
+export const getJobRequirements = (id) => {
+  return axios.get(`${API_VACANT_REQUIREMENT}${id}/`)
+    .then(response => response)
+    .catch(error => error);
 };
 
 export const getJob = (id) => {

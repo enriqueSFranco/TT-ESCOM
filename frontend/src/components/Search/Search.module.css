@@ -65,7 +65,7 @@
 
 .searchBackdrop {
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.473);
+  background-color: #2e2e2eaf;
   top: 0;
   left: 63%;
   right: 0;
@@ -77,7 +77,7 @@
     top: 5rem;
     /* left: 25rem; */
     background-color: #fff;
-    box-shadow: rgb(0 0 0 / 16%) 0px 3px 6px, rgb(0 0 0 / 23%) 0px 3px 6px;
+    box-shadow: #00000029 0px 3px 6px, #0000003b 0px 3px 6px;
     border-radius: 8px;
     width: 930px;
     height: 70px;
@@ -94,7 +94,7 @@
   font-family: 'Poppins', sans-serif;
   text-align: center;
   font-weight: bold;
-  color: #90314b;
+  color: #028dd4;
   position: relative;
   left: 36rem;
 }

@@ -47,6 +47,7 @@ const LoginCompany = () => {
             {/* input para el password */}
             <div className={styles.inputGroup}>
               <TextField
+                type="password"
                 label="Contraseña"
                 id="password"
                 name="password"
