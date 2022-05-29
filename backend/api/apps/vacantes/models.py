@@ -146,8 +146,8 @@ class Vacant(models.Model):
         default=1,
 		related_name='NecesaryExperience',
         on_delete=models.CASCADE)
-    t200_min_salary = models.IntegerField()
-    t200_max_salary = models.IntegerField()
+    t200_min_salary = models.IntegerField(null=True)
+    t200_max_salary = models.IntegerField(null=True)
     t200_gross_salary = models.BooleanField(default=False)
     t200_salary_negotiable = models.BooleanField(default=False)    
     c214_id_modality = models.ForeignKey(
