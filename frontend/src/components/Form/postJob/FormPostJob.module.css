@@ -138,9 +138,9 @@
 
 /* inicio */
 .switch {
-  --button-width: 3em;
-  --button-height: 1.5em;
-  --toggle-diameter: 1em;
+  --button-width: 3rem;
+  --button-height: 1.5rem;
+  --toggle-diameter: 1rem;
   --button-toggle-offset: calc((var(--button-height) - var(--toggle-diameter)) / 2);
   --toggle-shadow-offset: 10px;
   --toggle-wider: 3em;
@@ -275,7 +275,7 @@
 .wrapperButtons {
   /* outline: 1px solid red; */
   position: absolute;
-  bottom: .5rem;
+  bottom: 5rem;
   right: 0;
   width: 430px;
   display: flex;
@@ -284,14 +284,14 @@
 
 .wrapperFormJobDetails {
   position: relative;
-  top: 2rem;
+  /* top: 2rem; */
   height: 700px;
   /* background-color: rebeccapurple; */
 }
 
 .wrapperSwitch {
   /* outline: 2px solid red; */
-  width: 160px;
+  width: 170px;
   display: flex;
   gap: .4rem;
   margin-bottom: 2px;
@@ -306,14 +306,17 @@
 }
 
 .wrapperAddSkill{
+  width: 800px;
   display: flex;
   height: 65px;
   border-bottom: 1px solid #ccc;
 }
 
 .SkillsWrapper{
-  height: 150px;  
-  flex-wrap: wrap;  
+  height: 120px;  
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  /* outline: 2px solid red; */
 }
 
 .SkillsWrapper Autocomplete{
@@ -330,7 +333,9 @@
 }
 
 .listItemsSkill{
-  display: flex;
   width: 700PX;
+  display: flex;
   flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0;
 }

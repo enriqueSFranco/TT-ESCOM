@@ -56,29 +56,34 @@ const AboutMe = () => {
 
   return (
     <>
-      <div className={styles.wrapper}>
+      <article className={styles.wrapper}>
         <button className={styles.btnEdit} onClick={openModalEdit}>
           <MdEdit />
         </button>
-        <h1 className={styles.title}>Objetivo Profesional</h1>
+        <h1 className={styles.title}>Mi Objetivo Profesional es:</h1>
         <p className={styles.professionalObjective}>
           {aboutMe.personalObjective === ""
             ? "Sin descripcion"
             : aboutMe.personalObjective}
         </p>
-        <p className={styles.salary}>
-          Sueldo deseado:{" "}
-          {aboutMe?.salary === null
-            ? "No especificado"
-            : `$${numberFormat(aboutMe?.salary).slice(4)}MXN`}
-        </p>
-        <p className={styles.employmentModality}>
-          Modalidad de trabajo:{" "}
-          {aboutMe?.salary === null
-            ? "No especificado"
-            : `${aboutMe?.modality}`}
-        </p>
-      </div>
+        <div className={`${styles.position}`}>
+          <p className={styles.salary}>
+            Sueldo deseado:{" "}
+            {aboutMe?.salary === null
+              ? "No especificado"
+              : `$${numberFormat(aboutMe?.salary).replace(".00", "")}`}
+          </p>
+          <p className={styles.employmentModality}>
+            Modalidad de trabajo:{" "}
+            {aboutMe?.salary === null
+              ? "No especificado"
+              : `${aboutMe?.modality}`}
+          </p>
+          <p>
+            Experiencia: No especificada
+          </p>
+        </div>
+      </article>
       <ModalForm isOpen={isOpenModalEdit} closeModal={closeOpenModalEdit}>
         <form onSubmit={handleSubmit} className={styles.wrapperTextEdit}>
           <div className={styles.wrapperTextArea}>

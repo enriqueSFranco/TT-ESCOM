@@ -8,7 +8,7 @@ import styles from './Confirm.module.css';
  **/
 const Confirm = ({ applyJob, isApplyJob, job }) => {
 
-  console.log(isApplyJob);
+  // console.log(isApplyJob);
   //TODO: corregir casos del mensaje
   let message = '';
   if (isApplyJob.message==="Aplicación registrada correctamente.")

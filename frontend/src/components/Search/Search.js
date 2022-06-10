@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useFetch } from "hooks/useFetch";
 import { uuid } from "utils/uuid";
-import { API_JOBS } from "services/settings";
+import { API_VACANTS_FILTER } from "services/settings";
 import Loader from "components/Loader/Loader";
 import Input from "components/Element/Input/Input";
 import Label from "components/Element/Label/Label";
@@ -10,7 +10,7 @@ import * as BiIcon from "react-icons/bi";
 import styles from "./Search.module.css";
 
 const Search = ({ handleSearch }) => {
-  const { data } = useFetch(API_JOBS);
+  const { data } = useFetch(API_VACANTS_FILTER);
   const [queryJob, setQueryJob] = useState("");
   const [locationJob, setLocationJob] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -19,7 +19,6 @@ const Search = ({ handleSearch }) => {
   const handleFilterJob = e => {
     const query = e.target.value;
     setQueryJob(query);
-
     const newFilter = data?.result?.filter(({ t200_job }) => {
       let regex = new RegExp(`${query}`, "gi");
       return t200_job.match(regex);

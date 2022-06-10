@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { Toaster } from "react-hot-toast";
 import { getAllJobs, getVacantsFilter } from "services/jobs";
 import Search from "components/Search/Search";
 import FilterProfile from "components/Filter/FilterProfile";
@@ -36,7 +37,7 @@ const Home = () => {
   const filteredData = (value) => {
     if (value !== "") {
       getVacantsFilter({
-        job: value,
+        job: value.toLowerCase(),
         company_name: "",
         c206_id_profile: "",
         id_modality: "",
@@ -45,12 +46,6 @@ const Home = () => {
         setData(response.data.result);
       })
       .catch(error => console.log(error))
-      // const filteredData = jobs?.result.filter((el) => {
-      //   let regex = new RegExp(`${value}`, "gi");
-      //   return el?.t200_job.match(regex);
-      // });
-      // console.log(filteredData)
-      // setTotalJobs(filteredData.length);
     }
   };
 
@@ -120,10 +115,11 @@ const Home = () => {
       getVacantsFilter({
         job: "",
         company_name: "",
-        c206_id_profile: "",
-        id_modality: value,
+        c206_id_profile: value,
+        id_modality: "",
       }).then((response) => {
         const { data } = response;
+        console.log(data?.resuslt)
         setData(data?.result);
         // setTotalJobs(data?.result.length);
       });
@@ -160,6 +156,8 @@ const Home = () => {
 
       {/* pie de pagina */}
       {/* <Footer /> */}
+      <Toaster position="top-right" />
+
     </main>
   );
 };

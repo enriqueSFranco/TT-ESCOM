@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useForm } from "hooks/useForm";
 import { postJobInitialForm } from "../schemes";
 import FormPostJobLocation from "./FormPostJobLocation";
@@ -45,10 +45,7 @@ const FormPostJob = ({idCompany}) => {
 
   const prevStep = () => setStep(step - 1);
   
-  console.log(form);
-  //console.log(form?.t300_id_company);
-  //console.log(idCompany);  
-    
+
 
   if (step === 1) {
     return (
@@ -65,7 +62,7 @@ const FormPostJob = ({idCompany}) => {
   } else if (step === 2) {
     return (
       <FormPostJobDetails
-      baseform={form}
+        form={form}
         handleChange={handleChange}
         onSubmit={onSubmitPostJob}
         prevStep={prevStep}

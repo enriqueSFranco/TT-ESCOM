@@ -12,6 +12,7 @@ import {MdSchool, MdLocationPin, MdOutlineAirplanemodeActive } from "react-icons
 import { FaSchool } from "react-icons/fa";
 import * as IoIcon from "react-icons/io";
 import styles from "./CardProfileStudent.module.css";
+import { Toaster } from "react-hot-toast";
 
 const CardProfileStudent = () => {
   // TODO: Implementar useReducer para el manejo del estado
@@ -52,8 +53,6 @@ const CardProfileStudent = () => {
       })
   }, [token?.user?.user_id]);
 
-  console.log(academicHistorial)
-
   return (
     <>
     <article className={`${styles.mainContainer}`}>
@@ -78,11 +77,11 @@ const CardProfileStudent = () => {
                 <h4 className={styles.label}>Informacion Personal</h4>
                 <div className={styles.flex}>
                   <MdLocationPin style={{color: "#ee4b4a", fontWeight: "bold", fontSize: "1.3rem"}} />
-                  <p style={{fontWeight: "600"}}>{student[0]?.t100_residence ?? "No especificado."}</p>
+                  <p style={{fontWeight: "400"}}>{student[0]?.t100_residence ?? "No especificado."}</p>
                 </div>
                 <div className={styles.flex}>
                   <MdOutlineAirplanemodeActive style={{color: "#f7b82f", fontWeight: "bold", fontSize: "1.3rem"}} />
-                  <p style={{fontWeight: "600"}}>
+                  <p style={{fontWeight: "400"}}>
                     {student[0]?.t100_travel
                       ? "Disponible para reubicarse."
                       : "No disponible para reubicarse." ?? "No especificado."}
@@ -90,11 +89,11 @@ const CardProfileStudent = () => {
                 </div>
                 <div className={styles.flex}>
                   <FaSchool style={{color: "#cccecf", fontWeight: "bold", fontSize: "1.3rem"}} />
-                  <p style={{margin:0, fontWeight: "600"}}>{academicHistorial && academicHistorial[0]?.t104_academic_unit}</p>
+                  <p style={{margin:0, fontWeight: "400"}}>{academicHistorial && academicHistorial[0]?.t104_academic_unit}</p>
                 </div>
                 <div className={styles.flex}>
                   <MdSchool />
-                  <p style={{margin:0, fontWeight: "600"}}>{academicHistorial && academicHistorial[0]?.c109_id_academic_state?.c109_description}</p>
+                  <p style={{margin:0, fontWeight: "400"}}>{academicHistorial && academicHistorial[0]?.c109_id_academic_state?.c109_description}</p>
                 </div>
               </div>
               <h4 className={styles.label}>redes sociales</h4>
@@ -118,7 +117,7 @@ const CardProfileStudent = () => {
                     );
                   })
                 ) : (
-                  <h3>Sin redes sociales</h3>
+                  <h3>Sin redes sociales por el momento.</h3>
                 )}
               </div>
               <div className={`${styles.wrapperSkills} ${styles.separator}`}>
@@ -139,14 +138,14 @@ const CardProfileStudent = () => {
                   }
                 </ul>
               </div>
-              <div className={`${styles.cv} py-4`}>
+              {/* <div className={`${styles.cv} py-4`}>
                 <IoIcon.IoIosCheckmarkCircle />
                 <p>
                   Tu curriculum esta activo y visible para las empresas.
                   <br />
                   <em>Abierto a oportunidades.</em>
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </article>
@@ -156,8 +155,9 @@ const CardProfileStudent = () => {
           width={650}
           height={800}
         >
-          <FormUpdateDataStudent student={student} />
+          <FormUpdateDataStudent idStudent={student[0]?.t100_id_student} />
         </ModalForm>
+        <Toaster position="top-right" />
     </>
   );
 };

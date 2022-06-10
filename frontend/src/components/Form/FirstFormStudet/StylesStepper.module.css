@@ -20,7 +20,7 @@
 .bg {
   position: relative;
   background-size: cover;
-  background-position: center center;
+  background-position: -200px;
   background-repeat: no-repeat;
   backdrop-filter: calc(10px);
   height: 100%;
@@ -29,8 +29,27 @@
 }
 
 .bg1 {
-  background-image: url(../../../images/escom1.jpeg);
+  background-image: url(../../../images/team.png);
+}
 
+.bg2 {
+  background-color: #fff;
+  background-position: center -30px;
+  background-image: url(../../../images/step1.png);
+}
+
+.bg3 {
+  background-color: #78E0D8;
+  background-size: 800px;
+  background-position: center center;
+  background-image: url(../../../images/step3.gif);
+}
+
+.bg4 {
+  background-position: 0px;
+  background-color: #fff;
+  background-size: contain;
+  background-image: url(../../../images/skillsStep.gif);
 }
 
 .container2 {
