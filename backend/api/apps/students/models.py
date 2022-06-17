@@ -128,8 +128,8 @@ class ProjectType(models.Model):
 
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
 #T100 Alumno
-class Student(AbstractBaseUser):	
-	#user = models.OneToOneField(User,on_delete=models.CASCADE)
+class Student(models.Model):	
+	id_user = models.OneToOneField(User,on_delete=models.CASCADE,null=False,blank=False)
 	t100_id_student = models.AutoField(primary_key=True)
 	t100_boleta = models.CharField(max_length=14, null=True, blank=True)
 	t100_name = models.CharField(max_length=50, null=True, blank=True)
@@ -155,7 +155,6 @@ class Student(AbstractBaseUser):
 	is_active = models.BooleanField(default=False)
 
 	USERNAME_FIELD = 't100_email'
-	REQUIRED_FIELDS = ['password']
 	class Meta:		
 		verbose_name = 'Student'
 		verbose_name_plural = 'Students'
@@ -232,23 +231,7 @@ class AcademicHistory(models.Model):
 	def __str__ (self) ->str:
 		return self.t104_academic_unit+" : "+self.t104_carreer
 
-#T113 Areas de interes
-class InterestArea(models.Model):
-	t113_id_registrer = models.AutoField(primary_key=True)
-	t100_id_student = models.ForeignKey(
-		Student,
-		null=False,
-		blank=False,
-		default=1,
-		related_name='StudentInterests',
-		on_delete=models.CASCADE)
-	
 
-	class Meta:
-		verbose_name="Areas of interest"
-		db_table="t113_areas_interes"
-	def __str__ (self):
-		return "Areas de interes"
 
 #T114 Enlaces
 class Link(models.Model):

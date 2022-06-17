@@ -20,6 +20,32 @@ class UserSerializer(serializers.ModelSerializer):
         # generar token de autenticacion
         new_user.save() # guardamos al usuario
         return new_user
+    
+    def validate_username(self,value):
+      # custom validation
+      print ("Validando correo")
+      if value == '':
+        raise serializers.ValidationError("El campo correo esta vacio")
+      if User.objects.filter(username=value):
+        raise serializers.ValidationError("Ya hay un usuario registrado con ese correo")
+      return value
+
+    def validate_email(self,value):
+      # custom validation
+      print ("Validando correo")
+      if value == '':
+        raise serializers.ValidationError("El campo correo esta vacio")
+      if User.objects.filter(email=value):
+        raise serializers.ValidationError("Ya hay un usuario registrado con ese correo")
+      return value
+
+    def validate_password(self,value):
+      # custom validation
+      print ("Validando correo")
+      if value == '':
+        raise serializers.ValidationError("El campo contraseña esta vacio")
+      
+      return value
 
 class ListUserSerializer(serializers.ModelSerializer):
     """
