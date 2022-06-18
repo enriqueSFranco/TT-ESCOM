@@ -1,6 +1,7 @@
 from django.db import models
 from apps.administration.models import Admin
 from django.contrib.auth.models import  AbstractBaseUser
+from apps.users.models import User
 
 def upload_image_banner(instance, filename):
     return f"/banners/{instance.t300_id_company}-{filename}"
@@ -8,7 +9,8 @@ def upload_image_banner(instance, filename):
 def upload_image_logo(instance, filename):
     return f"logos/{instance.t300_id_company}-{filename}"
 
-class Company(models.Model):
+"""------------------------------------------------ Tablas de información -------------------------------------------------------"""
+class Company(models.Model):    
     t300_id_company = models.AutoField(primary_key=True)
     t300_name = models.CharField(max_length=100,blank=False,null=False,default="Sin datos")
     t300_rfc = models.CharField(unique=True,max_length=20,blank=False,null=False,default="Sin datos")
@@ -40,49 +42,30 @@ class Company(models.Model):
     def __str__(self) -> str:
         return self.t300_name
 
+class OnHoldRecruiter(models.Model):#----------------------Consultar si se implementará
+    name = models.CharField(max_length=60,null=True,blank=True)
+    last_name = models.CharField(max_length=100,null=True,blank=True)
+    email = models.EmailField(unique=True,blank=False,null=False)
+    phonenumber = models.PositiveBigIntegerField(blank=True,null=True)
+    id_company = models.CharField(max_length=100,null=True,blank=True)    
+    
+
+    class Meta:
+        verbose_name = 'OnHoldRecruiter'
+        verbose_name_plural = 'OnHoldRecruiters'
+        db_table = 'reclutadores_en_espera'#------------------Cambiar nombre
+
+    def __str__(self) -> str:
+        return self.email    
+
 class Ubication(models.Model):
-    estados=[
-		('AGUASCALIENTES','AGUASCALIENTES'),
-		('BAJA CALIFORNIA','BAJA CALIFORNIA'),
-		('BAJA CALIFORNIA SUR','BAJA CALIFORNIA SUR'),
-		('CAMPECHE','CAMPECHE'),
-		('COAHUILA','COAHUILA'),
-		('COLIMA','COLIMA'),
-		('CHIAPAS','CHIAPAS'),
-		('CHIHUAHUA','CHIHUAHUA'),
-		('CIUDAD DE MEXICO','CIUDAD DE MEXICO'),
-		('DURANGO','DURANGO'),
-		('GUANAJUATO','GUANAJUATO'),
-		('GUERRERO','GUERRERO'),
-		('HIDALGO','HIDALGO'),
-		('JALISCO','JALISCO'),
-		('MEXICO','MEXICO'),
-		('MICHOACAN','MICHOACAN'),
-		('MORELOS','MORELOS'),
-		('NAYARIT','NAYARIT'),
-		('NUEVO LEON','NUEVO LEON'),
-		('OAXACA','OAXACA'),
-		('PUEBLA','PUEBLA'),
-		('QUERETARO DE ARTEAGA','QUERETARO DE ARTEAGA'),
-		('QUINTANA ROO','QUINTANA ROO'),
-		('SAN LUIS POTOSI','SAN LUIS POTOSI'),
-		('SINALOA','SINALOA'),
-		('SONORA','SONORA'),
-		('TABASCO','TABASCO'),
-		('TAMAULIPAS' ,'TAMAULIPAS'),
-		('TLAXCALA' ,'TLAXCALA'),
-		('VERACRUZ' ,'VERACRUZ '),
-		('YUCATAN' ,'YUCATAN'),
-		('ZACATECAS' ,'ZACATECAS'),
-		('NO ESPECIFICADA' ,'NO ESPECIFICADA')
-	]
     t300_id_company = models.ForeignKey(
 		Company,
 		null=False,
 		blank=False,
 		related_name='CompanyUbication',
 		on_delete=models.CASCADE)
-    t302_state = models.CharField(max_length=50,choices=estados,default='NO ESPECIFICADA',null=True,blank=True)
+    t302_state = models.CharField(max_length=50,default='NO ESPECIFICADA',null=True,blank=True)
     t302_municipality = models.CharField(max_length=70,null=True,blank=True)
     t302_locality = models.CharField(max_length=100,null=True,blank=True)
     t302_street = models.CharField(max_length=70,null=True,blank=True)
@@ -98,7 +81,8 @@ class Ubication(models.Model):
     def __str__(self) -> str:
         return self.t300_id_company
 
-class Recruiter(AbstractBaseUser):
+class Recruiter(models.Model):
+    id_user = models.OneToOneField(User,on_delete=models.CASCADE,null=True,blank=False)
     t301_id_recruiter = models.AutoField(primary_key=True)
     t301_name = models.CharField(max_length=60,null=True,blank=True)
     t301_last_name = models.CharField(max_length=100,null=True,blank=True)
@@ -111,15 +95,12 @@ class Recruiter(AbstractBaseUser):
         blank=False,
         related_name='RecuiterCompany',
         on_delete=models.CASCADE)
-    is_active= models.BooleanField(default=False)       
-
-    USERNAME_FIELD = 't301_email'
-    REQUIRED_FIELDS = ['password']
+    is_active= models.BooleanField(default=False)           
 
     class Meta:
         verbose_name = 'Recruiter'
         verbose_name_plural = 'Recruiters'
-        db_table = 't301_reclutadores'
+        db_table = 't301_reclutador'
 
     def __str__(self) -> str:
         return self.t301_email

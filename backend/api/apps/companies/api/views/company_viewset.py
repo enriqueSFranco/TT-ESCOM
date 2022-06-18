@@ -17,6 +17,16 @@ class CompanyViewSet(viewsets.GenericViewSet):
 	list_serializer_class = CompanyListSerializer
 	recruiter_serializer_class = RecruiterSerializer
 	queryset = None
+	company_object={'t300_name': "",
+			't300_rfc': "",
+			't300_bussiness_name': "",
+			't300_create_date': ""}
+	recruiter_object={
+			"t301_name":"",
+    		"t301_last_name":"",
+    		"t301_email": "",
+    		"t301_phonenumber":"",
+			"t300_id_company":""}
 
 	def get_object(self, pk):
 		self.queryset= None
@@ -40,33 +50,37 @@ class CompanyViewSet(viewsets.GenericViewSet):
 		companies_serializer = self.list_serializer_class(company, many=True)
 		return Response(companies_serializer.data, status=status.HTTP_200_OK)
 
+	def set_company(self,data):
+		company = self.company_object		
+		company['t300_name']= data['t300_name']
+		company['t300_rfc']= data['t300_rfc']
+		company['t300_bussiness_name']= data['t300_bussiness_name']
+		company['t300_create_date']= data['t300_create_date']
+		return company
+
+	def set_recruiter(self,data):
+		recruiter = self.recruiter_object
+		recruiter["t301_name"] = data["t301_name"]
+		recruiter["t301_last_name"] = data["t301_last_name"]
+		recruiter["t301_email"] = data["t301_email"]
+		recruiter["t301_phonenumber"] = data["t301_phonenumber"]
+		recruiter["t300_id_company"]=""
+		return recruiter	
+
 	def create(self, request):
-		company={
-			't300_name': request.data['t300_name'],
-			't300_rfc': request.data['t300_rfc'], 
-			't300_bussiness_name': request.data['t300_bussiness_name'],
-			't300_create_date': request.data['t300_create_date']#,
-			#'t300_verified': False
-		}
-		recruiter={
-			"t301_name":request.data["t301_name"],
-    		"t301_last_name":request.data["t301_last_name"],
-    		"t301_email": request.data["t301_email"],    
-    		"t301_phonenumber":request.data["t301_phonenumber"],			
-			"t300_id_company":""
-		}
-		print(request.data)
+		company = self.set_company(request.data)
+		recruiter = self.set_recruiter(request.data)
+		print(request.data)#-----------------------
 		company_serializer = self.serializer_class(data=company)
-		print(company_serializer.is_valid())
+		print(company_serializer.is_valid())#-----------------------
 		if company_serializer.is_valid():#Crear empresa
 			company_serializer.save()
 			id_company = self.model.objects.filter(t300_rfc=request.data['t300_rfc']).values('t300_rfc','t300_id_company')
-			print("ID de la nueva empresa", id_company[0]['t300_id_company'])
+			print("ID de la nueva empresa", id_company[0]['t300_id_company'])#-----------------------
 			recruiter['t300_id_company']=id_company[0]['t300_id_company']
 			recruiter_serializer = self.recruiter_serializer_class(data=recruiter)
 			if recruiter_serializer.is_valid():#Crear reclutador
-				recruiter_serializer.save()
-				
+				recruiter_serializer.save()				
 				return Response({
 					'message': 'Compañia y reclutador registrados correctamente.',
 					'succes': True
@@ -83,7 +97,7 @@ class CompanyViewSet(viewsets.GenericViewSet):
 				'message': 'Datos de la empresa incorrectos, revise la información',
 				'errors': company_serializer.errors,
 				'succes': False 
-			}, status=status.HTTP_400_BAD_REQUEST)
+			}, status=status.HTTP_400_BAD_REQUEST)	
 		
 
 	def retrieve(self, request, pk):

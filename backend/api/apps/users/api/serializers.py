@@ -16,14 +16,14 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validate_data):
         new_user = User(**validate_data)
         new_user.set_password(validate_data['password']) 
-        print(new_user)
+        print("users.serializers Linea 19:"+str(new_user))#---------------
         # generar token de autenticacion
         new_user.save() # guardamos al usuario
         return new_user
     
     def validate_username(self,value):
       # custom validation
-      print ("Validando correo")
+      print ("Validando usuario")
       if value == '':
         raise serializers.ValidationError("El campo correo esta vacio")
       if User.objects.filter(username=value):
@@ -41,7 +41,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     def validate_password(self,value):
       # custom validation
-      print ("Validando correo")
+      print ("Validando contraseña")
       if value == '':
         raise serializers.ValidationError("El campo contraseña esta vacio")
       
