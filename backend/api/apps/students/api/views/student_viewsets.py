@@ -51,23 +51,6 @@ class StudentViewSet(viewsets.GenericViewSet):
 				.filter()\
 				.all()								
 		return self.queryset
-
-  #TODO terminar ruta para cambiar el password
-	#@action(detail=True, methods=['post'],url_path='cambio_pass')
-	#def set_password(self, request, pk=None):
-	#	student = self.get_object(pk)
-	#	password_serializer = PasswordSerializer(data=request.data)
-	#	if password_serializer.is_valid():
-	#		student.set_password(
-	#			password_serializer.validated_data['password'])
-	#		student.save()
-	#		return Response({
-	#			'message': 'Contraseña actualizada correctamente'
-	#		})
-	#	return Response({
-	#		'message': 'Hay errores en la información enviada',
-	#		'errors': password_serializer.errors
-	#	}, status=status.HTTP_400_BAD_REQUEST)
 		
 	def list(self, request):
 		print(request.data)

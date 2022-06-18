@@ -15,7 +15,6 @@ from apps.companies.api.views.ubication_viewset import CompanyUbicationViewSet
 from apps.companies.api.views.recruiter_viewset import RecruiterViewSet
 from apps.students.api.views.projects_viewset import ProjectsViewSet
 from apps.companies.api.views.company_viewset import ActivateCompanyViewSet
-from apps.users.views import UserViewSet
 from apps.companies.api.views.auth_recruiter_viewset import ValidateRecruiterViewSet
 from apps.vacantes.api.views.vacant_viewset import RecruiterVacantViewSet
 from apps.vacantes.api.views.vacant_viewset import VacantRequirementsViewSet,VacantLenguagesViewSet
@@ -26,14 +25,13 @@ from apps.students.api.views.certifcation_viewset import CertificationViewSet
 from apps.vacantes.api.views.vacant_viewset import FilterVacantViewSet
 
 router = DefaultRouter()
-router.register(r'users',UserViewSet,basename='Registred users')
+#Estudiantes
 router.register(r'Students', StudentViewSet, basename='Students')
 router.register(r'Student/<int:pk>', StudentViewSet, basename='Student details')
 router.register(r'Skills', SkillViewSet, basename='Students skills')
 router.register(r'Skills/<int:pk>', SkillViewSet, basename='Student skills details')
 router.register(r'Links', LinkViewSet, basename='Students links')
 router.register(r'Links/<int:pk>', LinkViewSet, basename='Student links')
-#router.register(r'DeleteLink/<int:pk>/<str:link>', LinkViewSet, basename='delete student link')
 router.register(r'AcademicHistorial',HistorialViewSet,basename='Students academic historial')
 router.register(r'AcademicHistorial/<int:pk>',HistorialViewSet,basename='Student academic historial details')
 router.register(r'EmploymentHistorial',EmploymentViewSet,basename='Students employment historial')
@@ -46,6 +44,10 @@ router.register(r'StudentsCertifications',CertificationViewSet,basename='Student
 router.register(r'StudentsCertifications/<int:pk>',CertificationViewSet,basename='Student certifications')
 router.register(r'StudentsApplications',StudentApplicationsViewSet,basename='Students applications')
 router.register(r'StudentsApplications/<int:pk>',StudentApplicationsViewSet,basename='Student applications')
+#Empresas
+#Vacantes
+#Encargados
+#router.register(r'DeleteLink/<int:pk>/<str:link>', LinkViewSet, basename='delete student link')
 router.register(r'Vacants', VacantViewSet, basename='Vacants')
 router.register(r'Vacant/<int:pk>', VacantViewSet, basename='Vacant detail')
 router.register(r'VacantRequirements', VacantRequirementsViewSet, basename='Vacants requirements')

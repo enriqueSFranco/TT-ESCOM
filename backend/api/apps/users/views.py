@@ -48,8 +48,6 @@ class UserViewSet(viewsets.GenericViewSet):
 			self.queryset = self.model.objects\
 				.filter(id=pk)\
 				.all()
-				#.values('is_superuser','username','first_name','last_name','email','is_staff','date_joined',
-                #'user_type','is_active')
 		return self.queryset
 	def get_queryset(self):
 		if self.queryset is None:
@@ -64,18 +62,18 @@ class UserViewSet(viewsets.GenericViewSet):
 		users_serializer = self.list_serializer_class(users, many=True)
 		return Response(users_serializer.data, status=status.HTTP_200_OK)
 
-	def create(self, request):        
-		user_serializer = self.serializer_class(data=request.data)        
-		print('request: ',request.data)
-		if user_serializer.is_valid():
-			user_serializer.save()
-			return Response({
-				'message': 'Usuario registrado correctamente.'
-			}, status=status.HTTP_201_CREATED)
-		return Response({
-			'message': 'Hay errores en el registro',
-			'errors': user_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+	#def create(self, request):        
+	#	user_serializer = self.serializer_class(data=request.data)        
+	#	print('request: ',request.data)
+	#	if user_serializer.is_valid():
+	#		user_serializer.save()
+	#		return Response({
+	#			'message': 'Usuario registrado correctamente.'
+	#		}, status=status.HTTP_201_CREATED)
+	#	return Response({
+	#		'message': 'Hay errores en el registro',
+	#		'errors': user_serializer.errors
+	#	}, status=status.HTTP_400_BAD_REQUEST)
 
 	def retrieve(self, request, pk):
 		get_user = self.get_object(pk)
@@ -94,7 +92,7 @@ class UserViewSet(viewsets.GenericViewSet):
 			'message': 'Hay errores en la actualización',
 			'errors': user_serializer.errors
 		}, status=status.HTTP_400_BAD_REQUEST)
-#
+
 	#def destroy(self, request, pk):
 	#	student_destroy = self.model.objects.filter(t100_id_student=pk).first()
 	#	if student_destroy:
@@ -114,33 +112,17 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         return RefreshToken.for_user(user)
 
     def validate(self,attrs):
-        """data={
-			'access':'',
-			'refresh':'',
-			'user':{
-				'username':'',
-				'email':'',
-				'user_id':''
-			},
-			'message':'Inicio de sesión exitoso'
-		}"""
         data = super().validate(attrs)
-        token = self.get_token(self.user) #super().get_token(user)        
+        token = self.get_token(self.user)     
         print(self.user.user_id)
-        #print(token)
-        #print(student_user.data)
-
-        # Add custom claims
-        #token['username'] = user.username		
-        # ...
         data['refresh']=str(token)
         data['access']=str(token.access_token)		
         user={
 			'user_id':self.user.user_id,
 			'username':self.user.username,
-			'email':self.user.email,
+			'email':self.user.email,#---------->Quitar cuando se cambie la forma de validar si entrar al step o no
 			'user_type':self.user.user_type,
-			'first_name':self.user.first_name
+			'first_name':self.user.first_name#---------->Quitar cuando se cambie la forma de validar si entrar al step o no
 		}
         data['user']=user        
         print (data)

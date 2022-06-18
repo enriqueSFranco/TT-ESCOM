@@ -1,6 +1,4 @@
 from rest_framework import serializers
-from django.contrib import auth
-from django.contrib.auth import get_user_model
 from apps.students.models import Student
 
 
@@ -45,21 +43,3 @@ class UpdateStudentSerializer(serializers.ModelSerializer):
       update_student.save()
       return update_student
 
-class StudentTokenSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = Student
-    fields = ('t100_email','password')
-
-  def validate(self,attrs):
-    print("Validando datos...")
-    correo=attrs.get('t100_email')    
-    password = attrs.get('password')    
-    print("Buscando usuario ....")
-    try:
-      user = Student.objects.filter(t100_email=correo).values('t100_email','password')
-      return True
-    except:
-      print("No encontre ese usuario")
-      user = ""
-      raise serializers.ValidationError("Credenciales invalidas")
-      return False

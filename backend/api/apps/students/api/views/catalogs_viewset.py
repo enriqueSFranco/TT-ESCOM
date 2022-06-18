@@ -186,7 +186,7 @@ class LenguageViewSet(viewsets.GenericViewSet):
 
 class AcademicUnitViewSet(viewsets.GenericViewSet):
 	model = AcademicUnit
-	serializer_class = AcademicLevelSerializer
+	serializer_class = AcademicUnitSerializer
 	list_serializer_class = AcademicUnitListSerializer
 	queryset = None
 
