@@ -86,19 +86,17 @@ class ValidateRecruiterViewSet(viewsets.GenericViewSet):
 						}, status=status.HTTP_200_OK)
 				else:
 					user_delete = User.objects.filter(username=recruiter_data[0]['t301_email']).delete()
-					return Response({'message': 'No se pudo actuzlizar el reclutador, intentalo de nuevo',
+					return Response({'message': 'No se pudo actualizar el reclutador, intentalo de nuevo',
 									'errors': recruiter_user.errors
 									}, status=status.HTTP_400_BAD_REQUEST)
 			else:
-				user_delete = User.objects.filter(username=recruiter_data[0]['t301_email']).delete()
+				#user_delete = User.objects.filter(username=recruiter_data[0]['t301_email']).delete()#----------Validar si este caso es valido
 				return Response({'message': 'No se pudo validar el reclutador, intentalo de nuevo',
 						'errors': recruiter_user.errors
 						}, status=status.HTTP_400_BAD_REQUEST)
 		else:
 			print("Reclutador eliminado por solicitud rechazada")#---------------------------
 			recruiter_destroy = self.model.objects.filter(t301_id_recruiter=pk).delete()			
-			#Eliminar empresa nueva
-			#Eliminar 
 			return Response({
 				'message': 'Registro rechazado'				
 			}, status=status.HTTP_200_OK)

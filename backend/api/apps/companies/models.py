@@ -58,29 +58,6 @@ class OnHoldRecruiter(models.Model):#----------------------Consultar si se imple
     def __str__(self) -> str:
         return self.email    
 
-class Ubication(models.Model):
-    t300_id_company = models.ForeignKey(
-		Company,
-		null=False,
-		blank=False,
-		related_name='CompanyUbication',
-		on_delete=models.CASCADE)
-    t302_state = models.CharField(max_length=50,default='NO ESPECIFICADA',null=True,blank=True)
-    t302_municipality = models.CharField(max_length=70,null=True,blank=True)
-    t302_locality = models.CharField(max_length=100,null=True,blank=True)
-    t302_street = models.CharField(max_length=70,null=True,blank=True)
-    t302_cp = models.SmallIntegerField(null=True,blank=True)
-    t302_ext = models.CharField(max_length=20,null=True,blank=True)
-    t302_int = models.CharField(max_length=20,null=True,blank=True)
-
-    class Meta:
-        verbose_name = 'CompanyUbication'
-        verbose_name_plural = 'CompaniesUbications'
-        db_table = 't302_ubicacion'
-
-    def __str__(self) -> str:
-        return self.t300_id_company
-
 class Recruiter(models.Model):
     id_user = models.OneToOneField(User,on_delete=models.CASCADE,null=True,blank=False)
     t301_id_recruiter = models.AutoField(primary_key=True)
