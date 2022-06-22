@@ -47,6 +47,7 @@ urlpatterns = [
     path('api/', include('apps.routers')),
     path('students/', include('apps.student_routers')),
     path('companies/', include('apps.companies_routers')),
+    path('manager/', include('apps.manager_routers')),
     path('users/', include('apps.users_routers')),
     path('api/catalogues/',include('apps.catalogs_routers')),#-----------Cambiar en front las peticiones
     path('catalogues/',include('apps.catalogs_routers')),
