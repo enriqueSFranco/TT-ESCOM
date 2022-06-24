@@ -10,7 +10,10 @@ from apps.users.api.serializers import UserSerializer
 from apps.companies.api.serializer.recruiter_serializer import RecruiterSerializer
 from apps.companies.api.serializer.company_serializer import CompanySerializer,CompanyListSerializer,UpdateCompanySerializer,VerifiedStateUpdate
 
-class CompanyViewSet(viewsets.GenericViewSet):
+class CompanyViewSet(viewsets.GenericViewSet): 
+	"""
+	Sin comentarios
+	""" 	
 	model = Company
 	user_serializer = UserSerializer
 	serializer_class = CompanySerializer
@@ -21,12 +24,11 @@ class CompanyViewSet(viewsets.GenericViewSet):
 			't300_rfc': "",
 			't300_bussiness_name': "",
 			't300_create_date': ""}
-	recruiter_object={
-			"t301_name":"",
-    		"t301_last_name":"",
-    		"t301_email": "",
-    		"t301_phonenumber":"",
-			"t300_id_company":""}
+	recruiter_object={"t301_name":"",
+    				  "t301_last_name":"",
+    				  "t301_email": "",
+    				  "t301_phonenumber":"",
+						"t300_id_company":""}
 
 	def get_object(self, pk):
 		self.queryset= None
@@ -45,6 +47,13 @@ class CompanyViewSet(viewsets.GenericViewSet):
   
 
 	def list(self, request):
+		"""
+		Obtiene todos las compañias registradas en el sistema
+
+
+
+		Dummy text
+		""" 	
 		print(request.data)
 		company = self.get_queryset()
 		companies_serializer = self.list_serializer_class(company, many=True)
@@ -68,6 +77,13 @@ class CompanyViewSet(viewsets.GenericViewSet):
 		return recruiter	
 
 	def create(self, request):
+		"""
+		Registra una nueva compañia en el sistema
+
+
+
+		Dummy text
+		""" 	
 		company = self.set_company(request.data)
 		recruiter = self.set_recruiter(request.data)
 		print(request.data)#-----------------------
@@ -101,11 +117,25 @@ class CompanyViewSet(viewsets.GenericViewSet):
 		
 
 	def retrieve(self, request, pk):
+		"""
+		Obtiene la información de una compañia especifíca registrada en el sistema
+
+
+
+		Dummy text
+		""" 	
 		company = self.get_object(pk)
 		company_serializer = self.list_serializer_class(company,many=True)
 		return Response(company_serializer.data)
 
 	def update(self, request, pk):
+		"""
+		Actualiza la información de una compañia
+
+
+
+		Dummy text
+		""" 	
 		u_company = self.model.objects.filter(t300_id_company = pk).first()
 		company_serializer = UpdateCompanySerializer(u_company, data=request.data)
 		if company_serializer.is_valid():
@@ -119,6 +149,13 @@ class CompanyViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk):
+		"""
+		Elimina la información de una compañia del sistema 
+
+
+
+		Dummy text
+		""" 	
 		company_destroy = self.model.objects.filter(t300_id_company=pk).first()		
 		if company_destroy:
 			company_destroy = self.model.objects.filter(t300_id_company=pk).delete()
@@ -154,17 +191,38 @@ class ActivateCompanyViewSet(viewsets.GenericViewSet):
 		return self.queryset
 	
 	def list(self, request):
+		"""
+		Muestra todas las compañias pendientes de validar
+
+
+
+		Dummy text
+		""" 
 		print(request.data)
 		company = self.get_queryset()
 		companies_serializer = self.list_serializer_class(company, many=True)
 		return Response(companies_serializer.data, status=status.HTTP_200_OK)
 
 	def retrieve(self, request, pk):
+		"""
+		Muestra la información de una compañia pendiente de validar"
+
+
+
+		Dummy text
+		""" 
 		company = self.get_object(pk)
 		company_serializer = self.list_serializer_class(company,many=True)
 		return Response(company_serializer.data)
 
 	def update(self, request, pk):
+		"""
+		Actualiza el estado de validación de la compañia
+
+
+
+		Dummy text
+		""" 
 		u_company = self.model.objects.filter(t300_id_company = pk).first()
 		company_serializer = VerifiedStateUpdate(u_company, data=request.data)
 		if company_serializer.is_valid():

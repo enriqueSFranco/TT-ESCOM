@@ -74,7 +74,7 @@ class RecruiterViewSet(viewsets.GenericViewSet):
 			recruiter_destroy = self.model.objects.filter(t301_id_recruiter=pk).delete()
 			return Response({
 				'message': 'Reclutador eliminado correctamente'
-			})
+			},status = status.HTTP_204_NO_CONTENT)
 		return Response({
 			'message': 'No existe el reclutador que desea eliminar'
 		}, status=status.HTTP_404_NOT_FOUND)

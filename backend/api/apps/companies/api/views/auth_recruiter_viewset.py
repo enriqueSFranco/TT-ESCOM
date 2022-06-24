@@ -44,11 +44,25 @@ class ValidateRecruiterViewSet(viewsets.GenericViewSet):
 
 
 	def retrieve(self, request, pk):
+		"""
+		Muestra la información de un reclutador pendiente de validación
+
+
+
+		Dummy text
+		""" 
 		recruiter = self.get_object(pk)
 		recruiter_serializer = self.list_serializer_class(recruiter,many=True)
 		return Response(recruiter_serializer.data)
 
 	def list(self, request):
+		"""
+		Muestra todos los reclutadores a los reclutadores pendientes de validación
+
+
+
+		Dummy text
+		""" 
 		print(request.data)
 		recruiters = self.get_queryset()
 		recruiters_serializer = self.list_serializer_class(recruiters, many=True)
@@ -65,6 +79,13 @@ class ValidateRecruiterViewSet(viewsets.GenericViewSet):
 		return user
 
 	def update(self, request, pk):
+		"""
+		Actualiza la validación de un reclutador
+
+
+
+		Dummy text
+		""" 
 		id_company = ""
 		print(request.data['is_active'])
 		if (request.data['is_active']== 'true' and self.model.objects.filter(t301_id_recruiter=pk)):

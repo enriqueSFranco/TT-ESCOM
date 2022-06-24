@@ -28,7 +28,7 @@ class AcademicLevelViewSet(viewsets.GenericViewSet):
 			self.queryset = self.model.objects\
 				.filter(c107_id_academic_level = pk)\
 				.values('c107_id_academic_level','c107_description')
-		return  self.queryset #get_object_or_404(self.model,pk=pk)
+		return  self.queryset
 		
 	def get_queryset(self):
 		if self.queryset is None:
@@ -38,12 +38,26 @@ class AcademicLevelViewSet(viewsets.GenericViewSet):
 		return self.queryset  
 
 	def list(self, request):
-		print(request.data)
+		"""
+		Muestra los elementos del catálogo de niveles académicos
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#---------------------------------------------
 		registers_list = self.get_queryset()
 		registers_serializer = self.list_serializer_class(registers_list, many=True)
 		return Response(registers_serializer.data, status=status.HTTP_200_OK)	
 
 	def retrieve(self, request, pk):
+		"""
+		Muestra un elemento del catálogo de niveles académicos
+
+
+
+		Dummy text
+		""" 
 		s_register = self.get_object(pk)
 		register_serializer = self.list_serializer_class(s_register,many=True)
 		return Response(register_serializer.data)
@@ -61,7 +75,7 @@ class AcademicStateViewSet(viewsets.GenericViewSet):
 			self.queryset = self.model.objects\
 				.filter(c109_id_academic_state = pk)\
 				.values('c109_id_academic_state','c109_description')
-		return  self.queryset #get_object_or_404(self.model,pk=pk)
+		return  self.queryset
 		
 	def get_queryset(self):
 		if self.queryset is None:
@@ -71,12 +85,26 @@ class AcademicStateViewSet(viewsets.GenericViewSet):
 		return self.queryset  
 
 	def list(self, request):
-		print(request.data)
+		"""
+		Muestra los elementos del catálogo de estado académico
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#------------------------
 		registers_list = self.get_queryset()
 		registers_serializer = self.list_serializer_class(registers_list, many=True)
 		return Response(registers_serializer.data, status=status.HTTP_200_OK)	
 
 	def retrieve(self, request, pk):
+		"""
+		Muestra el elemento del catálogo de estado académico
+
+
+
+		Dummy text
+		""" 
 		s_register = self.get_object(pk)
 		register_serializer = self.list_serializer_class(s_register,many=True)
 		return Response(register_serializer.data)
@@ -95,7 +123,7 @@ class PlataformViewSet(viewsets.GenericViewSet):
 			self.queryset = self.model.objects\
 				.filter(c115_id_plataform = pk)\
 				.values('c115_id_plataform','c115_description')
-		return  self.queryset #get_object_or_404(self.model,pk=pk)
+		return  self.queryset
 		
 	def get_queryset(self):
 		if self.queryset is None:
@@ -105,12 +133,26 @@ class PlataformViewSet(viewsets.GenericViewSet):
 		return self.queryset  
 
 	def list(self, request):
-		print(request.data)
+		"""
+		Muestra los elementos del catálogo de plataformas
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#-------------------------------------
 		registers_list = self.get_queryset()
 		registers_serializer = self.list_serializer_class(registers_list, many=True)
 		return Response(registers_serializer.data, status=status.HTTP_200_OK)	
 
 	def retrieve(self, request, pk):
+		"""
+		Muestra un elemento del catálogo de plataformas
+
+
+
+		Dummy text
+		""" 
 		s_register = self.get_object(pk)
 		register_serializer = self.list_serializer_class(s_register,many=True)
 		return Response(register_serializer.data)
@@ -129,7 +171,7 @@ class SkillsViewSet(viewsets.GenericViewSet):
 			self.queryset = self.model.objects\
 				.filter(c116_type = pk)\
 				.values('c116_id_skill','c116_description','c116_type')
-		return  self.queryset #get_object_or_404(self.model,pk=pk)
+		return  self.queryset
 		
 	def get_queryset(self):
 		if self.queryset is None:
@@ -139,12 +181,26 @@ class SkillsViewSet(viewsets.GenericViewSet):
 		return self.queryset  
 
 	def list(self, request):
-		print(request.data)
+		"""
+		Muestra los elementos del catálogo de habilidades
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#-----------------------------
 		registers_list = self.get_queryset()
 		registers_serializer = self.list_serializer_class(registers_list, many=True)
 		return Response(registers_serializer.data, status=status.HTTP_200_OK)	
 
 	def retrieve(self, request, pk):
+		"""
+		Muestra un elemento del catálogo de habilidades
+
+
+
+		Dummy text
+		""" 
 		s_register = self.get_object(pk)
 		register_serializer = self.list_serializer_class(s_register,many=True)
 		return Response(register_serializer.data)		
@@ -163,7 +219,7 @@ class LenguageViewSet(viewsets.GenericViewSet):
 			self.queryset = self.model.objects\
 				.filter(c111_id_lenguage = pk)\
 				.values('c111_id_lenguage','c111_description')
-		return  self.queryset #get_object_or_404(self.model,pk=pk)
+		return  self.queryset
 		
 	def get_queryset(self):
 		if self.queryset is None:
@@ -173,12 +229,26 @@ class LenguageViewSet(viewsets.GenericViewSet):
 		return self.queryset  
 
 	def list(self, request):
-		print(request.data)
+		"""
+		Muestra los elementos del catálogo de idiomas
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#--------------------------
 		registers_list = self.get_queryset()
 		registers_serializer = self.list_serializer_class(registers_list, many=True)
 		return Response(registers_serializer.data, status=status.HTTP_200_OK)	
 
 	def retrieve(self, request, pk):
+		"""
+		Muestra un elemento del catálogo de idiomas
+
+
+
+		Dummy text
+		""" 
 		s_register = self.get_object(pk)
 		register_serializer = self.list_serializer_class(s_register,many=True)
 		return Response(register_serializer.data)				
@@ -206,12 +276,26 @@ class AcademicUnitViewSet(viewsets.GenericViewSet):
 		return self.queryset  
 
 	def list(self, request):
-		print(request.data)
+		"""
+		Muestra los elementos del catálogo de unidades académicas
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#--------------------------------------
 		registers_list = self.get_queryset()
 		registers_serializer = self.list_serializer_class(registers_list, many=True)
 		return Response(registers_serializer.data, status=status.HTTP_200_OK)	
 
 	def retrieve(self, request, pk):
+		"""
+		Muestra un elemento del catálogo de unidades académicas
+
+
+
+		Dummy text
+		""" 
 		s_register = self.get_object(pk)
 		register_serializer = self.list_serializer_class(s_register,many=True)
 		return Response(register_serializer.data)
@@ -240,12 +324,26 @@ class InterestJobViewSet(viewsets.GenericViewSet):
 		return self.queryset  
 
 	def list(self, request):
-		print(request.data)
+		"""
+		Muestra los elementos del catálogo de puestos de interés
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#---------------------------------
 		registers_list = self.get_queryset()
 		registers_serializer = self.list_serializer_class(registers_list, many=True)
 		return Response(registers_serializer.data, status=status.HTTP_200_OK)	
 
 	def retrieve(self, request, pk):
+		"""
+		Muestra un elemento del catálogo de puestos de interés
+
+
+
+		Dummy text
+		""" 
 		s_register = self.get_object(pk)
 		register_serializer = self.list_serializer_class(s_register,many=True)
 		return Response(register_serializer.data)
@@ -273,12 +371,26 @@ class ProjectTypeViewSet(viewsets.GenericViewSet):
 		return self.queryset  
 
 	def list(self, request):
-		print(request.data)
+		"""
+		Muestra los elementos del catálogo de tipos de proyecto
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#--------------------------------------
 		registers_list = self.get_queryset()
 		registers_serializer = self.list_serializer_class(registers_list, many=True)
 		return Response(registers_serializer.data, status=status.HTTP_200_OK)	
 
 	def retrieve(self, request, pk):
+		"""
+		Muestra un elemento del catálogo de tipos de proyecto
+
+
+
+		Dummy text
+		""" 
 		s_register = self.get_object(pk)
 		register_serializer = self.list_serializer_class(s_register,many=True)
 		return Response(register_serializer.data)

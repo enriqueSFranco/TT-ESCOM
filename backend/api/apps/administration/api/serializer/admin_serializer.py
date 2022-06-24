@@ -29,7 +29,7 @@ class AdminListSerializer(serializers.ModelSerializer):
 class UpdateAdminSerializer(serializers.ModelSerializer):
         class Meta:
             model = Admin
-            fields = ('t400_id_admin','t400_name','t400_last_names','t400_password','t400_position')
+            fields = ('t400_name','t400_last_names','t400_position')
         
         def update(self,instance,validate_data):
             u_admin = super().update(instance,validate_data)

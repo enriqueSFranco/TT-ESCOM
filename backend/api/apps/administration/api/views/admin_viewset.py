@@ -39,18 +39,25 @@ class AdminViewSet(viewsets.GenericViewSet):
 		if self.queryset == None:
 			self.queryset = self.model.objects\
 				.filter(t400_id_admin = pk)\
-				.all()#values('t400_id_admin','t400_name','t400_last_names','t400_password','t400_position')
+				.all()
 		return  self.queryset 
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.all()#values('t400_id_admin','t400_name','t400_last_names','t400_password','t400_position')
+				.all()
 		return self.queryset
   
 
 	def list(self, request):
+		"""
+		Muestra todos los encargados registrados en el sistema
+
+
+
+		Dummy text
+		""" 
 		print(request.data)
 		admins = self.get_queryset()
 		admins_serializer = self.list_serializer_class(admins, many=True)
@@ -76,6 +83,13 @@ class AdminViewSet(viewsets.GenericViewSet):
 
 
 	def create(self, request):
+		"""
+		Agrega un nuevo encargado al sistema
+
+
+
+		Dummy text
+		""" 
 		user_data = self.set_user(request.data)	
 		manager_user = self.user_serializer(data = user_data)
 		if manager_user.is_valid():
@@ -90,7 +104,6 @@ class AdminViewSet(viewsets.GenericViewSet):
 				return Response({'message': 'Administrador registrado correctamente.'
 								}, status=status.HTTP_201_CREATED)
 			else:
-				print("No es valido DXDXDXXXXX")#-------------------------------------
 				user_delete = self.user_model.objects.filter(email=request.data['t400_email']).delete()
 				return Response({'message': 'Hay errores en el registro',
 								'errors': admin_serializer.errors
@@ -101,26 +114,26 @@ class AdminViewSet(viewsets.GenericViewSet):
 				'errors': manager_user.errors
 			}, status=status.HTTP_400_BAD_REQUEST)
 
-	def old_create(self, request):
-		user_data = self.set_user(request.data)	
-		admin_serializer = self.serializer_class(data=request.data)
-		print('request: ',request.data)
-		if admin_serializer.is_valid():
-			admin_serializer.save()
-			return Response({
-				'message': 'Administrador registrado correctamente.'
-			}, status=status.HTTP_201_CREATED)
-		return Response({
-			'message': 'Hay errores en el registro',
-			'errors': admin_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
-
 	def retrieve(self, request, pk):
+		"""
+		Muestra la información de un encargado
+
+
+
+		Dummy text
+		""" 
 		admin = self.get_object(pk)
 		admin_serializer = self.list_serializer_class(admin,many=True)
 		return Response(admin_serializer.data)
 
 	def update(self, request, pk):
+		"""
+		Actualiza la información de un encargado
+
+
+
+		Dummy text
+		""" 
 		u_admin = self.model.objects.filter(t400_id_admin = pk).first()
 		admin_serializer = UpdateAdminSerializer(u_admin, data=request.data)
 		if admin_serializer.is_valid():
@@ -134,6 +147,13 @@ class AdminViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk):
+		"""
+		Elimina un encargado del sistema
+
+
+
+		Dummy text
+		""" 
 		admin_destroy = self.model.objects.filter(t400_id_admin=pk).first()				
 		if admin_destroy:
 			admin_destroy = self.model.objects.filter(t400_id_admin=pk).delete()

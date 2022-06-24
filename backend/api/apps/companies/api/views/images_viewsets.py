@@ -30,19 +30,40 @@ class CompanyLogoViewSet(viewsets.GenericViewSet):
   
 
 	def list(self, request):
-		print(request.data)
+		"""
+		Muestra los logos de las compañias registradas
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#-------------------------
 		company = self.get_queryset()
 		companies_serializer = self.serializer_class(company, many=True)
 		return Response(companies_serializer.data, status=status.HTTP_200_OK)
 	
 
 	def retrieve(self, request, pk):
+		"""
+		Muestra el logo de una empresa
+
+
+
+		Dummy text
+		""" 
 		company = self.get_object(pk)
 		company_serializer = self.serializer_class(company,many=True)
 		return Response(company_serializer.data)
 
 	def update(self, request, pk):
-		print(request.data)
+		"""
+		Actualiza el logo de una empresa
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#------------------------------------
 		u_company = self.model.objects.filter(t300_id_company = pk).first()
 		company_serializer = self.serializer_class(u_company, data=request.data)
 		if company_serializer.is_valid():
@@ -56,6 +77,13 @@ class CompanyLogoViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk):
+		"""
+		Elimina el logo de una empresa
+
+
+
+		Dummy text
+		""" 
 		company_destroy = self.model.objects.filter(t300_id_company=pk).first()				
 		if company_destroy:
 			company_destroy = self.model.objects.filter(t300_id_company=pk).update(t300_logo="")
@@ -90,20 +118,41 @@ class CompanyBannerViewSet(viewsets.GenericViewSet):
   
 
 	def list(self, request):
-		print(request.data)
+		"""
+		Muestra todos las portadas de las empresas
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#--------------------------------
 		company = self.get_queryset()
 		companies_serializer = self.serializer_class(company, many=True)
 		return Response(companies_serializer.data, status=status.HTTP_200_OK)
 	
 
 	def retrieve(self, request, pk):
-		print(request.data)
+		"""
+		Muestra la portada de una empresa
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#-----------------------------------
 		company = self.get_object(pk)
 		company_serializer = self.serializer_class(company,many=True)
 		return Response(company_serializer.data)
 
 	def update(self, request, pk):
-		print(request.data)
+		"""
+		Actualiza la portada de una compañia
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#----------------------------------
 		u_company = self.model.objects.filter(t300_id_company = pk).first()
 		company_serializer = self.serializer_class(u_company, data=request.data)
 		if company_serializer.is_valid():
@@ -117,6 +166,13 @@ class CompanyBannerViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk):
+		"""
+		Elimina la portada de una compañia
+
+
+
+		Dummy text
+		""" 
 		company_destroy = self.model.objects.filter(t300_id_company=pk).first()				
 		if company_destroy:
 			company_destroy = self.model.objects.filter(t300_id_company=pk).update(t300_banner="")

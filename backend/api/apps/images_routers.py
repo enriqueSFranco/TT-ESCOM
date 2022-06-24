@@ -10,12 +10,8 @@ from apps.students.api.views.images_viewsets import StudentImageViewSet,CVViewSe
 router = DefaultRouter()
 
 router.register(r'CompanyLogo', CompanyLogoViewSet, basename='Logos')
-router.register(r'CompanyLogo/<int:pk>', CompanyLogoViewSet, basename='Logo')
 router.register(r'CompanyBanner', CompanyBannerViewSet, basename='Banners')
-router.register(r'CompanyBanner/<int:pk>', CompanyBannerViewSet, basename='Banner')
 router.register(r'StudentPic', StudentImageViewSet, basename='Student profile picture')
-router.register(r'StudentPic/<int:pk>', StudentImageViewSet, basename='Student profile picture')
 router.register(r'StudentCV', CVViewSet, basename='Students cv')
-router.register(r'StudentCV/<int:pk>', CVViewSet, basename='Student cv')
 
 urlpatterns=router.urls

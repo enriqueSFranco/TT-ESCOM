@@ -32,7 +32,7 @@ schema_view = get_schema_view(
    openapi.Info(
       title="Backend: Bolsa de Trabajo ESCOM",
       default_version='v0.5',
-      description="DOcumentación de los endpoints utilizados para la comunicación entre el frontend y el backend del proyecto Bolsa de Trabajo ESCOM",
+      description="Documentación de los endpoints utilizados para la comunicación entre el frontend y el backend del proyecto Bolsa de Trabajo ESCOM",
       terms_of_service="https://www.google.com/policies/terms/",
       contact=openapi.Contact(email="jcruzh1301@alumno.ipn.mx"),
       license=openapi.License(name="BSD License"),
@@ -43,14 +43,14 @@ schema_view = get_schema_view(
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('apps.routers')),
-    path('students/', include('apps.student_routers')),
-    path('companies/', include('apps.companies_routers')),
+    path('admin/', admin.site.urls),    
+    path('student/', include('apps.student_routers')),
+    path('company/', include('apps.companies_routers')),
     path('manager/', include('apps.manager_routers')),
+    path('vacant/', include('apps.vacants_routers')),
     path('users/', include('apps.users_routers')),
     path('api/catalogues/',include('apps.catalogs_routers')),#-----------Cambiar en front las peticiones
-    path('catalogues/',include('apps.catalogs_routers')),
+    path('catalog/',include('apps.catalogs_routers')),    
     #path('api/token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),#-----------Cambiar en front las peticiones
     path('sesion/token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('sesion/refresh-token/', TokenRefreshView.as_view(), name='refresh-token'),
@@ -59,4 +59,5 @@ urlpatterns = [
     re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+    path('api/', include('apps.routers')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -31,13 +31,27 @@ class CertificationViewSet(viewsets.GenericViewSet):
   
 
 	def list(self, request):
-		print(request.data)		
+		"""
+		Muestra las certificaciones de todos los candiatos registrados
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#----------------------------------
 		historial = self.get_queryset()
 		historials_serializer = self.list_serializer_class(historial, many=True)
 		return Response(historials_serializer.data, status=status.HTTP_200_OK)
 
 	def create(self, request):
-		print(request.data)		
+		"""
+		Crea un registro de certificación para un candidato
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#------------------------------------
 		certification_serializer = self.serializer_class(data=request.data)
 		print('request: ',request.data)
 		if certification_serializer.is_valid():
@@ -51,13 +65,27 @@ class CertificationViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def retrieve(self, request, pk):
-		print(request.data)		
+		"""
+		Muestra las certificaciones de un candidato
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#-----------------------------------
 		certification = self.get_object(pk)
 		certification_serializer = self.list_serializer_class(certification,many=True)
 		return Response(certification_serializer.data)
 
 	def update(self, request, pk):
-		print(request.data)		
+		"""
+		Actualiza un registro de certificación de un candidato
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#----------------------------------------
 		certification = self.model.objects.filter(t119_id_registrer = pk).first()
 		certification_serializer = UpdateCertificationsSerializer(certification, data=request.data)
 		if certification_serializer.is_valid():
@@ -71,7 +99,14 @@ class CertificationViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk):
-		print(request.data)		
+		"""
+		Elimina un registro de certificación de un candidato
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#---------------------------------------------
 		certification_destroy = self.model.objects.filter(t119_id_registrer=pk).first()
 		print(certification_destroy)
 		if certification_destroy:
