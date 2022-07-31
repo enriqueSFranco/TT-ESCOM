@@ -133,23 +133,23 @@ class Vacant(models.Model):
         related_name='CompanyOffering',
         on_delete=models.CASCADE
     )
-    t200_job = models.CharField(max_length=125)
-    t200_description = models.TextField(null=True,blank=True) 
+    t200_job = models.CharField(max_length=125,null=False,blank=False)
+    t200_description = models.TextField(null=False,blank=False) 
     t200_benefits = models.TextField(null=True,blank=True)    
-    t200_check_time = models.TimeField(auto_now=False)
-    t200_closing_hour = models.TimeField(auto_now=False)
+    t200_check_time = models.TimeField(auto_now=False,blank=True,null=True)
+    t200_closing_hour = models.TimeField(auto_now=False,blank=True,null=True)
     t200_work_days = models.CharField(max_length=50,blank=True,null=True,default="Sin horario")  
     c207_id_experience = models.ForeignKey(
         Experience,
-        null=False,
-		blank=False,
+        blank=True,
+        null=True,
         default=1,
 		related_name='NecesaryExperience',
         on_delete=models.CASCADE)
     t200_min_salary = models.IntegerField(null=True)
     t200_max_salary = models.IntegerField(null=True)
-    t200_gross_salary = models.BooleanField(default=False)
-    t200_salary_negotiable = models.BooleanField(default=False)    
+    t200_gross_salary = models.BooleanField(default=False,blank=True,null=True)
+    t200_salary_negotiable = models.BooleanField(default=False,blank=True,null=True)    
     c214_id_modality = models.ForeignKey(
         Modality,
         null=False,
@@ -174,8 +174,8 @@ class Vacant(models.Model):
         default=1,
 		related_name='ActualState',
         on_delete=models.CASCADE)
-    t200_publish_date = models.DateField()
-    t200_close_date = models.DateField()
+    t200_publish_date = models.DateField(blank=True,null=True)
+    t200_close_date = models.DateField(blank=True,null=True)
     t200_state = models.CharField(max_length=50,null=True,blank=True)
     t200_municipality = models.CharField(max_length=100,null=True,blank=True)
     t200_locality = models.CharField(max_length=100,null=True,blank=True)
@@ -183,11 +183,11 @@ class Vacant(models.Model):
     t200_cp = models.IntegerField(blank=True,null=True)
     t200_interior_number = models.CharField(max_length=20,blank=True,null=True)
     t200_exterior_number = models.CharField(max_length=20,blank=True,null=True)    
-    t200_vacancy = models.PositiveIntegerField(default=1)
+    t200_vacancy = models.PositiveIntegerField(default=1,blank=True,null=True)
     c208_id_contract = models.ForeignKey(
         Contract,
-        null=False,
-		blank=False,
+        blank=True,
+        null=True,
         default=1,
 		related_name='ContractType',
         on_delete=models.CASCADE)
