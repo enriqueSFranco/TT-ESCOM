@@ -127,8 +127,8 @@ class Vacant(models.Model):
     t200_id_vacant = models.AutoField(primary_key=True)
     t300_id_company = models.ForeignKey(
         Company,
-        blank=False,
-        null=False,
+        null=True,
+		blank=True,
         default=1,
         related_name='CompanyOffering',
         on_delete=models.CASCADE
@@ -152,8 +152,8 @@ class Vacant(models.Model):
     t200_salary_negotiable = models.BooleanField(default=False,blank=True,null=True)    
     c214_id_modality = models.ForeignKey(
         Modality,
-        null=False,
-        blank=False,
+        null=True,
+		blank=True,
         default=1,
         related_name='WorkModality',
         on_delete=models.CASCADE
@@ -161,16 +161,16 @@ class Vacant(models.Model):
 
     c206_id_profile = models.ForeignKey(
         CandidateProfile,
-        null=False,
-        blank=False,
+        null=True,
+		blank=True,
         default=1,
         related_name='ProfileRequired',
         on_delete=models.CASCADE
     )
     c204_id_vacant_status = models.ForeignKey(
         VacantStatus,
-        null=False,
-		blank=False,
+        null=True,
+		blank=True,
         default=1,
 		related_name='ActualState',
         on_delete=models.CASCADE)
