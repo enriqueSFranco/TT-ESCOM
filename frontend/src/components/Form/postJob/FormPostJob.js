@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useForm } from "hooks/useForm";
-import { postJobInitialForm } from "../schemes";
+import { postJobInitialForm } from "../../types/schemes";
 import FormPostJobLocation from "./FormPostJobLocation";
 import FormPostJobDetails from "./FormPostJobDetails";
 import styles from "./FormPostJob.module.css";

@@ -23,6 +23,8 @@
     "react-number-format": "^4.9.3",
     "react-router-dom": "^6.2.1",
     "react-scripts": "^5.0.1",
+    "styled-components": "^5.3.5",
+    "tinymce": "^6.1.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

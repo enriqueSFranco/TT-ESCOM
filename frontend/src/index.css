@@ -1,8 +1,17 @@
+:root {
+  --bg-color_1: #EADBFD;
+  --bg-color_2: #D7F3E8;
+  --bg-color_3: #DBECFC;
+
+  --color_1: #9F6AE3;
+  --color_2: #69D8A3;
+  --color_3: #45A5EA;
+
+  --color-logo: #fff;
+}
 
 html {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
   background-color: #fff;
   font-size: 16px;
   font-family: 'Poppins', sans-serif;
@@ -12,6 +21,13 @@ html {
 *::after,
 *::before {
   box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
 }
 
 li {

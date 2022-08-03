@@ -1,4 +1,4 @@
-import axios from "axios";
+import API from 'services/http.service'
 import {
   API_JOBS,
   API_VACANTS_APPLICATIONS_JOB_STUDENT,
@@ -7,9 +7,9 @@ import {
   API_VACANT_REQUIREMENT
 } from "../settings";
 
-export const getAllJobs = async (page) => {
+export const getAllJobs = async () => {
   try {
-    const response = await axios.get(`/api/Vacants/?page=${page}`);
+    const response = await API.get(`${process.env.REACT_APP_URL_VACANTS}`);
     return response;
   } catch (error) {
     if (error.response) {
@@ -19,14 +19,13 @@ export const getAllJobs = async (page) => {
 };
 
 export const getJobRequirements = (id) => {
-  return axios.get(`${API_VACANT_REQUIREMENT}${id}/`)
+  return API(`${API_VACANT_REQUIREMENT}${id}/`)
     .then(response => response)
     .catch(error => error);
 };
 
 export const getJob = (id) => {
-  return axios
-    .get(`${API_JOBS}${id}/`)
+  return API(`${API_JOBS}${id}/`)
     .then((response) => {
       const { data } = response;
       return data;
@@ -35,8 +34,7 @@ export const getJob = (id) => {
 };
 
 export const getVacantInfo = (id) => {
-  return axios
-    .get(`${API_VACANT_INFO}${id}/`)
+  return API(`${API_VACANT_INFO}${id}/`)
     .then((response) => {
       const { data } = response;
       return data;
@@ -45,8 +43,7 @@ export const getVacantInfo = (id) => {
 };
 
 export const getApplicationsJobs = (id) => {
-  return axios
-    .get(`${API_VACANTS_APPLICATIONS_JOB_STUDENT}${id}/`)
+  return API(`${API_VACANTS_APPLICATIONS_JOB_STUDENT}${id}/`)
     .then((response) => {
       const { data } = response;
       return data;
@@ -55,8 +52,7 @@ export const getApplicationsJobs = (id) => {
 };
 
 export const postJob = (body) => {
-  return axios
-    .post(API_JOBS, body, {
+  return API.post(API_JOBS, body, {
       headers: {
         "Content-Type": "application/json",
         accept: "application/json",
@@ -70,8 +66,7 @@ export const postJob = (body) => {
 };
 
 export const deleteJob = async (id) => {
-  return axios
-    .delete(`${API_JOBS}/${id}/`)
+  return API.delete(`${API_JOBS}/${id}/`)
     .then((response) => {
       const { data } = response;
       return data;
@@ -84,7 +79,7 @@ export const deleteJob = async (id) => {
 };
 
 export const getVacantsFilter = (payload = {}) => {
-  return axios.post(API_VACANTS_FILTER, payload)
+  return API.post(API_VACANTS_FILTER, payload)
     .then(response => response)
     .catch(error => error);
 }

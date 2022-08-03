@@ -1,0 +1,8 @@
+@keyframes fadeOut {
+  from { transform: scale(1) }
+  to { transform: scale(0) }
+}
+
+.fadeOut {
+  animation: fadeOut .3s ease;
+}
