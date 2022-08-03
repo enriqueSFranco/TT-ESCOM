@@ -3,6 +3,7 @@
         "model" : "students.Student",
         "pk" : 1,
         "fields":{
+            "id_user": 1,
             "t100_boleta": "2014080325",
             "t100_name": "Joel Antonio",
             "t100_last_name": "Cruz Heras",
@@ -46,6 +47,7 @@
         "model":"administration.Admin",
         "pk": 1,
         "fields":{
+            "id_user": 1,
             "t400_name": "Francisco",
             "t400_last_names": "Hernandez",
             "t400_email":"ex_ap_escom@ipn.mx",

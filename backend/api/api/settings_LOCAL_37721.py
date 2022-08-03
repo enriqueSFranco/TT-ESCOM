@@ -84,13 +84,8 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
-<<<<<<< HEAD
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     # 'PAGE_SIZE': 15,
-=======
-    #'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    #'PAGE_SIZE': 15,
->>>>>>> b52f4382d6f9d3215f3a9dff7fdc7a7f26705e94
 }
 
 ROOT_URLCONF = 'api.urls'

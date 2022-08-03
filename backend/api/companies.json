@@ -6,8 +6,7 @@
         "fields":{
             "t300_id_company": "1",
             "t300_name": "Amazon",
-            "t300_rfc": "ASE030509UJ6",
-            "t300_nss": 0,
+            "t300_rfc": "ASE030509UJ6",  
             "t300_email": "primary@amazon.com.mx",
             "t300_bussiness_name": "AMAZON SERVICES",
             "t300_web_page": "www.amazon.com.mx",
@@ -29,8 +28,7 @@
         "fields":{
             "t300_id_company": "2",
             "t300_name": "Banco de México",
-            "t300_rfc": "BME821130SXA",
-            "t300_nss": 0,
+            "t300_rfc": "BME821130SXA",  
             "t300_email": "sie@banxico.org.mx",
             "t300_bussiness_name": "Banco de México",
             "t300_web_page": "https://www.banxico.org.mx/",
@@ -52,8 +50,7 @@
         "fields":{
             "t300_id_company": "3",
             "t300_name": "Dell México",
-            "t300_rfc": "DME9204099R6",
-            "t300_nss": 0,
+            "t300_rfc": "DME9204099R6",  
             "t300_email": "",
             "t300_bussiness_name": "DELL COMPUTER SERVICES DE MEXICO SA DE CV",
             "t300_web_page": "https://www.dell.com/mx",
@@ -75,8 +72,7 @@
         "fields":{
             "t300_id_company": "4",
             "t300_name": "Axxis Soluciones",
-            "t300_rfc": "ASO040721S32",
-            "t300_nss": 0,
+            "t300_rfc": "ASO040721S32",  
             "t300_email": "JUAN.MATIAS@AXXIS.COM.MX",
             "t300_bussiness_name": "AXXIS SOLUCIONES S.A. DE C.V.",
             "t300_web_page": "http://www.axxis.com.mx/",
@@ -98,8 +94,7 @@
         "fields":{
             "t300_id_company": "5",
             "t300_name": "BBVA Bancomer",
-            "t300_rfc": "BBA830831LJ2",
-            "t300_nss": 0,
+            "t300_rfc": "BBA830831LJ2",  
             "t300_email": "une.mx@bbva.com.",
             "t300_bussiness_name": "BBVA Bancomer S.A., Institución de Banca Múltiple, Grupo Financiero BBVA Bancomer",
             "t300_web_page": "https://www.bbva.mx",
@@ -121,8 +116,7 @@
         "fields":{
             "t300_id_company": "6",
             "t300_name": "Coppel",
-            "t300_rfc": "COP920428Q20",
-            "t300_nss": 0,
+            "t300_rfc": "COP920428Q20",  
             "t300_email": "atencion@coppel.com",
             "t300_bussiness_name": "Almacenes Coppel S.A. de C.V.",
             "t300_web_page": "https://www.coppel.com/",
@@ -144,8 +138,7 @@
         "fields":{
             "t300_id_company": "7",
             "t300_name": "Coca-Cola FEMSA",
-            "t300_rfc": "CCF9305145C9",
-            "t300_nss": 0,
+            "t300_rfc": "CCF9305145C9",  
             "t300_email": "salaprensa@coca-cola.com",
             "t300_bussiness_name": "COCA-COLA FEMSA, S.A.B. DE C.V.",
             "t300_web_page": "https://www.coca-colamexico.com.mx/",
@@ -167,8 +160,7 @@
         "fields":{
             "t300_id_company": "8",
             "t300_name": "Bimbo",
-            "t300_rfc": "BIM011108DJ5",
-            "t300_nss": 0,
+            "t300_rfc": "BIM011108DJ5",  
             "t300_email": "servicioalcliente@grupobimbo.com",
             "t300_bussiness_name": "GRUPO BIMBO, S.A.B. DE C.V",
             "t300_web_page": "https://www.bimbo.com.mx/es",
@@ -190,8 +182,7 @@
         "fields":{
             "t300_id_company": "9",
             "t300_name": "Microsoft",
-            "t300_rfc": "MME910620Q85",
-            "t300_nss": 0,
+            "t300_rfc": "MME910620Q85",  
             "t300_email": "info@microsoft.com.mx",
             "t300_bussiness_name": "Microsoft México, S. de R.L. de C.V",
             "t300_web_page": "https://www.microsoft.com/es-mx/",
@@ -213,8 +204,7 @@
         "fields":{
             "t300_id_company": "10",
             "t300_name": "BMW",
-            "t300_rfc": "BFS011206BK7",
-            "t300_nss": 0,
+            "t300_rfc": "BFS011206BK7",  
             "t300_email": "atencionbmw@bmw.com.mx",
             "t300_bussiness_name": "Designworks",
             "t300_web_page": "https://www.bmw.com.mx/es/index.html",
@@ -236,8 +226,7 @@
         "fields":{
             "t300_id_company": "11",
             "t300_name": "Audi",
-            "t300_rfc": "AAU120905KG9",
-            "t300_nss": 0,
+            "t300_rfc": "AAU120905KG9",  
             "t300_email": "info@audi.com.mx",
             "t300_bussiness_name": "Audi México, S.A. de C.V.",
             "t300_web_page": "audi.com.mx/mx/web/es.html",
@@ -259,8 +248,7 @@
         "fields":{
             "t300_id_company": "12",
             "t300_name": "Cyberpuerta",
-            "t300_rfc": "CYB080602JSA",
-            "t300_nss": 0,
+            "t300_rfc": "CYB080602JSA",  
             "t300_email": "info@cyberpuerta.mx",
             "t300_bussiness_name": "CYBERPUERTA S.A. DE C.V",
             "t300_web_page": "cyberpuerta.mx",
@@ -282,8 +270,7 @@
         "fields":{
             "t300_id_company": "13",
             "t300_name": "Uber",
-            "t300_rfc": "UBV121024TN8",
-            "t300_nss": 0,
+            "t300_rfc": "UBV121024TN8",  
             "t300_email": "",
             "t300_bussiness_name": "UBER B.V.",
             "t300_web_page": "https://www.uber.com/mx/es/",
@@ -298,30 +285,14 @@
             "is_active": true           
         }
     },
-
-    
-    {
-        "model":"companies.Recruiter",
-        "pk":1,
-        "fields":{
-            "password": "pbkdf2_sha256$320000$RiPoxXGsCVLO04U3Ps9nys$gjzTJp4eRilm2jvKV7reAC/9kevVwvN7zdwdfgHPCH0=",
-            "last_login": null,
-            "t301_name": "Eduardo",
-            "t301_last_name": "Heras",
-            "t301_user": "eduardoH",
-            "t301_email": "jcruzh1301@alumno.ipn.mx",
-            "t301_phonenumber": 5543925511,
-            "is_active": true,
-            "t300_id_company": 1
-        }
-
-    },
+   
     
     
     {
         "model":"companies.Recruiter",        
         "pk":1,
         "fields":{
+            "id_user":1,
             "t301_id_recruiter": "1",
             "t301_name": "Eduardo",
             "t301_last_name": "Cruz  Heras",
@@ -337,6 +308,7 @@
         "model":"companies.Recruiter",        
         "pk":5,
         "fields":{
+            "id_user":1,
             "t301_id_recruiter": "5",
             "t301_name": "Kevin Alejandro",
             "t301_last_name": "Martinez Hernandez",
@@ -352,6 +324,7 @@
         "model":"companies.Recruiter",        
         "pk":6,
         "fields":{
+            "id_user":1,
             "t301_id_recruiter": "6",
             "t301_name": "Carlos",
             "t301_last_name": "Zambrano Lopez",
@@ -367,6 +340,7 @@
         "model":"companies.Recruiter",        
         "pk":7,
         "fields":{
+            "id_user":1,
             "t301_id_recruiter": "7",
             "t301_name": "Joel",
             "t301_last_name": "Garcia Concepcion",
@@ -382,6 +356,7 @@
         "model":"companies.Recruiter",        
         "pk":8,
         "fields":{
+            "id_user":1,
             "t301_id_recruiter": "8",
             "t301_name": "Enrique",
             "t301_last_name": "Fernandez Lopez",
@@ -397,6 +372,7 @@
         "model":"companies.Recruiter",        
         "pk":9,
         "fields":{
+            "id_user":1,
             "t301_id_recruiter": "9",
             "t301_name": "Hugo",
             "t301_last_name": "Heras  Guzman",
@@ -412,6 +388,7 @@
         "model":"companies.Recruiter",        
         "pk":10,
         "fields":{
+            "id_user":1,
             "t301_id_recruiter": "10",
             "t301_name": "Alfonso",
             "t301_last_name": "Saias Carrillo",
@@ -427,6 +404,7 @@
         "model":"companies.Recruiter",        
         "pk":11,
         "fields":{
+            "id_user":1,
             "t301_id_recruiter": "11",
             "t301_name": "Manuel",
             "t301_last_name": "Mondragon Martnez",
@@ -442,6 +420,7 @@
         "model":"companies.Recruiter",        
         "pk":4,
         "fields":{
+            "id_user":1,
             "t301_id_recruiter": "4",
             "t301_name": "Rafael",
             "t301_last_name": "Flores Gonzales",
@@ -457,6 +436,7 @@
         "model":"companies.Recruiter",        
         "pk":12,
         "fields":{
+            "id_user":1,
             "t301_id_recruiter": "12",
             "t301_name": "Porfirio",
             "t301_last_name": "Díaz Calles",
@@ -472,6 +452,7 @@
         "model":"companies.Recruiter",        
         "pk":3,
         "fields":{
+            "id_user":1,
             "t301_id_recruiter": "3",
             "t301_name": "Jesus",
             "t301_last_name": "Rivera Ortiz",
@@ -487,6 +468,7 @@
         "model":"companies.Recruiter",        
         "pk":2,
         "fields":{
+            "id_user":1,
             "t301_id_recruiter": "2",
             "t301_name": "Enrique",
             "t301_last_name": "Salinas Franco",
@@ -502,6 +484,7 @@
         "model":"companies.Recruiter",        
         "pk":13,
         "fields":{
+            "id_user":1,
             "t301_id_recruiter": "13",
             "t301_name": "Lazaro",
             "t301_last_name": "Huerta Victoriano",
