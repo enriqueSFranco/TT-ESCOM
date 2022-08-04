@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import { useFetch } from "hooks/useFetch";
+import { useAuth } from "context/AuthContext";
 import { useForm } from "hooks/useForm";
 import { API_ACADEMIC_UNITS } from "services/settings";
 import { postAcademicHistorial } from "services/students/index";
-import AuthContext from "context/AuthContext";
 import { TextField } from "@mui/material";
 import { MdSchool } from "react-icons/md";
 import styles from "./FormAddAcademicRecord.module.css";
@@ -16,7 +16,7 @@ let initialForm = {
 };
 
 const FormAddAcademicRecord = () => {
-  const { token } = useContext(AuthContext);
+  const { token } = useAuth();
   const { data } = useFetch(API_ACADEMIC_UNITS);
   const { form, handleChange } = useForm(initialForm);
 

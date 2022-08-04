@@ -4,7 +4,7 @@ const CardBody = styled.article`
   position: relative;
   width: 400px;
   height: 350px;
-  background-color: #faf9fd;
+  background-color: #fff;
   border-radius: 8px;
   transition: box-shadow 0.3s ease-in;
   color: #222;
@@ -13,6 +13,7 @@ const CardBody = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  outline: ${props => `1.5px solid ${props.borderColor}` || null};
 `;
 
 const CardHeader = styled.header`
@@ -65,14 +66,12 @@ const Description = styled.p`
 `;
 
 const Actions = styled.div`
-  /* outline: 2px solid red; */
   display: flex;
-  justify-content: space-between;
   align-items: center;
 `;
 
 const Button = styled.button`
-  background-color: #018dd4;
+  background-color: ${props => props.bgColor || '#018dd4'};
   color: #fff;
   border: none;
   outline: none;
@@ -80,6 +79,7 @@ const Button = styled.button`
   width: 120px;
   border-radius: 2px;
   cursor: pointer;
+
 `;
 
 const Location = styled.span`

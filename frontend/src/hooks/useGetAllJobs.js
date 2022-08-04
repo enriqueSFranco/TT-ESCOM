@@ -9,10 +9,10 @@ export function useGetAllJobs() {
     setLoading(true)
     getAllJobs()
       .then((response) => {
-        console.log(response)
-        // if (response.status === 200) {
-        //   setResponse(response.data)
-        // }
+        if (response.status === 200) {
+          const { data } = response;
+          setResponse(data)
+        }
       })
       .catch((error) => console.log(error))
       .finally(() => setLoading(false))

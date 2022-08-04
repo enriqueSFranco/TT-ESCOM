@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "hooks/useForm";
 import { useFetch } from "hooks/useFetch";
@@ -12,7 +12,7 @@ import DatesPersonal from "./DatesPersonal";
 import DatesJob from "./DatesJob";
 import DatesSkill from "./DatesSkill";
 import DatesSchool from "./DatesSchool";
-import AuthContext from "context/AuthContext";
+import { useAuth } from "context/AuthContext";
 import styles from "./StylesStepper.module.css";
 
 let initialForm = {
@@ -48,7 +48,7 @@ const StepComponent = () => {
   const { form, handleChange } = useForm(initialForm);
   const [academicHistorial, setAcademicHistorial] = useState(AcademicFormat);
   const { data } = useFetch("/api/catalogues/CatalogueSkills/");
-  const { token } = useContext(AuthContext);
+  const { token } = useAuth();
   let navigate = useNavigate();
 
   let id_student = token?.user?.user_id;

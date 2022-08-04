@@ -1,7 +1,7 @@
 import { useContext, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useDetectClick } from "hooks/useDetectClick";
-import { stringToColor } from "utils/stringToColor";
+import { stringToColor } from "utils/generateColors";
 import AuthContext from "context/AuthContext";
 import Avatar from "@mui/material/Avatar";
 import DropMenuStudent from "./DropMenuStudent";

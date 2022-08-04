@@ -6,7 +6,7 @@ import { getJob, getJobRequirements } from "services/jobs/index";
 import { applyJob } from "services/students/index";
 import { uuid } from "utils/uuid";
 import { numberFormat } from "utils/numberFormat";
-import AuthContext from "context/AuthContext";
+import { useAuth } from "context/AuthContext";
 import Modal from "components/Modal/Modal";
 import Chip from "@mui/material/Chip";
 import Skeleton from "../../Skeleton/Skeleton";
@@ -23,7 +23,7 @@ const CardJobDetails = () => {
   let isSticky = useSticky(100, elementRef);
   let { t200_id_vacant } = useParams();
   let navigate = useNavigate();
-  const { token } = useContext(AuthContext);
+  const { token } = useAuth();
   const [isOpen, openModal, closeModal] = useModal();
   const [requirements, setRequirements] = useState(null);
   const [job, setJob] = useState([]);

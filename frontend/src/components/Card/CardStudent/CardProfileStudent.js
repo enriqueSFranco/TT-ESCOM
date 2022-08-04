@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from "react";
-import AuthContext from "context/AuthContext";
+import { useEffect, useState } from "react";
+import { useAuth } from "context/AuthContext";
 import { useModal } from "hooks/useModal";
 import { getSocialNetwork, getStudent, getAcademicHistorial } from "services/students/index";
 import { getSkill } from "services/catalogs";
@@ -21,7 +21,7 @@ const CardProfileStudent = () => {
   const [skills, setSkills] = useState([]);
   const [academicHistorial, setAcademicHistorial] = useState(null);
   const [socialNetworks, setSocialNetworks] = useState([]);
-  const { token } = useContext(AuthContext);
+  const { token } = useAuth();
 
   useEffect(() => {
     getStudent(token?.user?.user_id)

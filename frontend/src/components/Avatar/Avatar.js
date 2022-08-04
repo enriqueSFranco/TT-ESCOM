@@ -1,5 +1,5 @@
 import Avatar from "@mui/material/Avatar";
-import { stringToColor } from "utils/stringToColor";
+import { stringToColor } from "utils/generateColors";
 
 const CustomAvatar = ({student = [], width, height, fontSize}) => {
   

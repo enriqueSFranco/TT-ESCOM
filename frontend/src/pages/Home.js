@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useGetAllJobs } from "hooks/useGetAllJobs";
 import { getVacantsFilter } from "services/jobs";
 import FormSearchJob from "components/Search/FormSearchJob";
-import CardJob from "components/Card/CardJob/CardJob";
 import JobList from "components/Card/JobList/JobList";
 import LayoutHome from "Layout/LayoutHome";
 import LayoutHero from "Layout/LayoutHero";
@@ -11,23 +10,9 @@ import parallaxESCOM from "images/parallaxESCOM.jpg";
 
 
 const Home = () => {
-  // const [jobs, setJobs] = useState(null);
   const [response, loading] = useGetAllJobs();
   const [data, setData] = useState([]); // lista de vacantes filtrada
   const [isFiltered, setIsFiltered] = useState(false); // bandera para saber si la informacion se tiene que filtrar
-  // const [loading, setLoading] = useState(false);
-
-  // useEffect(() => {
-  //   setLoading(true);
-  //   getAllJobs()
-  //     .then((response) => {
-  //       if (response.status === 200) {
-  //         setJobs(response.data);
-  //       }
-  //     })
-  //     .catch((error) => console.log(error))
-  //     .finally(() => setLoading(false));
-  // }, []);
 
   const filteredData = (value) => {
     if (value !== "") {
@@ -136,7 +121,6 @@ const Home = () => {
           </LayoutHero>
         </Hero>
         <Content>
-          {/* <CardJob /> */}
           <JobList jobs={isFiltered ? data : response} loading={loading} />
         </Content>
         <Aside></Aside>

@@ -1,13 +1,9 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import { useForm } from "hooks/useForm";
 import { postJobInitialForm } from "../../types/schemes";
 import FormPostJobLocation from "./FormPostJobLocation";
-import { getJob } from "services/jobs/index";
 import FormPostJobDetails from "./FormPostJobDetails";
 import styles from "./FormPostJob.module.css";
-import AuthContext from "context/AuthContext";
-import { getRecruiterInfo } from "services/recruiter/index";
-
 
 const validateForm = (form) => {
   let errors = {};
@@ -30,7 +26,7 @@ const validateForm = (form) => {
 
 const FormUpdateJob = ({job}) => {
   const [step, setStep] = useState(1);
-  const { user, token } = useContext(AuthContext);
+  // const { user, token } = useContext(AuthContext);
   const [recruiter, setRecruiter] = useState([]);
   const [jobInfo, setJobInfo] = useState(job);
   const { 

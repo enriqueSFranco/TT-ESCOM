@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "hooks/useForm";
 import { loginFormCompany } from "../../types/schemes";
-import AuthContext from "context/AuthContext";
+import { useAuth } from "context/AuthContext";
 import { InputAdornment } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { RiLockPasswordLine } from "react-icons/ri";
@@ -11,7 +11,7 @@ import styles from "../Styles.module.css";
 
 const LoginCompany = () => {
   const { form, handleChange } = useForm(loginFormCompany);
-  const { loginRecruiter } = useContext(AuthContext);
+  const { loginRecruiter } = useAuth();
 
   return (
     <div className={`container bg-white shadow rounded ${styles.wrapper}`}>

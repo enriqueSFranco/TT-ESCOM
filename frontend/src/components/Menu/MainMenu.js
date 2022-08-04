@@ -10,8 +10,18 @@ import {
   NavItem,
   NavLink,
 } from "./styled-components/MainMenuStyled";
+import styles from "./MenuIndicator.module.css";
+import { useActiveMenuItem } from "hooks/useActiveMenuItem";
+
+const menuItems = [
+  { label: "Inicio", icon: <TiHomeOutline />, to: "/" },
+  { label: "Empresas", icon: <IoBusinessOutline />, to: "/empresas" },
+  { label: "Comunicados", icon: <BsMegaphone />, to: "/comunicados" },
+];
 
 const MainMenu = () => {
+  const [activeIndex] = useActiveMenuItem(0, menuItems)
+
   return (
     <>
       <NavLeft>
@@ -21,33 +31,25 @@ const MainMenu = () => {
         </NavLink>
       </NavLeft>
       <NavList>
-        <NavItem>
-          <NavLink to="/">
-            <TiHomeOutline />
-            Inicio
+        {menuItems.map((menuItem, index) => (
+          <NavLink
+            to={menuItem.to}
+            data-item
+            className={`${activeIndex === index ? `${styles.active}` : null}`}
+          >
+            {menuItem.icon}
+            {menuItem.label}
           </NavLink>
-        </NavItem>
+        ))}
         <NavItem>
-          <NavLink to="/empresas">
-            <IoBusinessOutline />
-            Empresas
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink to="/comunicados">
-            <BsMegaphone />
-            Comunicados
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink type="button" bgColor="#fff" color="#000" to="/alumno">
+          <NavLink type="button" bgColor="blue" to="/alumno">
             Iniciar sesion
           </NavLink>
         </NavItem>
         <NavItem>
           <NavLink
             type="button"
-            bgColor="current"
+            bgColor="#252A48"
             color="#fff"
             to="/reclutador"
           >

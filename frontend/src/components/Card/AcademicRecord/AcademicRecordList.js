@@ -1,5 +1,5 @@
-import React, { useEffect, useContext, useState } from 'react';
-import AuthContext from 'context/AuthContext';
+import React, { useEffect, useState } from 'react';
+import { useAuth } from 'context/AuthContext';
 import { useModal } from "hooks/useModal";
 import { uuid } from 'utils/uuid';
 import Modal from "components/Modal/Modal";
@@ -11,7 +11,7 @@ import styles from './AcademicRecord.module.css';
 
 const AcademicRecordList = () => {
   const [data, setData] = useState(null);
-  const { token } = useContext(AuthContext);
+  const { token } = useAuth();
   const [
     isOpenModalAcademicRecord,
     openModalAcademicRecord,

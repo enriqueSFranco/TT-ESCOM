@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "hooks/useForm";
 import TextField from "@mui/material/TextField";
-import AuthContext from "context/AuthContext";
+import { useAuth } from "context/AuthContext";
 import styles from "./FormCertification.module.css";
 
 const initialForm = {
@@ -27,7 +27,7 @@ const FormCertification = ({
   dataToEdit,
   setDataToEdit
 }) => {
-  const { token } = useContext(AuthContext);
+  const { token } = useAuth();
   const [isVisibleLink, setIsVisibleLink] = useState(false);
   const { form, handleChange, handleChecked, onSubmitPostCertification } = useForm({
     ...initialForm,

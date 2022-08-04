@@ -1,10 +1,11 @@
 import React from "react";
 import Chip from "components/Chip/Chip";
-import { numberFormat } from "utils/numberFormat";
-import { formatDate } from "utils/formatDate";
-import * as GiIcon from "react-icons/gi";
-import * as BsIcon from "react-icons/bs";
-import * as MdIcon from "react-icons/md";
+import { getRandomColor } from "utils/generateColors";
+// import { numberFormat } from "utils/numberFormat";
+// import { formatDate } from "utils/formatDate";
+// import * as GiIcon from "react-icons/gi";
+// import * as BsIcon from "react-icons/bs";
+// import * as MdIcon from "react-icons/md";
 import { IoBusiness } from "react-icons/io5"
 import {
   Actions,
@@ -20,7 +21,7 @@ import {
   TitleJob,
 } from "../styled-components/CardJobStyled";
 
-const CardJob = () => {
+const CardJob = ({ randomColor }) => {
   // if (!job) return null;
 
   const tags = [
@@ -30,7 +31,7 @@ const CardJob = () => {
   ]
 
   return (
-    <CardBody>
+    <CardBody borderColor={randomColor}>
       <CardHeader>
         <div>
           <IoBusiness style={{color: 'darkgray', fontSize: '3.5rem'}}/>
@@ -56,19 +57,13 @@ const CardJob = () => {
               </TagsItem>
             ))
           }
-          {/* <TagsItem>
-            <Chip label="Flex, sched" />
-          </TagsItem>
-          <TagsItem>
-            <Chip label="Midl lvl" />
-          </TagsItem> */}
         </Tags>
         <Location>Cupertino, California</Location>
         <Description>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis sequi, minima unde perspiciatis qui assumenda aperiam nisi itaque numquam deleniti, cupiditate quis odit illum exercitationem et commodi perferendis corrupti nihil.
         </Description>
         <Actions>
-          <Button>View More</Button>
+          <Button bgColor={randomColor}>View More</Button>
         </Actions>
       </CardContent>
       {/* <div>

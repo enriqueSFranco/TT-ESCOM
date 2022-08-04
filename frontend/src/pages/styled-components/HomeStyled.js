@@ -5,7 +5,7 @@ const Main = styled.main`
   grid-template-columns: 400px 1fr;
   grid-template-areas: 
                       "hero hero"
-                      "aside content-data";
+                      "aside content_data";
   position: relative;
   top: 4rem;
 `
@@ -16,7 +16,12 @@ const Hero = styled.div`
   `
 
 const Content = styled.section`
-  grid-area: content-data;
+  grid-area: content_data;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 2rem;
+  padding: 1rem;
 `
 
 const Aside = styled.aside`

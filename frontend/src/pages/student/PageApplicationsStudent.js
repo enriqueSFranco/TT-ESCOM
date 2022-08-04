@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useFetch } from 'hooks/useFetch';
 import { uuid, } from 'utils/uuid';
 import { formatDate } from 'utils/formatDate';
 import { API_APPLICATIONS_JOB_STUDENT } from 'services/settings';
-import AuthContext from 'context/AuthContext';
+import { useAuth } from 'context/AuthContext';
 import ApplicationJobStudent from 'components/Card/ApplicationJob/ApplicationJobStudent';
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, styled, tableCellClasses} from '@mui/material';
 import { IoIosBusiness } from 'react-icons/io'
 import styles from './PageApplicationsStudent.module.css';
 
 const PageApplicationsStudent = () => {
-  const { token } = useContext(AuthContext);
+  const { token } = useAuth();
   const { data } = useFetch(`${API_APPLICATIONS_JOB_STUDENT}${token?.user?.user_id}/`);
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({

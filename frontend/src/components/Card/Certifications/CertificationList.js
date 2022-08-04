@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import AuthContext from "context/AuthContext";
+import React, { useEffect, useState } from "react";
+import { useAuth } from "context/AuthContext";
 import { useModal } from "hooks/useModal";
 import { getStudentCertifications } from "services/students/index";
 import FormCertification from "components/Form/Certification/FormCertification";
@@ -9,7 +9,7 @@ import { MdAdd } from "react-icons/md";
 import styles from "./Certifications.module.css";
 
 const CertificationList = () => {
-  const { token } = useContext(AuthContext);
+  const { token } = useAuth();
   const [data, setData] = useState(null);
   const [
     isOpenModalAddCertification,

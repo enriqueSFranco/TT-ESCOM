@@ -1,8 +1,8 @@
-import { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "hooks/useForm";
 import TextField from "@mui/material/TextField";
-import AuthContext from "context/AuthContext";
+import { useAuth } from "context/AuthContext";
 import { Toaster } from "react-hot-toast";
 import { InputAdornment } from "@mui/material";
 import { MdOutlineMail } from "react-icons/md";
@@ -16,7 +16,7 @@ let initialForm = {
 
 const Form = () => {
   const { form, handleChange } = useForm(initialForm);
-  const { login } = useContext(AuthContext);
+  const { login } = useAuth();
 
   return (
     <>

@@ -1,5 +1,5 @@
-import { useEffect, useContext, useRef, useState } from "react";
-import AuthContext from "context/AuthContext";
+import { useEffect, useState } from "react";
+import { useAuth } from "context/AuthContext";
 import { useForm } from "hooks/useForm";
 import { useModal } from "hooks/useModal";
 import { getStudent, updateStudent } from "services/students";
@@ -14,7 +14,7 @@ const AboutMe = () => {
   const [aboutMe, setAboutMe] = useState({});
   const { form, handleChange } = useForm({t100_personal_objectives: ""});
   const [isOpenModalEdit, openModalEdit, closeOpenModalEdit] = useModal();
-  const { token } = useContext(AuthContext);
+  const { token } = useAuth
   let idStudent = token?.user?.user_id;
 
   // Efecto para obtener la ingformacion de un alumno

@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useForm } from "hooks/useForm";
 import { postJobInitialForm } from "../../types/schemes";
 import FormPostJobLocation from "./FormPostJobLocation";
 import FormPostJobDetails from "./FormPostJobDetails";
 import styles from "./FormPostJob.module.css";
-import AuthContext from "context/AuthContext";
+import { useAuth } from "context/AuthContext";
 import { useFetch } from "hooks/useFetch";
 
 const validateForm = (form) => {
@@ -28,7 +28,7 @@ const validateForm = (form) => {
 
 const FormPostJob = ({idCompany}) => {
   const [step, setStep] = useState(1);
-  const { token } = useContext(AuthContext);
+  const { token } = useAuth();
   const { data } = useFetch("/api/catalogues/CatalogueSkills/");
   const [ vacantSkills, setVacantSkills ] = useState([]);
   const { 

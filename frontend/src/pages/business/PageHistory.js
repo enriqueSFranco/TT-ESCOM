@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import AuthContext from "context/AuthContext";
+import { useAuth } from "context/AuthContext";
 import { useModal } from "hooks/useModal";
 import { uuid } from "utils/uuid";
 import { numberFormat } from "utils/numberFormat";
@@ -46,7 +46,7 @@ const vacantApplicationsData = {
 };
 
 const PageHistory = () => {
-  const { token } = useContext(AuthContext);
+  const { token } = useAuth();
   const { t200_id_vacant } = useParams();
   const [totalApplications, setTotalApplications] = useState([]);
   const [initialContent, setInitialContent] = useState(true);

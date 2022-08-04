@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-
 const NavLeft = styled.div`
   width: 140px;
   height: 40px;
@@ -32,6 +31,7 @@ const NavItem = styled.li`
 `
 
 const NavLink = styled(Link)`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -45,11 +45,11 @@ const NavLink = styled(Link)`
     if (props.type === 'button') {
       return `
         background-color: ${props.bgColor};
-        color: ${props.color || '#000'};
-        outline: 1px solid #fff;
-        height: 2rem;
+        color: ${props.color || '#fff'};
+        // outline: 1px solid #fff;
+        height: 2.8rem;
         padding: 1rem .5rem;
-        border-radius: 4px;
+        border-radius: 1rem;
         border: none;
       `
     }

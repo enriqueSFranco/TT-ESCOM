@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
-import Skeleton from "../../Skeleton/Skeleton";
 import CardJob from "../CardJob/CardJob";
+import { getRandomColor } from "utils/generateColors";
 import styles from "./JobList.module.css";
 
 const ListEmptyJobs = () => {
@@ -12,37 +11,14 @@ const ListEmptyJobs = () => {
 };
 
 const JobList = ({ jobs, loading }) => {
-  return (
-    <>
-      {jobs?.length > 0 ? (
-        <>
-          <article className={`${styles.wrapper} ${styles.grid}`}>
-            <div style={{ width: "550px" }}>
-              {loading ? (
-                <Skeleton type="feed" />
-              ) : (
-                jobs
-                  ?.filter(
-                    (job) =>
-                      job?.c204_id_vacant_status?.c204_description === "Abierta"
-                  )
-                  .map((job) => (
-                    <Link
-                      to={`vacante/${job?.t200_id_vacant}`}
-                      key={job?.t200_id_vacant}
-                    >
-                      <CardJob job={job} />
-                    </Link>
-                  ))
-              )}
-            </div>
-          </article>
-        </>
-      ) : (
-        <ListEmptyJobs />
-      )}
-    </>
-  );
+  if (jobs?.length > 0) {
+    return (
+      <>
+        {jobs.map((job) => <CardJob key={job?.t200_id_vacant} randomColor={getRandomColor()} job={job} />)}
+      </>
+    );
+  }
+  return <ListEmptyJobs />;
 };
 
 export default JobList;

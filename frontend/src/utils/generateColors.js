@@ -14,3 +14,13 @@ export function stringToColor(string) {
   return color;
 
 };
+
+export function getRandomColor() {
+  let colorCode = '123456789ABCDEF'
+  let finalColor = '#'
+
+  for (let i = 0; i < 6; ++i) {
+    finalColor += colorCode[Math.floor(Math.random() * 16)]
+  }
+  return finalColor
+}
