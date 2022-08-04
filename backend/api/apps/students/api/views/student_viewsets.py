@@ -28,8 +28,7 @@ class StudentViewSet(viewsets.GenericViewSet):
    							"email": "",
    							"is_staff": False,
    							"user_type": "STUDENT",
-   							"is_active": True,
-							"user_id":0
+   							"is_active": True
 				}
 
 	def get_tokens_for_user(self,user):
@@ -68,8 +67,7 @@ class StudentViewSet(viewsets.GenericViewSet):
 	def set_alumno(self,data,user):
 		alumno = {
 			"id_user" : user,
-			"t100_email" : data['t100_email'],
-			"password" : ""
+			"t100_email" : data['t100_email']
 		}
 		return alumno
 
