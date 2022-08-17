@@ -1,10 +1,9 @@
 import React from "react";
-// import { useLocation } from "react-router-dom";
 import LinkButton from "components/Button/LinkButton";
 import { MdOutlineBusinessCenter } from "react-icons/md";
-import { TiHomeOutline } from "react-icons/ti";
 import { IoBusinessOutline } from "react-icons/io5";
 import { BsMegaphone } from "react-icons/bs";
+import homeIcon from "assets/icons/home.png"
 import {
   Logo,
   NavLeft,
@@ -12,35 +11,20 @@ import {
   NavItem,
   NavLink,
 } from "./styled-components/MainMenuStyled";
-// import "./MenuIndicator.css";
 
 const MainMenu = () => {
-
-  // const location = useLocation();
-  // const menuRef = useRef(null);
-
-  // useEffect(() => {
-  //   let links = menuRef.current.querySelectorAll("[data-link]");
-  //   links.forEach((link) => {
-  //     link.classList.remove('active')
-  //     if (link.pathname === location.pathname) {
-  //       link.classList.add('active')
-  //     }
-  //   });
-
-  // }, [location]);
-
+  console.log(process.env.REACT_APP_PATH_HOME)
   return (
     <>
       <NavLeft>
-        <NavLink to="/">
+        <NavLink to='/'>
           <MdOutlineBusinessCenter style={{ fontSize: "1.8rem" }} />
           <Logo>ESCOM</Logo>
         </NavLink>
       </NavLeft>
       <NavList>
         <NavLink to="/" data-link className='active'>
-          <TiHomeOutline />
+          <img width='18px' src={homeIcon} alt="home" />
           Inicio
         </NavLink>
         <NavLink to="/empresas" data-link>
@@ -52,10 +36,10 @@ const MainMenu = () => {
           Comunicados
         </NavLink>
         <NavItem>
-          <LinkButton to="/alumno">Iniciar sesion</LinkButton>
+          <LinkButton to="/alumno" text='Iniciar sesion' bg='#FFF' color='#000' />
         </NavItem>
         <NavItem>
-          <LinkButton to="/reclutador" bg='#F13465' color='#FFF'>Publicar empleo</LinkButton>
+          <LinkButton to="/reclutador" text='Publicar empleo' bg='#F13465' color='#FFF' />
         </NavItem>
       </NavList>
     </>

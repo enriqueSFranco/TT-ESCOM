@@ -5,6 +5,10 @@
   background-repeat: no-repeat;
 }
 
+/* .active {
+  background-color: #2b2b2bcc;
+} */
+
 .bg {
   background-image: url(../../images/beneficios-del-smart-working.jpg);
 }

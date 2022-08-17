@@ -26,7 +26,6 @@ const GridButtom = styled.div`
 const Form = styled.form`
   width: fit-content;
   height: 80px;
-  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,7 +33,6 @@ const Form = styled.form`
   backdrop-filter: blur(10px);
   padding: .5rem;
   border-radius: 4px;
-  z-index: 99;
 `
 
 export { Main, GridButtom, GridTop, Form }

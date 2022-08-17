@@ -2,8 +2,13 @@ import styled from 'styled-components'
 
 const BoxInput = styled.div`
   position: relative;
-  width: fit-content;
+  border: 1.5px solid #ccc;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: ${props => props.bgInput ? props.bgInput : '#fff'};
+  width: ${({width}) => width || '100%'};
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 `
 
 const InputLabel = styled.span`
@@ -14,46 +19,47 @@ const InputLabel = styled.span`
   pointer-events: none;
   font-size: 1rem;
   transition: all .5s ease;
-`
+  `
 
 const TextField = styled.input`
-  width: ${({width}) => width ? width : '100%'};
-  padding: 1rem;
+  width: ${({width}) => width || '100%'};
   outline: none;
-  border: 1.5px solid #ccc;
-  color: ${props => props.color ? props.color : '#fff'};
+  padding: 1rem;
+  color: ${props => props.color ? props.color : '#000'};
+  background-color: ${props => props.bgInput ? props.bgInput : '#fff'};
   font-weight: 400;
+  border: none;
   font-size: 1rem;
   letter-spacing: 1px;
-  border-radius: .2rem;
-  background-color: ${props => props.bgInput ? props.bgInput : '#00000097'};
 
   &:focus {
-    border: 1.5px solid #1A73E8;;
+    box-shadow: #1A73E8 0px 0px 0px 1px, #1A73E8 0px 0px 0px 1px inset;
   }
   
   &:valid ~ span,
   &:focus ~ span {
-    color: ${props => props.colorTextFloat ? props.colorTextFloat : '#fff' };
-    transform: translateX(1rem) translateY(-.6rem);
-    background-color: ${props => props.bgTextFloat ? props.bgTextFloat : '#00000097'};
+    color: ${props => props.colorTextFloat ? props.colorTextFloat : '#1A73E8' };
+    transform: translateX(1rem) translateY(-1.9rem);
+    background-color: ${props => props.bgTextFloat || '#fff'};
     font-size: .75rem;
     letter-spacing: 1px;
     padding: 0 .2rem;
-    backdrop-filter: blur(10px);
+    /* backdrop-filter: blur(10px); */
   }
 `
 
 const Icon = styled.div`
   position: absolute;
   width: 20px;
-  height: 90%;
-  right: .5rem;
-  top: .1rem;
+  height: 80%;
+  right: .2rem;
+  top: .3rem;
+  margin-left: 1rem;
   display: flex;
   align-items: center;
   font-size: 1.1rem;
-  color: ${({iconColor}) => iconColor || '#fff'};
+  background-color: ${props => props.bgInput || '#fff'};
+  color: ${({iconColor}) => iconColor || '#000'};
   cursor: pointer;
 `
 

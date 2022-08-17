@@ -32,6 +32,7 @@ const WrapperForm = styled.div`
     border-radius: 2rem;
     background-color: #00000097;
     backdrop-filter: blur(10px);
+    box-shadow: #1C8EFB 0px 1px 1px, #1C8EFB 0px 1px 1px;
   }
 
 `

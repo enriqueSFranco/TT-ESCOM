@@ -37,13 +37,14 @@ const Company = () => {
       <Main>
         <GridTop>
           <LayoutHero src_photo={bgCompany} alt_photo="bg-company">
-            <h1>Empresas registradas</h1>
             <Form>
               <Input
                 type="text"
                 label="Buscar una empresa"
                 width='400px'
+                bgInput='#00000097'
                 icon={<BsSearch />}
+                iconColor='#fff'
                 id="query"
                 name="query"
                 value={query}

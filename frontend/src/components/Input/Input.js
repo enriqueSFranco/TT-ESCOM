@@ -1,16 +1,39 @@
-import { BoxInput, Icon, InputLabel, TextField } from './styled-components/InputStyled'
+import {
+  BoxInput,
+  Icon,
+  InputLabel,
+  TextField,
+} from "./styled-components/InputStyled";
 
-const Input = ({label, icon = null, iconColor, onClick, width, type = 'text', ...rest}) => {
+const Input = ({
+  label,
+  type = "text",
+  icon = null,
+  iconColor,
+  bgInput,
+  onClick,
+  position,
+  width,
+  ...rest
+}) => {
   return (
-    <BoxInput>
-      <TextField type={type} required='required' width={width} autoComplete='off' {...rest} />
+    <BoxInput bgInput={bgInput} width={width}>
+      <TextField
+        type={type}
+        required="required"
+        autoComplete="off"
+        width={width}
+        bgInput={bgInput}
+        {...rest}
+      />
       <InputLabel>{label}</InputLabel>
-      {
-        !icon ? null : <Icon iconColor={iconColor} onClick={onClick}>{icon}</Icon>
-      }
-      
+      {!icon ? null : (
+        <Icon bgInput={bgInput} iconColor={iconColor} onClick={onClick}>
+          {icon}
+        </Icon>
+      )}
     </BoxInput>
-  )
-}
+  );
+};
 
-export default Input
+export default Input;

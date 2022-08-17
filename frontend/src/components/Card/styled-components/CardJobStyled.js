@@ -13,7 +13,7 @@ const CardBody = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  box-shadow: ${props => `${props.borderColor} 0px 1px 2px, ${props.borderColor} 0px 0px 0px 2px ` || `rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px`};
 `;
 
 const CardHeader = styled.header`
@@ -77,11 +77,13 @@ const Actions = styled.div`
 const Button = styled.button`
   background-color: ${props => props.bgColor || '#018dd4'};
   color: #fff;
+  font-weight: 700;
+  font-size: .9rem;
   border: none;
   outline: none;
   padding: 0.5rem;
   width: 120px;
-  border-radius: 2px;
+  border-radius: 2rem;
   cursor: pointer;
 
 `;

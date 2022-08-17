@@ -10,7 +10,7 @@ const WrapperPhoto = styled.div`
   width: 100%;
   height: inherit;
   position: absolute;
-`
+  `
 
 const Photo = styled.img`
   object-fit: cover;
@@ -18,11 +18,12 @@ const Photo = styled.img`
   position: absolute;
   width: 100%;
   height: 400px;
+  bottom: 70px;
   
-`
+  `
 
 const Content = styled.div`
-  height: inherit;
+  height: 300px;
   width: 100%;
   display: flex;
   align-items: center;

@@ -8,7 +8,6 @@ const Header = styled.header`
   width: 100%;
   height: 4rem;
   ${props => {
-    console.log(props.top)
     if (props.top) {
       return `
         background-color: #000;
@@ -16,7 +15,7 @@ const Header = styled.header`
       `
     } else {
       return `
-        background-color: #ffffff7e;
+        background-color: #2b2b2bcc;
         backdrop-filter: blur(10px);
         transition: background-color .4s ease-in-out;
       `

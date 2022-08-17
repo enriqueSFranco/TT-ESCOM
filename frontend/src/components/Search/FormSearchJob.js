@@ -20,6 +20,8 @@ const FormSearchJob = ({ handleSearch }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [filterData, setFilterData] = useState(data);
 
+  console.log(data)
+
   const handleFilterJob = (e) => {
     const query = e.target.value;
     setQueryJob(query);
@@ -43,7 +45,7 @@ const FormSearchJob = ({ handleSearch }) => {
     }, 2000);
   };
 
-  if (!data) return null;
+  // if (!data) return null;
 
   return (
     <WrapperForm>
