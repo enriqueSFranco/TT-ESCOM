@@ -1,6 +1,6 @@
 export const API_RECRUITER = "/api/Recruiters/";
 export const API_RECRUITERVACANTS = "/api/RecruiterVacants/";
-export const API_COMPANY = "/api/Companies/";
+export const API_COMPANY = "/company/Companies/";
 export const API_PHOTO_COMPANY = "/images/CompanyLogo/";
 export const API_JOBS = `/api/Vacants/`;
 export const API_VACANTS_APPLICATIONS_JOB_STUDENT = "/api/VacantApplications/";

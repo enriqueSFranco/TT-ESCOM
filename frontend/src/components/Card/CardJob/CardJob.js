@@ -1,12 +1,9 @@
 import React from "react";
 import Chip from "components/Chip/Chip";
-import { getRandomColor } from "utils/generateColors";
-// import { numberFormat } from "utils/numberFormat";
-// import { formatDate } from "utils/formatDate";
-// import * as GiIcon from "react-icons/gi";
-// import * as BsIcon from "react-icons/bs";
-// import * as MdIcon from "react-icons/md";
-import { IoBusiness } from "react-icons/io5"
+import { numberFormat } from "utils/numberFormat";
+import { openModal } from "utils/openModal";
+import { formatDate } from "utils/formatDate";
+import { IoBusiness } from "react-icons/io5";
 import {
   Actions,
   Button,
@@ -21,83 +18,47 @@ import {
   TitleJob,
 } from "../styled-components/CardJobStyled";
 
-const CardJob = ({ randomColor }) => {
-  // if (!job) return null;
+const CardJob = ({ job, randomColor }) => {
+  if (!job) return null;
 
   const tags = [
-    {label: 'Full Time'},
-    {label: 'Flex, sched'},
-    {label: 'Midl lvl'},
-  ]
+    { label: `Exp: ${job?.c207_id_experience?.c207_description}` },
+    { label: job?.t200_max_salary ? `${numberFormat(job?.t200_max_salary).replace('.00', '')}` : '-'},
+    { label: "Midl lvl" },
+  ];
+
+  const handleOpenModal = () => openModal()
 
   return (
     <CardBody borderColor={randomColor}>
       <CardHeader>
         <div>
-          <IoBusiness style={{color: 'darkgray', fontSize: '3.5rem'}}/>
-          {/* {job?.t300_id_company?.t300_logo ? (
+          {job?.t300_id_company?.t300_logo ? (
             <img
               src={job?.t300_id_company?.t300_logo}
               alt={job?.t300_id_company?.t300_name}
             />
           ) : (
-            <IoIcon.IoMdBusiness className={styles.notLogo} />
-          )} */}
+            <IoBusiness style={{ color: "darkgray", fontSize: "3.5rem" }} />
+          )}
         </div>
-        <PublicationDate>1 Agosto</PublicationDate>
-        {/* <h3 className={`${styles.nameCompany}`}>{job?.t200_job}</h3> */}
+        <PublicationDate>{formatDate(job?.t200_publish_date)}</PublicationDate>
       </CardHeader>
       <CardContent>
-        <TitleJob>UX designer</TitleJob>
+        <TitleJob>{job.t200_job}</TitleJob>
         <Tags>
-          {
-            tags.map((tag, index) => (
-              <TagsItem key={crypto.randomUUID()} index={index}>
-                <Chip label={tag.label} />
-              </TagsItem>
-            ))
-          }
+          {tags.map((tag, index) => (
+            <TagsItem key={crypto.randomUUID()} index={index}>
+              <Chip label={tag.label} />
+            </TagsItem>
+          ))}
         </Tags>
         <Location>Cupertino, California</Location>
-        <Description>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis sequi, minima unde perspiciatis qui assumenda aperiam nisi itaque numquam deleniti, cupiditate quis odit illum exercitationem et commodi perferendis corrupti nihil.
-        </Description>
+        <Description>{job.t200_description}</Description>
         <Actions>
-          <Button bgColor={randomColor}>View More</Button>
+          <Button bgColor={randomColor} onClick={handleOpenModal}>Ver mas</Button>
         </Actions>
       </CardContent>
-      {/* <div>
-        <div className={styles.summary}>
-          <p className={`${styles.lineClamp}`}>{job?.t200_description}</p>
-        </div>
-        <div className={styles.wrapper}>
-          <div className={styles.wrapperTags}>
-            <Chip
-              label={`Modalidad: ${
-                job?.t200_home_ofice ? "Remoto" : "Presencial"
-              }`}
-              size="small"
-              icon={<MdIcon.MdBusinessCenter style={{ color: "#78909c" }} />}
-            />
-
-            <Chip
-              label={`Sueldo: ${numberFormat(job?.t200_min_salary).slice(
-                4
-              )}MXN a ${numberFormat(job?.t200_max_salary).slice(4)}MXN al mes`}
-              size="small"
-              icon={<GiIcon.GiMoneyStack style={{ color: "green" }} />}
-            />
-
-            <Chip
-              label={`Fecha de publicacion: ${formatDate(
-                job?.t200_publish_date
-              )}`}
-              size="small"
-              icon={<BsIcon.BsCalendarDate style={{ color: "red" }} />}
-            />
-          </div>
-        </div>
-      </div> */}
     </CardBody>
   );
 };

@@ -57,7 +57,7 @@ export const useForm = (initialForm, validateForm) => {
   const handleSubmitCompany = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
-    console.log(form);
+  
     if (Object.keys(errors).length === 0) {
       createBusiness(form)
         .then(response => {
@@ -97,7 +97,7 @@ export const useForm = (initialForm, validateForm) => {
   const onSubmitPostJob = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
-
+    console.log(form)
     if (Object.keys(errors).length === 0) {
       setLoading(true);
       postJob(form)
@@ -123,9 +123,6 @@ export const useForm = (initialForm, validateForm) => {
           setLoading(false);
         }
       })
-    // if (Object.keys(errors).length === 0) {
-    //   setLoading(true);
-    // }
   } 
 
   return {

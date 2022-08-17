@@ -4,7 +4,7 @@ import { useForm } from "hooks/useForm";
 import { useFetch } from "hooks/useFetch";
 // import { TextField, Autocomplete, FormControl } from "@mui/material/";
 import { API_COMPANY } from "services/settings";
-import { companyInitialForm } from "../../types/schemes";
+import { companyInitialForm } from "../../../types/schemes";
 import FormBusinessRecruiter from "./FormBusinessRecruiter";
 import FormCompanyInfo from "./FormCompanyInfo";
 import FormRecruiterInfo from "./FormRecruiterInfo";

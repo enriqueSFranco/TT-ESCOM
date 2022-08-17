@@ -37,7 +37,6 @@ const Root = () => {
         </Route> */}
       </Route>
       
-      <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>   
         <Route path="/dashboard" element={<PageDashBoard />} />
         <Route path="/mis-vacantes" element={<PageHistory />}>
           <Route path=":t200_id_vacant" element={<CardJobDetails />} />
@@ -47,6 +46,7 @@ const Root = () => {
         </Route>
           <Route path="/perfil-del-candidato" element={<FullProfileUser />} />
         <Route path="/publicar-comunicado" element={<PagePostRelease />} />
+      <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>   
         {/* <Route path="/candidatos" element={<PageApplications />} /> */}
       </Route>
 

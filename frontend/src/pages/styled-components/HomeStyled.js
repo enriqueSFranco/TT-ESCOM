@@ -7,7 +7,7 @@ const Main = styled.main`
                       "hero hero"
                       "aside content_data";
   position: relative;
-  top: 4rem;
+  /* top: 4rem; */
 `
 
 const Hero = styled.div`

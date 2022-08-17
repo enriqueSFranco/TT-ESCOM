@@ -36,6 +36,7 @@ import burrito from "images/emoji_angustiado.jpg";
 import * as GiIcon from "react-icons/gi";
 import * as BsIcon from "react-icons/bs";
 import * as MdIcon from "react-icons/md";
+import MenuAsideRecruiterListVacants from "components/Menu/MenuAsideRecruiterListVacants";
 
 const vacantApplicationsData = {
   applications: 0,
@@ -200,82 +201,8 @@ const PageHistory = () => {
     <>
       <section className={styles.wrapper}>
         {/* seccion izquierda */}
-        <aside className={styles.sidebar}>
-          <header className={styles.header}>
-            <form className={styles.form}>
-              <div className={styles.boxSearch}>
-                <BiSearch />
-                <input
-                  type="text"
-                  name="search"
-                  id="search"
-                  autoComplete="off"
-                  value={search}
-                  onChange={handleSearchVacant}
-                  // onFocus={handleFocus}
-                  onBlur={handleBlur}
-                  placeholder="Buscar vacante"
-                  className={`${search !== "" ? `${styles.inputSearchFocus}` : `${styles.inputSearch}`}`}
-                />
-              </div>
-              <div
-                className={`${
-                  search !== "" ? `${styles.displayDataFiltered}` : `${styles.displayNone}`
-                }`}
-              >
-                <ul className={styles.listData}>
-                  {filterData?.map((item) => (
-                    <li className={styles.listItem} key={item?.t200_id_vacant}>{item?.t200_job}</li>
-                  ))}
-                </ul>
-              </div>
-            </form>
-            <button
-              className={`${styles.btnAddJob} ${styles.tooltip}`}
-              onClick={setModal1}
-            >
-              <GrAdd />
-              <span className={styles.tooltipBox}>
-                Agregar una nueva vacante.
-              </span>
-            </button>
-          </header>
-          {/* lista de vacantes */}
-          {listJobs?.length > 0 ? (
-            <article className={styles.wrapperListJobs}>
-              {listJobs &&
-                listJobs?.map((listJobs) => (
-                  <Link
-                    to={`${listJobs?.t200_id_vacant}`}
-                    key={uuid()}
-                    style={{ color: "#000" }}
-                    onClick={handleInitialContent}
-                  >
-                    <ApplicationJob
-                      nameJob={listJobs?.t200_job}
-                      salary={listJobs?.t200_max_salary}
-                      madality={listJobs?.t200_home_ofice}
-                      nameBusisness={listJobs?.t300_id_company?.t300_name}
-                      typeBusiness={
-                        listJobs?.t300_id_company?.t300_bussiness_name
-                      }
-                      workingHours={`Lunes a Viernes de ${listJobs?.t200_check_time} a ${listJobs?.t200_closing_hour}`}
-                      vacantState={
-                        listJobs?.c204_id_vacant_status?.c204_description
-                      }
-                    />
-                  </Link>
-                ))}
-            </article>
-          ) : (
-            <article className={`container ${styles.notJobs}`}>
-              <div className={styles.bodyNotJobs}>
-                <h2>No tienes vacantes publicadas recientemente</h2>
-                <img src={burrito} alt="burrito_ipn" />
-              </div>
-            </article>
-          )}
-        </aside>
+        <MenuAsideRecruiterListVacants />
+
         <article className={styles.contentDetailsJob}>
           {/* seccion derecha */}
           <div className={styles.containerRight}>
@@ -470,14 +397,14 @@ const PageHistory = () => {
           </div>
         </article>
       </section>
-      {modalType == 1 && (
+      {modalType === 1 && (
         <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
           <FormPostJob
             idCompany={recruiter[0]?.t300_id_company?.t300_id_company}
           />
         </ModalForm>
       )}
-      {modalType == 2 && (
+      {modalType === 2 && (
         <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
           <ConfirmDelete
             deleteJob={handleDeleteJob}
@@ -486,7 +413,7 @@ const PageHistory = () => {
           />
         </ModalForm>
       )}
-      {modalType == 3 && (
+      {modalType === 3 && (
         <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
           <FormUpdateJob job={job} />
         </ModalForm>

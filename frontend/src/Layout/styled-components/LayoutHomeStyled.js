@@ -1,7 +1,6 @@
-import React from 'react'
 import styled from "styled-components";
 
-const LayoutHomeStyle = styled(React.Fragment)`
+const LayoutHomeStyle = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
@@ -11,11 +10,11 @@ const LayoutHomeStyle = styled(React.Fragment)`
     "main";
 `
 
-const Header = styled(React.Fragment)`
+const Header = styled.div`
   grid-area: header;
 `
 
-const Main = styled(React.Fragment)`
+const Main = styled.div`
   grid-area: main;
 `
 

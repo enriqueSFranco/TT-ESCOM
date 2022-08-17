@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "hooks/useForm";
-import { loginFormCompany } from "../../types/schemes";
+import { loginFormCompany } from "../../../types/schemes";
 import { useAuth } from "context/AuthContext";
 import { InputAdornment } from "@mui/material";
 import TextField from "@mui/material/TextField";

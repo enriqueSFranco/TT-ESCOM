@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import { useForm } from "hooks/useForm";
-import { postJobInitialForm } from "../../types/schemes";
-import FormPostJobLocation from "./FormPostJobLocation";
-import FormPostJobDetails from "./FormPostJobDetails";
-import styles from "./FormPostJob.module.css";
 import { useAuth } from "context/AuthContext";
-import { useFetch } from "hooks/useFetch";
+import { useForm } from "hooks/useForm";
+import { POST_NEW_JOB } from "types/newJob";
+import TextEditor from "components/TextEditor/TextEditor";
 
 const validateForm = (form) => {
   let errors = {};
@@ -20,58 +17,56 @@ const validateForm = (form) => {
     errors.t200_job =
       "El campo 'Titulo de la vacante' solo acepta letras y espacios en blanco.";
 
-  if(!form.t200_cp)
-    errors.t200_cp = "El código postal es incorrecto"
+  if (!form.t200_cp) errors.t200_cp = "El código postal es incorrecto";
 
   return errors;
 };
 
-const FormPostJob = ({idCompany}) => {
-  const [step, setStep] = useState(1);
+const FormPostJob = ({ idCompany }) => {
   const { token } = useAuth();
-  const { data } = useFetch("/api/catalogues/CatalogueSkills/");
-  const [ vacantSkills, setVacantSkills ] = useState([]);
-  const { 
-    form, 
-    errors, 
-    handleChange, 
-    handleChecked, 
-    onSubmitPostJob 
-  } = useForm({...postJobInitialForm, 
-    t301_id_recruiter : token?.user?.user_id,
-    t300_id_company : idCompany},validateForm);
-  
-  const nextStep = () => setStep(step + 1);
+  const [body, setBody] = useState("");
 
-  const prevStep = () => setStep(step - 1);
+  const { form, errors, handleChange, onSubmitPostJob } = useForm({
+    ...POST_NEW_JOB,
+    ...{
+      t301_id_recruiter: token?.user?.user_id,
+      t200_description: body,
+      t300_id_company: idCompany,
+    }
+  },
+    validateForm
+  );
   
 
+  // let result = {
+  //   ...POST_NEW_JOB,
+  //   ...{
+  //     t301_id_recruiter: token?.user?.user_id,
+  //     t200_description: body,
+  //     t300_id_company: idCompany,
+  //   }
+  // }
 
-  if (step === 1) {
-    return (
-      <div className={`container ${styles.wrapper}`}>
-        <FormPostJobLocation
-          form={form}
-          errors={errors}
-          handleChange={handleChange}
-          handleChecked={handleChecked}
-          nextStep={nextStep}
-        />
-      </div>
-    );
-  } else if (step === 2) {
-    return (
-      <FormPostJobDetails
-        form={form}
-        handleChange={handleChange}
-        onSubmit={onSubmitPostJob}
-        prevStep={prevStep}
-        skills = {data}
-        vacantSkills = {vacantSkills} 
-        setVacantSkills = {setVacantSkills}
+  console.log('form: ',form.t200_description, ' => body',body);
+
+  return (
+    <form onSubmit={onSubmitPostJob}>
+      <input
+        type="text"
+        id="t200_job"
+        name="t200_job"
+        value={form.t200_job}
+        onChange={handleChange}
       />
-    );
-  }
+      <TextEditor
+        id="description"
+        name="description"
+        value={body}
+        onChange={(newText) => setBody(newText)}
+      />
+      <input type="submit" value="enviar a revision" />
+    </form>
+  );
 };
 
 export default FormPostJob;

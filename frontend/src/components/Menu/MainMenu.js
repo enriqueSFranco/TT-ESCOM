@@ -1,4 +1,6 @@
 import React from "react";
+// import { useLocation } from "react-router-dom";
+import LinkButton from "components/Button/LinkButton";
 import { MdOutlineBusinessCenter } from "react-icons/md";
 import { TiHomeOutline } from "react-icons/ti";
 import { IoBusinessOutline } from "react-icons/io5";
@@ -10,17 +12,23 @@ import {
   NavItem,
   NavLink,
 } from "./styled-components/MainMenuStyled";
-import styles from "./MenuIndicator.module.css";
-import { useActiveMenuItem } from "hooks/useActiveMenuItem";
-
-const menuItems = [
-  { label: "Inicio", icon: <TiHomeOutline />, to: "/" },
-  { label: "Empresas", icon: <IoBusinessOutline />, to: "/empresas" },
-  { label: "Comunicados", icon: <BsMegaphone />, to: "/comunicados" },
-];
+// import "./MenuIndicator.css";
 
 const MainMenu = () => {
-  const [activeIndex] = useActiveMenuItem(0, menuItems)
+
+  // const location = useLocation();
+  // const menuRef = useRef(null);
+
+  // useEffect(() => {
+  //   let links = menuRef.current.querySelectorAll("[data-link]");
+  //   links.forEach((link) => {
+  //     link.classList.remove('active')
+  //     if (link.pathname === location.pathname) {
+  //       link.classList.add('active')
+  //     }
+  //   });
+
+  // }, [location]);
 
   return (
     <>
@@ -31,30 +39,23 @@ const MainMenu = () => {
         </NavLink>
       </NavLeft>
       <NavList>
-        {menuItems.map((menuItem, index) => (
-          <NavLink
-            to={menuItem.to}
-            data-item
-            className={`${activeIndex === index ? `${styles.active}` : null}`}
-          >
-            {menuItem.icon}
-            {menuItem.label}
-          </NavLink>
-        ))}
+        <NavLink to="/" data-link className='active'>
+          <TiHomeOutline />
+          Inicio
+        </NavLink>
+        <NavLink to="/empresas" data-link>
+          <IoBusinessOutline />
+          Empresas
+        </NavLink>
+        <NavLink to="/comunicados" data-link>
+          <BsMegaphone />
+          Comunicados
+        </NavLink>
         <NavItem>
-          <NavLink type="button" bgColor="blue" to="/alumno">
-            Iniciar sesion
-          </NavLink>
+          <LinkButton to="/alumno">Iniciar sesion</LinkButton>
         </NavItem>
         <NavItem>
-          <NavLink
-            type="button"
-            bgColor="#252A48"
-            color="#fff"
-            to="/reclutador"
-          >
-            Publicar empleo
-          </NavLink>
+          <LinkButton to="/reclutador" bg='#F13465' color='#FFF'>Publicar empleo</LinkButton>
         </NavItem>
       </NavList>
     </>

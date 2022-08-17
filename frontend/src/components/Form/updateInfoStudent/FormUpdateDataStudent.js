@@ -3,7 +3,7 @@ import { useForm } from "hooks/useForm";
 import toast from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
 import { updateStudent, getLinks, postSocialNetwork, getStudent } from "services/students/index";
-import { updateStudentInitialForm } from "../../types/schemes";
+import { updateStudentInitialForm } from "../../../types/schemes";
 import TextField from "@mui/material/TextField";
 import Label from "../../Element/Label/Label";
 import Switch from "../../Element/Switch/Switch";

@@ -13,7 +13,7 @@ const CardBody = styled.article`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  outline: ${props => `1.5px solid ${props.borderColor}` || null};
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 `;
 
 const CardHeader = styled.header`
@@ -22,7 +22,11 @@ const CardHeader = styled.header`
   align-items: center;
 `;
 
-const PublicationDate = styled.span``;
+const PublicationDate = styled.span`
+  font-size: .8rem;
+  font-weight: 600;
+  color: #7c7c7c;
+`;
 
 const CardContent = styled.div``;
 

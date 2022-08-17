@@ -6,9 +6,24 @@ const Header = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #000;
-  z-index: 10;
   height: 4rem;
+  ${props => {
+    console.log(props.top)
+    if (props.top) {
+      return `
+        background-color: #000;
+        transition: background-color .4s ease-in-out;
+      `
+    } else {
+      return `
+        background-color: #ffffff7e;
+        backdrop-filter: blur(10px);
+        transition: background-color .4s ease-in-out;
+      `
+    }
+  }}
+  z-index: 10;
+  color: blue;
   font-family: 'Poppins', sans-serif;
 `
 

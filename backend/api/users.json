@@ -41,26 +41,6 @@
 
     {
         "model" : "users.User",
-        "pk" : 3,
-        "fields":{
-            "password": "pbkdf2_sha256$320000$Z2LBfMZuiFfh9pjQZK753n$VITNBEGuXuDcQd0NnXkv5EZCQPliBaBsShFXW5CMnFw=",
-            "last_login": null,
-            "is_superuser": false,
-            "username": "joel@gmail.com",
-            "first_name": "",
-            "last_name": "",
-            "email": "joel@gmail.com",
-            "is_staff": false,
-            "date_joined": "2022-08-04T02:09:55.027412Z",
-            "user_type": "STUDENT",
-            "is_active": true,
-            "groups": [],
-            "user_permissions": []
-        }
-    },
-
-    {
-        "model" : "users.User",
         "pk" : 4,
         "fields":{
             "password": "pbkdf2_sha256$320000$gO13DS6FTonkwp0UKzVbqG$2ddsLbUja6PPEYFiH2pas8THPkLsfRQJfjIdKvP/Me8=",

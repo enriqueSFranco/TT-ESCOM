@@ -1,24 +1,21 @@
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { useFetch } from "hooks/useFetch";
-import { API_COMPANY } from "services/settings";
-import { getVacantsFilter } from "services/jobs";
-
 import Input from "components/Input/Input";
 import { BsSearch } from 'react-icons/bs'
 import Skeleton from "components/Skeleton/Skeleton";
 import CardCompany from "components/Card/Company/CardCompany";
 import LayoutHome from "Layout/LayoutHome";
-import { Main, GridButtom, GridTop, Form } from "./styled-components/CompanyStyled";
 import LayoutHero from "Layout/LayoutHero";
 import bgCompany from "images/companyBackground.jpg";
+import { Main, GridButtom, GridTop, Form } from "./styled-components/CompanyStyled";
 import styles from "./main/PageCompany.module.css";
 
 const Company = () => {
   const [query, setQuery] = useState("");
   const [companyMatch, setCompanyMatch] = useState(null);
-  const { data, loading } = useFetch(API_COMPANY);
-
+  const { data, loading } = useFetch(process.env.REACT_APP_URL_COMPANY);
+  
   const searchCompany = (query) => {
     let input = query.toLowerCase().trim();
     if (input !== "") {

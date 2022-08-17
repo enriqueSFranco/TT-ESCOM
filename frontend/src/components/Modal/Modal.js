@@ -1,21 +1,46 @@
-import ReactDOM from "react-dom";
+import { useRef } from "react";
+import { unmountComponentAtNode } from "react-dom";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import styles from "./Modal.module.css";
+import {
+  Button,
+  WrapperModal,
+  Title,
+  ModalContainer,
+  ModalHeader,
+  ModalContent,
+} from "./styled-components/ModalStyled";
+import './styled-components/animation.css'
 
+const Modal = ({ children, title = "", root }) => {
+  const ref = useRef(null);
 
-const Modal = ({ children, isOpen, closeModal }) => {
+  function callback() {
+    unmountComponentAtNode(root); // destruimos la referencia del componente
+    document.getElementById("modal").remove();
+    ref.current.removeEventListener("animationend", callback);
+  }
+  
+  function handleClick() {
+    console.log(ref.current.classList)
+    // detectamos cuando la animacion termine
+    ref.current.classList.add('fadeOut')
+    ref.current.addEventListener("animationend", (e) => callback, {
+      once: true,
+    });
+  }
 
-  return ReactDOM.createPortal(
-      <article
-        className={`${styles.modal} ${isOpen && styles.isOpen}`}
-        // onClick={closeModal}
-      >
-        <div className={styles.modalContainer}>
-          <button className={styles.modalClose} onClick={closeModal}><AiOutlineCloseCircle /></button>
-          {children}
-        </div>
-      </article>,
-      document.getElementById("modal")
+  return (
+    <WrapperModal ref={ref}>
+      <ModalContainer>
+        <ModalHeader>
+          <Title>{title}</Title>
+          <Button onClick={handleClick}>
+            <AiOutlineCloseCircle />
+          </Button>
+        </ModalHeader>
+        <ModalContent>{children}</ModalContent>
+      </ModalContainer>
+    </WrapperModal>
   );
 };
 

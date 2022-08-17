@@ -118,6 +118,7 @@ const Home = () => {
         <Hero>
           <LayoutHero src_photo={parallaxESCOM} alt_photo="parallax-ESCOM">
             <FormSearchJob handleSearch={handleSearch} />
+            isdfiosdu
           </LayoutHero>
         </Hero>
         <Content>

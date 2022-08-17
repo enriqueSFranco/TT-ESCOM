@@ -25,7 +25,7 @@ export const getJobRequirements = (id) => {
 };
 
 export const getJob = (id) => {
-  return API(`${API_JOBS}${id}/`)
+  return API(`${process.env.REACT_APP_URL_VACANTS}${id}/`)
     .then((response) => {
       const { data } = response;
       return data;
@@ -52,12 +52,7 @@ export const getApplicationsJobs = (id) => {
 };
 
 export const postJob = (body) => {
-  return API.post(API_JOBS, body, {
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    })
+  return API.post(process.env.REACT_APP_URL_VACANTS, body)
     .then((response) => {
       const { data } = response;
       return data;

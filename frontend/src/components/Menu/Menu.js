@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuth } from "context/AuthContext";
-import { USERS } from "components/types/users";
+import { USERS } from "types/users";
 import MainMenu from "./MainMenu";
 import MenuRecruiter from "./MenuRecruiter";
 import LayoutMenu from "Layout/LayoutMenu";

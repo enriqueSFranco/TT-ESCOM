@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const LayoutHeroStyled = styled.section`
   width: 100%;
-  height: 300px;
+  height: 400px;
   position: relative;
 `
 
@@ -17,7 +17,7 @@ const Photo = styled.img`
   object-position: center;
   position: absolute;
   width: 100%;
-  height: 300px;
+  height: 400px;
   
 `
 

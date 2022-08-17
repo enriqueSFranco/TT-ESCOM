@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { useForm } from "hooks/useForm";
-import { studentInitialForm } from "../../types/schemes";
+import { studentInitialForm } from "../../../types/schemes";
 import TextField from "@mui/material/TextField";
 import { InputAdornment } from "@mui/material";
 import { BiUser } from "react-icons/bi";

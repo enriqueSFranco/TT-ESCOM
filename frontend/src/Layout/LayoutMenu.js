@@ -1,14 +1,15 @@
-import React from 'react'
-import { Header, Nav } from './styled-components/LayoutMenuStyled'
+import React from "react";
+import { useScroll } from "hooks/useScroll";
+import { Header, Nav } from "./styled-components/LayoutMenuStyled";
 
 const LayoutMenu = ({ children }) => {
-  return (
-    <Header>
-      <Nav>
-        {children}
-      </Nav>
-    </Header>
-  )
-}
+  const onScreen = useScroll(300, false)
 
-export default LayoutMenu
+  return (
+    <Header top={onScreen}>
+      <Nav>{children}</Nav>
+    </Header>
+  );
+};
+
+export default LayoutMenu;

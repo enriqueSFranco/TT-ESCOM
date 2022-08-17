@@ -7,7 +7,8 @@
   --color_2: #69D8A3;
   --color_3: #45A5EA;
 
-  --color-logo: #fff;
+  --link-color: #0B1033;
+
 }
 
 html {
@@ -28,6 +29,7 @@ body {
   padding: 0;
   width: 100%;
   height: 100vh;
+  background: #FFFAF9;
 }
 
 li {
