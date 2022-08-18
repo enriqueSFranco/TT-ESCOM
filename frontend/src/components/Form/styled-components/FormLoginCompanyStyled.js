@@ -18,14 +18,19 @@ const Button = styled.button`
 
 const Form = styled.form`
   height: fit-content;
+  outline: 2px solid red;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: .5rem;
   `
 
-
+const BoxInput = styled.div`
+  width: 400px;
+  height: 90px;
+  outline: 2px solid blue;
+`
 
 const Register = styled.div`
   display: flex;
@@ -38,15 +43,15 @@ const Register = styled.div`
 const WrapperForm = styled.div`
   background-color: #ffffff94;
   backdrop-filter: blur(10px);
-  width: 600px;
+  width: 550px;
   position: absolute;
   top: 10rem;
   right: 10rem;
-  border-radius: 2rem 1rem;
+  border-radius: 1rem;
   padding: 2rem 1rem 1rem 1rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   z-index: 99;
 `
 
 
-export { Button, Form, Register, WrapperForm }
+export { Button, BoxInput, Form, Register, WrapperForm }

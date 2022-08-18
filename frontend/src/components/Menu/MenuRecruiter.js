@@ -10,38 +10,24 @@ import {
 const MenuRecruiter = () => {
   return (
     <>
-    <NavLeft>
-      <NavLink to="/">
-        <Logo>ESCOM</Logo>
-      </NavLink>
-    </NavLeft>
+      <NavLeft>
+        <NavLink to="/">
+          <Logo>ESCOM</Logo>
+        </NavLink>
+      </NavLeft>
       <NavList>
         <NavItem>
-          <NavLink to="/dashboard">
-            Dashboard
-          </NavLink>
+          <NavLink to="/dashboard">Dashboard</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/mis-vacantes">
-            Mis vacantes
-          </NavLink>
+          <NavLink to="/mis-vacantes">Mis vacantes</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/publicar-comunicado">
-            Comunicados
-          </NavLink>
+          <NavLink to="/publicar-comunicado">Comunicados</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/solicitudes">
-            Candidatos
-          </NavLink>
+          <NavLink to="/solicitudes">Candidatos</NavLink>
         </NavItem>
-        {/* <NavItem>
-          <BsFillBellFill/>
-        </NavItem> */}
-        {/* <NavItem>
-          <DropMenu />
-        </NavItem> */}
       </NavList>
     </>
   );

@@ -4,7 +4,7 @@ import { useDetectClick } from "hooks/useDetectClick";
 import { stringToColor } from "utils/generateColors";
 import AuthContext from "context/AuthContext";
 import Avatar from "@mui/material/Avatar";
-import DropMenuStudent from "./DropMenuStudent";
+import DropMenuStudent from "./MenuCandidate";
 import DropMenuRecruiter from "./DropMenuRecruiter";
 import { IoMdMenu } from "react-icons/io";
 import styles from "./Dropdown.module.css";

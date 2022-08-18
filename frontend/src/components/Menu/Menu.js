@@ -2,6 +2,7 @@ import React from "react";
 import { useAuth } from "context/AuthContext";
 import { USERS } from "types/users";
 import MainMenu from "./MainMenu";
+import MenuCandidate from "./MenuCandidate";
 import MenuRecruiter from "./MenuRecruiter";
 import LayoutMenu from "Layout/LayoutMenu";
 
@@ -11,7 +12,9 @@ const Menu = () => {
 
   if (typeUser === USERS.candidate) {
     return (
-      <></>
+      <LayoutMenu>
+        <MenuCandidate />
+      </LayoutMenu>
     )
   }
 

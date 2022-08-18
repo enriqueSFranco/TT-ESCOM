@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion" ;
+
 import styles from "./MenuStudent.module.css";
+
 
 // secciones del menu
 let tabs = [

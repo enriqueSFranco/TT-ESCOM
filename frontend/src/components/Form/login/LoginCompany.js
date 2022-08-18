@@ -2,7 +2,7 @@ import React from "react";
 import { usePassword } from "hooks/usePassword";
 import { useForm } from "hooks/useForm";
 import LayoutHome from "Layout/LayoutHome";
-import { loginFormCompany } from "../../../types/schemes";
+import { initialFormLoginCompany } from "types/loginUsers";
 import LinkButton from "components/Button/LinkButton";
 import Input from "components/Input/Input";
 import { useAuth } from "context/AuthContext";
@@ -17,7 +17,7 @@ import {
 
 const LoginCompany = () => {
   const [showPassword, handleShowPassword] = usePassword();
-  const { form, handleChange } = useForm(loginFormCompany);
+  const { form, handleChange } = useForm(initialFormLoginCompany);
   const { loginRecruiter } = useAuth();
 
   return (

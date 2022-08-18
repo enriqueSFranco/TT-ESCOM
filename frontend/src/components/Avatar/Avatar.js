@@ -1,13 +1,18 @@
 import Avatar from "@mui/material/Avatar";
 import { stringToColor } from "utils/generateColors";
 
-const CustomAvatar = ({student = [], width, height, fontSize}) => {
+const CustomAvatar = ({student = 'BTC', width, height, fontSize}) => {
   
-  if (student.length < 0) return null;
+  if (student === '') {
+    <Avatar sx={{ width: width, height: height, bgcolor: stringToColor(`${student}`), fontSize: fontSize }}>
+      {student}
+    </Avatar>
+  }
+  console.log(student)
 
   return (
-    <Avatar sx={{ width: width, height: height, bgcolor: stringToColor(`${student && student[0]?.t100_name}`), fontSize: fontSize }}>
-    {student[0]?.t100_name && student[0]?.t100_name.slice(0,1)}{student[0]?.t100_last_name && student[0]?.t100_last_name.slice(0,1)}
+    <Avatar sx={{ width: width, height: height, bgcolor: stringToColor(`${student}`), fontSize: fontSize }}>
+    {student.slice(0,1)}
   </Avatar>
   )
 }
