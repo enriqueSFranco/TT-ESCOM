@@ -114,11 +114,11 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self,attrs):
         data = super().validate(attrs)
         token = self.get_token(self.user)     
-        print(self.user.user_id)
+        print(self.user.id)
         data['refresh']=str(token)
         data['access']=str(token.access_token)		
         user={
-			'user_id':self.user.user_id,
+			'user_id':self.user.id,
 			'username':self.user.username,
 			'email':self.user.email,#---------->Quitar cuando se cambie la forma de validar si entrar al step o no
 			'user_type':self.user.user_type,
