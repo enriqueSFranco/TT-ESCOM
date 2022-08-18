@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
 import { useModal } from "hooks/useModal";
-import { uuid } from "utils/uuid";
 import { numberFormat } from "utils/numberFormat";
 import Chip from "@mui/material/Chip";
 import { GoTrashcan } from "react-icons/go";
@@ -16,13 +15,13 @@ import {
   getJobsForRecruiter,
   getRecruiterInfo,
 } from "services/recruiter/index";
-import ApplicationJob from "components/Card/ApplicationJob/ApplicationJob";
+// import ApplicationJob from "components/Card/ApplicationJob/ApplicationJob";
 import ModalForm from "components/Modal/ModalVacants";
 import FormPostJob from "components/Form/postJob/FormPostJob";
 import FormUpdateJob from "components/Form/postJob/FormUpdateJob";
 import ConfirmDelete from "components/Alert/Confirm/ConfirmDelete";
-import { BiSearch } from "react-icons/bi";
-import { GrAdd } from "react-icons/gr";
+// import { BiSearch } from "react-icons/bi";
+// import { GrAdd } from "react-icons/gr";
 
 import Candidate from "images/candidate.png";
 import Application from "images/application.png";
@@ -32,11 +31,15 @@ import Reject from "images/reject.png";
 import { deleteJob } from "services/jobs/index";
 import applicationsIcon from "images/applications.png";
 import styles from "./PageHistory.module.css";
-import burrito from "images/emoji_angustiado.jpg";
+// import burrito from "images/emoji_angustiado.jpg";
 import * as GiIcon from "react-icons/gi";
 import * as BsIcon from "react-icons/bs";
 import * as MdIcon from "react-icons/md";
-import MenuAsideRecruiterListVacants from "components/Menu/MenuAsideRecruiterListVacants";
+import FormSearchJob from "components/Menu/FormSearchJobRecruiter";
+import LayoutHome from "Layout/LayoutHome";
+import CardJobPreviewRecruiter from "components/Card/CardJobPreviewRecruiter";
+import { Aside, Container, Wrapper, WrapperListCardJobPreviewRecruiter } from '../styled-components/DashboardRecruiterStyled'
+
 
 const vacantApplicationsData = {
   applications: 0,
@@ -198,15 +201,38 @@ const PageHistory = () => {
   };
 
   return (
-    <>
-      <section className={styles.wrapper}>
-        {/* seccion izquierda */}
-        <MenuAsideRecruiterListVacants />
+    <LayoutHome>
+      <Wrapper>
+        <Aside>
+          <FormSearchJob />
+          <WrapperListCardJobPreviewRecruiter>
+            <CardJobPreviewRecruiter />
+            <CardJobPreviewRecruiter />
+            <CardJobPreviewRecruiter />
+            <CardJobPreviewRecruiter />
+            <CardJobPreviewRecruiter />
+            <CardJobPreviewRecruiter />
+            <CardJobPreviewRecruiter />
+            <CardJobPreviewRecruiter />
+            <CardJobPreviewRecruiter />
+            <CardJobPreviewRecruiter />
+            <CardJobPreviewRecruiter />
+            <CardJobPreviewRecruiter />
+            <CardJobPreviewRecruiter />
+            <CardJobPreviewRecruiter />
+            <CardJobPreviewRecruiter />
+            <CardJobPreviewRecruiter />
+          </WrapperListCardJobPreviewRecruiter>
+        </Aside>
 
-        <article className={styles.contentDetailsJob}>
-          {/* seccion derecha */}
+        <Container>
+
+        </Container>
+
+        {/* <article className={styles.contentDetailsJob}>
+          
           <div className={styles.containerRight}>
-            {/* a qui va la card que muestra los detalles de la vacante */}
+            
             {!initialContent ? (
               <article className={`container ${styles.wrapperDetailsJob}`}>
                 {job && (
@@ -367,7 +393,7 @@ const PageHistory = () => {
                             </button>
                           </div>
                         )}
-                        {/* Descripcion de la vacante */}
+                      
                         <div className={styles.summary}>
                           <p className={`${styles.lineClamp}`}>
                             {job[0]?.t200_description}
@@ -395,8 +421,8 @@ const PageHistory = () => {
               </div>
             )}
           </div>
-        </article>
-      </section>
+        </article> */}
+      </Wrapper>
       {modalType === 1 && (
         <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
           <FormPostJob
@@ -418,7 +444,7 @@ const PageHistory = () => {
           <FormUpdateJob job={job} />
         </ModalForm>
       )}
-    </>
+    </LayoutHome>
   );
 };
 

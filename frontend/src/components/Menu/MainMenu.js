@@ -3,7 +3,7 @@ import LinkButton from "components/Button/LinkButton";
 import { MdOutlineBusinessCenter } from "react-icons/md";
 import { IoBusinessOutline } from "react-icons/io5";
 import { BsMegaphone } from "react-icons/bs";
-import homeIcon from "assets/icons/home.png"
+import { HiOutlineHome } from "react-icons/hi"
 import {
   Logo,
   NavLeft,
@@ -24,7 +24,7 @@ const MainMenu = () => {
       </NavLeft>
       <NavList>
         <NavLink to="/" data-link className='active'>
-          <img width='18px' src={homeIcon} alt="home" />
+          <HiOutlineHome />
           Inicio
         </NavLink>
         <NavLink to="/empresas" data-link>

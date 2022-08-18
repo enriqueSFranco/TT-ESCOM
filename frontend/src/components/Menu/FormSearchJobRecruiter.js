@@ -1,37 +1,29 @@
 import React from "react";
 import Input from "components/Input/Input";
 import { GrAdd } from "react-icons/gr";
+import { Form, Button, BoxInput } from "./styled-components/FormSearchJobRecruiterStyled"
 
-const MenuAsideRecruiterListVacantsStyled = () => {
+const FormSearchJob = () => {
   return (
-    <aside>
-      <div>
-        <form>
-          <div>
-            <Input
-              type="text"
-              label='Buscar vacante'
-              name="search"
-              id="search"
-              // value={search}
-              // onChange={handleSearchVacant}
-              // onFocus={handleFocus}
-              // onBlur={handleBlur}
-            />
-          </div>
-          <button>
-            <GrAdd />
-            <span>Agregar una nueva vacante.</span>
-          </button>
-        </form>
-        <ul>
-          {/* {filterData?.map((item) => (
+    <>
+      <Form>
+        <BoxInput>
+          <Input
+            type="text"
+            label="Buscar vacante"
+            name="search"
+            id="search"
+          />
+        </BoxInput>
+      </Form>
+      <ul>
+        {/* {filterData?.map((item) => (
                 <li key={item?.t200_id_vacant}>
                   {item?.t200_job}
                 </li>
               ))} */}
-        </ul>
-      </div>
+      </ul>
+
       {/* {listJobs?.length > 0 ? (
             <article className={styles.wrapperListJobs}>
               {listJobs &&
@@ -66,8 +58,8 @@ const MenuAsideRecruiterListVacantsStyled = () => {
               </div>
             </article>
           )} */}
-    </aside>
+    </>
   );
 };
 
-export default MenuAsideRecruiterListVacantsStyled;
+export default FormSearchJob;

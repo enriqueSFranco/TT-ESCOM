@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import axios from "axios";
+import { useGetAllRecruitrs } from "hooks/useGetAllRecucruiters";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { uuid } from "utils/uuid";
 import toast, {Toaster} from "react-hot-toast";
 
 const wrapper = {
@@ -15,22 +15,22 @@ const wrapper = {
 };
 
 const PageValidateRecruiter = () => {
-  const [listRecruiter, setListRecruiter] = useState([]);
+  const listRecruiter = useGetAllRecruitrs();
 
   // obtenemos la lista de reclutadores
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await axios.get("/api/ValidateRecruiter/", {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-      setListRecruiter(data);
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const { data } = await axios.get(process.env.REACT_APP_URL_VALIDATE_RECRUITER, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Accept: "application/json",
+  //       },
+  //     });
+  //     setListRecruiter(data);
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   // enviamos la validacion para dar de alta a un reclutador
   const validateRecruiter = async (idRecruiter) => {
@@ -48,8 +48,6 @@ const PageValidateRecruiter = () => {
     console.log(data);
   }
 
-  if (listRecruiter.length === 0) return null;
-
   return (
     <section style={wrapper}>
       <h2>VALIDAR RECLUTADORES</h2>
@@ -64,7 +62,7 @@ const PageValidateRecruiter = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {listRecruiter?.map((recruiter) => (
+            {/* {listRecruiter?.map((recruiter) => (
               <TableRow key={uuid()}>
                 <TableCell component="th" scope="row">
                   {recruiter?.t301_id_recruiter}
@@ -75,10 +73,9 @@ const PageValidateRecruiter = () => {
                 <TableCell>{recruiter?.t300_id_company?.t300_name}</TableCell>
                 <TableCell>
                   <button onClick={() => validateRecruiter(recruiter?.t301_id_recruiter)}>Crear credenciales</button>
-                  {/* <button>Eliminar</button> */}
                 </TableCell>
               </TableRow>
-            ))}
+            ))} */}
           </TableBody>
         </Table>
       </TableContainer>

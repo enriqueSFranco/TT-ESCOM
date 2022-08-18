@@ -6,12 +6,6 @@ export const loginFormCompany = {
   password: "",
 };
 
-export const studentInitialForm = {
-  t100_username: "",
-  t100_email: "",
-  password: "",
-};
-
 export const updateStudentInitialForm = {
   t100_name: "",
   t100_last_name: "",

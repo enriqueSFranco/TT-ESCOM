@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "hooks/useForm";
+import { initialFormLoginCandidate } from "types/loginUsers";
 import TextField from "@mui/material/TextField";
 import { useAuth } from "context/AuthContext";
 import { Toaster } from "react-hot-toast";
@@ -9,14 +10,9 @@ import { MdOutlineMail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import styles from "./LoginStudent.module.css";
 
-let initialForm = {
-  t100_email: "",
-  password: "",
-};
-
 const Form = () => {
-  const { form, handleChange } = useForm(initialForm);
-  const { login } = useAuth();
+  const { form, handleChange } = useForm(initialFormLoginCandidate);
+  const { loginCandidate } = useAuth();
 
   return (
     <>
@@ -34,7 +30,7 @@ const Form = () => {
               <h2>Bienvenid@ a la btescom</h2>
               <span>Encuentra el trabajo a tu medida.</span>
             </div>
-            <form onSubmit={login} className={styles.form}>
+            <form onSubmit={loginCandidate} className={styles.form}>
               {/* input para la boleta */}
               <div className={styles.inputGroup}>
                 <TextField

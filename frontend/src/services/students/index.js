@@ -1,5 +1,6 @@
 // @ts-check
-
+import API from "services/http.service"
+import { CODE_201, CODE_200, CODE_400, CODE_404 } from "services/http.code";
 import axios from "axios";
 import toast from "react-hot-toast";
 import {
@@ -121,17 +122,21 @@ export const updateStudent = (id, payload = {}) => {
  **/
 export const createAccountStudent = async (payload) => {
   try {
-    const response = await axios.post(API_STUDENT, payload, {
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    });
-    return response;
-  } catch (error) {
-    if (error.response) {
-      return error.response.data.errors;
+    const controller = new AbortController()
+    const signal = controller.signal
+    const response = await API.post(`${process.env.REACT_APP_URL_CANDIDATE}`, payload, {signal});
+    if (response.status === CODE_200 || response.status === CODE_201)
+      return response;
+    else if(response.status === CODE_400 || response.status === CODE_404) {
+      let error = {
+        err: true,
+        status: response.status || '00',
+        statusText: response.statusText || 'Opppps, ha ocurrido un error'
+      }
+      throw error
     }
+  } catch (error) {
+    return error;
   }
 };
 

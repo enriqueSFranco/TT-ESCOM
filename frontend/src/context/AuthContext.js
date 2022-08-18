@@ -56,7 +56,6 @@ export const AuthProvider = ({ children }) => {
     })
       .then((response) => {
         if (response.status === 200 || response.status === 201) {
-          // console.log(response?.data?.access)
           setUser(response?.data?.access);
           setToken(response?.data);
           window.sessionStorage.setItem("token", JSON.stringify(response?.data));                
@@ -74,9 +73,7 @@ export const AuthProvider = ({ children }) => {
           window.sessionStorage.removeItem('token', JSON.stringify(response?.data))
         }
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => error)
   };
 
   const logout = () => {
