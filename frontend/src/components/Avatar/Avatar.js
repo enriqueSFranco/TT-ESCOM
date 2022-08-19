@@ -1,18 +1,25 @@
 import Avatar from "@mui/material/Avatar";
 import { stringToColor } from "utils/generateColors";
+import { useFetch } from "hooks/useFetch";
 
-const CustomAvatar = ({student = 'BTC', width, height, fontSize}) => {
+const CustomAvatar = ({username = 'BTC', width, height, fontSize}) => {
   
-  if (student === '') {
-    <Avatar sx={{ width: width, height: height, bgcolor: stringToColor(`${student}`), fontSize: fontSize }}>
-      {student}
-    </Avatar>
+  const { data, loading } = useFetch(`https://robohash.org/${username}`) 
+
+  if (!data) return null;
+
+  console.log(data)
+
+  if (username === '') {
+    return (
+      <img src={data} alt={username} />
+    )
   }
-  console.log(student)
+  console.log(username)
 
   return (
-    <Avatar sx={{ width: width, height: height, bgcolor: stringToColor(`${student}`), fontSize: fontSize }}>
-    {student.slice(0,1)}
+    <Avatar sx={{ width: width, height: height, bgcolor: stringToColor(`${username}`), fontSize: fontSize }}>
+    {username.slice(0,1)}
   </Avatar>
   )
 }

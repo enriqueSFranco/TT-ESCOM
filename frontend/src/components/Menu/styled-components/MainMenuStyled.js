@@ -21,6 +21,7 @@ const NavList = styled.ul`
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
+  list-style: none;
 `
 
 const NavItem = styled.li`

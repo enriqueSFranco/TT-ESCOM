@@ -8,8 +8,14 @@ import {
 } from "../settings";
 
 export const getAllJobs = async () => {
+  const controller = new AbortController()
+  const signal = controller.signal
   try {
-    const response = await API.get(`${process.env.REACT_APP_URL_VACANTS}`);
+    const response = await API.get(`${process.env.REACT_APP_URL_VACANTS}`, {signal});
+
+    setTimeout(() => {
+      controller.abort();
+    }, 3000)
     return response;
   } catch (error) {
     if (error.response) {

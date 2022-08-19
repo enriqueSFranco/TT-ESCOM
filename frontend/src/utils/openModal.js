@@ -14,8 +14,9 @@ export function openModal(data) {
 
   render(
     <Suspense fallback={<div>Cargando...</div>}>
-      <Modal root={$containerModal} title="Modal de prueba">
-        <div dangerouslySetInnerHTML={createMarkup(data)}></div>
+      <Modal root={$containerModal}>
+          <div dangerouslySetInnerHTML={createMarkup(data)}></div>
+        <button>Postularme</button>
       </Modal>
     </Suspense>,
     $containerModal

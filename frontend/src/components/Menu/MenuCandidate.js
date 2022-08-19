@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useAuth } from "context/AuthContext";
-import { getStudent } from "services/students";
+// import { getStudent } from "services/students";
 import CustomAvatar from "components/Avatar/Avatar";
 import { IoMdSettings, IoMdLogOut, IoMdBriefcase } from "react-icons/io";
+import { HiOutlineHome } from 'react-icons/hi'
 
 import {
   Logo,
@@ -12,9 +13,8 @@ import {
   NavLink,
 } from "./styled-components/MainMenuStyled";
 
-const MenuCandidate = ({ student }) => {
-  const { logout, token } = useAuth();
-  let user = token.user.first_name
+const MenuCandidate = ({ username }) => {
+  const { logout } = useAuth();
   // const [user, setUser] = useState([]);
 
   // useEffect(() => {
@@ -33,7 +33,12 @@ const MenuCandidate = ({ student }) => {
         </NavLink>
       </NavLeft>
       <NavList>
-        <NavItem></NavItem>
+        <NavItem>
+          <NavLink to="/">
+            <HiOutlineHome />
+            Inicio
+          </NavLink>
+        </NavItem>
         <NavItem>
           <NavLink to="/mis-postulaciones">
             <IoMdBriefcase />
@@ -47,7 +52,7 @@ const MenuCandidate = ({ student }) => {
           </NavLink>
         </NavItem>
         <NavLink to="/perfil">
-          <CustomAvatar student={user} width="35px" height="35px" />
+          <CustomAvatar username={username} width="35px" height="35px" />
         </NavLink>
         <NavItem>
           <NavLink to="/" onClick={logout}>

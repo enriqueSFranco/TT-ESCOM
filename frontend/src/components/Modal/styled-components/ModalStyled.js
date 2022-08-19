@@ -29,22 +29,15 @@ const ModalContainer = styled.div`
   height: 80vh;
   border-radius: 1rem;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
   animation: ${fadeIn} .3s ease forwards;
   `
 
-const ModalHeader = styled.div`
-  position: sticky;
-  top: 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  /* background-color: red; */
-`
-
 const ModalContent = styled.div`
-  /* min-height: fit-content; */
-  background-color: blue;
   overflow-y: auto;
 `
 
@@ -72,4 +65,4 @@ const Title = styled.h1`
 `
 
 
-export {Button, WrapperModal, Title, ModalContainer, ModalHeader, ModalContent}
+export {Button, WrapperModal, Title, ModalContainer, ModalContent}
