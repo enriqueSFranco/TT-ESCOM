@@ -13,7 +13,6 @@ import {
 } from "./styled-components/MainMenuStyled";
 
 const MainMenu = () => {
-  console.log(process.env.REACT_APP_PATH_HOME)
   return (
     <>
       <NavLeft>

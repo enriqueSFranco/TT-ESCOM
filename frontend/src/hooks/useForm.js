@@ -95,21 +95,21 @@ export const useForm = (initialForm, validateForm) => {
     }
   }
 
-  const onSubmitPostJob = (e) => {
-    e.preventDefault();
-    setErrors(validateForm(form));
-    console.log(form)
-    if (Object.keys(errors).length === 0) {
-      setLoading(true);
-      postJob(form)
-        .then((response) => {
-          console.log(response);
-          navigate("/mis-vacantes");
-        })
-        .catch((error) => console.error(error))
-        .finally(() => setLoading(false));
-    }
-  };
+  // const onSubmitPostJob = (e) => {
+  //   e.preventDefault();
+  //   // setErrors(validateForm(form));
+  //   console.log(form)
+  //   if (Object.keys(errors).length === 0) {
+  //     setLoading(true);
+  //     postJob(form)
+  //       .then((response) => {
+  //         console.log(response);
+  //         navigate("/mis-vacantes");
+  //       })
+  //       .catch((error) => console.error(error))
+  //       .finally(() => setLoading(false));
+  //   }
+  // };
 
   const onSubmitPostCertification = (e) => {
     e.preventDefault();
@@ -136,7 +136,7 @@ export const useForm = (initialForm, validateForm) => {
     handleSubmitStudent,
     handleSubmitCompany,
     handleValidate,
-    onSubmitPostJob,
+    // onSubmitPostJob,
     onSubmitPostCertification,
     handleSubmitCompanyRecruiter
   };

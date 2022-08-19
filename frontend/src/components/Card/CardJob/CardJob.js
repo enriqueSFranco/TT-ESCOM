@@ -27,7 +27,12 @@ const CardJob = ({ job, randomColor }) => {
     { label: "Midl lvl" },
   ];
 
-  const handleOpenModal = () => openModal()
+  
+  function createMarkup() {
+    return {__html: job.t200_description}
+  }
+
+  const handleOpenModal = () => openModal(job.t200_description)
 
   return (
     <CardBody borderColor={randomColor}>
@@ -42,7 +47,7 @@ const CardJob = ({ job, randomColor }) => {
             <IoBusiness style={{ color: "darkgray", fontSize: "3.5rem" }} />
           )}
         </div>
-        <PublicationDate>{formatDate(job?.t200_publish_date)}</PublicationDate>
+        <PublicationDate>{!job?.t200_publish_date ? 'sin fecha' : formatDate(job?.t200_publish_date)}</PublicationDate>
       </CardHeader>
       <CardContent>
         <TitleJob>{job.t200_job}</TitleJob>
@@ -54,7 +59,7 @@ const CardJob = ({ job, randomColor }) => {
           ))}
         </Tags>
         <Location>Cupertino, California</Location>
-        <Description>{job.t200_description}</Description>
+        <Description dangerouslySetInnerHTML={createMarkup()} />
         <Actions>
           <Button bgColor={randomColor} onClick={handleOpenModal}>Ver mas</Button>
         </Actions>

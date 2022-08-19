@@ -29,17 +29,24 @@ const ModalContainer = styled.div`
   height: 80vh;
   border-radius: 1rem;
   padding: 1rem;
-  overflow-y: auto;
   animation: ${fadeIn} .3s ease forwards;
-`
+  `
 
 const ModalHeader = styled.div`
+  position: sticky;
+  top: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* background-color: red; */
 `
 
-const ModalContent = styled.div``
+const ModalContent = styled.div`
+  /* min-height: fit-content; */
+  background-color: blue;
+  overflow-y: auto;
+`
 
 const Button = styled.button`
   background-color: transparent;

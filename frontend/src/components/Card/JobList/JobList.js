@@ -14,7 +14,7 @@ const JobList = ({ jobs, loading }) => {
   if (jobs?.length > 0) {
     return (
       <>
-        {jobs.map((job) => <CardJob key={job?.t200_id_vacant} randomColor={getRandomColor()} job={job} />)}
+        {jobs?.map((job) => <CardJob key={job?.t200_id_vacant} randomColor={getRandomColor()} job={job} />)}
       </>
     );
   }

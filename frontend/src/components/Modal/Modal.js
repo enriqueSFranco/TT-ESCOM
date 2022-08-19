@@ -16,14 +16,15 @@ const Modal = ({ children, title = "", root }) => {
 
   function callback() {
     unmountComponentAtNode(root); // destruimos la referencia del componente
-    document.getElementById("modal").remove();
+    let $el = document.getElementById("modal")
+    $el.remove()
     ref.current.removeEventListener("animationend", callback);
   }
   
   function handleClick() {
-    console.log(ref.current.classList)
     // detectamos cuando la animacion termine
     ref.current.classList.add('fadeOut')
+
     ref.current.addEventListener("animationend", (e) => callback, {
       once: true,
     });
