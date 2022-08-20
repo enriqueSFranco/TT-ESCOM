@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useFetch } from "hooks/useFetch";
-import { API_VACANTS_FILTER } from "services/settings";
+import { useDebounce } from "hooks/useDebounce";
 import Loader from "components/Loader/Loader";
 import * as BiIcon from "react-icons/bi";
 import styles from "./Search.module.css";
@@ -14,21 +14,21 @@ import {
 } from "./styled-components/FormSearchStyled";
 
 const FormSearchJob = ({ handleSearch }) => {
-  const { data } = useFetch(API_VACANTS_FILTER);
   const [queryJob, setQueryJob] = useState("");
   const [locationJob, setLocationJob] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+const { data } = useFetch(`${process.env.REACT_APP_URL_VACANTS}`);
   const [filterData, setFilterData] = useState(data);
-
-  console.log(data)
+  const debounce = useDebounce(queryJob, 500)
 
   const handleFilterJob = (e) => {
     const query = e.target.value;
     setQueryJob(query);
-    const newFilter = data?.result?.filter(({ t200_job }) => {
+    const newFilter = data?.filter(({ t200_job }) => {
       let regex = new RegExp(`${query}`, "gi");
       return t200_job.match(regex);
     });
+    console.log(data)
     query === "" ? setFilterData([]) : setFilterData(newFilter);
   };
 
@@ -36,16 +36,16 @@ const FormSearchJob = ({ handleSearch }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (queryJob === "") return setFilterData(data);
+    if (debounce === "") return setFilterData(data);
 
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      handleSearch(queryJob === "" ? setFilterData(data) : queryJob);
+      handleSearch(debounce === "" ? setFilterData(data) : debounce);
     }, 2000);
   };
 
-  // if (!data) return null;
+  console.log(debounce)
 
   return (
     <WrapperForm>

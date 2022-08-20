@@ -1,8 +1,7 @@
 import React from "react";
 import { useAuth } from "context/AuthContext";
 // import { getStudent } from "services/students";
-import CustomAvatar from "components/Avatar/Avatar";
-import { IoMdSettings, IoMdLogOut, IoMdBriefcase } from "react-icons/io";
+import { IoMdBriefcase } from "react-icons/io";
 import { HiOutlineHome } from 'react-icons/hi'
 
 import {
@@ -12,9 +11,11 @@ import {
   NavItem,
   NavLink,
 } from "./styled-components/MainMenuStyled";
+import DropMenu from "./DropMenu";
 
 const MenuCandidate = ({ username }) => {
-  const { logout } = useAuth();
+  const { token } = useAuth();
+  let typeuser = token?.user?.user_type;
   // const [user, setUser] = useState([]);
 
   // useEffect(() => {
@@ -46,19 +47,7 @@ const MenuCandidate = ({ username }) => {
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/configuracion">
-            <IoMdSettings />
-            Configuracion
-          </NavLink>
-        </NavItem>
-        <NavLink to="/perfil">
-          <CustomAvatar username={username} width="35px" height="35px" />
-        </NavLink>
-        <NavItem>
-          <NavLink to="/" onClick={logout}>
-            <IoMdLogOut />
-            Cerrar sesion
-          </NavLink>
+          <DropMenu typeuser={typeuser} />
         </NavItem>
       </NavList>
     </>

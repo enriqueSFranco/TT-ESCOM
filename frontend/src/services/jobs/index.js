@@ -12,10 +12,6 @@ export const getAllJobs = async () => {
   const signal = controller.signal
   try {
     const response = await API.get(`${process.env.REACT_APP_URL_VACANTS}`, {signal});
-
-    setTimeout(() => {
-      controller.abort();
-    }, 3000)
     return response;
   } catch (error) {
     if (error.response) {

@@ -1,27 +1,48 @@
-import Avatar from "@mui/material/Avatar";
-import { stringToColor } from "utils/generateColors";
-import { useFetch } from "hooks/useFetch";
+import React from 'react'
 
-const CustomAvatar = ({username = 'BTC', width, height, fontSize}) => {
-  
-  const { data, loading } = useFetch(`https://robohash.org/${username}`) 
+const CustomAvatar = ({ username }) => {
 
-  if (!data) return null;
-
-  console.log(data)
-
-  if (username === '') {
+  if (username === "") {
     return (
-      <img src={data} alt={username} />
-    )
+      <div
+        style={{
+          // outline: "2px solid #cfcf",
+          width: "2.5rem",
+          // height: "3rem",
+          borderRadius: "50%",
+          display: 'grid',
+          placeContent: 'center',
+          padding: '.3rem'
+        }}
+      >
+        <img
+          height="100%"
+          src={`https://robohash.org/default.png`}
+          alt={username}
+        />
+      </div>
+    );
   }
-  console.log(username)
 
   return (
-    <Avatar sx={{ width: width, height: height, bgcolor: stringToColor(`${username}`), fontSize: fontSize }}>
-    {username.slice(0,1)}
-  </Avatar>
-  )
-}
+    <div
+        style={{
+          // outline: "2px solid #cfcf",
+          width: "2.5rem",
+          // height: "3rem",
+          borderRadius: "50%",
+          display: 'grid',
+          placeContent: 'center',
+          padding: '.3rem'
+        }}
+      >
+        <img
+          height="100%"
+          src={`https://robohash.org/${username}.png`}
+          alt={username}
+        />
+      </div>
+  );
+};
 
 export default CustomAvatar;

@@ -31,6 +31,7 @@ const Home = () => {
   };
 
   const handleSearch = (value) => {
+    // console.log(value)
     filteredData(value);
     setIsFiltered(value !== "" ? true : false);
   };

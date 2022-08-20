@@ -29,7 +29,7 @@ const WrapperForm = styled.div`
   @media only screen and ${device.laptop} {
     width: fit-content;
     height: 80px;
-    border-radius: 2rem;
+    /* border-radius: 2rem; */
     background-color: #00000097;
     backdrop-filter: blur(10px);
     box-shadow: #1C8EFB 0px 1px 1px, #1C8EFB 0px 1px 1px;
