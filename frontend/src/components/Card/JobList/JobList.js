@@ -11,6 +11,8 @@ const ListEmptyJobs = () => {
 };
 
 const JobList = ({ jobs, loading }) => {
+  console.log(jobs)
+  
   if (jobs?.length > 0) {
     return (
       <>

@@ -17,35 +17,39 @@ const FormSearchJob = ({ handleSearch }) => {
   const [queryJob, setQueryJob] = useState("");
   const [locationJob, setLocationJob] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-const { data } = useFetch(`${process.env.REACT_APP_URL_VACANTS}`);
-  const [filterData, setFilterData] = useState(data);
+  const [filterData, setFilterData] = useState(null);
+  const { data } = useFetch(`${process.env.REACT_APP_URL_VACANTS}`);
   const debounce = useDebounce(queryJob, 500)
 
+  // filtrado para el autocompletado
   const handleFilterJob = (e) => {
     const query = e.target.value;
     setQueryJob(query);
-    const newFilter = data?.filter(({ t200_job }) => {
-      let regex = new RegExp(`${query}`, "gi");
-      return t200_job.match(regex);
+    
+    const dataFiltered = data?.filter(el => {
+      let er = new RegExp(`^${query}`, 'gi')
+      let matches = el.t200_job.toLowerCase().match(er)
+      return matches
     });
-    console.log(data)
-    query === "" ? setFilterData([]) : setFilterData(newFilter);
+
+    return query === "" ? setFilterData([]) : setFilterData(dataFiltered);
   };
 
   const handleClick = (job) => setQueryJob(job);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (debounce === "") return setFilterData(data);
+    
+    if (queryJob === "") window.location.reload()
 
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      handleSearch(debounce === "" ? setFilterData(data) : debounce);
+      handleSearch(debounce === "" ? filterData : debounce);
     }, 2000);
-  };
 
-  console.log(debounce)
+    // clearTimeout(timer);
+  };
 
   return (
     <WrapperForm>
