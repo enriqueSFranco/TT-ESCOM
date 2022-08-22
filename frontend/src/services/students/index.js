@@ -160,19 +160,9 @@ export const uploadPhotoStudent = (id, img) => {
  * @return {Promise}
  **/
 export const applyJob = (payload) => {
-  return axios.post(API_JOB_APPLICATIONS, payload, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    },
-  })
-    .then(response => {
-      console.log(response);
-      return response;
-    })
-    .catch(error => {
-      if (error.response) return error.response;
-    })
+  return API.post(`${process.env.REACT_APP_URL_VACANT_APPLICATIONS}`, payload)
+    .then(response => response)
+    .catch(error => error.message)
 };
 
 export const changeApplyState = (id,payload) => {  

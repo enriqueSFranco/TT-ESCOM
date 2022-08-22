@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }) => {
           if (Boolean(val)){
             new Promise(resolve => {
               setTimeout(() => {
-                resolve(navigate("/"))
+                resolve(navigate("/actualiza-alumno"))
               }, 3000);
             });
           }

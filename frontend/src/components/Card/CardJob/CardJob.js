@@ -1,7 +1,8 @@
 import React from "react";
+import { useAuth } from "context/AuthContext";
 import Chip from "components/Chip/Chip";
 import { numberFormat } from "utils/numberFormat";
-import { openModal } from "utils/openModal";
+import { openModalDetailsJob } from "utils/openModal";
 import { formatDate } from "utils/formatDate";
 import { IoBusiness } from "react-icons/io5";
 import {
@@ -19,21 +20,27 @@ import {
 } from "../styled-components/CardJobStyled";
 
 const CardJob = ({ job, randomColor }) => {
-  if (!job) return null;
+  const { token } = useAuth();
+  let userID = token?.user?.user_id
+  let idJob = job.t200_id_vacant;
+  let description = job.t200_description
 
   const tags = [
+    
     { label: `Exp: ${job?.c207_id_experience?.c207_description}` },
     { label: job?.t200_max_salary ? `${numberFormat(job?.t200_max_salary).replace('.00', '')}` : '-'},
     { label: "Midl lvl" },
   ];
-
+  
   
   function createMarkup() {
     return {__html: job.t200_description}
   }
-
-  const handleOpenModal = () => openModal(job.t200_description)
-
+  
+  const handleOpenModal = () => openModalDetailsJob(description, idJob, userID)
+  
+  if (!job) return null;
+  
   return (
     <CardBody borderColor={randomColor}>
       <CardHeader>

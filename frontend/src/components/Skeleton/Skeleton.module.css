@@ -1,11 +1,11 @@
 .cardSkContent {
-  width: 450px;
-  height: 210px;
+  width: 400px;
+  height: 350px;
 }
 
 .cardSk {
-  width: 500px;
-  height: 280px;
+  width: 400px;
+  height: 350px;
   margin-bottom:1rem;
   outline: 1px solid #ccc;
   cursor: pointer;
@@ -19,7 +19,7 @@
 
 
 .cardSkHeader {
-  width: 450px;
+  width: 200px;
   height: 22px;
 }
 
@@ -28,9 +28,8 @@
   margin: .5rem 0 .5rem 0;
 }
 
-
 .placeholder {
-  width: 450px;
+  width: 350px;
   background-color: #ccc;
   border-radius: 3px;
   animation-name: placeholder;

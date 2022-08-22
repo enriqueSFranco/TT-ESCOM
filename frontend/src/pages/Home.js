@@ -6,6 +6,7 @@ import LayoutHome from "Layout/LayoutHome";
 import LayoutHero from "Layout/LayoutHero";
 import { Aside, Content, Hero, Main } from "./styled-components/HomeStyled";
 import parallaxESCOM from "images/parallaxESCOM.jpg";
+import ButtonScrollTop from "components/Button/ButtonScrollTop";
 
 
 const Home = () => {
@@ -44,6 +45,7 @@ const Home = () => {
         <Content>
           <JobList jobs={isFiltered ? filteredData : response} loading={loading} />
         </Content>
+        <ButtonScrollTop />
         <Aside></Aside>
       </Main>
     </LayoutHome>
