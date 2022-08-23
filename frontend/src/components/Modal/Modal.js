@@ -5,7 +5,6 @@ import {
   Button,
   WrapperModal,
   ModalContainer,
-  ModalHeader,
   ModalContent,
 } from "./styled-components/ModalStyled";
 import './styled-components/animation.css'

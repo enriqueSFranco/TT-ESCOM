@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "hooks/useForm";
 import { useFetch } from "hooks/useFetch";
 import { helpHttp } from "utils/helpHttp";
-import { AcademicFormat } from "../../../types/schemes";
+import { AcademicFormat } from "types/schemes";
 import { getAllAcademicUnits, getAllJobs } from "services/catalogs/index";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -151,7 +151,7 @@ const StepComponent = () => {
 
   const updateData = () => {
     console.log(form);
-    const endpoint = "/api/Students/" + id_student + "/";
+    const endpoint = process.env.REACT_APP_URL_CANDIDATE + id_student + "/";
 
     let options = {
       headers: {

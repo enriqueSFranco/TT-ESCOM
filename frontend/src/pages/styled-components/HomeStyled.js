@@ -1,12 +1,25 @@
 import styled from "styled-components"
+import { device } from "breakpoints"
 
 const Main = styled.main`
-  display: grid;
-  grid-template-columns: 400px 1fr;
-  grid-template-areas: 
-                      "hero hero"
-                      "aside content_data";
-  position: relative;
+
+  @media screen and ${device.mobileM} {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+                        "hero"
+                        "content_data";
+    position: relative;
+  }
+
+  @media screen and ${device.laptop} {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    grid-template-areas: 
+                        "hero hero"
+                        "aside content_data";
+    position: relative;
+  }
   /* top: 4rem; */
 `
 

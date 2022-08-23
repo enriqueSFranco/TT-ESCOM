@@ -20,16 +20,7 @@ import {
  * @returns {Promise}
  **/
 export const getStudent = async (id) => {
-
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-      // 'Authorization': `Bearer ${token?.access}`,
-      'Accept': 'application/json',
-    },
-  };
-  return axios
-    .get(`${API_STUDENT}${id}/`, config)
+  return API(`${process.env.REACT_APP_URL_CANDIDATE}${id}/`)
     .then((response) => {
       const { data } = response;
       return data;
@@ -47,8 +38,7 @@ export const getStudent = async (id) => {
  * @returns {Promise}
  **/
 export const getSocialNetwork = async (id) => {
-  return axios
-    .get(`${API_SOCIAL_NETWORK}/${id}/`)
+  return API(`${process.env.REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS}/${id}/`)
     .then((response) => {
       const { data } = response;
       return data;
@@ -65,7 +55,7 @@ export const getSocialNetwork = async (id) => {
  * @returns {Promise}
  **/
 export const postSocialNetwork = (payload = {}) => {
-  return axios.post(`${API_SOCIAL_NETWORK}`, payload, {
+  return API.post(`${process.env.REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS}`, payload, {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -224,7 +214,7 @@ export const addProject = (payload = {}) => {
  * @returns {Promise}
  **/
 export const getAcademicHistorial = (id) => {
-  return axios.get(`${API_ACADEMIC_HISTORIAL}${id}/`)
+  return API(`${process.env.REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL}${id}/`)
     .then(response => response)
     .catch(error => error);
 }

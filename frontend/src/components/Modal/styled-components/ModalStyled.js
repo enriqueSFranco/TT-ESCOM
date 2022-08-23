@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components'
-
+import { device } from 'breakpoints'
 
 const fadeIn = keyframes`
   from {
@@ -25,16 +25,26 @@ const WrapperModal = styled.article`
 
 const ModalContainer = styled.div`
   background-color: #fff;
-  width: 50%;
-  height: 80vh;
-  border-radius: 1rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   gap: 2rem;
+  border-radius: 1rem;
   animation: ${fadeIn} .3s ease forwards;
+
+  @media screen and ${device.mobileM} {
+    width: 90%;
+    height: 80vh;
+  }
+
+  @media screen and ${device.laptop} {
+    
+    width: 50%;
+    height: 80vh;
+  }
+
   `
 
 const ModalContent = styled.div`
@@ -59,10 +69,4 @@ const Button = styled.button`
   }
 `
 
-const Title = styled.h1`
-  text-transform: uppercase;
-  font-size: 1.5rem;
-`
-
-
-export {Button, WrapperModal, Title, ModalContainer, ModalContent}
+export {Button, WrapperModal, ModalContainer, ModalContent}

@@ -2,9 +2,16 @@ import styled from "styled-components";
 import { device } from "breakpoints";
 
 const Button = styled.button`
-  width: 100%;
-  height: 40px;
-  border-radius: 0;
+
+@media only screen and ${device.mobileM} {
+    width: 100%;
+    height: 40px;
+    border-radius: .5rem;
+    border: none;
+    background-color: #0057FF;
+    color: #FFF;
+    font-size: .9rem;
+  }
 
   @media only screen and ${device.laptop} {
     width: auto;
@@ -22,14 +29,18 @@ const Button = styled.button`
 `
 
 const WrapperForm = styled.div`
-  width: 90%;
-  height: fit-content;
   border-radius: .5rem;
+
+  @media only screen and ${device.mobileM} {
+    z-index: 1;
+    /* outline: 2px solid red; */
+    position: absolute;
+    top: 2.2rem;
+  }
   
   @media only screen and ${device.laptop} {
     width: fit-content;
     height: 80px;
-    /* border-radius: 2rem; */
     background-color: #00000097;
     backdrop-filter: blur(10px);
     box-shadow: #1C8EFB 0px 1px 1px, #1C8EFB 0px 1px 1px;
@@ -38,10 +49,14 @@ const WrapperForm = styled.div`
 `
 
 const Form = styled.form`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  @media only screen and ${device.mobileM} {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
 
   @media only screen and ${device.laptop} {
     position: relative;
@@ -56,8 +71,14 @@ const Form = styled.form`
 `
 
 const InputSearch = styled.input`
-  width: 80%;
-  font-size: .9rem;
+  
+  @media only screen and ${device.mobileM} {
+    width: 100%;
+    font-size: .9rem;
+    outline: 1px solid #ccc;
+    border-radius: .5rem;
+    padding:.7rem;
+  }
   
   @media only screen and ${device.laptop} {
     outline: none;
@@ -69,7 +90,7 @@ const InputSearch = styled.input`
     margin-left: ${({ marginLeft }) => marginLeft ? marginLeft : `0px`};
     font-size: 1rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    /* outline: 2px solid red; */
+    
     ::placeholder {
       letter-spacing: 1px;
       color: #fff;
@@ -78,8 +99,12 @@ const InputSearch = styled.input`
 `
 
 const WrapperInput = styled.div`
-      /* outline: 2px solid red; */
-      width: 100%;
+  @media only screen and ${device.mobileM} {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
   @media only screen and ${device.laptop} {
       position: relative;
       height: 50px;
@@ -93,17 +118,22 @@ const WrapperInput = styled.div`
         display: grid;
         place-content: center;
         position: absolute;
-        left: 0s;
+        left: 0;
         font-weight: 700;
       }
     }
 `
 
 const Separator = styled.span`
-  display: none;
-  
+
+  @media only screen and ${device.mobileM} {
+    display: none;
+  }
+
   @media only screen and ${device.laptop} {
     display: block;
+    position: relative;
+    right: 1rem;
     outline: 1px solid #ffffff30;
     backdrop-filter: blur(10px);
     height: 50px;

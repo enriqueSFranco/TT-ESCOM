@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useFetch } from "hooks/useFetch";
 import { useDebounce } from "hooks/useDebounce";
+import { useViewport } from "hooks/useViewport";
 import Loader from "components/Loader/Loader";
 import * as BiIcon from "react-icons/bi";
 import styles from "./Search.module.css";
@@ -19,17 +20,18 @@ const FormSearchJob = ({ handleSearch }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [filterData, setFilterData] = useState(null);
   const { data } = useFetch(`${process.env.REACT_APP_URL_VACANTS}`);
-  const debounce = useDebounce(queryJob, 500)
+  const debounce = useDebounce(queryJob, 500);
+  const [viewport] = useViewport();
 
   // filtrado para el autocompletado
   const handleFilterJob = (e) => {
     const query = e.target.value;
     setQueryJob(query);
-    
-    const dataFiltered = data?.filter(el => {
-      let er = new RegExp(`^${query}`, 'gi')
-      let matches = el.t200_job.toLowerCase().match(er)
-      return matches
+
+    const dataFiltered = data?.filter((el) => {
+      let er = new RegExp(`^${query}`, "gi");
+      let matches = el.t200_job.toLowerCase().match(er);
+      return matches;
     });
 
     return query === "" ? setFilterData([]) : setFilterData(dataFiltered);
@@ -39,16 +41,14 @@ const FormSearchJob = ({ handleSearch }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    
-    if (queryJob === "") window.location.reload()
+
+    if (queryJob === "") window.location.reload();
 
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
       handleSearch(debounce === "" ? filterData : debounce);
     }, 2000);
-
-    // clearTimeout(timer);
   };
 
   return (
@@ -99,13 +99,20 @@ const FormSearchJob = ({ handleSearch }) => {
           />
           {/* lista de estados, municipios */}
         </WrapperInput>
-        <Button
-          type="submit"
-          disabled={isLoading}
-        >
-          {isLoading && <Loader />}
-          {!isLoading && <BiIcon.BiSearch />}
-          {isLoading && ""}
+        <Button type="submit" disabled={isLoading}>
+          {viewport.device === "MOBILE" ? (
+            <>
+              {isLoading && <Loader />}
+              {!isLoading && 'Buscar vacante'}
+              {isLoading && ""}
+            </>
+          ) : (
+            <>
+              {isLoading && <Loader />}
+              {!isLoading && <BiIcon.BiSearch />}
+              {isLoading && ""}
+            </>
+          )}
         </Button>
       </Form>
     </WrapperForm>

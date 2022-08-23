@@ -13,7 +13,17 @@ const ButtonScroll = styled.button`
   display: grid;
   place-content: center;
   font-size: 2.3rem;
-  display: ${props => props.isVisible ? 'block' : 'none'};
+  transition: all .5s ease-in-out;
+  ${props => {
+    if (!props.isVisible) return `
+      opacity: 0;
+      visibility: hidden;
+    `
+    else return `
+      opacity: 1;
+      visibility: visible;
+    `
+  }}
 `
 
 

@@ -7,7 +7,7 @@ const DropMenuCandidate = () => {
   return (
     <ul>
       <li>
-        <Link to='/'>perfil</Link>
+        <Link to='/perfil'>perfil</Link>
       </li>
       <li>
         <Link to='/'>configuracion</Link>
