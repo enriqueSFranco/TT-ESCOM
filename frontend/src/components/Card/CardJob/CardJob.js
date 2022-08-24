@@ -21,7 +21,8 @@ import {
 
 const CardJob = ({ job, randomColor }) => {
   const { token } = useAuth();
-  let userID = token?.user?.user_id
+
+  let userID = token?.user?.id_student
   let idJob = job.t200_id_vacant;
   let description = job.t200_description
 

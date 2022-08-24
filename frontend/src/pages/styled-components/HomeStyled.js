@@ -20,7 +20,6 @@ const Main = styled.main`
                         "aside content_data";
     position: relative;
   }
-  /* top: 4rem; */
 `
 
 const Hero = styled.div`
@@ -29,12 +28,28 @@ const Hero = styled.div`
   `
 
 const Content = styled.section`
-  grid-area: content_data;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 2rem;
-  padding: 1rem;
+
+  @media screen and ${device.mobileM} {
+    position: relative;
+    /* top: 280px; */
+    grid-area: content_data;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  @media screen and ${device.laptop} {
+    min-height: 100vh;
+    grid-area: content_data;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding: 1rem;
+  }
+
 `
 
 const Aside = styled.aside`

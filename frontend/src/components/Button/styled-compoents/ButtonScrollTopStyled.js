@@ -1,11 +1,10 @@
 import styled from 'styled-components'
+import { device } from 'breakpoints'
 
 const ButtonScroll = styled.button`
   width: 60px;
   height: 60px;
   position: fixed;
-  right: 2rem;
-  bottom: 2rem;
   background-color: transparent;
   border: none;
   outline: none;
@@ -24,7 +23,16 @@ const ButtonScroll = styled.button`
       visibility: visible;
     `
   }}
-`
 
+  @media only screen and ${device.mobileM} {
+    right: 0;
+    bottom: 3rem;
+  }
+
+  @media only screen and ${device.laptop} {
+    right: 2rem;
+    bottom: 2rem;
+  } 
+`
 
 export { ButtonScroll }

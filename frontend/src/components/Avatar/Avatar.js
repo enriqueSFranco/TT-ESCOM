@@ -1,18 +1,23 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
+import { getRandomColor } from "utils/generateColors";
+
+const bg = getRandomColor()
 
 const CustomAvatar = ({ username }) => {
 
   if (username === "") {
     return (
-      <div
+      <Link
+        to="/perfil"
         style={{
-          // outline: "2px solid #cfcf",
-          width: "2.5rem",
-          // height: "3rem",
+          width: "3.3rem",
+          height: "2.8rem",
+          backgroundColor: `${bg}`,
           borderRadius: "50%",
-          display: 'grid',
-          placeContent: 'center',
-          padding: '.3rem'
+          display: "grid",
+          placeContent: "center",
+          padding: ".3rem",
         }}
       >
         <img
@@ -20,20 +25,21 @@ const CustomAvatar = ({ username }) => {
           src={`https://robohash.org/default.png`}
           alt={username}
         />
-      </div>
+      </Link>
     );
   }
 
   return (
-    <div
+      <Link
+        to="/perfil"
         style={{
-          // outline: "2px solid #cfcf",
-          width: "2.5rem",
-          // height: "3rem",
+          width: "3.3rem",
+          height: "2.8rem",
           borderRadius: "50%",
-          display: 'grid',
-          placeContent: 'center',
-          padding: '.3rem'
+          backgroundColor: `${bg}`,
+          display: "grid",
+          placeContent: "center",
+          padding: ".3rem",
         }}
       >
         <img
@@ -41,7 +47,7 @@ const CustomAvatar = ({ username }) => {
           src={`https://robohash.org/${username}.png`}
           alt={username}
         />
-      </div>
+      </Link>
   );
 };
 

@@ -6,7 +6,7 @@ const Button = styled.button`
 @media only screen and ${device.mobileM} {
     width: 100%;
     height: 40px;
-    border-radius: .5rem;
+    border-radius: .3rem;
     border: none;
     background-color: #0057FF;
     color: #FFF;
@@ -29,13 +29,13 @@ const Button = styled.button`
 `
 
 const WrapperForm = styled.div`
-  border-radius: .5rem;
 
-  @media only screen and ${device.mobileM} {
-    z-index: 1;
-    /* outline: 2px solid red; */
-    position: absolute;
-    top: 2.2rem;
+@media only screen and ${device.mobileM} {
+    z-index: 11;
+    position: fixed;
+    top: 5rem;
+    width: 93%;
+    background-color: #FFF;
   }
   
   @media only screen and ${device.laptop} {
@@ -44,6 +44,7 @@ const WrapperForm = styled.div`
     background-color: #00000097;
     backdrop-filter: blur(10px);
     box-shadow: #1C8EFB 0px 1px 1px, #1C8EFB 0px 1px 1px;
+    border-radius: .5rem;
   }
 
 `
@@ -56,6 +57,7 @@ const Form = styled.form`
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    background-color: #FFF;
   }
 
   @media only screen and ${device.laptop} {
@@ -76,8 +78,9 @@ const InputSearch = styled.input`
     width: 100%;
     font-size: .9rem;
     outline: 1px solid #ccc;
-    border-radius: .5rem;
+    border-radius: .3rem;
     padding:.7rem;
+    border: none;
   }
   
   @media only screen and ${device.laptop} {

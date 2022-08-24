@@ -24,6 +24,7 @@ export const useViewport = () => {
       });
     }
     window.addEventListener('resize', handleResize, false);
+    
     return () => window.removeEventListener('resize', handleResize, false);
   }, []);
 

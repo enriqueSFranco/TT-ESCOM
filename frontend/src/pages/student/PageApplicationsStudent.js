@@ -22,7 +22,7 @@ import styles from "./PageApplicationsStudent.module.css";
 const PageApplicationsStudent = () => {
   const { token } = useAuth();
   const { data } = useFetch(
-    `${process.env.REACT_APP_URL_CANDIDATE_APPLICATIONS_JOBS}${token?.user?.user_id}/`
+    `${process.env.REACT_APP_URL_CANDIDATE_APPLICATIONS_JOBS}${token?.user?.id_student}/`
   );
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -36,6 +36,8 @@ const PageApplicationsStudent = () => {
   }));
 
   if (!data) return null;
+
+  console.log(data)
 
   // TODO: ELIMINAR ELEMENTOS DUPLICADOS DE LA LISTA DE VACANTES EN RELACION AL CAMPO T200_JOB
   return (

@@ -9,6 +9,7 @@
 
   --link-color: #0B1033;
   --font-size-mobile-M: .77rem;
+  --font-family-mobile-M: 'Secular One', sans-serif;
 }
 
 html {
@@ -22,14 +23,14 @@ html {
 *::after,
 *::before {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  padding: 0;
   width: 100%;
   height: 100vh;
-  background: #FFFAF9;
+  background: #FFF;
 }
 
 a {

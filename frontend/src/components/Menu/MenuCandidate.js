@@ -1,9 +1,11 @@
 import React from "react";
 import { useAuth } from "context/AuthContext";
+import { useViewport } from "hooks/useViewport";
 // import { getStudent } from "services/students";
+import { IoBusinessOutline } from "react-icons/io5";
 import { IoMdBriefcase } from "react-icons/io";
-import { HiOutlineHome } from 'react-icons/hi'
-
+import { HiOutlineHome } from "react-icons/hi";
+import { BsMegaphone } from "react-icons/bs"
 import {
   Logo,
   NavLeft,
@@ -15,21 +17,52 @@ import DropMenu from "./DropMenu";
 
 const MenuCandidate = ({ username }) => {
   const { token } = useAuth();
+  const [viewport] = useViewport();
   let typeuser = token?.user?.user_type;
-  // const [user, setUser] = useState([]);
 
-  // useEffect(() => {
-  //   getStudent(student?.user?.user_id).then((response) => {
-  //     setUser(response);
-  //   });
-  // }, [student?.user?.user_id]);
+  console.log(viewport)
 
-  // console.log(token.user.first_name)
+  if (viewport.device === "MOBILE") {
+    return (
+      <>
+        <NavList>
+          <NavItem>
+            <NavLink to="/">
+              <HiOutlineHome />
+              Inicio
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/mis-postulaciones">
+              <IoMdBriefcase />
+              Postulaciones
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/mis-postulaciones">
+              <IoBusinessOutline />
+              Empresas
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/mis-postulaciones">
+              <BsMegaphone />
+              Comunicados
+            </NavLink>
+          </NavItem>
+          {/* <NavItem>
+          <DropMenu typeuser={typeuser} />
+        </NavItem> */}
+        </NavList>
+      </>
+    );
+  }
 
   return (
     <>
       <NavLeft>
         <NavLink to="/">
+          <IoMdBriefcase style={{ fontSize: "1.2rem" }} />
           <Logo>ESCOM</Logo>
         </NavLink>
       </NavLeft>

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { device } from 'breakpoints'
 
 const Button = styled.button`
   border: none;
@@ -41,16 +42,26 @@ const Register = styled.div`
 `
 
 const WrapperForm = styled.div`
-  background-color: #ffffff94;
-  backdrop-filter: blur(10px);
-  width: 550px;
-  position: absolute;
-  top: 10rem;
-  right: 10rem;
-  border-radius: 1rem;
-  padding: 2rem 1rem 1rem 1rem;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  z-index: 99;
+
+  @media screen and ${device.mobileM} {
+    width: 100%;
+    right: 0;
+  }
+
+  @media screen and ${device.laptop} {
+
+    background-color: #ffffff94;
+    backdrop-filter: blur(10px);
+    width: 550px;
+    position: absolute;
+    top: 10rem;
+    right: 10rem;
+    border-radius: 1rem;
+    padding: 2rem 1rem 1rem 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    z-index: 99;
+  }
+
 `
 
 

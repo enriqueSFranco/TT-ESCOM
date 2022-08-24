@@ -3,8 +3,18 @@ import { Link } from 'react-router-dom'
 import { device } from 'breakpoints'
 
 const NavLeft = styled.div`
-  width: 140px;
-  height: 40px;
+  @media only screen and ${device.mobileM} {
+    width: 140px;
+    height: 40px;
+  }
+  
+  @media screen and ${device.laptop} {
+    width: 140px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `
 
 const Logo = styled.h1`
@@ -23,13 +33,15 @@ const Logo = styled.h1`
 `
 
 const NavList = styled.ul`
-
+  list-style: none;
+  
   @media screen and ${device.mobileM} {
-    flex-direction: column;
-    position: absolute;
-    right: 0;
-    top: 0;
-    /* display: none; */
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0 .5rem .6rem .5rem;
   }
   
   @media screen and ${device.laptop} {
@@ -55,12 +67,17 @@ const NavLink = styled(Link)`
 
   @media screen and ${device.mobileM} {
     color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: .7rem;
+    font-weight: 500;
   }
 
   @media screen and ${device.laptop} {
-
-    position: relative;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     gap: .3rem;
@@ -70,9 +87,5 @@ const NavLink = styled(Link)`
       color: #fff;
     }
   }
-
-
 `
-
-
 export { Logo, NavLeft, NavList, NavItem, NavLink }

@@ -19,9 +19,9 @@ const FormSearchJob = ({ handleSearch }) => {
   const [locationJob, setLocationJob] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [filterData, setFilterData] = useState(null);
+  const [viewport] = useViewport();
   const { data } = useFetch(`${process.env.REACT_APP_URL_VACANTS}`);
   const debounce = useDebounce(queryJob, 500);
-  const [viewport] = useViewport();
 
   // filtrado para el autocompletado
   const handleFilterJob = (e) => {
@@ -97,7 +97,6 @@ const FormSearchJob = ({ handleSearch }) => {
             placeholder="Ciudad de Mexico"
             marginLeft="3.7rem"
           />
-          {/* lista de estados, municipios */}
         </WrapperInput>
         <Button type="submit" disabled={isLoading}>
           {viewport.device === "MOBILE" ? (
