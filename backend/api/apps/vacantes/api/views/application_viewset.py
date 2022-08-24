@@ -42,6 +42,7 @@ class ApplicationViewSet(viewsets.GenericViewSet):
 		return Response(applications_serializer.data, status=status.HTTP_200_OK)
 
 	def create(self, request):
+		print(request,request.data)####depurar
 		status_data ={
 			"t201_id_application":"",
 			"c205_id_application_state":1,

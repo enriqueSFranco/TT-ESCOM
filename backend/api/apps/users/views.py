@@ -7,6 +7,7 @@ from apps.users.api.serializers import UserSerializer,ListUserSerializer,UpdateU
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny
 from rest_framework import viewsets
+from apps.students.models import Student
 from apps.users.models import User
 
 
@@ -38,7 +39,7 @@ class BlacklistTokenUpdateView(APIView):
 
 
 class UserViewSet(viewsets.GenericViewSet):
-	model = User
+	model = User	
 	serializer_class = UserSerializer
 	list_serializer_class = ListUserSerializer
 	queryset = None
@@ -106,19 +107,26 @@ class UserViewSet(viewsets.GenericViewSet):
 
 
 
-class MyTokenObtainPairSerializer(TokenObtainPairSerializer):	    
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):	    	
+    student_model = Student
     @classmethod
     def get_token(cls, user):
         return RefreshToken.for_user(user)
 
-    def validate(self,attrs):
+    def validate(self,attrs):		
         data = super().validate(attrs)
         token = self.get_token(self.user)     
-        print(self.user.id)
+        print(self.user.id)#-------------Depurar
         data['refresh']=str(token)
         data['access']=str(token.access_token)		
+        print(self.user.user_type)#-------------Depurar
+        if(self.user.user_type=='STUDENT'):
+            student_data = self.student_model.objects.filter(id_user = self.user.id).values('t100_id_student')
+            print(student_data[0]['t100_id_student'])#-------------Depurar
+            #user_data = {'t100_id_student': student_data[0]['t100_id_student']}			
         user={
-			'user_id':self.user.id,
+			'id_student':student_data[0]['t100_id_student'],
+			'user_id':self.user.id,			
 			'username':self.user.username,
 			'email':self.user.email,#---------->Quitar cuando se cambie la forma de validar si entrar al step o no
 			'user_type':self.user.user_type,
