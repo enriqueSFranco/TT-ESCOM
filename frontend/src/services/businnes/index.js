@@ -1,26 +1,8 @@
-import axios from "axios";
-import { API_COMPANY, API_PHOTO_COMPANY, API_RECRUITER } from "../settings";
-
-export const getImageBusiness = async (id) => {
-  try {
-    const response = await axios.get(`${API_PHOTO_COMPANY}/${id}/`);
-    if (!response.status) {
-      let error = {
-        err: true,
-        status: response.status,
-        statusText: response.statusText
-      }
-      throw error;
-    }
-    const { data } = response;
-    return data;
-  } catch (error) {
-    return error;
-  };
-};
+import API from 'services/http.service'
+import { API_COMPANY } from "../settings";
 
 export const getAllBusiness = async () => {
-  return axios.get(API_COMPANY)
+  return API(API_COMPANY)
     .then(response => {
       const { data } = response;
       return data;
@@ -29,7 +11,7 @@ export const getAllBusiness = async () => {
 };
 
 export const getBusiness = (id) => {
-  return axios.get(`${API_COMPANY}/${id}/`)
+  return API(`${API_COMPANY}/${id}/`)
     .then(response => {
       const { data } = response;
       return data;
@@ -39,28 +21,12 @@ export const getBusiness = (id) => {
 
 
 export const createBusiness = (payload = {}) => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json",
-    },
-  };
-
-  return axios.post(API_COMPANY, payload, config)
-    .then((response) => {
-      return response;
-    })
-    .catch(error => {
-      if (error.response) return error.response;
-    })
+  return API.post(`${process.env.REACT_APP_URL_COMPANY}`, payload)
+    .then((response) => response)
+    .catch(error => error)
 };
 
 export const createBusinessRecruiter = (payload = {}) => {
-  return axios.post(API_RECRUITER, payload, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    }
-  }).then(response => response)
+  return API.post(`${process.env.REACT_APP_URL_RECRUITERS}`, payload).then(response => response)
   .catch(error => error);
 }

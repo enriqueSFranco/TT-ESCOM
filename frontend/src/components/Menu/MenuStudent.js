@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion" ;
+// import { motion } from "framer-motion" ;
 
 import styles from "./MenuStudent.module.css";
 
@@ -26,7 +26,7 @@ const MenuStudent = () => {
             >
               {item.label}
               {item.label === selectedTab ? (
-                <motion.div className={styles.underline} layoutId="underline" />
+                <div className={styles.underline} layoutId="underline" />
               ) : null}
             </Link>
           </li>

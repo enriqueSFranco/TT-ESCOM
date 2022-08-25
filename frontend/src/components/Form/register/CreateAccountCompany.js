@@ -2,9 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "hooks/useForm";
 import { useFetch } from "hooks/useFetch";
-// import { TextField, Autocomplete, FormControl } from "@mui/material/";
-import { API_COMPANY } from "services/settings";
-import { companyInitialForm } from "../../../types/schemes";
+import { companyInitialForm } from "types/schemes";
 import FormBusinessRecruiter from "./FormBusinessRecruiter";
 import FormCompanyInfo from "./FormCompanyInfo";
 import FormRecruiterInfo from "./FormRecruiterInfo";
@@ -67,8 +65,7 @@ const validateForm = (form) => {
 const FormCompany = () => {
   const { form, errors, handleChange, handleValidate, handleSubmitCompany } =
     useForm(companyInitialForm, validateForm);
-  const { data } = useFetch(API_COMPANY);
-  // const [_, setIdCompany] = useState(0);
+  const { data } = useFetch(process.env.REACT_APP_URL_COMPANY);
   const [step, setStep] = useState(1);
   const [isActive, setIsActive] = useState(false);
 
