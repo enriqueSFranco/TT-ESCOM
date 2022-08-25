@@ -10,15 +10,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import toast, { Toaster } from "react-hot-toast";
 
-const wrapper = {
-  position: "relative",
-  top: "4rem",
-};
 
 const PageValidateRecruiter = () => {
   const listRecruiter = useGetAllRecruitrs();
-
-  console.log(listRecruiter)
 
   // TODO: pasar a un servicio
   const validateRecruiter = async (idRecruiter) => {
@@ -32,12 +26,11 @@ const PageValidateRecruiter = () => {
     console.log(data);
   };
 
-
   if (!listRecruiter) return null;
 
   return (
     <LayoutMenu>
-      <section style={wrapper}>
+      <section>
         <h2>VALIDAR RECLUTADORES</h2>
         <TableContainer>
           <Table sx={{ maxWidth: 600 }} aria-label="simple table">

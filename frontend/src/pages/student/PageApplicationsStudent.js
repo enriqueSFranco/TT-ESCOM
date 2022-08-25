@@ -37,8 +37,6 @@ const PageApplicationsStudent = () => {
 
   if (!data) return null;
 
-  console.log(data)
-
   // TODO: ELIMINAR ELEMENTOS DUPLICADOS DE LA LISTA DE VACANTES EN RELACION AL CAMPO T200_JOB
   return (
     <LayoutHome>
@@ -101,13 +99,13 @@ const PageApplicationsStudent = () => {
                         row?.t200_id_vacant?.t300_id_company?.t300_name
                       }
                       state={row?.c205_id_application_state?.c205_description}
-                      workingHours={`${(row?.t200_id_vacant?.t200_check_time).slice(
-                        0,
-                        5
-                      )}am - ${(row?.t200_id_vacant?.t200_closing_hour).slice(
-                        0,
-                        5
-                      )}pm`}
+                      // workingHours={`${(row?.t200_id_vacant?.t200_check_time).slice(
+                      //   0,
+                      //   5
+                      // )}am - ${(row?.t200_id_vacant?.t200_closing_hour).slice(
+                      //   0,
+                      //   5
+                      // )}pm`}
                     />
                   </TableCell>
                   <TableCell

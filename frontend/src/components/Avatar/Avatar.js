@@ -33,10 +33,10 @@ const CustomAvatar = ({ username }) => {
       <Link
         to="/perfil"
         style={{
-          width: "3.3rem",
-          height: "2.8rem",
+          width: "2.5rem",
+          height: "2.5rem",
           borderRadius: "50%",
-          backgroundColor: `${bg}`,
+          // backgroundColor: `${bg}`,
           display: "grid",
           placeContent: "center",
           padding: ".3rem",

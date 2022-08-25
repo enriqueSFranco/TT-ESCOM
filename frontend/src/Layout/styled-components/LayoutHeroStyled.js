@@ -46,7 +46,6 @@ const WrapperPhoto = styled.div`
 const Photo = styled.img`
   object-fit: cover;
   object-position: center;
-  /* position: absolute; */
   width: 100%;
   height: 400px;
 `;
@@ -54,13 +53,10 @@ const Photo = styled.img`
 const Content = styled.div`
   width: 100%;
   height: inherit;
-  /* background-color: transparent; */
-  /* display: flex;
+  background-color: transparent;
+  display: flex;
   justify-content: center;
-  align-items: center; */
-  position: absolute;
-  bottom: 0;
-  outline: 2px solid red;
+  align-items: center;
 `;
 
 export { Content, ContainerText, LayoutHeroStyled, Photo, WrapperPhoto, WrapperAvatar };

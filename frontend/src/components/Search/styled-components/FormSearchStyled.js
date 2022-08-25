@@ -30,7 +30,7 @@ const Button = styled.button`
 
 const WrapperForm = styled.div`
 
-@media only screen and ${device.mobileM} {
+  @media only screen and ${device.mobileM} {
     z-index: 11;
     position: fixed;
     top: 5rem;
@@ -40,13 +40,16 @@ const WrapperForm = styled.div`
   
   @media only screen and ${device.laptop} {
     width: fit-content;
-    height: 80px;
+    height: fit-content;
     background-color: #00000097;
     backdrop-filter: blur(10px);
     box-shadow: #1C8EFB 0px 1px 1px, #1C8EFB 0px 1px 1px;
     border-radius: .5rem;
+    position: absolute;
+    top: 8rem;
+    z-index: 0;
   }
-
+  
 `
 
 const Form = styled.form`
@@ -69,6 +72,7 @@ const Form = styled.form`
     flex-direction: row;
     align-items: center;
     padding: 1rem;
+    background-color: transparent;
   }
 `
 
