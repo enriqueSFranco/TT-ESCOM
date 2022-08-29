@@ -24,6 +24,8 @@ export function useGetAllJobs() {
   useEffect(() => {
     if (page === INITIAL_PAGE) return;
 
+    if (page === null) return;
+
     setLoadinNextPage(true);
     getAllJobs(page).then((nextResponse) => {
       setResponse(prevResponse => prevResponse.concat(nextResponse))

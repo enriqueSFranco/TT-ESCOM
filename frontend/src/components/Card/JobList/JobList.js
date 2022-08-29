@@ -1,5 +1,4 @@
 import CardJob from "../CardJob/CardJob";
-import { getRandomColor } from "utils/generateColors";
 import Skeleton from "components/Skeleton/Skeleton"
 import styles from "./JobList.module.css";
 
@@ -11,18 +10,18 @@ const ListEmptyJobs = () => {
   );
 };
 
-const JobList = ({ jobs, loading }) => {
+const JobList = ({ jobs, loading, loadingNextPage }) => {
 
   if (!jobs) return null;
 
   if (jobs?.length > 0) {
     return (
       <>
-        {jobs?.map((job) => <CardJob key={job?.t200_id_vacant} randomColor={getRandomColor()} job={job} />)}
+        {jobs?.map((job) => <CardJob key={crypto.randomUUID()} job={job} />)}
       </>
     );
   }
-  if (loading) {
+  if (loading || loadingNextPage) {
     return (
       <Skeleton type='feed' />
     )
@@ -34,7 +33,7 @@ const JobList = ({ jobs, loading }) => {
 
   return (
     <>
-      {jobs?.map((job) => <CardJob key={job?.t200_id_vacant} randomColor={getRandomColor()} job={job} />)}
+      {jobs?.map((job) => <CardJob key={crypto.randomUUID()} job={job} />)}
     </>
   );
 };

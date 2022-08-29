@@ -13,7 +13,7 @@ import Filters from "components/Filter/Filters";
 import ButtonScrollTop from "components/Button/ButtonScrollTop";
 
 const Home = () => {
-  const { response, loading, setPage } = useGetAllJobs();
+  const { response, loading, loadingNextPage, setPage } = useGetAllJobs();
   const [filteredData, setDataFiltered] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
   const externalRef = useRef(null);
@@ -67,6 +67,7 @@ const Home = () => {
           <JobList
             jobs={isFiltered ? filteredData : response}
             loading={loading}
+            loadingNextPage={loadingNextPage}
           />
           <div id="visor" ref={externalRef}></div>
         </Content>

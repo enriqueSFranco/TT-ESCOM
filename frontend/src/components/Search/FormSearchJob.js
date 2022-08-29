@@ -28,7 +28,7 @@ const FormSearchJob = ({ handleSearch }) => {
     const query = e.target.value;
     setQueryJob(query);
 
-    const dataFiltered = data?.filter((el) => {
+    const dataFiltered = data.result?.filter((el) => {
       let er = new RegExp(`^${query}`, "gi");
       let matches = el.t200_job.toLowerCase().match(er);
       return matches;

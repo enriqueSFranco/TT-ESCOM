@@ -14,7 +14,7 @@ const CardBody = styled.article`
     font-size: .9rem;
     justify-content: space-around;
     padding: .5rem;
-    box-shadow: ${props => `${props.borderColor} 0px 1px 2px, ${props.borderColor} 0px 0px 0px 2px ` || `rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px`};
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   }
 
   @media screen and ${device.laptop} {
@@ -29,7 +29,7 @@ const CardBody = styled.article`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    box-shadow: ${props => `${props.borderColor} 0px 1px 2px, ${props.borderColor} 0px 0px 0px 2px ` || `rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px`};
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   }
 `;
 

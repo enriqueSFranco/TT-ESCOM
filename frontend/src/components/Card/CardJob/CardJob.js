@@ -43,7 +43,7 @@ const CardJob = ({ job, randomColor }) => {
   if (!job) return null;
   
   return (
-    <CardBody borderColor={randomColor}>
+    <CardBody>
       <CardHeader>
         <div>
           {job?.t300_id_company?.t300_logo ? (
@@ -69,7 +69,7 @@ const CardJob = ({ job, randomColor }) => {
         <Location>Cupertino, California</Location>
         <Description dangerouslySetInnerHTML={createMarkup()} />
         <Actions>
-          <Button bgColor={randomColor} onClick={handleOpenModal}>Ver mas</Button>
+          <Button onClick={handleOpenModal}>Ver mas</Button>
         </Actions>
       </CardContent>
     </CardBody>
