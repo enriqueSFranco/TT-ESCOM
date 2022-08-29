@@ -4,7 +4,7 @@ import { getRandomColor } from "utils/generateColors";
 
 const bg = getRandomColor()
 
-const CustomAvatar = ({ username }) => {
+const CustomAvatar = ({ username, width, height }) => {
 
   if (username === "") {
     return (
@@ -33,8 +33,8 @@ const CustomAvatar = ({ username }) => {
       <Link
         to="/perfil"
         style={{
-          width: "2.5rem",
-          height: "2.5rem",
+          width: `${width || '2.5rem'}`,
+          height: `${height || '2.5rem'}`,
           borderRadius: "50%",
           // backgroundColor: `${bg}`,
           display: "grid",

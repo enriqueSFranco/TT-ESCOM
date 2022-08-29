@@ -13,6 +13,8 @@ const ListEmptyJobs = () => {
 
 const JobList = ({ jobs, loading }) => {
 
+  if (!jobs) return null;
+
   if (jobs?.length > 0) {
     return (
       <>

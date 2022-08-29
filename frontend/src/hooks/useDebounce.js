@@ -14,3 +14,15 @@ export function useDebounce(val, wait) {
 
   return debounce
 }
+
+export function useCustomDebounce(func, delay) {
+  const time = delay || 500
+  let timer;
+
+  return event => {
+    if (time) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(func, time, event)
+  }
+}

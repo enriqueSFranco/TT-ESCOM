@@ -1,36 +1,57 @@
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useGetAllJobs } from "hooks/useGetAllJobs";
+import { useNearScreen } from "hooks/useNearScreen";
+import { useCustomDebounce } from "hooks/useDebounce";
+import { useScroll } from "hooks/useScroll";
 import FormSearchJob from "components/Search/FormSearchJob";
 import JobList from "components/Card/JobList/JobList";
 import LayoutHome from "Layout/LayoutHome";
 import LayoutHero from "Layout/LayoutHero";
 import { Aside, Content, Hero, Main } from "./styled-components/HomeStyled";
 import parallaxESCOM from "images/parallaxESCOM.jpg";
+import Filters from "components/Filter/Filters";
 import ButtonScrollTop from "components/Button/ButtonScrollTop";
 
-
 const Home = () => {
-  const [response, loading] = useGetAllJobs();
+  const { response, loading, setPage } = useGetAllJobs();
   const [filteredData, setDataFiltered] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
+  const externalRef = useRef(null);
+  const { isNearScreen } = useNearScreen({
+    distance: "100px",
+    externalRef: loading ? null : externalRef,
+    once: false,
+  });
+
+  function handleNextPage() {
+    setPage(prevPage => prevPage + 1)
+  }
+  const debounce = useCustomDebounce(() => {
+    handleNextPage()
+  }, 400)
 
   function handleFilter(value) {
-    let lowerValue = value.toLowerCase()
+    let lowerValue = value.toLowerCase();
 
-    if (lowerValue !== '') {
-      const result = response.filter(el =>  {
-        // let regex = new RegExp(lowerValue, 'gi')
-        return el.t200_job.toLowerCase().match(lowerValue)
-      })
-      console.log('result: ',result)
-      setDataFiltered(result)
+    if (lowerValue !== "") {
+      const result = response.filter((el) =>
+        el.t200_job.toLowerCase().match(lowerValue)
+      );
+      setDataFiltered(result);
     }
   }
 
   function handleSearch(value) {
     setIsFiltered(value !== "" ? true : false);
-    handleFilter(value)
+    handleFilter(value);
   }
+
+  const debouncehandleNextPage = useCallback(debounce
+  , []);
+
+  useEffect(() => {
+    if (isNearScreen) debouncehandleNextPage();
+  },[isNearScreen, debouncehandleNextPage]);
 
   if (!response && !filteredData) return null;
 
@@ -43,10 +64,17 @@ const Home = () => {
           </LayoutHero>
         </Hero>
         <Content>
-          <JobList jobs={isFiltered ? filteredData : response} loading={loading} />
+          <JobList
+            jobs={isFiltered ? filteredData : response}
+            loading={loading}
+          />
+          <div id="visor" ref={externalRef}></div>
         </Content>
         <ButtonScrollTop />
-        <Aside></Aside>
+        <Aside>
+          {/* TODO: Hacer la parte de los filtros */}
+          <Filters />
+        </Aside>
       </Main>
     </LayoutHome>
   );

@@ -1,9 +1,13 @@
 .grid {
+  height: calc(100vh - 4rem);
+  position: relative;
+  top: 4rem;
   display: grid;
+  place-content: center;
   gap: 1rem;
   grid-template-columns: repeat(2, 1fr);
-  /* grid-template-rows: repeat(2, 1fr); */
   grid-auto-flow: column;
+  margin: 0 2rem;
 }
 
 .profileCard {
@@ -30,5 +34,4 @@
   top: 4rem;
   width: 100%;
   height: calc(100vh - 4rem);
-  /* background-color: red; */
 }

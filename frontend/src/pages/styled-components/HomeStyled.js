@@ -49,11 +49,11 @@ const Content = styled.section`
     gap: 2rem;
     padding: 1rem;
   }
-
 `
 
 const Aside = styled.aside`
   grid-area: aside;
+  padding: 1rem;
 `
 
 export { Aside, Content, Hero, Main }
