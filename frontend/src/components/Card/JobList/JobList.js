@@ -12,25 +12,27 @@ const ListEmptyJobs = () => {
 
 const JobList = ({ jobs, loading, loadingNextPage }) => {
 
+  console.log(jobs)
+
   if (!jobs) return null;
 
-  if (jobs?.length > 0) {
+  if (jobs.result?.length > 0) {
     return (
       <>
-        {jobs?.map((job) => <CardJob key={crypto.randomUUID()} job={job} />)}
+        {jobs.result?.map((job) => <CardJob key={crypto.randomUUID()} job={job} />)}
       </>
     );
   }
-  if (loading || loadingNextPage) {
+  if (loading && loadingNextPage) {
     return (
       <Skeleton type='feed' />
     )
   }
 
-  if (jobs?.length < 0) {
+  if (jobs.result?.length < 0) {
     return <ListEmptyJobs />
   }
-
+  console.log(jobs)
   return (
     <>
       {jobs?.map((job) => <CardJob key={crypto.randomUUID()} job={job} />)}

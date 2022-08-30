@@ -2,7 +2,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useGetAllJobs } from "hooks/useGetAllJobs";
 import { useNearScreen } from "hooks/useNearScreen";
 import { useCustomDebounce } from "hooks/useDebounce";
-import { useScroll } from "hooks/useScroll";
 import FormSearchJob from "components/Search/FormSearchJob";
 import JobList from "components/Card/JobList/JobList";
 import LayoutHome from "Layout/LayoutHome";
@@ -26,6 +25,7 @@ const Home = () => {
   function handleNextPage() {
     setPage(prevPage => prevPage + 1)
   }
+  
   const debounce = useCustomDebounce(() => {
     handleNextPage()
   }, 400)
@@ -54,6 +54,8 @@ const Home = () => {
   },[isNearScreen, debouncehandleNextPage]);
 
   if (!response && !filteredData) return null;
+
+  console.log(response)
 
   return (
     <LayoutHome>

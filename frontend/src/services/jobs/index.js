@@ -12,11 +12,10 @@ export const getAllJobs = async (numberPage = 1) => {
   const signal = controller.signal
   try {
     const {data} = await API.get(`${process.env.REACT_APP_URL_VACANTS}?page=${numberPage}`, {signal});
-    return data.result;
+    return data;
   } catch (error) {
-    if (error.response) {
+    if (error.response)
       return error.response;
-    }
   }
 };
 

@@ -1,12 +1,13 @@
 import axios from "axios";
-import { API_RECRUITER, API_RECRUITERVACANTS } from "../settings";
+import API from 'services/http.service'
+import { API_RECRUITER } from "../settings";
 
 /**
  * @param {Number} t301_id_recruiter
  * @return {Promise}
  **/
 export const getJobsForRecruiter = async (t301_id_recruiter) => {
-  return axios.get(`${API_RECRUITERVACANTS}${t301_id_recruiter}/`)
+  return API(`${process.env.REACT_APP_URL_VACANT_RECRUITER}${t301_id_recruiter}/`)
     .then(response => {
       return response;
     })

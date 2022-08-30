@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
+import { useRecruiterJobs } from "hooks/useRecruiterJobs";
 import { useModal } from "hooks/useModal";
 import { useForm } from "hooks/useForm";
 import { postJob } from "services/jobs/index";
@@ -45,6 +46,7 @@ import CardJobPreviewRecruiter from "components/Card/CardJobPreviewRecruiter";
 import {
   Aside,
   Container,
+  Form,
   Wrapper,
   WrapperListCardJobPreviewRecruiter,
 } from "../styled-components/DashboardRecruiterStyled";
@@ -64,6 +66,7 @@ const PageHistory = () => {
   // const { t200_id_vacant } = useParams();
   const { form, handleChange } = useForm(POST_NEW_JOB);
   const [body, setBody] = useState("");
+  const { data } = useRecruiterJobs({idRcruiter: `${token?.user?.user_id}`})
   // const [totalApplications, setTotalApplications] = useState([]);
   const [initialContent, setInitialContent] = useState(true);
   const [listJobs, setListJobs] = useState(null);
@@ -74,8 +77,9 @@ const PageHistory = () => {
   const [job, setJob] = useState(null);
   const [recruiter, setRecruiter] = useState([]);
   const [isOpenModalForm, openModalForm, closeModalForm] = useModal();
-  let id = token?.user?.user_id;
   let newObject = { ...form, t200_description: body };
+
+  // console.log(token)
 
   // efecto para obtener la lista de vacantes de un reclutador
   // useEffect(() => {
@@ -223,7 +227,7 @@ const PageHistory = () => {
       .catch((error) => console.error(error))
   };
 
-  // console.log(newObject);
+  console.log('data =>',data)
 
   return (
     <LayoutHome>
@@ -231,12 +235,16 @@ const PageHistory = () => {
         <Aside>
           <FormSearchJob />
           <WrapperListCardJobPreviewRecruiter>
-            <CardJobPreviewRecruiter />
+            {
+              !data && data?.map(el => (
+                <CardJobPreviewRecruiter key={crypto.randomUUID()} />
+              )) 
+            }
           </WrapperListCardJobPreviewRecruiter>
         </Aside>
 
         <Container>
-          <form onSubmit={onSubmitPostJob}>
+          <Form onSubmit={onSubmitPostJob}>
             <Input
               label="Titulo de la vacante"
               id="t200_job"
@@ -251,7 +259,7 @@ const PageHistory = () => {
               value={body}
             />
             <button type="submit">Enviar a revision</button>
-          </form>
+          </Form>
         </Container>
 
         {/* <article className={styles.contentDetailsJob}>
@@ -448,7 +456,7 @@ const PageHistory = () => {
           </div>
         </article> */}
       </Wrapper>
-      {modalType === 1 && (
+      {/* {modalType === 1 && (
         <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
           <FormPostJob
             idCompany={recruiter[0]?.t300_id_company?.t300_id_company}
@@ -468,7 +476,7 @@ const PageHistory = () => {
         <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
           <FormUpdateJob job={job} />
         </ModalForm>
-      )}
+      )} */}
     </LayoutHome>
   );
 };
