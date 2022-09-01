@@ -1,5 +1,6 @@
 // @ts-check
-
+import API from "services/http.service"
+import { CODE_201, CODE_200, CODE_400, CODE_404 } from "services/http.code";
 import axios from "axios";
 import toast from "react-hot-toast";
 import {
@@ -19,16 +20,7 @@ import {
  * @returns {Promise}
  **/
 export const getStudent = async (id) => {
-
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-      // 'Authorization': `Bearer ${token?.access}`,
-      'Accept': 'application/json',
-    },
-  };
-  return axios
-    .get(`${API_STUDENT}${id}/`, config)
+  return API(`${process.env.REACT_APP_URL_CANDIDATE}${id}/`)
     .then((response) => {
       const { data } = response;
       return data;
@@ -46,8 +38,7 @@ export const getStudent = async (id) => {
  * @returns {Promise}
  **/
 export const getSocialNetwork = async (id) => {
-  return axios
-    .get(`${API_SOCIAL_NETWORK}/${id}/`)
+  return API(`${process.env.REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS}/${id}/`)
     .then((response) => {
       const { data } = response;
       return data;
@@ -64,7 +55,7 @@ export const getSocialNetwork = async (id) => {
  * @returns {Promise}
  **/
 export const postSocialNetwork = (payload = {}) => {
-  return axios.post(`${API_SOCIAL_NETWORK}`, payload, {
+  return API.post(`${process.env.REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS}`, payload, {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -121,17 +112,21 @@ export const updateStudent = (id, payload = {}) => {
  **/
 export const createAccountStudent = async (payload) => {
   try {
-    const response = await axios.post(API_STUDENT, payload, {
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-    });
-    return response;
-  } catch (error) {
-    if (error.response) {
-      return error.response.data.errors;
+    const controller = new AbortController()
+    const signal = controller.signal
+    const response = await API.post(`${process.env.REACT_APP_URL_CANDIDATE}`, payload, {signal});
+    if (response.status === CODE_200 || response.status === CODE_201)
+      return response;
+    else if(response.status === CODE_400 || response.status === CODE_404) {
+      let error = {
+        err: true,
+        status: response.status || '00',
+        statusText: response.statusText || 'Opppps, ha ocurrido un error'
+      }
+      throw error
     }
+  } catch (error) {
+    return error;
   }
 };
 
@@ -155,19 +150,9 @@ export const uploadPhotoStudent = (id, img) => {
  * @return {Promise}
  **/
 export const applyJob = (payload) => {
-  return axios.post(API_JOB_APPLICATIONS, payload, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    },
-  })
-    .then(response => {
-      console.log(response);
-      return response;
-    })
-    .catch(error => {
-      if (error.response) return error.response;
-    })
+  return API.post(`${process.env.REACT_APP_URL_VACANT_APPLICATIONS}`, payload)
+    .then(response => response)
+    .catch(error => error.message)
 };
 
 export const changeApplyState = (id,payload) => {  
@@ -229,7 +214,7 @@ export const addProject = (payload = {}) => {
  * @returns {Promise}
  **/
 export const getAcademicHistorial = (id) => {
-  return axios.get(`${API_ACADEMIC_HISTORIAL}${id}/`)
+  return API(`${process.env.REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL}${id}/`)
     .then(response => response)
     .catch(error => error);
 }

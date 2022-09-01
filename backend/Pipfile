@@ -21,6 +21,9 @@ xmltodict = "==0.12.0"
 django-rest-framework = "*"
 Django = "==4.0.2"
 Pillow = "*"
+django-rest-swagger = "*"
+drf-yasg = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 

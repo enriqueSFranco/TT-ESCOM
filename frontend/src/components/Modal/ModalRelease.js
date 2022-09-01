@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useFetch } from '../../hooks/useFetch';
-import { motion } from 'framer-motion';
+import { useFetch } from 'hooks/useFetch';
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import styles from './ModalRelease.module.css';
 
@@ -17,7 +16,7 @@ const ModalRelease = () => {
   const [release] = data; // destructuramos el arreglo de objetos
 
   return (
-    <motion.article 
+    <article 
       initial={{opacity: 0}}
       animate={{opacity: 1}}
       transition={{delay: 0, duration: 1}} 
@@ -40,7 +39,7 @@ const ModalRelease = () => {
           <a href={release?.t202_link} target="_blank" rel="noreferrer">Enlace de registro</a>
         </div>
       </div>
-    </motion.article>
+    </article>
   )
 }
 

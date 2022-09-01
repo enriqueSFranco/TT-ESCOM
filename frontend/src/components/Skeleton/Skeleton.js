@@ -2,20 +2,19 @@ import React from 'react';
 import styles from './Skeleton.module.css';
 
 const Skeleton = ({ type }) => {
+  
   const FeedSkeleton = () => (
-    <article className={`${styles.cardSk} container`}>
+    <article className={`${styles.cardSk}`}>
       <header className={`${styles.cardSkHeader} ${styles.placeholder}`}>
         <p className={``}></p>
       </header>
       <div className={styles.cardSkContent}>
         <p className={`${styles.lineClamp} ${styles.placeholder}`}></p>
         <p className={`${styles.timeWork} ${styles.placeholder}`}></p>
-        <p className={`${styles.locationJob} ${styles.placeholder}`}></p>
-        <p className={`${styles.publicationTimeJob} ${styles.placeholder}`}></p>
       </div>
+      <span className={`${styles.placeholder} ${styles.buttonSkeleton}`}></span>
   </article>
   );
-
 
   const BusinessDetailsSkeleton = () => (
     <article className={styles.businessDetailsSkeleton}>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { CODE_201 } from "services/http.code";
 import { createBusiness, createBusinessRecruiter } from "services/businnes/index";
 import { createAccountStudent } from "services/students/index";
 import { postJob } from "services/jobs/index";
@@ -40,9 +41,9 @@ export const useForm = (initialForm, validateForm) => {
     if (Object.keys(errors).length === 0) { // si la longitud de las claves del objeto error es de cero, quiere decir que no hay errores.
       setLoading(true);
       createAccountStudent(form).then((response) => {
-        console.log(response)
-        if (response.status === 201) {
-          toast.success(response.data.message);
+        if (response.status || response.status === CODE_201) {
+          const { data } = response
+          toast.success(data.message);
           setTimeout(() => {
             navigate("/alumno");
           }, 3000);
@@ -57,7 +58,7 @@ export const useForm = (initialForm, validateForm) => {
   const handleSubmitCompany = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
-    console.log(form);
+  
     if (Object.keys(errors).length === 0) {
       createBusiness(form)
         .then(response => {
@@ -94,21 +95,21 @@ export const useForm = (initialForm, validateForm) => {
     }
   }
 
-  const onSubmitPostJob = (e) => {
-    e.preventDefault();
-    setErrors(validateForm(form));
-
-    if (Object.keys(errors).length === 0) {
-      setLoading(true);
-      postJob(form)
-        .then((response) => {
-          console.log(response);
-          navigate("/mis-vacantes");
-        })
-        .catch((error) => console.error(error))
-        .finally(() => setLoading(false));
-    }
-  };
+  // const onSubmitPostJob = (e) => {
+  //   e.preventDefault();
+  //   // setErrors(validateForm(form));
+  //   console.log(form)
+  //   if (Object.keys(errors).length === 0) {
+  //     setLoading(true);
+  //     postJob(form)
+  //       .then((response) => {
+  //         console.log(response);
+  //         navigate("/mis-vacantes");
+  //       })
+  //       .catch((error) => console.error(error))
+  //       .finally(() => setLoading(false));
+  //   }
+  // };
 
   const onSubmitPostCertification = (e) => {
     e.preventDefault();
@@ -123,9 +124,6 @@ export const useForm = (initialForm, validateForm) => {
           setLoading(false);
         }
       })
-    // if (Object.keys(errors).length === 0) {
-    //   setLoading(true);
-    // }
   } 
 
   return {
@@ -138,7 +136,7 @@ export const useForm = (initialForm, validateForm) => {
     handleSubmitStudent,
     handleSubmitCompany,
     handleValidate,
-    onSubmitPostJob,
+    // onSubmitPostJob,
     onSubmitPostCertification,
     handleSubmitCompanyRecruiter
   };

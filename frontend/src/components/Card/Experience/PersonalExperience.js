@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "context/AuthContext";
+import { useAuth } from "context/AuthContext";
 import { useForm } from "hooks/useForm";
 import { addProject } from "services/students";
 import { TextField } from "@mui/material";
@@ -20,7 +20,7 @@ const PersonalExperience = ({ setTypeProject }) => {
   const [totalChar, setTotalChar] = useState(0);
   const [succes, setSucces] = useState(null);
   const [message, setMessage] = useState("");
-  const { token } = useContext(AuthContext);
+  const { token } = useAuth();
   const { form, handleChange } = useForm({...initialForm, t100_id_student: token?.user?.user_id});
 
   const handleClick = () => setTypeProject(null);

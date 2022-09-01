@@ -1,67 +1,41 @@
-import { useCallback, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
-import Skeleton from "../../Skeleton/Skeleton";
 import CardJob from "../CardJob/CardJob";
-import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
-import burrito from "images/emoji_angustiado.jpg"
+import Skeleton from "components/Skeleton/Skeleton"
 import styles from "./JobList.module.css";
 
-const JobList = ({jobs, loading, page, setPage, maxLenPage}) => {
+const ListEmptyJobs = () => {
+  return (
+    <article className={`${styles.notJobs}`}>
+      <h2>¡Upps, no tenemos vacantes registradas!</h2>
+    </article>
+  );
+};
 
-  const prevPage = useCallback(() => {
-    setPage(prevState => {
+const JobList = ({ jobs, loading, loadingNextPage }) => {
 
-      if ((prevState - 1) > 0) {
-        return prevState - 1;
-      }
-      return prevState;
-    })
-  }, [setPage]);
+  console.log(jobs)
 
-  const  nextPage = useCallback(() => {
-    // console.log("next: ",page)
-    setPage((prevState) => {
-      if (prevState < maxLenPage) {
-        return prevState + 1;
-      }
-      return prevState;
-    });
-  },[setPage, maxLenPage]);
-  // console.log(page)
+  if (!jobs) return null;
+
+  if (jobs.result?.length > 0) {
+    return (
+      <>
+        {jobs.result?.map((job) => <CardJob key={crypto.randomUUID()} job={job} />)}
+      </>
+    );
+  }
+  if (loading && loadingNextPage) {
+    return (
+      <Skeleton type='feed' />
+    )
+  }
+
+  if (jobs.result?.length < 0) {
+    return <ListEmptyJobs />
+  }
+  console.log(jobs)
   return (
     <>
-    {jobs?.length > 0 ? (
-      <>
-        <article className={`${styles.wrapper} ${styles.grid}`}>
-          <div style={{ width: "550px" }}>
-            {loading ? (
-              <Skeleton type="feed" />
-            ) : jobs?.filter(job => job?.c204_id_vacant_status?.c204_description === "Abierta")
-              .map(job => (
-                <Link
-                to={`vacante/${job?.t200_id_vacant}`}
-                key={job?.t200_id_vacant}
-              >
-                <CardJob job={job} />
-              </Link>
-              ))
-            }
-          </div>
-          <Outlet />
-        </article>
-        <div className={styles.pagination}>
-          <button disabled={page <= 1} onClick={prevPage}><GrFormPreviousLink className={styles.icon} />Anterior</button>
-          <button disabled={page === maxLenPage} onClick={nextPage}>Siguiente <GrFormNextLink className={styles.icon} /></button>
-        </div>
-      </>
-    ) : (
-      <article className={`container ${styles.notJobs}`}>
-        <div className={styles.bodyNotJobs}>
-          <h2>¡Upps, no tenemos vacantes registradas!</h2>
-          <img src={burrito} alt="burrito_ipn" />
-        </div>
-      </article>
-    )}
+      {jobs?.map((job) => <CardJob key={crypto.randomUUID()} job={job} />)}
     </>
   );
 };

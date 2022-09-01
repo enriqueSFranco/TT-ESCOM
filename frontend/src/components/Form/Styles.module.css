@@ -5,6 +5,10 @@
   background-repeat: no-repeat;
 }
 
+/* .active {
+  background-color: #2b2b2bcc;
+} */
+
 .bg {
   background-image: url(../../images/beneficios-del-smart-working.jpg);
 }
@@ -76,17 +80,18 @@
 }
 
 .error {
+  width: 400px;
   font-weight: 300;
-  color: #5f2120;
+  font-size: .9rem;
+  color: #ff0400;
   text-align: left;
   padding: .3rem;
-  background-color: #fceded;
   border-radius: 0 0 4px 4px;
 }
 
 .error svg {
-  color: #ef6360;
-  font-size: 1.2rem;
+  color: #ff0400;
+  font-size: 1rem;
   margin-right: .4rem;
 }
 

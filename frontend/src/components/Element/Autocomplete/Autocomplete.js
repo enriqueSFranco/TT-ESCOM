@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { uuid } from "../../../utils/uuid";
 import Label from "../Label/Label";
-import Input from "../Input/Input";
+import Input from "../../Input/Input";
 import Span from "../Span/Span";
 import styles from "./Autocomplete.module.css";
 

@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useModal } from "hooks/useModal";
 import { getProjects } from "services/students/index";
-import AuthContext from "context/AuthContext";
+import { useAuth } from "context/AuthContext";
 import { uuid } from "utils/uuid";
 import ExperenceItem from "./ExperienceItem";
 import ModalForm from "components/Modal/ModalForm";
@@ -12,7 +12,7 @@ import styles from "./Experience.module.css";
 
 const ExperenceList = () => {
   const [listProjects, setListProjects] = useState(null);
-  const { token } = useContext(AuthContext);
+  const { token } = useAuth();
   const [isOpenModalAddProject, openModalAddProject, closeModalAddProject] =
     useModal();
 

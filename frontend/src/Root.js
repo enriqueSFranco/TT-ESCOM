@@ -2,8 +2,8 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { ROLE } from "routes/roles";
 import PrivateRoute from "routes/PrivateRoute";
-import PageHome from "pages/main/PageHome";
-import PageCompany from "pages/main/PageCompany";
+import Home from "pages/Home";
+import Company from "pages/Company";
 import PageLoginStudent from "pages/login/PageLoginStudent";
 import PageReleases from "pages/main/PageReleases";
 import PageCreateAccountStudent from "pages/login/PageCreateAccountStudent";
@@ -31,13 +31,12 @@ const Root = () => {
   return (
     <Routes>
       {/* Indice de rutas publicas */}
-      <Route path="/" element={<PageHome />}>
-        <Route path="vacante">
+      <Route path="/" element={<Home />}>
+        {/* <Route path="vacante">
           <Route path=":t200_id_vacant" element={<CardJobDetails />} />
-        </Route>
+        </Route> */}
       </Route>
       
-      <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>   
         <Route path="/dashboard" element={<PageDashBoard />} />
         <Route path="/mis-vacantes" element={<PageHistory />}>
           <Route path=":t200_id_vacant" element={<CardJobDetails />} />
@@ -47,6 +46,7 @@ const Root = () => {
         </Route>
           <Route path="/perfil-del-candidato" element={<FullProfileUser />} />
         <Route path="/publicar-comunicado" element={<PagePostRelease />} />
+      <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>   
         {/* <Route path="/candidatos" element={<PageApplications />} /> */}
       </Route>
 
@@ -65,7 +65,7 @@ const Root = () => {
       <Route path="/registro-reclutador" element={<PageRegisterCompany />} />
       <Route path="/pre-registro" element={<PageSuccesCompany />} />
       
-      <Route path="empresas" element={<PageCompany />}>
+      <Route path="empresas" element={<Company />}>
         <Route path=":t301_id_company" element={<ModalBusiness />} />
       </Route>
       

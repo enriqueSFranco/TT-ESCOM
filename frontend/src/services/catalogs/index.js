@@ -1,4 +1,5 @@
 import axios from "axios";
+import API from 'services/http.service'
 import {   
   API_CATALOGUE_CANDIDATE_PROFILE, 
   API_CATALOGUE_EXPERIENCE,
@@ -14,7 +15,7 @@ import {
 } from "services/settings";
 
 export const getSkill = async (id) => {
-  return axios.get(`${API_SKILLS}${id}/`)
+  return API(`${process.env.REACT_APP_URL_CANDIDATE_SKILLS}${id}/`)
     .then(response => {
       const { data } = response;
       return data;

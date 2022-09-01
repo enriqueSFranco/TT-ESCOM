@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { stringToColor } from "utils/stringToColor";
+import { stringToColor } from "utils/generateColors";
 import { uuid } from "utils/uuid";
 import { getSkill } from "services/catalogs";
 import {

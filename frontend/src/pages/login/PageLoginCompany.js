@@ -1,23 +1,18 @@
 import LoginCompany from 'components/Form/login/LoginCompany';
+import background from 'assets/images/reclutamiento-interno.jpg'
 
 const Container = {
   fontFamily: 'sans-serif',
   width: '100%',
   height: '100vh',
-  backgroundImage: 'linear-gradient(to top, #30cfd0 0%, #330867 100%)'
+  background: `url(${background}) no-repeat`,
+  backgroundSize: 'cover'
 };
-
-const Form = {
-  position: 'relative',
-  top: '7rem',
-}
 
 const PageLoginCompany = () => {
   return (
     <section style={Container}>
-      <article style={Form}>
-        <LoginCompany />
-      </article>
+      <LoginCompany />
     </section>
   )
 };

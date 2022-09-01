@@ -1,15 +1,54 @@
-import Avatar from "@mui/material/Avatar";
-import { stringToColor } from "utils/stringToColor";
+import React from "react";
+import { Link } from "react-router-dom";
+import { getRandomColor } from "utils/generateColors";
 
-const CustomAvatar = ({student = [], width, height, fontSize}) => {
-  
-  if (student.length < 0) return null;
+const bg = getRandomColor()
+
+const CustomAvatar = ({ username, width, height }) => {
+
+  if (username === "") {
+    return (
+      <Link
+        to="/perfil"
+        style={{
+          width: "3.3rem",
+          height: "2.8rem",
+          backgroundColor: `${bg}`,
+          borderRadius: "50%",
+          display: "grid",
+          placeContent: "center",
+          padding: ".3rem",
+        }}
+      >
+        <img
+          height="100%"
+          src={`https://robohash.org/default.png`}
+          alt={username}
+        />
+      </Link>
+    );
+  }
 
   return (
-    <Avatar sx={{ width: width, height: height, bgcolor: stringToColor(`${student && student[0]?.t100_name}`), fontSize: fontSize }}>
-    {student[0]?.t100_name && student[0]?.t100_name.slice(0,1)}{student[0]?.t100_last_name && student[0]?.t100_last_name.slice(0,1)}
-  </Avatar>
-  )
-}
+      <Link
+        to="/perfil"
+        style={{
+          width: `${width || '2.5rem'}`,
+          height: `${height || '2.5rem'}`,
+          borderRadius: "50%",
+          // backgroundColor: `${bg}`,
+          display: "grid",
+          placeContent: "center",
+          padding: ".3rem",
+        }}
+      >
+        <img
+          height="100%"
+          src={`https://robohash.org/${username}.png`}
+          alt={username}
+        />
+      </Link>
+  );
+};
 
 export default CustomAvatar;

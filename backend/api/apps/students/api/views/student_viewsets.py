@@ -1,5 +1,4 @@
 import email
-from lib2to3.pgen2 import token
 from django.shortcuts import get_object_or_404
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
