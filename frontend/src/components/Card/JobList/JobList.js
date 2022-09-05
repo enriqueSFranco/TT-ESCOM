@@ -10,20 +10,18 @@ const ListEmptyJobs = () => {
   );
 };
 
-const JobList = ({ jobs, loading, loadingNextPage }) => {
-
-  console.log(jobs)
+const JobList = ({ jobs, loading }) => {
 
   if (!jobs) return null;
 
-  if (jobs.result?.length > 0) {
-    return (
-      <>
-        {jobs.result?.map((job) => <CardJob key={crypto.randomUUID()} job={job} />)}
-      </>
-    );
-  }
-  if (loading && loadingNextPage) {
+  // if (jobs.result?.length > 0) {
+  //   return (
+  //     <>
+  //       {jobs.result?.map((job) => <CardJob key={crypto.randomUUID()} job={job} />)}
+  //     </>
+  //   );
+  // }
+  if (loading) {
     return (
       <Skeleton type='feed' />
     )
@@ -32,7 +30,7 @@ const JobList = ({ jobs, loading, loadingNextPage }) => {
   if (jobs.result?.length < 0) {
     return <ListEmptyJobs />
   }
-  console.log(jobs)
+
   return (
     <>
       {jobs?.map((job) => <CardJob key={crypto.randomUUID()} job={job} />)}

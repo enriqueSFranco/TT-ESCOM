@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "context/AuthContext";
 import { useForm } from "hooks/useForm";
 import { useFetch } from "hooks/useFetch";
+import { useGetAllJobs } from "hooks/useGetAllJobs";
 import { helpHttp } from "utils/helpHttp";
+import { formStepCandidate } from 'types/formStepCandidate'
 import { AcademicFormat } from "types/schemes";
 import { getAllAcademicUnits, getAllJobs } from "services/catalogs/index";
 import Stepper from "@mui/material/Stepper";
@@ -12,28 +15,8 @@ import DatesPersonal from "./DatesPersonal";
 import DatesJob from "./DatesJob";
 import DatesSkill from "./DatesSkill";
 import DatesSchool from "./DatesSchool";
-import { useAuth } from "context/AuthContext";
 import styles from "./StylesStepper.module.css";
 
-let initialForm = {
-  t100_boleta: "",
-  t100_name: "",
-  t100_password: "",
-  t100_last_name: "",
-  t100_username: "",
-  t100_email: "",
-  t100_gender: null,
-  t100_date_of_birth: null,
-  t100_personal_objectives: "",
-  t100_speciality: "",
-  t100_target_salary: "",
-  t100_travel: false,
-  is_active: false,
-  t100_phonenumber: "",
-  t100_residence: "",
-  t100_modalities: "",
-  t100_interest_job: "",
-};
 
 const StepComponent = () => {
   const [startMonth, setStartMonth] = useState(1);
@@ -45,16 +28,18 @@ const StepComponent = () => {
   const [softSkills, setSoftSkills] = useState([]);
   const [academicUnit, setAcademicUnits] = useState([]);
   const [interestJobs, setInterestJobs] = useState([]);
-  const { form, handleChange } = useForm(initialForm);
+  const { form, handleChange } = useForm(formStepCandidate);
+  // const { response, loading, loadingNextPage, setPage } = useGetAllJobs()
   const [academicHistorial, setAcademicHistorial] = useState(AcademicFormat);
-  const { data } = useFetch("/api/catalogues/CatalogueSkills/");
+  const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
   const { token } = useAuth();
   let navigate = useNavigate();
 
   let id_student = token?.user?.user_id;
   academicHistorial.t100_id_student = id_student;
 
-  useEffect(() => {
+  // TODO: Pasar a un hook personalizado
+  useEffect(() => { // efecto que recupera las unidades academicas
     getAllAcademicUnits()
       .then((response) => {
         setAcademicUnits(response);
@@ -62,7 +47,8 @@ const StepComponent = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  useEffect(() => {
+  // TODO: Pasar a un hook personalizado
+  useEffect(() => { // efecto que recupera 
     getAllJobs()
       .then((response) => {
         setInterestJobs(response);

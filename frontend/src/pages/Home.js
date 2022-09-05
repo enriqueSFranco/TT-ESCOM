@@ -55,7 +55,7 @@ const Home = () => {
 
   if (!response && !filteredData) return null;
 
-  console.log(response)
+  console.log(loadingNextPage)
 
   return (
     <LayoutHome>
@@ -69,7 +69,6 @@ const Home = () => {
           <JobList
             jobs={isFiltered ? filteredData : response}
             loading={loading}
-            loadingNextPage={loadingNextPage}
           />
           <div id="visor" ref={externalRef}></div>
         </Content>
