@@ -1,12 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { useAuth } from 'context/AuthContext'
+import { Link } from 'react-router-dom'
+// import { HiOutlineUser } from 'react-icons/hi'
 
 const DropMenuCandidate = () => {
   const { logout } = useAuth()
   return (
-    <ul>
+    <>
       <li>
+        {/* <HiOutlineUser /> */}
         <Link to='/perfil'>perfil</Link>
       </li>
       <li>
@@ -15,7 +17,7 @@ const DropMenuCandidate = () => {
       <li>
         <Link to='/' onClick={logout}>cerrar sesion</Link>
       </li>
-    </ul>
+    </>
   )
 }
 

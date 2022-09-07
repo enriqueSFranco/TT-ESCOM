@@ -61,7 +61,7 @@ const CardProfileStudent = () => {
             <IoIcon.IoMdSettings
               className={styles.config}
             />
-            <CustomAvatar student={student} width="100px" fontSize="2rem" />
+            <CustomAvatar student={student} width="100" />
             <div className={styles.nameHolder}>
               <h3>
                 {student[0]?.t100_name} {student[0]?.t100_last_name}

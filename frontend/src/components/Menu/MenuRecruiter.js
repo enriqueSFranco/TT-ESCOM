@@ -1,4 +1,5 @@
 import React from "react";
+import { useAuth } from "context/AuthContext";
 import {
   Logo,
   NavLeft,
@@ -8,6 +9,8 @@ import {
 } from "./styled-components/MainMenuStyled";
 
 const MenuRecruiter = () => {
+  const { logout } = useAuth()
+
   return (
     <>
       <NavLeft>
@@ -27,6 +30,9 @@ const MenuRecruiter = () => {
         </NavItem>
         <NavItem>
           <NavLink to="/solicitudes">Candidatos</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/" onClick={logout}>Cerrar sesion</NavLink>
         </NavItem>
       </NavList>
     </>

@@ -150,7 +150,7 @@ export const uploadPhotoStudent = (id, img) => {
  * @return {Promise}
  **/
 export const applyJob = (payload) => {
-  return API.post(`${process.env.REACT_APP_URL_VACANT_APPLICATIONS}`, payload)
+  return API.post(`${process.env.REACT_APP_URL_VACANT_APPLICATION_FOR_JOB}`, payload)
     .then(response => response)
     .catch(error => error.message)
 };
