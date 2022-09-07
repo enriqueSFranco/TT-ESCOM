@@ -18,14 +18,6 @@ const WrapperListCardJobPreviewRecruiter = styled.div`
   overflow-y: auto;
 `
 
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  height: 550px;
-`
-
 const Aside = styled.aside`
   grid-area: aside;
   display: flex;
@@ -38,12 +30,12 @@ const Aside = styled.aside`
 const Container = styled.main`
   grid-area: container;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
   background-color: #fff;
   border-left: 1px solid #ccc;
 `
 
 
-export { Aside, Container, Form, Wrapper, WrapperListCardJobPreviewRecruiter }
+export { Aside, Container, Wrapper, WrapperListCardJobPreviewRecruiter }

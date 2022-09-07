@@ -18,6 +18,7 @@ export const ChipStyled = styled.span`
     font-size: .87rem;
     font-weight: 700;
     padding: .3rem .5rem;
+    color: ${props => props.color || '#000'}
   }
 
 `

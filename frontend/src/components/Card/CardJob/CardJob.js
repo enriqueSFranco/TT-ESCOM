@@ -19,7 +19,7 @@ import {
   TitleJob,
 } from "../styled-components/CardJobStyled";
 
-const CardJob = ({ job, randomColor }) => {
+const CardJob = ({ job }) => {
   const { token } = useAuth();
 
   let userID = token?.user?.id_student
@@ -41,6 +41,8 @@ const CardJob = ({ job, randomColor }) => {
   const handleOpenModal = () => openModalDetailsJob(description, idJob, userID)
   
   if (!job) return null;
+
+  console.log(job)
   
   return (
     <CardBody>
@@ -62,7 +64,7 @@ const CardJob = ({ job, randomColor }) => {
         <Tags>
           {tags.map((tag, index) => (
             <TagsItem key={crypto.randomUUID()} index={index}>
-              <Chip label={tag.label} />
+              <Chip color={`var(--color_${(index + 1)})`} label={tag.label} />
             </TagsItem>
           ))}
         </Tags>

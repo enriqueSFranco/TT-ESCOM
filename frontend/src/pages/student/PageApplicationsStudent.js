@@ -17,6 +17,7 @@ import {
   tableCellClasses,
 } from "@mui/material";
 import { IoIosBusiness } from "react-icons/io";
+import { Container } from '../styled-components/ApplicationStudentStyled'
 import styles from "./PageApplicationsStudent.module.css";
 
 const PageApplicationsStudent = () => {
@@ -40,8 +41,7 @@ const PageApplicationsStudent = () => {
   // TODO: ELIMINAR ELEMENTOS DUPLICADOS DE LA LISTA DE VACANTES EN RELACION AL CAMPO T200_JOB
   return (
     <LayoutHome>
-      <section className={`${styles.wrapper}`}>
-        <h1 className={styles.title}>Mis Postulaciones</h1>
+      <Container>
         <TableContainer component={Paper}>
           <Table stickyHeader sx={{ width: "100%" }} aria-label="simple table">
             <TableHead>
@@ -66,12 +66,8 @@ const PageApplicationsStudent = () => {
             <TableBody>
               {data?.map((row) => (
                 <TableRow key={uuid()}>
-                  <TableCell
-                    sx={{ width: 150 }}
-                    style={{ textAlign: "center" }}
-                  >
-                    {row?.t200_id_vacant?.t300_id_company?.t300_logo !==
-                    null ? (
+                  <TableCell sx={{ width: 150 }} style={{ textAlign: "center" }}>
+                    {row?.t200_id_vacant?.t300_id_company?.t300_logo !== null ? (
                       <img
                         src={row?.t200_id_vacant?.t300_id_company?.t300_logo}
                         alt={row?.t200_id_vacant?.t300_id_company}
@@ -92,8 +88,7 @@ const PageApplicationsStudent = () => {
                       salary={row?.t200_id_vacant?.t200_max_salary}
                       modality={row?.t200_id_vacant?.t200_home_ofice}
                       experience={
-                        row?.t200_id_vacant?.c207_id_experience
-                          ?.c207_description
+                        row?.t200_id_vacant?.c207_id_experience?.c207_description
                       }
                       nameBusisness={
                         row?.t200_id_vacant?.t300_id_company?.t300_name
@@ -123,7 +118,7 @@ const PageApplicationsStudent = () => {
             </TableBody>
           </Table>
         </TableContainer>
-      </section>
+      </Container>
     </LayoutHome>
   );
 };

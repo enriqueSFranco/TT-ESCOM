@@ -1,3 +1,4 @@
+import { memo } from "react";
 import CardJob from "../CardJob/CardJob";
 import Skeleton from "components/Skeleton/Skeleton"
 import styles from "./JobList.module.css";
@@ -14,13 +15,6 @@ const JobList = ({ jobs, loading }) => {
 
   if (!jobs) return null;
 
-  // if (jobs.result?.length > 0) {
-  //   return (
-  //     <>
-  //       {jobs.result?.map((job) => <CardJob key={crypto.randomUUID()} job={job} />)}
-  //     </>
-  //   );
-  // }
   if (loading) {
     return (
       <Skeleton type='feed' />
@@ -38,4 +32,4 @@ const JobList = ({ jobs, loading }) => {
   );
 };
 
-export default JobList;
+export default memo(JobList);

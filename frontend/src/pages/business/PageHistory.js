@@ -3,11 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
 import { useRecruiterJobs } from "hooks/useRecruiterJobs";
 import { useModal } from "hooks/useModal";
-import { useForm } from "hooks/useForm";
-import { postJob } from "services/jobs/index";
-import { POST_NEW_JOB } from "types/newJob";
+import JobList from "components/Card/JobList/JobList";
+// import { useForm } from "hooks/useForm";
+// import { postJob } from "services/jobs/index";
+// import { POST_NEW_JOB } from "types/newJob";
 // import { numberFormat } from "utils/numberFormat";
-import Input from "components/Input/Input";
+// import Input from "components/Input/Input";
 // import Chip from "@mui/material/Chip";
 // import { GoTrashcan } from "react-icons/go";
 // import { MdEdit } from "react-icons/md";
@@ -46,11 +47,10 @@ import CardJobPreviewRecruiter from "components/Card/CardJobPreviewRecruiter";
 import {
   Aside,
   Container,
-  Form,
   Wrapper,
   WrapperListCardJobPreviewRecruiter,
 } from "../styled-components/DashboardRecruiterStyled";
-import TextEditor from "components/TextEditor/TextEditor";
+// import TextEditor from "components/TextEditor/TextEditor";
 
 // const vacantApplicationsData = {
 //   applications: 0,
@@ -62,11 +62,11 @@ import TextEditor from "components/TextEditor/TextEditor";
 
 const PageHistory = () => {
   const { token } = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   // const { t200_id_vacant } = useParams();
-  const { form, handleChange } = useForm(POST_NEW_JOB);
+  // const { form, handleChange } = useForm(POST_NEW_JOB);
   const [body, setBody] = useState("");
-  const { data } = useRecruiterJobs({idRcruiter: `${token?.user?.user_id}`})
+  const { data, loading } = useRecruiterJobs({ idRcruiter: `${token?.user?.id}` });
   // const [totalApplications, setTotalApplications] = useState([]);
   const [initialContent, setInitialContent] = useState(true);
   const [listJobs, setListJobs] = useState(null);
@@ -77,7 +77,7 @@ const PageHistory = () => {
   const [job, setJob] = useState(null);
   const [recruiter, setRecruiter] = useState([]);
   const [isOpenModalForm, openModalForm, closeModalForm] = useModal();
-  let newObject = { ...form, t200_description: body };
+  // let newObject = { ...form, t200_description: body };
 
   // console.log(token)
 
@@ -217,17 +217,15 @@ const PageHistory = () => {
       setIsDeletedJob({ success: response.status, message: response.message });
   };
 
-  const onSubmitPostJob = (e) => {
-    e.preventDefault();
-    postJob(newObject)
-      .then((response) => {
-        console.log(response);
-        navigate("/mis-vacantes");
-      })
-      .catch((error) => console.error(error))
-  };
-
-  console.log('data =>',data)
+  // const onSubmitPostJob = (e) => {
+  //   e.preventDefault();
+  //   postJob(newObject)
+  //     .then((response) => {
+  //       console.log(response);
+  //       navigate("/mis-vacantes");
+  //     })
+  //     .catch((error) => console.error(error));
+  // };
 
   return (
     <LayoutHome>
@@ -235,31 +233,14 @@ const PageHistory = () => {
         <Aside>
           <FormSearchJob />
           <WrapperListCardJobPreviewRecruiter>
-            {
-              !data && data?.map(el => (
-                <CardJobPreviewRecruiter key={crypto.randomUUID()} />
-              )) 
-            }
+            {data?.map((el) => (
+              <CardJobPreviewRecruiter key={crypto.randomUUID()} info={el} />
+            ))}
           </WrapperListCardJobPreviewRecruiter>
         </Aside>
 
         <Container>
-          <Form onSubmit={onSubmitPostJob}>
-            <Input
-              label="Titulo de la vacante"
-              id="t200_job"
-              name="t200_job"
-              value={newObject.t200_job}
-              onChange={handleChange}
-            />
-            <TextEditor
-              id="body"
-              name="body"
-              onChange={(newValue) => setBody(newValue)}
-              value={body}
-            />
-            <button type="submit">Enviar a revision</button>
-          </Form>
+          <FormPostJob />
         </Container>
 
         {/* <article className={styles.contentDetailsJob}>

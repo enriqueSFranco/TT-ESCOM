@@ -55,8 +55,6 @@ const Home = () => {
 
   if (!response && !filteredData) return null;
 
-  console.log(loadingNextPage)
-
   return (
     <LayoutHome>
       <Main>

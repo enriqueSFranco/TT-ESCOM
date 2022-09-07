@@ -1,9 +1,9 @@
 import React, { lazy, Suspense } from "react";
 import { render } from "react-dom";
-import { applyJob } from "services/students/index"
+import { applyJob } from "services/students/index";
 
 function createMarkup(data) {
-  return {__html: data}
+  return { __html: data };
 }
 
 export function openModalDetailsJob(description, idJob, userID) {
@@ -13,29 +13,36 @@ export function openModalDetailsJob(description, idJob, userID) {
   $containerModal.id = "modal";
   document.body.appendChild($containerModal);
 
-
   const handleApplyJob = async () => {
-    let now = new Date()
+    let now = new Date();
     try {
       const response = await applyJob({
         t200_id_vacant: idJob,
         t100_id_student: userID,
         c205_id_application_state: 1,
         t201_date_application:
-        now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate(),
+          now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate(),
       });
-      console.log(response)
-      return response
+      console.log(response);
+      return response;
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
   render(
     <Suspense fallback={<div>Cargando...</div>}>
       <Modal root={$containerModal}>
-          <div dangerouslySetInnerHTML={createMarkup(description)}></div>
-          <button onClick={handleApplyJob}>Postularme</button>
+        <div>
+          <figure>
+            <img src="" alt="" />
+            <figcaption>
+              
+            </figcaption>
+          </figure>
+        </div>
+        <div dangerouslySetInnerHTML={createMarkup(description)}></div>
+        <button onClick={handleApplyJob}>Postularme</button>
       </Modal>
     </Suspense>,
     $containerModal

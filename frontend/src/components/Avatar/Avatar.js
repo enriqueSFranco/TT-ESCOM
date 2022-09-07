@@ -33,18 +33,18 @@ const CustomAvatar = ({ username, width, height }) => {
       <Link
         to="/perfil"
         style={{
-          width: `${width || '2.5rem'}`,
-          height: `${height || '2.5rem'}`,
+          // width: `${width || '2.5rem'}`,
+          // height: `${height || '2.5rem'}`,
           borderRadius: "50%",
           // backgroundColor: `${bg}`,
           display: "grid",
           placeContent: "center",
-          padding: ".3rem",
+          // padding: ".3rem",
         }}
       >
         <img
-          height="100%"
-          src={`https://robohash.org/${username}.png`}
+          style={{objectFit: 'contain', borderRadius: '50%'}}
+          src={`https://placeimg.com/100/100/people`}
           alt={username}
         />
       </Link>

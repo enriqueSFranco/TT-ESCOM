@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
 import { useForm } from "hooks/useForm";
+import { postJob } from "services/jobs/index";
 import { POST_NEW_JOB } from "types/newJob";
+import Input from "components/Input/Input";
 import TextEditor from "components/TextEditor/TextEditor";
+import { Button, Form, GroupInput } from './styled-componets/FormPostJobStyled'
+
 
 const validateForm = (form) => {
   let errors = {};
@@ -22,50 +27,94 @@ const validateForm = (form) => {
   return errors;
 };
 
-const FormPostJob = ({ idCompany }) => {
+const FormPostJob = () => {
+  const navigate = useNavigate()
   const { token } = useAuth();
   const [body, setBody] = useState("");
-
-  const { form, errors, handleChange, onSubmitPostJob } = useForm({
-    ...POST_NEW_JOB,
-    ...{
-      t301_id_recruiter: token?.user?.user_id,
-      t200_description: body,
-      t300_id_company: idCompany,
-    }
-  },
-    validateForm
-  );
+  const { form, handleChange } = useForm(POST_NEW_JOB);
   
+  let newObject = { ...form, t200_description: body, t301_id_recruiter: token?.user?.id };
 
-  // let result = {
-  //   ...POST_NEW_JOB,
-  //   ...{
-  //     t301_id_recruiter: token?.user?.user_id,
-  //     t200_description: body,
-  //     t300_id_company: idCompany,
-  //   }
-  // }
+  // const { form, errors, handleChange, onSubmitPostJob } = useForm(
+  //   {
+  //     ...POST_NEW_JOB,
+  //     ...{
+  //       t301_id_recruiter: token?.user?.id,
+  //       t200_description: body,
+  //       t300_id_company: idCompany,
+  //     },
+  //   },
+  //   validateForm
+  // );
 
-  console.log('form: ',form.t200_description, ' => body',body);
+
+  const onSubmitPostJob = (e) => {
+    e.preventDefault();
+    postJob(newObject)
+      .then((response) => {
+        console.log(response);
+        navigate("/mis-vacantes");
+      })
+      .catch((error) => console.error(error));
+  };
+
 
   return (
-    <form onSubmit={onSubmitPostJob}>
-      <input
-        type="text"
-        id="t200_job"
-        name="t200_job"
-        value={form.t200_job}
-        onChange={handleChange}
-      />
-      <TextEditor
-        id="description"
-        name="description"
-        value={body}
-        onChange={(newText) => setBody(newText)}
-      />
-      <input type="submit" value="enviar a revision" />
-    </form>
+    <Form onSubmit={onSubmitPostJob}>
+      <GroupInput>
+        <Input
+          label="Titulo de la vacante"
+          width='500px'
+          id="t200_job"
+          name="t200_job"
+          value={newObject.t200_job}
+          onChange={handleChange}
+        />
+        <Input
+          label="# de plazas"
+          // width='130px'
+          // id="t200_job"
+          // name="t200_job"
+          // value={newObject.t200_job}
+          // onChange={handleChange}
+        />
+      </GroupInput>
+      <GroupInput>
+        <Input
+          label="Codigo postal"
+          // width='152px'
+          // id="t200_job"
+          // name="t200_job"
+          // value={newObject.t200_job}
+          // onChange={handleChange}
+        />
+        <Input
+          label="Municipio"
+          // width='152px'
+          // id="t200_job"
+          // name="t200_job"
+          // value={newObject.t200_job}
+          // onChange={handleChange}
+        />
+        <Input
+          label="Calle"
+          // width='152px'
+          // id="t200_job"
+          // name="t200_job"
+          // value={newObject.t200_job}
+          // onChange={handleChange}
+        />
+      </GroupInput>
+      <div>
+        <TextEditor
+          id="body"
+          name="body"
+          onChange={(newValue) => setBody(newValue)}
+          value={body}
+        />
+      </div>
+      <Button type="submit">Enviar a revision</Button>
+    </Form>
   );
 };
 
