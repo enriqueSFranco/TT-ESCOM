@@ -1,4 +1,5 @@
 import React from "react";
+import { useGetApplicationJob } from "hooks/useGetApplicationJob";
 import Chip from "components/Chip/Chip";
 import GroupAvatars from "components/Avatar/GroupAvatars";
 import {
@@ -14,12 +15,16 @@ import {
 } from "./styled-components/CardJobPreviewRecruiterStyled";
 
 const CardJobPreviewRecruiter = ({ info }) => {
-  if (!info) return null;
+  const [data] = useGetApplicationJob({ idVacant: info?.t200_id_vacant })
 
+  
   const { t200_job, t300_id_company, c207_id_experience, c214_id_modality } =
-    info;
+  info;
+  
+  if (!info && !data) return null;
 
-  console.log(info);
+  console.log(data)
+
   return (
     <Card>
       <CardHeader>
@@ -39,7 +44,7 @@ const CardJobPreviewRecruiter = ({ info }) => {
           <Chip
             label={`Exp: ${c207_id_experience?.c207_description}`}
             bg="var(--bg-color_1)"
-            color='var(--color_1)'
+            color="var(--color_1)"
           />
         </CardListItemTags>
         <CardListItemTags>
@@ -50,16 +55,17 @@ const CardJobPreviewRecruiter = ({ info }) => {
                 : "Se acuerda en entrevista"
             }`}
             bg="var(--bg-color_3)"
-            color='var(--color_3)'
+            color="var(--color_3)"
           />
         </CardListItemTags>
       </CardListTags>
 
-      <TotalApplications>31 postulaciones</TotalApplications>
+      <TotalApplications>{data?.length > 0 ? `${data?.length} postulaciones` : 'Sin postulaciones'}</TotalApplications>
 
       <CardFooter>
-        {/* TODO: Hacer componente lista de candidatos */}
-        <GroupAvatars users={['E', 'J', 'I', 'K', 't', 'y', 'v', 'w', 'c', 'h', 'p']} />
+        <GroupAvatars
+          users={data}
+        />
       </CardFooter>
     </Card>
   );

@@ -23,7 +23,7 @@ import styles from "./PageApplicationsStudent.module.css";
 const PageApplicationsStudent = () => {
   const { token } = useAuth();
   const { data } = useFetch(
-    `${process.env.REACT_APP_URL_CANDIDATE_APPLICATIONS_JOBS}${token?.user?.id_student}/`
+    `${process.env.REACT_APP_URL_CANDIDATE_APPLICATIONS_JOBS}${token?.user?.id}/`
   );
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({

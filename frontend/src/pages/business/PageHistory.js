@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
 import { useRecruiterJobs } from "hooks/useRecruiterJobs";
 import { useModal } from "hooks/useModal";
-import JobList from "components/Card/JobList/JobList";
 // import { useForm } from "hooks/useForm";
 // import { postJob } from "services/jobs/index";
 // import { POST_NEW_JOB } from "types/newJob";
@@ -66,7 +65,7 @@ const PageHistory = () => {
   // const { t200_id_vacant } = useParams();
   // const { form, handleChange } = useForm(POST_NEW_JOB);
   const [body, setBody] = useState("");
-  const { data, loading } = useRecruiterJobs({ idRcruiter: `${token?.user?.id}` });
+  const { data, loading } = useRecruiterJobs({ idRcruiter: token?.user?.id });
   // const [totalApplications, setTotalApplications] = useState([]);
   const [initialContent, setInitialContent] = useState(true);
   const [listJobs, setListJobs] = useState(null);
@@ -79,7 +78,7 @@ const PageHistory = () => {
   const [isOpenModalForm, openModalForm, closeModalForm] = useModal();
   // let newObject = { ...form, t200_description: body };
 
-  // console.log(token)
+  console.log(data)
 
   // efecto para obtener la lista de vacantes de un reclutador
   // useEffect(() => {
@@ -226,6 +225,8 @@ const PageHistory = () => {
   //     })
   //     .catch((error) => console.error(error));
   // };
+
+  if (!data) return null
 
   return (
     <LayoutHome>

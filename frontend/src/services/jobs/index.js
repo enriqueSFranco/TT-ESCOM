@@ -43,8 +43,8 @@ export const getVacantInfo = (id) => {
     .catch((error) => console.log(error));
 };
 
-export const getApplicationsJobs = (id) => {
-  return API(`${API_VACANTS_APPLICATIONS_JOB_STUDENT}${id}/`)
+export const getApplicationsJobs = (idVacant) => {
+  return API(`${process.env.REACT_APP_URL_VACANT_APPLICATIONS}${idVacant}/`)
     .then((response) => {
       const { data } = response;
       return data;
