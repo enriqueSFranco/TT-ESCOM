@@ -34,8 +34,7 @@ class LenguagesListSerializer(serializers.ModelSerializer):
 class UpdateLenguagesSerializer(serializers.ModelSerializer):
         class Meta:
             model = StudentLenguage
-            fields = ('t110_written_level','t110_reading_level','t110_speaking_level'
-            ,'t110_comprension_level','t110_native')
+            fields = ('t110_level','c120_id_level')
      
         def update(self,instance,validate_data):
             update_Lenguages = super().update(instance,validate_data)

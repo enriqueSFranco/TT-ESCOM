@@ -278,12 +278,8 @@ class StudentLenguage(models.Model):
 		default=1,
 		related_name='LenguageDescription',
 		on_delete=models.CASCADE)
-	t110_written_level = models.PositiveSmallIntegerField(null=True, blank=True)
-	t110_reading_level = models.PositiveSmallIntegerField(null=True, blank=True)
-	t110_speaking_level = models.PositiveSmallIntegerField(null=True, blank=True)
-	t110_comprension_level = models.PositiveSmallIntegerField(null=True, blank=True)
-	t110_native = models.BooleanField(default=False)
-
+	t110_level = models.CharField(max_length=50,null=True,blank=True)
+	c120_id_level = models.PositiveSmallIntegerField(null=True,blank=True)
 	class Meta:
 		unique_together = ['t100_id_student','c111_id_language']
 		verbose_name='StudentLenguage'
