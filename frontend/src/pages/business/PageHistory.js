@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { memo, useState } from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
 import { useRecruiterJobs } from "hooks/useRecruiterJobs";
 import { useModal } from "hooks/useModal";
+import LayoutDashboard from "Layout/LayoutDashboard";
+import LayoutHome from "Layout/LayoutHome";
 // import { useForm } from "hooks/useForm";
 // import { postJob } from "services/jobs/index";
 // import { POST_NEW_JOB } from "types/newJob";
@@ -41,12 +43,10 @@ import { deleteJob } from "services/jobs/index";
 // import * as BsIcon from "react-icons/bs";
 // import * as MdIcon from "react-icons/md";
 import FormSearchJob from "components/Menu/FormSearchJobRecruiter";
-import LayoutHome from "Layout/LayoutHome";
 import CardJobPreviewRecruiter from "components/Card/CardJobPreviewRecruiter";
 import {
   Aside,
   Container,
-  Wrapper,
   WrapperListCardJobPreviewRecruiter,
 } from "../styled-components/DashboardRecruiterStyled";
 // import TextEditor from "components/TextEditor/TextEditor";
@@ -78,7 +78,7 @@ const PageHistory = () => {
   const [isOpenModalForm, openModalForm, closeModalForm] = useModal();
   // let newObject = { ...form, t200_description: body };
 
-  console.log(data)
+  // console.log(data)
 
   // efecto para obtener la lista de vacantes de un reclutador
   // useEffect(() => {
@@ -226,11 +226,11 @@ const PageHistory = () => {
   //     .catch((error) => console.error(error));
   // };
 
-  if (!data) return null
+  if (!data) return null;
 
   return (
     <LayoutHome>
-      <Wrapper>
+      <LayoutDashboard>
         <Aside>
           <FormSearchJob />
           <WrapperListCardJobPreviewRecruiter>
@@ -239,228 +239,12 @@ const PageHistory = () => {
             ))}
           </WrapperListCardJobPreviewRecruiter>
         </Aside>
-
         <Container>
-          <FormPostJob />
+          <Outlet />
         </Container>
-
-        {/* <article className={styles.contentDetailsJob}>
-          
-          <div className={styles.containerRight}>
-            
-            {!initialContent ? (
-              <article className={`container ${styles.wrapperDetailsJob}`}>
-                {job && (
-                  <>
-                    <header className={styles.headerRight}>
-                      <nav className={styles.nav}>
-                        <div className={`${styles.box}`}>
-                          <figure className={styles.applicationsBox}>
-                            <img src={Application} alt="candidatos" />
-                            <figcaption>
-                              <span className={styles.notify}>
-                                {totalApplications >= 9
-                                  ? "+9"
-                                  : totalApplications}{" "}
-                                Recibida(s)
-                              </span>
-                            </figcaption>
-                          </figure>
-                          <Link to={`/solicitudes/${t200_id_vacant}`}>
-                            Ver postulaciones
-                          </Link>
-                        </div>
-
-                        <div className={`${styles.box}`}>
-                          <figure className={styles.applicationsBox}>
-                            <img src={Candidate} alt="contratados" />
-                            <figcaption>
-                              <span className={styles.notify}>
-                                {vacantApplicationsData?.hired}/
-                                {job[0]?.t200_vacancy} Contratados
-                              </span>
-                            </figcaption>
-                          </figure>
-                          <Link to={`/solicitudes/${t200_id_vacant}`}>
-                            Ver Contratados
-                          </Link>
-                        </div>
-
-                        <div className={`${styles.box}`}>
-                          <figure className={styles.applicationsBox}>
-                            <img src={Steps} alt="enSeguimiento" />
-                            <figcaption>
-                              <span className={styles.notify}>
-                                {vacantApplicationsData?.inProcess} En
-                                seguimiento
-                              </span>
-                            </figcaption>
-                          </figure>
-                          <Link to={`/solicitudes/${t200_id_vacant}`}>
-                            Ver Seguimiento
-                          </Link>
-                        </div>
-
-                        <div className={`${styles.box}`}>
-                          <figure className={styles.applicationsBox}>
-                            <img src={Reject} alt="enSeguimiento" />
-                            <figcaption>
-                              <span className={styles.notify}>
-                                {vacantApplicationsData?.rejected} Descartadas
-                              </span>
-                            </figcaption>
-                          </figure>
-                          <Link to={`/solicitudes/${t200_id_vacant}`}>
-                            Ver Descartadas
-                          </Link>
-                        </div>
-
-                        <div className={`${styles.box}`}>
-                          <figure className={styles.applicationsBox}>
-                            <img src={Review} alt="enSeguimiento" />
-                            <figcaption>
-                              <span className={styles.notify}>
-                                {vacantApplicationsData?.unseen} En Revision
-                              </span>
-                            </figcaption>
-                          </figure>
-                          <Link to={`/solicitudes/${t200_id_vacant}`}>
-                            Ver Sin Consultar
-                          </Link>
-                        </div>
-                      </nav>
-                    </header>
-
-                    <div className={styles.wrapperCard}>
-                      <article className={`${styles.card}`}>
-                        <header className={styles.cardHeader}>
-                          <h3 className={`${styles.nameCompany}`}>
-                            {job[0]?.t200_job}
-                          </h3>
-                        </header>
-                        <div className={styles.wrapperTags}>
-                          <Chip
-                            label={`${numberFormat(
-                              job[0]?.t200_min_salary
-                            ).slice(4)}MXN
-                                    ${
-                                      job[0]?.t200_max_salary === 0
-                                        ? ""
-                                        : `a ${numberFormat(
-                                            job[0]?.t200_max_salary
-                                          ).slice(4)}MXN `
-                                    }
-                                    al mes ${
-                                      job[0]?.t200_salary_negotiable
-                                        ? "Negociable"
-                                        : "No negociable"
-                                    }`}
-                            // size="small"
-                            icon={
-                              <GiIcon.GiMoneyStack
-                                style={{ color: "green", fontSize: "1rem" }}
-                              />
-                            }
-                          />
-
-                          <Chip
-                            label={`Modalidad: ${job[0]?.c214_id_modality?.c214_description} `}
-                            // size="small"
-                            icon={
-                              <MdIcon.MdBusinessCenter
-                                style={{ color: "#78909c", fontSize: "1rem" }}
-                              />
-                            }
-                          />
-
-                          <Chip
-                            label={`Fecha de cierre programada: ${job[0]?.t200_close_date}`}
-                            // size="small"
-                            icon={
-                              <BsIcon.BsCalendarDate
-                                style={{ color: "red", fontSize: "1rem" }}
-                              />
-                            }
-                          />
-                        </div>
-                        {totalApplications === 0 ? (
-                          <div className={styles.actions}>
-                            <button>
-                              <MdEdit
-                                className={styles.editAction}
-                                onClick={setModal3}
-                              />
-                            </button>
-                            <button className={`${styles.btnTrash}`}>
-                              <GoTrashcan
-                                className={styles.deleteAction}
-                                onClick={setModal2}
-                              />
-                            </button>
-                          </div>
-                        ) : (
-                          <div className={styles.actions}>
-                            <button className={`${styles.btnTrash}`}>
-                              <GoTrashcan
-                                className={styles.deleteAction}
-                                onClick={setModal2}
-                              />
-                            </button>
-                          </div>
-                        )}
-                      
-                        <div className={styles.summary}>
-                          <p className={`${styles.lineClamp}`}>
-                            {job[0]?.t200_description}
-                          </p>
-                        </div>
-                      </article>
-                    </div>
-                  </>
-                )}
-              </article>
-            ) : (
-              <div className={styles.noContentJob}>
-                <figure>
-                  <figcaption>
-                    Selecciona una vacante para ver sus detalles
-                    <br />
-                    No hay nada seleccionado.
-                  </figcaption>
-                  <img
-                    src={applicationsIcon}
-                    alt="iconJob"
-                    className={styles.image}
-                  />
-                </figure>
-              </div>
-            )}
-          </div>
-        </article> */}
-      </Wrapper>
-      {/* {modalType === 1 && (
-        <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
-          <FormPostJob
-            idCompany={recruiter[0]?.t300_id_company?.t300_id_company}
-          />
-        </ModalForm>
-      )}
-      {modalType === 2 && (
-        <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
-          <ConfirmDelete
-            deleteJob={handleDeleteJob}
-            isDeletedJob={isDeletedJob}
-            job={job[0]?.t200_job}
-          />
-        </ModalForm>
-      )}
-      {modalType === 3 && (
-        <ModalForm isOpen={isOpenModalForm} closeModal={closeModalForm}>
-          <FormUpdateJob job={job} />
-        </ModalForm>
-      )} */}
+      </LayoutDashboard>
     </LayoutHome>
   );
 };
 
-export default PageHistory;
+export default memo(PageHistory);

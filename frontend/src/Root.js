@@ -11,7 +11,7 @@ import PageLoginCompany from "pages/login/PageLoginCompany";
 import PageRegisterCompany from "pages/login/PageRegisterCompany";
 import PageProfileStudent from "pages/student/PageProfileStudent";
 import PageLoginStudentUpdate from "pages/login/PageLoginStudentUpdate";
-import PageDashBoard from "pages/business/PageDashBoard";
+import FormPostJob from "components/Form/postJob/FormPostJob";
 import PageHistory from "pages/business/PageHistory";
 import PageSuccesCompany from "pages/login/PageSuccesCompany";
 import PageValidateRecruiter from "pages/admin/PageValidateRecruiter";
@@ -24,57 +24,51 @@ import Accordion from "components/Accordion/Accordion";
 import AcademicRecordList from "components/Card/AcademicRecord/AcademicRecordList";
 import ModalRelease from "components/Modal/ModalRelease";
 import ModalBusiness from "components/Modal/ModalBusiness";
-import CardJobDetails from "components/Card/CardJobDetails/CardJobDetails";
 import FullProfileUser from "components/Card/CardStudent/FullProfileUser";
 
 const Root = () => {
   return (
     <Routes>
       {/* Indice de rutas publicas */}
-      <Route path="/" element={<Home />}>
-        {/* <Route path="vacante">
-          <Route path=":t200_id_vacant" element={<CardJobDetails />} />
-        </Route> */}
-      </Route>
-      
-        <Route path="/dashboard" element={<PageDashBoard />} />
-        <Route path="/mis-vacantes" element={<PageHistory />}>
-          <Route path=":t200_id_vacant" element={<CardJobDetails />} />
-        </Route>
-        <Route path="/solicitudes" element={<PageApplications />}>
-          <Route path=":t200_id_vacant" element={<Accordion />} />
-        </Route>
-          <Route path="/perfil-del-candidato" element={<FullProfileUser />} />
-        <Route path="/publicar-comunicado" element={<PagePostRelease />} />
-      <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>   
-        {/* <Route path="/candidatos" element={<PageApplications />} /> */}
-      </Route>
+      <Route path="/" element={<Home />} />
 
-      {/* FEATURE:  */}
-      {/* <Route path="empleos" element={<PageJobs />}>
+      {/* <Route path="/mis-vacantes" element={<PageHistory />}>
         <Route path=":t200_id_vacant" element={<CardJobDetails />} />
       </Route> */}
 
+      <Route path="/solicitudes" element={<PageApplications />}>
+        <Route path=":t200_id_vacant" element={<Accordion />} />
+      </Route>
+      <Route path="/perfil-del-candidato" element={<FullProfileUser />} />
+      <Route path="/publicar-comunicado" element={<PagePostRelease />} />
+
+      <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>
+        {/* <Route path="/candidatos" element={<PageApplications />} /> */}
+        <Route path="/dashboard/" element={<PageHistory />}>
+          <Route path="crear-vacante" element={<FormPostJob />} />
+          <Route path="mis-vacantes" element={<PageHistory />} />
+        </Route>
+      </Route>
+
       {/* RUTAS DEL ADMINISTRADOR */}
       <Route path="/validar-reclutador" element={<PageValidateRecruiter />} />
-
 
       <Route path="/alumno" element={<PageLoginStudent />} />
       <Route path="/registro-alumno" element={<PageCreateAccountStudent />} />
       <Route path="/reclutador" element={<PageLoginCompany />} />
       <Route path="/registro-reclutador" element={<PageRegisterCompany />} />
       <Route path="/pre-registro" element={<PageSuccesCompany />} />
-      
+
       <Route path="empresas" element={<Company />}>
         <Route path=":t301_id_company" element={<ModalBusiness />} />
       </Route>
-      
+
       <Route path="comunicados" element={<PageReleases />}>
         <Route path=":t202_id_announcement" element={<ModalRelease />} />
       </Route>
 
       {/* TODO Hacer ruta privada  */}
-      <Route path="/actualiza-alumno" element={<PageLoginStudentUpdate />}/>
+      <Route path="/actualiza-alumno" element={<PageLoginStudentUpdate />} />
 
       {/* Indice de rutas privadas para un alumno si funciona */}
       <Route element={<PrivateRoute role={ROLE.STUDENT} />}>

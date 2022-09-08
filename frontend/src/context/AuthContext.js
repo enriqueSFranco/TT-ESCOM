@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
           setUser(jwt_decode(response?.data?.access));
           setToken(response?.data);
           window.sessionStorage.setItem("token", JSON.stringify(response?.data));
-          navigate("mis-vacantes");
+          navigate("dashboard");
         } else {
           window.sessionStorage.removeItem('token', JSON.stringify(response?.data))
         }
