@@ -134,11 +134,7 @@ class Vacant(models.Model):
         on_delete=models.CASCADE
     )
     t200_job = models.CharField(max_length=125,null=False,blank=False)
-    t200_description = models.TextField(null=False,blank=False) 
-    t200_benefits = models.TextField(null=True,blank=True)    
-    t200_check_time = models.TimeField(auto_now=False,blank=True,null=True)
-    t200_closing_hour = models.TimeField(auto_now=False,blank=True,null=True)
-    t200_work_days = models.CharField(max_length=50,blank=True,null=True,default="Sin horario")  
+    t200_description = models.TextField(null=False,blank=False)     
     c207_id_experience = models.ForeignKey(
         Experience,
         blank=True,
@@ -146,10 +142,6 @@ class Vacant(models.Model):
         default=1,
 		related_name='NecesaryExperience',
         on_delete=models.CASCADE)
-    t200_min_salary = models.IntegerField(null=True)
-    t200_max_salary = models.IntegerField(null=True)
-    t200_gross_salary = models.BooleanField(default=False,blank=True,null=True)
-    t200_salary_negotiable = models.BooleanField(default=False,blank=True,null=True)    
     c214_id_modality = models.ForeignKey(
         Modality,
         null=True,
@@ -158,7 +150,6 @@ class Vacant(models.Model):
         related_name='WorkModality',
         on_delete=models.CASCADE
     )
-
     c206_id_profile = models.ForeignKey(
         CandidateProfile,
         null=True,
@@ -176,11 +167,13 @@ class Vacant(models.Model):
         on_delete=models.CASCADE)
     t200_publish_date = models.DateField(blank=True,null=True)
     t200_close_date = models.DateField(blank=True,null=True)
-    t200_state = models.CharField(max_length=50,null=True,blank=True)
-    t200_municipality = models.CharField(max_length=100,null=True,blank=True)
-    t200_locality = models.CharField(max_length=100,null=True,blank=True)
+    c222_id_locality = models.ForeignKey(
+        Locality,
+        null=True,
+		blank=True,
+		related_name='Locality',
+        on_delete=models.CASCADE)
     t200_street = models.CharField(max_length=60,null=True,blank=True)
-    t200_cp = models.IntegerField(blank=True,null=True)
     t200_interior_number = models.CharField(max_length=20,blank=True,null=True)
     t200_exterior_number = models.CharField(max_length=20,blank=True,null=True)    
     t200_vacancy = models.PositiveIntegerField(default=1,blank=True,null=True)
@@ -218,24 +211,8 @@ class Requirement(models.Model):
         default=1,
 		related_name='VacantRequirement',
 		on_delete=models.CASCADE)
-    c116_id_skill = models.ForeignKey(
-		Skills,
-		null=False,
-		blank=False,
-        default=1,
-		related_name='SkillRequired',
-		on_delete=models.CASCADE
-	)
-    c207_id_experience = models.ForeignKey(
-        Experience,
-        null=False,
-		blank=False,
-        default=1,
-		related_name='RequeriedExperience',
-        on_delete=models.CASCADE)
-    t214_necesary = models.BooleanField(default=False)
+    t214_description = models.CharField(max_length=150)
     class Meta:
-        unique_together = ['t200_id_vacant','c116_id_skill']
         verbose_name = 'Requirement'
         verbose_name_plural = 'Requierements'
         db_table = "t214_requerimiento"
@@ -244,36 +221,6 @@ class Requirement(models.Model):
 	    return str(self.t214_id_requirement)
 
 
-#T215 Idioma 
-class LenguageRequired (models.Model):
-    t215_id_lenguage = models.AutoField(primary_key=True)
-    t200_id_vacant = models.ForeignKey(
-		Vacant,
-		null=False,
-		blank=False,
-        default=1,
-		related_name='VacantLenguange',
-		on_delete=models.CASCADE)
-    c111_id_language = models.ForeignKey(
-		Lenguage,#"Lenguage.c111_id_lenguage",
-		null=False,
-		blank=False,
-        default=1,
-		related_name='LenguageRequired',
-		on_delete=models.CASCADE
-	)
-    t215_written_level = models.PositiveSmallIntegerField(null=True, blank=True)
-    t215_reading_level = models.PositiveSmallIntegerField(null=True, blank=True)
-    t215_speaking_level = models.PositiveSmallIntegerField(null=True, blank=True)
-    t215_comprension_level = models.PositiveSmallIntegerField(null=True, blank=True)
-
-    class Meta:
-        verbose_name = 'LenguageRequired'
-        verbose_name_plural = 'LenguagesRequired'
-        db_table = "t215_idioma"
-
-    def __str__(self) ->str:
-	    return str(self.t215_id_lenguage)
 
 #T201_applications
 class Application(models.Model):
