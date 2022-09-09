@@ -28,10 +28,8 @@ const ModalContainer = styled.div`
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 2rem;
-  border-radius: 1rem;
+  align-items: flex-end;
+  border-radius: .2rem;
   animation: ${fadeIn} .3s ease forwards;
 
   @media screen and ${device.mobileM} {
@@ -40,9 +38,8 @@ const ModalContainer = styled.div`
   }
 
   @media screen and ${device.laptop} {
-    
     width: 50%;
-    height: 80vh;
+    height: 85vh;
   }
 
   `

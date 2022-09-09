@@ -6,6 +6,7 @@ import { IoBusinessOutline } from "react-icons/io5";
 import { IoMdBriefcase } from "react-icons/io";
 import { HiOutlineHome } from "react-icons/hi";
 import { BsMegaphone } from "react-icons/bs"
+import { FaBell } from 'react-icons/fa'
 import {
   Logo,
   NavLeft,
@@ -14,7 +15,7 @@ import {
   NavLink,
 } from "./styled-components/MainMenuStyled";
 
-const MenuCandidate = ({ username }) => {
+const MenuCandidate = () => {
   const { token } = useAuth();
   const [viewport] = useViewport();
   let typeuser = token?.user?.user_type;
@@ -36,20 +37,17 @@ const MenuCandidate = ({ username }) => {
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="/mis-postulaciones">
+            <NavLink to="/">
               <IoBusinessOutline />
               Empresas
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="/mis-postulaciones">
+            <NavLink to="/comunicados">
               <BsMegaphone />
               Comunicados
             </NavLink>
           </NavItem>
-          {/* <NavItem>
-          <DropMenu typeuser={typeuser} />
-        </NavItem> */}
         </NavList>
       </>
     );
@@ -74,6 +72,23 @@ const MenuCandidate = ({ username }) => {
           <NavLink to="/mis-postulaciones">
             <IoMdBriefcase />
             Mis Postulaciones
+          </NavLink>
+        </NavItem>
+        <NavItem>
+            <NavLink to="/empresas">
+              <IoBusinessOutline />
+              Empresas
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/comunicados">
+              <BsMegaphone />
+              Comunicados
+            </NavLink>
+          </NavItem>
+          <NavItem>
+          <NavLink to="/">
+            <FaBell />
           </NavLink>
         </NavItem>
         <NavItem>

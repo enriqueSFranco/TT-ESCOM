@@ -4,9 +4,10 @@ import { useAuth } from "context/AuthContext";
 import { useForm } from "hooks/useForm";
 import { postJob } from "services/jobs/index";
 import { POST_NEW_JOB } from "types/newJob";
+import { getLocality } from "services/catalogs";
 import Input from "components/Input/Input";
 import TextEditor from "components/TextEditor/TextEditor";
-import { Button, Form, GroupInput } from './styled-componets/FormPostJobStyled'
+import { Button, Form, GroupInput, Select, WrapperSelect } from './styled-componets/FormPostJobStyled'
 
 
 const validateForm = (form) => {
@@ -32,21 +33,12 @@ const FormPostJob = () => {
   const { token } = useAuth();
   const [body, setBody] = useState("");
   const { form, handleChange } = useForm(POST_NEW_JOB);
+  const [cp, setCP] = useState("");
+  const [state, setState] = useState("");
+  const [town, setTown] = useState("");
+  const [place, setPlace] = useState(null)
   
   let newObject = { ...form, t200_description: body, t301_id_recruiter: token?.user?.id };
-
-  // const { form, errors, handleChange, onSubmitPostJob } = useForm(
-  //   {
-  //     ...POST_NEW_JOB,
-  //     ...{
-  //       t301_id_recruiter: token?.user?.id,
-  //       t200_description: body,
-  //       t300_id_company: idCompany,
-  //     },
-  //   },
-  //   validateForm
-  // );
-
 
   const onSubmitPostJob = (e) => {
     e.preventDefault();
@@ -58,6 +50,21 @@ const FormPostJob = () => {
       .catch((error) => console.error(error));
   };
 
+  const handleLocality = (e) => {
+    const { value } = e.target
+    setCP(value);
+
+    if (value !== "") {
+      getLocality(value)
+        .then((response) => {
+          const [c222_state, c222_municipality] = response;
+          setPlace(response);
+          setState(c222_state);
+          setTown(c222_municipality);
+        })
+        .catch((error) => console.error(error));
+    }
+  };
 
   return (
     <Form onSubmit={onSubmitPostJob}>
@@ -72,7 +79,6 @@ const FormPostJob = () => {
         />
         <Input
           label="# de plazas"
-          // width='130px'
           // id="t200_job"
           // name="t200_job"
           // value={newObject.t200_job}
@@ -82,28 +88,51 @@ const FormPostJob = () => {
       <GroupInput>
         <Input
           label="Codigo postal"
-          // width='152px'
-          // id="t200_job"
-          // name="t200_job"
-          // value={newObject.t200_job}
-          // onChange={handleChange}
+          id="t200_cp"
+          name="t200_cp"
+          value={cp ? parseInt(cp) : ''}
+          onChange={handleLocality}
         />
-        <Input
-          label="Municipio"
-          // width='152px'
-          // id="t200_job"
-          // name="t200_job"
-          // value={newObject.t200_job}
-          // onChange={handleChange}
-        />
+        <WrapperSelect>
+          <Select value={town} onChange={handleChange}>
+            <option>Seleccione una localidad</option>
+            {
+              place && place?.map(township => (
+                <option>{township.c222_locality}</option>
+              ))
+            }
+          </Select>
+        </WrapperSelect>
         <Input
           label="Calle"
-          // width='152px'
           // id="t200_job"
           // name="t200_job"
           // value={newObject.t200_job}
           // onChange={handleChange}
         />
+      </GroupInput>
+      <GroupInput>
+        <Input
+            label="Perfil del candidato"
+            // id="t200_job"
+            // name="t200_job"
+            // value={newObject.t200_job}
+            // onChange={handleChange}
+          />
+          <Input
+            label="Experiencia"
+            // id="t200_job"
+            // name="t200_job"
+            // value={newObject.t200_job}
+            // onChange={handleChange}
+          />
+          <Input
+            label="Tipo de contratacion"
+            // id="t200_job"
+            // name="t200_job"
+            // value={newObject.t200_job}
+            // onChange={handleChange}
+          />
       </GroupInput>
       <div>
         <TextEditor

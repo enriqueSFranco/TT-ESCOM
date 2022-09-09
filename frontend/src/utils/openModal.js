@@ -1,12 +1,14 @@
 import React, { lazy, Suspense } from "react";
 import { render } from "react-dom";
 import { applyJob } from "services/students/index";
+import logoCompany from 'images/facebook.png'
+// import { ModalStyled } from '../styled-components/index'
 
 function createMarkup(data) {
   return { __html: data };
 }
 
-export function openModalDetailsJob(description, idJob, userID) {
+export function openModalDetailsJob(description, idJob, userID, titleJob, token) {
   const Modal = lazy(() => import("components/Modal/Modal"));
   const $containerModal = document.createElement("div");
 
@@ -30,19 +32,24 @@ export function openModalDetailsJob(description, idJob, userID) {
     }
   };
 
+  console.log(token)
+
   render(
     <Suspense fallback={<div>Cargando...</div>}>
       <Modal root={$containerModal}>
         <div>
           <figure>
-            <img src="" alt="" />
+            <img src={logoCompany} alt="facebook" />
             <figcaption>
-              
+              <span>Nombre de la Empresa</span>
+              <span>{titleJob}</span>
             </figcaption>
           </figure>
         </div>
         <div dangerouslySetInnerHTML={createMarkup(description)}></div>
-        <button onClick={handleApplyJob}>Postularme</button>
+        {
+          token ? <button onClick={handleApplyJob}>Postularme</button> : <button onClick={() => window.location.replace('/registro-alumno')}>Postularme</button>
+        }
       </Modal>
     </Suspense>,
     $containerModal

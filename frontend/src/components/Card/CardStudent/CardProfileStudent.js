@@ -7,15 +7,13 @@ import {
 } from "services/students/index";
 import { getSkill } from "services/catalogs";
 import { uuid } from "utils/uuid";
-import Chip from "@mui/material/Chip";
 import CustomAvatar from "../../Avatar/Avatar";
+import Chip from 'components/Chip/Chip'
 import {
-  MdSchool,
   MdLocationPin,
   MdOutlineAirplanemodeActive,
   MdOutlineModeEdit
 } from "react-icons/md";
-import { FaSchool } from "react-icons/fa";
 import styles from "./CardProfileStudent.module.css";
 
 const CardProfileStudent = () => {
@@ -52,25 +50,25 @@ const CardProfileStudent = () => {
     });
   }, [token?.user?.id]);
 
+  console.log(student)
+
   return (
     <article className={`${styles.mainContainer}`}>
       <div className={`${styles.card}`}>
-        <header className={styles.background}>
-          <div className={styles.avatar}>
+        <header className={styles.header}>
             <CustomAvatar student={student} width="100" height="100" />
             <div className={styles.nameHolder}>
-              <h3>
-                {student[0]?.t100_name} {student[0]?.t100_last_name}
-              </h3>
-              <p style={{ marginBottom: 0 }}>
-                {academicHistorial && academicHistorial[0]?.t104_carreer}
-              </p>
+              <span style={{color: '#9E9EA7', fontWeight: 500, letterSpacing:  '.5px'}}>
+                Enrique Salinas Franco
+                {/* {student[0]?.t100_name} {student[0]?.t100_last_name} */}
+              </span>
+              <Chip label='Ingenieria en sistemas computaciones' bg="#116BFE" color='#fff' />
+                
+                {/* {academicHistorial && academicHistorial[0]?.t104_carreer} */}
             </div>
-          </div>
         </header>
         <div className={styles.userDetails}>
           <div className={styles.separator}>
-            <h4 className={styles.label}>Informacion Personal</h4>
             <div className={styles.flex}>
               <MdLocationPin
                 style={{
@@ -95,25 +93,6 @@ const CardProfileStudent = () => {
                   : "No disponible para reubicarse." ?? "No especificado."}
               </p>
             </div>
-            <div className={styles.flex}>
-              <FaSchool
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "1.3rem",
-                }}
-              />
-              <p style={{ margin: 0, fontWeight: "400" }}>
-                {academicHistorial && academicHistorial[0]?.t104_academic_unit}
-              </p>
-            </div>
-            <div className={styles.flex}>
-              <MdSchool />
-              <p style={{ margin: 0, fontWeight: "400" }}>
-                {academicHistorial &&
-                  academicHistorial[0]?.c109_id_academic_state
-                    ?.c109_description}
-              </p>
-            </div>
           </div>
           <h4 className={styles.label}>redes sociales</h4>
           <div className={`${styles.socialNetworks} ${styles.separator}`}>
@@ -136,7 +115,7 @@ const CardProfileStudent = () => {
                 );
               })
             ) : (
-              <h3>Sin redes sociales por el momento.</h3>
+              <span>Sin redes sociales por el momento.</span>
             )}
           </div>
           {/* SKILLS */}
@@ -151,13 +130,18 @@ const CardProfileStudent = () => {
                   <Chip
                     key={uuid()}
                     label={c116_id_skill?.c116_description}
-                    variant="outlined"
                   />
                 ))
               ) : (
                 <span>Sin skills</span>
               )}
             </ul>
+          </div>
+          {/* cv */}
+          <div>
+            {
+              student[0]?.t100_cv === null ? 'no' : 'si'
+            }
           </div>
         </div>
       </div>

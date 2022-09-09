@@ -27,4 +27,16 @@ const Button = styled.button`
   font-weight: 600;
 `
 
-export { Button, Form, GroupInput }
+const Select = styled.select`
+  height: 100%;
+  border-radius: 0;
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+`
+
+const WrapperSelect = styled.div`
+  outline: 1px solid #ccc;
+`
+
+export { Button, Form, GroupInput, Select, WrapperSelect }

@@ -9,7 +9,6 @@ import LayoutHome from "Layout/LayoutHome";
 import LayoutHero from "Layout/LayoutHero";
 import bgCompany from "images/companyBackground.jpg";
 import { Main, GridButtom, GridTop, Form } from "./styled-components/CompanyStyled";
-import styles from "./main/PageCompany.module.css";
 
 const Company = () => {
   const [query, setQuery] = useState("");
@@ -59,7 +58,7 @@ const Company = () => {
             ) : query.length > 0 ? (
               companyMatch.map((company) => (
                 <Link
-                  className={styles.linkCard}
+                  style={{height: '140px'}}
                   to={`${company?.t300_id_company}`}
                   key={company?.t300_id_company}
                 >
@@ -77,7 +76,7 @@ const Company = () => {
             ) : data.length > 0 ? (
               data.map((company) => (
                 <Link
-                  className={styles.linkCard}
+                  style={{height: '140px'}}
                   to={`${company?.t300_id_company}`}
                   key={company?.t300_id_company}
                 >

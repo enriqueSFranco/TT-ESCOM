@@ -23,8 +23,9 @@ const CardJob = ({ job }) => {
   const { token } = useAuth();
 
   let userID = token?.user?.id
-  let idJob = job.t200_id_vacant;
-  let description = job.t200_description
+  let idJob = job?.t200_id_vacant;
+  let description = job?.t200_description
+  let titleJob = job?.t200_job
 
   const tags = [
     
@@ -38,7 +39,7 @@ const CardJob = ({ job }) => {
     return {__html: job.t200_description}
   }
   
-  const handleOpenModal = () => openModalDetailsJob(description, idJob, userID)
+  const handleOpenModal = () => openModalDetailsJob(description, idJob, userID, titleJob, token)
   
   if (!job) return null;
   
