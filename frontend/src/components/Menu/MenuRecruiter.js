@@ -1,4 +1,9 @@
 import React from "react";
+import { useAuth } from "context/AuthContext";
+import LinkButton from "components/Button/LinkButton";
+import { HiOutlineLogout, HiUserGroup } from 'react-icons/hi'
+import { BsFillMegaphoneFill } from 'react-icons/bs'
+import { MdDashboard } from 'react-icons/md'
 import {
   Logo,
   NavLeft,
@@ -8,6 +13,8 @@ import {
 } from "./styled-components/MainMenuStyled";
 
 const MenuRecruiter = () => {
+  const { logout } = useAuth()
+
   return (
     <>
       <NavLeft>
@@ -17,16 +24,19 @@ const MenuRecruiter = () => {
       </NavLeft>
       <NavList>
         <NavItem>
-          <NavLink to="/dashboard">Dashboard</NavLink>
+          <LinkButton to="crear-vacante" text={`+ Crear Vacante`} color='#FFF' bg='#F13465' />
         </NavItem>
         <NavItem>
-          <NavLink to="/mis-vacantes">Mis vacantes</NavLink>
+          <NavLink to="/dashboard"><MdDashboard />Dashboard</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/publicar-comunicado">Comunicados</NavLink>
+          <NavLink to="publicar-comunicado"><BsFillMegaphoneFill />Comunicados</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/solicitudes">Candidatos</NavLink>
+          <NavLink to="solicitudes"><HiUserGroup />Candidatos</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/" onClick={logout}><HiOutlineLogout style={{fontSize: '1.4rem'}} />Salir</NavLink>
         </NavItem>
       </NavList>
     </>

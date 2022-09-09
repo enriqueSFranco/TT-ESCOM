@@ -13,9 +13,9 @@ import {
   MdSchool,
   MdLocationPin,
   MdOutlineAirplanemodeActive,
+  MdOutlineModeEdit
 } from "react-icons/md";
 import { FaSchool } from "react-icons/fa";
-import * as IoIcon from "react-icons/io";
 import styles from "./CardProfileStudent.module.css";
 
 const CardProfileStudent = () => {
@@ -27,41 +27,37 @@ const CardProfileStudent = () => {
   const { token } = useAuth();
 
   useEffect(() => {
-    getStudent(token?.user?.user_id).then((response) => {
+    getStudent(token?.user?.id).then((response) => {
       setStudent(response);
     });
-  }, [token?.user?.user_id]);
+  }, [token?.user?.id]);
 
   useEffect(() => {
-    getAcademicHistorial(token?.user?.user_id)
+    getAcademicHistorial(token?.user?.id)
       .then((response) => {
-        // console.log(response.data);
         setAcademicHistorial(response.data);
       })
       .catch((error) => error);
-  }, [token?.user?.user_id]);
+  }, [token?.user?.id]);
 
   useEffect(() => {
-    getSkill(token?.user?.user_id).then((response) => {
+    getSkill(token?.user?.id).then((response) => {
       setSkills(response);
     });
-  }, [token?.user?.user_id]);
+  }, [token?.user?.id]);
 
   useEffect(() => {
-    getSocialNetwork(token?.user?.user_id).then((response) => {
+    getSocialNetwork(token?.user?.id).then((response) => {
       setSocialNetworks(response);
     });
-  }, [token?.user?.user_id]);
+  }, [token?.user?.id]);
 
   return (
     <article className={`${styles.mainContainer}`}>
       <div className={`${styles.card}`}>
         <header className={styles.background}>
           <div className={styles.avatar}>
-            <IoIcon.IoMdSettings
-              className={styles.config}
-            />
-            <CustomAvatar student={student} width="100px" fontSize="2rem" />
+            <CustomAvatar student={student} width="100" height="100" />
             <div className={styles.nameHolder}>
               <h3>
                 {student[0]?.t100_name} {student[0]?.t100_last_name}
@@ -78,7 +74,6 @@ const CardProfileStudent = () => {
             <div className={styles.flex}>
               <MdLocationPin
                 style={{
-                  color: "#ee4b4a",
                   fontWeight: "bold",
                   fontSize: "1.3rem",
                 }}
@@ -90,7 +85,6 @@ const CardProfileStudent = () => {
             <div className={styles.flex}>
               <MdOutlineAirplanemodeActive
                 style={{
-                  color: "#f7b82f",
                   fontWeight: "bold",
                   fontSize: "1.3rem",
                 }}
@@ -104,7 +98,6 @@ const CardProfileStudent = () => {
             <div className={styles.flex}>
               <FaSchool
                 style={{
-                  color: "#cccecf",
                   fontWeight: "bold",
                   fontSize: "1.3rem",
                 }}
@@ -146,8 +139,12 @@ const CardProfileStudent = () => {
               <h3>Sin redes sociales por el momento.</h3>
             )}
           </div>
+          {/* SKILLS */}
           <div className={`${styles.wrapperSkills} ${styles.separator}`}>
-            <h4 className={styles.label}>Skills</h4>
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+              <h4 className={styles.label}>Skills</h4>
+              <MdOutlineModeEdit style={{fontSize: '1.1rem', cursor: 'pointer'}} />
+            </div>
             <ul className={styles.skillList}>
               {skills.length > 0 ? (
                 skills.map(({ c116_id_skill }) => (
@@ -158,7 +155,7 @@ const CardProfileStudent = () => {
                   />
                 ))
               ) : (
-                <h3>Sin skills</h3>
+                <span>Sin skills</span>
               )}
             </ul>
           </div>

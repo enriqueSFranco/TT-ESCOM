@@ -30,24 +30,24 @@ const CustomAvatar = ({ username, width, height }) => {
   }
 
   return (
-      <Link
-        to="/perfil"
-        style={{
-          // width: `${width || '2.5rem'}`,
-          // height: `${height || '2.5rem'}`,
-          borderRadius: "50%",
-          // backgroundColor: `${bg}`,
-          display: "grid",
-          placeContent: "center",
-          // padding: ".3rem",
-        }}
-      >
+      // <Link
+      //   to="/perfil"
+      //   style={{
+      //     // width: `${width || '2.5rem'}`,
+      //     // height: `${height || '2.5rem'}`,
+      //     borderRadius: "50%",
+      //     // backgroundColor: `${bg}`,
+      //     display: "grid",
+      //     placeContent: "center",
+      //     // padding: ".3rem",
+      //   }}
+      // >
+      // </Link>
         <img
           style={{objectFit: 'contain', borderRadius: '50%'}}
-          src={`https://placeimg.com/100/100/people`}
+          src={`https://placeimg.com/${width}/${height}/people`}
           alt={username}
         />
-      </Link>
   );
 };
 

@@ -21,13 +21,12 @@ const GroupAvatars = ({users}) => {
     <GroupAvatarsList>
       {renderUsers.map(user => (
         <AvatarItem>
-          <CustomAvatar username={user} />
+          <CustomAvatar username={user} width='100' height='100' />
         </AvatarItem>
       ))}
       {
         (users.length > 0 && restOfAvatars > 0) ? <RestOfAvatars restOfAvatars={restOfAvatars} /> : null
       }
-      {/* <RestOfAvatars restOfAvatars={restOfAvatars} /> */}
     </GroupAvatarsList>
   )
 }

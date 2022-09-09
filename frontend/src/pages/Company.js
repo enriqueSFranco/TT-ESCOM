@@ -54,7 +54,6 @@ const Company = () => {
           </LayoutHero>
         </GridTop>
         <GridButtom>
-          <div className={`${styles.grid}`}>
             {loading ? (
               <Skeleton type="business" />
             ) : query.length > 0 ? (
@@ -96,7 +95,6 @@ const Company = () => {
             ) : (
               <h2>No hay empresas registradas</h2>
             )}
-          </div>
           <Outlet />
         </GridButtom>
       </Main>

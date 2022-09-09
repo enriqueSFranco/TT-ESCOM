@@ -18,9 +18,16 @@ const GridTop = styled.div`
 `
 
 const GridButtom = styled.div`
+  position: relative;
+  top: 6rem;
+  padding: 1rem;
   grid-area: info;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: 220px;
   width: 100%;
   height: fit-content;
+  /* background-color: red; */
 `
 
 const Form = styled.form`

@@ -22,7 +22,7 @@ import {
 const CardJob = ({ job }) => {
   const { token } = useAuth();
 
-  let userID = token?.user?.id_student
+  let userID = token?.user?.id
   let idJob = job.t200_id_vacant;
   let description = job.t200_description
 
@@ -41,8 +41,6 @@ const CardJob = ({ job }) => {
   const handleOpenModal = () => openModalDetailsJob(description, idJob, userID)
   
   if (!job) return null;
-
-  console.log(job)
   
   return (
     <CardBody>

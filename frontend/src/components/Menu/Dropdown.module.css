@@ -4,9 +4,9 @@
 
 .menu {
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 4px;
   position: absolute;
-  top: 40px;
+  top: 60px;
   right: 0;
   width: 210px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
@@ -36,7 +36,12 @@
   display: flex;
   align-items: center;
   gap: .5rem;
-  /* border-bottom: 1px solid #ddd; */
+  transition: all .5s ease;
+}
+
+.menu li a:hover {
+  background-color: #018DD4;
+  color: #fff;
 }
 
 .avatarRecruiter {
@@ -52,7 +57,7 @@
 }
 
 .trigger {
-  background-color: #fff;
+  background-color: transparent;
   border-radius: 1rem;
   color: #fff;
   border-radius: 8px;
@@ -63,5 +68,6 @@
   width: fit-content;
   display: flex;
   align-items: center;
+  padding: .2rem;
   transition: box-shadow .4s ease;
 }

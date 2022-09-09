@@ -18,12 +18,10 @@ const DropMenu = ({ typeuser }) => {
       {typeuser === USERS.recruiter ? (
         <button className={`${styles.avatarRecruiter}`} onClick={onClick}>
           <CustomAvatar />
-          <IoMdMenu style={{ color: "#000" }} />
         </button>
       ) : (
         <button className={styles.trigger} onClick={onClick}>
-          <CustomAvatar />
-          <IoMdMenu style={{ color: "#000" }} />
+          <CustomAvatar width='45' height='45' />
         </button>
       )}
       <nav
