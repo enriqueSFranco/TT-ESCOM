@@ -123,7 +123,7 @@ function DatesPersonal({ form, handleChange }) {
             <div className={styles.inputCheckbox}>
               Dispuesto a reubicarte?
               <Checkbox
-                value={(form.t100_travel = checked)}
+                value={(form.t100_travel)}
                 checked={checked}
                 onChange={checkChanged}
                 size="small"
