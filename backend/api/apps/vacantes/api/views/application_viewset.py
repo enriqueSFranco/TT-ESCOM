@@ -1,4 +1,3 @@
-from email.mime import application
 from django.shortcuts import get_object_or_404
 from django.db.models import Max
 from rest_framework import status
@@ -6,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import viewsets
 from datetime import datetime
+
 
 from apps.vacantes.models import Application, ApplicationState,Vacant
 from apps.vacantes.api.serializers.vacant_serializer import UpdateVacantStateSerializer

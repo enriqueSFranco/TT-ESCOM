@@ -15,7 +15,7 @@ const GroupAvatars = ({users}) => {
   if (!users) return null
 
   let renderUsers = users.slice(0,3)
-  let restOfAvatars = users.length - users.slice(0,2).length
+  let restOfAvatars = users.length - users.slice(0,3).length
 
   return (
     <GroupAvatarsList>
@@ -25,7 +25,7 @@ const GroupAvatars = ({users}) => {
         </AvatarItem>
       ))}
       {
-        (users.length > 0 && restOfAvatars > 0) ? <RestOfAvatars restOfAvatars={restOfAvatars} /> : null
+        (renderUsers.length === 3) ? <RestOfAvatars restOfAvatars={restOfAvatars} /> : null
       }
     </GroupAvatarsList>
   )
