@@ -118,7 +118,7 @@ class Locality(models.Model):
 		db_table = 'c222_localidades'
     
 	def __str__(self) -> str:
-		return self.c222_cp+":"+self.c222_state+","+self.c222_municipality+","+self.c222_locality
+		return str(self.c222_cp)+":"+self.c222_state+","+self.c222_municipality+","+self.c222_locality
 
 
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
