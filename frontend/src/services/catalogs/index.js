@@ -10,7 +10,6 @@ import {
   API_ACADEMIC_STATE,
   API_INTEREST_JOBS,  
   API_CONTRACT,
-  API_SKILLS,
   API_CP
 } from "services/settings";
 

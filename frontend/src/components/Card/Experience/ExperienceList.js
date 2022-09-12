@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useModal } from "hooks/useModal";
 import { getProjects } from "services/students/index";
 import { useAuth } from "context/AuthContext";
 import { uuid } from "utils/uuid";
 import ExperenceItem from "./ExperienceItem";
-import ModalForm from "components/Modal/ModalForm";
 import TypeExperience from "./TypeExperience";
 import notProjects from "images/projects.png";
 import { MdAdd } from "react-icons/md";
@@ -13,29 +11,27 @@ import styles from "./Experience.module.css";
 const ExperenceList = () => {
   const [listProjects, setListProjects] = useState(null);
   const { token } = useAuth();
-  const [isOpenModalAddProject, openModalAddProject, closeModalAddProject] =
-    useModal();
 
-  let idUser = token?.user?.user_id;
+  // let idUser = token?.user?.id;
 
   useEffect(() => {
-    getProjects(idUser).then((response) => {
+    getProjects(token?.user?.user_id).then((response) => {
       setListProjects(response);
-    });
-  }, [idUser]);
+    })
+    .catch(error => console.error(error))
+  }, [token?.user?.user_id]);
 
   if (!listProjects) return null;
 
   return (
     <article className={styles.wrapper}>
-      {listProjects.length === 0 ? (
+      {listProjects && listProjects?.length === 0 ? (
         <div className={styles.notProjects}>
           <h3>Sin Proyectos</h3>
-          <img className={styles.notProjects} src={notProjects} alt="sin proyectos" />
         </div>
       ) : (
         <>
-          {listProjects?.map((project) => (
+          {listProjects && listProjects?.map((project, i) => (
             <ExperenceItem
               key={uuid()}
               data={listProjects}
@@ -54,18 +50,9 @@ const ExperenceList = () => {
           ))}
         </>
       )}
-      <button className={styles.btnAddProject} onClick={openModalAddProject}>
+      <button className={styles.btnAddProject}>
         <MdAdd />
       </button>
-
-      <ModalForm
-        isOpen={isOpenModalAddProject}
-        closeModal={closeModalAddProject}
-        width={600}
-        height={670}
-      >
-        <TypeExperience />
-      </ModalForm>
     </article>
   );
 };

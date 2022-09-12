@@ -32,7 +32,6 @@ const ExperenceItem = ({
     useModal();
 
   const deleteData = (id) => {
-    console.log("id:", id);
     deleteProject(id).then((response) => {
       if (data !== null) {
         let newData = data.filter((el) => el?.t117_id_registrer !== id);
@@ -40,6 +39,8 @@ const ExperenceItem = ({
       }
     });
   };
+
+  if (!data) return null
 
   return (
     <>

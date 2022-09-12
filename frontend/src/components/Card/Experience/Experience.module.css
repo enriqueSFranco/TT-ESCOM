@@ -26,7 +26,7 @@
   outline: none;
   border: none;
   border-radius: 5px;
-  font-family: 'Poppins', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,8 +35,8 @@
 
 .btnAddProject {
   position: sticky;
-  top: 22rem;
-  left: 37rem;
+  bottom: 0;
+  right: 0;
   bottom: .5rem;
   height: 40px;
   width: 40px;
@@ -60,7 +60,7 @@
   border-radius: 5px;
   border: none;
   height: 3rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .btnSubmit {
@@ -71,7 +71,7 @@
   border-radius: 5px;
   border: none;
   height: 3rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,7 +85,7 @@
   border: none;
   height: 3rem;
   border-radius: 5px;
-  font-family: 'Poppins', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .btnGoBack {
@@ -96,7 +96,7 @@
   border: none;
   height: 3rem;
   border-radius: 5px;
-  font-family: 'Poppins', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .btnDeleteExperience {
@@ -111,7 +111,7 @@
   font-size: 1rem;
   font-weight: 400;
   background-color: #232436;
-  font-family: 'Poppins', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   /* box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px; */
   transition: background-color .3s ease;
@@ -177,7 +177,7 @@
   font-size: 1rem;
   color: #000;
   font-weight: 500;
-  font-family: 'Poppins', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-transform: capitalize;
   transition: color .3s ease-in-out;
 }
@@ -202,14 +202,14 @@
   margin: 0;
   font-weight: 400;
   font-size: .9rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: #5c5c5c;
 }
 
 .groupDetails {
   width: 500px;
   height: 70px;
-  font-family: 'Poppins', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   /* background-color: red; */
 }
 
@@ -242,37 +242,39 @@
 }
 
 .notProjects {
-  height: 90%;
+  height: 100%;
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  /* background-color: red; */
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
 }
 
 .notProjects h3 {
   color: #04547e;
   text-align: center;
   font-size: 1.4rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .titleModal {
   font-size: 1.5rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin-bottom: 3rem;
   text-transform: uppercase;
   font-weight: bold;
 }
 
 .tittleProjectExperience {
-  font-family: 'Poppins', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin-top: 2rem;
 }
 
 .textArea {
   resize: none;
   outline: none;
-  font-family: 'Poppins', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   border-radius: 8px;
   margin-top: .7rem;
   border-color: #9e9e9e;

@@ -63,6 +63,9 @@ const Home = () => {
             <FormSearchJob handleSearch={handleSearch} />
           </LayoutHero>
         </Hero>
+        <Aside>
+          <Filters />
+        </Aside>
         <Content>
           <JobList
             jobs={isFiltered ? filteredData : response}
@@ -71,10 +74,6 @@ const Home = () => {
           <div id="visor" ref={externalRef}></div>
         </Content>
         <ButtonScrollTop />
-        <Aside>
-          {/* TODO: Hacer la parte de los filtros */}
-          <Filters />
-        </Aside>
       </Main>
     </LayoutHome>
   );
