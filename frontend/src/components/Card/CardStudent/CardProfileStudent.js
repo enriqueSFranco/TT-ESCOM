@@ -60,6 +60,8 @@ const CardProfileStudent = () => {
       });
     });
   }, [token?.user?.id]);
+
+  console.log(state.socialNetworks)
   
   return (
     <article className={`${styles.mainContainer}`}>
@@ -68,8 +70,7 @@ const CardProfileStudent = () => {
             <CustomAvatar student={state.candidate} width="100" height="100" />
             <div className={styles.nameHolder}>
               <span style={{color: '#9E9EA7', fontWeight: 500, letterSpacing:  '.5px'}}>
-                Enrique Salinas Franco
-                {/* {student[0]?.t100_name} {student[0]?.t100_last_name} */}
+                {state.candidate[0]?.t100_name} {state.candidate[0]?.t100_last_name}
               </span>
               <Chip label='Ingenieria en sistemas computaciones' bg="#116BFE" color='#fff' />
                 

@@ -1,15 +1,12 @@
 import axios from "axios";
 import API from 'services/http.service'
 import {   
-  API_CATALOGUE_CANDIDATE_PROFILE, 
-  API_CATALOGUE_EXPERIENCE,
   API_STUDENT_LENGUAGES,
   API_CATALOGUE_STATES,
   API_ACADEMIC_LEVEL,
   API_ACADEMIC_UNITS,
   API_ACADEMIC_STATE,
   API_INTEREST_JOBS,  
-  API_CONTRACT,
   API_CP
 } from "services/settings";
 
@@ -40,7 +37,7 @@ export const getLenguages = async (id) => {
 };
 
 export const getAllCatalogueExperience = () => {
-  return axios.get(`${API_CATALOGUE_EXPERIENCE}`)
+  return API(`${process.env.REACT_APP_URL_CATALOG_EXP}`)
     .then(response => {
       const { data } = response;
       return data;
@@ -49,7 +46,7 @@ export const getAllCatalogueExperience = () => {
 };
 
 export const getAllCandidateProfile = () => {
-  return axios.get(API_CATALOGUE_CANDIDATE_PROFILE)
+  return API(process.env.REACT_APP_URL_CATALOG_PROFILE_CANDIDATE)
     .then(response => {
       const { data } = response;
       return data;
@@ -106,7 +103,7 @@ export const getAllJobs = async () => {
 
 export const getAllContracTypes = async () => {
   try {
-    const { data } = await axios.get(API_CONTRACT);
+    const { data } = await API(process.env.REACT_APP_URL_CATALOG_CONTRACTS);
     return data;
   } catch (error) {
     if (error.response)

@@ -112,20 +112,21 @@ const Button = styled.button`
     outline: none;
     padding: .5rem;
     width: 80px;
-    border-radius: 2rem;
+    border-radius: 1rem;
     cursor: pointer;
   }
 
   @media screen and ${device.laptop} {
     background-color: ${props => props.bgColor || '#018dd4'};
     color: #fff;
-    font-weight: 700;
+    font-weight: 600;
     font-size: .9rem;
     border: none;
     outline: none;
     padding: 0.5rem;
     width: 120px;
-    border-radius: 2rem;
+    border-radius: .4rem;
+    transition: background-color .5s ease;
     cursor: pointer;
   }
 

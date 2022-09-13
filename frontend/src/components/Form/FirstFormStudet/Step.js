@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
 import { useForm } from "hooks/useForm";
 import { useFetch } from "hooks/useFetch";
-import { useGetAllJobs } from "hooks/useGetAllJobs";
 import { helpHttp } from "utils/helpHttp";
 import { formStepCandidate } from 'types/formStepCandidate'
 import { AcademicFormat } from "types/schemes";
@@ -35,7 +34,9 @@ const StepComponent = () => {
   const { token } = useAuth();
   let navigate = useNavigate();
 
-  let id_student = token?.user?.user_id;
+  let id_student = token?.user?.id;
+
+  console.log(token)
   academicHistorial.t100_id_student = id_student;
 
   // TODO: Pasar a un hook personalizado
@@ -59,8 +60,6 @@ const StepComponent = () => {
   let AllResults = data;
 
   if (!data && !form) return null;
-
-  console.log(AllResults)
 
   const PageDisplay = () => {
     if (activeStep === 0) {
@@ -136,7 +135,7 @@ const StepComponent = () => {
   };
 
   const updateData = () => {
-    console.log(form);
+
     const endpoint = process.env.REACT_APP_URL_CANDIDATE + id_student + "/";
 
     let options = {
@@ -152,7 +151,7 @@ const StepComponent = () => {
         if (!response.err) {
           console.log(response);
           ///Agreegar skills del alumno
-          const endpoint = "/api/Skills/";
+          const endpoint = process.env.REACT_APP_URL_CANDIDATE_SKILLS;
           const skillsAll = hardSkills.concat(softSkills);
           skillsAll.map((dato) => {
             //console.log(dato);
@@ -178,9 +177,7 @@ const StepComponent = () => {
 
           ///Agregar historial academico
 
-          const endpointAcademic = "api/AcademicHistorial/";
-          console.log(startMonth);
-          console.log(startYear + "-" + startMonth + "-01");
+          const endpointAcademic = process.env.REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL;
           academicHistorial.t104_start_date =
             startYear + "-" + startMonth + "-01";
           academicHistorial.t104_end_date = endYear + "-" + endMonth + "-01";

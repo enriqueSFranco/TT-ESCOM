@@ -61,8 +61,10 @@ export const AuthProvider = ({ children }) => {
           window.sessionStorage.setItem("token", JSON.stringify(response?.data));                
           
           let val = response.data?.user?.first_name
+
+          console.log(val)
           
-          if (val) {
+          if (val === '') {
             new Promise(resolve => {
               setTimeout(() => {
                 resolve(navigate("/actualiza-alumno"))

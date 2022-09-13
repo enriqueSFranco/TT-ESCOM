@@ -16,7 +16,6 @@ const Accordion = () => {
 
   useEffect(() => {
     getJob(t200_id_vacant).then((response) => {
-      // console.log(response);
       setJob(response);
     });
   }, [t200_id_vacant]);
