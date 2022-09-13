@@ -59,9 +59,12 @@ export const AuthProvider = ({ children }) => {
           setUser(response?.data?.access);
           setToken(response?.data);
           window.sessionStorage.setItem("token", JSON.stringify(response?.data));                
-          let val = response.data['user']['first_name'];
           
-          if (Boolean(val)){
+          let val = response.data?.user?.first_name
+
+          console.log(val)
+          
+          if (val === '') {
             new Promise(resolve => {
               setTimeout(() => {
                 resolve(navigate("/actualiza-alumno"))
@@ -80,7 +83,6 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     setToken(null);
     window.sessionStorage.removeItem("token");
-    // toast.success("Sesion finalizada correctamente.");
     navigate("/");
   };
 

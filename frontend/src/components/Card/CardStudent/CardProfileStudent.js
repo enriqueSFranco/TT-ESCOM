@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer } from "react";
 import { useAuth } from "context/AuthContext";
+import { fetchDataCandidateReducer, fetchDataCandidateInit } from "reducers/fetchDataCandidateReducer";
+import { TYPES } from "actions/fetchDataCandidateActions";
 import {
   getSocialNetwork,
   getStudent,
@@ -7,7 +9,7 @@ import {
 } from "services/students/index";
 import { getSkill } from "services/catalogs";
 import { uuid } from "utils/uuid";
-import CustomAvatar from "../../Avatar/Avatar";
+import CustomAvatar from "components/Avatar/Avatar";
 import Chip from 'components/Chip/Chip'
 import {
   MdLocationPin,
@@ -17,50 +19,58 @@ import {
 import styles from "./CardProfileStudent.module.css";
 
 const CardProfileStudent = () => {
-  // TODO: Implementar useReducer para el manejo del estado
-  const [student, setStudent] = useState([]);
-  const [skills, setSkills] = useState([]);
-  const [academicHistorial, setAcademicHistorial] = useState(null);
-  const [socialNetworks, setSocialNetworks] = useState([]);
+  const [state, dispatch] = useReducer(fetchDataCandidateReducer, fetchDataCandidateInit)
   const { token } = useAuth();
 
   useEffect(() => {
-    getStudent(token?.user?.id).then((response) => {
-      setStudent(response);
+    getStudent(token?.user?.user_id).then((response) => {
+      dispatch({
+        type: TYPES.FETCH_CANDIDATE,
+        payload: response
+      })
     });
-  }, [token?.user?.id]);
+  }, [token?.user?.user_id]);
 
+  
   useEffect(() => {
-    getAcademicHistorial(token?.user?.id)
+    getAcademicHistorial(token?.user?.user_id)
       .then((response) => {
-        setAcademicHistorial(response.data);
+        dispatch({
+          type: TYPES.FETCH_ACADEMIC_HISTORIAL,
+          payload: response.data
+        });
       })
       .catch((error) => error);
-  }, [token?.user?.id]);
+  }, [token?.user?.user_id]);
 
   useEffect(() => {
-    getSkill(token?.user?.id).then((response) => {
-      setSkills(response);
+    getSkill(token?.user?.user_id).then((response) => {
+      dispatch({
+        type: TYPES.FETCH_SKILLS,
+        payload: response
+      })
     });
-  }, [token?.user?.id]);
+  }, [token?.user?.user_id]);
 
   useEffect(() => {
     getSocialNetwork(token?.user?.id).then((response) => {
-      setSocialNetworks(response);
+      dispatch({
+        type: TYPES.FETCH_SOCIAL_NETWORK,
+        payload: response
+      });
     });
   }, [token?.user?.id]);
 
-  console.log(student)
-
+  console.log(state.socialNetworks)
+  
   return (
     <article className={`${styles.mainContainer}`}>
       <div className={`${styles.card}`}>
         <header className={styles.header}>
-            <CustomAvatar student={student} width="100" height="100" />
+            <CustomAvatar student={state.candidate} width="100" height="100" />
             <div className={styles.nameHolder}>
               <span style={{color: '#9E9EA7', fontWeight: 500, letterSpacing:  '.5px'}}>
-                Enrique Salinas Franco
-                {/* {student[0]?.t100_name} {student[0]?.t100_last_name} */}
+                {state.candidate[0]?.t100_name} {state.candidate[0]?.t100_last_name}
               </span>
               <Chip label='Ingenieria en sistemas computaciones' bg="#116BFE" color='#fff' />
                 
@@ -77,7 +87,7 @@ const CardProfileStudent = () => {
                 }}
               />
               <p style={{ fontWeight: "400" }}>
-                {student[0]?.t100_residence ?? "No especificado."}
+                {state.candidate[0]?.t100_residence ?? "No especificado."}
               </p>
             </div>
             <div className={styles.flex}>
@@ -88,7 +98,7 @@ const CardProfileStudent = () => {
                 }}
               />
               <p style={{ fontWeight: "400" }}>
-                {student[0]?.t100_travel
+                {state.candidate[0]?.t100_travel
                   ? "Disponible para reubicarse."
                   : "No disponible para reubicarse." ?? "No especificado."}
               </p>
@@ -96,8 +106,8 @@ const CardProfileStudent = () => {
           </div>
           <h4 className={styles.label}>redes sociales</h4>
           <div className={`${styles.socialNetworks} ${styles.separator}`}>
-            {socialNetworks.length > 0 ? (
-              socialNetworks.map(({ t113_link, c115_id_plataform }) => {
+            {state.socialNetworks?.length > 0 ? (
+              state.socialNetworks?.map(({ t113_link, c115_id_plataform }) => {
                 return (
                   <a
                     href={`${t113_link}`}
@@ -125,8 +135,8 @@ const CardProfileStudent = () => {
               <MdOutlineModeEdit style={{fontSize: '1.1rem', cursor: 'pointer'}} />
             </div>
             <ul className={styles.skillList}>
-              {skills.length > 0 ? (
-                skills.map(({ c116_id_skill }) => (
+              {state.skills?.length > 0 ? (
+                state.skills?.map(({ c116_id_skill }) => (
                   <Chip
                     key={uuid()}
                     label={c116_id_skill?.c116_description}
@@ -140,7 +150,7 @@ const CardProfileStudent = () => {
           {/* cv */}
           <div>
             {
-              student[0]?.t100_cv === null ? 'no' : 'si'
+              state.candidate[0]?.t100_cv === null ? 'no' : 'si'
             }
           </div>
         </div>

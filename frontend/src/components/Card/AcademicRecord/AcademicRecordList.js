@@ -12,30 +12,30 @@ import styles from './AcademicRecord.module.css';
 const AcademicRecordList = () => {
   const [data, setData] = useState(null);
   const { token } = useAuth();
-  const [
-    isOpenModalAcademicRecord,
-    openModalAcademicRecord,
-    closeModalAcademicRecord,
-  ] = useModal();
+  // const [
+  //   isOpenModalAcademicRecord,
+  //   openModalAcademicRecord,
+  //   closeModalAcademicRecord,
+  // ] = useModal();
 
   let id = token?.user?.user_id;
 
 
-  useEffect(() => {
-    getAcademicHistorial(id)
-      .then(response => {
-        console.log(response);
-        if (response.status === 200) {
-          const { data } = response;
-          setData(data);
-        } else {
-          setData(null);
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      })  
-  }, [id]);
+  // useEffect(() => {
+  //   getAcademicHistorial(id)
+  //     .then(response => {
+  //       console.log(response);
+  //       if (response.status === 200) {
+  //         const { data } = response;
+  //         setData(data);
+  //       } else {
+  //         setData(null);
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     })  
+  // }, [id]);
 
   return (
     <article className={styles.wrapper}>
@@ -55,17 +55,17 @@ const AcademicRecordList = () => {
         ))
       }
       <button
-        onClick={openModalAcademicRecord}
+        // onClick={openModalAcademicRecord}
         className={styles.btnAddProject}
       >
         <MdAdd />
       </button>
-      <Modal
+      {/* <Modal
         isOpen={isOpenModalAcademicRecord}
         closeModal={closeModalAcademicRecord}
       >
         <FormAddAcademicRecord />
-      </Modal>
+      </Modal> */}
     </article>
   )
 }

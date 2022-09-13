@@ -57,7 +57,6 @@ const TableRow = ({ children, user, idSkills, index }) => {
 
   const onClickAcceptApply = (e) => {
     e.preventDefault();
-    console.log(e);
     let now = new Date();
     let nextState = "";
     if (user?.c205_id_application_state?.c205_id_application_state === 1)
@@ -79,7 +78,6 @@ const TableRow = ({ children, user, idSkills, index }) => {
 
   const onClickDennyApply = (e) => {
     e.preventDefault();
-    console.log(e);
     let now = new Date();
     let nextState = "";
     if (user?.c205_id_application_state?.c205_id_application_state === 1)
@@ -100,7 +98,6 @@ const TableRow = ({ children, user, idSkills, index }) => {
   };
 
   if (!user) return null;
-  console.log(certifications);
 
   return (
     <>

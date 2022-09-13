@@ -60,8 +60,9 @@
 .navLink:hover { color: #000; }
 
 .navList.selected {
-  background-color: #ebebeb;
+  background-color: #ebebeba1;
   color: #000;
+  transition: all .5s ease;
 }
 
 .labelTheme {

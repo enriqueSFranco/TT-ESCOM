@@ -5,7 +5,6 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import {
   API_STUDENT,
-  API_SOCIAL_NETWORK,
   API_PHOTO_STUDENT,
   API_PROJECT_STUDENT,
   API_CATALOGUE_PLATAFORM,
@@ -38,7 +37,7 @@ export const getStudent = async (id) => {
  * @returns {Promise}
  **/
 export const getSocialNetwork = async (id) => {
-  return API(`${process.env.REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS}/${id}/`)
+  return API(`${process.env.REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS}${id}/`)
     .then((response) => {
       const { data } = response;
       return data;
@@ -176,7 +175,7 @@ export const changeApplyState = (id,payload) => {
  * @returns {Promise}
  **/
 export const getProjects = (id) => {
-  return axios.get(`${API_PROJECT_STUDENT}${id}/`)
+  return API(`${process.env.REACT_APP_URL_CANDIDATE_PROJECTS}${id}/`)
     .then(response => {
       const { data } = response;
       return data;
