@@ -1,3 +1,4 @@
+/* Usado para iniciar sesión de Candidatos y Reclutadores */
 export const createUser = (user) => {
   const formatterUser = {
     t100_email: user.t100_email,
@@ -5,3 +6,4 @@ export const createUser = (user) => {
   }
   return formatterUser
 }
+
