@@ -64,7 +64,7 @@ const CardProfileStudent = () => {
   console.log(state.socialNetworks)
   
   return (
-    <article className={`${styles.mainContainer}`}>
+    <article className={`${styles.cardProfile}`}>
       <div className={`${styles.card}`}>
         <header className={styles.header}>
             <CustomAvatar student={state.candidate} width="100" height="100" />
@@ -131,7 +131,7 @@ const CardProfileStudent = () => {
           {/* SKILLS */}
           <div className={`${styles.wrapperSkills} ${styles.separator}`}>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
-              <h4 className={styles.label}>Skills</h4>
+              <h4 className={styles.label}>Habilidades en</h4>
               <MdOutlineModeEdit style={{fontSize: '1.1rem', cursor: 'pointer'}} />
             </div>
             <ul className={styles.skillList}>
@@ -143,7 +143,7 @@ const CardProfileStudent = () => {
                   />
                 ))
               ) : (
-                <span>Sin skills</span>
+                <span>Sin habilidades registradas</span>
               )}
             </ul>
           </div>

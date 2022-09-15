@@ -11,6 +11,7 @@ import {
   getAllCandidateProfile,
 } from "services/catalogs";
 import Input from "components/Input/Input";
+import Switch from "components/Switch/Switch";
 import TextEditor from "components/TextEditor/TextEditor";
 import {
   Button,
@@ -52,6 +53,8 @@ const FormPostJob = () => {
   const [typeContractList, setTypeContractList] = useState(null);
   const [profileCandidate, setProfileCandidate] = useState("");
   const [profileCandidateList, setProfileCandidateList] = useState(null);
+  const [visible, setVisible] = useState(false);
+
 
   useEffect(() => {
     getAllCatalogueExperience()
@@ -85,12 +88,14 @@ const FormPostJob = () => {
     t301_id_recruiter: token?.user?.id,
   };
 
+  const handleVisible = (e) => setVisible(e.target.checked)
+
   const onSubmitPostJob = (e) => {
     e.preventDefault();
     postJob(newObject)
       .then((response) => {
         console.log(response);
-        navigate("/mis-vacantes");
+        navigate("/dashboard");
       })
       .catch((error) => console.error(error));
   };
@@ -221,6 +226,10 @@ const FormPostJob = () => {
               ))}
           </Select>
         </WrapperSelect>
+      </GroupInput>
+      <GroupInput>
+        <Switch label='Fecha de cierre' name='visible' id='visible' value={visible} onChange={handleVisible} />
+        {visible && <input type="date" />}
       </GroupInput>
       <div>
         <TextEditor

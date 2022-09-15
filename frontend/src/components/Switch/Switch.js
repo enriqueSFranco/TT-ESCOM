@@ -1,4 +1,4 @@
-import styles from "../Styles.module.css";
+import styles from "./Switch.module.css";
 
 const Switch = ({ label, name, id, value, onChange, ...rest }) => {
   return (

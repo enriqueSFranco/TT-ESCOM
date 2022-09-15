@@ -1,13 +1,21 @@
 import React from "react";
-import styles from "./PageApplications.module.css";
 import Accordion from "components/Accordion/Accordion";
+import LayoutHome from "Layout/LayoutHome";
+import ListCandidates from "components/Card/CardStudent/ListCandidates";
+import styles from "./PageApplications.module.css";
 
 function PageApplications() {
 
   return (
-    <section className={styles.wrapper}>
-      <Accordion />
-    </section>
+    <LayoutHome>
+      <section className={styles.wrapper}>
+        <h1>candidatos</h1>
+        {/* form */}
+        <article>
+          <ListCandidates />
+        </article>
+      </section>
+    </LayoutHome>
   );
 }
 
