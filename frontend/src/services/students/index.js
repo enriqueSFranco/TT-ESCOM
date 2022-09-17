@@ -32,6 +32,8 @@ export const getStudent = async (id) => {
     );
 };
 
+
+
 /**
  * @param {Number} id identificador de un alumno para obtener sus skills
  * @returns {Promise}

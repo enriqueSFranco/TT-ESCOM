@@ -5,7 +5,6 @@ export * from './useForm';
 export * from './useGetAllJobs';
 export * from './useGetAllRecucruiters';
 export * from './useGetApplicationJob';
-export * from './useGetCandidate';
 export * from './useGetSkills';
 export * from './useGetSocialNetwork';
 export * from './useGetStudent';

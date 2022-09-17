@@ -1,10 +1,13 @@
 import React from 'react';
+import LayoutHome from 'Layout/LayoutHome';
 
 const PagePostRelease = () => {
   return (
-    <section>
-      <h1>PagePostRelease</h1>
-    </section>
+    <LayoutHome>
+      <section>
+        <h1>PagePostRelease</h1>
+      </section>
+    </LayoutHome>
   )
 }
 

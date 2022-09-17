@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useFetch } from "hooks/useFetch";
 import { useDebounce } from "hooks/useDebounce";
 import { useViewport } from "hooks/useViewport";
+// import { searchCharacter } from "services/index"
 import Loader from "components/Loader/Loader";
 import * as BiIcon from "react-icons/bi";
 import styles from "./Search.module.css";
@@ -28,6 +29,13 @@ const FormSearchJob = ({ handleSearch }) => {
     const query = e.target.value;
     setQueryJob(query);
 
+    // hacer la llamada al endpoint de searchCharacter
+    // searchCharacter(query)
+    //   .then(res => {
+    //      setFiltered(res)
+    // })
+    //   .catch(error => console.error(error))
+
     const dataFiltered = data.result?.filter((el) => {
       let er = new RegExp(`^${query}`, "gi");
       let matches = el.t200_job.toLowerCase().match(er);
@@ -42,14 +50,20 @@ const FormSearchJob = ({ handleSearch }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (queryJob === "") window.location.reload();
+    if (queryJob === "" && locationJob === "") return
 
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
       handleSearch(debounce === "" ? filterData : debounce);
-    }, 2000);
+    }, 500);
+
+    // limpiamos los campos del formulario
+    setQueryJob('')
+    setLocationJob('')
   };
+
+  console.log(data)
 
   return (
     <WrapperForm>

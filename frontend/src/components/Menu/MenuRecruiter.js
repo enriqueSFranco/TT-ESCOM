@@ -30,10 +30,10 @@ const MenuRecruiter = () => {
           <NavLink to="/dashboard"><MdDashboard />Dashboard</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="publicar-comunicado"><BsFillMegaphoneFill />Comunicados</NavLink>
+          <NavLink to="/publicar-comunicado"><BsFillMegaphoneFill />Comunicados</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="solicitudes"><HiUserGroup />Candidatos</NavLink>
+          <NavLink to="/candidatos"><HiUserGroup />Candidatos</NavLink>
         </NavItem>
         <NavItem>
           <NavLink to="/" onClick={logout}><HiOutlineLogout style={{fontSize: '1.4rem'}} />Salir</NavLink>

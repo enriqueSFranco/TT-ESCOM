@@ -1,7 +1,6 @@
 import API from 'services/http.service'
 import {
   API_JOBS,
-  API_VACANTS_APPLICATIONS_JOB_STUDENT,
   API_VACANT_INFO,
   API_VACANTS_FILTER,
   API_VACANT_REQUIREMENT
@@ -18,6 +17,15 @@ export const getAllJobs = async (numberPage = 1) => {
       return error.response;
   }
 };
+
+export const searchCharacter = (nameJob) => {
+  return API(`vacant/Vacatn/?search=${nameJob}`)
+    .then(res => {
+      const { data } = res
+      return data
+    })
+    .catch(error => error)
+}
 
 export const getJobRequirements = (id) => {
   return API(`${API_VACANT_REQUIREMENT}${id}/`)

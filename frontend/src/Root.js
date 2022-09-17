@@ -36,17 +36,14 @@ const Root = () => {
         <Route path=":t200_id_vacant" element={<CardJobDetails />} />
       </Route> */}
 
-      <Route path="/solicitudes" element={<PageApplications />}>
-        <Route path=":t200_id_vacant" element={<Accordion />} />
-      </Route>
       <Route path="/perfil-del-candidato" element={<FullProfileUser />} />
-      <Route path="/publicar-comunicado" element={<PagePostRelease />} />
 
       <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>
-        {/* <Route path="/candidatos" element={<PageApplications />} /> */}
+        <Route path="/candidatos" element={<PageApplications />} />
+        <Route path="/publicar-comunicado" element={<PagePostRelease />} />
         <Route path="/dashboard/" element={<PageHistory />}>
           <Route path="crear-vacante" element={<FormPostJob />} />
-          <Route path="mis-vacantes" element={<PageHistory />} />
+          {/* <Route path="mis-vacantes" element={<PageHistory />} /> */}
         </Route>
       </Route>
 

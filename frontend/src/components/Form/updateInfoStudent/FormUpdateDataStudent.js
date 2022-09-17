@@ -6,7 +6,7 @@ import { updateStudent, getLinks, postSocialNetwork, getStudent } from "services
 import { updateStudentInitialForm } from "../../../types/schemes";
 import TextField from "@mui/material/TextField";
 import Label from "../../Element/Label/Label";
-import Switch from "../../Element/Switch/Switch";
+import Switch from "../../Switch/Switch";
 import * as BiIcon from "react-icons/bi";
 import styles from "./FormUpdateDataStudent.module.css";
 
