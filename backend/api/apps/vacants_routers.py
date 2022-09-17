@@ -1,3 +1,4 @@
+from posixpath import basename
 from rest_framework.routers import DefaultRouter
 from apps.vacantes.api.views.announcement_viewset import AnnouncementViewSet
 from apps.vacantes.api.views.application_viewset import ApplicationViewSet
@@ -11,9 +12,12 @@ from apps.vacantes.api.views.application_viewset import VacantApplicationsViewSe
 from apps.vacantes.api.views.vacant_viewset import VacantInfoViewSet
 from apps.vacantes.api.views.vacant_viewset import RecruiterVacantViewSet
 from apps.vacantes.api.views.vacant_viewset import FilterVacantViewSet
+from apps.vacantes.api.views.vacant_viewset import FilterVacant
+from django.urls import path
 
 router = DefaultRouter()
 router.register(r'Vacants', VacantViewSet, basename='Vacants')
+
 router.register(r'RecruiterVacants', RecruiterVacantViewSet, basename='Recruiters Vacants')
 #router.register(r'VacantRequirements', VacantRequirementsViewSet, basename='Vacants requirements')
 #router.register(r'VacantLenguages', VacantLenguagesViewSet, basename='Vacants lenguages')
@@ -25,6 +29,7 @@ router.register(r'Administrators',AdminViewSet,basename='Adminstrators')
 router.register(r'ValidateCompany',ActivateCompanyViewSet,basename='Validate company')
 router.register(r'ValidateRecruiter',ValidateRecruiterViewSet,basename='Invalid recruiters')
 router.register(r'VacantInfo',VacantInfoViewSet,basename='Vavcants info')
-router.register(r'FilterVacants',FilterVacantViewSet,basename='Vavcants filtered')
+router.register(r'FilterVacants',FilterVacantViewSet,basename='Vacants filtered')
+router.register(r'<str:search>', FilterVacant,basename="Filter")
 
-urlpatterns=router.urls
+urlpatterns= router.urls + [ path(r'api/<str:search>', FilterVacant.as_view({'get': 'list'}))]

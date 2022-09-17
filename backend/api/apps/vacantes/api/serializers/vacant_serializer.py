@@ -18,7 +18,13 @@ class VacantListSerializer(serializers.ModelSerializer):
         model = Vacant
         fields = '__all__'    
         depth = 2
-    
+
+class VacantFilterSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Vacant
+        fields = '__all__'    
+        depth = 2
+        
 
 class UpdateVacantSerializer(serializers.ModelSerializer):
         class Meta:

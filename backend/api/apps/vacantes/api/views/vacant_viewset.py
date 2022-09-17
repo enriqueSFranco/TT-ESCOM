@@ -3,13 +3,13 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from rest_framework import viewsets
+from rest_framework import generics, viewsets
 from django.db.models import Count,Max
 
 from apps.vacantes.pagination import CustomPagination
 from apps.vacantes.models import Vacant,Application,Requirement
 from apps.companies.models import Company
-from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,VacantListSerializer,UpdateVacantSerializer,VacantInfoListSerializer,VacantRequirementSerializer,VacantRequirementListSerializer
+from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,VacantListSerializer,UpdateVacantSerializer,VacantInfoListSerializer,VacantRequirementSerializer,VacantRequirementListSerializer,VacantFilterSerializer
 
 class VacantViewSet(viewsets.GenericViewSet):
 	model = Vacant
@@ -282,6 +282,20 @@ class VacantInfoViewSet(viewsets.GenericViewSet):
 		vacant_serializer = self.list_serializer_class(Vacant,many=True)
 		return Response(vacant_serializer.data)			
 
+class FilterVacant(viewsets.GenericViewSet):
+	queryset = Vacant.objects.all()
+	serializer_class = VacantListSerializer
+
+	def list(self, request,search):
+		vacants = Vacant.objects.filter(t200_job__startswith=search)
+		vacants_serializer = self.serializer_class(vacants, many=True)
+		return Response(vacants_serializer.data)
+
+	def retrieve(self, request, search):
+		Vacant = Vacant.objects.filter(t200_job=search)
+		vacant_serializer = self.serializer_class(Vacant,many=True)
+		return Response(vacant_serializer.data)		
+	
 
 class FilterVacantViewSet(viewsets.GenericViewSet):
 	model = Vacant
