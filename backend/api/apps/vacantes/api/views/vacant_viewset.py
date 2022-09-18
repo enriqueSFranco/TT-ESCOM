@@ -5,7 +5,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import generics, viewsets
 from django.db.models import Count,Max
-
+from django.db.models import Q
+from itertools import chain
 from apps.vacantes.pagination import CustomPagination
 from apps.vacantes.models import Vacant,Application,Requirement
 from apps.companies.models import Company
@@ -34,6 +35,13 @@ class VacantViewSet(viewsets.GenericViewSet):
 		return self.queryset
 
 	def list(self, request):
+		"""
+		Muestra todas las vacantes activas en la plataforma
+
+
+
+		Dummy text
+		""" 
 		vacants = self.get_queryset()
 		page = self.paginate_queryset(vacants)
 		if page is not None:
@@ -43,6 +51,13 @@ class VacantViewSet(viewsets.GenericViewSet):
 		return Response(vacants_serializer.data)
 
 	def create(self, request):
+		"""
+		Agrega una vacante al sistema
+
+
+
+		Dummy text
+		""" 
 		vacant_requirements = []
 		vacant_serializer = self.serializer_class(data=request.data)
 		print('request: ',request.data)
@@ -72,11 +87,25 @@ class VacantViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def retrieve(self, request, pk):
+		"""
+		Muestra la información de una sola vacante
+
+
+
+		Dummy text
+		""" 
 		Vacant = self.get_object(pk)
 		vacant_serializer = self.list_serializer_class(Vacant,many=True)
 		return Response(vacant_serializer.data)
 
 	def destroy(self, request, pk=None):
+		"""
+		Elimina una vacante
+
+
+
+		Dummy text
+		""" 
 		vacant_destroy = self.model.objects.filter(t200_id_vacant=pk).first()
 		if vacant_destroy :
 			vacant_destroy = self.model.objects.filter(t200_id_vacant=pk).delete()
@@ -88,17 +117,24 @@ class VacantViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_404_NOT_FOUND)
 
 	def update(self, request, pk):
-            vacant = self.queryset = self.model.objects.filter(t200_id_vacant = pk).first()
-            vacant_serializer = UpdateVacantSerializer(vacant, data=request.data)
-            if vacant_serializer.is_valid():
-                vacant_serializer.save()
-                return Response({
-				    'message': 'Vacante actualizada correctamente'
-			    }, status=status.HTTP_200_OK)
-            return Response({
-                'message': 'Hay errores en la actualización',
-                'errors': vacant_serializer.errors
-            }, status=status.HTTP_400_BAD_REQUEST)
+		"""
+		Actualiza la información de una vacante
+
+
+
+		Dummy text
+		""" 
+		vacant = self.queryset = self.model.objects.filter(t200_id_vacant = pk).first()
+		vacant_serializer = UpdateVacantSerializer(vacant, data=request.data)
+		if vacant_serializer.is_valid():
+			vacant_serializer.save()
+			return Response({
+			    'message': 'Vacante actualizada correctamente'
+		    }, status=status.HTTP_200_OK)
+		return Response({
+            'message': 'Hay errores en la actualización',
+            'errors': vacant_serializer.errors
+        }, status=status.HTTP_400_BAD_REQUEST)
 
 
 #class VacantRequirementsViewSet(viewsets.GenericViewSet):
@@ -234,6 +270,13 @@ class RecruiterVacantViewSet(viewsets.GenericViewSet):
 		return self.queryset
 
 	def list(self, request):
+		"""
+		Muestra las vacantes publicadas por un reclutador
+
+
+
+		Dummy text
+		""" 
 		vacants = self.get_queryset()
 		page = self.paginate_queryset(vacants)
 		if page is not None:
@@ -243,6 +286,13 @@ class RecruiterVacantViewSet(viewsets.GenericViewSet):
 		return Response(vacants_serializer.data)
 
 	def retrieve(self, request, pk):
+		"""
+		Muestra una vacante publicada por un reclutador
+
+
+
+		Dummy text
+		""" 
 		Vacant = self.get_object(pk)
 		vacant_serializer = self.list_serializer_class(Vacant,many=True)
 		return Response(vacant_serializer.data)
@@ -267,6 +317,13 @@ class VacantInfoViewSet(viewsets.GenericViewSet):
 		return self.queryset
 
 	def list(self, request):
+		"""
+		Muestra un resumen del estado de las vacantes publicadas
+
+
+
+		Dummy text
+		""" 
 		vacants = self.get_queryset()
 		print(vacants)
 		page = self.paginate_queryset(vacants)
@@ -277,24 +334,37 @@ class VacantInfoViewSet(viewsets.GenericViewSet):
 		return Response(vacants_serializer.data)
 
 	def retrieve(self, request, pk):
+		"""
+		Muestra el resumen del estado de una vacante publicada
+
+
+
+		Dummy text
+		""" 
 		Vacant = self.get_object(pk)
 		print(Vacant)
 		vacant_serializer = self.list_serializer_class(Vacant,many=True)
 		return Response(vacant_serializer.data)			
 
-class FilterVacant(viewsets.GenericViewSet):
-	queryset = Vacant.objects.all()
-	serializer_class = VacantListSerializer
+class FilterVacant (generics.ListAPIView):
+	serializer_class = VacantFilterSerializer
+	characters = "'?,.¿&"
 
-	def list(self, request,search):
-		vacants = Vacant.objects.filter(t200_job__startswith=search)
-		vacants_serializer = self.serializer_class(vacants, many=True)
-		return Response(vacants_serializer.data)
-
-	def retrieve(self, request, search):
-		Vacant = Vacant.objects.filter(t200_job=search)
-		vacant_serializer = self.serializer_class(Vacant,many=True)
-		return Response(vacant_serializer.data)		
+	def get_queryset(self):		
+		search_str = self.kwargs['search']		
+		for x in range(len(self.characters)):
+			search_str = search_str.replace(self.characters[x],"")
+		search = search_str.split(" ")
+		print(search)		
+		count =0
+		for word in search:
+			if count==0:
+				filter = Vacant.objects.filter(Q(c204_id_vacant_status = 1),Q(t200_job__icontains=word) | Q(t200_description__icontains=word))
+				count = count+1
+			else:
+				print(word)
+				filter = filter.union(Vacant.objects.filter(Q(c204_id_vacant_status = 1),Q(t200_job__icontains=word) | Q(t200_description__icontains=word)))
+		return filter.values()#Vacant.objects.filter(Q(c204_id_vacant_status = 1),Q(t200_job__icontains=search) | Q(t200_description__icontains=search)).values() 
 	
 
 class FilterVacantViewSet(viewsets.GenericViewSet):

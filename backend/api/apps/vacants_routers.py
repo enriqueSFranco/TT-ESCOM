@@ -30,6 +30,6 @@ router.register(r'ValidateCompany',ActivateCompanyViewSet,basename='Validate com
 router.register(r'ValidateRecruiter',ValidateRecruiterViewSet,basename='Invalid recruiters')
 router.register(r'VacantInfo',VacantInfoViewSet,basename='Vavcants info')
 router.register(r'FilterVacants',FilterVacantViewSet,basename='Vacants filtered')
-router.register(r'<str:search>', FilterVacant,basename="Filter")
+#router.register(r'<str:search>', FilterVacant,basename="Filter")
 
-urlpatterns= router.urls + [ path(r'api/<str:search>', FilterVacant.as_view({'get': 'list'}))]
+urlpatterns= router.urls 
