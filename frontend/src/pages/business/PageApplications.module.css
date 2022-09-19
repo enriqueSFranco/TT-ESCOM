@@ -6,3 +6,10 @@
   padding: 1rem;
   height: calc(100% - 4rem);
 }
+
+.gridFluid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  align-items: center;
+  justify-items: center;
+}

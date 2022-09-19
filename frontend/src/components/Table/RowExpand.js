@@ -45,9 +45,6 @@ const RowExpand = ({ user }) => {
 
   if (!user) return null;
 
-  console.log(user?.t100_id_student?.t100_personal_objectives);
-  console.log(lenguages);
-
   return (
     <article key={uuid()} className={styles.wrapperDetailsUser}>
       <div className={styles.grid_2}>

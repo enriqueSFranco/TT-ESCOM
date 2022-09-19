@@ -11,7 +11,7 @@ const ListEmptyJobs = () => {
   );
 };
 
-const JobList = ({ jobs, loading }) => {
+const JobList = ({ jobs, loading, loadingNextPage }) => {
 
   if (!jobs) return null;
 
@@ -27,7 +27,9 @@ const JobList = ({ jobs, loading }) => {
 
   return (
     <>
-      {jobs?.map((job) => <CardJob key={crypto.randomUUID()} job={job} />)}
+    {
+      jobs?.map((job) => <CardJob key={crypto.randomUUID()} job={job} />)
+    }
     </>
   );
 };

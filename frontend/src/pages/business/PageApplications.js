@@ -11,7 +11,7 @@ function PageApplications() {
       <section className={styles.wrapper}>
         <h1>candidatos</h1>
         {/* form */}
-        <article>
+        <article className={styles.gridFluid}>
           <ListCandidates />
         </article>
       </section>

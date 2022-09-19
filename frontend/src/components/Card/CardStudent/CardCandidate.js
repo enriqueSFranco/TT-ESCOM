@@ -1,30 +1,60 @@
-import React from 'react'
-import CustomAvatar from 'components/Avatar/Avatar'
-import { Card, CardProfile, ContentInfo, Item, List, LinkToFullProfile, Speciality } from './styled-components/CardCandidateStyled'
+import React from "react";
+import { useFetch } from "hooks";
+import Chip from "components/Chip/Chip";
+import CustomAvatar from "components/Avatar/Avatar";
+import LinkButton from "components/Button/LinkButton";
+import { List, ListItem } from "styled-components/CommonStyles";
+import { CardUser,  Username, H3, WrapperList } from "./styled-components/CardCandidateStyled";
 
-const CardCandidate = ({ job }) => {
-  if (!job) return null
-
-  console.log(job)
+const CardCandidate = ({ user, idUser }) => {
+  const { data, error, loading } = useFetch(`${process.env.REACT_APP_URL_CANDIDATE_SKILLS}${idUser}`)
+  
+  if (!user) return null;
 
   return (
-    <div>
-      {job.t100_name}
-    </div>
-    // <Card>
-    //   <CardProfile>
-    //     <img src="" alt="" />
-    //     <ContentInfo>
-    //       <LinkToFullProfile to='/'>Enrique</LinkToFullProfile>
-    //       <Speciality>Desarrollador web</Speciality>
-    //       <List>
-    //         <Item>enrique.sfranco04@gmail.com</Item>
-    //         {/* iterar las redes sociales */}
-    //       </List>
-    //     </ContentInfo>
-    //   </CardProfile>
-    // </Card>
-  )
-}
+    <CardUser>
+      <div
+        style={{
+          width: "100px",
+          height: "100px",
+          borderRadius: "50%",
+        }}
+      >
+        <CustomAvatar width="100" height="100" />
+      </div>
+      <div>
+        <Username>{user.t100_name}</Username>
+        <br />
+        {user.t100_speciality}
+        <H3>Habilidades</H3>
+        <WrapperList>
+          <List>
+            {
+              data && data?.map(skill => (
+                <ListItem key={crypto.randomUUID()}>
+                  <Chip label={skill.c116_id_skill.c116_description} bg="#eee" />
+                </ListItem>
+              ))
+            }
+          </List>
+        </WrapperList>
+        <H3>Idiomas</H3>
+        <div>
+          <List>
+            <ListItem>
+              <Chip label="Ingles" bg="#eee" />
+            </ListItem>
+            <ListItem>
+              <Chip label="Aleman" bg="#eee" />
+            </ListItem>
+          </List>
+        </div>
+        <div>
+          <LinkButton to="/" text="Ver perfil" />
+        </div>
+      </div>
+    </CardUser>
+  );
+};
 
-export default CardCandidate
+export default CardCandidate;

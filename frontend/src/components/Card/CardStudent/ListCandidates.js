@@ -4,6 +4,7 @@ import CardCandidate from './CardCandidate'
 
 const ListCandidates = () => {
   const {data, erorr, loading } = useFetch(`${process.env.REACT_APP_URL_CANDIDATE}`)
+  // const { data: dataSkills, error: errorSkills, loading: loadingSkills } = useFetch(`${process.env.REACT_APP_URL_CANDIDATE_SKILLS}`)
 
   if (!data) return null;
 
@@ -14,7 +15,8 @@ const ListCandidates = () => {
       {data && data?.map(el => (
         <CardCandidate 
           key={crypto.randomUUID()}
-          job={el}
+          user={el}
+          idUser={el.t100_id_student}
         />
       ))}
     </>

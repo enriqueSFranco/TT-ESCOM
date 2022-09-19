@@ -4,6 +4,7 @@ import { useNearScreen } from "hooks/useNearScreen";
 import { useCustomDebounce } from "hooks/useDebounce";
 import FormSearchJob from "components/Search/FormSearchJob";
 import JobList from "components/Card/JobList/JobList";
+import Loader from "components/Loader/Loader";
 import LayoutHome from "Layout/LayoutHome";
 import LayoutHero from "Layout/LayoutHero";
 import { Aside, Content, Hero, Main } from "./styled-components/HomeStyled";
@@ -70,7 +71,9 @@ const Home = () => {
           <JobList
             jobs={isFiltered ? filteredData : response}
             loading={loading}
+            loadingNextPage={loadingNextPage}
           />
+          {loadingNextPage && <Loader />}
           <div id="visor" ref={externalRef}></div>
         </Content>
         <ButtonScrollTop />

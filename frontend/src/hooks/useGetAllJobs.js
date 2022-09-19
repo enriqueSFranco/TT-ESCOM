@@ -16,7 +16,6 @@ export function useGetAllJobs() {
       .then((response) => {
         const { page_size, count } = response
         let totalPage = Math.ceil(count / page_size)
-        // console.log(totalPage)
         setMaxPage(totalPage)
         setResponse(response.result);
       })
