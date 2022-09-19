@@ -1,0 +1,67 @@
+\clearpage
+\begin{UseCase}[]{PST-CU01}{Consultar postulaciones}{
+	Permite al reclutador de una empresa  consultar las postulaciones que tenga de una vacante que haya publicado ya se ha que hayan sido recientemente publicadas 
+	o ya las haya cerrado.
+	}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		Reclutadores.
+	}
+	\UCitem[admin]{Prioridad}{
+		Media
+	}
+	\UCitem[admin]{Complejidad}{
+		Alta
+	}
+	\UCitem{Precondiciones}{
+		\Titem El reclutador debe de estar registrado en el sistema.
+	}
+	\UCitem{Destino}{
+		\Titem \refElem{PST-IU01}
+	}
+	\UCitem{Reglas de Negocio}{
+		Ninguna.
+		
+	}
+	\UCitem{Viene de}{
+		\refElem{VCT-CU03} trayectoria A.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Da clic en el componente \refElem{VCT-IU03a} de la vacante que quiera consultar, en la interfaz \refElem{VCT-IU03}.
+	\UCpaso [\UCsist] Obtiene el número de postulaciones recibidas de esa vacante, el número de postulaciones en seguimiento, el número de postulaciones
+	descartadas y el número de postulaciones que aun no ha revisado, con base en la \refElem{mq:post}.
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Ver postulaciones}
+	\UCpaso [\UCsist] Obtiene el nombre, primer y segundo apellido, carrera, habilidades técnicas y habilidades blandas y la
+	información de contacto de cada candidato que se haya postulado a la vacante seleccionada.
+	\UCpaso [\UCsist] Muestra la pantalla \refElem{PST-IU01} con la información obtenida. \refTray{A} \refTray{B} \refTray{C}\label{PST-CU01:1}
+
+\end{UCtrayectoria}
+
+%Trayectorias Alternativas
+%\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor no tiene vacantes registradas en el sistema.}
+%	\UCpaso [\UCsist] Muestra la interfaz \refElem{VCT-IU03-1}.
+%\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{A}{El actor quiere consultar la información de un candidato.}
+	\UCpaso [\UCactor] Da clic en el nombre del candidato que quiera consultar, en la interfaz \refElem{PST-IU01} 
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{PST-IU01a} con la información correspondiente al candidato.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{B}{El actor quiere dar seguimiento a una postulación.}
+	\extendUC{PST-CU01-1}.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{C}{El actor quiere descartar una postulación.}
+	\extendUC{PST-CU01-2}.
+\end{UCtrayectoriaA} 
+
+\subsubsection{Puntos de extensión}
+
+\UCExtensionPoint{Aceptar postulación}{El actor requiere quiere dar seguimiento a una postulación}{En el paso \ref{PST-CU01:1} de la trayectoria principal}{\refIdElem{GRL-CU01}}
+\UCExtensionPoint{Rechazar postulación}{El actor quiere descartar una postulación}{En el paso \ref{PST-CU01:1} de la trayectoria principal}{\refIdElem{GRL-CU02}}

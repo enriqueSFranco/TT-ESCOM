@@ -17,11 +17,8 @@
 	\UCitem{Precondiciones}{
 		La vacante no debe de estar en estado de \textbf{cerrada}.
 	}
-	\UCitems{Salidas}{
-		\imprimeUC{salida}
-	}
 	\UCitem{Destino}{
-		\Titem \refElem{GRL-IU07}
+		\Titem \refElem{VCT-IU01}
 	}
 	\UCitem{Reglas de Negocio}{
 		Ninguna.
@@ -34,15 +31,15 @@
 
 %Trayectoria Principal
 \begin{UCtrayectoria}
-	\UCpaso [\UCactor] Presiona el botón \IUbutton{Vacantes} desde el muenú (AGREGAR IMGANE).
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Vacantes} desde la interfaz \refIdElem{GRL-IU03}.
     \UCpaso [\UCsist] Verifica que exista almenos un registro de una vacante que no se encuente es estado \textbf{cerrada} en la base de datos.\refTray{A}
-	\UCpaso [\UCsist] Optiene el \salida[titulo]{vacante.puesto}, \salida[empresa]{empresa.nombre}, \salida[salario minímo]{vacante.salariomin}
-	, \salida[salario maximo]{vacante.saraliomax},\salida[ubicación]{vacante.ubicacion} y la \salida[descripción]{vacante.descripcion}  de las vacantes.
-	\UCpaso [\UCsist] Lista la información optenida en la parte derecha de la interfaz \refElem{GRL-IU06}
+	\UCpaso [\UCsist] Optiene el titulo, empresa, salario minímo
+	, salario maximo,ubicación y la descripción  de las vacantes.
+	\UCpaso [\UCsist] Lista la información optenida en la parte derecha de la interfaz \refElem{VCT-IU01}
 \end{UCtrayectoria}
 
 %Trayectorias Alternativas
 \begin{UCtrayectoriaA}[Fin del caso de uso]{A}{No hay vacantes registradas en el sistema.}
-	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU06-1}.
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{VCT-IU02-2}.
 \end{UCtrayectoriaA}
 

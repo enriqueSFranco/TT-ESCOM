@@ -1,16 +1,15 @@
-\subsection{Sprint 6: Gestión de Postulaciones}
+\clearpage
+\section{Gestión de Postulaciones}
     \begin{description}
         \item \textbf{Duración}: 15 días.
-        \item \textbf{Inicio del sprint }: 11 de marzo de 2022.
-        \item \textbf{Cierre del sprint }: 25 de marzo de 2022.
+        \item \textbf{Inicio del sprint }: 11 de abril de 2022.
+        \item \textbf{Cierre del sprint }: 26 de abril de 2022.
     \end{description}
-
-    \subsection{Planeación}
 
 Esta iteración tuvo como propósito implementar un mecanismo para gestionar las postulaciones de los usuarios registrdos dentro del 
 sistema, las actividades realizadas fueron:
 \begin{enumerate}
-    \item Se diseñó e implementó las interfaces de usuario para la gestión de posutlaciones según el tipo de cuenta.
+    \item Se diseñó e implementó las interfaces de usuario para la gestión de postulaciones según el tipo de cuenta.
     \item Se especificaron los requerimientos mediante casos de uso con sus respectivas interfaces de usuario.
     \item Se elaboró el diagrama de casos de uso para este sprint.
     \item Se elaboró la maquina de estados de una postulaciones.
@@ -43,12 +42,13 @@ En la figura \ref{dcu:DCUPST} se puede ver el diagrama de casos de uso.
 
 Los casos de uso que se implementaron en este sprint fueron:
 \begin{enumerate}
-    \item PST-CU1 Consultar postulaciones
-    \item PST-CU2 Postularse a una vacante
-    \item PST-CU1-2 Rechazar postulación
+    \item \refElem{PST-CU01}
+    \item \refElem{PST-CU01-1}
+    \item \refElem{PST-CU01-2}
 \end{enumerate} 
 
 
-\subsection{Ejecución}
 
-Para la construcción del módulo de gestión de postulaciones se construyeron servicios para realizar la comunicación entre frontend y backend, y de esta forma hacer la petición HTTP con el verbo GET a cada endpoint que almacena la información de una postulación, ya sea las de postulaciones que realiza un candidato a una vacante o la lista postulaciones de candidatos que recibe el reclutador.
+Para la construcción del módulo de gestión de postulaciones se construyeron servicios para realizar la comunicación entre frontend y backend, y de esta forma hacer la peticiones HTTP con el verbo GET a cada endpoint que almacena la información de una postulación, ya sea las de postulaciones que realiza un candidato a una vacante o la lista postulaciones de candidatos que recibe el reclutador peticiones HTTP con el verbo POST al endpoint que solicita agregar los registros de postulaciones a una vacante y peticiones HTTP con el verbo PUT para actualizar el estado de la postulación y, de ser necesario, actualizar el estado de la vacante.\\
+\newline
+Cuando se realiza una postulación se revisa antes el usuario que intenta aplicar a la vacante no tenga otra postulación en proceso a la misma vacante, es decir, se verifica que no se haya postulado anteriormente o si se ha postulado ese intento ya haya sido descartado. Cuando se corroboró que la postulación es válida, se genera un registro enlazado al usuario y a la vacante a la que aplicó para tener control del estado de su postulación, así mismo se genera un estado inicial de la vacante para controlar los cambios que ha tenido la solicitud. Al cambiar el estado de cualquier postulación se verifica que el estado de la  vacante a la que hace referencia la postulación no cambie a causa del cambio en la postulación, de ser así, entonces se actualiza el estado de la vacante para que coincida con el estado al que corresponda y así tener siempre actualizada la información mostrada a los usuarios.

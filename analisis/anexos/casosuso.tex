@@ -19,7 +19,7 @@ Para poder entender un caso de uso más allá de un diagrama, se lleva a cabo la
 	\item[Postcondiciones] Enlista las cosas que suceden en el sistema o negocio de forma inmediata o a corto plazo una vez que se ejecute el caso de uso.
 	\item[Reglas de Negocio] Lista las reglas de negocio que se van a ejecutar en el caso de uso.
 	\item[Viene de] Indica cuando el caso de uso se extiende de otro o se incluye en otro.
-	\item[Casos de prueba] Indican los datos o condiciones con las que se debe probar este caso de uso.
+	%\item[Casos de prueba] Indican los datos o condiciones con las que se debe probar este caso de uso.
 	\item[Trayectoria principal] Secuencia de pasos que llevan al caso de uso al éxito.
 	\item[Trayectoria(s) alternativa(s)] Secuencias de pasos que llevan al caso de uso al éxito o al fracaso.
 	\item[Puntos de extensión] Cuando existen casos de uso que pueden ejecutarse a partir del caso de uso en proceso.
@@ -76,7 +76,7 @@ Para poder entender un caso de uso más allá de un diagrama, se lleva a cabo la
 
 	\begin{figure}[hbtp!]
 		\begin{center}
-			\includegraphics[width=1 \textwidth]{anexos/imagenes/CUUSR.png}
+			\includegraphics[width=.8\textwidth]{sprints/imagenes/MUVCT.png}
 		\end{center}
 		
 		\caption{Diagrama de casos de uso del \textit{Módulo vacantes}.}
@@ -88,8 +88,40 @@ Para poder entender un caso de uso más allá de un diagrama, se lleva a cabo la
         \item Los casos de uso \IUblanco{}, se tienen planeados para la segunda entrega del proyecto.
     \end{itemize} 
 
+	\input{CasosdeUso/VCT-CU01/cu.tex}
+	\input{CasosdeUso/VCT-CU01/iu.tex}
+
 	\input{CasosdeUso/VCT-CU02/cu.tex}
 	\input{CasosdeUso/VCT-CU02/iu.tex}
 
 	\input{CasosdeUso/VCT-CU02-1/cu.tex}
-	\input{CasosdeUso/VCT-CU02-1/iu.tex}
+
+	\input{CasosdeUso/VCT-CU03/cu.tex}
+	\input{CasosdeUso/VCT-CU03/iu.tex}
+
+	\input{CasosdeUso/VCT-CU04/cu.tex}
+	\input{CasosdeUso/VCT-CU04/iu.tex}
+	%\input{CasosdeUso/VCT-CU02-1/iu.tex}
+
+
+	\section{Módulo de Postulaciones}
+	En la figura \ref{adcu:usr} se muestra el diagrama de casos de uso del módulo postulaciones del sistema.
+
+	\begin{figure}[hbtp!]
+		\begin{center}
+			\includegraphics[width=.8\textwidth]{sprints/imagenes/DCUPST.png}
+		\end{center}
+		
+		\caption{Diagrama de casos de uso del \textit{Módulo postulaciones}.}
+		\label{adcu:usr}
+	\end{figure}
+
+	\begin{itemize}
+        \item Los casos de uso \IUazul{} , son aquellos que se pertenecen a esta primera entrega del proyecto.
+        \item Los casos de uso \IUblanco{}, se tienen planeados para la segunda entrega del proyecto.
+    \end{itemize} 
+
+	\input{CasosdeUso/PST-CU01/cu.tex}
+	\input{CasosdeUso/PST-CU01/iu.tex}
+	\input{CasosdeUso/PST-CU01-1/cu.tex}
+	\input{CasosdeUso/PST-CU01-2/cu.tex}

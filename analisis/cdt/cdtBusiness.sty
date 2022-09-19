@@ -224,6 +224,20 @@
     \subsection{Descripción}
 }{}
 
+\newenvironment{MaquinaN}[4]{
+    \section{#2}
+    \hypertarget{#1}{}
+    \cdtAddElement{#1}{#2}{\Autor}{\Version}{\Estado}%
+    \subsection{Resumen}%
+    #3%
+    \begin{center}%
+        \begin{figure}[H]%
+            \includegraphics[width=\textwidth]{#4}
+            \caption{#2}%
+            \label{fig:#1}%
+        \end{figure}%
+    \end{center}%
+}{}
 
 
 %====================================================

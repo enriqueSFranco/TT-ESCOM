@@ -23,12 +23,8 @@
 		reclutador por validar.
 		
 	}
-	\UCitems{Entradas}{
-		\imprimeUC{entrada}
-	}
 	\UCitem{Destino}{
 		\Titem \refElem{GRL-IU02}
-		\Titem \refElem{GRL-IU03}
 	}
 	\UCitem{Reglas de Negocio}{
 		\Titem \refIdElem{RN-N001}
@@ -45,13 +41,11 @@
 
 %Trayectoria Principal
 \begin{UCtrayectoria}
-	\UCpaso [\UCactor] Presiona el botón \IUbutton{Eres Reclutador} desde la interfaz \refElem{GRL-IU00}.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Eres Reclutador} desde la interfaz \refElem{VCT-IU01}.
     \UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU02}.
-	\UCpaso [\UCactor] Ingresa los datos de la empresa: \entrada[nombre]{empresa.nombre}, \entrada[RFC]{empresa.rfc}, 
-	\entrada[Razón social]{empresa.razonsocial}.\label{cu02-grl1}\refTray{A}
-	\UCpaso [\UCactor] Ingresa los datos de contacto:\entrada[nombre]{reclutador.nombre}, \entrada[primer apellido]{reclutador.papellido}, 
-	\entrada[segundo apellido]{reclutador.sapellido}, 
-	\entrada[correo electrónico]{reclutador.email} y \entrada[telefono]{reclutador.telefono}.
+	\UCpaso [\UCactor] Ingresa los datos de la empresa: nombre, RFC, 
+	razón social.\label{cu02-grl1}\refTray{A}
+	\UCpaso [\UCactor] Ingresa los datos de contacto:nombre, primer apellido,segundo apellido,correo electrónico y teléfono.
 	%\UCpaso [\UCactor] Acepta los terminos de privacidad y condiciones del sistema.
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Enviar Pre-Registro}. \refTray{B}
     \UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la regla de negocio \refIdElem{RN-N001}.\refTray{C}
@@ -77,7 +71,7 @@
 %Trayectorias Alternativas
 \begin{UCtrayectoriaA}[Fin de la trayectoria]{B}{El actor decide cancelar el pre-registro.}
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Cancelar}.
-	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU00}.
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{VCT-IU01}.
 \end{UCtrayectoriaA} 
 
 %Trayectorias Alternativas

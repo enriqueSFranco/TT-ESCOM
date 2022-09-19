@@ -1,0 +1,54 @@
+\clearpage
+\begin{UseCase}[]{VCT-CU03}{Consultar vacantes}{
+	Permite al reclutador de una empresa  consultar las vacantes que haya publicado ya seha que hayan sido recientemente publicadas 
+	o ya las haya cerrado.
+	}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		Reclutadores.
+
+	}
+	\UCitem[admin]{Prioridad}{
+		Media
+	}
+	\UCitem[admin]{Complejidad}{
+		Alta
+	}
+	\UCitem{Precondiciones}{
+		\Titem El reclutador debe de estar registrado en el sistema.
+	}
+	\UCitem{Destino}{
+		\Titem \refElem{VCT-IU03}
+	}
+	\UCitem{Reglas de Negocio}{
+		Ninguna.
+		
+	}
+	\UCitem{Viene de}{
+		\refElem{VCT-CU03}
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Vacantes} en la interfaz de incio del reclutador
+	\UCpaso [\UCsist] Verifica que el usuario tenga almenos una vacante registrada en el sistema.%\refTray{A}
+	\UCpaso [\UCsist] Obtiene el título y el número de plazas de la vacante, ingresa el codigo postal, estado, municipio y colonia donde 
+	se va labora, de cada vacante registrada por el reclutador.
+	\UCpaso [\UCsist] Obtiene el perfil, la experiencia y el tipo de contratación a la que la vacante va dirigida,de cada vacante registrada por el reclutador.
+	\UCpaso [\UCsist] Obtiene el horario laboral y el rango salarial indicando si es neto o no el salario de cada vacante registrada por el reclutador.
+	\UCpaso [\UCsist] Muestra la información obtenida en la intefaz \refElem{VCT-IU03}. \refTray{A}
+\end{UCtrayectoria}
+
+%Trayectorias Alternativas
+%\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor no tiene vacantes registradas en el sistema.}
+%	\UCpaso [\UCsist] Muestra la interfaz \refElem{VCT-IU03-1}.
+%\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{A}{El actor quiere consultar la información de una vacante.}
+	\UCpaso [\UCactor] Da clic en el componente \refElem{VCT-IU03a} de la vacante que quiera consultar, en la interfaz \refElem{VCT-IU03} 
+	\UCpaso [\UCsist] Muestra el componente \refElem{VCT-IU03b} en la interfaz \refElem{VCT-IU03}.
+\end{UCtrayectoriaA} 

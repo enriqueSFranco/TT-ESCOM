@@ -1,0 +1,118 @@
+En este capítulo se redacta el trabajo realizado durante estos últimos seis meses conforme a la metodología utilizada así como las herramientas que se utilizaron tanto en análisis como en desarrollo, se detalla a grandes rasgos el análisis, diseño e implementación de cada requerimiento.
+
+\section{Pruebas de concepto}
+    \begin{description}
+        \item \textbf{Duración}: 15 días.
+        \item \textbf{Inicio del sprint }: 31 de enero de 2022.
+        \item \textbf{Cierre del sprint }: 14 de febrero de 2022.
+    \end{description}
+
+    El sprint ``Pruebas de concepto'' tuvo como finalidad buscar información sobre diferentes tecnologías de desarrollo Front End, Backend y Sistemas Gestores de Bases de Datos. 
+
+    Las tecnologías que se investigaron para el desarrollo de las interfaces de usuario (UI) o Front End son las que se listan a continuación:
+    \begin{description}
+        \item[ReactJS] ReactJS es una biblioteca JavaScript altamente eficiente y declarativa que se utiliza para crear interfaces de usuario interactivas y que íncita a crear código declarativo, es decir, “indica el qué, no el cómo” y es orientado a componentes. \cite{sa}\\
+        Las ventajas que se tienen al usar la librería ReactJS son:
+        \begin{itemize}
+            \item Alto rendimiento: React es conocido por su alta eficiencia y flexibilidad. Se puede integrar fácilmente con diferentes tecnologías.
+            \item Recursos abundantes: como Facebook la mantiene, existe una gran cantidad de documentación y recursos disponibles en la web que hace que la curva de aprendizaje sea muy fluida.
+            \item Compatibilidad con versiones anteriores: la transición o migración de versiones anteriores a nuevas es bastante fácil y retrocompatible.
+            \item Estructura de componentes fácil de mantener: la arquitectura basada en componentes de React ayuda a aumentar la reutilización del código y facilita bastante el mantenimiento de proyectos a gran escala.
+            \item Fuerte comunidad
+            \item Documentación Multi idioma
+            \item Flujo de datos unidireccional: el enlace de datos unidireccional y hacia abajo (de componentes padres a hijos), ayuda a garantizar que los cambios realizados en la estructura del componente hijo no afecten la estructura del componente padre.
+            
+        \end{itemize}
+
+        \item[AngularJS] AngularJS es un framework MVC (Modelo Vista Controlador), creado para el Desarrollo Web Front End que permite crear aplicaciones SPA (Single Page Applications).
+        Al usar un patrón MVVM (model view view-model) podemos separar la lógica de la parte de diseño, pero mantenemos ambas partes conectadas. De tal forma que la capa visual no sabe lo que está pasando en la capa de lógica, pero manteniendo control sobre el DOM y actualizar su contenido como queramos.
+        Las ventas que tiene AngularJS son las siguientes:
+        \begin{itemize}
+            \item Usa el lenguaje TypeScript
+            \item Proporciona estructura modular y consistencia al código
+            \item Estructura basada en componentes
+            \item Facilita el mantenimiento del software
+        \end{itemize}
+
+        \item[VueJS]  VueJS es un framework progresivo para construir interfaces de usuario. A diferencia de otros frameworks monolíticos, Vue está diseñado desde cero para ser utilizado incrementalmente.
+        La siguiente lista detalla los beneficios que se tienen al trabajar con VueJS:
+        
+        \begin{itemize}
+            \item Su pequeño tamaño: Puede que no sea una gran característica, pero los 18 KB que pesa este framework lo hace ideal para una descarga rápida y poder almacenarlo en equipos de baja memoria, impactando de manera positiva en el SEO y UX.
+            \item Fácil de aprender y utilizar: VueJS es amigable a la hora de ser utilizado por desarrolladores que van iniciando ya que no es necesario conocer JSX y TypeScript, elementos que si se utilizan en otras tecnologías de Front End.
+            \item Desglosar los componentes en archivos individuales: Al crear una aplicación o página web con VueJS, cada pieza de esta se divide en componentes individuales, representados como elementos encapsulados en su interfaz. Estos componentes se pueden escribir en HTML, CSS y JavaScript.
+            
+        \end{itemize}
+    \end{description}
+
+
+    Las tecnologías que se consideraron para la construcción del servidor web son las que se listan a continuación:
+    \begin{description}
+        \item[Django]  Es un framework web de alto nivel que fomenta el desarrollo rápido y el diseño limpio y pragmático.
+        Las características de Django son las siguientes:
+        \begin{itemize}
+            \item Python: Esto es lo mejor de todo, Django está escrito en Python y gracias a esto hereda todas las características y facilidades que nos da Python, entre ellas escribir código bastante fácil de entender, y sobre todo que permite desarrollar aplicaciones rápidas y potentes.
+            \item Admin: Django es el único framework que “por defecto” viene con un sistema de administración activo, listo para ser utilizado sin ningún tipo de configuración.
+            \item DRY: ¡No te repitas!, Django utiliza esta filosofía para no crear bloques de código iguales y fomentar la reutilización de este.
+            \item ORM (Mapeo de Objeto Relacional): Vamos a tomarlo como una herramienta que nos permite realizar consultas SQL a la Base de Datos, sin utilizar SQL, por ejemplo:
+            \begin{itemize}
+                \item Sin ORM:  SELECT * FROM Alumno WHERE edad = 17
+                \item Con ORM: Alumno.objects.filter(edad = 17)
+            \end{itemize}   
+        \end{itemize}
+
+        \item[Flask] Es un micro Framework escrito en Python, desarrollado para simplificar y hacer más fácil la creación de Aplicaciones Web bajo el patrón MVC.
+
+        La palabra “micro” no significa que se trate de un proyecto pequeño o que nos sirva para hacer páginas web pequeñas, al instalar Flask disponemos de las herramientas necesarias para crear una aplicación web funcional.
+\newline        
+En cuanto al patrón MVC, este es una forma de trabajar que permite diferenciar y separar lo que es la vista (página HTML), el modelo de datos (los datos que va a tener la App), y el controlador (donde se gestionan las peticiones de la aplicación web). \cite{sb}
+Los beneficios de trabajar con Flask son los siguientes:
+\begin{itemize}
+    \item Micro Framework: Perfecto si se quiere desarrollar una App básica o que se quiera crear de manera rápida y ágil.
+    \item Sin ORMs: No tiene ORMs, pero fácilmente se puede usar una extensión como Flask-SQLAlchemy que da soporte al ORM.
+    \item Es compatible con Python 3
+    \item Tiene un depurador y soporte integrado para pruebas unitarias: Si hay algún error en el código que se está creando, se puede depurar ese error y también se pueden ver los valores de las variables.
+\end{itemize}
+        
+    \end{description}
+
+
+    Los Sistemas Gestores de Bases de Datos que se consideraron son los que se listan a continuación:
+    \begin{description}
+        \item[MySQL] El proceso de desarrollo de MySQL se enfoca en ofrecer una implementación muy eficiente de las características que la mayoría de la gente necesita. Esto significa que MySQL todavía tiene menos características que su principal competidor de código abierto, PostgreSQL, o los motores de bases de datos comerciales.\\
+        Las funciones de MySQL son :
+        \begin{itemize}
+            \item Tamaño y velocidad: MySQL puede ejecutarse en hardware muy modesto y ejerce muy poca presión sobre el sistema recursos.
+            \item Fácil instalación: Dado que MySQL es pequeño y rápido, funciona de la manera que la mayoría de la gente quiere."fuera de la caja." Se puede instalar sin mucha dificultad. Ahora que muchas distribuciones de Linux incluyen MySQL, la instalación puede ser casi automática.
+            \item Atención a las normas:Existen múltiples estándares en el mundo de las bases de datos relacionales, y es imposible afirmar conformidad total. Pero aprender MySQL ciertamente lo prepara para mudarse a otros motores de base de datos.
+            \item Fácil interfaz con otro software: Es fácil usar MySQL como parte de un sistema de software más grande. Los lenguajes de programación tienen bibliotecas de funciones para usar con MySQL; estos incluyen: C, PHP, Perl, Python, Ruby y los lenguajes Microsoft .NET. MySQL. También es compatible con el estándar Open Database Connectivity (ODBC), lo que lo hace accesible incluso cuando la funcionalidad específica de MySQL no está disponible.
+\end{itemize}
+       \item[PostgreSQL] Postgres es un Sistema de Gestión de Base de Datos relacionales orientado a objetos (ORDBMS, por sus siglas en inglés) desarrollado a partir de 1977. PostgreSQL es ampliamente conocido por ser el sistema de base de datos de código abierto más conocido en el mundo, agregando tanto funciones con las que cuentan las bases de datos gratuitas como funciones con las que cuentan las bases de datos de giro empresarial.\\
+        Las funciones de PostgreSQL incluyen:
+        \begin{itemize}
+            \item Altamente extensible: Soporta operadores, funciones, métodos de acceso y tipos de datos definidos por el usuario.
+            \item Lenguaje procedural: Cuenta con soporte para un lenguajes procedurales interno, incluyendo un lenguaje nativo llamado PL/pgSQL. Este lenguaje es comparable al lenguaje procedural de ORACLE (PL/SQL).
+            \item Cliente/Servidor: PostgreSQL utiliza una arquitectura cliente/servidor de proceso por usuario. Esto es similar al método de manejo de procesos de Apache 1.3.x. Hay un proceso maestro que se bifurca para proporcionar conexiones adicionales para cada cliente que intenta conectarse a PostgreSQL.
+            \item DBMS objeto-relacional: PostgreSQL aborda los datos con un modelo relacional de objetos y es capaz de manejar rutinas y reglas complejas. Ejemplos de su funcionalidad avanzada son las consultas SQL declarativas, el control de concurrencia de múltiples versiones, la compatibilidad con múltiples usuarios, las transacciones, la optimización de consultas, la herencia y las matrices.
+\end{itemize}
+    \item[Oracle DB] Oracle Database es un sistema de gestión de bases de datos relacionales (RDBMS, por sus siglas en inglés) de Oracle, el fabricante estadounidense de software y hardware. Como software de bases de datos, Oracle Database optimiza la gestión y seguridad de los conjuntos de datos creando esquemas estructurados a los que solo pueden acceder administradores autorizados. Oracle ocupa el primer puesto de los 380 sistemas de bases de datos más populares, seguido por MySQL y Microsoft SQL Server. \\
+        Las funciones de Oracle DB son:
+        \begin{itemize}
+            \item Funciones de protección de datos y seguridad: Cuenta con autentificación y autorización de acceso estrictas, cifrado de datos y redes.
+            \item Pila de Red: Oracle Database tiene su pila de red que permite que la aplicación de una plataforma diferente se comunique con Oracle Database sin problemas. 
+            \item Cumple con ACID: Oracle es una base de datos compatible con ACID que ayuda a mantener la integridad y confiabilidad de los datos.
+            \item Es multiplataforma: Puede ejecutarse en varios hardware en todos los sistemas operativos, incluidos Windows Server, Unix y varias distribuciones de GNU/Linux.
+\end{itemize}
+        
+    \end{description}
+
+
+    Con base en la investigación que se realizó y viendo las características y ventajas que ofrece cada tecnología, se llegó a la unanimidad de trabajar con el siguiente stack de tecnologías:
+    \begin{itemize}
+        \item ReactJS para la construcción de las interfaces de usuario.
+        \item Django para la elaboración del servidor web
+        \item PostgreSQL para el almacenamiento de los datos.
+    \end{itemize}
+
+Adicionalmente, el equipo de desarrollo tuvo una capacitación con las tecnologías seleccionadas. Esta capacitación consistió en la elaboración de un login, con la finalidad de poder comunicar la aplicación del cliente con el servidor web y la base de datos.
+

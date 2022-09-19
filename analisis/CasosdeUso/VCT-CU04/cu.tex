@@ -1,0 +1,109 @@
+\clearpage
+\begin{UseCase}[]{VCT-CU04}{Publicar vacante}{
+	Permite al reclutador de una empresa  publicar una vacante en el sistema durante cierto periodo de tiempo y así poder gestionas las postulaciones 
+	que los usarios(canditos) hagan a dicha vacante.
+	}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		Reclutadores.
+
+	}
+	\UCitem[admin]{Prioridad}{
+		Media
+	}
+	\UCitem[admin]{Complejidad}{
+		Alta
+	}
+	\UCitem{Precondiciones}{
+		El reclutador debe de estar registrado en el sistema.
+	}
+	\UCitem{Destino}{
+		\Titem \refElem{VCT-IU03}
+	}
+	\UCitem{Reglas de Negocio}{
+		\Titem \refIdElem{RN-N001}
+		
+	}
+	\UCitem{Viene de}{
+		\refElem{VCT-CU03}
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Da clic en el icono \IUAgregar{} (Publicar vacante) en la interfaz \refElem{VCT-IU03}.
+	\UCpaso [\UCsist] Muestra la intefaz \refElem{VCT-IU04a} en la interfaz \refElem{VCT-IU03}.
+	\UCpaso [\UCactor] \label{VCT-CU04:vadata} Ingresa el título y el número de plazas de la vacante, ingresa el codigo postal, estado, municipio y colonia donde 
+	se va laboral.\refTray{A}
+	\UCpaso [\UCactor] Ingresa el perfil, la experiencia y el tipo de contratación a la que la vacante va dirigida.
+	\UCpaso [\UCactor] Ingresa el horario laboral y el rango salarial indicando si es neto o no el salario.
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Siguiente}. \refTray{A} 
+	\UCpaso [\UCsist] Valida que todos los campos marcados como obligatorios hayan sido ingresados de acuerdo a la regla de negocio \refIdElem{RN-N001}. \refTray{B}
+	\UCpaso [\UCsist] Muestra la intefaz \refElem{VCT-IU04b} en la interfaz \refElem{VCT-IU03}. \refTray{A} \refTray{C}
+	\UCpaso [\UCactor] Ingresa la descripción de la vacante.
+	\UCpaso [\UCactor] \label{VCT-CU04:hab}Selecciona las habilidades y su correspondiente experiencia deseadas para la vacante.\refTray{D}
+	\UCpaso [\UCactor] Selecciona la fecha de cierre de la vacante.
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Publicar} en la interfaz \refElem{VCT-IU04b}.\refTray{A}\refTray{C} \refTray{F}
+	\UCpaso [\UCsist] \label{VCT-CU04:vadata2}Valida que todos los campos marcados como obligatorios hayan sido ingresados de acuerdo a la regla de negocio \refIdElem{RN-N001}.\refTray{E}
+	\UCpaso [\UCsist] Muestra la intefaz \refElem{VCT-IU03} mostrando la nueva vacante registrada.
+\end{UCtrayectoria}
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{A}{El actor decide cancelar el registro.}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Cancelar} en la interfaz \refElem{VCT-IU04a}.
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG6} en la interfaz \refElem{VCT-IU04a}.
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Sí} en la interfaz \refElem{VCT-IU04a}.\refTray{G}
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{VCT-IU03}.
+\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{B}{El actor no registro al menos un campo obligatorio.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG4} en la interfaz \refElem{VCT-IU03a} en los campos que no
+	fueron ingresados.
+	\UCpaso [\UCsist] Continúa en el paso \ref{VCT-CU04:vadata} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{C}{El actor decide regresa a la pantalla anterior.}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Regresar} en la interfaz \refElem{VCT-IU04b}.
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{VCT-IU04a}.
+	\UCpaso [\UCsist] Continúa en el paso \ref{VCT-CU04:vadata} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{D}{El actor decide eliminar una habilidad.}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{x} de la habilidad seleccionada en la interfaz \refElem{VCT-IU04b}.
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{VCT-IU04b}.
+	\UCpaso [\UCsist] Continúa en el paso \ref{VCT-CU04:hab} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{E}{El actor no registro al menos un campo obligatorio.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG4} en la interfaz \refElem{VCT-IU03b} en los campos que no
+	fueron ingresados.
+	\UCpaso [\UCsist] Continúa en el paso \ref{VCT-CU04:vadata2} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{F}{El actor decide cancelar el registro.}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Cancelar} en la interfaz \refElem{VCT-IU04b}.
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG6} en la interfaz \refElem{VCT-IU04b}.
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Sí} en la interfaz \refElem{VCT-IU04b}.\refTray{H}
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{VCT-IU03}.
+\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{G}{El actor decide cancelar la acción.}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{No} en la interfaz \refElem{VCT-IU04a}.
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{VCT-IU04a}.
+	\UCpaso [\UCsist] Continúa en el paso \ref{VCT-CU04:vadata} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{H}{El actor decide cancelar la acción.}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{No} en la interfaz \refElem{VCT-IU04b}.
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{VCT-IU04b}.
+	\UCpaso [\UCsist] Continúa en el paso \ref{VCT-CU04:vadata2} de la trayectoria principal.
+\end{UCtrayectoriaA} 

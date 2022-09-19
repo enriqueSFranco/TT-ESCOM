@@ -2344,18 +2344,6 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliografia.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">Universia</bcf:citekey>
-    <bcf:citekey order="2">AIMX</bcf:citekey>
-    <bcf:citekey order="3">AIMX</bcf:citekey>
-    <bcf:citekey order="4">AIMX</bcf:citekey>
-    <bcf:citekey order="5">Evo</bcf:citekey>
-    <bcf:citekey order="6">Evo</bcf:citekey>
-    <bcf:citekey order="7">UniJob</bcf:citekey>
-    <bcf:citekey order="8">Economista</bcf:citekey>
-    <bcf:citekey order="9">Occ</bcf:citekey>
-    <bcf:citekey order="10">CT</bcf:citekey>
-    <bcf:citekey order="11">Inned</bcf:citekey>
-    <bcf:citekey order="12">Siboltra</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

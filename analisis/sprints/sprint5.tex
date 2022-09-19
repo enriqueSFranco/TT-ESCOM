@@ -1,18 +1,19 @@
-\subsection{Sprint 5: Gestión de Vacantes}
+\clearpage
+\section{Gestión de Vacantes}
 \begin{description}
     \item \textbf{Duración}: 15 días.
     \item \textbf{Inicio del sprint }: 26 de marzo de 2022.
     \item \textbf{Cierre del sprint }: 10 de abril de 2022.
 \end{description}
 
-\subsection{Planeación}
+
 
 Esta iteración tuvo como propósito implementar un mecanismo para la gestión de vacantes dentro del sistema, las actividades 
 realizadas fueron:
 \begin{enumerate}
     \item Se diseñó e implementó las interfaces de usuario para la gestión de vacantes según el tipo de cuenta.
     \item Se especificaron los requerimientos mediante casos de uso con sus respectivas interfaces de usuario.
-    \item Se elaboró el a de casos de uso para este sprint.
+    \item Se elaboró el diagrama de casos de uso para este sprint.
     \item Se elaboró la maquina de estados de una vacante.
 \end{enumerate} 
 
@@ -48,13 +49,11 @@ A continuación se listan los casos de uso de este sprint para el modúlo vacant
     \item \refElem{VCT-CU02} 
     \item \refElem{VCT-CU02-1} 
     \item \refElem{VCT-CU03}
-    \item \refElem{VCT-CU03-1}
-    \item \refElem{VCT-CU03-2} 
-    \item \refElem{VCT-CU03-3} 
+    \item \refElem{VCT-CU04}
 \end{enumerate} 
 
-\subsection{Ejecución}
+
 
 En la elaboración del módulo de gestión de vacantes se crearon servicios para conectar el frontend con el backend y poder hacer la peticiones HTTP con el verbo GET a cada endpoint que almacena la información de cada vacante, ya sea una vacante publicada por un reclutador, una vacante a la cual postuló un candidato o para mostrar la lista de todas las vacantes y con el verbo POST a cada endpoint que reciben payloads con la información necesaria para registrar las vacantes nuevas. \\
 \newline
-%De lado del backend la gestión de vacantes se realiza de acuerdo con las peticiones realizadas por el frontend a través
+De lado del backend se crearon servicios para la gestión de vacantes que funcionen de acuerdo con las peticiones realizadas por el frontend a los endpoints de la API. Cuando se recibe una petición a la API se procesa la información de los payload recibidos. En las peticiones de verbo POST, se verifica que la información recibida es válida para publicar una nueva vacante para entonces guardarla en la base de datos, y de ser petición con verbo GET se procesa el ID enviado en la URL, si es que se ha enviado uno, si en la petición se ha enviado el ID de una vacante se debe enviar la información acerca de una vacante, si se trata del ID de reclutador se envía información de las vacantes publicadas por un reclutador y si no se envía un ID en la URL se envía la información acerca de todas las vacantes en general.

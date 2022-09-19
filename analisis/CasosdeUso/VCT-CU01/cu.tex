@@ -1,0 +1,52 @@
+\begin{UseCase}[]{VCT-CU01}{Buscar vacantes}{
+	Permite al actor buscar las vacantes registradas en el sistema por medio de los filtros que tiene la interfaz o
+	ingresar palabras clave en los campos de busqueda.
+	}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		Cualquier persona que pueda acceder al sistema.
+
+	}
+	\UCitem[admin]{Prioridad}{
+		Media
+	}
+	\UCitem[admin]{Complejidad}{
+		Alta
+	}
+	\UCitem{Precondiciones}{
+		La vacante el estado de la vacante de \textbf{abierta} con base en la \refElem{mq:vacante}.
+	}
+	\UCitem{Destino}{
+		\Titem \refElem{VCT-IU01}
+	}
+	\UCitem{Reglas de Negocio}{
+		Ninguna.
+		
+	}
+	\UCitem{Viene de}{
+		Primario.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Ingresa la palabra clave de la vacane que desea buscar en la interfaz \refElem{VCT-IU01}.
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Buscar} en la interfaz \refElem{VCT-IU01}.
+    \UCpaso [\UCsist] Verifica que exista almenos un registro de una vacante que no se encuente es estado \textbf{cerrada}.\refTray{A}
+	\UCpaso [\UCsist] Optiene el titulo, empresa, salario minímo
+	, salario maximo,ubicación y la descripción  de las vacantes que coincidan con 
+	la palabra ingresada en el paso 1 de la trayectoria princial. \refTray{B}
+	\extendUC{VCT-CU02}.
+\end{UCtrayectoria}
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{No hay vacantes en estado abierta.}
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU02-1}.
+\end{UCtrayectoriaA}
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{No hay vacantes registradas en el sistema que coincidan con la palabra clave.}
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU02-1}.
+\end{UCtrayectoriaA}

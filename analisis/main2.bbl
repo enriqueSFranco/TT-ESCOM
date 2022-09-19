@@ -19,69 +19,72 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
-    \entry{CT}{online}{}
+    \entry{amiz1}{online}{}
       \name{author}{1}{}{%
-        {{hash=79168da9ad869f394530a3705d6bfe60}{%
-           family={{CompuTrabajo}},
-           familyi={C\bibinitperiod}}}%
+        {{hash=fb8a5deac0ce1c354839c74963df78f6}{%
+           family={{ Asociación de Internet MX (AIMX) }},
+           familyi={_\bibinitperiod}}}%
       }
-      \strng{namehash}{79168da9ad869f394530a3705d6bfe60}
-      \strng{fullhash}{79168da9ad869f394530a3705d6bfe60}
-      \strng{bibnamehash}{79168da9ad869f394530a3705d6bfe60}
-      \strng{authorbibnamehash}{79168da9ad869f394530a3705d6bfe60}
-      \strng{authornamehash}{79168da9ad869f394530a3705d6bfe60}
-      \strng{authorfullhash}{79168da9ad869f394530a3705d6bfe60}
-      \field{sortinit}{C}
-      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \strng{namehash}{fb8a5deac0ce1c354839c74963df78f6}
+      \strng{fullhash}{fb8a5deac0ce1c354839c74963df78f6}
+      \strng{bibnamehash}{fb8a5deac0ce1c354839c74963df78f6}
+      \strng{authorbibnamehash}{fb8a5deac0ce1c354839c74963df78f6}
+      \strng{authornamehash}{fb8a5deac0ce1c354839c74963df78f6}
+      \strng{authorfullhash}{fb8a5deac0ce1c354839c74963df78f6}
+      \field{sortinit}{A}
+      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{\texttt{www.marte.mar}}
+      \field{title}{\texttt{www.asociaciondeinternet.mx/}}
       \field{year}{2022}
     \endentry
-    \entry{Economista}{misc}{}
+    \entry{sb}{misc}{}
       \name{author}{1}{}{%
-        {{hash=ed71ebc2140c9cfb7a68bb21d225921d}{%
-           family={Economista},
-           familyi={E\bibinitperiod},
-           given={El},
-           giveni={E\bibinitperiod}}}%
+        {{hash=2c89295a15347c5891fd29b4ca518433}{%
+           family={Epitech},
+           familyi={E\bibinitperiod}}}%
       }
-      \strng{namehash}{ed71ebc2140c9cfb7a68bb21d225921d}
-      \strng{fullhash}{ed71ebc2140c9cfb7a68bb21d225921d}
-      \strng{bibnamehash}{ed71ebc2140c9cfb7a68bb21d225921d}
-      \strng{authorbibnamehash}{ed71ebc2140c9cfb7a68bb21d225921d}
-      \strng{authornamehash}{ed71ebc2140c9cfb7a68bb21d225921d}
-      \strng{authorfullhash}{ed71ebc2140c9cfb7a68bb21d225921d}
+      \strng{namehash}{2c89295a15347c5891fd29b4ca518433}
+      \strng{fullhash}{2c89295a15347c5891fd29b4ca518433}
+      \strng{bibnamehash}{2c89295a15347c5891fd29b4ca518433}
+      \strng{authorbibnamehash}{2c89295a15347c5891fd29b4ca518433}
+      \strng{authornamehash}{2c89295a15347c5891fd29b4ca518433}
+      \strng{authorfullhash}{2c89295a15347c5891fd29b4ca518433}
       \field{sortinit}{E}
       \field{sortinithash}{c554bd1a0b76ea92b9f105fe36d9c7b0}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{\url{www.eleconomista.com.mx/capitalhumano/Panorama-laboral-para-los-universitarios-se-complica-bajan-sueldos-y-vacantes-20210630-0113.html}}
-      \field{title}{Panorama laboral para los universitarios}
-      \field{urlday}{15}
-      \field{urlmonth}{4}
-      \field{urlyear}{2022}
+      \field{howpublished}{\url{www.epitech-it.es/flask-python/}}
+      \field{title}{Qué es Flask (Python) y cuáles son sus principales ventajas}
+      \field{urlday}{8}
+      \field{urlmonth}{7}
+      \field{urlyear}{2021}
       \field{year}{2021}
       \field{urldateera}{ce}
     \endentry
-    \entry{Occ}{online}{}
+    \entry{sa}{misc}{}
       \name{author}{1}{}{%
-        {{hash=548e65011cef93c87a4312d86c57b0df}{%
-           family={{La Occ Mundial}},
-           familyi={L\bibinitperiod}}}%
+        {{hash=319cf3650c5bfdac2364bdc9080a6841}{%
+           family={JonMircha},
+           familyi={J\bibinitperiod}}}%
       }
-      \strng{namehash}{548e65011cef93c87a4312d86c57b0df}
-      \strng{fullhash}{548e65011cef93c87a4312d86c57b0df}
-      \strng{bibnamehash}{548e65011cef93c87a4312d86c57b0df}
-      \strng{authorbibnamehash}{548e65011cef93c87a4312d86c57b0df}
-      \strng{authornamehash}{548e65011cef93c87a4312d86c57b0df}
-      \strng{authorfullhash}{548e65011cef93c87a4312d86c57b0df}
-      \field{sortinit}{L}
-      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \strng{namehash}{319cf3650c5bfdac2364bdc9080a6841}
+      \strng{fullhash}{319cf3650c5bfdac2364bdc9080a6841}
+      \strng{bibnamehash}{319cf3650c5bfdac2364bdc9080a6841}
+      \strng{authorbibnamehash}{319cf3650c5bfdac2364bdc9080a6841}
+      \strng{authornamehash}{319cf3650c5bfdac2364bdc9080a6841}
+      \strng{authorfullhash}{319cf3650c5bfdac2364bdc9080a6841}
+      \field{sortinit}{J}
+      \field{sortinithash}{c45040a764d616897e7f5b30174d7b92}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{\texttt{www.occ.com.mx}}
-      \field{year}{2022}
+      \field{howpublished}{\url{jonmircha.com/reactintroducciC3B3n}}
+      \field{title}{React}
+      \field{urlday}{12}
+      \field{urlmonth}{2}
+      \field{urlyear}{2021}
+      \field{year}{2021}
+      \field{urldateera}{ce}
     \endentry
     \entry{AIMX}{misc}{}
       \name{author}{1}{}{%
@@ -109,6 +112,32 @@
       \field{urlmonth}{3}
       \field{urlyear}{2022}
       \field{year}{2021}
+      \field{urldateera}{ce}
+    \endentry
+    \entry{Occ3}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=e6d9f6250e5cb1dd2b95177809b71d1c}{%
+           family={OCCMundial},
+           familyi={O\bibinitperiod},
+           given={Blog},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{e6d9f6250e5cb1dd2b95177809b71d1c}
+      \strng{fullhash}{e6d9f6250e5cb1dd2b95177809b71d1c}
+      \strng{bibnamehash}{e6d9f6250e5cb1dd2b95177809b71d1c}
+      \strng{authorbibnamehash}{e6d9f6250e5cb1dd2b95177809b71d1c}
+      \strng{authornamehash}{e6d9f6250e5cb1dd2b95177809b71d1c}
+      \strng{authorfullhash}{e6d9f6250e5cb1dd2b95177809b71d1c}
+      \field{sortinit}{O}
+      \field{sortinithash}{ff8d4eeb5101e3cf3809959b3592d942}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{www.occ.com.mx/blog/que-es-una-bolsa-de-trabajo/}}
+      \field{title}{¿Qué es una bolsa de trabajo y para qué sirve?}
+      \field{urlday}{15}
+      \field{urlmonth}{4}
+      \field{urlyear}{2022}
+      \field{year}{2019}
       \field{urldateera}{ce}
     \endentry
     \entry{Evo}{misc}{}
@@ -153,7 +182,7 @@
       \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{\texttt{www.marte.mar}}
+      \field{title}{\texttt{www.sisae-siboltra.ipn.mx}}
       \field{year}{2022}
     \endentry
     \entry{Universia}{misc}{}
@@ -205,25 +234,6 @@
       \field{urlyear}{2022}
       \field{year}{2022}
       \field{urldateera}{ce}
-    \endentry
-    \entry{Inned}{online}{}
-      \name{author}{1}{}{%
-        {{hash=8c806c2bee956e089a928ee19d77695b}{%
-           family={{Universidad de Marte}},
-           familyi={U\bibinitperiod}}}%
-      }
-      \strng{namehash}{8c806c2bee956e089a928ee19d77695b}
-      \strng{fullhash}{8c806c2bee956e089a928ee19d77695b}
-      \strng{bibnamehash}{8c806c2bee956e089a928ee19d77695b}
-      \strng{authorbibnamehash}{8c806c2bee956e089a928ee19d77695b}
-      \strng{authornamehash}{8c806c2bee956e089a928ee19d77695b}
-      \strng{authorfullhash}{8c806c2bee956e089a928ee19d77695b}
-      \field{sortinit}{U}
-      \field{sortinithash}{77a6935510e008adcf5b555e7b4f0711}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{\texttt{www.marte.mar}}
-      \field{year}{2022}
     \endentry
   \enddatalist
 \endrefsection

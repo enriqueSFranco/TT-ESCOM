@@ -23,9 +23,6 @@
 		consultar comunicados y las empresas registradas  en el sistema, así como consultar el estado 
 		de sus postulaciones.
 	}
-	\UCitem{Entradas}{
-		\imprimeUC{entrada}
-	}
 	  
 	\UCitem{Destino}{
 		\refIdElem{GRL-IU01}
@@ -45,9 +42,9 @@
 
 %Trayectoria Principal
 \begin{UCtrayectoria}
-	\UCpaso [\UCactor] Presiona el botón \IUbutton{Registrate} desde la interfaz \refElem{GRL-IU00}.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Registrate} desde la interfaz \refElem{VCT-IU01}.
     \UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU01}.
-	\UCpaso [\UCactor] Ingresa el \entrada[correo electrónico]{users.email} y \entrada[contraseña]{users.password} del usuario en los compos correspondientes.\label{cu01-grl}
+	\UCpaso [\UCactor] Ingresa el correo electrónico y contraseña del usuario en los compos correspondientes.\label{cu01-grl}
 	%\UCpaso [\UCactor] Acepta los terminos de privacidad y condiciones del sistema.
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Crear Cuenta}. \refTray{A}
     \UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la regla de negocio \refIdElem{RN-N001}.\refTray{B}
@@ -61,7 +58,7 @@
 %Trayectorias Alternativas
 \begin{UCtrayectoriaA}[Fin de la trayectoria]{A}{El actor decide cancelar el registro.}
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Cancelar}.
-	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU00}.
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{VCT-IU01}.
 \end{UCtrayectoriaA} 
 
 %Trayectorias Alternativas

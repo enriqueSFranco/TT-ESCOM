@@ -18,9 +18,6 @@
 		\Titem El alumno debe de tener una cuenta en el sistema.
 		\Titem Debe de ser la primera vez que el alumno inicie sesión en el sistema.
 	}
-	\UCitems{Entradas}{
-		\imprimeUC{entrada}
-	}
 	\UCitem{Destino}{
 		\Titem \refElem{USR-IU01}
 	}
@@ -38,35 +35,35 @@
 	\UCpaso [\UCactor] Presiona inisia sesion exitosamente desde la pantalla \refElem{GRL-IU03}.
     \UCpaso [\UCsist] Valida que sea su primer inicio de sesión despues de haber creado su cuenta.\refTray{A}
 	\UCpaso [\UCsist] Muestra la interfaz \refElem{USR-IU01}.
-	\UCpaso [\UCactor] Ingresa el \entrada[nombre]{estudiante.nombre}, \entrada[nombre]{estudiante.apellidos}, \entrada[ubicación]{estudiante.residencia}, 
-	indica si tiene \entrada[disponibilidad para viajar]{estudiante.viajar} e ingresa su \entrada[telefono]{estudiante.telefono}.\label{USRCU01-grl1}
+	\UCpaso [\UCactor] Ingresa el nombre, primer apellido, segundo apellido,ubicación, 
+	indica si tiene disponibilidad para viajar e ingresa su telefono.\label{USRCU01-grl1}
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Siguiente}.
 	\UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la
 	regla de negocio \refIdElem{RN-N001}.\refTray{B}
 	\UCpaso [\UCsist] Verifica que el telefono ingresado cumpla con el formato correcto de acuerdo a la regla de negocio  \refIdElem{RN-N007}.  \refTray{C}
 	\UCpaso [\UCsist] Muestra la interfaz \refElem{USR-IU01-1}.
-	\UCpaso [\UCactor] Ingresa la \entrada[carrera]{hacademico.carrera}, selecciona la \entrada[institución]{hacademico.intitucion} y selecciona
-	la fecha en la que \entrada[inicio]{hacademico.inicio} y \entrada[final]{hacademico.fin} la carrera.
+	\UCpaso [\UCactor] Ingresa la carrera, selecciona la institución y selecciona
+	la fecha en la que inicio y final la carrera.
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Siguiente}.
 	\UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la
 	regla de negocio \refIdElem{RN-N001}.\refTray{D}\label{USRCU01-grl2} 
 	\UCpaso [\UCsist] Muestra la interfaz \refElem{USR-IU01-2}.
-	\UCpaso [\UCactor] Ingresa el  \entrada[puesto deseado]{estudiante.puesto-deseado}, el \entrada[salario deseado]{estudiante.salario} y selecciona
-	el  \entrada[tipo de trabajo]{estudiante.modalidad} deseado.
+	\UCpaso [\UCactor] Ingresa el  puesto deseado, el salario deseado y selecciona
+	el  tipo de trabajo deseado.
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Siguiente}.
 	\UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la
 	regla de negocio \refIdElem{RN-N001}.\refTray{E}\label{USRCU01-grl3} 
 	\UCpaso [\UCsist] Muestra la interfaz \refElem{USR-IU01-3}.
-	\UCpaso [\UCactor] Selecciona almenos una \entrada[hard skill]{habilidad.descripcion} y soft skill.
+	\UCpaso [\UCactor] Selecciona almenos una hard skill y soft skill.
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Finalizar}.
 	\UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la
 	regla de negocio \refIdElem{RN-N001}.\refTray{F}\label{USRCU01-grl4} 
-	\UCpaso [\UCsist] Muestra la pantalla \refElem{GRL-IU06}. %\refTray{G} \refTray{H}
+	\UCpaso [\UCsist] Muestra la pantalla \refElem{VCT-IU01}. %\refTray{G} \refTray{H}
 \end{UCtrayectoria}
 
 \begin{UCtrayectoriaA}[Fin del caso de uso]{A}{No es la primera vez que alctor inicia sesion.}
-	\UCpaso [\UCsist] Muestra la interfaz \refIdElem{VCT-IU06}.
-	\extendUC{VCT-CU06}.
+	\UCpaso [\UCsist] Muestra la interfaz \refIdElem{VCT-IU01}.
+	\extendUC{VCT-CU01}.
 \end{UCtrayectoriaA} 
 
 \begin{UCtrayectoriaA}[Fin de la trayectoria]{B}{El actor no ingresó uno o más datos obligatorios.}

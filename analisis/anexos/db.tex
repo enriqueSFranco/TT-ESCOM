@@ -1,5 +1,3 @@
-
-
 \chapter{Modelo de datos}
 En este anexo vamos a utilizar un diagrama para mostrar como se encuentra la estructura del sistema a nivel de base de datos. 
 También se especifica el código de colores se ultiza para identificar diferentes tipos de entidades.
@@ -275,7 +273,7 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
     %\brAttr{id-admin}{Id}{tInt}{Descripción}{\datOpcional}
 \end{cdtEntidad}
 %---------------------Alumno-----------------------------
-\begin{cdtEntidad}{estudiante}{Alumno}{desc}
+\begin{cdtEntidad}{candidato}{Candidato}{desc}
     Un alumno es un tipo de usuario dentro del sistema 
     \brAttr{id-alumno}{Id}{tInt}{
         Identificador único para cada registro de la entidad alumno.
@@ -394,11 +392,11 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
 \end{cdtEntidad}
 %---------------------Historial Academico-----------------------------
 %\begin{cdtEntidad}{hacademico}{Historial Academico}{desc}
- %   \brAttr{id-vacante}{Id}{tInt}{Descripción}{\datRequerido} 
- %   \brAttr{intitucion}{Institucion}{tVarchar}{Descripción}{\datRequerido}
- %   \brAttr{carrera}{Carrera}{tVarchar}{Descripción}{\datRequerido}
- %   \brAttr{inicio}{Fecha de inicio}{tVarchar}{Descripción}{\datRequerido}
- %   \brAttr{fin}{Fecha final}{tVarchar}{Descripción}{\datRequerido}
+%    \brAttr{id}{Id}{tInt}{Descripción}{\datRequerido} 
+%    \brAttr{idAlumno}{Id de alumno}{tVarchar}{Descripción}{\datRequerido}
+%    \brAttr{carrera}{Carrera}{tVarchar}{Descripción}{\datRequerido}
+%    \brAttr{inicio}{Fecha de inicio}{tVarchar}{Descripción}{\datRequerido}
+%    \brAttr{fin}{Fecha final}{tVarchar}{Descripción}{\datRequerido}
     
 %\end{cdtEntidad}
 %---------------------Habilidades----------------------------

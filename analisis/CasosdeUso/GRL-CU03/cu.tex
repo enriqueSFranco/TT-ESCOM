@@ -23,9 +23,6 @@ acciones que tiene permitidas dentro del sistema de acuerdo a su tipo de cuenta.
 	\UCitem{Postcondiciones}{
 		Ninguna.		
 	}
-	\UCitems{Entradas}{
-		\imprimeUC{entrada}
-	}
 	\UCitem{Destino}{
 		\Titem \refElem{GRL-IU03}
 	}
@@ -42,9 +39,9 @@ acciones que tiene permitidas dentro del sistema de acuerdo a su tipo de cuenta.
 
 %Trayectoria Principal
 \begin{UCtrayectoria}
-	\UCpaso [\UCactor] Presiona el botón \IUbutton{Iniciar sesión} desde la interfaz \refElem{GRL-IU00}.\refTray{A}
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Iniciar sesión} desde la interfaz \refElem{VCT-IU01}.\refTray{A}
     \UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU03}.
-	\UCpaso [\UCactor] Ingresa el \entrada[correo electrónico]{users.email} y \entrada[contraseña]{users.password}.\label{cu03-grl1}\refTray{A}
+	\UCpaso [\UCactor] Ingresa el correo electrónico y contraseña.\label{cu03-grl1}\refTray{A}
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Iniciar Sesión}. \refTray{B} \refTray{C} 
 	\UCpaso [\UCsist] Verifica que los campos marcados como obligatorios hayan sido ingresados de acuerdo a la
 	regla de negocio \refIdElem{RN-N001}.\refTray{D}

@@ -17,9 +17,6 @@
 	\UCitem{Precondiciones}{
 		Ninguna
 	}
-	\UCitems{Salidas}{
-		\imprimeUC{salida}
-	}
 	\UCitem{Destino}{
 		\Titem \refElem{VCT-IU02}
 	}
@@ -35,14 +32,8 @@
 %Trayectoria Principal
 \begin{UCtrayectoria}
 	\UCpaso [\UCactor] Seleciona una vacante desde la interfaz \refElem{VCT-IU02}.
-	\UCpaso [\UCsist] Optiene el \salida[puesto]{vacante.puesto}, 
-	\salida[empresa]{empresa.nombre}, 
-	\salida[salario minímo]{vacante.salariomin},
-	\salida[salario maximo]{vacante.saraliomax},
-	la \salida[ubicación]{vacante.ubicacion},
-	los \salida[días]{vacante.diaslab} de trabajo,
-	el \salida[horario de entrada]{vacante.horaentra} y \salida[horario de salida]{vacante.horasal},
-	la \salida[descripción]{vacante.descripcion}  de la vacante.
-	\UCpaso [\UCsist] Muestra la información optenida en el componente \refElem{VCT-IU02-3} en el lado izquierdo de la interfaz \refElem{VCT-IU02}
+	\UCpaso [\UCsist] Optiene el puesto, empresa, salario minímo,salario maximo,la ubicación,
+	los días de trabajo, el horario de entrada y horario de salida, la descrpición  de la vacante.
+	\UCpaso [\UCsist] Muestra la información optenida en el componente \refElem{VCT-IU02-1} en el lado izquierdo de la interfaz \refElem{VCT-IU02}
 \end{UCtrayectoria}
 

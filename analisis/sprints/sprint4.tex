@@ -1,19 +1,18 @@
-\section{Sprint 4: Gestión de Usuarios}
+\clearpage
+\section{Gestión de Usuarios}
     \begin{description}
         \item \textbf{Duración}: 15 días.
         \item \textbf{Inicio del sprint }: 11 de marzo de 2022.
         \item \textbf{Cierre del sprint }: 25 de marzo de 2022.
     \end{description}
 
-    \subsection{Planeación}
-
     Esta iteración tuvo como propósito implementar un mecanismo que permita a los usuarios del sistema autenticarse y/o crear cuentas
     para acceder al mismo, las actividades realizadas fueron:
     \begin{enumerate}
         \item Se diseñó e implementó las interfaces de usuario para la gestión de cuentas y accesos.
         \item Se especificaron los requerimientos mediante casos de uso con sus respectivas interfaces de usuario.
-        \item Se elaboró el a de casos de uso para este sprint.
-        \item Se elaboró la maquina de estados de un reclutador.
+        \item Se elaboró el diagrama de casos de uso para este sprint.
+        \item Se elaboró la máquina de estados de un reclutador.
     \end{enumerate} 
 
     Los requerimientos funcionales de este sprint se muestran en la siguiente tabla.
@@ -63,8 +62,6 @@
         \item \refElem{USR-CU01}
     \end{itemize} 
 
-
-    \subsection{Ejecución}
         El \textit{Módulo General} fue el primero en desarrollarse ya que permite conocer el tipo de usuario
         que está ingresando al sistema.\\ 
         \newline        
@@ -87,28 +84,10 @@
             \label{tbdb:users}
         \end{figure}
     
-        Por parte del frontend necesitamos el uso de dos servicios con React js para administrar el JWT, el primer servicio es para realizar una petición HTTP con el verbo POST, teniendo como payload un objeto con los datos de correo electrónico y contraseña. Una vez realizada la petición HTTP al servidor, se asignará un token de acceso y un token de actualización, el token de acceso nos ayudará para identificar si el usuario en cuestión tiene los permisos para acceder a un determinado recurso dentro del sistema o para realizar una consulta de información a la API. Por otro lado, el token de actualización es por motivos de seguridad, ya que los tokens de acceso tienen un ciclo de vida corto y una vez que caducan, la aplicación del lado del cliente puede hacer uso del token de actualización para actualizar el token de acceso, es decir, los tokens de actualización nos permite obtener nuevos tokens de acceso sin tener que pedirle al usuario que inicie sesión nuevamente.\\ 
+        Por parte del frontend necesitamos el uso de dos servicios con React js para administrar el JWT, el primer servicio es para realizar una petición HTTP con el verbo POST, teniendo como payload un objeto con los datos de correo electrónico y contraseña. Una vez realizada la petición HTTP al servidor, se asignará un token de acceso y un token de actualización, el token de acceso nos ayudará para identificar si el usuario en cuestión tiene los permisos para acceder a un determinado recurso dentro del sistema o para realizar una consulta de información a la API. Por otro lado, el token de actualización es por motivos de seguridad, ya que los tokens de acceso tienen un ciclo de vida corto y una vez que caducan, la aplicación del lado del cliente puede hacer uso del token de actualización para actualizar el token de acceso, es decir, los tokens de actualización nos permite obtener nuevos tokens de acceso sin tener que pedirle al usuario que inicie sesión nuevamente.\\
         \newline
-        Hasta este punto, ya tenemos nuestros tokens y podemos iniciar sesión, un problema que se presentó fue en el momento de refrescar el navegador, ya que la sesión del usuario no persistía, una solución propuesta fue usar un servicio que se encargará de interceptar la llamada a la API que no genera los tokens, esto porque debemos de saber si el token de acceso ha caducado se realice una nueva solicitud para obtener un nuevo token, el cual se le asigna a la petición original y de esta forma el usuario tendrá un token actualizado.\\ 
-        \newline
-
+        Hasta este punto, ya tenemos nuestros tokens y podemos iniciar sesión, un problema que se presentó fue en el momento de refrescar el navegador, ya que la sesión del usuario no persistía, una solución propuesta fue usar un segundo servicio que se encargará de interceptar la llamada a la API que nos genera los tokens, esto porque debemos saber si el token de acceso ha caducado se realice una nueva solicitud para obtener un nuevo token, el cual se le asigna a la petición original y de esta forma el usuario tendrá un token actualizado.\\
+        \newline        
         Mientras tanto en el backend se valida que el payload de las credenciales enviadas por el frontend pertenezcan a un usuario activo en la base de datos. Para el manejo de los usuarios se usaron las capacidades de la tabla “Users” disponible en Django por defecto, con los campos mínimos que posee por defecto y agregando campos propios, ya que esta tabla cuenta con las funciones de seguridad integradas necesarias para encriptar contraseñas y validar la información recibida por el frontend y empezar el intercambio de tokens entre ambas partes de forma segura. Con la generación e intercambio de tokens funcionando correctamente se implementó el uso de las tablas de los usuarios definidos por el modelado de datos utilizando una representación de especiación, siendo la tabla “Users” la tabla de usuarios en general, posteriormente en las tablas de los usuarios del sistema se hace referencia a la llave primaria del registro propio del usuario en “Users” para consultar la información del usuario y pueda hacer uso de la plataforma.
-
-       \subsection{Revisión y retroalimentación}
-       Antes de liberar los casos de uso programados de este sprit, fue validado su funcionamiento:
-        \begin{enumerate}
-            \item Se utilizo el sistema siguiendo cada caso de uso al pie de la letra segun su descripción y trayectorias. 
-            \item Se hicieron las pruebas unitarias por cada campo, validando que el tipo de dato ingresado fuera correcto y en caso de no 
-            hacerlo mostrara el mensaje correcto según lo indicado en el caso de uso.
-            \item Se hicieron las pruebas unitarias por cada botón, validando que redireccionara a la interfaz correcta y/o mostrara el mensaje
-            correcto egún lo indicado en el caso de uso.
-        \end{enumerate} 
-       Para este sprint en específico se hicieron pruebas para el componente JSON Web Token a través de este 
-       framework se puede autentificar el acceso del usuario al sistema, al iniciar sesión con un usuario 
-       registrado en el sistema se comprueba que existe un usuario con el ``username'' enviado y de existir 
-       se compará la contraseña enviada con la almacenada para ese usuario, aplicando el mismo algoritmo que
-     se usa para encriptar las contraseñas, si la información coincide se devuelve un objeto JSON con el token de autentificación, el token de refresh e información del usuario al FrontEnd por medio de la API creada.
-
-    
-
-
+        
+       

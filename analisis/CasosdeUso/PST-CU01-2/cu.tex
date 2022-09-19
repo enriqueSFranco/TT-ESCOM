@@ -1,0 +1,46 @@
+\clearpage
+\begin{UseCase}[]{PST-CU01-2}{Descartar postulación}{
+	Permite al reclutador de una empresa dar seguimiento a una postulación recibida de un candidato.
+	}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		Reclutadores.
+	}
+	\UCitem[admin]{Prioridad}{
+		Media
+	}
+	\UCitem[admin]{Complejidad}{
+		Alta
+	}
+	\UCitem{Precondiciones}{
+		\Titem El reclutador debe de estar registrado en el sistema.
+		\Titem La vacante debe de tener al menos una postulación asociada.
+	}
+	\UCitem{Destino}{
+		\Titem \refElem{PST-IU01}
+	}
+	\UCitem{Reglas de Negocio}{
+		Ninguna.
+		
+	}
+	\UCitem{Viene de}{
+		\refElem{PST-CU01}.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Da clic en el \IUbutton{Descartar} de la postulación que desee, en la interfaz \refElem{VCT-IU03}.
+	\UCpaso [\UCsist] Cambia el estado de la postulación a ``Descartada'', con base en la \refElem{mq:post}.
+	\UCpaso [\UCsist] Notifica al candidato que su postulación ha sido descartada.
+	\UCpaso [\UCsist] Habilitaa los botones de acciones en el componenete \refElem{VCT-IU03b} de la postulaciones descartada, con base en la \refElem{mq:post}.
+	\UCpaso [\UCsist] Muestra la pantalla \refElem{PST-IU01}. \refTray{A}\label{PST-CU01:1}
+
+\end{UCtrayectoria}
+
+%Trayectorias Alternativas
+%\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor no tiene vacantes registradas en el sistema.}
+%	\UCpaso [\UCsist] Muestra la interfaz \refElem{VCT-IU03-1}.
+%\end{UCtrayectoriaA} 

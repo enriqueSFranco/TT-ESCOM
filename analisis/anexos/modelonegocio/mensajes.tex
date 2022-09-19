@@ -82,7 +82,7 @@ simplificar la descripción de los mensajes:
     %        \item $<ARTICULO>$: Se refiere a un {\em artículo} el cual puede ser DETERMINADO (El $\mid$
     %            La $\mid$ Lo $\mid$ Los $\mid$ Las) o INDETERMINADO (Un $\mid$ Una $\mid$ Uno $\mid$
     %            Unos $\mid$Unas).
-            \item $<ENTIDAD>$: Se refiere a la entidad o atributo en el cual estamos realizando la operación. Por ejemplo: evento, supervisor, sustentante, etc.
+            \item $<ENTIDAD>$: Se refiere a la entidad o atributo en el cual estamos realizando la operación.
             \item $<OPERACION>$: Se refiere a una acción que se debe realizar sobre los datos de una o varias entidades, el verbo puede tener una conjugación en participio. Por ejemplo: finalizado, registrado, eliminado, actualizado, por mencionar algunos.
         \end{itemize}   
     
@@ -108,15 +108,15 @@ simplificar la descripción de los mensajes:
 
 %===========================  MSG3 ==================================
 \begin{mensaje}{MSG3}{Dato ingresado ya registrado}{Mensaje de error}
-	\item[Redacción:] Ya existe un $<elemento>$ registrado con la información ingresada.
+	\item[Redacción:] Ya existe un $<DATO>$ registrado con la información ingresada.
 	
 	%el $<DATO>$ $<ACCION>$	
 	
 	\item[Parámetros:] 
     \begin{itemize}
-      %  \item $<DATO>$: Se refiere a la información que esta siendo ingresada nuevamente. Por ejemplo: CURP, correo electrónico, etc.
+        \item $<DATO>$: Se refiere a la información que esta siendo ingresada nuevamente. Por ejemplo: CURP, correo electrónico, etc.
      %   \item $<ACCION>$: Se refiere a la operación que esta siendo ejecutada de nueva cuenta, entre las cuales se encuentran: registrado, ingresado, confirmado, etc. 
-        \item $<ACTOR>$: Se refiere a la persona que está siendo afectado por la acción. Por ejemplo: sustentante, supervisor potencial, supervisor, enlace institucional, etc.
+      %  \item $<ACTOR>$: Se refiere a la persona que está siendo afectado por la acción. Por ejemplo: sustentante, supervisor potencial, supervisor, enlace institucional, etc.
     \end{itemize}   
 
     \item[Ejemplo:]  
@@ -147,4 +147,17 @@ simplificar la descripción de los mensajes:
 \begin{mensaje}{MSG5}{Credenciales incorrectas}{Mensaje de error en pantalla}
 	\item[Redacción:] Usuario y/o contraseña incorrectos.
 \end{mensaje}
+
+
+%%====================  MSG5 =====================
+\begin{mensaje}{MSG6}{Confirmación}{Mensaje de confirmación en pantalla}
+	\item[Redacción:] ¿Estas seguro de cancelar el registro  de la $<elemento>$?.
+    \item[Parámetros:] $<elemento>$: Se refiere a una entidad o atributo, en el cual estamos realizando la operación.
+    \item[Ejemplo:]\begin{itemize}
+        
+        \item ¿Estas seguro de cancelar el registro  de la vacante?.  
+    \end{itemize} 
+    
+\end{mensaje}
+
 
