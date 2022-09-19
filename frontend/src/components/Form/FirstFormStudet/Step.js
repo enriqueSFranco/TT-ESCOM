@@ -6,7 +6,7 @@ import { useFetch } from "hooks/useFetch";
 import { helpHttp } from "utils/helpHttp";
 import { formStepCandidate } from 'types/formStepCandidate'
 import { AcademicFormat } from "types/schemes";
-import { getAllAcademicUnits, getAllJobs } from "services/catalogs/index";
+import { getAllAcademicUnits, getIntrestJobs } from "services/catalogs/index";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
@@ -50,7 +50,7 @@ const StepComponent = () => {
 
   // TODO: Pasar a un hook personalizado
   useEffect(() => { // efecto que recupera 
-    getAllJobs()
+    getIntrestJobs()
       .then((response) => {
         setInterestJobs(response);
       })

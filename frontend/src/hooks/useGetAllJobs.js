@@ -8,12 +8,16 @@ export function useGetAllJobs() {
   const [loading, setLoading] = useState(false);
   const [loadingNextPage, setLoadinNextPage] = useState(false);
   const [page, setPage] = useState(INITIAL_PAGE);
+  const [maxPage, setMaxPage] = useState(0)
 
   useEffect(function(){
     setLoading(true);
     getAllJobs(INITIAL_PAGE)
       .then((response) => {
-        // console.log('response',response.result)
+        const { page_size, count } = response
+        let totalPage = Math.ceil(count / page_size)
+        // console.log(totalPage)
+        setMaxPage(totalPage)
         setResponse(response.result);
       })
       .catch((error) => console.log(error))
@@ -25,19 +29,15 @@ export function useGetAllJobs() {
   useEffect(function() {
     if (page === INITIAL_PAGE) return;
 
-    setLoadinNextPage(true);
-    getAllJobs(page).then((nextResponse) => {
-      // console.log({nextResponse})
-      const { pagination, page_size } = nextResponse
-      let maxPage = Math.ceil(pagination / page_size)
-      // console.log({page, maxPage})
-      if (page <= maxPage) {
+    if (page <= maxPage) {
+      setLoadinNextPage(true);
+      getAllJobs(page).then((nextResponse) => {
         setResponse(prevResponse => [...prevResponse, ...nextResponse?.result])
         setLoadinNextPage(false)
-      }
-    })
-    .catch(error => console.log(error))
-  }, [page]);
+      })
+      .catch(error => console.log(error))
+    } else return;
+  }, [maxPage, page]);
 
   return { response, loading, loadingNextPage, setPage };
 }

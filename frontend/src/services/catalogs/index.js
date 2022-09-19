@@ -91,7 +91,7 @@ export const getAllAcademicUnits = async () => {
   }
 }
 
-export const getAllJobs = async () => {
+export const getIntrestJobs = async () => {
   try {
     const { data } = await axios.get(API_INTEREST_JOBS);
     return data;

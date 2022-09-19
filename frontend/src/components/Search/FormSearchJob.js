@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useFetch } from "hooks/useFetch";
 import { useDebounce } from "hooks/useDebounce";
 import { useViewport } from "hooks/useViewport";
-// import { searchCharacter } from "services/index"
+import { searchCharacter } from "services/index"
 import Loader from "components/Loader/Loader";
 import * as BiIcon from "react-icons/bi";
 import styles from "./Search.module.css";
@@ -21,7 +21,7 @@ const FormSearchJob = ({ handleSearch }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [filterData, setFilterData] = useState(null);
   const [viewport] = useViewport();
-  const { data } = useFetch(`${process.env.REACT_APP_URL_VACANTS}`);
+  // const { data } = useFetch(`${process.env.REACT_APP_URL_VACANTS}`);
   const debounce = useDebounce(queryJob, 500);
 
   // filtrado para el autocompletado
@@ -30,19 +30,22 @@ const FormSearchJob = ({ handleSearch }) => {
     setQueryJob(query);
 
     // hacer la llamada al endpoint de searchCharacter
-    // searchCharacter(query)
-    //   .then(res => {
-    //      setFiltered(res)
-    // })
-    //   .catch(error => console.error(error))
-
-    const dataFiltered = data.result?.filter((el) => {
-      let er = new RegExp(`^${query}`, "gi");
-      let matches = el.t200_job.toLowerCase().match(er);
-      return matches;
-    });
-
-    return query === "" ? setFilterData([]) : setFilterData(dataFiltered);
+    if (query !== '') {
+      searchCharacter(query)
+        .then(res => {
+          const { results } = res
+          console.log(results)
+          setFilterData(results)
+      })
+        .catch(error => console.error(error))
+    }
+    return;
+    // const dataFiltered = data.result?.filter((el) => {
+    //   let er = new RegExp(`^${query}`, "gi");
+    //   let matches = el.t200_job.toLowerCase().match(er);
+    //   return matches;
+    // });
+    // return query === "" ? setFilterData([]) : setFilterData(filterData);
   };
 
   const handleClick = (job) => setQueryJob(job);
@@ -63,7 +66,7 @@ const FormSearchJob = ({ handleSearch }) => {
     setLocationJob('')
   };
 
-  console.log(data)
+  // if (!filterData) return null
 
   return (
     <WrapperForm>
@@ -87,7 +90,7 @@ const FormSearchJob = ({ handleSearch }) => {
           />
           {/* TODO: pasar los elementos de autocompletado a componentes. */}
           <ul className={styles.dataResultsJobs}>
-            {filterData?.map((value) => (
+            {filterData && filterData?.map((value) => (
               <li
                 key={crypto.randomUUID()}
                 value={value?.t200_job}

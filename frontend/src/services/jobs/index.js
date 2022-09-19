@@ -19,7 +19,7 @@ export const getAllJobs = async (numberPage = 1) => {
 };
 
 export const searchCharacter = (nameJob) => {
-  return API(`vacant/Vacatn/?search=${nameJob}`)
+  return API(`/vacant/search/${nameJob}`)
     .then(res => {
       const { data } = res
       return data
