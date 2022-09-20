@@ -1,10 +1,10 @@
 import { useEffect, useReducer } from "react";
 import { useAuth } from "context/AuthContext";
+import { useGetCandidate } from "hooks";
 import { fetchDataCandidateReducer, fetchDataCandidateInit } from "reducers/fetchDataCandidateReducer";
 import { TYPES } from "actions/fetchDataCandidateActions";
 import {
   getSocialNetwork,
-  getStudent,
   getAcademicHistorial,
 } from "services/students/index";
 import { getSkill } from "services/catalogs";
@@ -21,16 +21,7 @@ import styles from "./CardProfileStudent.module.css";
 const CardProfileStudent = () => {
   const [state, dispatch] = useReducer(fetchDataCandidateReducer, fetchDataCandidateInit)
   const { token } = useAuth();
-
-  useEffect(() => {
-    getStudent(token?.user?.user_id).then((response) => {
-      dispatch({
-        type: TYPES.FETCH_CANDIDATE,
-        payload: response
-      })
-    });
-  }, [token?.user?.user_id]);
-
+  const { candidate } = useGetCandidate(token?.user?.user_id)
   
   useEffect(() => {
     getAcademicHistorial(token?.user?.user_id)
@@ -44,13 +35,13 @@ const CardProfileStudent = () => {
   }, [token?.user?.user_id]);
 
   useEffect(() => {
-    getSkill(token?.user?.user_id).then((response) => {
+    getSkill(token?.user?.id).then((response) => {
       dispatch({
         type: TYPES.FETCH_SKILLS,
         payload: response
       })
     });
-  }, [token?.user?.user_id]);
+  }, [token?.user?.id]);
 
   useEffect(() => {
     getSocialNetwork(token?.user?.id).then((response) => {
@@ -61,18 +52,18 @@ const CardProfileStudent = () => {
     });
   }, [token?.user?.id]);
 
-  console.log(state.socialNetworks)
+  if (!candidate) return null
   
   return (
     <article className={`${styles.cardProfile}`}>
       <div className={`${styles.card}`}>
         <header className={styles.header}>
-            <CustomAvatar student={state.candidate} width="100" height="100" />
+            <CustomAvatar picture={candidate[0]?.t100_profile_picture} username={candidate[0]?.t100_name} width="100" height="100" />
             <div className={styles.nameHolder}>
               <span style={{color: '#9E9EA7', fontWeight: 500, letterSpacing:  '.5px'}}>
-                {state.candidate[0]?.t100_name} {state.candidate[0]?.t100_last_name}
+                {candidate[0]?.t100_name} {candidate[0]?.t100_last_name}
               </span>
-              <Chip label='Ingenieria en sistemas computaciones' bg="#116BFE" color='#fff' />
+              <Chip label={(candidate[0]?.t100_interest_job)} bg="#116BFE" color='#fff' />
                 
                 {/* {academicHistorial && academicHistorial[0]?.t104_carreer} */}
             </div>
@@ -87,7 +78,7 @@ const CardProfileStudent = () => {
                 }}
               />
               <p style={{ fontWeight: "400" }}>
-                {state.candidate[0]?.t100_residence ?? "No especificado."}
+                {candidate[0]?.t100_residence ?? "No especificado."}
               </p>
             </div>
             <div className={styles.flex}>
@@ -98,7 +89,7 @@ const CardProfileStudent = () => {
                 }}
               />
               <p style={{ fontWeight: "400" }}>
-                {state.candidate[0]?.t100_travel
+                {candidate[0]?.t100_travel
                   ? "Disponible para reubicarse."
                   : "No disponible para reubicarse." ?? "No especificado."}
               </p>
@@ -140,6 +131,7 @@ const CardProfileStudent = () => {
                   <Chip
                     key={uuid()}
                     label={c116_id_skill?.c116_description}
+                    bg="#ccc"
                   />
                 ))
               ) : (
@@ -150,7 +142,7 @@ const CardProfileStudent = () => {
           {/* cv */}
           <div>
             {
-              state.candidate[0]?.t100_cv === null ? 'no' : 'si'
+              candidate[0]?.t100_cv === null ? 'sin CV' : 'con CV'
             }
           </div>
         </div>

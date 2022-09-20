@@ -4,10 +4,10 @@ import Chip from "components/Chip/Chip";
 import CustomAvatar from "components/Avatar/Avatar";
 import LinkButton from "components/Button/LinkButton";
 import { List, ListItem } from "styled-components/CommonStyles";
-import { CardUser,  Username, H3, WrapperList } from "./styled-components/CardCandidateStyled";
+import { CardUser,  Username, H3, WrapperList, Speciality } from "./styled-components/CardCandidateStyled";
 
 const CardCandidate = ({ user, idUser }) => {
-  const { data, error, loading } = useFetch(`${process.env.REACT_APP_URL_CANDIDATE_SKILLS}${idUser}`)
+  const { data } = useFetch(`${process.env.REACT_APP_URL_CANDIDATE_SKILLS}${idUser}`)
   
   if (!user) return null;
 
@@ -20,12 +20,11 @@ const CardCandidate = ({ user, idUser }) => {
           borderRadius: "50%",
         }}
       >
-        <CustomAvatar width="100" height="100" />
+        <CustomAvatar picture={user.t100_profile_picture} username={user.t100_name} width="100" height="100" />
       </div>
       <div>
         <Username>{user.t100_name}</Username>
-        <br />
-        {user.t100_speciality}
+        <Speciality>{user.t100_speciality}</Speciality>
         <H3>Habilidades</H3>
         <WrapperList>
           <List>

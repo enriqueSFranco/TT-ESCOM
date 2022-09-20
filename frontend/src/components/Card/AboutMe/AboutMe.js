@@ -1,37 +1,37 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "context/AuthContext";
-import { useForm } from "hooks/useForm";
-import { useModal } from "hooks/useModal";
-import { getStudent, updateStudent } from "services/students";
+import { useGetCandidate, useForm, useModal } from "hooks";
+import { updateStudent } from "services/students";
 import { numberFormat } from "utils/numberFormat";
 import ModalForm from "components/Modal/ModalForm";
 import { MdEdit } from "react-icons/md";
 import styles from "./AboutMe.module.css";
 
 const AboutMe = () => {
+  const { token } = useAuth()
   const [totalChar, setTotalChar] = useState(0);
   const [student, setStudent] = useState(null);
-  const [aboutMe, setAboutMe] = useState({});
-  const { form, handleChange } = useForm({t100_personal_objectives: ""});
+  // const [aboutMe, setAboutMe] = useState({});
   const [isOpenModalEdit, openModalEdit, closeOpenModalEdit] = useModal();
-  const { token } = useAuth
-  let idStudent = token?.user?.user_id;
+  const { form, handleChange } = useForm({t100_personal_objectives: ""});
+  const { candidate } = useGetCandidate(token?.user?.id)
+  // let idStudent = token?.user?.id;
 
   // Efecto para obtener la ingformacion de un alumno
-  useEffect(() => {
-    getStudent(idStudent)
-      .then((response) => {
-        setAboutMe({
-          personalObjective: response[0]?.t100_personal_objectives,
-          salary: response[0]?.t100_target_salary,
-          modality: response[0]?.t100_modalities,
-        });
-        setStudent(response);
-      })
-      .catch((error) => {
-        if (error.response) return error.response.data.message;
-      });
-  }, [idStudent]);
+  // useEffect(() => {
+  //   getStudent(token?.user?.id)
+  //     .then((response) => {
+  //       setAboutMe({
+  //         personalObjective: response[0]?.t100_personal_objectives,
+  //         salary: response[0]?.t100_target_salary,
+  //         modality: response[0]?.t100_modalities,
+  //       });
+  //       setStudent(response);
+  //     })
+  //     .catch((error) => {
+  //       if (error.response) return error.response.data.message;
+  //     });
+  // }, [token?.user?.id]);
 
   const updateCount = e => setTotalChar(e.target.value.length);
 
@@ -40,19 +40,21 @@ const AboutMe = () => {
     e.preventDefault();
     let copyStudent = {
       ...form, 
-      t100_name: student[0]?.t100_name,
-      t100_last_name: student[0]?.t100_last_name,
-      t100_boleta: student[0]?.t100_boleta,
-      t100_email: student[0]?.t100_email
+      t100_name: candidate[0]?.t100_name,
+      t100_last_name: candidate[0]?.t100_last_name,
+      t100_boleta: candidate[0]?.t100_boleta,
+      t100_email: candidate[0]?.t100_email
     };
 
     // console.log("copia: ",copyStudent)
-    updateStudent(idStudent, copyStudent)
+    updateStudent(token?.user?.id, copyStudent)
       .then(response => {
         console.log(response);
       })
       .catch(error => console.log(error));
   };
+
+  if (!candidate) return null;
 
   return (
     <>
@@ -62,22 +64,22 @@ const AboutMe = () => {
         </button>
         <h1 className={styles.title}>Mi Objetivo Profesional es:</h1>
         <p className={styles.professionalObjective}>
-          {aboutMe.personalObjective === ""
+          {candidate[0].t100_personal_objectives === ""
             ? "Sin descripcion"
-            : aboutMe.personalObjective}
+            : candidate[0].t100_personal_objectives}
         </p>
         <div className={`${styles.position}`}>
           <p className={styles.salary}>
             Sueldo deseado:{" "}
-            {aboutMe?.salary === null
+            {candidate[0]?.t100_target_salary === null
               ? "No especificado"
-              : `$${numberFormat(aboutMe?.salary).replace(".00", "")}`}
+              : `$${numberFormat(candidate[0]?.salary).replace(".00", "")}`}
           </p>
           <p className={styles.employmentModality}>
             Modalidad de trabajo:{" "}
-            {aboutMe?.salary === null
+            {candidate[0]?.t100_modalities === null
               ? "No especificado"
-              : `${aboutMe?.modality}`}
+              : `${candidate[0]?.modality}`}
           </p>
           <p>
             Experiencia: No especificada

@@ -7,7 +7,7 @@ export * from './useGetAllRecucruiters';
 export * from './useGetApplicationJob';
 export * from './useGetSkills';
 export * from './useGetSocialNetwork';
-export * from './useGetStudent';
+export * from './useGetCandidate';
 export * from './useModal';
 export * from './useNearScreen';
 export * from './usePassword';

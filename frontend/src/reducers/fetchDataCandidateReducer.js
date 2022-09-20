@@ -12,9 +12,9 @@ export function fetchDataCandidateReducer(state, action) {
     case TYPES.FETCH_CANDIDATE: 
       return {
         candidate: action.payload,
-        skills: null,
-        academicHistorial: null,
-        socialNetworks: null
+        skills: {},
+        academicHistorial: {},
+        socialNetworks: {}
       }
     case TYPES.FETCH_SKILLS:
       return {

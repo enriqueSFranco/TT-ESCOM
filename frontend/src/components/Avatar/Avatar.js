@@ -1,53 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { getRandomColor } from "utils/generateColors";
+import { stringToColor } from "utils/generateColors";
 
-const bg = getRandomColor()
+const CustomAvatar = ({ picture, username = "BT", width, height }) => {
+  if (!username) return null;
 
-const CustomAvatar = ({ username, width, height }) => {
-
-  if (username === "") {
+  if (picture === null) {
     return (
-      <Link
-        to="/perfil"
+      <div
         style={{
-          width: "3.3rem",
-          height: "2.8rem",
-          backgroundColor: `${bg}`,
+          backgroundColor: `${stringToColor(username.slice(0, 2))}`,
+          height: "80px",
+          width: '80px',
+          display: 'grid',
+          placeContent: 'center',
           borderRadius: "50%",
-          display: "grid",
-          placeContent: "center",
-          padding: ".3rem",
         }}
       >
-        <img
-          height="100%"
-          src={`https://robohash.org/default.png`}
-          alt={username}
-        />
-      </Link>
+        <span style={{color: '#FFF', fontSize: '1.4rem'}}>{username.slice(0, 1)}</span>
+      </div>
     );
   }
 
   return (
-      // <Link
-      //   to="/perfil"
-      //   style={{
-      //     // width: `${width || '2.5rem'}`,
-      //     // height: `${height || '2.5rem'}`,
-      //     borderRadius: "50%",
-      //     // backgroundColor: `${bg}`,
-      //     display: "grid",
-      //     placeContent: "center",
-      //     // padding: ".3rem",
-      //   }}
-      // >
-      // </Link>
-        <img
-          style={{objectFit: 'contain', borderRadius: '50%'}}
-          src={`https://placeimg.com/${width}/${height}/people`}
-          alt={username}
-        />
+    <img
+      style={{ objectFit: "contain", borderRadius: "50%" }}
+      src={`https://placeimg.com/${width}/${height}/people`}
+      alt={username}
+    />
   );
 };
 

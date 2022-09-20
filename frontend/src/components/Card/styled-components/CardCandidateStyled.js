@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 const CardUser = styled.div`
-  outline: 1px solid #ccc;
+  /* outline: 1px solid #ccc; */
 `
 
 const LinkToFullProfile = styled(Link)``
