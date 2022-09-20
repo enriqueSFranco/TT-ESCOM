@@ -38,6 +38,8 @@ const PageApplicationsStudent = () => {
 
   if (!data) return null;
 
+  console.log(data);
+
   // TODO: ELIMINAR ELEMENTOS DUPLICADOS DE LA LISTA DE VACANTES EN RELACION AL CAMPO T200_JOB
   return (
     <LayoutHome>
@@ -85,8 +87,8 @@ const PageApplicationsStudent = () => {
                   >
                     <ApplicationJobStudent
                       nameJob={row?.t200_id_vacant?.t200_job}
-                      salary={row?.t200_id_vacant?.t200_max_salary}
-                      modality={row?.t200_id_vacant?.t200_home_ofice}
+                      //salary={row?.t200_id_vacant?.t200_max_salary}
+                      modality={row?.t200_id_vacant?.c214_id_modality?.c214_description}
                       experience={
                         row?.t200_id_vacant?.c207_id_experience?.c207_description
                       }
@@ -94,19 +96,14 @@ const PageApplicationsStudent = () => {
                         row?.t200_id_vacant?.t300_id_company?.t300_name
                       }
                       state={row?.c205_id_application_state?.c205_description}
-                      // workingHours={`${(row?.t200_id_vacant?.t200_check_time).slice(
-                      //   0,
-                      //   5
-                      // )}am - ${(row?.t200_id_vacant?.t200_closing_hour).slice(
-                      //   0,
-                      //   5
-                      // )}pm`}
+                      // workingHours={}
+
                     />
                   </TableCell>
                   <TableCell
                     style={{ fontSize: "1rem" }}
                     sx={{ width: 350 }}
-                  >{`${row?.t200_id_vacant?.t200_municipality}, ${row?.t200_id_vacant?.t200_state}, ${row?.t200_id_vacant?.t200_street}`}</TableCell>
+                  >{`${row?.t200_id_vacant?.c222_id_locality?.c222_state}, ${row?.t200_id_vacant?.c222_id_locality?.c222_municipality}`}</TableCell>
                   <TableCell style={{ fontSize: "1rem" }}>
                     {row?.t200_id_vacant?.c208_id_contract?.c208_description}
                   </TableCell>
