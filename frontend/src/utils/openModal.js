@@ -1,8 +1,10 @@
 import React, { lazy, Suspense } from "react";
 import { render } from "react-dom";
 import { applyJob } from "services/students/index";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 import logoCompany from 'images/facebook.png'
-// import { ModalStyled } from '../styled-components/index'
+import { useState } from "react";
 
 function createMarkup(data) {
   return { __html: data };
@@ -25,14 +27,11 @@ export function openModalDetailsJob(description, idJob, userID, titleJob, token)
         t201_date_application:
           now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate(),
       });
-      console.log(response);
       return response;
     } catch (error) {
       console.log(error);
     }
   };
-
-  console.log(token)
 
   render(
     <Suspense fallback={<div>Cargando...</div>}>
@@ -55,3 +54,33 @@ export function openModalDetailsJob(description, idJob, userID, titleJob, token)
     $containerModal
   );
 }
+
+// export function openModalAddSkill(idUser, skills) {
+//   const Modal = lazy(() => import("components/Modal/Modal"));
+//   const $containerModal = document.createElement("div");
+
+//   $containerModal.id = "modal-skill";
+//   document.body.appendChild($containerModal);
+
+//   let hard = [];
+//   let soft = [];
+
+//   skills.forEach(el => el["c116_type"] === "H" ? hard.push(el) : soft.push(el))
+
+
+//   function sendSkill() {
+//     addSkill(idUser)
+//       .then(response => console.log(response))
+//       .catch(error => console.error(error))
+//   }
+
+//   if (!skills) return null
+
+//   render(
+//     <Suspense fallback={<div>Cargando...</div>}>
+//       <Modal root={$containerModal}>
+//       </Modal>
+//     </Suspense>,
+//     $containerModal
+//   );
+// }

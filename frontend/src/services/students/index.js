@@ -34,8 +34,36 @@ export const getStudent = async (id) => {
     );
 };
 
+export const getSkills = () => {
+  const controller = new AbortController()
+  const signal = controller.signal
+
+  return API.post(`${process.env.REACT_APP_URL_CANDIDATE_SKILLS}`, {signal})
+    .then(response => {
+      const { data } = response
+      return data
+    })
+    .catch(error => error)
+}
+
+
+export const addSkill = (payload = {}) => {
+  // const controller = new AbortController()
+  // const signal = controller.signal
+
+  return API.post(`${process.env.REACT_APP_URL_CANDIDATE_SKILLS}`, {payload, headers: {
+    accept: 'application/json',
+    'Content-Type': 'application/json'
+  }})
+    .then(response => {
+      const { data } = response
+      return data
+    })
+    .catch(error => error)
+}
+
 /**
- * @param {Number} id identificador de un alumno para obtener sus skills
+ * @param {Number} id identificador de un alumno para obtener sus redes sociales
  * @returns {Promise}
  **/
 export const getSocialNetwork = async (id) => {

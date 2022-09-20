@@ -25,7 +25,7 @@ class SkillListSerializer(serializers.ModelSerializer):
 class UpdateStudentSkillSerializer(serializers.ModelSerializer):
         class Meta:
             model = StudentSkill
-            fields = ('c116_id_skill')
+            fields = ('c116_id_skill',)
      
         def update(self,instance,validate_data):
             update_skill = super().update(instance,validate_data)
