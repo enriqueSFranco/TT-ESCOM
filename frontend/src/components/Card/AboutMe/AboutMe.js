@@ -64,9 +64,9 @@ const AboutMe = () => {
         </button>
         <h1 className={styles.title}>Mi Objetivo Profesional es:</h1>
         <p className={styles.professionalObjective}>
-          {candidate[0].t100_personal_objectives === ""
+          {candidate[0]?.t100_personal_objectives === ""
             ? "Sin descripcion"
-            : candidate[0].t100_personal_objectives}
+            : candidate[0]?.t100_personal_objectives}
         </p>
         <div className={`${styles.position}`}>
           <p className={styles.salary}>
@@ -86,7 +86,7 @@ const AboutMe = () => {
           </p>
         </div>
       </article>
-      <ModalForm isOpen={isOpenModalEdit} closeModal={closeOpenModalEdit}>
+      {/* <ModalForm isOpen={isOpenModalEdit} closeModal={closeOpenModalEdit}>
         <form onSubmit={handleSubmit} className={styles.wrapperTextEdit}>
           <div className={styles.wrapperTextArea}>
             <textarea
@@ -111,7 +111,7 @@ const AboutMe = () => {
             Guardar
           </button>
         </form>
-      </ModalForm>
+      </ModalForm> */}
     </>
   );
 };

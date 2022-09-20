@@ -92,7 +92,7 @@ const MenuCandidate = () => {
           </NavLink>
         </NavItem>
         <NavItem>
-          <DropMenu typeuser={typeuser} />
+          <DropMenu typeuser={typeuser} name={token.user.first_name} />
         </NavItem>
       </NavList>
     </>
