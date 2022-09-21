@@ -8,7 +8,7 @@ const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1rem;
+  gap: .5rem;
 `
 
 // li

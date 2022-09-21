@@ -85,7 +85,7 @@ const AboutMe = () => {
           </p>
         </div>
       </article>
-      <ModalForm isOpen={isOpenModalEdit} closeModal={closeOpenModalEdit}>
+      {/* <ModalForm isOpen={isOpenModalEdit} closeModal={closeOpenModalEdit}>
         <form onSubmit={handleSubmit} className={styles.wrapperTextEdit}>
           <div className={styles.wrapperTextArea}>
             <textarea
@@ -110,7 +110,7 @@ const AboutMe = () => {
             Guardar
           </button>
         </form>
-      </ModalForm>
+      </ModalForm> */}
     </>
   );
 };

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
-import { useForm } from "hooks/useForm";
-import { useFetch } from "hooks/useFetch";
+import { useForm, useFetch } from "hooks";
 import { helpHttp } from "utils/helpHttp";
 import { formStepCandidate } from 'types/formStepCandidate'
 import { AcademicFormat } from "types/schemes";
@@ -36,7 +35,6 @@ const StepComponent = () => {
 
   let id_student = token?.user?.id;
 
-  console.log(token)
   academicHistorial.t100_id_student = id_student;
 
   // TODO: Pasar a un hook personalizado
@@ -149,12 +147,10 @@ const StepComponent = () => {
       .PUT(endpoint, options)
       .then((response) => {
         if (!response.err) {
-          console.log(response);
           ///Agreegar skills del alumno
           const endpoint = process.env.REACT_APP_URL_CANDIDATE_SKILLS;
           const skillsAll = hardSkills.concat(softSkills);
-          skillsAll.map((dato) => {
-            //console.log(dato);
+          skillsAll.forEach((dato) => {
             let options = {
               headers: {
                 "Content-Type": "application/json",

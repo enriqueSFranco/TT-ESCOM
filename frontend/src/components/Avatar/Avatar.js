@@ -9,8 +9,8 @@ const CustomAvatar = ({ picture, username = "BT", width, height }) => {
       <div
         style={{
           backgroundColor: `${stringToColor(username.slice(0, 2))}`,
-          height: "80px",
-          width: '80px',
+          height: `${`${width}px` || '80px'}`,
+          width: `${`${height }px`|| '80px'}`,
           display: 'grid',
           placeContent: 'center',
           borderRadius: "50%",

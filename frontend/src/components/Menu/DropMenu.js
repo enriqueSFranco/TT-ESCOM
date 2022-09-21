@@ -3,11 +3,10 @@ import { useDetectClick } from "hooks/useDetectClick";
 import { USERS } from "types/users";
 import DropMenuStudent from "./DropMenuCandidate";
 import DropMenuRecruiter from "./DropMenuRecruiter";
-import { IoMdMenu } from "react-icons/io";
 import CustomAvatar from "components/Avatar/Avatar";
 import styles from "./Dropdown.module.css";
 
-const DropMenu = ({ typeuser }) => {
+const DropMenu = ({ typeuser, name }) => {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useDetectClick(dropdownRef, false);
 
@@ -21,7 +20,7 @@ const DropMenu = ({ typeuser }) => {
         </button>
       ) : (
         <button className={styles.trigger} onClick={onClick}>
-          <CustomAvatar width='45' height='45' />
+          <CustomAvatar picture={null} username={name} width='45' height='45' />
         </button>
       )}
       <nav

@@ -10,12 +10,11 @@ const Menu = () => {
   const { token } = useAuth();
 
   let typeUser = token?.user?.user_type;
-  let username = token?.user.first_name
 
   if (typeUser === USERS.candidate) {
     return (
       <LayoutMenu>
-        <MenuCandidate username={username}  />
+        <MenuCandidate />
       </LayoutMenu>
     )
   }

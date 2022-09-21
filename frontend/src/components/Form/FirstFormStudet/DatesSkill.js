@@ -4,16 +4,13 @@ import Autocomplete from "@mui/material/Autocomplete";
 import styles from "./StylesStepper.module.css";
 
 function DatesSkill({ softSkills, setSoftSkills,hardSkills, setHardSkills, AllResults }) {
+  const [localsoftSkills, setLocalSoftSkill] = useState(softSkills);
+  const [localhardSkills, setLocalHardSkill] = useState(hardSkills);
 
-  console.log({softSkills, hardSkills})
   let hard = [];
   let soft = [];
 
-  const [localsoftSkills, setLocalSoftSkill] = useState(softSkills);
-
-  const [localhardSkills, setLocalHardSkill] = useState(hardSkills);
-
-  AllResults.map((dato) => {
+  AllResults.forEach((dato) => {
     if (dato["c116_type"] === "H") {
       hard.push(dato);
     }
