@@ -100,7 +100,7 @@ const CardProfileStudent = () => {
     });
   }
 
-  if (!candidate && !data) return null;
+  if (!candidate || !data) return null;
 
   return (
     <article className={`${styles.cardProfile}`}>
