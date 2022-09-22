@@ -23,8 +23,21 @@ export const getSkill = async (id) => {
     })
 };
 
+export const getAllSocialNetworks = () => {
+  return API(`${process.env.REACT_APP_URL_CATALOG_PLATAFORM}`)
+    .then(response => {
+      const { data } = response;
+      return data;
+    })
+    .catch(error => {
+      if (error.response) {
+        return error.response.data;
+      }
+    })
+}
+
 export const getLenguages = async (id) => {
-  return axios.get(`${API_STUDENT_LENGUAGES}${id}/`)
+  return API(`${API_STUDENT_LENGUAGES}${id}/`)
     .then(response => {
       const { data } = response;
       return data;

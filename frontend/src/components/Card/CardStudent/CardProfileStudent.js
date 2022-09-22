@@ -22,6 +22,7 @@ import {
   MdOutlineAirplanemodeActive,
   MdOutlineModeEdit,
 } from "react-icons/md";
+import FormSocialNetwork from 'components/Form/FormAddSocialNetwork/FormSocialNetwork'
 import { List } from 'styled-components/CommonStyles'
 import styles from "./CardProfileStudent.module.css";
 
@@ -32,11 +33,13 @@ const CardProfileStudent = () => {
   );
   const { token } = useAuth();
   const [visibleSkill, setVisibleSkill] = useState(false);
+  const [visibleSocilaNetwork, setVisibleSocialNetwork] = useState(false)
   const { candidate } = useGetCandidate(token?.user?.user_id);
   const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
   const [newSkills, setNewSkills] = useState([]);
 
   useEffect(() => {
+    const controller = new AbortController()
     getAcademicHistorial(token?.user?.user_id)
       .then((response) => {
         dispatch({
@@ -45,8 +48,9 @@ const CardProfileStudent = () => {
         });
       })
       .catch((error) => error);
+    return () => controller.abort()
   }, [token?.user?.user_id]);
-
+  
   useEffect(() => {
     const controller = new AbortController();
 
@@ -72,6 +76,8 @@ const CardProfileStudent = () => {
 
   const hanadleVisibleSkill = () => setVisibleSkill(!visibleSkill);
 
+  const handleVisibleSocialNetwork = () => setVisibleSocialNetwork(!visibleSocilaNetwork)
+
   function sendSkill() {
     newSkills.forEach((newSkill) => {
       let options = {
@@ -94,14 +100,14 @@ const CardProfileStudent = () => {
     });
   }
 
-  if (!candidate && !data) return null;
+  if (!candidate || !data) return null;
 
   return (
     <article className={`${styles.cardProfile}`}>
       <div className={`${styles.card}`}>
         <header className={styles.header}>
           <CustomAvatar
-            picture={candidate[0]?.t100_profile_picture}
+            // picture={candidate[0]?.t100_profile_picture}
             username={candidate[0]?.t100_name}
             width="100"
             height="100"
@@ -153,7 +159,7 @@ const CardProfileStudent = () => {
           <div className={`${styles.socialNetworks} ${styles.separator}`}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <h4 className={styles.label}>redes sociales</h4>
-              <MdOutlineModeEdit style={{ fontSize: "1.1rem", cursor: "pointer" }} />
+              <MdOutlineModeEdit onClick={handleVisibleSocialNetwork} style={{ fontSize: "1.1rem", cursor: "pointer" }} />
             </div>
             <List>
               {state.socialNetworks?.length > 0 ? (
@@ -180,6 +186,8 @@ const CardProfileStudent = () => {
                 <span style={{padding: 0}}>Sin redes sociales por el momento.</span>
               )}
             </List>
+            {/* TODO: Hacer componente de agregar redes sociales */}
+            {visibleSocilaNetwork && <FormSocialNetwork />}
           </div>
           {/* SKILLS */}
           <div className={`${styles.wrapperSkills} ${styles.separator}`}>
