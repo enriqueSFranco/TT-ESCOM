@@ -1,10 +1,11 @@
 from django.shortcuts import get_object_or_404
-
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import viewsets
-
+import base64 
+import os
+from django.core.files import File 
 from apps.students.models import Student
 from apps.students.api.serializer.images_serializer import StudentImageSerializer,CVSerializer
 
@@ -39,21 +40,21 @@ class StudentImageViewSet(viewsets.GenericViewSet):
 	def retrieve(self, request, pk):
 		student_image = self.get_object(pk)
 		image_serializer = self.serializer_class(student_image,many=True)
-		return Response(image_serializer.data)
+		return Response(image_serializer.data)		
 
-	def update(self, request, pk):
-		print(request.data)
+	def update(self, request, pk):		
+		#print(request.data)
 		u_image = self.model.objects.filter(t100_id_student = pk).first()
 		image_serializer = self.serializer_class(u_image, data=request.data)
 		if image_serializer.is_valid():
-			image_serializer.save()
+			image_serializer.save()	
 			return Response({
 				'message': 'Imagen de perfil actualizada correctamente'
-			}, status=status.HTTP_200_OK)
+			}, status=status.HTTP_200_OK)		
 		return Response({
-			'message': 'Hay errores en la actualización',
-			'errors': image_serializer.errors
+			'message': 'Error en la actualización'
 		}, status=status.HTTP_400_BAD_REQUEST)
+
 
 	def destroy(self, request, pk):
 		image_destroy = self.model.objects.filter(t100_id_student=pk).first()				

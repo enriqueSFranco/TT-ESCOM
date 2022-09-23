@@ -1,11 +1,14 @@
+from typing_extensions import Required
 from rest_framework import serializers
+from drf_extra_fields.fields import Base64ImageField
 from apps.students.models import Student
 
 
 class StudentImageSerializer(serializers.ModelSerializer):
+        t100_profile_picture = Base64ImageField(required=True)
         class Meta:
             model = Student
-            fields = ('t100_id_student','t100_profile_picture')
+            fields = ('t100_username','t100_profile_picture')
         
         def update(self,instance,validate_data):
             u_profile_pic = super().update(instance,validate_data)

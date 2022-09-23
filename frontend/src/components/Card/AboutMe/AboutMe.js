@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "context/AuthContext";
 import { useGetCandidate, useForm, useModal } from "hooks";
-import { updateStudent } from "services/students";
+import { updateStudent, getStudent } from "services/students";
 import { numberFormat } from "utils/numberFormat";
 import ModalForm from "components/Modal/ModalForm";
 import { MdEdit } from "react-icons/md";
@@ -11,29 +11,31 @@ const AboutMe = () => {
   const { token } = useAuth()
   const [totalChar, setTotalChar] = useState(0);
   const [student, setStudent] = useState(null);
-  // const [aboutMe, setAboutMe] = useState({});
+  const [aboutMe, setAboutMe] = useState({});
   const [isOpenModalEdit, openModalEdit, closeOpenModalEdit] = useModal();
   const { form, handleChange } = useForm({t100_personal_objectives: ""});
   const { candidate } = useGetCandidate(token?.user?.id)
   // let idStudent = token?.user?.id;
 
   // Efecto para obtener la ingformacion de un alumno
-  // useEffect(() => {
-  //   getStudent(token?.user?.id)
-  //     .then((response) => {
-  //       setAboutMe({
-  //         personalObjective: response[0]?.t100_personal_objectives,
-  //         salary: response[0]?.t100_target_salary,
-  //         modality: response[0]?.t100_modalities,
-  //       });
-  //       setStudent(response);
-  //     })
-  //     .catch((error) => {
-  //       if (error.response) return error.response.data.message;
-  //     });
-  // }, [token?.user?.id]);
+   useEffect(() => {
+     getStudent(token?.user?.id)
+       .then((response) => {
+         setAboutMe({
+           personalObjective: response[0]?.t100_personal_objectives,
+           salary: response[0]?.t100_target_salary,
+           modality: response[0]?.t100_modalities,
+         });
+         setStudent(response);
+       })
+       .catch((error) => {
+         if (error.response) return error.response.data.message;
+       });
+   }, [token?.user?.id]);
 
   const updateCount = e => setTotalChar(e.target.value.length);
+
+  console.log(aboutMe);
 
   // Funcion para actualizar el objetivo profesional
   const handleSubmit = (e) => {
@@ -64,25 +66,22 @@ const AboutMe = () => {
         </button>
         <h1 className={styles.title}>Mi Objetivo Profesional es:</h1>
         <p className={styles.professionalObjective}>
-          {candidate[0]?.t100_personal_objectives === ""
+          {aboutMe.personalObjectives === ""
             ? "Sin descripcion"
-            : candidate[0]?.t100_personal_objectives}
+            : `${aboutMe.personalObjective}`}
         </p>
         <div className={`${styles.position}`}>
           <p className={styles.salary}>
             Sueldo deseado:{" "}
-            {candidate[0]?.t100_target_salary === null
+            {aboutMe?.t100_target_salary === null
               ? "No especificado"
-              : `$${numberFormat(candidate[0]?.salary).replace(".00", "")}`}
+              : `$${numberFormat(aboutMe?.salary).replace(".00", "")}`}
           </p>
           <p className={styles.employmentModality}>
             Modalidad de trabajo:{" "}
-            {candidate[0]?.t100_modalities === null
+            {aboutMe?.t100_modalities === null
               ? "No especificado"
-              : `${candidate[0]?.modality}`}
-          </p>
-          <p>
-            Experiencia: No especificada
+              : `${aboutMe?.modality}`}
           </p>
         </div>
       </article>
