@@ -1,13 +1,14 @@
+from typing_extensions import Required
 from rest_framework import serializers
+from drf_extra_fields.fields import Base64ImageField
 from apps.students.models import Student
 
 
 class StudentImageSerializer(serializers.ModelSerializer):
+        t100_profile_picture = Base64ImageField(required=True)
         class Meta:
             model = Student
-            exclude = ('id_user','t100_id_student','t100_boleta','t100_name','t100_last_name','t100_username',
-            't100_cv','t100_email','t100_gender','t100_date_of_birth','t100_personal_objectives','t100_speciality',
-            't100_phonenumber','t100_residence','t100_modalities','t100_target_salary','t100_travel','t100_interest_job','is_active')
+            fields = ('t100_username','t100_profile_picture')
         
         def update(self,instance,validate_data):
             u_profile_pic = super().update(instance,validate_data)
