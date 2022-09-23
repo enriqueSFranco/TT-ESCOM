@@ -1,18 +1,15 @@
 import { useEffect, useReducer, useState } from "react";
 import { useAuth } from "context/AuthContext";
-import { useGetCandidate, useFetch } from "hooks";
-import TextField from "@mui/material/TextField";
+import { useGetCandidate, useGetSocialNetwork, useFetch } from "hooks";
 import { helpHttp } from "utils/helpHttp";
+import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import {
   fetchDataCandidateReducer,
   fetchDataCandidateInit,
 } from "reducers/fetchDataCandidateReducer";
 import { TYPES } from "actions/fetchDataCandidateActions";
-import {
-  getSocialNetwork,
-  getAcademicHistorial,
-} from "services/students/index";
+import { getAcademicHistorial } from "services/students/index";
 import { getSkill } from "services/catalogs";
 import { uuid } from "utils/uuid";
 import CustomAvatar from "components/Avatar/Avatar";
@@ -22,8 +19,8 @@ import {
   MdOutlineAirplanemodeActive,
   MdOutlineModeEdit,
 } from "react-icons/md";
-import FormSocialNetwork from 'components/Form/FormAddSocialNetwork/FormSocialNetwork'
-import { List } from 'styled-components/CommonStyles'
+import FormSocialNetwork from "components/Form/FormAddSocialNetwork/FormSocialNetwork";
+import { List } from "styled-components/CommonStyles";
 import styles from "./CardProfileStudent.module.css";
 
 const CardProfileStudent = () => {
@@ -33,13 +30,14 @@ const CardProfileStudent = () => {
   );
   const { token } = useAuth();
   const [visibleSkill, setVisibleSkill] = useState(false);
-  const [visibleSocilaNetwork, setVisibleSocialNetwork] = useState(false)
+  const [visibleSocilaNetwork, setVisibleSocialNetwork] = useState(false);
   const { candidate } = useGetCandidate(token?.user?.user_id);
+  const { socialNetworks } = useGetSocialNetwork({ idUser: token?.user?.id });
   const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
   const [newSkills, setNewSkills] = useState([]);
 
   useEffect(() => {
-    const controller = new AbortController()
+    const controller = new AbortController();
     getAcademicHistorial(token?.user?.user_id)
       .then((response) => {
         dispatch({
@@ -48,9 +46,9 @@ const CardProfileStudent = () => {
         });
       })
       .catch((error) => error);
-    return () => controller.abort()
+    return () => controller.abort();
   }, [token?.user?.user_id]);
-  
+
   useEffect(() => {
     const controller = new AbortController();
 
@@ -63,20 +61,10 @@ const CardProfileStudent = () => {
     return () => controller.abort();
   }, [token?.user?.id]);
 
-  useEffect(() => {
-    const controller = new AbortController();
-    getSocialNetwork(token?.user?.id).then((response) => {
-      dispatch({
-        type: TYPES.FETCH_SOCIAL_NETWORK,
-        payload: response,
-      });
-    });
-    return () => controller.abort();
-  }, [token?.user?.id]);
 
   const hanadleVisibleSkill = () => setVisibleSkill(!visibleSkill);
 
-  const handleVisibleSocialNetwork = () => setVisibleSocialNetwork(!visibleSocilaNetwork)
+  const handleVisibleSocialNetwork = () => setVisibleSocialNetwork(!visibleSocilaNetwork);
 
   function sendSkill() {
     newSkills.forEach((newSkill) => {
@@ -105,6 +93,15 @@ const CardProfileStudent = () => {
   return (
     <article className={`${styles.cardProfile}`}>
       <div className={`${styles.card}`}>
+        <MdOutlineModeEdit
+          style={{
+            position: "absolute",
+            right: ".5rem",
+            top: ".5rem",
+            fontSize: "1.1rem",
+            cursor: "pointer",
+          }}
+        />
         <header className={styles.header}>
           <CustomAvatar
             // picture={candidate[0]?.t100_profile_picture}
@@ -159,35 +156,37 @@ const CardProfileStudent = () => {
           <div className={`${styles.socialNetworks} ${styles.separator}`}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <h4 className={styles.label}>redes sociales</h4>
-              <MdOutlineModeEdit onClick={handleVisibleSocialNetwork} style={{ fontSize: "1.1rem", cursor: "pointer" }} />
+              <MdOutlineModeEdit
+                onClick={handleVisibleSocialNetwork}
+                style={{ fontSize: "1.1rem", cursor: "pointer" }}
+              />
             </div>
-            <List>
-              {state.socialNetworks?.length > 0 ? (
-                state.socialNetworks?.map(
-                  ({ t113_link, c115_id_plataform }) => {
-                    return (
-                      <a
-                        href={`${t113_link}`}
-                        target="_blank"
-                        rel="noreferrer"
-                        key={uuid()}
-                        className={styles.link}
-                      >
-                        <img
-                          src={c115_id_plataform?.c115_icon}
-                          alt={c115_id_plataform?.c115_icon}
-                          className={styles.iconSocialNetwork}
-                        />
-                      </a>
-                    );
-                  }
-                )
+            <List className={styles.list}>
+              {socialNetworks?.length > 0 ? (
+                socialNetworks?.map(({ t113_link, c115_id_plataform }) => (
+                    <a
+                      href={`${t113_link}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={styles.link}
+                      key={crypto.randomUUID()}
+                    >
+                      <img
+                        src={c115_id_plataform?.c115_icon}
+                        alt={c115_id_plataform?.c115_icon}
+                        className={styles.iconSocialNetwork}
+                      />
+                    </a>
+                ))
               ) : (
-                <span style={{padding: 0}}>Sin redes sociales por el momento.</span>
+                <span style={{ padding: 0 }}>
+                  Sin redes sociales por el momento.
+                </span>
               )}
             </List>
-            {/* TODO: Hacer componente de agregar redes sociales */}
-            {visibleSocilaNetwork && <FormSocialNetwork />}
+            {visibleSocilaNetwork && (
+              <FormSocialNetwork idUser={token?.user?.id} />
+            )}
           </div>
           {/* SKILLS */}
           <div className={`${styles.wrapperSkills} ${styles.separator}`}>
@@ -205,7 +204,7 @@ const CardProfileStudent = () => {
                     key={uuid()}
                     label={c116_id_skill?.c116_description}
                     bg="#232436"
-                    color='#fff'
+                    color="#fff"
                   />
                 ))
               ) : (
@@ -214,7 +213,12 @@ const CardProfileStudent = () => {
             </List>
             {visibleSkill && (
               <div
-                style={{ display: "flex", alignItems: "center", gap: ".4rem", marginTop: '1rem' }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: ".4rem",
+                  marginTop: "1rem",
+                }}
               >
                 <Autocomplete
                   id="skills"
@@ -254,8 +258,16 @@ const CardProfileStudent = () => {
               </div>
             )}
           </div>
-          {/* cv */}
-          <div>{candidate[0]?.t100_cv === null ? "sin CV" : "con CV"}</div>
+          <div>
+            {candidate[0]?.t100_cv === null ? (
+              <p>Aun no cuentas con tu cv</p>
+            ) : (
+              <p>
+                Tu curriculum esta activo y visible para las empresas{" "}
+                <span>Abierto a oportunidades</span>
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </article>

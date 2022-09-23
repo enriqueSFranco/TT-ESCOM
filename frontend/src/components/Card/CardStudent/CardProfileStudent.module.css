@@ -81,16 +81,16 @@ img {
 }
 
 .link {
-  /* outline: 2px solid red;  */
   width: 50px;
-  letter-spacing: .5px;
-  position: relative;
+  height: 20px;
+  display: grid;
+  place-content: center;
+  /* outline: 2px solid red; */
 }
 
 .iconSocialNetwork {
   position: absolute;
   max-width: 100%;
-  height: 50px;
   object-fit: contain;
   padding-bottom: .4rem;
 }
@@ -119,7 +119,17 @@ img {
 
 .socialNetworks {
   width: 100%;
-  height: 150px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  /* outline: 2px solid red; */
+}
+
+.list {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .separator {
@@ -151,7 +161,7 @@ img {
   font-size: 1rem;
 }
 
-.username { color: #fff;}
+.username { color: #000;}
 
 .wrapperSkills {
   width: 100%;
@@ -172,7 +182,7 @@ img {
 .card {
   overflow: hidden;
   color: #000;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
   height: calc(100vh - 6rem);
   width: 450px;
   border-radius: 6px;

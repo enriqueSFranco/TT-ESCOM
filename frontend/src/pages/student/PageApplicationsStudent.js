@@ -56,9 +56,6 @@ const PageApplicationsStudent = () => {
                   Ubicacion de la vacante
                 </StyledTableCell>
                 <StyledTableCell style={{ fontSize: "1.2rem" }} align="center">
-                  Tipo de contratacion
-                </StyledTableCell>
-                <StyledTableCell style={{ fontSize: "1.2rem" }} align="center">
                   Fecha de postulacion
                 </StyledTableCell>
               </TableRow>
@@ -90,26 +87,13 @@ const PageApplicationsStudent = () => {
                       experience={
                         row?.t200_id_vacant?.c207_id_experience?.c207_description
                       }
-                      nameBusisness={
-                        row?.t200_id_vacant?.t300_id_company?.t300_name
-                      }
                       state={row?.c205_id_application_state?.c205_description}
-                      // workingHours={`${(row?.t200_id_vacant?.t200_check_time).slice(
-                      //   0,
-                      //   5
-                      // )}am - ${(row?.t200_id_vacant?.t200_closing_hour).slice(
-                      //   0,
-                      //   5
-                      // )}pm`}
                     />
                   </TableCell>
                   <TableCell
-                    style={{ fontSize: "1rem" }}
+                    style={{ fontSize: "1rem", textAlign: 'center' }}
                     sx={{ width: 350 }}
                   >{`${row?.t200_id_vacant?.t200_municipality}, ${row?.t200_id_vacant?.t200_state}, ${row?.t200_id_vacant?.t200_street}`}</TableCell>
-                  <TableCell style={{ fontSize: "1rem" }}>
-                    {row?.t200_id_vacant?.c208_id_contract?.c208_description}
-                  </TableCell>
                   <TableCell style={{ fontSize: "1rem" }} align="center">
                     {formatDate(row?.t201_date_application)}
                   </TableCell>
