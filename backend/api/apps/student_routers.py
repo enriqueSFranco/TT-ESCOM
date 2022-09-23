@@ -8,6 +8,7 @@ from apps.students.api.views.studentlenguages_viewset import LenguagesViewSet
 from apps.students.api.views.projects_viewset import ProjectsViewSet
 from apps.vacantes.api.views.application_viewset import StudentApplicationsViewSet
 from apps.students.api.views.certifcation_viewset import CertificationViewSet
+from apps.students.api.views.images_viewsets import StudentImageViewSet
 
 router = DefaultRouter()
 router.register(r'Students', StudentViewSet, basename='Students')
@@ -19,5 +20,6 @@ router.register(r'StudentsLenguages',LenguagesViewSet,basename='Students lenguag
 router.register(r'StudentsProjects',ProjectsViewSet,basename='Students personal projects')
 router.register(r'StudentsCertifications',CertificationViewSet,basename='Students certifications')
 router.register(r'StudentsApplications',StudentApplicationsViewSet,basename='Students applications')
+router.register(r'UploadImage',StudentImageViewSet,basename='Student image upload')
 
 urlpatterns=router.urls
