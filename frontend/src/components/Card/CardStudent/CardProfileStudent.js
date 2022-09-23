@@ -104,7 +104,7 @@ const CardProfileStudent = () => {
         />
         <header className={styles.header}>
           <CustomAvatar
-            // picture={candidate[0]?.t100_profile_picture}
+            picture={candidate[0]?.t100_profile_picture}
             username={candidate[0]?.t100_name}
             width="100"
             height="100"
