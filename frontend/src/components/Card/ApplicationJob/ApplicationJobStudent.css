@@ -1,0 +1,69 @@
+.nameJob {
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.paragraph {
+  margin: .4rem 0 0 0;
+  /* font-weight: bold; */
+}
+
+.tags {
+  /* outline: 2px solid red; */
+  width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  /* justify-content: space-between; */
+}
+
+.wrapper {
+  font-size: .9rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align: left;
+  outline: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 4px;
+  width: 420px;
+  height: fit-content;
+  padding: .5rem;
+}
+
+.state {
+  font-weight: 400;
+  text-align: right;
+  position: relative;
+  right: 0;
+  top: 1rem;
+}
+
+.tag-state {
+  padding: .2rem;
+  border-radius: 4px;
+  font-size: .75rem;
+}
+
+.enviada {
+  background-color: darkblue;
+  color: #FFF;
+}
+
+.en-seguimineto {
+  background-color: orange;
+  color: #000;
+}
+
+.descartada {
+  background-color: red;
+  color: #FFF;
+}
+
+.contratado {
+  background-color: #009E0F;
+  color: #FFF;
+}
+
+.no-contratado {
+  background-color: deeppink;
+  color: #000;
+}

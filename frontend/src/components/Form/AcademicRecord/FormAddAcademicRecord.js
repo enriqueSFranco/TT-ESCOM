@@ -1,8 +1,8 @@
 import React from "react";
-import { useFetch } from "hooks/useFetch";
+// import { useFetch } from "hooks/useFetch";
 import { useAuth } from "context/AuthContext";
 import { useForm } from "hooks/useForm";
-import { API_ACADEMIC_UNITS } from "services/settings";
+// import { API_ACADEMIC_UNITS } from "services/settings";
 import { postAcademicHistorial } from "services/students/index";
 import { TextField } from "@mui/material";
 import { MdSchool } from "react-icons/md";
@@ -17,11 +17,10 @@ let initialForm = {
 
 const FormAddAcademicRecord = () => {
   const { token } = useAuth();
-  const { data } = useFetch(API_ACADEMIC_UNITS);
+  // const { data } = useFetch(API_ACADEMIC_UNITS);
   const { form, handleChange } = useForm(initialForm);
 
-  if (!data) return null;
-
+  
   function onSubmitAcademicHistorial(e) {
     e.preventDefault();
     let copyForm = {
@@ -35,7 +34,9 @@ const FormAddAcademicRecord = () => {
       .catch((error) => {
         console.log(error);
       });
-  };
+    };
+    
+  // if (!data) return null;
 
   return (
     <div className={styles.wrapperForm}>
