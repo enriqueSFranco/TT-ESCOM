@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useForm } from "hooks/useForm";
+import { uploadPhotoStudent } from 'services'
 import Input from "components/Input/Input";
 import Switch from "components/Switch/Switch";
 import CustomAvatar from "components/Avatar/Avatar";
@@ -21,8 +22,8 @@ const validateForm = (form) => {
   return errors;
 };
 
-const FormUpdateDataStudent = ({ data }) => {
-  const [image, setImage] = useState(null)
+const FormUpdateDataStudent = ({ id, username }) => {
+  const [image, setImage] = useState('')
   const { form, handleChange, handleChecked } = useForm(
     updateStudentInitialForm,
     validateForm
@@ -38,31 +39,33 @@ const FormUpdateDataStudent = ({ data }) => {
     fr.onload = function() {
       setImage(fr.result.toString())
     }
+    fr.readAsDataURL(file)
   }
 
-  async function updateImage(e) {
+  function updateImage(e) {
     console.log(e.target.files[0])
     setImage(e.target.files[0])
-    // convertToBase64(e.target.files)
-  //   const data = new FormData()
-  //   data.append('t100_username', "")
-  //   data.append('t100_profile_picture', image)
-  //   const response = await fetch(`${process.env.REACT_APP_URL_CANDIDATE_UPLOAD_IMAGE}${data?.id}/`, {
-  //     method: 'PUT',
-  //     body: data
-  //   })
+  }
 
-  //   const json = await response.json()
-  //   console.log(json)
+  async function handleAPI(e) {
+    const data = new FormData(e.target)
+    data.append('t100_username', '')
+    if (Object.entries(e.target.files).length > 0)
+      data.append('t100_profile_picture', convertToBase64(image.name))
+    
+    uploadPhotoStudent(id, data)
+      .then(response => console.log(response))
+      .catch(error => console.error(error))
   }
 
   function update(e) {
     e.preventDefault()
     console.log('formulario enviado...')
+    handleAPI(e)
     uploadCV()
   }
 
-  if (!data) return null
+  if (!id) return null
 
   console.log(image)
 
@@ -71,7 +74,7 @@ const FormUpdateDataStudent = ({ data }) => {
       <h1 style={{fontSize: '1.3rem'}}>Editar datos personales</h1>
         <form onSubmit={e => update(e)}>
           <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '150px', marginBottom: '1rem'}}>
-            <CustomAvatar picture={null} username={data?.first_name} width='100' height='100' />
+            <CustomAvatar picture={null} username={username} width='100' height='100' />
             <div style={{display: 'flex', justifyContent: 'center'}}>
               <input type="file" onChange={updateImage} />
             </div>

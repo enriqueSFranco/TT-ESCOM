@@ -13,6 +13,7 @@ import PageProfileStudent from "pages/student/PageProfileStudent";
 import PageLoginStudentUpdate from "pages/login/PageLoginStudentUpdate";
 import FormPostJob from "components/Form/postJob/FormPostJob";
 import PageHistory from "pages/business/PageHistory";
+import PageLanguages from 'pages/student/PageLanguages'
 import PageSuccesCompany from "pages/login/PageSuccesCompany";
 import PageValidateRecruiter from "pages/admin/PageValidateRecruiter";
 import PageApplications from "pages/business/PageApplications";
@@ -71,6 +72,7 @@ const Root = () => {
       <Route element={<PrivateRoute role={ROLE.STUDENT} />}>
         <Route path="/perfil" element={<PageProfileStudent />}>
           <Route path="historial-academico" element={<AcademicRecordList />} />
+          <Route path="idiomas" element={<PageLanguages />} />
           <Route path="experiencia" element={<ExperienceList />} />
           <Route path="certificaciones" element={<CertificationList />} />
         </Route>

@@ -10,6 +10,8 @@ import {
   API_CP
 } from "services/settings";
 
+const { REACT_APP_CATALOG_LANGUAGE } = process.env;
+
 export const getSkill = async (id) => {
   return API(`${process.env.REACT_APP_URL_CANDIDATE_SKILLS}${id}/`)
     .then(response => {
@@ -22,6 +24,15 @@ export const getSkill = async (id) => {
       }
     })
 };
+
+export const getAllLanguage = () => {
+  return API(`${REACT_APP_CATALOG_LANGUAGE}`)
+    .then(response => {
+      const { data } = response
+      return data;
+    })
+    .catch(error => error)
+}
 
 export const getAllSocialNetworks = () => {
   return API(`${process.env.REACT_APP_URL_CATALOG_PLATAFORM}`)

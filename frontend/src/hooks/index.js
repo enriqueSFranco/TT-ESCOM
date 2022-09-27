@@ -15,3 +15,4 @@ export * from './useRecruiterJobs';
 export * from './useScroll';
 export * from './useViewport';
 export * from './useGetPlataforms'
+export * from './useLanguage'

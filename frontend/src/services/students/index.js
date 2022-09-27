@@ -168,13 +168,9 @@ export const createAccountStudent = async (payload) => {
 };
 
 // TODO:terminar la funcion para subir una imagen
-export const uploadPhotoStudent = (id, img) => {
-  const formData = new FormData();
-
-  formData.append("photo", img);
-
-  return axios
-    .put(`${API_PHOTO_STUDENT}/${id}/`, formData)
+export const uploadPhotoStudent = (id, payload) => {
+  
+  return API.put(`${process.env.REACT_APP_URL_CANDIDATE_UPLOAD_IMAGE}${id}/`, payload, {headers: { 'Content-Type': 'multipart/form-data'}})
     .then((response) => {
       const { data } = response;
       return data;
