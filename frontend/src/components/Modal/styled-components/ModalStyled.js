@@ -28,7 +28,6 @@ const ModalContainer = styled.div`
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   border-radius: .2rem;
   animation: ${fadeIn} .3s ease forwards;
 

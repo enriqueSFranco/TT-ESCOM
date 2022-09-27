@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
 import { useForm } from "hooks/useForm";
-import toast from "react-hot-toast";
-import { Toaster } from "react-hot-toast";
+import Input from "components/Input/Input";
+import Switch from "components/Switch/Switch";
+import CustomAvatar from "components/Avatar/Avatar";
 import { updateStudent, getLinks, postSocialNetwork, getStudent } from "services/students/index";
 import { updateStudentInitialForm } from "../../../types/schemes";
-import TextField from "@mui/material/TextField";
-import Label from "../../Element/Label/Label";
-import Switch from "../../Switch/Switch";
-import * as BiIcon from "react-icons/bi";
-import styles from "./FormUpdateDataStudent.module.css";
 
 const validateForm = (form) => {
   let errors = {};
@@ -25,198 +21,86 @@ const validateForm = (form) => {
   return errors;
 };
 
-const FormUpdateDataStudent = ({ idStudent }) => {
-  const [links, setLinks] = useState(null);
-  const [student, setStudent] = useState(null);
-  // const { token } = useContext(AuthContext);
+const FormUpdateDataStudent = ({ data }) => {
+  const [image, setImage] = useState(null)
   const { form, handleChange, handleChecked } = useForm(
     updateStudentInitialForm,
     validateForm
   );
 
-    useEffect(() => {
-      if (idStudent !== undefined) {
-        getStudent(idStudent)
-          .then(response => {
-            setStudent(response);
-          })
-          .catch(error => console.log(error));
-      }
-    }, [idStudent]);
+  async function uploadCV() {
+    console.log('subiendo cv...')
 
-  useEffect(() => {
-    getLinks()
-      .then((response) => {
-        setLinks(response);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+  }
 
-  //TODO: redireccion despues de haber actualizado los datos del alumno.
-  async function handleSubmit(e) {
-    e.preventDefault();
-    if (idStudent !== undefined) {
-      updateStudent(idStudent, form)
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+  function convertToBase64(file) {
+    const fr = new FileReader()
+    fr.onload = function() {
+      setImage(fr.result.toString())
     }
-  };
+  }
 
-  const handleClickAddLink = (e) => {
-    e.preventDefault();
-    postSocialNetwork({
-      t113_link: form.t113_link,
-      t100_id_student: idStudent,
-      c115_id_plataform: parseInt(form.c115_id_plataform)
-    }).then(response => {
-      if (form.t113_link.trim())
-        toast.success(`Link agreado correctamente.`)
-      else 
-        toast.error(`El campo link esta vacio.`)
-    })
-    .catch(error => console.log(error))
-  };
+  async function updateImage(e) {
+    console.log(e.target.files[0])
+    setImage(e.target.files[0])
+    // convertToBase64(e.target.files)
+  //   const data = new FormData()
+  //   data.append('t100_username', "")
+  //   data.append('t100_profile_picture', image)
+  //   const response = await fetch(`${process.env.REACT_APP_URL_CANDIDATE_UPLOAD_IMAGE}${data?.id}/`, {
+  //     method: 'PUT',
+  //     body: data
+  //   })
+
+  //   const json = await response.json()
+  //   console.log(json)
+  }
+
+  function update(e) {
+    e.preventDefault()
+    console.log('formulario enviado...')
+    uploadCV()
+  }
+
+  if (!data) return null
+
+  console.log(image)
 
   return (
     <>
-      <div className={styles.wrapper}>
-        <header className={styles.header}>
-          <h1 className={styles.title}>editar perfil</h1>
-        </header>
-        <form onSubmit={handleSubmit} className={`container ${styles.form}`}>
-          <div className={styles.inputGroup}>
-            <div className={styles.inputGroupFlex}>
-              <TextField
-                size="small"
-                label="Nombre"
-                id="t100_name"
-                name="t100_name"
-                autoComplete="off"
-                sx={{ width: "280px", maxWidth: "100%" }}
-                // defaultValue={student[0]?.t100_name}
-                value={form.t100_name}
-                onChange={handleChange}
-              />
-              <TextField
-                size="small"
-                label="Apellido"
-                id="t100_last_name"
-                name="t100_last_name"
-                autoComplete="off"
-                sx={{ width: "280px", maxWidth: "100%" }}
-                // defaultValue={student[0]?.t100_last_name}
-                value={form.t100_last_name}
-                onChange={handleChange}
-              />
-            </div>
-
-            <TextField
-              size="small"
-              label="Especialidad"
-              id="t100_speciality"
-              name="t100_speciality"
-              autoComplete="off"
-              sx={{ width: "280px", maxWidth: "100%" }}
-              // defaultValue={student[0]?.t100_speciality ?? ""}
-              value={form.t100_speciality}
-              onChange={handleChange}
-            />
-
-            <div className={styles.flexInput}>
-              <TextField
-                size="small"
-                label="Donde vives"
-                id="t100_residence"
-                name="t100_residence"
-                autoComplete="off"
-                sx={{ width: "280px", maxWidth: "100%" }}
-                // defaultValue={student[0]?.t100_residence ?? ""}
-                value={form.t100_residence}
-                onChange={handleChange}
-              />
-              <Switch
-                label="Disponibilidad para viajar"
-                name="t100_travel"
-                id="t100_travel"
-                value={form.t100_travel}
-                onChange={handleChecked}
-                checked={form.t100_travel}
-              />
-            </div>
-
-            <TextField
-              size="small"
-              type="text"
-              label="Telefono/Whatsapp"
-              id="t100_phonenumber"
-              name="t100_phonenumber"
-              autoComplete="off"
-              sx={{ width: "280px", maxWidth: "100%" }}
-              // defaultValue={student[0]?.t100_phonenumber}
-              value={form.t100_phonenumber}
-              onChange={handleChange}
-            />
-            <div>
-              <input
-                type="file"
-                name="cv"
-                id="cv"
-                className={`${styles.inputFile}`}
-                value={form.file}
-                onChange={handleChange}
-              />
-              <Label htmlFor="cv">
-                <BiIcon.BiCloudUpload />
-                subir cv
-              </Label>
-            </div>
-            <div className={styles.inputGroupFlex_1_3}>
-              <h3 className={styles.titleH3}>Cuentas con alguna red social?</h3>
-              <div className={styles.flexInput}>
-                <select 
-                  name="c115_id_plataform" 
-                  id="c115_id_plataform"
-                  value={form?.c115_id_plataform}
-                  onChange={handleChange}
-                  className={styles.select}
-                  >
-                    <option value="" disabled>Red Social</option>
-                  {links &&
-                    links?.map((link) => (
-                      <option
-                        key={link?.c115_description}
-                        value={link?.c115_id_plataform}
-                      >
-                        {link?.c115_description}
-                      </option>
-                    ))}
-                </select>
-                <TextField
-                  sx={{ width: "300px" }}
-                  size="small"
-                  label="link"
-                  autoComplete="off"
-                  id="t113_link"
-                  name="t113_link"
-                  value={form?.t113_link}
-                  onChange={handleChange}
-                />
-                <button type="button" className={styles.btnAdd} onClick={handleClickAddLink}>
-                  +
-                </button>
-              </div>
+      <h1 style={{fontSize: '1.3rem'}}>Editar datos personales</h1>
+        <form onSubmit={e => update(e)}>
+          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '150px', marginBottom: '1rem'}}>
+            <CustomAvatar picture={null} username={data?.first_name} width='100' height='100' />
+            <div style={{display: 'flex', justifyContent: 'center'}}>
+              <input type="file" onChange={updateImage} />
             </div>
           </div>
-          <button type="submit" className={styles.btnUpdate}>
-            Actualizar
-          </button>
+          <Input label='Nombre(s)' width='300px' />
+          <div style={{display: 'flex', gap: '1rem', marginTop: '1rem'}}>
+            <Input label='Primer Apellido' />
+            <Input label='Segundo Apellido' />
+          </div>
+          <div>
+            <h2>Donde te ubicas</h2>
+            <div style={{display: 'flex', gap: '1rem', marginBottom: '1rem'}}>
+              <Input label='Calle y numero'  />
+              <Input label='CP' width='300px' />
+            </div>
+            <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
+              <Input label='Estado' width='450px' />
+              <Input label='Ciudad/Municipio/Alcadia' width='460px' />
+              <Input label='Colonia' width='450px' />
+            </div>
+            <div style={{display: 'flex', gap: '1rem', alignItems: 'center', justifyContent:'space-between', marginTop: '1rem'}}>
+              <Switch label='Disponible para reubicarte' />
+              <input type="file" />
+            </div>
+          </div>
+          <div style={{display: 'flex', justifyContent: 'center', width: '100%', marginTop: '1rem'}}>
+            <input type="submit" value='Aceptar' style={{backgroundColor: '#116BFE', color: '#FFF', outline: 'none', border: "none", width: '120px', borderRadius: '4px', padding: '.5rem'}} />
+          </div>
         </form>
-      </div>
-      <Toaster />
     </>
   );
 };

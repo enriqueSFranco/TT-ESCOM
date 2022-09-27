@@ -52,6 +52,7 @@ monotonic = "==1.5"
 python-engineio = "*"
 python-socketio = "*"
 six = "==1.15.0"
+drf-extra-fields = "*"
 
 [dev-packages]
 
