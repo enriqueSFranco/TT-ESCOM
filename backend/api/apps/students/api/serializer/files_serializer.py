@@ -1,4 +1,3 @@
-from typing_extensions import Required
 from rest_framework import serializers
 from drf_extra_fields.fields import Base64ImageField
 from apps.students.models import Student
@@ -18,7 +17,7 @@ class StudentImageSerializer(serializers.ModelSerializer):
 class CVSerializer(serializers.ModelSerializer):
         class Meta:
             model = Student
-            fields = ('t100_id_student','t100_email','t100_cv')
+            fields = ('t100_username','t100_cv')
         
         def update(self,instance,validate_data):
             u_cv = super().update(instance,validate_data)
