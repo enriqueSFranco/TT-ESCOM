@@ -22,7 +22,7 @@ const validateForm = (form) => {
   return errors;
 };
 
-const FormUpdateDataStudent = ({ id, username }) => {
+const FormUpdateDataStudent = ({ id, username, candidate }) => {
   const [image, setImage] = useState('')
   const { form, handleChange, handleChecked } = useForm(
     updateStudentInitialForm,
@@ -68,6 +68,7 @@ const FormUpdateDataStudent = ({ id, username }) => {
   if (!id) return null
 
   console.log(image)
+  console.log(candidate)
 
   return (
     <>
@@ -79,9 +80,9 @@ const FormUpdateDataStudent = ({ id, username }) => {
               <input type="file" onChange={updateImage} />
             </div>
           </div>
-          <Input label='Nombre(s)' width='300px' />
+          <Input label='Nombre(s)' width='300px' defaultValue={candidate?.t100_name}/>
           <div style={{display: 'flex', gap: '1rem', marginTop: '1rem'}}>
-            <Input label='Primer Apellido' />
+            <Input label='Primer Apellido' defaultValue={candidate?.t100_last_name}/>
             <Input label='Segundo Apellido' />
           </div>
           <div>
@@ -96,7 +97,7 @@ const FormUpdateDataStudent = ({ id, username }) => {
               <Input label='Colonia' width='450px' />
             </div>
             <div style={{display: 'flex', gap: '1rem', alignItems: 'center', justifyContent:'space-between', marginTop: '1rem'}}>
-              <Switch label='Disponible para reubicarte' />
+              <Switch label='Disponible para reubicarte' defailtValue={candidate?.t100_travel}/>
               <input type="file" />
             </div>
           </div>
