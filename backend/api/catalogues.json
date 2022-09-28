@@ -171,2251 +171,2251 @@
     
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":1,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Abkhaz",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":2,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Afar",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":3,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Africanos",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":4,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Akan",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":5,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Albania",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":6,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Alemán",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":7,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Amárico",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":8,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Árabe",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":9,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Aragonés",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":10,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Armenio",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":11,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Assamese",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":12,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Avaric",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":13,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Avestan",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":14,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Aymara",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":15,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Azerbaiyán",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":16,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Bambara",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":17,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Bashkir",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":18,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Belarús",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":19,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Bengalí",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":20,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Bihari",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":21,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Bislama",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":22,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Bosnia",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":23,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Breton",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":24,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Búlgaro",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":25,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Burmese",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":26,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Cachemira",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":27,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Canarés",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":28,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Catalán",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":29,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Chamorro",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":30,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Chechenio",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":31,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Checo",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":32,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Chichewa, Chewa, Nyanja",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":33,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Chino",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":34,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Chuvashia",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":35,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Cingalés, singalés",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":36,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Corea",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":37,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Cornualles",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":38,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Corso",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":39,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Cree",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":40,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Croacia",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":41,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Danés",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":42,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "De las Islas Marshall",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":43,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Divehi, Dhivehi, Maldivas",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":44,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Dzongkha",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":45,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Eslovaca",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":46,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Esloveno",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":47,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Español",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":48,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Esperanto",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":49,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Estonia",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":50,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Ewe",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":51,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Faroese",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":52,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Fiji",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":53,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Finlandés",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":54,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Francés",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":55,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Fula, Fulah, Pulaar, Pular",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":56,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Gaélico escocés, gaélico",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":57,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Galés",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":58,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Galicia",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":59,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Georgiano",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":60,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Griego Moderno",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":61,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Guaraní",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":62,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Gujarati",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":63,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Haitiano, creole haitiano",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":64,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Hausa",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":65,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Hebreo (moderno)",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":66,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Herero",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":67,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Hindi",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":68,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Hiri Motu",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":69,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Holandés",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":70,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Húngaro",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":71,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Ido",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":72,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Igbo",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":73,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Indonesio",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":74,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Inglés",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":75,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Interlingua",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":76,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Interlingue",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":77,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Inuktitut",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":78,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Inupiaq",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":79,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Irlanda",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":80,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Islandés",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":81,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Italiano",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":82,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Japonés",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":83,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Javanés",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":84,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Kalaallisut, Groenlandia",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":85,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Kanuri",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":86,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Kazajstán",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":87,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Khmer",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":88,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Kikuyu, Gikuyu",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":89,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Kinyarwanda",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":90,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Kirguises, Kirguistán",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":91,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Kirundi",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":92,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Komi",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":93,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Kongo",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":94,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Kurdo",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":95,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Kwanyama, Kuanyama",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":96,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Lao",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":97,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Latin",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":98,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Letonia",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":99,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Limburgués, Limburgan, Limburger",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":100,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Lingala",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":101,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Lituano",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":102,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Luba-Katanga",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":103,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Luganda",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":104,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Luxemburgués, Luxemburgués",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":105,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Macedonia",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":106,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Madagascar",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":107,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Malayalam",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":108,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Malayo",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":109,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Maltés",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":110,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Manx",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":111,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Māori",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":112,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Maratí (Marathi)",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":113,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Mongolia",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":114,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Nauru",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":115,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Navajo, Navaho",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":116,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Ndebele del Norte",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":117,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Ndebele del sur",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":118,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Ndonga",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":119,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Nepali",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":120,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Noruego",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":121,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Noruego Bokmål",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":122,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Noruego Nynorsk",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":123,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Nuosu",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":124,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Occitano",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":125,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Oeste de Frisia",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":126,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Ojibwe, Ojibwa",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":127,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Oriya",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":128,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Oromo",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":129,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Osetia del Sur, osetio",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":130,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Pāli",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":131,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Panjabi, Punjabi",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":132,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Pashto, Pushto",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":133,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Persa",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":134,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Polaco",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":135,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Portugués",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":136,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Quechua",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":137,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Romanche",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":138,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Rumania, Moldavia, Moldavan",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":139,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Ruso",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":140,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Sami del norte",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":141,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Samoa",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":142,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Sango",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":143,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Sánscrito (samskrta)",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":144,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Sardo",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":145,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Serbio",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":146,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Shona",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":147,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Sindhi",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":148,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Somalí",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":149,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Southern Sotho",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":150,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Sueco",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":151,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Sundanese",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":152,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Swahili",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":153,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Swati",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":154,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Tagalo",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":155,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Tahitian",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":156,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Tailandia",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":157,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Tamil",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":158,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Tártara",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":159,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Tayikistán",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":160,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Telugu",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":161,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Tibetano estándar, Tibetano, Central",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":162,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Tigrinya",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":163,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Tonga (Islas Tonga)",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":164,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Tsonga",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":165,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Tswana",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":166,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Turco",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":167,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Turkmenistán",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":168,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Twi",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":169,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Ucrania",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":170,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Uighur, Uyghur",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":171,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Urdu",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":172,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Uzbeko",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":173,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Valonia",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":174,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Vasco",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":175,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Venda",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":176,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Vietnamita",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":177,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Volapük",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":178,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Wolof",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":179,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Xhosa",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":180,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Yiddish",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":181,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Yoruba",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":182,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Zhuang, Chuang",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":183,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Zulu",
+            "c111_type": "Idioma"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":184,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Akateko",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":185,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "amuzgo",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":186,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Awakateko",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":187,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "ayapaneco",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":188,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "ch'ol",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":189,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "chatino",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":190,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "chichimeco jonaz",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":191,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "chinanteco",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":192,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "chocholteco",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":193,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "chontal de Oaxaca",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":194,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "chontal de Tabasco",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":195,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Chuj",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":196,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "cora",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":197,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "cucapá",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":198,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "cuicateco",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":199,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "guarijío",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":200,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "huasteco",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":201,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "huave",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":202,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "huichol",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":203,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "ixcateco",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":204,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Ixil",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":205,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Jakalteko",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":206,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "K'iche'",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":207,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Kaqchikel",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":208,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Kickapoo",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":209,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "kiliwa",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":210,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "ku'ahl",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":211,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "kumiai",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":212,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "lacandón",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":213,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Mam",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":214,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "matlatzinca",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":215,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "maya",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":216,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "mayo",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":217,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "mazahua",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":218,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "mazateco",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":219,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "mixe",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":220,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "mixteco",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":221,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "náhuatl",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":222,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "oluteco",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":223,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "otomí",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":224,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "paipai",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":225,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "pame",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":226,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "pápago",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":227,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "pima",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":228,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "popoloca",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":229,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "popoluca de la Sierra",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":230,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Q'anjob'al",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":231,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Q'eqchí '",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":232,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "qato'k",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":233,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "sayulteco",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":234,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "seri",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":235,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "tarahumara",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":236,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "tarasco",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":237,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "Teko",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":238,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "tepehua",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":239,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "tepehuano del norte",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":240,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "tepehuano del sur",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":241,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "texistepequeño",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":242,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "tlahuica",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":243,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "tlapaneco",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":244,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "tojolabal",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":245,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "totonaco",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":246,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "triqui",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":247,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "tseltal",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":248,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "tsotsil",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":249,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "yaqui",
+            "c111_type": "Dialecto"
         }
     },
 
     {
         "model":"students.Lenguage",        
-        "pk":251,
+        "pk":250,
         "fields":{
-            "c111_description": "zoque",
-            "c111_type": "Dialect"
+            "c111_description": "zapoteco",
+            "c111_type": "Dialecto"
         }
     },
 
