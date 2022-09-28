@@ -1,5 +1,6 @@
 from django.contrib.auth.models import  AbstractBaseUser,PermissionsMixin
 from apps.users.models import User
+#from apps.vacantes import models
 
 #from turtle import ondrag
 from django.db import models
@@ -101,7 +102,7 @@ class Skills(models.Model):
 class Lenguage(models.Model):
 	c111_id_lenguage = models.AutoField(primary_key=True)
 	c111_description = models.CharField(max_length=60,blank=True,null=True)	
-
+	c111_type = models.CharField(max_length=20,blank=True,null=True)
 	class Meta:
 		verbose_name = 'Lenguange'
 		verbose_name_plural = 'Lenguages'
@@ -147,6 +148,12 @@ class Student(models.Model):
 	t100_speciality = models.CharField(max_length=100,null=True,blank=True)
 	t100_phonenumber = models.PositiveBigIntegerField (null=True,blank=True)
 	t100_residence = models.CharField(max_length=100,null=True,blank=True)
+	c222_id_locality = models.ForeignKey(
+        'vacantes.Locality',
+        null=True,
+		blank=True,
+		related_name='StudentLocality',
+        on_delete=models.CASCADE)
 	t100_modalities = models.CharField(max_length=20,null=True,blank=True)
 	t100_target_salary = models.PositiveIntegerField(null=True, blank=True)	
 	t100_travel = models.BooleanField(default=False)

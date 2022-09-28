@@ -8,7 +8,8 @@ from apps.students.api.views.studentlenguages_viewset import LenguagesViewSet
 from apps.students.api.views.projects_viewset import ProjectsViewSet
 from apps.vacantes.api.views.application_viewset import StudentApplicationsViewSet
 from apps.students.api.views.certifcation_viewset import CertificationViewSet
-from apps.students.api.views.images_viewsets import StudentImageViewSet
+from apps.students.api.views.files_viewsets import StudentImageViewSet
+from apps.students.api.views.files_viewsets import CVViewSet
 
 router = DefaultRouter()
 router.register(r'Students', StudentViewSet, basename='Students')
@@ -21,5 +22,6 @@ router.register(r'StudentsProjects',ProjectsViewSet,basename='Students personal 
 router.register(r'StudentsCertifications',CertificationViewSet,basename='Students certifications')
 router.register(r'StudentsApplications',StudentApplicationsViewSet,basename='Students applications')
 router.register(r'UploadImage',StudentImageViewSet,basename='Student image upload')
+router.register(r'UploadCV',CVViewSet,basename='Student CV upload')
 
 urlpatterns=router.urls

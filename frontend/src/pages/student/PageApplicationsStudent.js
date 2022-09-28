@@ -38,6 +38,7 @@ const PageApplicationsStudent = () => {
 
   if (!data) return null;
 
+  console.log(data);
   // TODO: ELIMINAR ELEMENTOS DUPLICADOS DE LA LISTA DE VACANTES EN RELACION AL CAMPO T200_JOB
   return (
     <LayoutHome>
@@ -93,7 +94,7 @@ const PageApplicationsStudent = () => {
                   <TableCell
                     style={{ fontSize: "1rem", textAlign: 'center' }}
                     sx={{ width: 350 }}
-                  >{`${row?.t200_id_vacant?.t200_municipality}, ${row?.t200_id_vacant?.t200_state}, ${row?.t200_id_vacant?.t200_street}`}</TableCell>
+                  >{`${row?.t200_id_vacant?.c222_id_locality?.c222_municipality}, ${row?.t200_id_vacant?.c222_id_locality?.c222_state}, ${row?.t200_id_vacant?.t200_street}`}</TableCell>
                   <TableCell style={{ fontSize: "1rem" }} align="center">
                     {formatDate(row?.t201_date_application)}
                   </TableCell>

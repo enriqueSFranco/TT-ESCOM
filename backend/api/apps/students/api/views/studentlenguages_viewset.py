@@ -1,7 +1,4 @@
-from pickle import NONE
-from re import S
 from django.shortcuts import get_object_or_404
-
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import action
@@ -41,7 +38,7 @@ class LenguagesViewSet(viewsets.GenericViewSet):
 		if lenguage_serializer.is_valid():
 			lenguage_serializer.save()
 			return Response({
-				'message': 'Registro de idioma registrado correctamente.'
+				'message': 'Idioma registrado correctamente.'
 			}, status=status.HTTP_201_CREATED)
 		return Response({
 			'message': 'Hay errores en el registro',
@@ -71,8 +68,8 @@ class LenguagesViewSet(viewsets.GenericViewSet):
 		if lenguage_destroy:
 			lenguage_destroy = self.model.objects.filter(t110_id_registrer=pk).delete()
 			return Response({
-				'message': 'Registro del alumno eliminado correctamente'
+				'message': 'Registro del idioma eliminado correctamente'
 			})
 		return Response({
-			'message': 'No existe el registro del alumno que desea eliminar'
+			'message': 'No existe el registro que desea eliminar'
 		}, status=status.HTTP_404_NOT_FOUND)

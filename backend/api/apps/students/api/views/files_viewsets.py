@@ -7,7 +7,7 @@ import base64
 import os
 from django.core.files import File 
 from apps.students.models import Student
-from apps.students.api.serializer.images_serializer import StudentImageSerializer,CVSerializer
+from apps.students.api.serializer.files_serializer import StudentImageSerializer,CVSerializer
 
 class StudentImageViewSet(viewsets.GenericViewSet):
 	model = Student
@@ -79,14 +79,14 @@ class CVViewSet(viewsets.GenericViewSet):
 		if self.queryset == None:
 			self.queryset = self.model.objects\
 				.filter(t100_id_student = pk)\
-				.values('t100_id_student','t100_email','t100_cv')
+				.all()
 		return  self.queryset
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t100_boleta','t100_email','t100_cv')
+				.all()
 		return self.queryset
   
 
@@ -102,10 +102,18 @@ class CVViewSet(viewsets.GenericViewSet):
 		cv_serializer = self.serializer_class(student_cv,many=True)
 		return Response(cv_serializer.data)
 
+	def set_file(self,file):
+		print("hola desde set_file")
+		image = {"t100_username":"",
+			"t100_cv":base64.b64decode(file)
+		}
+		return image
+
 	def update(self, request, pk):
 		print(request.data)
+		image = self.set_file(request.data['file'])
 		u_cv = self.model.objects.filter(t100_id_student = pk).first()
-		cv_serializer = self.serializer_class(u_cv, data=request.data)
+		cv_serializer = self.serializer_class(u_cv, data=image)
 		if cv_serializer.is_valid():
 			cv_serializer.save()
 			return Response({

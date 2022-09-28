@@ -277,7 +277,7 @@ const CardProfileStudent = () => {
         </div>
       </article>
       <ModalPortal isOpen={isOpen} closeModal={closeModal}>
-        <FormUpdateDataStudent id={candidate[0]?.t100_id_student} username={candidate[0]?.t100_name} />
+        <FormUpdateDataStudent id={candidate[0]?.t100_id_student} username={candidate[0]?.t100_name} candidate={candidate[0]} />
       </ModalPortal>
     </>
   );
