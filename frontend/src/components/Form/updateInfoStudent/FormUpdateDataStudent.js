@@ -35,40 +35,46 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
   }
 
   function convertToBase64(file) {
-    const fr = new FileReader()
-    fr.onload = function() {
-      setImage(fr.result.toString())
-    }
-    fr.readAsDataURL(file)
+    return new Promise((resolve, reject) => {
+      const fr = new FileReader()
+      fr.readAsDataURL(file)
+
+      fr.onload = () => {
+        resolve(fr.result)
+      }
+      fr.onerror = (error) => {
+        reject(error)
+      }
+    })
   }
 
-  function updateImage(e) {
-    console.log(e.target.files[0])
-    setImage(e.target.files[0])
+  async function updateImage(e) {
+    const file = e.target.files[0]
+    const base64 = await convertToBase64(file)
+    console.log(base64)
   }
 
-  async function handleAPI(e) {
-    const data = new FormData(e.target)
-    data.append('t100_username', '')
-    if (Object.entries(e.target.files).length > 0)
-      data.append('t100_profile_picture', convertToBase64(image.name))
+  // async function handleAPI(e) {
+  //   const data = new FormData(e.target)
+  //   data.append('t100_username', '')
+  //   if (Object.entries(e.target.files).length > 0)
+  //     data.append('t100_profile_picture', convertToBase64(image.name))
     
-    uploadPhotoStudent(id, data)
-      .then(response => console.log(response))
-      .catch(error => console.error(error))
-  }
+  //   uploadPhotoStudent(id, data)
+  //     .then(response => console.log(response))
+  //     .catch(error => console.error(error))
+  // }
 
   function update(e) {
     e.preventDefault()
     console.log('formulario enviado...')
-    handleAPI(e)
+    updateImage(e)
     uploadCV()
   }
 
   if (!id) return null
 
   console.log(image)
-  console.log(candidate)
 
   return (
     <>
@@ -77,7 +83,7 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
           <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '150px', marginBottom: '1rem'}}>
             <CustomAvatar picture={null} username={username} width='100' height='100' />
             <div style={{display: 'flex', justifyContent: 'center'}}>
-              <input type="file" onChange={updateImage} />
+              <input type="file" onChange={update} />
             </div>
           </div>
           <Input label='Nombre(s)' width='300px' defaultValue={candidate?.t100_name}/>

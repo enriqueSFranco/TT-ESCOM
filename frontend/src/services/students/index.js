@@ -181,7 +181,16 @@ export const uploadPhotoStudent = (id, payload) => {
 };
 
 export const addLanguage = (payload) => {
-  return API.put(`${REACT_APP_URL_CANDIDATE_LANGUAGE}`, payload)
+  return API.post(`${REACT_APP_URL_CANDIDATE_LANGUAGE}`, payload)
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => error);
+}
+
+export const getLanguageUser = (id) => {
+  return API(`${REACT_APP_URL_CANDIDATE_LANGUAGE}${id}/`,)
     .then((response) => {
       const { data } = response;
       return data;
