@@ -32,9 +32,33 @@ class LenguagesViewSet(viewsets.GenericViewSet):
 		lenguages_serializer = self.list_serializer_class(lenguages, many=True)
 		return Response(lenguages_serializer.data, status=status.HTTP_200_OK)
 
+#{
+#    "t120_level": null,
+#    "t100_id_student": null,
+#    "c111_id_language": null
+#}
+
+	def set_lenguage(self,data):
+		register ={
+			"t100_id_student":data['t100_id_student'],
+			"c111_id_language":data['c111_id_language'],
+			"t110_level":"",
+			"t110_level_description":""
+		}
+		print(register)
+		if data['t110_level'] < 30 or data['t110_level'] >100:
+			return register
+		print("Si es un nivel valido")
+		register['t110_level']=data['t110_level']
+		if data['t110_level'] > 30 and data['t110_level'] < 50:
+			register['t110_level_description']='Básico'
+		print(register)	
+		return register
+
 	def create(self, request):
-		lenguage_serializer = self.serializer_class(data=request.data)
 		print('request: ',request.data)
+		lenguage_data=self.set_lenguage(request.data)
+		lenguage_serializer = self.serializer_class(data=lenguage_data)				
 		if lenguage_serializer.is_valid():
 			lenguage_serializer.save()
 			return Response({
