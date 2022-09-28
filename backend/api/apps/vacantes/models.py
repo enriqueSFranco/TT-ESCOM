@@ -1,5 +1,5 @@
 from django.db import models
-from  apps.students.models import Student,Skills,Lenguage
+from apps.students.models import Student
 from apps.administration.models import Admin
 from apps.companies.models import Company,Recruiter
 

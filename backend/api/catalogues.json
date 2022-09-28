@@ -171,79 +171,2260 @@
     
     {
         "model":"students.Lenguage",        
-        "pk":1,
+        "pk":251,
         "fields":{
-            "c111_description": "Español"
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
         }
     },
+
     {
         "model":"students.Lenguage",        
-        "pk":2,
+        "pk":251,
         "fields":{
-            "c111_description": "Inglés"
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
         }
     },
+
     {
         "model":"students.Lenguage",        
-        "pk":3,
+        "pk":251,
         "fields":{
-            "c111_description": "Frances"
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
         }
     },
+
     {
         "model":"students.Lenguage",        
-        "pk":4,
+        "pk":251,
         "fields":{
-            "c111_description": "Alemán"
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
         }
     },
+
     {
         "model":"students.Lenguage",        
-        "pk":5,
+        "pk":251,
         "fields":{
-            "c111_description": "Ruso"
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
         }
     },
+
     {
         "model":"students.Lenguage",        
-        "pk":6,
+        "pk":251,
         "fields":{
-            "c111_description": "Chino Mandarín"
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
         }
     },
+
     {
         "model":"students.Lenguage",        
-        "pk":7,
+        "pk":251,
         "fields":{
-            "c111_description": "Portugues"
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
         }
     },
+
     {
         "model":"students.Lenguage",        
-        "pk":8,
+        "pk":251,
         "fields":{
-            "c111_description": "Árabe"
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
         }
     },
+
     {
         "model":"students.Lenguage",        
-        "pk":9,
+        "pk":251,
         "fields":{
-            "c111_description": "Japónes"
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
         }
     },
+
     {
         "model":"students.Lenguage",        
-        "pk":10,
+        "pk":251,
         "fields":{
-            "c111_description": "Koreano"
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
         }
     },
+
     {
         "model":"students.Lenguage",        
-        "pk":11,
+        "pk":251,
         "fields":{
-            "c111_description": "Italiano"
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
+        }
+    },
+
+    {
+        "model":"students.Lenguage",        
+        "pk":251,
+        "fields":{
+            "c111_description": "zoque",
+            "c111_type": "Dialect"
         }
     },
 
