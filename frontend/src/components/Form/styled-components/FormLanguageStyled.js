@@ -1,12 +1,18 @@
 import styled from 'styled-components'
 
 const Form = styled.form`
-  height: 500px;
+  height: 450px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
+`
+
+const Title = styled.h2`
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 1.5rem;
+  text-transform: capitalize;
 `
 
 const Button = styled.input`
@@ -20,8 +26,8 @@ const Button = styled.input`
   transition: background-color .3s ease;
 
   &:hover {
-    /* background-color:  */
+    background-color: #3281ff;
   }
 `
 
-export { Button, Form }
+export { Button, Form, Title }

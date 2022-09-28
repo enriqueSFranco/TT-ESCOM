@@ -15,6 +15,6 @@ export function useLanguage() {
       .catch(error => setError(error))
 
     return () => controller.abort()
-  })
+  }, [])
   return { languages, error }
 }

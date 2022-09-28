@@ -1,13 +1,17 @@
 import React from 'react'
-import Language from 'components/Card/Language/Language'
+import { useAuth } from 'context/AuthContext'
 import { useModal } from 'hooks'
+import Language from 'components/Card/Language/Language'
 import { IoMdAddCircleOutline } from 'react-icons/io'
 import { Header, AddLanguage } from '../styled-components/LanguageStyled'
 import ModalPortal from 'components/Modal/ModalPortal'
 import FormLanguage from 'components/Form/FormLanguage'
 
 const PageLanguages = () => {
+  const { token } = useAuth()
   const [isOpen, openModal, closeModal] = useModal()
+
+  console.log(token)
 
   return (
     <>
@@ -19,7 +23,7 @@ const PageLanguages = () => {
         <Language />
       </section>
       <ModalPortal isOpen={isOpen} closeModal={closeModal}>
-        <FormLanguage />
+        <FormLanguage id={9} />
       </ModalPortal>
     </>
   )
