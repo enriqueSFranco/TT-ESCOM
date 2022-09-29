@@ -92,6 +92,7 @@ const CardProfileStudent = () => {
   }
 
   if (!candidate || !data) return null;
+  
 
   return (
     <>
@@ -125,7 +126,7 @@ const CardProfileStudent = () => {
                 {candidate[0]?.t100_name} {candidate[0]?.t100_last_name}
               </span>
               <Chip
-                label={candidate[0]?.t100_interest_job}
+                label={candidate[0]?.t100_interest_job ?? "Puesto deseado no definido"}
                 bg="#116BFE"
                 color="#fff"
               />
@@ -141,8 +142,13 @@ const CardProfileStudent = () => {
                   }}
                 />
                 <p style={{ fontWeight: "400" }}>
-                  {candidate[0]?.t100_residence ?? "No especificado."}
-                </p>
+                  {candidate[0]?.c222_id_locality ? 
+                  candidate[0]?.c222_id_locality?.c222_state+", "+candidate[0]?.c222_id_locality?.c222_municipality+", "
+                  : "No especificado." }
+                  {candidate[0]?.t100_residence ? 
+                  candidate[0]?.c222_id_locality?.c222_locality+", "+candidate[0]?.t100_residence
+                  : "" }
+                </p>                
               </div>
               <div className={styles.flex}>
                 <MdOutlineAirplanemodeActive

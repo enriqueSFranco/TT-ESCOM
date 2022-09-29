@@ -4,6 +4,19 @@ import TextField from "@mui/material/TextField";
 import styles from "./StylesStepper.module.css";
 import PropTypes from "prop-types";
 import NumberFormat from "react-number-format";
+import {
+  MdLocationPin,
+} from "react-icons/md";
+import {
+  getLocality,
+} from "services/catalogs";
+import {
+  Button,
+  Form,
+  GroupInput,
+  Select,
+  WrapperSelect,
+} from "./styled-componets/FormStepCandidate";
 
 const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
   props,
@@ -61,13 +74,31 @@ BoletaC.propTypes = {
 };
 
 function DatesPersonal({ form, handleChange }) {
+  const [localities, setLocalities] = useState(null);
   const [checked, setChecked] = useState(false);
+  const [place, setPlace] = useState("");
+  const [cp, setCP] = useState("");
 
   const checkChanged = (state) => {
     setChecked(!checked);
     //setTravel(!checked);
     //console.log(!checked);
   };
+
+  const handleLocality = (e) => {
+    const { value } = e.target;
+    setCP(value);
+  
+    if (value !== "") {
+      getLocality(value)
+        .then((response) => {
+          setLocalities(response);
+        })
+        .catch((error) => console.error(error));
+    }
+  };
+
+  console.log(form);
 
   return (
     <div className={styles.containerPage}>
@@ -76,7 +107,7 @@ function DatesPersonal({ form, handleChange }) {
         <div className={styles.inputGroup}>
           <TextField
             size="small"
-            label="Nombre"
+            label="Nombre*"
             name="t100_name"
             id="t100_name"
             value={form.t100_name}
@@ -85,7 +116,7 @@ function DatesPersonal({ form, handleChange }) {
           />
           <TextField
             size="small"
-            label="Apellido(s)"
+            label="Apellido(s)*"
             name="t100_last_name"
             id="t100_last_name"
             value={form.t100_last_name}
@@ -98,7 +129,7 @@ function DatesPersonal({ form, handleChange }) {
           <TextField
             size="small"
             sx={{width: 300}}
-            label="Telefono de contacto"
+            label="Telefono de contacto*"
             value={form.t100_phonenumber}
             onChange={handleChange}
             name="t100_phonenumber"
@@ -109,17 +140,54 @@ function DatesPersonal({ form, handleChange }) {
           />
         </div>
 
-        <div className={styles.inputGroupP}>
-          <div className={styles.Col1}>
+        <div className={`my-4 ${styles.inputGroup}`}>
+          <div className={styles.flex}>
+            <MdLocationPin
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "1.3rem",
+                    }}                    
+            />
+            <p style={{ fontWeight: "400" }}>Donde te ubicas?</p>
+          </div>
+          <div className={styles.Col1}>                
             <TextField
               size="small"
-              label="¿Donde te ubicas?"
+              label="Calle y numero"
               name="t100_residence"
               id="t100_residence"
               value={form.t100_residence}
               onChange={handleChange}
               sx={{ width: 300, maxWidth: "100%" }}
             />
+            <TextField
+              size="small"
+              label="C.P.*"
+              value={cp ? parseInt(cp) : ""}
+              onChange={handleLocality}              
+              sx={{ width: 300, maxWidth: "100%" }}
+            />
+            <WrapperSelect>
+              <Select
+                name="c222_id_locality"
+                id="c222_id_locality"
+                value={place}
+                onChange={(e) => setPlace(e.target.value)}
+              >
+                <option value="" disabled>
+                  Seleccione una localidad
+                </option>
+                {localities &&
+                  localities?.map((township) => (
+                    <option
+                      key={crypto.randomUUID()}
+                      value={township.c222_locality}
+                    >
+                      {township.c222_locality}
+                    </option>
+                  ))}
+              </Select>
+            </WrapperSelect>
             <div className={styles.inputCheckbox}>
               Dispuesto a reubicarte?
               <Checkbox
@@ -138,7 +206,7 @@ function DatesPersonal({ form, handleChange }) {
             size="small"
             label="Boleta"
             value={form.t100_boleta}
-            onChange={handleChange}
+             onChange={handleChange}
             name="t100_boleta"
             id="t100_boleta"
             sx={{ width: 300, maxWidth: "100%" }}

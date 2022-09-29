@@ -75,11 +75,10 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
             <div style={{display: 'flex', justifyContent: 'center'}}>
               <input type="file" onChange={update} />
             </div>
-          </div>
-          <Input label='Nombre(s)' width='300px' defaultValue={candidate?.t100_name}/>
+          </div>          
           <div style={{display: 'flex', gap: '1rem', marginTop: '1rem'}}>
-            <Input label='Primer Apellido' defaultValue={candidate?.t100_last_name}/>
-            <Input label='Segundo Apellido' />
+            <Input label='Nombre(s)' width='300px' defaultValue={candidate?.t100_name}/>
+            <Input label='Apellidos' defaultValue={candidate?.t100_last_name}/>
           </div>
           <div>
             <h2>Donde te ubicas</h2>
