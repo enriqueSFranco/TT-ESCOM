@@ -218,14 +218,14 @@ class LanguageViewSet(viewsets.GenericViewSet):
 		if self.queryset == None:
 			self.queryset = self.model.objects\
 				.filter(c111_id_lenguage = pk)\
-				.values('c111_id_lenguage','c111_description')
+				.all()
 		return  self.queryset
 		
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('c111_id_lenguage','c111_description')
+				.all()
 		return self.queryset  
 
 	def list(self, request):
