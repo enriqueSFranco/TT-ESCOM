@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from 'context/AuthContext';
-import { openModalHistoryRecord } from 'utils/openModal'
-import { uuid } from 'utils/uuid';
+import { useModal } from "hooks/useModal";
+import ModalPortal from "components/Modal/ModalPortal";
+import FormAddAcademicRecord from "components/Form/AcademicRecord/FormAddAcademicRecord";
 import { getAcademicHistorial } from 'services/students';
 import AcademicRecord from './AcademicRecord';
 import { MdAdd } from "react-icons/md";
@@ -10,12 +11,10 @@ import styles from './AcademicRecord.module.css';
 const AcademicRecordList = () => {
   const [data, setData] = useState(null);
   const { token } = useAuth();
+  const [isOpenModal, openModal, closeModal] = useModal(false);
 
   let id = token?.user?.user_id;
 
-  function handleOpenModal() {
-    openModalHistoryRecord()
-  }
 
   useEffect(() => {
     getAcademicHistorial(id)
@@ -38,10 +37,7 @@ const AcademicRecordList = () => {
       {
         data && data?.map(el => (
           <AcademicRecord
-            key={uuid()}
-            data={data}
-            setData={setData}
-            id={el?.t104_id_registrer}
+            key={el?.t100_id_student?.t100_id_studentv}
             academicUnit={el?.t104_academic_unit}
             carrer={el?.t104_carreer}
             startDate={el?.t104_start_date}
@@ -51,11 +47,17 @@ const AcademicRecordList = () => {
         ))
       }
       <button
-        onClick={handleOpenModal}
+        onClick={openModal}
         className={styles.btnAddProject}
       >
         <MdAdd />
       </button>
+      <ModalPortal
+        isOpen={isOpenModal}
+        closeModal={closeModal}
+      >
+        <FormAddAcademicRecord />
+      </ModalPortal>
     </article>
   )
 }

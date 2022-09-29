@@ -10,13 +10,7 @@ import {
 import {
   getLocality,
 } from "services/catalogs";
-import {
-  Button,
-  Form,
-  GroupInput,
-  Select,
-  WrapperSelect,
-} from "./styled-componets/FormStepCandidate";
+import {Select, WrapperSelect} from "./styled-componets/FormStepCandidate";
 
 const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
   props,
@@ -81,8 +75,6 @@ function DatesPersonal({ form, handleChange }) {
 
   const checkChanged = (state) => {
     setChecked(!checked);
-    //setTravel(!checked);
-    //console.log(!checked);
   };
 
   const handleLocality = (e) => {
@@ -98,7 +90,7 @@ function DatesPersonal({ form, handleChange }) {
     }
   };
 
-  console.log(form);
+  // console.log()
 
   return (
     <div className={styles.containerPage}>
@@ -181,7 +173,7 @@ function DatesPersonal({ form, handleChange }) {
                   localities?.map((township) => (
                     <option
                       key={crypto.randomUUID()}
-                      value={township.c222_locality}
+                      value={township.c222_id}
                     >
                       {township.c222_locality}
                     </option>
@@ -206,7 +198,7 @@ function DatesPersonal({ form, handleChange }) {
             size="small"
             label="Boleta"
             value={form.t100_boleta}
-             onChange={handleChange}
+            onChange={handleChange}
             name="t100_boleta"
             id="t100_boleta"
             sx={{ width: 300, maxWidth: "100%" }}

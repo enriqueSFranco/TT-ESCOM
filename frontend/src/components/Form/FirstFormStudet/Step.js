@@ -106,30 +106,19 @@ const StepComponent = () => {
 
   // Control de imagenes del step
   const PageImage = () => {
-    if (activeStep === 0) {
+    if (activeStep === 0)
       return <div className={`${styles.bg1} ${styles.bg}`}></div>;
-    }
-    if (activeStep === 1) {
+    if (activeStep === 1)
       return <div className={`${styles.bg2} ${styles.bg}`}></div>;
-    }
-    if (activeStep === 2) {
+    if (activeStep === 2)
       return <div className={`${styles.bg3} ${styles.bg}`}></div>;
-    }
-    if (activeStep === 3) {
+    if (activeStep === 3)
       return <div className={`${styles.bg4} ${styles.bg}`}></div>;
-    }
   };
 
   const nextStep = () => {
-    if (activeStep < 3) {
-      //console.log((activeStep));
-      setActiveStep((currentStep) => currentStep + 1);
-    }
-    if (activeStep >= 3) {
-      updateData();
-      //if (!errors)
-      //  navigate("/perfil");
-    }
+    if (activeStep < 3) setActiveStep((currentStep) => currentStep + 1);
+    if (activeStep >= 3) updateData();
   };
 
   const updateData = () => {
