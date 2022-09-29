@@ -6,7 +6,7 @@ import { Actions, Level, LanguageStyled, HeaderLanguage, LanguageText } from '..
 
 const Language = ({ language, progress, levelColor }) => {
 
-  console.log(language, progress)
+  // console.log(language, progress)
 
   return (
     <LanguageStyled>

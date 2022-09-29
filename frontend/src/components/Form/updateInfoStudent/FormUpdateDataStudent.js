@@ -56,27 +56,15 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
       .catch(error => console.error(error))
   }
 
-  // async function handleAPI(e) {
-  //   const data = new FormData(e.target)
-  //   data.append('t100_username', '')
-  //   if (Object.entries(e.target.files).length > 0)
-  //     data.append('t100_profile_picture', convertToBase64(image.name))
-    
-  //   uploadPhotoStudent(id, data)
-  //     .then(response => console.log(response))
-  //     .catch(error => console.error(error))
-  // }
-
   function update(e) {
     e.preventDefault()
     console.log('formulario enviado...')
-    updateImage(e)
+    if ( e.target.files !== undefined) 
+      updateImage(e)
     uploadCV()
   }
 
   if (!id) return null
-
-  console.log(image)
 
   return (
     <>

@@ -21,9 +21,10 @@ const PageLanguages = () => {
           <span>Agregar Idioma</span>
           <AddLanguage onClick={openModal}><IoMdAddCircleOutline /></AddLanguage>
         </Header>
-        {/* {languages?.map(({c111_id_language}) => (
-          <Language key={crypto.randomUUID()} language={c111_id_language.c111_description} progress={c111_id_language.c111_id_lenguage} />
-        ))} */}
+        {languages?.map(language => (
+          // console.log(language)
+          <Language key={crypto.randomUUID()} language={language?.c111_id_language?.c111_description} progress={language.t110_level} />
+        ))}
       </section>
       <ModalPortal isOpen={isOpen} closeModal={closeModal}>
         <FormLanguage id={token?.user?.id} />

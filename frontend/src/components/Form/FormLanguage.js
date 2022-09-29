@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useLanguage, useForm } from "hooks";
 import { addLanguage } from "services";
 import { initialFormLanguage } from "types";
@@ -12,16 +12,16 @@ import { Button, Form, Title } from "./styled-components/FormLanguageStyled";
 
 const FormLanguage = ({ id }) => {
   const { languages, error } = useLanguage();
-  const { form, handleChange } = useForm(initialFormLanguage);
+  const [idLanguage, setIdLanguage] = useState(0)
+  // const { form, handleChange } = useForm(initialFormLanguage);
   const [value, setValue] = useState(30);
 
   const handleRange = (e) => setValue(e.target.value);
 
-  let payload = { ...form, t110_level: value, t100_id_student: id,  };
+  let payload = { c111_id_language: parseInt(idLanguage), t110_level: value, t100_id_student: id,  };
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("formulario enviado...");
     addLanguage(payload)
       .then((response) => {
         console.log(response);
@@ -36,7 +36,7 @@ const FormLanguage = ({ id }) => {
 
   if (!languages) return null;
 
-  console.log(languages);
+  console.log(payload);
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -45,17 +45,17 @@ const FormLanguage = ({ id }) => {
         <IoLanguageOutline style={{ color: "#116BFE", fontWeight: "700" }} />
       </Title>
       <select
-        name="c111_id_lenguage"
-        id="c111_id_lenguage"
-        onChange={handleChange}
+        name="c111_id_language"
+        id="c111_id_language"
+        onChange={e => setIdLanguage(e.target.value)}
         defaultValue=""
       >
         <option value="">Selecciona un idioma o dialecto</option>
-        {/* {languages?.map((language) => (
-          <option value={language?.c111_id_language}>
+        {languages?.map((language) => (
+          <option value={language.c111_id_language}>
             {language?.c111_description}
           </option>
-        ))} */}
+        ))}
       </select>
       <div style={{ display: "flex", gap: "1rem" }}>
         <input
