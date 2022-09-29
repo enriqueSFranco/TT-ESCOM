@@ -6,10 +6,9 @@ import { initialFormLanguage } from "types";
 import { IoLanguageOutline } from "react-icons/io5";
 import { Button, Form, Title } from "./styled-components/FormLanguageStyled";
 
-// "t110_level": "",
-// "c120_id_level": 0,
-// "t100_id_student": null,
-// "c111_id_language": null
+// "t110_level": 40,
+// "t100_id_student": 1,
+// "c111_id_language": 101
 
 const FormLanguage = ({ id }) => {
   const { languages, error } = useLanguage();
@@ -18,7 +17,7 @@ const FormLanguage = ({ id }) => {
 
   const handleRange = (e) => setValue(e.target.value);
 
-  let payload = { ...form, c120_id_level: value, t100_id_student: id,  };
+  let payload = { ...form, t110_level: value, t100_id_student: id,  };
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,7 +52,7 @@ const FormLanguage = ({ id }) => {
       >
         <option value="">Selecciona un idioma o dialecto</option>
         {languages?.map((language) => (
-          <option value={language?.c111_id_lenguage}>
+          <option value={language?.c111_id_language}>
             {language?.c111_description}
           </option>
         ))}

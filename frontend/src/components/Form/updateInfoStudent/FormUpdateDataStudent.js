@@ -51,7 +51,9 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
   async function updateImage(e) {
     const file = e.target.files[0]
     const base64 = await convertToBase64(file)
-    console.log(base64)
+    uploadPhotoStudent(id, {t100_username: "", t100_profile_picture: base64})
+      .then(response => console.log(response))
+      .catch(error => console.error(error))
   }
 
   // async function handleAPI(e) {

@@ -172,7 +172,7 @@ export const createAccountStudent = async (payload) => {
 // TODO:terminar la funcion para subir una imagen
 export const uploadPhotoStudent = (id, payload) => {
   
-  return API.put(`${process.env.REACT_APP_URL_CANDIDATE_UPLOAD_IMAGE}${id}/`, payload, {headers: { 'Content-Type': 'multipart/form-data'}})
+  return API.put(`${process.env.REACT_APP_URL_CANDIDATE_UPLOAD_IMAGE}${id}/`, payload)
     .then((response) => {
       const { data } = response;
       return data;
