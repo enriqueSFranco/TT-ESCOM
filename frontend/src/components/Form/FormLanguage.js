@@ -1,19 +1,12 @@
 import React, { useState } from "react";
-import { useLanguage, useForm } from "hooks";
+import { useLanguage } from "hooks";
 import { addLanguage } from "services";
-import { initialFormLanguage } from "types";
-// import Input from "components/Input/Input";
 import { IoLanguageOutline } from "react-icons/io5";
 import { Button, Form, Title } from "./styled-components/FormLanguageStyled";
 
-// "t110_level": 40,
-// "t100_id_student": 1,
-// "c111_id_language": 101
-
 const FormLanguage = ({ id }) => {
-  const { languages, error } = useLanguage();
+  const { languages } = useLanguage();
   const [idLanguage, setIdLanguage] = useState(0)
-  // const { form, handleChange } = useForm(initialFormLanguage);
   const [value, setValue] = useState(30);
 
   const handleRange = (e) => setValue(e.target.value);
@@ -65,17 +58,6 @@ const FormLanguage = ({ id }) => {
         />
         <span>{value}</span>
       </div>
-
-      {/* <Input
-        label="Nivel"
-        type="text"
-        id="t110_level"
-        name="t110_level"
-        value={form.t110_level}
-        onChange={handleChange}
-        width="300px"
-      /> */}
-
       <Button type="submit" value="Agregar idioma" />
     </Form>
   );

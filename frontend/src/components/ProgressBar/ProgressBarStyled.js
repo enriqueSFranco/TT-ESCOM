@@ -20,6 +20,7 @@ const ProgressText = styled.span`
   position: absolute;
   right: .5rem;
   font-size: .7rem;
+  font-weight: 700;
 `
 
 export { Progress, ProgressText, WrapperProgress }

@@ -19,7 +19,7 @@ const PageLanguages = () => {
 
   return (
     <>
-      <section style={{height: '93%', padding: '0 1rem'}}>
+      <section style={{padding: '0 1rem'}}>
         <Header>
           <span>Agregar Idioma</span>
           <AddLanguage onClick={openModal}><IoMdAddCircleOutline /></AddLanguage>

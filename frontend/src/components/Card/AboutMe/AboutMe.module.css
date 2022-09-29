@@ -8,14 +8,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 2rem;
   height: 2rem;
   transition: background-color .3s ease-in-out;
   border-radius: 50%;
 }
 
 .btnEdit:hover {
-  background-color: #c0e3f4;
-  color: #038dd4;
+  background-color: #116BFE;
 }
 
 .btnSave {
@@ -43,7 +43,12 @@
   margin-top: .2rem;
 }
 
-.salary, .employmentModality { font-weight: 400; }
+.salary, .employmentModality {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  font-weight: 400;
+}
 
 .title {
   color: #fff;
@@ -68,14 +73,16 @@
   font-size: .87rem;
   width: 100%;
   position: absolute;
-  left: 0;
+  left: 1rem;
   bottom: 0;
   display: flex;
-  justify-content: space-around;
+  gap: 1rem;
+  /* justify-content: space-around; */
 }
 
 .professionalObjective {
   font-size: .9rem;
+  width: 1000px;
 }
 
 .wrapper {

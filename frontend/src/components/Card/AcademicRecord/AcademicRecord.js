@@ -1,11 +1,11 @@
 import React from "react";
-// import { useModal } from "hooks/useModal";
+import { useModal } from "hooks";
 import { formatDate } from "utils/formatDate";
-// import { deleteAcademicHistorial } from "services/students/index";
-// import Modal from "components/Modal/Modal";
+import { deleteAcademicHistorial } from "services/students/index";
 import { GoTrashcan } from "react-icons/go";
 import { MdSchool, MdEdit } from "react-icons/md";
 import styles from "./AcademicRecord.module.css";
+import ModalPortal from "components/Modal/ModalPortal";
 
 const AcademicRecord = ({
   data,
@@ -19,26 +19,25 @@ const AcademicRecord = ({
   idAcademicLevel,
   idAcademicState,
 }) => {
-  // const [
-  //   isOpenModalDeleteAcademicRecord,
-  //   openModalDeleteAcademicRecord,
-  //   closeModalDeleteAcademicRecord,
-  // ] = useModal();
-  // const [
-  //   isOpenModalEditAcademicRecord,
-  //   openModalEditAcademicRecord,
-  //   closeModalEditAcademicRecord,
-  // ] = useModal();
+  const [
+    isOpenModalDeleteAcademicRecord,
+    openModalDeleteAcademicRecord,
+    closeModalDeleteAcademicRecord,
+  ] = useModal();
+  const [
+    isOpenModalEditAcademicRecord,
+    openModalEditAcademicRecord,
+    closeModalEditAcademicRecord,
+  ] = useModal();
 
-  // const deleteData = (id) => {
-  //   deleteAcademicHistorial(id)
-  //     .then(response => {
-  //       if (data !== null) {
-  //         let newData = data?.filter(el => el?.t104_id_registrer !== id)
-  //         setData(newData);
-  //       }
-  //     })
-  // };
+  const deleteData = (id) => {
+    deleteAcademicHistorial(id).then((response) => {
+      if (data !== null) {
+        let newData = data?.filter((el) => el?.t104_id_registrer !== id);
+        setData(newData);
+      }
+    });
+  };
 
   return (
     <>
@@ -63,16 +62,16 @@ const AcademicRecord = ({
         <div className={styles.actions}>
           <button
             className={`${styles.btnTrash}`}
-            // onClick={openModalDeleteAcademicRecord}
+            onClick={openModalDeleteAcademicRecord}
           >
             <GoTrashcan className={styles.deleteAction} />
           </button>
-          {/* <button onClick={openModalEditAcademicRecord}>
+          <button onClick={openModalEditAcademicRecord}>
             <MdEdit className={styles.editAction} />
-          </button> */}
+          </button>
         </div>
       </div>
-      {/* <Modal
+      <ModalPortal
         isOpen={isOpenModalDeleteAcademicRecord}
         closeModal={closeModalDeleteAcademicRecord}
       >
@@ -82,8 +81,8 @@ const AcademicRecord = ({
             <GoTrashcan />
           </div>
           <h3 className={styles.tittleProjectExperience}>
-            Estas seguro de eliminar la Unidad Academica <span>"{academicUnit}"</span> de
-            tu historial Academico ?
+            Estas seguro de eliminar la Unidad Academica{" "}
+            <span>"{academicUnit}"</span> de tu historial Academico ?
           </h3>
           <button
             className={styles.btnDeleteExperience}
@@ -92,13 +91,13 @@ const AcademicRecord = ({
             Si, Eliminar
           </button>
         </div>
-      </Modal>
-      <Modal
+      </ModalPortal>
+      <ModalPortal
         isOpen={isOpenModalEditAcademicRecord}
         closeModal={closeModalEditAcademicRecord}
       >
         <h2>Editar</h2>
-      </Modal> */}
+      </ModalPortal>
     </>
   );
 };

@@ -1,59 +1,39 @@
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useAuth } from "context/AuthContext";
 import { useGetCandidate, useForm, useModal } from "hooks";
-import { updateStudent, getStudent } from "services/students";
+import { updateStudent } from "services/students";
 import { numberFormat } from "utils/numberFormat";
-import ModalForm from "components/Modal/ModalForm";
+import ModalPortal from "components/Modal/ModalPortal";
+import Chip from 'components/Chip/Chip'
 import { MdEdit } from "react-icons/md";
 import styles from "./AboutMe.module.css";
 
 const AboutMe = () => {
-  const { token } = useAuth()
+  const { token } = useAuth();
   const [totalChar, setTotalChar] = useState(0);
-  const [student, setStudent] = useState(null);
-  const [aboutMe, setAboutMe] = useState({});
   const [isOpenModalEdit, openModalEdit, closeOpenModalEdit] = useModal();
-  const { form, handleChange } = useForm({t100_personal_objectives: ""});
-  const { candidate } = useGetCandidate(token?.user?.id)
-  // let idStudent = token?.user?.id;
+  const { form, handleChange } = useForm({ t100_personal_objectives: "" });
+  const { candidate } = useGetCandidate(token?.user?.user_id);
 
-  // Efecto para obtener la ingformacion de un alumno
-   useEffect(() => {
-     getStudent(token?.user?.id)
-       .then((response) => {
-         setAboutMe({
-           personalObjective: response[0]?.t100_personal_objectives,
-           salary: response[0]?.t100_target_salary,
-           modality: response[0]?.t100_modalities,
-         });
-         setStudent(response);
-       })
-       .catch((error) => {
-         if (error.response) return error.response.data.message;
-       });
-   }, [token?.user?.id]);
-
-  const updateCount = e => setTotalChar(e.target.value.length);
-
-  console.log(aboutMe);
+  const updateCount = (e) => setTotalChar(e.target.value.length);
 
   // Funcion para actualizar el objetivo profesional
   const handleSubmit = (e) => {
     e.preventDefault();
     let copyStudent = {
-      ...form, 
+      ...form,
       t100_name: candidate[0]?.t100_name,
       t100_last_name: candidate[0]?.t100_last_name,
       t100_boleta: candidate[0]?.t100_boleta,
-      t100_email: candidate[0]?.t100_email
+      t100_email: candidate[0]?.t100_email,
     };
 
     // console.log("copia: ",copyStudent)
     updateStudent(token?.user?.id, copyStudent)
-      .then(response => {
+      .then((response) => {
         console.log(response);
       })
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   };
 
   if (!candidate) return null;
@@ -66,26 +46,22 @@ const AboutMe = () => {
         </button>
         <h1 className={styles.title}>Mi Objetivo Profesional es:</h1>
         <p className={styles.professionalObjective}>
-          {aboutMe.personalObjectives === ""
-            ? "Sin descripcion"
-            : `${aboutMe.personalObjective}`}
+          {candidate[0]?.t100_personal_objectives === '' ? 'Sin descripcion' : candidate[0]?.t100_personal_objectives}
         </p>
         <div className={`${styles.position}`}>
           <p className={styles.salary}>
-            Sueldo deseado:{" "}
-            {aboutMe?.t100_target_salary === null
+            {candidate[0]?.t100_target_salary === null
               ? "No especificado"
-              : `$${numberFormat(aboutMe?.salary).replace(".00", "")}`}
+              : <Chip label={`Sueldo deseado: ${numberFormat(candidate[0]?.t100_target_salary).replace(".00", "")}`} bg="#02B700" color="#FFF" />}
           </p>
           <p className={styles.employmentModality}>
-            Modalidad de trabajo:{" "}
-            {aboutMe?.t100_modalities === null
+            {candidate[0]?.t100_modalities === null
               ? "No especificado"
-              : `${aboutMe?.modality}`}
+              : <Chip label={`Modalidad de trabajo: ${candidate[0]?.t100_modalities}`} bg="#DDDEE2" color="#000" />}
           </p>
         </div>
       </article>
-      {/* <ModalForm isOpen={isOpenModalEdit} closeModal={closeOpenModalEdit}>
+      <ModalPortal isOpen={isOpenModalEdit} closeModal={closeOpenModalEdit}>
         <form onSubmit={handleSubmit} className={styles.wrapperTextEdit}>
           <div className={styles.wrapperTextArea}>
             <textarea
@@ -110,7 +86,7 @@ const AboutMe = () => {
             Guardar
           </button>
         </form>
-      </ModalForm> */}
+      </ModalPortal>
     </>
   );
 };

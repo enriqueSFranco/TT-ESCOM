@@ -116,29 +116,16 @@ export const getLinks = () => {
  * @return {Promise}
  **/
 export const updateStudent = (id, payload = {}) => {
-  return toast.promise(
-    axios
-      .put(`${API_STUDENT}${id}/`, payload, {
-        headers: {
-          "Content-Type": "application/json",
-          accept: "application/json",
-        },
-      })
-      .then((response) => {
-        const { data } = response;
-        return data;
-      })
-      .catch((error) => {
-        if (error.response) {
-          return error.response.data;
-        }
-      }),
-    {
-      loading: "Actualizando Perfil",
-      success: "Tu perfil se ha actualizado correctamente",
-      error: "Hubo erro en la actualizacion",
-    }
-  );
+  return API.put(`${REACT_APP_URL_CANDIDATE}${id}/`, payload)
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => {
+      if (error.response) {
+        return error.response.data;
+      }
+    })
 };
 
 /**

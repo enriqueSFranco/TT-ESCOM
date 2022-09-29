@@ -93,8 +93,6 @@ const CardProfileStudent = () => {
 
   if (!candidate || !data) return null;
 
-  // console.log(candidate[0]?.t100_profile_picture)
-  
   return (
     <>
       <article className={`${styles.cardProfile}`}>
