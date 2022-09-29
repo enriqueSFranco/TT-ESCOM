@@ -13,6 +13,8 @@ import {
   API_CERTIFICATIONS,
 } from "../settings";
 
+const { REACT_APP_URL_CANDIDATE_LANGUAGE, REACT_APP_URL_CANDIDATE, REACT_APP_URL_CANDIDATE_SKILLS, REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS } = process.env
+
 /**
  * @param {Number} id identificador para obtner un alumno en especifico
  * @returns {Promise}
@@ -21,7 +23,7 @@ export const getStudent = async (id) => {
   let controller = new AbortController()
   let signal = controller.signal
 
-  return API(`${process.env.REACT_APP_URL_CANDIDATE}${id}/`, {signal})
+  return API(`${REACT_APP_URL_CANDIDATE}${id}/`, {signal})
     .then((response) => {
       const { data } = response;
       return data;
@@ -38,7 +40,7 @@ export const getSkills = () => {
   const controller = new AbortController()
   const signal = controller.signal
 
-  return API.post(`${process.env.REACT_APP_URL_CANDIDATE_SKILLS}`, {signal})
+  return API.post(`${REACT_APP_URL_CANDIDATE_SKILLS}`, {signal})
     .then(response => {
       const { data } = response
       return data
@@ -51,7 +53,7 @@ export const addSkill = (payload = {}) => {
   // const controller = new AbortController()
   // const signal = controller.signal
 
-  return API.post(`${process.env.REACT_APP_URL_CANDIDATE_SKILLS}`, {payload, headers: {
+  return API.post(`${REACT_APP_URL_CANDIDATE_SKILLS}`, {payload, headers: {
     accept: 'application/json',
     'Content-Type': 'application/json'
   }})
@@ -67,7 +69,7 @@ export const addSkill = (payload = {}) => {
  * @returns {Promise}
  **/
 export const getSocialNetwork = async (id) => {
-  return API(`${process.env.REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS}${id}/`)
+  return API(`${REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS}${id}/`)
     .then((response) => {
       const { data } = response;
       return data;
@@ -85,7 +87,7 @@ export const getSocialNetwork = async (id) => {
  **/
 export const postSocialNetwork = (payload = {}) => {
   return API.post(
-    `${process.env.REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS}`,
+    `${REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS}`,
     payload,
     {
       headers: {
@@ -148,7 +150,7 @@ export const createAccountStudent = async (payload) => {
     const controller = new AbortController();
     const signal = controller.signal;
     const response = await API.post(
-      `${process.env.REACT_APP_URL_CANDIDATE}`,
+      `${REACT_APP_URL_CANDIDATE}`,
       payload,
       { signal }
     );
@@ -170,13 +172,31 @@ export const createAccountStudent = async (payload) => {
 // TODO:terminar la funcion para subir una imagen
 export const uploadPhotoStudent = (id, payload) => {
   
-  return API.put(`${process.env.REACT_APP_URL_CANDIDATE_UPLOAD_IMAGE}${id}/`, payload, {headers: { 'Content-Type': 'multipart/form-data'}})
+  return API.put(`${process.env.REACT_APP_URL_CANDIDATE_UPLOAD_IMAGE}${id}/`, payload)
     .then((response) => {
       const { data } = response;
       return data;
     })
     .catch((error) => error);
 };
+
+export const addLanguage = (payload) => {
+  return API.post(`${REACT_APP_URL_CANDIDATE_LANGUAGE}`, payload)
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => error);
+}
+
+export const getLanguageUser = (id) => {
+  return API(`${REACT_APP_URL_CANDIDATE_LANGUAGE}${id}/`,)
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => error);
+}
 
 /**
  * @param {Object} payload

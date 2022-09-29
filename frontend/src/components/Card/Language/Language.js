@@ -5,6 +5,9 @@ import ProgressBar from 'components/ProgressBar/ProgressBar'
 import { Actions, Level, LanguageStyled, HeaderLanguage, LanguageText } from '../styled-components/CardLanguageStyled'
 
 const Language = ({ language, progress, levelColor }) => {
+
+  // console.log(language, progress)
+
   return (
     <LanguageStyled>
       <HeaderLanguage>
@@ -14,11 +17,11 @@ const Language = ({ language, progress, levelColor }) => {
           <AiFillDelete />
         </Actions>
       </HeaderLanguage>
-      <LanguageText>Ingles</LanguageText>
+      <LanguageText>{language}</LanguageText>
       <div style={{textAlign:'center'}}>
         <Level color={levelColor}>Nativo</Level>
       </div>
-      <ProgressBar progress={60} />
+      <ProgressBar progress={progress} />
     </LanguageStyled>
   )
 }
