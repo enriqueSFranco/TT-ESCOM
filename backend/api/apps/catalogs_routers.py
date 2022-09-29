@@ -4,7 +4,7 @@ import imp
 from operator import imod
 from posixpath import basename
 from rest_framework.routers import DefaultRouter
-from apps.students.api.views.catalogs_viewset import AcademicLevelViewSet,AcademicStateViewSet,PlataformViewSet,SkillsViewSet,LenguageViewSet,InterestJobViewSet,AcademicUnitViewSet,ProjectTypeViewSet
+from apps.students.api.views.catalogs_viewset import AcademicLevelViewSet,AcademicStateViewSet,PlataformViewSet,SkillsViewSet,LanguageViewSet,InterestJobViewSet,AcademicUnitViewSet,ProjectTypeViewSet
 from apps.vacantes.api.views.catalogs_viewset import VacantStatusViewSet,CandidateProfileViewSet,ExperienceViewSet,ApplicationStateViewSet,ReportTypeViewSet,ReportStateViewSet,LocalityViewSet,ContractViewSet,ReportStateViewSet,ModalityViewSet
 
 router = DefaultRouter()
@@ -15,7 +15,7 @@ router.register(r'CatalogueAcademicState',AcademicStateViewSet,basename='Academi
 router.register(r'CataloguePlataform',PlataformViewSet,basename='Plataforms catalog')
 router.register(r'CatalogueJobs',InterestJobViewSet,basename='Jobs catalog')
 router.register(r'CatalogueSkills',SkillsViewSet,basename='Skills catalog')
-router.register(r'CatalogueLenguage',LenguageViewSet,basename='Lenguages catalog')
+router.register(r'CatalogueLanguage',LanguageViewSet,basename='Languages catalog')
 router.register(r'CatalogueVacantStatus',VacantStatusViewSet,basename='Vacant status catalog')
 router.register(r'CatalogueReportStateViewSet',ReportStateViewSet,basename='Report status catalog')
 router.register(r'CatalogueCandidateProfile',CandidateProfileViewSet,basename='Candidate profile catalog')

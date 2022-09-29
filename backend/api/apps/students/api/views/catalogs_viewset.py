@@ -6,12 +6,12 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import viewsets
 
-from apps.students.models import AcademicLevel,AcademicState,AcademicUnit,InterestJob,Plataform,Skills,Lenguage,ProjectType
+from apps.students.models import AcademicLevel,AcademicState,AcademicUnit,InterestJob,Plataform,Skills,Language,ProjectType
 from apps.students.api.serializer.catalogs_serializers import AcademicLevelSerializer,AcademicLevelListSerializer
 from apps.students.api.serializer.catalogs_serializers import AcademicStateSerializer,AcademicStateListSerializer
 from apps.students.api.serializer.catalogs_serializers import PlataformSerializer,PlataformListSerializer
 from apps.students.api.serializer.catalogs_serializers import SkillsSerializer,SkillsListSerializer
-from apps.students.api.serializer.catalogs_serializers import LenguageSerializer,LenguageListSerializer
+from apps.students.api.serializer.catalogs_serializers import LanguageSerializer,LanguageListSerializer
 from apps.students.api.serializer.catalogs_serializers import InterestJobSerializer,InsterestJobListSerializer
 from apps.students.api.serializer.catalogs_serializers import AcademicUnitSerializer,AcademicUnitListSerializer
 from apps.students.api.serializer.catalogs_serializers import  ProjectTypeListSerializer,ProjectTypeSerializer
@@ -207,10 +207,10 @@ class SkillsViewSet(viewsets.GenericViewSet):
 
 
 
-class LenguageViewSet(viewsets.GenericViewSet):
-	model = Lenguage
-	serializer_class = LenguageSerializer
-	list_serializer_class = LenguageListSerializer
+class LanguageViewSet(viewsets.GenericViewSet):
+	model = Language
+	serializer_class = LanguageSerializer
+	list_serializer_class = LanguageListSerializer
 	queryset = None
 
 	def get_object(self, pk):

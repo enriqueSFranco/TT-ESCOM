@@ -192,11 +192,11 @@ class VacantViewSet(viewsets.GenericViewSet):
 #		}, status=status.HTTP_404_NOT_FOUND)
 	
 
-#class VacantLenguagesViewSet(viewsets.GenericViewSet):
-#	model = LenguageRequired
+#class VacantLanguagesViewSet(viewsets.GenericViewSet):
+#	model = LanguageRequired
 #	#permission_classes = [IsAuthenticated]
-#	serializer_class = VacantLenguageSerializer
-#	list_serializer_class = VacantLenguageListSerializer
+#	serializer_class = VacantLanguageSerializer
+#	list_serializer_class = VacantLanguageListSerializer
 #	queryset = None
 #
 #	def get_object(self, pk):	

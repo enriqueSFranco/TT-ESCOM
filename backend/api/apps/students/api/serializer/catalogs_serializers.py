@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.students.models import AcademicLevel,AcademicState,AcademicUnit,InterestJob,Plataform,Skills,Lenguage,ProjectType
+from apps.students.models import AcademicLevel,AcademicState,AcademicUnit,InterestJob,Plataform,Skills,Language,ProjectType
 
 class AcademicLevelSerializer(serializers.ModelSerializer):
     class Meta:
@@ -140,19 +140,19 @@ class SkillsListSerializer(serializers.ModelSerializer):
 
 
 
-class LenguageSerializer(serializers.ModelSerializer):
+class LanguageSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Lenguage
+        model = Language
         fields = '__all__'
     
     def create(self,validate_data):
-        register = Lenguage(**validate_data)
+        register = Language(**validate_data)
         register.save()
         return register
     
-class LenguageListSerializer(serializers.ModelSerializer):
+class LanguageListSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Lenguage
+        model = Language
         fields = '__all__'
 
     def to_representation(self,instance):
