@@ -2,11 +2,24 @@ import React from "react";
 import { stringToColor } from "utils/generateColors";
 
 const CustomAvatar = ({ picture, username = "BT", width, height }) => {
-  if (!username) return null;
+  
+  // if (!username) return null;
 
-  if (picture === null) {
+  console.log(picture)
+
+
+  if (picture) {
     return (
-      <div
+      <img
+      style={{ objectFit: "cover", width: width, height: height, borderRadius: "50%" }}
+      src={picture}
+      alt={username}
+    />
+    );
+  }
+
+  return (
+          <div
         style={{
           backgroundColor: `${stringToColor(username.slice(0, 2))}`,
           height: `${`${width}px` || '80px'}`,
@@ -18,15 +31,6 @@ const CustomAvatar = ({ picture, username = "BT", width, height }) => {
       >
         <span style={{color: '#FFF', fontSize: '1.4rem'}}>{username.slice(0, 1)}</span>
       </div>
-    );
-  }
-
-  return (
-    <img
-      style={{ objectFit: "contain", borderRadius: "50%" }}
-      src={`https://placeimg.com/${width}/${height}/people`}
-      alt={username}
-    />
   );
 };
 

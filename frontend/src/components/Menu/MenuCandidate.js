@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuth } from "context/AuthContext";
-import { useViewport } from "hooks/useViewport";
+import { useViewport, useGetCandidate } from "hooks";
 import DropMenu from "./DropMenu";
 import { IoBusinessOutline } from "react-icons/io5";
 import { IoMdBriefcase } from "react-icons/io";
@@ -18,7 +18,12 @@ import {
 const MenuCandidate = () => {
   const { token } = useAuth();
   const [viewport] = useViewport();
+  const { candidate } = useGetCandidate(token?.user?.user_id)
   let typeuser = token?.user?.user_type;
+
+  if (!candidate) return null
+  
+  // console.log(candidate[0]?.t100_profile_picture)
 
   if (viewport.device === "MOBILE") {
     return (
@@ -92,7 +97,7 @@ const MenuCandidate = () => {
           </NavLink>
         </NavItem>
         <NavItem>
-          <DropMenu typeuser={typeuser} name={token.user.first_name} />
+          <DropMenu typeuser={typeuser} picture={candidate[0]?.t100_profile_picture} name={token.user.first_name} />
         </NavItem>
       </NavList>
     </>

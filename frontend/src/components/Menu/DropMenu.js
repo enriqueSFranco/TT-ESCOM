@@ -6,7 +6,7 @@ import DropMenuRecruiter from "./DropMenuRecruiter";
 import CustomAvatar from "components/Avatar/Avatar";
 import styles from "./Dropdown.module.css";
 
-const DropMenu = ({ typeuser, name }) => {
+const DropMenu = ({ typeuser, picture, name }) => {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useDetectClick(dropdownRef, false);
 
@@ -20,7 +20,7 @@ const DropMenu = ({ typeuser, name }) => {
         </button>
       ) : (
         <button className={styles.trigger} onClick={onClick}>
-          <CustomAvatar picture={null} username={name} width='45' height='45' />
+          <CustomAvatar picture={picture} username={name} width='50px' height='50px' />
         </button>
       )}
       <nav
