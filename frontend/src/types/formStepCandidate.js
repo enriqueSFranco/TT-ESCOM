@@ -14,6 +14,7 @@ export const formStepCandidate = Object.freeze({
   is_active: false,
   t100_phonenumber: "",
   t100_residence: "",
+  c222_id_locality:"",
   t100_modalities: "",
   t100_interest_job: "",
 });
