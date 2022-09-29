@@ -36,7 +36,7 @@ const FormLanguage = ({ id }) => {
 
   if (!languages) return null;
 
-  console.log(payload);
+  console.log(languages);
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -51,11 +51,11 @@ const FormLanguage = ({ id }) => {
         defaultValue=""
       >
         <option value="">Selecciona un idioma o dialecto</option>
-        {languages?.map((language) => (
+        {/* {languages?.map((language) => (
           <option value={language?.c111_id_language}>
             {language?.c111_description}
           </option>
-        ))}
+        ))} */}
       </select>
       <div style={{ display: "flex", gap: "1rem" }}>
         <input
