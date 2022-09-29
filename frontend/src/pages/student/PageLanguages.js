@@ -14,6 +14,9 @@ const PageLanguages = () => {
 
   if (!languages) return null
 
+
+  console.log(languages)
+
   return (
     <>
       <section style={{height: '93%', padding: '0 1rem'}}>
@@ -21,10 +24,11 @@ const PageLanguages = () => {
           <span>Agregar Idioma</span>
           <AddLanguage onClick={openModal}><IoMdAddCircleOutline /></AddLanguage>
         </Header>
-        {languages?.map(language => (
-          // console.log(language)
-          <Language key={crypto.randomUUID()} language={language?.c111_id_language?.c111_description} progress={language.t110_level} />
-        ))}
+        <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
+          {languages?.map(language => (
+            <Language key={crypto.randomUUID()} language={language?.c111_id_language?.c111_description} progress={language.t110_level} />
+          ))}
+        </div>
       </section>
       <ModalPortal isOpen={isOpen} closeModal={closeModal}>
         <FormLanguage id={token?.user?.id} />

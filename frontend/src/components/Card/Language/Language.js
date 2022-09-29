@@ -6,8 +6,6 @@ import { Actions, Level, LanguageStyled, HeaderLanguage, LanguageText } from '..
 
 const Language = ({ language, progress, levelColor }) => {
 
-  // console.log(language, progress)
-
   return (
     <LanguageStyled>
       <HeaderLanguage>
@@ -21,7 +19,7 @@ const Language = ({ language, progress, levelColor }) => {
       <div style={{textAlign:'center'}}>
         <Level color={levelColor}>Nativo</Level>
       </div>
-      <ProgressBar progress={progress} />
+      <ProgressBar progress={progress} language={language} />
     </LanguageStyled>
   )
 }

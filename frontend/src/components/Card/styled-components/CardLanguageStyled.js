@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const LanguageStyled = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  position: absolute;
+  position: relative;
   width: 300px;
   height: 120px;
   outline: 1px solid #ccc;

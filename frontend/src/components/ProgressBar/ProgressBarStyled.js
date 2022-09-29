@@ -9,8 +9,8 @@ const WrapperProgress = styled.div`
 
 const Progress = styled.div`
   width: ${props => `${props.progress}%`};
-  /* width: 45%; */
-  background-color: red;
+  color: #FFF;
+  background-color: ${props => props.bg || '#116BFE'};
   height: inherit;
   border-radius: 10px;
   position: relative;

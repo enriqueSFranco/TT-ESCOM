@@ -18,7 +18,7 @@ const FormLanguage = ({ id }) => {
 
   const handleRange = (e) => setValue(e.target.value);
 
-  let payload = { c111_id_language: parseInt(idLanguage), t110_level: value, t100_id_student: id,  };
+  let payload = { c111_id_language: parseInt(idLanguage), t110_level: parseInt(value), t100_id_student: id,  };
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,8 +36,6 @@ const FormLanguage = ({ id }) => {
 
   if (!languages) return null;
 
-  console.log(payload);
-
   return (
     <Form onSubmit={handleSubmit}>
       <Title>
@@ -52,7 +50,7 @@ const FormLanguage = ({ id }) => {
       >
         <option value="">Selecciona un idioma o dialecto</option>
         {languages?.map((language) => (
-          <option value={language.c111_id_language}>
+          <option key={language.c111_id_language} value={language.c111_id_language}>
             {language?.c111_description}
           </option>
         ))}
