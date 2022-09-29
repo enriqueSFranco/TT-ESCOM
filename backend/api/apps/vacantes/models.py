@@ -362,7 +362,7 @@ class Report(models.Model):
         null=False,
 		blank=False,
         default=1,
-		related_name='StudentLenguages',        
+		related_name='StudentLanguages',        
         on_delete=models.CASCADE
     )
     t203_report_date = models.DateField(null=True)

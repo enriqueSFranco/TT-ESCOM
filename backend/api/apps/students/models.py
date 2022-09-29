@@ -99,13 +99,13 @@ class Skills(models.Model):
 			
 
 #C111 Idiomas
-class Lenguage(models.Model):
-	c111_id_lenguage = models.AutoField(primary_key=True)
+class Language(models.Model):
+	c111_id_language = models.AutoField(primary_key=True)
 	c111_description = models.CharField(max_length=60,blank=True,null=True)	
 	c111_type = models.CharField(max_length=20,blank=True,null=True)
 	class Meta:
-		verbose_name = 'Lenguange'
-		verbose_name_plural = 'Lenguages'
+		verbose_name = 'Languange'
+		verbose_name_plural = 'Languages'
 		db_table = 'c111_idiomas'
 	
 	def __str__(self) -> str:
@@ -269,28 +269,28 @@ class Link(models.Model):
 		return self.t113_link
 
 #T110 Idiomas
-class StudentLenguage(models.Model):
+class StudentLanguage(models.Model):
 	t110_id_registrer = models.AutoField(primary_key=True)
 	t100_id_student = models.ForeignKey(
 		Student,
 		null=False,
 		blank=False,
 		default=1,
-		related_name='StudentLenguages',
+		related_name='StudentLanguages',
 		on_delete=models.CASCADE)
 	c111_id_language = models.ForeignKey(
-		Lenguage,#"Lenguage.c111_id_lenguage",
+		Language,#"Language.c111_id_lenguage",
 		null=False,
 		blank=False,
 		default=1,
-		related_name='LenguageDescription',
+		related_name='LanguageDescription',
 		on_delete=models.CASCADE)
 	t110_level_description = models.CharField(max_length=50,null=True,blank=True)
 	t110_level = models.PositiveSmallIntegerField(null=True,blank=True)
 	class Meta:
 		unique_together = ['t100_id_student','c111_id_language']
-		verbose_name='StudentLenguage'
-		verbose_name_plural='StudentLenguages'
+		verbose_name='StudentLanguage'
+		verbose_name_plural='StudentLanguages'
 		db_table='t110_idiomas'
 	
 	def __str__(self):

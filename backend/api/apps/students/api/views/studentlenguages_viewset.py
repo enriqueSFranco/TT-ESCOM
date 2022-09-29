@@ -4,13 +4,13 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import viewsets
 
-from apps.students.models import StudentLenguage
-from apps.students.api.serializer.studentlenguage_serializer import LenguagesSerializer,LenguagesListSerializer,UpdateLenguagesSerializer
+from apps.students.models import StudentLanguage
+from apps.students.api.serializer.studentlenguage_serializer import LanguagesSerializer,LanguagesListSerializer,UpdateLanguagesSerializer
 
-class LenguagesViewSet(viewsets.GenericViewSet):
-	model = StudentLenguage
-	serializer_class = LenguagesSerializer
-	list_serializer_class = LenguagesListSerializer
+class LanguagesViewSet(viewsets.GenericViewSet):
+	model = StudentLanguage
+	serializer_class = LanguagesSerializer
+	list_serializer_class = LanguagesListSerializer
 	queryset = None
 
 	def get_object(self, pk):        		          
@@ -76,7 +76,7 @@ class LenguagesViewSet(viewsets.GenericViewSet):
 
 	def update(self, request, pk):
 		lenguage = self.model.objects.filter(t110_id_registrer=pk).first()
-		lenguage_serializer = UpdateLenguagesSerializer(lenguage, data=request.data)
+		lenguage_serializer = UpdateLanguagesSerializer(lenguage, data=request.data)
 		if lenguage_serializer.is_valid():
 			lenguage_serializer.save()
 			return Response({

@@ -1,33 +1,33 @@
 from rest_framework import serializers
-from apps.students.models import StudentLenguage,Lenguage
+from apps.students.models import StudentLanguage,Language
 
-class LenguagesSerializer(serializers.ModelSerializer):
+class LanguagesSerializer(serializers.ModelSerializer):
     class Meta:
-        model = StudentLenguage
+        model = StudentLanguage
         fields = '__all__'
         #depth = 2
     
     def create(self,validate_data):
-        Lenguages = StudentLenguage(**validate_data)
-        Lenguages.save()
-        return Lenguages
+        Languages = StudentLanguage(**validate_data)
+        Languages.save()
+        return Languages
     
-class LenguagesListSerializer(serializers.ModelSerializer):    
+class LanguagesListSerializer(serializers.ModelSerializer):    
     class Meta:
-        model = StudentLenguage
+        model = StudentLanguage
         fields = '__all__'
         depth = 2
 
 
-class UpdateLenguagesSerializer(serializers.ModelSerializer):
+class UpdateLanguagesSerializer(serializers.ModelSerializer):
         class Meta:
-            model = StudentLenguage
+            model = StudentLanguage
             fields = ('t110_level','c120_id_level')
      
         def update(self,instance,validate_data):
-            update_Lenguages = super().update(instance,validate_data)
-            update_Lenguages.save()
-            return update_Lenguages
+            update_Languages = super().update(instance,validate_data)
+            update_Languages.save()
+            return update_Languages
 
 
 

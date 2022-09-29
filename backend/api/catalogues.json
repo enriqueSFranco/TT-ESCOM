@@ -170,7 +170,7 @@
 
     
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":1,
         "fields":{
             "c111_description": "Abkhaz",
@@ -179,7 +179,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":2,
         "fields":{
             "c111_description": "Afar",
@@ -188,7 +188,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":3,
         "fields":{
             "c111_description": "Africanos",
@@ -197,7 +197,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":4,
         "fields":{
             "c111_description": "Akan",
@@ -206,7 +206,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":5,
         "fields":{
             "c111_description": "Albania",
@@ -215,7 +215,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":6,
         "fields":{
             "c111_description": "Alemán",
@@ -224,7 +224,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":7,
         "fields":{
             "c111_description": "Amárico",
@@ -233,7 +233,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":8,
         "fields":{
             "c111_description": "Árabe",
@@ -242,7 +242,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":9,
         "fields":{
             "c111_description": "Aragonés",
@@ -251,7 +251,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":10,
         "fields":{
             "c111_description": "Armenio",
@@ -260,7 +260,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":11,
         "fields":{
             "c111_description": "Assamese",
@@ -269,7 +269,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":12,
         "fields":{
             "c111_description": "Avaric",
@@ -278,7 +278,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":13,
         "fields":{
             "c111_description": "Avestan",
@@ -287,7 +287,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":14,
         "fields":{
             "c111_description": "Aymara",
@@ -296,7 +296,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":15,
         "fields":{
             "c111_description": "Azerbaiyán",
@@ -305,7 +305,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":16,
         "fields":{
             "c111_description": "Bambara",
@@ -314,7 +314,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":17,
         "fields":{
             "c111_description": "Bashkir",
@@ -323,7 +323,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":18,
         "fields":{
             "c111_description": "Belarús",
@@ -332,7 +332,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":19,
         "fields":{
             "c111_description": "Bengalí",
@@ -341,7 +341,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":20,
         "fields":{
             "c111_description": "Bihari",
@@ -350,7 +350,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":21,
         "fields":{
             "c111_description": "Bislama",
@@ -359,7 +359,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":22,
         "fields":{
             "c111_description": "Bosnia",
@@ -368,7 +368,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":23,
         "fields":{
             "c111_description": "Breton",
@@ -377,7 +377,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":24,
         "fields":{
             "c111_description": "Búlgaro",
@@ -386,7 +386,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":25,
         "fields":{
             "c111_description": "Burmese",
@@ -395,7 +395,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":26,
         "fields":{
             "c111_description": "Cachemira",
@@ -404,7 +404,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":27,
         "fields":{
             "c111_description": "Canarés",
@@ -413,7 +413,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":28,
         "fields":{
             "c111_description": "Catalán",
@@ -422,7 +422,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":29,
         "fields":{
             "c111_description": "Chamorro",
@@ -431,7 +431,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":30,
         "fields":{
             "c111_description": "Chechenio",
@@ -440,7 +440,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":31,
         "fields":{
             "c111_description": "Checo",
@@ -449,7 +449,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":32,
         "fields":{
             "c111_description": "Chichewa, Chewa, Nyanja",
@@ -458,7 +458,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":33,
         "fields":{
             "c111_description": "Chino",
@@ -467,7 +467,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":34,
         "fields":{
             "c111_description": "Chuvashia",
@@ -476,7 +476,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":35,
         "fields":{
             "c111_description": "Cingalés, singalés",
@@ -485,7 +485,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":36,
         "fields":{
             "c111_description": "Corea",
@@ -494,7 +494,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":37,
         "fields":{
             "c111_description": "Cornualles",
@@ -503,7 +503,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":38,
         "fields":{
             "c111_description": "Corso",
@@ -512,7 +512,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":39,
         "fields":{
             "c111_description": "Cree",
@@ -521,7 +521,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":40,
         "fields":{
             "c111_description": "Croacia",
@@ -530,7 +530,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":41,
         "fields":{
             "c111_description": "Danés",
@@ -539,7 +539,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":42,
         "fields":{
             "c111_description": "De las Islas Marshall",
@@ -548,7 +548,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":43,
         "fields":{
             "c111_description": "Divehi, Dhivehi, Maldivas",
@@ -557,7 +557,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":44,
         "fields":{
             "c111_description": "Dzongkha",
@@ -566,7 +566,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":45,
         "fields":{
             "c111_description": "Eslovaca",
@@ -575,7 +575,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":46,
         "fields":{
             "c111_description": "Esloveno",
@@ -584,7 +584,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":47,
         "fields":{
             "c111_description": "Español",
@@ -593,7 +593,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":48,
         "fields":{
             "c111_description": "Esperanto",
@@ -602,7 +602,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":49,
         "fields":{
             "c111_description": "Estonia",
@@ -611,7 +611,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":50,
         "fields":{
             "c111_description": "Ewe",
@@ -620,7 +620,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":51,
         "fields":{
             "c111_description": "Faroese",
@@ -629,7 +629,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":52,
         "fields":{
             "c111_description": "Fiji",
@@ -638,7 +638,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":53,
         "fields":{
             "c111_description": "Finlandés",
@@ -647,7 +647,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":54,
         "fields":{
             "c111_description": "Francés",
@@ -656,7 +656,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":55,
         "fields":{
             "c111_description": "Fula, Fulah, Pulaar, Pular",
@@ -665,7 +665,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":56,
         "fields":{
             "c111_description": "Gaélico escocés, gaélico",
@@ -674,7 +674,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":57,
         "fields":{
             "c111_description": "Galés",
@@ -683,7 +683,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":58,
         "fields":{
             "c111_description": "Galicia",
@@ -692,7 +692,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":59,
         "fields":{
             "c111_description": "Georgiano",
@@ -701,7 +701,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":60,
         "fields":{
             "c111_description": "Griego Moderno",
@@ -710,7 +710,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":61,
         "fields":{
             "c111_description": "Guaraní",
@@ -719,7 +719,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":62,
         "fields":{
             "c111_description": "Gujarati",
@@ -728,7 +728,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":63,
         "fields":{
             "c111_description": "Haitiano, creole haitiano",
@@ -737,7 +737,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":64,
         "fields":{
             "c111_description": "Hausa",
@@ -746,7 +746,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":65,
         "fields":{
             "c111_description": "Hebreo (moderno)",
@@ -755,7 +755,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":66,
         "fields":{
             "c111_description": "Herero",
@@ -764,7 +764,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":67,
         "fields":{
             "c111_description": "Hindi",
@@ -773,7 +773,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":68,
         "fields":{
             "c111_description": "Hiri Motu",
@@ -782,7 +782,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":69,
         "fields":{
             "c111_description": "Holandés",
@@ -791,7 +791,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":70,
         "fields":{
             "c111_description": "Húngaro",
@@ -800,7 +800,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":71,
         "fields":{
             "c111_description": "Ido",
@@ -809,7 +809,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":72,
         "fields":{
             "c111_description": "Igbo",
@@ -818,7 +818,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":73,
         "fields":{
             "c111_description": "Indonesio",
@@ -827,7 +827,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":74,
         "fields":{
             "c111_description": "Inglés",
@@ -836,7 +836,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":75,
         "fields":{
             "c111_description": "Interlingua",
@@ -845,7 +845,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":76,
         "fields":{
             "c111_description": "Interlingue",
@@ -854,7 +854,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":77,
         "fields":{
             "c111_description": "Inuktitut",
@@ -863,7 +863,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":78,
         "fields":{
             "c111_description": "Inupiaq",
@@ -872,7 +872,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":79,
         "fields":{
             "c111_description": "Irlanda",
@@ -881,7 +881,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":80,
         "fields":{
             "c111_description": "Islandés",
@@ -890,7 +890,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":81,
         "fields":{
             "c111_description": "Italiano",
@@ -899,7 +899,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":82,
         "fields":{
             "c111_description": "Japonés",
@@ -908,7 +908,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":83,
         "fields":{
             "c111_description": "Javanés",
@@ -917,7 +917,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":84,
         "fields":{
             "c111_description": "Kalaallisut, Groenlandia",
@@ -926,7 +926,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":85,
         "fields":{
             "c111_description": "Kanuri",
@@ -935,7 +935,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":86,
         "fields":{
             "c111_description": "Kazajstán",
@@ -944,7 +944,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":87,
         "fields":{
             "c111_description": "Khmer",
@@ -953,7 +953,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":88,
         "fields":{
             "c111_description": "Kikuyu, Gikuyu",
@@ -962,7 +962,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":89,
         "fields":{
             "c111_description": "Kinyarwanda",
@@ -971,7 +971,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":90,
         "fields":{
             "c111_description": "Kirguises, Kirguistán",
@@ -980,7 +980,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":91,
         "fields":{
             "c111_description": "Kirundi",
@@ -989,7 +989,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":92,
         "fields":{
             "c111_description": "Komi",
@@ -998,7 +998,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":93,
         "fields":{
             "c111_description": "Kongo",
@@ -1007,7 +1007,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":94,
         "fields":{
             "c111_description": "Kurdo",
@@ -1016,7 +1016,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":95,
         "fields":{
             "c111_description": "Kwanyama, Kuanyama",
@@ -1025,7 +1025,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":96,
         "fields":{
             "c111_description": "Lao",
@@ -1034,7 +1034,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":97,
         "fields":{
             "c111_description": "Latin",
@@ -1043,7 +1043,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":98,
         "fields":{
             "c111_description": "Letonia",
@@ -1052,7 +1052,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":99,
         "fields":{
             "c111_description": "Limburgués, Limburgan, Limburger",
@@ -1061,7 +1061,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":100,
         "fields":{
             "c111_description": "Lingala",
@@ -1070,7 +1070,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":101,
         "fields":{
             "c111_description": "Lituano",
@@ -1079,7 +1079,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":102,
         "fields":{
             "c111_description": "Luba-Katanga",
@@ -1088,7 +1088,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":103,
         "fields":{
             "c111_description": "Luganda",
@@ -1097,7 +1097,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":104,
         "fields":{
             "c111_description": "Luxemburgués, Luxemburgués",
@@ -1106,7 +1106,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":105,
         "fields":{
             "c111_description": "Macedonia",
@@ -1115,7 +1115,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":106,
         "fields":{
             "c111_description": "Madagascar",
@@ -1124,7 +1124,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":107,
         "fields":{
             "c111_description": "Malayalam",
@@ -1133,7 +1133,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":108,
         "fields":{
             "c111_description": "Malayo",
@@ -1142,7 +1142,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":109,
         "fields":{
             "c111_description": "Maltés",
@@ -1151,7 +1151,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":110,
         "fields":{
             "c111_description": "Manx",
@@ -1160,7 +1160,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":111,
         "fields":{
             "c111_description": "Māori",
@@ -1169,7 +1169,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":112,
         "fields":{
             "c111_description": "Maratí (Marathi)",
@@ -1178,7 +1178,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":113,
         "fields":{
             "c111_description": "Mongolia",
@@ -1187,7 +1187,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":114,
         "fields":{
             "c111_description": "Nauru",
@@ -1196,7 +1196,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":115,
         "fields":{
             "c111_description": "Navajo, Navaho",
@@ -1205,7 +1205,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":116,
         "fields":{
             "c111_description": "Ndebele del Norte",
@@ -1214,7 +1214,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":117,
         "fields":{
             "c111_description": "Ndebele del sur",
@@ -1223,7 +1223,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":118,
         "fields":{
             "c111_description": "Ndonga",
@@ -1232,7 +1232,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":119,
         "fields":{
             "c111_description": "Nepali",
@@ -1241,7 +1241,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":120,
         "fields":{
             "c111_description": "Noruego",
@@ -1250,7 +1250,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":121,
         "fields":{
             "c111_description": "Noruego Bokmål",
@@ -1259,7 +1259,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":122,
         "fields":{
             "c111_description": "Noruego Nynorsk",
@@ -1268,7 +1268,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":123,
         "fields":{
             "c111_description": "Nuosu",
@@ -1277,7 +1277,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":124,
         "fields":{
             "c111_description": "Occitano",
@@ -1286,7 +1286,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":125,
         "fields":{
             "c111_description": "Oeste de Frisia",
@@ -1295,7 +1295,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":126,
         "fields":{
             "c111_description": "Ojibwe, Ojibwa",
@@ -1304,7 +1304,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":127,
         "fields":{
             "c111_description": "Oriya",
@@ -1313,7 +1313,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":128,
         "fields":{
             "c111_description": "Oromo",
@@ -1322,7 +1322,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":129,
         "fields":{
             "c111_description": "Osetia del Sur, osetio",
@@ -1331,7 +1331,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":130,
         "fields":{
             "c111_description": "Pāli",
@@ -1340,7 +1340,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":131,
         "fields":{
             "c111_description": "Panjabi, Punjabi",
@@ -1349,7 +1349,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":132,
         "fields":{
             "c111_description": "Pashto, Pushto",
@@ -1358,7 +1358,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":133,
         "fields":{
             "c111_description": "Persa",
@@ -1367,7 +1367,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":134,
         "fields":{
             "c111_description": "Polaco",
@@ -1376,7 +1376,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":135,
         "fields":{
             "c111_description": "Portugués",
@@ -1385,7 +1385,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":136,
         "fields":{
             "c111_description": "Quechua",
@@ -1394,7 +1394,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":137,
         "fields":{
             "c111_description": "Romanche",
@@ -1403,7 +1403,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":138,
         "fields":{
             "c111_description": "Rumania, Moldavia, Moldavan",
@@ -1412,7 +1412,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":139,
         "fields":{
             "c111_description": "Ruso",
@@ -1421,7 +1421,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":140,
         "fields":{
             "c111_description": "Sami del norte",
@@ -1430,7 +1430,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":141,
         "fields":{
             "c111_description": "Samoa",
@@ -1439,7 +1439,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":142,
         "fields":{
             "c111_description": "Sango",
@@ -1448,7 +1448,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":143,
         "fields":{
             "c111_description": "Sánscrito (samskrta)",
@@ -1457,7 +1457,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":144,
         "fields":{
             "c111_description": "Sardo",
@@ -1466,7 +1466,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":145,
         "fields":{
             "c111_description": "Serbio",
@@ -1475,7 +1475,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":146,
         "fields":{
             "c111_description": "Shona",
@@ -1484,7 +1484,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":147,
         "fields":{
             "c111_description": "Sindhi",
@@ -1493,7 +1493,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":148,
         "fields":{
             "c111_description": "Somalí",
@@ -1502,7 +1502,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":149,
         "fields":{
             "c111_description": "Southern Sotho",
@@ -1511,7 +1511,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":150,
         "fields":{
             "c111_description": "Sueco",
@@ -1520,7 +1520,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":151,
         "fields":{
             "c111_description": "Sundanese",
@@ -1529,7 +1529,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":152,
         "fields":{
             "c111_description": "Swahili",
@@ -1538,7 +1538,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":153,
         "fields":{
             "c111_description": "Swati",
@@ -1547,7 +1547,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":154,
         "fields":{
             "c111_description": "Tagalo",
@@ -1556,7 +1556,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":155,
         "fields":{
             "c111_description": "Tahitian",
@@ -1565,7 +1565,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":156,
         "fields":{
             "c111_description": "Tailandia",
@@ -1574,7 +1574,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":157,
         "fields":{
             "c111_description": "Tamil",
@@ -1583,7 +1583,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":158,
         "fields":{
             "c111_description": "Tártara",
@@ -1592,7 +1592,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":159,
         "fields":{
             "c111_description": "Tayikistán",
@@ -1601,7 +1601,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":160,
         "fields":{
             "c111_description": "Telugu",
@@ -1610,7 +1610,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":161,
         "fields":{
             "c111_description": "Tibetano estándar, Tibetano, Central",
@@ -1619,7 +1619,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":162,
         "fields":{
             "c111_description": "Tigrinya",
@@ -1628,7 +1628,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":163,
         "fields":{
             "c111_description": "Tonga (Islas Tonga)",
@@ -1637,7 +1637,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":164,
         "fields":{
             "c111_description": "Tsonga",
@@ -1646,7 +1646,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":165,
         "fields":{
             "c111_description": "Tswana",
@@ -1655,7 +1655,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":166,
         "fields":{
             "c111_description": "Turco",
@@ -1664,7 +1664,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":167,
         "fields":{
             "c111_description": "Turkmenistán",
@@ -1673,7 +1673,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":168,
         "fields":{
             "c111_description": "Twi",
@@ -1682,7 +1682,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":169,
         "fields":{
             "c111_description": "Ucrania",
@@ -1691,7 +1691,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":170,
         "fields":{
             "c111_description": "Uighur, Uyghur",
@@ -1700,7 +1700,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":171,
         "fields":{
             "c111_description": "Urdu",
@@ -1709,7 +1709,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":172,
         "fields":{
             "c111_description": "Uzbeko",
@@ -1718,7 +1718,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":173,
         "fields":{
             "c111_description": "Valonia",
@@ -1727,7 +1727,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":174,
         "fields":{
             "c111_description": "Vasco",
@@ -1736,7 +1736,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":175,
         "fields":{
             "c111_description": "Venda",
@@ -1745,7 +1745,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":176,
         "fields":{
             "c111_description": "Vietnamita",
@@ -1754,7 +1754,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":177,
         "fields":{
             "c111_description": "Volapük",
@@ -1763,7 +1763,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":178,
         "fields":{
             "c111_description": "Wolof",
@@ -1772,7 +1772,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":179,
         "fields":{
             "c111_description": "Xhosa",
@@ -1781,7 +1781,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":180,
         "fields":{
             "c111_description": "Yiddish",
@@ -1790,7 +1790,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":181,
         "fields":{
             "c111_description": "Yoruba",
@@ -1799,7 +1799,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":182,
         "fields":{
             "c111_description": "Zhuang, Chuang",
@@ -1808,7 +1808,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":183,
         "fields":{
             "c111_description": "Zulu",
@@ -1817,7 +1817,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":184,
         "fields":{
             "c111_description": "Akateko",
@@ -1826,7 +1826,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":185,
         "fields":{
             "c111_description": "amuzgo",
@@ -1835,7 +1835,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":186,
         "fields":{
             "c111_description": "Awakateko",
@@ -1844,7 +1844,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":187,
         "fields":{
             "c111_description": "ayapaneco",
@@ -1853,7 +1853,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":188,
         "fields":{
             "c111_description": "ch'ol",
@@ -1862,7 +1862,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":189,
         "fields":{
             "c111_description": "chatino",
@@ -1871,7 +1871,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":190,
         "fields":{
             "c111_description": "chichimeco jonaz",
@@ -1880,7 +1880,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":191,
         "fields":{
             "c111_description": "chinanteco",
@@ -1889,7 +1889,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":192,
         "fields":{
             "c111_description": "chocholteco",
@@ -1898,7 +1898,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":193,
         "fields":{
             "c111_description": "chontal de Oaxaca",
@@ -1907,7 +1907,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":194,
         "fields":{
             "c111_description": "chontal de Tabasco",
@@ -1916,7 +1916,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":195,
         "fields":{
             "c111_description": "Chuj",
@@ -1925,7 +1925,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":196,
         "fields":{
             "c111_description": "cora",
@@ -1934,7 +1934,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":197,
         "fields":{
             "c111_description": "cucapá",
@@ -1943,7 +1943,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":198,
         "fields":{
             "c111_description": "cuicateco",
@@ -1952,7 +1952,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":199,
         "fields":{
             "c111_description": "guarijío",
@@ -1961,7 +1961,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":200,
         "fields":{
             "c111_description": "huasteco",
@@ -1970,7 +1970,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":201,
         "fields":{
             "c111_description": "huave",
@@ -1979,7 +1979,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":202,
         "fields":{
             "c111_description": "huichol",
@@ -1988,7 +1988,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":203,
         "fields":{
             "c111_description": "ixcateco",
@@ -1997,7 +1997,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":204,
         "fields":{
             "c111_description": "Ixil",
@@ -2006,7 +2006,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":205,
         "fields":{
             "c111_description": "Jakalteko",
@@ -2015,7 +2015,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":206,
         "fields":{
             "c111_description": "K'iche'",
@@ -2024,7 +2024,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":207,
         "fields":{
             "c111_description": "Kaqchikel",
@@ -2033,7 +2033,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":208,
         "fields":{
             "c111_description": "Kickapoo",
@@ -2042,7 +2042,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":209,
         "fields":{
             "c111_description": "kiliwa",
@@ -2051,7 +2051,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":210,
         "fields":{
             "c111_description": "ku'ahl",
@@ -2060,7 +2060,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":211,
         "fields":{
             "c111_description": "kumiai",
@@ -2069,7 +2069,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":212,
         "fields":{
             "c111_description": "lacandón",
@@ -2078,7 +2078,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":213,
         "fields":{
             "c111_description": "Mam",
@@ -2087,7 +2087,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":214,
         "fields":{
             "c111_description": "matlatzinca",
@@ -2096,7 +2096,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":215,
         "fields":{
             "c111_description": "maya",
@@ -2105,7 +2105,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":216,
         "fields":{
             "c111_description": "mayo",
@@ -2114,7 +2114,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":217,
         "fields":{
             "c111_description": "mazahua",
@@ -2123,7 +2123,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":218,
         "fields":{
             "c111_description": "mazateco",
@@ -2132,7 +2132,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":219,
         "fields":{
             "c111_description": "mixe",
@@ -2141,7 +2141,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":220,
         "fields":{
             "c111_description": "mixteco",
@@ -2150,7 +2150,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":221,
         "fields":{
             "c111_description": "náhuatl",
@@ -2159,7 +2159,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":222,
         "fields":{
             "c111_description": "oluteco",
@@ -2168,7 +2168,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":223,
         "fields":{
             "c111_description": "otomí",
@@ -2177,7 +2177,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":224,
         "fields":{
             "c111_description": "paipai",
@@ -2186,7 +2186,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":225,
         "fields":{
             "c111_description": "pame",
@@ -2195,7 +2195,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":226,
         "fields":{
             "c111_description": "pápago",
@@ -2204,7 +2204,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":227,
         "fields":{
             "c111_description": "pima",
@@ -2213,7 +2213,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":228,
         "fields":{
             "c111_description": "popoloca",
@@ -2222,7 +2222,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":229,
         "fields":{
             "c111_description": "popoluca de la Sierra",
@@ -2231,7 +2231,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":230,
         "fields":{
             "c111_description": "Q'anjob'al",
@@ -2240,7 +2240,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":231,
         "fields":{
             "c111_description": "Q'eqchí '",
@@ -2249,7 +2249,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":232,
         "fields":{
             "c111_description": "qato'k",
@@ -2258,7 +2258,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":233,
         "fields":{
             "c111_description": "sayulteco",
@@ -2267,7 +2267,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":234,
         "fields":{
             "c111_description": "seri",
@@ -2276,7 +2276,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":235,
         "fields":{
             "c111_description": "tarahumara",
@@ -2285,7 +2285,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":236,
         "fields":{
             "c111_description": "tarasco",
@@ -2294,7 +2294,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":237,
         "fields":{
             "c111_description": "Teko",
@@ -2303,7 +2303,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":238,
         "fields":{
             "c111_description": "tepehua",
@@ -2312,7 +2312,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":239,
         "fields":{
             "c111_description": "tepehuano del norte",
@@ -2321,7 +2321,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":240,
         "fields":{
             "c111_description": "tepehuano del sur",
@@ -2330,7 +2330,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":241,
         "fields":{
             "c111_description": "texistepequeño",
@@ -2339,7 +2339,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":242,
         "fields":{
             "c111_description": "tlahuica",
@@ -2348,7 +2348,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":243,
         "fields":{
             "c111_description": "tlapaneco",
@@ -2357,7 +2357,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":244,
         "fields":{
             "c111_description": "tojolabal",
@@ -2366,7 +2366,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":245,
         "fields":{
             "c111_description": "totonaco",
@@ -2375,7 +2375,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":246,
         "fields":{
             "c111_description": "triqui",
@@ -2384,7 +2384,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":247,
         "fields":{
             "c111_description": "tseltal",
@@ -2393,7 +2393,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":248,
         "fields":{
             "c111_description": "tsotsil",
@@ -2402,7 +2402,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":249,
         "fields":{
             "c111_description": "yaqui",
@@ -2411,7 +2411,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":250,
         "fields":{
             "c111_description": "zapoteco",
@@ -2420,7 +2420,7 @@
     },
 
     {
-        "model":"students.Lenguage",        
+        "model":"students.Language",        
         "pk":251,
         "fields":{
             "c111_description": "zoque",
