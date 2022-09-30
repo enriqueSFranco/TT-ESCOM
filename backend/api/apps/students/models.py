@@ -135,6 +135,7 @@ class Student(models.Model):
 	t100_boleta = models.CharField(max_length=14, null=True, blank=True)
 	t100_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_last_name = models.CharField(max_length=50, null=True, blank=True)
+	t100_second_surname = models.CharField(max_length=50, null=True, blank=True)
 	t100_username = models.CharField(max_length=40, null=True, blank=True)
 	t100_cv = models.FileField(null=True, blank=True,default="",upload_to=upload_cv)
 	t100_email = models.EmailField(unique=True,max_length=50, null=False, blank=False)
