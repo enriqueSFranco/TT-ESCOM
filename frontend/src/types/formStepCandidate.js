@@ -3,6 +3,7 @@ export const formStepCandidate = Object.freeze({
   t100_name: "",
   t100_password: "",
   t100_last_name: "",
+  t100_second_surname:"",
   t100_username: "",
   t100_email: "",
   t100_gender: null,
@@ -14,7 +15,6 @@ export const formStepCandidate = Object.freeze({
   is_active: false,
   t100_phonenumber: "",
   t100_residence: "",
-  c222_id_locality:"",
   t100_modalities: "",
   t100_interest_job: "",
 });

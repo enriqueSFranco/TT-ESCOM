@@ -123,7 +123,7 @@ const CardProfileStudent = () => {
                   letterSpacing: ".5px",
                 }}
               >
-                {candidate[0]?.t100_name} {candidate[0]?.t100_last_name}
+                {candidate[0]?.t100_name} {candidate[0]?.t100_last_name} {candidate[0]?.t100_second_surname}
               </span>
               <Chip
                 label={candidate[0]?.t100_interest_job ?? "Puesto deseado no definido"}

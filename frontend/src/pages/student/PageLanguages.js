@@ -25,7 +25,7 @@ const PageLanguages = () => {
           <AddLanguage onClick={openModal}><IoMdAddCircleOutline /></AddLanguage>
         </Header>
         <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
-          {languages?.map(language => (
+          {languages && languages?.map(language => (
             <Language key={crypto.randomUUID()} language={language?.c111_id_language?.c111_description} progress={language.t110_level} />
           ))}
         </div>

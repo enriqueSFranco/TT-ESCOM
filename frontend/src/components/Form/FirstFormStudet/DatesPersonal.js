@@ -202,7 +202,7 @@ function DatesPersonal({ form, handleChange }) {
                   localities?.map((township) => (
                     <option
                       key={crypto.randomUUID()}
-                      value={township}
+                      value={township.c222_id}
                     >
                       {township.c222_locality}
                     </option>
