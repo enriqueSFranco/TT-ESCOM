@@ -1,19 +1,13 @@
 // @ts-check
 import API from "services/http.service";
 import { CODE_201, CODE_200, CODE_400, CODE_404 } from "services/http.code";
-import axios from "axios";
-import toast from "react-hot-toast";
 import {
-  API_STUDENT,
-  API_PHOTO_STUDENT,
-  API_PROJECT_STUDENT,
   API_CATALOGUE_PLATAFORM,
   API_ACADEMIC_HISTORIAL,
   API_JOB_APPLICATIONS,
-  API_CERTIFICATIONS,
 } from "../settings";
 
-const { REACT_APP_URL_CANDIDATE_LANGUAGE, REACT_APP_URL_CANDIDATE, REACT_APP_URL_CANDIDATE_SKILLS, REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS } = process.env
+const { REACT_APP_URL_CANDIDATE_LANGUAGE, REACT_APP_URL_CANDIDATE, REACT_APP_URL_CANDIDATE_SKILLS, REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS, REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL, REACT_APP_URL_CANDIDATE_PROJECTS, REACT_APP_URL_CANDIDATE_CERTIFICATIONS } = process.env
 
 /**
  * @param {Number} id identificador para obtner un alumno en especifico
@@ -28,11 +22,7 @@ export const getStudent = async (id) => {
       const { data } = response;
       return data;
     })
-    .catch((error) => {
-      if (axios.isCancel(error)) {
-        return false
-      }
-    }
+    .catch((error) => error
     );
 };
 
@@ -50,9 +40,6 @@ export const getSkills = () => {
 
 
 export const addSkill = (payload = {}) => {
-  // const controller = new AbortController()
-  // const signal = controller.signal
-
   return API.post(`${REACT_APP_URL_CANDIDATE_SKILLS}`, {payload, headers: {
     accept: 'application/json',
     'Content-Type': 'application/json'
@@ -101,8 +88,7 @@ export const postSocialNetwork = (payload = {}) => {
 };
 
 export const getLinks = () => {
-  return axios
-    .get(API_CATALOGUE_PLATAFORM)
+  return API(API_CATALOGUE_PLATAFORM)
     .then((response) => {
       const { data } = response;
       return data;
@@ -199,8 +185,7 @@ export const applyJob = (payload) => {
 };
 
 export const changeApplyState = (id, payload) => {
-  return axios
-    .put(`${API_JOB_APPLICATIONS}${id}/`, payload, {
+  return API.put(`${API_JOB_APPLICATIONS}${id}/`, payload, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -220,7 +205,7 @@ export const changeApplyState = (id, payload) => {
  * @returns {Promise}
  **/
 export const getProjects = (id) => {
-  return API(`${process.env.REACT_APP_URL_CANDIDATE_PROJECTS}${id}/`)
+  return API(`${REACT_APP_URL_CANDIDATE_PROJECTS}${id}/`)
     .then((response) => {
       const { data } = response;
       return data;
@@ -235,8 +220,7 @@ export const getProjects = (id) => {
  * @returns {Promise}
  **/
 export const deleteProject = (id) => {
-  return axios
-    .delete(`${API_PROJECT_STUDENT}${id}/`)
+  return API.delete(`${REACT_APP_URL_CANDIDATE_PROJECTS}${id}/`)
     .then((response) => response)
     .catch((error) => error);
 };
@@ -245,8 +229,7 @@ export const deleteProject = (id) => {
  * @param {Object} payload objeto con los campos a enviar
  **/
 export const addProject = (payload = {}) => {
-  return axios
-    .post(`${API_PROJECT_STUDENT}`, payload)
+  return API.post(REACT_APP_URL_CANDIDATE_PROJECTS, payload)
     .then((response) => {
       return response;
     })
@@ -260,14 +243,13 @@ export const addProject = (payload = {}) => {
  * @returns {Promise}
  **/
 export const getAcademicHistorial = (id) => {
-  return API(`${process.env.REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL}${id}/`)
+  return API(`${REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL}${id}/`)
     .then((response) => response)
     .catch((error) => error);
 };
 
 export const postAcademicHistorial = (payload = {}) => {
-  return axios
-    .post(API_ACADEMIC_HISTORIAL, payload)
+  return API.post(REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL, payload)
     .then((response) => response)
     .catch((error) => error);
 };
@@ -277,8 +259,7 @@ export const postAcademicHistorial = (payload = {}) => {
  * @returns {Promise}
  **/
 export const deleteAcademicHistorial = (id) => {
-  return axios
-    .delete(`${API_ACADEMIC_HISTORIAL}${id}/`)
+  return API.delete(`${API_ACADEMIC_HISTORIAL}${id}/`)
     .then((response) => response)
     .catch((error) => error);
 };
@@ -288,8 +269,7 @@ export const deleteAcademicHistorial = (id) => {
  * @returns {Promise}
  **/
 export const getStudentCertifications = (id) => {
-  return axios
-    .get(`${API_CERTIFICATIONS}${id}/`)
+  return API(`${REACT_APP_URL_CANDIDATE_CERTIFICATIONS}${id}/`)
     .then((response) => response)
     .catch((error) => error);
 };
@@ -299,8 +279,7 @@ export const getStudentCertifications = (id) => {
  * @returns {Promise}
  **/
 export const deleteStudentCertification = (id) => {
-  return axios
-    .delete(`${API_CERTIFICATIONS}${id}/`)
+  return API.delete(`${REACT_APP_URL_CANDIDATE_CERTIFICATIONS}${id}/`)
     .then((response) => response)
     .catch((error) => error);
 };
@@ -310,8 +289,7 @@ export const deleteStudentCertification = (id) => {
  * @returns {Promise}
  **/
 export const postCertification = (payload = {}) => {
-  return axios
-    .post(API_CERTIFICATIONS, payload)
+  return API.post(REACT_APP_URL_CANDIDATE_CERTIFICATIONS, payload)
     .then((response) => response)
     .catch((error) => error);
 };

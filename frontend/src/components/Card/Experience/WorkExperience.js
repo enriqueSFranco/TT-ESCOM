@@ -27,7 +27,7 @@ const WorkExperience = ({ setTypeProject }) => {
   const navigate = useNavigate();
   const { token } = useAuth();
   const { form, handleChange } = useForm(
-    { ...initialForm, t100_id_student: token?.user?.user_id },
+    { ...initialForm, t100_id_student: token?.user?.id },
     validateForm
   );
   const [succes, setSucces] = useState(null);

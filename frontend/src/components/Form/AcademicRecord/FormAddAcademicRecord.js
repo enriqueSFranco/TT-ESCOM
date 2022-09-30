@@ -25,7 +25,7 @@ const FormAddAcademicRecord = () => {
     e.preventDefault();
     let copyForm = {
       ...form,
-      t100_id_student: token?.user?.user_id,
+      t100_id_student: token?.user?.id,
     };
     postAcademicHistorial(copyForm)
       .then((response) => {

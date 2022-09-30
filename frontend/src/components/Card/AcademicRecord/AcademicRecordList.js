@@ -13,7 +13,7 @@ const AcademicRecordList = () => {
   const { token } = useAuth();
   const [isOpenModal, openModal, closeModal] = useModal(false);
 
-  let id = token?.user?.user_id;
+  let id = token?.user?.id;
 
 
   useEffect(() => {

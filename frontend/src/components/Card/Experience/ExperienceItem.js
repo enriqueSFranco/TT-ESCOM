@@ -2,7 +2,8 @@ import React from "react";
 import { useModal } from "hooks/useModal";
 import { formatDate } from "utils/formatDate";
 import { deleteProject } from "services/students/index";
-import Modal from "components/Modal/Modal";
+import ModalPortal from "components/Modal/ModalPortal";
+import TypeExperience from "./TypeExperience";
 import logoProject from "images/project.svg";
 import { GoTrashcan } from "react-icons/go";
 import { MdEdit } from "react-icons/md";
@@ -102,7 +103,7 @@ const ExperenceItem = ({
           </button>
         </div>
       </div>
-      <Modal
+      <ModalPortal
         isOpen={isOpenModalDeleteProject}
         closeModal={closeModalDeleteProject}
       >
@@ -116,11 +117,11 @@ const ExperenceItem = ({
           </h3>
           <button className={styles.btnDeleteExperience} onClick={() => deleteData(id)}>Si, Eliminar</button>
         </div>
-      </Modal>
+      </ModalPortal>
 
-      <Modal isOpen={isOpenModalEditProject} closeModal={closeModalEditProject}>
-        <h1>Editar proyecto</h1>
-      </Modal>
+      {/* <ModalPortal isOpen={isOpenModalEditProject} closeModal={closeModalEditProject}>
+        <TypeExperience />
+      </ModalPortal> */}
     </>
   );
 };

@@ -31,7 +31,7 @@ const FormCertification = ({
   const [isVisibleLink, setIsVisibleLink] = useState(false);
   const { form, handleChange, handleChecked, onSubmitPostCertification } = useForm({
     ...initialForm,
-    t100_id_student: token?.user?.user_id,
+    t100_id_student: token?.user?.id,
   }, validateForm);
 
   return (

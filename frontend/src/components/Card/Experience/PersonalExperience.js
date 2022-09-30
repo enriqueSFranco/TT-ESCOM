@@ -21,7 +21,7 @@ const PersonalExperience = ({ setTypeProject }) => {
   const [succes, setSucces] = useState(null);
   const [message, setMessage] = useState("");
   const { token } = useAuth();
-  const { form, handleChange } = useForm({...initialForm, t100_id_student: token?.user?.user_id});
+  const { form, handleChange } = useForm({...initialForm, t100_id_student: token?.user?.id});
 
   const handleClick = () => setTypeProject(null);
 
@@ -81,6 +81,7 @@ const PersonalExperience = ({ setTypeProject }) => {
               onChange={handleChange}
             />
           </div>
+          
           <div className={styles.wraperDescriptionProject}>
             <textarea
               name="t117_description"

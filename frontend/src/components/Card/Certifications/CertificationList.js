@@ -3,7 +3,7 @@ import { useAuth } from "context/AuthContext";
 import { useModal } from "hooks/useModal";
 import { getStudentCertifications } from "services/students/index";
 import FormCertification from "components/Form/Certification/FormCertification";
-import ModalForm from "components/Modal/ModalForm";
+import ModalPortal from "components/Modal/ModalPortal";
 import CertificationItem from "./CertificationItem";
 import { MdAdd } from "react-icons/md";
 import styles from "./Certifications.module.css";
@@ -17,7 +17,7 @@ const CertificationList = () => {
     closeModalAddCertification,
   ] = useModal();
 
-  let idStudent = token?.user?.user_id;
+  let idStudent = token?.user?.id;
 
   useEffect(() => {
     getStudentCertifications(idStudent)
@@ -57,14 +57,14 @@ const CertificationList = () => {
         <MdAdd />
       </button>
 
-      <ModalForm
+      <ModalPortal
         isOpen={isOpenModalAddCertification}
         closeModal={closeModalAddCertification}
         width="600px"
         height="600px"
       >
         <FormCertification />
-      </ModalForm>
+      </ModalPortal>
     </article>
   );
 };
