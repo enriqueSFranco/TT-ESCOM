@@ -37,6 +37,7 @@ const Select = styled.select`
 
 const WrapperSelect = styled.div`
   outline: 1px solid #ccc;
+  width:200px;
 `
 
 export { Button, Form, GroupInput, Select, WrapperSelect }
