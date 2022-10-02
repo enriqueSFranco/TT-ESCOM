@@ -1,5 +1,8 @@
 from django.contrib.auth.models import  AbstractBaseUser,PermissionsMixin
 from apps.users.models import User
+from drf_extra_fields.fields import Base64FileField
+import PyPDF2
+import io
 #from apps.vacantes import models
 
 #from turtle import ondrag
@@ -15,7 +18,18 @@ def upload_platoform_icon(instance, filename):
     return f"icons/{instance.t100_id_student}-{filename}"
 
 def upload_cv(instance, filename):
-    return f"{instance.t100_boleta}-{filename}"	
+    return f"files/{instance.t100_boleta}-{filename}"	
+
+class PDFBase64File(Base64FileField):
+    ALLOWED_TYPES = ['pdf']
+
+    def get_file_extension(self, filename, decoded_file):
+        try:
+            PyPDF2.PdfFileReader(io.BytesIO(decoded_file))
+        except PyPDF2.utils.PdfReadError as e:
+            logger.warning(e)
+        else:
+            return 'pdf'
 
 """----------------------------------------------------------- Catalogos --------------------------------------------------------"""
 
