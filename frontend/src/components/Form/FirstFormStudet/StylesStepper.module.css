@@ -6,8 +6,8 @@
   position: relative;
   justify-content: space-between;
   align-items: center;
-  width: 1200px;
-  height: 600px;
+  width: 2000px;
+  height: 800px;
   display: flex;
 }
 
@@ -19,7 +19,6 @@
 
 .flex {
   display: flex;
-  align-items: center;
 }
 
 .bg {
@@ -57,7 +56,10 @@
   background-image: url(../../../images/skillsStep.gif);
 }
 
-.container2 {
+.container2 {  
+  width: 60%;
+  height: 90%;
+  align-items: center;
   margin: 1em;
 }
 
@@ -78,8 +80,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: 180px;
-  margin-top: 1rem;
+  height: 90%;
 }
 
 .buttons {
@@ -105,7 +106,7 @@
 .formDataPrivate {
   position: relative;
   top: 0rem;
-  height: 400px;
+  height: 90%;
 }
 
 .form1 {
@@ -126,6 +127,16 @@
 }
 
 .formTitle, .formTitleDataSchool, .formTitleSkills {
+  color: #028dd4;
+  font-weight: bold;
+  width: 650px;
+  position: relative;
+  left: .8rem;
+  top: -1rem;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+}
+.formTitlePersonal{
   color: #028dd4;
   font-weight: bold;
   width: 650px;
@@ -166,9 +177,8 @@
   align-items: center;
   flex-direction: column;
   text-align: left;
-  height: 480px;
-  min-width: 600px;
-  /* outline: 2px solid red; */
+  height: 600px;
+  min-width: 900px;
   
 }
 
@@ -179,21 +189,44 @@
 }
 
 .inputGroup {
-  /* outline: 2px solid red; */
-  height: 60px;
-  margin-bottom: 2rem;
+   outline: 2px solid red; 
+  height: 80px;
+  margin-bottom: 5rem;
 }
 
+.inputGroupName {
+  outline: 2px solid red; 
+ height: 80px;
+}
 
-.inputGroup, .inputGroup_1_2 {
+.inputGroupPhone {
+  outline: 2px solid green; 
+  height: 50px;  
   justify-content: center;
   align-items: center;
   text-align: left;
   margin: 1rem;
 }
 
+.inputGroupLocation {
+  outline: 2px solid blue; 
+  height: 200px;  
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  margin: 1rem;
+  height: 250px;
+}
+
+.inputGroup, .inputGroup_1_2 {
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  margin: 1rem;  
+}
+
 .inputGroup_1_2 {
-  /* outline: 2px solid yellow; */
+   outline: 2px solid yellow; 
   width: 550px;
   display: flex;
   justify-content: space-between;
@@ -218,7 +251,6 @@
 
 .Col1{
   width: 550px;
-  display: flex;
   justify-content: space-between;
   margin-right:1em;
   /* outline: 2px solid red; */

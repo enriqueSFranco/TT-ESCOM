@@ -35,6 +35,7 @@ const StepComponent = () => {
 
   let id_student = token?.user?.id;
 
+  const payload = {...form,c222_id_locality:1}
   academicHistorial.t100_id_student = id_student;
 
   // TODO: Pasar a un hook personalizado
@@ -124,13 +125,13 @@ const StepComponent = () => {
   const updateData = () => {
 
     const endpoint = process.env.REACT_APP_URL_CANDIDATE + id_student + "/";
-
+    
     let options = {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: form,
+      body: payload,
     };
     helpHttp()
       .PUT(endpoint, options)

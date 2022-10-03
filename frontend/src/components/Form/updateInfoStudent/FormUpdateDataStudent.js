@@ -20,6 +20,7 @@ const validateForm = (form) => {
   else if (!regex.t100_name.test(form.t100_name.trim())) errors.t100_name = "";
 
   return errors;
+  
 };
 
 const FormUpdateDataStudent = ({ id, username, candidate }) => {
@@ -82,7 +83,8 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
           </div>          
           <div style={{display: 'flex', gap: '1rem', marginTop: '1rem'}}>
             <Input label='Nombre(s)' width='300px' defaultValue={candidate?.t100_name}/>
-            <Input label='Apellidos' defaultValue={candidate?.t100_last_name}/>
+            <Input label='Primer Apellido' defaultValue={candidate?.t100_last_name}/>
+            <Input label='Segundo Apellido' defaultValue={candidate?.t100_second_surname}/>
           </div>
           <div>
             <h2>Donde te ubicas</h2>

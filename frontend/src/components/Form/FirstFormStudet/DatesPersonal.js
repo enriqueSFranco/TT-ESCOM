@@ -90,11 +90,17 @@ function DatesPersonal({ form, handleChange }) {
     }
   };
 
+<<<<<<< HEAD
+=======
+   console.log(form)
+   console.log(place)
+
+>>>>>>> c1e9dd3a2a69bcb5ee50fa4cb5f601e84947ded5
   return (
     <div className={styles.containerPage}>
-      <h5 className={styles.formTitle}>Por favor, proporcionanos los siguientes datos.</h5>
+      <h5 className={styles.formTitlePersonal}>Por favor, proporcionanos los siguientes datos.</h5>
       <form className={styles.formDataPrivate}>
-        <div className={styles.inputGroup}>
+        <div className={styles.inputGroupName}>
           <TextField
             size="small"
             label="Nombre*"
@@ -102,20 +108,31 @@ function DatesPersonal({ form, handleChange }) {
             id="t100_name"
             value={form.t100_name}
             onChange={handleChange}
-            sx={{ width: 300, maxWidth: "100%", marginRight: 2 }}
+            sx={{ width: 600, maxWidth: "100%", marginRight: 2 }}
           />
-          <TextField
-            size="small"
-            label="Apellido(s)*"
-            name="t100_last_name"
-            id="t100_last_name"
-            value={form.t100_last_name}
-            onChange={handleChange}
-            sx={{ width: 300, maxWidth: "100%" }}
-          />
+          <div >
+            <TextField
+              size="small"
+              label="Primer Apellido*"
+              name="t100_last_name"
+              id="t100_last_name"
+              value={form.t100_last_name}
+              onChange={handleChange}
+              sx={{paddingTop:0.3, width: 300, maxWidth: "100%" }}
+            />
+            <TextField
+              size="small"
+              label="Segundo Apellido*"
+              name="t100_second_surname"
+              id="t100_second_surname"
+              value={form.t100_second_surname}
+              onChange={handleChange}
+              sx={{paddingLeft:0.5,paddingTop:0.3, width: 300, maxWidth: "100%" }}
+            />
+          </div>
         </div>
 
-        <div className={styles.inputGroup}>
+        <div className={styles.inputGroupPhone} >
           <TextField
             size="small"
             sx={{width: 300}}
@@ -129,40 +146,57 @@ function DatesPersonal({ form, handleChange }) {
             }}
           />
         </div>
-
-        <div className={`my-4 ${styles.inputGroup}`}>
+        <div className={`my-4 ${styles.inputGroupLocation}`}>
           <div className={styles.flex}>
             <MdLocationPin
                     style={{
                       fontWeight: "bold",
-                      fontSize: "1.3rem",
+                      fontSize: "2.5rem",
                     }}                    
             />
-            <p style={{ fontWeight: "400" }}>Donde te ubicas?</p>
+            <p style={{ fontWeight: "400", fontSize: "1.5rem", }}>Donde te ubicas?</p>
           </div>
-          <div className={styles.Col1}>                
-            <TextField
-              size="small"
-              label="Calle y numero"
-              name="t100_residence"
-              id="t100_residence"
-              value={form.t100_residence}
-              onChange={handleChange}
-              sx={{ width: 300, maxWidth: "100%" }}
-            />
-            <TextField
-              size="small"
-              label="C.P.*"
-              value={cp ? parseInt(cp) : ""}
-              onChange={handleLocality}              
-              sx={{ width: 300, maxWidth: "100%" }}
-            />
+          <div className={styles.Col1}>    
+            <div className={styles.flex}>
+              <TextField
+                size="small"
+                label="Calle y numero"
+                name="t100_residence"
+                id="t100_residence"
+                value={form.t100_residence}
+                onChange={handleChange}
+                sx={{ width: 300, maxWidth: "100%", padding:1 }}
+              />
+              <TextField
+                size="small"
+                label="C.P.*"
+                value={cp ? parseInt(cp) : ""}
+                onChange={handleLocality}              
+                sx={{ width: 300, maxWidth: "100%", padding:1 }}
+              />
+            </div>            
+            <div className={styles.flex}>
+              <TextField
+                size="small"
+                label="Estado"
+                value={place.c222_state}
+                onChange={handleChange}
+                sx={{ width: 300, maxWidth: "100%" ,padding:1}}
+              />
+              <TextField
+                size="small"
+                label="Localidad"
+                value={place.c222_municipality}  
+                sx={{ width: 300, maxWidth: "100%", padding:1 }}
+              />
+            </div>            
             <WrapperSelect>
               <Select
                 name="c222_id_locality"
                 id="c222_id_locality"
                 value={place}
                 onChange={(e) => setPlace(e.target.value)}
+                sx={{ width:300, padding:1}}
               >
                 <option value="" disabled>
                   Seleccione una localidad

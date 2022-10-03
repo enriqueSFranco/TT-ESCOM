@@ -101,19 +101,12 @@ class CVViewSet(viewsets.GenericViewSet):
 		student_cv = self.get_object(pk)
 		cv_serializer = self.serializer_class(student_cv,many=True)
 		return Response(cv_serializer.data)
-
-	def set_file(self,file):
-		print("hola desde set_file")
-		image = {"t100_username":"",
-			"t100_cv":base64.b64decode(file)
-		}
-		return image
+	
 
 	def update(self, request, pk):
 		print(request.data)
-		image = self.set_file(request.data['file'])
 		u_cv = self.model.objects.filter(t100_id_student = pk).first()
-		cv_serializer = self.serializer_class(u_cv, data=image)
+		cv_serializer = self.serializer_class(u_cv, data=request.data)
 		if cv_serializer.is_valid():
 			cv_serializer.save()
 			return Response({
