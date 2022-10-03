@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "hooks/useForm";
-import { uploadPhotoStudent } from 'services'
+import { uploadPhotoStudent, uploadCVStudent } from 'services'
 import Input from "components/Input/Input";
 import Switch from "components/Switch/Switch";
 import CustomAvatar from "components/Avatar/Avatar";
-import { updateStudent, getLinks, postSocialNetwork, getStudent } from "services/students/index";
+// import { updateStudent, getLinks, postSocialNetwork, getStudent } from "services/students/index";
 import { updateStudentInitialForm } from "../../../types/schemes";
 
 const validateForm = (form) => {
@@ -29,9 +29,13 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
     validateForm
   );
 
-  async function uploadCV() {
+  async function uploadCV(e) {
     console.log('subiendo cv...')
-
+    const file = e.target.files[0]
+    const base64 = await convertToBase64(file)
+    uploadPhotoStudent(id, {t100_username: "", t100_cv: base64})
+      .then(response => console.log(response))
+      .catch(error => console.error(error))
   }
 
   function convertToBase64(file) {
