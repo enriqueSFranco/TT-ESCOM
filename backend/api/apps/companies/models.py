@@ -13,7 +13,7 @@ def upload_image_logo(instance, filename):
     return f"logos/{instance.t300_id_company}-{filename}"
 
 def upload_document(instance, filename):
-    return f"files/company{instance.t100_boleta}-{filename}"	
+    return f"files/company/{instance.t300_id_company}-{filename}"	
 
 class PDFBase64File(Base64FileField):
     ALLOWED_TYPES = ['pdf']
@@ -48,7 +48,7 @@ class Company(models.Model):
         on_delete=models.CASCADE
     )
     t300_verified = models.BooleanField(default=False)
-    t300_create_date = models.DateField()   
+    t300_create_date = models.DateField(blank=True,null=True)   
     is_active = models.BooleanField(default=False) 
 
     class Meta:        
@@ -58,6 +58,8 @@ class Company(models.Model):
     
     def __str__(self) -> str:
         return self.t300_name
+
+
 
 class OnHoldRecruiter(models.Model):#----------------------Consultar si se implementará
     name = models.CharField(max_length=60,null=True,blank=True)

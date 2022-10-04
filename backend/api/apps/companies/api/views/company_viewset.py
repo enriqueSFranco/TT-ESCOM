@@ -20,15 +20,22 @@ class CompanyViewSet(viewsets.GenericViewSet):
 	list_serializer_class = CompanyListSerializer
 	recruiter_serializer_class = RecruiterSerializer
 	queryset = None
-	company_object={'t300_name': "",
-			't300_rfc': "",
-			't300_bussiness_name': "",
-			't300_create_date': ""}
-	recruiter_object={"t301_name":"",
+	company_object = {
+					  "t300_name": "",
+					  "t300_rfc": "",
+					  "t300_bussiness_name": "",
+					  "t300_validator_document":""
+					 }
+	recruiter_object={
+					  "t301_name":"",
     				  "t301_last_name":"",
     				  "t301_email": "",
     				  "t301_phonenumber":"",
-						"t300_id_company":""}
+					  "t300_id_company":""
+					}
+	validation_object ={
+						""
+						}	
 
 	def get_object(self, pk):
 		self.queryset= None
@@ -61,10 +68,10 @@ class CompanyViewSet(viewsets.GenericViewSet):
 
 	def set_company(self,data):
 		company = self.company_object		
-		company['t300_name']= data['t300_name']
-		company['t300_rfc']= data['t300_rfc']
-		company['t300_bussiness_name']= data['t300_bussiness_name']
-		company['t300_create_date']= data['t300_create_date']
+		company['t300_name'] = data['t300_name']
+		company['t300_rfc'] = data['t300_rfc']
+		company['t300_bussiness_name'] = data['t300_bussiness_name']
+		company['t300_validator_document'] = data['t300_validator_document']
 		return company
 
 	def set_recruiter(self,data):
@@ -215,6 +222,7 @@ class ActivateCompanyViewSet(viewsets.GenericViewSet):
 		company_serializer = self.list_serializer_class(company,many=True)
 		return Response(company_serializer.data)
 
+	#/* POner la fecha de creacion de la empresa al ser validada*/
 	def update(self, request, pk):
 		"""
 		Actualiza el estado de validación de la compañia
