@@ -20,6 +20,7 @@ import {
   MdOutlineAirplanemodeActive,
   MdOutlineModeEdit,
 } from "react-icons/md";
+import { GoVerified } from "react-icons/go"
 import FormSocialNetwork from "components/Form/FormAddSocialNetwork/FormSocialNetwork";
 import { List } from "styled-components/CommonStyles";
 import styles from "./CardProfileStudent.module.css";
@@ -93,7 +94,6 @@ const CardProfileStudent = () => {
 
   if (!candidate || !data) return null;
   
-
   return (
     <>
       <article className={`${styles.cardProfile}`}>
@@ -115,7 +115,7 @@ const CardProfileStudent = () => {
               width="100px"
               height="100px"
             />
-            <div className={styles.nameHolder}>
+            <div style={{textAlign: 'center'}}>
               <span
                 style={{
                   color: "#9E9EA7",
@@ -269,13 +269,13 @@ const CardProfileStudent = () => {
                 </div>
               )}
             </div>
-            <div>
+            <div style={{display: 'grid', placeContent: 'center', textAlign: 'center'}}>
               {candidate[0]?.t100_cv === null ? (
                 <p>Aun no cuentas con tu cv</p>
               ) : (
                 <p>
-                  Tu curriculum esta activo y visible para las empresas{" "}
-                  <span>Abierto a oportunidades</span>
+                  <GoVerified style={{color: '#38761D'}} /> Tu curriculum esta activo y visible para las empresas{" "}
+                  <span style={{color: '#38761D', fontWeight: '700'}}>Abierto a oportunidades</span>
                 </p>
               )}
             </div>

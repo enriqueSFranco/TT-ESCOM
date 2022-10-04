@@ -90,9 +90,6 @@ function DatesPersonal({ form, handleChange }) {
     }
   };
 
-   console.log(form)
-   console.log(place)
-
   return (
     <div className={styles.containerPage}>
       <h5 className={styles.formTitlePersonal}>Por favor, proporcionanos los siguientes datos.</h5>

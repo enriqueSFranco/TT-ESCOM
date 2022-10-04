@@ -1,39 +1,36 @@
-import { useEffect, useState } from "react";
-import { useForm } from "hooks/useForm";
-import { uploadPhotoStudent } from 'services'
+// import { useState } from "react";
+// import { useForm } from "hooks/useForm";
+import { uploadPhotoStudent, uploadCVStudent } from 'services'
 import Input from "components/Input/Input";
 import Switch from "components/Switch/Switch";
 import CustomAvatar from "components/Avatar/Avatar";
-import { updateStudent, getLinks, postSocialNetwork, getStudent } from "services/students/index";
-import { updateStudentInitialForm } from "../../../types/schemes";
+// import { updateStudent, getLinks, postSocialNetwork, getStudent } from "services/students/index";
+// import { updateStudentInitialForm } from "../../../types/schemes";
 
-const validateForm = (form) => {
-  let errors = {};
-  let regex = {
-    t100_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
-    t100_specialty: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
-    t100_location: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
-    t100_phone: "",
-  };
+// const validateForm = (form) => {
+//   let errors = {};
+//   let regex = {
+//     t100_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
+//     t100_specialty: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
+//     t100_location: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
+//     t100_phone: "",
+//   };
 
-  if (!form.t100_name.trim()) errors.t100_name = "";
-  else if (!regex.t100_name.test(form.t100_name.trim())) errors.t100_name = "";
+//   if (!form.t100_name.trim()) errors.t100_name = "";
+//   else if (!regex.t100_name.test(form.t100_name.trim())) errors.t100_name = "";
 
-  return errors;
-};
+//   return errors;
+  
+// };
 
 const FormUpdateDataStudent = ({ id, username, candidate }) => {
-  const [image, setImage] = useState('')
-  const { form, handleChange, handleChecked } = useForm(
-    updateStudentInitialForm,
-    validateForm
-  );
+  // const [image, setImage] = useState('')
+  // const { form, handleChange, handleChecked } = useForm(
+  //   updateStudentInitialForm,
+  //   validateForm
+  // );
 
-  async function uploadCV() {
-    console.log('subiendo cv...')
-
-  }
-
+  
   function convertToBase64(file) {
     return new Promise((resolve, reject) => {
       const fr = new FileReader()
@@ -48,6 +45,15 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
     })
   }
 
+  async function uploadCV(e) {
+    const file = e.target.files[0]
+    console.log(file)
+    const base64 = await convertToBase64(file)
+    uploadCVStudent(id, {t100_username: "", t100_cv: base64})
+      .then(response => console.log(response))
+      .catch(error => console.error(error))
+  }
+
   async function updateImage(e) {
     const file = e.target.files[0]
     const base64 = await convertToBase64(file)
@@ -59,9 +65,10 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
   function update(e) {
     e.preventDefault()
     console.log('formulario enviado...')
-    if ( e.target.files !== undefined) 
+    if ( e.target.files !== undefined) {
       updateImage(e)
-    uploadCV()
+      uploadCV(e)
+    }
   }
 
   if (!id) return null
@@ -94,7 +101,7 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
             </div>
             <div style={{display: 'flex', gap: '1rem', alignItems: 'center', justifyContent:'space-between', marginTop: '1rem'}}>
               <Switch label='Disponible para reubicarte' defailtValue={candidate?.t100_travel}/>
-              <input type="file" />
+              <input type="file" onChange={update} />
             </div>
           </div>
           <div style={{display: 'flex', justifyContent: 'center', width: '100%', marginTop: '1rem'}}>
