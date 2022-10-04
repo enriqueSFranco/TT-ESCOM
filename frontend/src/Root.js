@@ -26,6 +26,8 @@ import AcademicRecordList from "components/Card/AcademicRecord/AcademicRecordLis
 import ModalRelease from "components/Modal/ModalRelease";
 import ModalBusiness from "components/Modal/ModalBusiness";
 import FullProfileUser from "components/Card/CardStudent/FullProfileUser";
+import RegisteredCompanies from "pages/admin/RegisteredCompanies";
+import DetailsCompany from "pages/admin/DetailsCompany";
 
 const Root = () => {
   return (
@@ -50,6 +52,9 @@ const Root = () => {
 
       {/* RUTAS DEL ADMINISTRADOR */}
       <Route path="/validar-reclutador" element={<PageValidateRecruiter />} />
+      <Route path="/empresas-registradas" element={<RegisteredCompanies />} />
+      <Route path="/detalles-de-emperesa" element={<DetailsCompany />} />
+
 
       <Route path="/alumno" element={<PageLoginStudent />} />
       <Route path="/registro-alumno" element={<PageCreateAccountStudent />} />

@@ -5,6 +5,7 @@ import { helpHttp } from "utils/helpHttp";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import ModalPortal from "components/Modal/ModalPortal";
+import ModalPreviewCV from "components/Modal/ModalPreviewCV"
 import {
   fetchDataCandidateReducer,
   fetchDataCandidateInit,
@@ -20,6 +21,7 @@ import {
   MdOutlineAirplanemodeActive,
   MdOutlineModeEdit,
 } from "react-icons/md";
+import { BsFileEarmarkPersonFill } from "react-icons/bs"
 import { GoVerified } from "react-icons/go"
 import FormSocialNetwork from "components/Form/FormAddSocialNetwork/FormSocialNetwork";
 import { List } from "styled-components/CommonStyles";
@@ -31,14 +33,15 @@ const CardProfileStudent = () => {
     fetchDataCandidateReducer,
     fetchDataCandidateInit
   );
-  const [visibleSkill, setVisibleSkill] = useState(false);
-  const [visibleSocilaNetwork, setVisibleSocialNetwork] = useState(false);
+  const [visibleSkill, setVisibleSkill] = useState(false)
+  const [visibleSocilaNetwork, setVisibleSocialNetwork] = useState(false)
   const [newSkills, setNewSkills] = useState([]);
   const [isOpen, openModal, closeModal] = useModal()
+  const [isOpenCV, opneModalCV, closeModalCV] = useModal()
   const { token } = useAuth();
   const { candidate } = useGetCandidate(token?.user?.user_id);
-  const { socialNetworks } = useGetSocialNetwork({ idUser: token?.user?.id });
-  const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
+  const { socialNetworks } = useGetSocialNetwork({ idUser: token?.user?.id })
+  const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS)
 
   useEffect(() => {
     const controller = new AbortController();
@@ -163,10 +166,15 @@ const CardProfileStudent = () => {
                     : "No disponible para reubicarse." ?? "No especificado."}
                 </p>
               </div>
+              <div className={styles.flex}>
+                {
+                  candidate[0]?.t100_cv ? <><BsFileEarmarkPersonFill /><button onClick={opneModalCV} style={{backgroundColor: 'transparent', outline: "none", border: "none"}}>Ver CV</button></> : "sin cv"
+                }
+              </div>
             </div>
             <div className={`${styles.socialNetworks} ${styles.separator}`}>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <h4 className={styles.label}>redes sociales</h4>
+                <h4 className={styles.label}>contacto/Redes sociales</h4>
                 <MdOutlineModeEdit
                   onClick={handleVisibleSocialNetwork}
                   style={{ fontSize: "1.1rem", cursor: "pointer" }}
@@ -284,6 +292,10 @@ const CardProfileStudent = () => {
       </article>
       <ModalPortal isOpen={isOpen} closeModal={closeModal}>
         <FormUpdateDataStudent id={candidate[0]?.t100_id_student} username={candidate[0]?.t100_name} candidate={candidate[0]} />
+      </ModalPortal>
+
+      <ModalPortal isOpen={isOpenCV} closeModal={closeModalCV}>
+        <ModalPreviewCV fileUrl={candidate[0]?.t100_cv} />
       </ModalPortal>
     </>
   );
