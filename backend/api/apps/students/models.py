@@ -18,7 +18,7 @@ def upload_platoform_icon(instance, filename):
     return f"icons/{instance.t100_id_student}-{filename}"
 
 def upload_cv(instance, filename):
-    return f"files/{instance.t100_boleta}-{filename}"	
+    return f"files/candidates{instance.t100_boleta}-{filename}"	
 
 class PDFBase64File(Base64FileField):
     ALLOWED_TYPES = ['pdf']

@@ -2,12 +2,29 @@ from django.db import models
 from apps.administration.models import Admin
 from django.contrib.auth.models import  AbstractBaseUser
 from apps.users.models import User
+from drf_extra_fields.fields import Base64FileField
+import PyPDF2
+import io
 
 def upload_image_banner(instance, filename):
     return f"/banners/{instance.t300_id_company}-{filename}"
 
 def upload_image_logo(instance, filename):
     return f"logos/{instance.t300_id_company}-{filename}"
+
+def upload_document(instance, filename):
+    return f"files/company{instance.t100_boleta}-{filename}"	
+
+class PDFBase64File(Base64FileField):
+    ALLOWED_TYPES = ['pdf']
+
+    def get_file_extension(self, filename, decoded_file):
+        try:
+            PyPDF2.PdfFileReader(io.BytesIO(decoded_file))
+        except PyPDF2.utils.PdfReadError as e:
+            logger.warning(e)
+        else:
+            return 'pdf'
 
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
 class Company(models.Model):    
@@ -22,6 +39,7 @@ class Company(models.Model):
     t300_objective = models.TextField(blank=True,null=True)
     t300_logo = models.ImageField(upload_to=upload_image_logo, null=True,blank=True)
     t300_banner = models.ImageField(upload_to=upload_image_banner, null=True,blank=True)
+    t300_validator_document = models.FileField(null=True, blank=True,default="",upload_to=upload_document)
     t400_id_admin = models.ForeignKey(
         Admin,
         null=True,
