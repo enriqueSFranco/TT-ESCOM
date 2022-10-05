@@ -64,6 +64,7 @@ class Company(models.Model):
 class OnHoldRecruiter(models.Model):#----------------------Consultar si se implementará
     name = models.CharField(max_length=60,null=True,blank=True)
     last_name = models.CharField(max_length=100,null=True,blank=True)
+    second_surname = models.CharField(max_length=100,null=True,blank=True)
     email = models.EmailField(unique=True,blank=False,null=False)
     phonenumber = models.PositiveBigIntegerField(blank=True,null=True)
     id_company = models.CharField(max_length=100,null=True,blank=True)    
@@ -82,6 +83,7 @@ class Recruiter(models.Model):
     t301_id_recruiter = models.AutoField(primary_key=True)
     t301_name = models.CharField(max_length=60,null=True,blank=True)
     t301_last_name = models.CharField(max_length=100,null=True,blank=True)
+    t301_second_surname = models.CharField(max_length=100,null=True,blank=True)
     t301_user = models.CharField(max_length=60,null=True,blank=True)
     t301_email = models.EmailField(unique=True,blank=False,null=False)
     t301_phonenumber = models.PositiveBigIntegerField(blank=True,null=True)

@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from apps.companies.models import Recruiter
+from apps.companies.models import Recruiter,OnHoldRecruiter
 
 class RecruiterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recruiter
-        fields = '__all__' #('t301_name','t301_last_name','t301_user','t301_email','t301_phonenumber','t300_id_company','is_active')
+        fields = ('t301_name','t301_last_name','t301_second_surname','t301_user','t301_email','t301_phonenumber','t300_id_company')
     
     def create(self,validate_data):
         new_recruiter = Recruiter(**validate_data)
@@ -61,3 +61,8 @@ class ValidateRecruiterSerializer(serializers.ModelSerializer):
 #Hacer serializador para cambiar contraseña
 
 
+class OnHoldRecruiterListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Recruiter
+        fields = '__all__'
+        depth = 2

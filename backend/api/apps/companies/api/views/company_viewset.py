@@ -32,10 +32,7 @@ class CompanyViewSet(viewsets.GenericViewSet):
     				  "t301_email": "",
     				  "t301_phonenumber":"",
 					  "t300_id_company":""
-					}
-	validation_object ={
-						""
-						}	
+					}	
 
 	def get_object(self, pk):
 		self.queryset= None
@@ -172,73 +169,3 @@ class CompanyViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'No existe la compañia que desea eliminar'
 		}, status=status.HTTP_404_NOT_FOUND)
-
-
-class ActivateCompanyViewSet(viewsets.GenericViewSet):
-	model = Company
-	user_serializer = UserSerializer
-	serializer_class = CompanySerializer
-	list_serializer_class = CompanyListSerializer
-	recruiter_serializer_class = RecruiterSerializer
-	queryset = None		
-
-	def get_object(self, pk):
-		self.queryset= None
-		if self.queryset == None:
-			self.queryset = self.model.objects\
-				.filter(t300_verified=False,t300_id_company = pk)\
-				.all()
-		return  self.queryset
-
-	def get_queryset(self):
-		if self.queryset is None:
-			self.queryset = self.model.objects\
-				.filter(t300_verified = False)\
-				.all()
-		return self.queryset
-	
-	def list(self, request):
-		"""
-		Muestra todas las compañias pendientes de validar
-
-
-
-		Dummy text
-		""" 
-		print(request.data)
-		company = self.get_queryset()
-		companies_serializer = self.list_serializer_class(company, many=True)
-		return Response(companies_serializer.data, status=status.HTTP_200_OK)
-
-	def retrieve(self, request, pk):
-		"""
-		Muestra la información de una compañia pendiente de validar"
-
-
-
-		Dummy text
-		""" 
-		company = self.get_object(pk)
-		company_serializer = self.list_serializer_class(company,many=True)
-		return Response(company_serializer.data)
-
-	#/* POner la fecha de creacion de la empresa al ser validada*/
-	def update(self, request, pk):
-		"""
-		Actualiza el estado de validación de la compañia
-
-
-
-		Dummy text
-		""" 
-		u_company = self.model.objects.filter(t300_id_company = pk).first()
-		company_serializer = VerifiedStateUpdate(u_company, data=request.data)
-		if company_serializer.is_valid():
-			company_serializer.save()
-			return Response({
-				'message': 'Compañia Validada correctamente'
-			}, status=status.HTTP_200_OK)
-		return Response({
-			'message': 'Hay errores en la actualización',
-			'errors': company_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
