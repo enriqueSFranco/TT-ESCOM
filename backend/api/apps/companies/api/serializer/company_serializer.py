@@ -1,17 +1,19 @@
 from rest_framework import serializers
-from apps.companies.models import Company
+from apps.companies.models import Company,PDFBase64File
+
 
 class CompanySerializer(serializers.ModelSerializer):
+    t300_validator_document = PDFBase64File()
     class Meta:
         model = Company
-        fields = ('t300_id_company','t300_name','t300_rfc','t300_email','t300_bussiness_name',
-        't300_web_page','t300_mision','t300_vision','t300_objective','t400_id_admin',
-        't300_create_date','t300_verified')
+        fields = ('t300_name','t300_rfc','t300_bussiness_name','t300_validator_document')
     
     def create(self,validate_data):
         new_company = Company(**validate_data)
         new_company.save()
         return new_company
+
+
     
 class CompanyListSerializer(serializers.ModelSerializer):
     class Meta:

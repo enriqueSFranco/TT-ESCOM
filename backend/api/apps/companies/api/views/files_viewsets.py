@@ -6,7 +6,7 @@ from rest_framework.decorators import action
 from rest_framework import viewsets
 
 from apps.companies.models import Company
-from apps.companies.api.serializer.images_serializer import CompanyLogoSerializer,CompanyBannerSerializer
+from backend.api.apps.companies.api.serializer.files_serializer import CompanyLogoSerializer,CompanyBannerSerializer
 
 class CompanyLogoViewSet(viewsets.GenericViewSet):
 	model = Company
