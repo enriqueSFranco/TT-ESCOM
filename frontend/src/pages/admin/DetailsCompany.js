@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useGetCompany } from "hooks";
 import Menu from "components/Menu/Menu";
 import LayoutWidget from "Layout/LayoutWidget";
 import { FaHome, FaUsers, FaAddressCard } from "react-icons/fa";
-import { HiLink } from "react-icons/hi"
+import { HiLink } from "react-icons/hi";
+import { NavList, Banner, MainContainer, Title } from "../styled-components/DetailsCompanyStyled";
 import { Wrapper } from "../styled-components/GlobalStyles";
 import { List, ListItem } from "styled-components/CommonStyles";
 
 const DetailsCompany = () => {
-  const {t300_id_company} = useParams() 
-  const [company] = useGetCompany({idCompany: t300_id_company})
+  const { t300_id_company } = useParams();
+  const [company] = useGetCompany({ idCompany: t300_id_company });
   const [showSection, setShowSection] = useState({
     home: true,
     users: false,
@@ -38,15 +39,15 @@ const DetailsCompany = () => {
       verify: true,
     });
 
-  if (!company) return null
-
-    console.log(company)
+  if (!company) return null;
 
   return (
     <>
       <Menu />
       <Wrapper>
-        <header style={{backgroundColor: "blue", width: '100%', height: '250px'}}>
+        <Banner
+          style={{ backgroundColor: "blue", width: "100%", height: "250px" }}
+        >
           <figure>
             <img src="" alt="" />
             <figcaption>
@@ -55,40 +56,36 @@ const DetailsCompany = () => {
               <span>Estado de la empresa</span>
             </figcaption>
           </figure>
-        </header>
-        <nav>
-          <List>
-            <li>
-              <Link to={`/detalles-de-emperesa`}>
-                <FaHome style={{ fontSize: "2rem" }} onClick={showHome} />
-              </Link>
-            </li>
-            <li>
-              <Link to="/detalles-de-emperesa">
-                <FaUsers style={{ fontSize: "2rem" }} onClick={showUsers} />
-              </Link>
-            </li>
-            <li>
-              <Link to="/detalles-de-emperesa">
-                <FaAddressCard
-                  style={{ fontSize: "2rem" }}
-                  onClick={showVerify}
-                />
-              </Link>
-            </li>
+        </Banner>
+        <NavList>
+          <List className="list">
+            <ListItem className="list-item">
+              <FaHome style={{ fontSize: "2rem" }} onClick={showHome} />
+            </ListItem>
+            <ListItem className="list-item">
+              <FaUsers style={{ fontSize: "2rem" }} onClick={showUsers} />
+            </ListItem>
+            <ListItem className="list-item">
+              <FaAddressCard
+                style={{ fontSize: "2rem" }}
+                onClick={showVerify}
+              />
+            </ListItem>
           </List>
-        </nav>
-        <article>
+        </NavList>
+        <MainContainer>
           {/* Contenido principal */}
-          <div style={{outline: "2px solid red", width: '1000px'}}>
-            <h2>Mison</h2>
+          <div style={{ width: "1000px" }}>
+            <Title>Mision</Title>
             <p>{company[0]?.t300_mision}</p>
-            <h2>Vision</h2>
+            <Title>Vision</Title>
             <p>{company[0]?.t300_vision}</p>
-            <a href={company[0]?.t300_web_page}><HiLink /> Sitio web</a>
+            <a href={company[0]?.t300_web_page}>
+              <HiLink /> Sitio web
+            </a>
           </div>
           <div>
-            <h3>Resumen de la actividad de la empresa en el sistema</h3>
+            <Title>Resumen de la actividad de la empresa en el sistema</Title>
             {showSection.home && (
               <>
                 <List>
@@ -107,7 +104,7 @@ const DetailsCompany = () => {
             {showSection.users && <h1>users</h1>}
             {showSection.verify && <h1>verify</h1>}
           </div>
-        </article>
+        </MainContainer>
       </Wrapper>
     </>
   );
