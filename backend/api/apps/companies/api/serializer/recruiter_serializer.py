@@ -4,7 +4,8 @@ from apps.companies.models import Recruiter
 class RecruiterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recruiter
-        fields = ('t301_name','t301_last_name','t301_second_surname','t301_user','t301_email','t301_phonenumber','t300_id_company')
+        fields = ('t301_name','t301_last_name','t301_second_surname','t301_user','t301_email','t301_phonenumber',
+        't300_id_company','c303_id_status')
     
     def create(self,validate_data):
         new_recruiter = Recruiter(**validate_data)
@@ -39,30 +40,10 @@ class RecruiterListSerializer(serializers.ModelSerializer):
 class UpdateRecruiterSerializer(serializers.ModelSerializer):
         class Meta:
             model = Recruiter
-            fields = ('t301_name','t301_last_name','t301_user','t301_email','t301_phonenumber','is_active')
+            fields = ('t301_name','t301_last_name','t301_user','t301_email','t301_phonenumber')
         
         def update(self,instance,validate_data):
             u_recruiter = super().update(instance,validate_data)
             u_recruiter.save()
             return u_recruiter
 
-#Hacer serializador para activar el usuario y asignarle contraseña
-
-class ValidateRecruiterSerializer(serializers.ModelSerializer):
-        class Meta:
-            model = Recruiter
-            fields = ('is_active','id_user')
-        
-        def update(self,instance,validate_data):
-            u_recruiter = super().update(instance,validate_data)
-            #Crear contraseña perrona
-            u_recruiter.save()
-            return u_recruiter
-#Hacer serializador para cambiar contraseña
-
-
-class OnHoldRecruiterListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Recruiter
-        fields = '__all__'
-        depth = 2

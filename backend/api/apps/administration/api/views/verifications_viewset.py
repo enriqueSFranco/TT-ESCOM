@@ -4,7 +4,8 @@ from rest_framework.response import Response
 from rest_framework import generics,viewsets
 
 from apps.users.models import User
-from apps.companies.api.serializer.recruiter_serializer import RecruiterSerializer,RecruiterListSerializer,ValidateRecruiterSerializer,OnHoldRecruiterListSerializer
+from apps.administration.api.serializer.data_serializer import ValidateRecruiterSerializer,OnHoldRecruiterListSerializer
+from apps.companies.api.serializer.recruiter_serializer import RecruiterSerializer,RecruiterListSerializer
 from apps.companies.models import Company, Recruiter
 from apps.users.api.serializers import UserSerializer
 from apps.companies.api.serializer.company_serializer import CompanySerializer,CompanyListSerializer,VerifiedStateUpdate
@@ -33,8 +34,16 @@ class OnHoldRecruitersViewSet(viewsets.GenericViewSet):
 		recruiter = self.get_object(pk)
 		recruiter_serializer = self.list_serializer_class(recruiter,many=True)
 		return Response(recruiter_serializer.data)
+
 	def list(self,request):
-		pass
+		"""
+		Clase generica necesaria para registrar la ruta 
+
+
+
+		Dummy text
+		""" 
+		return Response( status=status.HTTP_200_OK)		
 
 
 class ValidateRecruiterViewSet(viewsets.GenericViewSet):
@@ -81,18 +90,15 @@ class ValidateRecruiterViewSet(viewsets.GenericViewSet):
 		recruiter_serializer = self.list_serializer_class(recruiter,many=True)
 		return Response(recruiter_serializer.data)
 
-	#def list(self, request):
-	#	"""
-	#	Muestra todos los reclutadores a los reclutadores pendientes de validación
-#
-#
-#
-	#	Dummy text
-	#	""" 
-	#	print(request.data)
-	#	recruiters = self.get_queryset()
-	#	recruiters_serializer = self.list_serializer_class(recruiters, many=True)
-	#	return Response(recruiters_serializer.data, status=status.HTTP_200_OK)
+	def list(self,request):
+		"""
+		Clase generica necesaria para registrar la ruta 
+
+
+
+		Dummy text
+		""" 
+		return Response( status=status.HTTP_200_OK)			
 
 	def set_user(self,data):
 		user=self.create_user
@@ -101,7 +107,7 @@ class ValidateRecruiterViewSet(viewsets.GenericViewSet):
 		user['username'] = data['t301_email']
 		user['email'] = data['t301_email']
 		user["first_name"] = data["t301_name"]
-		user["last_name"] = data["t301_last_name"]
+		user["last_name"] = data["t301_last_name"] + data["t301_second_surname"]
 		return user
 
 	def update(self, request, pk):
@@ -113,10 +119,10 @@ class ValidateRecruiterViewSet(viewsets.GenericViewSet):
 		Dummy text
 		""" 
 		id_company = ""
-		print(request.data['is_active'])
-		if (request.data['is_active']== 'true' and self.model.objects.filter(t301_id_recruiter=pk)):
+		print(request.data['activate'])
+		if (request.data['activate']== 'true' and self.model.objects.filter(t301_id_recruiter=pk)):
 			print("Dando de alta al reclutador....")#---------------------------
-			recruiter_data = self.model.objects.filter(t301_id_recruiter=pk).values('t301_name','t301_email','t301_last_name')
+			recruiter_data = self.model.objects.filter(t301_id_recruiter=pk).values('t301_name','t301_email','t301_last_name','t301_second_surname')
 			print("Linea 73:"+str(recruiter_data[0]))#---------------------------
 			user_data = self.set_user(recruiter_data[0])
 			recruiter_user= self.user_serializer(data = user_data)
@@ -125,7 +131,7 @@ class ValidateRecruiterViewSet(viewsets.GenericViewSet):
 				user_register = User.objects.filter(username=recruiter_data[0]['t301_email']).values('id')
 				u_recruiter = self.model.objects.filter(t301_id_recruiter = pk).first()	
 				print("Linea 80:"+str(user_register[0]['id']))#---------------------------
-				recruiter_serializer = ValidateRecruiterSerializer(u_recruiter, data={"is_active":True,"id_user":user_register[0]['id']})
+				recruiter_serializer = ValidateRecruiterSerializer(u_recruiter, data={"c303_id_status":4,"id_user":user_register[0]['id']})
 				if recruiter_serializer.is_valid():#Activar el usuario
 					recruiter_serializer.save()	
 					return Response({

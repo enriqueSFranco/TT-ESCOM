@@ -13,6 +13,15 @@ class RecruiterViewSet(viewsets.GenericViewSet):
 	serializer_class = RecruiterSerializer
 	list_serializer_class = RecruiterListSerializer
 	queryset = None
+	recruiter_object={
+					  "t301_name":"",
+    				  "t301_last_name":"",
+					  "t301_second_surname":"",
+    				  "t301_email": "",
+    				  "t301_phonenumber":"",
+					  "t300_id_company":"",
+					  "c303_id_status":""
+					}
 
 	def get_object(self, pk):
 		self.queryset= None
@@ -36,9 +45,21 @@ class RecruiterViewSet(viewsets.GenericViewSet):
 		recruiters_serializer = self.list_serializer_class(recruiters, many=True)
 		return Response(recruiters_serializer.data, status=status.HTTP_200_OK)
 
+	def set_recruiter(self,data):
+		recruiter = self.recruiter_object
+		recruiter["t301_name"] = data["t301_name"]
+		recruiter["t301_last_name"] = data["t301_last_name"]
+		recruiter["t301_second_surname"] = data["t301_second_surname"]
+		recruiter["t301_email"] = data["t301_email"]
+		recruiter["t301_phonenumber"] = data["t301_phonenumber"]
+		recruiter["c303_id_status"] = "2"
+		recruiter["t300_id_company"]= data["t300_id_company"]
+		return recruiter	
+
 	def create(self, request):
-		recruiter_serializer = self.serializer_class(data=request.data)
 		print('request: ',request.data)
+		recruiter = self.set_recruiter(request.data)
+		recruiter_serializer = self.serializer_class(data=recruiter)		
 		if recruiter_serializer.is_valid():
 			recruiter_serializer.save()
 			return Response({

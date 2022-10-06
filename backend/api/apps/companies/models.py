@@ -46,7 +46,7 @@ class RecruiterStatus(models.Model):
     
     class Meta:
         verbose_name = 'Recruiter status'
-        db_table = "c302_estado_reclutador"
+        db_table = "c303_estado_reclutador"
 
     def __str__(self) ->str:
 	    return self.c303_description        
@@ -103,7 +103,7 @@ class Recruiter(models.Model):
         Company,
         null=False,
         blank=False,
-        related_name='RecuiterCompany',
+        related_name='RecruiterCompany',
         on_delete=models.CASCADE)
     c303_id_status = models.ForeignKey(
         RecruiterStatus,
