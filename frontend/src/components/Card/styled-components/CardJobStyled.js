@@ -36,8 +36,19 @@ const CardBody = styled.article`
 const CardHeader = styled.header`
   display: flex;
   justify-content: space-between;
-  align-items: center;
 `;
+
+const CardImage = styled.div`
+  width: 130px;
+  height: 70px;
+  
+  img {
+    width: inherit;
+    height: inherit;
+    object-fit: contain;
+
+  }
+`
 
 const PublicationDate = styled.span`
   font-size: .8rem;
@@ -141,6 +152,7 @@ export {
   Actions,
   Button,
   CardBody,
+  CardImage,
   CardHeader,
   CardContent,
   Description,

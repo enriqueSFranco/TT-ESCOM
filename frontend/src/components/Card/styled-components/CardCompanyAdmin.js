@@ -21,8 +21,15 @@ const GridLeft = styled.div`
 `
 
 const GridRight = styled.div`
-  outline: 2px solid blue;
-  
+  /* outline: 2px solid blue; */
+  display: grid;
+  place-content: center;
+
+  img {
+    width: inherit;
+    height: inherit;
+    object-fit: contain;
+  }
 `
 
 

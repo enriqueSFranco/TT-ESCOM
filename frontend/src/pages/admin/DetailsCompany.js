@@ -74,7 +74,6 @@ const DetailsCompany = () => {
           </List>
         </NavList>
         <MainContainer>
-          {/* Contenido principal */}
           <div style={{ width: "1000px" }}>
             <Title>Mision</Title>
             <p>{company[0]?.t300_mision}</p>
