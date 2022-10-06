@@ -5,7 +5,7 @@ import Menu from "components/Menu/Menu";
 import LayoutWidget from "Layout/LayoutWidget";
 import { FaHome, FaUsers, FaAddressCard } from "react-icons/fa";
 import { HiLink } from "react-icons/hi";
-import { NavList, Banner, MainContainer, Title } from "../styled-components/DetailsCompanyStyled";
+import { ContainerLogoCompany, FooterLogoCompany, NavList, Banner, MainContainer, Title } from "../styled-components/DetailsCompanyStyled";
 import { Wrapper } from "../styled-components/GlobalStyles";
 import { List, ListItem } from "styled-components/CommonStyles";
 
@@ -41,21 +41,21 @@ const DetailsCompany = () => {
 
   if (!company) return null;
 
+  console.log(company)
+
   return (
     <>
       <Menu />
       <Wrapper>
-        <Banner
-          style={{ backgroundColor: "blue", width: "100%", height: "250px" }}
-        >
-          <figure>
-            <img src="" alt="" />
-            <figcaption>
+        <Banner>
+          <ContainerLogoCompany>
+            <img src={company[0]?.t300_logo} alt={company[0]?.t300_name} />
+            <FooterLogoCompany>
               <span>{company[0]?.t300_name}</span>
               <br />
               <span>Estado de la empresa</span>
-            </figcaption>
-          </figure>
+            </FooterLogoCompany>
+          </ContainerLogoCompany>
         </Banner>
         <NavList>
           <List className="list">
