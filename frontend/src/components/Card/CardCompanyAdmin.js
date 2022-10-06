@@ -4,9 +4,9 @@ import { BsFileEarmarkPost } from 'react-icons/bs'
 import { AiFillFlag } from 'react-icons/ai'
 import { CardBody, Container, ContainerTotal, GridLeft, GridRight, SubContainerTotal  } from './styled-components/CardCompanyAdmin'
 
-export default function CardCompanyAdmin({nameCompany, nameRecruiter, stateCompany, logoCompany, totalPost, totalReports}) {
+export default function CardCompanyAdmin({nameCompany, nameRecruiter, stateCompany, logoCompany, totalPost, totalReports, href}) {
   return (
-    <CardBody>
+    <CardBody to={href}>
       <GridLeft>
         <h2 style={{fontSize: '1.2rem'}}>{nameCompany}</h2>
         <GroupAvatars users={null} />

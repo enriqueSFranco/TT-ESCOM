@@ -10,7 +10,7 @@ export const getAllBusiness = async () => {
 };
 
 export const getBusiness = (id) => {
-  return API(`${process.env.REACT_APP_URL_COMPANY}/${id}/`)
+  return API(`${process.env.REACT_APP_URL_COMPANY}${id}/`)
     .then(response => {
       const { data } = response;
       return data;

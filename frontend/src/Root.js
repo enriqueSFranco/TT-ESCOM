@@ -53,7 +53,7 @@ const Root = () => {
       {/* RUTAS DEL ADMINISTRADOR */}
       <Route path="/validar-reclutador" element={<PageValidateRecruiter />} />
       <Route path="/empresas-registradas" element={<RegisteredCompanies />} />
-      <Route path="/detalles-de-emperesa" element={<DetailsCompany />} />
+      <Route path="detalles-de-emperesa/:t300_id_company" element={<DetailsCompany />} />
 
 
       <Route path="/alumno" element={<PageLoginStudent />} />

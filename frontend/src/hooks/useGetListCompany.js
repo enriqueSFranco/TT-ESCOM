@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllBusiness } from 'services'
+import { getAllBusiness, getBusiness } from 'services'
 
 export function useGetListCompany() {
   const [business, setBusiness] = useState(null)
@@ -15,4 +15,20 @@ export function useGetListCompany() {
   }, [])
 
   return [business]
+}
+
+export function useGetCompany({ idCompany }) {
+  const [company, setCompany] = useState(null)
+
+  const controller = new AbortController()
+  
+  useEffect(() => {
+    getBusiness(idCompany)
+      .then(response => setCompany(response))
+      .catch(error => error)
+
+    return () => controller.abort()
+  }, [])
+
+  return [company]
 }

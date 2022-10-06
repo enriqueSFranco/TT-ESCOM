@@ -26,6 +26,7 @@ const RegisteredCompanies = () => {
               key={crypto.randomUUID()}
               nameCompany={company?.t300_name}
               logoCompany={company?.t300_logo}
+              href={`/detalles-de-emperesa/${company?.t300_id_company}`}
             />
           ))}
         </Container>

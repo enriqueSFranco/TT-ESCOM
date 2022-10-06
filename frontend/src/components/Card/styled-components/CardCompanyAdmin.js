@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-const CardBody = styled.div`
+const CardBody = styled(Link)`
   outline: 1px solid #ccc;
   width: 500px;
   height: 180px;
