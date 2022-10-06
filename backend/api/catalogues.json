@@ -1,4 +1,87 @@
 [  
+
+    {
+        "model":"companies.RecruiterStatus",        
+        "pk":1,
+        "fields":{
+            "c303_id_status": "1",
+            "c303_description": "Por validar empresa"
+        }
+    },
+
+    {
+        "model":"companies.RecruiterStatus",        
+        "pk":2,
+        "fields":{
+            "c303_id_status": "2",
+            "c303_description": "Por validar reclutador"
+        }
+    },
+
+    {
+        "model":"companies.RecruiterStatus",        
+        "pk":3,
+        "fields":{
+            "c303_id_status": "3",
+            "c303_description": "Rechazado"
+        }
+    },
+
+    {
+        "model":"companies.RecruiterStatus",        
+        "pk":4,
+        "fields":{
+            "c303_id_status": "4",
+            "c303_description": "Activo"
+        }
+    },
+
+    {
+        "model":"companies.RecruiterStatus",        
+        "pk":5,
+        "fields":{
+            "c303_id_status": "5",
+            "c303_description": "Dado de baja"
+        }
+    },
+
+
+    {
+        "model":"companies.CompanyStatus",        
+        "pk":1,
+        "fields":{
+            "c302_id_status": "1",
+            "c302_description": "Por validar"
+        }
+    },
+
+    {
+        "model":"companies.CompanyStatus",        
+        "pk":2,
+        "fields":{
+            "c302_id_status": "2",
+            "c302_description": "Inactiva"
+        }
+    },
+
+    {
+        "model":"companies.CompanyStatus",        
+        "pk":3,
+        "fields":{
+            "c302_id_status": "3",
+            "c302_description": "Activa"
+        }
+    },
+
+    {
+        "model":"companies.CompanyStatus",        
+        "pk":4,
+        "fields":{
+            "c302_id_status": "4",
+            "c302_description": "Rechazado"
+        }
+    },
+
    
     {
         "model" :"students.AcademicLevel",                

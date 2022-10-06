@@ -1,6 +1,5 @@
 from django.db import models
 from apps.administration.models import Admin
-from django.contrib.auth.models import  AbstractBaseUser
 from apps.users.models import User
 from drf_extra_fields.fields import Base64FileField
 import PyPDF2
@@ -26,6 +25,32 @@ class PDFBase64File(Base64FileField):
         else:
             return 'pdf'
 
+"""----------------------------------------------------------- Catalogos --------------------------------------------------------"""
+
+#C302 Estado compañia
+class CompanyStatus(models.Model):
+    c302_id_status = models.AutoField(primary_key=True)
+    c302_description = models.TextField(max_length=50)
+    
+    class Meta:
+        verbose_name = 'Company status'
+        db_table = "c302_estado_compañia"
+
+    def __str__(self) ->str:
+	    return self.c302_description
+
+#C303 Estado compañia
+class RecruiterStatus(models.Model):
+    c303_id_status = models.AutoField(primary_key=True)
+    c303_description = models.TextField(max_length=50)
+    
+    class Meta:
+        verbose_name = 'Recruiter status'
+        db_table = "c302_estado_reclutador"
+
+    def __str__(self) ->str:
+	    return self.c303_description        
+
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
 class Company(models.Model):    
     t300_id_company = models.AutoField(primary_key=True)
@@ -48,8 +73,14 @@ class Company(models.Model):
         on_delete=models.CASCADE
     )
     t300_verified = models.BooleanField(default=False)
-    t300_create_date = models.DateField(blank=True,null=True)   
-    is_active = models.BooleanField(default=False) 
+    t300_create_date = models.DateField(blank=True,null=True)           
+    c302_id_status = models.ForeignKey(
+        CompanyStatus,
+        null=True,
+        blank=True,
+        related_name='CompanyStatus',
+        on_delete=models.CASCADE
+    )
 
     class Meta:        
         verbose_name = 'Company'
@@ -58,25 +89,6 @@ class Company(models.Model):
     
     def __str__(self) -> str:
         return self.t300_name
-
-
-
-class OnHoldRecruiter(models.Model):#----------------------Consultar si se implementará
-    name = models.CharField(max_length=60,null=True,blank=True)
-    last_name = models.CharField(max_length=100,null=True,blank=True)
-    second_surname = models.CharField(max_length=100,null=True,blank=True)
-    email = models.EmailField(unique=True,blank=False,null=False)
-    phonenumber = models.PositiveBigIntegerField(blank=True,null=True)
-    id_company = models.CharField(max_length=100,null=True,blank=True)    
-    
-
-    class Meta:
-        verbose_name = 'OnHoldRecruiter'
-        verbose_name_plural = 'OnHoldRecruiters'
-        db_table = 'reclutadores_en_espera'#------------------Cambiar nombre
-
-    def __str__(self) -> str:
-        return self.email    
 
 class Recruiter(models.Model):
     id_user = models.OneToOneField(User,on_delete=models.CASCADE,null=True,blank=False)
@@ -93,7 +105,13 @@ class Recruiter(models.Model):
         blank=False,
         related_name='RecuiterCompany',
         on_delete=models.CASCADE)
-    is_active= models.BooleanField(default=False)           
+    c303_id_status = models.ForeignKey(
+        RecruiterStatus,
+        null=True,
+        blank=True,
+        related_name='RecruiterStatus',
+        on_delete=models.CASCADE
+    )          
 
     class Meta:
         verbose_name = 'Recruiter'

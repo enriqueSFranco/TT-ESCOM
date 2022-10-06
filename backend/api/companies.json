@@ -1,12 +1,13 @@
 [
     
+    
     {
         "model":"companies.Company",        
         "pk":1,
         "fields":{
             "t300_id_company": "1",
             "t300_name": "Amazon",
-            "t300_rfc": "ASE030509UJ6",  
+            "t300_rfc": "ASE030509UJ6",
             "t300_email": "primary@amazon.com.mx",
             "t300_bussiness_name": "AMAZON SERVICES",
             "t300_web_page": "www.amazon.com.mx",
@@ -18,7 +19,7 @@
             "t400_id_admin": 1,
             "t300_verified": true,
             "t300_create_date": "2022-04-15",
-            "is_active": true           
+            "c302_id_status": 3           
         }
     },
 
@@ -28,7 +29,7 @@
         "fields":{
             "t300_id_company": "2",
             "t300_name": "Banco de México",
-            "t300_rfc": "BME821130SXA",  
+            "t300_rfc": "BME821130SXA",
             "t300_email": "sie@banxico.org.mx",
             "t300_bussiness_name": "Banco de México",
             "t300_web_page": "https://www.banxico.org.mx/",
@@ -40,7 +41,7 @@
             "t400_id_admin": 1,
             "t300_verified": true,
             "t300_create_date": "2022-04-16",
-            "is_active": true           
+            "c302_id_status": 3           
         }
     },
 
@@ -50,7 +51,7 @@
         "fields":{
             "t300_id_company": "3",
             "t300_name": "Dell México",
-            "t300_rfc": "DME9204099R6",  
+            "t300_rfc": "DME9204099R6",
             "t300_email": "",
             "t300_bussiness_name": "DELL COMPUTER SERVICES DE MEXICO SA DE CV",
             "t300_web_page": "https://www.dell.com/mx",
@@ -62,7 +63,7 @@
             "t400_id_admin": 1,
             "t300_verified": true,
             "t300_create_date": "2022-04-17",
-            "is_active": true           
+            "c302_id_status": 3           
         }
     },
 
@@ -72,7 +73,7 @@
         "fields":{
             "t300_id_company": "4",
             "t300_name": "Axxis Soluciones",
-            "t300_rfc": "ASO040721S32",  
+            "t300_rfc": "ASO040721S32",
             "t300_email": "JUAN.MATIAS@AXXIS.COM.MX",
             "t300_bussiness_name": "AXXIS SOLUCIONES S.A. DE C.V.",
             "t300_web_page": "http://www.axxis.com.mx/",
@@ -84,7 +85,7 @@
             "t400_id_admin": 1,
             "t300_verified": true,
             "t300_create_date": "2022-04-18",
-            "is_active": true           
+            "c302_id_status": 3           
         }
     },
 
@@ -94,7 +95,7 @@
         "fields":{
             "t300_id_company": "5",
             "t300_name": "BBVA Bancomer",
-            "t300_rfc": "BBA830831LJ2",  
+            "t300_rfc": "BBA830831LJ2",
             "t300_email": "une.mx@bbva.com.",
             "t300_bussiness_name": "BBVA Bancomer S.A., Institución de Banca Múltiple, Grupo Financiero BBVA Bancomer",
             "t300_web_page": "https://www.bbva.mx",
@@ -106,7 +107,7 @@
             "t400_id_admin": 1,
             "t300_verified": true,
             "t300_create_date": "2022-04-19",
-            "is_active": true           
+            "c302_id_status": 3           
         }
     },
 
@@ -116,7 +117,7 @@
         "fields":{
             "t300_id_company": "6",
             "t300_name": "Coppel",
-            "t300_rfc": "COP920428Q20",  
+            "t300_rfc": "COP920428Q20",
             "t300_email": "atencion@coppel.com",
             "t300_bussiness_name": "Almacenes Coppel S.A. de C.V.",
             "t300_web_page": "https://www.coppel.com/",
@@ -128,7 +129,7 @@
             "t400_id_admin": 1,
             "t300_verified": true,
             "t300_create_date": "2022-04-20",
-            "is_active": true           
+            "c302_id_status": 3           
         }
     },
 
@@ -138,7 +139,7 @@
         "fields":{
             "t300_id_company": "7",
             "t300_name": "Coca-Cola FEMSA",
-            "t300_rfc": "CCF9305145C9",  
+            "t300_rfc": "CCF9305145C9",
             "t300_email": "salaprensa@coca-cola.com",
             "t300_bussiness_name": "COCA-COLA FEMSA, S.A.B. DE C.V.",
             "t300_web_page": "https://www.coca-colamexico.com.mx/",
@@ -150,7 +151,7 @@
             "t400_id_admin": 1,
             "t300_verified": true,
             "t300_create_date": "2022-04-21",
-            "is_active": true           
+            "c302_id_status": 3           
         }
     },
 
@@ -160,7 +161,7 @@
         "fields":{
             "t300_id_company": "8",
             "t300_name": "Bimbo",
-            "t300_rfc": "BIM011108DJ5",  
+            "t300_rfc": "BIM011108DJ5",
             "t300_email": "servicioalcliente@grupobimbo.com",
             "t300_bussiness_name": "GRUPO BIMBO, S.A.B. DE C.V",
             "t300_web_page": "https://www.bimbo.com.mx/es",
@@ -172,7 +173,7 @@
             "t400_id_admin": 1,
             "t300_verified": true,
             "t300_create_date": "2022-04-22",
-            "is_active": true           
+            "c302_id_status": 3           
         }
     },
 
@@ -182,7 +183,7 @@
         "fields":{
             "t300_id_company": "9",
             "t300_name": "Microsoft",
-            "t300_rfc": "MME910620Q85",  
+            "t300_rfc": "MME910620Q85",
             "t300_email": "info@microsoft.com.mx",
             "t300_bussiness_name": "Microsoft México, S. de R.L. de C.V",
             "t300_web_page": "https://www.microsoft.com/es-mx/",
@@ -194,7 +195,7 @@
             "t400_id_admin": 1,
             "t300_verified": true,
             "t300_create_date": "2022-04-23",
-            "is_active": true           
+            "c302_id_status": 3           
         }
     },
 
@@ -204,7 +205,7 @@
         "fields":{
             "t300_id_company": "10",
             "t300_name": "BMW",
-            "t300_rfc": "BFS011206BK7",  
+            "t300_rfc": "BFS011206BK7",
             "t300_email": "atencionbmw@bmw.com.mx",
             "t300_bussiness_name": "Designworks",
             "t300_web_page": "https://www.bmw.com.mx/es/index.html",
@@ -216,7 +217,7 @@
             "t400_id_admin": 1,
             "t300_verified": true,
             "t300_create_date": "2022-04-24",
-            "is_active": true           
+            "c302_id_status": 3           
         }
     },
 
@@ -226,7 +227,7 @@
         "fields":{
             "t300_id_company": "11",
             "t300_name": "Audi",
-            "t300_rfc": "AAU120905KG9",  
+            "t300_rfc": "AAU120905KG9",
             "t300_email": "info@audi.com.mx",
             "t300_bussiness_name": "Audi México, S.A. de C.V.",
             "t300_web_page": "audi.com.mx/mx/web/es.html",
@@ -238,7 +239,7 @@
             "t400_id_admin": 1,
             "t300_verified": true,
             "t300_create_date": "2022-04-25",
-            "is_active": true           
+            "c302_id_status": 3           
         }
     },
 
@@ -248,7 +249,7 @@
         "fields":{
             "t300_id_company": "12",
             "t300_name": "Cyberpuerta",
-            "t300_rfc": "CYB080602JSA",  
+            "t300_rfc": "CYB080602JSA",
             "t300_email": "info@cyberpuerta.mx",
             "t300_bussiness_name": "CYBERPUERTA S.A. DE C.V",
             "t300_web_page": "cyberpuerta.mx",
@@ -260,7 +261,7 @@
             "t400_id_admin": 1,
             "t300_verified": true,
             "t300_create_date": "2022-04-26",
-            "is_active": true           
+            "c302_id_status": 3           
         }
     },
 
@@ -270,7 +271,7 @@
         "fields":{
             "t300_id_company": "13",
             "t300_name": "Uber",
-            "t300_rfc": "UBV121024TN8",  
+            "t300_rfc": "UBV121024TN8",
             "t300_email": "",
             "t300_bussiness_name": "UBER B.V.",
             "t300_web_page": "https://www.uber.com/mx/es/",
@@ -282,7 +283,7 @@
             "t400_id_admin": 1,
             "t300_verified": true,
             "t300_create_date": "2022-04-27",
-            "is_active": true           
+            "c302_id_status": 3           
         }
     }
        

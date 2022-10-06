@@ -5,7 +5,7 @@ from rest_framework import generics,viewsets
 
 from apps.users.models import User
 from apps.companies.api.serializer.recruiter_serializer import RecruiterSerializer,RecruiterListSerializer,ValidateRecruiterSerializer,OnHoldRecruiterListSerializer
-from apps.companies.models import Company, Recruiter,OnHoldRecruiter
+from apps.companies.models import Company, Recruiter
 from apps.users.api.serializers import UserSerializer
 from apps.companies.api.serializer.company_serializer import CompanySerializer,CompanyListSerializer,VerifiedStateUpdate
 
