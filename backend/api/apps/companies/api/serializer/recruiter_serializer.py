@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.companies.models import Recruiter,OnHoldRecruiter
+from apps.companies.models import Recruiter
 
 class RecruiterSerializer(serializers.ModelSerializer):
     class Meta:
