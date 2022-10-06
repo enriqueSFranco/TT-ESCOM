@@ -103,7 +103,7 @@ class Recruiter(models.Model):
         Company,
         null=False,
         blank=False,
-        related_name='RecuiterCompany',
+        related_name='RecruiterCompany',
         on_delete=models.CASCADE)
     c303_id_status = models.ForeignKey(
         RecruiterStatus,

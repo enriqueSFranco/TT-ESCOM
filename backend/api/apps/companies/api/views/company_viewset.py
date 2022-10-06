@@ -24,14 +24,17 @@ class CompanyViewSet(viewsets.GenericViewSet):
 					  "t300_name": "",
 					  "t300_rfc": "",
 					  "t300_bussiness_name": "",
-					  "t300_validator_document":""
+					  "t300_validator_document":"",
+					  "c302_id_status":""
 					 }
 	recruiter_object={
 					  "t301_name":"",
     				  "t301_last_name":"",
+					  "t301_second_surname":"",
     				  "t301_email": "",
     				  "t301_phonenumber":"",
-					  "t300_id_company":""
+					  "t300_id_company":"",
+					  "c303_id_status":""
 					}	
 
 	def get_object(self, pk):
@@ -69,14 +72,17 @@ class CompanyViewSet(viewsets.GenericViewSet):
 		company['t300_rfc'] = data['t300_rfc']
 		company['t300_bussiness_name'] = data['t300_bussiness_name']
 		company['t300_validator_document'] = data['t300_validator_document']
+		company['c302_id_status'] = 1
 		return company
 
 	def set_recruiter(self,data):
 		recruiter = self.recruiter_object
 		recruiter["t301_name"] = data["t301_name"]
 		recruiter["t301_last_name"] = data["t301_last_name"]
+		recruiter["t301_second_surname"] = data["t301_second_surname"]
 		recruiter["t301_email"] = data["t301_email"]
 		recruiter["t301_phonenumber"] = data["t301_phonenumber"]
+		recruiter["c303_id_status"] = "1"
 		recruiter["t300_id_company"]=""
 		return recruiter	
 

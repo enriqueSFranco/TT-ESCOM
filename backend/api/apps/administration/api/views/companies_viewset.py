@@ -4,10 +4,10 @@ from rest_framework import viewsets
 from django.db.models import Count
 from apps.companies.models import Company, Recruiter
 from apps.companies.api.serializer.recruiter_serializer import RecruiterSerializer
-from apps.administration.api.serializer.data_serializer import CompanyDataSerializer
-from apps.companies.api.serializer.company_serializer import CompanySerializer,CompanyListSerializer,UpdateCompanySerializer,VerifiedStateUpdate
+from apps.administration.api.serializer.data_serializer import CompanySerializer,CompanyDataSerializer,CompanyListSerializer
+from apps.companies.api.serializer.company_serializer import UpdateCompanySerializer,VerifiedStateUpdate
 
-class CompanyViewSet(viewsets.GenericViewSet): 
+class ManagerViewCompanyViewSet(viewsets.GenericViewSet): 
 	"""
 	Sin comentarios
 	""" 	
@@ -40,18 +40,28 @@ class CompanyViewSet(viewsets.GenericViewSet):
     			CMP.t400_id_admin_id,
     			CMP.t300_verified,
     			CMP.t300_create_date,
-    			CMP.is_active """
+    			CMP.c302_id_status_id """
 
 	def get_object(self, pk):
 		self.queryset= None
 		if self.queryset == None:
 			Query = self.RawQuery + self.QueryCondition + pk + self.QueryGroup
-			self.queryset = self.model.objects.raw(Query)
-			#self.queryset = self.model.objects\
-			#	.filter(t300_id_company = pk).all()\
-			#	.filter(Vacant__to__c204_id_vacant_status).annotate(Count('c205_id_application_state'))	
+			#self.queryset = self.model.objects.raw(Query)
+			self.queryset = self.model.objects\
+				.filter(t300_id_company = pk).all()\
+				.filter(RecruiterCompany__t300_id_company=pk).annotate(OnHoldRecruiters=Count('RecruiterCompany__t301_id_recruiter'))\
+				.filter(CompanyOffering__t300_id_company=pk).annotate(OnHoldVacants=Count('CompanyOffering__t200_id_vacant'))
 		return  self.queryset
 
+	"""¿¿ from django.db.models import Count, IntegerField, OuterRef, Subquery, Sum
+ 		weapon_count = Player.objects.annotate(weapon_count=Count('unit_set__weapon_set')).filter(pk=OuterRef('pk'))
+ 		rarity_sum = Player.objects.annotate(rarity_sum=Sum('unit_set__rarity')).filter(pk=OuterRef('pk'))
+ 		qs = Player.objects.annotate(
+     	weapon_count=Subquery(weapon_count.values('weapon_count'), output_field=IntegerField()),
+     	rarity_sum=Subquery(rarity_sum.values('rarity_sum'), output_field=IntegerField())
+ 		)
+ 		qs.values()"""
+ 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
