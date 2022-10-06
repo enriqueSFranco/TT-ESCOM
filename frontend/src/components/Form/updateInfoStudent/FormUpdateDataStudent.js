@@ -100,7 +100,7 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
               <Input label='Colonia' width='450px' />
             </div>
             <div style={{display: 'flex', gap: '1rem', alignItems: 'center', justifyContent:'space-between', marginTop: '1rem'}}>
-              <Switch label='Disponible para reubicarte' defailtValue={candidate?.t100_travel}/>
+              <Switch label='Disponible para reubicarte' defaultValue={candidate?.t100_travel}/>
               <input type="file" onChange={update} />
             </div>
           </div>
