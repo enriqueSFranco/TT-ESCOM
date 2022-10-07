@@ -21,22 +21,23 @@ class ManagerViewCompanyViewSet(viewsets.GenericViewSet):
 	def get_object(self, pk):
 		self.queryset= None
 		if self.queryset == None:
-			CompanyVacants = Vacant.objects.filter(t300_id_company=pk).values('t300_id_company').annotate(TotalVacants=Count('t200_id_vacant'))
-			#OnHoldCompanyRecruiters =Recruiter.objects.filter(t300_id_company=pk,c303_id_status=2).values('t300_id_company').annotate(OnHoldRecruiters=Count('t301_id_recruiter'))
-			self.queryset = self.model.objects\
-				.filter(t300_id_company = pk).all()\
-				.annotate(TotalVacants=Subquery(CompanyVacants.values('TotalVacants'), output_field=IntegerField()))#\
-				#.annotate(OnHoldRecruiters=Subquery(OnHoldCompanyRecruiters.values('OnHoldRecruiters'), output_field=IntegerField()))
+			OnHoldCompanyVacants = Vacant.objects.filter(t300_id_company=pk,c204_id_vacant_status=1).values('t300_id_company').annotate(OnHoldVacants=Count('t200_id_vacant'))
+			OnHoldCompanyRecruiters =Recruiter.objects.filter(t300_id_company=pk,c303_id_status=2).values('t300_id_company').annotate(OnHoldRecruiters=Count('t301_id_recruiter'))
+			self.queryset = self.model.objects.all()\
+				.annotate(OnHoldVacants=Subquery(OnHoldCompanyVacants.values('OnHoldVacants'), output_field=IntegerField()))\
+				.annotate(OnHoldRecruiters=Subquery(OnHoldCompanyRecruiters.values('OnHoldRecruiters'), output_field=IntegerField()))
+			
 		return  self.queryset
 
  
 	def get_queryset(self):
 		if self.queryset is None:
-			OnHoldCompanyVacants = Vacant.objects.filter(t300_id_company=OuterRef('t300_id_company'),c204_id_vacant_status=1).values('t300_id_company').annotate(OnHoldVacants=Count('t200_id_vacant'))
-			OnHoldCompanyRecruiters =Recruiter.objects.filter(t300_id_company=OuterRef('t300_id_company'),c303_id_status=2).values('t300_id_company').annotate(OnHoldRecruiters=Count('t301_id_recruiter'))
-			self.queryset = self.model.objects.all()\
-				.annotate(OnHoldVacants=Subquery(OnHoldCompanyVacants.values('OnHoldVacants'), output_field=IntegerField()))\
-				.annotate(OnHoldRecruiters=Subquery(OnHoldCompanyRecruiters.values('OnHoldRecruiters'), output_field=IntegerField()))
+			CompanyVacants = Vacant.objects.filter(t300_id_company=OuterRef('t300_id_company')).values('t300_id_company').annotate(TotalVacants=Count('t200_id_vacant'))
+			CompanyReports =Report.objects.filter(t300_id_company=OuterRef('t300_id_company')).values('t300_id_company').annotate(TotalReports=Count('t203_id_report'))
+			self.queryset = self.model.objects\
+				.all()\
+				.annotate(TotalVacants=Subquery(CompanyVacants.values('TotalVacants'), output_field=IntegerField()))\
+				.annotate(TotalReports=Subquery(CompanyReports.values('TotalReports'), output_field=IntegerField()))
 		return self.queryset
   
 
