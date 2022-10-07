@@ -288,6 +288,26 @@
     },
 
     {
+        "model" : "users.User",
+        "pk" : 17,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$8t5lqqlUBLSKSRa8Joc67V$DYPbGr4nytQB3e1JHu6wAbXaOhqKQTZyHvfykNLaKWw=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "ex_ap_escom@ipn.mx",
+            "first_name": "José Francisco",
+            "last_name": "Serrano García",
+            "email": "ex_ap_escom@ipn.mx",
+            "is_staff": false,
+            "date_joined": "2022-10-07T06:51:56.124153Z",
+            "user_type": "MANAGER",
+            "is_active": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+
+    {
         "model" : "students.Student",
         "pk" : 1,
         "fields":{
@@ -314,14 +334,16 @@
 
     {
         "model":"administration.Admin",
-        "pk": 1,
+        "pk": 17,
         "fields":{
-            "id_user": 1,
-            "t400_name": "Francisco",
-            "t400_last_names": "Hernandez",
-            "t400_email":"ex_ap_escom@ipn.mx",
-            "t400_admin": "true",
-            "t400_position": "Jefe de departamento"
+            "id_user": 17,
+            "t400_id_admin":1,
+            "t400_name": "José Francisco",
+            "t400_last_name": "Serrano",
+            "t400_second_surname":"García",
+            "t400_email":"ex_ap_escom@ipn.mx",            
+            "t400_position": "Jefe de departamento",
+            "c401_id_rol":1
         }
     }
     

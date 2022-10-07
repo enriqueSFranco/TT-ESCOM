@@ -14,6 +14,7 @@ class OnHoldRecruitersViewSet(viewsets.GenericViewSet):
 	model = Recruiter
 	list_serializer_class = OnHoldRecruiterListSerializer
 	queryset = None
+
 	def get_object(self, pk):
 		self.queryset= None
 		if self.queryset == None:
@@ -21,6 +22,13 @@ class OnHoldRecruitersViewSet(viewsets.GenericViewSet):
 				.filter(t300_id_company = pk,id_user__isnull=True)\
 				.all()
 		return  self.queryset
+
+	def get_queryset(self):
+		if self.queryset is None:
+			self.queryset = self.model.objects\
+				.filter(id_user__isnull=True)\
+				.all()
+		return self.queryset
 
 
 	def retrieve(self, request, pk):
@@ -43,7 +51,9 @@ class OnHoldRecruitersViewSet(viewsets.GenericViewSet):
 
 		Dummy text
 		""" 
-		return Response( status=status.HTTP_200_OK)		
+		recruiter = self.get_queryset()
+		recruiter_serializer = self.list_serializer_class(recruiter,many=True)
+		return Response(recruiter_serializer.data)
 
 
 class ValidateRecruiterViewSet(viewsets.GenericViewSet):

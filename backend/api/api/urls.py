@@ -48,7 +48,7 @@ urlpatterns = [
     path('company/', include('apps.companies_routers')),
     path('manager/', include('apps.manager_routers')),
     path('vacant/', include('apps.vacants_routers')),
-    path('users/', include('apps.users_routers')),
+    path('users/', include('apps.users_routers')),    
     path('api/catalogues/',include('apps.catalogs_routers')),#-----------Cambiar en front las peticiones
     path('catalog/',include('apps.catalogs_routers')),    
     #path('api/token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),#-----------Cambiar en front las peticiones

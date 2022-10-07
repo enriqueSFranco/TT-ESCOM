@@ -168,11 +168,13 @@
     },    
 
 
+   
     {
         "model":"vacantes.VacantStatus",        
         "pk":1,
         "fields":{
-            "c204_description": "Abierta"
+            "c204_id_status": "1",
+            "c204_description": "En revisión"
         }
     },
 
@@ -180,7 +182,8 @@
         "model":"vacantes.VacantStatus",        
         "pk":2,
         "fields":{
-            "c204_description": "Ocupada"
+            "c204_id_status": "2",
+            "c204_description": "Abierta"
         }
     },
 
@@ -188,7 +191,8 @@
         "model":"vacantes.VacantStatus",        
         "pk":3,
         "fields":{
-            "c204_description": "Cerrada"
+            "c204_id_status": "3",
+            "c204_description": "Ocupada"
         }
     },
 
@@ -196,7 +200,8 @@
         "model":"vacantes.VacantStatus",        
         "pk":4,
         "fields":{
-            "c204_description": "Cerrada por reporte"
+            "c204_id_status": "4",
+            "c204_description": "Cerrada"
         }
     },
 
@@ -204,7 +209,37 @@
         "model":"vacantes.VacantStatus",        
         "pk":5,
         "fields":{
+            "c204_id_status": "5",
+            "c204_description": "Cerrada por reporte"
+        }
+    },
+
+    {
+        "model":"vacantes.VacantStatus",        
+        "pk":6,
+        "fields":{
+            "c204_id_status": "6",
             "c204_description": "Reportada"
+        }
+    },
+
+
+
+    {
+        "model":"administration.Rol",        
+        "pk":1,
+        "fields":{
+            "c401_id_rol": "1",
+            "c401_description": "Administrador"
+        }
+    },
+
+    {
+        "model":"administration.Rol",        
+        "pk":2,
+        "fields":{
+            "c401_id_rol": "2",
+            "c401_description": "Colaborador"
         }
     },
 

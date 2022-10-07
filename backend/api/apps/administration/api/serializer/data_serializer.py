@@ -2,12 +2,20 @@ from rest_framework import serializers
 from apps.companies.models import Recruiter,Company,PDFBase64File
 
 class CompanyListSerializer(serializers.ModelSerializer):
+    TotalVacants = serializers.IntegerField()
+    TotalReports = serializers.IntegerField()
+    class Meta:
+        model = Company
+        fields = '__all__'
+        depth = 2
+
+class CompanyRetriveSerializer(serializers.ModelSerializer):    
     OnHoldVacants = serializers.IntegerField()
     OnHoldRecruiters = serializers.IntegerField()
     class Meta:
         model = Company
         fields = '__all__'
-        depth = 2
+        depth = 2        
     
 class CompanySerializer(serializers.ModelSerializer):
     t300_validator_document = PDFBase64File()
