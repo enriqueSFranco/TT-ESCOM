@@ -12,10 +12,10 @@ from apps.companies.models import Recruiter
 from apps.users.models import User
 
 
-class UserCreate(APIView):
+class UserCreate(viewsets.GenericViewSet):
     permission_classes = [AllowAny]
 
-    def post(self, request, format='json'):
+    def create(self, request):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
@@ -64,18 +64,18 @@ class UserViewSet(viewsets.GenericViewSet):
 		users_serializer = self.list_serializer_class(users, many=True)
 		return Response(users_serializer.data, status=status.HTTP_200_OK)
 
-	#def create(self, request):        
-	#	user_serializer = self.serializer_class(data=request.data)        
-	#	print('request: ',request.data)
-	#	if user_serializer.is_valid():
-	#		user_serializer.save()
-	#		return Response({
-	#			'message': 'Usuario registrado correctamente.'
-	#		}, status=status.HTTP_201_CREATED)
-	#	return Response({
-	#		'message': 'Hay errores en el registro',
-	#		'errors': user_serializer.errors
-	#	}, status=status.HTTP_400_BAD_REQUEST)
+	def create(self, request):        
+		user_serializer = self.serializer_class(data=request.data)        
+		print('request: ',request.data)
+		if user_serializer.is_valid():
+			user_serializer.save()
+			return Response({
+				'message': 'Usuario registrado correctamente.'
+			}, status=status.HTTP_201_CREATED)
+		return Response({
+			'message': 'Hay errores en el registro',
+			'errors': user_serializer.errors
+		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def retrieve(self, request, pk):
 		get_user = self.get_object(pk)

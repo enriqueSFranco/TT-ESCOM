@@ -226,6 +226,26 @@
 
 
     {
+        "model":"administration.Rol",        
+        "pk":1,
+        "fields":{
+            "c401_id_rol": "1",
+            "c401_description": "Administrador"
+        }
+    },
+
+    {
+        "model":"administration.Rol",        
+        "pk":2,
+        "fields":{
+            "c401_id_rol": "2",
+            "c401_description": "Colaborador"
+        }
+    },
+
+
+
+    {
         "model":"vacantes.ApplicationState",        
         "pk":1,
         "fields":{
