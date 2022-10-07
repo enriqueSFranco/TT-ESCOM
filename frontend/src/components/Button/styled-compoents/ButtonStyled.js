@@ -6,12 +6,12 @@ const ButtonStyled = styled.button`
   border: none;
   outline: none;
   border-radius: 4px;
-  width: fit-content;
+  width: ${props => `${props.width}rem` || 'fit-content'};
+  height: ${props => `${props.height}rem` || '1rem'};
   display: flex;
+  justify-content: center;
   align-items: center;
-  /* text-align: left; */
-  /* font-size: .9rem; */
-  /* justify-content: center; */
+  gap: .3rem;
 `
 
 export { ButtonStyled }

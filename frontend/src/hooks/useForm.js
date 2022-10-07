@@ -78,9 +78,9 @@ export const useForm = (initialForm, validateForm) => {
 
   const handleSubmitCompany = (e) => {
     e.preventDefault();
+    // form.t300_validator_document = uploadFile(e)
     setErrors(validateForm(form));
-    form['t300_validator_document'] = uploadFile(e)
-    console.log('->',form)
+    // console.log('->',form)
 
     if (Object.keys(errors).length === 0) {
       createAccountRecruiter(form)

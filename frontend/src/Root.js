@@ -22,6 +22,7 @@ import PageApplicationsStudent from "pages/student/PageApplicationsStudent";
 import ExperienceList from "components/Card/Experience/ExperienceList";
 import CertificationList from "components/Card/Certifications/CertificationList";
 import Accordion from "components/Accordion/Accordion";
+import ListCollaborators from 'pages/admin/ListCollaborators'
 import AcademicRecordList from "components/Card/AcademicRecord/AcademicRecordList";
 import ModalRelease from "components/Modal/ModalRelease";
 import ModalBusiness from "components/Modal/ModalBusiness";
@@ -54,6 +55,7 @@ const Root = () => {
       <Route path="/validar-reclutador" element={<PageValidateRecruiter />} />
       <Route path="/empresas-registradas" element={<RegisteredCompanies />} />
       <Route path="detalles-de-emperesa/:t300_id_company" element={<DetailsCompany />} />
+      <Route path="/lista-de-colaboradores" element={<ListCollaborators />} />
 
 
       <Route path="/alumno" element={<PageLoginStudent />} />

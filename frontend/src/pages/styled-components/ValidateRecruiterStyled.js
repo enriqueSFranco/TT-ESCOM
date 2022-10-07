@@ -1,11 +1,13 @@
 import styled from 'styled-components'
 
-const SectionTable = styled.section`
-  position: relative;
-  top: 10rem;
+const WrapperValidateCompany = styled.section`
+  position: absolute;
+  top: 4rem;
+  left: 0;
   width: 100%;
-  margin: 0 auto;
-  text-align: center;
+  height: 100vh;
+  color: #000;
+  background-color: #F2F2F2;
 `
 
-export { SectionTable }
+export { WrapperValidateCompany }
