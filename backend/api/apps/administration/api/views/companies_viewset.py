@@ -1,8 +1,9 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import viewsets
-from django.db.models import Count
+from django.db.models import Count, IntegerField, OuterRef, Subquery, Sum, Q
 from apps.companies.models import Company, Recruiter
+from apps.vacantes.models import Vacant
 from apps.companies.api.serializer.recruiter_serializer import RecruiterSerializer
 from apps.administration.api.serializer.data_serializer import CompanySerializer,CompanyDataSerializer,CompanyListSerializer
 from apps.companies.api.serializer.company_serializer import UpdateCompanySerializer,VerifiedStateUpdate
@@ -15,52 +16,19 @@ class ManagerViewCompanyViewSet(viewsets.GenericViewSet):
 	serializer_class = CompanySerializer
 	list_serializer_class = CompanyListSerializer
 	queryset = None
-
-	RawQuery ="""SELECT COUNT(vac.t200_job) OnHoldVacants,
-       			count(rec.t301_name) OnHoldRecruiters,
-       			CMP.* 
-			FROM t300_empresa CMP
-			left JOIN t200_vacante VAC
-			ON VAC.t300_id_company_id = CMP.t300_id_company AND vac.c204_id_vacant_status_id =1
-			left JOIN t301_reclutador REC
-			ON REC.t300_id_company_id = CMP.t300_id_company and REC.t301_user is null """
-	QueryCondition = "where CMP.t300_id_company = "
-	QueryGroup ="""	  group by CMP.t300_id_company,
-    			CMP.t300_name,
-    			CMP.t300_rfc,
-    			CMP.t300_email,
-    			CMP.t300_bussiness_name,
-    			CMP.t300_web_page,
-    			CMP.t300_mision,
-    			CMP.t300_vision,
-    			CMP.t300_objective,
-    			CMP.t300_logo,
-    			CMP.t300_banner,
-    			CMP.t300_validator_document,
-    			CMP.t400_id_admin_id,
-    			CMP.t300_verified,
-    			CMP.t300_create_date,
-    			CMP.c302_id_status_id """
+	
 
 	def get_object(self, pk):
 		self.queryset= None
 		if self.queryset == None:
-			Query = self.RawQuery + self.QueryCondition + pk + self.QueryGroup
-			#self.queryset = self.model.objects.raw(Query)
+			OnHoldCompanyVacants = Vacant.objects.filter(t300_id_company=pk,c204_id_vacant_status=1).values('t300_id_company').annotate(OnHoldVacants=Count('t200_id_vacant'))
+			OnHoldCompanyRecruiters =Recruiter.objects.filter(t300_id_company=pk,c303_id_status=2).values('t300_id_company').annotate(OnHoldRecruiters=Count('t301_id_recruiter'))
 			self.queryset = self.model.objects\
 				.filter(t300_id_company = pk).all()\
-				.filter(RecruiterCompany__t300_id_company=pk).annotate(OnHoldRecruiters=Count('RecruiterCompany__t301_id_recruiter'))\
-				.filter(CompanyOffering__t300_id_company=pk).annotate(OnHoldVacants=Count('CompanyOffering__t200_id_vacant'))
+				.annotate(OnHoldVacants=Subquery(OnHoldCompanyVacants.values('OnHoldVacants'), output_field=IntegerField()))\
+				.annotate(OnHoldRecruiters=Subquery(OnHoldCompanyRecruiters.values('OnHoldRecruiters'), output_field=IntegerField()))
 		return  self.queryset
 
-	"""¿¿ from django.db.models import Count, IntegerField, OuterRef, Subquery, Sum
- 		weapon_count = Player.objects.annotate(weapon_count=Count('unit_set__weapon_set')).filter(pk=OuterRef('pk'))
- 		rarity_sum = Player.objects.annotate(rarity_sum=Sum('unit_set__rarity')).filter(pk=OuterRef('pk'))
- 		qs = Player.objects.annotate(
-     	weapon_count=Subquery(weapon_count.values('weapon_count'), output_field=IntegerField()),
-     	rarity_sum=Subquery(rarity_sum.values('rarity_sum'), output_field=IntegerField())
- 		)
- 		qs.values()"""
  
 	def get_queryset(self):
 		if self.queryset is None:
