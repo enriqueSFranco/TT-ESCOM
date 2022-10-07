@@ -104,7 +104,6 @@ const FormCompany = () => {
                 errors={errors}
                 handleChange={handleChange}
                 handleValidate={handleValidate}
-                handleSubmitCompany={handleSubmitCompany}
                 isActive={isActive}
                 handleIsActive={handleIsActive}
               />

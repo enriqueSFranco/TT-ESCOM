@@ -3,8 +3,11 @@ import { useParams } from "react-router-dom";
 import { useGetCompany } from "hooks";
 import Menu from "components/Menu/Menu";
 import LayoutWidget from "Layout/LayoutWidget";
+import Chip from "components/Chip/Chip"
 import { FaHome, FaUsers, FaAddressCard } from "react-icons/fa";
+import { FcApproval, FcList } from 'react-icons/fc'
 import { HiLink } from "react-icons/hi";
+import { RiFileUserFill, RiUser2Fill } from 'react-icons/ri'
 import { ContainerLogoCompany, FooterLogoCompany, NavList, Banner, MainContainer, Title } from "../styled-components/DetailsCompanyStyled";
 import { Wrapper } from "../styled-components/GlobalStyles";
 import { List, ListItem } from "styled-components/CommonStyles";
@@ -53,7 +56,9 @@ const DetailsCompany = () => {
             <FooterLogoCompany>
               <span>{company[0]?.t300_name}</span>
               <br />
-              <span>Estado de la empresa</span>
+              <div style={{width: 'fit-content', margin: '0 auto'}}>
+                <Chip label={`Estado de la empresa: ${company[0]?.c302_id_status?.c302_description}`} bg="blue" color="#fff" />
+              </div>
             </FooterLogoCompany>
           </ContainerLogoCompany>
         </Banner>
@@ -89,13 +94,16 @@ const DetailsCompany = () => {
               <>
                 <List>
                   <ListItem>
-                    <LayoutWidget />
+                    <LayoutWidget number={3} text="Reclutadores en espera" icon={<RiFileUserFill style={{fontSize: '1.4rem', color: " #34495E"}} />} />
                   </ListItem>
                   <ListItem>
-                    <LayoutWidget />
+                    <LayoutWidget number={6} text="Vacantes por validar" icon={<FcList style={{fontSize: '1.4rem'}} />} />
                   </ListItem>
                   <ListItem>
-                    <LayoutWidget />
+                    <LayoutWidget number={30} text="Vacantes publicadas" icon={<FcApproval style={{fontSize: '1.4rem'}} />} />
+                  </ListItem>
+                  <ListItem>
+                    <LayoutWidget number={3} text="Reclutadores Asociados" icon={<RiUser2Fill style={{fontSize: '1.4rem', color: " #3498db "}} />} />
                   </ListItem>
                 </List>
               </>

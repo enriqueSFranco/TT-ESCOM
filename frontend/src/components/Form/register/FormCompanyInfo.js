@@ -1,8 +1,6 @@
 import React from "react";
-import { InputAdornment, TextField } from "@mui/material";
+import Input from "components/Input/Input";
 import Label from "components/Element/Label/Label";
-import { IoIosBusiness } from "react-icons/io";
-import { HiOutlineIdentification } from "react-icons/hi";
 import * as BsIcon from "react-icons/bs";
 import * as BiIcon from "react-icons/bi";
 import * as MdIcon from "react-icons/md";
@@ -15,10 +13,10 @@ const FormCompanyInfo = ({
   errors,
   handleChange,
   handleValidate,
-  handleSubmitCompany,
   isActive,
   handleIsActive,
 }) => {
+  
   const continueStep = (e) => {
     e.preventDefault();
     nextStep();
@@ -41,23 +39,15 @@ const FormCompanyInfo = ({
         )}
       </div>
       <div className={styles.inputGroup}>
-        <TextField
+        <Input
           label="Nombre de su empresa"
           id="t300_name"
           name="t300_name"
-          sx={{ width: 500, maxWidth: "100%" }}
+          width='500px'
           value={form.t300_name}
           onBlur={handleValidate}
           onKeyUp={handleValidate}
           onChange={handleChange}
-          // helperText="Porfavor, Escriba el nombre de su empresa."
-          InputProps={{
-            startAdornment: form.t300_name && (
-              <InputAdornment position="start">
-                <IoIosBusiness />
-              </InputAdornment>
-            ),
-          }}
         />
         {errors.t300_name && (
           <span className={styles.error}>
@@ -67,23 +57,15 @@ const FormCompanyInfo = ({
         )}
       </div>
       <div className={styles.inputGroup}>
-        <TextField
+        <Input
           label="RFC"
           id="t300_rfc"
           name="t300_rfc"
-          sx={{ width: 500, maxWidth: "100%" }}
+          width='500px'
           value={form.t300_rfc}
           onBlur={handleValidate}
           onKeyUp={handleValidate}
           onChange={handleChange}
-          // helperText="Porfavor, Escriba el RFC de su empresa."
-          InputProps={{
-            startAdornment: form.t300_rfc && (
-              <InputAdornment position="start">
-                <HiOutlineIdentification />
-              </InputAdornment>
-            ),
-          }}
         />
         {errors.t300_rfc && (
           <span className={styles.error}>
@@ -93,12 +75,11 @@ const FormCompanyInfo = ({
         )}
       </div>
       <div className={styles.inputGroup}>
-        <TextField
+        <Input
           label="Razon Social"
           id="t300_bussiness_name"
           name="t300_bussiness_name"
-          // helperText="Porfavor, Escriba la razon social de su empresa."
-          sx={{ width: 500, maxWidth: "100%" }}
+          width='500px'
           value={form.t300_bussiness_name}
           onBlur={handleValidate}
           onKeyUp={handleValidate}
@@ -118,16 +99,11 @@ const FormCompanyInfo = ({
         </p>
         <input
           type="file"
-          name="cv"
-          id="cv"
-          className={`${styles.inputFile}`}
-          value={form.file}
+          name="t300_validator_document"
+          id="t300_validator_document"
+          value={form.t300_validator_document}
           onChange={handleChange}
         />
-        <Label htmlFor="cv">
-          <BiIcon.BiCloudUpload />
-          subir cv
-        </Label>
       </div>
       <button className={styles.btnNext} type="button" onClick={continueStep}>
         Siguiente

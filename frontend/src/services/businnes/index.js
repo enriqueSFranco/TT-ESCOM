@@ -19,13 +19,13 @@ export const getBusiness = (id) => {
 };
 
 
-export const createBusiness = (payload = {}) => {
+export const createAccountRecruiter = (payload = {}) => {
   return API.post(`${process.env.REACT_APP_URL_COMPANY}`, payload)
     .then((response) => response)
     .catch(error => error)
 };
 
-export const createBusinessRecruiter = (payload = {}) => {
-  return API.post(`${process.env.REACT_APP_URL_RECRUITERS}`, payload).then(response => response)
-  .catch(error => error);
-}
+// export const createBusinessRecruiter = (payload = {}) => {
+//   return API.post(`${process.env.REACT_APP_URL_RECRUITERS}`, payload).then(response => response)
+//   .catch(error => error);
+// }
