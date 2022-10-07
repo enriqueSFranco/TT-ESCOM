@@ -4,6 +4,7 @@ import { USERS } from "types/users";
 import MainMenu from "./MainMenu";
 import MenuCandidate from "./MenuCandidate";
 import MenuRecruiter from "./MenuRecruiter";
+import MenuAdmin from './MenuAdmin'
 import LayoutMenu from "Layout/LayoutMenu";
 
 const Menu = () => {
@@ -25,6 +26,14 @@ const Menu = () => {
         <MenuRecruiter />
       </LayoutMenu>
     );
+  }
+
+  if (typeUser === 'Admin') {
+    return (
+      <LayoutMenu>
+        <MenuAdmin />
+      </LayoutMenu>
+    )
   }
 
   return (

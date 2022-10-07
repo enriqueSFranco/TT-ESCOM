@@ -1,8 +1,7 @@
 import API from 'services/http.service'
-import { API_COMPANY } from "../settings";
 
 export const getAllBusiness = async () => {
-  return API(API_COMPANY)
+  return API(process.env.REACT_APP_URL_COMPANY)
     .then(response => {
       const { data } = response;
       return data;
@@ -11,7 +10,7 @@ export const getAllBusiness = async () => {
 };
 
 export const getBusiness = (id) => {
-  return API(`${API_COMPANY}/${id}/`)
+  return API(`${process.env.REACT_APP_URL_COMPANY}${id}/`)
     .then(response => {
       const { data } = response;
       return data;

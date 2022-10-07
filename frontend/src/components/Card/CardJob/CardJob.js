@@ -8,6 +8,7 @@ import { IoBusiness } from "react-icons/io5";
 import {
   Actions,
   Button,
+  CardImage,
   CardBody,
   CardHeader,
   CardContent,
@@ -46,7 +47,7 @@ const CardJob = ({ job }) => {
   return (
     <CardBody>
       <CardHeader>
-        <div>
+        <CardImage>
           {job?.t300_id_company?.t300_logo ? (
             <img
               src={job?.t300_id_company?.t300_logo}
@@ -55,7 +56,7 @@ const CardJob = ({ job }) => {
           ) : (
             <IoBusiness style={{ color: "darkgray", fontSize: "3.5rem" }} />
           )}
-        </div>
+        </CardImage>
         <PublicationDate>{!job?.t200_publish_date ? 'sin fecha' : formatDate(job?.t200_publish_date)}</PublicationDate>
       </CardHeader>
       <CardContent>
