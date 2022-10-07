@@ -8,6 +8,14 @@ class CompanyListSerializer(serializers.ModelSerializer):
         model = Company
         fields = '__all__'
         depth = 2
+
+class CompanyRetriveSerializer(serializers.ModelSerializer):
+    TotalVacants = serializers.IntegerField()
+    #ReportedVacants = serializers.IntegerField()
+    class Meta:
+        model = Company
+        fields = '__all__'
+        depth = 2        
     
 class CompanySerializer(serializers.ModelSerializer):
     t300_validator_document = PDFBase64File()

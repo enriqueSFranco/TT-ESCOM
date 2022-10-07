@@ -3,9 +3,9 @@ from rest_framework.response import Response
 from rest_framework import viewsets
 from django.db.models import Count, IntegerField, OuterRef, Subquery, Sum, Q
 from apps.companies.models import Company, Recruiter
-from apps.vacantes.models import Vacant
+from apps.vacantes.models import Vacant,Report
 from apps.companies.api.serializer.recruiter_serializer import RecruiterSerializer
-from apps.administration.api.serializer.data_serializer import CompanySerializer,CompanyDataSerializer,CompanyListSerializer
+from apps.administration.api.serializer.data_serializer import CompanySerializer,CompanyDataSerializer,CompanyListSerializer,CompanyRetriveSerializer
 from apps.companies.api.serializer.company_serializer import UpdateCompanySerializer,VerifiedStateUpdate
 
 class ManagerViewCompanyViewSet(viewsets.GenericViewSet): 
@@ -13,7 +13,7 @@ class ManagerViewCompanyViewSet(viewsets.GenericViewSet):
 	Sin comentarios
 	""" 	
 	model = Company
-	serializer_class = CompanySerializer
+	serializer_class = CompanySerializer	
 	list_serializer_class = CompanyListSerializer
 	queryset = None
 	
@@ -21,20 +21,22 @@ class ManagerViewCompanyViewSet(viewsets.GenericViewSet):
 	def get_object(self, pk):
 		self.queryset= None
 		if self.queryset == None:
-			OnHoldCompanyVacants = Vacant.objects.filter(t300_id_company=pk,c204_id_vacant_status=1).values('t300_id_company').annotate(OnHoldVacants=Count('t200_id_vacant'))
-			OnHoldCompanyRecruiters =Recruiter.objects.filter(t300_id_company=pk,c303_id_status=2).values('t300_id_company').annotate(OnHoldRecruiters=Count('t301_id_recruiter'))
+			CompanyVacants = Vacant.objects.filter(t300_id_company=pk).values('t300_id_company').annotate(TotalVacants=Count('t200_id_vacant'))
+			#OnHoldCompanyRecruiters =Recruiter.objects.filter(t300_id_company=pk,c303_id_status=2).values('t300_id_company').annotate(OnHoldRecruiters=Count('t301_id_recruiter'))
 			self.queryset = self.model.objects\
 				.filter(t300_id_company = pk).all()\
-				.annotate(OnHoldVacants=Subquery(OnHoldCompanyVacants.values('OnHoldVacants'), output_field=IntegerField()))\
-				.annotate(OnHoldRecruiters=Subquery(OnHoldCompanyRecruiters.values('OnHoldRecruiters'), output_field=IntegerField()))
+				.annotate(TotalVacants=Subquery(CompanyVacants.values('TotalVacants'), output_field=IntegerField()))#\
+				#.annotate(OnHoldRecruiters=Subquery(OnHoldCompanyRecruiters.values('OnHoldRecruiters'), output_field=IntegerField()))
 		return  self.queryset
 
  
 	def get_queryset(self):
 		if self.queryset is None:
-			self.queryset = self.model.objects\
-				.filter()\
-				.all()
+			OnHoldCompanyVacants = Vacant.objects.filter(t300_id_company=OuterRef('t300_id_company'),c204_id_vacant_status=1).values('t300_id_company').annotate(OnHoldVacants=Count('t200_id_vacant'))
+			OnHoldCompanyRecruiters =Recruiter.objects.filter(t300_id_company=OuterRef('t300_id_company'),c303_id_status=2).values('t300_id_company').annotate(OnHoldRecruiters=Count('t301_id_recruiter'))
+			self.queryset = self.model.objects.all()\
+				.annotate(OnHoldVacants=Subquery(OnHoldCompanyVacants.values('OnHoldVacants'), output_field=IntegerField()))\
+				.annotate(OnHoldRecruiters=Subquery(OnHoldCompanyRecruiters.values('OnHoldRecruiters'), output_field=IntegerField()))
 		return self.queryset
   
 
@@ -48,7 +50,7 @@ class ManagerViewCompanyViewSet(viewsets.GenericViewSet):
 		""" 	
 		print(request.data)
 		company = self.get_queryset()
-		companies_serializer = CompanyDataSerializer(company, many=True)
+		companies_serializer = self.list_serializer_class(company, many=True)
 		return Response(companies_serializer.data, status=status.HTTP_200_OK)
 
 	def retrieve(self, request, pk):
@@ -60,7 +62,7 @@ class ManagerViewCompanyViewSet(viewsets.GenericViewSet):
 		Dummy text
 		""" 	
 		company = self.get_object(pk)
-		company_serializer = self.list_serializer_class(company,many=True)
+		company_serializer = CompanyRetriveSerializer(company,many=True)
 		return Response(company_serializer.data)
 
 	def destroy(self, request, pk):
