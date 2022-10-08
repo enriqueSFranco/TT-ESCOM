@@ -68,9 +68,11 @@ class AdminViewSet(viewsets.GenericViewSet):
 	def set_user(self,data):
 		user=self.create_user
 		#------A definir por la pantalla de agregar encargado
-		user['password']= "password"
+		user['password']= "Prueba123"
 		user['username']=data['t400_email']
 		user['email']=data['t400_email']
+		user['first_name'] = data['t400_name']
+		user['last_name'] = data['t400_last_name']+data['t400_second_surname']
 		return user
 
 	def set_manager(self,data,user):
