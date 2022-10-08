@@ -1,7 +1,8 @@
 import React from "react";
 import { useGetAllRecruitrs } from "hooks";
-import LayoutMenu from "Layout/LayoutMenu";
-import { WrapperValidateCompany } from '../styled-components/ValidateRecruiterStyled'
+import LayoutAdmin from "Layout/LayoutAdmin";
+// import LayoutMenu from "Layout/LayoutMenu";
+import { WrapperValidateCompany } from "../styled-components/ValidateRecruiterStyled";
 import CardValidateCompany from "components/Card/CardValidateCompany";
 
 const PageValidateRecruiter = () => {
@@ -10,12 +11,14 @@ const PageValidateRecruiter = () => {
   if (!listRecruiter) return null;
 
   return (
-    <LayoutMenu>
+    <>
+    
+    <LayoutAdmin>
+      <h2>validar empresas</h2>
       <WrapperValidateCompany>
-        <h2>validar empresas</h2>
-        {listRecruiter?.map(recruiter => (
-          <CardValidateCompany 
-            key={`list-item-recruiter-${recruiter?.t301_id_recruiter}`} 
+        {listRecruiter?.map((recruiter) => (
+          <CardValidateCompany
+            key={`list-item-recruiter-${recruiter?.t301_id_recruiter}`}
             nameCompany={recruiter?.t300_id_company?.t300_name}
             busisnessName={recruiter?.t300_id_company?.t300_bussiness_name}
             document={recruiter?.t300_id_company?.t300_validator_document}
@@ -27,7 +30,8 @@ const PageValidateRecruiter = () => {
           />
         ))}
       </WrapperValidateCompany>
-    </LayoutMenu>
+    </LayoutAdmin>
+    </>
   );
 };
 

@@ -1,23 +1,27 @@
 import React from 'react'
 import Button from 'components/Button/Button'
+import { Card, CardActions, CardImage, CardFooter, CardImageName } from './styled-components/CardCollaboratorStyled'
 import { GrEdit } from 'react-icons/gr'
 import { MdDelete } from 'react-icons/md'
 
-const CardCollaborator = ({collaboratorName, position, picture}) => {
+const CardCollaborator = ({collaboratorName, position, picture, openModalEdit, openModalDelete}) => {
+
   return (
-    <div>
-      <div>
-        <Button bgColor='transparent' icon={<GrEdit />} />
-        <Button bgColor='transparent' icon={<MdDelete />} />
-      </div>
-      <figure>
+    <Card>
+      <CardActions>
+        <Button onClick={openModalEdit} bgColor='transparent' color='#000' icon={<GrEdit />} />
+        <Button onClick={openModalDelete} bgColor='transparent' color='#000' icon={<MdDelete />} />
+      </CardActions>
+      <CardImage>
         <img src="" alt="" />
-        <figcaption>
+        <CardImageName>
           <span>Nombre del colaborador</span>
-        </figcaption>
-      </figure>
-      <span>cargo en ESCOM</span>
-    </div>
+        </CardImageName>
+      </CardImage>
+      <CardFooter>
+        <span>Cargo en ESCOM</span>
+      </CardFooter>
+    </Card>
   )
 }
 
