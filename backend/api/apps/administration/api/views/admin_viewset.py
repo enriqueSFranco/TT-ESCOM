@@ -6,9 +6,13 @@ from rest_framework.decorators import action
 from rest_framework import viewsets
 
 from apps.administration.models import Admin
+from apps.companies.models import Company, Recruiter
 from apps.users.models import User
+from apps.users.api.serializers import UpdateUserSerializer
 from apps.users.api.serializers import UserSerializer
+from apps.administration.api.serializer.data_serializer import OnHoldRecruiterListSerializer
 from apps.administration.api.serializer.admin_serializer import AdminSerializer,AdminListSerializer,UpdateAdminSerializer
+from apps.companies.api.serializer.company_serializer import CompanySerializer,CompanyListSerializer
 
 class AdminViewSet(viewsets.GenericViewSet):
 	model = Admin
@@ -17,6 +21,12 @@ class AdminViewSet(viewsets.GenericViewSet):
 	serializer_class = AdminSerializer
 	list_serializer_class = AdminListSerializer
 	queryset = None
+	update_user = {
+		'username':'',
+		'first_name':'',
+		'last_name':'',
+		'email':''
+	}
 	create_user = {"password": "",
    							"is_superuser": False,
    							"username": "",
@@ -131,6 +141,15 @@ class AdminViewSet(viewsets.GenericViewSet):
 		admin_serializer = self.list_serializer_class(admin,many=True)
 		return Response(admin_serializer.data)
 
+	
+	def set_update_user(self,data):
+		update_user = self.update_user
+		update_user['username'] = data['t400_email']
+		update_user['first_name'] = data['t400_name']
+		update_user['last_name'] = data['t400_last_name']+data['t400_second_surname']
+		update_user['email'] = data['t400_email']
+		return update_user
+
 	def update(self, request, pk):
 		"""
 		Actualiza la información de un encargado
@@ -143,9 +162,16 @@ class AdminViewSet(viewsets.GenericViewSet):
 		admin_serializer = UpdateAdminSerializer(u_admin, data=request.data)
 		if admin_serializer.is_valid():
 			admin_serializer.save()
-			return Response({
-				'message': 'Administrador actualizado correctamente'
-			}, status=status.HTTP_200_OK)
+			admin = self.model.objects.filter(t400_id_admin = pk).values('id_user').first()
+			print(admin['id_user'])#----------------------------
+			u_user = self.user_model.objects.filter(id=admin['id_user'])
+			user = self.set_update_user(request.data)
+			user_serializer = UpdateUserSerializer(u_user,data=user)
+			if user_serializer.is_valid():
+				user_serializer.save()
+				return Response({
+					'message': 'Administrador actualizado correctamente'
+				}, status=status.HTTP_200_OK)
 		return Response({
 			'message': 'Hay errores en la actualización',
 			'errors': admin_serializer.errors
@@ -167,4 +193,138 @@ class AdminViewSet(viewsets.GenericViewSet):
 			})
 		return Response({
 			'message': 'No existe el administrador que desea eliminar'
+		}, status=status.HTTP_404_NOT_FOUND)
+
+
+class OnHoldRecruitersViewSet(viewsets.GenericViewSet):
+	model = Recruiter
+	list_serializer_class = OnHoldRecruiterListSerializer
+	queryset = None
+
+	def get_object(self, pk):
+		self.queryset= None
+		if self.queryset == None:
+			self.queryset = self.model.objects\
+				.filter(t300_id_company = pk,id_user__isnull=True)\
+				.all()
+		return  self.queryset
+
+	def get_queryset(self):
+		if self.queryset is None:
+			self.queryset = self.model.objects\
+				.filter(id_user__isnull=True)\
+				.all()
+		return self.queryset
+
+
+	def retrieve(self, request, pk):
+		"""
+		Muestra los reclutadores pendientes de validación de una compañia
+
+
+
+		Dummy text
+		""" 
+		recruiter = self.get_object(pk)
+		recruiter_serializer = self.list_serializer_class(recruiter,many=True)
+		return Response(recruiter_serializer.data)
+
+	def list(self,request):
+		"""
+		Clase generica necesaria para registrar la ruta 
+
+
+
+		Dummy text
+		""" 
+		recruiter = self.get_queryset()
+		recruiter_serializer = self.list_serializer_class(recruiter,many=True)
+		return Response(recruiter_serializer.data)		
+
+
+class OnHoldCompaniesViewSet(viewsets.GenericViewSet):
+	"""
+	Sin comentarios
+	""" 	
+	model = Company
+	user_serializer = UserSerializer
+	serializer_class = CompanySerializer
+	list_serializer_class = CompanyListSerializer
+	queryset = None
+	company_object = {
+					  "t300_name": "",
+					  "t300_rfc": "",
+					  "t300_bussiness_name": "",
+					  "t300_validator_document":"",
+					  "c302_id_status":""
+					 }
+	recruiter_object={
+					  "t301_name":"",
+    				  "t301_last_name":"",
+					  "t301_second_surname":"",
+    				  "t301_email": "",
+    				  "t301_phonenumber":"",
+					  "t300_id_company":"",
+					  "c303_id_status":""
+					}	
+
+	def get_object(self, pk):
+		self.queryset= None
+		if self.queryset == None:
+			self.queryset = self.model.objects\
+				.filter(t300_id_company = pk,c302_id_status=1)\
+				.all()
+		return  self.queryset
+
+	def get_queryset(self):
+		if self.queryset is None:
+			self.queryset = self.model.objects\
+				.filter(c302_id_status=1)\
+				.all()
+		return self.queryset
+  
+
+	def list(self, request):
+		"""
+		Obtiene todos las compañias registradas en el sistema
+
+
+
+		Dummy text
+		""" 	
+		print(request.data)
+		company = self.get_queryset()
+		companies_serializer = self.list_serializer_class(company, many=True)
+		return Response(companies_serializer.data, status=status.HTTP_200_OK)
+
+		
+
+	def retrieve(self, request, pk):
+		"""
+		Obtiene la información de una compañia especifíca registrada en el sistema
+
+
+
+		Dummy text
+		""" 	
+		company = self.get_object(pk)
+		company_serializer = self.list_serializer_class(company,many=True)
+		return Response(company_serializer.data)
+
+	def destroy(self, request, pk):
+		"""
+		Elimina la información de una compañia del sistema 
+
+
+
+		Dummy text
+		""" 	
+		company_destroy = self.model.objects.filter(t300_id_company=pk).first()		
+		if company_destroy:
+			company_destroy = self.model.objects.filter(t300_id_company=pk).delete()
+			return Response({
+				'message': 'Compañia eliminada correctamente'
+			})
+		return Response({
+			'message': 'No existe la compañia que desea eliminar'
 		}, status=status.HTTP_404_NOT_FOUND)

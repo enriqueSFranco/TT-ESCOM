@@ -4,56 +4,12 @@ from rest_framework.response import Response
 from rest_framework import generics,viewsets
 
 from apps.users.models import User
-from apps.administration.api.serializer.data_serializer import ValidateRecruiterSerializer,OnHoldRecruiterListSerializer
+from apps.administration.api.serializer.data_serializer import ValidateRecruiterSerializer
 from apps.companies.api.serializer.recruiter_serializer import RecruiterSerializer,RecruiterListSerializer
 from apps.companies.models import Company, Recruiter
 from apps.users.api.serializers import UserSerializer
 from apps.companies.api.serializer.company_serializer import CompanySerializer,CompanyListSerializer,VerifiedStateUpdate
 
-class OnHoldRecruitersViewSet(viewsets.GenericViewSet):
-	model = Recruiter
-	list_serializer_class = OnHoldRecruiterListSerializer
-	queryset = None
-
-	def get_object(self, pk):
-		self.queryset= None
-		if self.queryset == None:
-			self.queryset = self.model.objects\
-				.filter(t300_id_company = pk,id_user__isnull=True)\
-				.all()
-		return  self.queryset
-
-	def get_queryset(self):
-		if self.queryset is None:
-			self.queryset = self.model.objects\
-				.filter(id_user__isnull=True)\
-				.all()
-		return self.queryset
-
-
-	def retrieve(self, request, pk):
-		"""
-		Muestra los reclutadores pendientes de validación de una compañia
-
-
-
-		Dummy text
-		""" 
-		recruiter = self.get_object(pk)
-		recruiter_serializer = self.list_serializer_class(recruiter,many=True)
-		return Response(recruiter_serializer.data)
-
-	def list(self,request):
-		"""
-		Clase generica necesaria para registrar la ruta 
-
-
-
-		Dummy text
-		""" 
-		recruiter = self.get_queryset()
-		recruiter_serializer = self.list_serializer_class(recruiter,many=True)
-		return Response(recruiter_serializer.data)
 
 
 class ValidateRecruiterViewSet(viewsets.GenericViewSet):
