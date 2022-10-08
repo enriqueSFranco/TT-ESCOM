@@ -19,18 +19,20 @@ class AdminViewSet(viewsets.GenericViewSet):
 	queryset = None
 	create_user = {"password": "",
    							"is_superuser": False,
-   							"username": "","first_name": "","last_name": "",
+   							"username": "",
+							"first_name": "",
+							"last_name": "",
    							"email": "",
    							"is_staff": False,
    							"user_type": "MANAGER",
-   							"is_active": True,
-							"user_id":0
+   							"is_active": True
 				}
 	manager_object = {"t400_name": "",
-    				  "t400_last_names": "",
+    				  "t400_last_name": "",
     				  "t400_email": "",
     				  "t400_admin": "",
     				  "t400_position": "",
+					  "c401_id_rol"
     				  "id_user": 0}
 			
 
@@ -74,11 +76,12 @@ class AdminViewSet(viewsets.GenericViewSet):
 	def set_manager(self,data,user):
 		manager = self.manager_object
 		manager['t400_name'] = data['t400_name']
-		manager['t400_last_names'] = data['t400_last_names']
+		manager['t400_last_name'] = data['t400_last_name']
+		manager['t400_second_surname'] = data['t400_second_surname']
 		manager['t400_email'] = data['t400_email']
-		manager['t400_admin'] = data['t400_admin']
 		manager['t400_position'] = data['t400_position']
 		manager['id_user'] = user
+		manager['c401_id_rol'] = data['c401_id_rol']
 		return manager
 
 

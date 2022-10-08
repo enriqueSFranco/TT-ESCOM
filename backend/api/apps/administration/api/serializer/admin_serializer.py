@@ -5,7 +5,6 @@ class AdminSerializer(serializers.ModelSerializer):
     class Meta:
         model = Admin
         fields = '__all__'
-        depth = 2
     
     def create(self,validate_data):
         new_admin = Admin(**validate_data)
