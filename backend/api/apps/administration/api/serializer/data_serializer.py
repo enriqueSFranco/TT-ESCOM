@@ -2,6 +2,7 @@ from rest_framework import serializers
 from apps.companies.models import Recruiter,Company,PDFBase64File
 
 class CompanyListSerializer(serializers.ModelSerializer):
+    TotalRecruiters = serializers.IntegerField()
     TotalVacants = serializers.IntegerField()
     TotalReports = serializers.IntegerField()
     class Meta:

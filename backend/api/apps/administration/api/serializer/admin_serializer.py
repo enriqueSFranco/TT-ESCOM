@@ -5,7 +5,6 @@ class AdminSerializer(serializers.ModelSerializer):
     class Meta:
         model = Admin
         fields = '__all__'
-        depth = 2
     
     def create(self,validate_data):
         new_admin = Admin(**validate_data)
@@ -31,7 +30,7 @@ class AdminListSerializer(serializers.ModelSerializer):
 class UpdateAdminSerializer(serializers.ModelSerializer):
         class Meta:
             model = Admin
-            fields = ('t400_name','t400_last_names','t400_position')
+            fields = ('t400_name','t400_last_name','t400_second_surname','t400_position','t400_email')
             depth = 2
         
         def update(self,instance,validate_data):
