@@ -32,10 +32,12 @@ class ManagerViewCompanyViewSet(viewsets.GenericViewSet):
  
 	def get_queryset(self):
 		if self.queryset is None:
+			CompanyRecruiters = Recruiter.objects.filter(t300_id_company=OuterRef('t300_id_company')).values('t300_id_company').annotate(TotalRecruiters=Count('t301_id_recruiter'))
 			CompanyVacants = Vacant.objects.filter(t300_id_company=OuterRef('t300_id_company')).values('t300_id_company').annotate(TotalVacants=Count('t200_id_vacant'))
 			CompanyReports =Report.objects.filter(t300_id_company=OuterRef('t300_id_company')).values('t300_id_company').annotate(TotalReports=Count('t203_id_report'))
 			self.queryset = self.model.objects\
 				.all()\
+				.annotate(TotalRecruiters=Subquery(CompanyRecruiters.values('TotalRecruiters'),output_field=IntegerField()))\
 				.annotate(TotalVacants=Subquery(CompanyVacants.values('TotalVacants'), output_field=IntegerField()))\
 				.annotate(TotalReports=Subquery(CompanyReports.values('TotalReports'), output_field=IntegerField()))
 		return self.queryset
