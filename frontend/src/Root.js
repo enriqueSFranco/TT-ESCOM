@@ -30,6 +30,7 @@ import FullProfileUser from "components/Card/CardStudent/FullProfileUser";
 import RegisteredCompanies from "pages/admin/RegisteredCompanies";
 import DetailsCompany from "pages/admin/DetailsCompany";
 import ValidateCompany from "pages/admin/ValidateCompany"
+import ListVacantsAdmin from "pages/admin/ListVacantsAdmin";
 
 
 const Root = () => {
@@ -59,6 +60,7 @@ const Root = () => {
       <Route path="/empresas-registradas" element={<RegisteredCompanies />} />
       <Route path="detalles-de-emperesa/:t300_id_company" element={<DetailsCompany />} />
       <Route path="/lista-de-colaboradores" element={<ListCollaborators />} />
+      <Route path="/lista-de-vacantes" element={<ListVacantsAdmin />} />
 
 
       <Route path="/alumno" element={<PageLoginStudent />} />

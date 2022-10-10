@@ -17,13 +17,10 @@ import {
 const CardJobPreviewRecruiter = ({ info }) => {
   const [data] = useGetApplicationJob({ idVacant: info?.t200_id_vacant })
 
-  
   const { t200_job, t300_id_company, c207_id_experience, c214_id_modality } =
   info;
   
   if (!info && !data) return null;
-
-  console.log(data)
 
   return (
     <Card>
