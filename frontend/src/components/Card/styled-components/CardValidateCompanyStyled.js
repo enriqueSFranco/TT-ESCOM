@@ -7,6 +7,7 @@ const WrapperCard = styled.div`
   align-items: center;
   padding: 1rem;
   border-radius: 1rem;
+  background-color: #fff;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `
 
