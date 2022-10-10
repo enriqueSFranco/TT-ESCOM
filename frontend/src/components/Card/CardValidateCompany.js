@@ -47,8 +47,8 @@ const CardValidateCompany = ({ nameCompany, busisnessName, rfc, document, nameRe
       </div>
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center',gap: '1rem'}}>
         {/* acciones */}
-        <Button onClick={validateRecruiter} height='2.5' width='10' bgColor='#30D46F' text='Aceptar Registro' icon={<AiFillCheckCircle />} />
-        <Button onClick={rejectRecruiter} height='2.5' width='10' bgColor='#FF0000' text='Declinar Registro' icon={<AiFillDelete />} />
+        <Button onClick={validateRecruiter} height='2.5' width='10' bgColor='#30D46F' text='Aceptar Empresa' icon={<AiFillCheckCircle />} />
+        <Button onClick={rejectRecruiter} height='2.5' width='10' bgColor='#FF0000' text='Rechazar Empresa' icon={<AiFillDelete />} />
       </div>
     </WrapperCard>
   )

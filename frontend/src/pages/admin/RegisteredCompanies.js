@@ -18,7 +18,7 @@ const RegisteredCompanies = () => {
       <Menu />
       <Wrapper>
         <WrapperTitle>
-          <h1>Empresas Registradas</h1>
+          <h1 style={{color: '#369BD4', letterSpacing: '2px'}}>Empresas Registradas</h1>
         </WrapperTitle>
         <Container>
           {business?.map((company) => (
@@ -26,6 +26,10 @@ const RegisteredCompanies = () => {
               key={crypto.randomUUID()}
               nameCompany={company?.t300_name}
               logoCompany={company?.t300_logo}
+              stateCompany={company?.c302_id_status?.c302_description}
+              totalPost={company?.TotalVacants}
+              totalReports={company?.TotalVacants}
+              totalRecruiters={company?.TotalRecruiters}
               href={`/detalles-de-emperesa/${company?.t300_id_company}`}
             />
           ))}

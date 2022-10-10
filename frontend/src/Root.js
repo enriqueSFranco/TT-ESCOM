@@ -29,6 +29,8 @@ import ModalBusiness from "components/Modal/ModalBusiness";
 import FullProfileUser from "components/Card/CardStudent/FullProfileUser";
 import RegisteredCompanies from "pages/admin/RegisteredCompanies";
 import DetailsCompany from "pages/admin/DetailsCompany";
+import ValidateCompany from "pages/admin/ValidateCompany"
+
 
 const Root = () => {
   return (
@@ -53,6 +55,7 @@ const Root = () => {
 
       {/* RUTAS DEL ADMINISTRADOR */}
       <Route path="/validar-reclutador" element={<PageValidateRecruiter />} />
+      <Route path="/validar-empresa" element={<ValidateCompany />} />
       <Route path="/empresas-registradas" element={<RegisteredCompanies />} />
       <Route path="detalles-de-emperesa/:t300_id_company" element={<DetailsCompany />} />
       <Route path="/lista-de-colaboradores" element={<ListCollaborators />} />

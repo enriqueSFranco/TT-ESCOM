@@ -9,6 +9,16 @@ export const getAllBusiness = async () => {
     .catch(error => console.error(error));
 };
 
+export const getAllBusinessAdmin = async () => {
+  // REACT_APP_URL_MANAGER_COMPANIES
+  return API(process.env.REACT_APP_URL_MANAGER_COMPANIES)
+    .then(response => {
+      const { data } = response;
+      return data;
+    })
+    .catch(error => console.error(error));
+}
+
 export const getBusiness = (id) => {
   return API(`${process.env.REACT_APP_URL_COMPANY}${id}/`)
     .then(response => {
@@ -18,14 +28,17 @@ export const getBusiness = (id) => {
     .catch(error => error);
 };
 
-
 export const createAccountRecruiter = (payload = {}) => {
   return API.post(`${process.env.REACT_APP_URL_COMPANY}`, payload)
     .then((response) => response)
     .catch(error => error)
 };
 
-// export const createBusinessRecruiter = (payload = {}) => {
-//   return API.post(`${process.env.REACT_APP_URL_RECRUITERS}`, payload).then(response => response)
-//   .catch(error => error);
-// }
+export const validateCompany = () => {
+  return API(`${process.env.REACT_APP_URL_MANAGER_COMPANIES}`)
+    .then((response) => {
+      const { data } = response
+      return data
+    })
+    .catch(error => error)
+};

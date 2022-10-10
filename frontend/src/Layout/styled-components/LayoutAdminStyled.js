@@ -8,7 +8,7 @@ const NavList = styled.ul``
 const Item = styled.li``
 
 const Wrapper = styled.main`
-  position: absolute;
+  position: relative;
   top: 4rem;
   display: grid;
   grid-template-columns: 400px 1fr;

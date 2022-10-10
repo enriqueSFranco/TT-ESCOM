@@ -1,8 +1,6 @@
 import React from "react";
 import Input from "components/Input/Input";
-import Label from "components/Element/Label/Label";
 import * as BsIcon from "react-icons/bs";
-import * as BiIcon from "react-icons/bi";
 import * as MdIcon from "react-icons/md";
 import styles from "../Styles.module.css";
 
@@ -97,13 +95,13 @@ const FormCompanyInfo = ({
           Proporcionanos el documento que valide que tu empresa esta
           constituida.
         </p>
-        <input
+        {/* <input
           type="file"
           name="t300_validator_document"
           id="t300_validator_document"
           value={form.t300_validator_document}
           onChange={handleChange}
-        />
+        /> */}
       </div>
       <button className={styles.btnNext} type="button" onClick={continueStep}>
         Siguiente
