@@ -21,11 +21,30 @@ const Aside = styled.aside`
 const Container = styled.main`
   grid-area: container;
   width: 100%;
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
   background-color: #fff;
   border-left: 1px solid #ccc;
 `
 
-export {Aside, Container, WrapperListCardJobPreviewRecruiter }
+const WrapperWidgets = styled.section`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1rem;
+`
+
+const ContentWidgetCommon = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+`
+
+const ContentWidget = styled.div`
+  outline: 2px solid red;
+  display: flex;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+`
+
+
+export {Aside, ContentWidget, ContentWidgetCommon, Container, WrapperListCardJobPreviewRecruiter, WrapperWidgets }

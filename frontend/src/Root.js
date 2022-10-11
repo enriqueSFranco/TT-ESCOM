@@ -31,6 +31,7 @@ import RegisteredCompanies from "pages/admin/RegisteredCompanies";
 import DetailsCompany from "pages/admin/DetailsCompany";
 import ValidateCompany from "pages/admin/ValidateCompany"
 import ListVacantsAdmin from "pages/admin/ListVacantsAdmin";
+import CardDetailsVacantRecruiter from "components/Card/CardDetailsVacantRecruiter";
 
 
 const Root = () => {
@@ -50,6 +51,7 @@ const Root = () => {
         <Route path="/publicar-comunicado" element={<PagePostRelease />} />
         <Route path="/dashboard/" element={<PageHistory />}>
           <Route path="crear-vacante" element={<FormPostJob />} />
+          <Route path=":t200_id_vacant" element={<CardDetailsVacantRecruiter />} />
           {/* <Route path="mis-vacantes" element={<PageHistory />} /> */}
         </Route>
       </Route>

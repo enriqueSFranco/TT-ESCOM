@@ -24,8 +24,6 @@ function removeAccents(string) {
  * @return {String}
  **/ 
 function generateCSSClass(string) {
-  let r = removeAccents(string.toLowerCase().replace(' ', ''))
-  console.log(r)
   return removeAccents(string.toLowerCase()).replace(' ', '-')
 }
 
@@ -38,7 +36,7 @@ const CardJobPreviewRecruiter = ({ info }) => {
   if (!info && !data) return null;
 
   return (
-    <Card>
+    <Card to={`/dashboard/${info.t200_id_vacant}`}>
       <CardHeader>
         <CardHeaderLeft>
           <TitleJob>{t200_job}</TitleJob>

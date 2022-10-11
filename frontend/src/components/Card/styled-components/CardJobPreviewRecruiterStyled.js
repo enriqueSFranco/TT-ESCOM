@@ -1,14 +1,20 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-const Card = styled.article`
+const Card = styled(Link)`
   position: relative;
   height: 190px;
-  outline: 2px solid red;
+  color: #000;
+  /* outline: 2px solid red; */
   border-radius: 5px;
   background-color: #FFF;
   padding: 1rem;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  &:hover {
+    color: #000;
+  }
 `
 
 const CardHeader = styled.header`

@@ -26,9 +26,6 @@ const PageMyJobs = () => {
       });
   }, [token?.user?.user_id]);
 
-  // if (recruiter.length < 0) return null;
-  console.log(listJobs);
-
   return (
     <div className={styles.wrapper}>
       <TableContainer>

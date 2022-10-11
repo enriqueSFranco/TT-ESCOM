@@ -5,6 +5,7 @@ import { useRecruiterJobs } from "hooks/useRecruiterJobs";
 import { useModal } from "hooks/useModal";
 import LayoutDashboard from "Layout/LayoutDashboard";
 import LayoutHome from "Layout/LayoutHome";
+import LayoutWidgetRecruiter from "Layout/LayoutWidgetRecruiter";
 // import { useForm } from "hooks/useForm";
 // import { postJob } from "services/jobs/index";
 // import { POST_NEW_JOB } from "types/newJob";
@@ -42,12 +43,16 @@ import { deleteJob } from "services/jobs/index";
 // import * as GiIcon from "react-icons/gi";
 // import * as BsIcon from "react-icons/bs";
 // import * as MdIcon from "react-icons/md";
+import { FaUsers } from 'react-icons/fa'
 import FormSearchJob from "components/Menu/FormSearchJobRecruiter";
 import CardJobPreviewRecruiter from "components/Card/CardJobPreviewRecruiter";
 import {
   Aside,
   Container,
   WrapperListCardJobPreviewRecruiter,
+  WrapperWidgets,
+  ContentWidget,
+  ContentWidgetCommon
 } from "../styled-components/DashboardRecruiterStyled";
 // import TextEditor from "components/TextEditor/TextEditor";
 
@@ -64,7 +69,7 @@ const PageHistory = () => {
   const navigate = useNavigate();
   // const { t200_id_vacant } = useParams();
   // const { form, handleChange } = useForm(POST_NEW_JOB);
-  const [body, setBody] = useState("");
+  // const [body, setBody] = useState("");
   const { data, loading } = useRecruiterJobs({ idRcruiter: token?.user?.id });
   // const [totalApplications, setTotalApplications] = useState([]);
   const [initialContent, setInitialContent] = useState(true);
@@ -240,6 +245,46 @@ const PageHistory = () => {
           </WrapperListCardJobPreviewRecruiter>
         </Aside>
         <Container>
+          <WrapperWidgets>
+            <LayoutWidgetRecruiter>
+              <ContentWidget>
+                <h3>20</h3>
+                <span>recibidas</span>
+                <FaUsers />
+              </ContentWidget>
+              <Link to='/postulaciones'>Ver postulados</Link>
+            </LayoutWidgetRecruiter>
+            <LayoutWidgetRecruiter>
+              <ContentWidgetCommon>
+                <span>2/4</span>
+                <span>contratados</span>
+              </ContentWidgetCommon>
+            </LayoutWidgetRecruiter>
+            <LayoutWidgetRecruiter>
+              <ContentWidgetCommon>
+                <span>8</span>
+                <span>en seguimiento</span>
+              </ContentWidgetCommon>
+            </LayoutWidgetRecruiter>
+            <LayoutWidgetRecruiter>
+              <ContentWidgetCommon>
+                <span>4</span>
+                <span>descartadas</span>
+              </ContentWidgetCommon>
+            </LayoutWidgetRecruiter>
+            <LayoutWidgetRecruiter>
+              <ContentWidgetCommon>
+                <span>8</span>
+                <span>sin consultar</span>
+              </ContentWidgetCommon>
+            </LayoutWidgetRecruiter>
+            <LayoutWidgetRecruiter>
+              <ContentWidgetCommon>
+                <span>3</span>
+                <span>reportes recibidos</span>
+              </ContentWidgetCommon>
+            </LayoutWidgetRecruiter>
+          </WrapperWidgets>
           <Outlet />
         </Container>
       </LayoutDashboard>
