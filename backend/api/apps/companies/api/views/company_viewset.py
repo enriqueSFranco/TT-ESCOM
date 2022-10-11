@@ -24,7 +24,6 @@ class CompanyViewSet(viewsets.GenericViewSet):
 					  "t300_name": "",
 					  "t300_rfc": "",
 					  "t300_bussiness_name": "",
-					  "t300_validator_document":"",
 					  "c302_id_status":""
 					 }
 	recruiter_object={
@@ -71,7 +70,6 @@ class CompanyViewSet(viewsets.GenericViewSet):
 		company['t300_name'] = data['t300_name']
 		company['t300_rfc'] = data['t300_rfc']
 		company['t300_bussiness_name'] = data['t300_bussiness_name']
-		company['t300_validator_document'] = data['t300_validator_document']
 		company['c302_id_status'] = 1
 		return company
 
@@ -138,7 +136,7 @@ class CompanyViewSet(viewsets.GenericViewSet):
 		company_serializer = self.list_serializer_class(company,many=True)
 		return Response(company_serializer.data)
 
-	def update(self, request, pk):
+	def update(self, request):
 		"""
 		Actualiza la información de una compañia
 
@@ -146,7 +144,7 @@ class CompanyViewSet(viewsets.GenericViewSet):
 
 		Dummy text
 		""" 	
-		u_company = self.model.objects.filter(t300_id_company = pk).first()
+		u_company = self.model.objects.filter(t300_rfc = request.data['t300_rfc']).first()
 		company_serializer = UpdateCompanySerializer(u_company, data=request.data)
 		if company_serializer.is_valid():
 			company_serializer.save()

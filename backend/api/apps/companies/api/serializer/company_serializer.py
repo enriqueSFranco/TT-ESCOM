@@ -3,10 +3,9 @@ from apps.companies.models import Company,PDFBase64File
 
 
 class CompanySerializer(serializers.ModelSerializer):
-    t300_validator_document = PDFBase64File()
     class Meta:
         model = Company
-        fields = ('t300_name','t300_rfc','t300_bussiness_name','t300_validator_document','c302_id_status')
+        fields = ('t300_name','t300_rfc','t300_bussiness_name','c302_id_status')
     
     def create(self,validate_data):
         new_company = Company(**validate_data)
