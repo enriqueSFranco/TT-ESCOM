@@ -3,6 +3,7 @@ import { getApplicationsJobs } from 'services/jobs/index'
 
 export function useGetApplicationJob({ idVacant }) {
   const [data, setData] = useState(null)
+  const controller = new AbortController()
   
   useEffect(() => {
     getApplicationsJobs(idVacant)
@@ -11,6 +12,7 @@ export function useGetApplicationJob({ idVacant }) {
         setData(response)
       })
       .catch(error =>  console.log(error))
+    return controller.abort()
   }, []);
 
   return [data]

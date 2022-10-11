@@ -14,6 +14,21 @@ import {
   CardFooter,
 } from "./styled-components/CardJobPreviewRecruiterStyled";
 
+function removeAccents(string) {
+  const accents = {'á':'a','é':'e','í':'i','ó':'o','ú':'u'}
+  return string.split('').map(letter => accents[letter] || letter).join('').toString()
+}
+
+/**
+ * @param {String} string
+ * @return {String}
+ **/ 
+function generateCSSClass(string) {
+  let r = removeAccents(string.toLowerCase().replace(' ', ''))
+  console.log(r)
+  return removeAccents(string.toLowerCase()).replace(' ', '-')
+}
+
 const CardJobPreviewRecruiter = ({ info }) => {
   const [data] = useGetApplicationJob({ idVacant: info?.t200_id_vacant })
 
@@ -57,12 +72,13 @@ const CardJobPreviewRecruiter = ({ info }) => {
         </CardListItemTags>
       </CardListTags>
 
-      <TotalApplications>{data?.length > 0 ? `${data?.length} postulaciones` : 'Sin postulaciones'}</TotalApplications>
 
       <CardFooter>
+        <TotalApplications>{data?.length > 0 ? `${data?.length} postulaciones` : 'Sin postulaciones'}</TotalApplications>
         <GroupAvatars
           users={data}
         />
+        <span className={`${generateCSSClass(info?.c204_id_vacant_status?.c204_description)}`}>{info?.c204_id_vacant_status?.c204_description}</span>
       </CardFooter>
     </Card>
   );
