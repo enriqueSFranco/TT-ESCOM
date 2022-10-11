@@ -4,11 +4,10 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import generics, viewsets
-from django.db.models import Count,Max
-from django.db.models import Q
+from django.db.models import Count, IntegerField, OuterRef, Subquery,Max,Q
 from itertools import chain
 from apps.vacantes.pagination import CustomPagination
-from apps.vacantes.models import Vacant,Application,Requirement
+from apps.vacantes.models import Vacant,Application,Report
 from apps.companies.models import Company
 from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,VacantListSerializer,UpdateVacantSerializer,VacantInfoListSerializer,VacantRequirementSerializer,VacantRequirementListSerializer,VacantFilterSerializer
 
@@ -64,20 +63,20 @@ class VacantViewSet(viewsets.GenericViewSet):
 		print('request: ',request.data['requirements'])
 		if vacant_serializer.is_valid():
 			vacant_serializer.save()
-			vacant_requirements = request.data['requirements']
+			#vacant_requirements = request.data['requirements']
 			n_vacant = self.model.objects.aggregate(Max('t200_id_vacant'))
 			id_vacant = n_vacant['t200_id_vacant__max']
 			print(id_vacant)
-			if vacant_requirements:
-				for requirement in vacant_requirements:
-					requirement['t200_id_vacant'] = id_vacant
-					requirement['c116_id_skill']= requirement['skill']['c116_id_skill']
-					print(requirement)
-					requirement_serializer = self.requirement_serializer(data=requirement)
-					if requirement_serializer.is_valid():
-						requirement_serializer.save()
-					else:
-						print (requirement_serializer.errors)
+			#if vacant_requirements:
+			#	for requirement in vacant_requirements:
+			#		requirement['t200_id_vacant'] = id_vacant
+			#		requirement['c116_id_skill']= requirement['skill']['c116_id_skill']
+			#		print(requirement)
+			#		requirement_serializer = self.requirement_serializer(data=requirement)
+			#		if requirement_serializer.is_valid():
+			#			requirement_serializer.save()
+			#		else:
+			#			print (requirement_serializer.errors)
 			return Response({
 				'message': 'Vacante registrada correctamente.'
 			}, status=status.HTTP_201_CREATED)
@@ -137,116 +136,6 @@ class VacantViewSet(viewsets.GenericViewSet):
         }, status=status.HTTP_400_BAD_REQUEST)
 
 
-#class VacantRequirementsViewSet(viewsets.GenericViewSet):
-#	model = Requirement
-#	#permission_classes = [IsAuthenticated]
-#	serializer_class = VacantRequirementSerializer
-#	list_serializer_class = VacantRequirementListSerializer
-#	queryset = None
-#
-#	def get_object(self, pk):	
-#		self.queryset = self.model.objects\
-#				.filter(t200_id_vacant = pk)\
-#				.all()
-#		return self.queryset
-#	
-#	def get_queryset(self):
-#		if self.queryset is None:
-#			self.queryset = self.model.objects\
-#				.filter()\
-#				.all()
-#		return self.queryset
-#
-#	def list(self, request):
-#		requirements = self.get_queryset()				
-#		requirements_serializer = self.list_serializer_class(requirements, many=True)
-#		return Response(requirements_serializer.data, status=status.HTTP_200_OK)	
-#
-#	def create(self, request):
-#		requirement_serializer = self.serializer_class(data=request.data)
-#		print('request: ',request.data)
-#		if requirement_serializer.is_valid():
-#			requirement_serializer.save()
-#			return Response({
-#				'message': 'Habilidad registrada correctamente.'
-#			}, status=status.HTTP_201_CREATED)
-#		return Response({
-#			'message': 'Hay errores en el registro',
-#			'errors': requirement_serializer.errors
-#		}, status=status.HTTP_400_BAD_REQUEST)
-#
-#	def retrieve(self, request, pk):
-#		requirement = self.get_object(pk)
-#		requirement_serializer = self.list_serializer_class(requirement,many=True)
-#		return Response(requirement_serializer.data)
-#
-#	def destroy(self, request, pk=None):
-#		requirement_destroy = self.model.objects.filter(t200_id_vacant=pk).first()
-#		if requirement_destroy :
-#			requirement_destroy = self.model.objects.filter(t200_id_vacant=pk).delete()
-#			return Response({
-#				'message': 'Requerimiento eliminado correctamente'
-#			}, status=status.HTTP_200_OK)
-#		return Response({
-#			'message': 'No existe el requerimiento que desea eliminar'
-#		}, status=status.HTTP_404_NOT_FOUND)
-	
-
-#class VacantLanguagesViewSet(viewsets.GenericViewSet):
-#	model = LanguageRequired
-#	#permission_classes = [IsAuthenticated]
-#	serializer_class = VacantLanguageSerializer
-#	list_serializer_class = VacantLanguageListSerializer
-#	queryset = None
-#
-#	def get_object(self, pk):	
-#		self.queryset = self.model.objects\
-#				.filter(t200_id_vacant = pk)\
-#				.all()
-#		return self.queryset
-#	
-#	def get_queryset(self):
-#		if self.queryset is None:
-#			self.queryset = self.model.objects\
-#				.filter()\
-#				.all()
-#		return self.queryset
-#
-#	def list(self, request):
-#		lenguages = self.get_queryset()				
-#		lenguages_serializer = self.list_serializer_class(lenguages, many=True)
-#		return Response(lenguages_serializer.data, status=status.HTTP_200_OK)	
-#
-#	def create(self, request):
-#		lenguage_serializer = self.serializer_class(data=request.data)
-#		print('request: ',request.data)
-#		if lenguage_serializer.is_valid():
-#			lenguage_serializer.save()
-#			return Response({
-#				'message': 'Idioma registrada correctamente.'
-#			}, status=status.HTTP_201_CREATED)
-#		return Response({
-#			'message': 'Hay errores en el registro',
-#			'errors': lenguage_serializer.errors
-#		}, status=status.HTTP_400_BAD_REQUEST)
-#
-#	def retrieve(self, request, pk):
-#		lenguages = self.get_object(pk)
-#		lenguages_serializer = self.list_serializer_class(lenguages,many=True)
-#		return Response(lenguages_serializer.data)
-#
-#	def destroy(self, request, pk=None):
-#		lenguage_destroy = self.model.objects.filter(t200_id_vacant=pk).first()
-#		if lenguage_destroy :
-#			lenguage_destroy = self.model.objects.filter(t200_id_vacant=pk).delete()
-#			return Response({
-#				'message': 'Idioma eliminado correctamente'
-#			}, status=status.HTTP_200_OK)
-#		return Response({
-#			'message': 'No existe el idioma que desea eliminar'
-#		}, status=status.HTTP_404_NOT_FOUND)
-
-
 
 class RecruiterVacantViewSet(viewsets.GenericViewSet):
 	model = Vacant
@@ -299,39 +188,53 @@ class RecruiterVacantViewSet(viewsets.GenericViewSet):
 
 
 class VacantInfoViewSet(viewsets.GenericViewSet):
-	model = Application
+	model = Vacant
 	list_serializer_class = VacantInfoListSerializer
 	queryset = None
 
-	def get_object(self, pk):	
+	def get_object(self, pk):			
+		Recieved = Application.objects.filter(t200_id_vacant=pk).values('t200_id_vacant').annotate(TotalReceived=Count('t200_id_vacant'))
+		Hired = Application.objects.filter(t200_id_vacant=pk,c205_id_application_state=4).values('t200_id_vacant').annotate(TotalHired=Count('t200_id_vacant'))
+		OnTrack = Application.objects.filter(t200_id_vacant=pk,c205_id_application_state=2).values('t200_id_vacant').annotate(TotalOnTrack=Count('t200_id_vacant'))
+		Discarted = Application.objects.filter(Q(t200_id_vacant=pk),Q(c205_id_application_state=3)|Q(c205_id_application_state=5)).values('t200_id_vacant').annotate(TotalDiscarted=Count('t200_id_vacant'))
+		Unseen = Application.objects.filter(t200_id_vacant=pk,c205_id_application_state=1).values('t200_id_vacant').annotate(TotalUnseen=Count('t200_id_vacant'))
+		Reports = Report.objects.filter(t200_id_vacant=pk).values('t200_id_vacant').annotate(TotalReports=Count('t200_id_vacant'))
 		self.queryset = self.model.objects\
-				.filter(t200_id_vacant = pk)\
-				.all().values('c205_id_application_state').annotate(total=Count('c205_id_application_state'))
+				.filter(t200_id_vacant = pk).all()\
+				.annotate(TotalHired=Subquery(Hired.values('TotalHired'),output_field=IntegerField()))\
+				.annotate(TotalOnTrack=Subquery(OnTrack.values('TotalOnTrack'),output_field=IntegerField()))\
+				.annotate(TotalDiscarted=Subquery(Discarted.values('TotalDiscarted'),output_field=IntegerField()))\
+				.annotate(TotalReceived=Subquery(Recieved.values('TotalReceived'),output_field=IntegerField()))\
+				.annotate(TotalUnseen=Subquery(Unseen.values('TotalUnseen'),output_field=IntegerField()))\
+				.annotate(TotalReports=Subquery(Reports.values('TotalReports'),output_field=IntegerField()))				
 		return self.queryset
 	
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.all().values('c205_id_application_state').annotate(total=Count('c205_id_application_state'))
+				.all()#.values('c205_id_application_state').annotate(total=Count('c205_id_application_state'))
 		return self.queryset
 
 	def list(self, request):
 		"""
-		Muestra un resumen del estado de las vacantes publicadas
+		Clase generica para el registro de la ruta
 
 
 
 		Dummy text
 		""" 
-		vacants = self.get_queryset()
-		print(vacants)
-		page = self.paginate_queryset(vacants)
-		if page is not None:
-			vacants_serializer = self.list_serializer_class(page, many=True)
-			return Response(vacants_serializer.data)
-		vacants_serializer = self.list_serializer_class(vacants, many=True)
-		return Response(vacants_serializer.data)
+		#vacants = self.get_queryset()
+		#print(vacants)
+		#page = self.paginate_queryset(vacants)
+		#if page is not None:
+		#	vacants_serializer = self.list_serializer_class(page, many=True)
+		#	return Response(vacants_serializer.data)
+		#vacants_serializer = self.list_serializer_class(vacants, many=True)
+		#return Response(vacants_serializer.data)
+		return Response({
+				'message': 'No hay nada que ver aqui'
+			})
 
 	def retrieve(self, request, pk):
 		"""

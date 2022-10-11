@@ -51,17 +51,17 @@ class UpdateVacantStateSerializer(serializers.ModelSerializer):
             return update_vacant
     
     
-class VacantInfoListSerializer(serializers.ModelSerializer):
+class VacantInfoListSerializer(serializers.ModelSerializer):    
+    TotalHired = serializers.IntegerField()
+    TotalOnTrack = serializers.IntegerField()
+    TotalDiscarted = serializers.IntegerField()
+    TotalReceived = serializers.IntegerField()
+    TotalUnseen = serializers.IntegerField()
+    TotalReports = serializers.IntegerField()
     class Meta:
         model = Vacant
-        fields = '__all__'    
-
-    def to_representation(self,instance):
-        
-        return{
-            'id_state' : instance['c205_id_application_state'],
-            'total':instance['total']
-        }        
+        fields = "__all__"
+      
 
 class VacantRequirementSerializer(serializers.ModelSerializer):    
     class Meta:
