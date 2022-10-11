@@ -1,12 +1,11 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import viewsets
-from django.db.models import Count, IntegerField, OuterRef, Subquery, Sum, Q
+from django.db.models import Count, IntegerField, OuterRef, Subquery
 from apps.companies.models import Company, Recruiter
 from apps.vacantes.models import Vacant,Report
 from apps.companies.api.serializer.recruiter_serializer import RecruiterSerializer
 from apps.administration.api.serializer.data_serializer import CompanySerializer,CompanyDataSerializer,CompanyListSerializer,CompanyRetriveSerializer
-from apps.companies.api.serializer.company_serializer import UpdateCompanySerializer,VerifiedStateUpdate
 
 class ManagerViewCompanyViewSet(viewsets.GenericViewSet): 
 	"""

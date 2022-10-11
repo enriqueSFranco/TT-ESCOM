@@ -16,8 +16,7 @@
             "t300_objective": "",
             "t300_logo": "/logos/amazon.jpeg",
             "t300_banner": "/banners/",
-            "t400_id_admin": 1,
-            "t300_verified": true,
+            "t400_id_admin": 1, 
             "t300_create_date": "2022-04-15",
             "c302_id_status": 3           
         }
@@ -38,8 +37,7 @@
             "t300_objective": "Mantener una inflación baja y estable",
             "t300_logo": "/logos/banxico.jpeg",
             "t300_banner": "/banners/",
-            "t400_id_admin": 1,
-            "t300_verified": true,
+            "t400_id_admin": 1, 
             "t300_create_date": "2022-04-16",
             "c302_id_status": 3           
         }
@@ -60,8 +58,7 @@
             "t300_objective": "La compañía cuenta con los siguientes objetivos:\n* La relación directa con el cliente es más eficiente, al no existir intermediarios.\n* Punto único de contacto y responsabilidad.\n* Compras a pedidopermite configurar la computadora según las necesidades de cada cliente.\n* Bajos costos, mínimo inventario.\n* Tecnologías según normas.",
             "t300_logo": "/logos/dell.jpeg",
             "t300_banner": "/banners/",
-            "t400_id_admin": 1,
-            "t300_verified": true,
+            "t400_id_admin": 1, 
             "t300_create_date": "2022-04-17",
             "c302_id_status": 3           
         }
@@ -82,8 +79,7 @@
             "t300_objective": "",
             "t300_logo": "/logos/axxis.jpeg",
             "t300_banner": "/banners/",
-            "t400_id_admin": 1,
-            "t300_verified": true,
+            "t400_id_admin": 1, 
             "t300_create_date": "2022-04-18",
             "c302_id_status": 3           
         }
@@ -104,8 +100,7 @@
             "t300_objective": "",
             "t300_logo": "/logos/bbva.jpeg",
             "t300_banner": "/banners/",
-            "t400_id_admin": 1,
-            "t300_verified": true,
+            "t400_id_admin": 1, 
             "t300_create_date": "2022-04-19",
             "c302_id_status": 3           
         }
@@ -126,8 +121,7 @@
             "t300_objective": "",
             "t300_logo": "/logos/coppel.jpeg",
             "t300_banner": "/banners/",
-            "t400_id_admin": 1,
-            "t300_verified": true,
+            "t400_id_admin": 1, 
             "t300_create_date": "2022-04-20",
             "c302_id_status": 3           
         }
@@ -148,8 +142,7 @@
             "t300_objective": "El propósito de Coca‑Cola es refrescar al mundo y marcar la diferencia en la vida de las personas, la sociedad y el planeta. The Coca‑Cola Company nació en 1886 con el propósito de refrescar al mundo, no solo en un sentido puramente físico, sino también espiritual",
             "t300_logo": "/logos/Coca-Cola.png",
             "t300_banner": "/banners/bannerCoca-Cola.png",
-            "t400_id_admin": 1,
-            "t300_verified": true,
+            "t400_id_admin": 1, 
             "t300_create_date": "2022-04-21",
             "c302_id_status": 3           
         }
@@ -170,8 +163,7 @@
             "t300_objective": "Lograr un creciente volumen y participación de nuestras marcas. Estar cerca de nuestros consumidores y clientes, ellos son nuestra razón de ser. Buscar que nuestro personal se desarrolle y realice plenamente. Orientados permanentemente a aprender.",
             "t300_logo": "/logos/bimbo-logo.jpg",
             "t300_banner": "/banners/BimboHero.jpg",
-            "t400_id_admin": 1,
-            "t300_verified": true,
+            "t400_id_admin": 1, 
             "t300_create_date": "2022-04-22",
             "c302_id_status": 3           
         }
@@ -192,8 +184,7 @@
             "t300_objective": "El objetivo de Microsoft es incrementar la productividad y la colaboración en las compañías, proporcionando acceso a las soluciones de negocio desde cualquier lugar y utilizando cualquier tipo de dispositivo",
             "t300_logo": "/logos/Microsoft-Logo.png",
             "t300_banner": "/banners/MicrosoftHero.jpg",
-            "t400_id_admin": 1,
-            "t300_verified": true,
+            "t400_id_admin": 1, 
             "t300_create_date": "2022-04-23",
             "c302_id_status": 3           
         }
@@ -214,8 +205,7 @@
             "t300_objective": " Diseñar el futuro de la movilidad con objetivos claros",
             "t300_logo": "/logos/BMW_logo.png",
             "t300_banner": "/banners/BMWHero.jpg",
-            "t400_id_admin": 1,
-            "t300_verified": true,
+            "t400_id_admin": 1, 
             "t300_create_date": "2022-04-24",
             "c302_id_status": 3           
         }
@@ -236,8 +226,7 @@
             "t300_objective": "Generar una cultura vial responsable y segura. Para combatir los elevados índices de accidentalidad vial en nuestro país.",
             "t300_logo": "/logos/Audi_logo.png",
             "t300_banner": "/banners/AudiBanner.jpg",
-            "t400_id_admin": 1,
-            "t300_verified": true,
+            "t400_id_admin": 1, 
             "t300_create_date": "2022-04-25",
             "c302_id_status": 3           
         }
@@ -258,8 +247,7 @@
             "t300_objective": "",
             "t300_logo": "/logos/",
             "t300_banner": "/banners/",
-            "t400_id_admin": 1,
-            "t300_verified": true,
+            "t400_id_admin": 1, 
             "t300_create_date": "2022-04-26",
             "c302_id_status": 3           
         }
@@ -280,8 +268,7 @@
             "t300_objective": "",
             "t300_logo": "/logos/uber.jpeg",
             "t300_banner": "/banners/",
-            "t400_id_admin": 1,
-            "t300_verified": true,
+            "t400_id_admin": 1, 
             "t300_create_date": "2022-04-27",
             "c302_id_status": 3           
         }
