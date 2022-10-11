@@ -14,7 +14,6 @@ const PageValidateRecruiter = () => {
       <div style={{ width: "100%", textAlign: "center" }}>
         <h2>Validar Reclutador</h2>
       </div>
-      {/* TODO: Hacer la grid */}
       <WrapperValidateCompany>
         {listRecruiter.length > 0 ? (
           listRecruiter?.map((recruiter) => (

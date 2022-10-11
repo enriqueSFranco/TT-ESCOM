@@ -52,7 +52,8 @@ import {
   WrapperListCardJobPreviewRecruiter,
   WrapperWidgets,
   ContentWidget,
-  ContentWidgetCommon
+  ContentWidgetCommon,
+  TextNumber
 } from "../styled-components/DashboardRecruiterStyled";
 // import TextEditor from "components/TextEditor/TextEditor";
 
@@ -248,39 +249,39 @@ const PageHistory = () => {
           <WrapperWidgets>
             <LayoutWidgetRecruiter>
               <ContentWidget>
-                <h3>20</h3>
+                <TextNumber>20</TextNumber>
                 <span>recibidas</span>
                 <FaUsers />
               </ContentWidget>
-              <Link to='/postulaciones'>Ver postulados</Link>
+              <Link to='/postulaciones'>Ver Postulados</Link>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
-                <span>2/4</span>
+                <TextNumber>2/4</TextNumber>
                 <span>contratados</span>
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
-                <span>8</span>
+                <TextNumber>8</TextNumber>
                 <span>en seguimiento</span>
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
-                <span>4</span>
+                <TextNumber>4</TextNumber>
                 <span>descartadas</span>
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
-                <span>8</span>
+                <TextNumber>8</TextNumber>
                 <span>sin consultar</span>
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
-                <span>3</span>
+                <TextNumber>3</TextNumber>
                 <span>reportes recibidos</span>
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>

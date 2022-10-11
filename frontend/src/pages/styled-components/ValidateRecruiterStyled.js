@@ -7,6 +7,9 @@ const WrapperValidateCompany = styled.section`
   left: .5rem;
   bottom: 0;
   height: calc(100vh - 9rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
   color: #000;
   background-color: #F7F7F9;
   border-radius: 5px;

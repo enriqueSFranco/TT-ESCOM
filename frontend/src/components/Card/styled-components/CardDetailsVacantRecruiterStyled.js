@@ -18,8 +18,17 @@ const WraperCard = styled.article`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `
 
-const HeaderInfo = styled.header``
+const HeaderInfo = styled.header`
+`
 
 const Description = styled.div``
 
-export { WrapperLoader, WraperCard, Description, HeaderInfo }
+const ListItems = styled.ul`
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin: 0 0 1rem 0;
+  padding: 0;
+`
+
+export { WrapperLoader, ListItems, WraperCard, Description, HeaderInfo }
