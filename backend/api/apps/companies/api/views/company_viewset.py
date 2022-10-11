@@ -8,7 +8,7 @@ from rest_framework import viewsets
 from apps.companies.models import Company, Recruiter
 from apps.users.api.serializers import UserSerializer
 from apps.companies.api.serializer.recruiter_serializer import RecruiterSerializer
-from apps.companies.api.serializer.company_serializer import CompanySerializer,CompanyListSerializer,UpdateCompanySerializer,VerifiedStateUpdate
+from apps.companies.api.serializer.company_serializer import CompanySerializer,CompanyListSerializer,UpdateCompanySerializer
 
 class CompanyViewSet(viewsets.GenericViewSet): 
 	"""

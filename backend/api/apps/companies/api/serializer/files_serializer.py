@@ -17,7 +17,7 @@ class CompanyFileSerializer(serializers.ModelSerializer):
         model = Company
         exclude = ('t300_id_company','t300_name','t300_rfc','t300_email','t300_bussiness_name',
         't300_web_page','t300_mision','t300_vision','t300_objective','t300_logo','t300_banner',
-        't400_id_admin','t300_verified','t300_create_date','c302_id_status')
+        't400_id_admin','t300_create_date','c302_id_status')
 
 class CompanyBannerSerializer(serializers.ModelSerializer):
         class Meta:

@@ -2,13 +2,15 @@ from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import generics,viewsets
+from datetime import date
+
 
 from apps.users.models import User
-from apps.administration.api.serializer.data_serializer import ValidateRecruiterSerializer
+from apps.administration.api.serializer.data_serializer import ValidateRecruiterSerializer,ValidateCompanySerializer
 from apps.companies.api.serializer.recruiter_serializer import RecruiterSerializer,RecruiterListSerializer
 from apps.companies.models import Company, Recruiter
 from apps.users.api.serializers import UserSerializer
-from apps.companies.api.serializer.company_serializer import CompanySerializer,CompanyListSerializer,VerifiedStateUpdate
+from apps.companies.api.serializer.company_serializer import CompanySerializer,CompanyListSerializer
 
 
 
@@ -128,34 +130,40 @@ class ActivateCompanyViewSet(viewsets.GenericViewSet):
 	list_serializer_class = CompanyListSerializer
 	recruiter_serializer_class = RecruiterSerializer
 	queryset = None		
+	company_validation ={
+		't400_id_admin':'',
+		't300_create_date':'',
+		'c302_id_status':''
+	}
+	update_recruiter={
+		'c303_id_status':2,
+		'id_user':''
+	}
 
 	def get_object(self, pk):
 		self.queryset= None
 		if self.queryset == None:
 			self.queryset = self.model.objects\
-				.filter(t300_verified=False,t300_id_company = pk)\
+				.filter(c302_id_status=1,t300_id_company = pk)\
 				.all()
 		return  self.queryset
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
-				.filter(t300_verified = False)\
+				.filter(c302_id_status = 1)\
 				.all()
 		return self.queryset
 	
 	def list(self, request):
 		"""
-		Muestra todas las compañias pendientes de validar
+		Clase generica necesaria para registrar la ruta 
 
 
 
 		Dummy text
 		""" 
-		print(request.data)
-		company = self.get_queryset()
-		companies_serializer = self.list_serializer_class(company, many=True)
-		return Response(companies_serializer.data, status=status.HTTP_200_OK)
+		return Response( status=status.HTTP_200_OK)			
 
 	def retrieve(self, request, pk):
 		"""
@@ -169,6 +177,13 @@ class ActivateCompanyViewSet(viewsets.GenericViewSet):
 		company_serializer = self.list_serializer_class(company,many=True)
 		return Response(company_serializer.data)
 
+	def set_data(self,data):
+		company_data = self.company_validation		
+		company_data['t400_id_admin'] = data['t400_id_admin']		
+		company_data['t300_create_date'] = str(date.today())
+		company_data['c302_id_status'] = 3
+		return company_data
+
 	#/* POner la fecha de creacion de la empresa al ser validada*/
 	def update(self, request, pk):
 		"""
@@ -178,14 +193,33 @@ class ActivateCompanyViewSet(viewsets.GenericViewSet):
 
 		Dummy text
 		""" 
-		u_company = self.model.objects.filter(t300_id_company = pk).first()
-		company_serializer = VerifiedStateUpdate(u_company, data=request.data)
-		if company_serializer.is_valid():
-			company_serializer.save()
+		if(request.data['activate']):
+			recruiter_state=self.update_recruiter
+			company_data=self.set_data(request.data)	
+			print(company_data)#------------------------
+			u_company = self.model.objects.filter(t300_id_company = pk).first()			
+			company_serializer = ValidateCompanySerializer(u_company, data=company_data)
+			if company_serializer.is_valid():
+				company_serializer.save()
+				u_recruiter = Recruiter.objects.filter(t300_id_company=pk).first()
+				print(self.update_recruiter)
+				recruiter_serializer = ValidateRecruiterSerializer(u_recruiter, data=recruiter_state)
+				if recruiter_serializer.is_valid():					
+					recruiter_serializer.save()
+					return Response({
+						'message': 'Compañia Validada correctamente'
+					}, status=status.HTTP_200_OK)
+				return Response({
+					'message': 'Hay errores en la actualización, no se pudo cambiar el estado del reclutador',
+					'errors': recruiter_serializer.errors
+				}, status=status.HTTP_400_BAD_REQUEST)
 			return Response({
-				'message': 'Compañia Validada correctamente'
-			}, status=status.HTTP_200_OK)
-		return Response({
-			'message': 'Hay errores en la actualización',
-			'errors': company_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+				'message': 'Hay errores en la actualización, no se pudo validar empresa',
+				'errors': company_serializer.errors
+			}, status=status.HTTP_400_BAD_REQUEST)
+		else:
+			#Borrar reclutador asociado
+			#Borrar compañia
+			return Response({
+					'message': 'Compañia Rechazada'
+				}, status=status.HTTP_200_OK)

@@ -62,3 +62,15 @@ class OnHoldRecruiterListSerializer(serializers.ModelSerializer):
         model = Recruiter
         fields = '__all__'
         depth = 2
+
+
+#t400_id_admin
+class ValidateCompanySerializer(serializers.ModelSerializer):
+        class Meta:
+            model = Company
+            fields = ('t400_id_admin','t300_create_date','c302_id_status')
+
+        def update(self,instance,validate_data):
+            validate_company = super().update(instance,validate_data)
+            validate_company.save()
+            return validate_company

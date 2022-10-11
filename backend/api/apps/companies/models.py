@@ -72,7 +72,6 @@ class Company(models.Model):
         related_name='AdminCreate',
         on_delete=models.CASCADE
     )
-    t300_verified = models.BooleanField(default=False)
     t300_create_date = models.DateField(blank=True,null=True)           
     c302_id_status = models.ForeignKey(
         CompanyStatus,

@@ -6,7 +6,6 @@ from apps.companies.models import Company, Recruiter
 from apps.vacantes.models import Vacant,Report
 from apps.companies.api.serializer.recruiter_serializer import RecruiterSerializer
 from apps.administration.api.serializer.data_serializer import CompanySerializer,CompanyDataSerializer,CompanyListSerializer,CompanyRetriveSerializer
-from apps.companies.api.serializer.company_serializer import UpdateCompanySerializer,VerifiedStateUpdate
 
 class ManagerViewCompanyViewSet(viewsets.GenericViewSet): 
 	"""

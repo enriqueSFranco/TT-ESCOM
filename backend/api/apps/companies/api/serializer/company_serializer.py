@@ -33,16 +33,4 @@ class UpdateCompanySerializer(serializers.ModelSerializer):
             return u_company
 
 
-#t300_verified,t400_id_admin
-class VerifiedStateUpdate(serializers.ModelSerializer):
-        class Meta:
-            model = Company
-            exclude = ('t300_id_company','t300_name','t300_rfc','t300_email','t300_bussiness_name',
-            't300_web_page','t300_mision','t300_vision','t300_objective','t300_logo','t300_banner',
-            't300_create_date','is_active')
-
-        def update(self,instance,validate_data):
-            validate_company = super().update(instance,validate_data)
-            validate_company.save()
-            return validate_company
 
