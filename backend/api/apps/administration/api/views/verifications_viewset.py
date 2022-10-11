@@ -200,12 +200,13 @@ class ActivateCompanyViewSet(viewsets.GenericViewSet):
 			u_company = self.model.objects.filter(t300_id_company = pk).first()			
 			company_serializer = ValidateCompanySerializer(u_company, data=company_data)
 			if company_serializer.is_valid():
-				company_serializer.save()
+				#
 				u_recruiter = Recruiter.objects.filter(t300_id_company=pk).first()
 				print(self.update_recruiter)
 				recruiter_serializer = ValidateRecruiterSerializer(u_recruiter, data=recruiter_state)
 				if recruiter_serializer.is_valid():					
-					recruiter_serializer.save()
+					company_serializer.save()
+					recruiter_serializer.save()					
 					return Response({
 						'message': 'Compañia Validada correctamente'
 					}, status=status.HTTP_200_OK)
@@ -219,7 +220,12 @@ class ActivateCompanyViewSet(viewsets.GenericViewSet):
 			}, status=status.HTTP_400_BAD_REQUEST)
 		else:
 			#Borrar reclutador asociado
+			recruiter_destroy = Recruiter.objects.filter(t300_id_company=pk)
 			#Borrar compañia
-			return Response({
+			company_destroy = self.model.objects.filter(t300_id_company=pk).first()
+			if (recruiter_destroy and company_destroy):
+				recruiter_destroy = Recruiter.objects.filter(t300_id_company=pk).delete()
+				company_destroy = self.model.objects.filter(t300_id_company=pk).delete()
+				return Response({
 					'message': 'Compañia Rechazada'
 				}, status=status.HTTP_200_OK)

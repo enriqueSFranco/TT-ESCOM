@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from apps.companies.models import Company,PDFBase64File
+from apps.companies.models import Company,Recruiter
+from apps.administration.api.serializer.data_serializer import RecruiterListSerializer
 
 
 class CompanySerializer(serializers.ModelSerializer):
@@ -13,8 +14,13 @@ class CompanySerializer(serializers.ModelSerializer):
         return new_company
 
 
+class RecruiterListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Recruiter
+        fields = '__all__'    
     
 class CompanyListSerializer(serializers.ModelSerializer):
+    RecruiterCompany = RecruiterListSerializer(many=True, read_only=True)
     class Meta:
         model = Company
         fields = '__all__'
