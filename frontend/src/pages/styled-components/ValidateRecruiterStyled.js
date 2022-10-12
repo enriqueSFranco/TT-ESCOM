@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const WrapperValidateCompany = styled.section`
+  overflow-y: auto;
   position: relative;
   top: 0;
   right: 1rem;
@@ -8,7 +9,7 @@ const WrapperValidateCompany = styled.section`
   bottom: 0;
   height: calc(100vh - 9rem);
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 1rem;
   color: #000;
   background-color: #F7F7F9;
