@@ -36,9 +36,6 @@ const FormAddCollaborator = () => {
           <input type="file" />
         </WrapperPhoto>
       <Form onSubmit={handleSubmit}>
-        {/* imagen del colaborador */}
-
-        {/* campos para agregar un colaborador */}
         <GroupInputs>
           <Input label="Nombre(s)" value={form.t400_name} name="t400_name" id="t400_name" onChange={handleChange} />
           <Input label="Primer Apellido" value={form.t400_last_name} name="t400_last_name" id="t400_last_name" onChange={handleChange} />

@@ -1,8 +1,7 @@
 import { memo, useState } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
-import { useRecruiterJobs } from "hooks/useRecruiterJobs";
-import { useModal } from "hooks/useModal";
+import { useRecruiterJobs, useModal, useFetch  } from "hooks";
 import LayoutDashboard from "Layout/LayoutDashboard";
 import LayoutHome from "Layout/LayoutHome";
 import LayoutWidgetRecruiter from "Layout/LayoutWidgetRecruiter";
@@ -36,7 +35,7 @@ import ConfirmDelete from "components/Alert/Confirm/ConfirmDelete";
 // import Review from "images/review.png";
 // import Steps from "images/steps.png";
 // import Reject from "images/reject.png";
-import { deleteJob } from "services/jobs/index";
+import { deleteJob } from "services";
 // import applicationsIcon from "images/applications.png";
 // import styles from "./PageHistory.module.css";
 // import burrito from "images/emoji_angustiado.jpg";
@@ -67,6 +66,8 @@ import {
 
 const PageHistory = () => {
   const { token } = useAuth();
+  let { t200_id_vacant } = useParams()
+  const { data: dataVacantInfo, error: errorVacantInfo, loading: loadingVacantInfo } = useFetch(`${process.env.REACT_APP_URL_VACANT_VACANT_INFO}${t200_id_vacant || 1}/`)
   const navigate = useNavigate();
   // const { t200_id_vacant } = useParams();
   // const { form, handleChange } = useForm(POST_NEW_JOB);
@@ -84,7 +85,7 @@ const PageHistory = () => {
   const [isOpenModalForm, openModalForm, closeModalForm] = useModal();
   // let newObject = { ...form, t200_description: body };
 
-  // console.log(data)
+  // console.log(dataVacantInfo)
 
   // efecto para obtener la lista de vacantes de un reclutador
   // useEffect(() => {
@@ -231,9 +232,13 @@ const PageHistory = () => {
   //     })
   //     .catch((error) => console.error(error));
   // };
+  
+  
+  
+  if (!data || !dataVacantInfo) return null;
 
-  if (!data) return null;
-
+  // console.log(dataVacantInfo)
+  
   return (
     <LayoutHome>
       <LayoutDashboard>
@@ -257,31 +262,31 @@ const PageHistory = () => {
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
-                <TextNumber>2/4</TextNumber>
+                <TextNumber>{`${dataVacantInfo[0]?.TotalHired === null ? 0 : dataVacantInfo[0]?.TotalHired}/10`}</TextNumber>
                 <span>contratados</span>
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
-                <TextNumber>8</TextNumber>
+                <TextNumber>{dataVacantInfo[0]?.TotalOnTrack === null ? 0 : dataVacantInfo[0]?.TotalOnTrack}</TextNumber>
                 <span>en seguimiento</span>
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
-                <TextNumber>4</TextNumber>
+                <TextNumber>{dataVacantInfo[0]?.TotalDiscarted === null ? 0 : dataVacantInfo[0]?.TotalDiscarted}</TextNumber>
                 <span>descartadas</span>
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
-                <TextNumber>8</TextNumber>
+                <TextNumber>{dataVacantInfo[0]?.TotalUnseen === null ? 0 : dataVacantInfo[0]?.TotalUnseen}</TextNumber>
                 <span>sin consultar</span>
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
-                <TextNumber>3</TextNumber>
+                <TextNumber>{dataVacantInfo[0]?.TotalReports === null ? 0 : dataVacantInfo[0]?.TotalReports}</TextNumber>
                 <span>reportes recibidos</span>
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>

@@ -1,8 +1,10 @@
 import React from 'react'
 import Button from 'components/Button/Button'
-import { Card, CardActions, CardImage, CardFooter, CardImageName } from './styled-components/CardCollaboratorStyled'
+import Chip from 'components/Chip/Chip'
+import CustomAvatar from 'components/Avatar/Avatar'
 import { GrEdit } from 'react-icons/gr'
 import { MdDelete } from 'react-icons/md'
+import { Card, CardActions, CardImage, CardFooter, CardImageName } from './styled-components/CardCollaboratorStyled'
 
 const CardCollaborator = ({collaboratorName, position, picture, openModalEdit, openModalDelete}) => {
 
@@ -13,13 +15,13 @@ const CardCollaborator = ({collaboratorName, position, picture, openModalEdit, o
         <Button onClick={openModalDelete} bgColor='transparent' color='#000' icon={<MdDelete />} />
       </CardActions>
       <CardImage>
-        <img src="" alt="" />
+        <CustomAvatar width='80' height='80' username={collaboratorName} />
         <CardImageName>
-          <span>Nombre del colaborador</span>
+          <span>{collaboratorName}</span>
         </CardImageName>
       </CardImage>
       <CardFooter>
-        <span>Cargo en ESCOM</span>
+        <Chip label={position} bg="#202C33" color="#fff" />
       </CardFooter>
     </Card>
   )

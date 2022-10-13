@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Card = styled.div`
-  outline: 2px solid #ccc;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   width: 300px;
   border-radius: .5rem;
   background-color: #fff;
@@ -18,13 +18,13 @@ const CardActions = styled.div`
 `
 
 const CardImage = styled.figure`
-  outline: 2px solid blue;
   display: grid;
   place-content: center;
+  justify-items: center;
   padding: .3rem;
+  margin: 0;
   
   img {
-    outline: 2px solid red;
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -33,12 +33,15 @@ const CardImage = styled.figure`
 `
 
 const CardImageName = styled.figcaption`
-  outline: 2px solid purple;
   margin-top: 1rem;
+  font-size: .9rem;
+  letter-spacing: 1px;
 `
 
 const CardFooter = styled.div`
   text-align: center;
+  width: fit-content;
+  margin: 1rem auto 0 auto;
 `
 
 export { Card, CardActions, CardImage, CardFooter, CardImageName }
