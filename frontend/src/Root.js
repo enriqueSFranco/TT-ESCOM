@@ -22,12 +22,17 @@ import PageApplicationsStudent from "pages/student/PageApplicationsStudent";
 import ExperienceList from "components/Card/Experience/ExperienceList";
 import CertificationList from "components/Card/Certifications/CertificationList";
 import Accordion from "components/Accordion/Accordion";
+import ListCollaborators from 'pages/admin/ListCollaborators'
 import AcademicRecordList from "components/Card/AcademicRecord/AcademicRecordList";
 import ModalRelease from "components/Modal/ModalRelease";
 import ModalBusiness from "components/Modal/ModalBusiness";
 import FullProfileUser from "components/Card/CardStudent/FullProfileUser";
 import RegisteredCompanies from "pages/admin/RegisteredCompanies";
 import DetailsCompany from "pages/admin/DetailsCompany";
+import ValidateCompany from "pages/admin/ValidateCompany"
+import ListVacantsAdmin from "pages/admin/ListVacantsAdmin";
+import CardDetailsVacantRecruiter from "components/Card/CardDetailsVacantRecruiter";
+
 
 const Root = () => {
   return (
@@ -44,16 +49,20 @@ const Root = () => {
       <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>
         <Route path="/candidatos" element={<PageApplications />} />
         <Route path="/publicar-comunicado" element={<PagePostRelease />} />
-        <Route path="/dashboard/" element={<PageHistory />}>
+        <Route path="dashboard" element={<PageHistory />}>
           <Route path="crear-vacante" element={<FormPostJob />} />
+          <Route path=":t200_id_vacant" element={<CardDetailsVacantRecruiter />} />
           {/* <Route path="mis-vacantes" element={<PageHistory />} /> */}
         </Route>
       </Route>
 
       {/* RUTAS DEL ADMINISTRADOR */}
       <Route path="/validar-reclutador" element={<PageValidateRecruiter />} />
+      <Route path="/validar-empresa" element={<ValidateCompany />} />
       <Route path="/empresas-registradas" element={<RegisteredCompanies />} />
       <Route path="detalles-de-emperesa/:t300_id_company" element={<DetailsCompany />} />
+      <Route path="/lista-de-colaboradores" element={<ListCollaborators />} />
+      <Route path="/lista-de-vacantes" element={<ListVacantsAdmin />} />
 
 
       <Route path="/alumno" element={<PageLoginStudent />} />

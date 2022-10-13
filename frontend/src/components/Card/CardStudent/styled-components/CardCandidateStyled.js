@@ -6,18 +6,19 @@ const CardUser = styled.article`
   border-radius: .3rem;
   padding: 0.5rem;
   display: grid;
-  gap: 1rem;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 200px 1fr;
   justify-items: center;
   align-items: center;
   grid-template-areas: "avatar information";
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `;
 
 const Username = styled.span`
   display: inline-block;
   width: 100%;
-  text-transform: uppercase;
-  margin-bottom: .2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: capitalize;
 `
 
 const H3 = styled.h3`

@@ -2,8 +2,9 @@ import { useEffect, useState } from "react"
 import { CODE_400 } from "services/http.code"
 import API from "services/http.service"
 
-export function useGetAllRecruitrs() {
+export function useGetValidateAllRecruiters() {
   const [data, setData] = useState(null)
+  const { REACT_APP_URL_ON_HOLD_RECRUITER } = process.env
   
     useEffect(() => {
       const fetchData = async () => {
@@ -11,7 +12,7 @@ export function useGetAllRecruitrs() {
           const controller = new AbortController()
           const signal = controller.signal
 
-          const response = await API(process.env.REACT_APP_URL_VALIDATE_RECRUITER, {signal})
+          const response = await API(REACT_APP_URL_ON_HOLD_RECRUITER, {signal})
 
           if (response.status === CODE_400) {
             let error = {

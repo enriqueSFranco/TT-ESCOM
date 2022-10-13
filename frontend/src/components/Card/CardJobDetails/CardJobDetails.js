@@ -77,8 +77,6 @@ const CardJobDetails = () => {
 
   if (!job && !requirements) return null;
 
-  console.log(requirements);
-
   return (
     <>
       {loading ? (

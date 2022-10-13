@@ -1,11 +1,6 @@
 import React from "react";
-import {TextField, InputAdornment} from "@mui/material/";
-import { BiUser } from "react-icons/bi";
-import {
-  MdOutlineMail,
-  MdOutlineErrorOutline,
-  MdLocalPhone,
-} from "react-icons/md";
+import Input from 'components/Input/Input'
+import { MdOutlineErrorOutline } from "react-icons/md";
 import styles from "../Styles.module.css";
 
 const FormRecruiterInfo = ({
@@ -20,7 +15,9 @@ const FormRecruiterInfo = ({
 }) => {
 
   const handleClick = () => setIsAcitve(!isActive);
+
   // console.log(form)
+
   return (
     <div className={styles.personalContact}>
       {!isActive ? (
@@ -35,23 +32,16 @@ const FormRecruiterInfo = ({
       ) : <h2 style={{color: "#028dd4", textAlign: "left"}}>Datos Personales</h2>}
       <form onSubmit={handleSubmitCompany}>
         <div className={styles.inputGroup}>
-          <TextField
+          <Input
             label="Nombre(s)"
             type="text"
             id="t301_name"
             name="t301_name"
-            sx={{ width: 490, maxWidth: "100%" }}
+            width="500px"
             value={form.t301_name}
             onBlur={handleValidate}
             onKeyUp={handleValidate}
             onChange={handleChange}
-            InputProps={{
-              startAdornment: form.t301_name && (
-                <InputAdornment position="start">
-                  <BiUser />
-                </InputAdornment>
-              ),
-            }}
           />
           {errors.t301_name && (
             <span className={styles.error}>
@@ -61,22 +51,15 @@ const FormRecruiterInfo = ({
           )}
         </div>
         <div className={styles.inputGroup}>
-          <TextField
-            label="Apellidos"
+          <Input
+            label="Primer Apellido"
             id="t301_last_name"
             name="t301_last_name"
-            sx={{ width: 490, maxWidth: "100%" }}
+            width="500px"
             value={form.t301_last_name}
             onBlur={handleValidate}
             onKeyUp={handleValidate}
             onChange={handleChange}
-            InputProps={{
-              startAdornment: form.t301_last_name && (
-                <InputAdornment position="start">
-                  <BiUser />
-                </InputAdornment>
-              ),
-            }}
           />
           {errors.t301_last_name && (
             <span className={styles.error}>
@@ -86,22 +69,28 @@ const FormRecruiterInfo = ({
           )}
         </div>
         <div className={styles.inputGroup}>
-          <TextField
+          <Input
+            label="Segundo Apellido"
+            id="t301_second_surname"
+            name="t301_second_surname"
+            width="500px"
+            value={form.t301_second_surname}
+            onBlur={handleValidate}
+            onKeyUp={handleValidate}
+            onChange={handleChange}
+          />
+
+        </div>
+        <div className={styles.inputGroup}>
+          <Input
             label="Correo electronico"
             id="t301_email"
             name="t301_email"
-            sx={{ width: 490 }}
+            width="500px"
             value={form.t301_email}
             onBlur={handleValidate}
             onKeyUp={handleValidate}
             onChange={handleChange}
-            InputProps={{
-              startAdornment: form.t301_email && (
-                <InputAdornment position="start">
-                  <MdOutlineMail />
-                </InputAdornment>
-              ),
-            }}
           />
           {errors.t301_email && (
             <span className={styles.error}>
@@ -111,22 +100,15 @@ const FormRecruiterInfo = ({
           )}
         </div>
         <div className={styles.inputGroup}>
-          <TextField
+          <Input
             label="Telefono"
             id="t301_phonenumber"
             name="t301_phonenumber"
-            sx={{ width: 490 }}
+            width="500px"
             value={form.t301_phonenumber}
             onBlur={handleValidate}
             onKeyUp={handleValidate}
             onChange={handleChange}
-            InputProps={{
-              startAdornment: form.t301_phonenumber && (
-                <InputAdornment position="start">
-                  <MdLocalPhone />
-                </InputAdornment>
-              ),
-            }}
           />
           {errors.t301_phonenumber && (
             <span className={styles.error}>

@@ -6,7 +6,7 @@
 /* ESTILOS PARA EL ELEMENTO INPUT */
 .input {
   position: relative;
-  width: 400px;
+  width: fit-content;
 }
 
 .inputLabel {
@@ -27,7 +27,7 @@
 .inputField {
   box-sizing: border-box;
   display: block;
-  width: 400px;
+  width: fit-content;
   border: 1px solid #ccc;
   padding: calc(var(--size-bezel) * 1.5) var(--size-bezel);
   color: currentColor;

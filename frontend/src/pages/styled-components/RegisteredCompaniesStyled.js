@@ -15,6 +15,8 @@ const Wrapper = styled.section`
   top: 4rem;
   width: 100%;
   text-align: center;
+  background-color: #F5F5F5;
+  padding-bottom: .5rem;
 `
 
 const WrapperTitle = styled.div`
@@ -23,7 +25,7 @@ const WrapperTitle = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   position: sticky;
   top: 4rem;
-  background-color: #fff;
+  background-color: #F5F5F5;
 `
 
 export { Container, Wrapper, WrapperTitle }

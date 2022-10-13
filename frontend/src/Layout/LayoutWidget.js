@@ -5,8 +5,8 @@ const LayoutWidget = ({number, text, icon}) => {
   return (
     <LayoutWidgetStyled>
       <div>
-        <h3>3</h3>
-        <span>Reclutadores en espera</span>
+        <h3>{number}</h3>
+        <span>{text}</span>
       </div>
       <div>
         <span>

@@ -2,9 +2,8 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { CODE_201 } from "services/http.code";
-import { createBusiness, createBusinessRecruiter } from "services/businnes/index";
+import { createAccountRecruiter } from "services";
 import { createAccountStudent } from "services/students/index";
-import { postJob } from "services/jobs/index";
 import { postCertification } from "services/students/index";
 
 export const useForm = (initialForm, validateForm) => {
@@ -55,12 +54,36 @@ export const useForm = (initialForm, validateForm) => {
     } else return;
   };
 
+  function convertToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const fr = new FileReader()
+      fr.readAsDataURL(file)
+
+      fr.onload = () => {
+        resolve(fr.result)
+      }
+      fr.onerror = (error) => {
+        reject(error)
+      }
+    })
+  }
+
+  async function uploadFile(e) {
+    const file = e.target.files[0]
+    console.log('file: ',file)
+    const base64 = await convertToBase64(file)
+
+    return base64
+  }
+
   const handleSubmitCompany = (e) => {
     e.preventDefault();
+    // form.t300_validator_document = uploadFile(e)
     setErrors(validateForm(form));
-  
+    // console.log('->',form)
+
     if (Object.keys(errors).length === 0) {
-      createBusiness(form)
+      createAccountRecruiter(form)
         .then(response => {
           console.log(response)
           if (response.status === 201) {
@@ -75,41 +98,25 @@ export const useForm = (initialForm, validateForm) => {
     }
   };
 
-  const handleSubmitCompanyRecruiter = e => {
-    e.preventDefault();
-    if (Object.keys(errors).length === 0) {
-      setLoading(true);
-      createBusinessRecruiter(form)
-      .then(response => {
-        if (response.status === 201) {
-          toast.success("Pre-Registro enviado con exito.");
-          setTimeout(() => {
-            navigate("/pre-registro")
-          }, 3000);
-        }
-      })
-      .catch(error => {
-        console.log(error)
-      })
-      .finally(() => setLoading(false));
-    }
-  }
-
-  // const onSubmitPostJob = (e) => {
+  // const handleSubmitCompanyRecruiter = e => {
   //   e.preventDefault();
-  //   // setErrors(validateForm(form));
-  //   console.log(form)
   //   if (Object.keys(errors).length === 0) {
   //     setLoading(true);
-  //     postJob(form)
-  //       .then((response) => {
-  //         console.log(response);
-  //         navigate("/mis-vacantes");
-  //       })
-  //       .catch((error) => console.error(error))
-  //       .finally(() => setLoading(false));
+  //     createBusinessRecruiter(form)
+  //     .then(response => {
+  //       if (response.status === 201) {
+  //         toast.success("Pre-Registro enviado con exito.");
+  //         setTimeout(() => {
+  //           navigate("/pre-registro")
+  //         }, 3000);
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.log(error)
+  //     })
+  //     .finally(() => setLoading(false));
   //   }
-  // };
+  // }
 
   const onSubmitPostCertification = (e) => {
     e.preventDefault();
@@ -136,8 +143,6 @@ export const useForm = (initialForm, validateForm) => {
     handleSubmitStudent,
     handleSubmitCompany,
     handleValidate,
-    // onSubmitPostJob,
     onSubmitPostCertification,
-    handleSubmitCompanyRecruiter
   };
 };

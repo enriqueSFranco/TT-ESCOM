@@ -1,11 +1,21 @@
 import styled from 'styled-components'
 
-const SectionTable = styled.section`
+const WrapperValidateCompany = styled.section`
+  overflow-y: auto;
   position: relative;
-  top: 10rem;
-  width: 100%;
-  margin: 0 auto;
-  text-align: center;
+  top: 0;
+  right: 1rem;
+  left: .5rem;
+  bottom: 0;
+  height: calc(100vh - 9rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #000;
+  background-color: #F7F7F9;
+  border-radius: 5px;
+  padding: .5rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `
 
-export { SectionTable }
+export { WrapperValidateCompany }

@@ -3,7 +3,7 @@ export * from './useDetectClick';
 export * from './useFetch';
 export * from './useForm';
 export * from './useGetAllJobs';
-export * from './useGetAllRecucruiters';
+export * from './useGetValidateAllRecucruiters';
 export * from './useGetApplicationJob';
 export * from './useGetSkills';
 export * from './useGetSocialNetwork';
@@ -17,3 +17,4 @@ export * from './useViewport';
 export * from './useGetPlataforms'
 export * from './useLanguage'
 export * from './useGetListCompany'
+export * from './useValidateCompanies'

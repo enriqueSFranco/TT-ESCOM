@@ -122,7 +122,7 @@
 
 .companyInfo { text-align: left; }
 
-.personalContact { height: 500px;}
+.personalContact { height: fit-content;}
 
 .yohaveAccount {
   /* background-color: red; */
@@ -286,10 +286,9 @@
 .flexRow {
   position: relative;
   top: 0;
-  width: 490px;
+  width: 100%;
   display: flex;
-  align-items: center;
-  gap: .5rem;
+  flex-direction: column;
 }
 
 
@@ -303,23 +302,22 @@
 }
 
 .inputFile + label {
-  max-width: 150px;
+  width: fit-content;
   font-size: .9rem;
-  font-weight: 700;
+  font-weight: 500;
   text-overflow: ellipsis;
   text-align: center;
   white-space: nowrap;
   cursor: pointer;
   display: inline-block;
   overflow: hidden;
-  padding: .65rem 1.25rem;
-  border-radius: var(--size-radius);
+  transition: color .3s ease;
 }
 
 .inputFile + label svg {
-  width: 1rem;
-  height: 1rem;
-  color: #fff;
+  width: 1.4rem;
+  height: 1.4rem;
+  color: #000;
   vertical-align: middle;
   fill: currentColor;
   margin-top: -.25rem;
@@ -327,8 +325,11 @@
 }
 
 .inputFile + label {
-  color: #fff;
-  background-color: #90314b;
+  color: #000;
+}
+
+.inputFile + label:hover, .inputFile {
+  color: #0d5ed7;
 }
 
 
@@ -351,8 +352,7 @@
   border: none;
   padding: .5rem;
   width: 150px;
-  border-radius: 1rem;
-  font-weight: bold;
+  border-radius: 4px;
 }
 
 .btnBack {

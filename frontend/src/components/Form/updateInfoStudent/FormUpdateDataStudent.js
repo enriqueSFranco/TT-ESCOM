@@ -1,11 +1,7 @@
-// import { useState } from "react";
-// import { useForm } from "hooks/useForm";
 import { uploadPhotoStudent, uploadCVStudent } from 'services'
 import Input from "components/Input/Input";
 import Switch from "components/Switch/Switch";
 import CustomAvatar from "components/Avatar/Avatar";
-// import { updateStudent, getLinks, postSocialNetwork, getStudent } from "services/students/index";
-// import { updateStudentInitialForm } from "../../../types/schemes";
 
 // const validateForm = (form) => {
 //   let errors = {};
@@ -24,12 +20,6 @@ import CustomAvatar from "components/Avatar/Avatar";
 // };
 
 const FormUpdateDataStudent = ({ id, username, candidate }) => {
-  // const [image, setImage] = useState('')
-  // const { form, handleChange, handleChecked } = useForm(
-  //   updateStudentInitialForm,
-  //   validateForm
-  // );
-
   
   function convertToBase64(file) {
     return new Promise((resolve, reject) => {

@@ -1,76 +1,53 @@
 import React from "react";
-import { useGetAllRecruitrs } from "hooks";
-import API from "services/http.service"
-import LayoutMenu from "Layout/LayoutMenu";
-import Button from 'components/Button/Button'
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import { MdEmail, MdPhone } from "react-icons/md"
-import { ImUser } from 'react-icons/im'
-import { HiCheckCircle } from 'react-icons/hi'
-import { FcCancel } from 'react-icons/fc'
-import { SectionTable } from '../styled-components/ValidateRecruiterStyled'
+import { useGetValidateAllRecruiters, useModal } from "hooks";
+import { validateRecruiter, rejectRecruiter } from "utils";
+import LayoutAdmin from "Layout/LayoutAdmin";
+import ModalPortal from "components/Modal/ModalPortal";
+import FormValidateCompany from "components/Form/FormValidate";
+import CardRecruiter from "components/Card/CardRecruiter";
+import { WrapperValidateCompany } from "../styled-components/ValidateRecruiterStyled";
 
 const PageValidateRecruiter = () => {
-  const listRecruiter = useGetAllRecruitrs();
-
-  const validateRecruiter = async () => {
-    const payload = { is_active: true };
-    
-    const { data } = await API.put(
-      `${process.env.REACT_APP_URL_VALIDATE_RECRUITER}`,
-      payload
-    );
-    return data
-  };
+  const listRecruiter = useGetValidateAllRecruiters();
+  const [isOpenAccept, openModalAccept, closeModalAccept] = useModal(false)
+  const [isOpenReject, openModalReject, closeModalReject] = useModal(false)
 
   if (!listRecruiter) return null;
 
   return (
-    <LayoutMenu>
-      <SectionTable>
-        <h2>validar empresas</h2>
-        <TableContainer>
-          <Table sx={{ maxWidth: '100%' }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell style={{textAlign: 'center'}}>id</TableCell>
-                <TableCell style={{textAlign: 'center'}}>Empresa</TableCell>
-                <TableCell>Responsable</TableCell>
-                <TableCell>Opciones</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {listRecruiter?.map((recruiter) => (
-              <TableRow key={crypto.randomUUID()}>
-                <TableCell component="th" scope="row" style={{textAlign: 'center'}}>
-                  {recruiter?.t301_id_recruiter}
-                </TableCell>
-                <TableCell style={{textAlign: 'center'}}>{recruiter?.t300_id_company?.t300_name}</TableCell>
-                <TableCell style={{textAlign: 'left'}}>
-                  <div style={{display: 'flex', flexDirection: 'column', gap: '.5rem'}}>
-                    <span><ImUser style={{marginRight: '.3rem'}} />{recruiter?.t301_name} {recruiter?.t301_last_name}</span>
-                    <span><MdEmail style={{marginRight: '.3rem'}} />Email</span>
-                    <span><MdPhone style={{marginRight: '.3rem'}} />Telefono</span>
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <div style={{display: 'flex', gap: '.5rem', height: '40px'}}>
-                    <Button onClick={() => validateRecruiter(recruiter?.t301_id_recruiter)} bgColor='transparent' color="#000" text='Crear credenciales' icon={<HiCheckCircle style={{fontSize: '1.2rem', color: '#46AC5E'}} />} />
-                    <Button text='Declinar PreRegistro' bgColor="transparent" color='#000' icon={<FcCancel style={{fontSize: '1.2rem'}} />} />
-                  </div>
-                </TableCell>
-              </TableRow>
-            ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </SectionTable>
-    </LayoutMenu>
+    <>
+      <LayoutAdmin>
+        <div style={{ width: "100%", textAlign: "center" }}>
+          <h2>Validar Reclutador</h2>
+        </div>
+        <WrapperValidateCompany>
+          {listRecruiter.length > 0 ? (
+            listRecruiter?.map((recruiter) => (
+              <CardRecruiter
+                key={`list-item-recruiter-${recruiter?.t301_id_recruiter}`}
+                recruiterName={`${recruiter?.t301_name} ${recruiter?.t301_last_name} ${recruiter?.t301_second_surname}`}
+                companyName={recruiter?.t300_id_company?.t300_name}
+                recruiterEmail={recruiter?.t301_email}
+                recruiterPhone={recruiter?.t301_phonenumber}
+                openModalAccept={openModalAccept}
+                openModalReject={openModalReject}
+              />
+            ))
+          ) : (
+            <h2>Sin Reclutdores por validar</h2>
+          )}
+        </WrapperValidateCompany>
+      </LayoutAdmin>
+
+      <ModalPortal isOpen={isOpenAccept} closeModal={closeModalAccept}>
+        <FormValidateCompany typeAction={1} resolve={() => validateRecruiter(listRecruiter[0]?.t301_id_recruiter)}  />
+      </ModalPortal>
+
+      <ModalPortal isOpen={isOpenReject} closeModal={closeModalReject}>
+        <FormValidateCompany typeAction={0} reject={() => rejectRecruiter(listRecruiter[0]?.t301_id_recruiter)} />
+      </ModalPortal>
+
+    </>
   );
 };
 
