@@ -102,6 +102,7 @@ class ValidateRecruiterViewSet(viewsets.GenericViewSet):
 				recruiter_serializer = ValidateRecruiterSerializer(u_recruiter, data={"c303_id_status":4,"id_user":user_register[0]['id']})
 				if recruiter_serializer.is_valid():#Activar el usuario
 					recruiter_serializer.save()	
+					#Generar envío de correo con la contraseña
 					return Response({
 						'message': 'Dado de alta'
 						}, status=status.HTTP_200_OK)

@@ -205,14 +205,14 @@ class OnHoldRecruitersViewSet(viewsets.GenericViewSet):
 		self.queryset= None
 		if self.queryset == None:
 			self.queryset = self.model.objects\
-				.filter(t300_id_company = pk,id_user__isnull=True)\
+				.filter(t300_id_company = pk,c303_id_status=2)\
 				.all()
 		return  self.queryset
 
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
-				.filter(id_user__isnull=True)\
+				.filter(c303_id_status=2)\
 				.all()
 		return self.queryset
 
