@@ -5,7 +5,7 @@ import { AiOutlineFile, AiFillCheckCircle, AiFillDelete } from "react-icons/ai"
 import { ImUserTie } from 'react-icons/im'
 import {WrapperCard, Title} from './styled-components/CardValidateCompanyStyled'
 
-const CardValidateCompany = ({ nameCompany, busisnessName, rfc, document, nameRecruiter, emailRecruiter, phoneRecriter, idRecruiter, openModalAccept, openModalReject }) => {
+const CardValidateCompany = ({ nameCompany, busisnessName, rfc, document, nameRecruiter, emailRecruiter, phoneRecriter, openModalAccept, openModalReject }) => {
   return (
     <WrapperCard>
       <div>

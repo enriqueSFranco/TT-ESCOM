@@ -1,5 +1,4 @@
 import React from "react";
-import API from "services/http.service";
 import Button from "components/Button/Button";
 import { AiFillCheckCircle, AiOutlineSend } from "react-icons/ai";
 import {
@@ -9,28 +8,7 @@ import {
   WrapperLegend,
 } from "./styled-components/FormValidateCompanyStyled";
 
-const validateRecruiter = async (idRecruiter) => {
-  const payload = { activate: true };
-  const { REACT_APP_URL_MANAGER_VALIDATE_COMPANY } = process.env;
-
-  const { data } = await API.put(
-    `${REACT_APP_URL_MANAGER_VALIDATE_COMPANY}${idRecruiter}/`,
-    payload
-  );
-  return data;
-};
-
-const rejectRecruiter = async (idRecruiter) => {
-  const payload = { activate: false };
-
-  const { data } = await API.put(
-    `${process.env.REACT_APP_URL_MANAGER_VALIDATE_COMPANY}${idRecruiter}/`,
-    payload
-  );
-  return data;
-};
-
-const FormValidateCompany = ({ typeAction }) => {
+const FormValidateCompany = ({ typeAction, resolve, reject }) => {
   return (
     <WrapperForm>
       {typeAction === 1 && (
@@ -70,7 +48,7 @@ const FormValidateCompany = ({ typeAction }) => {
             width="10"
             height="2"
             icon={<AiFillCheckCircle />}
-            onClick={validateRecruiter}
+            onClick={resolve}
           />
         )}
 
@@ -82,7 +60,7 @@ const FormValidateCompany = ({ typeAction }) => {
             width="11"
             height="2"
             icon={<AiOutlineSend />}
-            onClick={rejectRecruiter}
+            onClick={reject}
           />
         )}
       </GroupButtons>

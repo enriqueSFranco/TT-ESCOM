@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { uploadDocumentValidate } from "services"
 import Input from "components/Input/Input";
 import * as BsIcon from "react-icons/bs";
 import * as MdIcon from "react-icons/md";
 import styles from "../Styles.module.css";
 
 const FormCompanyInfo = ({
-  data,
   nextStep,
   form,
   errors,
@@ -14,6 +14,36 @@ const FormCompanyInfo = ({
   isActive,
   handleIsActive,
 }) => {
+
+  // const [_, setFile] = useState()
+
+  function convertToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const fr = new FileReader()
+      fr.readAsDataURL(file)
+  
+      fr.onload = () => {
+        resolve(fr.result)
+      }
+      fr.onerror = (error) => {
+        reject(error)
+      }
+    })
+  }
+  
+  async function uploadFile(e) {
+    const file = e.target.files[0]
+    const base64 = await convertToBase64(file)
+    uploadDocumentValidate({t300_validator_document: base64})
+      .then(response => console.log(response))
+      .catch(error => console.error(error))
+  }
+
+  function handleUpload(e) {
+    uploadFile(e)
+    // .then(response => console.log(response))
+    // .catch(error => error)
+  }
   
   const continueStep = (e) => {
     e.preventDefault();
@@ -95,13 +125,13 @@ const FormCompanyInfo = ({
           Proporcionanos el documento que valide que tu empresa esta
           constituida.
         </p>
-        {/* <input
+        <input
           type="file"
           name="t300_validator_document"
           id="t300_validator_document"
           value={form.t300_validator_document}
-          onChange={handleChange}
-        /> */}
+          onChange={handleUpload}
+        />
       </div>
       <button className={styles.btnNext} type="button" onClick={continueStep}>
         Siguiente

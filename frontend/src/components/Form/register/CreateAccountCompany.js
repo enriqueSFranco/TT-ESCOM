@@ -65,7 +65,7 @@ const validateForm = (form) => {
 const FormCompany = () => {
   const { form, errors, handleChange, handleValidate, handleSubmitCompany } =
     useForm(companyInitialForm, validateForm);
-  const { data } = useFetch(process.env.REACT_APP_URL_COMPANY);
+  // const { data } = useFetch(process.env.REACT_APP_URL_COMPANY);
   const [step, setStep] = useState(1);
   const [isActive, setIsActive] = useState(false);
 
@@ -90,15 +90,11 @@ const FormCompany = () => {
                   Inicia sesion
                 </Link>
               </span>
-              {/* <span>
-                <a href="/#">Recuperar contraseña</a>
-              </span> */}
             </div>
           </div>
           <div className={`col bg-white rounded-end ${styles.wrapperColumn}`}>
             {!isActive ? (
               <FormCompanyInfo
-                data={data}
                 nextStep={nextStep}
                 form={form}
                 errors={errors}

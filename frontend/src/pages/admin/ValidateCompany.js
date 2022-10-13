@@ -1,17 +1,18 @@
 import React from "react";
 import { useValidateCompanies, useModal } from "hooks";
+import { validateBusiness, rejectBusiness } from "utils";
 import LayoutAdmin from "Layout/LayoutAdmin";
 import CardValidateCompany from "components/Card/CardValidateCompany";
 import { WrapperValidateCompany } from "pages/styled-components/ValidateRecruiterStyled";
 import ModalPortal from "components/Modal/ModalPortal";
-import FormValidateCompany from "components/Form/FormValidateCompany";
+import FormValidateCompany from "components/Form/FormValidate";
 
 const ValidateCompany = () => {
   const [listCompanies] = useValidateCompanies();
-  const [isOpenAccept, openModalAccept, closeModalAccept] = useModal(false)
-  const [isOpenReject, openModalReject, closeModalReject] = useModal(false)
+  const [isOpenAccept, openModalAccept, closeModalAccept] = useModal(false);
+  const [isOpenReject, openModalReject, closeModalReject] = useModal(false);
 
-  if (!listCompanies) return null
+  if (!listCompanies) return null;
 
   return (
     <>
@@ -22,7 +23,6 @@ const ValidateCompany = () => {
         <WrapperValidateCompany>
           {listCompanies.length > 0 ? (
             listCompanies?.map((company) => (
-              // console.log(company)
               <CardValidateCompany
                 key={`list-item-company-${company?.t300_id_company}`}
                 nameCompany={company?.t300_name}
@@ -32,7 +32,6 @@ const ValidateCompany = () => {
                 nameRecruiter={`${company?.RecruiterCompany[0].t301_name} ${company?.RecruiterCompany[0]?.t301_last_name} ${company?.RecruiterCompany[0]?.t301_second_surname}`}
                 emailRecruiter={company?.RecruiterCompany[0]?.t301_email}
                 phoneRecriter={company?.RecruiterCompany[0]?.t301_phonenumber}
-                idRecruiter={company?.RecruiterCompany[0]?.t301_id_recruiter}
                 openModalAccept={openModalAccept}
                 openModalReject={openModalReject}
               />
@@ -43,11 +42,25 @@ const ValidateCompany = () => {
         </WrapperValidateCompany>
       </LayoutAdmin>
       <ModalPortal isOpen={isOpenAccept} closeModal={closeModalAccept}>
-        <FormValidateCompany typeAction={1} />
+        <FormValidateCompany
+          typeAction={1}
+          resolve={() =>
+            validateBusiness(
+              listCompanies[0]?.t300_id_company
+            )
+          }
+        />
       </ModalPortal>
 
       <ModalPortal isOpen={isOpenReject} closeModal={closeModalReject}>
-        <FormValidateCompany typeAction={0} />
+        <FormValidateCompany
+          typeAction={0}
+          reject={() =>
+            rejectBusiness(
+              listCompanies[0]?.t300_id_company
+            )
+          }
+        />
       </ModalPortal>
     </>
   );
