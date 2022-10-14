@@ -63,7 +63,7 @@ class UpdateUserSerializer(serializers.ModelSerializer):
   # skills=SkillSerializer(many=True)
   class Meta:
     model = User
-    fields = ('first_name','last_name','email')
+    fields = ('username','first_name','last_name','email')
       # encriptamos el password cuando el usuario quiera actualizar su informacion
     def update(self, instance, validate_data):
       update_user = super().update(instance, validate_data)

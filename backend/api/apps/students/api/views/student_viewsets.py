@@ -113,9 +113,12 @@ class StudentViewSet(viewsets.GenericViewSet):
 		return Response(student_serializer.data)
 
 	def update(self, request, pk):
+		student = self.model.objects.filter(t100_id_student=pk).values('t100_email').first()
 		user_update ={
 			"first_name":request.data['t100_name'],
-			"last_name":request.data['t100_last_name']+request.data['t100_second_surname']
+			"last_name":request.data['t100_last_name']+request.data['t100_second_surname'],
+			"username": student['t100_email'],
+			"email": student['t100_email']
 		}
 		print(request.data)
 		student = self.model.objects.filter(t100_id_student=pk).first()
@@ -123,8 +126,10 @@ class StudentViewSet(viewsets.GenericViewSet):
 		print(student)
 		if student_serializer.is_valid():
 			student_serializer.save()
-			student_user = self.user_model.objects.filter(username = student).first()
-			print(student_user)
+			student_user = self.user_model.objects.filter(username = student).first()			
+			#print("print student object",student['t100_email'])			
+			#user_update['username']= 
+			#user_update['email']= student['t100_email']
 			print(user_update)
 			student_user_serializer = UpdateUserSerializer(student_user,data = user_update)
 			if student_user_serializer.is_valid():
