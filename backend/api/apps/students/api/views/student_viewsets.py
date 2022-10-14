@@ -115,7 +115,7 @@ class StudentViewSet(viewsets.GenericViewSet):
 	def update(self, request, pk):
 		user_update ={
 			"first_name":request.data['t100_name'],
-			"last_name":request.data['t100_last_name']
+			"last_name":request.data['t100_last_name']+request.data['t100_second_surname']
 		}
 		print(request.data)
 		student = self.model.objects.filter(t100_id_student=pk).first()
@@ -132,8 +132,13 @@ class StudentViewSet(viewsets.GenericViewSet):
 				return Response({
 					'message': 'Alumno actualizado correctamente'
 				}, status=status.HTTP_200_OK)
+			else:
+				return Response({
+					'message': 'Hay errores en la actualización del usuario del alumno',
+					'errors': student_user_serializer.errors
+		}, status=status.HTTP_400_BAD_REQUEST)
 		return Response({
-			'message': 'Hay errores en la actualización',
+			'message': 'Hay errores en la actualización del alumno',
 			'errors': student_serializer.errors
 		}, status=status.HTTP_400_BAD_REQUEST)
 
