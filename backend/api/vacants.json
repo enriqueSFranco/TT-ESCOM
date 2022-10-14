@@ -1,5 +1,7 @@
 [
 
+
+    
     {
         "model":"vacantes.Vacant",        
         "pk":1,
@@ -20,8 +22,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 2,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 1
-       
+            "t301_id_recruiter": 1,
+            "t400_id_admin": null
         }
     },
 
@@ -45,8 +47,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 2,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 2
-       
+            "t301_id_recruiter": 2,
+            "t400_id_admin": 1
         }
     },
 
@@ -70,8 +72,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 3
-       
+            "t301_id_recruiter": 3,
+            "t400_id_admin": 1
         }
     },
 
@@ -95,8 +97,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 4
-       
+            "t301_id_recruiter": 4,
+            "t400_id_admin": null
         }
     },
 
@@ -120,8 +122,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 1
-       
+            "t301_id_recruiter": 1,
+            "t400_id_admin": 1
         }
     },
 
@@ -145,8 +147,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 2
-       
+            "t301_id_recruiter": 2,
+            "t400_id_admin": null
         }
     },
 
@@ -170,8 +172,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 3
-       
+            "t301_id_recruiter": 3,
+            "t400_id_admin": null
         }
     },
 
@@ -195,8 +197,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 4
-       
+            "t301_id_recruiter": 4,
+            "t400_id_admin": 1
         }
     },
 
@@ -220,8 +222,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 1
-       
+            "t301_id_recruiter": 1,
+            "t400_id_admin": 1
         }
     },
 
@@ -245,8 +247,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 2
-       
+            "t301_id_recruiter": 2,
+            "t400_id_admin": 1
         }
     },
 
@@ -270,8 +272,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 2,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 3
-       
+            "t301_id_recruiter": 3,
+            "t400_id_admin": 1
         }
     },
 
@@ -295,8 +297,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 4
-       
+            "t301_id_recruiter": 4,
+            "t400_id_admin": null
         }
     },
 
@@ -320,8 +322,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 25,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 1
-       
+            "t301_id_recruiter": 1,
+            "t400_id_admin": 1
         }
     },
 
@@ -345,8 +347,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 2
-       
+            "t301_id_recruiter": 2,
+            "t400_id_admin": null
         }
     },
 
@@ -370,8 +372,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 3
-       
+            "t301_id_recruiter": 3,
+            "t400_id_admin": 1
         }
     },
 
@@ -395,8 +397,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 2,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 4
-       
+            "t301_id_recruiter": 4,
+            "t400_id_admin": 1
         }
     },
 
@@ -420,8 +422,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 2,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 1
-       
+            "t301_id_recruiter": 1,
+            "t400_id_admin": 1
         }
     },
 
@@ -445,8 +447,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 2
-       
+            "t301_id_recruiter": 2,
+            "t400_id_admin": 1
         }
     },
 
@@ -470,8 +472,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 3
-       
+            "t301_id_recruiter": 3,
+            "t400_id_admin": 1
         }
     },
 
@@ -495,8 +497,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 1
-       
+            "t301_id_recruiter": 1,
+            "t400_id_admin": 1
         }
     },
 
@@ -520,8 +522,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 2
-       
+            "t301_id_recruiter": 2,
+            "t400_id_admin": null
         }
     },
 
@@ -545,8 +547,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 2
-       
+            "t301_id_recruiter": 2,
+            "t400_id_admin": 1
         }
     },
 
@@ -570,8 +572,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 2
-       
+            "t301_id_recruiter": 2,
+            "t400_id_admin": 1
         }
     },
 
@@ -595,8 +597,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 2,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 2
-       
+            "t301_id_recruiter": 2,
+            "t400_id_admin": 1
         }
     },
 
@@ -620,8 +622,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 5,
             "c208_id_contract": 7,
-            "t301_id_recruiter": 2
-       
+            "t301_id_recruiter": 2,
+            "t400_id_admin": null
         }
     },
 
@@ -645,8 +647,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 5,
             "c208_id_contract": 7,
-            "t301_id_recruiter": 2
-       
+            "t301_id_recruiter": 2,
+            "t400_id_admin": 1
         }
     },
 
@@ -670,8 +672,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 4,
-            "t301_id_recruiter": 2
-       
+            "t301_id_recruiter": 2,
+            "t400_id_admin": null
         }
     },
 
@@ -695,8 +697,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 4,
-            "t301_id_recruiter": 2
-       
+            "t301_id_recruiter": 2,
+            "t400_id_admin": null
         }
     },
 
@@ -720,8 +722,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 4,
-            "t301_id_recruiter": 2
-       
+            "t301_id_recruiter": 2,
+            "t400_id_admin": 1
         }
     },
 
@@ -745,8 +747,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 4,
-            "t301_id_recruiter": 2
-       
+            "t301_id_recruiter": 2,
+            "t400_id_admin": null
         }
     },
 
@@ -770,8 +772,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 4,
-            "t301_id_recruiter": 3
-       
+            "t301_id_recruiter": 3,
+            "t400_id_admin": 1
         }
     },
 
@@ -795,8 +797,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 4,
-            "t301_id_recruiter": 3
-       
+            "t301_id_recruiter": 3,
+            "t400_id_admin": null
         }
     },
 
@@ -820,8 +822,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 4,
-            "t301_id_recruiter": 3
-       
+            "t301_id_recruiter": 3,
+            "t400_id_admin": 1
         }
     },
 
@@ -845,8 +847,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 4,
-            "t301_id_recruiter": 3
-       
+            "t301_id_recruiter": 3,
+            "t400_id_admin": null
         }
     },
 
@@ -870,8 +872,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 4,
-            "t301_id_recruiter": 3
-       
+            "t301_id_recruiter": 3,
+            "t400_id_admin": 1
         }
     },
 
@@ -895,8 +897,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 4,
-            "t301_id_recruiter": 3
-       
+            "t301_id_recruiter": 3,
+            "t400_id_admin": null
         }
     },
 
@@ -920,8 +922,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 4,
-            "t301_id_recruiter": 3
-       
+            "t301_id_recruiter": 3,
+            "t400_id_admin": 1
         }
     },
 
@@ -945,8 +947,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 4,
-            "t301_id_recruiter": 3
-       
+            "t301_id_recruiter": 3,
+            "t400_id_admin": 1
         }
     },
 
@@ -970,8 +972,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 7,
-            "t301_id_recruiter": 3
-       
+            "t301_id_recruiter": 3,
+            "t400_id_admin": 1
         }
     },
 
@@ -995,8 +997,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 7,
-            "t301_id_recruiter": 3
-       
+            "t301_id_recruiter": 3,
+            "t400_id_admin": 1
         }
     },
 
@@ -1020,8 +1022,8 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 3,
-            "t301_id_recruiter": 5
-       
+            "t301_id_recruiter": 5,
+            "t400_id_admin": 1
         }
     },
 
@@ -1045,9 +1047,10 @@
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 3,
-            "t301_id_recruiter": 5
-       
+            "t301_id_recruiter": 5,
+            "t400_id_admin": 1
         }
     }
+
 
 ]

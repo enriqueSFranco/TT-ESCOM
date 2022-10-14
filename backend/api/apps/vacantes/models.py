@@ -192,6 +192,13 @@ class Vacant(models.Model):
         related_name='RecruiterVacant',
         on_delete=models.CASCADE
     )
+    t400_id_admin = models.ForeignKey(
+        Admin,
+        null=True,
+        blank=True,
+        related_name='ValidatedAdmin',
+        on_delete=models.CASCADE
+    ) 
 
     class Meta:
         verbose_name = 'Vacant'
