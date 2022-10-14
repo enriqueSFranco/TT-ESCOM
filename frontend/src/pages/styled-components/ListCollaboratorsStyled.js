@@ -9,6 +9,9 @@ const HeaderTop = styled.div`
 
 const WrapperList = styled.section`
   padding: 0 1rem 1rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 `
 
 export { WrapperList, HeaderTop }

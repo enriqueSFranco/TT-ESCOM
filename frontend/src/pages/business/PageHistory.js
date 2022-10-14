@@ -237,8 +237,6 @@ const PageHistory = () => {
   
   if (!data || !dataVacantInfo) return null;
 
-  // console.log(dataVacantInfo)
-  
   return (
     <LayoutHome>
       <LayoutDashboard>
@@ -254,7 +252,7 @@ const PageHistory = () => {
           <WrapperWidgets>
             <LayoutWidgetRecruiter>
               <ContentWidget>
-                <TextNumber>20</TextNumber>
+                <TextNumber>{dataVacantInfo[0]?.TotalReceived === null ? 0 : dataVacantInfo[0]?.TotalReceived}</TextNumber>
                 <span>recibidas</span>
                 <FaUsers />
               </ContentWidget>
