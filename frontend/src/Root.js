@@ -52,8 +52,8 @@ const Root = () => {
         <Route path="dashboard" element={<PageHistory />}>
           <Route path="crear-vacante" element={<FormPostJob />} />
           <Route path=":t200_id_vacant" element={<CardDetailsVacantRecruiter />} />
-          {/* <Route path="mis-vacantes" element={<PageHistory />} /> */}
         </Route>
+        {/* <Route path="/postulaciones" element={} /> */}
       </Route>
 
       {/* RUTAS DEL ADMINISTRADOR */}

@@ -56,7 +56,7 @@ const CardCandidate = ({ user, idUser }) => {
           </List>
         </div>
         <div>
-          <LinkButton to="/" text="Ver perfil" />
+          <LinkButton to="/perfil-del-candidato" text="Ver perfil" />
         </div>
       </div>
     </CardUser>
