@@ -7,7 +7,6 @@ const CardUser = styled.article`
   padding: 0.5rem;
   display: grid;
   grid-template-columns: 200px 1fr;
-  justify-items: center;
   align-items: center;
   grid-template-areas: "avatar information";
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -17,6 +16,7 @@ const Username = styled.span`
   display: inline-block;
   width: 100%;
   font-weight: 500;
+  font-size: .8rem;
   letter-spacing: 1px;
   text-transform: capitalize;
 `
@@ -24,7 +24,7 @@ const Username = styled.span`
 const H3 = styled.h3`
   font-size: .89rem;
   font-weight: 600;
-  margin: .4rem 0;
+  /* margin: .5rem 0; */
 `
 
 const Speciality = styled.span`
@@ -32,6 +32,8 @@ const Speciality = styled.span`
   border-radius: 4px;
   background-color: #116BFE;
   padding: .3rem;
+  font-size: .8rem;
+  outline: 2px solid blue;
 `
 
 const WrapperList = styled.div`
