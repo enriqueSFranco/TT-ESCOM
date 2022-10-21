@@ -4,12 +4,12 @@ import { AiFillDelete } from 'react-icons/ai'
 import ProgressBar from 'components/ProgressBar/ProgressBar'
 import { Actions, Level, LanguageStyled, HeaderLanguage, LanguageText } from '../styled-components/CardLanguageStyled'
 
-const Language = ({ language, progress, levelColor }) => {
+const Language = ({ type, language, progress, levelColor }) => {
 
   return (
     <LanguageStyled>
       <HeaderLanguage>
-        <span>Idioma</span>
+        <span>{type}</span>
         <Actions>
           <GrEdit />
           <AiFillDelete />

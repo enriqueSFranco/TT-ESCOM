@@ -26,7 +26,7 @@ const PageLanguages = () => {
         </Header>
         <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
           {languages && languages?.map(language => (
-            <Language key={crypto.randomUUID()} language={language?.c111_id_language?.c111_description} progress={language.t110_level} />
+            <Language key={crypto.randomUUID()} type={language?.c111_id_language?.c111_type} language={language?.c111_id_language?.c111_description} progress={language.t110_level} />
           ))}
         </div>
       </section>

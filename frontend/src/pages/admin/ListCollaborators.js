@@ -42,7 +42,8 @@ const ListCollaborators = () => {
 
 
       <ModalPortal isOpen={isOpenModalEdit} closeModal={closeModalEdit}>
-        <h1>Editar Informacion de colaborador</h1>
+        <h2 style={{textAlign: 'center'}}>Editar colaborador</h2>
+        <FormAddCollaborator />
       </ModalPortal>
 
       <ModalPortal isOpen={isOpenModalDelete} closeModal={closeModalDelete}>

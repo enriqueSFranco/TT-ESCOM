@@ -18,7 +18,7 @@ const FormAddCollaborator = () => {
     t400_second_surname: "",
     t400_email: "",
     t400_position: "",
-    id_user: 1,
+    // id_user: 1,
     c401_id_rol: 2,
   });
 
