@@ -23,7 +23,7 @@ export const POST_NEW_JOB = Object.freeze({
   c207_id_experience: null,
   c214_id_modality: null,
   c206_id_profile: null,
-  c204_id_vacant_status: null,
+  c204_id_vacant_status: 1,
   c208_id_contract: null,
   t301_id_recruiter: null,
   requirements: {},

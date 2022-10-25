@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from apps.vacantes.models import Vacant
 from apps.companies.models import Recruiter,Company,PDFBase64File
 
 class CompanyListSerializer(serializers.ModelSerializer):
@@ -42,7 +43,6 @@ class RecruiterListSerializer(serializers.ModelSerializer):
         fields = '__all__'    
         depth = 2
 
-#Hacer serializador para activar el usuario y asignarle contraseña
 
 class ValidateRecruiterSerializer(serializers.ModelSerializer):
         class Meta:
@@ -74,3 +74,16 @@ class ValidateCompanySerializer(serializers.ModelSerializer):
             validate_company = super().update(instance,validate_data)
             validate_company.save()
             return validate_company
+
+
+
+class OnHoldVacantsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vacant
+        fields = '__all__'
+        depth = 2
+
+class ValidateVacantSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Vacant
+        fields = ('t400_id_admin','c204_id_vacant_status')       

@@ -13,7 +13,7 @@ export const createVacant = (vacant) => {
       c207_id_experience : vacant.c207_id_experience,
       c214_id_modality : vacant.c214_id_modality,
       c206_id_profile : vacant.c206_id_profile,
-      c204_id_vacant_status : vacant.c204_id_vacant_status,
+      c204_id_vacant_status : 1,
       c222_id_locality : vacant.c222_id_locality,
       c208_id_contract : vacant.c208_id_contract,
       t301_id_recruiter : vacant.t301_id_recruiter

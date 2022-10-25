@@ -62,21 +62,7 @@ class VacantViewSet(viewsets.GenericViewSet):
 		print('request: ',request.data)
 		print('request: ',request.data['requirements'])
 		if vacant_serializer.is_valid():
-			vacant_serializer.save()
-			#vacant_requirements = request.data['requirements']
-			n_vacant = self.model.objects.aggregate(Max('t200_id_vacant'))
-			id_vacant = n_vacant['t200_id_vacant__max']
-			print(id_vacant)
-			#if vacant_requirements:
-			#	for requirement in vacant_requirements:
-			#		requirement['t200_id_vacant'] = id_vacant
-			#		requirement['c116_id_skill']= requirement['skill']['c116_id_skill']
-			#		print(requirement)
-			#		requirement_serializer = self.requirement_serializer(data=requirement)
-			#		if requirement_serializer.is_valid():
-			#			requirement_serializer.save()
-			#		else:
-			#			print (requirement_serializer.errors)
+			vacant_serializer.save()			
 			return Response({
 				'message': 'Vacante registrada correctamente.'
 			}, status=status.HTTP_201_CREATED)

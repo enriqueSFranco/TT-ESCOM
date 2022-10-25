@@ -6,7 +6,8 @@ from datetime import date
 
 
 from apps.users.models import User
-from apps.administration.api.serializer.data_serializer import ValidateRecruiterSerializer,ValidateCompanySerializer
+from apps.vacantes.models import Vacant
+from apps.administration.api.serializer.data_serializer import ValidateRecruiterSerializer,ValidateCompanySerializer,OnHoldVacantsSerializer,ValidateVacantSerializer
 from apps.companies.api.serializer.recruiter_serializer import RecruiterSerializer,RecruiterListSerializer
 from apps.companies.models import Company, Recruiter
 from apps.users.api.serializers import UserSerializer
@@ -184,8 +185,7 @@ class ActivateCompanyViewSet(viewsets.GenericViewSet):
 		company_data['t300_create_date'] = str(date.today())
 		company_data['c302_id_status'] = 3
 		return company_data
-
-	#/* POner la fecha de creacion de la empresa al ser validada*/
+	
 	def update(self, request, pk):
 		"""
 		Actualiza el estado de validación de la compañia
@@ -230,3 +230,50 @@ class ActivateCompanyViewSet(viewsets.GenericViewSet):
 				return Response({
 					'message': 'Compañia Rechazada'
 				}, status=status.HTTP_200_OK)
+
+
+class ActivateVacantViewSet(viewsets.GenericViewSet):
+	model = Vacant
+	serializer_class = ValidateVacantSerializer
+	list_serializer_class = OnHoldVacantsSerializer
+	queryset = None		
+
+
+	def get_object(self, pk):
+		self.queryset= None
+		if self.queryset == None:
+			self.queryset = self.model.objects\
+				.filter(c204_id_vacant_status=1,t200_id_vacant = pk)\
+				.all()
+		return  self.queryset
+
+	def get_queryset(self):
+		if self.queryset is None:
+			self.queryset = self.model.objects\
+				.filter(c204_id_vacant_status = 1)\
+				.all()
+		return self.queryset
+
+	def list(self, request):
+		"""
+		Obtiene todas las vacantes en espera
+
+
+
+		Dummy text
+		""" 	
+		vacant = self.get_queryset()
+		vacants_serializer = self.list_serializer_class(vacant, many=True)
+		return Response(vacants_serializer.data, status=status.HTTP_200_OK)
+
+	def retrieve(self, request, pk):
+		"""
+		Obtiene la información de una vacante en espera especifíca
+
+
+
+		Dummy text
+		""" 	
+		vacant = self.get_object(pk)
+		vacant_serializer = self.list_serializer_class(vacant,many=True)
+		return Response(vacant_serializer.data)
