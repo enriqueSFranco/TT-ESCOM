@@ -2,6 +2,9 @@ import { uploadPhotoStudent, uploadCVStudent } from 'services'
 import Input from "components/Input/Input";
 import Switch from "components/Switch/Switch";
 import CustomAvatar from "components/Avatar/Avatar";
+import ButtonFile from 'components/Button/ButtonFile';
+import { BsFileEarmarkImage } from 'react-icons/bs'
+import { HiOutlineLocationMarker } from 'react-icons/hi'
 
 // const validateForm = (form) => {
 //   let errors = {};
@@ -65,12 +68,13 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
 
   return (
     <>
-      <h1 style={{fontSize: '1.3rem'}}>Editar datos personales</h1>
+      <h1 style={{fontSize: '1.3rem', textAlign:'center', fontFamily: 'sans-serif'}}>Editar datos personales</h1>
         <form onSubmit={e => update(e)}>
-          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', height: '150px', marginBottom: '1rem'}}>
+          <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '150px', marginBottom: '1rem'}}>
             <CustomAvatar picture={null} username={username} width='100' height='100' />
             <div style={{display: 'flex', justifyContent: 'center'}}>
-              <input type="file" onChange={update} />
+              {/* <input type="file" onChange={update} /> */}
+              <ButtonFile onChange={update} text="Subir foto" icon={<BsFileEarmarkImage />} color="#116BFE" />
             </div>
           </div>          
           <div style={{display: 'flex', gap: '1rem', marginTop: '1rem'}}>
@@ -79,7 +83,7 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
             <Input label='Segundo Apellido' defaultValue={candidate?.t100_second_surname}/>
           </div>
           <div>
-            <h2>Donde te ubicas</h2>
+            <h2 style={{fontSize: '1.3rem', fontFamily: 'sans-serif', marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '.4rem'}}>Donde te ubicas <HiOutlineLocationMarker /></h2>
             <div style={{display: 'flex', gap: '1rem', marginBottom: '1rem'}}>
               <Input label='Calle y numero'  />
               <Input label='CP' width='300px' />
@@ -91,7 +95,8 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
             </div>
             <div style={{display: 'flex', gap: '1rem', alignItems: 'center', justifyContent:'space-between', marginTop: '1rem'}}>
               <Switch label='Disponible para reubicarte' defaultValue={candidate?.t100_travel}/>
-              <input type="file" onChange={update} />
+              {/* <input type="file" onChange={update} /> */}
+              <ButtonFile onChange={update} text="Subir CV" icon={<BsFileEarmarkImage />} bgColor="#116BFE" color="#fff" />
             </div>
           </div>
           <div style={{display: 'flex', justifyContent: 'center', width: '100%', marginTop: '1rem'}}>

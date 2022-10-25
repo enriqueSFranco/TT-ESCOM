@@ -38,8 +38,6 @@ const CardProfileStudent = () => {
     fetchDataCandidateReducer,
     fetchDataCandidateInit
   );
-  // const [visibleSkill, setVisibleSkill] = useState(false)
-  // const [visibleSocilaNetwork, setVisibleSocialNetwork] = useState(false)
   const [newSkills, setNewSkills] = useState([]);
   const [isOpen, openModal, closeModal] = useModal();
   const [isOpenCV, openModalCV, closeModalCV] = useModal();

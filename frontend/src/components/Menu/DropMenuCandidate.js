@@ -1,21 +1,19 @@
 import React from 'react'
 import { useAuth } from 'context/AuthContext'
 import { Link } from 'react-router-dom'
-// import { HiOutlineUser } from 'react-icons/hi'
+import { HiOutlineUser } from 'react-icons/hi'
+import { BiLogIn } from 'react-icons/bi'
 
 const DropMenuCandidate = () => {
   const { logout } = useAuth()
   return (
     <>
       <li>
-        {/* <HiOutlineUser /> */}
-        <Link to='/perfil'>perfil</Link>
+        {/*  */}
+        <Link to='/perfil'><HiOutlineUser /> Ver Perfil</Link>
       </li>
       <li>
-        <Link to='/'>configuracion</Link>
-      </li>
-      <li>
-        <Link to='/' onClick={logout}>cerrar sesion</Link>
+        <Link to='/' onClick={logout}><BiLogIn /> Cerrar sesion</Link>
       </li>
     </>
   )
