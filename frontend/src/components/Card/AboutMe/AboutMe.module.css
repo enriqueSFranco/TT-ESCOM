@@ -3,7 +3,7 @@
   right: 1rem;
   border: none;
   background-color: transparent;
-  color: #fff;
+  color: #000;
   font-size: 1.3rem;
   display: flex;
   align-items: center;
@@ -16,26 +16,24 @@
 
 .btnEdit:hover {
   background-color: #116BFE;
+  color: #fff;
 }
 
 .btnSave {
   width: 120px;
   height: 3rem;
-  border-radius: 5px;
+  border-radius: 2px;
   border: none;
   color: #fff;
-  font-weight: 600;
-  background-color: #232436;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+  background-color: #116BFE;
   outline: none;
   transition: background-color .3s ease-in;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-.btnSave:hover {
-  background-color: #adff2f;
-  color: #232436;
-  border: none;
-}
 
 .flex_1_2 {
   display: flex;
@@ -51,9 +49,10 @@
 }
 
 .title {
-  color: #fff;
+  color: #000;
   font-size: 1.3rem;
-  font-weight: 700;
+  font-weight: 500;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   letter-spacing: 1px;
 }
 
@@ -62,6 +61,7 @@
   outline: none;
   border: 2px solid #cccbcb;
   border-radius: 5px;
+  width: 600px;
 }
 .tip, .totalChar {
   font-size: .89rem;
@@ -87,13 +87,13 @@
 
 .wrapper {
   position: relative;
-  color: #fff;
+  color: #000;
   border-radius: 6px;
   padding: 1rem;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   height: 240px;
   width: 100%;
-  background-color: #232436;
+  background-color: #F3F5F8;
   font-weight: 400;
 }
 
@@ -110,9 +110,7 @@
 }
 
 .wrapperTextArea {
-  position: relative;
   display: flex;
   flex-direction: column;
-  /* outline: 2px solid red; */
   height: 270px;
 }

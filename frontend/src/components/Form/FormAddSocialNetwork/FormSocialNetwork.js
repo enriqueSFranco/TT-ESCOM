@@ -23,8 +23,8 @@ const FormSocialNetwork = ({idUser}) => {
   if (!plataforms || !idUser) return null
 
   return (
-    <form onSubmit={handleSubmit} style={{display: "flex", flexDirection: "column", gap:".4rem", height: '100px'}}>
-      <div style={{display: 'flex', justifyContent: "space-between"}}>
+    <form onSubmit={handleSubmit} style={{position: 'relative', top: '4rem', display: "flex", flexDirection: "column", justifyContent: 'center', alignItems: 'center', gap:"1rem", height: '100px'}}>
+      <div style={{display: 'flex', justifyContent: "space-between", gap: '1rem'}}>
         <Select name="c115_id_plataform" id="c115_id_plataform" onChange={handleChange}>
           <option value="" disabled>Forma de contacto</option>
           {plataforms.map(plataform => (
@@ -33,7 +33,7 @@ const FormSocialNetwork = ({idUser}) => {
         </Select>
         <LinkSocialNetwork type="text" name='t113_link' id='t113_link' value={form.t113_link} onChange={handleChange} />
       </div>
-      <Button type="submit" value='Agredar medio' />
+      <Button type="submit" value='Agregar' />
     </form>
   )
 }

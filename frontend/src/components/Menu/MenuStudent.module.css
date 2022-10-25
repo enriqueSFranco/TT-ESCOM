@@ -1,5 +1,4 @@
 .nav {
-  background-color: #eee;
   border-radius: 10px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -60,8 +59,8 @@
 .navLink:hover { color: #000; }
 
 .navList.selected {
-  background-color: #ebebeba1;
-  color: #000;
+  background-color: rgba(204, 204, 204, 0.274);
+  color: #fff;
   transition: all .5s ease;
 }
 
@@ -85,6 +84,6 @@
   left: 0;
   right: 0;
   height: 5px;
-  background-color: #028dd4;
+  background-color: #00aaff;
   border-radius: 8px 8px 0 0;
 }
