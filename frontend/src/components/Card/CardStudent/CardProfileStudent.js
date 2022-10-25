@@ -77,9 +77,6 @@ const CardProfileStudent = () => {
     return () => controller.abort();
   }, [token?.user?.id]);
 
-  // const hanadleVisibleSkill = () => setVisibleSkill(!visibleSkill);
-
-  // const handleVisibleSocialNetwork = () => setVisibleSocialNetwork(!visibleSocilaNetwork);
 
   function sendSkill() {
     newSkills.forEach((newSkill) => {
@@ -114,7 +111,8 @@ const CardProfileStudent = () => {
               position: "absolute",
               right: ".5rem",
               top: ".5rem",
-              fontSize: "1.1rem",
+              color: '#fff',
+              fontSize: "1.3rem",
               cursor: "pointer",
             }}
             onClick={openModal}
@@ -129,7 +127,7 @@ const CardProfileStudent = () => {
             <div style={{ textAlign: "center" }}>
               <span
                 style={{
-                  color: "#9E9EA7",
+                  color: "#fff",
                   fontWeight: 500,
                   letterSpacing: ".5px",
                 }}
@@ -143,7 +141,7 @@ const CardProfileStudent = () => {
                   candidate[0]?.t100_interest_job ??
                   "Puesto deseado no definido"
                 }
-                bg="#116BFE"
+                bg="#00416A"
                 color="#fff"
               />
             </div>
@@ -197,7 +195,7 @@ const CardProfileStudent = () => {
             </div>
             <div className={`${styles.socialNetworks} ${styles.separator}`}>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <h4 className={styles.label}>contacto/Redes sociales</h4>
+                <h4 className={styles.label}>Redes sociales</h4>
                 <MdOutlineModeEdit
                   onClick={openModalSocialNetwork}
                   style={{ fontSize: "1.1rem", cursor: "pointer" }}
@@ -294,14 +292,18 @@ const CardProfileStudent = () => {
       <ModalPortal
         isOpen={isOpenSkill}
         closeModal={closeModalSkill}
-
+        minHeight="300px"
       >
+        <h2 style={{position: 'relative', top: '3rem', textAlign: 'center', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>Agregar nueva skill</h2>
         <div
           style={{
             display: "flex",
+            flexDirection: 'column',
             alignItems: "center",
             gap: ".4rem",
             marginTop: "1rem",
+            position: 'relative',
+            top: '4rem'
           }}
         >
           <Autocomplete
@@ -327,14 +329,17 @@ const CardProfileStudent = () => {
             onClick={sendSkill}
             style={{
               height: "2rem",
-              padding: ".4rem",
+              padding: ".4rem 1rem",
+              marginTop: '1rem',
               display: "grid",
               placeContent: "center",
               outline: "none",
               border: "none",
               backgroundColor: "#116BFE",
               color: "#fff",
-              borderRadius: "4px",
+              fontWeight: '400',
+              fontFamily: 'sans-serif',
+              borderRadius: "2px",
             }}
           >
             Agregar

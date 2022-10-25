@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import styles from "./MenuStudent.module.css";
 
 // secciones del menu

@@ -19,8 +19,10 @@ const Button = styled.input`
   border: none;
   outline: none;
   color: #fff;
-  padding: .2rem;
-  border-radius: 4px;
+  padding: .4rem 1rem;
+  border-radius: 2px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  
   width: 120px;
 `
 
