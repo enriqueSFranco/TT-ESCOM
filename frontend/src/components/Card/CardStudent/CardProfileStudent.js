@@ -1,11 +1,16 @@
 import { useEffect, useReducer, useState } from "react";
 import { useAuth } from "context/AuthContext";
-import { useGetCandidate, useGetSocialNetwork, useFetch, useModal } from "hooks";
+import {
+  useGetCandidate,
+  useGetSocialNetwork,
+  useFetch,
+  useModal,
+} from "hooks";
 import { helpHttp } from "utils/helpHttp";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import ModalPortal from "components/Modal/ModalPortal";
-import ModalPreviewCV from "components/Modal/ModalPreviewCV"
+import ModalPreviewCV from "components/Modal/ModalPreviewCV";
 import {
   fetchDataCandidateReducer,
   fetchDataCandidateInit,
@@ -21,8 +26,8 @@ import {
   MdOutlineAirplanemodeActive,
   MdOutlineModeEdit,
 } from "react-icons/md";
-import { BsFileEarmarkPersonFill } from "react-icons/bs"
-import { GoVerified } from "react-icons/go"
+import { BsFileEarmarkPersonFill, BsFillFileEarmarkPostFill } from "react-icons/bs";
+import { GoVerified } from "react-icons/go";
 import FormSocialNetwork from "components/Form/FormAddSocialNetwork/FormSocialNetwork";
 import { List } from "styled-components/CommonStyles";
 import styles from "./CardProfileStudent.module.css";
@@ -33,15 +38,19 @@ const CardProfileStudent = () => {
     fetchDataCandidateReducer,
     fetchDataCandidateInit
   );
-  const [visibleSkill, setVisibleSkill] = useState(false)
-  const [visibleSocilaNetwork, setVisibleSocialNetwork] = useState(false)
+  // const [visibleSkill, setVisibleSkill] = useState(false)
+  // const [visibleSocilaNetwork, setVisibleSocialNetwork] = useState(false)
   const [newSkills, setNewSkills] = useState([]);
-  const [isOpen, openModal, closeModal] = useModal()
-  const [isOpenCV, opneModalCV, closeModalCV] = useModal()
+  const [isOpen, openModal, closeModal] = useModal();
+  const [isOpenCV, openModalCV, closeModalCV] = useModal();
+  const [isOpenSocialNetwork, openModalSocialNetwork, closeModalSocialNetwork] =
+    useModal();
+  const [isOpenSkill, openModalSkill, closeModalSkill] = useModal();
+
   const { token } = useAuth();
   const { candidate } = useGetCandidate(token?.user?.user_id);
-  const { socialNetworks } = useGetSocialNetwork({ idUser: token?.user?.id })
-  const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS)
+  const { socialNetworks } = useGetSocialNetwork({ idUser: token?.user?.id });
+  const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -68,10 +77,9 @@ const CardProfileStudent = () => {
     return () => controller.abort();
   }, [token?.user?.id]);
 
+  // const hanadleVisibleSkill = () => setVisibleSkill(!visibleSkill);
 
-  const hanadleVisibleSkill = () => setVisibleSkill(!visibleSkill);
-
-  const handleVisibleSocialNetwork = () => setVisibleSocialNetwork(!visibleSocilaNetwork);
+  // const handleVisibleSocialNetwork = () => setVisibleSocialNetwork(!visibleSocilaNetwork);
 
   function sendSkill() {
     newSkills.forEach((newSkill) => {
@@ -96,7 +104,7 @@ const CardProfileStudent = () => {
   }
 
   if (!candidate || !data) return null;
-  
+
   return (
     <>
       <article className={`${styles.cardProfile}`}>
@@ -115,10 +123,10 @@ const CardProfileStudent = () => {
             <CustomAvatar
               picture={candidate[0]?.t100_profile_picture}
               username={candidate[0]?.t100_name}
-              width="100px"
-              height="100px"
+              width="100"
+              height="100"
             />
-            <div style={{textAlign: 'center'}}>
+            <div style={{ textAlign: "center" }}>
               <span
                 style={{
                   color: "#9E9EA7",
@@ -126,10 +134,15 @@ const CardProfileStudent = () => {
                   letterSpacing: ".5px",
                 }}
               >
-                {candidate[0]?.t100_name} {candidate[0]?.t100_last_name} {candidate[0]?.t100_second_surname}
+                {candidate[0]?.t100_name} {candidate[0]?.t100_last_name}{" "}
+                {candidate[0]?.t100_second_surname}
               </span>
+                <div style={{margin: '.5rem 0 .4rem 0'}}></div>
               <Chip
-                label={candidate[0]?.t100_interest_job ?? "Puesto deseado no definido"}
+                label={
+                  candidate[0]?.t100_interest_job ??
+                  "Puesto deseado no definido"
+                }
                 bg="#116BFE"
                 color="#fff"
               />
@@ -144,14 +157,10 @@ const CardProfileStudent = () => {
                     fontSize: "1.3rem",
                   }}
                 />
-                <p style={{ fontWeight: "400" }}>
-                  {candidate[0]?.c222_id_locality ? 
-                  candidate[0]?.c222_id_locality?.c222_state+", "+candidate[0]?.c222_id_locality?.c222_municipality+", "
-                  : "No especificado." }
-                  {candidate[0]?.t100_residence ? 
-                  candidate[0]?.c222_id_locality?.c222_locality+", "+candidate[0]?.t100_residence
-                  : "" }
-                </p>                
+                <p style={{ fontWeight: "400", fontFamily: 'sans-serif' }}>
+                  {candidate[0]?.t100_residence
+                    ? candidate[0]?.t100_residence : ""}
+                </p>
               </div>
               <div className={styles.flex}>
                 <MdOutlineAirplanemodeActive
@@ -160,42 +169,56 @@ const CardProfileStudent = () => {
                     fontSize: "1.3rem",
                   }}
                 />
-                <p style={{ fontWeight: "400" }}>
+                <p style={{ fontWeight: "400", fontFamily: 'sans-serif' }}>
                   {candidate[0]?.t100_travel
                     ? "Disponible para reubicarse."
                     : "No disponible para reubicarse." ?? "No especificado."}
                 </p>
               </div>
               <div className={styles.flex}>
-                {
-                  candidate[0]?.t100_cv ? <><BsFileEarmarkPersonFill /><button onClick={opneModalCV} style={{backgroundColor: 'transparent', outline: "none", border: "none"}}>Ver CV</button></> : "sin cv"
-                }
+                {candidate[0]?.t100_cv ? (
+                  <>
+                    <BsFileEarmarkPersonFill />
+                    <button
+                      onClick={openModalCV}
+                      style={{
+                        backgroundColor: "transparent",
+                        outline: "none",
+                        border: "none",
+                      }}
+                    >
+                      Ver CV
+                    </button>
+                  </>
+                ) : (
+                  <p style={{paddingLeft: '.2rem', fontWeight: "400", fontFamily: 'sans-serif'}}><BsFillFileEarmarkPostFill style={{marginRight: '.5rem', fontWeight: "bold", fontSize: "1rem"}} />Aun no cuentas con tu CV</p>
+                )}
               </div>
             </div>
             <div className={`${styles.socialNetworks} ${styles.separator}`}>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <h4 className={styles.label}>contacto/Redes sociales</h4>
                 <MdOutlineModeEdit
-                  onClick={handleVisibleSocialNetwork}
+                  onClick={openModalSocialNetwork}
                   style={{ fontSize: "1.1rem", cursor: "pointer" }}
                 />
               </div>
               <List className={styles.list}>
                 {socialNetworks?.length > 0 ? (
                   socialNetworks?.map(({ t113_link, c115_id_plataform }) => (
-                      <a
-                        href={`${t113_link}`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={styles.link}
-                        key={crypto.randomUUID()}
-                      >
-                        <img
-                          src={c115_id_plataform?.c115_icon}
-                          alt={c115_id_plataform?.c115_icon}
-                          className={styles.iconSocialNetwork}
-                        />
-                      </a>
+                    <a
+                      href={`${t113_link}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={styles.link}
+                      key={crypto.randomUUID()}
+                    >
+                      <img
+                        src={c115_id_plataform?.c115_icon}
+                        alt={c115_id_plataform?.c115_icon}
+                        className={styles.iconSocialNetwork}
+                      />
+                    </a>
                   ))
                 ) : (
                   <span style={{ padding: 0 }}>
@@ -203,16 +226,14 @@ const CardProfileStudent = () => {
                   </span>
                 )}
               </List>
-              {visibleSocilaNetwork && (
-                <FormSocialNetwork idUser={token?.user?.id} />
-              )}
+
             </div>
             {/* SKILLS */}
             <div className={`${styles.wrapperSkills} ${styles.separator}`}>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <h4 className={styles.label}>Habilidades en</h4>
                 <MdOutlineModeEdit
-                  onClick={hanadleVisibleSkill}
+                  onClick={openModalSkill}
                   style={{ fontSize: "1.1rem", cursor: "pointer" }}
                 />
               </div>
@@ -222,7 +243,7 @@ const CardProfileStudent = () => {
                     <Chip
                       key={uuid()}
                       label={c116_id_skill?.c116_description}
-                      bg="#232436"
+                      bg="#116BFE"
                       color="#fff"
                     />
                   ))
@@ -230,60 +251,23 @@ const CardProfileStudent = () => {
                   <span>Sin habilidades registradas</span>
                 )}
               </List>
-              {visibleSkill && (
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: ".4rem",
-                    marginTop: "1rem",
-                  }}
-                >
-                  <Autocomplete
-                    id="skills"
-                    size="small"
-                    sx={{ width: 300, maxWidth: "100%" }}
-                    name="skills"
-                    value={newSkills}
-                    onChange={(event, newValue) => setNewSkills(newValue)}
-                    multiple
-                    options={data}
-                    getOptionLabel={(option) => option.c116_description}
-                    filterSelectedOptions
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        label="Agregar nueva habilidad"
-                        placeholder="Selecciona "
-                      />
-                    )}
-                  />
-                  <button
-                    onClick={sendSkill}
-                    style={{
-                      height: "2rem",
-                      padding: ".4rem",
-                      display: "grid",
-                      placeContent: "center",
-                      outline: "none",
-                      border: "none",
-                      backgroundColor: "#116BFE",
-                      color: "#fff",
-                      borderRadius: "4px",
-                    }}
-                  >
-                    Agregar
-                  </button>
-                </div>
-              )}
             </div>
-            <div style={{display: 'grid', placeContent: 'center', textAlign: 'center'}}>
+            <div
+              style={{
+                display: "grid",
+                placeContent: "center",
+                textAlign: "center",
+              }}
+            >
               {candidate[0]?.t100_cv === null ? (
                 <p>Aun no cuentas con tu cv</p>
               ) : (
                 <p>
-                  <GoVerified style={{color: '#38761D'}} /> Tu curriculum esta activo y visible para las empresas{" "}
-                  <span style={{color: '#38761D', fontWeight: '700'}}>Abierto a oportunidades</span>
+                  <GoVerified style={{ color: "#38761D" }} /> Tu curriculum esta
+                  activo y visible para las empresas{" "}
+                  <span style={{ color: "#38761D", fontWeight: "700" }}>
+                    Abierto a oportunidades
+                  </span>
                 </p>
               )}
             </div>
@@ -291,7 +275,71 @@ const CardProfileStudent = () => {
         </div>
       </article>
       <ModalPortal isOpen={isOpen} closeModal={closeModal}>
-        <FormUpdateDataStudent id={candidate[0]?.t100_id_student} username={candidate[0]?.t100_name} candidate={candidate[0]} />
+        <FormUpdateDataStudent
+          id={candidate[0]?.t100_id_student}
+          username={candidate[0]?.t100_name}
+          candidate={candidate[0]}
+        />
+      </ModalPortal>
+
+      <ModalPortal
+        isOpen={isOpenSocialNetwork}
+        closeModal={closeModalSocialNetwork}
+        minHeight="250px"
+      >
+        <h2 style={{position: 'relative', top: '3rem', textAlign: 'center', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>Agregar Red Social</h2>
+        <FormSocialNetwork idUser={token?.user?.id} />
+      </ModalPortal>
+
+      <ModalPortal
+        isOpen={isOpenSkill}
+        closeModal={closeModalSkill}
+
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: ".4rem",
+            marginTop: "1rem",
+          }}
+        >
+          <Autocomplete
+            id="skills"
+            size="small"
+            sx={{ width: 300, maxWidth: "100%" }}
+            name="skills"
+            value={newSkills}
+            onChange={(event, newValue) => setNewSkills(newValue)}
+            multiple
+            options={data}
+            getOptionLabel={(option) => option.c116_description}
+            filterSelectedOptions
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Agregar nueva habilidad"
+                placeholder="Selecciona "
+              />
+            )}
+          />
+          <button
+            onClick={sendSkill}
+            style={{
+              height: "2rem",
+              padding: ".4rem",
+              display: "grid",
+              placeContent: "center",
+              outline: "none",
+              border: "none",
+              backgroundColor: "#116BFE",
+              color: "#fff",
+              borderRadius: "4px",
+            }}
+          >
+            Agregar
+          </button>
+        </div>
       </ModalPortal>
 
       <ModalPortal isOpen={isOpenCV} closeModal={closeModalCV}>

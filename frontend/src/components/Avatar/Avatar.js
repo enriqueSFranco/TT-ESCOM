@@ -26,7 +26,7 @@ const CustomAvatar = ({ picture, username = "BT", width, height }) => {
         width: `${`${width}px` || "80px"}`,
         display: "grid",
         placeContent: "center",
-        borderRadius: "50%",
+        borderRadius: "5px",
       }}
     >
       <span style={{ color: "#FFF", fontSize: "1.4rem" }}>

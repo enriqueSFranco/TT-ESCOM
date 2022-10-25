@@ -61,7 +61,7 @@ const AboutMe = () => {
           </p>
         </div>
       </article>
-      <ModalPortal isOpen={isOpenModalEdit} closeModal={closeOpenModalEdit}>
+      <ModalPortal isOpen={isOpenModalEdit} closeModal={closeOpenModalEdit} minWidth='500px' minHeight='400px'>
         <form onSubmit={handleSubmit} className={styles.wrapperTextEdit}>
           <div className={styles.wrapperTextArea}>
             <textarea

@@ -97,7 +97,7 @@ const MenuCandidate = () => {
           </NavLink>
         </NavItem>
         <NavItem>
-          <DropMenu typeuser={typeuser} picture={candidate[0]?.t100_profile_picture} name={token.user.first_name} />
+          <DropMenu typeuser={typeuser} picture={candidate[0]?.t100_profile_picture} name={token.user.username} />
         </NavItem>
       </NavList>
     </>
