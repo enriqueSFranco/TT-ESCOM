@@ -13,27 +13,34 @@ import {
   TotalApplications,
   CardFooter,
 } from "./styled-components/CardJobPreviewRecruiterStyled";
+import CustomAvatar from "components/Avatar/Avatar";
 
 function removeAccents(string) {
-  const accents = {'á':'a','é':'e','í':'i','ó':'o','ú':'u'}
-  return string.split('').map(letter => accents[letter] || letter).join('').toString()
+  const accents = { á: "a", é: "e", í: "i", ó: "o", ú: "u" };
+  return string
+    .split("")
+    .map((letter) => accents[letter] || letter)
+    .join("")
+    .toString();
 }
 
 /**
  * @param {String} string
  * @return {String}
- **/ 
+ **/
 function generateCSSClass(string) {
-  return removeAccents(string.toLowerCase()).replace(' ', '-')
+  return removeAccents(string.toLowerCase()).replace(" ", "-");
 }
 
 const CardJobPreviewRecruiter = ({ info }) => {
-  const [data] = useGetApplicationJob({ idVacant: info?.t200_id_vacant })
+  const [data] = useGetApplicationJob({ idVacant: info?.t200_id_vacant });
 
   const { t200_job, t300_id_company, c207_id_experience, c214_id_modality } =
-  info;
-  
-  if (!info && !data) return null;
+    info;
+
+  if (!info || !data) return null;
+
+  console.log(data);
 
   return (
     <Card to={`/dashboard/${info.t200_id_vacant}`}>
@@ -70,13 +77,15 @@ const CardJobPreviewRecruiter = ({ info }) => {
         </CardListItemTags>
       </CardListTags>
 
-
       <CardFooter>
-        <TotalApplications>{data?.length > 0 ? `${data?.length} postulaciones` : 'Sin postulaciones'}</TotalApplications>
-        <GroupAvatars
-          users={data}
-        />
-        <span className={`${generateCSSClass(info?.c204_id_vacant_status?.c204_description)}`}>{info?.c204_id_vacant_status?.c204_description}</span>
+        <GroupAvatars users={data} />
+        <span
+          className={`${generateCSSClass(
+            info?.c204_id_vacant_status?.c204_description
+          )}`}
+        >
+          {info?.c204_id_vacant_status?.c204_description}
+        </span>
       </CardFooter>
     </Card>
   );
