@@ -48,7 +48,6 @@ const CardHeaderRight = styled.div`
 const CardListTags = styled.ul`
   display: flex;
   gap: 1rem;
-  margin: 1.5rem 0;
   padding: 0;
   list-style: none;
 `

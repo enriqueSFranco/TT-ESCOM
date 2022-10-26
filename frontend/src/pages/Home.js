@@ -71,9 +71,10 @@ const Home = () => {
           <JobList
             jobs={isFiltered ? filteredData : response}
             loading={loading}
-            loadingNextPage={loadingNextPage}
           />
-          {loadingNextPage && <Loader />}
+          <div style={{width: '100%',display: 'grid', placeContent: 'center', backgroundColor: 'transparent', margin: '1rem 0', padding: '0 0 2rem 0'}}>
+            {loadingNextPage && <Loader />}
+          </div>
           <div id="visor" ref={externalRef}></div>
         </Content>
         <ButtonScrollTop />

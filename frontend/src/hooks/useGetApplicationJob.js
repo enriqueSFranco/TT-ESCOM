@@ -8,7 +8,6 @@ export function useGetApplicationJob({ idVacant }) {
   useEffect(() => {
     getApplicationsJobs(idVacant)
       .then(response => {
-        // console.log(response)
         setData(response)
       })
       .catch(error =>  console.log(error))

@@ -22,7 +22,7 @@ const CardBody = styled.article`
     width: 400px;
     height: 350px;
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 2px;
     color: #222;
     font-family: sans-serif;
     padding: 0 0.5rem;
@@ -128,15 +128,16 @@ const Button = styled.button`
   }
 
   @media screen and ${device.laptop} {
-    background-color: ${props => props.bgColor || '#018dd4'};
+    background-color: ${props => props.bgColor || '#1C8EFB'};
     color: #fff;
-    font-weight: 600;
+    font-weight: 500;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: .9rem;
     border: none;
     outline: none;
     padding: 0.5rem;
     width: 120px;
-    border-radius: .4rem;
+    border-radius: 4px;
     transition: background-color .5s ease;
     cursor: pointer;
   }
@@ -144,7 +145,8 @@ const Button = styled.button`
 `;
 
 const Location = styled.span`
-  font-weight: 600;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 0.85rem;
 `;
 

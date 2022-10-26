@@ -11,7 +11,7 @@ const ListEmptyJobs = () => {
   );
 };
 
-const JobList = ({ jobs, loading, loadingNextPage }) => {
+const JobList = ({ jobs, loading }) => {
 
   if (!jobs) return null;
 

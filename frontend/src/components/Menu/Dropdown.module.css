@@ -3,8 +3,10 @@
 }
 
 .menu {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(10px);
   border-radius: 4px;
+  /* outline: 1px solid #fff; */
   position: absolute;
   top: 60px;
   right: 0;
@@ -30,7 +32,7 @@
 
 
 .menu li a {
-  color: #333;
+  color: #FFF;
   padding: 15px 20px;
   display: block;
   display: flex;
