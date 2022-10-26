@@ -145,7 +145,8 @@ const Button = styled.button`
 `;
 
 const Location = styled.span`
-  font-weight: 600;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 0.85rem;
 `;
 
