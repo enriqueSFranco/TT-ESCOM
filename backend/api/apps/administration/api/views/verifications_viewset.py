@@ -237,6 +237,8 @@ class ActivateVacantViewSet(viewsets.GenericViewSet):
 	serializer_class = ValidateVacantSerializer
 	list_serializer_class = OnHoldVacantsSerializer
 	queryset = None		
+	vacant_validation_info = {"t400_id_admin":"",
+						 "c204_id_vacant_status":""}
 
 
 	def get_object(self, pk):
@@ -277,3 +279,43 @@ class ActivateVacantViewSet(viewsets.GenericViewSet):
 		vacant = self.get_object(pk)
 		vacant_serializer = self.list_serializer_class(vacant,many=True)
 		return Response(vacant_serializer.data)
+
+	def update(self, request, pk):
+		"""
+		Actualiza el estado de la vacante
+
+
+
+		Dummy text
+		""" 
+		print(request.data)
+		vacant_validation = self.vacant_validation_info
+		vacant_validation["t400_id_admin"] = request.data["t400_id_admin"]
+		#Abrir vacante
+		if(request.data['activate']):
+			vacant_validation["c204_id_vacant_status"] = 2			
+			u_vacant = self.model.objects.filter(t200_id_vacant=pk,c204_id_vacant_status=1).first()
+			vacant_serializer = self.serializer_class(u_vacant,data=vacant_validation)
+			if vacant_serializer.is_valid():
+				vacant_serializer.save()
+				return Response({
+					'message': 'Vacante Validada'
+					}, status=status.HTTP_200_OK)
+			return Response({
+					'message': 'Hay errores en la actualización, no se pudo cambiar el estado de la vacante',
+					'errors': vacant_serializer.errors
+				}, status=status.HTTP_400_BAD_REQUEST)						
+		#Cerrar vacante por rechazo
+		else:
+			vacant_validation["c204_id_vacant_status"] = 3
+			u_vacant = self.model.objects.filter(t200_id_vacant=pk,c204_id_vacant_status=1).first()
+			vacant_serializer = self.serializer_class(u_vacant,data=vacant_validation)
+			if vacant_serializer.is_valid():
+				vacant_serializer.save()
+				return Response({
+					'message': 'Vacante Rechazada'
+					}, status=status.HTTP_200_OK)
+			return Response({
+					'message': 'Hay errores en la actualización, no se pudo cambiar el estado de la vacante',
+					'errors': vacant_serializer.errors
+				}, status=status.HTTP_400_BAD_REQUEST)			
