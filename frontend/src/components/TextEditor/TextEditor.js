@@ -6,7 +6,7 @@ const TextEditor = ({ id, name, value, onChange }) => {
 
   return (
     <Editor
-      apiKey="fixymk6a0qooh20uhfl7ws2m6z6e3buuyfenh2gmyp71pfsj"
+      
       onInit={(evt, editor) => (editorRef.current = editor)}
       initialValue="
         <h2>Descripcion</h2>

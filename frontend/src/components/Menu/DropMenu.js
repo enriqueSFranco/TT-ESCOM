@@ -20,7 +20,7 @@ const DropMenu = ({ typeuser, picture, name }) => {
         </button>
       ) : (
         <button className={styles.trigger} onClick={onClick}>
-          <CustomAvatar picture={picture} username={name} width='50' height='50' />
+          <CustomAvatar picture={picture} username={name} width='50px' height='50px' />
         </button>
       )}
       <nav
