@@ -48,6 +48,7 @@ import CardJobPreviewRecruiter from "components/Card/CardJobPreviewRecruiter";
 import {
   Aside,
   Container,
+  Grid,
   WrapperListCardJobPreviewRecruiter,
   WrapperWidgets,
   ContentWidget,
@@ -74,18 +75,17 @@ const PageHistory = () => {
   // const [body, setBody] = useState("");
   const { data, loading } = useRecruiterJobs({ idRcruiter: token?.user?.id });
   // const [totalApplications, setTotalApplications] = useState([]);
-  const [initialContent, setInitialContent] = useState(true);
-  const [listJobs, setListJobs] = useState(null);
-  const [filterData, setFilterData] = useState(null);
-  const [search, setSearch] = useState("");
-  const [modalType, setModalType] = useState(null);
+  // const [initialContent, setInitialContent] = useState(true);
+  // const [listJobs, setListJobs] = useState(null);
+  // const [filterData, setFilterData] = useState(null);
+  // const [search, setSearch] = useState("");
+  // const [modalType, setModalType] = useState(null);
   const [isDeletedJob, setIsDeletedJob] = useState({});
   const [job, setJob] = useState(null);
-  const [recruiter, setRecruiter] = useState([]);
-  const [isOpenModalForm, openModalForm, closeModalForm] = useModal();
+  // const [recruiter, setRecruiter] = useState([]);
+  // const [isOpenModalForm, openModalForm, closeModalForm] = useModal();
   // let newObject = { ...form, t200_description: body };
 
-  // console.log(dataVacantInfo)
 
   // efecto para obtener la lista de vacantes de un reclutador
   // useEffect(() => {
@@ -111,20 +111,6 @@ const PageHistory = () => {
   //         setTotalApplications(response.length);
   //       })
   //       .catch((error) => console.log(error));
-  //   }
-  // }, [t200_id_vacant]);
-
-  // efecto para obtener los detalles de una vacante en especifico
-  // useEffect(() => {
-  //   if (t200_id_vacant !== undefined) {
-  //     getJob(t200_id_vacant)
-  //       .then((response) => {
-  //         console.log(response);
-  //         setJob(response);
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
   //   }
   // }, [t200_id_vacant]);
 
@@ -166,32 +152,8 @@ const PageHistory = () => {
   //   }
   // }, [t200_id_vacant]);
 
-  // useEffect(() => {
-  //   getRecruiterInfo(token?.user?.user_id)
-  //     .then((response) => {
-  //       setRecruiter(response);
-  //       // console.log(response)
-  //       //form.t300_id_company  = recruiter[0]?.t300_id_company?.t300_id_company;
-  //     })
-  //     .catch((error) => console.error(error));
-  // }, [token?.user?.user_id]);
-
   // const handleInitialContent = () => setInitialContent(false);
 
-  // const setModal1 = () => {
-  //   setModalType(1);
-  //   openModalForm();
-  // };
-
-  // const setModal2 = () => {
-  //   setModalType(2);
-  //   openModalForm();
-  // };
-
-  // const setModal3 = () => {
-  //   setModalType(3);
-  //   openModalForm();
-  // };
 
   // const handleBlur = (e) => {
   //   e.target.classList.remove(styles.inputSearchFocus);
@@ -214,14 +176,14 @@ const PageHistory = () => {
   //   }
   // };
 
-  const handleDeleteJob = async () => {
-    const response = await deleteJob(job[0]?.t200_id_vacant);
+  // const handleDeleteJob = async () => {
+  //   const response = await deleteJob(job[0]?.t200_id_vacant);
 
-    if (response.status === 200)
-      setIsDeletedJob({ succes: response.status, message: response.message });
-    else
-      setIsDeletedJob({ success: response.status, message: response.message });
-  };
+  //   if (response.status === 200)
+  //     setIsDeletedJob({ succes: response.status, message: response.message });
+  //   else
+  //     setIsDeletedJob({ success: response.status, message: response.message });
+  // };
 
   // const onSubmitPostJob = (e) => {
   //   e.preventDefault();
@@ -289,7 +251,9 @@ const PageHistory = () => {
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>
           </WrapperWidgets>
-          <Outlet />
+          <Grid>
+            <Outlet />
+          </Grid>
         </Container>
       </LayoutDashboard>
     </LayoutHome>

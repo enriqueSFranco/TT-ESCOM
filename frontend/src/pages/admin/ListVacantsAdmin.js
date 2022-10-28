@@ -1,20 +1,20 @@
 import React from 'react'
-import { useGetAllJobs } from 'hooks'
+import { useFetch } from 'hooks'
 import CardJobPreviewRecruiter from 'components/Card/CardJobPreviewRecruiter'
 import LayoutAdmin from 'Layout/LayoutAdmin'
 import { Content } from '../styled-components/ListVacantsAdmin'
 
+const { REACT_APP_URL_MANAGER_VALIDATE_VACANT } = process.env
+
 const ListVacantsAdmin = () => {
-  const { response, loading, loadingNextPage } = useGetAllJobs()
+  const { data, error, loading } = useFetch(REACT_APP_URL_MANAGER_VALIDATE_VACANT)
 
-  if (!response) return null
-
-  console.log(response)
+  if (!data) return null
 
   return (
     <LayoutAdmin>
       <div style={{ width: "100%", textAlign: "center" }}>
-        <h2>Vacantes</h2>
+        <h2>Vacantes por validar</h2>
       </div>
       {/* TODO: Hacer la grid */}
       <Content>
@@ -22,7 +22,7 @@ const ListVacantsAdmin = () => {
           loading && <h1>cargando....</h1>
         }
         {
-          response.map(el => (
+          data.map(el => (
             <CardJobPreviewRecruiter info={el}/>
           ))
         }

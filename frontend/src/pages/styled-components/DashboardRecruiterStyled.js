@@ -21,8 +21,15 @@ const Aside = styled.aside`
 const Container = styled.main`
   grid-area: container;
   width: 100%;
-  background-color: #fff;
+  /* background-color: red; */
   border-left: 1px solid #ccc;
+  `
+
+const Grid = styled.div`
+  padding: 0 .5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 `
 
 const WrapperWidgets = styled.section`
@@ -53,4 +60,4 @@ const ContentWidget = styled.div`
 `
 
 
-export {Aside, ContentWidget, TextNumber, ContentWidgetCommon, Container, WrapperListCardJobPreviewRecruiter, WrapperWidgets }
+export {Aside, ContentWidget, TextNumber, Grid, ContentWidgetCommon, Container, WrapperListCardJobPreviewRecruiter, WrapperWidgets }
