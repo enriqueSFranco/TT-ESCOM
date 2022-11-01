@@ -195,18 +195,16 @@ const PageHistory = () => {
   //     .catch((error) => console.error(error));
   // };
   
-  
-  
   if (!data || !dataVacantInfo) return null;
 
   return (
     <LayoutHome>
-      <LayoutDashboard>
+      <LayoutDashboard top='4rem'>
         <Aside>
           <FormSearchJob />
           <WrapperListCardJobPreviewRecruiter>
             {data?.map((el) => (
-              <CardJobPreviewRecruiter key={crypto.randomUUID()} info={el} />
+              <CardJobPreviewRecruiter key={crypto.randomUUID()} info={el} url='dashboard' />
             ))}
           </WrapperListCardJobPreviewRecruiter>
         </Aside>

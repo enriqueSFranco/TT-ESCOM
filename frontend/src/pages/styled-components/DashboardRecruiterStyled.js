@@ -7,7 +7,8 @@ const WrapperListCardJobPreviewRecruiter = styled.div`
   flex-direction: column;
   gap: 1rem;
   overflow-y: auto;
-`
+  /* background-color: green; */
+  `
 
 const Aside = styled.aside`
   grid-area: aside;
@@ -15,14 +16,17 @@ const Aside = styled.aside`
   flex-direction: column;
   align-items: center;
   padding-top: 1rem;
-  background-color: #FFF;
+  background-color: #fff;
+  height: ${props => props.height || '100%'};
+  background-color: red;
 `
 
 const Container = styled.main`
   grid-area: container;
   width: 100%;
-  /* background-color: red; */
-  border-left: 1px solid #ccc;
+  background-color: #fff;
+  background-color: yellow;
+  height: ${props => props.height || '100%'};
   `
 
 const Grid = styled.div`

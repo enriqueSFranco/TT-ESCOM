@@ -6,6 +6,9 @@ const Card = styled(Link)`
   height: 190px;
   color: #000;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: #FFF;
   padding: 1rem 1rem 0 1rem;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
@@ -17,7 +20,7 @@ const Card = styled(Link)`
 `
 
 const CardHeader = styled.header`
-  height: 60px;
+  height: fit-content;
   /* outline: 2px solid red; */
   display: flex;
   justify-content: space-between;
@@ -31,14 +34,13 @@ const CardHeaderLeft = styled.div`
 `
 
 const CardHeaderRight = styled.div`
-  /* outline: 2px solid blue; */
   width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
 
   img {
-    height: 90px;
+    height: 100%;
     object-fit: contain;
     object-position: center center;
   }
@@ -72,6 +74,8 @@ const CardFooter = styled.footer`
   align-items: center;
   padding: 0 1rem .5rem 1rem;
   width: 100%;
+  /* position: absolute;
+  bottom: 1rem; */
 
   .abierta {color: #38761D; font-weight: 700;}
 

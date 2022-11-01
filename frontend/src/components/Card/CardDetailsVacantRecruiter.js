@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { useAuth } from "context/AuthContext";
 import { useFetch } from "hooks";
 import Loader from "components/Loader/Loader";
 import Chip from "components/Chip/Chip";
@@ -18,8 +19,9 @@ import {
   Title
 } from "./styled-components/CardDetailsVacantRecruiterStyled";
 
-const CardDetailsVacantRecruiter = ({ info }) => {
+const CardDetailsVacantRecruiter = ({ height }) => {
   const { t200_id_vacant } = useParams();
+  const { token } = useAuth()
   const { data, error, loading } = useFetch(
     `${process.env.REACT_APP_URL_VACANTS}${t200_id_vacant}/`
   );
@@ -27,7 +29,12 @@ const CardDetailsVacantRecruiter = ({ info }) => {
   const handlePublish = () => {}
 
   const handleComment = () => {}
+  
   if (!data) return null;
+
+  console.log(token)
+
+  // token.user.user_type
 
   return (
     <>
@@ -56,7 +63,7 @@ const CardDetailsVacantRecruiter = ({ info }) => {
                 <span style={{fontWeight: '700'}}>{`Contratacion: ${data[0]?.c208_id_contract?.c208_description}`}</span>
               </div>
             </HeaderInfo>
-            <Description>
+            <Description height={height}>
               <ContentDescription>
                 {data[0]?.t200_description}
               </ContentDescription>
@@ -66,9 +73,11 @@ const CardDetailsVacantRecruiter = ({ info }) => {
               </WrapperActions>
             </Description>
           </WraperCard>
+          {
+            // token.user.user_type === 
+          }
           <WrapperComment>
             <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
-
           </WrapperComment>
         </>
       )}

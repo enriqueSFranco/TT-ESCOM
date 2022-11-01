@@ -16,7 +16,7 @@ import {
 } from "./styled-components/CardJobPreviewRecruiterStyled";
 
 
-const CardJobPreviewRecruiter = ({ info, typeUser }) => {
+const CardJobPreviewRecruiter = ({ info, url, typeUser }) => {
   const [data] = useGetApplicationJob({ idVacant: info?.t200_id_vacant });
 
   const { t200_job, t300_id_company, c207_id_experience, c214_id_modality } =
@@ -25,7 +25,7 @@ const CardJobPreviewRecruiter = ({ info, typeUser }) => {
   if (!info || !data) return null;
 
   return (
-    <Card to={`/dashboard/${info.t200_id_vacant}`}>
+    <Card to={`/${url}/${info.t200_id_vacant}`}>
       <CardHeader>
         <CardHeaderLeft>
           <TitleJob>{t200_job}</TitleJob>

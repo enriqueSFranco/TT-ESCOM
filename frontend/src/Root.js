@@ -62,7 +62,9 @@ const Root = () => {
       <Route path="/empresas-registradas" element={<RegisteredCompanies />} />
       <Route path="detalles-de-emperesa/:t300_id_company" element={<DetailsCompany />} />
       <Route path="/lista-de-colaboradores" element={<ListCollaborators />} />
-      <Route path="/lista-de-vacantes" element={<ListVacantsAdmin />} />
+      <Route path="/lista-de-vacantes" element={<ListVacantsAdmin />}>
+        <Route path=":t200_id_vacant" element={<CardDetailsVacantRecruiter height="85%" />} />
+      </Route>
 
 
       <Route path="/alumno" element={<PageLoginStudent />} />

@@ -10,10 +10,10 @@ const WrapperLoader = styled.div`
 `
 
 const WraperCard = styled.article`
-  height: 76vh;
   width: 100%;
+  height: 76vh;
   margin: 0 auto;
-  background: #F7F7F9;
+  background-color: #F7F7F9;
   border-radius: 5px;
   padding: 1rem;
   margin-top: 1rem;
@@ -34,7 +34,7 @@ const HeaderInfo = styled.header`
 `
 
 const Description = styled.div`
-  height: 80%;
+  height: ${props => props.height || '80%'};
   position: relative;
 `
 
