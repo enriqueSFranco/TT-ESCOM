@@ -51,7 +51,7 @@ const Root = () => {
         <Route path="/publicar-comunicado" element={<PagePostRelease />} />
         <Route path="dashboard" element={<PageHistory />}>
           <Route path="crear-vacante" element={<FormPostJob />} />
-          <Route path=":t200_id_vacant" element={<CardDetailsVacantRecruiter />} />
+          <Route path=":t200_id_vacant" element={<CardDetailsVacantRecruiter height="80%" />} />
         </Route>
         {/* <Route path="/postulaciones" element={} /> */}
       </Route>

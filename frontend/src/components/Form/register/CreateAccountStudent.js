@@ -49,6 +49,7 @@ const CreateAccount = () => {
   return (
     <LayoutHome>
       <WrapperForm>
+        <h2 style={{fontFamily: 'sans-serif', fontSize: '1.5rem', textAlign: 'center', marginBottom: '2rem', color: '#2B3647', fontWeight: '600'}}>Crear cuenta como candidato</h2>
         <Form onSubmit={handleSubmitStudent}>
           <BoxInput>
             <Input
@@ -94,9 +95,9 @@ const CreateAccount = () => {
         </Form>
         <Register>
           <span>
-            ¿Ya tines cuenta 👀?
+            ¿Ya tines una cuenta?
           </span>
-          <LinkButton text="Inicia sesion." to="/alumno" />
+          <LinkButton text="Inicia sesion aqui" to="/alumno" />
         </Register>
       </WrapperForm>
       <Toaster position="top-right" />

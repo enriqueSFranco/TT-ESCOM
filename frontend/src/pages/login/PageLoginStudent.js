@@ -1,16 +1,20 @@
 import LoginStudent from "components/Form/login/LoginStudent";
-
-const Container = {
-  fontFamily: "sans-serif",
-  width: "100%",
-  backgroundImage: "linear-gradient(to top, #00c6fb 0%, #005bea 100%)",
-};
+import fondo from 'assets/images/login-candidate-background.png'
+import { Wrapper, ContainerForm, ContainerBackground } from "pages/styled-components/CreateAccountCandidateStyled";
 
 const PageLoginStudent = () => {
   return (
-    <section style={Container}>
-      <LoginStudent />
-    </section>
+    <Wrapper>
+      <ContainerBackground bg='linear-gradient(to right, #fa709a 0%, #fee140 100%);'>
+        <img src={fondo} alt="login-candidato-fondo" style={{
+          width: '70%',
+          borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70% '
+        }} />
+      </ContainerBackground>
+      <ContainerForm>
+        <LoginStudent />
+      </ContainerForm>
+    </Wrapper>
   );
 };
 
