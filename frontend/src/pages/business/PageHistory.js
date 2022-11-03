@@ -87,73 +87,7 @@ const PageHistory = () => {
   // let newObject = { ...form, t200_description: body };
 
 
-  // efecto para obtener la lista de vacantes de un reclutador
-  // useEffect(() => {
-  //   getJobsForRecruiter(id)
-  //     .then((response) => {
-  //       // console.log(response.data);
-  //       setListJobs(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }, [id]);
-
-  // useEffect(() => {
-  //   if (t200_id_vacant !== undefined) {
-  //     vacantApplicationsData.hired = 0;
-  //     vacantApplicationsData.inProcess = 0;
-  //     vacantApplicationsData.rejected = 0;
-  //     vacantApplicationsData.unseen = 0;
-  //     getApplicationsJobs(t200_id_vacant)
-  //       .then((response) => {
-  //         //console.log(response);
-  //         setTotalApplications(response.length);
-  //       })
-  //       .catch((error) => console.log(error));
-  //   }
-  // }, [t200_id_vacant]);
-
-  // efecto para obtener los detalles de las aplicaciones de una vacante en especifico
-  // useEffect(() => {
-  //   if (t200_id_vacant !== undefined) {
-  //     getVacantInfo(t200_id_vacant)
-  //       .then((response) => {
-  //         //console.log(response);
-  //         response.map((data) => {
-  //           //console.log(data?.id_state);
-  //           switch (data?.id_state) {
-  //             case 1:
-  //               vacantApplicationsData.unseen = data?.total;
-  //               break;
-  //             case 2:
-  //               vacantApplicationsData.inProcess = data?.total;
-  //               break;
-  //             case 3:
-  //               vacantApplicationsData.rejected = data?.total;
-  //               break;
-  //             case 4:
-  //               vacantApplicationsData.hired = data?.total;
-  //               break;
-  //             case 5:
-  //               vacantApplicationsData.rejected = data?.total;
-  //               break;
-  //             case 6:
-  //               vacantApplicationsData.rejected = data?.total;
-  //               break;
-  //             default:
-  //               break;
-  //           }
-  //         });
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   }
-  // }, [t200_id_vacant]);
-
   // const handleInitialContent = () => setInitialContent(false);
-
 
   // const handleBlur = (e) => {
   //   e.target.classList.remove(styles.inputSearchFocus);

@@ -60,6 +60,11 @@ const WrapperActions = styled.div`
     background-color: #7FBB42;
   }
 
+  .disabled {
+    background-color: #eee;
+    color: #222;
+  }
+
   .reject {
     background-color: red;
   }

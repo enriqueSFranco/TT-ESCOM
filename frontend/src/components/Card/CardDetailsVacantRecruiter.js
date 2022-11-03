@@ -2,11 +2,12 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
 import { useFetch } from "hooks";
+import { USERS } from "types";
 import Loader from "components/Loader/Loader";
 import Chip from "components/Chip/Chip";
-import { HiOutlineLocationMarker } from 'react-icons/hi'
-import { FcCalendar } from 'react-icons/fc'
-import { FaBrain } from 'react-icons/fa'
+import { HiOutlineLocationMarker } from "react-icons/hi";
+import { FcCalendar } from "react-icons/fc";
+import { FaBrain } from "react-icons/fa";
 import {
   WrapperLoader,
   WraperCard,
@@ -16,25 +17,22 @@ import {
   ContentDescription,
   HeaderInfo,
   ListItems,
-  Title
+  Title,
 } from "./styled-components/CardDetailsVacantRecruiterStyled";
+import Comment from "components/Comment/Comment";
 
 const CardDetailsVacantRecruiter = ({ height }) => {
   const { t200_id_vacant } = useParams();
-  const { token } = useAuth()
+  const { token } = useAuth();
   const { data, error, loading } = useFetch(
     `${process.env.REACT_APP_URL_VACANTS}${t200_id_vacant}/`
   );
 
-  const handlePublish = () => {}
+  const handlePublish = () => {};
 
-  const handleComment = () => {}
-  
-  if (!data) return null;
+  const handleComment = () => {};
 
-  console.log(token)
-
-  // token.user.user_type
+  if (!data || !token) return null;
 
   return (
     <>
@@ -49,36 +47,95 @@ const CardDetailsVacantRecruiter = ({ height }) => {
             <HeaderInfo>
               <ListItems>
                 <li>
-                  <Chip label={`Modalidad: ${data[0]?.c214_id_modality?.c214_description}`} bg="var(--bg-color_3)" color="var(--color_3)" icon={<HiOutlineLocationMarker style={{fontSize: '1.2rem'}} />} />
+                  <Chip
+                    label={`Modalidad: ${data[0]?.c214_id_modality?.c214_description}`}
+                    bg="var(--bg-color_3)"
+                    color="var(--color_3)"
+                    icon={
+                      <HiOutlineLocationMarker style={{ fontSize: "1.2rem" }} />
+                    }
+                  />
                 </li>
                 <li>
-                  <Chip label={`Experiencia: ${data[0]?.c207_id_experience?.c207_description}`} bg="var(--bg-color_1)" color="var(--color_1)" icon={<FaBrain style={{fontSize: '1.2rem'}} />} />
+                  <Chip
+                    label={`Experiencia: ${data[0]?.c207_id_experience?.c207_description}`}
+                    bg="var(--bg-color_1)"
+                    color="var(--color_1)"
+                    icon={<FaBrain style={{ fontSize: "1.2rem" }} />}
+                  />
                 </li>
                 <li>
-                  <Chip label={`Fecha de cierre: ${data[0]?.t200_close_date}`} bg="#F78181" color="#DF0101" icon={<FcCalendar style={{fontSize: '1.2rem'}} />} />
+                  <Chip
+                    label={`Fecha de cierre: ${data[0]?.t200_close_date}`}
+                    bg="#F78181"
+                    color="#DF0101"
+                    icon={<FcCalendar style={{ fontSize: "1.2rem" }} />}
+                  />
                 </li>
               </ListItems>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '.5rem', marginBottom: '1rem'}}>
-                <span style={{fontWeight: '700'}}>{`Perfil del candidato: ${data[0]?.c206_id_profile?.c206_description}`}</span>
-                <span style={{fontWeight: '700'}}>{`Contratacion: ${data[0]?.c208_id_contract?.c208_description}`}</span>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: ".5rem",
+                  marginBottom: "1rem",
+                }}
+              >
+                <span
+                  style={{ fontWeight: "700" }}
+                >{`Perfil del candidato: ${data[0]?.c206_id_profile?.c206_description}`}</span>
+                <span
+                  style={{ fontWeight: "700" }}
+                >{`Contratacion: ${data[0]?.c208_id_contract?.c208_description}`}</span>
               </div>
             </HeaderInfo>
             <Description height={height}>
               <ContentDescription>
                 {data[0]?.t200_description}
               </ContentDescription>
-              <WrapperActions>
-                <button className="button_admin publish" onClick={handlePublish}>Publicar vacante</button>
-                <button className="button_admin reject" onClick={handleComment}>Agregar observacion</button>
-              </WrapperActions>
+              {token.user.user_type === USERS.recruiter ? (
+                <WrapperActions>
+                  <button
+                    className={`button_admin ${data[0]?.c204_id_vacant_status?.c204_id_status === 1 ? 'disabled' : 'publish'}`}
+                    onClick={handlePublish}
+                    disabled={data[0]?.c204_id_vacant_status?.c204_id_status === 1 ? true : false}
+                  >
+                    Enviar a revision
+                  </button>
+                  {/* <button className="button_admin reject" onClick={handleComment}>Agregar observacion</button> */}
+                </WrapperActions>
+              ) : (
+                <WrapperActions>
+                  <button
+                    className="button_admin publish"
+                    onClick={handlePublish}
+                  >
+                    Publicar vacante
+                  </button>
+                  <button
+                    className="button_admin reject"
+                    onClick={handleComment}
+                  >
+                    Agregar observacion
+                  </button>
+                </WrapperActions>
+              )}
             </Description>
           </WraperCard>
-          {
-            // token.user.user_type === 
-          }
-          <WrapperComment>
-            <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
-          </WrapperComment>
+          {token.user.user_type === USERS.recruiter ? (
+            <WrapperComment>
+              <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
+              <ul>
+                <li>
+                  <Comment />
+                </li>
+              </ul>
+            </WrapperComment>
+          ) : (
+            <WrapperComment>
+              <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
+            </WrapperComment>
+          )}
         </>
       )}
     </>

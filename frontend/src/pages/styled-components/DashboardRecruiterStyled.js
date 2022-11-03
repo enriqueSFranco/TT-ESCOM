@@ -7,7 +7,6 @@ const WrapperListCardJobPreviewRecruiter = styled.div`
   flex-direction: column;
   gap: 1rem;
   overflow-y: auto;
-  /* background-color: green; */
   `
 
 const Aside = styled.aside`
@@ -18,14 +17,12 @@ const Aside = styled.aside`
   padding-top: 1rem;
   background-color: #fff;
   height: ${props => props.height || '100%'};
-  background-color: red;
 `
 
 const Container = styled.main`
   grid-area: container;
   width: 100%;
   background-color: #fff;
-  background-color: yellow;
   height: ${props => props.height || '100%'};
   `
 
