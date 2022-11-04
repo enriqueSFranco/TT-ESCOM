@@ -1,31 +1,57 @@
 import React from 'react'
-import { useGetAllJobs } from 'hooks'
+import { Link, Outlet, useParams } from 'react-router-dom'
+import { useFetch } from 'hooks'
 import CardJobPreviewRecruiter from 'components/Card/CardJobPreviewRecruiter'
+import FormSearchJob from 'components/Search/FormSearchJob'
 import LayoutAdmin from 'Layout/LayoutAdmin'
+import LayoutDashboard from 'Layout/LayoutDashboard'
+import LayoutWidgetRecruiter from 'Layout/LayoutWidgetRecruiter'
 import { Content } from '../styled-components/ListVacantsAdmin'
+import { FaUsers } from 'react-icons/fa'
+import {
+  Aside,
+  Container,
+  Grid,
+  WrapperListCardJobPreviewRecruiter,
+  WrapperWidgets,
+  ContentWidget,
+  ContentWidgetCommon,
+  TextNumber
+} from "../styled-components/DashboardRecruiterStyled";
+
+const { REACT_APP_URL_MANAGER_VALIDATE_VACANT } = process.env
 
 const ListVacantsAdmin = () => {
-  const { response, loading, loadingNextPage } = useGetAllJobs()
+  const { t200_id_vacant } = useParams()
+  const { data, error, loading } = useFetch(REACT_APP_URL_MANAGER_VALIDATE_VACANT)
+  const { data: dataVacantInfo, error: errorVacantInfo, loading: loadingVacantInfo } = useFetch(`${process.env.REACT_APP_URL_VACANT_VACANT_INFO}${t200_id_vacant || 1}/`)
 
-  if (!response) return null
 
-  console.log(response)
+  if (!data) return null
 
   return (
     <LayoutAdmin>
-      <div style={{ width: "100%", textAlign: "center" }}>
-        <h2>Vacantes</h2>
-      </div>
-      {/* TODO: Hacer la grid */}
       <Content>
-        {
-          loading && <h1>cargando....</h1>
-        }
-        {
-          response.map(el => (
-            <CardJobPreviewRecruiter info={el}/>
-          ))
-        }
+        <LayoutDashboard>
+        <Aside>
+          <div style={{
+            height: '87vh',
+            overflowY: 'auto',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '.5rem'
+          }}>
+            {data?.map((el) => (
+              <CardJobPreviewRecruiter key={`card_job_${crypto.randomUUID()}`} url='lista-de-vacantes' info={el} />
+            ))}
+          </div>
+        </Aside>
+        <Container>
+          <Grid>
+            <Outlet />
+          </Grid>
+        </Container>
+      </LayoutDashboard>
       </Content>
     </LayoutAdmin>
   )

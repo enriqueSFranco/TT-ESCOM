@@ -7,6 +7,7 @@ import { IoMdBriefcase } from "react-icons/io";
 import { HiOutlineHome } from "react-icons/hi";
 import { BsMegaphone } from "react-icons/bs"
 import { FaBell } from 'react-icons/fa'
+import logo from 'assets/icons/briefcase.png'
 import {
   Logo,
   NavLeft,
@@ -62,7 +63,9 @@ const MenuCandidate = () => {
     <>
       <NavLeft>
         <NavLink to="/">
-          <IoMdBriefcase style={{ fontSize: "1.5rem" }} />
+          <picture>
+            <img src={logo} alt="logo-bte" />
+          </picture>
           <Logo>ESCOM</Logo>
         </NavLink>
       </NavLeft>

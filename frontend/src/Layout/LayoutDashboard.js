@@ -1,9 +1,9 @@
 import React from "react";
 import { Wrapper } from "./styled-components/LayoutDashboardStyled";
 
-const LayoutDashboard = ({ children }) => {
+const LayoutDashboard = ({ children, top }) => {
   return (
-    <Wrapper>
+    <Wrapper top={top}>
       {children}
     </Wrapper>
   );

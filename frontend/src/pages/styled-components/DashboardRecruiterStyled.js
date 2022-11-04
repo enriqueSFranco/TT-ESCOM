@@ -7,7 +7,7 @@ const WrapperListCardJobPreviewRecruiter = styled.div`
   flex-direction: column;
   gap: 1rem;
   overflow-y: auto;
-`
+  `
 
 const Aside = styled.aside`
   grid-area: aside;
@@ -15,14 +15,22 @@ const Aside = styled.aside`
   flex-direction: column;
   align-items: center;
   padding-top: 1rem;
-  background-color: #FFF;
+  background-color: #fff;
+  height: ${props => props.height || '100%'};
 `
 
 const Container = styled.main`
   grid-area: container;
   width: 100%;
   background-color: #fff;
-  border-left: 1px solid #ccc;
+  height: ${props => props.height || '100%'};
+  `
+
+const Grid = styled.div`
+  padding: 0 .5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 `
 
 const WrapperWidgets = styled.section`
@@ -53,4 +61,4 @@ const ContentWidget = styled.div`
 `
 
 
-export {Aside, ContentWidget, TextNumber, ContentWidgetCommon, Container, WrapperListCardJobPreviewRecruiter, WrapperWidgets }
+export {Aside, ContentWidget, TextNumber, Grid, ContentWidgetCommon, Container, WrapperListCardJobPreviewRecruiter, WrapperWidgets }

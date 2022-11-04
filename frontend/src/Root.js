@@ -51,7 +51,7 @@ const Root = () => {
         <Route path="/publicar-comunicado" element={<PagePostRelease />} />
         <Route path="dashboard" element={<PageHistory />}>
           <Route path="crear-vacante" element={<FormPostJob />} />
-          <Route path=":t200_id_vacant" element={<CardDetailsVacantRecruiter />} />
+          <Route path=":t200_id_vacant" element={<CardDetailsVacantRecruiter height="80%" />} />
         </Route>
         {/* <Route path="/postulaciones" element={} /> */}
       </Route>
@@ -62,7 +62,9 @@ const Root = () => {
       <Route path="/empresas-registradas" element={<RegisteredCompanies />} />
       <Route path="detalles-de-emperesa/:t300_id_company" element={<DetailsCompany />} />
       <Route path="/lista-de-colaboradores" element={<ListCollaborators />} />
-      <Route path="/lista-de-vacantes" element={<ListVacantsAdmin />} />
+      <Route path="/lista-de-vacantes" element={<ListVacantsAdmin />}>
+        <Route path=":t200_id_vacant" element={<CardDetailsVacantRecruiter height="85%" />} />
+      </Route>
 
 
       <Route path="/alumno" element={<PageLoginStudent />} />

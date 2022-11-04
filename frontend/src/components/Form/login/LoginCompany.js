@@ -23,6 +23,7 @@ const LoginCompany = () => {
   return (
     <LayoutHome>
       <WrapperForm>
+        <h2 style={{fontFamily: 'sans-serif', fontSize: '1.5rem', textAlign: 'center', marginBottom: '2rem', color: '#2B3647', fontWeight: '600'}}>Iniciar sesion como reclutador</h2>
         <Form onSubmit={loginRecruiter}>
           <Input
             label="Correo electronico"
@@ -50,7 +51,7 @@ const LoginCompany = () => {
           </Button>
         </Form>
         <Register>
-          <span>¿Aun no te has unido con nosotros 👀 ?</span>
+          <span>¿Aun no te has unido con nosotros?</span>
           <LinkButton
             text="Registrate a qui."
             to="/registro-reclutador"

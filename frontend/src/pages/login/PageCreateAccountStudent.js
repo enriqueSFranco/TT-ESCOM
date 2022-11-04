@@ -1,18 +1,18 @@
 import CreateAccountStudent from "components/Form/register/CreateAccountStudent";
-
-const Container = {
-  fontFamily: "sans-serif",
-  width: "100%",
-  height: "100vh",
-  backgroundImage: 'linear-gradient(to top, #00c6fb 0%, #005bea 100%)'
-};
+import Background from 'assets/images/job-portal-development.png'
+import { Wrapper, ContainerForm, ContainerBackground } from '../styled-components/CreateAccountCandidateStyled'
 
 const PageCreateAccountStudent = () => {
   return (
     <>
-      <section style={Container}>
-        <CreateAccountStudent />
-      </section>
+      <Wrapper>
+        <ContainerBackground bg='linear-gradient(to right, #00dbde 0%, #fc00ff 100%)'>
+          <img src={Background} alt='crear-cuenta-candidato-bg' />
+        </ContainerBackground>
+        <ContainerForm>
+          <CreateAccountStudent />
+        </ContainerForm>
+      </Wrapper>
     </>
   );
 };

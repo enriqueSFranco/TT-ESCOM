@@ -1,16 +1,19 @@
 import LoginStudent from "components/Form/login/LoginStudent";
-
-const Container = {
-  fontFamily: "sans-serif",
-  width: "100%",
-  backgroundImage: "linear-gradient(to top, #00c6fb 0%, #005bea 100%)",
-};
+import fondo from 'assets/images/businessman-with-demanding-job-5652961-4708242.png'
+import { Wrapper, ContainerForm, ContainerBackground } from "pages/styled-components/CreateAccountCandidateStyled";
 
 const PageLoginStudent = () => {
   return (
-    <section style={Container}>
-      <LoginStudent />
-    </section>
+    <Wrapper>
+      <ContainerBackground bg='linear-gradient(to right, #f83600 0%, #f9d423 100%);'>
+        <img src={fondo} alt="login-candidato-fondo" style={{
+          filter: 'drop-shadow(0 0 0.75rem #fff)'
+        }} />
+      </ContainerBackground>
+      <ContainerForm>
+        <LoginStudent />
+      </ContainerForm>
+    </Wrapper>
   );
 };
 

@@ -120,9 +120,24 @@
   bottom: 1rem;
 }
 
-.companyInfo { text-align: left; }
+.companyInfo { 
+  height: fit-content;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 4rem;
+  outline: 2px solid red;
+}
 
-.personalContact { height: fit-content;}
+.personalContact { 
+  height: fit-content;
+  outline: 2px solid red;
+  position: relative;
+  top: 4rem;
+}
 
 .yohaveAccount {
   /* background-color: red; */
@@ -211,11 +226,12 @@
 }
 
 .wrapperColumn {
-  /* background-color: red; */
   padding-bottom: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  top: 4rem;
 }
 
 .autocomplete {
@@ -334,10 +350,7 @@
 
 
 .wrapperButtons {
-  /* outline: 1px solid red; */
-  width: 500px;
-  position: relative;
-  top: 1rem;
+  width: 100%;
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -353,17 +366,15 @@
   padding: .5rem;
   width: 150px;
   border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  gap: .3rem;
+  align-items: center;
 }
 
-.btnBack {
+.btnBack, .btnNext {
   transition: background-color .3s ease-in;
 
-}
-
-.btnNext {
-  position: relative;
-  top: 1rem;
-  transition: background-color .3s ease-in;
 }
 
 .btnNext:hover,

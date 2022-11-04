@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { uploadDocumentValidate } from "services"
+import React from "react";
+import { uploadDocumentValidate } from "services";
 import Input from "components/Input/Input";
 import * as BsIcon from "react-icons/bs";
 import * as MdIcon from "react-icons/md";
@@ -15,36 +15,34 @@ const FormCompanyInfo = ({
   handleIsActive,
 }) => {
 
-  // const [_, setFile] = useState()
-
   function convertToBase64(file) {
     return new Promise((resolve, reject) => {
-      const fr = new FileReader()
-      fr.readAsDataURL(file)
-  
+      const fr = new FileReader();
+      fr.readAsDataURL(file);
+
       fr.onload = () => {
-        resolve(fr.result)
-      }
+        resolve(fr.result);
+      };
       fr.onerror = (error) => {
-        reject(error)
-      }
-    })
+        reject(error);
+      };
+    });
   }
-  
+
   async function uploadFile(e) {
-    const file = e.target.files[0]
-    const base64 = await convertToBase64(file)
-    uploadDocumentValidate({t300_validator_document: base64})
-      .then(response => console.log(response))
-      .catch(error => console.error(error))
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    uploadDocumentValidate({ t300_validator_document: base64 })
+      .then((response) => console.log(response))
+      .catch((error) => console.error(error));
   }
 
   function handleUpload(e) {
-    uploadFile(e)
+    uploadFile(e);
     // .then(response => console.log(response))
     // .catch(error => error)
   }
-  
+
   const continueStep = (e) => {
     e.preventDefault();
     nextStep();
@@ -53,17 +51,24 @@ const FormCompanyInfo = ({
   return (
     <div className={styles.companyInfo}>
       <div className={`${styles.welcome}`}>
-        <h2>
+        <h2
+          style={{
+            fontFamily: "sans-serif",
+            fontSize: "1.5rem",
+            marginBottom: ".5rem",
+            color: "#2B3647",
+            fontWeight: "600",
+          }}
+        >
           Datos de la empresa <BsIcon.BsQuestionCircle />
         </h2>
         {!isActive && (
-          <a
-            onClick={handleIsActive}
-            className={styles.youHaveAccountComany}
-            href="#/"
-          >
-            ¿Tu empresa ya esta registrada con nosotros ?
-          </a>
+          <span>
+            Verifica si tu empresa ya esta registrada{" "}
+            <a onClick={handleIsActive} href="#/">
+              aqui
+            </a>
+          </span>
         )}
       </div>
       <div className={styles.inputGroup}>
@@ -71,7 +76,7 @@ const FormCompanyInfo = ({
           label="Nombre de su empresa"
           id="t300_name"
           name="t300_name"
-          width='500px'
+          width="500px"
           value={form.t300_name}
           onBlur={handleValidate}
           onKeyUp={handleValidate}
@@ -89,7 +94,7 @@ const FormCompanyInfo = ({
           label="RFC"
           id="t300_rfc"
           name="t300_rfc"
-          width='500px'
+          width="500px"
           value={form.t300_rfc}
           onBlur={handleValidate}
           onKeyUp={handleValidate}
@@ -107,7 +112,7 @@ const FormCompanyInfo = ({
           label="Razon Social"
           id="t300_bussiness_name"
           name="t300_bussiness_name"
-          width='500px'
+          width="500px"
           value={form.t300_bussiness_name}
           onBlur={handleValidate}
           onKeyUp={handleValidate}

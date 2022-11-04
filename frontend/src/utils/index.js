@@ -7,3 +7,5 @@ export * from './helpHttp';
 export * from './numberFormat';
 export * from './openModal';
 export * from './uuid';
+export * from './generateCSSClass';
+export * from './removeAccents';

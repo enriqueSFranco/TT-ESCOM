@@ -1,7 +1,7 @@
 import React from "react";
 import { useViewport } from "hooks/useViewport";
 import LinkButton from "components/Button/LinkButton";
-import { MdOutlineBusinessCenter } from "react-icons/md";
+import logo from 'assets/icons/briefcase.png'
 import { IoBusinessOutline } from "react-icons/io5";
 import { BsMegaphone } from "react-icons/bs";
 import { HiOutlineHome } from "react-icons/hi";
@@ -50,7 +50,9 @@ const MainMenu = () => {
     <>
       <NavLeft>
         <NavLink to="/">
-          <MdOutlineBusinessCenter style={{ fontSize: "1.8rem" }} />
+        <picture>
+            <img src={logo} alt="logo-bte" />
+          </picture>
           <Logo>ESCOM</Logo>
         </NavLink>
       </NavLeft>
