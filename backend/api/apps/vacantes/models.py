@@ -121,6 +121,7 @@ class Locality(models.Model):
 		return str(self.c222_cp)+":"+self.c222_state+","+self.c222_municipality+","+self.c222_locality
 
 
+
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
 #T200 Vacants
 class Vacant(models.Model):
@@ -390,4 +391,41 @@ class Report(models.Model):
 
     def __str__(self) -> str:
         return self.t203_id_report    
+
+
+#T223 Observaciones/Comentarios
+class Comment(models.Model):
+    t223_id_comment = models.AutoField(primary_key=True)
+    t200_id_vacant = models.ForeignKey(
+		Vacant,
+		null=False,
+		blank=False,
+        default=1,
+		related_name='Vacantrelative',
+		on_delete=models.CASCADE)
+    t400_id_admin = models.ForeignKey(
+        Admin,
+        null=True,
+        blank=True,
+        related_name='WatcherAdmin',
+        on_delete=models.CASCADE
+    ) 
+    t301_id_recruiter = models.ForeignKey(
+        Recruiter,
+        null=True,
+        blank=True,
+        related_name='RecruiterComment',
+        on_delete=models.CASCADE
+    )
+    t223_comment = models.CharField(null=False,blank=False,max_length=250)
+    t223_sent_date = models.DateField(null=True)
+    
+
+    class Meta:
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comments'
+        db_table = 't223_comentario'
+
+    def __str__(self) -> str:
+        return self.t223_id_comment    
 
