@@ -11,12 +11,7 @@ const Wrapper = styled.section`
 
 const ContainerForm = styled.article`
   grid-area: formulario;
-  height: calc(100vh - 4rem);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  /* position: relative;
-  top: 4rem; */
+  /* background-color: red; */
 `
 
 const ContainerBackground = styled.article`
@@ -25,8 +20,24 @@ const ContainerBackground = styled.article`
   align-items: center;
   justify-content: center;
   background-image: ${props => props.bg || 'linear-gradient(to top, #4481eb 0%, #04befe 100%)'};
-  /* position: relative;
-  top: 4rem; */
 `
 
-export { Wrapper, ContainerForm, ContainerBackground }
+const Overelay = styled.div`
+  position: relative;
+  width: 600px;
+  height: 700px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    border-radius: 4px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255,255,255,0.5);
+    backdrop-filter: blur(10px);
+  }
+`
+
+export { Wrapper, ContainerForm, ContainerBackground, Overelay }

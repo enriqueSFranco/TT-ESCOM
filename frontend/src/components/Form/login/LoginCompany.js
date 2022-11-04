@@ -51,7 +51,7 @@ const LoginCompany = () => {
           </Button>
         </Form>
         <Register>
-          <span>¿Aun no te has unido con nosotros 👀 ?</span>
+          <span>¿Aun no te has unido con nosotros?</span>
           <LinkButton
             text="Registrate a qui."
             to="/registro-reclutador"

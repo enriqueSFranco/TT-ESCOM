@@ -4,6 +4,7 @@ import LinkButton from "components/Button/LinkButton";
 import { HiOutlineLogout, HiUserGroup } from 'react-icons/hi'
 import { BsFillMegaphoneFill } from 'react-icons/bs'
 import { MdDashboard } from 'react-icons/md'
+import logo from 'assets/icons/briefcase.png'
 import {
   Logo,
   NavLeft,
@@ -19,6 +20,9 @@ const MenuRecruiter = () => {
     <>
       <NavLeft>
         <NavLink to="/">
+        <picture>
+            <img src={logo} alt="logo-bte" />
+          </picture>
           <Logo>ESCOM</Logo>
         </NavLink>
       </NavLeft>
