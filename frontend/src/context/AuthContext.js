@@ -9,11 +9,13 @@ const AuthContext = createContext({
   token: null,
   loginRecruiter: (e) => {},
   loginCandidate: (e) => {},
+  loginAdmin: (e) => {},
   logout: () => {},
 });
 
 // Provider
 export const AuthProvider = ({ children }) => {
+  let navigate = useNavigate();
   const [user, setUser] = useState(() =>
     window.sessionStorage.getItem("token")
       ? jwt_decode(window.sessionStorage.getItem("token"))
@@ -25,7 +27,26 @@ export const AuthProvider = ({ children }) => {
       : null
   );
 
-  let navigate = useNavigate();
+  const loginAdmin = async (e) => {
+    e.preventDefault();
+    loginService({
+      "username": e.target.t400_email.value.trim(),
+      "password": e.target.password.value.trim(),
+    })
+      .then((response) => {
+        if (response.status === 200 || response.status === 201) {
+          setUser(jwt_decode(response?.data?.access));
+          setToken(response?.data);
+          window.sessionStorage.setItem("token", JSON.stringify(response?.data));
+          navigate("dashboard");
+        } else {
+          window.sessionStorage.removeItem('token', JSON.stringify(response?.data))
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+  }
 
   const loginRecruiter = async (e) => {
     e.preventDefault();
@@ -44,7 +65,7 @@ export const AuthProvider = ({ children }) => {
         }
       })
       .catch((error) => {
-        return error;
+        console.log(error)
       });
   };
 
@@ -76,7 +97,7 @@ export const AuthProvider = ({ children }) => {
           window.sessionStorage.removeItem('token', JSON.stringify(response?.data))
         }
       })
-      .catch((error) => error)
+      .catch((error) => console.log(error))
   };
 
   const logout = () => {
@@ -95,8 +116,9 @@ export const AuthProvider = ({ children }) => {
     user,
     token,
     loginCandidate,
+    loginRecruiter,
+    loginAdmin,
     logout,
-    loginRecruiter
   };
 
   return (

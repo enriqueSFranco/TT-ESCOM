@@ -1,6 +1,5 @@
 import React from "react";
-import { usePassword } from "hooks/usePassword";
-import { useForm } from "hooks/useForm";
+import { usePassword, useForm } from "hooks";
 import LayoutHome from "Layout/LayoutHome";
 import { initialFormLoginCompany } from "types/loginUsers";
 import LinkButton from "components/Button/LinkButton";

@@ -4,7 +4,7 @@ import LayoutHome from "Layout/LayoutHome";
 import ListCandidates from "components/Card/CardStudent/ListCandidates";
 import styles from "./PageApplications.module.css";
 
-function PageApplications() {
+function AllCandidates() {
 
   return (
     <LayoutHome>
@@ -19,4 +19,4 @@ function PageApplications() {
   );
 }
 
-export default PageApplications;
+export default AllCandidates;

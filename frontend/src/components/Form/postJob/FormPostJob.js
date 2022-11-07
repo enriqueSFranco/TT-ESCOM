@@ -4,6 +4,7 @@ import { useAuth } from "context/AuthContext";
 import { useForm } from "hooks/useForm";
 import { postJob } from "services/jobs/index";
 import { POST_NEW_JOB } from "types/newJob";
+import LayoutHome from "Layout/LayoutHome";
 import {
   getLocality,
   getAllCatalogueExperience,
@@ -19,6 +20,7 @@ import {
   GroupInput,
   Select,
   WrapperSelect,
+  ContainerForm,
 } from "./styled-componets/FormPostJobStyled";
 
 const validateForm = (form) => {
@@ -116,131 +118,142 @@ const FormPostJob = () => {
   if (!expList) return null;
 
   return (
-    <Form onSubmit={onSubmitPostJob}>
-      <GroupInput>
-        <Input
-          label="Titulo de la vacante"
-          width="500px"
-          id="t200_job"
-          name="t200_job"
-          value={newObject.t200_job}
-          onChange={handleChange}
-        />
-        <Input
-          label="# de plazas"
-          // id="t200_job"
-          // name="t200_job"
-          // value={newObject.t200_job}
-          // onChange={handleChange}
-        />
-      </GroupInput>
-      <GroupInput>
-        <Input
-          label="Codigo postal"
-          id="t200_cp"
-          name="t200_cp"
-          value={cp ? parseInt(cp) : ""}
-          onChange={handleLocality}
-        />
-        <WrapperSelect>
-          <Select
-            name="place"
-            id="place"
-            value={place}
-            onChange={(e) => setPlace(e.target.value)}
-          >
-            <option value="" disabled>
-              Seleccione una localidad
-            </option>
-            {localities &&
-              localities?.map((township) => (
-                <option
-                  key={crypto.randomUUID()}
-                  value={township.c222_locality}
-                >
-                  {township.c222_locality}
+    <LayoutHome>
+      <ContainerForm>
+        <h2>Agregar nuva vacante</h2>
+        <Form onSubmit={onSubmitPostJob}>
+          <GroupInput>
+            <Input
+              label="Titulo de la vacante"
+              width="500px"
+              id="t200_job"
+              name="t200_job"
+              value={newObject.t200_job}
+              onChange={handleChange}
+            />
+            <Input
+              label="# de plazas"
+              // id="t200_job"
+              // name="t200_job"
+              // value={newObject.t200_job}
+              // onChange={handleChange}
+            />
+          </GroupInput>
+          <GroupInput>
+            <Input
+              label="Codigo postal"
+              id="t200_cp"
+              name="t200_cp"
+              value={cp ? parseInt(cp) : ""}
+              onChange={handleLocality}
+            />
+            <WrapperSelect>
+              <Select
+                name="place"
+                id="place"
+                value={place}
+                onChange={(e) => setPlace(e.target.value)}
+              >
+                <option value="" disabled>
+                  Seleccione una localidad
                 </option>
-              ))}
-          </Select>
-        </WrapperSelect>
-        <Input
-          label="Calle"
-          id="t200_street"
-          name="t200_street"
-          value={form.t200_street}
-          onChange={handleChange}
-        />
-      </GroupInput>
-      <GroupInput>
-        <WrapperSelect>
-          <Select
-            name="profileCandidate"
-            id="profileCandidate"
-            value={profileCandidate}
-            onChange={(e) => setProfileCandidate(e.target.value)}
-          >
-            <option value="" disabled>
-              Perfil del candidato
-            </option>
-            {profileCandidateList &&
-              profileCandidateList?.map((el) => (
-                <option key={crypto.randomUUID()} value={el.c206_description}>
-                  {el.c206_description}
+                {localities &&
+                  localities?.map((township) => (
+                    <option
+                      key={`localities-id-${crypto.randomUUID()}`}
+                      value={township.c222_locality}
+                    >
+                      {township.c222_locality}
+                    </option>
+                  ))}
+              </Select>
+            </WrapperSelect>
+            <Input
+              label="Calle"
+              id="t200_street"
+              name="t200_street"
+              value={form.t200_street}
+              onChange={handleChange}
+            />
+          </GroupInput>
+          
+          <GroupInput>
+            <WrapperSelect>
+              <Select
+                name="profileCandidate"
+                id="profileCandidate"
+                value={profileCandidate}
+                onChange={(e) => setProfileCandidate(e.target.value)}
+              >
+                <option value="" disabled>
+                  Perfil del candidato
                 </option>
-              ))}
-          </Select>
-        </WrapperSelect>
-        <WrapperSelect>
-          <Select
-            name="exp"
-            id="exp"
-            value={exp}
-            onChange={(e) => setExp(e.target.value)}
-          >
-            <option value="" disabled>
-              Nivel de Experiencia
-            </option>
-            {expList &&
-              expList?.map((el) => (
-                <option key={crypto.randomUUID()} value={el.c207_description}>
-                  {el.c207_description}
+                {profileCandidateList &&
+                  profileCandidateList?.map((el) => (
+                    <option key={`profile-candidate-${crypto.randomUUID()}`} value={el.c206_description}>
+                      {el.c206_description}
+                    </option>
+                  ))}
+              </Select>
+            </WrapperSelect>
+
+            <WrapperSelect>
+              <Select
+                name="exp"
+                id="exp"
+                value={exp}
+                onChange={(e) => setExp(e.target.value)}
+              >
+                <option value="" disabled>
+                  Nivel de Experiencia
                 </option>
-              ))}
-          </Select>
-        </WrapperSelect>
-        <WrapperSelect>
-          <Select
-            name="typeContract"
-            id="typeContract"
-            value={typeContract}
-            onChange={(e) => setTypeContract(e.target.value)}
-          >
-            <option value="" disabled>
-              Tipo de contratacion
-            </option>
-            {typeContractList &&
-              typeContractList?.map((el) => (
-                <option key={crypto.randomUUID()} value={el.c208_description}>
-                  {el.c208_description}
+                {expList &&
+                  expList?.map((el) => (
+                    <option key={`exp-${crypto.randomUUID()}`} value={el.c207_description}>
+                      {el.c207_description}
+                    </option>
+                  ))}
+              </Select>
+            </WrapperSelect>
+
+            <WrapperSelect>
+              <Select
+                name="typeContract"
+                id="typeContract"
+                value={typeContract}
+                onChange={(e) => setTypeContract(e.target.value)}
+              >
+                <option value="" disabled>
+                  Tipo de contratacion
                 </option>
-              ))}
-          </Select>
-        </WrapperSelect>
-      </GroupInput>
-      <GroupInput>
-        <Switch label='Fecha de cierre' name='visible' id='visible' value={visible} onChange={handleVisible} />
-        {visible && <input type="date" />}
-      </GroupInput>
-      <div>
-        <TextEditor
-          id="body"
-          name="body"
-          onChange={(newValue) => setBody(newValue)}
-          value={body}
-        />
-      </div>
-      <Button type="submit">Enviar a revision</Button>
-    </Form>
+                {typeContractList &&
+                  typeContractList?.map((el) => (
+                    <option key={`type-contract${crypto.randomUUID()}`} value={el.c208_description}>
+                      {el.c208_description}
+                    </option>
+                  ))}
+              </Select>
+            </WrapperSelect>
+          </GroupInput>
+          <GroupInput>
+            
+          </GroupInput>
+          {/* <GroupInput>
+            <Switch label='Fecha de cierre' name='visible' id='visible' value={visible} onChange={handleVisible} />
+            {visible && <input type="date" />}
+          </GroupInput> */}
+          {/* <div>
+            <TextEditor
+              id="body"
+              name="body"
+              onChange={(newValue) => setBody(newValue)}
+              value={body}
+            />
+          </div> */}
+          {/* <Button type="submit">Enviar a revision</Button> */}
+        </Form>
+      </ContainerForm>
+    </LayoutHome>
   );
 };
 

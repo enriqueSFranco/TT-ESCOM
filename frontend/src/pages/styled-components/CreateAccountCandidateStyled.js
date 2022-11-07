@@ -11,7 +11,13 @@ const Wrapper = styled.section`
 
 const ContainerForm = styled.article`
   grid-area: formulario;
-  /* background-color: red; */
+  border-left: 12px solid #222;
+`
+
+const TextH2 = styled.h2`
+  color: #fff;
+  font-family: 'Fredoka One', cursive;
+  text-transform: uppercase;
 `
 
 const ContainerBackground = styled.article`
@@ -35,9 +41,9 @@ const Overelay = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255,255,255,0.3);
     backdrop-filter: blur(10px);
   }
 `
 
-export { Wrapper, ContainerForm, ContainerBackground, Overelay }
+export { Wrapper, ContainerForm, ContainerBackground, Overelay, TextH2 }

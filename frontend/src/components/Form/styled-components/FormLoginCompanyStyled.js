@@ -29,7 +29,6 @@ const Form = styled.form`
 const BoxInput = styled.div`
   width: 400px;
   height: 90px;
-  /* outline: 2px solid blue; */
 `
 
 const Register = styled.div`
@@ -46,8 +45,9 @@ const WrapperForm = styled.div`
     width: 100%;
     right: 0;
   }
-
+  
   @media screen and ${device.laptop} {
+    /* outline: 2px solid blue; */
 
     background-color: #fff;
     width: 550px;
@@ -57,7 +57,6 @@ const WrapperForm = styled.div`
     border-radius: .3rem;
     padding: 2rem 1rem 1rem 1rem;
     /* box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; */
-    z-index: 99;
   }
 
 `

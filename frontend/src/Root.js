@@ -16,7 +16,7 @@ import PageHistory from "pages/business/PageHistory";
 import PageLanguages from 'pages/student/PageLanguages'
 import PageSuccesCompany from "pages/login/PageSuccesCompany";
 import PageValidateRecruiter from "pages/admin/PageValidateRecruiter";
-import PageApplications from "pages/business/PageApplications";
+import AllCandidates from "pages/business/AllCandidates";
 import PagePostRelease from "pages/business/PagePostRelease";
 import PageApplicationsStudent from "pages/student/PageApplicationsStudent";
 import ExperienceList from "components/Card/Experience/ExperienceList";
@@ -32,6 +32,9 @@ import DetailsCompany from "pages/admin/DetailsCompany";
 import ValidateCompany from "pages/admin/ValidateCompany"
 import ListVacantsAdmin from "pages/admin/ListVacantsAdmin";
 import CardDetailsVacantRecruiter from "components/Card/CardDetailsVacantRecruiter";
+import Postulates from "pages/business/Postulates";
+import LoginAdmin from "pages/login/LoginAdmin";
+import CreateAccountAdmin from "pages/login/CreateAccountAdmin";
 
 
 const Root = () => {
@@ -47,13 +50,13 @@ const Root = () => {
       <Route path="/perfil-del-candidato" element={<FullProfileUser />} />
 
       <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>
-        <Route path="/candidatos" element={<PageApplications />} />
+        <Route path="/candidatos" element={<AllCandidates />} />
         <Route path="/publicar-comunicado" element={<PagePostRelease />} />
         <Route path="dashboard" element={<PageHistory />}>
-          <Route path="crear-vacante" element={<FormPostJob />} />
           <Route path=":t200_id_vacant" element={<CardDetailsVacantRecruiter height="80%" />} />
         </Route>
-        {/* <Route path="/postulaciones" element={} /> */}
+          <Route path="/crear-vacante" element={<FormPostJob />} />
+        <Route path="/postulaciones" element={<Postulates />} />
       </Route>
 
       {/* RUTAS DEL ADMINISTRADOR */}
@@ -70,6 +73,8 @@ const Root = () => {
       <Route path="/alumno" element={<PageLoginStudent />} />
       <Route path="/registro-alumno" element={<PageCreateAccountStudent />} />
       <Route path="/reclutador" element={<PageLoginCompany />} />
+      <Route path="/registro-administrador" element={<CreateAccountAdmin />} />
+      <Route path="/administrador" element={<LoginAdmin />} />
       <Route path="/registro-reclutador" element={<PageRegisterCompany />} />
       <Route path="/pre-registro" element={<PageSuccesCompany />} />
 

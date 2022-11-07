@@ -139,8 +139,8 @@ const CardProfileStudent = () => {
                   candidate[0]?.t100_interest_job ??
                   "Puesto deseado no definido"
                 }
-                bg="#00416A"
-                color="#fff"
+                bg="#35eb93"
+                color="#000"
               />
             </div>
           </header>
