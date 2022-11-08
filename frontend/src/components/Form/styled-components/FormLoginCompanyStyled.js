@@ -27,7 +27,7 @@ const Form = styled.form`
   `
 
 const BoxInput = styled.div`
-  width: 400px;
+  width: 100%;
   height: 90px;
 `
 

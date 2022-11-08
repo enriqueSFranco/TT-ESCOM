@@ -1,10 +1,12 @@
 import React from 'react'
+import { WrapperTooltip, Title } from './TooltipStyled'
 
-const Tooltip = ({children}) => {
+const Tooltip = ({children, title}) => {
   return (
-    <span>
+    <WrapperTooltip>
       {children}
-    </span>
+      <Title>{title}</Title>
+    </WrapperTooltip>
   )
 }
 

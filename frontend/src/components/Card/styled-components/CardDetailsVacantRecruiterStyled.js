@@ -54,6 +54,9 @@ const WrapperActions = styled.div`
     border-radius: 2px;
     color: #fff;
     font-weight: 600;
+    display: flex;
+    gap: .3rem;
+    align-items: center;
   }
 
   .publish {

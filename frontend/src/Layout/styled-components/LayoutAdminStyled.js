@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
 const Content = styled.section`
-  
-  background-color: blue;
+
 `
 
 const NavList = styled.ul`

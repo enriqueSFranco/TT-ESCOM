@@ -5,8 +5,9 @@ import { USERS } from "types/users";
 import DropMenuStudent from "./DropMenuCandidate";
 import DropMenuRecruiter from "./DropMenuRecruiter";
 import CustomAvatar from "components/Avatar/Avatar";
-import { HiOutlineUserCircle, HiMenu } from 'react-icons/hi'
+import { HiOutlineUserCircle, HiMenu } from "react-icons/hi";
 import styles from "./Dropdown.module.css";
+import DropMenuManager from "./DropMenuManager";
 
 const DropMenu = ({ typeuser = "", picture = null, name = null }) => {
   const dropdownRef = useRef(null);
@@ -35,7 +36,11 @@ const DropMenu = ({ typeuser = "", picture = null, name = null }) => {
   if (typeuser === USERS.candidate) {
     return (
       <div className={styles.dropdown}>
-        <button className={styles.trigger} style={{backgroundColor: 'transparent'}} onClick={onClick}>
+        <button
+          className={styles.trigger}
+          style={{ backgroundColor: "transparent" }}
+          onClick={onClick}
+        >
           <CustomAvatar
             picture={picture}
             username={name}
@@ -55,9 +60,34 @@ const DropMenu = ({ typeuser = "", picture = null, name = null }) => {
     );
   }
 
+  if (typeuser === USERS.manager) {
+    return (
+      <div className={styles.dropdown}>
+        <button
+          className={styles.trigger}
+          style={{ backgroundColor: "transparent" }}
+          onClick={onClick}
+        >
+          <CustomAvatar username={name} />
+        </button>
+        <nav
+          ref={dropdownRef}
+          className={`${styles.menu} ${isActive ? `${styles.active}` : ""}`}
+        >
+          <ul className={styles.menuList}>
+            <DropMenuManager />
+          </ul>
+        </nav>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.dropdown}>
-      <button onClick={onClick} className={styles.trigger}><HiOutlineUserCircle style={{color: '#1C8EFB', fontSize: '1.4rem'}} /><HiMenu style={{color: '#1C8EFB', fontSize: '1.4rem'}} /></button>
+      <button onClick={onClick} className={styles.trigger}>
+        <HiOutlineUserCircle style={{ color: "#1C8EFB", fontSize: "1.4rem" }} />
+        <HiMenu style={{ color: "#1C8EFB", fontSize: "1.4rem" }} />
+      </button>
       <nav
         ref={dropdownRef}
         className={`${styles.menu} ${isActive ? `${styles.active}` : ""}`}

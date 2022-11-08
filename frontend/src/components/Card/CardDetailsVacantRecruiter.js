@@ -1,13 +1,16 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
-import { useFetch } from "hooks";
+import { useFetch, useModal, useGetObservationVacant } from "hooks";
 import { USERS } from "types";
+import ModalPortal from "components/Modal/ModalPortal";
 import Loader from "components/Loader/Loader";
 import Chip from "components/Chip/Chip";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { FcCalendar } from "react-icons/fc";
 import { FaBrain } from "react-icons/fa";
+import { BiLike } from 'react-icons/bi'
+import { IoMdAddCircle } from 'react-icons/io'
 import {
   WrapperLoader,
   WraperCard,
@@ -20,9 +23,14 @@ import {
   Title,
 } from "./styled-components/CardDetailsVacantRecruiterStyled";
 import Comment from "components/Comment/Comment";
+import Tooltip from "components/Tooltip/Tooltip";
+import Button from "components/Button/Button";
+import PostComment from "components/Modal/contentModals/PostComment";
 
 const CardDetailsVacantRecruiter = ({ height }) => {
+  const [isOpen, openModal, closeModal] = useModal(false)
   const { t200_id_vacant } = useParams();
+  const observation = useGetObservationVacant({vacantId: t200_id_vacant})
   const { token } = useAuth();
   const { data, error, loading } = useFetch(
     `${process.env.REACT_APP_URL_VACANTS}${t200_id_vacant}/`
@@ -30,9 +38,7 @@ const CardDetailsVacantRecruiter = ({ height }) => {
 
   const handlePublish = () => {};
 
-  const handleComment = () => {};
-
-  if (!data || !token) return null;
+  if (!data || !token || !observation) return null;
 
   return (
     <>
@@ -111,12 +117,7 @@ const CardDetailsVacantRecruiter = ({ height }) => {
                     onClick={handlePublish}
                   >
                     Publicar vacante
-                  </button>
-                  <button
-                    className="button_admin reject"
-                    onClick={handleComment}
-                  >
-                    Agregar observacion
+                    <BiLike style={{color: '#fff', fontSize: '1.3rem'}} />
                   </button>
                 </WrapperActions>
               )}
@@ -126,18 +127,41 @@ const CardDetailsVacantRecruiter = ({ height }) => {
             <WrapperComment>
               <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
               <ul>
-                <li>
-                  <Comment />
-                </li>
+                {
+                  observation?.map(el => (
+                    // console.log(el)
+                    <li key={`comment-id-${el?.t223_id_comment}`}>
+                      <Comment comment={el?.t223_comment} date={el?.t223_sent_date}  />
+                    </li>
+                  ))
+                }
               </ul>
             </WrapperComment>
           ) : (
+            // TODO: Pasar a un componente independiente
             <WrapperComment>
-              <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
+              <header>
+                <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
+                <nav
+                  style={{
+                    position: 'relative',
+                    display: 'flex',
+                    justifyContent: 'flex-end'
+                  }}
+                >
+                  <Tooltip title='Agregar una observacion'>
+                    <Button onClick={openModal} bgColor='transparent' icon={<IoMdAddCircle style={{fontSize: '1.7rem', color: '#1C8EFB'}} />} />
+                  </Tooltip>
+                </nav>
+              </header>
+
             </WrapperComment>
           )}
         </>
       )}
+      <ModalPortal isOpen={isOpen} closeModal={closeModal} minWidth="700px" minHeight="470px">
+        <PostComment />
+      </ModalPortal>
     </>
   );
 };
