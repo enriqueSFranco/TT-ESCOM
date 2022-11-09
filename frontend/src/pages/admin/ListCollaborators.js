@@ -1,7 +1,8 @@
 import React from "react";
 import { useModal, useFetch } from "hooks";
 import Button from "components/Button/Button"
-import LayoutAdmin from "Layout/LayoutAdmin";
+import Tooltip from "components/Tooltip/Tooltip";
+// import LayoutAdmin from "Layout/LayoutAdmin";
 import FormAddCollaborator from 'components/Form/FormAddCollaborator'
 import ModalPortal from "components/Modal/ModalPortal";
 import CardCollaborator from "components/Card/CardCollaborator";
@@ -15,15 +16,14 @@ const ListCollaborators = () => {
     useModal(false);
   const [isOpenModalAdd, openModalAdd, closeModalAdd] = useModal(false)
 
-  if (!data) return null
-
-  console.log(data)
+  // if (!data) return null
 
   return (
     <>
-      <LayoutAdmin>
         <HeaderTop>
-          <Button onClick={openModalAdd} text={<MdAddCircleOutline style={{fontSize: '2rem'}} />} bgColor="transparent" color="#000" />
+          <Tooltip title="Agregar un nuevo colaborador">
+            <Button onClick={openModalAdd} text={<MdAddCircleOutline style={{fontSize: '2rem'}} />} bgColor="transparent" color="#000" />
+          </Tooltip>
         </HeaderTop>
         <WrapperList>
           {
@@ -38,8 +38,6 @@ const ListCollaborators = () => {
             ))
           }
         </WrapperList>
-      </LayoutAdmin>
-
 
       <ModalPortal isOpen={isOpenModalEdit} closeModal={closeModalEdit}>
         <h2 style={{textAlign: 'center'}}>Editar colaborador</h2>

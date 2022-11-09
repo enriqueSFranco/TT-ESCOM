@@ -7,6 +7,7 @@ export function useRecruiterJobs({idRcruiter}) {
   const [error, setError] = useState(null)
 
   useEffect(() => {
+    const controller = new AbortController()
     setLoading(true)
     getJobsForRecruiter(`${idRcruiter}`)
       .then(response => {
@@ -15,6 +16,8 @@ export function useRecruiterJobs({idRcruiter}) {
       })
       .catch(error => setError(error))
       .finally(() => setLoading(false))
+
+    return () => controller.abort()
   }, [])
 
   return { data, error, loading }

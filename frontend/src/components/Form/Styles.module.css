@@ -129,12 +129,12 @@
   align-items: center;
   position: relative;
   top: 4rem;
-  outline: 2px solid red;
+  /* outline: 2px solid red; */
 }
 
 .personalContact { 
   height: fit-content;
-  outline: 2px solid red;
+  /* outline: 2px solid red; */
   position: relative;
   top: 4rem;
 }
@@ -232,12 +232,6 @@
   align-items: center;
   position: relative;
   top: 4rem;
-}
-
-.autocomplete {
-  position: relative;
-  right: 3.2rem;
-  margin-bottom: 1.5rem;
 }
 
 .wrapperLinkToLoginCompany {

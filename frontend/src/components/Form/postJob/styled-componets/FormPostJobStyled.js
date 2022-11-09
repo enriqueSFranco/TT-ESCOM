@@ -6,12 +6,19 @@ const Form = styled.form`
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  height: calc(100vh - 4rem);
+  height: fit-content;
   background-color: #fff;
+  `
+
+const ContainerForm = styled.div`
+  position: relative;
+  top: 6rem;
+  outline: 2px solid red;
+
 `
 
 const GroupInput = styled.div`
-  /* outline: 2px solid red; */
+  outline: 2px solid red;
   width: 800px;
   display: flex;
   gap: 1rem;
@@ -39,4 +46,4 @@ const WrapperSelect = styled.div`
   outline: 1px solid #ccc;
 `
 
-export { Button, Form, GroupInput, Select, WrapperSelect }
+export { Button, Form, GroupInput, Select, WrapperSelect, ContainerForm }

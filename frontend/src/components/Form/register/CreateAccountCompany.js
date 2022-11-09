@@ -92,11 +92,7 @@ const FormCompany = () => {
           <article className={styles.wrapperForm3}>
             <h2
               style={{
-                textTransform: "uppercase",
-                fontSize: "1.5rem",
-                fontWeight: "bold",
-                color: "#028dd4",
-                marginBottom: ".8rem",
+                fontFamily: 'sans-serif', fontSize: '1.5rem', textAlign: 'center', color: '#2B3647', fontWeight: '600', marginTop: '2rem'
               }}
             >
               Proporcionanos el nombre de la empresa.

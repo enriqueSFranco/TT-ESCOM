@@ -46,7 +46,6 @@ const validateForm = (form) => {
   return errors;
 };
 
-
 const FormBusinessRecruiter = ({ isActive, setIsActive }) => {
   const {
     form,
@@ -57,31 +56,33 @@ const FormBusinessRecruiter = ({ isActive, setIsActive }) => {
   } = useForm(initialForm, validateForm);
   const { data } = useFetch(API_COMPANY);
 
-  console.log(form)
-
-
   return (
-    <>
-      <div className={styles.autocomplete}>
-        <FormControl sx={{ minWidth: 490, textAlign: "left" }}>
-          <Autocomplete
-            sx={{ width: 500 }}
-            disablePortal
-            id="t300_id_company"
-            name="t300_id_company"
-            freeSolo
-            onChange={(event, newValue) => {
-              // console.log(newValue['t300_id_company']);
-              // setIdCompany(newValue["t300_id_company"]);
-              form.t300_id_company = newValue["t300_id_company"];
-            }}
-            value={form.t300_id_company}
-            getOptionLabel={(option) => option.t300_name || ""}
-            options={data && data}
-            renderInput={(params) => <TextField {...params} label="Empresas" />}
-          />
-        </FormControl>
-      </div>
+    <article
+      style={{
+        display: "grid",
+        placeContent: "center",
+        position: "relative",
+        top: "2rem",
+      }}
+    >
+      <FormControl>
+        <Autocomplete
+          sx={{ width: 500 }}
+          disablePortal
+          id="t300_id_company"
+          name="t300_id_company"
+          freeSolo
+          onChange={(event, newValue) => {
+            // console.log(newValue['t300_id_company']);
+            // setIdCompany(newValue["t300_id_company"]);
+            form.t300_id_company = newValue["t300_id_company"];
+          }}
+          value={form.t300_id_company}
+          getOptionLabel={(option) => option.t300_name || ""}
+          options={data && data}
+          renderInput={(params) => <TextField {...params} label="Empresas" />}
+        />
+      </FormControl>
       <FormRecruiterInfo
         form={form}
         errors={errors}
@@ -91,7 +92,7 @@ const FormBusinessRecruiter = ({ isActive, setIsActive }) => {
         isActive={isActive}
         setIsAcitve={setIsActive}
       />
-    </>
+    </article>
   );
 };
 

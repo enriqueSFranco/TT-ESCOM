@@ -2,9 +2,7 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { CODE_201 } from "services/http.code";
-import { createAccountRecruiter } from "services";
-import { createAccountStudent } from "services/students/index";
-import { postCertification } from "services/students/index";
+import { createAccountRecruiter, createAccountStudent, postCertification } from "services";
 
 export const useForm = (initialForm, validateForm) => {
   const navigate = useNavigate();
@@ -54,28 +52,6 @@ export const useForm = (initialForm, validateForm) => {
     } else return;
   };
 
-  function convertToBase64(file) {
-    return new Promise((resolve, reject) => {
-      const fr = new FileReader()
-      fr.readAsDataURL(file)
-
-      fr.onload = () => {
-        resolve(fr.result)
-      }
-      fr.onerror = (error) => {
-        reject(error)
-      }
-    })
-  }
-
-  async function uploadFile(e) {
-    const file = e.target.files[0]
-    console.log('file: ',file)
-    const base64 = await convertToBase64(file)
-
-    return base64
-  }
-
   const handleSubmitCompany = (e) => {
     e.preventDefault();
     // form.t300_validator_document = uploadFile(e)
@@ -97,6 +73,7 @@ export const useForm = (initialForm, validateForm) => {
         })
     }
   };
+
 
   // const handleSubmitCompanyRecruiter = e => {
   //   e.preventDefault();

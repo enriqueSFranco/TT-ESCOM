@@ -42,9 +42,11 @@ import { deleteJob } from "services";
 // import * as GiIcon from "react-icons/gi";
 // import * as BsIcon from "react-icons/bs";
 // import * as MdIcon from "react-icons/md";
-import { FaUsers } from 'react-icons/fa'
+import Chip from 'components/Chip/Chip'
 import FormSearchJob from "components/Menu/FormSearchJobRecruiter";
 import CardJobPreviewRecruiter from "components/Card/CardJobPreviewRecruiter";
+import { FaUsers } from 'react-icons/fa'
+import { GoReport, GoThumbsdown } from 'react-icons/go'
 import {
   Aside,
   Container,
@@ -65,15 +67,29 @@ import {
 //   unseen: 0,
 // };
 
-const PageHistory = () => {
+
+const ListJobsRecruiter = () => {
   const { token } = useAuth();
+  const { data, loading } = useRecruiterJobs({ idRcruiter: token?.user?.id });
+
+  if (!data) return null
+
+  return (
+    <WrapperListCardJobPreviewRecruiter>
+            {data?.map((el) => (
+              <CardJobPreviewRecruiter key={crypto.randomUUID()} info={el} url='dashboard' />
+            ))}
+          </WrapperListCardJobPreviewRecruiter>
+  )
+}
+
+const PageHistory = () => {
   let { t200_id_vacant } = useParams()
   const { data: dataVacantInfo, error: errorVacantInfo, loading: loadingVacantInfo } = useFetch(`${process.env.REACT_APP_URL_VACANT_VACANT_INFO}${t200_id_vacant || 1}/`)
   const navigate = useNavigate();
   // const { t200_id_vacant } = useParams();
   // const { form, handleChange } = useForm(POST_NEW_JOB);
   // const [body, setBody] = useState("");
-  const { data, loading } = useRecruiterJobs({ idRcruiter: token?.user?.id });
   // const [totalApplications, setTotalApplications] = useState([]);
   // const [initialContent, setInitialContent] = useState(true);
   // const [listJobs, setListJobs] = useState(null);
@@ -129,18 +145,14 @@ const PageHistory = () => {
   //     .catch((error) => console.error(error));
   // };
   
-  if (!data || !dataVacantInfo) return null;
+  if (!dataVacantInfo) return null;
 
   return (
     <LayoutHome>
       <LayoutDashboard top='4rem'>
         <Aside>
           <FormSearchJob />
-          <WrapperListCardJobPreviewRecruiter>
-            {data?.map((el) => (
-              <CardJobPreviewRecruiter key={crypto.randomUUID()} info={el} url='dashboard' />
-            ))}
-          </WrapperListCardJobPreviewRecruiter>
+          <ListJobsRecruiter />
         </Aside>
         <Container>
           <WrapperWidgets>
@@ -155,31 +167,31 @@ const PageHistory = () => {
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
                 <TextNumber>{`${dataVacantInfo[0]?.TotalHired === null ? 0 : dataVacantInfo[0]?.TotalHired}/10`}</TextNumber>
-                <span>contratados</span>
+                <Chip label='contratados' bg="#31C27C" color="#fff" icon={<FaUsers style={{fontSize: '1.1rem'}} />} />
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
                 <TextNumber>{dataVacantInfo[0]?.TotalOnTrack === null ? 0 : dataVacantInfo[0]?.TotalOnTrack}</TextNumber>
-                <span>en seguimiento</span>
+                <Chip label='en seguimiento' bg="#1949D1" color="#fff" />
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
                 <TextNumber>{dataVacantInfo[0]?.TotalDiscarted === null ? 0 : dataVacantInfo[0]?.TotalDiscarted}</TextNumber>
-                <span>descartadas</span>
+                <Chip label='descartadas' bg="#FF0000" color="#fff" icon={<GoThumbsdown />} />
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
                 <TextNumber>{dataVacantInfo[0]?.TotalUnseen === null ? 0 : dataVacantInfo[0]?.TotalUnseen}</TextNumber>
-                <span>sin consultar</span>
+                <Chip label='sin consultar' bg="#8473FC" color="#fff" />
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
                 <TextNumber>{dataVacantInfo[0]?.TotalReports === null ? 0 : dataVacantInfo[0]?.TotalReports}</TextNumber>
-                <span>reportes recibidos</span>
+                <Chip label='reportes recibidos' bg="#FD8619" color="#fff" icon={<GoReport />} />
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>
           </WrapperWidgets>

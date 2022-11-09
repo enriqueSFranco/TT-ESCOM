@@ -3,15 +3,13 @@
 }
 
 .menu {
-  background-color: rgba(255, 255, 255, 0.24);
-  backdrop-filter: blur(10px);
-  border-radius: 4px;
-  /* outline: 1px solid #fff; */
+  background-color: #ffffff;
+  border-radius: 1rem;
   position: absolute;
   top: 60px;
   right: 0;
   width: 210px;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 8px #0000004d;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-20px);
@@ -32,7 +30,8 @@
 
 
 .menu li a {
-  color: #FFF;
+  color: #353434e3;
+  font-size: .9rem;
   padding: 15px 20px;
   display: block;
   display: flex;
@@ -42,8 +41,9 @@
 }
 
 .menu li a:hover {
-  background-color: #018DD4;
-  color: #fff;
+  background-color: #f0efef;
+  border-radius: 1rem;
+  color: #000;
 }
 
 .avatarRecruiter {
@@ -59,17 +59,16 @@
 }
 
 .trigger {
-  background-color: transparent;
+  background-color: #fff;
   border-radius: 1rem;
   color: #fff;
   border-radius: 8px;
-  cursor: pointer;
-  font-size: 1.5rem;
   border: none;
   vertical-align: middle;
   width: fit-content;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: .2rem;
+  padding: .3rem;
   transition: box-shadow .4s ease;
 }

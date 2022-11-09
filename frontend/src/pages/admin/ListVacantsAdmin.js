@@ -30,7 +30,6 @@ const ListVacantsAdmin = () => {
   if (!data) return null
 
   return (
-    <LayoutAdmin>
       <Content>
         <LayoutDashboard>
         <Aside>
@@ -53,7 +52,6 @@ const ListVacantsAdmin = () => {
         </Container>
       </LayoutDashboard>
       </Content>
-    </LayoutAdmin>
   )
 }
 
