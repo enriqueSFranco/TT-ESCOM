@@ -31,12 +31,12 @@ import {
   BsFileEarmarkPersonFill,
   BsFillFileEarmarkPostFill,
 } from "react-icons/bs";
+import { BiDislike } from 'react-icons/bi'
 import { GoVerified } from "react-icons/go";
 import FormSocialNetwork from "components/Form/FormAddSocialNetwork/FormSocialNetwork";
 import { List } from "styled-components/CommonStyles";
 import styles from "./CardProfileStudent.module.css";
 import FormUpdateDataStudent from "components/Form/updateInfoStudent/FormUpdateDataStudent";
-import { Tooltip } from "@mui/material";
 
 const CardProfileStudent = () => {
   const [state, dispatch] = useReducer(
@@ -151,13 +151,25 @@ const CardProfileStudent = () => {
         <div className={styles.userDetails}>
           <div className={styles.personalInfo}>
             <div className={styles.container_flex}>
-              <MdLocationPin
+              <span
                 style={{
-                  fontWeight: "bold",
-                  fontSize: "1.3rem",
-                  color: "#BEBEBE",
+                  backgroundColor: "#F1F3F4",
+                  height: "fit-content",
+                  width: "fit-content",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  padding: ".4rem",
+                  borderRadius: "50%",
                 }}
-              />
+              >
+                <MdLocationPin
+                  style={{
+                    fontSize: "1rem",
+                    color: "#222",
+                  }}
+                />
+              </span>
               <p>
                 {candidate[0]?.t100_residence
                   ? candidate[0]?.t100_residence
@@ -165,13 +177,25 @@ const CardProfileStudent = () => {
               </p>
             </div>
             <div className={styles.container_flex}>
-              <MdOutlineAirplanemodeActive
+              <span
                 style={{
-                  fontWeight: "bold",
-                  fontSize: "1.3rem",
-                  color: "#BEBEBE",
+                  backgroundColor: "#F1F3F4",
+                  height: "fit-content",
+                  width: "fit-content",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  padding: ".4rem",
+                  borderRadius: "50%",
                 }}
-              />
+              >
+                <MdOutlineAirplanemodeActive
+                  style={{
+                    fontSize: "1rem",
+                    color: "#222",
+                  }}
+                />
+              </span>
               <p>
                 {candidate[0]?.t100_travel
                   ? "Disponible para reubicarse."
@@ -194,29 +218,44 @@ const CardProfileStudent = () => {
                   </button>
                 </>
               ) : (
-                <p
-                  style={{
-                    paddingLeft: ".2rem",
-                    fontWeight: "400",
-                    fontFamily: "sans-serif",
-                  }}
-                >
-                  <BsFillFileEarmarkPostFill
+                <>
+                  <span
                     style={{
-                      marginRight: ".5rem",
-                      color: "#BEBEBE",
-                      fontWeight: "bold",
-                      fontSize: "1rem",
+                      backgroundColor: "#F1F3F4",
+                      height: "fit-content",
+                      width: "fit-content",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      padding: ".4rem",
+                      borderRadius: "50%",
                     }}
-                  />
-                  Aun no cuentas con tu CV
-                </p>
+                  >
+                    <BsFillFileEarmarkPostFill
+                      style={{
+                        color: "#222",
+                        fontWeight: "bold",
+                        fontSize: "1rem",
+                      }}
+                    />
+                  </span>
+                  <p
+                    style={{
+                      marginLeft: '.3rem',
+                      paddingLeft: ".2rem",
+                      fontWeight: "400",
+                      fontFamily: "sans-serif",
+                    }}
+                  >
+                    Aun no cuentas con tu CV
+                  </p>
+                </>
               )}
             </div>
           </div>
           <div className={`${styles.socialNetworks} ${styles.separator}`}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <h4 className={styles.label}>Redes sociales</h4>
+              <h4>Redes sociales</h4>
               <MdOutlineModeEdit
                 onClick={openModalSocialNetwork}
                 style={{ fontSize: "1.1rem", cursor: "pointer" }}
@@ -224,14 +263,29 @@ const CardProfileStudent = () => {
             </div>
             <ul className={styles.list}>
               {socialNetworks?.length > 0 ? (
-                socialNetworks?.map(({ t113_link, c115_id_plataform }) => (
-                  <li key={`item-link-plataform-${c115_id_plataform}`} title={`Ir a ${t113_link}`} className={styles.list_item}>
-                      <img
-                        src={c115_id_plataform?.c115_icon}
-                        alt={c115_id_plataform?.c115_icon}
-                        className={styles.iconSocialNetwork}
-                      />
-                    <span className={styles.go_link}>Ir a {<a href={`${t113_link}`} target="_blank" rel="noreferrer">{t113_link}</a>}</span>
+                socialNetworks?.map(({ t113_link, c115_id_plataform, c115_description }) => (
+                  <li
+                    key={`item-link-plataform-${c115_id_plataform}`}
+                    title={`Ir a ${t113_link}`}
+                    className={styles.list_item}
+                  >
+                    <img
+                      src={c115_id_plataform?.c115_icon}
+                      alt={c115_id_plataform?.c115_icon}
+                      className={styles.iconSocialNetwork}
+                    />
+                    <span className={styles.go_link}>
+                    {c115_id_plataform?.c115_description}
+                      {
+                        <a
+                          href={`${t113_link}`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {t113_link}
+                        </a>
+                      }
+                    </span>
                   </li>
                 ))
               ) : (
@@ -244,7 +298,7 @@ const CardProfileStudent = () => {
           {/* SKILLS */}
           <div className={`${styles.wrapperSkills} ${styles.separator}`}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <h4 className={styles.label}>Habilidades en</h4>
+              <h4>Habilidades en</h4>
               <MdOutlineModeEdit
                 onClick={openModalSkill}
                 style={{ fontSize: "1.1rem", cursor: "pointer" }}
@@ -270,10 +324,22 @@ const CardProfileStudent = () => {
               display: "grid",
               placeContent: "center",
               textAlign: "center",
+              width: 'fit-content',
+              padding: '0 1rem',
+              height: '40%',
+              margin: '0 auto',
+              borderRadius: '1rem',
+              backgroundColor: 'red',
+              color: '#fff',
+              position: 'relative', 
+              top:'1.5rem'
             }}
           >
             {candidate[0]?.t100_cv === null ? (
-              <p>Aun no cuentas con tu cv</p>
+              <div style={{display: 'flex', alignItems: 'center', gap: '.3rem'}}>
+                <BiDislike style={{fontSize: '1.5rem', color: '#fff'}} />
+                <span>Aun no cuentas con tu cv</span>
+              </div>
             ) : (
               <p>
                 <GoVerified style={{ color: "#38761D" }} /> Tu curriculum esta

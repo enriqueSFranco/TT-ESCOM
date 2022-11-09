@@ -1,7 +1,7 @@
-import { memo, useState } from "react";
+import { useState } from "react";
 import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
-import { useRecruiterJobs, useModal, useFetch  } from "hooks";
+import { useRecruiterJobs, useModal, useFetch } from "hooks";
 import LayoutDashboard from "Layout/LayoutDashboard";
 import LayoutHome from "Layout/LayoutHome";
 import LayoutWidgetRecruiter from "Layout/LayoutWidgetRecruiter";
@@ -42,11 +42,11 @@ import { deleteJob } from "services";
 // import * as GiIcon from "react-icons/gi";
 // import * as BsIcon from "react-icons/bs";
 // import * as MdIcon from "react-icons/md";
-import Chip from 'components/Chip/Chip'
+import Chip from "components/Chip/Chip";
 import FormSearchJob from "components/Menu/FormSearchJobRecruiter";
 import CardJobPreviewRecruiter from "components/Card/CardJobPreviewRecruiter";
-import { FaUsers } from 'react-icons/fa'
-import { GoReport, GoThumbsdown } from 'react-icons/go'
+import { FaUsers } from "react-icons/fa";
+import { GoReport, GoThumbsdown } from "react-icons/go";
 import {
   Aside,
   Container,
@@ -55,7 +55,7 @@ import {
   WrapperWidgets,
   ContentWidget,
   ContentWidgetCommon,
-  TextNumber
+  TextNumber,
 } from "../styled-components/DashboardRecruiterStyled";
 // import TextEditor from "components/TextEditor/TextEditor";
 
@@ -67,25 +67,34 @@ import {
 //   unseen: 0,
 // };
 
-
 const ListJobsRecruiter = () => {
   const { token } = useAuth();
   const { data, loading } = useRecruiterJobs({ idRcruiter: token?.user?.id });
 
-  if (!data) return null
+  if (!data) return null;
 
   return (
     <WrapperListCardJobPreviewRecruiter>
-            {data?.map((el) => (
-              <CardJobPreviewRecruiter key={crypto.randomUUID()} info={el} url='dashboard' />
-            ))}
-          </WrapperListCardJobPreviewRecruiter>
-  )
-}
+      {data?.map((el) => (
+        <CardJobPreviewRecruiter
+          key={`${crypto.randomUUID()}`}
+          info={el}
+          url="dashboard"
+        />
+      ))}
+    </WrapperListCardJobPreviewRecruiter>
+  );
+};
 
 const PageHistory = () => {
-  let { t200_id_vacant } = useParams()
-  const { data: dataVacantInfo, error: errorVacantInfo, loading: loadingVacantInfo } = useFetch(`${process.env.REACT_APP_URL_VACANT_VACANT_INFO}${t200_id_vacant || 1}/`)
+  let { t200_id_vacant } = useParams();
+  const {
+    data: dataVacantInfo,
+    error: errorVacantInfo,
+    loading: loadingVacantInfo,
+  } = useFetch(
+    `${process.env.REACT_APP_URL_VACANT_VACANT_INFO}${t200_id_vacant || 1}/`
+  );
   const navigate = useNavigate();
   // const { t200_id_vacant } = useParams();
   // const { form, handleChange } = useForm(POST_NEW_JOB);
@@ -101,7 +110,6 @@ const PageHistory = () => {
   // const [recruiter, setRecruiter] = useState([]);
   // const [isOpenModalForm, openModalForm, closeModalForm] = useModal();
   // let newObject = { ...form, t200_description: body };
-
 
   // const handleInitialContent = () => setInitialContent(false);
 
@@ -144,12 +152,12 @@ const PageHistory = () => {
   //     })
   //     .catch((error) => console.error(error));
   // };
-  
+
   if (!dataVacantInfo) return null;
 
   return (
     <LayoutHome>
-      <LayoutDashboard top='4rem'>
+      <LayoutDashboard top="4rem">
         <Aside>
           <FormSearchJob />
           <ListJobsRecruiter />
@@ -158,40 +166,79 @@ const PageHistory = () => {
           <WrapperWidgets>
             <LayoutWidgetRecruiter>
               <ContentWidget>
-                <TextNumber>{dataVacantInfo[0]?.TotalReceived === null ? 0 : dataVacantInfo[0]?.TotalReceived}</TextNumber>
+                <TextNumber>
+                  {dataVacantInfo[0]?.TotalReceived === null
+                    ? 0
+                    : dataVacantInfo[0]?.TotalReceived}
+                </TextNumber>
                 <span>recibidas</span>
                 <FaUsers />
               </ContentWidget>
-              <Link to='/postulaciones'>Ver Postulados</Link>
+              <Link to="/postulaciones">Ver Postulados</Link>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
-                <TextNumber>{`${dataVacantInfo[0]?.TotalHired === null ? 0 : dataVacantInfo[0]?.TotalHired}/10`}</TextNumber>
-                <Chip label='contratados' bg="#31C27C" color="#fff" icon={<FaUsers style={{fontSize: '1.1rem'}} />} />
+                <TextNumber>{`${
+                  dataVacantInfo[0]?.TotalHired === null
+                    ? 0
+                    : dataVacantInfo[0]?.TotalHired
+                }/10`}</TextNumber>
+                <Chip
+                  label="contratados"
+                  bg="#31C27C"
+                  color="#fff"
+                  icon={<FaUsers style={{ fontSize: "1.1rem" }} />}
+                />
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
-                <TextNumber>{dataVacantInfo[0]?.TotalOnTrack === null ? 0 : dataVacantInfo[0]?.TotalOnTrack}</TextNumber>
-                <Chip label='en seguimiento' bg="#1949D1" color="#fff" />
+                <TextNumber>
+                  {dataVacantInfo[0]?.TotalOnTrack === null
+                    ? 0
+                    : dataVacantInfo[0]?.TotalOnTrack}
+                </TextNumber>
+                <Chip label="en seguimiento" bg="#1949D1" color="#fff" />
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
-                <TextNumber>{dataVacantInfo[0]?.TotalDiscarted === null ? 0 : dataVacantInfo[0]?.TotalDiscarted}</TextNumber>
-                <Chip label='descartadas' bg="#FF0000" color="#fff" icon={<GoThumbsdown />} />
+                <TextNumber>
+                  {dataVacantInfo[0]?.TotalDiscarted === null
+                    ? 0
+                    : dataVacantInfo[0]?.TotalDiscarted}
+                </TextNumber>
+                <Chip
+                  label="descartadas"
+                  bg="#FF0000"
+                  color="#fff"
+                  icon={<GoThumbsdown />}
+                />
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
-                <TextNumber>{dataVacantInfo[0]?.TotalUnseen === null ? 0 : dataVacantInfo[0]?.TotalUnseen}</TextNumber>
-                <Chip label='sin consultar' bg="#8473FC" color="#fff" />
+                <TextNumber>
+                  {dataVacantInfo[0]?.TotalUnseen === null
+                    ? 0
+                    : dataVacantInfo[0]?.TotalUnseen}
+                </TextNumber>
+                <Chip label="sin consultar" bg="#8473FC" color="#fff" />
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>
-                <TextNumber>{dataVacantInfo[0]?.TotalReports === null ? 0 : dataVacantInfo[0]?.TotalReports}</TextNumber>
-                <Chip label='reportes recibidos' bg="#FD8619" color="#fff" icon={<GoReport />} />
+                <TextNumber>
+                  {dataVacantInfo[0]?.TotalReports === null
+                    ? 0
+                    : dataVacantInfo[0]?.TotalReports}
+                </TextNumber>
+                <Chip
+                  label="reportes recibidos"
+                  bg="#FD8619"
+                  color="#fff"
+                  icon={<GoReport />}
+                />
               </ContentWidgetCommon>
             </LayoutWidgetRecruiter>
           </WrapperWidgets>
@@ -204,4 +251,4 @@ const PageHistory = () => {
   );
 };
 
-export default memo(PageHistory);
+export default PageHistory;

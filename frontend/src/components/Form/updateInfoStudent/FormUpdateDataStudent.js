@@ -71,7 +71,7 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
       <h1 style={{fontSize: '1.3rem', textAlign:'center', fontFamily: 'sans-serif'}}>Editar datos personales</h1>
         <form onSubmit={e => update(e)}>
           <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '150px', marginBottom: '1rem'}}>
-            <CustomAvatar picture={null} username={username} width='100' height='100' />
+            <CustomAvatar picture={null} username={username} width='100px' height='100px' />
             <div style={{display: 'flex', justifyContent: 'center'}}>
               {/* <input type="file" onChange={update} /> */}
               <ButtonFile onChange={update} text="Subir foto" icon={<BsFileEarmarkImage />} color="#116BFE" />
