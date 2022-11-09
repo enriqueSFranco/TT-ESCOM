@@ -67,7 +67,7 @@ BoletaC.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-function DatesPersonal({ form, handleChange }) {
+function DatesPersonal({ form, handleChange , id_locality}) {
   const [localities, setLocalities] = useState(null);
   const [checked, setChecked] = useState(false);
   const [place, setPlace] = useState("");
@@ -89,6 +89,15 @@ function DatesPersonal({ form, handleChange }) {
         .catch((error) => console.error(error));
     }
   };
+
+  const set_locality = (e) => {
+    console.log(e);
+    console.log(e.c222_id);
+    
+  }
+
+  console.log(id_locality);
+  console.log(place);
 
   return (
     <div className={styles.containerPage}>
@@ -189,7 +198,7 @@ function DatesPersonal({ form, handleChange }) {
                 name="c222_id_locality"
                 id="c222_id_locality"
                 value={place}
-                onChange={(e) => setPlace(e.target.value)}
+                onChange={(e) => set_locality(e.target.value)}
                 sx={{ width:300, padding:1}}
               >
                 <option value="" disabled>

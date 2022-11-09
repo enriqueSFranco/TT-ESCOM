@@ -32,6 +32,7 @@ const StepComponent = () => {
   const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
   const { token } = useAuth();
   let navigate = useNavigate();
+  let id_locality = "";
 
   let id_student = token?.user?.id;
 
@@ -62,7 +63,7 @@ const StepComponent = () => {
 
   const PageDisplay = () => {
     if (activeStep === 0) {
-      return <DatesPersonal form={form} handleChange={handleChange} />;
+      return <DatesPersonal form={form} handleChange={handleChange} id_locality = {id_locality}/>;
     }
     if (activeStep === 1) {
       return (
