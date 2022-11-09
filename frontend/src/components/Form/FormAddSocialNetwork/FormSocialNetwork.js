@@ -9,18 +9,21 @@ const FormSocialNetwork = ({idUser}) => {
   const { plataforms } = useGetPlataforms()
 
   let r = {
-    ...form, 
+    ...form,
     t100_id_student: idUser
   }
 
   function handleSubmit(e) {
     e.preventDefault()
+    r['c115_id_plataform'] = parseInt(r.c115_id_plataform)
+    console.log(typeof parseInt(r.c115_id_plataform))
     postSocialNetwork(r)
       .then(response => console.log(response))
       .catch(error => console.error(error))
   }
 
   if (!plataforms || !idUser) return null
+
 
   return (
     <form onSubmit={handleSubmit} style={{position: 'relative', top: '4rem', display: "flex", flexDirection: "column", justifyContent: 'center', alignItems: 'center', gap:"1rem", height: '100px'}}>
