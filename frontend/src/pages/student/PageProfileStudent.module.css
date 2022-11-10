@@ -14,7 +14,8 @@
 .profileCard {
   grid-column: 1;
   grid-row: 1 / span 2;
-  background-color: #fff;
+  background-color: #191f28;
+  color: #fff;
   position: relative;
   top: 1rem;
   border-radius: 1rem;
@@ -22,18 +23,18 @@
 
 .profileAboutMe {
   grid-column: 2;
-  margin-bottom: 1rem;
-  height: 220px;
   position: relative;
   top: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 
 .profileSummary {
-  position: relative;
-  top: 1rem;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  margin-top: 1rem;
   border-radius: 1rem;
-  height: 95%;
+  height: 93%;
   grid-row: 2 / span 2;
   background-color: #fff;
 }
+
+/* #191f28, #3741d4 */

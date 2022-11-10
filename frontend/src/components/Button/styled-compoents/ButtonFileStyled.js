@@ -13,6 +13,7 @@ const WrapperLabel = styled.label`
   display: flex;
   align-items: center;
   gap: .3rem;
+  cursor: pointer;
 `
 
 const InputFile = styled.input`

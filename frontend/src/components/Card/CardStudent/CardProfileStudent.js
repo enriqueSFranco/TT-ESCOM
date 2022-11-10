@@ -35,8 +35,8 @@ import { BiDislike } from 'react-icons/bi'
 import { GoVerified } from "react-icons/go";
 import FormSocialNetwork from "components/Form/FormAddSocialNetwork/FormSocialNetwork";
 import { List } from "styled-components/CommonStyles";
-import styles from "./CardProfileStudent.module.css";
 import FormUpdateDataStudent from "components/Form/updateInfoStudent/FormUpdateDataStudent";
+import styles from "./CardProfileStudent.module.css";
 
 const CardProfileStudent = () => {
   const [state, dispatch] = useReducer(
@@ -113,7 +113,7 @@ const CardProfileStudent = () => {
             position: "absolute",
             right: ".5rem",
             top: ".5rem",
-            color: "#000",
+            color: "#fff",
             fontSize: "1.1rem",
             cursor: "pointer",
           }}
@@ -129,7 +129,7 @@ const CardProfileStudent = () => {
           <div style={{ textAlign: "center" }}>
             <span
               style={{
-                color: "#000",
+                color: "#fff",
                 fontWeight: 400,
                 fontFamily: "sans-serif",
               }}
@@ -153,7 +153,7 @@ const CardProfileStudent = () => {
             <div className={styles.container_flex}>
               <span
                 style={{
-                  backgroundColor: "#F1F3F4",
+                  backgroundColor: "#37404d",
                   height: "fit-content",
                   width: "fit-content",
                   display: "flex",
@@ -166,7 +166,7 @@ const CardProfileStudent = () => {
                 <MdLocationPin
                   style={{
                     fontSize: "1rem",
-                    color: "#222",
+                    color: "#fff",
                   }}
                 />
               </span>
@@ -179,7 +179,7 @@ const CardProfileStudent = () => {
             <div className={styles.container_flex}>
               <span
                 style={{
-                  backgroundColor: "#F1F3F4",
+                  backgroundColor: "#37404d",
                   height: "fit-content",
                   width: "fit-content",
                   display: "flex",
@@ -192,7 +192,7 @@ const CardProfileStudent = () => {
                 <MdOutlineAirplanemodeActive
                   style={{
                     fontSize: "1rem",
-                    color: "#222",
+                    color: "#fff",
                   }}
                 />
               </span>
@@ -221,7 +221,7 @@ const CardProfileStudent = () => {
                 <>
                   <span
                     style={{
-                      backgroundColor: "#F1F3F4",
+                      backgroundColor: "#37404d",
                       height: "fit-content",
                       width: "fit-content",
                       display: "flex",
@@ -233,7 +233,7 @@ const CardProfileStudent = () => {
                   >
                     <BsFillFileEarmarkPostFill
                       style={{
-                        color: "#222",
+                        color: "#fff",
                         fontWeight: "bold",
                         fontSize: "1rem",
                       }}
@@ -310,8 +310,8 @@ const CardProfileStudent = () => {
                   <Chip
                     key={uuid()}
                     label={c116_id_skill?.c116_description}
-                    bg="#E8EDFB"
-                    color="#4169E0"
+                    bg="#37404d"
+                    color="#fff"
                   />
                 ))
               ) : (
@@ -329,7 +329,7 @@ const CardProfileStudent = () => {
               height: '40%',
               margin: '0 auto',
               borderRadius: '1rem',
-              backgroundColor: 'red',
+              backgroundColor: '#37404d',
               color: '#fff',
               position: 'relative', 
               top:'1.5rem'

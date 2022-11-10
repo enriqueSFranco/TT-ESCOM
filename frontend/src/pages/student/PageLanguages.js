@@ -2,7 +2,8 @@ import React from 'react'
 import { useAuth } from 'context/AuthContext'
 import { useModal, useLanguageUser } from 'hooks'
 import Language from 'components/Card/Language/Language'
-import { IoMdAddCircleOutline } from 'react-icons/io'
+import Tooltip from 'components/Tooltip/Tooltip'
+import { MdAdd } from 'react-icons/md'
 import { Header, AddLanguage } from '../styled-components/LanguageStyled'
 import ModalPortal from 'components/Modal/ModalPortal'
 import FormLanguage from 'components/Form/FormLanguage'
@@ -21,8 +22,9 @@ const PageLanguages = () => {
     <>
       <section style={{padding: '0 1rem'}}>
         <Header>
-          <span>Agregar Idioma</span>
-          <AddLanguage onClick={openModal}><IoMdAddCircleOutline /></AddLanguage>
+          <Tooltip title='Agregar Idioma'>
+            <AddLanguage onClick={openModal}><MdAdd /></AddLanguage>
+          </Tooltip>
         </Header>
         <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
           {languages && languages?.map(language => (

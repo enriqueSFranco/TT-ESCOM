@@ -8,11 +8,18 @@ const Header = styled.header`
 `
 
 const AddLanguage = styled.button`
-  background-color: transparent;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
   border: none;
   outline: none;
-  margin-right: 1rem;
+  color: #028dd4;
   font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #028ed43f;
+  margin: .5rem -.5rem 0 0;
 `
 
 export { Header, AddLanguage }

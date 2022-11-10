@@ -1,35 +1,27 @@
 .btnAddCertification {
   width: 150px;
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
+  position: relative;
+  right: 0;
+  top: 2rem;
   border-radius: 5px;
   border: none;
   height: 3rem;
-  font-family: 'Poppins', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background-color: #232436;
   color: #fff;
-  transition: background-color .3s ease-in;
 }
 
-.btnAddCertification:hover {
-  background-color: #028dd4;
-}
 
 .formCertification {
   position: relative;
   top: 5rem;
   height: calc(100% - 5rem);
-  /* outline: 2px solid red; */
 }
 
 .formCertification > p {
   margin: 0;
   padding-bottom: .5rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .flex_1_2 {
@@ -42,11 +34,11 @@
 .inputGroup { height: 5em; }
 
 .titleCertification {
-  /* outline: 2px solid red; */
-  position: absolute;
-  top: 2rem;
+  position: relative;
+  top: 4rem;
+  text-align: center;
   font-size: 1.5rem;
-  color: #333333;
+  color: #000;
   font-family: 'Poppins', sans-serif;
 }
 
