@@ -14,7 +14,7 @@ const Header = styled.div`
   grid-area: header;
 `
 
-const Main = styled.div`
+const Main = styled.section`
   grid-area: main;
 `
 

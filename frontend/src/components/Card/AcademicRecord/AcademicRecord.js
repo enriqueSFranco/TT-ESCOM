@@ -15,9 +15,6 @@ const AcademicRecord = ({
   carrer,
   startDate,
   endDate,
-  idStudent,
-  idAcademicLevel,
-  idAcademicState,
 }) => {
   const [
     isOpenModalDeleteAcademicRecord,
@@ -32,7 +29,7 @@ const AcademicRecord = ({
 
   const deleteData = (id) => {
     deleteAcademicHistorial(id).then((response) => {
-      if (data !== null) {
+      if (response !== null) {
         let newData = data?.filter((el) => el?.t104_id_registrer !== id);
         setData(newData);
       }

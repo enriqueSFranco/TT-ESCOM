@@ -28,7 +28,7 @@ const MenuRecruiter = () => {
       </NavLeft>
       <NavList>
         <NavItem>
-          <LinkButton to="/crear-vacante" text={`+ Crear Vacante`} color='#FFF' bg='#F13465' />
+          <LinkButton to="/crear-vacante" text={`+ Crear Vacante`} color='#00e49f' bg='#0bab7b4d' />
         </NavItem>
         <NavItem>
           <NavLink to="/dashboard"><MdDashboard />Dashboard</NavLink>
