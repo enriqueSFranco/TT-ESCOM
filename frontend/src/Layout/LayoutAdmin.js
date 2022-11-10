@@ -44,13 +44,13 @@ const LayoutAdmin = ({ children }) => {
               <FcBusiness
                 style={{ marginRight: ".3rem", fontSize: "1.3rem" }}
               />
-              <Link to="/lista-de-vacantes">Vacantes-ESCOM</Link>
+              <Link to="lista-de-vacantes">Vacantes-ESCOM</Link>
             </Item>
             <Item>
               <FcBusinessman
                 style={{ marginRight: ".3rem", fontSize: "1.3rem" }}
               />{" "}
-              <Link to="/validar-reclutador">Reclutadores por validar</Link>
+              <Link to="validar-reclutador">Reclutadores por validar</Link>
             </Item>
             <Item>
               <IoBusiness
@@ -60,7 +60,7 @@ const LayoutAdmin = ({ children }) => {
                   color: "#8A9FA9",
                 }}
               />{" "}
-              <Link to="/validar-empresa">Empresas por validar</Link>
+              <Link to="validar-empresa">Empresas por validar</Link>
             </Item>
             <Item>
               <IoBusiness
@@ -70,7 +70,7 @@ const LayoutAdmin = ({ children }) => {
                   color: "#8A9FA9",
                 }}
               />{" "}
-              <Link to="/validar-empresa">Vacantes por validar</Link>
+              <Link to="validar-empresa">Vacantes por validar</Link>
             </Item>
           </NavList>
         </SideBar>
