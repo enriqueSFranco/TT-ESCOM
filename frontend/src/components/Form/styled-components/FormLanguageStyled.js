@@ -30,4 +30,72 @@ const Button = styled.input`
   }
 `
 
-export { Button, Form, Title }
+const Select = styled.select`
+  height: 50px;
+  padding: 0 .5rem;
+  border-radius: 4px;
+  outline: 1px solid #ccc;
+  border: 0;
+  background-color: #fff;
+  cursor: pointer;
+`
+
+const Range = styled.input`
+    width: 400px;
+    height: 8px;
+    border-radius: 1rem;
+    -webkit-appearance: none;
+
+    &:focus {
+      outline: none;
+    }
+    
+    &::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 1px;
+        cursor: pointer;
+        box-shadow: none;
+        background: #ffffff;
+        border-radius: 0px;
+        border: 0px solid #010101;
+    }
+    &::-moz-range-track {
+        width: 100%;
+        height: 1px;
+        cursor: pointer;
+        box-shadow: none;
+        background: #ffffff;
+        border-radius: 0px;
+        border: 0px solid #010101;
+    }
+  
+    &::-webkit-slider-thumb {
+        box-shadow: none;
+        border: 0px solid #1c8efb;
+        box-shadow: 0px 10px 10px rgba(0,0,0,0.25);
+        height: 22px;
+        width: 22px;
+        border-radius: 22px;
+        background: rgba(255,255,255,1);
+        cursor: pointer;
+        -webkit-appearance: none;
+        margin-top: -20px;
+    }
+  &::-moz-range-thumb{
+        box-shadow: none;
+        border: 0px solid #ffffff;
+        box-shadow: 0px 10px 10px rgba(0,0,0,0.25);
+        height: 22px;
+        width: 22px;
+        border-radius: 22px;
+        background: #1c8efb;
+        cursor: pointer;
+        -webkit-appearance: none;
+        margin-top: -20px;
+  }
+  &::-moz-focus-outer {
+    border: 0;
+    }
+`
+
+export { Button, Form, Title, Select, Range }

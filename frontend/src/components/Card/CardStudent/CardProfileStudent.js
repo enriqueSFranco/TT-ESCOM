@@ -265,7 +265,7 @@ const CardProfileStudent = () => {
               {socialNetworks?.length > 0 ? (
                 socialNetworks?.map(({ t113_link, c115_id_plataform, c115_description }) => (
                   <li
-                    key={`item-link-plataform-${c115_id_plataform}`}
+                    key={`item-link-plataform-${crypto.randomUUID()}`}
                     title={`Ir a ${t113_link}`}
                     className={styles.list_item}
                   >

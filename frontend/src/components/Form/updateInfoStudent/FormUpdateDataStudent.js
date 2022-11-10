@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { uploadPhotoStudent, uploadCVStudent } from "services";
+import { useForm } from "hooks";
+import { uploadPhotoStudent, uploadCVStudent, updateStudent } from "services";
 import Input from "components/Input/Input";
 import Switch from "components/Switch/Switch";
 import CustomAvatar from "components/Avatar/Avatar";
@@ -9,6 +10,14 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 
 const FormUpdateDataStudent = ({ id, username, candidate }) => {
   const [previewImage, setPreviewImage] = useState(username);
+  const { form, handleChange, handleChecked } = useForm({
+    t100_name: "",
+    t100_last_name: "",
+    t100_second_surname: "",
+    t100_cv: null,
+    t100_residence: "",
+    t100_travel: false
+  })
 
   function convertToBase64(file) {
     return new Promise((resolve, reject) => {
@@ -51,12 +60,18 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
     e.preventDefault();
     console.log("formulario enviado...");
 
+    updateStudent(id, form)
+      .then(response => console.log(response))
+      .catch(error => error)
+
     if (e.target.files !== undefined) updateImage(e);
 
     if (e.target.files !== undefined) uploadCV(e);
   }
 
   if (!id) return null;
+
+  console.log(form)
 
   return (
     <>
@@ -102,15 +117,26 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
           <Input
             label="Nombre(s)"
             width="300px"
-            defaultValue={candidate?.t100_name}
+            // defaultValue={candidate?.t100_name}
+            name="t100_name"
+            id="t100_name"
+            value={form.t100_name}
+            onChange={handleChange}
           />
           <Input
             label="Primer Apellido"
-            defaultValue={candidate?.t100_last_name}
+            // defaultValue={candidate?.t100_last_name}
+            name="t100_last_name"
+            id="t100_last_name"
+            value={form.t100_last_name}
+            onChange={handleChange}
           />
           <Input
             label="Segundo Apellido"
-            defaultValue={candidate?.t100_second_surname}
+            name="t100_second_surname"
+            id="t100_second_surname"
+            value={form.t100_second_surname}
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -127,7 +153,13 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
             Donde te ubicas <HiOutlineLocationMarker />
           </h2>
           <div style={{ display: "flex", gap: "1rem", marginBottom: "1rem" }}>
-            <Input label="Calle y numero" />
+            <Input 
+              label="Calle y numero" 
+              name="t100_residence"
+              id="t100_residence"
+              value={form.t100_residence}
+              onChange={handleChange}
+            />
             <Input label="CP" width="300px" />
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
@@ -146,10 +178,16 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
           >
             <Switch
               label="Disponible para reubicarte"
-              defaultValue={candidate?.t100_travel}
+              name="t100_travel"
+              id="t100_travel"
+              value={form.t100_travel}
+              onChange={handleChecked}
             />
             <ButtonFile
               onChange={uploadCV}
+              value={form.t100_cv}
+              id="t100_cv"
+              name="t100_cv"
               text="Subir CV"
               icon={<BsFileEarmarkImage />}
               bgColor="#116BFE"
