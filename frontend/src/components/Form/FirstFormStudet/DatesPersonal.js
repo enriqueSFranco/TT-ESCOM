@@ -67,11 +67,10 @@ BoletaC.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-function DatesPersonal({ form, handleChange , id_locality}) {
+function DatesPersonal({ form, handleChange , id_locality , state , setState , municipality , setMunicipality , cp, setCP , place , setPlace}) {
   const [localities, setLocalities] = useState(null);
-  const [checked, setChecked] = useState(false);
-  const [place, setPlace] = useState("");
-  const [cp, setCP] = useState("");
+  const [checked, setChecked] = useState(false);  
+
 
   const checkChanged = (state) => {
     setChecked(!checked);
@@ -85,19 +84,21 @@ function DatesPersonal({ form, handleChange , id_locality}) {
       getLocality(value)
         .then((response) => {
           setLocalities(response);
+          console.log(response[0]['c222_state']);
+          setState(response[0]['c222_state']);
+          setMunicipality(response[0]['c222_municipality'])
         })
         .catch((error) => console.error(error));
     }
   };
 
   const set_locality = (e) => {
-    console.log(e);
-    console.log(e.c222_id);
-    
+    const locality = e.split(',');
+    console.log(locality);
+    form.c222_id_locality = locality[0];    
+    setPlace(locality[1])
   }
-
-  console.log(id_locality);
-  console.log(place);
+  //console.log(form);
 
   return (
     <div className={styles.containerPage}>
@@ -182,14 +183,13 @@ function DatesPersonal({ form, handleChange , id_locality}) {
               <TextField
                 size="small"
                 label="Estado"
-                value={place.c222_state}
-                onChange={handleChange}
+                value={state}
                 sx={{ width: 300, maxWidth: "100%" ,padding:1}}
               />
               <TextField
                 size="small"
                 label="Localidad"
-                value={place.c222_municipality}  
+                value={municipality}  
                 sx={{ width: 300, maxWidth: "100%", padding:1 }}
               />
             </div>            
@@ -199,7 +199,7 @@ function DatesPersonal({ form, handleChange , id_locality}) {
                 id="c222_id_locality"
                 value={place}
                 onChange={(e) => set_locality(e.target.value)}
-                sx={{ width:300, padding:1}}
+                //sx={{ width:300, padding:1}}
               >
                 <option value="" disabled>
                   Seleccione una localidad
@@ -208,7 +208,7 @@ function DatesPersonal({ form, handleChange , id_locality}) {
                   localities?.map((township) => (
                     <option
                       key={crypto.randomUUID()}
-                      value={township.c222_id}
+                      value={[township.c222_id,township.c222_locality]}
                     >
                       {township.c222_locality}
                     </option>
