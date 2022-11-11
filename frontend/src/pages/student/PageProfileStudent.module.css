@@ -32,7 +32,7 @@
 .profileSummary {
   margin-top: 1rem;
   border-radius: 1rem;
-  height: 93%;
+  height: 90%;
   grid-row: 2 / span 2;
   background-color: #fff;
 }

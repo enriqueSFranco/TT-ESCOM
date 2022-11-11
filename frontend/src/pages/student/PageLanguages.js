@@ -32,7 +32,7 @@ const PageLanguages = () => {
           ))}
         </div>
       </section>
-      <ModalPortal isOpen={isOpen} closeModal={closeModal}>
+      <ModalPortal isOpen={isOpen} closeModal={closeModal} minHeight="400px" minWidth="600px" bg='#FF8008' colorText="#fff">
         <FormLanguage id={token?.user?.id} />
       </ModalPortal>
     </>

@@ -61,17 +61,20 @@ const Root = () => {
       {/* RUTAS DEL ADMINISTRADOR */}
       <Route element={<PrivateRoute role={ROLE.MANAGER} />}>
         <Route path="/index" element={<Index />}>
-          <Route path="lista-de-colaboradores" element={<ListCollaborators />} />
-        </Route>
-          <Route path="/lista-de-vacantes" element={<ListVacantsAdmin />}>
+          <Route
+            path="lista-de-colaboradores"
+            element={<ListCollaborators />}
+          />
+          <Route path="validar-reclutador" element={<PageValidateRecruiter />} />
+          <Route path="validar-empresa" element={<ValidateCompany />} />
+          <Route path="empresas-registradas" element={<RegisteredCompanies />} />
+          <Route path="lista-de-vacantes" element={<ListVacantsAdmin />}>
             <Route
               path=":t200_id_vacant"
               element={<CardDetailsVacantRecruiter height="85%" />}
             />
           </Route>
-          <Route path="/validar-reclutador" element={<PageValidateRecruiter />} />
-        <Route path="/validar-empresa" element={<ValidateCompany />} />
-        <Route path="/empresas-registradas" element={<RegisteredCompanies />} />
+        </Route>
         <Route
           path="/detalles-de-emperesa/:t300_id_company"
           element={<DetailsCompany />}

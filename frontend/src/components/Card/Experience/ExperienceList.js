@@ -6,7 +6,7 @@ import { uuid } from "utils/uuid";
 import ModalPortal from "components/Modal/ModalPortal";
 import ExperenceItem from "./ExperienceItem";
 import TypeExperience from "./TypeExperience";
-import notProjects from "images/projects.png";
+// import notProjects from "images/projects.png";
 import { MdAdd } from "react-icons/md";
 import styles from "./Experience.module.css";
 
