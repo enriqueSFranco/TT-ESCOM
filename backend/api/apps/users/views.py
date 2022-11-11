@@ -135,7 +135,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         elif(self.user.user_type=='MANAGER'):
             admin_data = self.admin_model.objects.filter(id_user = self.user.id).values('t400_id_admin')
             id = admin_data[0]['t400_id_admin']			
-            print(recruiter_data[0]['t400_id_admin'])#-------------Depurargit
+            print(admin_data[0]['t400_id_admin'])#-------------Depurargit
         user={
 			'id':id,
 			'user_id':self.user.id,			
