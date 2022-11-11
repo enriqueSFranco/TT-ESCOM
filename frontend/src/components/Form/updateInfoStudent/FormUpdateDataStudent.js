@@ -6,9 +6,39 @@ import CustomAvatar from "components/Avatar/Avatar";
 import ButtonFile from "components/Button/ButtonFile";
 import { BsFileEarmarkImage } from "react-icons/bs";
 import { HiOutlineLocationMarker } from "react-icons/hi";
+import {getLocality} from "services/catalogs";
+import {Select, WrapperSelect} from "./UpdateCandidateComponents";
 
 const FormUpdateDataStudent = ({ id, username, candidate }) => {
   const [previewImage, setPreviewImage] = useState(username);
+  const [localities, setLocalities] = useState(null);
+  const [state,setState] = useState("");
+  const [municipality,setMunicipality] = useState("");
+  const [cp,setCP] = useState("");
+  const [place,setPlace] = useState("");
+
+  const handleLocality = (e) => {
+    const { value } = e.target;
+    setCP(value);
+  
+    if (value !== "") {
+      getLocality(value)
+        .then((response) => {
+          setLocalities(response);
+          console.log(response[0]['c222_state']);
+          setState(response[0]['c222_state']);
+          setMunicipality(response[0]['c222_municipality'])
+        })
+        .catch((error) => console.error(error));
+    }
+  };
+
+  const set_locality = (e) => {
+    const locality = e.split(',');
+    console.log(locality);
+    //form.c222_id_locality = locality[0];    
+    setPlace(locality[1])
+  }
 
   function convertToBase64(file) {
     return new Promise((resolve, reject) => {
@@ -128,12 +158,38 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
           </h2>
           <div style={{ display: "flex", gap: "1rem", marginBottom: "1rem" }}>
             <Input label="Calle y numero" />
-            <Input label="CP" width="300px" />
+            <Input 
+              label="CP" 
+              onChange={handleLocality}
+              width="300px" />
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-            <Input label="Estado" width="450px" />
-            <Input label="Ciudad/Municipio/Alcadia" width="460px" />
-            <Input label="Colonia" width="450px" />
+            <Input label="Estado" value={state} width="450px" />
+            <Input label="Ciudad/Municipio/Alcadia" value ={municipality} width="460px" />
+            {/*/<Input label="Colonia" width="450px" />*/}
+            <WrapperSelect>
+              <Select
+                name="c222_id_locality"
+                id="c222_id_locality"
+                value={place}
+                width="450px"
+                onChange={(e) => set_locality(e.target.value)}
+                //sx={{ width:300, padding:1}}
+              >
+                <option value="" disabled>
+                  Seleccione una Colonia
+                </option>
+                {localities &&
+                  localities?.map((township) => (
+                    <option
+                      key={crypto.randomUUID()}
+                      value={[township.c222_id,township.c222_locality]}
+                    >
+                      {township.c222_locality}
+                    </option>
+                  ))}
+              </Select>
+            </WrapperSelect>
           </div>
           <div
             style={{
