@@ -1,6 +1,6 @@
 import React from "react";
-// import { useParams } from "react-router-dom";
-// import { useForm } from "hooks";
+import { useParams } from "react-router-dom";
+import { useForm } from "hooks";
 import {
   WrapperComment,
   Description,
@@ -8,13 +8,28 @@ import {
   TextDate,
 } from "./styled-components/CommentStyled";
 
-const Comment = ({ comment, date, nameManager }) => {
-  // const { t200_id_vacant } = useParams()
-  // const { form, handleChange } = useForm({
-  //   t200_id_vacant,
-  //   t200_id_recruiter: recruiterId,
-  //   t223_comment: ''
-  // });
+function CommentRecruiter({recruiterId}) {
+  const { t200_id_vacant } = useParams()
+  const { form, handleChange } = useForm({
+    t200_id_vacant,
+    t200_id_recruiter: recruiterId,
+    t223_comment: ''
+  });
+
+  return (
+  <CommentBox
+    name="t223_comment"
+    id="t223_comment"
+    value={form.t223_comment}
+    onChange={handleChange}
+    cols="30"
+    rows="5"
+    placeholder="Responder"
+  ></CommentBox>
+  )
+}
+
+const Comment = ({ comment, date, nameManager, userId }) => {
 
   return (
     <WrapperComment>
@@ -24,15 +39,7 @@ const Comment = ({ comment, date, nameManager }) => {
           <TextDate>Fecha: {date}</TextDate>
         </div>
       </Description>
-      <div>
-        <CommentBox
-          name=""
-          id=""
-          cols="30"
-          rows="5"
-          placeholder="Responder"
-        ></CommentBox>
-      </div>
+      <CommentRecruiter recruiterId={userId} />
     </WrapperComment>
   );
 };

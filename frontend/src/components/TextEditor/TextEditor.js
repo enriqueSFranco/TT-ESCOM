@@ -16,7 +16,7 @@ const TextEditor = ({ id, name, value, onChange }) => {
         <h2>Prestaciones</h2>
       "
       init={{
-        height: 400,
+        height: 300,
         width: 800,
         menubar: false,
         plugins:

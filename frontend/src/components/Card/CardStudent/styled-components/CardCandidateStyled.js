@@ -1,16 +1,29 @@
 import styled from "styled-components";
 
-const CardUser = styled.article`
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+const Card = styled.article`
   width: 450px;
-  border-radius: .3rem;
-  padding: 0.5rem;
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  align-items: center;
-  grid-template-areas: "avatar information";
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 `;
+
+const CardContentAvatar = styled.figure`
+  padding: .5rem 0 .3rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  text-align: center;
+  background-color: #FAF9F6;
+  border-radius: 1rem;
+`
+
+const Text = styled.p`
+  display: block;
+  font-weight: ${props => props.fontWeight || 'normal'};
+  color: ${props => props.textColor || '#000'};
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+`
 
 const Username = styled.span`
   display: inline-block;
@@ -42,4 +55,4 @@ const WrapperList = styled.div`
   height: 50px;
 `
 
-export { CardUser, Username, H3, WrapperList, Speciality };
+export { Card, CardContentAvatar, Text, Username, H3, WrapperList, Speciality };

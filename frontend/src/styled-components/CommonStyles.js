@@ -12,7 +12,9 @@ const List = styled.ul`
 `
 
 // li
-const ListItem = styled.li``
-
+const ListItem = styled.li`
+  padding: 0;
+  margin: 0;
+`
 
 export { List, ListItem }
