@@ -17,7 +17,7 @@ router.register(r'Vacants', VacantViewSet, basename='Vacants')
 
 router.register(r'RecruiterVacants', RecruiterVacantViewSet, basename='Recruiters Vacants')
 #router.register(r'VacantRequirements', VacantRequirementsViewSet, basename='Vacants requirements')
-#router.register(r'VacantLanguages', VacantLanguagesViewSet, basename='Vacants lenguages')
+#router.register(r'VacantLanguages', VacantLanguagesViewSet, basename='Vacants languages')
 router.register(r'Announcements',AnnouncementViewSet,basename='Announcements')
 router.register(r'Applications',ApplicationViewSet,basename='Students Applications')
 router.register(r'VacantApplications',VacantApplicationsViewSet,basename='Vacants Applications')

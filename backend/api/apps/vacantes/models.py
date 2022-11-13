@@ -209,24 +209,7 @@ class Vacant(models.Model):
     def __str__(self) ->str:
 	    return str(self.t200_id_vacant)
 
-#T214 Requerimiento
-class Requirement(models.Model):
-    t214_id_requirement = models.AutoField(primary_key=True)
-    t200_id_vacant = models.ForeignKey(
-		Vacant,
-		null=False,
-		blank=False,
-        default=1,
-		related_name='VacantRequirement',
-		on_delete=models.CASCADE)
-    t214_description = models.CharField(max_length=150)
-    class Meta:
-        verbose_name = 'Requirement'
-        verbose_name_plural = 'Requierements'
-        db_table = "t214_requerimiento"
 
-    def __str__(self) ->str:
-	    return str(self.t214_id_requirement)
 
 
 

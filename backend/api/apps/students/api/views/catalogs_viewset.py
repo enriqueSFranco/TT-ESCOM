@@ -217,7 +217,7 @@ class LanguageViewSet(viewsets.GenericViewSet):
 		self.queryset= None
 		if self.queryset == None:
 			self.queryset = self.model.objects\
-				.filter(c111_id_lenguage = pk)\
+				.filter(c111_id_language = pk)\
 				.all()
 		return  self.queryset
 		

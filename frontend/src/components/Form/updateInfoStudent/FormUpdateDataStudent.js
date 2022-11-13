@@ -41,11 +41,11 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
     setPlace(locality[1])
   }
   const { form, handleChange, handleChecked } = useForm({
-    t100_name: "",
-    t100_last_name: "",
-    t100_second_surname: "",
+    t100_name: candidate?.t100_name,
+    t100_last_name: candidate?.t100_last_name,
+    t100_second_surname: candidate?.t100_second_surname,
     t100_cv: null,
-    t100_residence: "",
+    t100_residence: candidate?.t100_residence,
     t100_travel: false
   })
 

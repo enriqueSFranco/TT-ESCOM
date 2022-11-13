@@ -1,20 +1,20 @@
 from rest_framework import serializers
-from apps.vacantes.models import Requirement
+from apps.vacantes.models import RequiredAbility
 
 class RequirementSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Requirement
+        model = RequiredAbility
         fields = ('t200_id_vacant','c116_id_skill')
         #'__all__'
     
     def create(self,validate_data):
-        aplication = Requirement(**validate_data)
+        aplication = RequiredAbility(**validate_data)
         aplication.save()
         return aplication
     
 class RequirementListSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Requirement
+        model = RequiredAbility
         fields = '__all__'
         #'__all__'
         depth = 2
@@ -22,7 +22,7 @@ class RequirementListSerializer(serializers.ModelSerializer):
 
 class UpdateRequirementSerializer(serializers.ModelSerializer):
         class Meta:
-            model = Requirement
+            model = RequiredAbility
             fields = ('t200_id_vacant','c116_id_skill')
         
         def update(self,instance,validate_data):

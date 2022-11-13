@@ -47,7 +47,7 @@ export const getAllSocialNetworks = () => {
     })
 }
 
-export const getLenguages = async (id) => {
+export const getLanguages = async (id) => {
   return API(`${API_STUDENT_LENGUAGES}${id}/`)
     .then(response => {
       const { data } = response;
