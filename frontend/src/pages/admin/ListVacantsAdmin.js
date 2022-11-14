@@ -1,57 +1,62 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-import { useFetch } from 'hooks'
-import CardJobPreviewRecruiter from 'components/Card/CardJobPreviewRecruiter'
-// import FormSearchJob from 'components/Search/FormSearchJob'
-import LayoutDashboard from 'Layout/LayoutDashboard'
-// import LayoutWidgetRecruiter from 'Layout/LayoutWidgetRecruiter'
-import { Content } from '../styled-components/ListVacantsAdmin'
-// import { FaUsers } from 'react-icons/fa'
+import React from "react";
+import { Outlet } from "react-router-dom";
+import { useFetch } from "hooks";
+import CardJobPreviewRecruiter from "components/Card/CardJobPreviewRecruiter";
+import LayoutDashboard from "Layout/LayoutDashboard";
+import { Content } from "../styled-components/ListVacantsAdmin";
 import {
   Aside,
   Container,
-  Grid,
-  // WrapperListCardJobPreviewRecruiter,
-  // WrapperWidgets,
-  // ContentWidget,
-  // ContentWidgetCommon,
-  // TextNumber
 } from "../styled-components/DashboardRecruiterStyled";
 
-const { REACT_APP_URL_MANAGER_VALIDATE_VACANT } = process.env
+const ContentGrid = {
+  height:' 100%',
+  width: '100%',
+  padding: '0 .5rem',
+  display: 'grid',
+  gridTemplateColumns: 'repeat(2, 1fr)',
+  gap: '1rem',
+}
+
+const { REACT_APP_URL_MANAGER_VALIDATE_VACANT } = process.env;
 
 const ListVacantsAdmin = () => {
-  // const { t200_id_vacant } = useParams()
-  const { data, error, loading } = useFetch(REACT_APP_URL_MANAGER_VALIDATE_VACANT)
-  // const { data: dataVacantInfo, error: errorVacantInfo, loading: loadingVacantInfo } = useFetch(`${process.env.REACT_APP_URL_VACANT_VACANT_INFO}${t200_id_vacant || 1}/`)
+  const { data, error, loading } = useFetch(
+    REACT_APP_URL_MANAGER_VALIDATE_VACANT
+  );
 
-
-  if (!data) return null
+  if (!data) return null;
 
   return (
-      <Content>
-        <LayoutDashboard>
+    <Content>
+      <LayoutDashboard>
         <Aside>
-          <div style={{
-            height: '87vh',
-            overflowY: 'auto',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '.5rem'
-          }}>
+          <div
+            style={{
+              height: "87vh",
+              overflowY: "auto",
+              display: "flex",
+              flexDirection: "column",
+              gap: ".5rem",
+            }}
+          >
             {data?.map((el) => (
-              <CardJobPreviewRecruiter key={`card_job_${crypto.randomUUID()}`} url='index/lista-de-vacantes' info={el} />
+              <CardJobPreviewRecruiter
+                key={`card_job_${crypto.randomUUID()}`}
+                url="index/lista-de-vacantes"
+                info={el}
+              />
             ))}
           </div>
         </Aside>
         <Container>
-          <Grid>
+          <section style={ContentGrid}>
             <Outlet />
-          </Grid>
+          </section>
         </Container>
       </LayoutDashboard>
-      </Content>
-  )
-}
+    </Content>
+  );
+};
 
-export default ListVacantsAdmin
+export default ListVacantsAdmin;

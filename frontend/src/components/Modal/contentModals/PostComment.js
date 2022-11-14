@@ -6,7 +6,7 @@ const TextH1 = {
   fontFamily: 'sans-serif',
   textAlign: 'center',
   position: 'relative',
-  top: '3rem'
+  top: '2rem'
 }
 
 const PostComment = () => {

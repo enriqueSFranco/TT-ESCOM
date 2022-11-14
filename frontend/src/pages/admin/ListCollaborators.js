@@ -2,7 +2,6 @@ import React from "react";
 import { useModal, useFetch } from "hooks";
 import Button from "components/Button/Button"
 import Tooltip from "components/Tooltip/Tooltip";
-// import LayoutAdmin from "Layout/LayoutAdmin";
 import FormAddCollaborator from 'components/Form/FormAddCollaborator'
 import ModalPortal from "components/Modal/ModalPortal";
 import CardCollaborator from "components/Card/CardCollaborator";
@@ -10,13 +9,13 @@ import { MdAddCircleOutline } from "react-icons/md"
 import { WrapperList, HeaderTop } from '../styled-components/ListCollaboratorsStyled'
 
 const ListCollaborators = () => {
-  const { data, error, loading } = useFetch(process.env.REACT_APP_URL_MANAGET_ADMINISTRATORS)
+  const { data } = useFetch(process.env.REACT_APP_URL_MANAGER_ADMINISTRATORS)
   const [isOpenModalEdit, openModalEdit, closeModalEdit] = useModal(false);
   const [isOpenModalDelete, openModalDelete, closeModalDelete] =
     useModal(false);
   const [isOpenModalAdd, openModalAdd, closeModalAdd] = useModal(false)
 
-  // if (!data) return null
+  if (!data) return null
 
   return (
     <>
@@ -45,8 +44,7 @@ const ListCollaborators = () => {
       </ModalPortal>
 
       <ModalPortal isOpen={isOpenModalDelete} closeModal={closeModalDelete}>
-      <h1>Eliminar colaborador</h1>
-
+        <h2 style={{textAlign: 'center'}}>Eliminar colaborador</h2>
       </ModalPortal>
 
 

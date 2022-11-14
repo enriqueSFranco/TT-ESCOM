@@ -27,10 +27,12 @@ const Container = styled.main`
   `
 
 const Grid = styled.div`
+  background-color: #fff;
   padding: 0 .5rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+  /* background-color: red; */
 `
 
 const WrapperWidgets = styled.section`

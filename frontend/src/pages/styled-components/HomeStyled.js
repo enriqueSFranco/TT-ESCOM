@@ -19,6 +19,7 @@ const Main = styled.main`
                         "hero hero"
                         "aside content_data";
     position: relative;
+    background-color: #FFF;
   }
 `
 

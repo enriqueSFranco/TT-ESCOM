@@ -2,9 +2,8 @@ import styled from 'styled-components'
 
 const WrapperForm = styled.div`
   position: relative;
-  top: 4rem;
+  top: 3rem;
 `
-
 const Form = styled.form`
   display: flex;
   flex-direction: column;

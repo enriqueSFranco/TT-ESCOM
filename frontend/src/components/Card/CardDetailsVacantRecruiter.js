@@ -9,8 +9,8 @@ import Chip from "components/Chip/Chip";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { FcCalendar } from "react-icons/fc";
 import { FaBrain } from "react-icons/fa";
-import { BiLike } from 'react-icons/bi'
-import { IoMdAddCircle } from 'react-icons/io'
+import { BiLike } from "react-icons/bi";
+import { IoMdAddCircle } from "react-icons/io";
 import {
   WrapperLoader,
   WraperCard,
@@ -28,15 +28,22 @@ import Button from "components/Button/Button";
 import PostComment from "components/Modal/contentModals/PostComment";
 
 const CardDetailsVacantRecruiter = ({ height }) => {
-  const [isOpen, openModal, closeModal] = useModal(false)
+  const [isOpen, openModal, closeModal] = useModal(false);
   const { t200_id_vacant } = useParams();
-  const observation = useGetObservationVacant({vacantId: t200_id_vacant})
+  const observation = useGetObservationVacant({ vacantId: t200_id_vacant });
   const { token } = useAuth();
   const { data, error, loading } = useFetch(
     `${process.env.REACT_APP_URL_VACANTS}${t200_id_vacant}/`
   );
 
-  const handlePublish = () => {};
+  const handlePublish = (e) => {
+    e.preventDefault();
+    console.log("publicar");
+  };
+  const handleSendReview = (e) => {
+    e.preventDefault();
+    console.log("enviar a revision");
+  };
 
   if (!data || !token || !observation) return null;
 
@@ -102,9 +109,17 @@ const CardDetailsVacantRecruiter = ({ height }) => {
               {token.user.user_type === USERS.recruiter ? (
                 <WrapperActions>
                   <button
-                    className={`button_admin ${data[0]?.c204_id_vacant_status?.c204_id_status === 1 ? 'disabled' : 'publish'}`}
-                    onClick={handlePublish}
-                    disabled={data[0]?.c204_id_vacant_status?.c204_id_status === 1 ? true : false}
+                    className={`button_admin ${
+                      data[0]?.c204_id_vacant_status?.c204_id_status === 1
+                        ? "disabled"
+                        : "publish"
+                    }`}
+                    onClick={handleSendReview}
+                    disabled={
+                      data[0]?.c204_id_vacant_status?.c204_id_status === 1
+                        ? true
+                        : false
+                    }
                   >
                     Enviar a revision
                   </button>
@@ -117,7 +132,7 @@ const CardDetailsVacantRecruiter = ({ height }) => {
                     onClick={handlePublish}
                   >
                     Publicar vacante
-                    <BiLike style={{color: '#fff', fontSize: '1.3rem'}} />
+                    <BiLike style={{ color: "#fff", fontSize: "1.3rem" }} />
                   </button>
                 </WrapperActions>
               )}
@@ -126,16 +141,16 @@ const CardDetailsVacantRecruiter = ({ height }) => {
           {token.user.user_type === USERS.recruiter ? (
             <WrapperComment>
               <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
-              <ul>
-                {
-                  observation?.map(el => (
-                    // console.log(el)
-                    <li key={`comment-id-${el?.t223_id_comment}`}>
-                      <Comment comment={el?.t223_comment} date={el?.t223_sent_date}  />
-                    </li>
-                  ))
-                }
-              </ul>
+              <div style={{display: 'flex', flexDirection: 'column', gap: '1rem', overflowY: 'auto', height: '660px'}}>
+                {observation?.map((el) => (
+                  <Comment
+                    key={`comment-id-${el?.t223_id_comment}`}
+                    comment={el?.t223_comment}
+                    date={el?.t223_sent_date}
+                    userId={el?.t301_id_recruiter?.t301_id_recruiter}
+                  />
+                ))}
+              </div>
             </WrapperComment>
           ) : (
             // TODO: Pasar a un componente independiente
@@ -144,22 +159,35 @@ const CardDetailsVacantRecruiter = ({ height }) => {
                 <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
                 <nav
                   style={{
-                    position: 'relative',
-                    display: 'flex',
-                    justifyContent: 'flex-end'
+                    position: "relative",
+                    display: "flex",
+                    justifyContent: "flex-end",
                   }}
                 >
-                  <Tooltip title='Agregar una observacion'>
-                    <Button onClick={openModal} bgColor='transparent' icon={<IoMdAddCircle style={{fontSize: '1.7rem', color: '#1C8EFB'}} />} />
+                  <Tooltip title="Agregar una observacion">
+                    <Button
+                      onClick={openModal}
+                      bgColor="transparent"
+                      icon={
+                        <IoMdAddCircle
+                          style={{ fontSize: "1.7rem", color: "#1C8EFB" }}
+                        />
+                      }
+                    />
                   </Tooltip>
                 </nav>
               </header>
-
+              {/* TODO: Observaciones del administrador */}
             </WrapperComment>
           )}
         </>
       )}
-      <ModalPortal isOpen={isOpen} closeModal={closeModal} minWidth="700px" minHeight="470px">
+      <ModalPortal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        minWidth="700px"
+        minHeight="490px"
+      >
         <PostComment />
       </ModalPortal>
     </>
