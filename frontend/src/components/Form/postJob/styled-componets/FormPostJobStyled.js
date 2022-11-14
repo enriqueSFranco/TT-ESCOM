@@ -10,7 +10,21 @@ const Form = styled.form`
   background-color: #ffffffbd;
   backdrop-filter: blur(10px);
   padding: 1rem;
-  border-radius: 1rem;
+  border-radius: 0;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #105AF4;
+    height: 4px;
+    border-radius: 1rem;
+  }
+
   `
 
 const ContainerForm = styled.div`

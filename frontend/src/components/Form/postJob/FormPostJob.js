@@ -62,7 +62,7 @@ const FormPostJob = () => {
   const [typeContractList, setTypeContractList] = useState(null);
   const [profileCandidate, setProfileCandidate] = useState("");
   const [profileCandidateList, setProfileCandidateList] = useState(null);
-  // const [visible, setVisible] = useState(false);
+
 
   useEffect(() => {
     getAllCatalogueExperience()
@@ -123,6 +123,8 @@ const FormPostJob = () => {
 
   if (!expList) return null;
 
+  console.log(newObject)
+
   return (
     <LayoutHome>
       <ContainerForm>
@@ -130,6 +132,7 @@ const FormPostJob = () => {
           style={{
             fontSize: "1.3rem",
             fontFamily: "System",
+            fontWeight: '700',
             margin: "1rem 0 0 0",
           }}
         >

@@ -21,8 +21,8 @@ const CardBody = styled.article`
     position: relative;
     width: 400px;
     height: 350px;
-    background-color: #fff;
-    border-radius: 2px;
+    background-color: #FFF;
+    border-radius: 1rem;
     color: #222;
     font-family: sans-serif;
     padding: 0 0.5rem;
@@ -53,7 +53,7 @@ const CardImage = styled.div`
 const PublicationDate = styled.span`
   font-size: .8rem;
   font-weight: 600;
-  color: #7c7c7c;
+  color: #FFF;
 `;
 
 const CardContent = styled.div``;
@@ -102,7 +102,7 @@ const Description = styled.p`
   @media screen and ${device.laptop} {
     width: 100%;
     height: 70px;
-    color: #7c7c7c;
+    color: #000;
     margin: 0.8rem 0;
   }
 
