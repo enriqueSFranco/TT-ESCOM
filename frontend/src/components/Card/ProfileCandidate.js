@@ -13,12 +13,13 @@ const links = [
 
 const ProfileCandidate = ({ user }) => {
   const { skills } = useGetSkills(user?.t100_id_student)
+  const { languages } = useLanguageUser(user?.t100_id_student)
   // user?.id_user.id || t100_id_student
   const { t100_name, t100_last_name, t100_second_surname, t100_email, t100_phonenumber, t100_profile_picture, t100_speciality, t100_interest_job } = user
 
-  if (!skills) return null
+  if (!skills || !languages) return null
 
-  console.log(skills)
+  console.log(languages)
   
   return (
     <WrapperCard>
@@ -36,11 +37,34 @@ const ProfileCandidate = ({ user }) => {
           </List>
         </CardHeader>
         <CardInfo>
-          <List>
-            {skills?.map(skill => (
-              <ListItem><Chip label={skill?.c116_id_skill?.c116_description} bg="#37404D" color="#fff" /></ListItem>
-            ))}
-          </List>
+          <div>
+            <h2 style={{fontSize: '1rem'}}>Habilidades en:</h2>
+            <List>
+              {skills?.map(skill => (
+                <ListItem><Chip label={skill?.c116_id_skill?.c116_description} bg="#37404D" color="#fff" /></ListItem>
+              ))}
+            </List>
+          </div>
+          
+          <div>
+            <h2 style={{fontSize: '1rem'}}>Idioma/Dialecto</h2>
+            
+            <List>
+              {
+                languages?.map(language => (
+                  <ListItem><Chip label={language?.c111_id_language?.c111_description} bg="#37404D" color="#fff" /></ListItem>
+                ))
+              }
+            </List>
+          </div>
+
+          <div>
+            <h2 style={{fontSize: '1rem'}}>Contacto</h2>
+            <List style={{display: 'flex', flexDirection: 'column'}}>
+              <ListItem style={{alignSelf: 'flex-start'}}><MdEmail /> {t100_email}</ListItem>
+              <ListItem style={{alignSelf: 'flex-start'}}> <MdOutlinePhoneIphone />{t100_phonenumber}</ListItem>
+            </List>
+          </div>
         </CardInfo>
       </CardLeft>
       <CardRight></CardRight>
