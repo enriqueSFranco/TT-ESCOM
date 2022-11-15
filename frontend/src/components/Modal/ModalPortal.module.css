@@ -23,11 +23,15 @@
 }
 
 .modalClose {
-  position: absolute;
-  top: .5rem;
-  right: 1rem;
   background-color: transparent;
   border: none;
   color: red;
   font-size: 1.7rem;
+}
+
+.wrapperModalClose {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;  
 }

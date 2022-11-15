@@ -4,7 +4,7 @@ const WrapperCard = styled.article`
   min-width: 100%;
   min-height: calc(100vh - 15rem);
   position: relative;
-  top: 2.5rem;
+  /* top: 2.5rem; */
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(2, 1fr);

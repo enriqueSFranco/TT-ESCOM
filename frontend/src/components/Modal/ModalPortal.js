@@ -22,9 +22,11 @@ const ModalPortal = ({
         }}
         className={styles.modalContainer}
       >
-        <button className={styles.modalClose} onClick={closeModal}>
-          <AiOutlineCloseCircle />
-        </button>
+        <div className={styles.wrapperModalClose}>
+          <button className={styles.modalClose} onClick={closeModal}>
+            <AiOutlineCloseCircle />
+          </button>
+        </div>
         {children}
       </div>
     </article>,

@@ -9,6 +9,7 @@ import { HiUserCircle } from 'react-icons/hi'
 import styles from "./Accordion.module.css";
 import Button from "components/Button/Button";
 
+// TODO: Pasar a un componente
 const CardApplicantDetails = ({ name, interestJob, speciality, picture, onClick }) => {
   return <article style={{
     height: "200px",
@@ -30,6 +31,15 @@ const CardApplicantDetails = ({ name, interestJob, speciality, picture, onClick 
     </div>
   </article>;
 };
+
+// TODO: Pasar a un component
+const NoApplications = () => {
+  return (
+    <>
+      <h1>dfjlkj</h1>
+    </>
+  )
+}
 
 const Accordion = () => {
   const { t200_id_vacant } = useParams();
@@ -84,8 +94,10 @@ const Accordion = () => {
         </aside>
         <article className={styles.application_details}>
           {/* detalles del candidato */}
-          <div style={{position: 'relative', top: '-2.5rem'}}>
-            {viewApplicantDetails ? <ProfileCandidate user={data[0]?.t100_id_student} /> : <ProfileCandidate user={data[0]?.t100_id_student} />}
+          <div style={{position: 'relative'}}>
+            {
+              !data.length ? (<NoApplications />) : (viewApplicantDetails ? <ProfileCandidate user={data[0]?.t100_id_student} /> : <ProfileCandidate user={data[0]?.t100_id_student} />)
+            }
           </div>
         </article>
       </main>
