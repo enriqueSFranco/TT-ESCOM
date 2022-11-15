@@ -4,7 +4,7 @@ const WrapperCard = styled.article`
   min-width: 100%;
   min-height: calc(100vh - 15rem);
   position: relative;
-  top: 3rem;
+  top: 2.5rem;
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(2, 1fr);
@@ -23,7 +23,11 @@ const CardRight = styled.div`
   grid-area: card_right;
   padding: 1rem;
   background-color: #fff;
-border-radius: 1rem;
+  border-radius: 1rem;
+`
+
+const Item = styled.li`
+  cursor: pointer;
 `
 
 const CardInfo = styled.div`
@@ -44,4 +48,4 @@ const CardHeader = styled.header`
 `
 
 
-export { WrapperCard, CardLeft, CardHeader, CardInfo, CardRight }
+export { WrapperCard, CardLeft, CardHeader, CardInfo, CardRight, Item }
