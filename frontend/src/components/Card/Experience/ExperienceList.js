@@ -15,15 +15,14 @@ const ExperenceList = () => {
   const [isOpen, openModal, closeModal] = useModal(false)
   const { token } = useAuth();
 
-
   let idUser = token?.user?.id;
 
   useEffect(() => {
-    getProjects(token?.user?.id).then((response) => {
+    getProjects(idUser).then((response) => {
       setListProjects(response);
     })
     .catch(error => console.error(error))
-  }, [token?.user?.id]);
+  }, [idUser]);
 
   if (!listProjects) return null;
 

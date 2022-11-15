@@ -16,7 +16,7 @@ import {
   Logo,
   NavLeft,
   NavList,
-  NavLink,
+  Link,
 } from "./styled-components/MainMenuStyled";
 
 const MainMenu = () => {
@@ -26,26 +26,26 @@ const MainMenu = () => {
     return (
       <>
         <NavList>
-          <NavLink to="/" data-link className="active">
+          <Link to="/" data-link className="active">
             <FcHome style={{ fontSize: "1.5rem" }} />
             Inicio
-          </NavLink>
-          <NavLink to="/empresas" data-link>
+          </Link>
+          <Link to="/empresas" data-link>
             <FcDepartment style={{ fontSize: "1.5rem" }} />
             Empresas
-          </NavLink>
-          <NavLink to="/comunicados" data-link>
+          </Link>
+          <Link to="/comunicados" data-link>
             <FcAdvertising style={{ fontSize: "1.5rem" }} />
             Comunicados
-          </NavLink>
-          <NavLink to="/alumno" data-link>
+          </Link>
+          <Link to="/alumno" data-link>
             <FcGraduationCap style={{ fontSize: "1.5rem" }} />
             Candidato
-          </NavLink>
-          <NavLink to="/reclutador" data-link>
+          </Link>
+          <Link to="/reclutador" data-link>
             <FcBriefcase style={{ fontSize: "1.5rem" }} />
             Reclutador
-          </NavLink>
+          </Link>
         </NavList>
       </>
     );
@@ -54,26 +54,26 @@ const MainMenu = () => {
   return (
     <>
       <NavLeft>
-        <NavLink to="/">
+        <Link to="/">
           <picture>
             <img src={logo} alt="logo-bte" />
           </picture>
           <Logo>ESCOM</Logo>
-        </NavLink>
+        </Link>
       </NavLeft>
       <NavList>
-        <NavLink to="/" data-link className="active">
+        <Link to="/" data-link className="active">
           <HiOutlineHome />
           Inicio
-        </NavLink>
-        <NavLink to="/empresas" data-link>
+        </Link>
+        <Link to="/empresas" data-link>
           <IoBusinessOutline />
           Empresas
-        </NavLink>
-        <NavLink to="/comunicados" data-link>
+        </Link>
+        <Link to="/comunicados" data-link>
           <BsMegaphone />
           Comunicados
-        </NavLink>
+        </Link>
         <DropMenu />
       </NavList>
     </>

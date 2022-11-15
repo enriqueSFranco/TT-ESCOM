@@ -9,7 +9,7 @@ import {
   NavLeft,
   NavList,
   NavItem,
-  NavLink,
+  Link,
 } from "./styled-components/MainMenuStyled";
 
 const MenuManager = () => {
@@ -19,22 +19,22 @@ const MenuManager = () => {
   return (
     <>
       <NavLeft>
-        <NavLink to="/">
+        <Link to="/">
           <picture>
             <img src={logo} alt="logo-bte" />
           </picture>
           <Logo>ESCOM</Logo>
-        </NavLink>
+        </Link>
       </NavLeft>
       <NavList>
-        <NavLink to="/index" data-link>
+        <Link to="/index" data-link>
           <MdSpaceDashboard style={{ fontSize: "1.5rem" }} />
           Dashboard
-        </NavLink>
-        <NavLink to="/empresas" data-link>
+        </Link>
+        <Link to="/empresas" data-link>
           <IoBusinessOutline style={{ fontSize: "1.5rem" }} />
           Empresas
-        </NavLink>
+        </Link>
         <NavItem>
           <DropMenu typeuser={typeuser} name={token.user.first_name} />
         </NavItem>
