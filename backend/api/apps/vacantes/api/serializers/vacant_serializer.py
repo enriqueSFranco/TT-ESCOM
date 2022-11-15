@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.vacantes.models import Vacant,Requirement
+from apps.vacantes.models import Vacant,RequiredAbility
 
 class VacantSerializer(serializers.ModelSerializer):    
     class Meta:
@@ -65,17 +65,17 @@ class VacantInfoListSerializer(serializers.ModelSerializer):
 
 class VacantRequirementSerializer(serializers.ModelSerializer):    
     class Meta:
-        model = Requirement
+        model = RequiredAbility
         fields = '__all__'
     
     def create(self,validate_data):
         print(validate_data)
-        new_requirement = Requirement(**validate_data)
+        new_requirement = RequiredAbility(**validate_data)
         new_requirement.save()
         return new_requirement
     
 class VacantRequirementListSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Requirement
+        model = RequiredAbility
         fields = '__all__'
         depth = 2

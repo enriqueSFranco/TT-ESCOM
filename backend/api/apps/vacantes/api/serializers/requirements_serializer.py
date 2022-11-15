@@ -1,28 +1,26 @@
 from rest_framework import serializers
-from apps.vacantes.models import Requirement
+from apps.vacantes.models import RequiredAbility,RequiredLanguage
 
-class RequirementSerializer(serializers.ModelSerializer):
+class RequiredAbilitySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Requirement
-        fields = ('t200_id_vacant','c116_id_skill')
-        #'__all__'
+        model = RequiredAbility
+        fields = '__all__'
     
     def create(self,validate_data):
-        aplication = Requirement(**validate_data)
+        aplication = RequiredAbility(**validate_data)
         aplication.save()
         return aplication
     
-class RequirementListSerializer(serializers.ModelSerializer):
+class RequiredAbilityListSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Requirement
-        fields = '__all__'
-        #'__all__'
+        model = RequiredAbility
+        fields = '__all__'        
         depth = 2
 
 
-class UpdateRequirementSerializer(serializers.ModelSerializer):
+class UpdateRequiredAbilitySerializer(serializers.ModelSerializer):
         class Meta:
-            model = Requirement
+            model = RequiredAbility
             fields = ('t200_id_vacant','c116_id_skill')
         
         def update(self,instance,validate_data):
@@ -31,4 +29,18 @@ class UpdateRequirementSerializer(serializers.ModelSerializer):
             return u_aplication
 
 
-
+class RequiredLanguageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RequiredLanguage
+        fields = '__all__'
+    
+    def create(self,validate_data):
+        aplication = RequiredLanguage(**validate_data)
+        aplication.save()
+        return aplication
+    
+class RequiredLanguageListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RequiredLanguage
+        fields = '__all__'        
+        depth = 2

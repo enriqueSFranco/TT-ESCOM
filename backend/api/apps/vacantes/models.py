@@ -1,5 +1,5 @@
 from django.db import models
-from apps.students.models import Student
+from apps.students.models import Student,Language
 from apps.administration.models import Admin
 from apps.companies.models import Company,Recruiter
 
@@ -209,25 +209,51 @@ class Vacant(models.Model):
     def __str__(self) ->str:
 	    return str(self.t200_id_vacant)
 
-#T214 Requerimiento
-class Requirement(models.Model):
-    t214_id_requirement = models.AutoField(primary_key=True)
+#T211 Habilidades requeridas
+class RequiredAbility(models.Model):
+    t211_id_requirement = models.AutoField(primary_key=True)
     t200_id_vacant = models.ForeignKey(
 		Vacant,
 		null=False,
 		blank=False,
         default=1,
-		related_name='VacantRequirement',
+		related_name='VacantAbility',
 		on_delete=models.CASCADE)
-    t214_description = models.CharField(max_length=150)
+    c116_description = models.CharField(max_length=150)
+    t211_required_level=models.CharField(max_length=50)
+    t211_mandatory=models.BooleanField(default=False)
     class Meta:
-        verbose_name = 'Requirement'
-        verbose_name_plural = 'Requierements'
-        db_table = "t214_requerimiento"
+        verbose_name = 'RequieredAbility'
+        verbose_name_plural = 'RequieredAbilities'
+        db_table = "t211_habilidad"
 
     def __str__(self) ->str:
-	    return str(self.t214_id_requirement)
+	    return str(self.c116_description)
 
+#t212 Idioma requerido
+class RequiredLanguage(models.Model):
+    t212_id_language = models.AutoField(primary_key=True)
+    t200_id_vacant = models.ForeignKey(
+		Vacant,
+		null=False,
+		blank=False,
+        default=1,
+		related_name='VacantLanguage',
+		on_delete=models.CASCADE)
+    c111_id_language = models.ForeignKey(
+		Language,
+		null=False,
+		blank=False,
+		default=1,
+		related_name='VacantLanguageDescription',
+		on_delete=models.CASCADE)
+    t110_level_description = models.CharField(max_length=50,null=True,blank=True)
+    class Meta:
+        verbose_name = 'RequiredLanguage'
+        verbose_name = 'RequiredLanguages'
+        db_table = 't212_idioma'
+    def __str__(self) ->str:
+        return str(self.c111_id_language)
 
 
 #T201_applications

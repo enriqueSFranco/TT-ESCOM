@@ -24,6 +24,7 @@ const AboutMe = () => {
       ...form,
       t100_name: candidate[0]?.t100_name,
       t100_last_name: candidate[0]?.t100_last_name,
+      t100_second_surname: candidate[0]?.t100_second_surname,
       t100_boleta: candidate[0]?.t100_boleta,
       t100_email: candidate[0]?.t100_email,
     };

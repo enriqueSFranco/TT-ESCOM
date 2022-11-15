@@ -27,11 +27,16 @@ const StepComponent = () => {
   const [academicUnit, setAcademicUnits] = useState([]);
   const [interestJobs, setInterestJobs] = useState([]);
   const { form, handleChange } = useForm(formStepCandidate);
+  const [state,setState] = useState("");
+  const [municipality,setMunicipality] = useState("");
+  const [cp,setCP] = useState("");
+  const [place,setPlace] = useState("");
   // const { response, loading, loadingNextPage, setPage } = useGetAllJobs()
   const [academicHistorial, setAcademicHistorial] = useState(AcademicFormat);
   const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
   const { token } = useAuth();
   let navigate = useNavigate();
+  let id_locality = "";
 
   let id_student = token?.user?.id;
 
@@ -62,7 +67,17 @@ const StepComponent = () => {
 
   const PageDisplay = () => {
     if (activeStep === 0) {
-      return <DatesPersonal form={form} handleChange={handleChange} />;
+      return <DatesPersonal 
+              form={form} 
+              handleChange={handleChange} 
+              state = {state}
+              setState = {setState}
+              municipality ={municipality}
+              setMunicipality = {setMunicipality}
+              cp ={cp}
+              setCP = {setCP}
+              place ={place}
+              setPlace = {setPlace}/>;
     }
     if (activeStep === 1) {
       return (

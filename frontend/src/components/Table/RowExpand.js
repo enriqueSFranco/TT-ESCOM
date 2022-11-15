@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { uuid } from "utils/uuid";
-import { getSkill, getLenguages } from "services/catalogs";
+import { getSkill, getLanguages } from "services/catalogs";
 import Chip from "@mui/material/Chip";
 import { BiUser } from "react-icons/bi";
 import { SiGmail } from "react-icons/si";
@@ -17,7 +17,7 @@ import styles from "./Table.module.css";
 
 const RowExpand = ({ user }) => {
   const [skills, setSkills] = useState(null);
-  const [lenguages, setLenguages] = useState(null);
+  const [languages, setLanguages] = useState(null);
 
   useEffect(() => {
     if (user !== null) {
@@ -33,11 +33,11 @@ const RowExpand = ({ user }) => {
 
   useEffect(() => {
     if (user !== null) {
-      let idUserLenguage = user?.t100_id_student?.t100_id_student;
-      getLenguages(idUserLenguage)
+      let idUserLanguage = user?.t100_id_student?.t100_id_student;
+      getLanguages(idUserLanguage)
         .then((response) => {
           //  console.log(response);
-          setLenguages(response);
+          setLanguages(response);
         })
         .catch((error) => console.log(error));
     }
@@ -53,15 +53,15 @@ const RowExpand = ({ user }) => {
             ? "Sin objetivos profesionales guardados"
             : user?.t100_id_student?.t100_personal_objectives}
         </p>
-        <div className={styles.wrapperLenguages}>
+        <div className={styles.wrapperLanguages}>
           <p className={styles.languages}>Idiomas:</p>
           <ul className={styles.listItemsSkill}>
-            {lenguages &&
-              lenguages?.map((lenguage) => (
+            {languages &&
+              languages?.map((language) => (
                 <li key={uuid()}>
                   <Chip
                     size="small"
-                    label={lenguage?.c111_id_language?.c111_description}
+                    label={language?.c111_id_language?.c111_description}
                   />
                 </li>
               ))}
