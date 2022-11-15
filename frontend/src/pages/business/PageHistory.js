@@ -174,7 +174,7 @@ const PageHistory = () => {
                 <span>recibidas</span>
                 <FaUsers />
               </ContentWidget>
-              <Link to="/postulaciones">Ver Postulados</Link>
+              <Link to={`/postulaciones/${t200_id_vacant}/`}>Ver Postulados</Link>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>

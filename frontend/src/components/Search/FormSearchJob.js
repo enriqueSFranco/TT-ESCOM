@@ -15,6 +15,7 @@ import {
   WrapperForm,
 } from "./styled-components/FormSearchStyled";
 
+
 const FormSearchJob = ({ handleSearch }) => {
   const [queryJob, setQueryJob] = useState("");
   const [locationJob, setLocationJob] = useState("");
