@@ -56,11 +56,11 @@ const MenuRecruiter = () => {
             bg="#0bab7b4d"
           />
         </NavItem>
-        {links?.map((link) => (
-          <Link key={`linkId-${link.id}`} to={link.to}>
-            {link.icon}{link.label}
-          </Link>
-        ))}
+          {links?.map((link, index) => (
+            <Link data-item key={`linkId-${link.id}`} to={link.to}>
+              {link.icon}{link.label}
+            </Link>
+          ))}
         <NavItem>
           <Link to="/" onClick={logout}>
             <HiOutlineLogout style={{ fontSize: "1.4rem" }} />

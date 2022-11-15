@@ -1,6 +1,4 @@
 import React from "react";
-import Chip from 'components/Chip/Chip'
-import { List, ListItem } from "styled-components/CommonStyles";
 import { Button, DescriptionJob } from "../styled-components/DetailsJobStyled";
 
 function createMarkup(description) {
@@ -17,6 +15,7 @@ const DetailsJob = ({
   userID,
   handleApplyJob,
 }) => {
+
   return (
     <>
       <div>

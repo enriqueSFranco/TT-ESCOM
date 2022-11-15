@@ -29,7 +29,6 @@ import {
 const CardJob = ({ job }) => {
   const { token } = useAuth();
   const [isOpen, openModal, closeModal] = useModal(false)
-  const [status, setStatus] = useState(0)
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
 
@@ -53,10 +52,8 @@ const CardJob = ({ job }) => {
         t201_date_application:
           now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate(),
       });
-      // const { data, status } = response
-      console.log(response)
-      // setMessage(data?.message)
-      // setStatus(status)
+      const { data } = response
+      setMessage(data?.message)
     } catch (error) {
       setError(error)
       console.log(error);
@@ -69,8 +66,6 @@ const CardJob = ({ job }) => {
   
   if (!job) return null;
 
-  console.log({message, error})
-  
   return (
     <>
       <CardBody>
@@ -114,18 +109,6 @@ const CardJob = ({ job }) => {
           handleApplyJob={handleApplyJob}
           token={token}
         />
-        {/* {
-          status === 201 ? (
-            <div>
-              <h2>{message}</h2>
-            </div>
-          ) : (
-            <div>
-              <h2>Ya has aplicado a esta vacante</h2>
-              <span>{error}</span>
-            </div>
-          )
-        } */}
       </ModalPortal>
     </>
   );

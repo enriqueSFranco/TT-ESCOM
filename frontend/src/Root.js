@@ -21,7 +21,7 @@ import PagePostRelease from "pages/business/PagePostRelease";
 import PageApplicationsStudent from "pages/student/PageApplicationsStudent";
 import ExperienceList from "components/Card/Experience/ExperienceList";
 import CertificationList from "components/Card/Certifications/CertificationList";
-import Accordion from "components/Accordion/Accordion";
+import Accordion from "components/Accordion/ApplicantDetails";
 import ListCollaborators from "pages/admin/ListCollaborators";
 import AcademicRecordList from "components/Card/AcademicRecord/AcademicRecordList";
 import ModalRelease from "components/Modal/ModalRelease";
@@ -55,7 +55,9 @@ const Root = () => {
           />
         </Route>
         <Route path="/crear-vacante" element={<FormPostJob />} />
-        <Route path="/postulaciones" element={<Postulates />} />
+        <Route path="/postulaciones" element={<Postulates />}>
+          <Route path=":t200_id_vacant" element={<Accordion />} />
+        </Route>
       </Route>
 
       {/* RUTAS DEL ADMINISTRADOR */}
