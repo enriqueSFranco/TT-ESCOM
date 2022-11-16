@@ -103,7 +103,7 @@ class VacantViewSet(viewsets.GenericViewSet):
 		print('request: ',request.data)
 		print('request: ',request.data['requirements'])
 		if vacant_serializer.is_valid():
-			#vacant_serializer.save()			
+			vacant_serializer.save()			
 			return Response({
 				'message': 'Vacante registrada correctamente.'
 			}, status=status.HTTP_201_CREATED)
