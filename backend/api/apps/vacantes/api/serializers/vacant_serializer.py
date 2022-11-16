@@ -62,20 +62,3 @@ class VacantInfoListSerializer(serializers.ModelSerializer):
         model = Vacant
         fields = "__all__"
       
-
-class VacantRequirementSerializer(serializers.ModelSerializer):    
-    class Meta:
-        model = RequiredAbility
-        fields = '__all__'
-    
-    def create(self,validate_data):
-        print(validate_data)
-        new_requirement = RequiredAbility(**validate_data)
-        new_requirement.save()
-        return new_requirement
-    
-class VacantRequirementListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = RequiredAbility
-        fields = '__all__'
-        depth = 2

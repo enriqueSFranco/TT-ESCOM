@@ -10,7 +10,6 @@ from itertools import chain
 from apps.vacantes.pagination import CustomPagination
 from apps.vacantes.models import Comment
 from apps.vacantes.api.serializers.comment_serializer import CommentSerializer,CommentListSerializer
-from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,VacantListSerializer,UpdateVacantSerializer,VacantInfoListSerializer,VacantRequirementSerializer,VacantRequirementListSerializer,VacantFilterSerializer
 
 class CommentViewset(viewsets.GenericViewSet):
 	model = Comment
