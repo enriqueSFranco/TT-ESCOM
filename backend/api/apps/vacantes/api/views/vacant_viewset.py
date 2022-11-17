@@ -10,17 +10,18 @@ from datetime import date
 from apps.vacantes.pagination import CustomPagination
 from apps.vacantes.models import Vacant,Application,Report
 from apps.companies.models import Company
+from apps.vacantes.api.serializers.requirements_serializer import RequiredAbilitySerializer
 from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,VacantListSerializer,UpdateVacantSerializer,VacantInfoListSerializer,VacantFilterSerializer
 
 class VacantViewSet(viewsets.GenericViewSet):
 	model = Vacant
 	#permission_classes = [IsAuthenticated]
 	serializer_class = VacantSerializer
-	#requirement_serializer = VacantRequirementSerializer
+	requirement_serializer = RequiredAbilitySerializer
 	pagination_class = CustomPagination
 	list_serializer_class = VacantListSerializer
 	queryset = None
-	vacant_prototpe = { "t200_job": "",
+	vacant_prototype = { "t200_job": "",
     					"t200_description": "",
     					"t200_publish_date": "",
     					"t200_close_date": "",
@@ -38,6 +39,11 @@ class VacantViewSet(viewsets.GenericViewSet):
     					"t301_id_recruiter": "",
     					"t400_id_admin":""
 					}
+	requirement_prototype = {"c116_description": "",
+    						 "t211_required_level": "",
+    						 "t211_mandatory": False,
+    						 "t200_id_vacant": ""
+							}
 
 	def get_object(self, pk):	
 		self.queryset = self.model.objects\
@@ -69,7 +75,7 @@ class VacantViewSet(viewsets.GenericViewSet):
 		return Response(vacants_serializer.data)
 
 	def set_vacant(self,data):
-		vacant_data = self.vacant_prototpe
+		vacant_data = self.vacant_prototype
 		vacant_data["t200_job"] = data["t200_job"]
 		vacant_data["t200_description"] = data["t200_description"]
 		vacant_data["t200_publish_date"] = str(date.today())
@@ -88,6 +94,16 @@ class VacantViewSet(viewsets.GenericViewSet):
 		vacant_data["t301_id_recruiter"] = data["t301_id_recruiter"]		
 		return vacant_data
 
+	def set_requirement(self,data,id_vacant):
+		requirement = self.requirement_prototype
+		requirement["c116_description"] = data[0]["c116_description"]
+		requirement["t211_required_level"] = data[0]["t211_required_level"]
+		requirement["t211_mandatory"] = data[0]["t211_mandatory"]
+		requirement["t200_id_vacant"] = id_vacant
+		print(requirement)
+		return requirement
+
+
 	def create(self, request):
 		"""
 		Agrega una vacante al sistema
@@ -101,9 +117,17 @@ class VacantViewSet(viewsets.GenericViewSet):
 		print(vacant_requirements)
 		vacant_serializer = self.serializer_class(data=vacant_data)
 		print('request: ',request.data)
-		print('request: ',request.data['requirements'])
-		if vacant_serializer.is_valid():
-			vacant_serializer.save()			
+		print('request: ',request.data['requirements'])		
+		if vacant_serializer.is_valid() and vacant_requirements:
+			vacant = vacant_serializer.save()
+			vacant_id= vacant.t200_id_vacant
+			print(vacant_id)
+			for requirement in vacant_requirements:
+				requirement_data = self.set_requirement(requirement,vacant_id)				
+				requirement_serializer =self.requirement_serializer(data = requirement_data)
+				if requirement_serializer.is_valid():
+					print("Requerimiento valido")
+					requirement_serializer.save()					
 			return Response({
 				'message': 'Vacante registrada correctamente.'
 			}, status=status.HTTP_201_CREATED)
