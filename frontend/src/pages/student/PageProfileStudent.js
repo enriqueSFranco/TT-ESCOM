@@ -13,13 +13,11 @@ const PageProfileStudent = () => {
         <div className={styles.profileCard}>
           <CardProfileStudent />
         </div>
-        <div className={styles.profileAboutMe}>
+        <div className={styles.moreInfo}>
           <div style={{width: '100%', display: 'flex', gap: '1rem', justifyContent: 'space-between'}}>
             <AboutMe />
             <AboutMeInfoWork />
           </div>
-        </div>
-        <div className={styles.profileSummary}>
           <MenuStudent />
           <Outlet />
         </div>

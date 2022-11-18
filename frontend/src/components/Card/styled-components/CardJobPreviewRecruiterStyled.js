@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Card = styled(Link)`
   position: relative;
-  height: 190px;
+  height: 200px;
   color: #000;
   border-radius: 5px;
   display: flex;
@@ -74,6 +74,7 @@ const CardFooter = styled.footer`
   align-items: center;
   padding: 0 1rem .5rem 1rem;
   width: 100%;
+  border-top: 1px solid #ccc;
   /* position: absolute;
   bottom: 1rem; */
 

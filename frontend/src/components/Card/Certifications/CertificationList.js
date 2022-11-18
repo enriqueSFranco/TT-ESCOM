@@ -36,6 +36,14 @@ const CertificationList = () => {
 
   return (
     <article className={styles.wrapper}>
+      <div className={styles.wrapperButton}>
+        <button
+          className={styles.btnAddProject}
+          onClick={openModalAddCertification}
+        >
+          <MdAdd />
+        </button>
+      </div>
       {
         data && data?.map(certification => (
           <CertificationItem
@@ -50,12 +58,6 @@ const CertificationList = () => {
           />
         ))
       }
-      <button
-        className={styles.btnAddProject}
-        onClick={openModalAddCertification}
-      >
-        <MdAdd />
-      </button>
 
       <ModalPortal
         isOpen={isOpenModalAddCertification}

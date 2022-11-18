@@ -64,7 +64,7 @@ const ExperenceItem = ({
               {typeProject === 1 ? (
                 // proyecto personal
                 <>
-                  <h3>{nameProject}</h3>
+                  <p>{nameProject}</p>
                   <span className={styles.speciality}>{idStudent}</span>
                   <br />
                 </>
@@ -103,9 +103,13 @@ const ExperenceItem = ({
           </button>
         </div>
       </div>
+
+      
       <ModalPortal
         isOpen={isOpenModalDeleteProject}
         closeModal={closeModalDeleteProject}
+        minWidth="500px"
+        minHeight="450px"
       >
         <div className={styles.mainWrapper}>
           <div className={styles.wrapperCircle}>
@@ -113,15 +117,15 @@ const ExperenceItem = ({
             <GoTrashcan />
           </div>
           <h3 className={styles.tittleProjectExperience}>
-            Estas seguro de eliminar el proyecto <span>"{nameProject}"</span> de tu historial de experiencia ?
+            Estas seguro de eliminar el proyecto <span style={{fontWeight: '700', fontSize: '1rem'}}>"{nameProject}"</span> de tu historial de experiencia ?
           </h3>
           <button className={styles.btnDeleteExperience} onClick={() => deleteData(id)}>Si, Eliminar</button>
         </div>
       </ModalPortal>
 
-      {/* <ModalPortal isOpen={isOpenModalEditProject} closeModal={closeModalEditProject}>
+      <ModalPortal isOpen={isOpenModalEditProject} closeModal={closeModalEditProject}>
         <TypeExperience />
-      </ModalPortal> */}
+      </ModalPortal>
     </>
   );
 };

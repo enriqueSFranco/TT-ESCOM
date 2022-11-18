@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
-import { useForm } from "hooks/useForm";
+import { useForm, useFetch } from "hooks";
 import { postJob } from "services/jobs/index";
 import { POST_NEW_JOB } from "types/newJob";
 import LayoutHome from "Layout/LayoutHome";
@@ -15,11 +15,11 @@ import Input from "components/Input/Input";
 // import Switch from "components/Switch/Switch";
 import TextEditor from "components/TextEditor/TextEditor";
 import { Autocomplete, TextField } from "@mui/material";
-import Tooltip from "components/Tooltip/Tooltip";
-import { MdLanguage, MdWork } from 'react-icons/md'
-import { ImProfile } from 'react-icons/im'
-import { FaBrain } from 'react-icons/fa'
-import { HiLocationMarker } from 'react-icons/hi'
+// import Tooltip from "components/Tooltip/Tooltip";
+import { MdLanguage, MdWork, MdOutlineErrorOutline } from "react-icons/md";
+import { ImProfile } from "react-icons/im";
+import { FaBrain } from "react-icons/fa";
+import { HiLocationMarker } from "react-icons/hi";
 import {
   Button,
   SubGroupInput,
@@ -30,29 +30,49 @@ import {
   ContainerForm,
 } from "./styled-componets/FormPostJobStyled";
 
-// const validateForm = (form) => {
-//   let errors = {};
-//   let regex = {
-//     t200_min_salary: /^[0-9]+$/,
-//     t200_job: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,255}$/,
-//   };
+const validateForm = (form) => {
+  let errors = {};
+  let regex = {
+    t200_job: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{1,255}$/,
+    t200_min_salary: /^[0-9]+$/,
+    t200_cp: /^[0-9]+$/,
+  };
 
-//   if (!form.t200_job.trim())
-//     errors.t200_job = "El campo 'Titulo de la vacante' es requerido";
-//   else if (!regex.t200_job.test(form.t200_job.trim()))
-//     errors.t200_job =
-//       "El campo 'Titulo de la vacante' solo acepta letras y espacios en blanco.";
+  if (!form.t200_job.trim())
+    errors.t200_job = "El campo 'Titulo de la vacante' es requerido";
+  else if (!regex.t200_job.test(form.t200_job.trim()))
+    errors.t200_job =
+      "El campo 'Titulo de la vacante' solo acepta letras y espacios en blanco.";
+  return errors;
+};
 
-//   if (!form.t200_cp) errors.t200_cp = "El código postal es incorrecto";
+function recuperarHabilidades(array) {
+  let arrayAuxiliar = [];
+  array.forEach((el) => arrayAuxiliar.push(el.c116_description));
+  return arrayAuxiliar;
+}
 
-//   return errors;
-// };
+const styles = {
+  containerError: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '.3em',
+  },
+  textError: {
+    color: 'red',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '.3em',
+    fontSize: '.8em'
+  }
+}
 
 const FormPostJob = () => {
   const navigate = useNavigate();
   const { token } = useAuth();
   const [body, setBody] = useState("");
-  const { form, handleChange } = useForm(POST_NEW_JOB);
+  const { form, errors, handleChange, handleValidate } = useForm(POST_NEW_JOB, validateForm);
+  const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
   const [exp, setExp] = useState("");
   const [expList, setExpList] = useState(null);
   const [cp, setCP] = useState("");
@@ -62,7 +82,10 @@ const FormPostJob = () => {
   const [typeContractList, setTypeContractList] = useState(null);
   const [profileCandidate, setProfileCandidate] = useState("");
   const [profileCandidateList, setProfileCandidateList] = useState(null);
-
+  const [requeridas, setRequeridas] = useState([]);
+  const [opcionales, setOpcionales] = useState([]);
+  const habilidadesOpcionales = recuperarHabilidades(opcionales)
+  const habilidadesRequeridas = recuperarHabilidades(requeridas)
 
   useEffect(() => {
     getAllCatalogueExperience()
@@ -94,9 +117,9 @@ const FormPostJob = () => {
     t200_locality: place,
     t200_cp: cp,
     t301_id_recruiter: token?.user?.id,
+    mandatory: habilidadesRequeridas,
+    opcionales: habilidadesOpcionales
   };
-
-  // const handleVisible = (e) => setVisible(e.target.checked);
 
   const onSubmitPostJob = (e) => {
     e.preventDefault();
@@ -110,9 +133,10 @@ const FormPostJob = () => {
 
   const handleLocality = (e) => {
     const { value } = e.target;
+    console.log(value)
     setCP(value);
 
-    if (value !== "") {
+    if (parseInt(value) !== "") {
       getLocality(value)
         .then((response) => {
           setLocalities(response);
@@ -121,9 +145,8 @@ const FormPostJob = () => {
     }
   };
 
-  if (!expList) return null;
 
-  console.log(newObject)
+  if (!expList || !data) return null;
 
   return (
     <LayoutHome>
@@ -132,7 +155,7 @@ const FormPostJob = () => {
           style={{
             fontSize: "1.3rem",
             fontFamily: "System",
-            fontWeight: '700',
+            fontWeight: "700",
             margin: "1rem 0 0 0",
           }}
         >
@@ -150,14 +173,24 @@ const FormPostJob = () => {
               <MdWork /> Titulo de la vacante
             </h2>
             <GroupInput>
-              <Input
-                label="Titulo de la vacante"
-                width="500px"
-                id="t200_job"
-                name="t200_job"
-                value={newObject.t200_job}
-                onChange={handleChange}
-              />
+              <div style={styles.containerError}>
+                <Input
+                  label="Titulo de la vacante"
+                  width="500px"
+                  id="t200_job"
+                  name="t200_job"
+                  value={newObject.t200_job}
+                  onChange={handleChange}
+                  onBlur={handleValidate}
+                  onKeyUp={handleValidate}
+                />
+                {errors.t200_job && (
+                  <span style={styles.textError}>
+                    <MdOutlineErrorOutline />
+                    {errors.t200_job}
+                  </span>
+                )}
+              </div>
               <Input
                 label="# de plazas"
                 // id="t200_job"
@@ -179,13 +212,16 @@ const FormPostJob = () => {
               <HiLocationMarker /> Ubicacion
             </h2>
             <GroupInput>
-              <Input
-                label="Codigo postal"
-                id="t200_cp"
-                name="t200_cp"
-                value={cp ? parseInt(cp) : ""}
-                onChange={handleLocality}
-              />
+                <Input
+                  label="Codigo postal"
+                  id="t200_cp"
+                  name="t200_cp"
+                  value={cp ? parseInt(cp) : ""}
+                  onChange={handleLocality}
+                  // onKeyDown={function(e) {
+                  //   if (e.keyCode < '48' || e.keyCode > '57') e.preventDefault()
+                  // }}
+                />
               <WrapperSelect>
                 <Select
                   name="place"
@@ -305,36 +341,55 @@ const FormPostJob = () => {
                 margin: "0 0 .4rem 0",
               }}
             >
-              <FaBrain /> Agregar las habilidades requeridas y opcionales para la vacante
+              <FaBrain /> Agregar las habilidades requeridas y opcionales para
+              la vacante
             </h2>
             <GroupInput>
               <SubGroupInput>
                 <Autocomplete
-                  disablePortal
-                  id="combo-box-demo"
-                  options={[]}
-                  sx={{ width: 300 }}
+                  id="requeridas"
+                  sx={{ width: 350, maxWidth: "100%" }}
+                  name="requeridas"
+                  value={requeridas}
+                  onChange={(event, newValue) => setRequeridas(newValue)}
+                  multiple={true}
+                  options={data}
+                  getOptionLabel={({ c116_description }) => c116_description}
+                  filterSelectedOptions
                   renderInput={(params) => (
-                    <TextField {...params} label="Habilidades requeridas" />
+                    <TextField
+                      {...params}
+                      label="Agregar nueva habilidad"
+                      placeholder="Selecciona "
+                    />
                   )}
                 />
-                <Tooltip title="Agregar una nueva habilidad">
+                {/* <Tooltip title="Agregar una nueva habilidad">
                   <Button>+</Button>
-                </Tooltip>
+                </Tooltip> */}
               </SubGroupInput>
               <SubGroupInput>
                 <Autocomplete
-                  disablePortal
-                  id="combo-box-demo"
-                  options={[]}
-                  sx={{ width: 300 }}
+                  id="opcionales"
+                  sx={{ width: 350, maxWidth: "100%" }}
+                  name="opcionales"
+                  value={opcionales}
+                  onChange={(event, newValue) => setOpcionales(newValue)}
+                  multiple
+                  options={data}
+                  getOptionLabel={(option) => option.c116_description}
+                  filterSelectedOptions
                   renderInput={(params) => (
-                    <TextField {...params} label="Habilidades opcionales" />
+                    <TextField
+                      {...params}
+                      label="Agregar nueva habilidad"
+                      placeholder="Selecciona "
+                    />
                   )}
                 />
-                <Tooltip title="Agregar una nueva habilidad">
+                {/* <Tooltip title="Agregar una nueva habilidad">
                   <Button>+</Button>
-                </Tooltip>
+                </Tooltip> */}
               </SubGroupInput>
             </GroupInput>
           </section>
@@ -354,7 +409,9 @@ const FormPostJob = () => {
               <SubGroupInput>
                 <Autocomplete
                   disablePortal
-                  id="combo-box-demo"
+                  id=""
+                  name=""
+                  multiple
                   options={[]}
                   sx={{ width: 300 }}
                   renderInput={(params) => (
@@ -385,7 +442,7 @@ const FormPostJob = () => {
               value={body}
             />
           </section>
-          {/* <Button type="submit">Enviar a revision</Button> */}
+          <Button type="submit">Enviar a revision</Button>
         </Form>
       </ContainerForm>
     </LayoutHome>

@@ -48,7 +48,7 @@ const Root = () => {
       <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>
         <Route path="/candidatos" element={<AllCandidates />} />
         <Route path="/publicar-comunicado" element={<PagePostRelease />} />
-        <Route path="dashboard" element={<PageHistory />}>
+        <Route path="/dashboard" element={<PageHistory />}>
           <Route
             path=":t200_id_vacant"
             element={<CardDetailsVacantRecruiter height="80%" />}
@@ -67,9 +67,15 @@ const Root = () => {
             path="lista-de-colaboradores"
             element={<ListCollaborators />}
           />
-          <Route path="validar-reclutador" element={<PageValidateRecruiter />} />
+          <Route
+            path="validar-reclutador"
+            element={<PageValidateRecruiter />}
+          />
           <Route path="validar-empresa" element={<ValidateCompany />} />
-          <Route path="empresas-registradas" element={<RegisteredCompanies />} />
+          <Route
+            path="empresas-registradas"
+            element={<RegisteredCompanies />}
+          />
           <Route path="lista-de-vacantes" element={<ListVacantsAdmin />}>
             <Route
               path=":t200_id_vacant"

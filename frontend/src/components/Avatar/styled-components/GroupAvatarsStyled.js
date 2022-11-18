@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const GroupAvatarsList = styled.ul`
   display: flex;
   margin: 0;
-  padding: 0;
+  padding: .5rem 0 0 0;
   list-style: none;
 `
 

@@ -7,7 +7,6 @@ import { TextField } from "@mui/material";
 import { MdOutlineAdd, MdKeyboardBackspace } from "react-icons/md";
 import styles from "./Experience.module.css";
 
-
 const initialForm = {
   t117_project_name: "",
   t117_link: "",
@@ -89,8 +88,8 @@ const PersonalExperience = ({ setTypeProject }) => {
               value={form?.t117_description}
               onChange={handleChange}
               onKeyUp={updatTotalChar}
-              cols="30"
-              rows="10"
+              cols="20"
+              rows="5"
               placeholder="Descripcion de tu proyecto..."
               className={styles.textArea}
             />

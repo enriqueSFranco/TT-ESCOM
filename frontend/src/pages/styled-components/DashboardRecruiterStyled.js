@@ -1,14 +1,5 @@
 import styled from 'styled-components'
 
-const WrapperListCardJobPreviewRecruiter = styled.div`
-  width: 90%;
-  height: calc(100vh - 10rem);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  overflow-y: auto;
-  `
-
 const Aside = styled.aside`
   grid-area: aside;
   display: flex;
@@ -63,4 +54,4 @@ const ContentWidget = styled.div`
 `
 
 
-export {Aside, ContentWidget, TextNumber, Grid, ContentWidgetCommon, Container, WrapperListCardJobPreviewRecruiter, WrapperWidgets }
+export {Aside, ContentWidget, TextNumber, Grid, ContentWidgetCommon, Container, WrapperWidgets }

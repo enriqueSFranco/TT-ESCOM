@@ -15,6 +15,10 @@ const List = styled.ul`
 const ListItem = styled.li`
   padding: 0;
   margin: 0;
+  display: flex;
+  gap: .4rem;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `
 
 export { List, ListItem }

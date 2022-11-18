@@ -1,5 +1,7 @@
 .nav {
   height: 44px;
+  background-color: #fff;
+  border-radius: 1rem 1rem 0 0;
 }
 
 .navMenu {

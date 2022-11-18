@@ -29,6 +29,11 @@ const ExperenceList = () => {
   return (
     <>
       <article className={styles.wrapper}>
+        <div className={styles.wrapperButton}>
+          <button className={styles.btnAddProject} onClick={openModal}>
+            <MdAdd />
+          </button>
+        </div>
         {listProjects && listProjects?.length === 0 ? (
           <div className={styles.notProjects}>
             <h3>Sin Proyectos</h3>
@@ -54,11 +59,8 @@ const ExperenceList = () => {
             ))}
           </>
         )}
-        <button className={styles.btnAddProject} onClick={openModal}>
-          <MdAdd />
-        </button>
       </article>
-      <ModalPortal isOpen={isOpen} closeModal={closeModal}>
+      <ModalPortal isOpen={isOpen} closeModal={closeModal} minHeight="700px">
         <TypeExperience />
       </ModalPortal>
     </>

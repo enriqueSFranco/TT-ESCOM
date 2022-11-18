@@ -21,7 +21,7 @@ const GroupAvatars = ({users}) => {
     <GroupAvatarsList>
       {renderUsers.map(user => (
         <AvatarItem>
-          <CustomAvatar username={user?.t100_id_student?.t100_name} width='40' height='40' />
+          <CustomAvatar username={user?.t100_id_student?.t100_name} picture={user?.t100_id_student?.t100_profile_picture} width='40px' height='40px' />
         </AvatarItem>
       ))}
       {

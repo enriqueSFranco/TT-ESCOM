@@ -25,7 +25,7 @@ const CardJobPreviewRecruiter = ({ info, url, typeUser }) => {
   if (!info || !data) return null;
 
   return (
-    <Card to={`/${url}/${info.t200_id_vacant}`}>
+    <Card to={`${info.t200_id_vacant}`}>
       <CardHeader>
         <CardHeaderLeft>
           <TitleJob>{t200_job}</TitleJob>
@@ -60,7 +60,9 @@ const CardJobPreviewRecruiter = ({ info, url, typeUser }) => {
       </CardListTags>
 
       <CardFooter>
-        {typeUser === USERS.recruiter && <GroupAvatars users={data} />}
+        {typeUser === USERS.recruiter && (
+          <GroupAvatars users={data} />
+        )}
         <span
           className={`${generateCSSClass(
             info?.c204_id_vacant_status?.c204_description
