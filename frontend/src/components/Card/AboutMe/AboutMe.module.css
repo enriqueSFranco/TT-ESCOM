@@ -36,13 +36,13 @@
 
 
 .flex_1_2 {
-  height: 100px;
   display: flex;
   justify-content: space-between;
   margin-top: .2rem;
 }
 
-.salary, .employmentModality {
+.salary,
+.employmentModality {
   display: flex;
   align-items: center;
   gap: .3rem;
@@ -50,9 +50,12 @@
 }
 
 .title {
-  color: #000;
-  font-size: 1.3rem;
-  font-weight: 500;
+  background: linear-gradient(27deg, #3f5efb, #fc466b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 32px;
+  font-weight: 700;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   letter-spacing: 1px;
 }
@@ -71,7 +74,8 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.tip, .totalChar {
+.tip,
+.totalChar {
   font-size: .89rem;
   color: #616161;
   font-weight: 500;
@@ -88,11 +92,13 @@
 }
 
 .professionalObjective {
-  font-size: .9rem;
+  font-size: 1em;
+  letter-spacing: 1px;
   width: 1000px;
 }
 
-.wrapper, .infoWork {
+.wrapper,
+.infoWork {
   position: relative;
   color: #000;
   border-radius: 1rem;
@@ -118,7 +124,6 @@
 .wrapperTextArea {
   display: flex;
   flex-direction: column;
-  height: 300px;
 }
 
 /* infoWork */

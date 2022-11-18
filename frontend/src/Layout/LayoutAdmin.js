@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Menu from "components/Menu/Menu";
 import { IoBusiness } from "react-icons/io5";
 import { FcBusinessman, FcBusiness } from "react-icons/fc";
@@ -21,38 +21,56 @@ const LayoutAdmin = ({ children }) => {
         <SideBar>
           <NavList>
             <Item>
-              <MdSpeakerNotes
-                style={{
-                  marginRight: ".3rem",
-                  fontSize: "1.3rem",
-                  color: "#673AB7",
-                }}
-              />{" "}
-              <Link to="/comunicados">Comunicados/Eventos</Link>
+              <NavLink
+                to="/comunicados"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                <MdSpeakerNotes
+                  style={{
+                    marginRight: ".3rem",
+                    fontSize: "1.3rem",
+                    color: "#673AB7",
+                  }}
+                />
+                Comunicados/Eventos
+              </NavLink>
             </Item>
             <Item>
+              <NavLink to="lista-de-colaboradores">
               <HiUserGroup
                 style={{
                   marginRight: ".3rem",
                   fontSize: "1.3rem",
                   color: "#F13465",
                 }}
-              />{" "}
-              <Link to="lista-de-colaboradores">Colaboradores</Link>
+              />Colaboradores</NavLink>
             </Item>
             <Item>
+              <NavLink to="lista-de-vacantes">
               <FcBusiness
                 style={{ marginRight: ".3rem", fontSize: "1.3rem" }}
               />
-              <Link to="lista-de-vacantes">Vacantes-ESCOM</Link>
+                Vacantes-ESCOM</NavLink>
             </Item>
             <Item>
+              <NavLink to="validar-reclutador">
               <FcBusinessman
-                style={{ marginRight: ".3rem", fontSize: "1.3rem" }}
-              />{" "}
-              <Link to="validar-reclutador">Reclutadores por validar</Link>
+                style={{ marginRight: ".3rem", marginLeft: '0', fontSize: "1.3rem" }}
+              />
+                Reclutadores por validar
+              </NavLink>
             </Item>
             <Item>
+              <NavLink to="validar-empresa">
+              <IoBusiness
+                style={{
+                  marginRight: ".3rem",
+                  fontSize: "1.3rem",
+                  color: "#8A9FA9",
+                }}
+              />Empresas por validar</NavLink>
+            </Item>
+            {/* <Item>
               <IoBusiness
                 style={{
                   marginRight: ".3rem",
@@ -60,18 +78,8 @@ const LayoutAdmin = ({ children }) => {
                   color: "#8A9FA9",
                 }}
               />{" "}
-              <Link to="validar-empresa">Empresas por validar</Link>
-            </Item>
-            <Item>
-              <IoBusiness
-                style={{
-                  marginRight: ".3rem",
-                  fontSize: "1.3rem",
-                  color: "#8A9FA9",
-                }}
-              />{" "}
-              <Link to="validar-empresa">Vacantes por validar</Link>
-            </Item>
+              <NavLink to="validar-empresa">Vacantes por validar</NavLink>
+            </Item> */}
           </NavList>
         </SideBar>
         <Content>{children}</Content>
