@@ -151,25 +151,61 @@ const CardDetailsVacantRecruiter = ({ height }) => {
           </WraperCard>
           {token.user.user_type === USERS.recruiter ? (
             <WrapperComment>
-              <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "1rem",
-                  overflowY: "auto",
-                  height: "fit-content",
-                }}
-              >
-                {observation?.map((el) => (
-                  <Comment
-                    key={`comment-id-${el?.t223_id_comment}`}
-                    comment={el?.t223_comment}
-                    date={el?.t223_sent_date}
-                    userId={el?.t301_id_recruiter?.t301_id_recruiter}
-                  />
-                ))}
-              </div>
+              <header>
+                <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
+              </header>
+              <section style={{ height: "calc(100% - 2.8rem)" }}>
+                {!observationManager.length ? (
+                  <article
+                    style={{
+                      height: "100%",
+                      display: "grid",
+                      placeContent: "center",
+                    }}
+                  >
+                    <NoComment />
+                    <div
+                      style={{
+                        position: "relative",
+                        bottom: ".5rem",
+                        left: "3rem",
+                      }}
+                    >
+                      <NoComment borderColor="#3D50D9" />
+                    </div>
+                    <h3
+                      style={{
+                        fontSize: "1.3rem",
+                        position: "relative",
+                        top: "1rem",
+                        left: "2rem",
+                        textAlign: "center",
+                      }}
+                    >
+                      No hay observaciones para esta vacante
+                    </h3>
+                  </article>
+                ) : (
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "1rem",
+                      overflowY: "auto",
+                      height: "fit-content",
+                    }}
+                  >
+                    {observation?.map((el) => (
+                      <Comment
+                        key={`comment-id-${el?.t223_id_comment}`}
+                        comment={el?.t223_comment}
+                        date={el?.t223_sent_date}
+                        userId={el?.t301_id_recruiter?.t301_id_recruiter}
+                      />
+                    ))}
+                  </div>
+                )}
+              </section>
             </WrapperComment>
           ) : (
             // TODO: Pasar a un componente independiente
@@ -205,7 +241,13 @@ const CardDetailsVacantRecruiter = ({ height }) => {
                 }}
               >
                 {!observationManager.length ? (
-                  <>
+                  <article
+                    style={{
+                      height: "100%",
+                      display: "grid",
+                      placeContent: "center",
+                    }}
+                  >
                     <NoComment />
                     <div
                       style={{
@@ -220,16 +262,24 @@ const CardDetailsVacantRecruiter = ({ height }) => {
                       style={{
                         fontSize: "1.3rem",
                         position: "relative",
-                        bottom: "7rem",
+                        top: "1rem",
                         left: "2rem",
                         textAlign: "center",
                       }}
                     >
                       No hay observaciones para esta vacante
                     </h3>
-                  </>
+                  </article>
                 ) : (
-                  <div style={{ display: "flex", flexDirection: 'column', gap: "1rem", width: '550px', height: '76vh'}}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "1rem",
+                      width: "550px",
+                      height: "76vh",
+                    }}
+                  >
                     {observationManager.map((observation) => (
                       <Comment
                         key={`comment-id-${observation?.t223_id_comment}`}

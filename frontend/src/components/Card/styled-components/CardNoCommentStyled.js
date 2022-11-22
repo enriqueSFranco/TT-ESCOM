@@ -4,7 +4,6 @@ const SkeletonCard = styled.div`
   width: 400px;
   height: 110px;
   background-color: #fff;
-  position: relative;
   bottom: 10rem;
   border-radius: 1rem;
   display: grid;

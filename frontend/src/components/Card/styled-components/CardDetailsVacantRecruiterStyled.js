@@ -22,6 +22,7 @@ const WraperCard = styled.article`
 const WrapperComment = styled.section`
   margin: 0 auto;
   width: 100%;
+  overflow-x: hidden;
   background: #F7F7F9;
   border-radius: 5px;
   padding: 1rem;
