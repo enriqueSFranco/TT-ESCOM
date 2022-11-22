@@ -135,7 +135,7 @@ class Vacant(models.Model):
         on_delete=models.CASCADE
     )
     t200_job = models.CharField(max_length=125,null=False,blank=False)
-    t200_description = models.TextField(null=False,blank=False)     
+    t200_description = models.TextField(null=True,blank=True)     
     c207_id_experience = models.ForeignKey(
         Experience,
         blank=True,
