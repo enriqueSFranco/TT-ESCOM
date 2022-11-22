@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
-import { useForm, useFetch } from "hooks";
+import { useForm, useFetch, useLanguage } from "hooks";
 import { postJob } from "services/jobs/index";
 import { POST_NEW_JOB } from "types/newJob";
 import LayoutHome from "Layout/LayoutHome";
@@ -15,7 +15,6 @@ import Input from "components/Input/Input";
 // import Switch from "components/Switch/Switch";
 import TextEditor from "components/TextEditor/TextEditor";
 import { Autocomplete, TextField } from "@mui/material";
-// import Tooltip from "components/Tooltip/Tooltip";
 import { MdLanguage, MdWork, MdOutlineErrorOutline } from "react-icons/md";
 import { ImProfile } from "react-icons/im";
 import { FaBrain } from "react-icons/fa";
@@ -52,6 +51,12 @@ function recuperarHabilidades(array) {
   return arrayAuxiliar;
 }
 
+function recuperarIdiomaId(array) {
+  let arrayAuxiliar = [];
+  array.forEach((el) => arrayAuxiliar.push(el.c111_id_language));
+  return arrayAuxiliar;
+}
+
 const styles = {
   containerError: {
     display: 'flex',
@@ -70,22 +75,25 @@ const styles = {
 const FormPostJob = () => {
   const navigate = useNavigate();
   const { token } = useAuth();
-  const [body, setBody] = useState("");
+  const { languages } = useLanguage()
   const { form, errors, handleChange, handleValidate } = useForm(POST_NEW_JOB, validateForm);
   const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
-  const [exp, setExp] = useState("");
+  const [body, setBody] = useState("");
+  // const [exp, setExp] = useState("");
   const [expList, setExpList] = useState(null);
   const [cp, setCP] = useState("");
   const [localities, setLocalities] = useState(null);
   const [place, setPlace] = useState("");
-  const [typeContract, setTypeContract] = useState("");
+  // const [typeContract, setTypeContract] = useState("");
   const [typeContractList, setTypeContractList] = useState(null);
-  const [profileCandidate, setProfileCandidate] = useState("");
+  // const [profileCandidate, setProfileCandidate] = useState("");
   const [profileCandidateList, setProfileCandidateList] = useState(null);
   const [requeridas, setRequeridas] = useState([]);
   const [opcionales, setOpcionales] = useState([]);
+  const [requiredLanguage, setRequiredLanguage] = useState([])
   const habilidadesOpcionales = recuperarHabilidades(opcionales)
   const habilidadesRequeridas = recuperarHabilidades(requeridas)
+  const lagnguageId = recuperarIdiomaId(requiredLanguage)
 
   useEffect(() => {
     getAllCatalogueExperience()
@@ -118,7 +126,8 @@ const FormPostJob = () => {
     t200_cp: cp,
     t301_id_recruiter: token?.user?.id,
     mandatory: habilidadesRequeridas,
-    opcionales: habilidadesOpcionales
+    optional: habilidadesOpcionales,
+    language: lagnguageId
   };
 
   const onSubmitPostJob = (e) => {
@@ -133,7 +142,7 @@ const FormPostJob = () => {
 
   const handleLocality = (e) => {
     const { value } = e.target;
-    console.log(value)
+    // console.log(value)
     setCP(value);
 
     if (parseInt(value) !== "") {
@@ -145,8 +154,9 @@ const FormPostJob = () => {
     }
   };
 
+  if (!expList || !data || !languages) return null;
 
-  if (!expList || !data) return null;
+  console.log(newObject)
 
   return (
     <LayoutHome>
@@ -192,11 +202,11 @@ const FormPostJob = () => {
                 )}
               </div>
               <Input
-                label="# de plazas"
-                // id="t200_job"
-                // name="t200_job"
-                // value={newObject.t200_job}
-                // onChange={handleChange}
+                label="Numero de plazas"
+                id="t200_vacancy"
+                name="t200_vacancy"
+                value={form.t200_vacancy}
+                onChange={handleChange}
               />
             </GroupInput>
           </section>
@@ -266,10 +276,10 @@ const FormPostJob = () => {
             <GroupInput>
               <WrapperSelect>
                 <Select
-                  name="profileCandidate"
-                  id="profileCandidate"
-                  value={profileCandidate}
-                  onChange={(e) => setProfileCandidate(e.target.value)}
+                  name="c206_id_profile"
+                  id="c206_id_profile"
+                  value={form.c206_id_profile}
+                  onChange={handleChange}
                 >
                   <option value="" disabled>
                     Perfil del candidato
@@ -288,10 +298,10 @@ const FormPostJob = () => {
 
               <WrapperSelect>
                 <Select
-                  name="exp"
-                  id="exp"
-                  value={exp}
-                  onChange={(e) => setExp(e.target.value)}
+                  name="c207_id_experience"
+                  id="c207_id_experience"
+                  value={form.c207_id_experience}
+                  onChange={handleChange}
                 >
                   <option value="" disabled>
                     Nivel de Experiencia
@@ -310,10 +320,10 @@ const FormPostJob = () => {
 
               <WrapperSelect>
                 <Select
-                  name="typeContract"
-                  id="typeContract"
-                  value={typeContract}
-                  onChange={(e) => setTypeContract(e.target.value)}
+                  name="c208_id_contract"
+                  id="c208_id_contract"
+                  value={form.c208_id_contract}
+                  onChange={handleChange}
                 >
                   <option value="" disabled>
                     Tipo de contratacion
@@ -409,10 +419,14 @@ const FormPostJob = () => {
               <SubGroupInput>
                 <Autocomplete
                   disablePortal
-                  id=""
-                  name=""
+                  id="language"
+                  name="language"
                   multiple
-                  options={[]}
+                  options={languages}
+                  getOptionLabel={(option) => option.c111_description}
+                  value={requiredLanguage}
+                  onChange={(event, newValue) => setRequiredLanguage(newValue)}
+                  filterSelectedOptions
                   sx={{ width: 300 }}
                   renderInput={(params) => (
                     <TextField {...params} label="Idioma/Dialecto" />

@@ -14,7 +14,6 @@ const Container = styled.main`
   grid-area: container;
   width: 100%;
   background-color: #fff;
-  height: ${props => props.height || '100%'};
   `
 
 const Grid = styled.div`
@@ -23,8 +22,6 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  height: calc(100% - 9rem);
-  /* background-color: red; */
 `
 
 const WrapperWidgets = styled.section`

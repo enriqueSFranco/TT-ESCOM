@@ -34,8 +34,8 @@ const HeaderInfo = styled.header`
 `
 
 const Description = styled.div`
-  height: fit-content;
   overflow-y: auto;
+  /* background-color: blue; */
 `
 
 const WrapperActions = styled.div`
@@ -75,6 +75,7 @@ const WrapperActions = styled.div`
 const ContentDescription = styled.div`
   height: fit-content;
   overflow-y: auto;
+  /* background-color: red; */
 `
 
 const ListItems = styled.ul`

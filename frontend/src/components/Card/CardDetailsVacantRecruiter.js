@@ -7,6 +7,7 @@ import {
   useGetObservationVacant,
   useGetObservationVacantManager,
 } from "hooks";
+import { stateVacant } from "services";
 import { USERS } from "types";
 import ModalPortal from "components/Modal/ModalPortal";
 import Loader from "components/Loader/Loader";
@@ -16,6 +17,7 @@ import { FcCalendar } from "react-icons/fc";
 import { FaBrain } from "react-icons/fa";
 import { BiLike } from "react-icons/bi";
 import { IoMdAddCircle } from "react-icons/io";
+import { IoCloseOutline } from "react-icons/io5";
 import Comment from "components/Comment/Comment";
 import Tooltip from "components/Tooltip/Tooltip";
 import Button from "components/Button/Button";
@@ -33,6 +35,10 @@ import {
   Title,
 } from "./styled-components/CardDetailsVacantRecruiterStyled";
 
+function createMarkup(description) {
+  return { __html: description };
+}
+
 const CardDetailsVacantRecruiter = ({ height }) => {
   const [isOpen, openModal, closeModal] = useModal(false);
   const { t200_id_vacant } = useParams();
@@ -48,15 +54,30 @@ const CardDetailsVacantRecruiter = ({ height }) => {
   const handlePublish = (e) => {
     e.preventDefault();
     console.log("publicar");
+    stateVacant(t200_id_vacant, {
+      t400_id_admin: 1,
+      c204_id_vacant_status: 2,
+    }).then(response => console.log(response))
+    .catch(error => console.error(error))
   };
   const handleSendReview = (e) => {
     e.preventDefault();
     console.log("enviar a revision");
+    stateVacant(t200_id_vacant, {
+      t400_id_admin: 1,
+      c204_id_vacant_status: 4,
+    }).then(response => console.log(response))
+    .catch(error => console.error(error))
+  };
+
+  const handleReject = (e) => {
+    e.preventDefault();
+    console.log("rechazar...");
   };
 
   if (!data || !token || !observation || !observationManager) return null;
 
-  // console.log(token.user.user_type)
+  // console.log(data)
 
   return (
     <>
@@ -113,10 +134,12 @@ const CardDetailsVacantRecruiter = ({ height }) => {
                 >{`Contratacion: ${data[0]?.c208_id_contract?.c208_description}`}</span>
               </div>
             </HeaderInfo>
-            <Description height={height}>
-              <ContentDescription>
-                {data[0]?.t200_description}
-              </ContentDescription>
+            <Description>
+              <ContentDescription
+                dangerouslySetInnerHTML={createMarkup(
+                  data[0]?.t200_description
+                )}
+              />
               {token.user.user_type === USERS.recruiter ? (
                 <WrapperActions>
                   <button
@@ -144,6 +167,15 @@ const CardDetailsVacantRecruiter = ({ height }) => {
                   >
                     Publicar vacante
                     <BiLike style={{ color: "#fff", fontSize: "1.3rem" }} />
+                  </button>
+                  <button
+                    className="button_admin reject"
+                    onClick={handleReject}
+                  >
+                    Rechazar vacante
+                    <IoCloseOutline
+                      style={{ color: "#fff", fontSize: "1.3rem" }}
+                    />
                   </button>
                 </WrapperActions>
               )}
