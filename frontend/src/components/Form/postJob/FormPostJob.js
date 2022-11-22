@@ -122,8 +122,9 @@ const FormPostJob = () => {
   let newObject = {
     ...form,
     t200_description: body,
-    t200_locality: place,
-    t200_cp: cp,
+    t200_street: place,
+    // t200_locality: place,
+    // t200_cp: cp,
     t301_id_recruiter: token?.user?.id,
     mandatory: habilidadesRequeridas,
     optional: habilidadesOpcionales,

@@ -5,6 +5,12 @@ function createMarkup(description) {
   return { __html: description };
 }
 
+const styles = {
+  header: {
+    backgroundColor: 'blue',
+  }
+}
+
 const DetailsJob = ({
   logo,
   nameCompany,
@@ -18,7 +24,7 @@ const DetailsJob = ({
 
   return (
     <>
-      <div>
+      <div style={styles.header}>
         <figure
           style={{
             display: "flex",
@@ -56,7 +62,7 @@ const DetailsJob = ({
           <Chip />
         </ListItem>
       </List> */}
-      <DescriptionJob dangerouslySetInnerHTML={createMarkup(descriptionJob)}></DescriptionJob>
+      <DescriptionJob dangerouslySetInnerHTML={createMarkup(descriptionJob)} />
       {token ? (
         <Button onClick={() => handleApplyJob(idJob, userID)}>Postularme</Button>
       ) : (

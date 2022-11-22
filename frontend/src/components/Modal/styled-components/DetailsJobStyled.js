@@ -12,7 +12,8 @@ const Button = styled.button`
 `
 
 const DescriptionJob = styled.div`
-  background-color: #eee;
+  /* background-color: #eee; */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 1rem;
 `
 

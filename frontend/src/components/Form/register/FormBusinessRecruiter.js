@@ -4,7 +4,7 @@ import { useFetch } from "hooks/useFetch";
 import { API_COMPANY } from "services/settings";
 import FormRecruiterInfo from "./FormRecruiterInfo";
 import { TextField, Autocomplete, FormControl } from "@mui/material/";
-import styles from "../Styles.module.css";
+// import styles from "../Styles.module.css";
 
 const initialForm = {
   t300_id_company: "",

@@ -1,4 +1,5 @@
 import React from "react";
+import { Toaster, toast } from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
 import {
@@ -57,22 +58,24 @@ const CardDetailsVacantRecruiter = ({ height }) => {
     stateVacant(t200_id_vacant, {
       t400_id_admin: 1,
       c204_id_vacant_status: 2,
-    }).then(response => console.log(response))
-    .catch(error => console.error(error))
+      activate: true,
+    }).then(response => toast.success(response.message))
+    .catch(error => toast.error(error.message))
   };
   const handleSendReview = (e) => {
     e.preventDefault();
     console.log("enviar a revision");
-    stateVacant(t200_id_vacant, {
-      t400_id_admin: 1,
-      c204_id_vacant_status: 4,
-    }).then(response => console.log(response))
-    .catch(error => console.error(error))
   };
-
+  
   const handleReject = (e) => {
     e.preventDefault();
     console.log("rechazar...");
+    stateVacant(t200_id_vacant, {
+      t400_id_admin: 1,
+      c204_id_vacant_status: 4,
+      activate: ""
+    }).then(response => toast.error(response.message))
+    .catch(error => toast.error(error.message))
   };
 
   if (!data || !token || !observation || !observationManager) return null;
@@ -338,6 +341,8 @@ const CardDetailsVacantRecruiter = ({ height }) => {
       >
         <PostComment />
       </ModalPortal>
+      
+      <Toaster position="top-right" />
     </>
   );
 };

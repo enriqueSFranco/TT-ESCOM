@@ -21,7 +21,7 @@ export function sendComment(payload = {}) {
 }
 
 export function stateVacant(vacantId,payload = {}) {
-  return API.post(`${REACT_APP_URL_MANAGER_VALIDATE_VACANT}${vacantId}/`, payload)
+  return API.put(`${REACT_APP_URL_MANAGER_VALIDATE_VACANT}${vacantId}/`, payload)
     .then(response => {
       const { data } = response
       return data
