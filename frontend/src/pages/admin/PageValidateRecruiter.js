@@ -1,11 +1,23 @@
 import React from "react";
 import { useGetValidateAllRecruiters, useModal } from "hooks";
 import { validateRecruiter, rejectRecruiter } from "utils";
-import LayoutAdmin from "Layout/LayoutAdmin";
 import ModalPortal from "components/Modal/ModalPortal";
 import FormValidateCompany from "components/Form/FormValidate";
 import CardRecruiter from "components/Card/CardRecruiter";
+import noRecruiters from 'assets/images/job-recruitment-website-5241930-4390947.png'
 import { WrapperValidateCompany } from "../styled-components/ValidateRecruiterStyled";
+
+const styles = {
+  noRecruiters: {
+    margin: '0 auto',
+    filter: 'drop-shadow(0 0 0.75rem #4E649E)'
+  },
+  text: {
+    textAlign: 'center',
+    color: '#4E649E',
+    fontWeight: '700',
+  }
+}
 
 const PageValidateRecruiter = () => {
   const listRecruiter = useGetValidateAllRecruiters();
@@ -16,9 +28,6 @@ const PageValidateRecruiter = () => {
 
   return (
     <>
-      <div style={{ width: "100%", textAlign: "center" }}>
-        <h2>Validar Reclutador</h2>
-      </div>
       <WrapperValidateCompany>
         {listRecruiter.length > 0 ? (
           listRecruiter?.map((recruiter) => (
@@ -33,7 +42,10 @@ const PageValidateRecruiter = () => {
             />
           ))
         ) : (
-          <h2>Sin Reclutdores por validar</h2>
+          <article style={styles.noRecruiters}>
+            <img src={noRecruiters} alt="sin-reclutadores-por-validar" />
+            <h2 style={styles.text}>No hay reclutdores por validar</h2>
+          </article>
         )}
       </WrapperValidateCompany>
       <ModalPortal isOpen={isOpenAccept} closeModal={closeModalAccept}>

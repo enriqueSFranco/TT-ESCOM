@@ -4,12 +4,12 @@ const WrapperComment = styled.article`
   background-color: #eee;
   padding: .5rem;
   border-radius: 2px;
+  height: fit-content;
 `
 
 const Description = styled.div`
-  display: grid;
-  grid-template-columns: 70% 1fr;
-  gap: 3rem;
+  width: 100%;
+  overflow: hidden;
 `
 
 const TextDate = styled.span`
@@ -22,7 +22,7 @@ const CommentBox = styled.textarea`
   outline: 1px solid blue;
   border-radius: 2px;
   border: none;
-  width: 100%;
+  width: 90%;
   height: 50px;
   resize: none;
   text-indent: 4px;
@@ -34,7 +34,21 @@ const CommentBox = styled.textarea`
     color: #222;
     font-weight: 400;
   }
-
 `
 
-export { WrapperComment, Description, CommentBox, TextDate }
+const Form = styled.form`
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+
+  input[type='submit'] {
+    border: none;
+    outline: none;
+    background-color: #3d50d9;
+    color: #fff;
+    padding: .5rem;
+    border-radius: 5px;
+  }
+`
+
+export { WrapperComment, Form, Description, CommentBox, TextDate }

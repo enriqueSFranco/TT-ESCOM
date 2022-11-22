@@ -1,7 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
-import { useFetch, useModal, useGetObservationVacant, useGetObservationVacantManager } from "hooks";
+import {
+  useFetch,
+  useModal,
+  useGetObservationVacant,
+  useGetObservationVacantManager,
+} from "hooks";
 import { USERS } from "types";
 import ModalPortal from "components/Modal/ModalPortal";
 import Loader from "components/Loader/Loader";
@@ -28,13 +33,13 @@ import {
   Title,
 } from "./styled-components/CardDetailsVacantRecruiterStyled";
 
-
-
 const CardDetailsVacantRecruiter = ({ height }) => {
   const [isOpen, openModal, closeModal] = useModal(false);
   const { t200_id_vacant } = useParams();
   const observation = useGetObservationVacant({ vacantId: t200_id_vacant });
-  const observationManager = useGetObservationVacantManager({ vacantId: t200_id_vacant })
+  const observationManager = useGetObservationVacantManager({
+    vacantId: t200_id_vacant,
+  });
   const { token } = useAuth();
   const { data, error, loading } = useFetch(
     `${process.env.REACT_APP_URL_VACANTS}${t200_id_vacant}/`
@@ -50,6 +55,8 @@ const CardDetailsVacantRecruiter = ({ height }) => {
   };
 
   if (!data || !token || !observation || !observationManager) return null;
+
+  // console.log(token.user.user_type)
 
   return (
     <>
@@ -75,7 +82,7 @@ const CardDetailsVacantRecruiter = ({ height }) => {
                 </li>
                 <li>
                   <Chip
-                    label={`Exp: ${data[0]?.c207_id_experience?.c207_description}`}
+                    label={`${data[0]?.c207_id_experience?.c207_description}`}
                     bg="var(--bg-color_1)"
                     color="var(--color_1)"
                     icon={<FaBrain style={{ fontSize: "1.2rem" }} />}
@@ -83,7 +90,7 @@ const CardDetailsVacantRecruiter = ({ height }) => {
                 </li>
                 <li>
                   <Chip
-                    label={`Fecha de cierre: ${data[0]?.t200_close_date}`}
+                    label={`${data[0]?.t200_close_date}`}
                     bg="#F78181"
                     color="#DF0101"
                     icon={<FcCalendar style={{ fontSize: "1.2rem" }} />}
@@ -145,7 +152,15 @@ const CardDetailsVacantRecruiter = ({ height }) => {
           {token.user.user_type === USERS.recruiter ? (
             <WrapperComment>
               <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '1rem', overflowY: 'auto', height: '660px'}}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1rem",
+                  overflowY: "auto",
+                  height: "fit-content",
+                }}
+              >
                 {observation?.map((el) => (
                   <Comment
                     key={`comment-id-${el?.t223_id_comment}`}
@@ -181,14 +196,53 @@ const CardDetailsVacantRecruiter = ({ height }) => {
                   </Tooltip>
                 </nav>
               </header>
-              <section style={{height: '76vh', display:'grid', placeContent: 'center'}}>
-                {!observationManager.length ? <>
-                  <NoComment />
-                  <div style={{position: "relative", bottom: ".5rem", left: "3rem",}}>
-                    <NoComment borderColor='#3D50D9' />
+              <section
+                style={{
+                  height: "78vh",
+                  display: "grid",
+                  placeContent: "center",
+                  overflowY: "auto",
+                }}
+              >
+                {!observationManager.length ? (
+                  <>
+                    <NoComment />
+                    <div
+                      style={{
+                        position: "relative",
+                        bottom: ".5rem",
+                        left: "3rem",
+                      }}
+                    >
+                      <NoComment borderColor="#3D50D9" />
+                    </div>
+                    <h3
+                      style={{
+                        fontSize: "1.3rem",
+                        position: "relative",
+                        bottom: "7rem",
+                        left: "2rem",
+                        textAlign: "center",
+                      }}
+                    >
+                      No hay observaciones para esta vacante
+                    </h3>
+                  </>
+                ) : (
+                  <div style={{ display: "flex", flexDirection: 'column', gap: "1rem", width: '550px', height: '76vh'}}>
+                    {observationManager.map((observation) => (
+                      <Comment
+                        key={`comment-id-${observation?.t223_id_comment}`}
+                        comment={observation?.t223_comment}
+                        token={token.user.user_type}
+                        date={observation?.t223_sent_date}
+                        userId={
+                          observation?.t301_id_recruiter?.t301_id_recruiter
+                        }
+                      />
+                    ))}
                   </div>
-                  <h3 style={{fontSize: '1.3rem', position: 'relative', bottom: '7rem', left: '2rem', textAlign: 'center'}}>No hay observaciones para esta vacante</h3>
-                </> : (<h1>si hay observaciones</h1>)}
+                )}
               </section>
             </WrapperComment>
           )}
