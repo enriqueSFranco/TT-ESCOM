@@ -10,7 +10,7 @@ from datetime import date
 from apps.vacantes.pagination import CustomPagination
 from apps.vacantes.models import Vacant,Application,Report
 from apps.companies.models import Company
-from apps.vacantes.api.serializers.requirements_serializer import RequiredAbilitySerializer
+from apps.vacantes.api.serializers.requirements_serializer import RequiredAbilitySerializer,RequiredLanguageSerializer
 from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,VacantListSerializer,UpdateVacantSerializer,VacantInfoListSerializer,VacantFilterSerializer
 
 class VacantViewSet(viewsets.GenericViewSet):
@@ -18,6 +18,7 @@ class VacantViewSet(viewsets.GenericViewSet):
 	#permission_classes = [IsAuthenticated]
 	serializer_class = VacantSerializer
 	requirement_serializer = RequiredAbilitySerializer
+	language_serializer = RequiredLanguageSerializer
 	pagination_class = CustomPagination
 	list_serializer_class = VacantListSerializer
 	queryset = None
@@ -44,6 +45,10 @@ class VacantViewSet(viewsets.GenericViewSet):
     						 "t211_mandatory": False,
     						 "t200_id_vacant": ""
 							}
+	language_prototype = {"t200_id_vacant" : "",
+						  "c111_id_language" : "",
+						  "t110_level_description" : ""
+	}
 
 	def get_object(self, pk):	
 		self.queryset = self.model.objects\
@@ -103,6 +108,21 @@ class VacantViewSet(viewsets.GenericViewSet):
 		print(requirement)
 		return requirement
 
+	def set_language(self,id_language,id_vacant,level):
+		language = self.language_prototype		
+		if level < 30 or level >100:
+			return 
+		print("Si es un nivel valido")
+		language['t200_id_vacant'] = id_vacant
+		language['c111_id_language'] = id_language
+		if level > 30 and level < 50:
+			language['t110_level_description']='Básico'	
+		if level > 50 and level < 75:
+			language['t110_level_description']='Medio'	
+		if level > 75 and level <= 100:
+			language['t110_level_description']='Avanzado'	
+		return language
+
 
 	def create(self, request):
 		"""
@@ -148,11 +168,12 @@ class VacantViewSet(viewsets.GenericViewSet):
 			index = 0		
 			for language in vacant_languages :
 				print(language,language_level[index])				
-				#language_data = self.set_requirement(requirement,vacant_optional_level[index],False,vacant_id)				
-				#requirement_serializer =self.requirement_serializer(data = requirement_data)
-				#if requirement_serializer.is_valid():
-				#	print("Requerimiento valido")
-				#	requirement_serializer.save()					
+				language_data = self.set_language(int(language),vacant_id,int(language_level[index]))				
+				language_serializer =self.language_serializer(data = language_data)
+				print(language_data)
+				if language_serializer.is_valid():
+					print("Idioma valido")
+					language_serializer.save()					
 				index = index + 1
 			return Response({
 				'message': 'Vacante registrada correctamente.'
