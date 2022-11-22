@@ -11,7 +11,6 @@ const WrapperLoader = styled.div`
 
 const WraperCard = styled.article`
   width: 100%;
-  height: 76vh;
   margin: 0 auto;
   background-color: #F7F7F9;
   border-radius: 5px;
@@ -34,17 +33,16 @@ const HeaderInfo = styled.header`
 `
 
 const Description = styled.div`
-  height: ${props => props.height || '80%'};
-  position: relative;
+  height: fit-content;
+  overflow-y: auto;
 `
 
 const WrapperActions = styled.div`
-  position: absolute;
-  bottom: 1rem;
   width: 100%;
   display: flex;
   justify-content: center;
   gap: 1.5rem;
+  margin-top: 2rem;
 
   .button_admin {
     border: none;

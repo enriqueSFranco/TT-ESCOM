@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
-import { useFetch, useModal, useGetObservationVacant } from "hooks";
+import { useFetch, useModal, useGetObservationVacant, useGetObservationVacantManager } from "hooks";
 import { USERS } from "types";
 import ModalPortal from "components/Modal/ModalPortal";
 import Loader from "components/Loader/Loader";
@@ -11,6 +11,11 @@ import { FcCalendar } from "react-icons/fc";
 import { FaBrain } from "react-icons/fa";
 import { BiLike } from "react-icons/bi";
 import { IoMdAddCircle } from "react-icons/io";
+import Comment from "components/Comment/Comment";
+import Tooltip from "components/Tooltip/Tooltip";
+import Button from "components/Button/Button";
+import PostComment from "components/Modal/contentModals/PostComment";
+import NoComment from "./CardNoComment";
 import {
   WrapperLoader,
   WraperCard,
@@ -22,15 +27,14 @@ import {
   ListItems,
   Title,
 } from "./styled-components/CardDetailsVacantRecruiterStyled";
-import Comment from "components/Comment/Comment";
-import Tooltip from "components/Tooltip/Tooltip";
-import Button from "components/Button/Button";
-import PostComment from "components/Modal/contentModals/PostComment";
+
+
 
 const CardDetailsVacantRecruiter = ({ height }) => {
   const [isOpen, openModal, closeModal] = useModal(false);
   const { t200_id_vacant } = useParams();
   const observation = useGetObservationVacant({ vacantId: t200_id_vacant });
+  const observationManager = useGetObservationVacantManager({ vacantId: t200_id_vacant })
   const { token } = useAuth();
   const { data, error, loading } = useFetch(
     `${process.env.REACT_APP_URL_VACANTS}${t200_id_vacant}/`
@@ -45,7 +49,7 @@ const CardDetailsVacantRecruiter = ({ height }) => {
     console.log("enviar a revision");
   };
 
-  if (!data || !token || !observation) return null;
+  if (!data || !token || !observation || !observationManager) return null;
 
   return (
     <>
@@ -61,7 +65,7 @@ const CardDetailsVacantRecruiter = ({ height }) => {
               <ListItems>
                 <li>
                   <Chip
-                    label={`Modalidad: ${data[0]?.c214_id_modality?.c214_description}`}
+                    label={`${data[0]?.c214_id_modality?.c214_description}`}
                     bg="var(--bg-color_3)"
                     color="var(--color_3)"
                     icon={
@@ -71,7 +75,7 @@ const CardDetailsVacantRecruiter = ({ height }) => {
                 </li>
                 <li>
                   <Chip
-                    label={`Experiencia: ${data[0]?.c207_id_experience?.c207_description}`}
+                    label={`Exp: ${data[0]?.c207_id_experience?.c207_description}`}
                     bg="var(--bg-color_1)"
                     color="var(--color_1)"
                     icon={<FaBrain style={{ fontSize: "1.2rem" }} />}
@@ -177,7 +181,15 @@ const CardDetailsVacantRecruiter = ({ height }) => {
                   </Tooltip>
                 </nav>
               </header>
-              {/* TODO: Observaciones del administrador */}
+              <section style={{height: '76vh', display:'grid', placeContent: 'center'}}>
+                {!observationManager.length ? <>
+                  <NoComment />
+                  <div style={{position: "relative", bottom: ".5rem", left: "3rem",}}>
+                    <NoComment borderColor='#3D50D9' />
+                  </div>
+                  <h3 style={{fontSize: '1.3rem', position: 'relative', bottom: '7rem', left: '2rem', textAlign: 'center'}}>No hay observaciones para esta vacante</h3>
+                </> : (<h1>si hay observaciones</h1>)}
+              </section>
             </WrapperComment>
           )}
         </>
