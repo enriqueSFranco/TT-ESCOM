@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useFetch } from "hooks/useFetch";
 import { useDebounce } from "hooks/useDebounce";
 import { useViewport } from "hooks/useViewport";
 import { searchCharacter } from "services/index"
@@ -22,7 +21,6 @@ const FormSearchJob = ({ handleSearch }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [filterData, setFilterData] = useState(null);
   const [viewport] = useViewport();
-  // const { data } = useFetch(`${process.env.REACT_APP_URL_VACANTS}`);
   const debounce = useDebounce(queryJob, 500);
 
   // filtrado para el autocompletado
@@ -35,18 +33,11 @@ const FormSearchJob = ({ handleSearch }) => {
       searchCharacter(query)
         .then(res => {
           const { results } = res
-          console.log(results)
           setFilterData(results)
       })
         .catch(error => console.error(error))
     }
     return;
-    // const dataFiltered = data.result?.filter((el) => {
-    //   let er = new RegExp(`^${query}`, "gi");
-    //   let matches = el.t200_job.toLowerCase().match(er);
-    //   return matches;
-    // });
-    // return query === "" ? setFilterData([]) : setFilterData(filterData);
   };
 
   const handleClick = (job) => setQueryJob(job);
@@ -66,8 +57,6 @@ const FormSearchJob = ({ handleSearch }) => {
     setQueryJob('')
     setLocationJob('')
   };
-
-  // if (!filterData) return null
 
   return (
     <WrapperForm>

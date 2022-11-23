@@ -1,14 +1,10 @@
-import { useState } from "react";
-import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
-import { useAuth } from "context/AuthContext";
-import { useRecruiterJobs, useFetch } from "hooks";
+import { Link, Outlet, useParams } from "react-router-dom";
+import { useFetch } from "hooks";
 import LayoutDashboard from "Layout/LayoutDashboard";
 import LayoutHome from "Layout/LayoutHome";
 import LayoutWidgetRecruiter from "Layout/LayoutWidgetRecruiter";
-import FormUpdateJob from "components/Form/postJob/FormUpdateJob";
-import ConfirmDelete from "components/Alert/Confirm/ConfirmDelete";
+// import FormUpdateJob from "components/Form/postJob/FormUpdateJob";
 import ListJobsRecruiter from "components/Card/JobList/JobListRecruiter";
-import { deleteJob } from "services";
 import Chip from "components/Chip/Chip";
 import FormSearchJob from "components/Menu/FormSearchJobRecruiter";
 // import CardJobPreviewRecruiter from "components/Card/CardJobPreviewRecruiter";
@@ -24,31 +20,17 @@ import {
   TextNumber,
 } from "../styled-components/DashboardRecruiterStyled";
 
-// const vacantApplicationsData = {
-//   applications: 0,
-//   hired: 0,
-//   inProcess: 0,
-//   rejected: 0,
-//   unseen: 0,
-// };
-
 const PageHistory = () => {
   let { t200_id_vacant } = useParams();
   const {
     data: dataVacantInfo,
-    error: errorVacantInfo,
-    loading: loadingVacantInfo,
+    // error: errorVacantInfo,
+    // loading: loadingVacantInfo,
   } = useFetch(
     `${process.env.REACT_APP_URL_VACANT_VACANT_INFO}${t200_id_vacant || 1}/`
   );
-  const navigate = useNavigate();
-  // const [filterData, setFilterData] = useState(null);
-  // const [search, setSearch] = useState("");
-  // const [modalType, setModalType] = useState(null);
-  const [isDeletedJob, setIsDeletedJob] = useState({});
-  const [job, setJob] = useState(null);
-  // const [isOpenModalForm, openModalForm, closeModalForm] = useModal();
-  // let newObject = { ...form, t200_description: body };
+
+  // const [isDeletedJob, setIsDeletedJob] = useState({});
 
   // const handleInitialContent = () => setInitialContent(false);
 
@@ -82,16 +64,6 @@ const PageHistory = () => {
   //     setIsDeletedJob({ success: response.status, message: response.message });
   // };
 
-  // const onSubmitPostJob = (e) => {
-  //   e.preventDefault();
-  //   postJob(newObject)
-  //     .then((response) => {
-  //       console.log(response);
-  //       navigate("/mis-vacantes");
-  //     })
-  //     .catch((error) => console.error(error));
-  // };
-
   if (!dataVacantInfo) return null;
 
   return (
@@ -108,13 +80,15 @@ const PageHistory = () => {
               <ContentWidget>
                 <TextNumber>
                   {dataVacantInfo[0]?.TotalReceived === null
-                    ? 0
-                    : dataVacantInfo[0]?.TotalReceived}
+                    ? <span style={{fontSize: '1rem'}}>Sin postulaciones</span>
+                    : (
+                      <div style={{display: 'flex', flexDirection: 'column', gap: '.4rem', justifyContent: 'center', alignItems: 'center'}}>
+                        <span style={{fontSize: '1.5rem'}}>{dataVacantInfo[0]?.TotalReceived} postulaciones</span>
+                        <Link style={{fontSize: '1rem'}} to={`/postulaciones/${t200_id_vacant}/`}>Ver Postulados</Link>
+                      </div>
+                    )}
                 </TextNumber>
-                <span>recibidas</span>
-                <FaUsers />
               </ContentWidget>
-              <Link to={`/postulaciones/${t200_id_vacant}/`}>Ver Postulados</Link>
             </LayoutWidgetRecruiter>
             <LayoutWidgetRecruiter>
               <ContentWidgetCommon>

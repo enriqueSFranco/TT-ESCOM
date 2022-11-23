@@ -15,7 +15,7 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
   const [localities, setLocalities] = useState(null);
   const [state,setState] = useState("");
   const [municipality,setMunicipality] = useState("");
-  const [cp,setCP] = useState(""); 
+  const [_,setCP] = useState(""); 
   const [place,setPlace] = useState("");
 
   const handleLocality = (e) => {
@@ -99,9 +99,9 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
     if (e.target.files !== undefined) uploadCV(e);
   }
 
+
   if (!id) return null;
 
-  console.log(form)
 
   return (
     <>
@@ -114,7 +114,7 @@ const FormUpdateDataStudent = ({ id, username, candidate }) => {
       >
         Editar datos personales
       </h1>
-      <form onSubmit={(e) => update(e)}>
+      <form onSubmit={update}>
         <div
           style={{
             display: "flex",
