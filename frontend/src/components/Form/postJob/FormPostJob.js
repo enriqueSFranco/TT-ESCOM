@@ -289,7 +289,7 @@ const FormPostJob = () => {
                     profileCandidateList?.map((el) => (
                       <option
                         key={`profile-candidate-${crypto.randomUUID()}`}
-                        value={el.c206_description}
+                        value={el.c206_id_profile}
                       >
                         {el.c206_description}
                       </option>
@@ -311,7 +311,7 @@ const FormPostJob = () => {
                     expList?.map((el) => (
                       <option
                         key={`exp-${crypto.randomUUID()}`}
-                        value={el.c207_description}
+                        value={el.c207_id_experience}
                       >
                         {el.c207_description}
                       </option>
@@ -333,7 +333,7 @@ const FormPostJob = () => {
                     typeContractList?.map((el) => (
                       <option
                         key={`type-contract${crypto.randomUUID()}`}
-                        value={el.c208_description}
+                        value={el.c208_id_contract}
                       >
                         {el.c208_description}
                       </option>

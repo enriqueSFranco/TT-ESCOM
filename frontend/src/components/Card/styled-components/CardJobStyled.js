@@ -22,14 +22,14 @@ const CardBody = styled.article`
     width: 400px;
     height: 350px;
     background-color: #FFF;
-    border-radius: 1rem;
+    border-radius: .5rem;
     color: #222;
     font-family: sans-serif;
     padding: 0 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   }
 `;
 
@@ -60,6 +60,12 @@ const CardContent = styled.div``;
 
 const TitleJob = styled.span`
   font-weight: 700;
+  font-size: 1.2em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(27deg, #3f5efb, #fc466b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 `;
 
 const Tags = styled.ul`
@@ -137,6 +143,9 @@ const Button = styled.button`
     outline: none;
     padding: 0.5rem;
     width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 4px;
     transition: background-color .5s ease;
     cursor: pointer;

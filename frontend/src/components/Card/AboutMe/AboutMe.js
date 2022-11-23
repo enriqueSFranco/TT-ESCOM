@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { useAuth } from "context/AuthContext";
 import { useGetCandidate, useForm, useModal } from "hooks";
 import { updateStudent } from "services/students";
-// import { numberFormat } from "utils/numberFormat";
 import ModalPortal from "components/Modal/ModalPortal";
-// import Chip from 'components/Chip/Chip'
 import { MdEdit } from "react-icons/md";
 import styles from "./AboutMe.module.css";
 
