@@ -102,7 +102,10 @@ class VacantViewSet(viewsets.GenericViewSet):
 	def set_requirement(self,skill,level,mandatory,id_vacant):
 		requirement = self.requirement_prototype
 		requirement["c116_description"] = skill
-		requirement["t211_required_level"] = level
+		if level =="":
+			requirement["t211_required_level"] = "Indistinto"
+		else:
+			requirement["t211_required_level"] = level	
 		requirement["t211_mandatory"] = mandatory
 		requirement["t200_id_vacant"] = id_vacant
 		print(requirement)

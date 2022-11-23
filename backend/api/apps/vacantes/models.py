@@ -220,7 +220,7 @@ class RequiredAbility(models.Model):
 		related_name='VacantAbility',
 		on_delete=models.CASCADE)
     c116_description = models.CharField(max_length=150)
-    t211_required_level=models.CharField(max_length=50)
+    t211_required_level=models.CharField(max_length=50,blank=True,null=True)
     t211_mandatory=models.BooleanField(default=False)
     class Meta:
         verbose_name = 'RequieredAbility'
