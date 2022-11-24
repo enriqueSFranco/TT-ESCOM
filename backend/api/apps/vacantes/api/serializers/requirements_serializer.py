@@ -15,7 +15,7 @@ class RequiredAbilityListSerializer(serializers.ModelSerializer):
     class Meta:
         model = RequiredAbility
         fields = '__all__'        
-        depth = 2
+        #depth = 2
 
 
 class UpdateRequiredAbilitySerializer(serializers.ModelSerializer):
@@ -43,4 +43,4 @@ class RequiredLanguageListSerializer(serializers.ModelSerializer):
     class Meta:
         model = RequiredLanguage
         fields = '__all__'        
-        depth = 2
+        #depth = 2

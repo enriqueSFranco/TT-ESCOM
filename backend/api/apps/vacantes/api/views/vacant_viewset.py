@@ -102,7 +102,10 @@ class VacantViewSet(viewsets.GenericViewSet):
 	def set_requirement(self,skill,level,mandatory,id_vacant):
 		requirement = self.requirement_prototype
 		requirement["c116_description"] = skill
-		requirement["t211_required_level"] = level
+		if level =="":
+			requirement["t211_required_level"] = "Indistinto"
+		else:
+			requirement["t211_required_level"] = level	
 		requirement["t211_mandatory"] = mandatory
 		requirement["t200_id_vacant"] = id_vacant
 		print(requirement)
@@ -360,7 +363,7 @@ class FilterVacant (generics.ListAPIView):
 		count =0
 		for word in search:
 			if count==0:
-				filter = Vacant.objects.filter(Q(c204_id_vacant_status = 1),Q(t200_job__icontains=word) | Q(t200_description__icontains=word))
+				filter = Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) | Q(t200_description__icontains=word))
 				count = count+1
 			else:
 				print(word)
