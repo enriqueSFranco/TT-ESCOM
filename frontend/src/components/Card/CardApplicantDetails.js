@@ -15,6 +15,7 @@ const CardApplicantDetails = ({
   salary,
   onClick,
 }) => {
+
   return (
     <article
       style={{

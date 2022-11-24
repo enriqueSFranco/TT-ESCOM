@@ -1,6 +1,5 @@
 import React from "react";
 import { useGetApplicationJob } from "hooks/useGetApplicationJob";
-import { generateCSSClass } from "utils";
 import Chip from "components/Chip/Chip";
 import { USERS } from "types/users";
 import GroupAvatars from "components/Avatar/GroupAvatars";
@@ -16,7 +15,7 @@ import {
 } from "./styled-components/CardJobPreviewRecruiterStyled";
 
 
-const CardJobPreviewRecruiter = ({ info, url, typeUser }) => {
+const CardJobPreviewRecruiter = ({ info, typeUser }) => {
   const [data] = useGetApplicationJob({ idVacant: info?.t200_id_vacant });
 
   const { t200_job, t300_id_company, c207_id_experience, c214_id_modality } =
@@ -61,14 +60,10 @@ const CardJobPreviewRecruiter = ({ info, url, typeUser }) => {
 
       <CardFooter>
         {typeUser === USERS.recruiter && (
-          <GroupAvatars users={data} />
+          !data.length ? (<span>No hay postulaciones</span>) : <GroupAvatars users={data} />
         )}
-        <span
-          className={`${generateCSSClass(
-            info?.c204_id_vacant_status?.c204_description
-          )}`}
-        >
-          {info?.c204_id_vacant_status?.c204_description}
+        <span>
+          Estado: {info?.c204_id_vacant_status?.c204_description}
         </span>
       </CardFooter>
     </Card>

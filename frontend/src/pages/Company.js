@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { useFetch } from "hooks/useFetch";
+import { useFetch } from "hooks";
 import Input from "components/Input/Input";
 import { BsSearch } from 'react-icons/bs'
 import Skeleton from "components/Skeleton/Skeleton";
@@ -17,8 +17,9 @@ const Company = () => {
   
   const searchCompany = (query) => {
     let input = query.toLowerCase().trim();
+    setQuery(input);
+    
     if (input !== "") {
-      setQuery(input);
       let matches = data.filter((company) => {
         let regex = new RegExp(`^${input}`, "gi");
         return company.t300_name.match(regex);
@@ -31,6 +32,8 @@ const Company = () => {
 
   if (!data) return null;
 
+  console.log(query)
+
   return (
     <LayoutHome>
       <Main>
@@ -41,9 +44,9 @@ const Company = () => {
                 type="text"
                 label="Buscar una empresa"
                 width='400px'
-                bgInput='#00000097'
+                // bgInput='#00000097'
                 icon={<BsSearch />}
-                iconColor='#fff'
+                iconColor='#000'
                 id="query"
                 name="query"
                 value={query}

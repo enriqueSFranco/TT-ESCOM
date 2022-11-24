@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useFetch } from "hooks/useFetch";
+import { useEffect, useState, useRef } from "react";
 import { useDebounce } from "hooks/useDebounce";
 import { useViewport } from "hooks/useViewport";
 import { searchCharacter } from "services/index"
@@ -21,8 +20,8 @@ const FormSearchJob = ({ handleSearch }) => {
   const [locationJob, setLocationJob] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [filterData, setFilterData] = useState(null);
+  const inputRef = useRef(null)
   const [viewport] = useViewport();
-  // const { data } = useFetch(`${process.env.REACT_APP_URL_VACANTS}`);
   const debounce = useDebounce(queryJob, 500);
 
   // filtrado para el autocompletado
@@ -35,18 +34,11 @@ const FormSearchJob = ({ handleSearch }) => {
       searchCharacter(query)
         .then(res => {
           const { results } = res
-          console.log(results)
           setFilterData(results)
       })
         .catch(error => console.error(error))
     }
     return;
-    // const dataFiltered = data.result?.filter((el) => {
-    //   let er = new RegExp(`^${query}`, "gi");
-    //   let matches = el.t200_job.toLowerCase().match(er);
-    //   return matches;
-    // });
-    // return query === "" ? setFilterData([]) : setFilterData(filterData);
   };
 
   const handleClick = (job) => setQueryJob(job);
@@ -67,7 +59,10 @@ const FormSearchJob = ({ handleSearch }) => {
     setLocationJob('')
   };
 
-  // if (!filterData) return null
+  useEffect(() => {
+    if (inputRef.current)
+      inputRef.current.focus()
+  }, [])
 
   return (
     <WrapperForm>
@@ -77,6 +72,7 @@ const FormSearchJob = ({ handleSearch }) => {
             type="text"
             id="job"
             name="job"
+            ref={inputRef}
             value={queryJob}
             onChange={handleFilterJob}
             onBlur={() => {
@@ -85,7 +81,6 @@ const FormSearchJob = ({ handleSearch }) => {
               }, 200);
             }}
             autoComplete="off"
-            autoFocus="true"
             placeholder="Desarrollador Backend"
             marginLeft="2.7rem"
           />

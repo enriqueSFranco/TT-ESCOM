@@ -36,7 +36,7 @@ const Form = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #00000097;
+  background-color: #00000010;
   backdrop-filter: blur(10px);
   padding: .5rem;
   border-radius: 4px;

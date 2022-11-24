@@ -79,12 +79,6 @@ const CardFooter = styled.footer`
   border-radius: 0 0 1rem 1rem;
   background-color: #085394;
   color: #fff;
-
-  .abierta {color: #38761D; font-weight: 700;}
-
-  .en-revision {color: #fff; font-weight: 700;}
-
-  .cerrada {color: #990000; font-weight: 700;}
 `
 
 export { Card, CardHeader, CardListTags, CardHeaderLeft, CardHeaderRight, CardListItemTags, TotalApplications, TitleJob, CardFooter }

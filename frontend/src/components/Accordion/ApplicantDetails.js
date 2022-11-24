@@ -6,6 +6,7 @@ import Chip from "components/Chip/Chip";
 import ProfileCandidate from "components/Card/ProfileCandidate";
 import { TiArrowBackOutline } from "react-icons/ti";
 import styles from "./Accordion.module.css";
+import { getStudent } from "services";
 
 
 // TODO: Pasar a un component
@@ -21,10 +22,17 @@ const Accordion = () => {
   const { t200_id_vacant } = useParams();
   const [viewApplicantDetails, setViewApplicantDetails] = useState(false);
   const [data] = useGetApplicationJob({ idVacant: t200_id_vacant });
+  const [user, setUser] = useState([])
 
-  const handleRender = () => setViewApplicantDetails(true);
+  const handleRender = (candidateId) => {
+    getStudent(candidateId)
+      .then(response => setUser(response))
+      .catch(error => error)
+  }
 
   if (!data) return null;
+
+  // console.log(user)
 
   return (
     <section>
@@ -58,7 +66,7 @@ const Accordion = () => {
           {data?.map((candidate) => (
             <CardApplicantDetails
               key={`candidate-id-${crypto.randomUUID()}`}
-              onClick={handleRender}
+              onClick={() => handleRender(candidate?.t100_id_student?.id_user?.id)}
               name={candidate?.t100_id_student?.t100_name}
               interestJob={candidate?.t100_id_student?.t100_interest_job}
               speciality={candidate?.t100_id_student?.t100_speciality}
@@ -73,10 +81,10 @@ const Accordion = () => {
           <div>
             {!data.length ? (
               <NoApplications />
-            ) : viewApplicantDetails ? (
+            ) : !user.length ? (
               <ProfileCandidate user={data[0]?.t100_id_student} />
-            ) : (
-              <ProfileCandidate user={data[0]?.t100_id_student} />
+              ) : (
+                <ProfileCandidate user={user[0]} />
             )}
           </div>
         </article>

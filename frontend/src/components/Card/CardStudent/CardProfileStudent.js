@@ -102,7 +102,7 @@ const CardProfileStudent = () => {
     });
   }
 
-  if (!candidate || !data) return null;
+  if (!candidate || !data || !socialNetworks) return null;
 
   return (
     <>
@@ -451,6 +451,8 @@ const CardProfileStudent = () => {
       <ModalPortal isOpen={isOpenCV} closeModal={closeModalCV}>
         <ModalPreviewCV fileUrl={candidate[0]?.t100_cv} />
       </ModalPortal>
+      {/* <Toaster position='top-right' /> */}
+
     </>
   );
 };

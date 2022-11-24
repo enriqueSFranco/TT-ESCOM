@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import toast from "react-hot-toast";
 import { useAuth } from "context/AuthContext";
 import { useModal } from "hooks";
 import { applyJob } from "services";
@@ -11,6 +12,7 @@ import { IoBusiness } from "react-icons/io5";
 import { MdAttachMoney } from 'react-icons/md'
 import { HiLocationMarker } from 'react-icons/hi'
 import { FaBrain } from 'react-icons/fa'
+import { BsArrowRightShort } from 'react-icons/bs'
 import {
   Actions,
   Button,
@@ -29,8 +31,6 @@ import {
 const CardJob = ({ job }) => {
   const { token } = useAuth();
   const [isOpen, openModal, closeModal] = useModal(false)
-  const [message, setMessage] = useState('')
-  const [error, setError] = useState('')
 
   let userID = token?.user?.id
   let idJob = job?.t200_id_vacant;
@@ -53,10 +53,9 @@ const CardJob = ({ job }) => {
           now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate(),
       });
       const { data } = response
-      setMessage(data?.message)
+      toast.success(data?.message)
     } catch (error) {
-      setError(error)
-      console.log(error);
+      toast.error(error.message);
     }
   };
   
@@ -65,6 +64,8 @@ const CardJob = ({ job }) => {
   }
   
   if (!job) return null;
+
+  // console.log(job)
 
   return (
     <>
@@ -94,7 +95,7 @@ const CardJob = ({ job }) => {
           <Location>{`${job?.c222_id_locality?.c222_state}, ${job?.c222_id_locality?.c222_municipality}, ${job?.c222_id_locality?.c222_locality}`}</Location>
           <Description dangerouslySetInnerHTML={createMarkup()} />
           <Actions>
-            <Button onClick={openModal}>Ver mas</Button>
+            <Button onClick={openModal}>Ver mas <BsArrowRightShort style={{fontSize: '1.5rem'}} /></Button>
           </Actions>
         </CardContent>
       </CardBody>
@@ -104,6 +105,11 @@ const CardJob = ({ job }) => {
           nameJob={job.t200_job}
           logo={job?.t300_id_company?.t300_logo}
           descriptionJob={job.t200_description}
+          street={job?.t200_street}
+          publishDate={job?.t200_publish_date}
+          typeContract={job?.c208_id_contract?.c208_description}
+          exp={job?.c207_id_experience?.c207_description}
+          profile={job?.c206_id_profile?.c206_description}
           idJob={idJob}
           userID={userID}
           handleApplyJob={handleApplyJob}
