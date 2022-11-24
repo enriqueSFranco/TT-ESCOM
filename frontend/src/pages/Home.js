@@ -14,7 +14,10 @@ import ButtonScrollTop from "components/Button/ButtonScrollTop";
 
 const Home = () => {
   const { response, loading, loadingNextPage, setPage } = useGetAllJobs();
-  const [filteredData, setDataFiltered] = useState([]);
+  const [filteredData, setDataFiltered] = useState({
+    vacants: response,
+    filters: new Set()
+  });
   const [isFiltered, setIsFiltered] = useState(false);
   const externalRef = useRef(null);
   const { isNearScreen } = useNearScreen({
@@ -42,6 +45,12 @@ const Home = () => {
     }
   }
 
+  const onFiltereChange = useCallback(e => {
+    setDataFiltered(prevState => {
+      console.log(prevState)
+    })
+  }, [setDataFiltered])
+
   function handleSearch(value) {
     setIsFiltered(value !== "" ? true : false);
     handleFilter(value);
@@ -54,7 +63,7 @@ const Home = () => {
     if (isNearScreen) debouncehandleNextPage();
   },[isNearScreen, debouncehandleNextPage]);
 
-  if (!response && !filteredData) return null;
+  if (!response && !filteredData.vacants) return null;
 
   return (
     <LayoutHome>
@@ -65,11 +74,11 @@ const Home = () => {
           </LayoutHero>
         </Hero>
         <Aside>
-          <Filters />
+          <Filters onFiltereChange={onFiltereChange} />
         </Aside>
         <Content>
           <JobList
-            jobs={isFiltered ? filteredData : response}
+            jobs={isFiltered ? filteredData.vacantspm  : response}
             loading={loading}
           />
           <div style={{width: '100%',display: 'grid', placeContent: 'center', backgroundColor: 'transparent', margin: '1rem 0', padding: '0 0 2rem 0'}}>

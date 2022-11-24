@@ -65,6 +65,8 @@ const CardJob = ({ job }) => {
   
   if (!job) return null;
 
+  // console.log(job)
+
   return (
     <>
       <CardBody>
@@ -103,6 +105,11 @@ const CardJob = ({ job }) => {
           nameJob={job.t200_job}
           logo={job?.t300_id_company?.t300_logo}
           descriptionJob={job.t200_description}
+          street={job?.t200_street}
+          publishDate={job?.t200_publish_date}
+          typeContract={job?.c208_id_contract?.c208_description}
+          exp={job?.c207_id_experience?.c207_description}
+          profile={job?.c206_id_profile?.c206_description}
           idJob={idJob}
           userID={userID}
           handleApplyJob={handleApplyJob}

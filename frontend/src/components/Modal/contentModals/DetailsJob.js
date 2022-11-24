@@ -9,6 +9,7 @@ import {
   Header,
   TextH2,
   WrapperRequitements,
+  WrapperMoreInfo
 } from "../styled-components/DetailsJobStyled";
 
 function createMarkup(description) {
@@ -20,6 +21,11 @@ const DetailsJob = ({
   nameCompany,
   nameJob,
   descriptionJob,
+  street,
+  publishDate,
+  typeContract,
+  exp,
+  profile,
   token,
   idJob,
   userID,
@@ -110,6 +116,12 @@ const DetailsJob = ({
           </>
         )}
       </WrapperRequitements>
+      <WrapperMoreInfo>
+        <span>Ubicacion: {street}</span>
+        <span>Perfil: {profile}</span>
+        <span>Tipo de contratacion: {typeContract}</span>
+        <span>Experiencia: {exp}</span>
+      </WrapperMoreInfo>
       <DescriptionJob dangerouslySetInnerHTML={createMarkup(descriptionJob)} />
       <div
         style={{

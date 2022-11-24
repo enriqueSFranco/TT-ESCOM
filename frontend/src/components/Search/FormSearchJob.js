@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useDebounce } from "hooks/useDebounce";
 import { useViewport } from "hooks/useViewport";
 import { searchCharacter } from "services/index"
@@ -20,6 +20,7 @@ const FormSearchJob = ({ handleSearch }) => {
   const [locationJob, setLocationJob] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [filterData, setFilterData] = useState(null);
+  const inputRef = useRef(null)
   const [viewport] = useViewport();
   const debounce = useDebounce(queryJob, 500);
 
@@ -58,6 +59,11 @@ const FormSearchJob = ({ handleSearch }) => {
     setLocationJob('')
   };
 
+  useEffect(() => {
+    if (inputRef.current)
+      inputRef.current.focus()
+  }, [])
+
   return (
     <WrapperForm>
       <Form onSubmit={onSubmit}>
@@ -66,6 +72,7 @@ const FormSearchJob = ({ handleSearch }) => {
             type="text"
             id="job"
             name="job"
+            ref={inputRef}
             value={queryJob}
             onChange={handleFilterJob}
             onBlur={() => {
@@ -74,7 +81,6 @@ const FormSearchJob = ({ handleSearch }) => {
               }, 200);
             }}
             autoComplete="off"
-            autoFocus="true"
             placeholder="Desarrollador Backend"
             marginLeft="2.7rem"
           />

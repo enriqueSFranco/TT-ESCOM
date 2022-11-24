@@ -25,6 +25,13 @@ const TextH2 = styled.h2`
   color: transparent;
 `
 
+const WrapperMoreInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: 1rem;
+`
+
 const WrapperRequitements = styled.div`
   padding: 1rem;
   border-bottom: 2px solid #eee;
@@ -36,9 +43,9 @@ const WrapperRequitements = styled.div`
 
 const DescriptionJob = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  padding: 1rem;
+  padding: 0 1rem 1rem 1rem;
   height: 400px;
   overflow-y: auto;
 `
 
-export { Button, DescriptionJob, Header, TextH2, WrapperRequitements }
+export { Button, DescriptionJob, Header, TextH2, WrapperRequitements, WrapperMoreInfo }
