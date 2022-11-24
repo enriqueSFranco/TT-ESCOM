@@ -26,7 +26,7 @@ const FormSearchJob = ({ handleSearch }) => {
 
   // filtrado para el autocompletado
   const handleFilterJob = (e) => {
-    const query = e.target.value;
+    const query = e.target.value.trim();
     setQueryJob(query);
 
     // hacer la llamada al endpoint de searchCharacter
@@ -120,7 +120,7 @@ const FormSearchJob = ({ handleSearch }) => {
             </>
           ) : (
             <>
-              {isLoading && <Loader />}
+              {isLoading && <Loader width='20' height='20' color="#fff" />}
               {!isLoading && <BiIcon.BiSearch />}
               {isLoading && ""}
             </>

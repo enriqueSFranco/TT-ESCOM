@@ -14,8 +14,8 @@ const Button = styled.button`
   }
 
   @media only screen and ${device.laptop} {
-    width: auto;
-    height: auto;
+    width: fit-content;
+    height: fit-content;
     padding: 1rem;
     border-radius: 50%;
     border: none;
