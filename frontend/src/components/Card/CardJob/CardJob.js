@@ -69,7 +69,7 @@ const CardJob = ({ job }) => {
 
   return (
     <>
-      <CardBody>
+      <CardBody data-close-date={`${job?.t200_close_date}`}>
         <CardHeader>
           <CardImage>
             {job?.t300_id_company?.t300_logo ? (

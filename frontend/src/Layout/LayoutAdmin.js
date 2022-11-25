@@ -70,16 +70,6 @@ const LayoutAdmin = ({ children }) => {
                 }}
               />Empresas por validar</NavLink>
             </Item>
-            {/* <Item>
-              <IoBusiness
-                style={{
-                  marginRight: ".3rem",
-                  fontSize: "1.3rem",
-                  color: "#8A9FA9",
-                }}
-              />{" "}
-              <NavLink to="validar-empresa">Vacantes por validar</NavLink>
-            </Item> */}
           </NavList>
         </SideBar>
         <Content>{children}</Content>

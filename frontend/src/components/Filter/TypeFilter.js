@@ -19,7 +19,7 @@ const TypeFilter = ({ type, onFiltereChange }) => {
   const FilterExp = () => (
     <List>
       {exps?.map((exp) => (
-        <Item>
+        <Item key={`filter-exp-id-${crypto.randomUUID()}`}>
           <Label htmlFor={exp.c207_description}>
             <Checkbox
               type="checkbox"
@@ -38,7 +38,7 @@ const TypeFilter = ({ type, onFiltereChange }) => {
   const FilterModality = () => (
     <List>
       {workModality?.map((modality) => (
-        <Item>
+        <Item key={`filter-workModality-id-${crypto.randomUUID()}`}>
           <Label htmlFor={modality.c214_description}>
             <Checkbox
               type="checkbox"

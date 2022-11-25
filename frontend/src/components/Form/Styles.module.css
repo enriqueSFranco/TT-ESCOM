@@ -290,17 +290,16 @@
   height: 100px;
   display: flex;
   flex-direction: column;
-  /* margin-bottom: 1.4rem; */
 }
 
-.flexRow {
-  position: relative;
-  top: 0;
-  width: 100%;
+.wrapperFile {
+  /* margin-bottom: 1rem; */
+  width: fit-content;
+  height: 40px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-
 
 /* input file */
 .inputFile {
@@ -339,7 +338,7 @@
 }
 
 .inputFile + label:hover, .inputFile {
-  color: #0d5ed7;
+  color: #116BFE;
 }
 
 
@@ -353,7 +352,7 @@
 .btnBack, 
 .btnRegister, 
 .btnNext {
-  background-color: #0d5ed7;
+  background-color: #116BFE;
   color: #fff;
   outline: none;
   border: none;

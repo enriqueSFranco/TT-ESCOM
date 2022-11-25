@@ -21,11 +21,11 @@ const FormRecruiterInfo = ({
     <div className={styles.personalContact}>
       {!isActive ? (
         <h2
-        style={{fontFamily: 'sans-serif', fontSize: '1.5rem', textAlign: 'center', marginBottom: '2rem', color: '#2B3647', fontWeight: '600'}}
+        style={{fontFamily: 'sans-serif', fontSize: '1.1em', textAlign: 'center', marginBottom: '2rem', color: '#2B3647', fontWeight: '600'}}
         >
           Datos Personales del reclutador
         </h2>
-      ) : <h2 style={{fontFamily: 'sans-serif', fontSize: '1.5rem', textAlign: 'center', textTransform: 'none', color: '#2B3647', fontWeight: '600'}}>Datos Personales</h2>}
+      ) : <h2 style={{fontFamily: 'sans-serif', fontSize: '1.1rem', textAlign: 'center', textTransform: 'none', color: '#2B3647', fontWeight: '600'}}>Datos Personales</h2>}
       <form onSubmit={handleSubmitCompany}>
         <div className={styles.inputGroup}>
           <Input

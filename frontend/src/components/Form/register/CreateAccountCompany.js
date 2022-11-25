@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import { Link } from "react-router-dom";
 import { useForm } from "hooks/useForm";
 import { companyInitialForm } from "types/schemes";
 import FormBusinessRecruiter from "./FormBusinessRecruiter";
@@ -92,7 +91,7 @@ const FormCompany = () => {
           <article className={styles.wrapperForm3}>
             <h2
               style={{
-                fontFamily: 'sans-serif', fontSize: '1.5rem', textAlign: 'center', color: '#2B3647', fontWeight: '600', marginTop: '2rem'
+                fontFamily: 'sans-serif', fontSize: '1.1em', textAlign: 'center', color: '#2B3647', fontWeight: '600', margin: '1rem 0 0 0'
               }}
             >
               Proporcionanos el nombre de la empresa.

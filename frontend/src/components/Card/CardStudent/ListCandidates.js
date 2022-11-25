@@ -3,7 +3,7 @@ import { useFetch } from 'hooks'
 import CardCandidate from './CardCandidate'
 
 const ListCandidates = () => {
-  const {data } = useFetch(`${process.env.REACT_APP_URL_CANDIDATE}`)
+  const { data } = useFetch(`${process.env.REACT_APP_URL_CANDIDATE}`)
 
   if (!data) return null;
 

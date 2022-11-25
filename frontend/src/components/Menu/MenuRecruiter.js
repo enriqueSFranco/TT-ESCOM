@@ -30,7 +30,7 @@ const links = [
     id: crypto.randomUUID(),
     to: "/candidatos",
     icon: <HiUserGroup />,
-    label: "Candidatos",
+    label: "Talentos",
   },
 ];
 
