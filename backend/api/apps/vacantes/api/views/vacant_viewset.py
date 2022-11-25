@@ -368,7 +368,7 @@ class FilterVacant (generics.ListAPIView):
 			else:
 				print(word)
 				filter = filter.union(Vacant.objects.filter(Q(c204_id_vacant_status = 1),Q(t200_job__icontains=word) | Q(t200_description__icontains=word)))
-		return filter.values()#Vacant.objects.filter(Q(c204_id_vacant_status = 1),Q(t200_job__icontains=search) | Q(t200_description__icontains=search)).values() 
+		return filter.all()#Vacant.objects.filter(Q(c204_id_vacant_status = 1),Q(t200_job__icontains=search) | Q(t200_description__icontains=search)).values() 
 	
 
 class FilterVacantViewSet(viewsets.GenericViewSet):
