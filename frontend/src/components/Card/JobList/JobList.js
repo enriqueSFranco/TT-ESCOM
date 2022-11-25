@@ -14,12 +14,13 @@ const ListEmptyJobs = () => {
 };
 
 const JobList = ({ jobs, loading }) => {
-
+  var date2 = new Date('2020-10-22');
   useEffect(() => {
     const $cards = document.querySelectorAll('[data-close-date]')
     $cards.forEach(card => {
       // TODO: Remover la card con fecha mayor a un mes a partir de su publicacion
-      console.log(card)
+      // if (card.getAttribute())
+      console.log(card.getAttribute("data-close-date"))
     })
   }, [jobs.length])
 
