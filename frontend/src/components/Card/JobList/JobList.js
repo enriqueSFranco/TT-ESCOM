@@ -1,8 +1,13 @@
-import { memo, useEffect } from "react";
-import moment from "moment";
+import { memo } from "react";
 import 'moment/locale/es-mx'
 import CardJob from "../CardJob/CardJob";
 import styles from "./JobList.module.css";
+
+// var fechaInicio = new Date('2022-10-23').getTime();
+// const now = new Date()
+// let dateCurrent = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`
+
+// console.log(typeof (diff/(1000*60*60*24)));
 
 const ListEmptyJobs = () => {
 
@@ -14,23 +19,27 @@ const ListEmptyJobs = () => {
 };
 
 const JobList = ({ jobs, loading }) => {
-  var date2 = new Date('2020-10-22');
-  useEffect(() => {
-    const $cards = document.querySelectorAll('[data-close-date]')
-    $cards.forEach(card => {
-      
-      // TODO: Remover la card con fecha mayor a un mes a partir de su publicacion
-      // if (card.getAttribute())
-      // console.log(card.getAttribute("data-close-date"))
-    })
-  }, [jobs.length])
+
+  // useEffect(() => {
+  //   const $cards = document.querySelectorAll('[data-close-date]')
+  //   if (!$cards.length) return;
+    
+  //   $cards.forEach((card, index) => {
+  //     if (Boolean(card.getAttribute("data-close-date"))) {
+  //       let publicDateJob = new Date(card.getAttribute("data-close-date"))
+  //       let diff = Math.floor((now - publicDateJob) / (1000 * 60 * 60 * 24))
+  //       let semilla = {
+  //         diff,
+  //         idPublicDate: card
+  //       }
+  //     }
+  //   })
+  // }, [])
 
   if (!jobs || jobs === undefined) return null;
 
 
   if (jobs?.length < 0) return <ListEmptyJobs />
-
-  console.log(moment("20221028", "YYYYMMDD").fromNow())
 
   return (
     <>

@@ -56,6 +56,27 @@ const PublicationDate = styled.span`
   font-weight: 500;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: #B1B4BC;
+  height: fit-content;
+
+  ${props => {
+      if (props.close > 30) {
+        return `
+          background-color: red; 
+          color: #fff;
+          padding: .2rem .3rem;
+          border-radius: .2rem;
+        `
+      }
+      if (props.close < 15) {
+        return `
+          background-color: #E7F6DF; 
+          color: #62C62E;
+          padding: .2rem .3rem;
+          border-radius: .2rem;
+          font-weight: 600;
+        `
+      }
+    }}
 `;
 
 const CardContent = styled.div``;

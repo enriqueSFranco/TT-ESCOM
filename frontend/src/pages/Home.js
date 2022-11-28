@@ -71,7 +71,7 @@ const Home = () => {
         <Aside>
           <Filters onFiltereChange={onFiltereChange} />
         </Aside>
-        <Content>
+        <Content id="cards">
           <JobList
             jobs={isFiltered ? data?.results : response}
             loading={loading}
