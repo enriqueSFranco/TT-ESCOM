@@ -1,5 +1,7 @@
 import React from "react";
 import toast from "react-hot-toast";
+import moment from "moment";
+import 'moment/locale/es-mx'
 import { useAuth } from "context/AuthContext";
 import { useModal } from "hooks";
 import { applyJob } from "services";
@@ -65,8 +67,6 @@ const CardJob = ({ job }) => {
   
   if (!job) return null;
 
-  // console.log(job)
-
   return (
     <>
       <CardBody data-close-date={`${job?.t200_close_date}`}>
@@ -81,7 +81,7 @@ const CardJob = ({ job }) => {
               <IoBusiness style={{ color: "darkgray", fontSize: "3.5rem" }} />
             )}
           </CardImage>
-          <PublicationDate>{!job?.t200_publish_date ? 'sin fecha' : formatDate(job?.t200_publish_date)}</PublicationDate>
+          <PublicationDate>Publicado {job?.t200_publish_date ? moment(job?.t200_publish_date, "YYYYMMDD").fromNow() : 'sin fecha'}</PublicationDate>
         </CardHeader>
         <CardContent>
           <TitleJob>{job.t200_job}</TitleJob>

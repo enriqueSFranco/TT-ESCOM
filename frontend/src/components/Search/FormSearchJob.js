@@ -16,7 +16,6 @@ import {
 
 const FormSearchJob = ({ handleSearch, query, setQuery }) => {
   const inputRef = useRef(null)
-  // const [queryJob, setQueryJob] = useState("");
   const debounce = useDebounce(query, 500);
   const [locationJob, setLocationJob] = useState("");
   const [loading, setLoading] = useState(false);
@@ -45,7 +44,8 @@ const FormSearchJob = ({ handleSearch, query, setQuery }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (query === "" && locationJob === "") return
+    if (query === "") return
+
     setLoading(true);
     setTimeout(() => {
       setQuery(debounce)
@@ -58,10 +58,6 @@ const FormSearchJob = ({ handleSearch, query, setQuery }) => {
     if (inputRef.current)
       inputRef.current.focus()
   }, [])
-
-  // if (!data) return null;
-
-  // console.log(data)
 
   return (
     <WrapperForm>

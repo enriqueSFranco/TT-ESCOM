@@ -36,6 +36,7 @@ const CardBody = styled.article`
 const CardHeader = styled.header`
   display: flex;
   justify-content: space-between;
+  color: #000;
 `;
 
 const CardImage = styled.div`
@@ -52,8 +53,9 @@ const CardImage = styled.div`
 
 const PublicationDate = styled.span`
   font-size: .8rem;
-  font-weight: 600;
-  color: #FFF;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #B1B4BC;
 `;
 
 const CardContent = styled.div``;

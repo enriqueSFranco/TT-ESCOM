@@ -1,10 +1,10 @@
 import { memo, useEffect } from "react";
+import moment from "moment";
+import 'moment/locale/es-mx'
 import CardJob from "../CardJob/CardJob";
-// import Skeleton from "components/Skeleton/Skeleton";
 import styles from "./JobList.module.css";
 
 const ListEmptyJobs = () => {
-  // const cardRef = useRef(null)
 
   return (
     <article className={`${styles.notJobs}`}>
@@ -18,15 +18,19 @@ const JobList = ({ jobs, loading }) => {
   useEffect(() => {
     const $cards = document.querySelectorAll('[data-close-date]')
     $cards.forEach(card => {
+      
       // TODO: Remover la card con fecha mayor a un mes a partir de su publicacion
       // if (card.getAttribute())
-      console.log(card.getAttribute("data-close-date"))
+      // console.log(card.getAttribute("data-close-date"))
     })
   }, [jobs.length])
 
-  if (!jobs) return null;
+  if (!jobs || jobs === undefined) return null;
 
-  if (jobs.result?.length < 0) return <ListEmptyJobs />
+
+  if (jobs?.length < 0) return <ListEmptyJobs />
+
+  console.log(moment("20221028", "YYYYMMDD").fromNow())
 
   return (
     <>

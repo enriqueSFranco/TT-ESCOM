@@ -11,7 +11,7 @@ import Filters from "components/Filter/Filters";
 import ButtonScrollTop from "components/Button/ButtonScrollTop";
 
 const Home = () => {
-  const [filteredData, setDataFiltered] = useState([]);
+  // const [filteredData, setDataFiltered] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
   const [query, setQuery] = useState("")
   const [data, isLoading] = useSearchJob(query)
@@ -31,25 +31,24 @@ const Home = () => {
     handleNextPage()
   }, 400)
 
-  function handleFilter(value) {
-    let lowerValue = value.toLowerCase();
-    if (!data) return
-    console.log(data)
+  // function handleFilter(value) {
+  //   let lowerValue = value.toLowerCase();
 
-    if (lowerValue !== "") {
-      const result = data?.results?.filter((el) =>
-        el.t200_job.toLowerCase().match(lowerValue)
-      );
-      setDataFiltered(result);
-    }
-  }
+  //   if (lowerValue !== "") {
+  //     const result = data?.results?.filter((el) =>
+  //       el.t200_job.toLowerCase().includes(lowerValue)
+  //       );
+  //       console.log(result)
+  //     setDataFiltered(result);
+  //   }
+  // }
 
   // TODO: Hacer la funcionalidad de filtrado con checkbox
   function onFiltereChange() {}
 
   function handleSearch(value) {
     setIsFiltered(value !== "" ? true : false);
-    handleFilter(value);
+    // handleFilter(value);
   }
 
   const debouncehandleNextPage = useCallback(debounce
@@ -59,10 +58,8 @@ const Home = () => {
     if (isNearScreen) debouncehandleNextPage();
   },[isNearScreen, debouncehandleNextPage]);
   
-  if (!response || !filteredData) return null;
+  if (!response) return null;
   
-  console.log(filteredData)
-
   return (
     <LayoutHome>
       <Main>
@@ -76,7 +73,7 @@ const Home = () => {
         </Aside>
         <Content>
           <JobList
-            jobs={isFiltered ? filteredData : response}
+            jobs={isFiltered ? data?.results : response}
             loading={loading}
           />
           <div style={{width: '100%',display: 'grid', placeContent: 'center', backgroundColor: 'transparent', margin: '1rem 0', padding: '0 0 2rem 0'}}>
