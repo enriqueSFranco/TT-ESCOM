@@ -9,6 +9,15 @@ const List = styled.ul`
   flex-wrap: wrap;
   align-items: center;
   gap: .5rem;
+  
+  .menu_item {
+    position: relative;
+  }
+
+  .active {
+    color: #0389D4;
+    border-bottom: 2px solid #0389D4;
+  }
 `
 
 // li

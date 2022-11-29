@@ -62,14 +62,6 @@ const CardApplicantDetails = ({
           <span style={{ fontSize: ".9rem" }}>Nombre: {name}</span>
         </ListItem>
         <ListItem>
-          {/* <MdWork style={{fontSize: '1.2rem'}} />  */}
-          <span style={{ fontSize: ".9rem" }}>
-            {interestJob
-              ? `Puesto de interes: ${interestJob}`
-              : `Especialidad: ${speciality}`}
-          </span>
-        </ListItem>
-        <ListItem>
           {/* <TiLocationOutline style={{fontSize: '1.4rem'}} /> */}
           <span style={{ fontSize: ".9rem" }}>Ubicacion: {residence}</span>
         </ListItem>
@@ -77,6 +69,12 @@ const CardApplicantDetails = ({
           {/* <MdAttachMoney style={{fontSize: '1.3rem'}} /> */}
           <span style={{ fontSize: ".9rem" }}>
             Salario deseado: {numberFormat(salary)}
+          </span>
+        </ListItem>
+        <ListItem>
+          {/* <MdAttachMoney style={{fontSize: '1.3rem'}} /> */}
+          <span style={{ fontSize: ".9rem" }}>
+            Estado: en revision
           </span>
         </ListItem>
       </List>

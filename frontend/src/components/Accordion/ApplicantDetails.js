@@ -20,7 +20,6 @@ const NoApplications = () => {
 
 const Accordion = () => {
   const { t200_id_vacant } = useParams();
-  const [viewApplicantDetails, setViewApplicantDetails] = useState(false);
   const [data] = useGetApplicationJob({ idVacant: t200_id_vacant });
   const [user, setUser] = useState([])
 
@@ -31,8 +30,6 @@ const Accordion = () => {
   }
 
   if (!data) return null;
-
-  // console.log(user)
 
   return (
     <section>
@@ -82,9 +79,9 @@ const Accordion = () => {
             {!data.length ? (
               <NoApplications />
             ) : !user.length ? (
-              <ProfileCandidate user={data[0]?.t100_id_student} />
+              <ProfileCandidate user={data[0]?.t100_id_student} isApplying={true} />
               ) : (
-                <ProfileCandidate user={user[0]} />
+                <ProfileCandidate user={user[0]} isApplying={true} />
             )}
           </div>
         </article>
