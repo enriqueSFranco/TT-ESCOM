@@ -97,16 +97,20 @@ class ApplicationViewSet(viewsets.GenericViewSet):
 
 	def update(self, request, pk):
 		status_data ={
-			"t201_id_application":"",
-			"c205_id_application_state":1,
+			"t201_id_application":pk,
+			"c205_id_application_state":request.data['c205_id_application_state'],
 			"t216_modify_date": datetime.now().date()
+		}
+		update_data = {
+			"c205_id_application_state":request.data['c205_id_application_state']
 		}
 		u_application = self.model.objects.filter(t201_id_application=pk).first()
 		print(u_application)
-		status_data['t201_id_application'] = u_application.t201_id_application
+		#status_data['t201_id_application'] = u_application.t201_id_application
 		print(status_data)
-		application_serializer = UpdateApplicationSerializer(u_application, data=request.data)
+		application_serializer = UpdateApplicationSerializer(u_application, data=update_data)
 		application_status = self.status_serializer(data=status_data)
+		#algo = ApplicationStateSerializer
 		if application_serializer.is_valid() and application_status.is_valid(): 
 			application_status.save()
 			application_serializer.save()
