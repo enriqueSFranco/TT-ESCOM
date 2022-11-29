@@ -79,7 +79,7 @@ const Accordion = () => {
             {!data.length ? (
               <NoApplications />
             ) : !user.length ? (
-              <ProfileCandidate user={data[0]?.t100_id_student} isApplying={true} />
+              <ProfileCandidate user={data[0]?.t100_id_student} idApplicant={data[0]?.t100_id_student?.id_user?.id} isApplying={true} />
               ) : (
                 <ProfileCandidate user={user[0]} isApplying={true} />
             )}

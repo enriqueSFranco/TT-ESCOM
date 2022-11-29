@@ -30,6 +30,6 @@ export function useLanguageUser(id) {
       })
       .catch(error => setError(error))
     return () => controller.abort()
-  }, [])
+  }, [id])
   return { languages, error }
 }

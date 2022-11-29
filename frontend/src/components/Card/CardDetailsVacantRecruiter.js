@@ -40,6 +40,7 @@ function createMarkup(description) {
   return { __html: description };
 }
 
+
 const CardDetailsVacantRecruiter = ({ height }) => {
   const [isOpen, openModal, closeModal] = useModal(false);
   const { t200_id_vacant } = useParams();
@@ -54,33 +55,31 @@ const CardDetailsVacantRecruiter = ({ height }) => {
 
   const handlePublish = (e) => {
     e.preventDefault();
-    console.log("publicar");
     stateVacant(t200_id_vacant, {
       t400_id_admin: 1,
       c204_id_vacant_status: 2,
       activate: true,
-    }).then(response => toast.success(response.message))
-    .catch(error => toast.error(error.message))
+    })
+      .then((response) => toast.success(response.message))
+      .catch((error) => toast.error(error.message));
   };
   const handleSendReview = (e) => {
     e.preventDefault();
     console.log("enviar a revision");
   };
-  
+
   const handleReject = (e) => {
     e.preventDefault();
-    console.log("rechazar...");
     stateVacant(t200_id_vacant, {
       t400_id_admin: 1,
       c204_id_vacant_status: 4,
-      activate: ""
-    }).then(response => toast.error(response.message))
-    .catch(error => toast.error(error.message))
+      activate: "",
+    })
+      .then((response) => toast.error(response.message))
+      .catch((error) => toast.error(error.message));
   };
 
   if (!data || !token || !observation || !observationManager) return null;
-
-  // console.log(data)
 
   return (
     <>
@@ -160,7 +159,6 @@ const CardDetailsVacantRecruiter = ({ height }) => {
                   >
                     Enviar a revision
                   </button>
-                  {/* <button className="button_admin reject" onClick={handleComment}>Agregar observacion</button> */}
                 </WrapperActions>
               ) : (
                 <WrapperActions>
@@ -341,7 +339,7 @@ const CardDetailsVacantRecruiter = ({ height }) => {
       >
         <PostComment />
       </ModalPortal>
-      
+
       <Toaster position="top-right" />
     </>
   );

@@ -44,6 +44,10 @@ const ProfileCandidate = ({ user, isApplying = false }) => {
 
   const handleSelected = (id) => setSelectedId(id);
 
+  const acceptApplication = () => {}
+
+  const rejectApplication = () => {}
+
   // useEffect(() => {
   //   setTimeout(() => {
   //     const menuItem = listRef.current.querySelectorAll('.menu_item')
@@ -122,7 +126,7 @@ const ProfileCandidate = ({ user, isApplying = false }) => {
         </CardHeader>
         <CardInfo>
           <div>
-            <h2 style={{ fontSize: "1.2rem" }}>Habilidades en:</h2>
+            <h2 style={{ fontSize: "1.2rem" }}>Conocimientos en:</h2>
             <List>
               {skills.length === 0 ? (
                 <span>Sin habilidades registradas.</span>
@@ -187,6 +191,7 @@ const ProfileCandidate = ({ user, isApplying = false }) => {
                 bgColor="#62c62e"
                 width="10"
                 height="3"
+                onClick={acceptApplication}
               />
               <Button
                 text="Rechazar candidato"
@@ -194,6 +199,7 @@ const ProfileCandidate = ({ user, isApplying = false }) => {
                 bgColor="#FF5848"
                 width="10"
                 height="3"
+                onClick={rejectApplication}
               />
             </div>
           )}

@@ -11,7 +11,7 @@ export function useGetSkills(id) {
       .catch(error => error)
 
     return () => controller.abort()
-  }, [])
+  }, [id])
 
   return { skills }
 }
