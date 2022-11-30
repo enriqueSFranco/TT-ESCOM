@@ -63,6 +63,11 @@ class VacantViewSet(viewsets.GenericViewSet):
 				.all()
 		return self.queryset
 
+	def check_outdated_vacants(self):
+		outdated_vacants = self.model.objects.filter(t200_close_date=str(date.today())).all()
+		print(outdated_vacants)
+		return
+
 	def list(self, request):
 		"""
 		Muestra todas las vacantes activas en la plataforma
@@ -71,6 +76,7 @@ class VacantViewSet(viewsets.GenericViewSet):
 
 		Dummy text
 		""" 
+		self.check_outdated_vacants()
 		vacants = self.get_queryset()
 		page = self.paginate_queryset(vacants)
 		if page is not None:
