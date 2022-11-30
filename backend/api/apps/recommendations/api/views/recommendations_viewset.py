@@ -1,10 +1,7 @@
-from django.shortcuts import get_object_or_404
-from django.db.models import Max
 from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.decorators import action
 from rest_framework import viewsets
-from datetime import datetime
+from rest_framework.response import Response
+from apps.recommendations.algorithms.vacant_recomendation import candidate_recomendation
 
 from apps.recommendations.models import Recommendation
 from apps.recommendations.api.serializers.recommendations_serializer import RecommendationSerializer,RecommendationListSerializer
@@ -22,6 +19,7 @@ class RecommendationsViewsets(viewsets.GenericViewSet):
 
     def list(self, request):
         #print(request.data)
+        candidate_recomendation()
         recommendations = self.get_queryset()
         recommendations_serializer = self.list_serializer_class(recommendations, many=True)        
         return Response(recommendations_serializer.data, status=status.HTTP_200_OK)
