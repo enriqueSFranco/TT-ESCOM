@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'apps.students',
     'apps.users',    
     'apps.vacantes',
+    'apps.recommendations',
     'drf_yasg',
 ]
 
