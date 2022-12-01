@@ -31,12 +31,12 @@ class CompanyStatisticsViewSet(viewsets.GenericViewSet):
 			self.queryset = self.model.objects\
 				.filter()\
 				.all()#.values('c205_id_application_state').annotate(total=Count('c205_id_application_state'))
-		#TotalPublished = Vacant.objects.filter(t300_id_company=pk).values('t300_id_company').annotate(TotalPublished=Count('t200_id_vacant'))
-		#TotalActive = Vacant.objects.filter(t300_id_company=pk,c204_id_vacant_status=2).values('t300_id_company').annotate(TotalActive=Count('t200_id_vacant'))
-		#self.queryset = self.model.objects\
-		#		.filter(t200_id_vacant = pk).all()\
-		#		.annotate(TotalPublished=Subquery(TotalPublished.values('TotalPublished'),output_field=IntegerField()))\
-		#		.annotate(TotalActive=Subquery(TotalActive.values('TotalActive'),output_field=IntegerField()))		
+		TotalPublished = Vacant.objects.filter(t300_id_company=OuterRef('t300_id_company')).values('t300_id_company').annotate(TotalPublished=Count('t200_id_vacant'))
+		TotalActive = Vacant.objects.filter(t300_id_company=OuterRef('t300_id_company'),c204_id_vacant_status=2).values('t300_id_company').annotate(TotalActive=Count('t200_id_vacant'))
+		self.queryset = self.model.objects\
+				.all()\
+				.annotate(TotalPublished=Subquery(TotalPublished.values('TotalPublished'),output_field=IntegerField()))\
+				.annotate(TotalActive=Subquery(TotalActive.values('TotalActive'),output_field=IntegerField()))		
 		return self.queryset
 
 	def list(self, request):
@@ -47,9 +47,10 @@ class CompanyStatisticsViewSet(viewsets.GenericViewSet):
 
 		Dummy text
 		""" 
-		return Response({
-				'message': 'Clase generica'
-			})
+		companies_statistics = self.get_queryset()
+		print(companies_statistics)
+		statistics_serializer = self.list_serializer_class(companies_statistics,many=True)
+		return Response(statistics_serializer.data)
 
 	def retrieve(self, request, pk):
 		"""
