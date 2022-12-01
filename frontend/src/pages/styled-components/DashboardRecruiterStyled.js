@@ -13,11 +13,12 @@ const Aside = styled.aside`
 const Container = styled.main`
   grid-area: container;
   width: 100%;
-  background-color: #fff;
+  background-color: yellow;
   `
 
 const Grid = styled.div`
-  background-color: #fff;
+  background-color: red;
+  height: 80%;
   padding: 0 .5rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);

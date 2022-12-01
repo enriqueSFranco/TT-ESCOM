@@ -17,7 +17,9 @@ export function sendComment(payload = {}) {
       const { data } = response
       return data
     })
-    .catch(error => error)
+    .catch(error => {
+      return error
+    })
 }
 
 export function stateVacant(vacantId,payload = {}) {

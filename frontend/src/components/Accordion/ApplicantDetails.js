@@ -21,15 +21,17 @@ const NoApplications = () => {
 const Accordion = () => {
   const { t200_id_vacant } = useParams();
   const [data] = useGetApplicationJob({ idVacant: t200_id_vacant });
-  const [user, setUser] = useState([])
+  const [candidate, setCandidate] = useState({info: [], pk: null, stateApplicationId: null})
 
-  const handleRender = (candidateId) => {
+  const handleRender = (candidateId, pk, stateApplicationId) => {
     getStudent(candidateId)
-      .then(response => setUser(response))
+      .then(response => setCandidate({info: response, pk, stateApplicationId}))
       .catch(error => error)
   }
 
   if (!data) return null;
+
+  console.log(data[0])
 
   return (
     <section>
@@ -63,10 +65,9 @@ const Accordion = () => {
           {data?.map((candidate) => (
             <CardApplicantDetails
               key={`candidate-id-${crypto.randomUUID()}`}
-              onClick={() => handleRender(candidate?.t100_id_student?.id_user?.id)}
+              onClick={() => handleRender(candidate?.t100_id_student?.id_user?.id, candidate?.t201_id_application, candidate?.c205_id_application_state?.c205_id_application_state)}
               name={candidate?.t100_id_student?.t100_name}
-              interestJob={candidate?.t100_id_student?.t100_interest_job}
-              speciality={candidate?.t100_id_student?.t100_speciality}
+              stateApplication={candidate?.c205_id_application_state?.c205_description}
               picture={candidate?.t100_id_student?.t100_profile_picture}
               residence={candidate?.t100_id_student?.t100_residence}
               salary={candidate?.t100_id_student?.t100_target_salary}
@@ -78,10 +79,10 @@ const Accordion = () => {
           <div>
             {!data.length ? (
               <NoApplications />
-            ) : !user.length ? (
-              <ProfileCandidate user={data[0]?.t100_id_student} idApplicant={data[0]?.t100_id_student?.id_user?.id} isApplying={true} />
+            ) : candidate?.info?.length ? (
+              <ProfileCandidate user={candidate.info[0]} pk={candidate?.pk} stateApplicationId={candidate?.stateApplicationId} isApplying={true} />
               ) : (
-                <ProfileCandidate user={user[0]} isApplying={true} />
+                <ProfileCandidate user={data[0]?.t100_id_student} pk={data[0]?.t201_id_application} stateApplicationId={data[0]?.c205_id_application_state?.c205_id_application_state} isApplying={true} />
             )}
           </div>
         </article>

@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
-import { getAcademicHistorial } from "services";
+import { getAcademicHistorial, sendStatusApplication } from "services";
 import { useGetSkills, useLanguageUser } from "hooks";
 import CustomAvatar from "components/Avatar/Avatar";
 import Chip from "components/Chip/Chip";
 import Button from "components/Button/Button";
-import { ImProfile } from 'react-icons/im'
-import { FiFileText } from 'react-icons/fi'
+import { ImProfile } from "react-icons/im";
+import { FiFileText } from "react-icons/fi";
 import { MdEmail, MdOutlinePhoneIphone } from "react-icons/md";
 import {
   WrapperCard,
@@ -23,9 +23,14 @@ const menuItems = [
   { id: 1, label: "Ver curriculumn", icon: <FiFileText /> },
 ];
 
-const ProfileCandidate = ({ user, isApplying = false }) => {
+const ProfileCandidate = ({
+  user,
+  pk,
+  stateApplicationId,
+  isApplying = false,
+}) => {
   const [selectedId, setSelectedId] = useState(menuItems[0].id);
-  const [stepWidth, setStepWidth] = useState(0);
+  const [stepWidth, _] = useState(0);
   const [historialAcademico, setHistorialAcademico] = useState(null);
   const listRef = useRef(null);
   const indicatorRef = useRef(null);
@@ -44,9 +49,65 @@ const ProfileCandidate = ({ user, isApplying = false }) => {
 
   const handleSelected = (id) => setSelectedId(id);
 
-  const acceptApplication = () => {}
+  const followUpOnTheApplication = (e) => {
+    e.preventDefault();
+    console.log(`candidato con el pk ${pk} aceptado`);
+    sendStatusApplication(
+      {
+        c205_id_application_state: 2,
+      },
+      pk
+    )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => console.log(error));
+  };
 
-  const rejectApplication = () => {}
+  const hireCandidate = (e) => {
+    e.preventDefault();
+    console.log(`candidato con el pk ${pk} contratado`);
+    sendStatusApplication(
+      {
+        c205_id_application_state: 4,
+      },
+      pk
+    )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const doNotHireCandidate = (e) => {
+    e.preventDefault();
+    console.log(`candidato con el pk ${pk} no contratado`);
+    sendStatusApplication(
+      {
+        c205_id_application_state: 5,
+      },
+      pk
+    )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const rejectApplication = (e) => {
+    e.preventDefault();
+    console.log(`candidato con el pk ${pk} rechazado`);
+    sendStatusApplication(
+      {
+        c205_id_application_state: 5,
+      },
+      pk
+    )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => console.log(error));
+  };
 
   // useEffect(() => {
   //   setTimeout(() => {
@@ -151,7 +212,7 @@ const ProfileCandidate = ({ user, isApplying = false }) => {
                 <span>Sin idiomas registrados.</span>
               ) : (
                 languages?.map((language) => (
-                  <ListItem>
+                  <ListItem key={`language-id-${crypto.randomUUID()}`}>
                     <Chip
                       label={language?.c111_id_language?.c111_description}
                       bg="#37404D"
@@ -185,28 +246,55 @@ const ProfileCandidate = ({ user, isApplying = false }) => {
                 gap: "1rem",
               }}
             >
-              <Button
-                text="Aceptar candidato"
-                color="#e7f6df"
-                bgColor="#62c62e"
-                width="10"
-                height="3"
-                onClick={acceptApplication}
-              />
-              <Button
-                text="Rechazar candidato"
-                color="#FFEAE7"
-                bgColor="#FF5848"
-                width="10"
-                height="3"
-                onClick={rejectApplication}
-              />
+              {/* NOTE: Si el estado de la vacante esta en estado 2 (En seguiminto)
+                se habilitan las acciones de "contratarlo" o "no contratarlo"
+              */}
+
+              {stateApplicationId === 2 ? (
+                <>
+                  <Button
+                    text="Contratar"
+                    color="#e7f6df"
+                    bgColor="#62c62e"
+                    width="10"
+                    height="3"
+                    onClick={hireCandidate}
+                  />
+                  <Button
+                    text="No Contratar"
+                    color="#FFEAE7"
+                    bgColor="#FF5848"
+                    width="10"
+                    height="3"
+                    onClick={doNotHireCandidate}
+                  />
+                </>
+              ) : (
+                <>
+                  <Button
+                    text="Dar seguimiento"
+                    color="#e7f6df"
+                    bgColor="#62c62e"
+                    width="10"
+                    height="3"
+                    onClick={followUpOnTheApplication}
+                  />
+                  <Button
+                    text="Rechazar candidato"
+                    color="#FFEAE7"
+                    bgColor="#FF5848"
+                    width="10"
+                    height="3"
+                    onClick={rejectApplication}
+                  />
+                </>
+              )}
             </div>
           )}
         </CardInfo>
       </CardLeft>
       <CardRight>
-        <nav style={{ width: "fit-content", margin: '0 auto'}}>
+        <nav style={{ width: "fit-content", margin: "0 auto" }}>
           <div
             ref={indicatorRef}
             className="menu_item_indicator"
@@ -223,7 +311,8 @@ const ProfileCandidate = ({ user, isApplying = false }) => {
                 onClick={() => handleSelected(menuItem.id)}
                 className={`menu_item ${selectedId === index ? "active" : ""}`}
               >
-                {menuItem.label}{menuItem.icon}
+                {menuItem.label}
+                {menuItem.icon}
               </Item>
             ))}
           </List>

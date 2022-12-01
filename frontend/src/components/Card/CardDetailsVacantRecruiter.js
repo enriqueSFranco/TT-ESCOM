@@ -40,7 +40,6 @@ function createMarkup(description) {
   return { __html: description };
 }
 
-
 const CardDetailsVacantRecruiter = ({ height }) => {
   const [isOpen, openModal, closeModal] = useModal(false);
   const { t200_id_vacant } = useParams();
@@ -62,10 +61,6 @@ const CardDetailsVacantRecruiter = ({ height }) => {
     })
       .then((response) => toast.success(response.message))
       .catch((error) => toast.error(error.message));
-  };
-  const handleSendReview = (e) => {
-    e.preventDefault();
-    console.log("enviar a revision");
   };
 
   const handleReject = (e) => {
@@ -144,21 +139,7 @@ const CardDetailsVacantRecruiter = ({ height }) => {
               />
               {token.user.user_type === USERS.recruiter ? (
                 <WrapperActions>
-                  <button
-                    className={`button_admin ${
-                      data[0]?.c204_id_vacant_status?.c204_id_status === 1
-                        ? "disabled"
-                        : "publish"
-                    }`}
-                    onClick={handleSendReview}
-                    disabled={
-                      data[0]?.c204_id_vacant_status?.c204_id_status === 1
-                        ? true
-                        : false
-                    }
-                  >
-                    Enviar a revision
-                  </button>
+                  {data[0]?.c204_id_vacant_status?.c204_id_status === 1 && <span>Vacante en revision</span>}
                 </WrapperActions>
               ) : (
                 <WrapperActions>

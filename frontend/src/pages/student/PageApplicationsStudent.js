@@ -39,7 +39,7 @@ const PageApplicationsStudent = () => {
   if (!data) return null;
 
   console.log(data);
-  // TODO: ELIMINAR ELEMENTOS DUPLICADOS DE LA LISTA DE VACANTES EN RELACION AL CAMPO T200_JOB
+
   return (
     <LayoutHome>
       <Container>

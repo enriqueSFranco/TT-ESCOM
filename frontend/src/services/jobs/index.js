@@ -1,16 +1,12 @@
 import API from 'services/http.service'
-import {
-  API_JOBS,
-  API_VACANT_INFO,
-  API_VACANTS_FILTER,
-  API_VACANT_REQUIREMENT
-} from "../settings";
+
+const { REACT_APP_URL_VACANTS, REACT_APP_URL_VACANT_SEARCH, REACT_APP_URL_VACANT_REQUIREMENTS, REACT_APP_URL_VACANT_VACANT_INFO, REACT_APP_URL_VACANT_APPLICATIONS } = process.env
 
 export const getAllJobs = async (numberPage = 1) => {
   const controller = new AbortController()
   const signal = controller.signal
   try {
-    const {data} = await API.get(`${process.env.REACT_APP_URL_VACANTS}?page=${numberPage}`, {signal});
+    const {data} = await API.get(`${REACT_APP_URL_VACANTS}?page=${numberPage}`, {signal});
     return data;
   } catch (error) {
     if (error.response)
@@ -19,7 +15,7 @@ export const getAllJobs = async (numberPage = 1) => {
 };
 
 export const searchCharacter = (nameJob) => {
-  return API(`/vacant/search/${nameJob}`)
+  return API(`${REACT_APP_URL_VACANT_SEARCH}${nameJob}`)
     .then(res => {
       const { data } = res
       return data
@@ -28,13 +24,13 @@ export const searchCharacter = (nameJob) => {
 }
 
 export const getJobRequirements = (id) => {
-  return API(`${API_VACANT_REQUIREMENT}${id}/`)
+  return API(`${REACT_APP_URL_VACANT_REQUIREMENTS}${id}/`)
     .then(response => response)
     .catch(error => error);
 };
 
 export const getJob = (id) => {
-  return API(`${process.env.REACT_APP_URL_VACANTS}${id}/`)
+  return API(`${REACT_APP_URL_VACANTS}${id}/`)
     .then((response) => {
       const { data } = response;
       return data;
@@ -43,7 +39,7 @@ export const getJob = (id) => {
 };
 
 export const getVacantInfo = (id) => {
-  return API(`${API_VACANT_INFO}${id}/`)
+  return API(`${REACT_APP_URL_VACANT_VACANT_INFO}${id}/`)
     .then((response) => {
       const { data } = response;
       return data;
@@ -52,7 +48,7 @@ export const getVacantInfo = (id) => {
 };
 
 export const getApplicationsJobs = (idVacant) => {
-  return API(`${process.env.REACT_APP_URL_VACANT_APPLICATIONS}${idVacant}/`)
+  return API(`${REACT_APP_URL_VACANT_APPLICATIONS}${idVacant}/`)
     .then((response) => {
       const { data } = response;
       return data;
@@ -61,7 +57,7 @@ export const getApplicationsJobs = (idVacant) => {
 };
 
 export const postJob = (body) => {
-  return API.post(process.env.REACT_APP_URL_VACANTS, body)
+  return API.post(REACT_APP_URL_VACANTS, body)
     .then((response) => {
       const { data } = response;
       return data;
@@ -69,27 +65,21 @@ export const postJob = (body) => {
     .catch((error) => error);
 };
 
-export const deleteJob = async (id) => {
-  return API.delete(`${API_JOBS}/${id}/`)
-    .then((response) => {
-      const { data } = response;
-      return data;
-    })
-    .catch((error) => {
-      if (error.response) {
-        return error.response.status;
-      }
-    });
-};
+// export const deleteJob = async (id) => {
+//   return API.delete(`${API_JOBS}/${id}/`)
+//     .then((response) => {
+//       const { data } = response;
+//       return data;
+//     })
+//     .catch((error) => {
+//       if (error.response) {
+//         return error.response.status;
+//       }
+//     });
+// };
 
-export const getVacantsFilter = (payload = {}) => {
-  return API.post(API_VACANTS_FILTER, payload)
-    .then(response => response)
-    .catch(error => error);
-}
-
-// {
-//   "t300_id_company": "",  ->"1"  , "3"
-//   "c206_id_profile": "", ->  "1" , "2"
-//   "t200_home_ofice": ""  -> "True"/"False"
+// export const getVacantsFilter = (payload = {}) => {
+//   return API.post(API_VACANTS_FILTER, payload)
+//     .then(response => response)
+//     .catch(error => error);
 // }

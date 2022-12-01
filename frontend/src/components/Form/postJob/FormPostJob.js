@@ -157,8 +157,6 @@ const FormPostJob = () => {
 
   if (!expList || !data || !languages) return null;
 
-  console.log(newObject)
-
   return (
     <LayoutHome>
       <ContainerForm>

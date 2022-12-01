@@ -8,8 +8,7 @@ import { List, ListItem } from 'styled-components/CommonStyles';
 
 const CardApplicantDetails = ({
   name,
-  interestJob,
-  speciality,
+  stateApplication,
   picture,
   residence,
   salary,
@@ -74,7 +73,7 @@ const CardApplicantDetails = ({
         <ListItem>
           {/* <MdAttachMoney style={{fontSize: '1.3rem'}} /> */}
           <span style={{ fontSize: ".9rem" }}>
-            Estado: en revision
+            Estado: {stateApplication}
           </span>
         </ListItem>
       </List>

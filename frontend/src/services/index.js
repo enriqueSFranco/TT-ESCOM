@@ -5,6 +5,5 @@ export * from './http.code';
 export * from './jobs';
 export * from './recruiter';
 export * from './release/getAllReleases';
-export * from './settings';
 export * from './students';
 export * from './admin'

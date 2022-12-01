@@ -11,17 +11,20 @@ const WrapperLoader = styled.div`
 
 const WraperCard = styled.article`
   width: 100%;
+  height: 83%;
   margin: 0 auto;
   background-color: #F7F7F9;
   border-radius: 5px;
   padding: 1rem;
   margin-top: 1rem;
+  outline: 2px solid green;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `
 
 const WrapperComment = styled.section`
   margin: 0 auto;
   width: 100%;
+  height: 80%;
   overflow-x: hidden;
   background: #F7F7F9;
   border-radius: 5px;
@@ -35,7 +38,8 @@ const HeaderInfo = styled.header`
 
 const Description = styled.div`
   overflow-y: auto;
-  /* background-color: blue; */
+  height: calc(100% - 21%);
+  outline: 2px solid blue;
 `
 
 const WrapperActions = styled.div`
