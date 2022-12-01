@@ -3016,5 +3016,43 @@
         "fields":{
             "c118_description": "Proyecto laboral"
         }
+    },
+
+
+    {
+        "model":"vacantes.RequiredLevel",        
+        "pk":1,
+        "fields":{
+            "c113_id_required_level": "1",
+            "c113_description": "Indistinto"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLevel",        
+        "pk":2,
+        "fields":{
+            "c113_id_required_level": "2",
+            "c113_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLevel",        
+        "pk":3,
+        "fields":{
+            "c113_id_required_level": "3",
+            "c113_description": "Intermedio"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLevel",        
+        "pk":4,
+        "fields":{
+            "c113_id_required_level": "4",
+            "c113_description": "Avanzado"
+        }
     }
+
 ]

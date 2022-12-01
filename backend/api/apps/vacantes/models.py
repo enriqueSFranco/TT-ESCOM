@@ -120,7 +120,16 @@ class Locality(models.Model):
 	def __str__(self) -> str:
 		return str(self.c222_cp)+":"+self.c222_state+","+self.c222_municipality+","+self.c222_locality
 
-
+class RequiredLevel(models.Model):
+    c113_id_required_level = models.AutoField(primary_key=True)
+    c113_description = models.CharField(max_length=50,blank=True,null=True)
+    class Meta:
+        verbose_name = 'RequiredLevel'
+        verbose_name_plural = 'RequiredLevels'
+        db_table = 'c213_nivel_requerido'
+    
+    def __str__(self) -> str:
+        return str(self.c113_description)
 
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
 #T200 Vacants
@@ -220,7 +229,14 @@ class RequiredAbility(models.Model):
 		related_name='VacantAbility',
 		on_delete=models.CASCADE)
     c116_description = models.CharField(max_length=150)
-    t211_required_level=models.CharField(max_length=50,blank=True,null=True)
+    t211_required_level=models.ForeignKey(
+        RequiredLevel,
+        null=True,
+		blank=True,
+        default=1,
+        related_name='SkillRequiredLevel',
+        on_delete=models.CASCADE
+    )#models.CharField(max_length=50,blank=True,null=True)
     t211_mandatory=models.BooleanField(default=False)
     class Meta:
         verbose_name = 'RequieredAbility'
