@@ -39,10 +39,14 @@ class CompanyViewSet(viewsets.GenericViewSet):
 
 	def get_object(self, pk):
 		self.queryset= None
+		TotalPublished = Vacant.objects.filter(t300_id_company=pk).values('t300_id_company').annotate(TotalPublished=Count('t200_id_vacant'))
+		TotalActive = Vacant.objects.filter(t300_id_company=pk,c204_id_vacant_status=2).values('t300_id_company').annotate(TotalActive=Count('t200_id_vacant'))		
 		if self.queryset == None:
 			self.queryset = self.model.objects\
 				.filter(t300_id_company = pk)\
-				.all()
+				.all()\
+				.annotate(TotalPublished=Subquery(TotalPublished.values('TotalPublished'),output_field=IntegerField()))\
+				.annotate(TotalActive=Subquery(TotalActive.values('TotalActive'),output_field=IntegerField()))	
 		return  self.queryset
 
 	def get_queryset(self):
