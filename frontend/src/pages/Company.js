@@ -32,8 +32,6 @@ const Company = () => {
 
   if (!data) return null;
 
-  console.log(query)
-
   return (
     <LayoutHome>
       <Main>
@@ -72,7 +70,8 @@ const Company = () => {
                     vision={company?.t300_vision}
                     webSite={company?.t300_web_page}
                     logo={company?.t300_logo}
-                    totalPost="10"
+                    totalPost={company?.TotalPublished}
+                    totalActive={company?.TotalActive}
                   />
                 </Link>
               ))
@@ -90,7 +89,8 @@ const Company = () => {
                     webSite={company?.t300_web_page}
                     logo={company?.t300_logo}
                     banner={company?.t300_banner}
-                    totalPost="10"
+                    totalPost={company?.TotalPublished}
+                    totalActive={company?.TotalActive}
                   />
                 </Link>
               ))

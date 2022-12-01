@@ -19,16 +19,15 @@ export function useGetListCompany() {
 
 export function useGetCompany({ idCompany }) {
   const [company, setCompany] = useState(null)
-
-  const controller = new AbortController()
   
   useEffect(() => {
+    const controller = new AbortController()
     getBusiness(idCompany)
       .then(response => setCompany(response))
       .catch(error => error)
 
     return () => controller.abort()
-  }, [])
+  }, [idCompany])
 
   return [company]
 }
