@@ -106,7 +106,7 @@ const CardJob = ({ job }) => {
             </PublicationDate>
           </CardHeader>
           <CardContent>
-            <TitleJob>{job.t200_job}</TitleJob>
+            <TitleJob close={diff}>{job.t200_job}</TitleJob>
             <Tags>
               {tags.map((tag, index) => (
                 <TagsItem key={crypto.randomUUID()} index={index}>

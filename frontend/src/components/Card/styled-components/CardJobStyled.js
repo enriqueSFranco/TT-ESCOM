@@ -18,32 +18,29 @@ const CardBody = styled.article`
   }
 
   @media screen and ${device.laptop} {
-    /* position: relative; */
     width: 400px;
-    height: fit-content;
+    height: 334px;
     border-radius: 0.5rem;
     color: #222;
     font-family: sans-serif;
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: space-around; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
       rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 
     ${(props) => {
       if (props.close > 30) {
         return `
-          background: #FF416C;  /* fallback for old browsers */
-          background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);  /* Chrome 10-25, Safari 5.1-6 */
-          background: linear-gradient(to right, #FF4B2B, #FF416C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
         `;
       }
-      if (props.close >= 1 || props.close <= 3) {
+      if (props.close >= 1 || props.close <= 8) {
         return `
-          background: #FDFC47;  /* fallback for old browsers */
-          background: -webkit-linear-gradient(to right, #24FE41, #FDFC47);  /* Chrome 10-25, Safari 5.1-6 */
-          background: linear-gradient(to right, #24FE41, #FDFC47); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+          background: hsla(280, 95%, 57%, 1);
+          background: linear-gradient(90deg, hsla(280, 95%, 57%, 1) 0%, hsla(193, 90%, 55%, 1) 100%);
+          background: -moz-linear-gradient(90deg, hsla(280, 95%, 57%, 1) 0%, hsla(193, 90%, 55%, 1) 100%);
+          background: -webkit-linear-gradient(90deg, hsla(280, 95%, 57%, 1) 0%, hsla(193, 90%, 55%, 1) 100%);
+          filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#B429F9", endColorstr="#26C5F3", GradientType=1 );
         `;
       }
     }}
@@ -51,9 +48,10 @@ const CardBody = styled.article`
 `;
 
 const CardBorder = styled.div`
+  position: relative;
+  left: -4px;
   background-color: #fff;
-  width: 100%;
-  height: 100%;
+  width: calc(100% + 8px);
   border-radius: 0.5rem;
   padding: 0.5rem;
 `;
@@ -109,10 +107,23 @@ const TitleJob = styled.span`
   font-size: 1.2em;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background: linear-gradient(27deg, #3f5efb, #fc466b);
+
+  ${(props) => {
+    if (props.close > 30) {
+      return `
+          color: #ccc;
+          font-weight: 600;
+        `;
+    }
+    if (props.close < 15) {
+      return `
+      background: linear-gradient(27deg, #3f5efb, #fc466b);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+        `;
+    }
+  }}
 `;
 
 const Tags = styled.ul`
