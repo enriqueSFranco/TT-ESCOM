@@ -21,6 +21,8 @@ class RecruiterListSerializer(serializers.ModelSerializer):
     
 class CompanyListSerializer(serializers.ModelSerializer):
     RecruiterCompany = RecruiterListSerializer(many=True, read_only=True)
+    TotalPublished = serializers.IntegerField()
+    TotalActive = serializers.IntegerField()
     class Meta:
         model = Company
         fields = '__all__'

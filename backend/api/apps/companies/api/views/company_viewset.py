@@ -1,12 +1,13 @@
 from django.shortcuts import get_object_or_404
-
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import viewsets
+from django.db.models import Count, IntegerField, OuterRef, Subquery,Max,Q
 
 from apps.companies.models import Company, Recruiter
 from apps.users.api.serializers import UserSerializer
+from apps.vacantes.models import Vacant
 from apps.companies.api.serializer.recruiter_serializer import RecruiterSerializer
 from apps.companies.api.serializer.company_serializer import CompanySerializer,CompanyListSerializer,UpdateCompanySerializer
 
@@ -45,10 +46,14 @@ class CompanyViewSet(viewsets.GenericViewSet):
 		return  self.queryset
 
 	def get_queryset(self):
+		TotalPublished = Vacant.objects.filter(t300_id_company=OuterRef('t300_id_company')).values('t300_id_company').annotate(TotalPublished=Count('t200_id_vacant'))
+		TotalActive = Vacant.objects.filter(t300_id_company=OuterRef('t300_id_company'),c204_id_vacant_status=2).values('t300_id_company').annotate(TotalActive=Count('t200_id_vacant'))		
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.all()
+				.all()\
+				.annotate(TotalPublished=Subquery(TotalPublished.values('TotalPublished'),output_field=IntegerField()))\
+				.annotate(TotalActive=Subquery(TotalActive.values('TotalActive'),output_field=IntegerField()))	
 		return self.queryset
   
 
