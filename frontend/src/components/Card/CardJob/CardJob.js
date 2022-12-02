@@ -77,6 +77,8 @@ const CardJob = ({ job }) => {
 
   if (!job) return null;
 
+  console.log(job)
+
   let now = new Date();
   let publicDateJob = new Date(job.t200_publish_date);
   let diff = Math.floor((now - publicDateJob) / (1000 * 60 * 60 * 24));

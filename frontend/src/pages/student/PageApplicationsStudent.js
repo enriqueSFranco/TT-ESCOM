@@ -28,7 +28,11 @@ const PageApplicationsStudent = () => {
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.info.main,
+      background: 'hsla(217, 100%, 50%, 1)',
+      background:'linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%)',
+      background: '-moz-linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%)',
+      background: '-webkit-linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%)',
+      filter: 'progid: DXImageTransform.Microsoft.gradient( startColorstr="#0061FF", endColorstr="#60EFFF", GradientType=1 )',
       color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {
@@ -88,6 +92,7 @@ const PageApplicationsStudent = () => {
                       experience={
                         row?.t200_id_vacant?.c207_id_experience?.c207_description
                       }
+                      dateApplication={row?.t201_date_application}
                       state={row?.c205_id_application_state?.c205_description}
                     />
                   </TableCell>
