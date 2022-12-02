@@ -229,7 +229,7 @@ class RequiredAbility(models.Model):
 		related_name='VacantAbility',
 		on_delete=models.CASCADE)
     c116_description = models.CharField(max_length=150)
-    t211_required_level=models.ForeignKey(
+    c113_id_required_level=models.ForeignKey(
         RequiredLevel,
         null=True,
 		blank=True,
