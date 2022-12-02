@@ -1,10 +1,8 @@
 import React from "react";
 import { useForm } from "hooks/useForm";
 import { useFetch } from "hooks/useFetch";
-import { API_COMPANY } from "services/settings";
 import FormRecruiterInfo from "./FormRecruiterInfo";
 import { TextField, Autocomplete, FormControl } from "@mui/material/";
-// import styles from "../Styles.module.css";
 
 const initialForm = {
   t300_id_company: "",
@@ -54,7 +52,7 @@ const FormBusinessRecruiter = ({ isActive, setIsActive }) => {
     handleValidate,
     handleSubmitCompanyRecruiter,
   } = useForm(initialForm, validateForm);
-  const { data } = useFetch(API_COMPANY);
+  const { data } = useFetch(process.env.REACT_APP_URL_COMPANY);
 
   return (
     <article
@@ -73,8 +71,6 @@ const FormBusinessRecruiter = ({ isActive, setIsActive }) => {
           name="t300_id_company"
           freeSolo
           onChange={(event, newValue) => {
-            // console.log(newValue['t300_id_company']);
-            // setIdCompany(newValue["t300_id_company"]);
             form.t300_id_company = newValue["t300_id_company"];
           }}
           value={form.t300_id_company}

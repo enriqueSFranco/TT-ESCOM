@@ -21,6 +21,7 @@ import {
   CardBody,
   CardHeader,
   CardContent,
+  CardBorder,
   Description,
   Location,
   PublicationDate,
@@ -82,47 +83,50 @@ const CardJob = ({ job }) => {
 
   return (
     <>
-      <CardBody>
-        <CardHeader>
-          <CardImage>
-            {job?.t300_id_company?.t300_logo ? (
-              <img
-                src={job?.t300_id_company?.t300_logo}
-                alt={job?.greent300_id_company?.t300_name}
-              />
-            ) : (
-              <IoBusiness style={{ color: "darkgray", fontSize: "3.5rem" }} />
-            )}
-          </CardImage>
-          <PublicationDate close={diff}>
-            {job?.t200_publish_date
-              ? diff >= 30
-                ? "Vacante cerrada"
-                : `Publicada ${moment(job?.t200_publish_date, "YYYY-MM-DD").fromNow()}`
-              : "Sin fecha"}
-          </PublicationDate>
-        </CardHeader>
-        <CardContent>
-          <TitleJob>{job.t200_job}</TitleJob>
-          <Tags>
-            {tags.map((tag, index) => (
-              <TagsItem key={crypto.randomUUID()} index={index}>
-                <Chip
-                  color={`var(--color_${index + 1})`}
-                  label={tag.label}
-                  icon={tag.icon}
+
+      <CardBody close={diff}>
+        <CardBorder>
+          <CardHeader>
+            <CardImage>
+              {job?.t300_id_company?.t300_logo ? (
+                <img
+                  src={job?.t300_id_company?.t300_logo}
+                  alt={job?.greent300_id_company?.t300_name}
                 />
-              </TagsItem>
-            ))}
-          </Tags>
-          <Location>{`${job?.c222_id_locality?.c222_state}, ${job?.c222_id_locality?.c222_municipality}, ${job?.c222_id_locality?.c222_locality}`}</Location>
-          <Description dangerouslySetInnerHTML={createMarkup()} />
-          <Actions>
-            <Button onClick={openModal}>
-              Ver mas <BsArrowRightShort style={{ fontSize: "1.5rem" }} />
-            </Button>
-          </Actions>
-        </CardContent>
+              ) : (
+                <IoBusiness style={{ color: "darkgray", fontSize: "3.5rem" }} />
+              )}
+            </CardImage>
+            <PublicationDate close={diff}>
+              {job?.t200_publish_date
+                ? diff >= 30
+                  ? "Vacante cerrada"
+                  : `Publicada ${moment(job?.t200_publish_date, "YYYY-MM-DD").fromNow()}`
+                : "Sin fecha"}
+            </PublicationDate>
+          </CardHeader>
+          <CardContent>
+            <TitleJob close={diff}>{job.t200_job}</TitleJob>
+            <Tags>
+              {tags.map((tag, index) => (
+                <TagsItem key={crypto.randomUUID()} index={index}>
+                  <Chip
+                    color={`var(--color_${index + 1})`}
+                    label={tag.label}
+                    icon={tag.icon}
+                  />
+                </TagsItem>
+              ))}
+            </Tags>
+            <Location>{`${job?.c222_id_locality?.c222_state}, ${job?.c222_id_locality?.c222_municipality}, ${job?.c222_id_locality?.c222_locality}`}</Location>
+            <Description dangerouslySetInnerHTML={createMarkup()} />
+            <Actions>
+              <Button onClick={openModal} bgColor="#000">
+                Ver mas <BsArrowRightShort style={{ fontSize: "1.5rem" }} />
+              </Button>
+            </Actions>
+          </CardContent>
+        </CardBorder>
       </CardBody>
       <ModalPortal isOpen={isOpen} closeModal={closeModal}>
         <DetailsJob
