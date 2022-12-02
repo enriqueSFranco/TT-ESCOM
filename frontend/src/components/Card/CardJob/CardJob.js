@@ -121,7 +121,7 @@ const CardJob = ({ job }) => {
             <Location>{`${job?.c222_id_locality?.c222_state}, ${job?.c222_id_locality?.c222_municipality}, ${job?.c222_id_locality?.c222_locality}`}</Location>
             <Description dangerouslySetInnerHTML={createMarkup()} />
             <Actions>
-              <Button onClick={openModal}>
+              <Button onClick={openModal} bgColor="#000">
                 Ver mas <BsArrowRightShort style={{ fontSize: "1.5rem" }} />
               </Button>
             </Actions>

@@ -19,8 +19,8 @@ const CardBody = styled.article`
 
   @media screen and ${device.laptop} {
     width: 400px;
-    height: 334px;
-    border-radius: 0.5rem;
+    height: 330px;
+    border-radius: 1rem;
     color: #222;
     font-family: sans-serif;
     display: flex;
@@ -49,10 +49,10 @@ const CardBody = styled.article`
 
 const CardBorder = styled.div`
   position: relative;
-  left: -4px;
+  left: -5px;
   background-color: #fff;
-  width: calc(100% + 8px);
-  border-radius: 0.5rem;
+  width: calc(100% + 10px);
+  border-radius: 1rem;
   padding: 0.5rem;
 `;
 
@@ -111,17 +111,17 @@ const TitleJob = styled.span`
   ${(props) => {
     if (props.close > 30) {
       return `
-          color: #ccc;
-          font-weight: 600;
-        `;
+        color: #ccc;
+        font-weight: 600;
+      `;
     }
     if (props.close < 15) {
       return `
-      background: linear-gradient(27deg, #3f5efb, #fc466b);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-        `;
+        background: linear-gradient(27deg, #3f5efb, #fc466b);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      `;
     }
   }}
 `;
