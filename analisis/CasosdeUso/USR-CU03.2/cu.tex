@@ -1,0 +1,48 @@
+\begin{UseCase}[]{USR-CU03.2}{Editar Idioma}{
+	%Permite al alumno consultar la información de sus idiomas registrados en el perfil.
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		\Titem Candidato. 
+	}
+	\UCitem[admin]{Prioridad}{ 
+		\Titem Media.
+	}
+	\UCitem[admin]{Complejidad}{
+		\Titem Baja
+	}
+	\UCitem{Precondiciones}{
+		\Titem El alumno debe de tener una cuenta en el sistema.
+		\Titem Se debe de tener previmante registrado al menos un idioma.
+	}
+	\UCitem{Destino}{
+		\Titem \refElem{USR-IU03.2}
+	}
+	\UCitem{Reglas de Negocio}{
+		\Titem Ninguna.
+		
+	}
+	\UCitem{Viene de}{
+		\Titem Caso de uso \refIdElem{USR-CU03}.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Presiona el botón \IUEditar{} desde la interfaz \refElem{USR-IU03} del idioma que desea modificar.
+    \UCpaso [\UCsist] Obtiene el tipo, el nombre y el nivel del idioma que registrado en el sistema.
+	\UCpaso [\UCsist] Muestra la información obtenida en la interfaz \refElem{USR-IU03.2}.
+	\UCpaso [\UCactor] Actualiza el tipo de idioma, el idioma y el nivel que tiene.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Aceptar}.\refTray{A}
+	\UCpaso [\UCsist] Quita del catalogo de idiomas el idioma seleccionado.
+	\UCpaso [\UCsist] Guarda la información en el sistema.
+	\UCpaso [\UCsist] Muestra la idioma actualizado en la interfaz \refElem{USR-IU03}.
+\end{UCtrayectoria}
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor desea cancelar el registro}
+	\UCpaso [\UCsist] Presiona el botón \IUbutton{Cancelar}.
+	\extendUC{USR-CU03}.
+\end{UCtrayectoriaA} 
+

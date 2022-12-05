@@ -1,0 +1,51 @@
+\begin{UseCase}[]{USR-CU03}{Consultar Idiomas}{
+	Permite al alumno consultar la información de sus idiomas registrados en el perfil.
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		\Titem Candidato. 
+	}
+	\UCitem[admin]{Prioridad}{ 
+		\Titem Alta
+	}
+	\UCitem[admin]{Complejidad}{
+		\Titem Media
+	}
+	\UCitem{Precondiciones}{
+		\Titem El alumno debe de tener una cuenta en el sistema.
+	}
+	\UCitem{Destino}{
+		\Titem \refElem{USR-IU03}
+	}
+	\UCitem{Reglas de Negocio}{
+		\Titem \refIdElem{RN-N001}
+		
+	}
+	\UCitem{Viene de}{
+		\Titem Caso de uso \refIdElem{USR-CU01}.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Idiomas} desde la interfaz \refElem{USR-IU02}.
+    \UCpaso [\UCsist] Obtiene el tipo, el nombre y el nivel de cada idioma registrado en el sistema.
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{USR-IU03}.
+\end{UCtrayectoria}
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor desea registrar un idioma}
+	\UCpaso [\UCsist] Presiona el ícono \IUAgregar{} desde la interfaz \refElem{USR-IU02} desde su sección correspondiente.
+	\extendUC{USR-CU03.1}.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor desea editar un idioma}
+	\UCpaso [\UCsist] Presiona el ícono \IUEditar{} desde la interfaz \refElem{USR-IU02} desde su sección correspondiente.
+	\extendUC{USR-CU03.2}.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor desea eliminar un idioma}
+	\UCpaso [\UCsist] Presiona el ícono \IUEliminar{} desde la interfaz \refElem{USR-IU02} desde su sección correspondiente.
+	\extendUC{USR-CU03.3}.
+\end{UCtrayectoriaA} 

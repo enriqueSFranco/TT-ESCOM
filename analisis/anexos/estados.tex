@@ -1,14 +1,15 @@
 \chapter{Modelo de estados}
-A continucación describiremos de manera detallada el modelo de estados correspondiente a las entidades de vacantes, postulaciones, reclutadores
+
+A continuación se describe de forma detallada el modelo de estados correspondiente a las entidades de vacantes, postulaciones, reclutadores
 y empresas.
 \begin{Maquina}{mq:vacante}{Máquina de estados de una vacante}{
 	En todo momento una vacante tiene un ``estado'' en el sistema. Las acciones que los actores pueden realizar sobre dicha vacante 
 	dependen del estado y pueden tener como consecuencia la transición a otro estado.
-	Los estados y transiciones posibles se muestran en la figura \ref{mq:vacante} y se describen a continuación.}{anexos/imagenes/mvacante.jpeg}
+	Los estados y transiciones posibles se muestran en la figura \ref{mq:vacante} y se describen a continuación.
+}{anexos/imagenes/mvacante}
 
 	La tabla \ref{fig:mqvacante} muestra el comportamiento que se tendrá en los íconos de la pantalla 
 	\refElem{VCT-IU01}, los cuales son habilitados dependiendo del estado en el que se encuentre  la vacante.
-
 
 	\begin{table}[htbp]
 		\begin{center}
@@ -62,7 +63,6 @@ y empresas.
 	Cuando un reclutador quiere publicar vacantes dentro del sistema, el encargado o colaborador que lo gestiona debe de validar
 	que la empresa a la que el reclutador representa es una empresa constituida, por lo que la entidad empresa tiene un estado 
 	desde que el reclutador envia un preregistro.}{anexos/imagenes/mqEMpresa.jpeg}
-
 \end{MaquinaN}
 
 \begin{MaquinaN}{mq:reclutador}{Maquina de estados de un reclutador}{

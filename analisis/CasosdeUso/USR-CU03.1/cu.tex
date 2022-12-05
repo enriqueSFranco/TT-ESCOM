@@ -1,0 +1,46 @@
+\begin{UseCase}[]{USR-CU03.1}{Agregar Idioma}{
+	%Permite al alumno consultar la información de sus idiomas registrados en el perfil.
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		\Titem Candidato. 
+	}
+	\UCitem[admin]{Prioridad}{ 
+		\Titem Media.
+	}
+	\UCitem[admin]{Complejidad}{
+		\Titem Baja
+	}
+	\UCitem{Precondiciones}{
+		\Titem El alumno debe de tener una cuenta en el sistema.
+	}
+	\UCitem{Destino}{
+		\Titem \refElem{USR-IU03.1}
+	}
+	\UCitem{Reglas de Negocio}{
+		\Titem Ninguna.
+		
+	}
+	\UCitem{Viene de}{
+		\Titem Caso de uso \refIdElem{USR-CU03}.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Presiona el botón \IUAgregar{} desde la interfaz \refElem{USR-IU03}.
+    \UCpaso [\UCsist] Muestra la interfaz \refElem{USR-IU03.1}.
+	\UCpaso [\UCactor] Selecciona el tipo de idioma, el idioma y el nivel que tiene.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Aceptar}.\refTray{A}
+	\UCpaso [\UCsist] Quita del catalogo de idiomas el idioma seleccionado.
+	\UCpaso [\UCsist] Guarda la información en el sistema.
+	\UCpaso [\UCsist] Muestra el nuevo idioma agregado en la interfaz \refElem{USR-IU03}.
+\end{UCtrayectoria}
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor desea cancelar el registro}
+	\UCpaso [\UCsist] Presiona el botón \IUbutton{Aceptar}.
+	\extendUC{USR-CU03}.
+\end{UCtrayectoriaA} 
+

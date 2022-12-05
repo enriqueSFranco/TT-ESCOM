@@ -1,0 +1,46 @@
+\begin{UseCase}[]{USR-CU03.3}{ELiminar Idioma}{
+	%Permite al alumno consultar la información de sus idiomas registrados en el perfil.
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		\Titem Candidato. 
+	}
+	\UCitem[admin]{Prioridad}{ 
+		\Titem Media.
+	}
+	\UCitem[admin]{Complejidad}{
+		\Titem Baja
+	}
+	\UCitem{Precondiciones}{
+		\Titem El alumno debe de tener una cuenta en el sistema.
+		\Titem Se debe de tener previmante registrado al menos un idioma.
+	}
+	\UCitem{Destino}{
+		\Titem \refElem{USR-IU03.1}
+	}
+	\UCitem{Reglas de Negocio}{
+		\Titem Ninguna.
+		
+	}
+	\UCitem{Viene de}{
+		\Titem Caso de uso \refIdElem{USR-CU03}.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Presiona el botón \IUEliminar{} desde la interfaz \refElem{USR-IU03}.
+    \UCpaso [\UCsist] Muestra la interfaz \refElem{USR-IU03.3}.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Aceptar}.\refTray{A}
+	\UCpaso [\UCsist] Agrega al catalogo de idiomas el idioma que se quiere eliminar.
+	\UCpaso [\UCsist] Eliminar el registro del idioma en el sistem.
+	\UCpaso [\UCsist] Muestra la información actualizada en la interfaz \refElem{USR-IU03}.
+\end{UCtrayectoria}
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor desea cancelar el registro}
+	\UCpaso [\UCsist] Presiona el botón \IUbutton{Cancelar}.
+	\extendUC{USR-CU03}.
+\end{UCtrayectoriaA} 
+
