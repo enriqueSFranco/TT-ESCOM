@@ -2,6 +2,7 @@ from django.db import models
 from apps.students.models import Student,Language
 from apps.administration.models import Admin
 from apps.companies.models import Company,Recruiter
+import datetime 
 
 def upload_comunicate(instance, filename):
     return f"comunicates/{instance.t300_id_company}-{filename}"
@@ -175,8 +176,9 @@ class Vacant(models.Model):
         default=1,
 		related_name='ActualState',
         on_delete=models.CASCADE)
-    t200_publish_date = models.DateField(blank=True,null=True)
-    t200_close_date = models.DateField(blank=True,null=True)
+    t200_creation_date = models.DateTimeField(null=True,default=str(datetime.datetime.now()))
+    t200_publish_date = models.DateTimeField(blank=True,null=True)
+    t200_close_date = models.DateTimeField(blank=True,null=True)
     c222_id_locality = models.ForeignKey(
         Locality,
         null=True,

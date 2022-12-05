@@ -3,6 +3,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import generics,viewsets
 from datetime import date
+import datetime
 
 
 from apps.users.models import User
@@ -238,7 +239,9 @@ class ActivateVacantViewSet(viewsets.GenericViewSet):
 	list_serializer_class = OnHoldVacantsSerializer
 	queryset = None		
 	vacant_validation_info = {"t400_id_admin":"",
-						 "c204_id_vacant_status":""}
+						 "c204_id_vacant_status":"",
+						 "t200_publish_date":"",
+						 "t200_close_date":""}						 
 
 
 	def get_object(self, pk):
@@ -289,13 +292,32 @@ class ActivateVacantViewSet(viewsets.GenericViewSet):
 		Dummy text
 		""" 
 		print(request.data)
+		actual_month = datetime.datetime.now().month
+		close_date = datetime.datetime.now()
+		print("Mes Actual:",actual_month)
+		new_month = actual_month+1
+		print("Mes Nuevo:",new_month)
+		if new_month > 12:
+			new_month = 1
+			actual_year = datetime.datetime.now().year
+			new_year = actual_year + 1
+			close_date = close_date.replace(year=new_year)	
+		close_date = close_date.replace(month=new_month)
 		vacant_validation = self.vacant_validation_info
 		vacant_validation["t400_id_admin"] = request.data["t400_id_admin"]
+		vacant_validation["t200_publish_date"]  = str(datetime.datetime.now())
+		#vacant_validation["t200_close_date"]  = str(close_date)
+		#t200_close_date
 		#Abrir vacante
 		if(request.data['activate']):
 			vacant_validation["c204_id_vacant_status"] = 2			
 			u_vacant = self.model.objects.filter(t200_id_vacant=pk,c204_id_vacant_status=1).first()
-			vacant_serializer = self.serializer_class(u_vacant,data=vacant_validation)
+			if u_vacant.t200_close_date:
+				vacant_validation["t200_close_date"]  = u_vacant.t200_close_date
+				vacant_serializer = self.serializer_class(u_vacant,data=vacant_validation)
+			else:
+				vacant_validation["t200_close_date"]  = str(close_date)
+				vacant_serializer = self.serializer_class(u_vacant,data=vacant_validation)
 			if vacant_serializer.is_valid():
 				vacant_serializer.save()
 				return Response({

@@ -7,6 +7,7 @@ from rest_framework import generics, viewsets
 from django.db.models import Count, IntegerField, OuterRef, Subquery,Max,Q
 from itertools import chain
 from datetime import date
+import datetime
 from apps.vacantes.pagination import CustomPagination
 from apps.vacantes.models import Vacant,Application,Report
 from apps.companies.models import Company
@@ -24,7 +25,7 @@ class VacantViewSet(viewsets.GenericViewSet):
 	queryset = None
 	vacant_prototype = { "t200_job": "",
     					"t200_description": "",
-    					"t200_publish_date": "",
+    					"t200_creation_date": "",
     					"t200_close_date": "",
     					"t200_street": "",
     					#"t200_interior_number": "",
@@ -88,8 +89,8 @@ class VacantViewSet(viewsets.GenericViewSet):
 	def set_vacant(self,data):
 		vacant_data = self.vacant_prototype
 		vacant_data["t200_job"] = data["t200_job"]
-		vacant_data["t200_description"] = data["t200_description"]
-		vacant_data["t200_publish_date"] = str(date.today())
+		vacant_data["t200_description"] = data["t200_description"]		
+		vacant_data["t200_creation_date"] = str(datetime.datetime.now())
 		vacant_data["t200_close_date"] = data["t200_close_date"]
 		vacant_data["t200_street"] = data["t200_street"]
 		#vacant_data["t200_interior_number"]: "",
@@ -255,14 +256,14 @@ class RecruiterVacantViewSet(viewsets.GenericViewSet):
 	def get_object(self, pk):	
 		self.queryset = self.model.objects\
 				.filter(t301_id_recruiter = pk)\
-				.all().order_by('c204_id_vacant_status')
+				.all().order_by('t200_id_vacant')
 		return self.queryset
 	
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.all().order_by('c204_id_vacant_status')
+				.all().order_by('t200_id_vacant')
 		return self.queryset
 
 	def list(self, request):
