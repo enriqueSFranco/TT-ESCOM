@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 
 const Content = styled.section`
-  background-color: #F7F7F9;
+  background-color: #fff;
+  position: relative;
+  top: 4rem;
   width: 100%;
 `
 

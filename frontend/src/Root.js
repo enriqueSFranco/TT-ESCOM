@@ -34,7 +34,7 @@ import ListVacantsAdmin from "pages/admin/ListVacantsAdmin";
 import CardDetailsVacantRecruiter from "components/Card/CardDetailsVacantRecruiter";
 import Postulates from "pages/business/Postulates";
 import LoginAdmin from "pages/login/LoginAdmin";
-import Index from "pages/admin/Index";
+// import Index from "pages/admin/Index";
 // import CreateAccountAdmin from "pages/login/CreateAccountAdmin";
 
 const Root = () => {
@@ -62,26 +62,15 @@ const Root = () => {
 
       {/* RUTAS DEL ADMINISTRADOR */}
       <Route element={<PrivateRoute role={ROLE.MANAGER} />}>
-        <Route path="/index" element={<Index />}>
+        <Route path="/agregar-colaborador" element={<ListCollaborators />} />
+        <Route path="/validar-reclutador" element={<PageValidateRecruiter />} />
+        <Route path="/validar-empresa" element={<ValidateCompany />} />
+        <Route path="/empresas-registradas" element={<RegisteredCompanies />} />
+        <Route path="/validar-vacante" element={<ListVacantsAdmin />}>
           <Route
-            path="lista-de-colaboradores"
-            element={<ListCollaborators />}
+            path=":t200_id_vacant"
+            element={<CardDetailsVacantRecruiter height="85%" />}
           />
-          <Route
-            path="validar-reclutador"
-            element={<PageValidateRecruiter />}
-          />
-          <Route path="validar-empresa" element={<ValidateCompany />} />
-          <Route
-            path="empresas-registradas"
-            element={<RegisteredCompanies />}
-          />
-          <Route path="lista-de-vacantes" element={<ListVacantsAdmin />}>
-            <Route
-              path=":t200_id_vacant"
-              element={<CardDetailsVacantRecruiter height="85%" />}
-            />
-          </Route>
         </Route>
         <Route
           path="/detalles-de-emperesa/:t300_id_company"

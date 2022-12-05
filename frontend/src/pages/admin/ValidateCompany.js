@@ -1,6 +1,7 @@
 import React from "react";
 import { useValidateCompanies, useModal } from "hooks";
 import { validateBusiness, rejectBusiness } from "utils";
+import LayoutHome from "Layout/LayoutHome";
 import CardValidateCompany from "components/Card/CardValidateCompany";
 import { WrapperValidateCompany } from "pages/styled-components/ValidateRecruiterStyled";
 import ModalPortal from "components/Modal/ModalPortal";
@@ -14,11 +15,19 @@ const ValidateCompany = () => {
   if (!listCompanies) return null;
 
   return (
-    <>
-      <div style={{ width: "100%", textAlign: "center" }}>
-        <h2>Validar Empresas</h2>
-      </div>
+    <LayoutHome>
       <WrapperValidateCompany>
+        <div
+          style={{
+            width: "100%",
+            backgroundColor: "#fff",
+            paddingTop: "2rem",
+            fontFamily: "sans-serif",
+            textAlign: "center",
+          }}
+        >
+          <h2>Empresar por validar</h2>
+        </div>
         {listCompanies.length > 0 ? (
           listCompanies?.map((company) => (
             <CardValidateCompany
@@ -35,7 +44,18 @@ const ValidateCompany = () => {
             />
           ))
         ) : (
-          <h2>Sin Empresas por validar</h2>
+          <section
+            style={{
+              backgroundColor: "#fff",
+              height: "inherit",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontFamily: 'sans-serif'
+            }}
+          >
+            <h2>Sin Empresas por validar</h2>
+          </section>
         )}
       </WrapperValidateCompany>
       <ModalPortal isOpen={isOpenAccept} closeModal={closeModalAccept}>
@@ -51,7 +71,7 @@ const ValidateCompany = () => {
           reject={() => rejectBusiness(listCompanies[0]?.t300_id_company)}
         />
       </ModalPortal>
-    </>
+    </LayoutHome>
   );
 };
 

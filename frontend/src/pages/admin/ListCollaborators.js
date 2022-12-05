@@ -1,5 +1,6 @@
 import React from "react";
 import { useModal, useFetch } from "hooks";
+import LayoutHome from "Layout/LayoutHome";
 import Button from "components/Button/Button";
 import Tooltip from "components/Tooltip/Tooltip";
 import FormAddCollaborator from "components/Form/FormAddCollaborator";
@@ -21,7 +22,7 @@ const ListCollaborators = () => {
   if (!data) return null;
 
   return (
-    <>
+    <LayoutHome>
       <HeaderTop>
         <Tooltip title="Agregar un nuevo colaborador">
           <Button
@@ -69,7 +70,7 @@ const ListCollaborators = () => {
         </h2>
         <FormAddCollaborator />
       </ModalPortal>
-    </>
+    </LayoutHome>
   );
 };
 

@@ -1,5 +1,6 @@
 import React from "react";
-import Menu from 'components/Menu/Menu'
+import LayoutHome from "Layout/LayoutHome";
+// import Menu from 'components/Menu/Menu'
 import CardCompanyAdmin from "components/Card/CardCompanyAdmin";
 import { useGetListCompany } from "hooks";
 import {
@@ -14,8 +15,8 @@ const RegisteredCompanies = () => {
   if (!business) return null;
 
   return (
-    <>
-      <Menu />
+    <LayoutHome>
+      {/* <Menu /> */}
       <Wrapper>
         <WrapperTitle>
           <h1 style={{color: '#369BD4', letterSpacing: '2px'}}>Empresas Registradas</h1>
@@ -35,7 +36,7 @@ const RegisteredCompanies = () => {
           ))}
         </Container>
       </Wrapper>
-    </>
+    </LayoutHome>
   );
 };
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { useFetch } from "hooks";
+import LayoutHome from "Layout/LayoutHome";
 import CardJobPreviewRecruiter from "components/Card/CardJobPreviewRecruiter";
 import LayoutDashboard from "Layout/LayoutDashboard";
 import { Content } from "../styled-components/ListVacantsAdmin";
@@ -28,34 +29,36 @@ const ListVacantsAdmin = () => {
   if (!data) return null;
 
   return (
-    <Content>
-      <LayoutDashboard>
-        <Aside>
-          <div
-            style={{
-              height: "87vh",
-              overflowY: "auto",
-              display: "flex",
-              flexDirection: "column",
-              gap: ".5rem",
-            }}
-          >
-            {data?.map((el) => (
-              <CardJobPreviewRecruiter
-                key={`card_job_${crypto.randomUUID()}`}
-                url="index/lista-de-vacantes"
-                info={el}
-              />
-            ))}
-          </div>
-        </Aside>
-        <Container>
-          <section style={ContentGrid}>
-            <Outlet />
-          </section>
-        </Container>
-      </LayoutDashboard>
-    </Content>
+    <LayoutHome>
+      <Content>
+        <LayoutDashboard>
+          <Aside>
+            <div
+              style={{
+                height: "87vh",
+                overflowY: "auto",
+                display: "flex",
+                flexDirection: "column",
+                gap: ".5rem",
+              }}
+            >
+              {data?.map((el) => (
+                <CardJobPreviewRecruiter
+                  key={`card_job_${crypto.randomUUID()}`}
+                  url="index/lista-de-vacantes"
+                  info={el}
+                />
+              ))}
+            </div>
+          </Aside>
+          <Container>
+            <section style={ContentGrid}>
+              <Outlet />
+            </section>
+          </Container>
+        </LayoutDashboard>
+      </Content>
+    </LayoutHome>
   );
 };
 

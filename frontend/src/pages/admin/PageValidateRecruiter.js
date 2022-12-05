@@ -1,6 +1,7 @@
 import React from "react";
 import { useGetValidateAllRecruiters, useModal } from "hooks";
 import { validateRecruiter, rejectRecruiter } from "utils";
+import LayoutHome from "Layout/LayoutHome";
 import ModalPortal from "components/Modal/ModalPortal";
 import FormValidateCompany from "components/Form/FormValidate";
 import CardRecruiter from "components/Card/CardRecruiter";
@@ -27,7 +28,7 @@ const PageValidateRecruiter = () => {
   if (!listRecruiter) return null;
 
   return (
-    <>
+    <LayoutHome>
       <WrapperValidateCompany>
         {listRecruiter.length > 0 ? (
           listRecruiter?.map((recruiter) => (
@@ -61,7 +62,7 @@ const PageValidateRecruiter = () => {
           reject={() => rejectRecruiter(listRecruiter[0]?.t301_id_recruiter)}
         />
       </ModalPortal>
-    </>
+    </LayoutHome>
   );
 };
 
