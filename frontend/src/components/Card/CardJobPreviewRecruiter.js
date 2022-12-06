@@ -1,4 +1,3 @@
-import React from "react";
 import { useGetApplicationJob } from "hooks/useGetApplicationJob";
 import Chip from "components/Chip/Chip";
 import { USERS } from "types/users";
@@ -14,17 +13,15 @@ import {
   CardFooter,
 } from "./styled-components/CardJobPreviewRecruiterStyled";
 
-
-const CardJobPreviewRecruiter = ({ info, typeUser }) => {
+const CardJobPreviewRecruiter = ({ info, typeUser, onClick }) => {
   const [data] = useGetApplicationJob({ idVacant: info?.t200_id_vacant });
-
   const { t200_job, t300_id_company, c207_id_experience, c214_id_modality } =
     info;
 
   if (!info || !data) return null;
 
   return (
-    <Card to={`${info.t200_id_vacant}`}>
+    <Card onClick={onClick}>
       <CardHeader>
         <CardHeaderLeft>
           <TitleJob>{t200_job}</TitleJob>
@@ -59,12 +56,13 @@ const CardJobPreviewRecruiter = ({ info, typeUser }) => {
       </CardListTags>
 
       <CardFooter>
-        {typeUser === USERS.recruiter && (
-          !data.length ? (<span>No hay postulaciones</span>) : <GroupAvatars users={data} />
-        )}
-        <span>
-          Estado: {info?.c204_id_vacant_status?.c204_description}
-        </span>
+        {typeUser === USERS.recruiter &&
+          (!data.length ? (
+            <span>No hay postulaciones</span>
+          ) : (
+            <GroupAvatars users={data} />
+          ))}
+        <span>Estado: {info?.c204_id_vacant_status?.c204_description}</span>
       </CardFooter>
     </Card>
   );

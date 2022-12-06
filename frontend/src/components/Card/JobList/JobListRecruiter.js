@@ -1,5 +1,5 @@
+import { memo } from "react";
 import { useAuth } from "context/AuthContext";
-import { useRecruiterJobs } from "hooks";
 import CardJobPreviewRecruiter from "../CardJobPreviewRecruiter";
 
 const styles = {
@@ -10,14 +10,18 @@ const styles = {
     flexDirection: 'column',
     gap: '1rem',
     overflowY: 'auto',
+    padding: '.5rem'
   }
 }
 
-const ListJobsRecruiter = () => {
+const ListJobsRecruiter = ({ data, setVacantId }) => {
   const { token } = useAuth();
-  const { data } = useRecruiterJobs({ idRcruiter: token?.user?.id });
 
-  if (!data) return null;
+  function handleClick(e, vacantId) {
+    e.preventDefault()
+    setVacantId(vacantId)
+    console.log(`vacante ${vacantId}`)
+  }
 
   return (
     <section style={styles.WrapperList}>
@@ -26,10 +30,11 @@ const ListJobsRecruiter = () => {
           key={`${crypto.randomUUID()}`}
           info={el}
           typeUser={token.user.user_type}
+          onClick={(e) => handleClick(e, el?.t200_id_vacant)}
         />
       ))}
     </section>
   );
 };
 
-export default ListJobsRecruiter
+export default memo(ListJobsRecruiter)

@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useGetApplicationJob } from "hooks";
 import CardApplicantDetails from 'components/Card/CardApplicantDetails'
 import Chip from "components/Chip/Chip";
 import ProfileCandidate from "components/Card/ProfileCandidate";
-import { TiArrowBackOutline } from "react-icons/ti";
 import styles from "./Accordion.module.css";
 import { getStudent } from "services";
 
@@ -31,13 +30,8 @@ const Accordion = () => {
 
   if (!data) return null;
 
-  console.log(data[0])
-
   return (
     <section>
-      <Link to="/dashboard" className={styles.goToJobs}>
-        <TiArrowBackOutline /> Ir a mis vacantes
-      </Link>
       <div className={styles.headerJob}>
         <h1 className={styles.titleJob}>{data[0]?.t200_id_vacant?.t200_job}</h1>
         <ul className={styles.listItem}>
