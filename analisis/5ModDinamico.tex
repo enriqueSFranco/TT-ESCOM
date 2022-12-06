@@ -1,0 +1,182 @@
+%!TEX root = ../example.tex
+
+\chapter{Modelado Dinámico}
+\label{ch:modDinamico}
+
+\begin{UseCase}[Autor/DanielO,Version/1.0,Estado/Ok]{HR-PR-CU1}{Llenar solicitud de unidades de aprendizaje }{
+		El Profesor\footnote{Ver \refElem{tProfesor}} podrá llenar la solicitud de las Unidades de Aprendizaje\footnote{Ver \refElem{tUnidadDeAprendizaje}} que le gustaría impartir en el periodo escolar\footnote{Ver \refElem{tPeriodoEscolar}} inmediato siguiente, sin que esta solicitud genere una obligación de asignarle esas unidades de aprendizaje en su carga académica\footnote{Ver \refElem{tCargaAcadémica}}. El Profesor podrá definir su disponibilidad, así como guardar y cerrar su solicitud. Cuando el Profesor guarde su solicitud, podrá editarla posteriormente siempre y cuando esté dentro del periodo de recepción de las mismas y en el caso de que cierre la solicitud, el Profesor ya no podrá hacer cambios.}
+
+	\UCitem[control]{Superviso}{  Panchito Lopez Cordero (Panchito LoCo)}
+	\UCitem[control]{Operación}{  Registro de propuesta de Unidades de Aprendizaje}	
+	\UCitem[control]{Revisor}{    David Ortega Pacheco / Sandra Ivette Bautista Rosales}
+	\UCitem[control]{Último cambio}{04 de Septiembre del 2017}
+	
+	\UCsection[control]{Revisión Version 0.2}
+	    \UCitem[control]{Fecha}{05 de Septiembre del 2017}
+	    \UCitem[control]{Resultado}{Con correcciones}
+	    \UCitem[control]{Observaciones}{
+		    \begin{Titemize}
+			    \Titem \TODO En el resumen, la palabra profesor no debería tener superíndice, debe aparecer el término como link porque está en singular como la definición.
+			    \Titem \TODO Link roto de carga académica (9), falta agregar y definir ese término "carga académica"
+			    \Titem \TODO Verificar si los nuevos cambios al mockup tienen RN, por ejemplo: 1) Si el profesor solicita materias en más de una UA, el cierre de solicitud implica que cerrará en todas las unidades académicas en las que puede solicitar?
+			    \Titem \TODO Revisar entradas y salidas de acuerdo a los cambios que resulten en el mockup de solicitud de unidades de aprendizaje
+		    \end{Titemize}}
+	
+	
+	\UCsection{Atributos}
+	    \UCitem{Actor}{\refElem{aGerenteVentas}}
+        \UCitem{Propósito}{
+	        \begin{Titemize}
+		        \Titem Permitir al profesor hacer la solicitud de las unidades de aprendizaje que le gustaría impartir de acuerdo a la disponibilidad que él tiene.
+	        \end{Titemize}
+        }
+	    \UCitem{Entradas}{ \imprimeEntrada }
+	    \UCitem{Origen}{El actor selecciona los datos con el mouse y del teclado.}
+	    \UCitem{Salida}{
+		    \begin{Titemize}
+			    \Titem Datos Laborales del Profesor.
+			    \Titem Descarga por Nombramiento.
+			    \Titem Unidad Académica.
+			    \Titem Academia
+			    \Titem Unidades de Aprendizaje
+			    \Titem Se muestra el mensaje \refIdElem{MSG1} para indicar que la solicitud fue guardada exitosamente.
+			    \Titem Se muestra el mensaje \refIdElem{MSG12} en pantalla para indicar que la solicitud será cerrada y no podrá hacer cambios futuros.
+		    \end{Titemize}
+	    }   
+	    \UCitem{Destino}{
+		    \begin{Titemize}
+			    \Titem \refIdElem{MSG1} en pantalla.
+			    \Titem \refIdElem{MSG12} en pantalla.
+			    \Titem \refIdElem{MSG17} en pantalla.
+		    \end{Titemize}
+	    }
+	    \UCitem{Precondición}{
+		    \begin{Titemize}
+			    \Titem\textbf{Sistematizada}: Que exista el registro de los datos del profesor.
+			    \Titem\textbf{Sistematizada}: Que el periodo para recepción de solicitudes esté habilitado.
+			    \Titem\textbf{Sistematizada}: Que el profesor esté asociado por lo menos a una unidad académica.
+		    \end{Titemize}
+	    }
+	
+	    \UCitem{Postcondición}{
+		    \begin{Titemize}
+			    \Titem \textbf{Sistematizada}: Si el profesor cerró la solicitud, entonces ésta será enviada. 
+			    \Titem \textbf{Sistematizada}: Si el profesor cerró la solicitud, cambia el estado de la solicitud de unidades de aprendizaje a " Enviado "
+			    \Titem \textbf{Sistematizada}: Si el profesor guardó la solicitud, ésta debe quedar en estado de editable hasta que el profesor la cierre o se termine el periodo de envío.
+			    \Titem \textbf{Sistematizada}: El profesor podrá consultar la solicitud que envió.
+		    \end{Titemize}
+	    }
+	    \UCitem{Reglas de Negocio}{
+		    \begin{Titemize}
+			    \Titem \refIdElem{BR-S001}		
+			    \Titem \refIdElem{BR-N027}
+		    \end{Titemize}
+	    }	
+	    \UCitem{Errores}{
+		    \begin{Titemize}
+			    \Titem \UCerr{Uno}{Cuando no hay información en el catálogo \textbf{Periodo escolar},}{se muestra el mensaje \refIdElem{MSG15} en la pantalla \refIdElem{HR-PR-UI1} y termina el caso de uso.}
+			    
+			    \Titem \UCerr{Dos}{Cuando el tiempo para realizar la solicitud se acabo},{se muestra el mensaje \refIdElem{MSG58} en la pantalla \refIdElem{HR-PR-UI1} y termina el caso de uso.}
+					    
+		    \end{Titemize}
+	    }
+	    \UCitem{Referencia Documental}{}
+	    \UCitem{Datos sensibles}{}
+	
+	\UCsection[design]{Datos de Diseño}
+	    \UCitem[design]{Disparador}{El Profesor desea realizar su solicitud de Unidades de Aprendizaje} %progr definir un periodo para la selección de unidades de aprendizaje.
+	    \UCitem[design]{Condiciones de Término}{Se tendrá registrado la solicitud.}
+	    \UCitem[design]{Efectos Colaterales}{Los profesores podrán hacer su solicitud de unidades de aprendizaje para un periodo escolar siguiente durante el periodo definido.}
+	    \UCitem[design]{Suposiciones}{Se considera que el usuario debio haber sido capacitado por la empresa}
+	    \UCitem[design]{Casos de Prueba}{Caso de Prueba CP13: Casos de Pruebas}
+	    
+	\UCsection[admin]{Datos de Administración de Requerimiento}
+	    \UCitem[admin]{Viene de}{\refIdElem{HR-PR-CU2} }
+	    \UCitem[admin]{Requerimientos Funcionales}{}%
+	    \UCitem[admin]{Requerimientos del Sistema}{}%
+        \UCitem[admin]{Madurez}{Alta}               %
+	    \UCitem[admin]{Volatilidad}{Media}          %
+	    \UCitem[admin]{Complejidad}{Baja}           %
+        \UCitem[admin]{Tamaño}{Grande}              %
+	    \UCitem[admin]{Prioridad}{Media}            %
+        \UCitem[admin]{Auditable}{}                 
+        \UCitem[admin]{Issues}{}                    %
+	    \UCitem[admin]{Dificultades}{               %
+		    \begin{Titemize}
+			    \Titem Por definir RN: ¿Qué pasa si un profesor guarda su solicitud para terminarla después y antes de que la cierre se termina el tiempo de envío?
+			    \Titem Por definir: Siempre se tiene que guardar antes de cerrar? o cerrar solicitud implica que el sistema va a guardar?
+			    \Titem En condiciones de termino, no se si es con que termina el caso de uso o que pasa cuando termina
+			    \Titem De las pantallas falta revisar: 1) Si tiene sentido dejar el label "Descarga por nombramiento" ya que no tenemos un catálogo de todos los puestos de la UA y también ya hay un responsable de SD que se encarga de validar los cargos y verificar si aplica algunas horas de descarga
+			    \Titem 2) Pasar a otra pantalla lo de "Definir Disponibilidad"
+			    \Titem 3) Quitar el ícono del lápiz para editar en la tabla de las materias seleccionadas
+		    \end{Titemize}
+	    }
+	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Selecciona Solicitud de Carga desde el Menú de Profesores
+	\UCpaso [\UCsist] Muestra la pantalla \refIdElem{HR-PR-UI1}. 
+	\UCpaso [\UCactor] Selecciona la \entrada{Descarga por Nombramiento}, la \entrada{Unidad Académica} y la \entrada{Academia}.
+	\UCpaso [\UCactor] Presiona el icono \IUBuscar. \label{HR-PR-IU1:Materias}
+	\UCpaso [\UCsist] Muestra el catalogo de Unidades de Aprendizaje. \refErr{Uno}
+	\UCpaso [\UCactor] Selecciona la \entrada{Unidad de Aprendizaje} desde el catalogo.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Seleccionar}. \refTray{A}
+	\UCpaso [\UCactor] Selecciona la cantidad de \entrada{Grupos}.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Agregar Unidad de Aprendizaje}.
+	\UCpaso [\UCsist] Muestra la unidad de aprendizaje en la tabla de la unidad académica seleccionada
+	\UCpaso [\UCsist] Habilita los iconos \IURegistrar y \IUEliminar.
+	\UCpaso [\UCactor] Selecciona si quiere Definir la \entrada{Disponibilidad} presionando el Icono "No". \refTray{B} \refTray{C} \label{HR-PR-CU1:EdiEli}
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Cerrar Solicitud}. \refTray{D} \refTray{E} \label{HR-PR-IU1:Dispo}
+	\UCpaso [\UCsist] Muestra el mensajes \refIdElem{MSG12}.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Definir Disponibilidad}. \refTray{F}
+	\UCpaso [\UCsist] Verifica que este en el tiempo adecuado para entregar la solicitud. \refErr{Dos}
+\end{UCtrayectoria}
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor desea cancelar la operación.}
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Cancelar} de la pantalla \refIdElem{HR-UA-UI1}.
+	\UCpaso regresa al paso \ref{HR-PR-IU1:Materias} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{B}{El actor desea Definir la Disponibilidad.}
+	\UCpaso [\UCactor] Presiona el icono "Si" de la pantalla \refIdElem{HR-PR-UI1}.
+	\UCpaso [\UCsist] Habilita los días para poder modificar el horario
+	\UCpaso [\UCactor] Llena los datos que requiere cumpliendo la \refIdElem{BR-N004X} 
+	\UCpaso regresa al paso \ref{HR-PR-IU1:Dispo} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{C}{El actor desea editar o eliminar.}
+	\UCpaso [\UCactor] Presiona el icono \IURegistrar. \refTray{C1}
+	\UCpaso [\UCsist] Habilita el campo unidad de aprendizaje
+	\UCpaso [\UCactor] Presiona el campo unidad de aprendizaje 
+	\UCpaso [\UCsist] Muestra el catalogo de Unidades de Aprendizaje. \refErr{Uno}
+	\UCpaso [\UCactor] Selecciona la Unidad de Aprendizaje desde el catalogo.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Seleccionar}. \refTray{A}
+	\UCpaso [\UCsist] regresa al paso \ref{HR-PR-CU1:EdiEli} de la trayectoria principal
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{C1}{El actor desea editar o eliminar.}
+	\UCpaso [\UCactor] Presiona el icono \IUEliminar.
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG17}.
+	\UCpaso [\UCactor] Presiona el boton \IUbutton{Aceptar}
+	\UCpaso [\UCsist] Elimina la Unidad de Aprendizaje
+	\UCpaso [\UCsist] regresa al paso \ref{HR-PR-CU1:EdiEli} de la trayectoria principal
+\end{UCtrayectoriaA} 
+
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{D}{El actor desea cancelar la operación.}
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Cancelar} de la pantalla \refIdElem{HR-PR-UI1}.
+	\UCpaso regresa al paso \ref{HR-PR-IU1:Dispo} de la trayectoria principal.
+\end{UCtrayectoriaA}
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{E}{El actor desea guardar la operación.}
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Guardar} de la pantalla \refIdElem{HR-PR-UI1}.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{F}{El actor desea cancelar la operación.}
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Cancelar} de la pantalla \refIdElem{HR-PR-UI1}.
+	\UCpaso regresa al paso \ref{HR-PR-IU1:Dispo} de la trayectoria principal.
+\end{UCtrayectoriaA}
+

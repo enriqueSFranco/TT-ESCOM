@@ -1,0 +1,544 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Componente: cdt/cdtPersistencia.sty                                               
+%  Autor: Ulises Vélez Saldaña
+%  Fecha: 27 Abril, 2017
+%  Versión: 1.0
+%  Biblioteca: cdt
+%  Capa: 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cdt/cdtPersistencia}[2017/04/27, v1.2 CDT-ESCOM-IPN Plantilla para definir el estilo de la documentación de CDT]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage[utf8]{inputenc} % Codificación de caracteres en UTF-8.
+\RequirePackage[spanish]{babel} % Cambia las variables del documento a español.
+\RequirePackage[T1]{fontenc}    % USed to show logs on console
+\RequirePackage{datatool}       % Proporciona una funcionalidad de bases de datos
+\RequirePackage{pgfkeys}        % Forma de administrar claves/llaves (identificadores)
+\RequirePackage{pgffor}         % Permite iterar a traves de un arreglo
+\RequirePackage{xstring}        % Funciones para cadenas
+\RequirePackage{multicol}       % Multicolumnas en las referencias cruzadas
+
+%===============================================================================================
+% PGFKEYS DE FORMA GLOBAL
+%===============================================================================================
+% https://users.soe.ucsc.edu/~rph/tex/pgf-2.00/generic/pgf/utilities/pgfkeys.code.tex
+% https://latex.org/forum/viewtopic.php?t=21593
+\makeatletter
+\long\def\pgfkeysgsetvalue#1#2{%
+    \pgfkeys@temptoks{#2}\expandafter\xdef\csname pgfk@#1\endcsname{\the\pgfkeys@temptoks}}
+\long\def\pgfkeysglet#1#2{%
+    \expandafter\xdef\csname pgfk@#1\endcsname{#2}}
+\long\def\pgfkeysaddValue#1#2{%
+    \pgfkeys@temptoks{#2}\expandafter\g@addto@macro\csname pgfk@#1\endcsname{#2}}
+\makeatother
+
+%===============================================================================================
+% VARIABLES USADAS
+%===============================================================================================
+
+%=====================================================
+% Arreglos de elementos
+%=====================================================
+\def\Terminos{}
+\def\OtrosElementos{}
+\def\BusinessRules{}
+\def\UseCases{}
+\def\Messages{}
+\def\Interfaces{}
+\def\Actores{}
+
+%=====================================================
+% Referencias cruzadas
+%=====================================================
+\def\temp{}
+\def\oldValue{}
+\def\currentElementId{}
+\def\currentElementFamily{}
+\def\referencedElementFamily{}
+
+%===============================================================================================
+% COMANDOS PARA AÑADIR ELEMENTOS 
+%===============================================================================================
+
+%=====================================================
+% Variables globales de Control
+%=====================================================
+\gdef\varAutor{Daniel Isai Ortega}
+\gdef\varVersion{0.1}
+\gdef\varEstado{Creado}
+
+%=====================================================
+% Crear las Variables para 
+%=====================================================
+\newcommand{\CrearVariablesInternas}[1]{
+    \xdef\Autor{\varAutor}%
+    \xdef\Version{\varVersion}%
+    \xdef\Estado{\varEstado}%
+    %\if\relax\detokenize{#1}\relax
+    %\else
+    \foreach \key/\value in {#1} {%
+        \expandafter\xdef\csname \key\endcsname{\value}%
+    }
+    %\fi
+}
+
+%=====================================================
+% Definición de elemento a referenciar
+%=====================================================
+\makeatletter
+\newcommand\cdtLabel[2]{%
+% Establece un identificador y punto para una referencia
+% Ejemplos:
+%    \cdtLabel{id}{Nombre}
+%  @params:
+%    @required id, identificador del elemento a referenciar
+%    @required Nombre del elemento a referenciar
+%
+    \Hy@raisedlink{\hypertarget{#1}{}}#2%
+}
+\makeatother
+
+%=====================================================
+% Metodo para agregar elementos a PGFKeys
+%=====================================================
+\newcommand\cdtAddElement[5]{%
+% Añade un nuevo elemento, su autor, la version y el estado, a PGFKeys
+% Ejemplos:
+%    \cdtLabel{id}{Nombre}{Autor}{Version}{Estado}
+%  @params:
+%    @required id, identificador del elemento a añadir
+%    @required Nombre del elemento a añadir
+%    @required Autor, persona a cargo de este elemento
+%    @required Version del elemento a añadir
+%    @required Estado del elemento (Creado,Revisado,Corregido)
+%
+    \gdef\currentElementId{#1}%
+    \IfBeginWith{#1}{t}{%
+        \xdef\Terminos{\Terminos,#1}%
+        \gdef\currentElementFamily{Term}%
+    }{\IfBeginWith{#1}{a}{%
+        \xdef\Actores{\Actores,#1}%
+        \gdef\currentElementFamily{Actor}%
+    }{\IfBeginWith{#1}{BR}{%
+        \xdef\BusinessRules{\BusinessRules,#1}%
+        \gdef\currentElementFamily{BR}%
+    }{\IfBeginWith{#1}{MSG}{%
+        \xdef\Messages{\Messages,#1}%
+        \gdef\currentElementFamily{MSG}%
+    }{\IfSubStr{#1}{.}{%
+        \xdef\OtrosElementos{\OtrosElementos,#1}%
+        \gdef\currentElementFamily{Element}%
+    }{\IfSubStr{#1}{CU}{%
+        \xdef\UseCases{\UseCases,#1}%
+        \gdef\currentElementFamily{UseCase}%
+    }{\IfSubStr{#1}{IU}{%
+        \xdef\Interfaces{\Interfaces,#1}%
+        \gdef\currentElementFamily{IU}%
+    }{%
+        \xdef\OtrosElementos{\OtrosElementos,#1}%
+        \gdef\currentElementFamily{Element}%
+    }}}}}}}%
+    \pgfkeysgsetvalue{/\currentElementFamily/#1}{#2}%
+    \pgfkeysglet{/\currentElementFamily/#1/author}{#3}%
+    \pgfkeysglet{/\currentElementFamily/#1/version}{#4}%
+    \pgfkeysglet{/\currentElementFamily/#1/status}{#5}%
+}
+
+%=====================================================
+% Comando para renombrear el Elemento Actual
+%=====================================================
+\newcommand\setCurrentElementId[1]{%
+% Cambia el valor del elemento que se esta procesando
+% Ejemplos:
+%    \setCurrentElementId{id}
+%  @params:
+%    @required id, identificador del nuevo elemento
+    \gdef\currentElementId{#1}%
+}
+
+%===============================================================================================
+% COMANDOS PARA CREAR REFERENCIAS A ELEMENTOS
+%===============================================================================================
+
+%=====================================================
+% Establece la familia del elemento referenciado
+%=====================================================
+\gdef\refElemText{}
+\newcommand\setReferencedElementFamily[1]{%
+% Proporciona la familia correcpondiente al elemento a referenciar
+% Ejemplos:
+%    \setReferencedElementFamily{id}
+%  @params:
+%    @required id del elemento referenciado
+%
+    \IfBeginWith{#1}{t}{%
+        \gdef\referencedElementFamily{Term}%
+        \gdef\refElemText{}%
+    }{\IfBeginWith{#1}{a}{%
+        \gdef\referencedElementFamily{Actor}%
+        \gdef\refElemText{}%
+    }{\IfBeginWith{#1}{BR}{%
+        \gdef\referencedElementFamily{BR}%
+        \gdef\refElemText{#1:}%
+    }{\IfBeginWith{#1}{MSG}{%
+        \gdef\referencedElementFamily{MSG}%
+        \gdef\refElemText{#1:}%
+    }{\IfSubStr{#1}{.}{%
+        \gdef\referencedElementFamily{Element}% 
+        \gdef\refElemText{}%
+    }{\IfSubStr{#1}{CU}{%
+        \gdef\referencedElementFamily{UseCase}%
+        \gdef\refElemText{#1:}%
+    }{\IfSubStr{#1}{IU}{%
+        \gdef\referencedElementFamily{IU}%
+        \gdef\refElemText{#1:}%
+    }{%
+        \gdef\referencedElementFamily{Element}%
+        \gdef\refElemText{}%
+    }}}}}}}%
+}
+
+%=====================================================
+% Referencía a un elemento imprimiendo su nombre
+%=====================================================
+\newcommand{\refElem}[2][]{%
+% Crea el hypervinculo al elemento indicado si es que existe
+% Ejemplos:
+%    \refElem{id}
+%  @params:
+%    @required Id, identificador del elemento a referenciar
+%
+    \setReferencedElementFamily{#2}%
+	\pgfkeysifdefined{/\referencedElementFamily/#2}{%
+%
+	    \ifthenelse{\equal{\currentElementId}{}}{}{%
+	        % Añadimos la referencia cruzada
+            \pgfkeysifdefined{/Reference/#2}{%
+                \pgfkeysgetvalue{/Reference/#2}{\oldValue}%
+                \pgfkeysglet{/Reference/#2}{\oldValue,\currentElementId}%
+            }{%
+                \pgfkeysglet{/Reference/#2}{\currentElementId}%
+            }%
+        }%
+        % Mostramos al usuario la referencia
+        \ifthenelse{\equal{#1}{}}{%
+            \hyperlink{#2}{\refElemText\pgfkeysvalueof{/\referencedElementFamily/#2}}%
+        }{%
+            \hyperlink{#2}{#1}%
+        }%
+	}{%
+	    \message{^^JWarning Referencia a elemento no definido /\referencedElementFamily/#2, pp\thepage}%
+		{\bf\color{red}{#2}}%
+	}%
+}
+
+%=====================================================
+% Referencía a un elemento imprimiendo su id y nombre
+%=====================================================
+\newcommand{\refIdElem}[2][]{%
+% Crea el hypervinculo al elemento indicado si es que existe
+% Ejemplos:
+%    \refIdElem{id}
+%  @params:
+%    @required Id, identificador del elemento a referenciar
+%
+    \setReferencedElementFamily{#2}%
+	\pgfkeysifdefined{/\referencedElementFamily/#2}{%
+%
+	    \ifthenelse{\equal{\currentElementId}{}}{}{%
+            % Añadimos la referencia cruzada
+            \pgfkeysifdefined{/Reference/#2}{%
+                \pgfkeysgetvalue{/Reference/#2}{\oldValue}%
+                \pgfkeysglet{/Reference/#2}{\oldValue,\currentElementId}%
+            }{%
+                \pgfkeysglet{/Reference/#2}{\currentElementId}%
+            }%
+        }%
+        % Mostramos al usuario la referencia
+    	\ifthenelse{\equal{#1}{}}{%
+    	    %\message{^^JInfo *** NOT ESPECIFIED \currentElementId}%
+    	    \hyperlink{#2}{#2:\pgfkeysvalueof{/\referencedElementFamily/#2}}%
+        }{%
+            \hyperlink{#2}{#1}%
+        }%
+	}{%
+	    \message{^^JWarning Referencia a elemento no definido /\referencedElementFamily/#2, pp\thepage}%
+		{\bf\color{red}{#2}}%
+	}%
+}
+
+%===============================================================================================
+% COMANDOS PARA IMPRIMIR LAS ENTRADAS DE LOS CASOS DE USO
+%===============================================================================================--------------------------------
+\newcommand{\loadUseCasesIO}{%
+    \IfFileExists{output/cdtUseCasesIO.csv}{%
+        \DTLloadrawdb{R.UseCasesIO}{output/cdtUseCasesIO.csv}%
+        \DTLforeach*{R.UseCasesIO}{\id=id,\inputs=inputs,\outputs=outputs,\reglas=reglas}{%
+            %\pgfkeysgsetvalue{/UseCase/\id/entrada}{\inputs}%
+            \pgfkeysglet{/UseCase/\id/entrada}{\inputs}%
+            \pgfkeysglet{/UseCase/\id/salida}{\outputs}%
+            \pgfkeysglet{/UseCase/\id/regla}{\reglas}%
+        }%
+        \DTLdeletedb{R.UseCasesIO}%
+    }{%
+        \message{^^JWarning No se encontro cdtUseCasesIO.csv, compilar de nuevo}%
+    }%
+}
+
+\newcommand{\UCaddIO}[2]{% First argument must be 'entrada' or 'salida'.
+    \pgfkeysifdefined{/\currentElementFamily/\currentElementId/#1}{%
+        \pgfkeysaddValue{/\currentElementFamily/\currentElementId/#1}{#2,}%
+    }{}%
+}
+
+\newcommand{\imprimeUC}[1]{%
+    \pgfkeysifdefined{/\currentElementFamily/\currentElementId/#1}{%
+        \pgfkeysgetvalue{/\currentElementFamily/\currentElementId/#1}{\oldValue}%
+        \StrDel{\oldValue}{\{}[\oldValue]%
+        \StrDel{\oldValue}{\}}[\oldValue]%
+        \xdef\aux{\oldValue}%
+        \begin{Titemize}
+        \foreach \id in \aux{%
+            \ifthenelse{\equal{}{\id}}{}{%
+                \IfSubStr{\id}{.}{%
+                    \StrBefore{\id}{.}[\entity]%
+                    \Titem \refElem{\id} de \pgfkeysvalueof{/Element/\entity}%
+                }{%
+                    \Titem \refElem{\id}%
+                }%
+            }%
+        }%
+        \end{Titemize}
+    }{}%
+    \expandafter\pgfkeysglet{/\currentElementFamily/\currentElementId/#1}{}%
+}
+
+\makeatletter
+\newcommand{\saveUseCaseIO}{%
+    \DTLnewdb{UseCasesIO}%
+    \DTLaddcolumn{UseCasesIO}{id}%
+    \DTLaddcolumn{UseCasesIO}{inputs}%
+    \DTLaddcolumn{UseCasesIO}{outputs}%
+    \DTLaddcolumn{UseCasesIO}{reglas}%
+%
+    \foreach \item in \UseCases {%
+        \pgfkeysifdefined{/UseCase/\item/entrada}{}{%
+            \pgfkeysglet{/UseCase/\item/entrada}{}
+        }
+        \pgfkeysifdefined{/UseCase/\item/salida}{}{%
+            \pgfkeysglet{/UseCase/\item/salida}{}
+        }
+        \pgfkeysifdefined{/UseCase/\item/regla}{}{%
+            \pgfkeysglet{/UseCase/\item/regla}{}
+        }
+        \DTLnewrow{UseCasesIO}%
+        \dtlexpandnewvalue%
+        \DTLnewdbentry{UseCasesIO}{id}{\item}%
+        \DTLnewdbentry{UseCasesIO}{inputs}{\pgfkeysvalueof{/UseCase/\item/entrada}}%
+        \DTLnewdbentry{UseCasesIO}{outputs}{\pgfkeysvalueof{/UseCase/\item/salida}}%
+        \DTLnewdbentry{UseCasesIO}{reglas}{\pgfkeysvalueof{/UseCase/\item/regla}}%
+    }%
+    \DTLsavedb{UseCasesIO}{cdtUseCasesIO.csv}%
+}
+\makeatother
+
+%===============================================================================================
+% COMANDOS PARA IMPRIMIR LAS REFERENCIAS CRUZADAS
+%===============================================================================================
+
+%====================================================
+% Imprimiendo un elemento en las referencias cruzadas
+%====================================================
+\newcommand\getElement[1]{
+% Imprime un elemento especificando su familia
+% Ejemplos:
+%    \getElement{id}
+%  @params:
+%    @required Id, identificador del elemento
+%
+    \IfBeginWith{#1}{t}{%
+        \item El termino \hyperlink{#1}{\pgfkeysvalueof{/Term/#1}}
+    }{\IfBeginWith{#1}{a}{
+        \item El actor \hyperlink{#1}{\pgfkeysvalueof{/Actor/#1}}
+    }{\IfBeginWith{#1}{BR}{%
+        \item La regla de negocio \hyperlink{#1}{#1:\pgfkeysvalueof{/BR/#1}}
+    }{\IfBeginWith{#1}{MSG}{%
+        \item El mensaje \hyperlink{#1}{#1:\pgfkeysvalueof{/MSG/#1}}
+    }{\IfSubStr{#1}{.}{%
+        \item El atributo \hyperlink{#1}{\StrBefore{\id}{.}.\pgfkeysvalueof{/Element/#1}}
+    }{\IfSubStr{#1}{CU}{%
+        \item El caso de Uso \hyperlink{#1}{#1:\pgfkeysvalueof{/UseCase/#1}}
+    }{\IfSubStr{#1}{IU}{
+        \item La interfaz \hyperlink{#1}{#1:\pgfkeysvalueof{/IU/#1}}
+    }{\IfStrEq{#1}{}{}{%
+        \item \hyperlink{#1}{\pgfkeysvalueof{/Element/#1}}
+    }}}}}}}}
+}
+
+%====================================================
+% Imprime las referencias cruzadas
+%====================================================
+\newcommand{\getReferences}[2]{%
+% Imprime las referencias cruzadas dado una familia y un arreglo
+% Ejemplos:
+%    \getReferences{Familia}{Macro<Array>}
+%  @params:
+%    @required Family, Actor, BR, IU, ...
+%    @required Macro<Array>, \Actores \BusinessRules \Interfaces ...
+%
+    \foreach \id in #2 {
+        \pgfkeysifdefined{/Reference/\id}{%
+        % if (\BR!="") and /Reference/\BR!=""
+            \noindent{\bf \hyperlink{\id}{\pgfkeysvalueof{/#1/\id}}} es referenciado por:
+            \pgfkeysgetvalue{/Reference/\id}{\temp}%
+            \begin{Citemize}
+            \foreach \id in \temp{
+                \getElement{\id}%
+                \item[] 
+            }
+            \end{Citemize}
+        }
+    }
+}
+
+%====================================================
+% Imprime las referencias cruzadas con identificador
+%====================================================
+\newcommand{\getReferencesId}[2]{%
+% Imprime las referencias cruzadas dado una familia y un arreglo
+% Ejemplos:
+%    \getReferences{Familia}{Macro<Array>}
+%  @params:
+%    @required Family, Actor, BR, IU, ...
+%    @required Macro<Array>, \Actores \BusinessRules \Interfaces ...
+%
+    \foreach \id in #2 {
+        \pgfkeysifdefined{/Reference/\id}{%
+        % if (\BR!="") and /Reference/\BR!=""
+            \noindent{\bf \hyperlink{\id}{\id:\pgfkeysvalueof{/#1/\id}}} es referenciado por:
+            \pgfkeysgetvalue{/Reference/\id}{\temp}%
+            \begin{Citemize}
+            \foreach \id in \temp{
+                \getElement{\id}
+            }
+            \end{Citemize}
+        }
+    }
+}
+
+%====================================================
+% Imprime todos los capitulos de referencias cruzadas
+%====================================================
+\newcommand{\makeReferenciasCruzadas}{%
+    \part{Referencias Cruzadas}
+        \chapter{Terminos}
+            \begin{multicols}{3}
+                \getReferences{Term}{\Terminos}%
+            \end{multicols}
+        \chapter{Actores}
+            \begin{multicols}{3}
+                \getReferences{Actor}{\Actores}%
+            \end{multicols}
+        \chapter{Otros Elementos}
+            \begin{multicols}{3}
+                \getReferences{Element}{\OtrosElementos}%
+            \end{multicols}
+        \chapter{Reglas de Negocio}
+            \begin{multicols}{2}
+                \getReferencesId{BR}{\BusinessRules}%
+            \end{multicols}
+        \chapter{Casos de Uso}
+            \begin{multicols}{2}
+                \getReferencesId{UseCase}{\UseCases}%
+            \end{multicols}
+        \chapter{Mensajes}
+            \begin{multicols}{2}
+                \getReferencesId{MSG}{\Messages}%
+            \end{multicols}
+        \chapter{Interfaces}
+            \begin{multicols}{2}
+                \getReferencesId{IU}{\Interfaces}%
+            \end{multicols}
+}
+
+%===============================================================================================
+% COMANDOS PARA CARGAR LA BASE DE DATOS A PGFKEYS
+%===============================================================================================
+\newcommand{\load}[2]{%
+% Carga la información de una base de datos en una familia PGFKeys especificada
+% Ejemplos:
+%    \load{Family}{DB<sufixname>}
+%  @params:
+%    @required family: Actor, BR, IU, ...
+%    @required DB<sufix-name>: Actores, BusinessRules, Interfaces
+%
+    \IfFileExists{output/cdt#2.csv}{%
+        \DTLloaddb{R.#2}{output/cdt#2.csv}%
+        \DTLforeach*{R.#2}{\id=id,\name=name}{%
+            \pgfkeysglet{/#1/\id}{\name}%
+        }%
+        \message{^^JInfo Se han cargado \DTLrowcount{R.#2} #2}%
+        \DTLdeletedb{R.#2}%
+    }{%
+        \message{^^JWarning No se encontro cdt#2.csv, compilar de nuevo}
+    }%
+}
+
+\AtBeginDocument{%
+    \load{BR}{BusinessRules}%
+    \load{Term}{Terminos}%
+    \load{Element}{Elements}%
+    \load{UseCase}{UseCases}%
+    \load{MSG}{Messages}%
+    \load{IU}{Interfaces}%
+    \load{Actor}{Actores}%
+    \loadUseCasesIO%
+}
+
+%===============================================================================================
+% COMANDOS PARA GUARDAR LAS LLAVES (PGFKEYS) EN BASES DE DATOS
+%===============================================================================================
+
+\newcommand{\save}[3]{%
+% Guarda la información de una familia de PGFKeys en una Base de datos especificada
+% Ejemplos:
+%    \save{Familia}{Macro<Array>}{DB<sufix-name>}
+%  @params:
+%    @required family: Actor, BR, IU, ...
+%    @required Macro<Array>: \Actores \BusinessRules \Interfaces ...
+%    @required DB<sufix-name>: Actores, BusinessRules, Interfaces
+%
+    \DTLnewdb{#3}%
+    \DTLaddcolumn{#3}{id}%
+    \DTLaddcolumn{#3}{name}%
+    \DTLaddcolumn{#3}{author}%
+    \DTLaddcolumn{#3}{version}%
+    \DTLaddcolumn{#3}{status}%
+%
+    \foreach \item in #2 {
+        \ifthenelse{ \equal{}{\item} \OR \equal{}{\pgfkeysvalueof{/#1/\item}} }{}{% PGFKEYS
+        % if( item!=""  && pgfkeyvalueof(item)!=""
+            \DTLnewrow{#3}%
+            \dtlexpandnewvalue%
+            \DTLnewdbentry{#3}{id}{\item}%
+            \DTLnewdbentry{#3}{name}{\pgfkeysvalueof{/#1/\item}}%
+            \DTLnewdbentry{#3}{author}{\pgfkeysvalueof{/#1/\item/author}}%
+            \DTLnewdbentry{#3}{version}{\pgfkeysvalueof{/#1/\item/version}}%
+            \DTLnewdbentry{#3}{status}{\pgfkeysvalueof{/#1/\item/status}}%
+        }%
+    }
+    \message{^^JInfo Se han guardado \DTLrowcount{#3} #3}%
+    \DTLsavedb{#3}{cdt#3.csv}%
+}
+
+\AtEndDocument{%
+    \save{BR}{\BusinessRules}{BusinessRules}
+    \save{Term}{\Terminos}{Terminos}%
+    \save{Element}{\OtrosElementos}{Elements}
+    \save{UseCase}{\UseCases}{UseCases}
+    \save{MSG}{\Messages}{Messages}
+    \save{IU}{\Interfaces}{Interfaces}
+    \save{Actor}{\Actores}{Actores}
+    \saveUseCaseIO%
+}

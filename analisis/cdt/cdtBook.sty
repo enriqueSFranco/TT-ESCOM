@@ -1,0 +1,392 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Componente: cdtBook.sty
+%  Autor: Ulises Vélez Saldaña
+%  Fecha: 27 de Octubre, 2017
+%  Versión: 1.2
+%  Biblioteca: cdt
+%  Capa: 3.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cdt/cdtBook}[2013/04/06, v1.1 CDT-ESCOM-IPN Plantilla para reportes de la Coordinación]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{longtable}     % Crear tablas Multipagina
+\RequirePackage{colortbl}      % Colores en las celdas de tablas
+\RequirePackage{multirow}      % Celdas multi-fila
+\RequirePackage{cdt/cdtTheme}  % 
+%\RequirePackage{pdfpages}     % Incluir documentos PDF
+%\RequirePackage{enumitem}     % Added in C2-DT-IN
+
+
+%=====================================================
+% Definicion de los datos de la Contraparte
+%=====================================================
+\newcommand{\varOrganizacion}{Laboratorio de Innovación Tecnológica}
+\newcommand{\varCveOrganizacion}{LIT-ESCOM}
+\newcommand{\organizacion}[2][]{%
+% Sobreescribe los datos de la contraparte
+% Ejemplos:
+%    \organizacion{Nombre de la Organización}
+%    \organizacion[CLAVE]{Nombre de la Organización}
+%  @params:
+%    @optional Clave de la Organizacion
+%    @required Nombre de la Organizacion
+    \renewcommand{\varCveOrganizacion}{{#1}}%
+    \renewcommand{\varOrganizacion}{{#2}}%
+}
+
+%=====================================================
+% Definicion del Nombre del Autor
+%=====================================================
+\newcommand{\varAuthor}[1]{Escuela Superior de Cómputo, IPN}
+\let\varAuthor=\author
+\renewcommand{\author}[1]{%
+% Sobreescribe el nombre del Autor por defecto
+% Ejemplos:
+%    \autor{Nombre del Autor}
+%  @params:
+%    @required Nombre del autor
+    \varAuthor{\color{colorSecundario}{{#1}}\\ {\color{colorGris}{\varOrganizacion}}}%
+}
+
+%=====================================================
+% Definicion del nombre y clave del sistema
+%=====================================================
+\newcommand{\varSistema}{}
+\newcommand{\varCveSistema}{}
+\newcommand{\sistema}[2][]{%
+% Establece el nombre y clave del sistema
+% Ejemplos:
+%    \sistema{Nombre del Sistema}
+%    \sistema[CLAVE]{Nombre del Sistema}
+%  @params:
+%    @optional Clave del Sistema, valor por defecto 1
+%    @required Nombre del Sistema
+    \renewcommand{\varCveSistema}{{#1}}%
+    \renewcommand{\varSistema}{{#2}}%
+}
+
+%=====================================================
+% Definición el nombre y clave del proyecto.
+%=====================================================
+\newcommand{\varProyecto}{Proyecto sin nombre}
+\newcommand{\varCveProyecto}{PRY}
+\newcommand{\proyecto}[2][]{%
+% Sobreescribe los valores por defecto de nombre y clave del sistema.
+% NOTA: Generalmente son los mismos que los del sistema.
+% Ejemplos:
+%    \proyecto{Nombre del Proyecto}
+%    \proyecto[CLAVE]{Nombre del Proyecto}
+%  @params:
+%    @optional Clave del proyecto
+%    @required Nombre del Proyecto
+    \renewcommand{\varCveProyecto}{{#1}}\renewcommand{\varProyecto}{{#2}}%
+}
+
+%=====================================================
+% Definición de Clave, nombre y versión del documento o componente
+% NOTA: La versión debe especificarse con \DRAFT o \RELEASE.
+%=====================================================
+\newcommand{\varCveDocumento}{}
+\newcommand{\varDocumento}{}
+\newcommand{\varDocVersion}{}
+\newcommand{\documento}[3]{%
+% Establece la clave, nombre y version del documento o componente
+% Ejemplos:
+%    \documento{CLAVE}{Nombre del documento}{\DRAFT{Fecha}}
+%    \documento{CLAVE}{Nombre del documento}{\RELEASE{Version}}
+%  @params:
+%    @required Clave del documento o componente
+%    @required Nombre del documento o componente
+%    @required Version de la forma \DRAFT{Fecha} o \RELEASE{Versión}
+    \renewcommand{\varCveDocumento}{{#1}}%
+    \renewcommand{\varDocumento}{{#2}}%
+    \renewcommand{\varDocVersion}{{#3}}%
+}
+
+%=====================================================
+% Indica que la version del documento es un borrador.
+% NOTA: Comando usado en \documento.
+%=====================================================
+\newcommand{\DRAFT}[1]{{%
+% Denota la fecha del borrador
+% Ejemplos:
+%    \DRAFT{fecha}
+%  @params:
+%    @required Fecha del borrador
+    \small\color{red}Borrador {\em #1}%
+}}
+
+%=====================================================
+% Indica que el documento ha sido liberado y el número de la versión.
+% NOTA: Comando usado en \documento.
+%=====================================================
+\newcommand{\RELEASE}[1]{{%
+% Denota la versión del documento
+% Ejemplos:
+%    \RELEASE{fecha}
+%  @params:
+%    @required Fecha del borrador
+    \small Versión #1%
+}}
+
+
+%=====================================================
+% Definición el entregable (si existe) del componente o documento.
+% NOTA: El nombre depende de la forma en que se haya dividido el sistema.
+%=====================================================
+\newcommand{\varEntregable}{\ }
+\newcommand{\varCveEntregable}{}
+\newcommand{\entregable}[2]{%
+% Establece el nombre y la clave del entregable
+% Ejemplos:
+%    \entregable{CLAVE}{Nombre del entregable}
+%  @params:
+%    @required Clave del entregable
+%    @required Nombre del Entregable
+    \renewcommand{\varCveEntregable}{{#1}}%
+    \renewcommand{\varEntregable}{{#2}}%
+}
+
+%=====================================================
+% Definición del título del documento
+%=====================================================
+\newcommand{\varTitulo}{\varProyecto\\\varSistema}
+\newcommand{\titulo}[1]{%
+% Sobreescribe el valor por defecto del titulo del documento
+% Ejemplos:
+%    \titulo{Titulo del documento}
+%  @params:
+%    @required Titulo del documento
+    \renewcommand{\varTitulo}{{#1}}%
+}
+
+%=====================================================
+% Definición del subtítulo del documento
+%=====================================================
+\newcommand{\varSubTitulo}{\varDocumento\\\bigskip \varEntregable}
+\newcommand{\subtitulo}[1]{%
+% Sobreescribe el valor por defecto del subtitulo del documento
+% Ejemplos:
+%    \subtitulo{Subtitulo del documento}
+%  @params:
+%    @required Subtitulo del documento
+    \renewcommand{\varSubTitulo}{{#1}}%
+}
+
+%=====================================================
+% Creación del titulo y subtitulo en la portada del documento
+%=====================================================
+\newcommand{\varTitle}[1]{}
+\let\varTitle=\title
+\renewcommand{\title}[1]{\varTitle{%
+    {\Huge\color{colorPrincipal}{#1}}\\\bigskip%
+    {\LARGE \color{colorSecundario}\varSubTitulo~{}}\bigskip\\%\rule{\textwidth}{1mm}%
+    \color{colorSecundario}\fbox{\color{colorPrincipal}%
+        \small\varCveProyecto--\varCveSistema--\varCveDocumento--\varCveEntregable--\varDocVersion%
+    }%
+}}
+\title{\varTitulo}
+
+%=====================================================
+% Especificar la fecha del documento.
+% NOTA: Usar cuando se defina un frezze o para marcar un hito o entregable
+%=====================================================
+\newcommand{\varFecha}{\today}
+\newcommand{\fecha}[1]{
+% Especifica la fecha del documento.
+% Ejemplos:
+%    \fecha{Fecha del documento}
+%  @params:
+%    @required Fecha del documento en formato DD/MM/YY
+    \renewcommand{\varFecha}{{#1}}\date{{#1}}%
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ficha técnica para revisión del documento
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%=====================================================
+% Definición de espacio para firmas
+%=====================================================
+\newcommand{\firma}[2][0.6\textwidth]{%
+% Añade un espacio para la firma de alguien
+% Ejemplos:
+%    \firma{Descripción}
+%    \firma[espacio]{Descripción}
+%  @params:
+%    @optional espacio de identacion, valor por defecto "50% página"
+%    @required Descripción que se muestra debajo de la linea de firma
+    \par\hspace{#1}\hrulefill\hspace{0.5cm}%
+    \par\hspace{#1}\hspace{1cm}#2%
+}
+
+%=====================================================
+% Datos del responsable del documento
+%=====================================================
+\newcommand{\varElaboro}{}
+\newcommand{\setElaboro}[2][Responsable]{%
+% Especifica el cargo y nombre del responsable del documento
+% Ejemplos:
+%    \elaboro{Nombre del Responsable}
+%    \elaboro[Cargo]{Nombre del Responsable}
+%  @params:
+%    @optional Cargo que ocupa el responsable, valor por defecto ""
+%    @required Nombre de la persona responsable
+    \renewcommand{\varElaboro}{\item[\color{colorPrincipal}\Gentsroom] #1,\\#2\firma{}}%
+}
+
+%=====================================================
+% Datos de nuevo responsable del documento
+%=====================================================
+\newcommand{\addElaboro}[2][Responsable]{%
+% Añade un nuevo responsable del documento
+% Ejemplos:
+%    \addElaboro{Nombre del Responsable}
+%    \addElaboro[Cargo]{Nombre del Responsable}
+%  @params:
+%    @optional Cargo que ocupa el responsable, valor por defecto ""
+%    @required Nombre de la persona responsable
+    \g@addto@macro\varElaboro{\item[\color{colorPrincipal}\Gentsroom] #1,\\#2\firma{}}%
+}
+
+%=====================================================
+% Datos del responsable de revisar el documento.
+%=====================================================
+\newcommand{\varSuperviso}{}
+\newcommand{\setSuperviso}[2][Responsable]{%
+% Especifica el cargo y nombre del supervisor del documento
+% Ejemplos:
+%    \superviso{Nombre del Supervisor}
+%    \superviso[Cargo]{Nombre del Supervisor}
+%  @params:
+%    @optional Cargo que ocupa el supervisor, valor por defecto ""
+%    @required Nombre del supervisor
+    \renewcommand{\varSuperviso}{\item[\color{colorPrincipal}\Gentsroom] #1,\\#2\firma{}}%
+}
+
+%=====================================================
+% Datos de nuevo responsable de revisar el documento.
+%=====================================================
+\newcommand{\addSuperviso}[2][Responsable]{%
+% Especifica el cargo y nombre del supervisor del documento
+% Ejemplos:
+%    \superviso{Nombre del Supervisor}
+%    \superviso[Cargo]{Nombre del Supervisor}
+%  @params:
+%    @optional Cargo que ocupa el supervisor, valor por defecto ""
+%    @required Nombre del supervisor
+    \g@addto@macro\varSuperviso{\item[\color{colorPrincipal}\Gentsroom] #1,\\#2\firma{}}%
+}
+
+%=====================================================
+% Datos del responsable de aprobar el documento.
+%=====================================================
+\newcommand{\varAprobo}{}
+\newcommand{\setAprobo}[2][Responsable]{%
+% Especifica el cargo y nombre del encargado de aprobar del documento
+% Ejemplos:
+%    \superviso{Nombre del encargado de Aprovar}
+%    \superviso[Cargo]{Nombre del encargado de Aprovar}
+%  @params:
+%    @optional Cargo que ocupa el encargado de aprobar, valor por defecto ""
+%    @required Nombre del encargado de aprobar el documento
+    \renewcommand{\varAprobo}{\item[\color{colorPrincipal}\Gentsroom] #1,\\#2\firma{}}%
+}
+
+%=====================================================
+% Datos de nuevo responsable de aprobar el documento.
+%=====================================================
+\newcommand{\addAprobo}[2][Responsable]{%
+% Especifica el cargo y nombre del encargado de aprobar del documento
+% Ejemplos:
+%    \superviso{Nombre del encargado de Aprovar}
+%    \superviso[Cargo]{Nombre del encargado de Aprovar}
+%  @params:
+%    @optional Cargo que ocupa el encargado de aprobar, valor por defecto ""
+%    @required Nombre del encargado de aprobar el documento
+    \g@addto@macro\varAprobo{\item[\color{colorPrincipal}\Gentsroom] #1,\\#2\firma{}}%
+}
+
+%=====================================================
+%    \makeDocInfo
+%    \makeElemRefs  % NOT IMPLEMENTED
+%    \makeDocRefs   % NOT IMPLEMENTED
+%    \makeObservaciones[3cm]
+%    \makeFirmas
+%=====================================================
+
+%=====================================================
+% Definicion de nuevo tipo de columna con fondo color agua y texto centrado
+%=====================================================
+\newcolumntype{h}{>{\columncolor{colorAgua}}c}
+
+%=====================================================
+% Definicion de la ficha de información del documento
+%=====================================================
+\newcommand{\makeDocInfo}{%
+    \cleardoublepage%
+    \noindent\begin{tabular}{| p{.17\textwidth} | p{.2\textwidth} | p{.55\textwidth}|}\hline%
+        \multicolumn{3}{|h|}{\bf Datos del proyecto}                     \\\hline%
+        {\bf Organización:} & {\varCveOrganizacion} & {\varOrganizacion} \\\hline%
+        {\bf Proyecto:}     & {\varCveProyecto}     & {\varProyecto}     \\\hline%
+        {\bf Sistema:}      & {\varCveSistema}      & {\varSistema}      \\\hline%
+    \end{tabular}%
+    \bigskip\\%
+    %
+    \noindent\begin{tabular}{| p{.27\textwidth} | p{.5\textwidth} | p{.15\textwidth} |}\hline%
+        \multicolumn{3}{|h|}{\bf Documento}                                \\\hline%
+        {\bf Clave}                       & {\bf Nombre}  & {\bf Versión}  \\\hline%
+        \varCveDocumento\varCveEntregable & \varDocumento & \varDocVersion \\\hline%
+    \end{tabular}%
+    \renewcommand{\tablename}{Tabla}%
+    \renewcommand{\listtablename}{Índice de tablas}%
+}
+
+%=====================================================
+% Crear un espacio para las observaciones sobre el documento.
+%=====================================================
+\newcommand{\makeObservaciones}[1][10cm]{
+% Define el espacio para las observación a llenar a mano
+% Ejemplos:
+%    \makeObservaciones
+%    \makeObservaciones[3cm]
+%  @params:
+%    @optional Altura reservada para las observaciones, valor por defecto 10cm
+    \noindent\begin{longtable}{| p{.98\textwidth}|}\hline%
+        \multicolumn{1}{|h|}{\bf Observaciones}\\\hline%
+        \vspace{#1}\\\hline%
+        \endhead%
+    \end{longtable}%
+}
+
+%=====================================================
+% Muestra los datos de las personas que elaboraron, revisaron y aprovaron el documento para que firmen
+%=====================================================
+\newcommand{\makeFirmas}[1][0em]{%
+% Define el espacio para las observación a llenar a mano
+% Ejemplos:
+%    \makeFirmas
+%    \makeFirmas[3cm]
+%  @params:
+%    @optional Espacio entre los elementos, valor por defecto 0em
+    \clearpage
+    \noindent{\large\color{colorPrincipal}\bf Elaborado por:}%
+    \begin{itemize}\setlength\itemsep{#1}%
+        \varElaboro%
+    \end{itemize}\cdtEmpty\cdtEmpty%
+    
+    \noindent{\large\color{colorPrincipal}\bf Supervisado por:}%
+    \begin{itemize}\setlength\itemsep{#1}%
+        \varSuperviso%
+    \end{itemize}\cdtEmpty\cdtEmpty%
+    
+    \noindent{\large\color{colorPrincipal}\bf Aprobado por:}%
+    \begin{itemize}\setlength\itemsep{#1}%
+        \varAprobo%
+    \end{itemize}\cdtEmpty%
+}
+
+

@@ -1,0 +1,175 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Componente: cdt/cdtTheme.sty                                               
+%  Autor: Ulises Vélez Saldaña
+%  Fecha: 27 Abril, 2017
+%  Versión: 1.2
+%  Biblioteca: cdt
+%  Capa: 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cdt/cdtTheme}[2017/04/27, v1.2 CDT-ESCOM-IPN Plantilla para definir el estilo de la documentación de CDT]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage[utf8]{inputenc}                      % Codificación de caracteres en UTF-8.
+\RequirePackage[spanish]{babel}                      % Cambia las variables del documento a español.
+\RequirePackage[scaled]{berasans}                    % Paquete para acomodar el tipo de fuente
+\RequirePackage{marvosym}                            % Algunos símbolos.
+\RequirePackage{graphicx}                            % Manejo de imágenes.
+\RequirePackage[usenames,dvipsnames]{xcolor}         % Para usar y definir colores.
+\RequirePackage{wallpaper}                           % Colocar imágenes en el fondo del documento.
+\RequirePackage{fancyhdr}                            % Manejo de encabezados.
+\RequirePackage[a4paper, lmargin=3cm, rmargin=2cm, tmargin=2cm, bmargin=2cm]{geometry} % Manejo de márgenes del documento.
+\RequirePackage[Sonny]{fncychap}                     % Manejo de capítulos: Sonny, Lenny, Glenn, Conny, Rejne and Bjarne.
+\RequirePackage[pdftex,bookmarks,colorlinks]{hyperref} % Manejo de vinculos o links
+
+%=====================================================
+% Package Bera Sans: Poner el tipo de fuente sans-serif como default
+%=====================================================
+\renewcommand*\familydefault{\sfdefault}
+
+%=====================================================
+% Definición de colores.
+%=====================================================
+\definecolor{colorPrincipal}{rgb}{0.0, 0.3, 0.55}
+\definecolor{colorSecundario}{rgb}{0.0, 0.5, 0.8}
+\definecolor{colorGris}{rgb}{0.4, 0.4, 0.4}
+\definecolor{colorAgua}{rgb}{0.80, 0.90, .95}
+
+%=====================================================
+% Colores para las referencias del documento.
+%=====================================================
+\hypersetup{linkcolor=colorPrincipal}
+\hypersetup{urlcolor=colorSecundario}
+\hypersetup{filecolor=colorSecundario}
+\hypersetup{citecolor=colorGris}
+
+%=====================================================
+% Definición de imagen de Portada.
+%=====================================================
+\newcommand{\varImgPortadaPercent}{1}
+\newcommand{\varImgPortada}{cdtTheme/portada.png}
+\newcommand{\setImgPortada}[2][1]{%
+% Sobreescribe la imagen por defecto
+% Ejemplos:
+%    \setImgPortada{path/to/image}
+%    \setImgPortada[2.1]{path/to/image}
+%  @params:
+%    @optional percentage, valor por defecto 1
+%    @required path/to/image
+    \renewcommand{\varImgPortadaPercent}{#1}%
+    \renewcommand{\varImgPortada}{#2}%
+}
+
+%=====================================================
+% Definición de imagen de Pleca.
+%=====================================================
+\newcommand{\varImgPlecaPercent}{1}
+\newcommand{\varImgPleca}{cdtTheme/pleca.png}
+\newcommand{\setImgPleca}[2][1]{%
+% Sobreescribe la imagen por defecto
+% Ejemplos:
+%    \setImgPleca{path/to/image}
+%    \setImgPleca[1.1]{path/to/image}
+%  @params:
+%    @optional percentage, valor por defecto 1
+%    @required path/to/image
+    \renewcommand{\varImgPlecaPercent}{#1}%
+    \renewcommand{\varImgPleca}{#2}%
+}
+
+%=====================================================
+% Definición de imagen Encabezado.
+%=====================================================
+\newcommand{\varImgHeaderHeight}{35pt}
+\newcommand{\varImgHeaderPar}{cdtTheme/headerPar}
+\newcommand{\varImgHeaderInp}{cdtTheme/headerInp}
+\newcommand{\setImgHeader}[3][35pt]{%
+% Sobreescribe la imagen por defecto
+% Ejemplos:
+%    \setImgHeader{path/to/par-header}{path/to/inp-header}
+%    \setImgHeader[20pt]{path/to/par-header}{path/to/inp-header}
+%  @params:
+%    @optional height, valor por defecto 35pt
+%    @required path/to/par-header
+%    @required path/to/impar-header
+    \renewcommand{\varImgHeaderHeight}{#1}%
+    \renewcommand{\varImgHeaderPar}{#2}%
+    \renewcommand{\varImgHeaderInp}{#3}%
+}
+
+%=====================================================
+% Creacion de Encabezados y pie de página.
+%=====================================================
+\pagestyle{fancy}
+\fancyhead[LE]{\includegraphics[height=\varImgHeaderHeight]{\varImgHeaderPar}}
+\fancyhead[RO]{\includegraphics[height=\varImgHeaderHeight]{\varImgHeaderInp}}
+\setlength{\headheight}{52pt}
+
+
+%%=====================================================
+%% Estilo para las paginas de contenido
+%=====================================================
+\newcommand{\varMainmatter}{}
+\let\varMainmatter=\mainmatter
+\renewcommand{\mainmatter}{%
+    \LRCornerWallPaper{\varImgPlecaPercent}{\varImgPleca}%
+    \varMainmatter%
+}
+
+%%=====================================================
+%% Estilo para Parte
+%======================================================
+\newcommand{\varPart}[1]{}
+\let\varPart=\part
+\renewcommand{\part}[1]{{%
+    \color{colorPrincipal}\varPart{#1}%
+}}
+
+%%=====================================================
+%% Estilo para los Capítulos y secciones
+%=====================================================
+\ChTitleVar{\Large\sf\color{colorPrincipal}}
+\ChNameVar{\Large\sf\color{colorPrincipal}}
+
+\let\LaTeX@startsection\@startsection
+\renewcommand{\@startsection}[6]{\LaTeX@startsection%
+{#1}{#2}{#3}{#4}{#5}{\color{colorPrincipal}\raggedright #6}}
+
+%=====================================================
+% Texto para el índice y los pies de las tablas.
+%=====================================================
+\AtBeginDocument{%
+    \ThisLRCornerWallPaper{\varImgPortadaPercent}{\varImgPortada}%
+    \renewcommand{\tablename}{Tabla}% could be outside
+    \renewcommand{\listtablename}{Índice de tablas}% could be outside
+}
+
+%%=====================================================
+%% Estilo para la portada
+%======================================================
+\newcommand{\varMaketitle}[1]{}
+\let\varMaketitle=\maketitle
+\renewcommand{\maketitle}{%
+    \ClearWallPaper%
+    \varMaketitle%
+    \thispagestyle{empty}%
+    \ClearWallPaper%
+    \LRCornerWallPaper{\varImgPlecaPercent}{\varImgPleca}%
+}
+
+%=====================================================
+% Estilo para las viñetas
+% mathabx \bigstar \sqbullet \blackdiamond
+% wasysym \Box \Diamond
+% pifont \ding{220} \ding{228} \ding{238}  flechas
+% bbding \PencilRight
+% pifont \ding{47} \ding{49}  lápiz
+% dingbat \leftpointright
+% bbding \HandRight
+% pifont \ding{167}
+%=====================================================
+\renewcommand\textbullet{\ensuremath{\bullet}} % Usado para evitar warnings de fuentes
+\renewcommand{\labelitemi}{\color{colorPrincipal}\textbullet}
+\renewcommand{\labelitemii}{\color{colorSecundario}\textbullet}
+\renewcommand{\labelitemiii}{\color{colorSecundario}$\circ$}
+\renewcommand{\labelitemiv}{\color{colorSecundario}\textbullet}
