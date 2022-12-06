@@ -1,4 +1,5 @@
 export const USERS = Object.freeze({
   recruiter: 'RECRUITER',
-  candidate: 'STUDENT'
+  candidate: 'STUDENT',
+  manager: 'MANAGER' 
 })

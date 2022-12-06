@@ -3,10 +3,12 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import generics,viewsets
 from datetime import date
+import datetime
 
 
 from apps.users.models import User
-from apps.administration.api.serializer.data_serializer import ValidateRecruiterSerializer,ValidateCompanySerializer
+from apps.vacantes.models import Vacant
+from apps.administration.api.serializer.data_serializer import ValidateRecruiterSerializer,ValidateCompanySerializer,OnHoldVacantsSerializer,ValidateVacantSerializer
 from apps.companies.api.serializer.recruiter_serializer import RecruiterSerializer,RecruiterListSerializer
 from apps.companies.models import Company, Recruiter
 from apps.users.api.serializers import UserSerializer
@@ -184,8 +186,7 @@ class ActivateCompanyViewSet(viewsets.GenericViewSet):
 		company_data['t300_create_date'] = str(date.today())
 		company_data['c302_id_status'] = 3
 		return company_data
-
-	#/* POner la fecha de creacion de la empresa al ser validada*/
+	
 	def update(self, request, pk):
 		"""
 		Actualiza el estado de validación de la compañia
@@ -230,3 +231,113 @@ class ActivateCompanyViewSet(viewsets.GenericViewSet):
 				return Response({
 					'message': 'Compañia Rechazada'
 				}, status=status.HTTP_200_OK)
+
+
+class ActivateVacantViewSet(viewsets.GenericViewSet):
+	model = Vacant
+	serializer_class = ValidateVacantSerializer
+	list_serializer_class = OnHoldVacantsSerializer
+	queryset = None		
+	vacant_validation_info = {"t400_id_admin":"",
+						 "c204_id_vacant_status":"",
+						 "t200_publish_date":"",
+						 "t200_close_date":""}						 
+
+
+	def get_object(self, pk):
+		self.queryset= None
+		if self.queryset == None:
+			self.queryset = self.model.objects\
+				.filter(c204_id_vacant_status=1,t200_id_vacant = pk)\
+				.all()
+		return  self.queryset
+
+	def get_queryset(self):
+		if self.queryset is None:
+			self.queryset = self.model.objects\
+				.filter(c204_id_vacant_status = 1)\
+				.all()
+		return self.queryset
+
+	def list(self, request):
+		"""
+		Obtiene todas las vacantes en espera
+
+
+
+		Dummy text
+		""" 	
+		vacant = self.get_queryset()
+		vacants_serializer = self.list_serializer_class(vacant, many=True)
+		return Response(vacants_serializer.data, status=status.HTTP_200_OK)
+
+	def retrieve(self, request, pk):
+		"""
+		Obtiene la información de una vacante en espera especifíca
+
+
+
+		Dummy text
+		""" 	
+		vacant = self.get_object(pk)
+		vacant_serializer = self.list_serializer_class(vacant,many=True)
+		return Response(vacant_serializer.data)
+
+	def update(self, request, pk):
+		"""
+		Actualiza el estado de la vacante
+
+
+
+		Dummy text
+		""" 
+		print(request.data)
+		actual_month = datetime.datetime.now().month
+		close_date = datetime.datetime.now()
+		print("Mes Actual:",actual_month)
+		new_month = actual_month+1
+		print("Mes Nuevo:",new_month)
+		if new_month > 12:
+			new_month = 1
+			actual_year = datetime.datetime.now().year
+			new_year = actual_year + 1
+			close_date = close_date.replace(year=new_year)	
+		close_date = close_date.replace(month=new_month)
+		vacant_validation = self.vacant_validation_info
+		vacant_validation["t400_id_admin"] = request.data["t400_id_admin"]
+		vacant_validation["t200_publish_date"]  = str(datetime.datetime.now())
+		#vacant_validation["t200_close_date"]  = str(close_date)
+		#t200_close_date
+		#Abrir vacante
+		if(request.data['activate']):
+			vacant_validation["c204_id_vacant_status"] = 2			
+			u_vacant = self.model.objects.filter(t200_id_vacant=pk,c204_id_vacant_status=1).first()
+			if u_vacant.t200_close_date:
+				vacant_validation["t200_close_date"]  = u_vacant.t200_close_date
+				vacant_serializer = self.serializer_class(u_vacant,data=vacant_validation)
+			else:
+				vacant_validation["t200_close_date"]  = str(close_date)
+				vacant_serializer = self.serializer_class(u_vacant,data=vacant_validation)
+			if vacant_serializer.is_valid():
+				vacant_serializer.save()
+				return Response({
+					'message': 'Vacante Validada'
+					}, status=status.HTTP_200_OK)
+			return Response({
+					'message': 'Hay errores en la actualización, no se pudo cambiar el estado de la vacante',
+					'errors': vacant_serializer.errors
+				}, status=status.HTTP_400_BAD_REQUEST)						
+		#Cerrar vacante por rechazo
+		else:
+			vacant_validation["c204_id_vacant_status"] = 3
+			u_vacant = self.model.objects.filter(t200_id_vacant=pk,c204_id_vacant_status=1).first()
+			vacant_serializer = self.serializer_class(u_vacant,data=vacant_validation)
+			if vacant_serializer.is_valid():
+				vacant_serializer.save()
+				return Response({
+					'message': 'Vacante Rechazada'
+					}, status=status.HTTP_200_OK)
+			return Response({
+					'message': 'Hay errores en la actualización, no se pudo cambiar el estado de la vacante',
+					'errors': vacant_serializer.errors
+				}, status=status.HTTP_400_BAD_REQUEST)			

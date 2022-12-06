@@ -1,6 +1,6 @@
 .card {
   width: 200px;
-  height: 180px;
+  height: 190px;
   background-color: #fff;
   outline: 1px solid #ccc;
   border-radius: 4px;
@@ -9,7 +9,6 @@
   flex-direction: column;
   align-items: center;
   transition: box-shadow .3s, transform .3s ease-out;
-  outline: 2px solid #007ec7;
 }
 
 .card:hover {

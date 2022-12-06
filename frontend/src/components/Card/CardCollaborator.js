@@ -15,7 +15,7 @@ const CardCollaborator = ({collaboratorName, position, picture, openModalEdit, o
         <Button onClick={openModalDelete} bgColor='transparent' color='#000' icon={<MdDelete />} />
       </CardActions>
       <CardImage>
-        <CustomAvatar width='80' height='80' username={collaboratorName} />
+        <CustomAvatar width='100px' height='100px' username={collaboratorName} />
         <CardImageName>
           <span>{collaboratorName}</span>
         </CardImageName>

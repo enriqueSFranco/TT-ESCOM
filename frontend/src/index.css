@@ -1,15 +1,20 @@
 :root {
-  --bg-color_1: #EADBFD;
-  --bg-color_2: #D7F3E8;
-  --bg-color_3: #DBECFC;
+  --bg-color_1: #000000;
+  --bg-color_2: #000000;
+  --bg-color_3: #000000;
 
-  --color_1: #9F6AE3;
-  --color_2: #69D8A3;
-  --color_3: #45A5EA;
+  --color_1: #ffffff;
+  --color_2: #ffffff;
+  --color_3: #ffffff;
 
   --link-color: #0B1033;
   --font-size-mobile-M: .77rem;
   --font-family-mobile-M: 'Secular One', sans-serif;
+
+  --Medio: #ffe180;
+  --color-level_2: #ffae00;
+  --Avanzado: #fd8787;
+  --color_level_3: #ff0000;
 }
 
 html {

@@ -37,7 +37,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*'] # TODO: Poner el nombre del dominio cuando este en produccion
 
 # Application definition
 
@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'apps.students',
     'apps.users',    
     'apps.vacantes',
+    'apps.recommendations',
     'drf_yasg',
 ]
 
@@ -198,6 +199,7 @@ AUTH_USER_MODEL = 'users.NewUser'
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = '/code/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')

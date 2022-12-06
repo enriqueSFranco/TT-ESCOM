@@ -12,6 +12,7 @@ const ButtonStyled = styled.button`
   justify-content: center;
   align-items: center;
   gap: .3rem;
+  /* position: relative; */
 `
 
 export { ButtonStyled }

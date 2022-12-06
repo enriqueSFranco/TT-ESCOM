@@ -1,9 +1,16 @@
 import { memo } from "react";
+import 'moment/locale/es-mx'
 import CardJob from "../CardJob/CardJob";
-import Skeleton from "components/Skeleton/Skeleton"
 import styles from "./JobList.module.css";
 
+// var fechaInicio = new Date('2022-10-23').getTime();
+// const now = new Date()
+// let dateCurrent = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`
+
+// console.log(typeof (diff/(1000*60*60*24)));
+
 const ListEmptyJobs = () => {
+
   return (
     <article className={`${styles.notJobs}`}>
       <h2>¡Upps, no tenemos vacantes registradas!</h2>
@@ -11,25 +18,36 @@ const ListEmptyJobs = () => {
   );
 };
 
-const JobList = ({ jobs, loading, loadingNextPage }) => {
+const JobList = ({ jobs, loading }) => {
 
-  if (!jobs) return null;
+  // useEffect(() => {
+  //   const $cards = document.querySelectorAll('[data-close-date]')
+  //   if (!$cards.length) return;
+    
+  //   $cards.forEach((card, index) => {
+  //     if (Boolean(card.getAttribute("data-close-date"))) {
+  //       let publicDateJob = new Date(card.getAttribute("data-close-date"))
+  //       let diff = Math.floor((now - publicDateJob) / (1000 * 60 * 60 * 24))
+  //       let semilla = {
+  //         diff,
+  //         idPublicDate: card
+  //       }
+  //     }
+  //   })
+  // }, [])
 
-  if (loading) {
-    return (
-      <Skeleton type='feed' />
-    )
-  }
+  if (!jobs || jobs === undefined) return null;
 
-  if (jobs.result?.length < 0) {
-    return <ListEmptyJobs />
-  }
+
+  if (jobs?.length < 0) return <ListEmptyJobs />
 
   return (
     <>
-    {
-      jobs?.map((job) => <CardJob key={crypto.randomUUID()} job={job} />)
-    }
+      {jobs
+        .filter((el) => el?.c204_id_vacant_status.c204_id_status === 2)
+        .map((el) => (
+          <CardJob key={`card-job-id_${crypto.randomUUID()}`} job={el} />
+        ))}
     </>
   );
 };

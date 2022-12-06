@@ -29,6 +29,7 @@ restore_inits: clean
 	touch apps/students/migrations/__init__.py
 	touch apps/users/migrations/__init__.py
 	touch apps/vacantes/migrations/__init__.py
+	touch apps/recommendations/migrations/__init__.py
 
 makemigrations: restore_inits
 	python3 manage.py makemigrations

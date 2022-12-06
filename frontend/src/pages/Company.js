@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { useFetch } from "hooks/useFetch";
+import { useFetch } from "hooks";
 import Input from "components/Input/Input";
 import { BsSearch } from 'react-icons/bs'
 import Skeleton from "components/Skeleton/Skeleton";
@@ -17,8 +17,9 @@ const Company = () => {
   
   const searchCompany = (query) => {
     let input = query.toLowerCase().trim();
+    setQuery(input);
+    
     if (input !== "") {
-      setQuery(input);
       let matches = data.filter((company) => {
         let regex = new RegExp(`^${input}`, "gi");
         return company.t300_name.match(regex);
@@ -41,9 +42,9 @@ const Company = () => {
                 type="text"
                 label="Buscar una empresa"
                 width='400px'
-                bgInput='#00000097'
+                // bgInput='#00000097'
                 icon={<BsSearch />}
-                iconColor='#fff'
+                iconColor='#000'
                 id="query"
                 name="query"
                 value={query}
@@ -69,7 +70,8 @@ const Company = () => {
                     vision={company?.t300_vision}
                     webSite={company?.t300_web_page}
                     logo={company?.t300_logo}
-                    totalPost="10"
+                    totalPost={company?.TotalPublished}
+                    totalActive={company?.TotalActive}
                   />
                 </Link>
               ))
@@ -87,7 +89,8 @@ const Company = () => {
                     webSite={company?.t300_web_page}
                     logo={company?.t300_logo}
                     banner={company?.t300_banner}
-                    totalPost="10"
+                    totalPost={company?.TotalPublished}
+                    totalActive={company?.TotalActive}
                   />
                 </Link>
               ))

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLanguage } from "hooks";
 import { addLanguage } from "services";
 import { IoLanguageOutline } from "react-icons/io5";
-import { Button, Form, Title } from "./styled-components/FormLanguageStyled";
+import { Button, Form, Title, Select, Range } from "./styled-components/FormLanguageStyled";
 
 const FormLanguage = ({ id }) => {
   const { languages } = useLanguage();
@@ -35,7 +35,7 @@ const FormLanguage = ({ id }) => {
         Registrar idioma{" "}
         <IoLanguageOutline style={{ color: "#116BFE", fontWeight: "700" }} />
       </Title>
-      <select
+      <Select
         name="c111_id_language"
         id="c111_id_language"
         onChange={e => setIdLanguage(e.target.value)}
@@ -47,16 +47,17 @@ const FormLanguage = ({ id }) => {
             {language?.c111_description}
           </option>
         ))}
-      </select>
-      <div style={{ display: "flex", gap: "1rem" }}>
-        <input
+      </Select>
+      <div style={{ display: "flex", flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: "1rem" }}>
+        <p style={{margin: '0'}}>Que porcentaje manejas del idioma?</p>
+        <Range
           type="range"
           min={30}
           max={100}
           value={value}
           onChange={(e) => handleRange(e)}
         />
-        <span>{value}</span>
+        <span>{value}%</span>
       </div>
       <Button type="submit" value="Agregar idioma" />
     </Form>

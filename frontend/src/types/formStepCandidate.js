@@ -17,4 +17,5 @@ export const formStepCandidate = Object.freeze({
   t100_residence: "",
   t100_modalities: "",
   t100_interest_job: "",
+  c222_id_locality: "",
 });

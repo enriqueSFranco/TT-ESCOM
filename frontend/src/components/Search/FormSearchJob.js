@@ -1,8 +1,6 @@
-import { useState } from "react";
-import { useFetch } from "hooks/useFetch";
-import { useDebounce } from "hooks/useDebounce";
-import { useViewport } from "hooks/useViewport";
-import { searchCharacter } from "services/index"
+import { useEffect, useState, useRef } from "react";
+import { useDebounce, useViewport } from "hooks";
+import { searchCharacter } from "services"
 import Loader from "components/Loader/Loader";
 import * as BiIcon from "react-icons/bi";
 import styles from "./Search.module.css";
@@ -15,58 +13,51 @@ import {
   WrapperForm,
 } from "./styled-components/FormSearchStyled";
 
-const FormSearchJob = ({ handleSearch }) => {
-  const [queryJob, setQueryJob] = useState("");
+
+const FormSearchJob = ({ handleSearch, query, setQuery }) => {
+  const inputRef = useRef(null)
+  const debounce = useDebounce(query, 500);
   const [locationJob, setLocationJob] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [filterData, setFilterData] = useState(null);
   const [viewport] = useViewport();
-  // const { data } = useFetch(`${process.env.REACT_APP_URL_VACANTS}`);
-  const debounce = useDebounce(queryJob, 500);
 
   // filtrado para el autocompletado
   const handleFilterJob = (e) => {
-    const query = e.target.value;
-    setQueryJob(query);
+    const query = e.target.value.trim();
+    setQuery(query);
 
     // hacer la llamada al endpoint de searchCharacter
     if (query !== '') {
       searchCharacter(query)
         .then(res => {
           const { results } = res
-          console.log(results)
           setFilterData(results)
       })
         .catch(error => console.error(error))
     }
     return;
-    // const dataFiltered = data.result?.filter((el) => {
-    //   let er = new RegExp(`^${query}`, "gi");
-    //   let matches = el.t200_job.toLowerCase().match(er);
-    //   return matches;
-    // });
-    // return query === "" ? setFilterData([]) : setFilterData(filterData);
   };
 
-  const handleClick = (job) => setQueryJob(job);
+  const handleClick = (job) => setQuery(job);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (queryJob === "" && locationJob === "") return
+    if (query === "") return
 
-    setIsLoading(true);
+    setLoading(true);
     setTimeout(() => {
-      setIsLoading(false);
+      setQuery(debounce)
+      setLoading(false);
       handleSearch(debounce === "" ? filterData : debounce);
     }, 500);
-
-    // limpiamos los campos del formulario
-    setQueryJob('')
-    setLocationJob('')
   };
 
-  // if (!filterData) return null
+  useEffect(() => {
+    if (inputRef.current)
+      inputRef.current.focus()
+  }, [])
 
   return (
     <WrapperForm>
@@ -76,7 +67,8 @@ const FormSearchJob = ({ handleSearch }) => {
             type="text"
             id="job"
             name="job"
-            value={queryJob}
+            ref={inputRef}
+            value={query}
             onChange={handleFilterJob}
             onBlur={() => {
               setTimeout(() => {
@@ -84,7 +76,6 @@ const FormSearchJob = ({ handleSearch }) => {
               }, 200);
             }}
             autoComplete="off"
-            autoFocus="true"
             placeholder="Desarrollador Backend"
             marginLeft="2.7rem"
           />
@@ -115,18 +106,18 @@ const FormSearchJob = ({ handleSearch }) => {
             marginLeft="3.7rem"
           />
         </WrapperInput>
-        <Button type="submit" disabled={isLoading}>
+        <Button type="submit" disabled={loading}>
           {viewport.device === "MOBILE" ? (
             <>
-              {isLoading && <Loader />}
-              {!isLoading && 'Buscar vacante'}
-              {isLoading && ""}
+              {loading && <Loader />}
+              {!loading && 'Buscar vacante'}
+              {loading && ""}
             </>
           ) : (
             <>
-              {isLoading && <Loader />}
-              {!isLoading && <BiIcon.BiSearch />}
-              {isLoading && ""}
+              {loading && <Loader width='20' height='20' color="#fff" />}
+              {!loading && <BiIcon.BiSearch />}
+              {loading && ""}
             </>
           )}
         </Button>

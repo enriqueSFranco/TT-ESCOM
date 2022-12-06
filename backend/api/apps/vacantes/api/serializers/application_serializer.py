@@ -20,7 +20,7 @@ class ApplicationListSerializer(serializers.ModelSerializer):
 class UpdateApplicationSerializer(serializers.ModelSerializer):
         class Meta:
             model = Application
-            exclude = ('t200_id_vacant','t100_id_student')
+            exclude = ('t201_id_application','t200_id_vacant','t100_id_student','t201_date_application')
         
         def update(self,instance,validate_data):
             u_aplication = super().update(instance,validate_data)

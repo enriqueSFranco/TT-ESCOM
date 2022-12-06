@@ -3,6 +3,7 @@ import { useModal } from "hooks";
 import { formatDate } from "utils/formatDate";
 import { deleteAcademicHistorial } from "services/students/index";
 import { GoTrashcan } from "react-icons/go";
+import gifTrash from 'assets/icons/trash.gif'
 import { MdSchool, MdEdit } from "react-icons/md";
 import styles from "./AcademicRecord.module.css";
 import ModalPortal from "components/Modal/ModalPortal";
@@ -15,9 +16,6 @@ const AcademicRecord = ({
   carrer,
   startDate,
   endDate,
-  idStudent,
-  idAcademicLevel,
-  idAcademicState,
 }) => {
   const [
     isOpenModalDeleteAcademicRecord,
@@ -32,7 +30,7 @@ const AcademicRecord = ({
 
   const deleteData = (id) => {
     deleteAcademicHistorial(id).then((response) => {
-      if (data !== null) {
+      if (response !== null) {
         let newData = data?.filter((el) => el?.t104_id_registrer !== id);
         setData(newData);
       }
@@ -52,11 +50,11 @@ const AcademicRecord = ({
         >
           <MdSchool className={styles.icon} />
           <div className={styles.history}>
-            <p>{carrer}</p>
-            <p>{academicUnit}</p>
-            <p className={styles.date}>
+            <span>{carrer}</span>
+            <span>{academicUnit}</span>
+            <span className={styles.date}>
               {formatDate(startDate)} {" - "} {formatDate(endDate)}
-            </p>
+            </span>
           </div>
         </div>
         <div className={styles.actions}>
@@ -74,11 +72,12 @@ const AcademicRecord = ({
       <ModalPortal
         isOpen={isOpenModalDeleteAcademicRecord}
         closeModal={closeModalDeleteAcademicRecord}
+        minWidth="500px"
+        minHeight="400px"
       >
-        <div className={styles.mainWrapper}>
+        <>
           <div className={styles.wrapperCircle}>
-            <div className={styles.circleDelete}></div>
-            <GoTrashcan />
+            <img src={gifTrash} alt="trash" />
           </div>
           <h3 className={styles.tittleProjectExperience}>
             Estas seguro de eliminar la Unidad Academica{" "}
@@ -90,7 +89,7 @@ const AcademicRecord = ({
           >
             Si, Eliminar
           </button>
-        </div>
+        </>
       </ModalPortal>
       <ModalPortal
         isOpen={isOpenModalEditAcademicRecord}

@@ -78,7 +78,7 @@ const FormCertification = ({
               onChange={handleChecked}
             />
             <label htmlFor="t119_in_course">
-              Aun sigues en proceso de acreditacion?
+              Sigues en proceso de acreditacion?
             </label>
           </div>
         </div>

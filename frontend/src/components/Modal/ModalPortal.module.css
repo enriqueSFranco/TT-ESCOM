@@ -5,7 +5,8 @@
   left: 0;
   width: 100%;
   min-height: 100vh;
-  background-color: rgba(0,0,0,.75);
+  background-color: rgba(0, 0, 0, 0.678);
+  backdrop-filter: blur(2px);
   display: none;
   justify-content: center;
   align-items: center;
@@ -14,22 +15,23 @@
 
 .modalContainer {
   position: relative;
-  min-width: 720px;
   max-width: 1000px;
   min-height: 600px;
-  max-height: 1200px;
   overflow-y: auto;
-  background-color: #fff;
   padding: 1rem;
-  border-radius: 1rem;
+  border-radius: .5rem;
 }
 
 .modalClose {
-  position: absolute;
-  top: .5rem;
-  right: 1rem;
   background-color: transparent;
   border: none;
   color: red;
   font-size: 1.7rem;
+}
+
+.wrapperModalClose {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;  
 }

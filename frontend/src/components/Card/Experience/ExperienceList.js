@@ -6,7 +6,7 @@ import { uuid } from "utils/uuid";
 import ModalPortal from "components/Modal/ModalPortal";
 import ExperenceItem from "./ExperienceItem";
 import TypeExperience from "./TypeExperience";
-import notProjects from "images/projects.png";
+// import notProjects from "images/projects.png";
 import { MdAdd } from "react-icons/md";
 import styles from "./Experience.module.css";
 
@@ -15,21 +15,25 @@ const ExperenceList = () => {
   const [isOpen, openModal, closeModal] = useModal(false)
   const { token } = useAuth();
 
-
   let idUser = token?.user?.id;
 
   useEffect(() => {
-    getProjects(token?.user?.id).then((response) => {
+    getProjects(idUser).then((response) => {
       setListProjects(response);
     })
     .catch(error => console.error(error))
-  }, [token?.user?.id]);
+  }, [idUser]);
 
   if (!listProjects) return null;
 
   return (
     <>
       <article className={styles.wrapper}>
+        <div className={styles.wrapperButton}>
+          <button className={styles.btnAddProject} onClick={openModal}>
+            <MdAdd />
+          </button>
+        </div>
         {listProjects && listProjects?.length === 0 ? (
           <div className={styles.notProjects}>
             <h3>Sin Proyectos</h3>
@@ -55,11 +59,8 @@ const ExperenceList = () => {
             ))}
           </>
         )}
-        <button className={styles.btnAddProject} onClick={openModal}>
-          <MdAdd />
-        </button>
       </article>
-      <ModalPortal isOpen={isOpen} closeModal={closeModal}>
+      <ModalPortal isOpen={isOpen} closeModal={closeModal} minHeight="700px">
         <TypeExperience />
       </ModalPortal>
     </>

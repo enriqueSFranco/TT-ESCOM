@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { useForm } from "hooks/useForm";
-import { useFetch } from "hooks/useFetch";
 import { companyInitialForm } from "types/schemes";
 import FormBusinessRecruiter from "./FormBusinessRecruiter";
 import FormCompanyInfo from "./FormCompanyInfo";
@@ -24,7 +22,8 @@ const validateForm = (form) => {
     t300_bussiness_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü.,\s]{4,255}$/,
     t301_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
     t301_last_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
-    t301_email: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
+    t301_email:
+      /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
     t301_phonenumber: /\x2b[0-9]+/,
   };
 
@@ -77,87 +76,47 @@ const FormCompany = () => {
 
   if (step === 1)
     return (
-      <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
-        <div className="row text-center">
-          <div className={`${styles.bgCompany} col rounded`}>
-            <div className={`${styles.wrapperLinkToLoginCompany}`}>
-              <blockquote>
-                Crea tu cuenta y publica tus vacantes con nosotros.
-              </blockquote>
-              <span>
-                ¿Ya tines cuenta?{" "}
-                <Link className={`${styles.linkToLogin}`} to="/reclutador">
-                  Inicia sesion
-                </Link>
-              </span>
-            </div>
-          </div>
-          <div className={`col bg-white rounded-end ${styles.wrapperColumn}`}>
-            {!isActive ? (
-              <FormCompanyInfo
-                nextStep={nextStep}
-                form={form}
-                errors={errors}
-                handleChange={handleChange}
-                handleValidate={handleValidate}
-                isActive={isActive}
-                handleIsActive={handleIsActive}
-              />
-            ) : (
-              <article className={styles.wrapperForm3}>
-                <h2
-                  style={{
-                    textTransform: "uppercase",
-                    fontSize: "1.5rem",
-                    fontWeight: "bold",
-                    color: "#028dd4",
-                    marginBottom: ".8rem",
-                  }}
-                >
-                  Proporcionanos el nombre de la empresa.
-                </h2>
-                <FormBusinessRecruiter
-                  isActive={isActive}
-                  setIsActive={setIsActive}
-                />
-              </article>
-            )}
-          </div>
-        </div>
+      <div className={`${styles.wrapperColumn}`}>
+        {!isActive ? (
+          <FormCompanyInfo
+            nextStep={nextStep}
+            form={form}
+            errors={errors}
+            handleChange={handleChange}
+            handleValidate={handleValidate}
+            isActive={isActive}
+            handleIsActive={handleIsActive}
+          />
+        ) : (
+          <article className={styles.wrapperForm3}>
+            <h2
+              style={{
+                fontFamily: 'sans-serif', fontSize: '1.1em', textAlign: 'center', color: '#2B3647', fontWeight: '600', margin: '1rem 0 0 0'
+              }}
+            >
+              Proporcionanos el nombre de la empresa.
+            </h2>
+            <FormBusinessRecruiter
+              isActive={isActive}
+              setIsActive={setIsActive}
+            />
+          </article>
+        )}
       </div>
     );
   else if (step === 2)
     return (
-      <div className={`container bg-white shadow rounded ${styles.wrapper}`}>
-        <div className="row">
-          <div
-            className={`${styles.bgRecruiter} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
-          >
-          </div>
-          <div className={`col bg-white rounded-end ${styles.wrapperColumn}`}>
-            <FormRecruiterInfo
-              prevStep={prevStep}
-              form={form}
-              errors={errors}
-              handleSubmitCompany={handleSubmitCompany}
-              handleChange={handleChange}
-              handleValidate={handleValidate}
-              isActive={isActive}
-              setIsAcitve={setIsActive}
-            />
-          <div className={`${styles.wrapperBottom}`}>
-              <blockquote>
-                Crea tu cuenta y publica tus vacantes con nosotros.
-              </blockquote>
-              <span>
-                Ya tines cuenta?{" "}
-                <Link className={`${styles.linkToLogin}`} to="/reclutador">
-                  Inicia sesion
-                </Link>
-              </span>
-            </div>
-          </div>
-        </div>
+      <div className={`${styles.wrapperColumn}`}>
+        <FormRecruiterInfo
+          prevStep={prevStep}
+          form={form}
+          errors={errors}
+          handleSubmitCompany={handleSubmitCompany}
+          handleChange={handleChange}
+          handleValidate={handleValidate}
+          isActive={isActive}
+          setIsAcitve={setIsActive}
+        />
       </div>
     );
 };

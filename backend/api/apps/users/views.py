@@ -9,6 +9,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework import viewsets
 from apps.students.models import Student
 from apps.companies.models import Recruiter
+from apps.administration.models import Admin
 from apps.users.models import User
 
 
@@ -111,6 +112,7 @@ class UserViewSet(viewsets.GenericViewSet):
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):	    	
     student_model = Student
     recruiter_model = Recruiter
+    admin_model = Admin
     @classmethod
     def get_token(cls, user):
         return RefreshToken.for_user(user)
@@ -131,8 +133,9 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
             id = recruiter_data[0]['t301_id_recruiter']
             print(recruiter_data[0]['t301_id_recruiter'])#-------------Depurargit
         elif(self.user.user_type=='MANAGER'):
-            id = 0
-			##--------------Terminar con la implementación del colaborador
+            admin_data = self.admin_model.objects.filter(id_user = self.user.id).values('t400_id_admin')
+            id = admin_data[0]['t400_id_admin']			
+            print(admin_data[0]['t400_id_admin'])#-------------Depurargit
         user={
 			'id':id,
 			'user_id':self.user.id,			

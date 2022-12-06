@@ -112,10 +112,11 @@ const WorkExperience = ({ setTypeProject }) => {
               name="t117_description"
               id="t117_description"
               cols="30"
-              rows="10"
+              rows="5"
               placeholder="Descripcion de tu proyecto"
               value={form.t117_description}
               onChange={handleChange}
+              className={styles.textArea}
             ></textarea>
             <input
               className={styles.btnSubmitWorkExperience}

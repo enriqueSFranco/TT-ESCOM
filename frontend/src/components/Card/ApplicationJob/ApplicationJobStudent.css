@@ -1,11 +1,24 @@
 .nameJob {
   font-size: 1rem;
+  font-weight: normal;
+  letter-spacing: 1px;
   font-family: 'Poppins', sans-serif;
+  background: linear-gradient(27deg, #3f5efb, #fc466b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin: 0 0 .5rem 0;
 }
 
 .paragraph {
   margin: .4rem 0 0 0;
   /* font-weight: bold; */
+}
+
+.applicationDate {
+  font-size: .9em;
+  font-weight: 500;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .tags {
@@ -21,49 +34,19 @@
   font-size: .9rem;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-align: left;
-  outline: 1px solid #ccc;
+  outline: 1px solid #00000075;
   background-color: #fff;
   border-radius: 4px;
-  width: 420px;
-  height: fit-content;
-  padding: .5rem;
+  width: 480px;
+  height: 200px;
+  padding: 0 .5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
-.state {
-  font-weight: 400;
-  text-align: right;
-  position: relative;
-  right: 0;
-  top: 1rem;
-}
-
-.tag-state {
-  padding: .2rem;
-  border-radius: 4px;
-  font-size: .75rem;
-}
-
-.enviada {
-  background-color: darkblue;
-  color: #FFF;
-}
-
-.en-seguimineto {
-  background-color: orange;
-  color: #000;
-}
-
-.descartada {
-  background-color: red;
-  color: #FFF;
-}
-
-.contratado {
-  background-color: #009E0F;
-  color: #FFF;
-}
-
-.no-contratado {
-  background-color: deeppink;
-  color: #000;
+.flex_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

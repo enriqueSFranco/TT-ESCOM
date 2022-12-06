@@ -1,16 +1,6 @@
-import axios from "axios";
 import API from 'services/http.service'
-import {   
-  API_STUDENT_LENGUAGES,
-  API_CATALOGUE_STATES,
-  API_ACADEMIC_LEVEL,
-  API_ACADEMIC_UNITS,
-  API_ACADEMIC_STATE,
-  API_INTEREST_JOBS,  
-  API_CP
-} from "services/settings";
 
-const { REACT_APP_CATALOG_LANGUAGE } = process.env;
+const { REACT_APP_CATALOG_LANGUAGE, REACT_APP_URL_CANDIDATE_LANGUAGE, REACT_APP_URL_CATALOG_PROFILE_CANDIDATE, REACT_APP_URL_CATALOG_EXP, REACT_APP_URL_CATALOG_CONTRACTS, REACT_APP_CATALOG_LOCALITIES, REACT_APP_URL_CATALOG_ACADEMIC_UNITS, REACT_APP_URL_CATALOGUE_JOBS, REACT_APP_URL_CATALOGUE_ACADEMIC_STATE, REACT_APP_URL_CATALOGUE_ACADEMIC_LEVEL } = process.env;
 
 export const getSkill = async (id) => {
   return API(`${process.env.REACT_APP_URL_CANDIDATE_SKILLS}${id}/`)
@@ -47,8 +37,8 @@ export const getAllSocialNetworks = () => {
     })
 }
 
-export const getLenguages = async (id) => {
-  return API(`${API_STUDENT_LENGUAGES}${id}/`)
+export const getLanguages = async (id) => {
+  return API(`${REACT_APP_URL_CANDIDATE_LANGUAGE}${id}/`)
     .then(response => {
       const { data } = response;
       return data;
@@ -61,7 +51,7 @@ export const getLenguages = async (id) => {
 };
 
 export const getAllCatalogueExperience = () => {
-  return API(`${process.env.REACT_APP_URL_CATALOG_EXP}`)
+  return API(`${REACT_APP_URL_CATALOG_EXP}`)
     .then(response => {
       const { data } = response;
       return data;
@@ -70,7 +60,7 @@ export const getAllCatalogueExperience = () => {
 };
 
 export const getAllCandidateProfile = () => {
-  return API(process.env.REACT_APP_URL_CATALOG_PROFILE_CANDIDATE)
+  return API(REACT_APP_URL_CATALOG_PROFILE_CANDIDATE)
     .then(response => {
       const { data } = response;
       return data;
@@ -78,22 +68,18 @@ export const getAllCandidateProfile = () => {
     .catch(error => error);
 };
 
-// export const getAllMunicipality = () => {
-  
-// };
-
-export const getAllStates = async () => {
-  try {
-    const { data } = await axios.get(API_CATALOGUE_STATES);
-    return data;
-  } catch (error) {
-    if (error.response)
-      return error.response.message;
-  }
-}
+// export const getAllStates = async () => {
+//   try {
+//     const { data } = await API(API_CATALOGUE_STATES);
+//     return data;
+//   } catch (error) {
+//     if (error.response)
+//       return error.response.message;
+//   }
+// }
 
 export const getLocality = cp => {
-  return axios.get(`${API_CP}${cp}/`)
+  return API(`${REACT_APP_CATALOG_LOCALITIES}${cp}/`)
     .then(response => {
       const { data } = response;
       return data;
@@ -107,7 +93,7 @@ export const getLocality = cp => {
 
 export const getAllAcademicUnits = async () => {
   try {
-    const { data } = await axios.get(API_ACADEMIC_UNITS);
+    const { data } = await API(REACT_APP_URL_CATALOG_ACADEMIC_UNITS);
     return data;
   } catch (error) {
     if (error.response)
@@ -117,7 +103,7 @@ export const getAllAcademicUnits = async () => {
 
 export const getIntrestJobs = async () => {
   try {
-    const { data } = await axios.get(API_INTEREST_JOBS);
+    const { data } = await API(REACT_APP_URL_CATALOGUE_JOBS);
     return data;
   } catch (error) {
     if (error.response)
@@ -127,7 +113,7 @@ export const getIntrestJobs = async () => {
 
 export const getAllContracTypes = async () => {
   try {
-    const { data } = await API(process.env.REACT_APP_URL_CATALOG_CONTRACTS);
+    const { data } = await API(REACT_APP_URL_CATALOG_CONTRACTS);
     return data;
   } catch (error) {
     if (error.response)
@@ -137,7 +123,7 @@ export const getAllContracTypes = async () => {
 
 export const getAllAcademicStates = async () => {
   try {
-    const { data } = await axios.get(API_ACADEMIC_STATE);
+    const { data } = await API(REACT_APP_URL_CATALOGUE_ACADEMIC_STATE);
     return data;
   } catch (error) {
     if (error.response)
@@ -148,7 +134,7 @@ export const getAllAcademicStates = async () => {
 
 export const getAllAcademicLevels = async () => {
   try {
-    const { data } = await axios.get(API_ACADEMIC_LEVEL);
+    const { data } = await API(REACT_APP_URL_CATALOGUE_ACADEMIC_LEVEL);
     return data;
   } catch (error) {
     if (error.response)

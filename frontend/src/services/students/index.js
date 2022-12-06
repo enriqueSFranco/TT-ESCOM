@@ -1,13 +1,18 @@
 // @ts-check
 import API from "services/http.service";
 import { CODE_201, CODE_200, CODE_400, CODE_404 } from "services/http.code";
-import {
-  API_CATALOGUE_PLATAFORM,
-  API_ACADEMIC_HISTORIAL,
-  API_JOB_APPLICATIONS,
-} from "../settings";
 
-const { REACT_APP_URL_CANDIDATE_LANGUAGE, REACT_APP_URL_CANDIDATE, REACT_APP_URL_CANDIDATE_SKILLS, REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS, REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL, REACT_APP_URL_CANDIDATE_PROJECTS, REACT_APP_URL_CANDIDATE_CERTIFICATIONS, REACT_APP_URL_CANDIDATE_UPLOAD_CV, REACT_APP_URL_CANDIDATE_UPLOAD_IMAGE } = process.env
+
+const { REACT_APP_URL_CANDIDATE_LANGUAGE, REACT_APP_URL_CANDIDATE, REACT_APP_URL_CANDIDATE_SKILLS, REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS, REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL, REACT_APP_URL_CANDIDATE_PROJECTS, REACT_APP_URL_CANDIDATE_CERTIFICATIONS, REACT_APP_URL_CANDIDATE_UPLOAD_CV, REACT_APP_URL_CANDIDATE_UPLOAD_IMAGE} = process.env
+
+export const getShortenLink = (url) => {
+  return API(`https://api.shrtco.de/v2/shorten?url=${url}`)
+    .then(response => {
+      const { data } = response
+      return data
+    })
+    .catch(error => error)
+}
 
 /**
  * @param {Number} id identificador para obtner un alumno en especifico
@@ -84,15 +89,6 @@ export const postSocialNetwork = (payload = {}) => {
     }
   )
     .then((response) => response)
-    .catch((error) => error);
-};
-
-export const getLinks = () => {
-  return API(API_CATALOGUE_PLATAFORM)
-    .then((response) => {
-      const { data } = response;
-      return data;
-    })
     .catch((error) => error);
 };
 
@@ -194,22 +190,6 @@ export const applyJob = (payload) => {
     .catch((error) => error.message);
 };
 
-export const changeApplyState = (id, payload) => {
-  return API.put(`${API_JOB_APPLICATIONS}${id}/`, payload, {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-    .then((response) => {
-      console.log(response);
-      return response;
-    })
-    .catch((error) => {
-      if (error.response) return error.response;
-    });
-};
-
 /**
  * @param {Number} id identificador de un alumno
  * @returns {Promise}
@@ -269,7 +249,7 @@ export const postAcademicHistorial = (payload = {}) => {
  * @returns {Promise}
  **/
 export const deleteAcademicHistorial = (id) => {
-  return API.delete(`${API_ACADEMIC_HISTORIAL}${id}/`)
+  return API.delete(`${REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL}${id}/`)
     .then((response) => response)
     .catch((error) => error);
 };

@@ -55,6 +55,7 @@ const FormLoginCandidate = () => {
   return (
     <LayoutHome>
       <WrapperForm>
+        <h2 style={{fontFamily: 'sans-serif', fontSize: '1.5rem', textAlign: 'center', marginBottom: '2rem', color: '#2B3647', fontWeight: '600'}}>Iniciar sesion como candidato</h2>
         <Form onSubmit={loginCandidate}>
           <BoxInput>
             <Input
@@ -100,8 +101,8 @@ const FormLoginCandidate = () => {
           </Button>
         </Form>
         <Register>
-          <span>¿Aun no te has unido con nosotros 👀 ?</span>
-          <LinkButton text="Registrate a qui." to="/registro-alumno" />
+          <span>¿Aun no te has unido con nosotros?</span>
+          <LinkButton text="Registrate a qui" to="/registro-alumno" />
         </Register>
       </WrapperForm>
       <Toaster position="top-right" />

@@ -29,8 +29,7 @@ const Header = styled.header`
           `
         } else {
           return `
-            background-color: #2b2b2bcc;
-            backdrop-filter: blur(10px);
+            background-color: #222;
             transition: background-color .4s ease-in-out;
           `
         }

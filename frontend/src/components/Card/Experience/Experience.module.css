@@ -20,9 +20,16 @@
   justify-content: center;
 }
 
+.wrapperButton {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: .5em .5em 0 0;
+}
 
 .btn {
   height: 3rem;
+  padding: 0 1rem;
   outline: none;
   border: none;
   border-radius: 5px;
@@ -34,9 +41,6 @@
 }
 
 .btnAddProject {
-  position: sticky;
-  bottom: 0;
-  right: 0;
   bottom: .5rem;
   height: 40px;
   width: 40px;
@@ -153,43 +157,44 @@
 
 .detailsProject a {
   color: #5c5c5c;
-  font-size: .78rem;
+  font-size: .7em;
 }
 
 .detailsProject {
   position: relative;
+  border-radius: 5px;
   left: 0;
-  width: 100%;
+  width: 450px;
   display: flex;
-  border-bottom: 2px solid #eee;
+  border: 1px solid #eee;
 }
 
 .descriptionProject {
-  width: 450px;
+  width: 400px;
   height: auto;
   overflow: hidden;
 }
 
 .detailsProject a {
-  position: absolute;
-  bottom: 0;
-  padding-bottom: .3rem;
   font-size: 1rem;
   color: #000;
-  font-weight: 500;
+  font-weight: 400;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-transform: capitalize;
   transition: color .3s ease-in-out;
 }
 
 .descriptionProject a:hover {
-  color: #0000ff;
+  color: #1C8EFB;
+  font-weight: normal;
+
 }
 
 .desription {
   color: #5c5c5c;
-  font-weight: 500;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   height: auto;
+  margin-top: .4rem;
 }
 
 .flex_1_2 {
@@ -207,15 +212,17 @@
 }
 
 .groupDetails {
-  width: 500px;
+  width: 230px;
   height: 70px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: .8rem;
   /* background-color: red; */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.groupDetails h3 {
+.groupDetails p {
   margin: 0;
   color: #363636;
+  font-size: 1rem;
 }
 
 .groupDetails span {
@@ -259,34 +266,52 @@
 }
 
 .titleModal {
-  font-size: 1.5rem;
+  font-size: 32px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin-bottom: 3rem;
   text-transform: uppercase;
   font-weight: bold;
+  background: linear-gradient(270deg, #3f5efb, #fc466b);
+  background-clip: text;
+-webkit-background-clip: text;
+color: transparent;
+
+-webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-foll-color: transparent;
+  -moz-text-foll-color: transparent;
 }
 
 .tittleProjectExperience {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin-top: 2rem;
+  color: #c52707;
+  background-color: #fbe5d5;
+  padding: 1rem;
+  font-size: 1em;
+  font-weight: normal;
+  border-radius: 5px;
 }
 
 .textArea {
   resize: none;
-  outline: none;
+  outline: 1px solid #ccc;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   border-radius: 8px;
   margin-top: .7rem;
-  border-color: #9e9e9e;
+  border:none;
   width: 100%;
+  padding: 1rem;
+  letter-spacing: 1px;
 }
 
 .wrapper {
-  position: absolute;
   width: 100%;
-  height: 90%;
+  height: 100%;
   overflow-y: auto;
-  border-radius: 6px;
+  border-radius: 1rem;
+  background-color: #fff;
+  padding: 0 0 0 .5rem;
 }
 
 .wrapperMain {
@@ -322,9 +347,8 @@
 }
 
 .mainWrapper {
-  /* outline: 2px solid red; */
   position: absolute;
-  top: 3rem;
+  top: 3.5rem;
   width: calc(100% - 2rem);
   height: calc(100% - 4rem);
   text-align: center;
@@ -347,11 +371,10 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  height: 500px;
+  height: 450px;
 }
 
 .inputGroup_1_2 {
-  /* background-color: red; */
   display: flex;
   gap: 1rem;
 }

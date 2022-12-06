@@ -1,28 +1,29 @@
 import styled from 'styled-components'
 
-const WrapperListCardJobPreviewRecruiter = styled.div`
-  width: 90%;
-  height: calc(100vh - 10rem);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  overflow-y: auto;
-`
-
 const Aside = styled.aside`
   grid-area: aside;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 1rem;
-  background-color: #FFF;
+  background-color: #fff;
+  height: ${props => props.height || '100%'};
 `
 
 const Container = styled.main`
   grid-area: container;
   width: 100%;
-  background-color: #fff;
-  border-left: 1px solid #ccc;
+  height: 100%;
+  /* outline: 2px solid red;   */
+`
+
+const Grid = styled.div`
+  /* outline: 2px solid blue;   */
+  height: calc(100% - 9.3rem);
+  padding: 0 .5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 `
 
 const WrapperWidgets = styled.section`
@@ -53,4 +54,4 @@ const ContentWidget = styled.div`
 `
 
 
-export {Aside, ContentWidget, TextNumber, ContentWidgetCommon, Container, WrapperListCardJobPreviewRecruiter, WrapperWidgets }
+export {Aside, ContentWidget, TextNumber, Grid, ContentWidgetCommon, Container, WrapperWidgets }

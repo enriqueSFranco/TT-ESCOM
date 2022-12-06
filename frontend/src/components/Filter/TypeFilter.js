@@ -1,68 +1,60 @@
 import React from "react";
-import { List, Item, Label, Checkbox } from './styled-components/TypeFilterStyled'
+import { useFetch } from "hooks";
+import {
+  List,
+  Item,
+  Label,
+  Checkbox,
+} from "./styled-components/TypeFilterStyled";
 
-const TypeFilter = ({ type }) => {
+const { REACT_APP_CATALOG_WORK_MODALITY, REACT_APP_URL_CATALOG_EXP } =
+  process.env;
+
+const TypeFilter = ({ type, onFiltereChange }) => {
+  const { data: exps } = useFetch(REACT_APP_URL_CATALOG_EXP);
+  const { data: workModality } = useFetch(REACT_APP_CATALOG_WORK_MODALITY);
+
+  if (!exps || !workModality) return null;
+
   const FilterExp = () => (
     <List>
-      <Item>
-        <Label for="">
-          <Checkbox type="checkbox" name="" id="" />
-          0 a 6meses
-        </Label>
-      </Item>
-      <Item>
-        <Label for="">
-          <Checkbox type="checkbox" name="" id="" />
-          6 meses a 1 año
-        </Label>
-      </Item>
-      <Item>
-        <Label for="">
-          <Checkbox type="checkbox" name="" id="" />
-          1 año a 2 años
-        </Label>
-      </Item>
-      <Item>
-        <Label for="">
-          <Checkbox type="checkbox" name="" id="" />
-          2 años o mas
-        </Label>
-      </Item>
-    </List>
-  );
-
-  const FilterEspecialty = () => (
-    <List>
-      <Item></Item>
+      {exps?.map((exp) => (
+        <Item key={`filter-exp-id-${crypto.randomUUID()}`}>
+          <Label htmlFor={exp.c207_description}>
+            <Checkbox
+              type="checkbox"
+              name={exp.c207_description}
+              id={exp.c207_description}
+              value={exp.c207_description}
+              onChange={onFiltereChange}
+            />
+            {exp.c207_description}
+          </Label>
+        </Item>
+      ))}
     </List>
   );
 
   const FilterModality = () => (
     <List>
-      <Item>
-        <Label for="">
-            <Checkbox type="checkbox" name="" id="" />
-            presencial
+      {workModality?.map((modality) => (
+        <Item key={`filter-workModality-id-${crypto.randomUUID()}`}>
+          <Label htmlFor={modality.c214_description}>
+            <Checkbox
+              type="checkbox"
+              name={modality.c214_description}
+              id={modality.c214_description}
+              value={modality.c214_description}
+              onChange={onFiltereChange}
+            />
+            {modality.c214_description}
           </Label>
-      </Item>
-      <Item>
-        <Label for="">
-            <Checkbox type="checkbox" name="" id="" />
-            remoto
-          </Label>
-      </Item>
-      <Item>
-        <Label for="">
-            <Checkbox type="checkbox" name="" id="" />
-            hibrido
-          </Label>
-      </Item>
+        </Item>
+      ))}
     </List>
   );
 
-
   if (type === "Experincia") return <FilterExp />;
-  if (type === "Especialidad") return <FilterEspecialty />;
   if (type === "Modalidad") return <FilterModality />;
 };
 
