@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const WrapperLoader = styled.div`
   width: 100vh;
@@ -7,7 +7,7 @@ const WrapperLoader = styled.div`
   left: 10rem;
   display: grid;
   place-content: center;
-`
+`;
 
 const WraperCard = styled.article`
   width: 100%;
@@ -19,8 +19,9 @@ const WraperCard = styled.article`
   margin-top: 1rem;
   /* outline: 2px solid green; */
   position: relative;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-`
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+`;
 
 const WrapperComment = styled.section`
   margin: 0 auto;
@@ -31,17 +32,17 @@ const WrapperComment = styled.section`
   border: 1px solid #ccc;
   padding: 1rem;
   margin-top: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-`
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+`;
 
-const HeaderInfo = styled.header`
-`
+const HeaderInfo = styled.header``;
 
 const Description = styled.div`
   height: fit-content;
   overflow-y: auto;
   /* outline: 2px solid orange; */
-  `
+`;
 
 const WrapperActions = styled.div`
   background-color: #fff;
@@ -57,18 +58,19 @@ const WrapperActions = styled.div`
   .button_admin {
     border: none;
     outline: none;
-    padding: .5rem 1rem;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 0.5rem 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     border-radius: 2px;
     color: #fff;
     font-weight: 600;
     display: flex;
-    gap: .3rem;
+    gap: 0.3rem;
     align-items: center;
   }
 
   .publish {
-    background-color: #7FBB42;
+    background-color: #7fbb42;
   }
 
   .disabled {
@@ -79,13 +81,13 @@ const WrapperActions = styled.div`
   .reject {
     background-color: red;
   }
-`
+`;
 
 const ContentDescription = styled.div`
   height: fit-content;
   overflow-y: auto;
   /* background-color: red; */
-`
+`;
 
 const ListItems = styled.ul`
   display: flex;
@@ -93,18 +95,28 @@ const ListItems = styled.ul`
   list-style: none;
   margin: 0 0 1rem 0;
   padding: 0;
-`
+`;
 
 const Title = styled.h2`
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 1.5rem;
   background: linear-gradient(27deg, #3f5efb, #fc466b);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-`
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+`;
 
-export { WrapperLoader, ContentDescription, WrapperActions, Title, WrapperComment, ListItems, WraperCard, Description, HeaderInfo }
+export {
+  WrapperLoader,
+  ContentDescription,
+  WrapperActions,
+  Title,
+  WrapperComment,
+  ListItems,
+  WraperCard,
+  Description,
+  HeaderInfo,
+};

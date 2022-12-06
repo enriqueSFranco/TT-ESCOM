@@ -1,15 +1,15 @@
 import styled from 'styled-components'
 
-const WrapperForm = styled.div`
-  position: relative;
-  top: 2rem;
-`
 const Form = styled.form`
+  /* outline: 2px solid blue; */
+  position: fixed;
+  bottom: 1rem;
+  background-color: #fff;
+  width: 34.5%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: .4rem;
 `
 
 const BoxComment = styled.textarea`
@@ -20,7 +20,9 @@ const BoxComment = styled.textarea`
   text-indent: 4px;
   background-color: #F7F6FB;
   padding: .5rem;
-  width: 500px;
+  width: 100%;
+  height: 80px;
+  overflow-y: auto;
   font-size: 1.1rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   transition: 180ms box-shadow ease-in-out;
@@ -35,15 +37,4 @@ const BoxComment = styled.textarea`
   }
 `
 
-const Submit = styled.input`
-  width: 100px;
-  outline: none;
-  border: none;
-  border-radius: 2px;
-  padding: .3rem 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: #116BFE;
-  color: #fff;
-`
-
-export { BoxComment, Form, Submit, WrapperForm }
+export { BoxComment, Form }

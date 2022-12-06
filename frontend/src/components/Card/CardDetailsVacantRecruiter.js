@@ -4,27 +4,21 @@ import { useParams } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
 import {
   useFetch,
-  useModal,
   useGetObservationVacant,
   useGetObservationVacantManager,
 } from "hooks";
 import { stateVacant } from "services";
 import { USERS } from "types";
 import { formatDate } from "utils";
-import ModalPortal from "components/Modal/ModalPortal";
 import Loader from "components/Loader/Loader";
 import Chip from "components/Chip/Chip";
-import { HiOutlineLocationMarker } from "react-icons/hi";
-import { FaCalendarAlt } from "react-icons/fa";
-import { FaBrain } from "react-icons/fa";
-import { BiLike } from "react-icons/bi";
-import { IoMdAddCircle } from "react-icons/io";
-import { IoCloseOutline } from "react-icons/io5";
 import Comment from "components/Comment/Comment";
-import Tooltip from "components/Tooltip/Tooltip";
-import Button from "components/Button/Button";
-import PostComment from "components/Modal/contentModals/PostComment";
 import NoComment from "./CardNoComment";
+import FormAddComment from "components/Form/FormAddComment";
+import { HiOutlineLocationMarker } from "react-icons/hi";
+import { FaCalendarAlt, FaBrain } from "react-icons/fa";
+import { BiLike } from "react-icons/bi";
+import { IoCloseOutline } from "react-icons/io5";
 import {
   WrapperLoader,
   WraperCard,
@@ -42,7 +36,6 @@ function createMarkup(description) {
 }
 
 const CardDetailsVacantRecruiter = () => {
-  const [isOpen, openModal, closeModal] = useModal(false);
   const { t200_id_vacant } = useParams();
   const observation = useGetObservationVacant({ vacantId: t200_id_vacant });
   const observationManager = useGetObservationVacantManager({
@@ -88,7 +81,7 @@ const CardDetailsVacantRecruiter = () => {
           <WraperCard>
             <Title>{data[0]?.t200_job}</Title>
             <HeaderInfo>
-              <ListItems style={{justifyContent: 'center'}}>
+              <ListItems style={{ justifyContent: "center" }}>
                 <li>
                   <Chip
                     label={`${data[0]?.c214_id_modality?.c214_description}`}
@@ -109,7 +102,9 @@ const CardDetailsVacantRecruiter = () => {
                 </li>
                 <li>
                   <Chip
-                    label={`Fecha de cierre: ${formatDate(new Date(data[0]?.t200_close_date).toLocaleDateString())}`}
+                    label={`Fecha de cierre: ${formatDate(
+                      new Date(data[0]?.t200_close_date).toLocaleDateString()
+                    )}`}
                     bg="#000"
                     color="#fff"
                     icon={<FaCalendarAlt style={{ fontSize: "1rem" }} />}
@@ -139,30 +134,29 @@ const CardDetailsVacantRecruiter = () => {
                 )}
               />
             </Description>
-              {token.user.user_type === USERS.recruiter ? (
-                <WrapperActions>
-                  {data[0]?.c204_id_vacant_status?.c204_id_status === 1 && <span>Vacante en revision</span>}
-                </WrapperActions>
-              ) : (
-                <WrapperActions>
-                  <button
-                    className="button_admin publish"
-                    onClick={handlePublish}
-                  >
-                    Publicar vacante
-                    <BiLike style={{ color: "#fff", fontSize: "1.3rem" }} />
-                  </button>
-                  <button
-                    className="button_admin reject"
-                    onClick={handleReject}
-                  >
-                    Rechazar vacante
-                    <IoCloseOutline
-                      style={{ color: "#fff", fontSize: "1.3rem" }}
-                    />
-                  </button>
-                </WrapperActions>
-              )}
+            {token.user.user_type === USERS.recruiter ? (
+              <WrapperActions>
+                {data[0]?.c204_id_vacant_status?.c204_id_status === 1 && (
+                  <span>Vacante en revision</span>
+                )}
+              </WrapperActions>
+            ) : (
+              <WrapperActions>
+                <button
+                  className="button_admin publish"
+                  onClick={handlePublish}
+                >
+                  Publicar vacante
+                  <BiLike style={{ color: "#fff", fontSize: "1.3rem" }} />
+                </button>
+                <button className="button_admin reject" onClick={handleReject}>
+                  Rechazar vacante
+                  <IoCloseOutline
+                    style={{ color: "#fff", fontSize: "1.3rem" }}
+                  />
+                </button>
+              </WrapperActions>
+            )}
           </WraperCard>
           {token.user.user_type === USERS.recruiter ? (
             <WrapperComment>
@@ -216,39 +210,19 @@ const CardDetailsVacantRecruiter = () => {
                         comment={el?.t223_comment}
                         token={token.user.user_type}
                         date={el?.t223_sent_date}
-                        nameManager={el?.t400_id_admin?.t400_name}
+                        username={el?.t400_id_admin?.t400_name}
                         userId={el?.t301_id_recruiter?.t301_id_recruiter}
                       />
                     ))}
                   </div>
                 )}
               </section>
+              <FormAddComment typeUser={token.user.user_type} userId={token.user.id} />
             </WrapperComment>
           ) : (
             // TODO: Pasar a un componente independiente
             <WrapperComment>
-              <header>
-                <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
-                <nav
-                  style={{
-                    position: "relative",
-                    display: "flex",
-                    justifyContent: "flex-end",
-                  }}
-                >
-                  <Tooltip title="Agregar una observacion">
-                    <Button
-                      onClick={openModal}
-                      bgColor="transparent"
-                      icon={
-                        <IoMdAddCircle
-                          style={{ fontSize: "1.7rem", color: "#1C8EFB" }}
-                        />
-                      }
-                    />
-                  </Tooltip>
-                </nav>
-              </header>
+              <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
               <section
                 style={{
                   height: "78vh",
@@ -260,7 +234,7 @@ const CardDetailsVacantRecruiter = () => {
                 {!observationManager.length ? (
                   <article
                     style={{
-                      height: "100%",
+                      // height: "100%",
                       display: "grid",
                       placeContent: "center",
                     }}
@@ -294,7 +268,8 @@ const CardDetailsVacantRecruiter = () => {
                       flexDirection: "column",
                       gap: "1rem",
                       width: "100%",
-                      height: "calc(100vh - 14rem)",
+                      position: 'relative',
+                      height: "calc(100vh - 17rem)",
                     }}
                   >
                     {observationManager.map((observation) => (
@@ -303,7 +278,7 @@ const CardDetailsVacantRecruiter = () => {
                         comment={observation?.t223_comment}
                         token={token.user.user_type}
                         date={observation?.t223_sent_date}
-                        nameManager={observation?.t400_id_admin?.t400_name}
+                        username={observation?.t400_id_admin?.t400_name}
                         userId={
                           observation?.t301_id_recruiter?.t301_id_recruiter
                         }
@@ -312,19 +287,11 @@ const CardDetailsVacantRecruiter = () => {
                   </div>
                 )}
               </section>
+              <FormAddComment typeUser={token.user.user_type} userId={token.user.id} />
             </WrapperComment>
           )}
         </>
       )}
-      <ModalPortal
-        isOpen={isOpen}
-        closeModal={closeModal}
-        minWidth="700px"
-        minHeight="550px"
-      >
-        <PostComment />
-      </ModalPortal>
-
       <Toaster position="top-right" />
     </>
   );
