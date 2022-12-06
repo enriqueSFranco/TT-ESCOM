@@ -10,11 +10,12 @@ import {
 } from "hooks";
 import { stateVacant } from "services";
 import { USERS } from "types";
+import { formatDate } from "utils";
 import ModalPortal from "components/Modal/ModalPortal";
 import Loader from "components/Loader/Loader";
 import Chip from "components/Chip/Chip";
 import { HiOutlineLocationMarker } from "react-icons/hi";
-import { FcCalendar } from "react-icons/fc";
+import { FaCalendarAlt } from "react-icons/fa";
 import { FaBrain } from "react-icons/fa";
 import { BiLike } from "react-icons/bi";
 import { IoMdAddCircle } from "react-icons/io";
@@ -40,7 +41,7 @@ function createMarkup(description) {
   return { __html: description };
 }
 
-const CardDetailsVacantRecruiter = ({ height }) => {
+const CardDetailsVacantRecruiter = () => {
   const [isOpen, openModal, closeModal] = useModal(false);
   const { t200_id_vacant } = useParams();
   const observation = useGetObservationVacant({ vacantId: t200_id_vacant });
@@ -87,14 +88,14 @@ const CardDetailsVacantRecruiter = ({ height }) => {
           <WraperCard>
             <Title>{data[0]?.t200_job}</Title>
             <HeaderInfo>
-              <ListItems>
+              <ListItems style={{justifyContent: 'center'}}>
                 <li>
                   <Chip
                     label={`${data[0]?.c214_id_modality?.c214_description}`}
                     bg="var(--bg-color_3)"
                     color="var(--color_3)"
                     icon={
-                      <HiOutlineLocationMarker style={{ fontSize: "1.2rem" }} />
+                      <HiOutlineLocationMarker style={{ fontSize: "1rem" }} />
                     }
                   />
                 </li>
@@ -103,15 +104,15 @@ const CardDetailsVacantRecruiter = ({ height }) => {
                     label={`${data[0]?.c207_id_experience?.c207_description}`}
                     bg="var(--bg-color_1)"
                     color="var(--color_1)"
-                    icon={<FaBrain style={{ fontSize: "1.2rem" }} />}
+                    icon={<FaBrain style={{ fontSize: "1rem" }} />}
                   />
                 </li>
                 <li>
                   <Chip
-                    label={`${data[0]?.t200_close_date}`}
-                    bg="#F78181"
-                    color="#DF0101"
-                    icon={<FcCalendar style={{ fontSize: "1.2rem" }} />}
+                    label={`Fecha de cierre: ${formatDate(new Date(data[0]?.t200_close_date).toLocaleDateString())}`}
+                    bg="#000"
+                    color="#fff"
+                    icon={<FaCalendarAlt style={{ fontSize: "1rem" }} />}
                   />
                 </li>
               </ListItems>
@@ -137,6 +138,7 @@ const CardDetailsVacantRecruiter = ({ height }) => {
                   data[0]?.t200_description
                 )}
               />
+            </Description>
               {token.user.user_type === USERS.recruiter ? (
                 <WrapperActions>
                   {data[0]?.c204_id_vacant_status?.c204_id_status === 1 && <span>Vacante en revision</span>}
@@ -161,7 +163,6 @@ const CardDetailsVacantRecruiter = ({ height }) => {
                   </button>
                 </WrapperActions>
               )}
-            </Description>
           </WraperCard>
           {token.user.user_type === USERS.recruiter ? (
             <WrapperComment>
@@ -213,7 +214,9 @@ const CardDetailsVacantRecruiter = ({ height }) => {
                       <Comment
                         key={`comment-id-${el?.t223_id_comment}`}
                         comment={el?.t223_comment}
+                        token={token.user.user_type}
                         date={el?.t223_sent_date}
+                        nameManager={el?.t400_id_admin?.t400_name}
                         userId={el?.t301_id_recruiter?.t301_id_recruiter}
                       />
                     ))}
@@ -290,8 +293,8 @@ const CardDetailsVacantRecruiter = ({ height }) => {
                       display: "flex",
                       flexDirection: "column",
                       gap: "1rem",
-                      width: "550px",
-                      height: "76vh",
+                      width: "100%",
+                      height: "calc(100vh - 14rem)",
                     }}
                   >
                     {observationManager.map((observation) => (
@@ -300,6 +303,7 @@ const CardDetailsVacantRecruiter = ({ height }) => {
                         comment={observation?.t223_comment}
                         token={token.user.user_type}
                         date={observation?.t223_sent_date}
+                        nameManager={observation?.t400_id_admin?.t400_name}
                         userId={
                           observation?.t301_id_recruiter?.t301_id_recruiter
                         }
@@ -316,7 +320,7 @@ const CardDetailsVacantRecruiter = ({ height }) => {
         isOpen={isOpen}
         closeModal={closeModal}
         minWidth="700px"
-        minHeight="490px"
+        minHeight="550px"
       >
         <PostComment />
       </ModalPortal>

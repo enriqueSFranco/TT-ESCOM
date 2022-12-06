@@ -3,13 +3,17 @@ import { useParams } from "react-router-dom";
 import { useForm } from "hooks";
 import { formatDate } from "utils";
 import { USERS } from "types";
+import { AiOutlineSend } from 'react-icons/ai'
 import {
   WrapperComment,
+  WrapperAvatar,
   Description,
   CommentBox,
   TextDate,
   Form
 } from "./styled-components/CommentStyled";
+import CustomAvatar from "components/Avatar/Avatar";
+import Button from "components/Button/Button";
 
 function CommentRecruiter({ id, token }) {
   const { t200_id_vacant } = useParams();
@@ -18,6 +22,8 @@ function CommentRecruiter({ id, token }) {
     t200_id_recruiter: id,
     t223_comment: "",
   });
+
+  // TODO: enviar el comentario del reclutador al colaborador
 
   return (
     <Form>
@@ -30,7 +36,7 @@ function CommentRecruiter({ id, token }) {
         rows="5"
         placeholder="Responder"
       ></CommentBox>
-      {token === USERS.recruiter && <input type="submit" value="Enviar" />}
+      {token === USERS.recruiter && <Button bgColor="transparent" color="#2172f2" icon={<AiOutlineSend />} />}
     </Form>
   );
 }
@@ -38,11 +44,14 @@ function CommentRecruiter({ id, token }) {
 const Comment = ({ comment, date, nameManager, userId, token }) => {
   return (
     <WrapperComment>
-      <TextDate>Fecha: {formatDate(date)}</TextDate>
+      <WrapperAvatar>
+        <CustomAvatar username={nameManager} width="50px" height="50px" />
+        <TextDate>Fecha: {formatDate(date)}</TextDate>
+      </WrapperAvatar>
       <Description>
-        <p>{comment}</p>
+        <span>{comment}</span>
       </Description>
-      <CommentRecruiter id={userId} token={token} />
+      {token === USERS.recruiter && <CommentRecruiter id={userId} token={token} />}
     </WrapperComment>
   );
 };

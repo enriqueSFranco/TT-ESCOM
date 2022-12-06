@@ -35,7 +35,7 @@ const ListVacantsAdmin = () => {
           <Aside>
             <div
               style={{
-                height: "87vh",
+                height: "90vh",
                 overflowY: "auto",
                 display: "flex",
                 flexDirection: "column",
@@ -45,7 +45,7 @@ const ListVacantsAdmin = () => {
               {data?.map((el) => (
                 <CardJobPreviewRecruiter
                   key={`card_job_${crypto.randomUUID()}`}
-                  url="index/lista-de-vacantes"
+                  url="/lista-de-vacantes"
                   info={el}
                 />
               ))}

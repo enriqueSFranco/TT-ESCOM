@@ -66,6 +66,8 @@ const PageHistory = () => {
 
   if (!dataVacantInfo) return null;
 
+  console.log(dataVacantInfo)
+
   return (
     <LayoutHome>
       <LayoutDashboard top="4rem">
@@ -96,7 +98,7 @@ const PageHistory = () => {
                   dataVacantInfo[0]?.TotalHired === null
                     ? 0
                     : dataVacantInfo[0]?.TotalHired
-                }/10`}</TextNumber>
+                }/${dataVacantInfo[0]?.t200_vacancy}`}</TextNumber>
                 <Chip
                   label="contratados"
                   bg="#31C27C"

@@ -11,23 +11,24 @@ const WrapperLoader = styled.div`
 
 const WraperCard = styled.article`
   width: 100%;
-  height: 83%;
   margin: 0 auto;
-  background-color: #F7F7F9;
+  background-color: #fff;
   border-radius: 5px;
+  border: 1px solid #ccc;
   padding: 1rem;
   margin-top: 1rem;
-  outline: 2px solid green;
+  /* outline: 2px solid green; */
+  position: relative;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `
 
 const WrapperComment = styled.section`
   margin: 0 auto;
   width: 100%;
-  height: 80%;
   overflow-x: hidden;
-  background: #F7F7F9;
+  background-color: #fff;
   border-radius: 5px;
+  border: 1px solid #ccc;
   padding: 1rem;
   margin-top: 1rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -37,17 +38,21 @@ const HeaderInfo = styled.header`
 `
 
 const Description = styled.div`
+  height: fit-content;
   overflow-y: auto;
-  height: calc(100% - 21%);
-  outline: 2px solid blue;
-`
+  /* outline: 2px solid orange; */
+  `
 
 const WrapperActions = styled.div`
+  background-color: #fff;
   width: 100%;
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  margin-top: 2rem;
+  padding: 1rem 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 
   .button_admin {
     border: none;
@@ -92,9 +97,14 @@ const ListItems = styled.ul`
 
 const Title = styled.h2`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  text-align: center;
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(27deg, #3f5efb, #fc466b);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
 `
 
 export { WrapperLoader, ContentDescription, WrapperActions, Title, WrapperComment, ListItems, WraperCard, Description, HeaderInfo }

@@ -79,7 +79,7 @@ const MenuManager = () => {
       </NavLeft>
       <NavList>
         {links?.map((link, index) => (
-          <Link data-item key={`linkId-${link.id}`} to={link.to}>
+          <Link data-item key={`link-id-${link.id}`} to={link.to}>
             {link.icon}
             {link.label}
           </Link>

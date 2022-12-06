@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const WrapperForm = styled.div`
   position: relative;
-  top: 3rem;
+  top: 2rem;
 `
 const Form = styled.form`
   display: flex;

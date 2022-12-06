@@ -69,7 +69,7 @@ const Root = () => {
         <Route path="/validar-vacante" element={<ListVacantsAdmin />}>
           <Route
             path=":t200_id_vacant"
-            element={<CardDetailsVacantRecruiter height="85%" />}
+            element={<CardDetailsVacantRecruiter />}
           />
         </Route>
         <Route

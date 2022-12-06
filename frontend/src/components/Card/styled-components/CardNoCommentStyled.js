@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const SkeletonCard = styled.div`
   width: 400px;
   height: 110px;
-  background-color: #fff;
+  background-color: #F5F5F5;
   bottom: 10rem;
   border-radius: 1rem;
   display: grid;
@@ -46,10 +46,10 @@ const WrapperParagraph = styled.div`
   `
 
 const SkeletonParagraph = styled.p`
-  background-color: #EFEFEF;
+  background-color: #2172F2;
   display: block;
   width: 100%;
-  height: 20px;
+  height: 8px;
   border-radius: 5px;
   margin: 0;
 
