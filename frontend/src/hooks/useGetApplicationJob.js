@@ -1,17 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { getApplicationsJobs } from 'services/jobs/index'
 
 export function useGetApplicationJob({ idVacant }) {
   const [data, setData] = useState(null)
+  const isMountedRef = useRef(true)
   
   useEffect(() => {
-    const controller = new AbortController()
     getApplicationsJobs(idVacant)
       .then(response => {
-        setData(response)
+        setTimeout(() => {
+          if (isMountedRef.current)
+            setData(response)
+        })
       })
       .catch(error =>  console.log(error))
-    return () => controller.abort()
+    return () => isMountedRef.current = false
   }, [idVacant]);
 
   return [data]

@@ -1,6 +1,5 @@
 import React from "react";
 import { Toaster, toast } from "react-hot-toast";
-import { useParams } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
 import {
   useFetch,
@@ -35,20 +34,20 @@ function createMarkup(description) {
   return { __html: description };
 }
 
-const CardDetailsVacantRecruiter = () => {
-  const { t200_id_vacant } = useParams();
-  const observation = useGetObservationVacant({ vacantId: t200_id_vacant });
+const CardDetailsVacantRecruiter = ({ vacantId }) => {
+  // const { t200_id_vacant } = useParams();
+  const observation = useGetObservationVacant({ vacantId: vacantId });
   const observationManager = useGetObservationVacantManager({
-    vacantId: t200_id_vacant,
+    vacantId: vacantId,
   });
   const { token } = useAuth();
   const { data, error, loading } = useFetch(
-    `${process.env.REACT_APP_URL_VACANTS}${t200_id_vacant}/`
+    `${process.env.REACT_APP_URL_VACANTS}${vacantId}/`
   );
 
   const handlePublish = (e) => {
     e.preventDefault();
-    stateVacant(t200_id_vacant, {
+    stateVacant(vacantId, {
       t400_id_admin: 1,
       c204_id_vacant_status: 2,
       activate: true,
@@ -59,7 +58,7 @@ const CardDetailsVacantRecruiter = () => {
 
   const handleReject = (e) => {
     e.preventDefault();
-    stateVacant(t200_id_vacant, {
+    stateVacant(vacantId, {
       t400_id_admin: 1,
       c204_id_vacant_status: 4,
       activate: "",
@@ -217,7 +216,10 @@ const CardDetailsVacantRecruiter = () => {
                   </div>
                 )}
               </section>
-              <FormAddComment typeUser={token.user.user_type} userId={token.user.id} />
+              <FormAddComment
+                typeUser={token.user.user_type}
+                userId={token.user.id}
+              />
             </WrapperComment>
           ) : (
             // TODO: Pasar a un componente independiente
@@ -268,7 +270,7 @@ const CardDetailsVacantRecruiter = () => {
                       flexDirection: "column",
                       gap: "1rem",
                       width: "100%",
-                      position: 'relative',
+                      position: "relative",
                       height: "calc(100vh - 17rem)",
                     }}
                   >
@@ -287,7 +289,10 @@ const CardDetailsVacantRecruiter = () => {
                   </div>
                 )}
               </section>
-              <FormAddComment typeUser={token.user.user_type} userId={token.user.id} />
+              <FormAddComment
+                typeUser={token.user.user_type}
+                userId={token.user.id}
+              />
             </WrapperComment>
           )}
         </>

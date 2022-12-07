@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
-const Card = styled(Link)`
+const Card = styled.article`
   position: relative;
   height: 200px;
   color: #000;
@@ -15,9 +14,10 @@ const Card = styled(Link)`
     rgb(209, 213, 219) 0px 0px 0px 1px inset;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-
+  transition: box-shadow .3s ease-in-out;
   &:hover {
     color: #000;
+    box-shadow: #2172F2 0px 0px 0px 3px;
   }
 `;
 
@@ -39,7 +39,6 @@ const CardHeaderRight = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
   img {
     height: 100%;
     object-fit: contain;

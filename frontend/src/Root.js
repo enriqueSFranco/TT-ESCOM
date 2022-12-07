@@ -12,7 +12,7 @@ import PageRegisterCompany from "pages/login/PageRegisterCompany";
 import PageProfileStudent from "pages/student/PageProfileStudent";
 import PageLoginStudentUpdate from "pages/login/PageLoginStudentUpdate";
 import FormPostJob from "components/Form/postJob/FormPostJob";
-import PageHistory from "pages/business/PageHistory";
+import PageHistory from "pages/business/pageInit/PageHistory";
 import PageLanguages from "pages/student/PageLanguages";
 import PageSuccesCompany from "pages/login/PageSuccesCompany";
 import PageValidateRecruiter from "pages/admin/PageValidateRecruiter";
@@ -34,8 +34,6 @@ import ListVacantsAdmin from "pages/admin/ListVacantsAdmin";
 import CardDetailsVacantRecruiter from "components/Card/CardDetailsVacantRecruiter";
 import Postulates from "pages/business/Postulates";
 import LoginAdmin from "pages/login/LoginAdmin";
-// import Index from "pages/admin/Index";
-// import CreateAccountAdmin from "pages/login/CreateAccountAdmin";
 
 const Root = () => {
   return (
@@ -48,12 +46,11 @@ const Root = () => {
       <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>
         <Route path="/candidatos" element={<AllCandidates />} />
         <Route path="/publicar-comunicado" element={<PagePostRelease />} />
-        <Route path="/dashboard" element={<PageHistory />}>
-          <Route
+        <Route path="/dashboard" element={<PageHistory />} />
+          {/* <Route
             path=":t200_id_vacant"
             element={<CardDetailsVacantRecruiter height="80%" />}
-          />
-        </Route>
+          /> */}
         <Route path="/crear-vacante" element={<FormPostJob />} />
         <Route path="/postulaciones" element={<Postulates />}>
           <Route path=":t200_id_vacant" element={<Accordion />} />
@@ -67,11 +64,11 @@ const Root = () => {
         <Route path="/validar-empresa" element={<ValidateCompany />} />
         <Route path="/empresas-registradas" element={<RegisteredCompanies />} />
         <Route path="/validar-vacante" element={<ListVacantsAdmin />}>
-          <Route
+        </Route>
+          {/* <Route
             path=":t200_id_vacant"
             element={<CardDetailsVacantRecruiter />}
-          />
-        </Route>
+          /> */}
         <Route
           path="/detalles-de-emperesa/:t300_id_company"
           element={<DetailsCompany />}
