@@ -1,44 +1,33 @@
 import React from "react";
 import { useFetch } from "hooks";
 import Chip from "components/Chip/Chip";
+import Button from "components/Button/Button";
 import { List, ListItem } from "styled-components/CommonStyles";
-
 import {
-  Button,
   DescriptionJob,
   Header,
   TextH2,
   WrapperRequitements,
-  WrapperMoreInfo
+  WrapperMoreInfo,
 } from "../styled-components/DetailsJobStyled";
 
 function createMarkup(description) {
   return { __html: description };
 }
 
-const DetailsJob = ({
-  logo,
-  nameCompany,
-  nameJob,
-  descriptionJob,
-  street,
-  publishDate,
-  typeContract,
-  exp,
-  profile,
-  token,
-  idJob,
-  userID,
-  handleApplyJob,
-}) => {
+const DetailsJob = ({ vacantId, token, idJob, userID, handleApplyJob }) => {
   const { data } = useFetch(
-    `${process.env.REACT_APP_URL_VACANT_REQUIREMENTS}${idJob}/`
+    `${process.env.REACT_APP_URL_VACANT_REQUIREMENTS}${vacantId}`
   );
 
-  if (!data) return null;
+  const { data: summaryJob } = useFetch(
+    `${process.env.REACT_APP_URL_VACANTS}${vacantId}`
+  );
+
+  if (!data || !summaryJob) return null;
 
   return (
-    <>
+    <article style={{ outline: "2px solid #ccc", borderRadius: "1rem" }}>
       <Header>
         <figure
           style={{
@@ -50,8 +39,8 @@ const DetailsJob = ({
           }}
         >
           <img
-            src={logo}
-            alt={nameCompany}
+            src={null}
+            alt={""}
             width="100px"
             style={{
               boxShadow:
@@ -67,8 +56,26 @@ const DetailsJob = ({
               gap: ".5rem",
             }}
           >
-            <span style={{color: '#fff', fontSize: '1.9em', fontWeight: '700', fontFamily: 'sans-serif'}}>{nameCompany}</span>
-            <span style={{color: '#fff', fontSize: '1.5em', fontWeight: '700', fontFamily: 'sans-serif'}}>{nameJob}</span>
+            <span
+              style={{
+                color: "#fff",
+                fontSize: "1.9em",
+                fontWeight: "700",
+                fontFamily: "sans-serif",
+              }}
+            >
+              {summaryJob[0]?.t300_id_company?.t300_name}
+            </span>
+            <span
+              style={{
+                color: "#fff",
+                fontSize: "1.5em",
+                fontWeight: "700",
+                fontFamily: "sans-serif",
+              }}
+            >
+              {summaryJob[0]?.t200_job}
+            </span>
           </figcaption>
         </figure>
       </Header>
@@ -117,12 +124,25 @@ const DetailsJob = ({
         )}
       </WrapperRequitements>
       <WrapperMoreInfo>
-        <span>Ubicacion: {street}</span>
-        <span>Perfil: {profile}</span>
-        <span>Tipo de contratacion: {typeContract}</span>
-        <span>Experiencia: {exp}</span>
+        <span>
+          Ubicacion:{" "}
+          {`${summaryJob[0]?.t200_street}, ${
+            summaryJob[0]?.t200_interior_number &&
+            summaryJob[0]?.t200_interior_number
+          }`}
+        </span>
+        <span>Perfil: {summaryJob[0]?.c206_id_profile?.c206_description}</span>
+        <span>
+          Tipo de contratacion:{" "}
+          {summaryJob[0]?.c208_id_contract.c208_description}
+        </span>
+        <span>
+          Experiencia: {summaryJob[0]?.c207_id_experience?.c207_description}
+        </span>
       </WrapperMoreInfo>
-      <DescriptionJob dangerouslySetInnerHTML={createMarkup(descriptionJob)} />
+      <DescriptionJob
+        dangerouslySetInnerHTML={createMarkup(summaryJob[0]?.t200_description)}
+      />
       <div
         style={{
           backgroundColor: "#fff",
@@ -131,16 +151,27 @@ const DetailsJob = ({
         }}
       >
         {token ? (
-          <Button onClick={() => handleApplyJob(idJob, userID)}>
-            Postularme
-          </Button>
+          <Button
+            text="Postularme a esta vacante"
+            onClick={() => handleApplyJob(idJob, userID)}
+            bgColor="#2172f2"
+            color="#fff"
+            width="20"
+            height="3"
+          />
         ) : (
-          <Button onClick={() => window.location.replace("/registro-alumno")}>
-            Postularme
-          </Button>
+          <Button
+            text="Postularme a esta vacante"
+            onClick={() => window.location.replace("/registro-alumno")}
+            bgColor="#2172f2"
+            color="#fff"
+            width="20"
+            height="3"
+          />
+          
         )}
       </div>
-    </>
+    </article>
   );
 };
 

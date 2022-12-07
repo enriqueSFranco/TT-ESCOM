@@ -12,6 +12,9 @@ const ButtonStyled = styled.button`
   justify-content: center;
   align-items: center;
   gap: .3rem;
+  font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  letter-spacing: 1px;
   /* position: relative; */
 `
 

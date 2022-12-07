@@ -1,21 +1,38 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useGetAllJobs, useNearScreen, useCustomDebounce, useSearchJob } from "hooks";
+import { useAuth } from "context/AuthContext";
+import {
+  useGetAllJobs,
+  useNearScreen,
+  useCustomDebounce,
+  useSearchJob,
+} from "hooks";
+import { applyJob } from "services";
 import FormSearchJob from "components/Search/FormSearchJob";
 import JobList from "components/Card/JobList/JobList";
 import Loader from "components/Loader/Loader";
 import LayoutHome from "Layout/LayoutHome";
 import LayoutHero from "Layout/LayoutHero";
-import { Aside, Content, Hero, Main } from "./styled-components/HomeStyled";
 import parallaxESCOM from "images/parallaxESCOM.jpg";
 import Filters from "components/Filter/Filters";
 import ButtonScrollTop from "components/Button/ButtonScrollTop";
+import {
+  Aside,
+  Content,
+  Hero,
+  Main,
+  Cards,
+  SummaryCard,
+} from "./styled-components/HomeStyled";
+import DetailsJob from "components/Modal/contentModals/DetailsJob";
 
 const Home = () => {
   // const [filteredData, setDataFiltered] = useState([]);
+  const [vacantId, setVacantId] = useState(null);
   const [isFiltered, setIsFiltered] = useState(false);
-  const [query, setQuery] = useState("")
-  const [data, isLoading] = useSearchJob(query)
+  const [query, setQuery] = useState("");
+  const [data, isLoading] = useSearchJob(query);
   const externalRef = useRef(null);
+  const { token } = useAuth();
   const { response, loading, loadingNextPage, setPage } = useGetAllJobs();
   const { isNearScreen } = useNearScreen({
     distance: "100px",
@@ -24,12 +41,12 @@ const Home = () => {
   });
 
   function handleNextPage() {
-    setPage(prevPage => prevPage + 1)
+    setPage((prevPage) => prevPage + 1);
   }
-  
+
   const debounce = useCustomDebounce(() => {
-    handleNextPage()
-  }, 400)
+    handleNextPage();
+  }, 400);
 
   // function handleFilter(value) {
   //   let lowerValue = value.toLowerCase();
@@ -51,35 +68,77 @@ const Home = () => {
     // handleFilter(value);
   }
 
-  const debouncehandleNextPage = useCallback(debounce
-  , []);
+  const debouncehandleNextPage = useCallback(debounce, []);
+
+  const handleApplyJob = async (idJob, userID) => {
+    let now = new Date();
+    try {
+      const response = await applyJob({
+        t200_id_vacant: idJob,
+        t100_id_student: userID,
+        c205_id_application_state: 1,
+        t201_date_application:
+          now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate(),
+      });
+      const { data } = response;
+      console.log(data)
+      // toast.success(data?.message);
+    } catch (error) {
+      // toast.error(error.message);
+    }
+  };
 
   useEffect(() => {
     if (isNearScreen) debouncehandleNextPage();
-  },[isNearScreen, debouncehandleNextPage]);
-  
+  }, [isNearScreen, debouncehandleNextPage]);
+
   if (!response) return null;
-  
+
+  // console.log(token?.user?.id)
+
   return (
     <LayoutHome>
       <Main>
         <Hero>
           <LayoutHero src_photo={parallaxESCOM} alt_photo="parallax-ESCOM">
-            <FormSearchJob handleSearch={handleSearch} query={query} setQuery={setQuery} />
+            <FormSearchJob
+              handleSearch={handleSearch}
+              query={query}
+              setQuery={setQuery}
+            />
           </LayoutHero>
         </Hero>
         <Aside>
           <Filters onFiltereChange={onFiltereChange} />
         </Aside>
-        <Content id="cards">
-          <JobList
-            jobs={isFiltered ? data?.results : response}
-            loading={loading}
-          />
-          <div style={{width: '100%',display: 'grid', placeContent: 'center', backgroundColor: 'transparent', margin: '1rem 0', padding: '0 0 2rem 0'}}>
-            {loadingNextPage && <Loader />}
-          </div>
-          <div id="visor" ref={externalRef}></div>
+        <Content>
+          <Cards id="cards">
+            <JobList
+              jobs={isFiltered ? data?.results : response}
+              loading={loading}
+              setVacantId={setVacantId}
+            />
+            <div
+              style={{
+                width: "100%",
+                display: "grid",
+                placeContent: "center",
+                backgroundColor: "transparent",
+                margin: "1rem 0",
+                padding: "0 0 2rem 0",
+              }}
+            >
+              {loadingNextPage && <Loader />}
+            </div>
+            <div id="visor" ref={externalRef}></div>
+          </Cards>
+          <SummaryCard>
+            <DetailsJob
+              vacantId={vacantId || response[0]?.t200_id_vacant}
+              handleApplyJob={() => handleApplyJob(vacantId, token?.user?.id)}
+              token={token}
+            />
+          </SummaryCard>
         </Content>
         <ButtonScrollTop />
       </Main>
