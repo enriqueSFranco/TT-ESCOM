@@ -1,5 +1,5 @@
 import React from "react";
-import { useFetch } from "hooks";
+import { useFetch, useScroll } from "hooks";
 import Chip from "components/Chip/Chip";
 import Button from "components/Button/Button";
 import { List, ListItem } from "styled-components/CommonStyles";
@@ -9,6 +9,7 @@ import {
   TextH2,
   WrapperRequitements,
   WrapperMoreInfo,
+  WrapperSummaryJob
 } from "../styled-components/DetailsJobStyled";
 
 function createMarkup(description) {
@@ -27,7 +28,7 @@ const DetailsJob = ({ vacantId, token, idJob, userID, handleApplyJob }) => {
   if (!data || !summaryJob) return null;
 
   return (
-    <article style={{ outline: "2px solid #ccc", borderRadius: "1rem" }}>
+    <WrapperSummaryJob>
       <Header>
         <figure
           style={{
@@ -145,9 +146,14 @@ const DetailsJob = ({ vacantId, token, idJob, userID, handleApplyJob }) => {
       />
       <div
         style={{
+          width: '100%',
           backgroundColor: "#fff",
-          display: "grid",
-          placeContent: "center",
+          position: 'absolute',
+          bottom: '0',
+          display: 'grid',
+          placeContent: 'center',
+          padding: '1rem 0',
+          borderRadius: '0 0 1rem 1rem'
         }}
       >
         {token ? (
@@ -171,7 +177,7 @@ const DetailsJob = ({ vacantId, token, idJob, userID, handleApplyJob }) => {
           
         )}
       </div>
-    </article>
+    </WrapperSummaryJob>
   );
 };
 
