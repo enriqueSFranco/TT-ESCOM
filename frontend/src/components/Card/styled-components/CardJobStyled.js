@@ -18,7 +18,7 @@ const CardBody = styled.article`
   }
 
   @media screen and ${device.laptop} {
-    width: 400px;
+    width: 100%;
     height: 330px;
     border-radius: 1rem;
     color: #222;
