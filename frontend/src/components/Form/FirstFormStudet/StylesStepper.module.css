@@ -19,12 +19,11 @@
 }
 
 .bg{
-  /* background-color: #2172F2; */
-  border-right: 2px solid #2F4665;
+  background-color: #f1f1f181;
   height: 100%;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  padding: 2rem;
 }
 
 .container2 {
@@ -41,7 +40,6 @@
   width: 100%;
   position: relative;
   top: 8rem;
-  padding-left: 1rem;
 }
 
 .titleCurrent {
@@ -50,8 +48,7 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-align: left;
   position: relative;
-  top: 1rem;
-  left: 1rem;
+  top: 4rem;
 }
 
 .subTitleCurrent {
@@ -60,8 +57,7 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-align: left;
   position: relative;
-  top: 2rem;
-  left: 1rem
+  top: 6rem;
 }
 
 .buttons {
