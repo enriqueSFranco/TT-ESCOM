@@ -105,7 +105,7 @@ function DatesPersonal({
   return (
     <div className={styles.containerPage}>
       <h5 className={styles.formTitlePersonal}>
-        Por favor, proporcionanos los siguientes datos.
+        Información Personal
       </h5>
       <form className={styles.form}>
         <div className={styles.inputGroup}>

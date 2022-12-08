@@ -10,8 +10,8 @@ const DatesJob = ({ form, handleChange, interestJobs, setInterestJobs }) => {
 
   return (
     <div className={styles.containerPage}>
-      <h5 className={styles.formTitleSkills}>¿Cuáles  son tus metas Profesionales?</h5>
-      <form className={styles.formJob}>
+      <h5 className={styles.formTitlePersonal}>Meta Profesional</h5>
+      <form className={styles.form}>
         <div className={styles.inputGroup}>
           <Autocomplete   
             size="small"         
@@ -40,9 +40,20 @@ const DatesJob = ({ form, handleChange, interestJobs, setInterestJobs }) => {
             sx={{ width: "100%"}}
           />
         </div>
-
-        <div className={styles.inputGroupCheckbox}>
-          <div className={styles.text}>Preferirias un trabajo ??</div>
+        <div style={{display: 'flex', alignItems: 'center', gap: '.3rem'}}>
+          {/* <MdLocationPin
+            style={{
+              fontWeight: "bold",
+              fontSize: "1rem",
+            }}
+          /> */}
+          <span
+            style={{ fontWeight: "400", fontSize: "1em", color: "#2F4665" }}
+          >
+            Modalidad de empleo
+          </span>
+        </div>
+        <div className={styles.inputGroup}>
           <RadioGroup
             row
             id="t100_modalities"

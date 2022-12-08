@@ -37,6 +37,9 @@ const RenderImage = ({ activeStep, steps }) => {
     return (
       <aside className={`${styles.bg}`}>
         <h2 className={styles.titleCurrent}>Paso 2</h2>
+        <p className={styles.subTitleCurrent}>
+          Ingresa tus datos personales para acercarte a las empresas
+        </p>
         <RenderIndicatorStep activeStep={activeStep} steps={steps} />
       </aside>
     );
@@ -44,6 +47,9 @@ const RenderImage = ({ activeStep, steps }) => {
     return (
       <aside className={`${styles.bg}`}>
         <h2 className={styles.titleCurrent}>Paso 3</h2>
+        <p className={styles.subTitleCurrent}>
+          Ingresa tus datos personales para acercarte a las empresas
+        </p>
         <RenderIndicatorStep activeStep={activeStep} steps={steps} />
       </aside>
     );
@@ -51,6 +57,9 @@ const RenderImage = ({ activeStep, steps }) => {
     return (
       <aside className={`${styles.bg}`}>
         <h2 className={styles.titleCurrent}>paso 4</h2>
+        <p className={styles.subTitleCurrent}>
+          Ingresa tus datos personales para acercarte a las empresas
+        </p>
         <RenderIndicatorStep activeStep={activeStep} steps={steps} />
       </aside>
     );

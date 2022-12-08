@@ -25,10 +25,10 @@ function DatesSkill({ softSkills, setSoftSkills,hardSkills, setHardSkills }) {
 
   return (
     <div className={styles.containerPage}>
-      <h4 className={styles.formTitleSkills}>Para Finalizar...</h4>
-      <form className={styles.formSkills}>
-      <h5>Selecciona tus habilidades y conocimientos más importantes (max 10)</h5>
-        <div className={styles.select}>
+      <h4 className={styles.formTitlePersonal}>Habilidades</h4>
+      <form className={styles.form}>
+      <h5 style={{fontSize: '.8em', color: '#6E6D7A', margin: '0'}}>Selecciona tus habilidades y conocimientos más importantes (max 10)</h5>
+        <div className={styles.inputGroup}>
           <Autocomplete
             size="small"
             sx={{ width: 600, maxWidth: "100%" }}
@@ -53,7 +53,7 @@ function DatesSkill({ softSkills, setSoftSkills,hardSkills, setHardSkills }) {
             )}
           />
         </div>
-        <div className={styles.select}>
+        <div className={styles.inputGroup}>
           <Autocomplete
             size="small"
             sx={{ width: 600, maxWidth: "100%" }}
