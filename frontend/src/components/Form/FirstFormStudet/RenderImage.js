@@ -1,6 +1,32 @@
 import React from "react";
 import { Stepper, Step, StepLabel } from "@mui/material";
+import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
+import { styled } from '@mui/material/styles';
 import styles from "./StylesStepper.module.css";
+
+const QontoConnector = styled(StepConnector)(({ theme }) => ({
+  [`&.${stepConnectorClasses.alternativeLabel}`]: {
+    top: 10,
+    left: 'calc(-50% + 16px)',
+    right: 'calc(50% + 16px)',
+  },
+  [`&.${stepConnectorClasses.active}`]: {
+    [`& .${stepConnectorClasses.line}`]: {
+      borderColor: '#62c62e',
+    },
+  },
+  [`&.${stepConnectorClasses.completed}`]: {
+    [`& .${stepConnectorClasses.line}`]: {
+      borderColor: '#62c62e',
+    },
+  },
+  [`& .${stepConnectorClasses.line}`]: {
+    borderColor: theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#ccc',
+    height: 100,
+    borderWidth: 2,
+    borderRadius: 1,
+  },
+}));
 
 const RenderIndicatorStep = ({ activeStep, steps }) => {
   return (
@@ -8,6 +34,7 @@ const RenderIndicatorStep = ({ activeStep, steps }) => {
       <Stepper
         activeStep={activeStep}
         orientation="vertical"
+        connector={<QontoConnector />}
       >
         {steps?.map((step) => (
           <Step key={`step-id-${step.id}`}>
