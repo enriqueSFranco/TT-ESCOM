@@ -20,6 +20,14 @@ def calculate_optional_skills(candidate_skills,optional):
     optional_porcentage = (optional_skills*100)/len(optional)       
     return optional_porcentage
 
+def calculate_total_percentage(vacant,wheights):        
+    sum = (vacant[0]*wheights[0]) + (vacant[1]*wheights[1]) + (vacant[2]*wheights[2]) + (vacant[3]*wheights[3]) + (vacant[4]*wheights[4])
+    total_max_percentage = wheights[0]+wheights[1]+wheights[2]+wheights[3]+wheights[4]
+    print(total_max_percentage)
+    percentage = sum*100/310
+    print(percentage)
+    return percentage
+
 
 def calculate_languages(candidate_languages,vacant_languages):
     languages_count = 0
