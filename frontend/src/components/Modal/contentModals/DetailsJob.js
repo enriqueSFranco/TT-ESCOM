@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useFetch, useScroll } from "hooks";
 import Chip from "components/Chip/Chip";
 import Button from "components/Button/Button";
@@ -17,6 +17,7 @@ function createMarkup(description) {
 }
 
 const DetailsJob = ({ vacantId, token, idJob, userID, handleApplyJob }) => {
+  const elementRef = useRef(null)
   const { data } = useFetch(
     `${process.env.REACT_APP_URL_VACANT_REQUIREMENTS}${vacantId}`
   );
@@ -25,10 +26,14 @@ const DetailsJob = ({ vacantId, token, idJob, userID, handleApplyJob }) => {
     `${process.env.REACT_APP_URL_VACANTS}${vacantId}`
   );
 
+  useEffect(() => {
+    
+  }, [])
+
   if (!data || !summaryJob) return null;
 
   return (
-    <WrapperSummaryJob>
+    <WrapperSummaryJob ref={elementRef}>
       <Header>
         <figure
           style={{

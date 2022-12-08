@@ -1,16 +1,18 @@
 import React, { useState } from "react";
+import { useFetch } from "hooks";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import styles from "./StylesStepper.module.css";
 
-function DatesSkill({ softSkills, setSoftSkills,hardSkills, setHardSkills, AllResults }) {
+function DatesSkill({ softSkills, setSoftSkills,hardSkills, setHardSkills }) {
   const [localsoftSkills, setLocalSoftSkill] = useState(softSkills);
   const [localhardSkills, setLocalHardSkill] = useState(hardSkills);
+  const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
 
   let hard = [];
   let soft = [];
 
-  AllResults.forEach((dato) => {
+  data?.forEach((dato) => {
     if (dato["c116_type"] === "H") {
       hard.push(dato);
     }
@@ -18,6 +20,8 @@ function DatesSkill({ softSkills, setSoftSkills,hardSkills, setHardSkills, AllRe
       soft.push(dato);
     }
   });
+
+  if (!data) return null
 
   return (
     <div className={styles.containerPage}>

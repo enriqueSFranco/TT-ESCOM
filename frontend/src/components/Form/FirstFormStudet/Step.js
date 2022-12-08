@@ -3,48 +3,47 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
 import { useForm, useFetch } from "hooks";
 import { helpHttp } from "utils/helpHttp";
-import { formStepCandidate } from 'types/formStepCandidate'
+import { formStepCandidate } from "types/formStepCandidate";
 import { AcademicFormat } from "types/schemes";
 import { getAllAcademicUnits, getIntrestJobs } from "services/catalogs/index";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
-import DatesPersonal from "./DatesPersonal";
-import DatesJob from "./DatesJob";
-import DatesSkill from "./DatesSkill";
-import DatesSchool from "./DatesSchool";
+import DisplayComponent from "./DisplayComponent";
+import RenderImage from "./RenderImage";
 import styles from "./StylesStepper.module.css";
 
+const steps = [
+  { id: 1, text: "Información Personal" },
+  { id: 2, text: "Educación" },
+  { id: 3, text: "Meta Profesional" },
+  { id: 4, text: "Habilidades" },
+];
 
 const StepComponent = () => {
+  const [activeStep, setActiveStep] = useState(0);
   const [startMonth, setStartMonth] = useState(1);
   const [startYear, setStartYear] = useState(2022);
   const [endMonth, setEndMonth] = useState(1);
   const [endYear, setEndYear] = useState(2022);
-  const [activeStep, setActiveStep] = useState(0);
   const [hardSkills, setHardSkills] = useState([]);
   const [softSkills, setSoftSkills] = useState([]);
   const [academicUnit, setAcademicUnits] = useState([]);
   const [interestJobs, setInterestJobs] = useState([]);
   const { form, handleChange } = useForm(formStepCandidate);
-  const [state,setState] = useState("");
-  const [municipality,setMunicipality] = useState("");
-  const [cp,setCP] = useState("");
-  const [place,setPlace] = useState("");
-  // const { response, loading, loadingNextPage, setPage } = useGetAllJobs()
+  const [state, setState] = useState("");
+  const [municipality, setMunicipality] = useState("");
+  const [cp, setCP] = useState("");
+  const [place, setPlace] = useState("");
   const [academicHistorial, setAcademicHistorial] = useState(AcademicFormat);
   const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
   const { token } = useAuth();
   let navigate = useNavigate();
-  let id_locality = "";
 
   let id_student = token?.user?.id;
 
-  const payload = {...form,c222_id_locality:1}
+  const payload = { ...form, c222_id_locality: 1 };
   academicHistorial.t100_id_student = id_student;
 
   // TODO: Pasar a un hook personalizado
-  useEffect(() => { // efecto que recupera las unidades academicas
+  useEffect(() => {
     getAllAcademicUnits()
       .then((response) => {
         setAcademicUnits(response);
@@ -53,7 +52,7 @@ const StepComponent = () => {
   }, []);
 
   // TODO: Pasar a un hook personalizado
-  useEffect(() => { // efecto que recupera 
+  useEffect(() => {
     getIntrestJobs()
       .then((response) => {
         setInterestJobs(response);
@@ -63,84 +62,14 @@ const StepComponent = () => {
 
   let AllResults = data;
 
-  if (!data && !form) return null;
-
-  const PageDisplay = () => {
-    if (activeStep === 0) {
-      return <DatesPersonal 
-              form={form} 
-              handleChange={handleChange} 
-              state = {state}
-              setState = {setState}
-              municipality ={municipality}
-              setMunicipality = {setMunicipality}
-              cp ={cp}
-              setCP = {setCP}
-              place ={place}
-              setPlace = {setPlace}/>;
-    }
-    if (activeStep === 1) {
-      return (
-        <DatesSchool
-          academicUnit={academicUnit}
-          setAcademicUnits={setAcademicUnits}
-          startMonth={startMonth}
-          setStartMonth={setStartMonth}
-          startYear={startYear}
-          setStartYear={setStartYear}
-          endMonth={endMonth}
-          setEndMonth={setEndMonth}
-          endYear={endYear}
-          setEndYear={setEndYear}
-          academicHistorial={academicHistorial}
-          setAcademicHistorial={setAcademicHistorial}
-        />
-      );
-    }
-    if (activeStep === 2) {
-      return (
-        <DatesJob
-          form={form}
-          handleChange={handleChange}
-          interestJobs={interestJobs}
-          setInterestJobs={setInterestJobs}
-        />
-      );
-    }
-    if (activeStep === 3) {
-      return (
-        <DatesSkill
-          softSkills={softSkills}
-          hardSkills={hardSkills}
-          setHardSkills={setHardSkills}
-          setSoftSkills={setSoftSkills}
-          AllResults={AllResults}
-        />
-      );
-    }
-  };
-
-  // Control de imagenes del step
-  const PageImage = () => {
-    if (activeStep === 0)
-      return <div className={`${styles.bg1} ${styles.bg}`}></div>;
-    if (activeStep === 1)
-      return <div className={`${styles.bg2} ${styles.bg}`}></div>;
-    if (activeStep === 2)
-      return <div className={`${styles.bg3} ${styles.bg}`}></div>;
-    if (activeStep === 3)
-      return <div className={`${styles.bg4} ${styles.bg}`}></div>;
-  };
-
   const nextStep = () => {
     if (activeStep < 3) setActiveStep((currentStep) => currentStep + 1);
     if (activeStep >= 3) updateData();
   };
 
   const updateData = () => {
-
     const endpoint = process.env.REACT_APP_URL_CANDIDATE + id_student + "/";
-    
+
     let options = {
       headers: {
         "Content-Type": "application/json",
@@ -176,9 +105,10 @@ const StepComponent = () => {
               .catch((err) => console.error(err));
           });
 
-          ///Agregar historial academico
+          //Agregar historial academico
 
-          const endpointAcademic = process.env.REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL;
+          const endpointAcademic =
+            process.env.REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL;
           academicHistorial.t104_start_date =
             startYear + "-" + startMonth + "-01";
           academicHistorial.t104_end_date = endYear + "-" + endMonth + "-01";
@@ -208,56 +138,66 @@ const StepComponent = () => {
     if (activeStep > 0) setActiveStep((currentStep) => currentStep - 1);
   };
 
-  const steps = ["1", "2 ", "3", "4"];
+  if (!data && !form) return null;
 
   return (
-    <div className={styles.container}>
-      <div className={styles.container1}>{PageImage()}</div>
-
+    <section className={styles.container}>
+      <RenderImage activeStep={activeStep} steps={steps} />
       <div className={styles.container2}>
-        <div className={styles.pages}>{PageDisplay()}</div>
-
-        <div className={styles.container3}>
-          <div className={styles.stepper}>
-            <Stepper activeStep={activeStep} alternativeLabel>
-              {steps.map((label) => (
-                <Step key={label}>
-                  <StepLabel></StepLabel>
-                </Step>
-              ))}
-            </Stepper>
-          </div>
-
-          <div className={styles.buttons}>
-            <div className={styles.button1}>
-              <button
-                className={styles.button}
-                disabled={activeStep === 0}
-                variant="outlined"
-                color="primary"
-                onClick={() => previousStep()}
-              >
-                Anterior
-              </button>
-            </div>
-
-            <div className={styles.space}></div>
-
-            <div className={styles.button2}>
-              <button
-                className={styles.button}
-                variant="outlined"
-                color="primary"
-                type="submit"
-                onClick={() => nextStep()}
-              >
-                {activeStep === steps.length - 1 ? "Finalizar" : "Siguiente"}
-              </button>
-            </div>
-          </div>
-        </div>
+        <DisplayComponent
+          activeStep={activeStep}
+          form={form}
+          handleChange={handleChange}
+          state={state}
+          setState={setState}
+          municipality={municipality}
+          setMunicipality={setMunicipality}
+          cp={cp}
+          setCP={setCP}
+          place={place}
+          setPlace={setPlace}
+          academicHistorial={academicHistorial}
+          setAcademicHistorial={setAcademicHistorial}
+          academicUnit={academicUnit}
+          setAcademicUnits={setAcademicUnits}
+          startMonth={startMonth}
+          setStartMonth={setStartMonth}
+          startYear={startYear}
+          setStartYear={setStartYear}
+          endMonth={endMonth}
+          setEndMonth={setEndMonth}
+          endYear={endYear}
+          setEndYear={setEndYear}
+          interestJobs={interestJobs}
+          setInterestJobs={setInterestJobs}
+          softSkills={softSkills}
+          setSoftSkills={setSoftSkills}
+          hardSkills={hardSkills}
+          setHardSkills={setHardSkills}
+          AllResultsAllResults={AllResults}
+        />
+        <nav className={styles.buttons}>
+          <button
+            className={styles.button}
+            disabled={activeStep === 0}
+            variant="outlined"
+            color="primary"
+            onClick={() => previousStep()}
+          >
+            Anterior
+          </button>
+          <button
+            className={styles.button}
+            variant="outlined"
+            color="primary"
+            type="submit"
+            onClick={() => nextStep()}
+          >
+            {activeStep === steps.length - 1 ? "Finalizar" : "Siguiente"}
+          </button>
+        </nav>
       </div>
-    </div>
+    </section>
   );
 };
 export default StepComponent;

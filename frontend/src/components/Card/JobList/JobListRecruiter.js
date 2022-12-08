@@ -17,20 +17,19 @@ const styles = {
 const ListJobsRecruiter = ({ data, setVacantId }) => {
   const { token } = useAuth();
 
-  function handleClick(e, vacantId) {
-    e.preventDefault()
+
+  function handleClick(vacantId) {
     setVacantId(vacantId)
-    console.log(`vacante ${vacantId}`)
   }
 
   return (
     <section style={styles.WrapperList}>
-      {data?.map((el) => (
+      {data?.map((el, index) => (
         <CardJobPreviewRecruiter
-          key={`${crypto.randomUUID()}`}
-          info={el}
+          key={`card-job-id-${crypto.randomUUID()}`}
+          el={el}
           typeUser={token.user.user_type}
-          onClick={(e) => handleClick(e, el?.t200_id_vacant)}
+          onClick={() => handleClick(el?.t200_id_vacant)}
         />
       ))}
     </section>

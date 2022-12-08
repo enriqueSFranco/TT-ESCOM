@@ -14,8 +14,6 @@ const ListEmptyJobs = () => {
 
 const JobList = ({ jobs, setVacantId }) => {
 
-
-
   if (!jobs || jobs === undefined) return null;
 
 

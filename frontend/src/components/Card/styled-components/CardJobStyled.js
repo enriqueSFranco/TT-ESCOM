@@ -29,6 +29,12 @@ const CardBody = styled.article`
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
       rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 
+    transition: box-shadow 0.3s ease-in-out;
+    &:hover {
+      color: #000;
+      box-shadow: #2172f2 0px 0px 0px 3px;
+    
+
     ${(props) => {
       if (props.close > 30) {
         return `

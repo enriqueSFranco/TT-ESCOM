@@ -15,8 +15,6 @@ import { USERS } from "types";
 
 const HeaderWidgets = ({ defaultId, vacantId, typeUser }) => {
 
-  console.log({vacantId, defaultId})
-
   const {
     data,
     // error: errorVacantInfo,
