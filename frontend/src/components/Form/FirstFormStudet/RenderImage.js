@@ -4,7 +4,7 @@ import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector
 import { styled } from '@mui/material/styles';
 import styles from "./StylesStepper.module.css";
 
-const QontoConnector = styled(StepConnector)(({ theme }) => ({
+const QontoConnector = styled(StepConnector)(({ theme, ownerState }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
     top: 10,
     left: 'calc(-50% + 16px)',
@@ -26,6 +26,7 @@ const QontoConnector = styled(StepConnector)(({ theme }) => ({
     borderWidth: 2,
     borderRadius: 1,
   },
+  
 }));
 
 const RenderIndicatorStep = ({ activeStep, steps }) => {
