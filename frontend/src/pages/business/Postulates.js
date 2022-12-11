@@ -7,9 +7,7 @@ const Postulates = () => {
 
   return (
     <LayoutHome>
-      <Container>
-        <Accordion />
-      </Container>
+      <Accordion />
     </LayoutHome>
   )
 }

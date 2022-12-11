@@ -1,16 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getSkill } from "services";
 
 export function useGetSkills(id) {
   const [skills, setSkills] = useState(null);
-  let controller = new AbortController()
+  const isMountedRef = useRef(true)
+
 
   useEffect(() => {
     getSkill(id)
-      .then(res => setSkills(res))
+      .then(res => {
+        setTimeout(() => {
+          if(isMountedRef.current)
+          setSkills(res)
+
+        }, 2000)
+      })
       .catch(error => error)
 
-    return () => controller.abort()
+    return () => isMountedRef.current = false
   }, [id])
 
   return { skills }

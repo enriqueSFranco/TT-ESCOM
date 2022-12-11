@@ -17,10 +17,10 @@ const styles = {
 const ListJobsRecruiter = ({ data, setVacantId }) => {
   const { token } = useAuth();
 
-
   function handleClick(vacantId) {
     setVacantId(vacantId)
   }
+
 
   return (
     <section style={styles.WrapperList}>

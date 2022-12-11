@@ -8,7 +8,7 @@ const Header = styled.header`
   background: center/cover no-repeat url(${background});
 `
 
-const WrapperSummaryJob = styled.article`
+const WrapperSummaryJob = styled.div`
   outline: 2px solid #ccc;
   border-radius: 1rem;
   height: 860px;

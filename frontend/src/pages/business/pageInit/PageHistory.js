@@ -14,37 +14,14 @@ import {
 } from "../../styled-components/DashboardRecruiterStyled";
 
 const PageHistory = () => {
-  const [vacantId, setVacantId] = useState(null)
+  const [vacantId, setVacantId] = useState(null);
+  const [isDataFilter, setIsDataFilter] = useState(false);
+  const [filterData, setFilterData] = useState(null);
   const { token } = useAuth();
-  const { data:listVacants } = useRecruiterJobs({ idRcruiter: token?.user?.id });
+  const { data: listVacants } = useRecruiterJobs({
+    idRcruiter: token?.user?.id,
+  });
   const { data } = useRecruiterJobs({ idRcruiter: token?.user?.id });
-
-  // let { t200_id_vacant } = useParams();
-
-  // const [isDeletedJob, setIsDeletedJob] = useState({});
-
-  // const handleInitialContent = () => setInitialContent(false);
-
-  // const handleBlur = (e) => {
-  //   e.target.classList.remove(styles.inputSearchFocus);
-  //   e.target.classList.add(styles.inputSearch);
-  //   setTimeout(() => {
-  //     setFilterData(null);
-  //   }, 200);
-  // };
-
-  // const handleSearchVacant = (e) => {
-  //   const { value } = e.target;
-  //   setSearch(value);
-  //   if (value !== "") {
-  //     // si hay algo en la caja de texto
-  //     const newData = listJobs?.filter((job) => {
-  //       const regex = new RegExp(`^${value}`, "gi");
-  //       return job?.t200_job.match(regex);
-  //     });
-  //     setFilterData(newData);
-  //   }
-  // };
 
   // const handleDeleteJob = async () => {
   //   const response = await deleteJob(job[0]?.t200_id_vacant);
@@ -55,27 +32,32 @@ const PageHistory = () => {
   //     setIsDeletedJob({ success: response.status, message: response.message });
   // };
 
-  // function handleClick(e, vacantId) {
-  //   e.preventDefault()
-  //   setVacantId(vacantId)
-  //   console.log(`vacante ${vacantId}`)
-  // }
-
-  if (!data || !listVacants) return null
+  if (!data || !listVacants) return null;
 
   return (
     <LayoutHome>
       <LayoutDashboard top="4rem">
         <Aside>
-          <FormSearchJob />
+          <FormSearchJob
+            data={listVacants}
+            setIsDataFilter={setIsDataFilter}
+            setFilterData={setFilterData}
+          />
           {/* LISTA DE VACANTES */}
-          <ListJobsRecruiter data={listVacants} setVacantId={setVacantId} />
+          <ListJobsRecruiter data={isDataFilter ? filterData : listVacants} setVacantId={setVacantId} />
         </Aside>
         <Container>
           {/* Widgets */}
-          <HeaderWidgets defaultId={data[0]?.t200_id_vacant} vacantId={vacantId} typeUser={token?.user?.user_type} />
+          <HeaderWidgets
+            defaultId={data[0]?.t200_id_vacant}
+            vacantId={vacantId}
+            typeUser={token?.user?.user_type}
+          />
           {/* Informacion de la vacante y observaciones */}
-          <MainInfoVacant defaultId={data[0]?.t200_id_vacant} vacantId={vacantId} />
+          <MainInfoVacant
+            defaultId={data[0]?.t200_id_vacant}
+            vacantId={vacantId}
+          />
         </Container>
       </LayoutDashboard>
     </LayoutHome>

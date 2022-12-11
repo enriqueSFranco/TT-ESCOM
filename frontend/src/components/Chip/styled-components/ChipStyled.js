@@ -16,7 +16,7 @@ export const ChipStyled = styled.span`
 
   @media screen and ${device.laptop} {
     font-size: .87rem;
-    font-weight: 400;
+    font-weight: 600;
     padding: .3rem .7rem;
     color: ${props => props.color || '#000'}
   }

@@ -9,6 +9,14 @@ const WrapperLoader = styled.div`
   place-content: center;
 `;
 
+const WrapperIconEdit = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 1.3rem;
+  color: #2172F2;
+`
+
 const WraperCard = styled.article`
   width: 100%;
   margin: 0 auto;
@@ -113,6 +121,7 @@ export {
   WrapperLoader,
   ContentDescription,
   WrapperActions,
+  WrapperIconEdit,
   Title,
   WrapperComment,
   ListItems,
