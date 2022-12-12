@@ -6,9 +6,8 @@ import styles from './Table.module.css';
 const menu = [
   {label: ""},
   {label: "Nombre",},
-  {label: "Carrera"},
+  {label: "Perfil"},
   {label: "Habilidades"},
-  {label: "Experiencia"},
   {label: "Estado de la postulacion"},
   {label: "Opciones"},
 ]

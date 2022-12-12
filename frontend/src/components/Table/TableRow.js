@@ -22,7 +22,7 @@ const TableRow = ({ children, it, index }) => {
     return setOpen(index);
   };
 
-  if (!historial) return null
+  if (!historial) return null;
 
   return (
     <>
@@ -35,16 +35,14 @@ const TableRow = ({ children, it, index }) => {
           )}
         </td>
         <td className={styles.td}>
-          <div className={styles.wrapperAvatar}>
-            <CustomAvatar
-              width="70px"
-              height="70px"
-              username={`${t100_name.slice(0, 1)}${t100_last_name.slice(0, 1)}`}
-            />
-            <h3
-              className={styles.nameUser}
-            >{`${t100_name} ${t100_last_name}`}</h3>
-          </div>
+          <CustomAvatar
+            width="70px"
+            height="70px"
+            username={`${t100_name.slice(0, 1)}${t100_last_name.slice(0, 1)}`}
+          />
+          <h3
+            className={styles.nameUser}
+          >{`${t100_name} ${t100_last_name}`}</h3>
         </td>
         <td className={styles.td}>{historial[0]?.t104_academic_unit}</td>
         <td className={styles.td}>
@@ -52,12 +50,15 @@ const TableRow = ({ children, it, index }) => {
             {skills &&
               skills?.map((skill) => (
                 <li key={uuid()} className={styles.listItem}>
-                  <Chip label={skill?.c116_id_skill?.c116_description} bg="#EBF2FD" color="#2864ED" />
+                  <Chip
+                    label={skill?.c116_id_skill?.c116_description}
+                    bg="#EBF2FD"
+                    color="#2864ED"
+                  />
                 </li>
               ))}
           </ul>
         </td>
-        <td className={styles.td}>no</td>
         <td className={styles.td}>en revision</td>
         <td className={styles.td}>
           <button className={`btn ${styles.actionsBtn} ${styles.accept}`}>
@@ -70,7 +71,7 @@ const TableRow = ({ children, it, index }) => {
       </tr>
       {open === index ? (
         <tr>
-          <td colSpan="7">{children}</td>
+          <td colSpan="6">{children}</td>
         </tr>
       ) : null}
     </>

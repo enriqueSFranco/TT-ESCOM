@@ -1,85 +1,95 @@
-import { Link } from "react-router-dom";
 import { uuid } from "utils";
 import { useGetSkills, useLanguageUser } from "hooks";
-import Chip from "@mui/material/Chip";
-import { BiUser } from "react-icons/bi";
-import { SiGmail } from "react-icons/si";
-import { MdLocationPin, MdOutlineLocalAirport } from "react-icons/md";
-import { BsWhatsapp, BsLinkedin, BsGithub } from "react-icons/bs";
+import Chip from "components/Chip/Chip";
+// import { SiGmail } from "react-icons/si";
+// import { MdLocationPin, MdOutlineLocalAirport } from "react-icons/md";
+// import { BsLinkedin, BsGithub } from "react-icons/bs";
+import { AiOutlineWhatsApp } from "react-icons/ai";
+import { List, ListItem } from "styled-components/CommonStyles";
 import styles from "./Table.module.css";
 
 const RowExpand = ({ it }) => {
   const { skills } = useGetSkills(it.t100_id_student?.t100_id_student);
-  const { lenguages } = useLanguageUser(it.t100_id_student?.t100_id_student);
+  const { languages } = useLanguageUser(it.t100_id_student?.t100_id_student);
 
-  if (!skills || !lenguages) return null;
+  console.log(it)
 
   return (
-    <article key={uuid()} className={styles.wrapperDetailsUser}>
-      <div className={styles.grid_2}>
-        <p className={styles.wrapperObjectPersonal}>
-          {/* {user?.t100_id_student?.t100_personal_objectives} */}
-        </p>
-        <div className={styles.wrapperLenguages}>
-          <p className={styles.languages}>Idiomas:</p>
-          <ul className={styles.list}>
-            {lenguages?.map((lenguage) => (
-              <li key={uuid()} className={styles.listItemsSkill}>
-                <Chip
-                  size="small"
-                  label={lenguage?.c111_id_language?.c111_description}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
+    <article className={styles.wrapperDetailsUser}>
+      <p className={styles.objectPersonal}>
+        {it?.t100_id_student?.t100_personal_objectives
+          ? it?.t100_id_student?.t100_personal_objectives
+          : "Sin objetivo profesional"}
+      </p>
+      <div className={styles.languages}>
+        <span>Idioma / Dialecto</span>
+        <List className={styles.list}>
+          {languages?.map((lenguage) => (
+            <ListItem
+              key={`language-id-${crypto.randomUUID()}`}
+              className={styles.listItemsSkill}
+            >
+              <Chip
+                label={lenguage?.c111_id_language?.c111_description}
+                bg="#EBF2FD"
+                color="#2864ED"
+              />
+            </ListItem>
+          ))}
+        </List>
       </div>
       <div className={styles.aboutMe}>
-        <div className={styles.wrapperPinAirport}>
+        {/* <div className={styles.wrapperPinAirport}>
           <span className={`${styles.wrapperTags}`}>
             <MdLocationPin className={styles.icon} />
-            {/* {user?.t100_id_student?.t100_residence} */}
+            {it?.t100_id_student?.t100_residence}
           </span>
           <span className={`${styles.wrapperTags}`}>
             <MdOutlineLocalAirport className={styles.icon} />
-            {/* {user &&
-              (user?.t100_id_student?.t100_travel
-                ? "Disponible para reubicarse"
-                : "No disponible para reubicarse")} */}
+            {it?.t100_id_student?.t100_travel
+              ? "Disponible para reubicarse"
+              : "No disponible para reubicarse"}
           </span>
-        </div>
-        <ul className={styles.listItemLinks}>
-          <li>
-            <BsWhatsapp />
-          </li>
-          <li>
-            <BsLinkedin />
-          </li>
-          <li>
-            <SiGmail />
-          </li>
-          <li>
-            <BsGithub />
-          </li>
-        </ul>
+        </div> */}
+        <span>Contacto</span>
+        <List>
+          <ListItem>
+            <a
+              aria-label="Chat on WhatsApp"
+              target="blank"
+              rel="noopener"
+              href={`https://wa.me/${it.t100_id_student?.t100_phonenumber}/?text=${it?.t200_id_vacant?.t200_job}`}
+            >
+              <AiOutlineWhatsApp
+                style={{ color: "#00E676", fontSize: "1.7rem" }}
+              />
+            </a>
+          </ListItem>
+          {/* <ListItem>
+            <BsLinkedin  />
+          </ListItem>
+          <ListItem>
+            <SiGmail  />
+          </ListItem>
+          <ListItem>
+            <BsGithub  />
+          </ListItem> */}
+        </List>
       </div>
       <div className={styles.wrapperSkills}>
         <p className={styles.titleSkills}>Skills</p>
-        <ul className={styles.listItemsSkill}>
-          {skills &&
-            skills?.map((skill) => (
-              <li key={uuid()}>
-                <Chip
-                  size="small"
-                  label={skill?.c116_id_skill?.c116_description}
-                />
-              </li>
-            ))}
-        </ul>
+        <List className={styles.listItemsSkill}>
+          {skills?.map((skill) => (
+            <ListItem key={uuid()}>
+              <Chip
+                label={skill?.c116_id_skill?.c116_description}
+                bg="#EBF2FD"
+                color="#2864ED"
+              />
+            </ListItem>
+          ))}
+        </List>
       </div>
-      <Link to="/" className={styles.link}>
-        <BiUser /> Ver perfil conpleto
-      </Link>
     </article>
   );
 };

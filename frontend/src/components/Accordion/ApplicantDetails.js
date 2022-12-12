@@ -16,12 +16,16 @@ const Accordion = () => {
 
   if (!data) return null;
 
-  // console.log(data);
-
   return (
     <section className={styles.wrapperPostulations}>
       <article className={styles.detailsVacant}>
-        <div style={{outline: '1px solid #ccc', borderRadius: '5px', height: '100%'}}>
+        <div
+          style={{
+            outline: "1px solid #ccc",
+            borderRadius: "5px",
+            height: "100%",
+          }}
+        >
           <header className={styles.headerVacant}>
             <h1 className={styles.titleVacant}>
               {data[0]?.t200_id_vacant?.t200_job}
@@ -44,7 +48,8 @@ const Accordion = () => {
               <ListItem>
                 <Chip
                   label={
-                    data[0]?.t200_id_vacant?.c207_id_experience?.c207_description
+                    data[0]?.t200_id_vacant?.c207_id_experience
+                      ?.c207_description
                   }
                   bg="#EBF2FD"
                   color="#2864ED"
@@ -79,14 +84,18 @@ const Accordion = () => {
       </article>
       <div className={styles.listApplicant}>
         <h2 className={styles.totalApplicants}>
-          Postulados: <Chip label={`${data.length} postulados`} bg="#EBF2FD" color="#2864ED" />
+          Postulados:{" "}
+          <Chip
+            label={`${data.length} postulados`}
+            bg="#EBF2FD"
+            color="#2864ED"
+          />
         </h2>
         <div className={styles.wrapperListApplicants}>
           <Table>
             {data?.map((it, index) => (
-              // console.log(it)
               <TableRow
-                key={`table-row-id-${crypto.randomUUID()}`}
+                key={index}
                 index={index}
                 it={it}
               >

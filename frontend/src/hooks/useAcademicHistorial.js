@@ -7,7 +7,6 @@ export function useAcademicHistorial(candidateId) {
   useEffect(() => {
     getAcademicHistorial(candidateId)
       .then((response) => {
-        console.log(response)
         setHistorial(response);
       })
       .catch((error) => error);
