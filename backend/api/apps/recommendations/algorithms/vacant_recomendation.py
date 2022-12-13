@@ -36,18 +36,25 @@ def get_vacant_required_experience(vacant_id):
     return vacant_data['c207_id_experience']
 
 def get_candidate_info(id_candidate):
-    data = []#StudentSkill
+    candidate_data = []#StudentSkill
+    skills = []
+    languages = []
     candidate_skills = StudentSkill.objects.filter(t100_id_student=id_candidate).all()
     candidate_languages = StudentLanguage.objects.filter(t100_id_student=id_candidate).all()
-    for skill in candidate_skills:
-        print(skill)
-    for language in calculate_languages:
-        print(language)
-    return
+
+    for skill in candidate_skills:        
+        skills.append(skill.c116_id_skill.c116_description)
+    for language in candidate_languages:
+        languages.append(language.c111_id_language.c111_description)    
+    candidate_data.append(id_candidate)
+    candidate_data.append(skills)
+    candidate_data.append(languages)
+    return candidate_data
 
 def candidate_recomendation(id_candidate):
-
     vacants = []
+    similarity_vectors = []
+    candidate_vector = []
     print("Obteniendo vacantes activas.....")
     vacants_ids = get_vacants()
     for id in vacants_ids:
@@ -56,9 +63,14 @@ def candidate_recomendation(id_candidate):
         vacant_data.append(get_vacant_mandatory_skills(id['t200_id_vacant']))
         vacant_data.append(get_vacant_optional_skills(id['t200_id_vacant']))
         vacant_data.append(get_vacant_languages(id['t200_id_vacant']))
-        vacant_data.append(get_vacant_required_experience(id['t200_id_vacant']))
+        #vacant_data.append(get_vacant_required_experience(id['t200_id_vacant']))
         print(vacant_data)
         vacants.append(vacant_data)
     print(vacants)
+    candidate_vector = get_candidate_info(id_candidate)
+    print(candidate_vector)
+    for vacant in vacants:
+        print(calculate_mandatory_skills(candidate_vector[1],vacant[1]))
+        
 
 
