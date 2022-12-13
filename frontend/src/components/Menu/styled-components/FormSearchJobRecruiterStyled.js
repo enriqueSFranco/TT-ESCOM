@@ -1,7 +1,9 @@
 import styled from "styled-components"
 
 const Form = styled.form`
-  width: 90%;
+  width: 85%;
+  height: 80px;
+  background-color: #fff;
 `
 
 const Button = styled.button`

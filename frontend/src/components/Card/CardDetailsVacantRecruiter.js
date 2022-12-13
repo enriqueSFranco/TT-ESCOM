@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import { useAuth } from "context/AuthContext";
 import {
@@ -17,10 +17,12 @@ import FormAddComment from "components/Form/FormAddComment";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { FaCalendarAlt, FaBrain } from "react-icons/fa";
 import { BiLike } from "react-icons/bi";
+import { FiEdit } from 'react-icons/fi'
 import { IoCloseOutline } from "react-icons/io5";
 import {
   WrapperLoader,
   WraperCard,
+  WrapperIconEdit,
   WrapperActions,
   WrapperComment,
   Description,
@@ -35,16 +37,16 @@ function createMarkup(description) {
 }
 
 const CardDetailsVacantRecruiter = ({ vacantId }) => {
-  // const { t200_id_vacant } = useParams();
   const observation = useGetObservationVacant({ vacantId: vacantId });
   const observationManager = useGetObservationVacantManager({
     vacantId: vacantId,
   });
   const { token } = useAuth();
-  const { data, error, loading } = useFetch(
+  const { data, loading } = useFetch(
     `${process.env.REACT_APP_URL_VACANTS}${vacantId}/`
   );
 
+  
   const handlePublish = (e) => {
     e.preventDefault();
     stateVacant(vacantId, {
@@ -54,9 +56,9 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
     })
       .then((response) => toast.success(response.message))
       .catch((error) => toast.error(error.message));
-  };
-
-  const handleReject = (e) => {
+    };
+    
+    const handleReject = (e) => {
     e.preventDefault();
     stateVacant(vacantId, {
       t400_id_admin: 1,
@@ -67,7 +69,17 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
       .catch((error) => toast.error(error.message));
   };
 
-  if (!data || !token || !observation || !observationManager) return null;
+  const observationsRecruiter = useMemo(() => observation, [observation]);
+  const observationsManager = useMemo(
+    () => observationManager,
+    [observationManager]
+  );
+  
+  if (!data || !token || !observationsRecruiter || !observationManager) return null;
+  
+  const STATUS = data[0]?.c204_id_vacant_status?.c204_id_status
+  let job = data[0]?.t200_job
+  console.log({STATUS, job})
 
   return (
     <>
@@ -78,7 +90,10 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
       ) : (
         <>
           <WraperCard>
-            <Title>{data[0]?.t200_job}</Title>
+            <WrapperIconEdit>
+              { STATUS === 1 && <FiEdit />}
+            </WrapperIconEdit>
+            <Title>{data[0]?.t200_job}</Title> 
             <HeaderInfo>
               <ListItems style={{ justifyContent: "center" }}>
                 <li>
@@ -163,7 +178,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                 <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
               </header>
               <section style={{ height: "calc(100% - 2.8rem)" }}>
-                {!observationManager.length ? (
+                {!observationsManager.length ? (
                   <article
                     style={{
                       height: "100%",
@@ -203,7 +218,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                       height: "fit-content",
                     }}
                   >
-                    {observation?.map((el) => (
+                    {observationsRecruiter?.map((el) => (
                       <Comment
                         key={`comment-id-${el?.t223_id_comment}`}
                         comment={el?.t223_comment}
@@ -274,7 +289,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                       height: "calc(100vh - 17rem)",
                     }}
                   >
-                    {observationManager.map((observation) => (
+                    {observationsManager.map((observation) => (
                       <Comment
                         key={`comment-id-${observation?.t223_id_comment}`}
                         comment={observation?.t223_comment}
@@ -292,6 +307,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
               <FormAddComment
                 typeUser={token.user.user_type}
                 userId={token.user.id}
+                vacantId={vacantId}
               />
             </WrapperComment>
           )}

@@ -234,7 +234,10 @@ export const addProject = (payload = {}) => {
  **/
 export const getAcademicHistorial = (id) => {
   return API(`${REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL}${id}/`)
-    .then((response) => response)
+    .then((response) => {
+      const { data } = response
+      return data
+    })
     .catch((error) => error);
 };
 

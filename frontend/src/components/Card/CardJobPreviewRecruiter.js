@@ -19,7 +19,7 @@ const CardJobPreviewRecruiter = ({ el, typeUser, onClick }) => {
     el;
 
   if (!el || !data) return null;
-
+  
   return (
     <Card onClick={onClick}>
       <CardHeader>

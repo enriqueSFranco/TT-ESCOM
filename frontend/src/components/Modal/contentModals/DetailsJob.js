@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { useFetch, useScroll } from "hooks";
+import React from "react";
+import { useFetch } from "hooks";
 import Chip from "components/Chip/Chip";
 import Button from "components/Button/Button";
 import { List, ListItem } from "styled-components/CommonStyles";
@@ -9,7 +9,7 @@ import {
   TextH2,
   WrapperRequitements,
   WrapperMoreInfo,
-  WrapperSummaryJob
+  WrapperSummaryJob,
 } from "../styled-components/DetailsJobStyled";
 
 function createMarkup(description) {
@@ -17,7 +17,6 @@ function createMarkup(description) {
 }
 
 const DetailsJob = ({ vacantId, token, idJob, userID, handleApplyJob }) => {
-  const elementRef = useRef(null)
   const { data } = useFetch(
     `${process.env.REACT_APP_URL_VACANT_REQUIREMENTS}${vacantId}`
   );
@@ -26,14 +25,10 @@ const DetailsJob = ({ vacantId, token, idJob, userID, handleApplyJob }) => {
     `${process.env.REACT_APP_URL_VACANTS}${vacantId}`
   );
 
-  useEffect(() => {
-    
-  }, [])
-
   if (!data || !summaryJob) return null;
 
   return (
-    <WrapperSummaryJob ref={elementRef}>
+    <WrapperSummaryJob>
       <Header>
         <figure
           style={{
@@ -151,14 +146,14 @@ const DetailsJob = ({ vacantId, token, idJob, userID, handleApplyJob }) => {
       />
       <div
         style={{
-          width: '100%',
+          width: "100%",
           backgroundColor: "#fff",
-          position: 'absolute',
-          bottom: '0',
-          display: 'grid',
-          placeContent: 'center',
-          padding: '1rem 0',
-          borderRadius: '0 0 1rem 1rem'
+          position: "absolute",
+          bottom: "0",
+          display: "grid",
+          placeContent: "center",
+          padding: "1rem 0",
+          borderRadius: "0 0 1rem 1rem",
         }}
       >
         {token ? (
@@ -179,7 +174,6 @@ const DetailsJob = ({ vacantId, token, idJob, userID, handleApplyJob }) => {
             width="20"
             height="3"
           />
-          
         )}
       </div>
     </WrapperSummaryJob>

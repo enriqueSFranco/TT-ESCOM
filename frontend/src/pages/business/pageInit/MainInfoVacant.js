@@ -3,6 +3,7 @@ import CardDetailsVacantRecruiter from "components/Card/CardDetailsVacantRecruit
 import { Grid } from "./Styleds";
 
 const MainInfoVacant = ({ defaultId, vacantId }) => {
+  
   return (
     <Grid>
       <CardDetailsVacantRecruiter vacantId={vacantId || defaultId} />
