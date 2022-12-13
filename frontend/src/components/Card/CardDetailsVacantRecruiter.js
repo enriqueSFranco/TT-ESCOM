@@ -17,7 +17,7 @@ import FormAddComment from "components/Form/FormAddComment";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { FaCalendarAlt, FaBrain } from "react-icons/fa";
 import { BiLike } from "react-icons/bi";
-import { FiEdit } from 'react-icons/fi'
+import { FiEdit } from "react-icons/fi";
 import { IoCloseOutline } from "react-icons/io5";
 import {
   WrapperLoader,
@@ -46,7 +46,6 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
     `${process.env.REACT_APP_URL_VACANTS}${vacantId}/`
   );
 
-  
   const handlePublish = (e) => {
     e.preventDefault();
     stateVacant(vacantId, {
@@ -56,9 +55,9 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
     })
       .then((response) => toast.success(response.message))
       .catch((error) => toast.error(error.message));
-    };
-    
-    const handleReject = (e) => {
+  };
+
+  const handleReject = (e) => {
     e.preventDefault();
     stateVacant(vacantId, {
       t400_id_admin: 1,
@@ -74,12 +73,12 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
     () => observationManager,
     [observationManager]
   );
-  
-  if (!data || !token || !observationsRecruiter || !observationManager) return null;
-  
-  const STATUS = data[0]?.c204_id_vacant_status?.c204_id_status
-  let job = data[0]?.t200_job
-  console.log({STATUS, job})
+
+  if (!data || !token || !observationsRecruiter || !observationManager)
+    return null;
+
+  const STATUS = data[0]?.c204_id_vacant_status?.c204_id_status;
+  // let nameJob = data[0]?.t200_job;
 
   return (
     <>
@@ -90,10 +89,8 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
       ) : (
         <>
           <WraperCard>
-            <WrapperIconEdit>
-              { STATUS === 1 && <FiEdit />}
-            </WrapperIconEdit>
-            <Title>{data[0]?.t200_job}</Title> 
+            <WrapperIconEdit>{STATUS === 1 && <FiEdit />}</WrapperIconEdit>
+            <Title>{data[0]?.t200_job}</Title>
             <HeaderInfo>
               <ListItems style={{ justifyContent: "center" }}>
                 <li>
@@ -177,7 +174,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
               <header>
                 <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
               </header>
-              <section style={{ height: "calc(100% - 2.8rem)" }}>
+              <div>
                 {!observationsManager.length ? (
                   <article
                     style={{
@@ -215,43 +212,39 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                       flexDirection: "column",
                       gap: "1rem",
                       overflowY: "auto",
-                      height: "fit-content",
+                      height: "600px",
+                      padding: ".5rem",
                     }}
                   >
                     {observationsRecruiter?.map((el) => (
                       <Comment
                         key={`comment-id-${el?.t223_id_comment}`}
                         comment={el?.t223_comment}
-                        token={token.user.user_type}
                         date={el?.t223_sent_date}
                         username={el?.t400_id_admin?.t400_name}
-                        userId={el?.t301_id_recruiter?.t301_id_recruiter}
+                        typeUser={el?.t301_id_recruiter?.t301_id_recruiter}
                       />
                     ))}
                   </div>
                 )}
-              </section>
+              </div>
               <FormAddComment
                 typeUser={token.user.user_type}
                 userId={token.user.id}
+                vacantId={vacantId}
               />
             </WrapperComment>
           ) : (
             // TODO: Pasar a un componente independiente
             <WrapperComment>
-              <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
-              <section
-                style={{
-                  height: "78vh",
-                  display: "grid",
-                  placeContent: "center",
-                  overflowY: "auto",
-                }}
-              >
+              <header>
+                <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
+              </header>
+              <section>
                 {!observationManager.length ? (
                   <article
                     style={{
-                      // height: "100%",
+                      height: "100%",
                       display: "grid",
                       placeContent: "center",
                     }}
@@ -280,23 +273,22 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                   </article>
                 ) : (
                   <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "1rem",
-                      width: "100%",
-                      position: "relative",
-                      height: "calc(100vh - 17rem)",
-                    }}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "1rem",
+                    overflowY: "auto",
+                    height: "730px",
+                    padding: ".5rem",
+                  }}
                   >
                     {observationsManager.map((observation) => (
                       <Comment
                         key={`comment-id-${observation?.t223_id_comment}`}
                         comment={observation?.t223_comment}
-                        token={token.user.user_type}
                         date={observation?.t223_sent_date}
                         username={observation?.t400_id_admin?.t400_name}
-                        userId={
+                        typeUser={
                           observation?.t301_id_recruiter?.t301_id_recruiter
                         }
                       />

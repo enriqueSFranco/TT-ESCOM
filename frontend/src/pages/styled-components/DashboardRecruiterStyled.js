@@ -14,11 +14,9 @@ const Container = styled.main`
   grid-area: container;
   width: 100%;
   height: 100%;
-  /* outline: 2px solid red;   */
 `
 
 const Grid = styled.div`
-  /* outline: 2px solid blue;   */
   height: calc(100% - 9.3rem);
   padding: 0 .5rem;
   display: grid;
