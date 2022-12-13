@@ -105,7 +105,6 @@
   flex-direction: column;
 }
 
-
 .logoProject {
   width: 80px;
   height: 80px;
@@ -132,6 +131,14 @@
   background-color: #fff;
   overflow-y: auto;
   padding: 0 0 .5rem .5rem;
+}
+
+.listAcademicRecord {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .wrapperCircle {

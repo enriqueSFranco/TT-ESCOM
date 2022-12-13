@@ -31,11 +31,10 @@ const Accordion = () => {
               {data[0]?.t200_id_vacant?.t200_job}
             </h1>
           </header>
-
-          {/* habilidades requeridas y opcionales */}
-          <div></div>
-          <div>
-            <List>
+          <div className={styles.summaryVacant}>
+            {/* habilidades requeridas y opcionales */}
+            <div className={styles.listSkill}></div>
+            <List className={styles.customList}>
               <ListItem>
                 <Chip
                   label={
@@ -76,9 +75,9 @@ const Accordion = () => {
                 />
               </ListItem>
             </List>
-          </div>
-          <div className={styles.summaryVacant}>
-            {data[0]?.t200_id_vacant?.t200_description}
+            <div>
+              {data[0]?.t200_id_vacant?.t200_description}
+            </div>
           </div>
         </div>
       </article>

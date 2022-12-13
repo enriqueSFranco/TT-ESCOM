@@ -24,7 +24,7 @@ const Table = ({children}) => {
         ))}
       </tr>
     </thead>
-    <tbody>
+    <tbody className={styles.tbody}>
       {children}
     </tbody>
   </table>

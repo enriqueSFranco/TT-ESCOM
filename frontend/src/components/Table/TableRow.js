@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useGetSkills, useAcademicHistorial } from "hooks";
 import { uuid } from "utils";
 import CustomAvatar from "components/Avatar/Avatar";
-import Chip from "components/Chip/Chip";
+import Tooltip from "components/Tooltip/Tooltip";
+import CustomChip from "components/Chip/Chip";
 import { BiDislike } from "react-icons/bi";
 import { FaHandshake } from "react-icons/fa";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
@@ -35,22 +36,24 @@ const TableRow = ({ children, it, index }) => {
           )}
         </td>
         <td className={styles.td}>
-          <CustomAvatar
-            width="70px"
-            height="70px"
-            username={`${t100_name.slice(0, 1)}${t100_last_name.slice(0, 1)}`}
-          />
-          <h3
-            className={styles.nameUser}
-          >{`${t100_name} ${t100_last_name}`}</h3>
+          <div style={{display: 'flex', alignItems: 'center', gap: '.8rem'}}>
+            <CustomAvatar
+              width="50px"
+              height="50px"
+              username={`${t100_name}`}
+            />
+            <span>{`${t100_name} ${t100_last_name}`}</span>
+          </div>
         </td>
-        <td className={styles.td}>{historial[0]?.t104_academic_unit}</td>
+        <td className={styles.td}>
+          {historial[0]?.c109_id_academic_state?.c109_description}
+        </td>
         <td className={styles.td}>
           <ul className={styles.list}>
             {skills &&
               skills?.map((skill) => (
                 <li key={uuid()} className={styles.listItem}>
-                  <Chip
+                  <CustomChip
                     label={skill?.c116_id_skill?.c116_description}
                     bg="#EBF2FD"
                     color="#2864ED"
@@ -59,14 +62,20 @@ const TableRow = ({ children, it, index }) => {
               ))}
           </ul>
         </td>
-        <td className={styles.td}>en revision</td>
+        <td className={styles.td}><span>{it?.c205_id_application_state?.c205_description}</span></td>
         <td className={styles.td}>
-          <button className={`btn ${styles.actionsBtn} ${styles.accept}`}>
-            <FaHandshake />
-          </button>
-          <button className={`btn ${styles.actionsBtn} ${styles.dismiss}`}>
-            <BiDislike />
-          </button>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Tooltip title="Dar seguimiento">
+              <button className={`btn ${styles.actionsBtn} ${styles.accept}`}>
+                <FaHandshake />
+              </button>
+            </Tooltip>
+            <Tooltip title="Rechazar candidato">
+              <button className={`btn ${styles.actionsBtn} ${styles.dismiss}`}>
+                <BiDislike />
+              </button>
+            </Tooltip>
+          </div>
         </td>
       </tr>
       {open === index ? (

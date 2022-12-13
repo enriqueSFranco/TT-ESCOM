@@ -18,8 +18,6 @@ const AcademicRecordList = () => {
     setData(historial);
   }, [historial]);
 
-  console.log(historial)
-
   return (
     <article className={styles.wrapper}>
       <div className={styles.container_botton}>
@@ -29,20 +27,22 @@ const AcademicRecordList = () => {
           </button>
         </Tooltip>
       </div>
-      {
-        data?.map((el) => (
-          <AcademicRecord
-            key={`academic-item${el?.t100_id_student?.t100_id_studentv}`}
-            academicUnit={el?.t104_academic_unit}
-            carrer={el?.t104_carreer}
-            id={el?.t104_id_registrer}
-            startDate={el?.t104_start_date}
-            endDate={el?.t104_end_date}
-            setData={setData}
-            idStudent={el?.t100_id_student?.t100_id_student}
-          />
-        ))}
-      <ModalPortal isOpen={isOpenModal} closeModal={closeModal}>
+      <div className={styles.listAcademicRecord}>
+        {
+          data?.map((el) => (
+            <AcademicRecord
+              key={`academic-item${el?.t100_id_student?.t100_id_studentv}`}
+              academicUnit={el?.t104_academic_unit}
+              carrer={el?.t104_carreer}
+              id={el?.t104_id_registrer}
+              startDate={el?.t104_start_date}
+              endDate={el?.t104_end_date}
+              setData={setData}
+              idStudent={el?.t100_id_student?.t100_id_student}
+            />
+          ))}
+      </div>
+      <ModalPortal isOpen={isOpenModal} closeModal={closeModal} minWidth="550px" minHeight="450px">
         <FormAddAcademicRecord />
       </ModalPortal>
     </article>

@@ -1,9 +1,6 @@
 import { uuid } from "utils";
 import { useGetSkills, useLanguageUser } from "hooks";
 import Chip from "components/Chip/Chip";
-// import { SiGmail } from "react-icons/si";
-// import { MdLocationPin, MdOutlineLocalAirport } from "react-icons/md";
-// import { BsLinkedin, BsGithub } from "react-icons/bs";
 import { AiOutlineWhatsApp } from "react-icons/ai";
 import { List, ListItem } from "styled-components/CommonStyles";
 import styles from "./Table.module.css";
@@ -39,18 +36,6 @@ const RowExpand = ({ it }) => {
         </List>
       </div>
       <div className={styles.aboutMe}>
-        {/* <div className={styles.wrapperPinAirport}>
-          <span className={`${styles.wrapperTags}`}>
-            <MdLocationPin className={styles.icon} />
-            {it?.t100_id_student?.t100_residence}
-          </span>
-          <span className={`${styles.wrapperTags}`}>
-            <MdOutlineLocalAirport className={styles.icon} />
-            {it?.t100_id_student?.t100_travel
-              ? "Disponible para reubicarse"
-              : "No disponible para reubicarse"}
-          </span>
-        </div> */}
         <span>Contacto</span>
         <List>
           <ListItem>
@@ -58,22 +43,13 @@ const RowExpand = ({ it }) => {
               aria-label="Chat on WhatsApp"
               target="blank"
               rel="noopener"
-              href={`https://wa.me/${it.t100_id_student?.t100_phonenumber}/?text=${it?.t200_id_vacant?.t200_job}`}
+              href={`https://wa.me/${it.t100_id_student?.t100_phonenumber}/?text=Hola ${it.t100_id_student?.t100_name}, recibimos tu postulacion a la vacante ${it?.t200_id_vacant?.t200_job}`}
             >
               <AiOutlineWhatsApp
                 style={{ color: "#00E676", fontSize: "1.7rem" }}
               />
             </a>
           </ListItem>
-          {/* <ListItem>
-            <BsLinkedin  />
-          </ListItem>
-          <ListItem>
-            <SiGmail  />
-          </ListItem>
-          <ListItem>
-            <BsGithub  />
-          </ListItem> */}
         </List>
       </div>
       <div className={styles.wrapperSkills}>

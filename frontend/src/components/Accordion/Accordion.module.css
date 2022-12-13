@@ -52,6 +52,7 @@
 
 .summaryVacant {
   color: #5e5e5e;
+  padding: 1rem;
 }
 
 .titleVacant {
@@ -61,6 +62,14 @@
   color: transparent;
   text-align: center;
   font-weight: 700;
+}
+
+.customList {
+  margin-bottom: 1rem;
+}
+
+.listSkill {
+  
 }
 
 .headerVacant {
@@ -85,7 +94,7 @@
 }
 
 .wrapperListApplicants {
-  outline: 1px solid #ccc;
+  /* outline: 1px solid #ccc; */
   height: calc(100% -  2.2rem);
   overflow-y: auto;
   border-radius: 5px;
