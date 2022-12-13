@@ -78,7 +78,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
     return null;
 
   const STATUS = data[0]?.c204_id_vacant_status?.c204_id_status;
-  // let nameJob = data[0]?.t200_job;
+  const typeOfUser = token?.user?.user_type
 
   return (
     <>
@@ -88,7 +88,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
         </WrapperLoader>
       ) : (
         <>
-          <WraperCard>
+          <WraperCard typeOfUser={typeOfUser}>
             <WrapperIconEdit>{STATUS === 1 && <FiEdit />}</WrapperIconEdit>
             <Title>{data[0]?.t200_job}</Title>
             <HeaderInfo>
@@ -170,11 +170,11 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
             )}
           </WraperCard>
           {token.user.user_type === USERS.recruiter ? (
-            <WrapperComment>
+            <WrapperComment typeOfUser={typeOfUser}>
               <header>
                 <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
               </header>
-              <div>
+              <>
                 {!observationsManager.length ? (
                   <article
                     style={{
@@ -227,7 +227,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                     ))}
                   </div>
                 )}
-              </div>
+              </>
               <FormAddComment
                 typeUser={token.user.user_type}
                 userId={token.user.id}
@@ -236,11 +236,11 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
             </WrapperComment>
           ) : (
             // TODO: Pasar a un componente independiente
-            <WrapperComment>
+            <WrapperComment typeOfUser={typeOfUser}>
               <header>
                 <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
               </header>
-              <section>
+              <>
                 {!observationManager.length ? (
                   <article
                     style={{
@@ -278,8 +278,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                     flexDirection: "column",
                     gap: "1rem",
                     overflowY: "auto",
-                    height: "730px",
-                    padding: ".5rem",
+                    height: "700px",
                   }}
                   >
                     {observationsManager.map((observation) => (
@@ -295,7 +294,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                     ))}
                   </div>
                 )}
-              </section>
+              </>
               <FormAddComment
                 typeUser={token.user.user_type}
                 userId={token.user.id}

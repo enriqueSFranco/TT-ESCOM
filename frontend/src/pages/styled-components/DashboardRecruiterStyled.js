@@ -11,9 +11,12 @@ const Aside = styled.aside`
 `
 
 const Container = styled.main`
-  grid-area: container;
   width: 100%;
   height: 100%;
+  grid-area: container;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
 `
 
 const Grid = styled.div`
@@ -21,7 +24,6 @@ const Grid = styled.div`
   padding: 0 .5rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
 `
 
 const WrapperWidgets = styled.section`

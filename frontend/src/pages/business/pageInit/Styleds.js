@@ -6,6 +6,7 @@ const Grid = styled.div`
     if (typeOfUser === USERS.manager) {
       return `
         height: 100%;
+
       `
     }
     if (typeOfUser === USERS.recruiter) {
@@ -14,9 +15,10 @@ const Grid = styled.div`
       `
     }
   }}
-  padding: .5rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  /* justify-items: center; */
+  align-content: center;
   gap: 1rem;
 `
 
@@ -25,7 +27,7 @@ const WrapperWidgets = styled.section`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: .5rem;
 `
 
 const ContentWidgetCommon = styled.div`
