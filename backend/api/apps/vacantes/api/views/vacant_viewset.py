@@ -65,7 +65,7 @@ class VacantViewSet(viewsets.GenericViewSet):
 		return self.queryset
 
 	def check_outdated_vacants(self):
-		outdated_vacants = self.model.objects.filter(t200_close_date__range=('2021-01-01',str(date.today()))).all()
+		outdated_vacants = self.model.objects.filter(c204_id_vacant_status=2,t200_close_date__range=('2021-01-01',str(date.today()))).all()
 		print(outdated_vacants)
 		for vacant in outdated_vacants:
 			print(vacant)
