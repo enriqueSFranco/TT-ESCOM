@@ -6,7 +6,6 @@ const Aside = styled.aside`
   flex-direction: column;
   align-items: center;
   padding-top: 1rem;
-  background-color: #fff;
   height: ${props => props.height || '100%'};
 `
 

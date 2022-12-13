@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Message = styled.span`
+const Message = styled.div`
   background-color: #f9f9f9;
   font-weight: 300;
 
@@ -15,6 +15,8 @@ const Message = styled.span`
   }}
   padding: .5rem .7rem;
   border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Description = styled.div`
@@ -25,9 +27,19 @@ const Description = styled.div`
 `;
 
 const TextDate = styled.span`
-  font-weight: 500;
-  font-size: 0.9rem;
-  color: #116bfe;
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: #767676;
+  display: flex;
+  justify-content: flex-end;
+  ${(props) => {
+    if (props.typeUser) {
+      return `
+        color: #fff;
+        font-weight: 400;
+      `;
+    }
+  }}
 `;
 
 const CommentBox = styled.textarea`

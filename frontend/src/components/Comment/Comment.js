@@ -4,7 +4,6 @@ import CustomAvatar from "components/Avatar/Avatar";
 import {
   ContainerMessage,
   Message,
-  WrapperAvatar,
   TextDate,
 } from "./styled-components/CommentStyled";
 
@@ -12,7 +11,10 @@ const Comment = ({ comment, date, username, typeUser }) => {
   return (
     <ContainerMessage typeUser={typeUser}>
       <CustomAvatar username={username} width="40px" height="40px" />
-      <Message typeUser={typeUser}>{comment}</Message>
+      <Message typeUser={typeUser}>
+        <p style={{margin: '0'}}>{comment}</p>
+        <TextDate typeUser={typeUser}>{formatDate(date)}</TextDate>
+      </Message>
     </ContainerMessage>
   );
 };

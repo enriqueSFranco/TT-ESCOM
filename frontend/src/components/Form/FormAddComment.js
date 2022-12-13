@@ -18,14 +18,17 @@ const textSucces = {
   margin: "0",
 };
 
+const soket = new WebSocket("");
+
 const FormAddComment = ({ typeUser, userId, vacantId }) => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
   const { form, errors, setForm, handleChange } = useForm({
     t223_comment: "",
-    t200_id_vacant: vacantId
+    t200_id_vacant: vacantId,
   });
 
+  console.log(soket);
   function onSendComment(e) {
     e.preventDefault();
 
@@ -39,13 +42,13 @@ const FormAddComment = ({ typeUser, userId, vacantId }) => {
       const payload = { ...form, t301_id_recruiter: userId };
 
       sendCommentRecruiter(payload)
-        .then(response => console.log(response))
-        .catch(error => console.error(error))
-      
+        .then((response) => console.log(response))
+        .catch((error) => console.error(error));
+
       setForm({
         t223_comment: "",
-        t200_id_vacant: vacantId
-      })
+        t200_id_vacant: vacantId,
+      });
     }
 
     if (typeUser === USERS.manager) {
@@ -56,7 +59,12 @@ const FormAddComment = ({ typeUser, userId, vacantId }) => {
         .then((response) => {
           console.log(response);
         })
-        .catch((error) => console.error(error))
+        .catch((error) => console.error(error));
+
+      setForm({
+        t223_comment: "",
+        t200_id_vacant: vacantId,
+      });
     }
   }
 
