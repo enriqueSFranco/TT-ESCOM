@@ -174,6 +174,13 @@ class Student(models.Model):
 	t100_travel = models.BooleanField(default=False)
 	t100_interest_job = models.CharField(max_length=70,null=True,blank=True)
 	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to=upload_image_profile)
+	c207_id_experience = models.ForeignKey(
+        'vacantes.Experience',
+        null=False,
+		blank=False,
+		related_name='StudentExperience',
+		default=1,
+        on_delete=models.CASCADE)
 	is_active = models.BooleanField(default=False)
 
 	USERNAME_FIELD = 't100_email'

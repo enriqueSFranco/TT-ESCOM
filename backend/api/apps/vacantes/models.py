@@ -146,6 +146,8 @@ class Vacant(models.Model):
     )
     t200_job = models.CharField(max_length=125,null=False,blank=False)
     t200_description = models.TextField(null=True,blank=True)     
+    t200_min_salary = models.IntegerField(null=False,default=0)
+    t200_max_salary = models.IntegerField(null=False,default=1)
     c207_id_experience = models.ForeignKey(
         Experience,
         blank=True,
