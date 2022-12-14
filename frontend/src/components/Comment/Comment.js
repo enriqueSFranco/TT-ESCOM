@@ -2,24 +2,20 @@ import React from "react";
 import { formatDate } from "utils";
 import CustomAvatar from "components/Avatar/Avatar";
 import {
-  WrapperComment,
-  WrapperAvatar,
-  Description,
+  ContainerMessage,
+  Message,
   TextDate,
 } from "./styled-components/CommentStyled";
 
-const Comment = ({ comment, date, username, token }) => {
-
+const Comment = ({ comment, date, username, typeUser }) => {
   return (
-    <WrapperComment typeUser={token}>
-      <WrapperAvatar>
-        <CustomAvatar username={username} width="50px" height="50px" />
-        <TextDate>Fecha: {formatDate(date)}</TextDate>
-      </WrapperAvatar>
-      <Description>
-        <span>{comment}</span>
-      </Description>
-    </WrapperComment>
+    <ContainerMessage typeUser={typeUser}>
+      <CustomAvatar username={username} width="40px" height="40px" />
+      <Message typeUser={typeUser}>
+        <p style={{margin: '0'}}>{comment}</p>
+        <TextDate typeUser={typeUser}>{formatDate(date)}</TextDate>
+      </Message>
+    </ContainerMessage>
   );
 };
 

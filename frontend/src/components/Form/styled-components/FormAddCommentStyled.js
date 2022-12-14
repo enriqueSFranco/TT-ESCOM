@@ -1,11 +1,8 @@
 import styled from 'styled-components'
 
 const Form = styled.form`
-  /* outline: 2px solid blue; */
-  position: fixed;
-  bottom: 1rem;
   background-color: #fff;
-  width: 34.5%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

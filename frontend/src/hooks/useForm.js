@@ -2,7 +2,11 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { CODE_201 } from "services/http.code";
-import { createAccountRecruiter, createAccountStudent, postCertification } from "services";
+import {
+  createAccountRecruiter,
+  createAccountStudent,
+  postCertification,
+} from "services";
 
 export const useForm = (initialForm, validateForm) => {
   const navigate = useNavigate();
@@ -35,18 +39,19 @@ export const useForm = (initialForm, validateForm) => {
     e.preventDefault(); // cancelamos el comporamiento del formulario que tiene por defecto
 
     setErrors(validateForm(form)); // verificamos si hay error en los campos del formulario
-    if (Object.keys(errors).length === 0) { // si la longitud de las claves del objeto error es de cero, quiere decir que no hay errores.
+    if (Object.keys(errors).length === 0) {
+      // si la longitud de las claves del objeto error es de cero, quiere decir que no hay errores.
       setLoading(true);
       createAccountStudent(form).then((response) => {
         if (response.status || response.status === CODE_201) {
-          const { data } = response
+          const { data } = response;
           toast.success(data.message);
           setTimeout(() => {
             navigate("/alumno");
           }, 3000);
           setForm(initialForm);
         } else {
-          setErrors({t100_email: "El email ya esta en uso"});
+          setErrors({ t100_email: "El email ya esta en uso" });
         }
       });
     } else return;
@@ -54,67 +59,43 @@ export const useForm = (initialForm, validateForm) => {
 
   const handleSubmitCompany = (e) => {
     e.preventDefault();
-    // form.t300_validator_document = uploadFile(e)
     setErrors(validateForm(form));
-    // console.log('->',form)
 
     if (Object.keys(errors).length === 0) {
-      createAccountRecruiter(form)
-        .then(response => {
-          console.log(response)
-          if (response.status === 201) {
-            toast.success(response?.data?.message);
-            setTimeout(() => {
-              navigate("/pre-registro");
-            }, 3000);
-          } else if (response.status === 400) {
-            toast.error(response.data.message);
-          }
-        })
+      createAccountRecruiter(form).then((response) => {
+        console.log(response);
+        if (response.status === 201) {
+          toast.success(response?.data?.message);
+          setTimeout(() => {
+            navigate("/pre-registro");
+          }, 3000);
+        } else if (response.status === 400) {
+          toast.error(response.data.message);
+        }
+      });
     }
   };
-
-
-  // const handleSubmitCompanyRecruiter = e => {
-  //   e.preventDefault();
-  //   if (Object.keys(errors).length === 0) {
-  //     setLoading(true);
-  //     createBusinessRecruiter(form)
-  //     .then(response => {
-  //       if (response.status === 201) {
-  //         toast.success("Pre-Registro enviado con exito.");
-  //         setTimeout(() => {
-  //           navigate("/pre-registro")
-  //         }, 3000);
-  //       }
-  //     })
-  //     .catch(error => {
-  //       console.log(error)
-  //     })
-  //     .finally(() => setLoading(false));
-  //   }
-  // }
 
   const onSubmitPostCertification = (e) => {
     e.preventDefault();
     // setErrors(validateForm(form));
-    postCertification(form)
-      .then(response => {
-        if (response.status === 201) {
-          const { data } = response;
-          setResponse(data);
-          setLoading(false);
-        } else {
-          setLoading(false);
-        }
-      })
-  } 
+    postCertification(form).then((response) => {
+      if (response.status === 201) {
+        const { data } = response;
+        setResponse(data);
+        setLoading(false);
+      } else {
+        setLoading(false);
+      }
+    });
+  };
 
   return {
     form,
     errors,
     loading,
     response,
+    setForm,
     handleChange,
     handleChecked,
     handleSubmitStudent,

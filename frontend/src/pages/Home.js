@@ -1,12 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useAuth } from "context/AuthContext";
 import {
   useGetAllJobs,
   useNearScreen,
   useCustomDebounce,
   useSearchJob,
 } from "hooks";
-import { applyJob } from "services";
 import FormSearchJob from "components/Search/FormSearchJob";
 import JobList from "components/Card/JobList/JobList";
 import Loader from "components/Loader/Loader";
@@ -32,7 +30,6 @@ const Home = () => {
   const [query, setQuery] = useState("");
   const [data, isLoading] = useSearchJob(query);
   const externalRef = useRef(null);
-  const { token } = useAuth();
   const { response, loading, loadingNextPage, setPage } = useGetAllJobs();
   const { isNearScreen } = useNearScreen({
     distance: "100px",
@@ -70,31 +67,11 @@ const Home = () => {
 
   const debouncehandleNextPage = useCallback(debounce, []);
 
-  const handleApplyJob = async (idJob, userID) => {
-    let now = new Date();
-    try {
-      const response = await applyJob({
-        t200_id_vacant: idJob,
-        t100_id_student: userID,
-        c205_id_application_state: 1,
-        t201_date_application:
-          now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate(),
-      });
-      const { data } = response;
-      console.log(data)
-      // toast.success(data?.message);
-    } catch (error) {
-      // toast.error(error.message);
-    }
-  };
-
   useEffect(() => {
     if (isNearScreen) debouncehandleNextPage();
   }, [isNearScreen, debouncehandleNextPage]);
 
   if (!response) return null;
-
-  // console.log(token?.user?.id)
 
   return (
     <LayoutHome>
@@ -133,11 +110,7 @@ const Home = () => {
             <div id="visor" ref={externalRef}></div>
           </Cards>
           <SummaryCard>
-            <DetailsJob
-              vacantId={vacantId || response[0]?.t200_id_vacant}
-              handleApplyJob={() => handleApplyJob(vacantId, token?.user?.id)}
-              token={token}
-            />
+            <DetailsJob vacantId={vacantId || response[0]?.t200_id_vacant} />
           </SummaryCard>
         </Content>
         {/* <ButtonScrollTop /> */}

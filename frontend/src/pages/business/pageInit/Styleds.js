@@ -1,11 +1,24 @@
 import styled from 'styled-components'
+import { USERS } from "types";
 
 const Grid = styled.div`
-  /* outline: 2px solid blue;   */
-  height: calc(100% - 9.3rem);
-  padding: 0 .5rem;
+  ${({typeOfUser}) => {
+    if (typeOfUser === USERS.manager) {
+      return `
+        height: 100%;
+
+      `
+    }
+    if (typeOfUser === USERS.recruiter) {
+      return `
+        height: calc(100% - 9.5rem);
+      `
+    }
+  }}
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  /* justify-items: center; */
+  align-content: center;
   gap: 1rem;
 `
 
@@ -14,7 +27,7 @@ const WrapperWidgets = styled.section`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: .5rem;
 `
 
 const ContentWidgetCommon = styled.div`

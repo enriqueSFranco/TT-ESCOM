@@ -18,20 +18,19 @@ const textSucces = {
   margin: "0",
 };
 
+
 const FormAddComment = ({ typeUser, userId, vacantId }) => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
-  // let { t200_id_vacant } = useParams();
-  const { form, handleChange } = useForm({
+  const { form, errors, setForm, handleChange } = useForm({
     t223_comment: "",
-    t200_id_vacant: vacantId
+    t200_id_vacant: vacantId,
   });
 
   function onSendComment(e) {
     e.preventDefault();
 
     if (!form.t223_comment.trim()) {
-      setError(true);
       return;
     }
 
@@ -39,11 +38,15 @@ const FormAddComment = ({ typeUser, userId, vacantId }) => {
       console.log("enviando mensaje desde reclutador");
 
       const payload = { ...form, t301_id_recruiter: userId };
-      console.log(payload)
+
       sendCommentRecruiter(payload)
-        .then(response => console.log(response))
-        .catch(error => setError(error))
-        // .finally(() => form?.t223_comment = "")
+        .then((response) => console.log(response))
+        .catch((error) => console.error(error));
+
+      setForm({
+        t223_comment: "",
+        t200_id_vacant: vacantId,
+      });
     }
 
     if (typeUser === USERS.manager) {
@@ -52,14 +55,16 @@ const FormAddComment = ({ typeUser, userId, vacantId }) => {
 
       sendComment(payload)
         .then((response) => {
-          setMessage(response.message);
+          console.log(response);
         })
-        .catch((error) => console.error(error))
-        // .finally(() => form?.t223_comment = "")
+        .catch((error) => console.error(error));
 
+      setForm({
+        t223_comment: "",
+        t200_id_vacant: vacantId,
+      });
     }
   }
-  console.log(vacantId)
 
   return (
     <Form onSubmit={onSendComment}>

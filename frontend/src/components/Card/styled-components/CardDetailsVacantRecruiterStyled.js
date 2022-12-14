@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { USERS } from "types";
 
 const WrapperLoader = styled.div`
   width: 100vh;
@@ -14,17 +15,23 @@ const WrapperIconEdit = styled.div`
   display: flex;
   flex-direction: row-reverse;
   font-size: 1.3rem;
-  color: #2172F2;
-`
+  color: #2172f2;
+`;
 
 const WraperCard = styled.article`
   width: 100%;
-  margin: 0 auto;
+  height: 100%;
+  ${({ typeOfUser }) => {
+    if (typeOfUser === USERS.manager) {
+      return `
+        height: 100%;
+      `;
+    }
+  }}
   background-color: #fff;
   border-radius: 5px;
   border: 1px solid #ccc;
   padding: 1rem;
-  margin-top: 1rem;
   /* outline: 2px solid green; */
   position: relative;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -32,14 +39,18 @@ const WraperCard = styled.article`
 `;
 
 const WrapperComment = styled.section`
-  margin: 0 auto;
   width: 100%;
-  overflow-x: hidden;
+  ${({typeOfUser}) => {
+    if (typeOfUser === USERS.manager) {
+      return `
+        height: 100%;
+        `;
+      }
+    }}
   background-color: #fff;
   border-radius: 5px;
   border: 1px solid #ccc;
   padding: 1rem;
-  margin-top: 1rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 `;

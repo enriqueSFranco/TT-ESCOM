@@ -17,6 +17,15 @@ const WrapperSummaryJob = styled.div`
   padding: 0 0 1rem 0;
 `
 
+const ContentModal = styled.div`
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+`
+
 const TextH2 = styled.h2`
   font-size: ${props => props.size || '1.3em'};
   font-weight: 700;
@@ -51,4 +60,4 @@ const DescriptionJob = styled.div`
   overflow-y: auto;
 `
 
-export { DescriptionJob, Header, TextH2, WrapperRequitements, WrapperMoreInfo, WrapperSummaryJob }
+export { DescriptionJob, ContentModal, Header, TextH2, WrapperRequitements, WrapperMoreInfo, WrapperSummaryJob }

@@ -6,24 +6,23 @@ const Aside = styled.aside`
   flex-direction: column;
   align-items: center;
   padding-top: 1rem;
-  background-color: #fff;
   height: ${props => props.height || '100%'};
 `
 
 const Container = styled.main`
-  grid-area: container;
   width: 100%;
   height: 100%;
-  /* outline: 2px solid red;   */
+  grid-area: container;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
 `
 
 const Grid = styled.div`
-  /* outline: 2px solid blue;   */
   height: calc(100% - 9.3rem);
   padding: 0 .5rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
 `
 
 const WrapperWidgets = styled.section`

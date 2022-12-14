@@ -1,5 +1,5 @@
 import React from "react";
-import { useFetch } from "hooks/useFetch";
+import { useFetch } from "hooks";
 import { uuid } from "utils/uuid";
 import { useAuth } from "context/AuthContext";
 import ApplicationJobStudent from "components/Card/ApplicationJob/ApplicationJobStudent";
@@ -23,6 +23,14 @@ function replaceBackSpace(string) {
   return string.replace(' ', '-').toLowerCase()
 }
 
+const NoApplications = () => {
+  return (
+    <div>
+      No tienes ninguana postulacion
+    </div>
+  )
+}
+
 const PageApplicationsStudent = () => {
   const { token } = useAuth();
   const { data } = useFetch(
@@ -40,8 +48,6 @@ const PageApplicationsStudent = () => {
   }));
 
   if (!data) return null;
-
-  console.log(data);
 
   return (
     <LayoutHome>
@@ -65,17 +71,18 @@ const PageApplicationsStudent = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {data?.map((row) => (
-                <TableRow key={uuid()}>
+              {data.lenght === 0 ? <NoApplications /> : (
+                data.map(it => (
+                  <TableRow key={uuid()}>
                   <TableCell
                     sx={{ width: 150 }}
                     style={{ textAlign: "center" }}
                   >
-                    {row?.t200_id_vacant?.t300_id_company?.t300_logo !==
+                    {it?.t200_id_vacant?.t300_id_company?.t300_logo !==
                     null ? (
                       <img
-                        src={row?.t200_id_vacant?.t300_id_company?.t300_logo}
-                        alt={row?.t200_id_vacant?.t300_id_company}
+                        src={it?.t200_id_vacant?.t300_id_company?.t300_logo}
+                        alt={it?.t200_id_vacant?.t300_id_company}
                         className="image"
                       />
                     ) : (
@@ -89,29 +96,31 @@ const PageApplicationsStudent = () => {
                     scope="row"
                   >
                     <ApplicationJobStudent
-                      nameJob={row?.t200_id_vacant?.t200_job}
-                      salary={row?.t200_id_vacant?.t200_max_salary}
-                      modality={row?.t200_id_vacant?.t200_home_ofice}
+                      nameJob={it?.t200_id_vacant?.t200_job}
+                      salary={it?.t200_id_vacant?.t200_max_salary}
+                      modality={it?.t200_id_vacant?.t200_home_ofice}
                       experience={
-                        row?.t200_id_vacant?.c207_id_experience
+                        it?.t200_id_vacant?.c207_id_experience
                           ?.c207_description
                       }
-                      dateApplication={row?.t201_date_application}
-                      contract={row?.t200_id_vacant?.c208_id_contract?.c208_description}
+                      dateApplication={it?.t201_date_application}
+                      contract={it?.t200_id_vacant?.c208_id_contract?.c208_description}
+                      description={it?.t200_id_vacant?.t200_description}
                     />
                   </TableCell>
                   <TableCell
                     style={{ fontSize: "1rem", textAlign: "center" }}
                     sx={{ width: 350 }}
-                  >{`${row?.t200_id_vacant?.c222_id_locality?.c222_municipality}, ${row?.t200_id_vacant?.c222_id_locality?.c222_state}, ${row?.t200_id_vacant?.t200_street}`}</TableCell>
+                  >{`${it?.t200_id_vacant?.c222_id_locality?.c222_municipality}, ${it?.t200_id_vacant?.c222_id_locality?.c222_state}, ${it?.t200_id_vacant?.t200_street}`}</TableCell>
                   <TableCell style={{ fontSize: "1rem" }} align="center">
                     <div className="tag_state">
-                      <div className={`${replaceBackSpace(row?.c205_id_application_state?.c205_description)} circle_state`}></div>
-                      {row?.c205_id_application_state?.c205_description}
+                      <div className={`${replaceBackSpace(it?.c205_id_application_state?.c205_description)} circle_state`}></div>
+                      {it?.c205_id_application_state?.c205_description}
                     </div>
                   </TableCell>
                 </TableRow>
-              ))}
+                ))
+              )}
             </TableBody>
           </Table>
         </TableContainer>

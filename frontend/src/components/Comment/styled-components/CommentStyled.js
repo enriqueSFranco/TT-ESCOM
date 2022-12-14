@@ -1,19 +1,22 @@
 import styled from "styled-components";
-import { USERS } from "types";
 
-const WrapperComment = styled.article`
-  background-color: #f5f5f5;
-  max-width: 100%;
-  height: fit-content;
-  padding: 0.5rem;
-  border-radius: 2px;
-`;
+const Message = styled.div`
+  background-color: #f9f9f9;
+  font-weight: 300;
 
-const WrapperAvatar = styled.div`
+  ${(props) => {
+    if (props.typeUser) {
+      return `
+        background-color: #2B3FEC;
+        color: #fff;
+        font-weight: 300;
+      `;
+    }
+  }}
+  padding: .5rem .7rem;
+  border-radius: 1rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
+  flex-direction: column;
 `;
 
 const Description = styled.div`
@@ -24,9 +27,19 @@ const Description = styled.div`
 `;
 
 const TextDate = styled.span`
-  font-weight: 500;
-  font-size: 0.9rem;
-  color: #116bfe;
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: #767676;
+  display: flex;
+  justify-content: flex-end;
+  ${(props) => {
+    if (props.typeUser) {
+      return `
+        color: #fff;
+        font-weight: 400;
+      `;
+    }
+  }}
 `;
 
 const CommentBox = styled.textarea`
@@ -55,11 +68,19 @@ const Form = styled.form`
   gap: 0.5rem;
 `;
 
-export {
-  WrapperComment,
-  WrapperAvatar,
-  Form,
-  Description,
-  CommentBox,
-  TextDate,
-};
+const ContainerMessage = styled.div`
+  width: 100%;
+  position: relative;
+  display: flex;
+  ${(props) => {
+    if (props.typeUser) {
+      return `
+        flex-direction: row-reverse;
+      `;
+    }
+  }}
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+export { ContainerMessage, Message, Form, Description, CommentBox, TextDate };
