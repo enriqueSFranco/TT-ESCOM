@@ -49,7 +49,6 @@ const CardJob = ({ job, onClick }) => {
   if (!job) return null;
 
   const currentTime = new Date(job?.t200_publish_date).getUTCDate()
-  console.log(currentTime)
 
   return (
     <CardBody close={currentTime}>
