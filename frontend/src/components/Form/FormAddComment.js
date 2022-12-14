@@ -18,7 +18,6 @@ const textSucces = {
   margin: "0",
 };
 
-const soket = new WebSocket("");
 
 const FormAddComment = ({ typeUser, userId, vacantId }) => {
   const [message, setMessage] = useState("");
@@ -28,7 +27,6 @@ const FormAddComment = ({ typeUser, userId, vacantId }) => {
     t200_id_vacant: vacantId,
   });
 
-  console.log(soket);
   function onSendComment(e) {
     e.preventDefault();
 

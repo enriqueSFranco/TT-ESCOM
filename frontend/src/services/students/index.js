@@ -187,7 +187,7 @@ export const applyJob = (payload) => {
     payload
   )
     .then((response) => response)
-    .catch((error) => error.message);
+    .catch((error) => error);
 };
 
 /**
