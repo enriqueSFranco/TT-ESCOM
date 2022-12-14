@@ -34,7 +34,7 @@ class Authentication(object):
         return response
       if not self.user_token_expired:
         return super().dispathc(request, *args, ** kwars)
-    response = Response({'error': 'No se han enviado las credenciales', 'expired': self.user_token_expired}, stataus=status.HTTP_400_BAD_REQUEST)
+    response = Response({'error': 'No se han enviado las credenciales', 'expired': self.user_token_expired}, stataus=status.HTTP_200_OK)
     response.accepted_renderer = JSONRenderer()
     response.accepted_media_type = 'application/json'
     response.renderer_contect = {}

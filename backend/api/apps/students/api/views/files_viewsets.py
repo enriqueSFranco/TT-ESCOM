@@ -53,7 +53,7 @@ class StudentImageViewSet(viewsets.GenericViewSet):
 			}, status=status.HTTP_200_OK)		
 		return Response({
 			'message': 'Error en la actualización'
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 
 	def destroy(self, request, pk):
@@ -115,7 +115,7 @@ class CVViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en la actualización',
 			'errors': cv_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	def destroy(self, request, pk):
 		cv_destroy = self.model.objects.filter(t100_id_student=pk).first()				

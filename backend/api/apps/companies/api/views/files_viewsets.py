@@ -74,7 +74,7 @@ class CompanyLogoViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en la actualización',
 			'errors': company_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	def destroy(self, request, pk):
 		"""
@@ -163,7 +163,7 @@ class CompanyBannerViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en la actualización',
 			'errors': company_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	def destroy(self, request, pk):
 		"""
@@ -231,7 +231,7 @@ class ValidationDocumentViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en la actualización',
 			'errors': file_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	def destroy(self, request, pk):
 		file_destroy = self.model.objects.filter(t300_id_company=pk).first()				

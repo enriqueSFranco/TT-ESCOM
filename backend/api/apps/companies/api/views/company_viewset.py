@@ -124,13 +124,13 @@ class CompanyViewSet(viewsets.GenericViewSet):
 					'message': 'Datos del reclutador incorrectos, revise la información',
 					'errors': recruiter_serializer.errors,
 					'succes': False
-					}, status=status.HTTP_400_BAD_REQUEST)
+					}, status=status.HTTP_200_OK)
 		else:
 			return Response({
 				'message': 'Datos de la empresa incorrectos, revise la información',
 				'errors': company_serializer.errors,
 				'succes': False 
-			}, status=status.HTTP_400_BAD_REQUEST)	
+			}, status=status.HTTP_200_OK)	
 		
 
 	def retrieve(self, request, pk):
@@ -163,7 +163,7 @@ class CompanyViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en la actualización',
 			'errors': company_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	def destroy(self, request, pk):
 		"""

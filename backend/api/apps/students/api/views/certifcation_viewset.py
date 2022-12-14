@@ -62,7 +62,7 @@ class CertificationViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en el registro',
 			'errors': certification_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	def retrieve(self, request, pk):
 		"""
@@ -96,7 +96,7 @@ class CertificationViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en la actualización',
 			'errors': certification_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	def destroy(self, request, pk):
 		"""

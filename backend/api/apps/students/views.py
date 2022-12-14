@@ -16,7 +16,7 @@
 #       user_token = Token.objects.get(student=StudentTokenSerializer().Meta.model.objects.filter(t100_boleta=t100_boleta).first())
 #       return Response({'token': user_token.key})
 #     except:
-#       return Response({'error': 'Credenciales incorrectas'}, status=status.HTTP_400_BAD_REQUEST)
+#       return Response({'error': 'Credenciales incorrectas'}, status=status.HTTP_200_OK)
 
 # # 28
 # class Login(ObtainAuthToken):
@@ -50,8 +50,8 @@
 #       else:
 #         return Response({'error': 'Este usuario no puede inicar sesion'}, status=status.HTTP_401_UNAUTHORIZED)
 #     else:
-#       Response({'error': 'Nombre de usuario o password incorrectos'}, status=status.HTTP_400_BAD_REQUEST)
-#     return Response({'error': 'Contraseña o nombre de usuario incorrectos', 'status':status.HTTP_400_BAD_REQUEST})
+#       Response({'error': 'Nombre de usuario o password incorrectos'}, status=status.HTTP_200_OK)
+#     return Response({'error': 'Contraseña o nombre de usuario incorrectos', 'status':status.HTTP_200_OK})
 
 # class Logout(APIView):
 #   def get(self, request, *args, **kwargs):
@@ -73,6 +73,6 @@
 #         token_messsage = 'token eliminado'
 
 #         return Response({'token_message': token_messsage, 'session_message': session_message}, status=status.HTTP_200_OK)
-#       return Response({'error': 'No se encontro un usuario con estas credenciales'}, status=status.HTTP_400_BAD_REQUEST)
+#       return Response({'error': 'No se encontro un usuario con estas credenciales'}, status=status.HTTP_200_OK)
 #     except:
 #       return Response({'error': 'No se ha encontrado token en la peticion'}, status=status.HTTP_409_CONFLICT)

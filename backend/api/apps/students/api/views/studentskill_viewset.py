@@ -39,7 +39,7 @@ class SkillViewSet(viewsets.GenericViewSet):
     if skill_serializer.is_valid():
       skill_serializer.save()
       return Response({"message": "Habilidad creada correctamente"}, status=status.HTTP_200_OK)
-    return Response({"message": "Hay errores en el registro"}, status=status.HTTP_400_BAD_REQUEST)
+    return Response({"message": "Hay errores en el registro"}, status=status.HTTP_200_OK)
 
   def retrieve(self, request, pk):        
     skills = self.model.objects.filter(t100_id_student=pk).all()
@@ -57,7 +57,7 @@ class SkillViewSet(viewsets.GenericViewSet):
     return Response({
 			'message': 'Hay errores en la actualización',
 			'errors': skill_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
   def destroy(self, request, pk):
     skill_destroy = self.model.objects.filter(t102_id_registrer=pk).first()    

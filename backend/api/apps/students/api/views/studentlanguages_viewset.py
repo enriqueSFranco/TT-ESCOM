@@ -67,7 +67,7 @@ class LanguagesViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en el registro',
 			'errors': language_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	def retrieve(self, request, pk):        
 		language = self.get_object(pk)
@@ -85,7 +85,7 @@ class LanguagesViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en la actualización',
 			'errors': language_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	def destroy(self, request, pk):
 		language_destroy = self.model.objects.filter(t110_id_registrer=pk).first()

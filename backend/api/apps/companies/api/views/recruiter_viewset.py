@@ -68,7 +68,7 @@ class RecruiterViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en el registro',
 			'errors': recruiter_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	def retrieve(self, request, pk):
 		recruiter = self.get_object(pk)
@@ -86,7 +86,7 @@ class RecruiterViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en la actualización',
 			'errors': recruiter_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	def destroy(self, request, pk):
 		recruiter_destroy = self.model.objects.filter(t301_id_recruiter=pk).first()

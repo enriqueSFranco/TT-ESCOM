@@ -75,7 +75,7 @@ class ApplicationViewSet(viewsets.GenericViewSet):
 		return Response({
 					'message': 'Hay errores en el registro',
 					'errors': application_serializer.errors
-					}, status=status.HTTP_400_BAD_REQUEST)
+					}, status=status.HTTP_200_OK)
 
 	def retrieve(self, request, pk):
 		applications = self.get_object(pk)
@@ -119,7 +119,7 @@ class ApplicationViewSet(viewsets.GenericViewSet):
 		return Response({
             'message': 'Hay errores en la actualización',
             'errors': application_serializer.errors
-            }, status=status.HTTP_400_BAD_REQUEST)
+            }, status=status.HTTP_200_OK)
 
 	def updateVacant(self,id_vacant):
 		vacant = self.vacant_model.objects.filter(t200_id_vacant = id_vacant).first()
