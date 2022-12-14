@@ -1,118 +1,99 @@
-.container{
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; 
-  overflow: hidden;
+.container {
+  width: 100%;
+  height: 100%;
   color: #000;
-  border-radius: 0 0 4px 4px;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  width: 2000px;
-  height: 800px;
   display: flex;
+  overflow: hidden;
 }
 
-.container1{
-  background-color: #028dd4;
-  width: 40%;
+.container1 {
+  background-color: #fff;
+  width: 20%;
   height: 100%;
 }
 
 .flex {
   display: flex;
-}
-
-.bg {
-  position: relative;
-  background-size: cover;
-  background-position: -200px;
-  background-repeat: no-repeat;
-  backdrop-filter: calc(10px);
-  height: 100%;
-  width: 100%;
-  /* outline: 2px solid red; */
-}
-
-.bg1 {
-  background-image: url(../../../images/team.png);
-}
-
-.bg2 {
-  background-color: #fff;
-  background-position: center -30px;
-  background-image: url(../../../images/step1.png);
-}
-
-.bg3 {
-  background-color: #78E0D8;
-  background-size: 800px;
-  background-position: center center;
-  background-image: url(../../../images/step3.gif);
-}
-
-.bg4 {
-  background-position: 0px;
-  background-color: #fff;
-  background-size: contain;
-  background-image: url(../../../images/skillsStep.gif);
-}
-
-.container2 {  
-  width: 60%;
-  height: 90%;
   align-items: center;
-  margin: 1em;
+  gap: 1rem;
 }
 
-.container3 {
+.bg{
+  background-color: #f1f1f181;
+  height: 100%;
   display: flex;
-  margin: 1em;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.container2 {
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .stepper {
-  width: 150px;
-  display: flex;
-  margin-right: 190px;
-  align-items: center;
+  width: 100%;
+  position: relative;
+  top: 8rem;
 }
 
-.pages {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 90%;
+.titleCurrent {
+  color: #2F4665;
+  font-weight: 700;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align: left;
+  position: relative;
+  top: 4rem;
+}
+
+.subTitleCurrent {
+  color: #2F4665;
+  font-weight: 500;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align: left;
+  position: relative;
+  top: 6rem;
 }
 
 .buttons {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   display: flex;
   align-items: center;
-  justify-content: right;
+  justify-content: flex-start;
+  gap: 3rem;
 }
 
-
 .button {
-  padding: 5px 35px;
+  padding: .5rem;
+  width: 130px;
   background-color: white;
-  border: 1px solid rgb(0, 128, 255);
+  outline: 2px solid #0080ff;
+  border: none;
   border-radius: 5px;
+  transition: background-color .4s ease;
 }
 
 .button:hover {
-  background-color: #7d7d7d1e;
-}
-
-.space { width: 30px; }
-
-.formDataPrivate {
-  position: relative;
-  top: 0rem;
-  height: 90%;
+  background-color: #0080ff;
+  color: #fff;
 }
 
 .form1 {
-  /* outline: 2px solid red; */
   position: relative;
   top: 1rem;
+}
+
+.form {
+  height: fit-content;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  /* justify-content: space-between; */
 }
 
 .formDataSchool {
@@ -126,24 +107,25 @@
   align-items: flex-start;
 }
 
-.formTitle, .formTitleDataSchool, .formTitleSkills {
+.formTitle,
+.formTitleDataSchool,
+.formTitleSkills {
   color: #028dd4;
   font-weight: bold;
   width: 650px;
   position: relative;
   left: .8rem;
   top: -1rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-transform: uppercase;
 }
-.formTitlePersonal{
-  color: #028dd4;
-  font-weight: bold;
-  width: 650px;
-  position: relative;
-  left: .8rem;
-  top: -1rem;
-  font-family: 'Poppins', sans-serif;
+
+.formTitlePersonal {
+  color: #2F4665;
+  font-weight: normal;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   text-transform: uppercase;
 }
 
@@ -171,15 +153,12 @@
 }
 
 .containerPage {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: left;
-  height: 600px;
-  min-width: 900px;
-  
+  width: fit-content;
+  height: fit-content;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  background-color: #fff;
 }
 
 .icon {
@@ -189,91 +168,15 @@
 }
 
 .inputGroup {
-   outline: 2px solid red; 
-  height: 80px;
-  margin-bottom: 5rem;
-}
-
-.inputGroupName {
-  outline: 2px solid red; 
- height: 80px;
-}
-
-.inputGroupPhone {
-  outline: 2px solid green; 
-  height: 50px;  
-  justify-content: center;
-  align-items: center;
-  text-align: left;
-  margin: 1rem;
-}
-
-.inputGroupLocation {
-  outline: 2px solid blue; 
-  height: 200px;  
-  justify-content: center;
-  align-items: center;
-  text-align: left;
-  margin: 1rem;
-  height: 250px;
-}
-
-.inputGroup, .inputGroup_1_2 {
-  justify-content: center;
-  align-items: center;
-  text-align: left;
-  margin: 1rem;  
-}
-
-.inputGroup_1_2 {
-   outline: 2px solid yellow; 
-  width: 550px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.inputGroupP {
-  display: flex;
-  margin:1em;
-}
-
-.inputGroupP1 {
   width: 100%;
-  position: relative;
-  top: 1rem;
+  height: fit-content;
   display: flex;
-  justify-content: left;
-  align-items: left;
-  text-align: left;
-  margin: 1rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
 }
 
-
-.Col1{
-  width: 550px;
-  justify-content: space-between;
-  margin-right:1em;
-  /* outline: 2px solid red; */
-}
-.Col2{
-  text-align: left;
-}
-
-.Col4{
-  margin-right: 2em;
-}
-
-.Col3{
-  text-align: left;
-  position: relative;
-  left: .7rem;
-}
-
-.Col21{
-  margin:30px;
-}
-
-.texto{
+.texto {
   margin-bottom: 7px;
 }
 
@@ -300,7 +203,9 @@
   width: 490px;
 }
 
-.text { text-align: left; }
+.text {
+  text-align: left;
+}
 
 .title {
   /* outline: 2px solid red; */

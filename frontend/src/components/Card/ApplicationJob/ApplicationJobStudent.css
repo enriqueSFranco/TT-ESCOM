@@ -50,3 +50,8 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.viewJob {
+  cursor: pointer;
+  color: #3f5efb;
+}

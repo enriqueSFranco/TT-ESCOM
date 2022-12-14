@@ -16,13 +16,24 @@ class RecommendationsViewsets(viewsets.GenericViewSet):
         if self.queryset is None:
             self.queryset = self.model.objects.filter().all()
         return self.queryset
+	
+    def get_object(self, pk):	
+        self.queryset = self.model.objects\
+				.filter(t100_id_student = pk)\
+				.all()
+        return self.queryset
 
     def list(self, request):
-        #print(request.data)
-        candidate_recomendation()
+        #print(request.data)        
         recommendations = self.get_queryset()
         recommendations_serializer = self.list_serializer_class(recommendations, many=True)        
         return Response(recommendations_serializer.data, status=status.HTTP_200_OK)
+	
+    def retrieve(self, request, pk):
+        candidate_recomendation(pk)
+        applications = self.get_object(pk)
+        applications_serializer = self.list_serializer_class(applications,many=True)
+        return Response(applications_serializer.data)
     """
 
 	def get_object(self, pk):	

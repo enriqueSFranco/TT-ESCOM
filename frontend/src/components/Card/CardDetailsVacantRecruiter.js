@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import { useAuth } from "context/AuthContext";
 import {
@@ -17,10 +17,12 @@ import FormAddComment from "components/Form/FormAddComment";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { FaCalendarAlt, FaBrain } from "react-icons/fa";
 import { BiLike } from "react-icons/bi";
+import { FiEdit } from "react-icons/fi";
 import { IoCloseOutline } from "react-icons/io5";
 import {
   WrapperLoader,
   WraperCard,
+  WrapperIconEdit,
   WrapperActions,
   WrapperComment,
   Description,
@@ -35,13 +37,20 @@ function createMarkup(description) {
 }
 
 const CardDetailsVacantRecruiter = ({ vacantId }) => {
+<<<<<<< HEAD
   // const { t200_id_vacant } = useParams();
+=======
+>>>>>>> feature/reclutador
   const observation = useGetObservationVacant({ vacantId: vacantId });
   const observationManager = useGetObservationVacantManager({
     vacantId: vacantId,
   });
   const { token } = useAuth();
+<<<<<<< HEAD
   const { data, error, loading } = useFetch(
+=======
+  const { data, loading } = useFetch(
+>>>>>>> feature/reclutador
     `${process.env.REACT_APP_URL_VACANTS}${vacantId}/`
   );
 
@@ -67,7 +76,17 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
       .catch((error) => toast.error(error.message));
   };
 
-  if (!data || !token || !observation || !observationManager) return null;
+  const observationsRecruiter = useMemo(() => observation, [observation]);
+  const observationsManager = useMemo(
+    () => observationManager,
+    [observationManager]
+  );
+
+  if (!data || !token || !observationsRecruiter || !observationManager)
+    return null;
+
+  const STATUS = data[0]?.c204_id_vacant_status?.c204_id_status;
+  const typeOfUser = token?.user?.user_type
 
   return (
     <>
@@ -77,7 +96,8 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
         </WrapperLoader>
       ) : (
         <>
-          <WraperCard>
+          <WraperCard typeOfUser={typeOfUser}>
+            <WrapperIconEdit>{STATUS === 1 && <FiEdit />}</WrapperIconEdit>
             <Title>{data[0]?.t200_job}</Title>
             <HeaderInfo>
               <ListItems style={{ justifyContent: "center" }}>
@@ -158,12 +178,12 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
             )}
           </WraperCard>
           {token.user.user_type === USERS.recruiter ? (
-            <WrapperComment>
+            <WrapperComment typeOfUser={typeOfUser}>
               <header>
                 <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
               </header>
-              <section style={{ height: "calc(100% - 2.8rem)" }}>
-                {!observationManager.length ? (
+              <>
+                {!observationsManager.length ? (
                   <article
                     style={{
                       height: "100%",
@@ -200,40 +220,39 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                       flexDirection: "column",
                       gap: "1rem",
                       overflowY: "auto",
-                      height: "fit-content",
+                      height: "600px",
+                      padding: ".5rem",
                     }}
                   >
-                    {observation?.map((el) => (
+                    {observationsRecruiter?.map((el) => (
                       <Comment
                         key={`comment-id-${el?.t223_id_comment}`}
                         comment={el?.t223_comment}
-                        token={token.user.user_type}
                         date={el?.t223_sent_date}
                         username={el?.t400_id_admin?.t400_name}
-                        userId={el?.t301_id_recruiter?.t301_id_recruiter}
+                        typeUser={el?.t301_id_recruiter?.t301_id_recruiter}
                       />
                     ))}
                   </div>
                 )}
-              </section>
-              <FormAddComment typeUser={token.user.user_type} userId={token.user.id} />
+              </>
+              <FormAddComment
+                typeUser={token.user.user_type}
+                userId={token.user.id}
+                vacantId={vacantId}
+              />
             </WrapperComment>
           ) : (
             // TODO: Pasar a un componente independiente
-            <WrapperComment>
-              <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
-              <section
-                style={{
-                  height: "78vh",
-                  display: "grid",
-                  placeContent: "center",
-                  overflowY: "auto",
-                }}
-              >
+            <WrapperComment typeOfUser={typeOfUser}>
+              <header>
+                <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
+              </header>
+              <>
                 {!observationManager.length ? (
                   <article
                     style={{
-                      // height: "100%",
+                      height: "100%",
                       display: "grid",
                       placeContent: "center",
                     }}
@@ -262,31 +281,33 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                   </article>
                 ) : (
                   <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "1rem",
-                      width: "100%",
-                      position: 'relative',
-                      height: "calc(100vh - 17rem)",
-                    }}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "1rem",
+                    overflowY: "auto",
+                    height: "700px",
+                  }}
                   >
-                    {observationManager.map((observation) => (
+                    {observationsManager.map((observation) => (
                       <Comment
                         key={`comment-id-${observation?.t223_id_comment}`}
                         comment={observation?.t223_comment}
-                        token={token.user.user_type}
                         date={observation?.t223_sent_date}
                         username={observation?.t400_id_admin?.t400_name}
-                        userId={
+                        typeUser={
                           observation?.t301_id_recruiter?.t301_id_recruiter
                         }
                       />
                     ))}
                   </div>
                 )}
-              </section>
-              <FormAddComment typeUser={token.user.user_type} userId={token.user.id} />
+              </>
+              <FormAddComment
+                typeUser={token.user.user_type}
+                userId={token.user.id}
+                vacantId={vacantId}
+              />
             </WrapperComment>
           )}
         </>

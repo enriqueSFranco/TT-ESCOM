@@ -51,10 +51,9 @@ const PageLanguages = () => {
       <ModalPortal
         isOpen={isOpen}
         closeModal={closeModal}
-        minHeight="400px"
-        minWidth="600px"
-        bg="#FF8008"
-        colorText="#fff"
+        minHeight="300px"
+        minWidth="500px"
+        colorText="#000"
       >
         <FormLanguage id={token?.user?.id} />
       </ModalPortal>

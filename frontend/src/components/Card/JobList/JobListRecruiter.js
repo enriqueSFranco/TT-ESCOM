@@ -1,7 +1,9 @@
 import { memo } from "react";
 import { useAuth } from "context/AuthContext";
 import CardJobPreviewRecruiter from "../CardJobPreviewRecruiter";
+import { WrapperList } from './JobListRecruiterStyled'
 
+<<<<<<< HEAD
 const styles = {
   WrapperList: {
     width: '90%',
@@ -21,19 +23,34 @@ const ListJobsRecruiter = ({ data, setVacantId }) => {
     e.preventDefault()
     setVacantId(vacantId)
     console.log(`vacante ${vacantId}`)
+=======
+const ListJobsRecruiter = ({ data, setVacantId }) => {
+  const { token } = useAuth();
+  const typeOfUser = token.user.user_type
+
+  function handleClick(vacantId) {
+    setVacantId(vacantId)
+>>>>>>> feature/reclutador
   }
 
   return (
-    <section style={styles.WrapperList}>
+    <WrapperList typeOfUser={typeOfUser}>
       {data?.map((el) => (
         <CardJobPreviewRecruiter
+<<<<<<< HEAD
           key={`${crypto.randomUUID()}`}
           info={el}
           typeUser={token.user.user_type}
           onClick={(e) => handleClick(e, el?.t200_id_vacant)}
+=======
+          key={`card-job-id-${crypto.randomUUID()}`}
+          el={el}
+          typeUser={typeOfUser}
+          onClick={() => handleClick(el?.t200_id_vacant)}
+>>>>>>> feature/reclutador
         />
       ))}
-    </section>
+    </WrapperList>
   );
 };
 

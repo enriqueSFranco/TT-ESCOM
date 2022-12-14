@@ -10,7 +10,7 @@ export function useDebounce(val, wait) {
 
     return () => clearInterval(handler)
 
-  }, [val])
+  }, [val, wait])
 
   return debounce
 }

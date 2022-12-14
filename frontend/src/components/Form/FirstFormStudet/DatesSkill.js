@@ -1,16 +1,18 @@
 import React, { useState } from "react";
+import { useFetch } from "hooks";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import styles from "./StylesStepper.module.css";
 
-function DatesSkill({ softSkills, setSoftSkills,hardSkills, setHardSkills, AllResults }) {
+function DatesSkill({ softSkills, setSoftSkills,hardSkills, setHardSkills }) {
   const [localsoftSkills, setLocalSoftSkill] = useState(softSkills);
   const [localhardSkills, setLocalHardSkill] = useState(hardSkills);
+  const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
 
   let hard = [];
   let soft = [];
 
-  AllResults.forEach((dato) => {
+  data?.forEach((dato) => {
     if (dato["c116_type"] === "H") {
       hard.push(dato);
     }
@@ -19,12 +21,14 @@ function DatesSkill({ softSkills, setSoftSkills,hardSkills, setHardSkills, AllRe
     }
   });
 
+  if (!data) return null
+
   return (
     <div className={styles.containerPage}>
-      <h4 className={styles.formTitleSkills}>Para Finalizar...</h4>
-      <form className={styles.formSkills}>
-      <h5>Selecciona tus habilidades y conocimientos más importantes (max 10)</h5>
-        <div className={styles.select}>
+      <h4 className={styles.formTitlePersonal}>Habilidades</h4>
+      <form className={styles.form}>
+      <h5 style={{fontSize: '.8em', color: '#6E6D7A', margin: '0'}}>Selecciona tus habilidades y conocimientos más importantes (max 10)</h5>
+        <div className={styles.inputGroup}>
           <Autocomplete
             size="small"
             sx={{ width: 600, maxWidth: "100%" }}
@@ -49,7 +53,7 @@ function DatesSkill({ softSkills, setSoftSkills,hardSkills, setHardSkills, AllRe
             )}
           />
         </div>
-        <div className={styles.select}>
+        <div className={styles.inputGroup}>
           <Autocomplete
             size="small"
             sx={{ width: 600, maxWidth: "100%" }}

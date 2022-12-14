@@ -55,10 +55,10 @@ class ApplicationViewSet(viewsets.GenericViewSet):
 		if (check_applications):
 			print("Ya hay una postulación activa")
 			return Response({'message': 'Ya hay una postulación activa'
-								}, status=status.HTTP_400_BAD_REQUEST)
+								}, status=status.HTTP_200_OK)
 
 		application_serializer = self.serializer_class(data=request.data)
-		#print('request: ',request.data['t201_date_application'])
+		#print('request: ',request.data['t201_date_application'])  HTTP_200_OK
 		if application_serializer.is_valid():
 			application_serializer.save()
 			application = self.model.objects.aggregate(Max('t201_id_application'))
@@ -70,12 +70,10 @@ class ApplicationViewSet(viewsets.GenericViewSet):
 			if application_status.is_valid():				
 				application_status.save()
 				return Response({
-					'message': 'Aplicación registrada correctamente.',
-					'type':1
+					'message': 'Aplicación registrada correctamente.'
 					}, status=status.HTTP_201_CREATED)
 		return Response({
 					'message': 'Hay errores en el registro',
-					'type':3,
 					'errors': application_serializer.errors
 					}, status=status.HTTP_400_BAD_REQUEST)
 

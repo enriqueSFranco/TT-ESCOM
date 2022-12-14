@@ -41,7 +41,7 @@ class Login(ObtainAuthToken):
                          ,status = status.HTTP_401_UNAUTHORIZED)
     else:
       #print("No paso validación")
-      return Response({'error':'Nombre de usuario o contraseña incorrecta'},status = status.HTTP_400_BAD_REQUEST)    
+      return Response({'error':'Nombre de usuario o contraseña incorrecta'},status = status.HTTP_200_OK)    
 
 
 class Logout(APIView):

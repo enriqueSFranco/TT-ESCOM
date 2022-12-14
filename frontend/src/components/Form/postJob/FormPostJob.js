@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
 import { useForm, useFetch, useLanguage } from "hooks";
-import { postJob } from "services/jobs/index";
 import { POST_NEW_JOB } from "types/newJob";
 import LayoutHome from "Layout/LayoutHome";
 import {
+  postJob,
   getLocality,
   getAllCatalogueExperience,
   getAllContracTypes,
   getAllCandidateProfile,
-} from "services/catalogs";
+} from "services";
 import Input from "components/Input/Input";
-// import Switch from "components/Switch/Switch";
 import TextEditor from "components/TextEditor/TextEditor";
 import { Autocomplete, TextField } from "@mui/material";
 import { MdLanguage, MdWork, MdOutlineErrorOutline } from "react-icons/md";
 import { ImProfile } from "react-icons/im";
+import { FcMoneyTransfer } from "react-icons/fc";
 import { FaBrain } from "react-icons/fa";
 import { HiLocationMarker } from "react-icons/hi";
 import {
@@ -42,6 +43,18 @@ const validateForm = (form) => {
   else if (!regex.t200_job.test(form.t200_job.trim()))
     errors.t200_job =
       "El campo 'Titulo de la vacante' solo acepta letras y espacios en blanco.";
+
+  if (!form.t200_min_salary.trim())
+    errors.t200_min_salary = "El campo 'Titulo de la vacante' es requerido";
+  else if (!regex.t200_min_salary.test(form.t200_min_salary.trim()))
+    errors.t200_min_salary =
+      "El campo 'Titulo de la vacante' solo acepta letras y espacios en blanco.";
+
+  if (!form.t200_cp.trim())
+    errors.t200_cp = "El campo 'Titulo de la vacante' es requerido";
+  else if (!regex.t200_cp.test(form.t200_cp.trim()))
+    errors.t200_cp =
+      "El campo 'Titulo de la vacante' solo acepta letras y espacios en blanco.";
   return errors;
 };
 
@@ -59,41 +72,41 @@ function recuperarIdiomaId(array) {
 
 const styles = {
   containerError: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '.3em',
+    display: "flex",
+    flexDirection: "column",
+    gap: ".3em",
   },
   textError: {
-    color: 'red',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '.3em',
-    fontSize: '.8em'
-  }
-}
+    color: "red",
+    display: "flex",
+    alignItems: "center",
+    gap: ".3em",
+    fontSize: ".8em",
+  },
+};
 
 const FormPostJob = () => {
   const navigate = useNavigate();
   const { token } = useAuth();
-  const { languages } = useLanguage()
-  const { form, errors, handleChange, handleValidate } = useForm(POST_NEW_JOB, validateForm);
+  const { languages } = useLanguage();
+  const { form, errors, handleChange, handleValidate } = useForm(
+    POST_NEW_JOB,
+    validateForm
+  );
   const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
   const [body, setBody] = useState("");
-  // const [exp, setExp] = useState("");
   const [expList, setExpList] = useState(null);
   const [cp, setCP] = useState("");
   const [localities, setLocalities] = useState(null);
   const [place, setPlace] = useState("");
-  // const [typeContract, setTypeContract] = useState("");
   const [typeContractList, setTypeContractList] = useState(null);
-  // const [profileCandidate, setProfileCandidate] = useState("");
   const [profileCandidateList, setProfileCandidateList] = useState(null);
   const [requeridas, setRequeridas] = useState([]);
   const [opcionales, setOpcionales] = useState([]);
-  const [requiredLanguage, setRequiredLanguage] = useState([])
-  const habilidadesOpcionales = recuperarHabilidades(opcionales)
-  const habilidadesRequeridas = recuperarHabilidades(requeridas)
-  const lagnguageId = recuperarIdiomaId(requiredLanguage)
+  const [requiredLanguage, setRequiredLanguage] = useState([]);
+  const habilidadesOpcionales = recuperarHabilidades(opcionales);
+  const habilidadesRequeridas = recuperarHabilidades(requeridas);
+  const lagnguageId = recuperarIdiomaId(requiredLanguage);
 
   useEffect(() => {
     getAllCatalogueExperience()
@@ -123,27 +136,28 @@ const FormPostJob = () => {
     ...form,
     t200_description: body,
     t200_street: place,
-    // t200_locality: place,
-    // t200_cp: cp,
     t301_id_recruiter: token?.user?.id,
     mandatory: habilidadesRequeridas,
     optional: habilidadesOpcionales,
-    language: lagnguageId
+    language: lagnguageId,
   };
 
   const onSubmitPostJob = (e) => {
     e.preventDefault();
     postJob(newObject)
       .then((response) => {
+        // toast.success(response)
         console.log(response);
-        navigate("/dashboard");
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 2000);
       })
       .catch((error) => console.error(error));
   };
 
   const handleLocality = (e) => {
     const { value } = e.target;
-    // console.log(value)
+
     setCP(value);
 
     if (parseInt(value) !== "") {
@@ -162,7 +176,7 @@ const FormPostJob = () => {
       <ContainerForm>
         <h2
           style={{
-            fontSize: "1.3rem",
+            fontSize: "1rem",
             fontFamily: "System",
             fontWeight: "700",
             margin: "1rem 0 0 0",
@@ -174,12 +188,12 @@ const FormPostJob = () => {
           <section style={{ width: "800px" }}>
             <h2
               style={{
-                fontSize: "1.3rem",
+                fontSize: "1rem",
                 fontFamily: "System",
                 margin: "0 0 .4rem 0",
               }}
             >
-              <MdWork /> Titulo de la vacante
+              <MdWork style={{ color: "#397AFD" }} /> Titulo de la vacante
             </h2>
             <GroupInput>
               <div style={styles.containerError}>
@@ -213,24 +227,26 @@ const FormPostJob = () => {
           <section style={{ width: "800px" }}>
             <h2
               style={{
-                fontSize: "1.3rem",
+                fontSize: "1rem",
                 fontFamily: "System",
                 margin: "0 0 .4rem 0",
               }}
             >
-              <HiLocationMarker /> Ubicacion
+              <HiLocationMarker style={{ color: "red" }} /> Ubicacion
             </h2>
             <GroupInput>
-                <Input
-                  label="Codigo postal"
-                  id="t200_cp"
-                  name="t200_cp"
-                  value={cp ? parseInt(cp) : ""}
-                  onChange={handleLocality}
-                  // onKeyDown={function(e) {
-                  //   if (e.keyCode < '48' || e.keyCode > '57') e.preventDefault()
-                  // }}
-                />
+              <Input
+                label="Codigo postal"
+                id="cp"
+                name="cp"
+                value={cp ? parseInt(cp) : ""}
+                onChange={handleLocality}
+                onKeyDown={function (e) {
+                  let charCode = e.which ? e.which : e.keyCode;
+                  if (charCode > 31 && (charCode < 48 || charCode > 57))
+                    e.preventDefault();
+                }}
+              />
               <WrapperSelect>
                 <Select
                   name="place"
@@ -265,7 +281,7 @@ const FormPostJob = () => {
           <section style={{ width: "800px" }}>
             <h2
               style={{
-                fontSize: "1.3rem",
+                fontSize: "1rem",
                 fontFamily: "System",
                 margin: "0 0 .4rem 0",
               }}
@@ -341,17 +357,66 @@ const FormPostJob = () => {
             </GroupInput>
           </section>
 
-          {/* HABILIDADES REQUERIDAS Y OPCIONALES */}
-          <section style={{ width: "800px" }}>
+          {/* <section style={{ width: "800px" }}>
             <h2
               style={{
-                fontSize: "1.3rem",
+                fontSize: "1rem",
                 fontFamily: "System",
                 margin: "0 0 .4rem 0",
               }}
             >
-              <FaBrain /> Agregar las habilidades requeridas y opcionales para
-              la vacante
+              <FcMoneyTransfer /> Sueldo por mes y Modalidad de empleo
+            </h2>
+            <GroupInput>
+              <Input
+                label="Sueldo minimo"
+                id=""
+                name=""
+                value=""
+                onChange={handleChange}
+              />
+              <Input
+                label="Sueldo minimo"
+                id=""
+                name=""
+                value=""
+                onChange={handleChange}
+              />
+            <WrapperSelect>
+                <Select
+                  name="c208_id_contract"
+                  id="c208_id_contract"
+                  value={form.c208_id_contract}
+                  onChange={handleChange}
+                >
+                  <option value="" disabled>
+                    Tipo de contratacion
+                  </option>
+                  {typeContractList &&
+                    typeContractList?.map((el) => (
+                      <option
+                        key={`type-contract${crypto.randomUUID()}`}
+                        value={el.c208_id_contract}
+                      >
+                        {el.c208_description}
+                      </option>
+                    ))}
+                </Select>
+              </WrapperSelect>
+            </GroupInput>
+          </section> */}
+
+          {/* HABILIDADES REQUERIDAS Y OPCIONALES */}
+          <section style={{ width: "800px" }}>
+            <h2
+              style={{
+                fontSize: "1rem",
+                fontFamily: "System",
+                margin: "0 0 .4rem 0",
+              }}
+            >
+              <FaBrain style={{ color: "#5A2889" }} /> Agregar las habilidades
+              requeridas y opcionales para la vacante
             </h2>
             <GroupInput>
               <SubGroupInput>
@@ -407,12 +472,12 @@ const FormPostJob = () => {
           <section style={{ width: "800px" }}>
             <h2
               style={{
-                fontSize: "1.3rem",
+                fontSize: "1rem",
                 fontFamily: "System",
                 margin: "0 0 .4rem 0",
               }}
             >
-              <MdLanguage /> Idioma/Dialecto
+              <MdLanguage style={{ color: "blue" }} /> Idioma/Dialecto
             </h2>
             <GroupInput>
               <SubGroupInput>
@@ -434,14 +499,10 @@ const FormPostJob = () => {
               </SubGroupInput>
             </GroupInput>
           </section>
-          {/* <GroupInput>
-            <Switch label='Fecha de cierre' name='visible' id='visible' value={visible} onChange={handleVisible} />
-            {visible && <input type="date" />}
-          </GroupInput> */}
           <section style={{ width: "800px" }}>
             <h2
               style={{
-                fontSize: "1.3rem",
+                fontSize: "1rem",
                 fontFamily: "System",
                 margin: "0 0 .4rem 0",
               }}

@@ -28,7 +28,9 @@ const Button = styled.button`
 `
 
 const Select = styled.select`
-  height: 100%;
+  height: 50px;
+  width: fit-content;
+  padding: 0 .5rem;
   border-radius: 0;
   outline: 0;
   border: 0;
@@ -37,7 +39,8 @@ const Select = styled.select`
 
 const WrapperSelect = styled.div`
   outline: 1px solid #ccc;
-  width:200px;
+  width: fit-content;
+  margin-top: 1rem;
 `
 
 export { Button, Form, GroupInput, Select, WrapperSelect }

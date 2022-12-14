@@ -79,6 +79,10 @@ export const getAllCandidateProfile = () => {
 // }
 
 export const getLocality = cp => {
+  let regex = /^[0-9]+$/
+  
+  if(!regex.test(cp)) return
+  
   return API(`${REACT_APP_CATALOG_LOCALITIES}${cp}/`)
     .then(response => {
       const { data } = response;

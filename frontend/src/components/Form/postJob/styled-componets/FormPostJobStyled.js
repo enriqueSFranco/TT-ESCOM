@@ -28,7 +28,6 @@ const Form = styled.form`
   `
 
 const ContainerForm = styled.div`
-  background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
   position: relative;
   top: 4rem;
   height: fit-content;
@@ -69,6 +68,7 @@ const Select = styled.select`
   border-radius: 0;
   outline: 0;
   border: 0;
+  padding: 0 .5rem;
   background-color: #fff;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `
