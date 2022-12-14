@@ -42,6 +42,7 @@ ALLOWED_HOSTS = ['*'] # TODO: Poner el nombre del dominio cuando este en producc
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -111,6 +112,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'api.wsgi.application'
+ASGI_APPLICATION = 'api.wsgi.application'
 
 
 # Database
