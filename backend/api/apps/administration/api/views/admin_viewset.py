@@ -122,7 +122,7 @@ class AdminViewSet(viewsets.GenericViewSet):
 				user_delete = self.user_model.objects.filter(email=request.data['t400_email']).delete()
 				return Response({'message': 'Hay errores en el registro',
 								'errors': admin_serializer.errors
-								}, status=status.HTTP_400_BAD_REQUEST)
+								}, status=status.HTTP_200_OK)
 		else:
 			return Response({
 				'message': 'Hay errores en el registro',

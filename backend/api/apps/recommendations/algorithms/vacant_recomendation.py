@@ -1,7 +1,15 @@
 #import numpy as np
 from apps.vacantes.models import Vacant,RequiredAbility,RequiredLanguage
 from apps.students.models import Student,StudentSkill,StudentLanguage
+from apps.recommendations.models import Recommendation
+from apps.recommendations.api.serializers.recommendations_serializer import RecommendationSerializer
 from apps.recommendations.algorithms.functions import calculate_experience,calculate_salary,calculate_languages,calculate_optional_skills,calculate_mandatory_skills,calculate_total_percentage
+
+recommendation_prototype = {
+    't100_id_student' : '',
+    't200_id_vacant' : '',
+    't500_percentage' : ''
+}
 
 def get_vacants():
     vacants_ids = Vacant.objects.filter(c204_id_vacant_status=2).values('t200_id_vacant')
@@ -65,6 +73,9 @@ def candidate_recomendation(id_candidate):
     vacants = []
     similarity_vectors = []
     candidate_vector = []
+    check_recommendations = Recommendation.objects.filter(t100_id_student=id_candidate).all()
+    if len(check_recommendations) > 0:
+        return
     print("Obteniendo vacantes activas.....")
     vacants_ids = get_vacants()
     for id in vacants_ids:
@@ -81,14 +92,26 @@ def candidate_recomendation(id_candidate):
     candidate_vector = get_candidate_info(id_candidate)
     print(candidate_vector)
     for vacant in vacants:
-        print("Porcentaje de recomendación:")
         similarity_vector = []
         similarity_vector.append(calculate_mandatory_skills(candidate_vector[1],vacant[1]))
         similarity_vector.append(calculate_optional_skills(candidate_vector[1],vacant[2]))
         similarity_vector.append(calculate_languages(candidate_vector[2],vacant[3]))
         similarity_vector.append(calculate_salary(candidate_vector[3],vacant[4][0],vacant[4][1]))
         similarity_vector.append(calculate_experience(candidate_vector[4],vacant[5]))#Experiencia 
-        print(calculate_total_percentage(similarity_vector,weight))
+        porcentage = calculate_total_percentage(similarity_vector,weight)
+        if porcentage >60:
+            print("Porcentaje de recomendación:")
+            print(porcentage)
+            recomendation_data = recommendation_prototype
+            recomendation_data['t100_id_student'] = id_candidate
+            recomendation_data['t200_id_vacant'] = vacant[0]
+            recomendation_data['t500_percentage'] = int(porcentage)
+            print(recomendation_data)
+            recommendation_serializer = RecommendationSerializer(data = recomendation_data)
+            if recommendation_serializer.is_valid():
+                recommendation_serializer.save()
+
+
         
 
 
