@@ -30,16 +30,13 @@ const CardBody = styled.article`
       rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 
     transition: box-shadow 0.3s ease-in-out;
+    
     &:hover {
       color: #000;
       box-shadow: #2172f2 0px 0px 0px 3px;
-    
+    }
 
     ${(props) => {
-      if (props.close > 30) {
-        return `
-        `;
-      }
       if (props.close >= 1 || props.close <= 8) {
         return `
           background: hsla(280, 95%, 57%, 1);
@@ -49,7 +46,7 @@ const CardBody = styled.article`
           filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#B429F9", endColorstr="#26C5F3", GradientType=1 );
         `;
       }
-    }}
+    }
   }
 `;
 
