@@ -6,14 +6,13 @@ import { IoBusinessOutline } from "react-icons/io5";
 import { IoMdBriefcase } from "react-icons/io";
 import { HiOutlineHome } from "react-icons/hi";
 import { BsMegaphone } from "react-icons/bs";
-import { FaBell } from "react-icons/fa";
 import logo from "assets/icons/briefcase.png";
 import {
   Logo,
   NavLeft,
   NavList,
   NavItem,
-  Link,
+  NavLink,
 } from "./styled-components/MainMenuStyled";
 
 const MenuCandidate = () => {
@@ -31,28 +30,28 @@ const MenuCandidate = () => {
       <>
         <NavList>
           <NavItem>
-            <Link to="/">
+            <NavLink to="/">
               <HiOutlineHome />
               Inicio
-            </Link>
+            </NavLink>
           </NavItem>
           <NavItem>
-            <Link to="/mis-postulaciones">
+            <NavLink to="/mis-postulaciones">
               <IoMdBriefcase />
               Postulaciones
-            </Link>
+            </NavLink>
           </NavItem>
           <NavItem>
-            <Link to="/">
+            <NavLink to="/">
               <IoBusinessOutline />
               Empresas
-            </Link>
+            </NavLink>
           </NavItem>
           <NavItem>
-            <Link to="/comunicados">
+            <NavLink to="/comunicados">
               <BsMegaphone />
               Comunicados
-            </Link>
+            </NavLink>
           </NavItem>
         </NavList>
       </>
@@ -62,42 +61,42 @@ const MenuCandidate = () => {
   return (
     <>
       <NavLeft>
-        <Link to="/">
+        <NavLink to="/">
           <picture>
             <img src={logo} alt="logo-bte" />
           </picture>
           <Logo>ESCOM</Logo>
-        </Link>
+        </NavLink>
       </NavLeft>
       <NavList>
         <NavItem>
-          <Link to="/">
+          <NavLink to="/">
             <HiOutlineHome />
             Inicio
-          </Link>
+          </NavLink>
         </NavItem>
         <NavItem>
-          <Link to="/mis-postulaciones">
+          <NavLink to="/mis-postulaciones">
             <IoMdBriefcase />
             Mis Postulaciones
-          </Link>
+          </NavLink>
         </NavItem>
         <NavItem>
-          <Link to="/empresas">
+          <NavLink to="/empresas">
             <IoBusinessOutline />
             Empresas
-          </Link>
+          </NavLink>
         </NavItem>
         <NavItem>
-          <Link to="/comunicados">
+          <NavLink to="/comunicados">
             <BsMegaphone />
             Comunicados
-          </Link>
+          </NavLink>
         </NavItem>
         <NavItem>
           <DropMenu
             typeuser={typeuser}
-            icon={<FaBell />}
+            type="notify"
           />
         </NavItem>
         <NavItem>

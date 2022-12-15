@@ -11,7 +11,7 @@ import {
   NavLeft,
   NavList,
   NavItem,
-  Link,
+  NavLink,
 } from "./styled-components/MainMenuStyled";
 
 const links = [
@@ -70,24 +70,24 @@ const MenuManager = () => {
   return (
     <>
       <NavLeft>
-        <Link to="/">
+        <NavLink to="/">
           <picture>
             <img src={logo} alt="logo-bte" />
           </picture>
           <Logo>ESCOM</Logo>
-        </Link>
+        </NavLink>
       </NavLeft>
       <NavList>
         {links?.map((link, index) => (
-          <Link data-item key={`link-id-${link.id}`} to={link.to}>
+          <NavLink data-item key={`link-id-${link.id}`} to={link.to}>
             {link.icon}
             {link.label}
-          </Link>
+          </NavLink>
         ))}
-        <Link to="/empresas" data-link>
+        <NavLink to="/empresas" data-link>
           <IoBusinessOutline style={{ fontSize: "1.3rem" }} />
           Empresas
-        </Link>
+        </NavLink>
         <NavItem>
           <DropMenu typeuser={typeuser} name={token.user.first_name} />
         </NavItem>

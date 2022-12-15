@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import 'moment/locale/es-mx'
 import CardJob from "../CardJob/CardJob";
 import styles from "./JobList.module.css";
@@ -14,23 +14,28 @@ const ListEmptyJobs = () => {
 
 const JobList = ({ jobs, setVacantId }) => {
 
-  if (!jobs || jobs === undefined) return null;
-
+  const [cards, setCards] = useState({
+    activeCard: jobs[0]?.t200_id_vacant,
+    listCard: jobs
+  })
 
   if (jobs?.length < 0) return <ListEmptyJobs />
-
-  const handleClick = (e, vacantId) => {
+  
+  const handleClick = (e, vacantId, index) => {
     e.preventDefault()
     setVacantId(vacantId)
-    console.log(`click ${vacantId}`)
+    setCards({...cards, activeCard: cards.listCard[index]?.t200_id_vacant})
   }
-
+  
+  if (!jobs) return null;
+  
   return (
     <>
-      {jobs
+      {cards.listCard
         .filter((el) => el?.c204_id_vacant_status.c204_id_status === 2)
-        .map((el) => (
-          <CardJob key={`card-job-id_${crypto.randomUUID()}`} job={el} onClick={(e) => handleClick(e, el?.t200_id_vacant)} />
+        .map((el, index) => (
+          // console.log(el?.t200_id_vacant)
+          <CardJob key={`card-job-id_${crypto.randomUUID()}`} job={el} vacantId={el?.t200_id_vacant} cards={cards} onClick={(e) => handleClick(e, el?.t200_id_vacant, index)} />
         ))}
     </>
   );

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { device } from 'breakpoints'
 
 const NavLeft = styled.div`
@@ -63,7 +63,7 @@ const NavItem = styled.li`
   width: fit-content;
 `
 
-const Link = styled(NavLink)`
+const NavLink = styled(Link)`
 
   @media screen and ${device.mobileM} {
     color: #000;
@@ -89,4 +89,4 @@ const Link = styled(NavLink)`
     }
   }
 `
-export { Logo, NavLeft, NavList, NavItem, Link }
+export { Logo, NavLeft, NavList, NavItem, NavLink }

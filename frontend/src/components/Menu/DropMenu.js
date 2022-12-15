@@ -4,16 +4,18 @@ import { useDetectClick } from "hooks/useDetectClick";
 import { USERS } from "types/users";
 import DropMenuStudent from "./DropMenuCandidate";
 import DropMenuRecruiter from "./DropMenuRecruiter";
-import CustomAvatar from "components/Avatar/Avatar";
-import { HiOutlineUserCircle, HiMenu } from "react-icons/hi";
-import styles from "./Dropdown.module.css";
 import DropMenuManager from "./DropMenuManager";
+import CustomAvatar from "components/Avatar/Avatar";
+import Notify from "components/Notify/Notify";
+import { HiOutlineUserCircle, HiMenu } from "react-icons/hi";
+import { FaBell } from "react-icons/fa";
+import styles from "./Dropdown.module.css";
 
 const DropMenu = ({
   typeuser = "",
-  picture = null,
-  name = null,
-  icon = null,
+  picture,
+  name,
+  type = "avatar"
 }) => {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useDetectClick(dropdownRef, false);
@@ -46,16 +48,13 @@ const DropMenu = ({
           style={{ backgroundColor: "transparent" }}
           onClick={onClick}
         >
-          {icon !== null ? (
-            icon
-          ) : (
-            <CustomAvatar
-              picture={picture}
-              username={name}
-              width="50px"
-              height="50px"
-            />
-          )}
+          {type === 'notify' && <Notify icon={<FaBell />} />}
+          {type === 'avatar' && (<CustomAvatar
+            picture={picture}
+            username={name}
+            width="50px"
+            height="50px"
+          />)}
         </button>
         <nav
           ref={dropdownRef}
