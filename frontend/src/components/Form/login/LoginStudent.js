@@ -1,12 +1,11 @@
 import React from "react";
-import { useForm } from "hooks/useForm";
-import { usePassword } from "hooks/usePassword";
-import { initialFormLoginCandidate } from "types/loginUsers";
 import { useAuth } from "context/AuthContext";
+import { useForm, usePassword } from "hooks";
+import { Toaster } from "react-hot-toast";
 import LayoutHome from "Layout/LayoutHome";
 import Input from "components/Input/Input";
 import LinkButton from "components/Button/LinkButton";
-import { Toaster } from "react-hot-toast";
+import { initialFormLoginCandidate } from "types/loginUsers";
 import {
   MdEmail,
   MdVisibility,
@@ -46,11 +45,11 @@ const validateForm = (form) => {
 
 const FormLoginCandidate = () => {
   const [showPassword, handleShowPassword] = usePassword();
+  const { loginCandidate } = useAuth();
   const { form, errors, handleValidate, handleChange } = useForm(
     initialFormLoginCandidate,
     validateForm
   );
-  const { loginCandidate } = useAuth();
 
   return (
     <LayoutHome>

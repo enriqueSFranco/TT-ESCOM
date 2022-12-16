@@ -1,7 +1,7 @@
 import React from "react";
 import { toast } from "react-hot-toast";
 import { useForm, useGetPlataforms } from "hooks";
-import { postSocialNetwork, getShortenLink } from "services";
+import { postSocialNetwork } from "services";
 import { INITIAL_FORM_ADD_SOCIAL_NETWORK } from "types/addSocialNetwork";
 import {
   Button,
@@ -10,7 +10,9 @@ import {
 } from "../styled-components/FormAddSocialNetworkStyled";
 
 const FormSocialNetwork = ({ idUser }) => {
-  const { form, handleChange } = useForm(INITIAL_FORM_ADD_SOCIAL_NETWORK);
+  const { form, setForm, handleChange } = useForm(
+    INITIAL_FORM_ADD_SOCIAL_NETWORK
+  );
   const { plataforms } = useGetPlataforms();
 
   let r = {
@@ -22,8 +24,10 @@ const FormSocialNetwork = ({ idUser }) => {
     e.preventDefault();
     r["c115_id_plataform"] = parseInt(r.c115_id_plataform);
     postSocialNetwork(r)
-      .then((response) => toast.success(response.message))
-      .catch((error) => toast.error(error));
+      .then((response) => toast.success(response?.data?.message))
+      .catch((error) => console.log(error));
+
+    setForm({ t113_link: "", c115_id_plataform: 0 });
   }
 
   if (!plataforms || !idUser) return null;
@@ -32,8 +36,7 @@ const FormSocialNetwork = ({ idUser }) => {
     <form
       onSubmit={handleSubmit}
       style={{
-        position: "relative",
-        top: "4rem",
+        marginTop: "1rem",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",

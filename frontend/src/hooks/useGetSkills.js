@@ -5,7 +5,6 @@ export function useGetSkills(id) {
   const [skills, setSkills] = useState(null);
   const isMountedRef = useRef(true)
 
-
   useEffect(() => {
     getSkill(id)
       .then(res => {
