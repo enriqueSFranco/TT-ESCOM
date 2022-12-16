@@ -19,7 +19,7 @@ export function useGetAllJobs() {
         setMaxPage(totalPage)
         setResponse(response.result);
       })
-      .catch((error) => console.log(error))
+      .catch((error) => error)
       .finally(() => setLoading(false));
 
     return () => {};

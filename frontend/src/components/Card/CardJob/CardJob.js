@@ -24,7 +24,12 @@ import {
   TitleJob,
 } from "../styled-components/CardJobStyled";
 
-const CardJob = ({ job, onClick }) => {
+const CardJob = ({ job, vacantId, cards, onClick }) => {
+  const toggleActiveStyled = (index) => {
+    console.log(vacantId, cards.activeCard)
+    return vacantId === cards.activeCard ? "active" : undefined
+  }
+
   const tags = [
     {
       label: job?.c207_id_experience?.c207_description,
@@ -46,13 +51,10 @@ const CardJob = ({ job, onClick }) => {
     return { __html: job.t200_description };
   }
 
-  if (!job) return null;
-
   const currentTime = new Date(job?.t200_publish_date).getUTCDate()
-  console.log(currentTime)
 
   return (
-    <CardBody close={currentTime}>
+    <CardBody close={currentTime} isActive={toggleActiveStyled(vacantId)}>
       <CardBorder>
         <CardHeader>
           <CardImage>

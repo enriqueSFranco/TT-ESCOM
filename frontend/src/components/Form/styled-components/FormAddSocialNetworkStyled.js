@@ -1,11 +1,13 @@
 import styled from 'styled-components'
 
 const Select = styled.select`
-  height: 30px;
+  height: 40px;
   border-radius: 0;
   outline: 1px solid #ccc;
   border: 0;
   background-color: transparent;
+  padding: 0 1rem;
+  cursor: pointer;
 `
 
 const LinkSocialNetwork = styled.input`

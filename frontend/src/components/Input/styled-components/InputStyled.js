@@ -9,6 +9,7 @@ const BoxInput = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  border-radius: 1rem;
 `
 
 const InputLabel = styled.span`
@@ -27,10 +28,12 @@ const TextField = styled.input`
   padding: 1rem;
   color: ${props => props.color ? props.color : '#000'};
   background-color: ${props => props.bgInput ? props.bgInput : '#fff'};
-  font-weight: 400;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   border: none;
   font-size: 1rem;
   letter-spacing: 1px;
+  border-radius: 1rem;
 
   &:focus {
     box-shadow: #1A73E8 0px 0px 0px 1px, #1A73E8 0px 0px 0px 1px inset;

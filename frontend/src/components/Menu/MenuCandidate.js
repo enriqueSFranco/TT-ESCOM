@@ -5,54 +5,51 @@ import DropMenu from "./DropMenu";
 import { IoBusinessOutline } from "react-icons/io5";
 import { IoMdBriefcase } from "react-icons/io";
 import { HiOutlineHome } from "react-icons/hi";
-import { BsMegaphone } from "react-icons/bs"
-import { FaBell } from 'react-icons/fa'
-import logo from 'assets/icons/briefcase.png'
+import { BsMegaphone } from "react-icons/bs";
+import logo from "assets/icons/briefcase.png";
 import {
   Logo,
   NavLeft,
   NavList,
   NavItem,
-  Link,
+  NavLink,
 } from "./styled-components/MainMenuStyled";
 
 const MenuCandidate = () => {
   const { token } = useAuth();
   const [viewport] = useViewport();
-  const { candidate } = useGetCandidate(token?.user?.user_id)
+  const { candidate } = useGetCandidate(token?.user?.user_id);
   let typeuser = token?.user?.user_type;
 
-  if (!candidate) return null
-  
-  // console.log(candidate[0]?.t100_profile_picture)
+  if (!candidate) return null;
 
   if (viewport.device === "MOBILE") {
     return (
       <>
         <NavList>
           <NavItem>
-            <Link to="/">
+            <NavLink to="/">
               <HiOutlineHome />
               Inicio
-            </Link>
+            </NavLink>
           </NavItem>
           <NavItem>
-            <Link to="/mis-postulaciones">
+            <NavLink to="/mis-postulaciones">
               <IoMdBriefcase />
               Postulaciones
-            </Link>
+            </NavLink>
           </NavItem>
           <NavItem>
-            <Link to="/">
+            <NavLink to="/">
               <IoBusinessOutline />
               Empresas
-            </Link>
+            </NavLink>
           </NavItem>
           <NavItem>
-            <Link to="/comunicados">
+            <NavLink to="/comunicados">
               <BsMegaphone />
               Comunicados
-            </Link>
+            </NavLink>
           </NavItem>
         </NavList>
       </>
@@ -62,45 +59,50 @@ const MenuCandidate = () => {
   return (
     <>
       <NavLeft>
-        <Link to="/">
+        <NavLink to="/">
           <picture>
             <img src={logo} alt="logo-bte" />
           </picture>
           <Logo>ESCOM</Logo>
-        </Link>
+        </NavLink>
       </NavLeft>
       <NavList>
         <NavItem>
-          <Link to="/">
+          <NavLink to="/">
             <HiOutlineHome />
             Inicio
-          </Link>
+          </NavLink>
         </NavItem>
         <NavItem>
-          <Link to="/mis-postulaciones">
+          <NavLink to="/mis-postulaciones">
             <IoMdBriefcase />
             Mis Postulaciones
-          </Link>
+          </NavLink>
         </NavItem>
         <NavItem>
-            <Link to="/empresas">
-              <IoBusinessOutline />
-              Empresas
-            </Link>
-          </NavItem>
-          <NavItem>
-            <Link to="/comunicados">
-              <BsMegaphone />
-              Comunicados
-            </Link>
-          </NavItem>
-          <NavItem>
-          <Link to="/">
-            <FaBell />
-          </Link>
+          <NavLink to="/empresas">
+            <IoBusinessOutline />
+            Empresas
+          </NavLink>
         </NavItem>
         <NavItem>
-          <DropMenu typeuser={typeuser} picture={candidate[0]?.t100_profile_picture} name={token.user.username} />
+          <NavLink to="/comunicados">
+            <BsMegaphone />
+            Comunicados
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <DropMenu
+            typeuser={typeuser}
+            type="notify"
+          />
+        </NavItem>
+        <NavItem>
+          <DropMenu
+            typeuser={typeuser}
+            picture={candidate[0]?.t100_profile_picture}
+            name={token.user.username}
+          />
         </NavItem>
       </NavList>
     </>

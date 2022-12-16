@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { useAuth } from "context/AuthContext";
 import { useFetch, useModal } from "hooks";
-import { applyJob, CODE_201, CODE_400 } from "services";
+import { applyJob } from "services";
 import Chip from "components/Chip/Chip";
 import Button from "components/Button/Button";
 import { List, ListItem } from "styled-components/CommonStyles";
 import {
   DescriptionJob,
-  ContentModal,
   Header,
   TextH2,
   WrapperRequitements,
@@ -15,44 +14,46 @@ import {
   WrapperSummaryJob,
 } from "../styled-components/DetailsJobStyled";
 import ModalPortal from "../ModalPortal";
+import Confirm from "components/Alert/Confirm/Confirm";
 
 function createMarkup(description) {
   return { __html: description };
 }
 
 const DetailsJob = ({ vacantId }) => {
-  const [statusApplication, setStatusApplication] = useState(null);
+  const [isApplyJob, setIsApplyJob] = useState({});
   const [isOpen, openModal, closeModal] = useModal(false);
   const { data } = useFetch(
     `${process.env.REACT_APP_URL_VACANT_REQUIREMENTS}${vacantId}`
   );
   const { token } = useAuth();
-
   const { data: summaryJob } = useFetch(
     `${process.env.REACT_APP_URL_VACANTS}${vacantId}`
   );
 
-  const handleApplyJob = async (idJob, userID) => {
-    let now = new Date();
-    try {
-      const response = await applyJob({
-        t200_id_vacant: idJob,
-        t100_id_student: userID,
-        c205_id_application_state: 1,
-        t201_date_application:
-          now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate(),
+  const handleApplyJob = async (idVacant) => {
+    let now = new Date()
+    const response = await applyJob({
+      t200_id_vacant: idVacant,
+      t100_id_student: token?.user?.id,
+      c205_id_application_state: 1,
+      t201_date_application:
+        now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate(),
+    });
+    console.log(response)
+    if (response.status === 201)
+      setIsApplyJob({
+        succes: response.status,
+        message: response.data.message,
       });
-      setStatusApplication(response);
-    } catch (error) {
-      setStatusApplication(error);
-    }
+    else
+      setIsApplyJob({
+        success: response.status,
+        message: response.data.message,
+      });
   };
 
   if (!data || !summaryJob) return null;
-
-  const idUser = token?.user?.id;
-
-  console.log(statusApplication);
 
   return (
     <>
@@ -210,19 +211,11 @@ const DetailsJob = ({ vacantId }) => {
         </div>
       </WrapperSummaryJob>
       <ModalPortal isOpen={isOpen} closeModal={closeModal} minHeight="300px">
-        <ContentModal>
-          <TextH2>
-            ¿Estas seguro de postularte a la vacante "{summaryJob[0]?.t200_job}
-            "?
-          </TextH2>
-          <Button
-            text="Si, si quiero postularme"
-            height={3}
-            width={14}
-            bgColor="#1CD561"
-            onClick={() => handleApplyJob(vacantId, idUser)}
-          />
-        </ContentModal>
+        <Confirm
+          applyJob={() => handleApplyJob(vacantId)}
+          isApplyJob={isApplyJob}
+          job={summaryJob[0]?.t200_job}
+        />
       </ModalPortal>
     </>
   );

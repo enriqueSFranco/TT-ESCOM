@@ -10,7 +10,7 @@ import {
   NavLeft,
   NavList,
   NavItem,
-  Link,
+  NavLink,
 } from "./styled-components/MainMenuStyled";
 
 const links = [
@@ -40,12 +40,12 @@ const MenuRecruiter = () => {
   return (
     <>
       <NavLeft>
-        <Link to="/">
+        <NavLink to="/">
           <picture>
             <img src={logo} alt="logo-bte" />
           </picture>
           <Logo>ESCOM</Logo>
-        </Link>
+        </NavLink>
       </NavLeft>
       <NavList>
         <NavItem>
@@ -57,15 +57,15 @@ const MenuRecruiter = () => {
           />
         </NavItem>
           {links?.map((link, index) => (
-            <Link data-item key={`linkId-${link.id}`} to={link.to}>
+            <NavLink data-item key={`linkId-${link.id}`} to={link.to}>
               {link.icon}{link.label}
-            </Link>
+            </NavLink>
           ))}
         <NavItem>
-          <Link to="/" onClick={logout}>
+          <NavLink to="/" onClick={logout}>
             <HiOutlineLogout style={{ fontSize: "1.4rem" }} />
             Salir
-          </Link>
+          </NavLink>
         </NavItem>
       </NavList>
     </>
