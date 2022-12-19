@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import { useAuth } from "context/AuthContext";
 import { useViewport, useGetCandidate } from "hooks";
 import DropMenu from "./DropMenu";
@@ -14,6 +15,16 @@ import {
   NavItem,
   NavLink,
 } from "./styled-components/MainMenuStyled";
+
+const styles = {
+  styledLink: {
+    color: '#000',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    gap: '.3rem',
+  }
+}
 
 const MenuCandidate = () => {
   const { token } = useAuth();
@@ -59,12 +70,12 @@ const MenuCandidate = () => {
   return (
     <>
       <NavLeft>
-        <NavLink to="/">
-          <picture>
+        <Link to="/" style={styles.styledLink}>
+          <picture style={{width: '30px'}}>
             <img src={logo} alt="logo-bte" />
           </picture>
           <Logo>ESCOM</Logo>
-        </NavLink>
+        </Link>
       </NavLeft>
       <NavList>
         <NavItem>

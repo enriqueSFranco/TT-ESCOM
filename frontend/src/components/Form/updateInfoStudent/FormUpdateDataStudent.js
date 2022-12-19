@@ -1,10 +1,11 @@
-import {useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "hooks";
 import {
   uploadPhotoStudent,
   uploadCVStudent,
   updateStudent,
   getLocality,
+  CODE_200,
 } from "services";
 import Input from "components/Input/Input";
 import Switch from "components/Switch/Switch";
@@ -12,19 +13,23 @@ import CustomAvatar from "components/Avatar/Avatar";
 import ButtonFile from "components/Button/ButtonFile";
 import { BsFileEarmarkImage } from "react-icons/bs";
 import { HiOutlineLocationMarker } from "react-icons/hi";
+import { AiOutlineFile } from 'react-icons/ai'
 import { Select, WrapperSelect } from "./UpdateCandidateComponents";
 import styles from "./FormUpdateDataStudent.module.css";
 
 const FormUpdateDataStudent = ({ id, username, picture, candidate }) => {
   const { form, setForm, handleChange, handleChecked } = useForm({
-    t100_name: candidate?.t100_name,
-    t100_last_name: candidate?.t100_last_name,
-    t100_second_surname: candidate?.t100_second_surname,
+    t100_name: "",
+    t100_last_name: "",
+    t100_second_surname: "",
     t100_cv: null,
-    t100_residence: candidate?.t100_residence,
+    t100_residence: "",
     t100_travel: false,
   });
-  const [previewImage, setPreviewImage] = useState(username);
+  const [files, setFiles] = useState({
+    img: null,
+    cv: null,
+  });
   const [localities, setLocalities] = useState(null);
   const [state, setState] = useState("");
   const [municipality, setMunicipality] = useState("");
@@ -32,8 +37,11 @@ const FormUpdateDataStudent = ({ id, username, picture, candidate }) => {
   const [place, setPlace] = useState("");
 
   useEffect(() => {
-    setForm(candidate)
-  }, [candidate, id, setForm])
+    const newInitialForm = {
+      ...candidate,
+    };
+    setForm(candidate);
+  }, [candidate, id, setForm]);
 
   const handleLocality = (e) => {
     const { value } = e.target;
@@ -59,7 +67,6 @@ const FormUpdateDataStudent = ({ id, username, picture, candidate }) => {
   function convertToBase64(file) {
     return new Promise((resolve, reject) => {
       const fr = new FileReader();
-      setPreviewImage(file);
       fr.readAsDataURL(file);
 
       fr.onload = () => {
@@ -76,19 +83,26 @@ const FormUpdateDataStudent = ({ id, username, picture, candidate }) => {
   async function uploadCV(e) {
     const file = e.target.files[0];
     console.log(file);
-    if (!file === undefined) {
-      return;
-    }
-    const base64 = await convertToBase64(file);
-    uploadCVStudent(id, { t100_username: "", t100_cv: base64 })
-      .then((response) => console.log(response))
+    if (!file) return;
+
+    const cvBase64 = await convertToBase64(file);
+    uploadCVStudent(id, { t100_username: "", t100_cv: cvBase64 })
+      .then((response) => console.log("cv: ", response))
       .catch((error) => console.error(error));
   }
 
   async function updateImage(e) {
     const file = e.target.files[0];
-    const base64 = await convertToBase64(file);
-    uploadPhotoStudent(id, { t100_username: "", t100_profile_picture: base64 })
+    const imgBase64 = await convertToBase64(file);
+
+    setFiles({img: imgBase64});
+
+    if (!file) return;
+
+    uploadPhotoStudent(id, {
+      t100_username: "",
+      t100_profile_picture: imgBase64,
+    })
       .then((response) => console.log(response))
       .catch((error) => console.error(error));
   }
@@ -98,12 +112,15 @@ const FormUpdateDataStudent = ({ id, username, picture, candidate }) => {
     console.log("formulario enviado...");
 
     updateStudent(id, form)
-      .then((response) => console.log(response))
+      .then((response) => {
+        const { status, data } = response;
+        if (status === CODE_200) {
+          console.log(data);
+        } else {
+          console.log(`error: ${data}`);
+        }
+      })
       .catch((error) => error);
-
-    if (e.target.files !== undefined) updateImage(e);
-
-    if (e.target.files !== undefined) uploadCV(e);
   }
 
   if (!id) return null;
@@ -129,12 +146,15 @@ const FormUpdateDataStudent = ({ id, username, picture, candidate }) => {
               width="100px"
               height="100px"
             />
-            <ButtonFile
-              onChange={updateImage}
+            {/* <ButtonFile
+              name="img"
+              id="img"
+              value={files.img}
+              onChange={(e) => updateImage(e)}
               text="Subir foto"
               icon={<BsFileEarmarkImage />}
               color="#222"
-            />
+            /> */}
           </div>
           <div className={styles.groupsInputs}>
             <Input
@@ -168,14 +188,15 @@ const FormUpdateDataStudent = ({ id, username, picture, candidate }) => {
               display: "flex",
               alignItems: "center",
               gap: ".4rem",
-              marginBottom: '1rem'
+              marginBottom: "1rem",
             }}
           >
-            <HiOutlineLocationMarker style={{color: 'red'}} /> Ubicacion
+            <HiOutlineLocationMarker style={{ color: "red" }} /> Ubicacion
           </h2>
           <div className={styles.groupsInputs}>
             <Input
               label="Codigo Postal"
+              value={form.cp}
               onChange={handleLocality}
               width="260px"
             />
@@ -242,16 +263,34 @@ const FormUpdateDataStudent = ({ id, username, picture, candidate }) => {
               value={form.t100_travel}
               onChange={handleChecked}
             />
-            <ButtonFile
-              onChange={uploadCV}
-              value={form.t100_cv}
-              id="t100_cv"
-              name="t100_cv"
-              text="Subir CV"
-              icon={<BsFileEarmarkImage />}
-              bgColor="#116BFE"
-              color="#fff"
-            />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: ".5rem",
+              }}
+            >
+              <ButtonFile
+                id="cv"
+                name="cv"
+                onChange={(e) => uploadCV(e)}
+                value={files.cv}
+                text="Actualizar curriculum"
+                icon={<AiOutlineFile />}
+                bgColor="#116BFE"
+                color="#fff"
+              />
+              <span
+                style={{
+                  fontSize: ".9rem",
+                  color: "green",
+                  textAlign: "center",
+                }}
+              >
+                {/* {previewImage.name && previewImage.name} */}
+              </span>
+            </div>
           </div>
           <div
             style={{

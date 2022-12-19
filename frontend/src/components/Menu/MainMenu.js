@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import { useViewport } from "hooks/useViewport";
 import DropMenu from "./DropMenu";
 import logo from "assets/icons/briefcase.png";
@@ -18,6 +19,17 @@ import {
   NavList,
   NavLink,
 } from "./styled-components/MainMenuStyled";
+
+const styles = {
+  styledLink: {
+    color: '#000',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    gap: '.3rem',
+  }
+}
+
 
 const MainMenu = () => {
   const [viewport] = useViewport();
@@ -54,12 +66,12 @@ const MainMenu = () => {
   return (
     <>
       <NavLeft>
-        <NavLink to="/">
-          <picture>
+        <Link to="/" style={styles.styledLink}>
+          <picture style={{width: '30px'}}>
             <img src={logo} alt="logo-bte" />
           </picture>
           <Logo>ESCOM</Logo>
-        </NavLink>
+        </Link>
       </NavLeft>
       <NavList>
         <NavLink to="/" data-link className="active">
