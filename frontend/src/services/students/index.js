@@ -100,8 +100,7 @@ export const postSocialNetwork = (payload = {}) => {
 export const updateStudent = (id, payload = {}) => {
   return API.put(`${REACT_APP_URL_CANDIDATE}${id}/`, payload)
     .then((response) => {
-      const { data } = response;
-      return data;
+      return response
     })
     .catch((error) => {
       if (error.response) {
@@ -151,7 +150,12 @@ export const uploadPhotoStudent = (id, payload) => {
 
 export const uploadCVStudent = (id, payload) => {
   
-  return API.put(`${REACT_APP_URL_CANDIDATE_UPLOAD_CV}${id}/`, payload)
+  return API.put(`${REACT_APP_URL_CANDIDATE_UPLOAD_CV}${id}/`, payload, {
+    headers: {
+      'Contnt-Type': 'text/plain',
+      charset:'utf-8'
+    }
+  })
     .then((response) => {
       const { data } = response;
       return data;
@@ -286,3 +290,4 @@ export const postCertification = (payload = {}) => {
     .then((response) => response)
     .catch((error) => error);
 };
+

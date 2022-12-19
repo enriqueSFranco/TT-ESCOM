@@ -24,7 +24,7 @@ img {
   color: #79e878;
 }
 
-.container_flex > p {
+.container_flex>p {
   margin: 0;
   font-size: .9rem;
   padding: .5rem;
@@ -40,11 +40,10 @@ img {
   margin: 0;
   font-size: .9rem;
   padding: .5rem;
-  
+
 }
 
 .wrapperSkills {
-  /* outline: 2px solid tan; */
   width: 100%;
   height: fit-content;
   padding-bottom: 1rem;
@@ -54,7 +53,7 @@ img {
 /* 1 */
 .cardProfile {
   height: 100%;
-  border-radius: 4px;
+  border-radius: 1rem;
 }
 
 /* 2 */
@@ -65,6 +64,8 @@ img {
   align-items: center;
   gap: .7rem;
   padding: .5rem 0;
+  border-radius: 1rem 1rem 0 0;
+  background-color: #37404d;
 }
 
 /* 3 */
@@ -84,7 +85,7 @@ img {
 }
 
 .personalInfo {
-  width: 100%;
+  min-width: 100%;
   margin: 0 auto;
   border-bottom: 2px solid #37404d;
 }
@@ -117,6 +118,7 @@ img {
 .list_item {
   height: fit-content;
   display: flex;
+  align-items: center;
   gap: .4rem;
 }
 
@@ -128,4 +130,23 @@ img {
 
 .list_item .go_link a {
   color: #fff;
+}
+
+
+.buttonAdd {
+  position: absolute;
+  right: 0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  display: grid;
+  place-content: center;
+  background-color: transparent;
+  color: #34bbff;
+  border-radius: 50%;
+  z-index: 9;
 }

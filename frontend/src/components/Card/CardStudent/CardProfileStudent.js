@@ -13,17 +13,18 @@ import ModalPortal from "components/Modal/ModalPortal";
 import ModalPreviewCV from "components/Modal/ModalPreviewCV";
 import CustomAvatar from "components/Avatar/Avatar";
 import Chip from "components/Chip/Chip";
+import ToolTip from "components/Tooltip/Tooltip";
 import FormSocialNetwork from "components/Form/FormAddSocialNetwork/FormSocialNetwork";
 import FormUpdateDataStudent from "components/Form/updateInfoStudent/FormUpdateDataStudent";
 import {
   MdLocationPin,
   MdOutlineAirplanemodeActive,
   MdOutlineModeEdit,
-  MdOutlineWork,
 } from "react-icons/md";
 import {
   BsFileEarmarkPersonFill,
   BsFillFileEarmarkPostFill,
+  BsLink45Deg,
 } from "react-icons/bs";
 import { BiDislike } from "react-icons/bi";
 import { GoVerified } from "react-icons/go";
@@ -59,7 +60,7 @@ const CardProfileStudent = () => {
         .POST(`${process.env.REACT_APP_URL_CANDIDATE_SKILLS}`, options)
         .then((response) => {
           if (!response.err) {
-            console.log({response});
+            console.log({ response });
           }
         });
     });
@@ -71,29 +72,39 @@ const CardProfileStudent = () => {
     <>
       {/* inicio del perfil */}
       <article className={`${styles.cardProfile}`}>
-        <MdOutlineModeEdit
-          style={{
-            position: "absolute",
-            right: ".5rem",
-            top: ".5rem",
-            color: "#fff",
-            fontSize: "1.1rem",
-            cursor: "pointer",
-          }}
-          onClick={openModal}
-        />
         <header className={styles.header}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              width: "100%",
+            }}
+          >
+            <ToolTip title="Editar Perfil">
+              <MdOutlineModeEdit
+                style={{
+                  position: "relative",
+                  top: ".2rem",
+                  right: ".5rem",
+                  color: "#fff",
+                  fontSize: "1.1rem",
+                  cursor: "pointer",
+                }}
+                onClick={openModal}
+              />
+            </ToolTip>
+          </div>
           <CustomAvatar
             picture={candidate[0]?.t100_profile_picture}
             username={candidate[0]?.t100_name}
-            width="80px"
-            height="80px"
+            width="90px"
+            height="90px"
           />
           <div style={{ textAlign: "center" }}>
             <span
               style={{
                 color: "#fff",
-                fontWeight: 400,
+                fontWeight: 600,
                 fontFamily: "sans-serif",
               }}
             >
@@ -101,16 +112,6 @@ const CardProfileStudent = () => {
               {candidate[0]?.t100_second_surname}
             </span>
             <div style={{ margin: ".5rem 0 .4rem 0" }}></div>
-            <Chip
-              label={
-                candidate[0]?.t100_interest_job
-                  ? candidate[0]?.t100_interest_job
-                  : "Puesto deseado no definido"
-              }
-              icon={<MdOutlineWork />}
-              bg="#E8F4EE"
-              color="#368968"
-            />
           </div>
         </header>
         <div className={styles.userDetails}>
@@ -170,10 +171,22 @@ const CardProfileStudent = () => {
             <div className={styles.container_flex}>
               {candidate[0]?.t100_cv ? (
                 <>
-                  <BsFileEarmarkPersonFill style={{ color: "#BEBEBE" }} />
+                  <BsFileEarmarkPersonFill
+                    style={{
+                      backgroundColor: "#37404d",
+                      height: "fit-content",
+                      width: "fit-content",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      padding: ".4rem",
+                      borderRadius: "50%",
+                    }}
+                  />
                   <button
                     onClick={openModalCV}
                     style={{
+                      color: "#fff",
                       backgroundColor: "transparent",
                       outline: "none",
                       border: "none",
@@ -221,42 +234,53 @@ const CardProfileStudent = () => {
           <div className={`${styles.socialNetworks} ${styles.separator}`}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <h4>Redes sociales</h4>
-              <button
-                style={{ fontSize: "1.1rem", cursor: "pointer" }}
-                onClick={openModalSocialNetwork}
-              >
-                +
-              </button>
+              <ToolTip title="Agregar Red Social">
+                <button
+                  className={styles.buttonAdd}
+                  onClick={openModalSocialNetwork}
+                >
+                  +
+                </button>
+              </ToolTip>
             </div>
             <ul className={styles.list}>
+              <li className={styles.list_item}>
+                <BsLink45Deg style={{ fontSize: "1.2rem" }} />
+                <a
+                  href={`mailto:${candidate[0]?.t100_email}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ color: "#fff" }}
+                >
+                  {candidate[0]?.t100_email}
+                </a>
+              </li>
               {socialNetworks?.length > 0 ? (
-                socialNetworks?.map(
-                  ({ t113_link, c115_id_plataform, c115_description }) => (
-                    <li
-                      key={`item-link-plataform-${crypto.randomUUID()}`}
-                      title={`Ir a ${t113_link}`}
-                      className={styles.list_item}
-                    >
-                      <img
-                        src={c115_id_plataform?.c115_icon}
-                        alt={c115_id_plataform?.c115_icon}
-                        className={styles.iconSocialNetwork}
-                      />
-                      <span className={styles.go_link}>
-                        {c115_id_plataform?.c115_description}
-                        {
-                          <a
-                            href={`${t113_link}`}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            {t113_link}
-                          </a>
-                        }
-                      </span>
-                    </li>
-                  )
-                )
+                socialNetworks?.map(({ t113_link, c115_id_plataform }) => (
+                  <li
+                    key={`item-link-plataform-${crypto.randomUUID()}`}
+                    title={`Ir a ${t113_link}`}
+                    className={styles.list_item}
+                  >
+                    <img
+                      src={c115_id_plataform?.c115_icon}
+                      alt={c115_id_plataform?.c115_icon}
+                      className={styles.iconSocialNetwork}
+                    />
+                    <span className={styles.go_link}>
+                      {c115_id_plataform?.c115_description}
+                      {
+                        <a
+                          href={`${t113_link}`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {t113_link}
+                        </a>
+                      }
+                    </span>
+                  </li>
+                ))
               ) : (
                 <span style={{ padding: 0 }}>
                   Sin redes sociales por el momento.
@@ -266,14 +290,19 @@ const CardProfileStudent = () => {
           </div>
           {/* SKILLS */}
           <div className={`${styles.wrapperSkills} ${styles.separator}`}>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: "1rem",
+              }}
+            >
               <h4>Habilidades en</h4>
-              <button
-                onClick={openModalSkill}
-                style={{ fontSize: "1.1rem", cursor: "pointer" }}
-              >
-                +
-              </button>
+              <ToolTip title="Agregar Nueva Habilidad">
+                <button onClick={openModalSkill} className={styles.buttonAdd}>
+                  +
+                </button>
+              </ToolTip>
             </div>
             <List>
               {skills?.length > 0 ? (
@@ -314,13 +343,13 @@ const CardProfileStudent = () => {
                 <span>Aun no cuentas con tu cv</span>
               </div>
             ) : (
-              <p>
-                <GoVerified style={{ color: "#38761D" }} /> Tu curriculum esta
+              <div>
+                <GoVerified style={{ color: "#02B700" }} /> Tu curriculum esta
                 activo y visible para las empresas{" "}
-                <span style={{ color: "#38761D", fontWeight: "700" }}>
+                <span style={{ color: "#02B700", fontWeight: "700" }}>
                   Abierto a oportunidades
                 </span>
-              </p>
+              </div>
             )}
           </div>
         </div>
@@ -339,6 +368,7 @@ const CardProfileStudent = () => {
         isOpen={isOpenSocialNetwork}
         closeModal={closeModalSocialNetwork}
         minHeight="300px"
+        minWidth="600px"
       >
         <h2
           style={{
@@ -358,11 +388,10 @@ const CardProfileStudent = () => {
         isOpen={isOpenSkill}
         closeModal={closeModalSkill}
         minHeight="300px"
+        minWidth="400px"
       >
         <h2
           style={{
-            position: "relative",
-            top: "3rem",
             textAlign: "center",
             fontFamily: "sans-serif",
             fontSize: "1.5rem",
@@ -378,13 +407,13 @@ const CardProfileStudent = () => {
             gap: ".4rem",
             marginTop: "1rem",
             position: "relative",
-            top: "4rem",
+            top: "2rem",
           }}
         >
           <Autocomplete
             id="skills"
             size="small"
-            sx={{ width: 300, maxWidth: "100%" }}
+            sx={{ width: 350, maxWidth: "100%" }}
             name="skills"
             value={newSkills}
             onChange={(event, newValue) => setNewSkills(newValue)}
@@ -425,7 +454,6 @@ const CardProfileStudent = () => {
       <ModalPortal isOpen={isOpenCV} closeModal={closeModalCV}>
         <ModalPreviewCV fileUrl={candidate[0]?.t100_cv} />
       </ModalPortal>
-      {/* <Toaster position='top-right' /> */}
     </>
   );
 };

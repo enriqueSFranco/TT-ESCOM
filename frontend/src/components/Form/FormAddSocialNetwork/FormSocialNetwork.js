@@ -2,11 +2,12 @@ import React from "react";
 import { toast } from "react-hot-toast";
 import { useForm, useGetPlataforms } from "hooks";
 import { postSocialNetwork } from "services";
+import Input from "components/Input/Input";
 import { INITIAL_FORM_ADD_SOCIAL_NETWORK } from "types/addSocialNetwork";
 import {
   Button,
+  Form,
   Select,
-  LinkSocialNetwork,
 } from "../styled-components/FormAddSocialNetworkStyled";
 
 const FormSocialNetwork = ({ idUser }) => {
@@ -22,6 +23,8 @@ const FormSocialNetwork = ({ idUser }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (!e.target.value) return
+
     r["c115_id_plataform"] = parseInt(r.c115_id_plataform);
     postSocialNetwork(r)
       .then((response) => toast.success(response?.data?.message))
@@ -33,18 +36,7 @@ const FormSocialNetwork = ({ idUser }) => {
   if (!plataforms || !idUser) return null;
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{
-        marginTop: "1rem",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: "1rem",
-        height: "100px",
-      }}
-    >
+    <Form onSubmit={handleSubmit}>
       <div
         style={{
           display: "flex",
@@ -69,16 +61,19 @@ const FormSocialNetwork = ({ idUser }) => {
             </option>
           ))}
         </Select>
-        <LinkSocialNetwork
+        <Input
           type="text"
           name="t113_link"
           id="t113_link"
           value={form.t113_link}
           onChange={handleChange}
+          width="300px"
+          placeholder="https://..."
         />
       </div>
+        <span style={{position: 'relative', bottom: '.8rem', left: '3.4rem', fontSize: '.9em', color: 'grey'}}>La dirección debe se https://</span>
       <Button type="submit" value="Agregar" />
-    </form>
+    </Form>
   );
 };
 

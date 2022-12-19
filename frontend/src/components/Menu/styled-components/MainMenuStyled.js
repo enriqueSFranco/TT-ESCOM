@@ -6,10 +6,11 @@ const NavLeft = styled.div`
   @media only screen and ${device.mobileM} {
     width: 140px;
     height: 40px;
+    
   }
   
   @media screen and ${device.laptop} {
-    width: 140px;
+    width: fit-content;
     height: 40px;
     display: flex;
     align-items: center;
@@ -79,13 +80,38 @@ const NavLink = styled(Link)`
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: 1rem;
+    font-size: .95rem;
     justify-content: space-between;
-    gap: .3rem;
+    gap: .2rem;
     color: #fff;
+    padding: 0 .4rem;
+    position: relative;
+    transition: background-color .3s ease-in-out;
+    
+    &::before {
+      content: "";
+      width: 100%;
+      height: 4px;
+      position: absolute;
+      left: 0;
+      top: 1.5rem;
+      background-color: #449AE6;
+      transition: .5s transform ease;
+      transform: scale3d(0,1,1);
+      transform-origin: 0 50%;
+    }
 
     &:hover {
       color: #fff;
+    }
+
+    &:hover::before {
+      transform: scale3d(1,1,1);
+      transform-origin: 100% 50%;
+    }
+
+    &:hover::before {
+      transform-origin: 0% 50%;
     }
   }
 `

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
 import LinkButton from "components/Button/LinkButton";
 import { HiOutlineLogout, HiUserGroup } from "react-icons/hi";
@@ -34,18 +35,28 @@ const links = [
   },
 ];
 
+const styles = {
+  styledLink: {
+    color: '#000',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    gap: '.3rem',
+  }
+}
+
 const MenuRecruiter = () => {
   const { logout } = useAuth();
 
   return (
     <>
       <NavLeft>
-        <NavLink to="/">
-          <picture>
+        <Link to="/" style={styles.styledLink}>
+          <picture style={{width: '30px'}}>
             <img src={logo} alt="logo-bte" />
           </picture>
           <Logo>ESCOM</Logo>
-        </NavLink>
+        </Link>
       </NavLeft>
       <NavList>
         <NavItem>
