@@ -150,12 +150,7 @@ export const uploadPhotoStudent = (id, payload) => {
 
 export const uploadCVStudent = (id, payload) => {
   
-  return API.put(`${REACT_APP_URL_CANDIDATE_UPLOAD_CV}${id}/`, payload, {
-    headers: {
-      'Contnt-Type': 'text/plain',
-      charset:'utf-8'
-    }
-  })
+  return API.put(`${REACT_APP_URL_CANDIDATE_UPLOAD_CV}${id}/`, payload)
     .then((response) => {
       const { data } = response;
       return data;

@@ -1,11 +1,16 @@
 import React from "react";
-import { Document, pdfjs } from "react-pdf";
-
+import { Viewer, Worker } from '@react-pdf-viewer/core'
 
 const ModalPreviewCV = ({ fileUrl }) => {
-  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
-
-  return <Document file={fileUrl}></Document>;
+  return (
+    <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.1.81/build/pdf.worker.js">
+      <div style={{ height: '750px' }}>
+        <Viewer 
+          fileUrl={fileUrl}
+        />
+      </div>
+    </Worker>
+  )
 };
 
 export default ModalPreviewCV;
