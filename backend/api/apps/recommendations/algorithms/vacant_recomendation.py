@@ -115,3 +115,19 @@ def candidate_recomendation(id_candidate):
         
 
 
+
+
+
+#####Se debe borrar y crear el vector de recomendaciones cada que se acceda/solicite las recomendaciones
+#Se obtienen las vacantes abiertas y su información
+#Se obtiene la información del candidato
+    #Si el candidato tiene nulo algun rubro necesario para la recomendación, se cancelará el analisis porque el candidato habla puras basuras
+#Se compara cada vacante contra el candidato para obtener el vector de similitud
+    #Si una vacante tiene nulo algun rubro necesario para la recomendación, se saltara el analisis de dicha vacante
+#Se multiplican los vectores de similitudes por el vector de pesos de los rubros (cada peso representa cual seria el porcentaje ideal para aplicar a la vacante)
+#Se obtiene el porcentaje total de vacante-candidato
+#Solo las vacantes con mas de 60% de similitud se agregan a la matriz de recommendations
+#Se deben de obtener las vacantes activas a las cuales se postulo el candidato
+#Con base a las vacantes donde se postulo se deben de obtener las vacantes similares a las que se postulo
+#Se deben agregar las vacantes similares al vector de recomendaciones, solo las que cumplan mas del 85% de similitud
+
