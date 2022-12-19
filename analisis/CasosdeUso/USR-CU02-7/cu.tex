@@ -1,0 +1,40 @@
+\begin{UseCase}[]{USR-CU02.7}{Eliminar experiencia laboral}{
+	Permite al candidato eliminar una experienca laboral o por proyecto a su perfil.
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		Candidato. 
+	}
+	\UCitem[admin]{Prioridad}{ 
+		Alta
+	}
+	\UCitem[admin]{Complejidad}{
+		Media
+	}
+	\UCitem{Precondiciones}{
+		\Titem El candidato debe de tener una cuenta en el sistema.
+	}
+	\UCitem{Destino}{
+		\Titem \refElem{USR-IU2.7}
+	}
+	\UCitem{Viene de}{
+		Caso de uso \refIdElem{GRL-CU03}.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Presiona el ícono \IUEliminar{} en la sección ``Experiencia laboral'' en la interfaz \refIdElem{USR-IU2} en la experiencia que desea eliminar.
+	\UCpaso Muestra la interfaz \refIdElem{USR-IU2.7}.
+	\UCpaso [\UCsist] Presiona el botón \IUbutton{Aceptar}.\refTray{A}
+	\UCpaso Elimina el registro en de la base de datos del sistema.
+	\UCpaso Actualiza la información ingresada en el sistema.
+	\UCpaso Muestra la información actualizada en la interfaz \refIdElem{USR-IU2}. 
+\end{UCtrayectoria}
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor no desea eliminar la experiencia}
+	\UCpaso [\UCsist] Presiona el botón \IUbutton{Cancelar}.
+	\extendUC{USR-CU02}.
+\end{UCtrayectoriaA} 

@@ -20,10 +20,6 @@
 	\UCitem{Destino}{
 		\Titem \refElem{VCT-IU01}
 	}
-	\UCitem{Reglas de Negocio}{
-		Ninguna.
-		
-	}
 	\UCitem{Viene de}{
 		Caso de uso \refIdElem{GRL-CU03}.
 	}	
@@ -32,10 +28,9 @@
 %Trayectoria Principal
 \begin{UCtrayectoria}
 	\UCpaso [\UCactor] Presiona el botón \IUbutton{Vacantes} desde la interfaz \refIdElem{GRL-IU03}.
-    \UCpaso [\UCsist] Verifica que exista almenos un registro de una vacante que no se encuente es estado \textbf{cerrada} en la base de datos.\refTray{A}
-	\UCpaso [\UCsist] Optiene el titulo, empresa, salario minímo
-	, salario maximo,ubicación y la descripción  de las vacantes.
-	\UCpaso [\UCsist] Lista la información optenida en la parte derecha de la interfaz \refElem{VCT-IU01}
+    \UCpaso [\UCsist] Verifica que exista al menos un registro de una vacante que no se encuentre es estado \textbf{cerrada} en la base de datos.\refTray{A}
+	\UCpaso [\UCsist] Obtiene el titulo, empresa, salario mínimo, salario máximo,ubicación y la descripción  de las vacantes.
+	\UCpaso [\UCsist] Lista la información obtenida en la parte derecha de la interfaz \refElem{VCT-IU01}
 \end{UCtrayectoria}
 
 %Trayectorias Alternativas

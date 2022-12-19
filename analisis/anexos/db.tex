@@ -1,6 +1,6 @@
 \chapter{Modelo de datos}
 En este anexo vamos a utilizar un diagrama para mostrar como se encuentra la estructura del sistema a nivel de base de datos. 
-También se especifica el código de colores se ultiza para identificar diferentes tipos de entidades.
+También se especifica el código de colores se utiliza para identificar diferentes tipos de entidades.
 
 \section{Código de colores y atributos}
 
@@ -11,7 +11,7 @@ El código de colores permite identificar el tipo de información que guarda una
     \item \IUEntidaB{} Este color se utiliza para representar entidades relacionadas al negocio.
     \item \IUEntidaA{} Este color se utiliza para representar entidades de tipo catálogo es decir, tiene información definida 
     y que no puede ser alterada por medio del sistema.
-    \item \IUEntidaC{} Este color se utiliza para representar entidades de tipo catálogo editables es decir, tiene información definida 
+    \item \IUEntidaC{} Este color se utiliza para representar entidades de tipo catálogo editable es decir, tiene información definida 
     y que puede ser alterada por medio del sistema.
     \item \IUEntidaD{} Este color se utiliza para representar entidades de tipo estado.
 \end{itemize}
@@ -120,10 +120,6 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
             \end{Citemize}
         }{\datRequerido}
 
-        \brAttr{nombre}{Nombre}{tVarchar}{
-	        Es el nombre de la persona con el cual se registra dentro del sistema.
-        }{\datRequerido}
-
         \brAttr{email}{Correo electrónico}{tEmail}{
 	        Es el correo del alumno con el cual se identificara como unico dentro del sistema.
 	        Restricciones adicionales:
@@ -161,7 +157,27 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
         \brAttr{status}{Activo}{tBool}{
 	        Es el estado de la cuenta del usuario dentro del sistema.
         }{\datRequerido}
+
 \end{cdtEntidad}
+
+%---------------------Tipo Usuario-----------------------------
+\begin{cdtEntidad}{tipo_users}{Usuario}{
+    Esta entidad es el catalogo que indica si el tipo de usuario es un candidato, reclutador, encatgado o colaborador.
+}
+    \brAttr{id}{Id de usuario}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+        Es el nombre del tipo del usuario.
+    }{\datRequerido}
+\end{cdtEntidad}
+
 %---------------------Empresa-----------------------------
 \begin{cdtEntidad}{empresa}{Empresa}{
     Empresa constituida que publica vacantes en el sistema siempre y cuando lo haya permitido el 
@@ -190,6 +206,10 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
         \end{Citemize}
     }{\datRequerido}
 
+    \brAttr{dominio}{Dominio}{tVarchar}{
+        Nombre de la empresa con el que se registra en el sistema.
+    }{\datRequerido}
+
     \brAttr{razonsocial}{Razón social}{tVarchar}{
         Razon social de la empresa.
     }{\datRequerido}
@@ -197,19 +217,37 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
     \brAttr{pageweb}{Página Web}{tVarchar}{
         Es el URL de la oágina de la empresa.
     }{\datOpcional}
+    
+    \brAttr{logo}{Logo}{tVarchar}{
+        Imagen del logo representativo de la empresa.
+    }{\datOpcional}
+
+    \brAttr{banner}{Banner}{tVarchar}{
+        Imagen secundaria del logo representativo de la empresa.
+    }{\datOpcional}
 
     %\brAttr{mision}{Misión}{tVarchar}{Descripción}{\datOpcional}
     %\brAttr{vision}{Vision}{tVarchar}{Descripción}{\datOpcional}
     %\brAttr{fecha-alta}{Fecha de alta}{tDate}{Descripción}{\datOpcional}
-    %\brAttr{id-admin}{Id del administrador}{tVarchar}{
-	   %     Es el correo del alumno con el cual se identificara como unico dentro del sistema.
-	   %     Restricciones adicionales:
-     %       \begin{Citemize}
-      %          \item \refElem{tForeignKey}
-      %          \item \refElem{tUnico}
-      %      \end{Citemize}
-      %  }{\datRequerido}
+    \brAttr{idEncargado}{Id del encargado del sistema}{tInt}{
+	   Es el identificador que hace referencia al encargado del sistema.
+	   Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{idEstado}{Id del estado}{tInt}{
+	   Es el identificador que hace referencia al estado que tiene la empresa en el sistema..
+	   Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
 \end{cdtEntidad}
+
 %---------------------Reclutador-----------------------------
 \begin{cdtEntidad}{reclutador}{Reclutador}{
     Es el personal de recursos humanos de la empresa que ya esta registrada en el sistema.}
@@ -225,9 +263,9 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
     \brAttr{nombre}{Nombre}{tChar}{
         Nombre del reclutador con el cual se registra en el sistema.
         Restricciones adicionales:
-            \begin{Citemize}
-                \item No debe de execer de 50 caracteres.
-            \end{Citemize}
+        \begin{Citemize}
+            \item No debe de exceder de 50 caracteres.
+        \end{Citemize}
     }{\datRequerido}
 
     \brAttr{papellido}{Primer apellido}{tChar}{
@@ -262,19 +300,73 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
             \end{Citemize}
     }{\datRequerido}
 
-    \brAttr{id-impresa}{Id}{tInt}{
+    \brAttr{idEmpresa}{Id}{tInt}{
         Es la referencia al id del registro de la empresa.
         Restricciones adicionales:
         \begin{Citemize}
             \item \refElem{tForeignKey}
         \end{Citemize}
-    
     }{\datOpcional}
+
+    \brAttr{idEstatusR}{Id}{tInt}{
+        Es la referencia al id del estatus del reclutador.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+        \end{Citemize}
+    }{\datOpcional}
+
+    \brAttr{idEncargado}{Id}{tInt}{
+        Es la referencia al id del encargado.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+        \end{Citemize}
+    }{\datOpcional}
+
     %\brAttr{id-admin}{Id}{tInt}{Descripción}{\datOpcional}
 \end{cdtEntidad}
+
+%---------------------EStado del Reclutador-----------------------------
+\begin{cdtEntidad}{estadoReclutador}{Estado Reclutador}{
+    Esta entidad es el catalogo que indica si el estado del reclutador.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+        Es el nombre estado del usuario.
+    }{\datRequerido}
+\end{cdtEntidad}
+
+%---------------------EStado del Empresa-----------------------------
+\begin{cdtEntidad}{estadoEmpresa}{Estado Empresa}{
+    Esta entidad es el catalogo que indica si el estado de la empresa.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+        Es el nombre estado del estado de la empresa.
+    }{\datRequerido}
+\end{cdtEntidad}
+
+
+
 %---------------------Alumno-----------------------------
-\begin{cdtEntidad}{candidato}{Candidato}{desc}
-    Un alumno es un tipo de usuario dentro del sistema 
+\begin{cdtEntidad}{candidato}{Candidato}{Un alumno es un tipo de usuario dentro del sistema.}
     \brAttr{id-alumno}{Id}{tInt}{
         Identificador único para cada registro de la entidad alumno.
             Restricciones adicionales:
@@ -391,20 +483,186 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
 
 \end{cdtEntidad}
 %---------------------Historial Academico-----------------------------
-%\begin{cdtEntidad}{hacademico}{Historial Academico}{desc}
-%    \brAttr{id}{Id}{tInt}{Descripción}{\datRequerido} 
-%    \brAttr{idAlumno}{Id de alumno}{tVarchar}{Descripción}{\datRequerido}
-%    \brAttr{carrera}{Carrera}{tVarchar}{Descripción}{\datRequerido}
-%    \brAttr{inicio}{Fecha de inicio}{tVarchar}{Descripción}{\datRequerido}
-%    \brAttr{fin}{Fecha final}{tVarchar}{Descripción}{\datRequerido}
+\begin{cdtEntidad}{hacademico}{Historial Academico}{
+    Esta entidad almacena todos 
+    }
+
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{idalumno}{idalumno}{tInt}{
+        Identificador único para cada registro de la entidad alumno.
+            Restricciones adicionales:
+            \begin{Citemize}
+                \item \refElem{tForeignKey}
+                \item \refElem{tUnico}
+            \end{Citemize}
+    }{\datRequerido} 
     
-%\end{cdtEntidad}
-%---------------------Habilidades----------------------------
-%\begin{cdtEntidad}{habilidad}{Catalogo Habilidades}{desc}
- %   \brAttr{id-habilidad}{Id}{tInt}{Descripción}{\datRequerido} 
- %   \brAttr{descripcion}{Carrera}{tVarchar}{Descripción}{\datRequerido}
- %   \brAttr{tipo}{Fecha de inicio}{tVarchar}{Descripción}{\datRequerido}
-%\end{cdtEntidad}
+    \brAttr{idCarrera}{idCarrera}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{idUnidadAcademica}{idUnidadAcademica}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{idEstadoAcademico}{idEstadoAcademico}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{idNivelAcademico}{IdNivelAcademico}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{fechaini}{Fecha de inicio}{tDate}{
+        Fecha en la que inicio el nivel academico.
+    }{\datRequerido}
+
+    \brAttr{fechafin}{Fecha final}{tDate}{
+        Fecha en la que finalizó el nivel academico.
+    }{\datRequerido}
+\end{cdtEntidad}
+%---------------------Red Social----------------------------
+\begin{cdtEntidad}{RedSocial}{Red Social}{
+    Esta entidad guarda todas las redes solciales qeu el candidato haya registrado en el sistema desde su perfil.
+}
+  \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{idalumno}{idalumno}{tInt}{
+        Identificador único para cada registro de la entidad alumno.
+            Restricciones adicionales:
+            \begin{Citemize}
+                \item \refElem{tForeignKey}
+                \item \refElem{tUnico}
+            \end{Citemize}    
+    }{\datRequerido}
+\end{cdtEntidad}
+
+
+%---------------------Nivel academico-----------------------------
+\begin{cdtEntidad}{NivelAcademico}{Nivel academico}{
+    Esta entidad es el catalogo que indica el nivel academico del usuario.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+        Es el nombre del nivel academico.
+    }{\datRequerido}
+\end{cdtEntidad}
+
+%---------------------Unidad Academica-----------------------------
+\begin{cdtEntidad}{UnidadAcademica}{Unidad Academica}{
+    Esta entidad es el catalogo que indica la Unidad Academica a la que el usuario esta asociado.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+        Es el nombre de la Unidad Academica.
+    }{\datRequerido}
+\end{cdtEntidad}
+
+%---------------------Estado Academico-----------------------------
+\begin{cdtEntidad}{EstadoAcademico}{Estado Academico}{
+    Esta entidad es el catalogo que indica el Estado Academico al que el usuario esta asociado.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+        Es el nombre del Estado Academico.
+    }{\datRequerido}
+\end{cdtEntidad}
+
+%---------------------Carrera-----------------------------
+\begin{cdtEntidad}{Carrera}{Carrera}{
+    Esta entidad es el catalogo que indica la Carrera al que el usuario esta asociado.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+        Es el nombre de la Carrera.
+    }{\datRequerido}
+\end{cdtEntidad}
+
+%---------------------Plataforma-----------------------------
+\begin{cdtEntidad}{Plataforma}{Plataforma}{
+    Esta entidad es el catalogo que indica la Plataforma de la red solcial que usuario tiene registrado.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+        Es el nombre de la Plataforma.
+    }{\datRequerido}
+\end{cdtEntidad}
+
 %---------------------Vacante----------------------------
 \begin{cdtEntidad}{vacante}{Vacante}{
     Vacante publicada por un reclutador de una empresa.}
@@ -430,7 +688,7 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
         \end{Citemize}
     }{\datRequerido}
 
-    \brAttr{ubicacion}{Lolidad}{tVarchar}{
+    \brAttr{ubicacion}{Localidad}{tVarchar}{
         Indica la ubicación de la vacante, siempre y cuando sea presencial o hibrida.
         Restricciones adicionales:
         \begin{Citemize}
@@ -468,8 +726,438 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
     \brAttr{horasal}{Horario de salida}{tTime}{
         Indica la hora de salida de trabajo de la vacante.
     }{\datOpcional}
-
-
-    
 \end{cdtEntidad}
 
+%---------------------EStado de la Vacante-----------------------------
+\begin{cdtEntidad}{estadoVacante}{Estado Vacante}{
+    Esta entidad es el catalogo que indica si el estado de la vacante.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+        Es el nombre estado del estado de la vacante.
+    }{\datRequerido}
+\end{cdtEntidad}
+
+%---------------------EStado de la Vacante-----------------------------
+\begin{cdtEntidad}{CestadoSolicitud}{Estado Solicitud}{
+    Esta entidad es el catalogo que indica si el estado de la solicitud.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+        Es el nombre estado del estado de la solicitud.
+    }{\datRequerido}
+\end{cdtEntidad}
+
+
+%---------------------Perfil del Candidato-----------------------------
+\begin{cdtEntidad}{perfilCandidato}{Estado Solicitud}{
+    Esta entidad es el catalogo que indica el tipo de perfil que tiene el candidato.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+        Es el nombre estado del perfil del candidato.
+    }{\datRequerido}
+\end{cdtEntidad}
+
+%---------------------Perfil del Candidato-----------------------------
+\begin{cdtEntidad}{perfilCandidato}{Perfil del Candidato}{
+    Esta entidad es el catalogo que indica el tipo de perfil que tiene el candidato.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+        Es el nombre estado del perfil del candidato.
+    }{\datRequerido}
+\end{cdtEntidad}
+
+
+%---------------------Experiencia Laboral-----------------------------
+\begin{cdtEntidad}{expLaboral}{Experiencia Laboral}{
+    Esta entidad es el catalogo que indica la experiencia que tiene el candidato.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+        Es el nombre estado del perfil del candidato.
+    }{\datRequerido}
+\end{cdtEntidad}
+
+%---------------------Tipo de Contratación-----------------------------
+\begin{cdtEntidad}{TipoContra}{Tipo de Contratación}{
+    Esta entidad es el catalogo que indica el tipo de contratación que desea el candidato.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+        Es el nombre del tipo de contratación que desea el candidato.
+    }{\datRequerido}
+\end{cdtEntidad}
+
+%---------------------Modalidad de Trabajo-----------------------------
+\begin{cdtEntidad}{modalidadT}{Modalidad de Trabajo}{
+    Esta entidad es el catalogo que indica de modalidad que desea el candidato.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+        Es el nombre del tipo de modalidad que desea el candidato.
+    }{\datRequerido}
+\end{cdtEntidad}
+
+%---------------------Nivel-----------------------------
+\begin{cdtEntidad}{nivel}{Nivel}{
+    Esta entidad es el catalogo que indica del idioma que tiene el candidato.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+        Es el nombre que indica del idioma que tiene  el candidato.
+    }{\datRequerido}
+\end{cdtEntidad}
+
+%---------------------Catalogo Idiomas-----------------------------
+\begin{cdtEntidad}{catIdioma}{Catalogo Idiomas}{
+    Esta entidad es el catalogo de idiomas que se tienen registrados dentro del sistema.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+        Es el nombre que indica del idioma que tiene  el candidato.
+    }{\datRequerido}
+\end{cdtEntidad}
+
+%---------------------Nivel Requerido-----------------------------
+\begin{cdtEntidad}{nivelR}{Nivel Requerido}{
+    Esta entidad es el catalogo de nivel requerido de una habilidad.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+        Es el nombre que indica del idioma que tiene  el candidato.
+    }{\datRequerido}
+\end{cdtEntidad}
+
+%---------------------Catalogo Habilidad-----------------------------
+\begin{cdtEntidad}{catHabilidad}{Catalogo Habilidad}{
+    Esta entidad es el catalogo de habilidades que se tienen registradas dentro del sistema.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+        Es el nombre qde la habilidad.
+    }{\datRequerido}
+
+    \brAttr{tipo}{Tipo}{tVarchar}{
+        Es tipo de habildiad.
+    }{\datRequerido}
+
+\end{cdtEntidad}
+
+%---------------------Comentario-----------------------------
+\begin{cdtEntidad}{comentario}{Comentario}{
+    Esta entidad guarda todos los comentarios y observaciones de una vacante.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{idVacante}{idVacante}{tInt}{
+        Identificador único para cada registro de cada vacante publicada en el sistema.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido} 
+
+    \brAttr{idEncargado}{Id del encargado del sistema}{tInt}{
+	   Es el identificador que hace referencia al encargado del sistema.
+	   Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{idReclutador}{Id de reclutador}{tInt}{
+        Identificador único para cada registro de un reclutador.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido} 
+    
+    \brAttr{mensaje}{Mensaje}{tVarchar}{
+        Descripción de las observaciones y/o recomendaciones de los encargados a la vacante.
+    }{\datRequerido} 
+
+    \brAttr{fechaenvio}{Fecha envio}{tDate}{
+       Fecha en la que se realizó el mensaje.
+    }{\datRequerido} 
+
+\end{cdtEntidad}
+
+
+%---------------------Solicitud-----------------------------
+\begin{cdtEntidad}{solicitud}{Solicitud}{
+    Esta entidad guarda todos los registros de las solicitudes que los alumnos/candidatos realicen a una vacante.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{idVacante}{idVacante}{tInt}{
+        Identificador único para cada registro de cada vacante publicada en el sistema.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido} 
+
+    \brAttr{idalumno}{Id}{tInt}{
+        Identificador único para cada registro de la entidad alumno.
+            Restricciones adicionales:
+            \begin{Citemize}
+                \item \refElem{tForeignKey}
+                \item \refElem{tUnico}
+            \end{Citemize}
+    }{\datRequerido} 
+
+    \brAttr{fechaaplicacion}{Fecha aplicación}{tDate}{
+        Fecha en la que se realizó la postulación.
+     }{\datRequerido} 
+\end{cdtEntidad}
+
+%---------------------EStado de la Solicitud -----------------------------
+\begin{cdtEntidad}{estadoSolicitud}{Estado Solicitud}{
+    Esta entidad que indica si el estado de la solicitud.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{idCestadoSolicitud}{IdCestadoSolicitud}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{idSolicitud}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{fechaCambio}{Fecha Cambio}{tDate}{
+        Fecha en la que se realizó el cambio del estado de la postulación.
+     }{\datRequerido} 
+\end{cdtEntidad}
+
+
+%---------------------Localidad -----------------------------
+\begin{cdtEntidad}{localidad}{Localidad}{
+    Esta entidad es el catalogo de las localidades de la vacante.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{localidad}{Localidad}{tVarchar}{
+        Nombre de la localidad.
+     }{\datRequerido} 
+
+    \brAttr{cp}{Codigo Postal}{tInt}{
+        Número del codigo postal asociado a la localidad del propio registro.
+    }{\datRequerido}
+
+    \brAttr{estado}{Estado}{tVarchar}{
+        Nombre del estado asociado a la localidad del propio registro.
+     }{\datRequerido} 
+    
+    \brAttr{municipio}{Municipio}{tVarchar}{
+        Nombre del municipio asociado a la localidad del propio registro.
+    }{\datRequerido} 
+   
+\end{cdtEntidad}
+
+%---------------------Idiomas-----------------------------
+\begin{cdtEntidad}{idioma}{Idioma}{
+    Esta entidad almacena los idiomas registrados de cada uno de los candidatos en su perfil.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{idCatIdioma}{Id}{tInt}{
+        Referencia al registro almacenado en la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{idNivel}{Id}{tInt}{
+        Referencia al registro almacenado en la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+\end{cdtEntidad}
+
+%---------------------Habilidad -----------------------------
+\begin{cdtEntidad}{habilidad}{Habilidad}{
+    Esta entidad es el catalogo de las habilidades necesarioas y/u opcionales de la vacante.
+}
+    \brAttr{id}{Id}{tInt}{
+        Identificador único para cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tPrimaryKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+
+    \brAttr{idVacante}{idVacante}{tInt}{
+        Identificador único para hacer referencia a cada registro de cada vacante publicada en el sistema.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido} 
+
+    \brAttr{descripcion}{Descripción}{tVarchar}{
+       Nombre de la habilidad.
+    }{\datRequerido}
+
+    \brAttr{idnivelR}{Id}{tInt}{
+        Identificador único para hacer referencia a cada registro de la entidad.
+        Restricciones adicionales:
+        \begin{Citemize}
+            \item \refElem{tForeignKey}
+            \item \refElem{tUnico}
+        \end{Citemize}
+    }{\datRequerido}
+    
+    \brAttr{obligatoria}{Obligatoria}{tBool}{
+        Indica si la habilidad es o no requerida para aplicar a la vacante.
+    }{\datRequerido} 
+   
+\end{cdtEntidad}

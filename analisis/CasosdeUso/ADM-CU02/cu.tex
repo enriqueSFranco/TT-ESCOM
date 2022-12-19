@@ -1,0 +1,52 @@
+\begin{UseCase}{ADMN-CU02}{Gestionar colaboradores de la plataforma}{
+	Permite al actor Consultrar, registrar y/o eliminar un nuevo colaborador en el sistema.
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		Encargado del sistema.
+	}
+	\UCitem{Prioridad}{
+		Alta.
+	}
+	\UCitem{Complejidad}{
+		Media.
+	}
+	\UCitem{Precondiciones}{
+		Ninguna.
+		%El correo electrónico del nuevo usuario no debe estar registrado en el sistema.
+	}
+	\UCitem{Postcondiciones}{
+		Ninguna.
+	}
+	  
+	\UCitem{Destino}{
+		\refIdElem{ADMN-IU02}
+		
+	}
+
+	\UCitem{Viene de}{
+		Caso de uso \refIdElem{GRL-CU03}.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Colaboradores} desde la barra superior del menú.
+	\UCpaso [\UCsist] Obtiene nombre, primer apellido, segundo apellido y el cargo que desempeña den la ESCOM de todos los colaboradores registrados en el sistema. 
+    \UCpaso [\UCsist] Muestra la información obtenida en interfaz \refElem{ADMN-IU02}.
+	
+\end{UCtrayectoria}
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{A}{El actor desea registrar un nuevo colaborador.}
+	\UCpaso [\UCactor] Da clic en el ícono \IUAgregar{}.
+	\extendUC{ADMN-CU02.1}.
+\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{B}{El actor desea eliminar un coloborador.}
+	\UCpaso [\UCactor] Da clic en el ícono \IUEliminar{}.
+	\extendUC{ADMN-CU02.2}.
+\end{UCtrayectoriaA} 

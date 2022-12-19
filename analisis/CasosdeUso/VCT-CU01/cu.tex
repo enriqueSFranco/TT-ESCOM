@@ -21,10 +21,6 @@
 	\UCitem{Destino}{
 		\Titem \refElem{VCT-IU01}
 	}
-	\UCitem{Reglas de Negocio}{
-		Ninguna.
-		
-	}
 	\UCitem{Viene de}{
 		Primario.
 	}	
@@ -32,12 +28,10 @@
 
 %Trayectoria Principal
 \begin{UCtrayectoria}
-	\UCpaso [\UCactor] Ingresa la palabra clave de la vacane que desea buscar en la interfaz \refElem{VCT-IU01}.
+	\UCpaso [\UCactor] Ingresa la palabra clave de la vacante que desea buscar en la interfaz \refElem{VCT-IU01}.
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Buscar} en la interfaz \refElem{VCT-IU01}.
-    \UCpaso [\UCsist] Verifica que exista almenos un registro de una vacante que no se encuente es estado \textbf{cerrada}.\refTray{A}
-	\UCpaso [\UCsist] Optiene el titulo, empresa, salario minímo
-	, salario maximo,ubicación y la descripción  de las vacantes que coincidan con 
-	la palabra ingresada en el paso 1 de la trayectoria princial. \refTray{B}
+    \UCpaso [\UCsist] Verifica que exista al menos un registro de una vacante que no se encuentre es estado \textbf{cerrada}.\refTray{A}
+	\UCpaso [\UCsist] Obtiene el titulo, empresa, salario mínimo, modalidad, idioma requerido y el periodo de cada una de las vacantes que coinciden con los criterios de búsqueda.\refTray{B}
 	\extendUC{VCT-CU02}.
 \end{UCtrayectoria}
 

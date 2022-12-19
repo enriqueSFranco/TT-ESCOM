@@ -1,5 +1,5 @@
 \begin{UseCase}[]{USR-CU02}{Consultar perfil}{
-	Permite al alumno consultar la información de su perfil y darle la oportunidad de editar dicha información o agregar más datos a su perfil.
+	Permite al candidato consultar la información de su perfil y darle la oportunidad de editar dicha información o agregar más datos a su perfil.
 }
 	%----------------------------------------------------------------
 	% Datos generales del CU:
@@ -14,7 +14,7 @@
 		Media
 	}
 	\UCitem{Precondiciones}{
-		\Titem El alumno debe de tener una cuenta en el sistema.
+		\Titem El candidato debe de tener una cuenta en el sistema.
 	}
 	\UCitem{Destino}{
 		\Titem \refElem{USR-IU02}
@@ -38,45 +38,34 @@
 
 \begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor desea editar datos personales}
 	\UCpaso [\UCsist] Presiona el ícono \IUEditar{} desde la interfaz \refElem{USR-IU02} desde su sección correspondiente.
-	\extendUC{VCT-CU01}.
+	\extendUC{USR-CU02.1}.
 \end{UCtrayectoriaA} 
 
 \begin{UCtrayectoriaA}[Fin del caso de uso]{B}{El actor desea editar objetivos profesionales}
 	\UCpaso [\UCsist] Presiona el ícono \IUEditar{} desde la interfaz \refElem{USR-IU02} desde su sección correspondiente.
-	\extendUC{VCT-CU01}.
+	\extendUC{USR-CU02.4}.
 \end{UCtrayectoriaA} 
 
 \begin{UCtrayectoriaA}[Fin del caso de uso]{C}{El actor desea editar medios de contacto}
 	\UCpaso [\UCsist] Presiona el ícono \IUEditar{} desde la interfaz \refElem{USR-IU02} desde su sección correspondiente.
-	\extendUC{VCT-CU01}.
+	\extendUC{USR-CU02.2}.
 \end{UCtrayectoriaA} 
 
 \begin{UCtrayectoriaA}[Fin del caso de uso]{D}{El actor desea editar habilidades}
 	\UCpaso [\UCsist] Presiona el ícono \IUEditar{} desde la interfaz \refElem{USR-IU02} desde su sección correspondiente.
-	\extendUC{VCT-CU01}.
-\end{UCtrayectoriaA} 
-
-
-\begin{UCtrayectoriaA}[Fin del caso de uso]{E}{El actor desea editar medios de contacto}
-	\UCpaso [\UCsist] Presiona el ícono \IUEditar{} desde la interfaz \refElem{USR-IU02} desde su sección correspondiente.
-	\extendUC{VCT-CU01}.
+	\extendUC{USR-CU02.3}.
 \end{UCtrayectoriaA} 
 
 \begin{UCtrayectoriaA}[Fin del caso de uso]{F}{El actor desea consultar la sección ``Idiomas''}
 	\UCpaso [\UCsist] Presiona el botón \IUbutton{Idiomas} desde la interfaz \refElem{USR-IU02}.
-	\extendUC{USR-CU02}.
+	\extendUC{USR-CU03}.
 \end{UCtrayectoriaA}
 
-\begin{UCtrayectoriaA}[Fin del caso de uso]{G}{El actor desea consultar la sección ``Certificaciones/Cursos ''}
-	\UCpaso [\UCsist] Presiona el botón \IUbutton{Certificaciones/Cursos } desde la interfaz \refElem{USR-IU02}.
-	\extendUC{VCT-CU01}.
-\end{UCtrayectoriaA} 
-
-
-\begin{UCtrayectoriaA}[Fin del caso de uso]{H}{El actor desea consultar la sección ``Historial academico''}
+\begin{UCtrayectoriaA}[Fin del caso de uso]{G}{El actor desea consultar la sección ``Certificaciones y Cursos''}
 	\UCpaso [\UCsist] Presiona el botón \IUbutton{Historial academico} desde la interfaz \refElem{USR-IU02}.
-	\extendUC{VCT-CU01}.
+	\extendUC{VCT-CU04}.
 \end{UCtrayectoriaA} 
+
 
 
 

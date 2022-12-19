@@ -1,0 +1,56 @@
+\begin{UseCase}[]{USR-CU02.2}{Editar Medios de contacto y redes sociales}{
+	Permite al candidato editar y/o agregar los medios de contacto que requiera para su perfil dentro del sistema.
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		Candidato. 
+	}
+	\UCitem[admin]{Prioridad}{ 
+		Media
+	}
+	\UCitem[admin]{Complejidad}{
+		Media
+	}
+	\UCitem{Precondiciones}{
+		\Titem El candidato debe de tener una cuenta en el sistema.
+	}
+	\UCitem{Destino}{
+		\Titem \refElem{USR-IU2.2}
+	}
+	\UCitem{Viene de}{
+		Caso de uso \refIdElem{USR-CU02}.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Presiona el ícono \IUEditar{} en la sección ``Medios de contacto y redes sociales'' en la interfaz \refIdElem{USR-IU02}. 
+	\UCpaso Obtiene el dato y el logo acorde al tipo de medio de contacto que se tienen registrados.
+	\UCpaso [\UCsist] Muestra la información obtenida en la interfaz \refIdElem{USR-IU2.2}.
+	\UCpaso \label{USRCU02-2-1} Registra/Elimina el medio de contacto que requiere.
+	\UCpaso [\UCsist] Presiona el botón \IUbutton{Aceptar}.\refTray{A}
+	\UCpaso Verifica que los campos marcados como obligatorios hayan sido ingresados con blase ne la regla de negocio \refIdElem{RN-N001}.\refTray{B}
+	\UCpaso Verifica que el formato de los campos ingresados sea correcto con blase ne la regla de negocio \refIdElem{RN-N003}.\refTray{C}
+	\UCpaso Actualiza la información ingresada en el sistema.
+	\UCpaso Muestra la información actualizada en la interfaz \refIdElem{USR-IU2}. 
+\end{UCtrayectoria}
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor no desea editar los medios de contacto}
+	\UCpaso [\UCsist] Presiona el botón \IUbutton{Cancelar}.
+	\extendUC{USR-CU02}.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{B}{El actor no ingresó uno o más datos obligatorios.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG4} en los campos que no fueron ingresados.
+	\UCpaso [\UCsist] Continúa en el paso \ref{USRCU02-2-1} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{C}{El actor ingresó el dato con formato incorrecto.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG2}.
+	\UCpaso [\UCsist] Continúa en el paso \ref{USRCU02-2-1} de la trayectoria principal.
+\end{UCtrayectoriaA}
+
+
+

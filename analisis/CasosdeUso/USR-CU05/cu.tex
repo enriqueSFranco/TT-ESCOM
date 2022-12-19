@@ -1,0 +1,37 @@
+\begin{UseCase}[]{USR-CU05}{Consultar Postulaciones}{
+	Permite al alumno consultar la información y el estatus de todas las postulaciones que ha realizado.
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		\Titem Candidato. 
+	}
+	\UCitem[admin]{Prioridad}{ 
+		\Titem Alta
+	}
+	\UCitem[admin]{Complejidad}{
+		\Titem Media
+	}
+	\UCitem{Precondiciones}{
+		\Titem El alumno debe de tener una cuenta en el sistema.
+	}
+	\UCitem{Destino}{
+		\Titem \refElem{USR-IU05}
+	}
+	\UCitem{Viene de}{
+		\Titem Caso de uso \refIdElem{USR-CU01}.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Postulaciones} desde la interfaz \refElem{USR-IU02}.
+    \UCpaso [\UCsist] Obtiene el nombre de la vacante, nombre de la empresa, el estatus  y la fecha en la que se realizó cada una de las postulaciones asociadas al usuario.
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{USR-IU05}.\refTray{A}
+\end{UCtrayectoria}
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor desea consultar vacantes}
+	\UCpaso [\UCsist] Presiona el botón \IUbutton{Vacantes}.
+	\extendUC{VCT-CU01}.
+\end{UCtrayectoriaA} 

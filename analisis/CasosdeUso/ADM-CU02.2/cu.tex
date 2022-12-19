@@ -1,0 +1,61 @@
+\begin{UseCase}{ADMN-CU02.2}{Registrar nuevo Colaborardor}{
+	Permite al registrar un nuevo colaborador en el sistema.
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		Encargado del sistema.
+	}
+	\UCitem{Prioridad}{
+		Alta.
+	}
+	\UCitem{Complejidad}{
+		Media.
+	}
+	\UCitem{Precondiciones}{
+		Ninguna.
+		%El correo electrónico del nuevo usuario no debe estar registrado en el sistema.
+	}
+	\UCitem{Postcondiciones}{
+		Ninguna.
+	}
+	  
+	\UCitem{Destino}{
+		\refIdElem{ADMN-IU02.1}
+		
+	}
+
+	\UCitem{Viene de}{
+		Caso de uso \refIdElem{ADMN-CU02}.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Da clic en el ícono \IUAgregar{} desde la interfaz \refElem{ADMN-IU02}.
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{ADMN-IU02.1}.
+	\UCpaso [\UCactor] \label{ADMNCU02-1-1} Ingresa el nombre, primer apellido, segundo apellido, cargo que desempeña en ESCOM.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Aceptar}.\refTray{A}
+	\UCpaso Verifica que los campos marcados como obligatorios hayan sido ingresados con blase ne la regla de negocio \refIdElem{RN-N001}.\refTray{B}
+	\UCpaso Verifica que el formato de los campos ingresados sea correcto con blase ne la regla de negocio \refIdElem{RN-N003}.\refTray{C}
+    \UCpaso [\UCsist] Muestra la información actualizada en interfaz \refElem{ADMN-IU02}.
+	
+\end{UCtrayectoria}
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor no desea registrar un nuevo colaborador}
+	\UCpaso [\UCsist] Presiona el botón \IUbutton{Cancelar}.
+	\extendUC{ADMN-CU02}.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{B}{El actor no ingresó uno o más datos obligatorios.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG4} en los campos que no fueron ingresados.
+	\UCpaso [\UCsist] Continúa en el paso \ref{ADMNCU02-1-1} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{C}{El actor ingresó el dato con formato incorrecto.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG2}.
+	\UCpaso [\UCsist] Continúa en el paso \ref{ADMNCU02-1-1} de la trayectoria principal.
+\end{UCtrayectoriaA}
+
+

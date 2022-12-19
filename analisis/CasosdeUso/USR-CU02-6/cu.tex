@@ -1,0 +1,56 @@
+\begin{UseCase}[]{USR-CU02.6}{Editar experiencia laboral}{
+	Permite al candidato editar una experienca laboral o por proyecto a su perfil.
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		Candidato. 
+	}
+	\UCitem[admin]{Prioridad}{ 
+		Alta
+	}
+	\UCitem[admin]{Complejidad}{
+		Media
+	}
+	\UCitem{Precondiciones}{
+		\Titem El candidato debe de tener una cuenta en el sistema.
+	}
+	\UCitem{Destino}{
+		\Titem \refElem{USR-IU2.6}
+	}
+	\UCitem{Viene de}{
+		Caso de uso \refIdElem{GRL-CU03}.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Presiona el ícono \IUEditar{} en la sección ``Experiencia laboral'' en la interfaz \refIdElem{USR-IU2} en la experiencia que desea editar.
+	\UCpaso Obtiene el nombre del proyecto, la descripción y el enlace del repositorio que se tiene registrado.
+	\UCpaso Muestra la información obtenida enn la interfaz \refIdElem{USR-IU2.6}.
+	\UCpaso [\UCsist] \label{USRCU02-6} Modifica el nombre del proyecto, la descripción y/o el enlace del repositorio de la experiencia.
+	\UCpaso [\UCsist] Presiona el botón \IUbutton{Aceptar}.\refTray{A}
+	\UCpaso Verifica que los campos marcados como obligatorios hayan sido ingresados con blase ne la regla de negocio \refIdElem{RN-N001}.\refTray{B}
+	\UCpaso Verifica que el formato de los campos ingresados sea correcto con blase ne la regla de negocio \refIdElem{RN-N003}.\refTray{C}
+	\UCpaso Actualiza la información ingresada en el sistema.
+	\UCpaso Muestra la información actualizada en la interfaz \refIdElem{USR-IU2}. 
+\end{UCtrayectoria}
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor no desea editar la experiencia laboral}
+	\UCpaso [\UCsist] Presiona el botón \IUbutton{Cancelar}.
+	\extendUC{USR-CU02}.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{B}{El actor no ingresó uno o más datos obligatorios.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG4} en los campos que no fueron ingresados.
+	\UCpaso [\UCsist] Continúa en el paso \ref{USRCU02-6} de la trayectoria principal.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{C}{El actor ingresó el dato con formato incorrecto.}
+	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG2}.
+	\UCpaso [\UCsist] Continúa en el paso \ref{USRCU02-6} de la trayectoria principal.
+\end{UCtrayectoriaA}
+
+
+

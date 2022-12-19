@@ -1,0 +1,47 @@
+\begin{UseCase}[]{USR-CU04}{Consultar Certificaciones/Cursos}{
+	Permite al alumno consultar la información de sus Certificaciones/Cursos registrados en el perfil.
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		\Titem Candidato. 
+	}
+	\UCitem[admin]{Prioridad}{ 
+		\Titem Alta
+	}
+	\UCitem[admin]{Complejidad}{
+		\Titem Media
+	}
+	\UCitem{Precondiciones}{
+		\Titem El alumno debe de tener una cuenta en el sistema.
+	}
+	\UCitem{Destino}{
+		\Titem \refElem{USR-IU04}
+	}
+	\UCitem{Viene de}{
+		\Titem Caso de uso \refIdElem{USR-CU01}.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Certificaciones/Cursos} desde la interfaz \refElem{USR-IU02}.
+    \UCpaso [\UCsist] Obtiene el nombre, nombre de la empresa y la fecha en la que se realizó la certificación de cada una que está registrada en el sistema.
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{USR-IU04}.\refTray{A}\refTray{B}\refTray{C}
+\end{UCtrayectoria}
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor desea registrar una certificación}
+	\UCpaso [\UCsist] Presiona el ícono \IUAgregar{} desde la interfaz \refElem{USR-IU04} desde su sección correspondiente.
+	\extendUC{USR-CU04.1}.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor desea editar una certificación}
+	\UCpaso [\UCsist] Presiona el ícono \IUEditar{} desde la interfaz \refElem{USR-IU04} desde su sección correspondiente.
+	\extendUC{USR-CU04.2}.
+\end{UCtrayectoriaA} 
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor desea eliminar una certificación}
+	\UCpaso [\UCsist] Presiona el ícono \IUEliminar{} desde la interfaz \refElem{USR-IU04} desde su sección correspondiente.
+	\extendUC{USR-CU04.3}.
+\end{UCtrayectoriaA} 

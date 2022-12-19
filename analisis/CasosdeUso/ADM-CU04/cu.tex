@@ -1,0 +1,65 @@
+\begin{UseCase}{ADMN-CU04}{Validar reclutador}{
+	Permite al actor validar la información de un reclutador que quiere publicar vacantes en el sistema, siempre y cuando ya se tenga lsu empresa previamente registrada.
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		\Titem Encargado del sistema.
+		\Titem Conlaborador del sistema.
+	}
+	\UCitem{Prioridad}{
+		Alta.
+	}
+	\UCitem{Complejidad}{
+		Media.
+	}
+	\UCitem{Precondiciones}{
+		La empresa del reclutador debe de estar previamente registrada en el sistema y con estado ``Validada''.
+	}
+	\UCitem{Postcondiciones}{
+		Ninguna.
+	}
+	  
+	\UCitem{Destino}{
+		\refIdElem{ADMN-IU04}
+		
+	}
+
+	\UCitem{Viene de}{
+		Caso de uso \refIdElem{GRL-CU03}.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Validar reclutadores} desde la barra superior del menú.
+	\UCpaso [\UCsist] Obtiene el nombre, primer apellido, segundo apellido, correo electrónico y número telefónico de cada reclutador que falte por validar. 
+    \UCpaso [\UCsist] Muestra la información obtenida en interfaz la \refElem{ADMN-IU04}.\refTray{A}\refTray{B}
+\end{UCtrayectoria}
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{A}{El actor desea validar un reclutador.}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Aceptar registro}.
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{ADMN-IU04a}.
+	\UCpaso [\UCsist] Presiona el botón \IUbutton{Aceptar}.\refTray{C}
+	\UCpaso [\UCsist] Genera las credenciales de acceso al sistema.
+	\UCpaso [\UCsist] Envía las credenciales generadas al correo del reclutador.
+\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{B}{El actor rechaza un reclutador.}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Declinar registro}.
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{ADMN-IU04b}.
+	\UCpaso [\UCactor] Ingresa la descripción de las observaciones del registro de la vacante.
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Aceptar}.\refTray{C}
+	\UCpaso [\UCsist] Envía las observaciones al correo del reclutador.
+\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{C}{El actor desea cancelar la acción.}
+	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Cancelar}.
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{ADMN-IU04}
+\end{UCtrayectoriaA} 
+
+

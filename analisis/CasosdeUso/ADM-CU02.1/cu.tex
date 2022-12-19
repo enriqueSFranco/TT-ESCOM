@@ -1,0 +1,49 @@
+\begin{UseCase}{ADMN-CU02.1}{Eliminar  Colaborador}{
+	Permite al actor eliminado un colaborador que está en el sistema.
+}
+	%----------------------------------------------------------------
+	% Datos generales del CU:
+	\UCsection{Atributos}
+	\UCitem{Actor(es)}{
+		Encargado del sistema.
+	}
+	\UCitem{Prioridad}{
+		Alta.
+	}
+	\UCitem{Complejidad}{
+		Media.
+	}
+	\UCitem{Precondiciones}{
+		Ninguna.
+		%El correo electrónico del nuevo usuario no debe estar registrado en el sistema.
+	}
+	\UCitem{Postcondiciones}{
+		Ninguna.
+	}
+	  
+	\UCitem{Destino}{
+		\refIdElem{ADMN-IU02.1}
+		
+	}
+
+	\UCitem{Viene de}{
+		Caso de uso \refIdElem{ADMN-CU02}.
+	}	
+\end{UseCase}
+
+%Trayectoria Principal
+\begin{UCtrayectoria}
+	\UCpaso [\UCactor] Da clic en el ícono \IUEliminar{} desde la interfaz \refElem{ADMN-IU02} en el recuadro del colaborador que desea eliminar.
+	\UCpaso [\UCsist] Muestra la interfaz \refElem{ADMN-IU02.2}.
+	\UCpaso [\UCactor] Presiona el botón \IUbutton{Aceptar}.\refTray{A}
+	\UCpaso Elimina el registro del sistema junto con su accesos.
+	\UCpaso Envía un mensaje por correo electrónico indicando que su cuenta ha sido eliminada.
+    \UCpaso [\UCsist] Muestra la información actualizada en interfaz \refElem{ADMN-IU02}.
+	
+\end{UCtrayectoria}
+
+\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor no desea registrar un nuevo colaborador}
+	\UCpaso [\UCsist] Presiona el botón \IUbutton{Cancelar}.
+	\extendUC{ADMN-CU02}.
+\end{UCtrayectoriaA} 
+
