@@ -12,7 +12,7 @@ from apps.vacantes.pagination import CustomPagination
 from apps.vacantes.models import Vacant,Application,Report
 from apps.companies.models import Company
 from apps.vacantes.api.serializers.requirements_serializer import RequiredAbilitySerializer,RequiredLanguageSerializer
-from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,VacantListSerializer,UpdateVacantSerializer,VacantInfoListSerializer,VacantFilterSerializer
+from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,VacantListSerializer,UpdateVacantSerializer,VacantInfoListSerializer,VacantFilterSerializer,UpdateVacantStateSerializer
 
 class VacantViewSet(viewsets.GenericViewSet):
 	model = Vacant
@@ -60,13 +60,19 @@ class VacantViewSet(viewsets.GenericViewSet):
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
-				.filter()\
+				.filter(c204_id_vacant_status=2)\
 				.all()
 		return self.queryset
 
 	def check_outdated_vacants(self):
-		outdated_vacants = self.model.objects.filter(t200_close_date=str(date.today())).all()
+		outdated_vacants = self.model.objects.filter(c204_id_vacant_status=2,t200_close_date__range=('2021-01-01',str(date.today()))).all()
 		print(outdated_vacants)
+		for vacant in outdated_vacants:
+			print(vacant)
+			vacant_serializer = UpdateVacantStateSerializer(vacant, data={"c204_id_vacant_status":"4"})
+			if vacant_serializer.is_valid():
+				print("vacante cerrada")
+				vacant_serializer.save()
 		return
 
 	def list(self, request):

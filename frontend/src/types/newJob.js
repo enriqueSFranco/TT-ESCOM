@@ -1,9 +1,7 @@
 export const POST_NEW_JOB = Object.freeze({
-  // t200_description:"",
   t200_job:"",
   t200_publish_date:null,
   t200_close_date:null,
-  // t200_street:"",
   t200_interior_number:"",
   t200_exterior_number:"",
   t200_vacancy:"",

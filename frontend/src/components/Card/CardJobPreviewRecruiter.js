@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { useGetApplicationJob } from "hooks/useGetApplicationJob";
+=======
+import { useGetApplicationJob } from "hooks";
+>>>>>>> feature/reclutador
 import Chip from "components/Chip/Chip";
 import { USERS } from "types/users";
 import GroupAvatars from "components/Avatar/GroupAvatars";
@@ -13,13 +17,18 @@ import {
   CardFooter,
 } from "./styled-components/CardJobPreviewRecruiterStyled";
 
+<<<<<<< HEAD
 const CardJobPreviewRecruiter = ({ info, typeUser, onClick }) => {
   const [data] = useGetApplicationJob({ idVacant: info?.t200_id_vacant });
+=======
+const CardJobPreviewRecruiter = ({ el, typeUser, onClick }) => {
+  const [data] = useGetApplicationJob({ idVacant: el?.t200_id_vacant });
+>>>>>>> feature/reclutador
   const { t200_job, t300_id_company, c207_id_experience, c214_id_modality } =
-    info;
+    el;
 
-  if (!info || !data) return null;
-
+  if (!el || !data) return null;
+  
   return (
     <Card onClick={onClick}>
       <CardHeader>
@@ -62,7 +71,11 @@ const CardJobPreviewRecruiter = ({ info, typeUser, onClick }) => {
           ) : (
             <GroupAvatars users={data} />
           ))}
+<<<<<<< HEAD
         <span>Estado: {info?.c204_id_vacant_status?.c204_description}</span>
+=======
+        <span>Estado: {el?.c204_id_vacant_status?.c204_description}</span>
+>>>>>>> feature/reclutador
       </CardFooter>
     </Card>
   );

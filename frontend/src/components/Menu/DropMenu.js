@@ -9,7 +9,12 @@ import { HiOutlineUserCircle, HiMenu } from "react-icons/hi";
 import styles from "./Dropdown.module.css";
 import DropMenuManager from "./DropMenuManager";
 
-const DropMenu = ({ typeuser = "", picture = null, name = null }) => {
+const DropMenu = ({
+  typeuser = "",
+  picture = null,
+  name = null,
+  icon = null,
+}) => {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useDetectClick(dropdownRef, false);
 
@@ -41,12 +46,16 @@ const DropMenu = ({ typeuser = "", picture = null, name = null }) => {
           style={{ backgroundColor: "transparent" }}
           onClick={onClick}
         >
-          <CustomAvatar
-            picture={picture}
-            username={name}
-            width="50px"
-            height="50px"
-          />
+          {icon !== null ? (
+            icon
+          ) : (
+            <CustomAvatar
+              picture={picture}
+              username={name}
+              width="50px"
+              height="50px"
+            />
+          )}
         </button>
         <nav
           ref={dropdownRef}

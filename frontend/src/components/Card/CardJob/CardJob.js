@@ -25,10 +25,6 @@ import {
 } from "../styled-components/CardJobStyled";
 
 const CardJob = ({ job, onClick }) => {
-  // const { token } = useAuth();
-  // let userID = token?.user?.id;
-  // let idJob = job?.t200_id_vacant;
-
   const tags = [
     {
       label: job?.c207_id_experience?.c207_description,
@@ -52,12 +48,10 @@ const CardJob = ({ job, onClick }) => {
 
   if (!job) return null;
 
-  let now = new Date();
-  let publicDateJob = new Date(job.t200_publish_date);
-  let diff = Math.floor((now - publicDateJob) / (1000 * 60 * 60 * 24));
+  const currentTime = new Date(job?.t200_publish_date).getUTCDate()
 
   return (
-    <CardBody close={diff}>
+    <CardBody close={currentTime}>
       <CardBorder>
         <CardHeader>
           <CardImage>
@@ -70,19 +64,16 @@ const CardJob = ({ job, onClick }) => {
               <IoBusiness style={{ color: "darkgray", fontSize: "3.5rem" }} />
             )}
           </CardImage>
-          <PublicationDate close={diff}>
+          <PublicationDate close={currentTime}>
             {job?.t200_publish_date
-              ? diff >= 30
+              ? currentTime >= 30
                 ? "Vacante cerrada"
-                : `Publicada ${moment(
-                    job?.t200_publish_date,
-                    "YYYY-MM-DD"
-                  ).fromNow()}`
+                : `Publicada ${moment(job?.t200_publish_date).fromNow()}`
               : "Sin fecha"}
           </PublicationDate>
         </CardHeader>
         <CardContent>
-          <TitleJob close={diff}>{job.t200_job}</TitleJob>
+          <TitleJob close={currentTime}>{job.t200_job}</TitleJob>
           <Tags>
             {tags.map((tag, index) => (
               <TagsItem key={crypto.randomUUID()} index={index}>

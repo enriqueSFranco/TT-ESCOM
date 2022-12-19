@@ -8,6 +8,24 @@ const Header = styled.header`
   background: center/cover no-repeat url(${background});
 `
 
+const WrapperSummaryJob = styled.div`
+  outline: 2px solid #ccc;
+  border-radius: 1rem;
+  height: 860px;
+  position: sticky;
+  top: 90px;
+  padding: 0 0 1rem 0;
+`
+
+const ContentModal = styled.div`
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+`
+
 const TextH2 = styled.h2`
   font-size: ${props => props.size || '1.3em'};
   font-weight: 700;
@@ -37,8 +55,9 @@ const WrapperRequitements = styled.div`
 const DescriptionJob = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 0 1rem 1rem 1rem;
-  height: 400px;
+  height: 500px;
+  background-color: #fff;
   overflow-y: auto;
 `
 
-export { DescriptionJob, Header, TextH2, WrapperRequitements, WrapperMoreInfo }
+export { DescriptionJob, ContentModal, Header, TextH2, WrapperRequitements, WrapperMoreInfo, WrapperSummaryJob }
