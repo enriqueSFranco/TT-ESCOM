@@ -1,5 +1,5 @@
 \clearpage
-\begin{UseCase}[]{PST-CU01-1}{Aceptar postulación}{
+\begin{UseCase}[]{PST-CU01.1}{Aceptar postulación}{
 	Permite al reclutador de una empresa dar seguimiento a una postulación recibida de un candidato.
 	}
 	%----------------------------------------------------------------
@@ -34,8 +34,8 @@
 \begin{UCtrayectoria}
 	\UCpaso [\UCactor] Da clic en el \IUbutton{Dar seguimiento} de la postulación que desee, en la interfaz \refElem{VCT-IU03}.
 	\UCpaso [\UCsist] Cambia el estado de la postulación a ``En seguimiento'', con base en la \refElem{mq:post}.
-	\UCpaso [\UCsist] Notifica al candidato que su postulación ha sido aceptada y que le daran Seguimiento.
-	\UCpaso [\UCsist] Habilita los botones de acciones en el componenete \refElem{VCT-IU03b} de la postulaciones aceptada, con base en la \refElem{mq:post}.
+	\UCpaso [\UCsist] Notifica al candidato que su postulación ha sido aceptada y que le darán Seguimiento.
+	\UCpaso [\UCsist] Habilita los botones de acciones en el componente \refElem{VCT-IU03b} de la postulaciones aceptada, con base en la \refElem{mq:post}.
 	\UCpaso [\UCsist] Muestra la pantalla \refElem{PST-IU01}. \refTray{A}\label{PST-CU01:1}
 
 \end{UCtrayectoria}
@@ -46,7 +46,7 @@
 %\end{UCtrayectoriaA} 
 
 \begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor quiere descartar una postulación.}
-	\extendUC{PST-CU01-2}.
+	\extendUC{PST-CU01.2}.
 \end{UCtrayectoriaA} 
 
 \subsubsection{Puntos de extensión}

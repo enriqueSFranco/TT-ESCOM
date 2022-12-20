@@ -32,7 +32,6 @@
 		\Titem \refIdElem{RN-N004}
 		\Titem \refIdElem{RN-N005}
 		\Titem \refIdElem{RN-N006}
-		
 	}
 	\UCitem{Viene de}{
 		Caso de uso \refIdElem{GRL-CU03}
@@ -52,8 +51,8 @@
 	\UCpaso [\UCsist] Verifica que el RFC ingresado cumpla con el formato correcto de acuerdo a las reglas de negocio  \refIdElem{RN-N004}, \refIdElem{RN-N005}.\refTray{D}
 	\UCpaso [\UCsist] Verifica que el RFC ingresado no coincida con otro registrado en el sistema de acuerdo a la regla de negocio \refIdElem{RN-N004}.\refTray{E}
 	\UCpaso [\UCsist] Verifica que el correo electrónico ingresado cumpla con el formato correcto de acuerdo a las reglas de negocio  \refIdElem{RN-N002}.\refTray{D} \label{cu02-grl2}
-	\UCpaso [\UCsist] Verifica que el correo electrónico ingresado no coincida con otro registrado en el sistema deacuedo a la regla de negocio  \refIdElem{RN-N004}.\refTray{E}
-	\UCpaso [\UCsist] Envia una notificación al encargado y colaboradores del sistema indicando que hay una nueva empresa por validar.
+	\UCpaso [\UCsist] Verifica que el correo electrónico ingresado no coincida con otro registrado en el sistema de acuerdo a la regla de negocio  \refIdElem{RN-N004}.\refTray{E}
+	\UCpaso [\UCsist] Envía una notificación al encargado y colaboradores del sistema indicando que hay una nueva empresa por validar.
     \UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU02-2}.
 \end{UCtrayectoria}
 
@@ -62,7 +61,7 @@
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Solicitalo aquí}.
 	\UCpaso [\UCsist] Muestra la interfaz \refElem{GRL-IU02-1}.
 	\UCpaso [\UCactor] Ingresa el nombre de la empresa.
-	\UCpaso [\UCactor] Ingresa los datos de contacto: nombre, apellidos, correo electrónico empresarial y un telefono de contacto.
+	\UCpaso [\UCactor] Ingresa los datos de contacto: nombre, apellidos, correo electrónico empresarial y un teléfono de contacto.
 	%\UCpaso [\UCactor] Acepta los terminos de privacidad y condiciones del sistema.
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Enviar Pre-Registro}. 
 	\UCpaso [\UCsist] Continúa en el paso \ref{cu02-grl2} de la trayectoria principal.

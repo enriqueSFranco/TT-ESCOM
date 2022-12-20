@@ -35,18 +35,24 @@
 \begin{UCtrayectoria}
 	\UCpaso [\UCactor] Presiona el botón \IUbutton{Colaboradores} desde la barra superior del menú.
 	\UCpaso [\UCsist] Obtiene nombre, primer apellido, segundo apellido y el cargo que desempeña den la ESCOM de todos los colaboradores registrados en el sistema. 
-    \UCpaso [\UCsist] Muestra la información obtenida en interfaz \refElem{ADMN-IU02}.
+    \UCpaso [\UCsist] Muestra la información obtenida en interfaz \refElem{ADMN-IU02}.\refTray{A}\refTray{B}\refTray{C}
 	
 \end{UCtrayectoria}
 
 %Trayectorias Alternativas
 \begin{UCtrayectoriaA}[Fin de la trayectoria]{A}{El actor desea registrar un nuevo colaborador.}
 	\UCpaso [\UCactor] Da clic en el ícono \IUAgregar{}.
-	\extendUC{ADMN-CU02.1}.
+	\extendUC{ADMN-CU02.2}.
 \end{UCtrayectoriaA} 
 
 %Trayectorias Alternativas
-\begin{UCtrayectoriaA}[Fin de la trayectoria]{B}{El actor desea eliminar un coloborador.}
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{B}{El actor desea editar la información de  un coloborador.}
+	\UCpaso [\UCactor] Da clic en el ícono \IUEditar{}.
+	\extendUC{ADMN-CU02.3}.
+\end{UCtrayectoriaA} 
+
+%Trayectorias Alternativas
+\begin{UCtrayectoriaA}[Fin de la trayectoria]{C}{El actor desea eliminar un coloborador.}
 	\UCpaso [\UCactor] Da clic en el ícono \IUEliminar{}.
-	\extendUC{ADMN-CU02.2}.
+	\extendUC{ADMN-CU02.1}.
 \end{UCtrayectoriaA} 
