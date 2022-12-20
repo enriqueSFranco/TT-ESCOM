@@ -454,7 +454,7 @@ const CardProfileStudent = () => {
         </div>
       </ModalPortal>
 
-      <ModalPortal isOpen={isOpenCV} closeModal={closeModalCV}>
+      <ModalPortal isOpen={isOpenCV} closeModal={closeModalCV} minWidth="1000px">
         <ModalPreviewCV fileUrl={candidate[0]?.t100_cv} />
       </ModalPortal>
     </>
