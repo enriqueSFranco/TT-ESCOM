@@ -69,14 +69,16 @@ def get_candidate_info(id_candidate):
     return candidate_data
 
 def candidate_recomendation(id_candidate):
-    weight = [1,0.5,0.1,1,0.5]
+    weight = [1,0.5,0,1,0]
+    #100+50+10+100+50
     vacants = []
     similarity_vectors = []
     candidate_vector = []
-    check_recommendations = Recommendation.objects.filter(t100_id_student=id_candidate).all()
-    if len(check_recommendations) > 0:
-        return
-    print("Obteniendo vacantes activas.....")
+    #check_recommendations = Recommendation.objects.filter(t100_id_student=id_candidate).all()    
+    #if len(check_recommendations) > 0:
+    #    return
+    student_destroy = Recommendation.objects.filter(t100_id_student=id_candidate).delete()
+    print("Obteniendo vacantes activas.....")    
     vacants_ids = get_vacants()
     for id in vacants_ids:
         vacant_data = []
@@ -98,6 +100,7 @@ def candidate_recomendation(id_candidate):
         similarity_vector.append(calculate_languages(candidate_vector[2],vacant[3]))
         similarity_vector.append(calculate_salary(candidate_vector[3],vacant[4][0],vacant[4][1]))
         similarity_vector.append(calculate_experience(candidate_vector[4],vacant[5]))#Experiencia 
+        print("vector_similitud",similarity_vector)
         porcentage = calculate_total_percentage(similarity_vector,weight)
         if porcentage >60:
             print("Porcentaje de recomendación:")
@@ -127,6 +130,7 @@ def candidate_recomendation(id_candidate):
 #Se multiplican los vectores de similitudes por el vector de pesos de los rubros (cada peso representa cual seria el porcentaje ideal para aplicar a la vacante)
 #Se obtiene el porcentaje total de vacante-candidato
 #Solo las vacantes con mas de 60% de similitud se agregan a la matriz de recommendations
+
 #Se deben de obtener las vacantes activas a las cuales se postulo el candidato
 #Con base a las vacantes donde se postulo se deben de obtener las vacantes similares a las que se postulo
 #Se deben agregar las vacantes similares al vector de recomendaciones, solo las que cumplan mas del 85% de similitud
