@@ -13,6 +13,7 @@ import {
   NavList,
   NavItem,
   NavLink,
+  WrapperTypeUser
 } from "./styled-components/MainMenuStyled";
 
 const links = [
@@ -89,7 +90,7 @@ const MenuManager = () => {
         </Link>
       </NavLeft>
       <NavList>
-        {links?.map((link, index) => (
+        {links?.map((link) => (
           <NavLink data-item key={`link-id-${link.id}`} to={link.to}>
             {link.icon}
             {link.label}
@@ -100,7 +101,10 @@ const MenuManager = () => {
           Empresas
         </NavLink>
         <NavItem>
-          <DropMenu typeuser={typeuser} name={token.user.first_name} />
+          <WrapperTypeUser>
+            <span>Hola 👋,  | Administrador </span>
+            <DropMenu typeuser={typeuser} name={token.user.first_name} />
+          </WrapperTypeUser>
         </NavItem>
       </NavList>
     </>

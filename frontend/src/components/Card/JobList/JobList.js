@@ -29,7 +29,7 @@ const JobList = ({ jobs, setVacantId }) => {
 
   return (
     <>
-      {cards.listCard
+      {jobs
         .filter((el) => el?.c204_id_vacant_status.c204_id_status === 2)
         .map((el, index) => (
           <CardJob

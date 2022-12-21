@@ -14,6 +14,7 @@ import {
   NavList,
   NavItem,
   NavLink,
+  WrapperTypeUser
 } from "./styled-components/MainMenuStyled";
 
 const styles = {
@@ -33,6 +34,8 @@ const MenuCandidate = () => {
   let typeuser = token?.user?.user_type;
 
   if (!candidate) return null;
+
+  console.log(candidate)
 
   if (viewport.device === "MOBILE") {
     return (
@@ -103,17 +106,14 @@ const MenuCandidate = () => {
           </NavLink>
         </NavItem>
         <NavItem>
-          <DropMenu
-            typeuser={typeuser}
-            type="notify"
-          />
-        </NavItem>
-        <NavItem>
-          <DropMenu
-            typeuser={typeuser}
-            picture={candidate[0]?.t100_profile_picture}
-            name={token.user.username}
-          />
+          <WrapperTypeUser>
+            <span>Hola 👋, {candidate[0]?.t100_name} | Candidato </span>
+            <DropMenu
+              typeuser={typeuser}
+              picture={candidate[0]?.t100_profile_picture}
+              name={token.user.username}
+            />
+          </WrapperTypeUser>
         </NavItem>
       </NavList>
     </>

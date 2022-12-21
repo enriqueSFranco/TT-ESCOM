@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
+import { useGetRecruiter } from "hooks"
+import DropMenu from "./DropMenu";
 import LinkButton from "components/Button/LinkButton";
 import { HiOutlineLogout, HiUserGroup } from "react-icons/hi";
 import { BsFillMegaphoneFill } from "react-icons/bs";
@@ -12,6 +14,7 @@ import {
   NavList,
   NavItem,
   NavLink,
+  WrapperTypeUser
 } from "./styled-components/MainMenuStyled";
 
 const links = [
@@ -46,7 +49,12 @@ const styles = {
 }
 
 const MenuRecruiter = () => {
-  const { logout } = useAuth();
+  const { token } = useAuth();
+  const { recruiter } = useGetRecruiter(token.user.user_id)
+  let typeuser = token?.user?.user_type;
+
+
+  console.log(recruiter)
 
   return (
     <>
@@ -73,10 +81,17 @@ const MenuRecruiter = () => {
             </NavLink>
           ))}
         <NavItem>
-          <NavLink to="/" onClick={logout}>
+        <WrapperTypeUser>
+            <span>Hola 👋, {recruiter[0]?.t301_name} | Reclutador </span>
+            <DropMenu
+              typeuser={typeuser}
+              name={recruiter[0]?.t301_name}
+            />
+          </WrapperTypeUser>
+          {/* <NavLink to="/" onClick={logout}>
             <HiOutlineLogout style={{ fontSize: "1.4rem" }} />
             Salir
-          </NavLink>
+          </NavLink> */}
         </NavItem>
       </NavList>
     </>
