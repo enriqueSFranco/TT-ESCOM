@@ -1,5 +1,5 @@
 [
-    
+
     
     {
         "model":"companies.Company",        
@@ -14,11 +14,10 @@
             "t300_mision": "La misión de Amazon consiste en ofrecer a los clientes los precios más bajos que sea imposible, obteniendo la mayor selección y disponibilidad de la forma más cómoda posible.",
             "t300_vision": "Convertirse en la compañia más centrada en el cliente del mundo.",
             "t300_objective": "",
-            "t300_logo": "/logos/amazon.jpeg",
+            "t300_logo": "/logos/Amazon.png",
             "t300_banner": "/banners/",
-            "t400_id_admin": 1, 
-            "t300_create_date": "2022-04-15",
-            "c302_id_status": 3           
+            "t400_id_admin": 1,
+            "t300_create_date": "2022-04-15"           
         }
     },
 
@@ -35,11 +34,10 @@
             "t300_mision": "El Banco de México tiene el objetivo prioritario de preservar el valor de la moneda nacional a lo largo del tiempo y, de esta forma, contribuir a mejorar el bienestar económico de los mexicanos.",
             "t300_vision": "",
             "t300_objective": "Mantener una inflación baja y estable",
-            "t300_logo": "/logos/banxico.jpeg",
+            "t300_logo": "/logos/Banxico.png",
             "t300_banner": "/banners/",
-            "t400_id_admin": 1, 
-            "t300_create_date": "2022-04-16",
-            "c302_id_status": 3           
+            "t400_id_admin": 1,
+            "t300_create_date": "2022-04-16"           
         }
     },
 
@@ -56,11 +54,10 @@
             "t300_mision": "Dell es crear una cultura empresarial donde la excelencia medioambiental es lasegunda naturaleza ya que los principios del ambientalismo - la eficiencia acaba con los desechos - se integran con los principios de nuestro modelo de negocio directo - la eficiencia ofrece valor delcliente.",
             "t300_vision": "Ser la más exitosa compañía de computadoras en el mundo ofreciendo la mejor experiencia al cliente en los mercados en que nosotros servimos. Al hacerlo, Dell satisfará las expectativasde nuestros clientes en las siguientes áreas:\n* La más alta calidad\n* Tecnología de punta\n*Precios\n*Responsabilidad corporativa e individualcompetitivos\n* El mejor servicioy soporte en su clase",
             "t300_objective": "La compañía cuenta con los siguientes objetivos:\n* La relación directa con el cliente es más eficiente, al no existir intermediarios.\n* Punto único de contacto y responsabilidad.\n* Compras a pedidopermite configurar la computadora según las necesidades de cada cliente.\n* Bajos costos, mínimo inventario.\n* Tecnologías según normas.",
-            "t300_logo": "/logos/dell.jpeg",
+            "t300_logo": "/logos/Dell.png",
             "t300_banner": "/banners/",
-            "t400_id_admin": 1, 
-            "t300_create_date": "2022-04-17",
-            "c302_id_status": 3           
+            "t400_id_admin": 1,
+            "t300_create_date": "2022-04-17"           
         }
     },
 
@@ -77,11 +74,10 @@
             "t300_mision": "Ayudar a nuestros clientes a ser más competitivos, innovadores y flexibles, transformando y optimizando sus procesos de negocio.",
             "t300_vision": "Ser la Firma consultora líder en soluciones de Administración de Procesos de Negocio en América Latina.",
             "t300_objective": "",
-            "t300_logo": "/logos/axxis.jpeg",
+            "t300_logo": "/logos/Axxis.png",
             "t300_banner": "/banners/",
-            "t400_id_admin": 1, 
-            "t300_create_date": "2022-04-18",
-            "c302_id_status": 3           
+            "t400_id_admin": 1,
+            "t300_create_date": "2022-04-18"           
         }
     },
 
@@ -98,11 +94,10 @@
             "t300_mision": "Generar confianza al servir más y mejor a nuestra clientela, con transparencia e integridad, ofreciendo siempre productos de la más alta calidad. Proporcionar a nuestros colaboradores las mejores condiciones para su desarrollo integral. Ser solventes y ofrecer rendimientos atractivos a nuestros accionistas",
             "t300_vision": "Trabajamos para un futuro mejor para la persona»",
             "t300_objective": "",
-            "t300_logo": "/logos/bbva.jpeg",
+            "t300_logo": "/logos/BBVA.png",
             "t300_banner": "/banners/",
-            "t400_id_admin": 1, 
-            "t300_create_date": "2022-04-19",
-            "c302_id_status": 3           
+            "t400_id_admin": 1,
+            "t300_create_date": "2022-04-19"           
         }
     },
 
@@ -119,11 +114,10 @@
             "t300_mision": "Acompañarte en tus necesidades y deseos, acercándote un mundo de posibilidades para que mejores tu vida.",
             "t300_vision": "Ser la tienda omnicanal y de servicios financieros personales y digitales, favorita del mercado masivo, que ofrece una gran variedad de categorías de productos y servicios útiles, atractivos y accesibles, de marcas líderes, que atienden las necesidades, así como los deseos de sus clientes.",
             "t300_objective": "",
-            "t300_logo": "/logos/coppel.jpeg",
+            "t300_logo": "/logos/logo-bancoppel.webp",
             "t300_banner": "/banners/",
-            "t400_id_admin": 1, 
-            "t300_create_date": "2022-04-20",
-            "c302_id_status": 3           
+            "t400_id_admin": 1,
+            "t300_create_date": "2022-04-20"           
         }
     },
 
@@ -140,11 +134,10 @@
             "t300_mision": "Refrescar al mundo en cuerpo, mente y espíritu. Inspirar momentos de optimismo y felicidad a través de nuestras marcas y acciones, para crear valor y dejar nuestra huella en cada uno de los lugares en los que operamos.",
             "t300_vision": "",
             "t300_objective": "El propósito de Coca‑Cola es refrescar al mundo y marcar la diferencia en la vida de las personas, la sociedad y el planeta. The Coca‑Cola Company nació en 1886 con el propósito de refrescar al mundo, no solo en un sentido puramente físico, sino también espiritual",
-            "t300_logo": "/logos/Coca-Cola.png",
+            "t300_logo": "/logos/CocaCola.png",
             "t300_banner": "/banners/bannerCoca-Cola.png",
-            "t400_id_admin": 1, 
-            "t300_create_date": "2022-04-21",
-            "c302_id_status": 3           
+            "t400_id_admin": 1,
+            "t300_create_date": "2022-04-21"           
         }
     },
 
@@ -161,11 +154,10 @@
             "t300_mision": "Es la guía de todas nuestras acciones. Buscamos alimentar, deleitar y servir a nuestro mundo, siendo una empresa altamente productiva y plenamente humana. Día a día queremos alcanzar nuestros logros y avanzar en nuestros propósitos. Esto es lo que constituye nuestra razón de ser como empresa.",
             "t300_vision": "",
             "t300_objective": "Lograr un creciente volumen y participación de nuestras marcas. Estar cerca de nuestros consumidores y clientes, ellos son nuestra razón de ser. Buscar que nuestro personal se desarrolle y realice plenamente. Orientados permanentemente a aprender.",
-            "t300_logo": "/logos/bimbo-logo.jpg",
+            "t300_logo": "/logos/Logo_Grupo_BIMBO.png",
             "t300_banner": "/banners/BimboHero.jpg",
-            "t400_id_admin": 1, 
-            "t300_create_date": "2022-04-22",
-            "c302_id_status": 3           
+            "t400_id_admin": 1,
+            "t300_create_date": "2022-04-22"           
         }
     },
 
@@ -182,11 +174,10 @@
             "t300_mision": "Nuestra misión es empoderar a todas las personas y organizaciones del planeta para que puedan lograr más.",
             "t300_vision": "",
             "t300_objective": "El objetivo de Microsoft es incrementar la productividad y la colaboración en las compañías, proporcionando acceso a las soluciones de negocio desde cualquier lugar y utilizando cualquier tipo de dispositivo",
-            "t300_logo": "/logos/Microsoft-Logo.png",
+            "t300_logo": "/logos/microsoft.png",
             "t300_banner": "/banners/MicrosoftHero.jpg",
-            "t400_id_admin": 1, 
-            "t300_create_date": "2022-04-23",
-            "c302_id_status": 3           
+            "t400_id_admin": 1,
+            "t300_create_date": "2022-04-23"           
         }
     },
 
@@ -203,11 +194,10 @@
             "t300_mision": "Proporcionar y administrar los procesos y tecnología necesarios para desarrollar las habilidades personales, profesionales y técnicas del personal e incrementar la satisfacción del cliente en las áreas de ventas y postventa dentro de la Red de Distribuidores, expandiendo nuestro liderazgo para alcanzar año con año el volumen planeado y la cuota de mercado con la más alta rentabilidad.",
             "t300_vision": "",
             "t300_objective": " Diseñar el futuro de la movilidad con objetivos claros",
-            "t300_logo": "/logos/BMW_logo.png",
+            "t300_logo": "/logos/designworks_logo_square_dark.png",
             "t300_banner": "/banners/BMWHero.jpg",
-            "t400_id_admin": 1, 
-            "t300_create_date": "2022-04-24",
-            "c302_id_status": 3           
+            "t400_id_admin": 1,
+            "t300_create_date": "2022-04-24"           
         }
     },
 
@@ -224,11 +214,10 @@
             "t300_mision": "Satisfacer totalmente las necesidades de nuestros clientes a través de la excelencia en el servicio, el desarrollo integral de nuestros colaboradores y el compromiso con nuestro país",
             "t300_vision": "",
             "t300_objective": "Generar una cultura vial responsable y segura. Para combatir los elevados índices de accidentalidad vial en nuestro país.",
-            "t300_logo": "/logos/Audi_logo.png",
+            "t300_logo": "/logos/audi-logo.png",
             "t300_banner": "/banners/AudiBanner.jpg",
-            "t400_id_admin": 1, 
-            "t300_create_date": "2022-04-25",
-            "c302_id_status": 3           
+            "t400_id_admin": 1,
+            "t300_create_date": "2022-04-25"           
         }
     },
 
@@ -245,11 +234,10 @@
             "t300_mision": "",
             "t300_vision": "",
             "t300_objective": "",
-            "t300_logo": "/logos/",
+            "t300_logo": "/logos/Cyberpuerta.webp",
             "t300_banner": "/banners/",
-            "t400_id_admin": 1, 
-            "t300_create_date": "2022-04-26",
-            "c302_id_status": 3           
+            "t400_id_admin": 1,
+            "t300_create_date": "2022-04-26"           
         }
     },
 
@@ -266,12 +254,11 @@
             "t300_mision": "Brindar transporte, para todos, en todas partes. ",
             "t300_vision": "Transporte más inteligente con menos automóviles y mayor acceso. Transporte más seguro, económico y confiable; transporte que crea más oportunidades de trabajo y mayores ingresos para los conductores.",
             "t300_objective": "",
-            "t300_logo": "/logos/uber.jpeg",
+            "t300_logo": "/logos/Uber.png",
             "t300_banner": "/banners/",
-            "t400_id_admin": 1, 
-            "t300_create_date": "2022-04-27",
-            "c302_id_status": 3           
+            "t400_id_admin": 1,
+            "t300_create_date": "2022-04-27"           
         }
     }
-       
+
 ]

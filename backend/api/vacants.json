@@ -1,6 +1,6 @@
 [
-    
-    
+
+
     {
         "model":"vacantes.Vacant",        
         "pk":1,
@@ -1131,7 +1131,223 @@
             "t301_id_recruiter": 2,
             "t400_id_admin": 1,
             "t200_min_salary": 20000,
-            "t200_max_salary": 2000
+            "t200_max_salary": 20000
+        }
+    },
+
+    {
+        "model":"vacantes.Vacant",        
+        "pk":43,
+        "fields":{
+            "t200_id_vacant": 43,
+            "t300_id_company": 5,
+            "t200_job": "Pasante Tableau Data Science",
+            "t200_description": "Extracción, transformación y carga de información para la realización y actualización de dashboards mediante el uso de Tableau. Análisis e interpretación de base de datos. Modelado en base de datos. Intervención para el mejoramiento de procesos. Manejo de las fuentes de datos para mejor utilización.\nRequisitos\nTableau,SQL\nBeneficios\nBonos de productividad. Sueldo base netos + bono de productividad. Descuentos en Universidades y Escuelas de Idiomas.\n Horario:09:00-19:00 Lunes a Viernes\nSalario:8000 - 10000",
+            "c214_id_modality": 2,
+            "c206_id_profile": 4,
+            "c204_id_vacant_status": 2,
+            "c207_id_experience": 3,                                    
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
+            "c222_id_locality": 29637,
+            "t200_street": "",
+            "t200_interior_number": "",
+            "t200_exterior_number": "",
+            "t200_vacancy": 3,
+            "c208_id_contract": 1,
+            "t301_id_recruiter": 8,
+            "t400_id_admin": 1,
+            "t200_min_salary": 8000,
+            "t200_max_salary": 10000
+        }
+    },
+
+    {
+        "model":"vacantes.Vacant",        
+        "pk":44,
+        "fields":{
+            "t200_id_vacant": 44,
+            "t300_id_company": 5,
+            "t200_job": "Titulado Tableau Data Science",
+            "t200_description": "Conocimiento en el manejo de bases de datos SQL, MY SQL, ORACLE (Querys y Stored Procedures). Conocimiento en Business Intelligence (Preferentemente). Conocimiento en algún lenguaje de programación (Opcional). Conocimiento en R y Python (Preferentemente). Extracción, transformación y carga de información para la realización y actualización de dashboards mediante el uso de Tableau. Análisis e interpretación de base de datos. Modelado en base de datos. Intervención para el mejoramiento de procesos. Manejo de las fuentes de datos para mejor utilización.\nRequisitos\nTableau,SQL,MYSQL,ORACLE\nBeneficios\nBonos de productividad. Sueldo base netos + bono de productividad. Descuentos en Universidades y Escuelas de Idiomas.\n Horario:09:00-19:00 Lunes a Viernes\nSalario:10000 - 13000",
+            "c214_id_modality": 3,
+            "c206_id_profile": 5,
+            "c204_id_vacant_status": 2,
+            "c207_id_experience": 3,                                    
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
+            "c222_id_locality": 29637,
+            "t200_street": "",
+            "t200_interior_number": "",
+            "t200_exterior_number": "",
+            "t200_vacancy": 3,
+            "c208_id_contract": 1,
+            "t301_id_recruiter": 8,
+            "t400_id_admin": 1,
+            "t200_min_salary": 10000,
+            "t200_max_salary": 13000
+        }
+    },
+
+    {
+        "model":"vacantes.Vacant",        
+        "pk":45,
+        "fields":{
+            "t200_id_vacant": 45,
+            "t300_id_company": 5,
+            "t200_job": "Jr Consultor BI (SQL- T-SQL)",
+            "t200_description": "Experiencia en manejo de bases de datos en SQL SERVER (Avanzado). Conocimiento comprobable en SQL estándar y T-SQL (Avanzado). Experiencia utilizando cursores, Indices, Triggers, Store Procedure. Uso avanzado de SQL Server Managment Studio (Avanzado). Uso avanzado de SSIS (Avanzado). Experiencia en migración de datos. (Necesaria). Manejo de sqlplus y Shell scripts. (DESEABLE). Conocimientos de conceptos de análisis de datos, ETL's y modelamiento de datos. Desarrollo de lenguaje SQL (DML y DDL).\nRequisitos\nSQL SERVER,SQL,T-SQl,SQL Server Managment Studio,SSIS\nBeneficios\nBonos de productividad. Sueldo base netos + bono de productividad. Descuentos en Universidades y Escuelas de Idiomas.\n Horario:09:00-19:00 Lunes a Viernes\nSalario:13000 - 17000",
+            "c214_id_modality": 3,
+            "c206_id_profile": 5,
+            "c204_id_vacant_status": 2,
+            "c207_id_experience": 5,                                    
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
+            "c222_id_locality": 29637,
+            "t200_street": "",
+            "t200_interior_number": "",
+            "t200_exterior_number": "",
+            "t200_vacancy": 1,
+            "c208_id_contract": 1,
+            "t301_id_recruiter": 8,
+            "t400_id_admin": 1,
+            "t200_min_salary": 13000,
+            "t200_max_salary": 17000
+        }
+    },
+
+    {
+        "model":"vacantes.Vacant",        
+        "pk":46,
+        "fields":{
+            "t200_id_vacant": 46,
+            "t300_id_company": 6,
+            "t200_job": "Becario",
+            "t200_description": "Conocimientos en Front end, Back end, HTML, PHP, Java, Python C. Actividades a realizar Páginas web, interfaces de usuarios, programación, plataformas, flujos de negocios, conexión de base de datos, investigación.\nRequisitos\nFrontend,Backend,HTML,PHP,Java,Python,C\nBeneficios\n\n Horario:09:00-14:00 Lunes a Viernes\nSalario:6000 - 6000",
+            "c214_id_modality": 1,
+            "c206_id_profile": 1,
+            "c204_id_vacant_status": 2,
+            "c207_id_experience": 1,                                    
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
+            "c222_id_locality": 29334,
+            "t200_street": "Cerrada de Suiza #40",
+            "t200_interior_number": "",
+            "t200_exterior_number": "",
+            "t200_vacancy": 2,
+            "c208_id_contract": 1,
+            "t301_id_recruiter": 9,
+            "t400_id_admin": 1,
+            "t200_min_salary": 6000,
+            "t200_max_salary": 6000
+        }
+    },
+
+    {
+        "model":"vacantes.Vacant",        
+        "pk":47,
+        "fields":{
+            "t200_id_vacant": 47,
+            "t300_id_company": 6,
+            "t200_job": "Ingeniero de datos Jr (Data Engineer Jr)",
+            "t200_description": "Experiencia en consultas y procesos almacenados SQL. Experiencia práctica en análisis de datos. Manejo de diferentes Bases de datos. Lógica de programación aplicada a la resolución de problemas. Receptividad y adaptación al cambio. Conocimiento en Python (pandas, automatización). Modelo entidad Relación. Manejo de control de versiones. Deseable PowerBI / Mongo. Experiencia de Power BI: 1 año (Obligatorio). Experiencia de Tableau: 1 año (Obligatorio).\nRequisitos\nSQL,Python,Git,PowerBI,Tableu\nBeneficios\nUn entorno de alta energía, dinámico y orientado a equipos, interactuando con nuestro equipo de Brasil. Vacaciones adicionales o permisos con goce de sueldo. Iniciando 12 días el primer año. Capacitaciones internas y cursos en la Academia Online con validez y certificación. Oportunidad de aprender otro idioma. Bono de recomendación. Trabajo híbrido o remoto. Aumentos salariales. Bebidas gratis. Días de maternidad superiores a los de la ley. Días de paternidad superiores a los de la ley. Estacionamiento gratuito. Horarios flexibles. Programa de referidos. Seguro de gastos médicos mayores. Seguro de vida.\n Horario:09:00-19:00 Lunes a Viernes\nSalario:10000 - 15000",
+            "c214_id_modality": 3,
+            "c206_id_profile": 5,
+            "c204_id_vacant_status": 2,
+            "c207_id_experience": 3,                                    
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
+            "c222_id_locality": 30141,
+            "t200_street": "Lago Alberto",
+            "t200_interior_number": "",
+            "t200_exterior_number": "",
+            "t200_vacancy": 1,
+            "c208_id_contract": 1,
+            "t301_id_recruiter": 9,
+            "t400_id_admin": 1,
+            "t200_min_salary": 10000,
+            "t200_max_salary": 15000
+        }
+    },
+
+    {
+        "model":"vacantes.Vacant",        
+        "pk":48,
+        "fields":{
+            "t200_id_vacant": 48,
+            "t300_id_company": 8,
+            "t200_job": "Ingeniero de Sistemas Embebidos",
+            "t200_description": "Conocimiento en Lenguajes de programación: C/C++ (Intermedio/avanzado). Experiencia usando herramientas de desarrollo: IDEs, debuggers, simuladores y emuladores. Experiencia en proyectos con microcontroladores o microprocesadores de 8, 16 y/o 32 bits. Conocimientos generales de electrónica analógica y digital. Experiencia en operación de instrumentos de medición: multímetro, osciloscopio. Conocimientos sobre uso y programación sobre protocolos de comunicación serial y redes convencionales e industriales (RS232, RS485, SPI, I2C, 1-Wire, MODBUS, etc). Experiencia básica en programación estructurada, modular y arquitecturas basadas en capas. Nivel de Inglés: A2 - B1.\nRequisitos\nC,C++,IDE,microcontroladores,protocolos de comunicación serial\nBeneficios\n3 meses a prueba. Posterior a los 3 meses, las de la Ley.\n Horario:09:00-18:00 Lunes a Viernes\nSalario:12000 - 14000",
+            "c214_id_modality": 1,
+            "c206_id_profile": 4,
+            "c204_id_vacant_status": 2,
+            "c207_id_experience": 2,                                    
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
+            "c222_id_locality": 29628,
+            "t200_street": "",
+            "t200_interior_number": "",
+            "t200_exterior_number": "",
+            "t200_vacancy": 2,
+            "c208_id_contract": 1,
+            "t301_id_recruiter": 11,
+            "t400_id_admin": 1,
+            "t200_min_salary": 12000,
+            "t200_max_salary": 14000
+        }
+    },
+
+    {
+        "model":"vacantes.Vacant",        
+        "pk":49,
+        "fields":{
+            "t200_id_vacant": 49,
+            "t300_id_company": 8,
+            "t200_job": "Web Developer Jr",
+            "t200_description": "Conocimientos básicos en desarrollo. Conocimiento básico en Web services, diseño y construcción. Conocimiento básico en desarrollo de aplicaciones móviles (React Native). Conocimiento intermedio en API de terceros como (Facebook, plataformas sociales). Conocimiento básico de maquetación o maquetado Front End (PHP Laravel y/o React Native).\nRequisitos\nWeb services,React Native,Laravel\nBeneficios\nSuperiores a las de la Ley. \n Horario:08:30-17:30 Lunes a Viernes\nSalario:13000 - 13000",
+            "c214_id_modality": 3,
+            "c206_id_profile": 3,
+            "c204_id_vacant_status": 2,
+            "c207_id_experience": 3,                                    
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
+            "c222_id_locality": 29427,
+            "t200_street": "",
+            "t200_interior_number": "",
+            "t200_exterior_number": "",
+            "t200_vacancy": 1,
+            "c208_id_contract": 1,
+            "t301_id_recruiter": 11,
+            "t400_id_admin": 1,
+            "t200_min_salary": 13000,
+            "t200_max_salary": 13000
+        }
+    },
+
+    {
+        "model":"vacantes.Vacant",        
+        "pk":50,
+        "fields":{
+            "t200_id_vacant": 50,
+            "t300_id_company": 8,
+            "t200_job": "Java Dedveloper",
+            "t200_description": "Desarrollo del backend y frontend de los proyectos asignados. Uso de las siguientes herramientas en backend: SQL Server, eclipse, IntellijIdea, Java EE, Spring Boot, Gradle, Git, Web services Rest y Postman. Uso de las siguientes herramientas para frontend: Angular, Visual studio code, IntellijIdea, Postman, Git, consumo de servicios web, HTML y JavaScript. Inglés avanzado. Experiencia en desarrollo de al menos 5 años.\nRequisitos\nbackend,frontend,SQL Server,eclipse,IntellijIdea,Java EE,Spring Boot,Gradle,Git,Web services Rest,Postman,Angular,Visual studio code,HTML,JavaScript\nBeneficios\nEsquema 100% nominal, más prestaciones de Ley, horario Flexible, modalidad híbrida.\n Horario:07:00-16:00 Lunes a Viernes\nSalario:35000 - 45000",
+            "c214_id_modality": 1,
+            "c206_id_profile": 5,
+            "c204_id_vacant_status": 2,
+            "c207_id_experience": 5,                                    
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
+            "c222_id_locality": 69265,
+            "t200_street": "",
+            "t200_interior_number": "",
+            "t200_exterior_number": "",
+            "t200_vacancy": 2,
+            "c208_id_contract": 1,
+            "t301_id_recruiter": 11,
+            "t400_id_admin": 1,
+            "t200_min_salary": 35000,
+            "t200_max_salary": 45000
         }
     },
 
@@ -1176,7 +1392,7 @@
         "fields":{
             "t212_id_language": 1,
             "t200_id_vacant": 1,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -1209,7 +1425,7 @@
         "fields":{
             "t212_id_language": 2,
             "t200_id_vacant": 2,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -1220,7 +1436,7 @@
         "fields":{
             "t212_id_language": 3,
             "t200_id_vacant": 2,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -1407,7 +1623,7 @@
         "fields":{
             "t212_id_language": 4,
             "t200_id_vacant": 3,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -1440,7 +1656,7 @@
         "fields":{
             "t212_id_language": 5,
             "t200_id_vacant": 4,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -1451,7 +1667,7 @@
         "fields":{
             "t212_id_language": 6,
             "t200_id_vacant": 4,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -1594,7 +1810,7 @@
         "fields":{
             "t212_id_language": 7,
             "t200_id_vacant": 5,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -1704,7 +1920,7 @@
         "fields":{
             "t212_id_language": 8,
             "t200_id_vacant": 6,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -1715,7 +1931,7 @@
         "fields":{
             "t212_id_language": 9,
             "t200_id_vacant": 6,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -1792,7 +2008,7 @@
         "fields":{
             "t212_id_language": 10,
             "t200_id_vacant": 7,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -1891,7 +2107,7 @@
         "fields":{
             "t212_id_language": 11,
             "t200_id_vacant": 8,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -1902,7 +2118,7 @@
         "fields":{
             "t212_id_language": 12,
             "t200_id_vacant": 8,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -2111,7 +2327,7 @@
         "fields":{
             "t212_id_language": 13,
             "t200_id_vacant": 9,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -2287,7 +2503,7 @@
         "fields":{
             "t212_id_language": 14,
             "t200_id_vacant": 10,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -2298,7 +2514,7 @@
         "fields":{
             "t212_id_language": 15,
             "t200_id_vacant": 10,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -2507,7 +2723,7 @@
         "fields":{
             "t212_id_language": 16,
             "t200_id_vacant": 11,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -2683,7 +2899,7 @@
         "fields":{
             "t212_id_language": 17,
             "t200_id_vacant": 12,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -2694,7 +2910,7 @@
         "fields":{
             "t212_id_language": 18,
             "t200_id_vacant": 12,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -2738,7 +2954,7 @@
         "fields":{
             "t212_id_language": 19,
             "t200_id_vacant": 13,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -2749,7 +2965,7 @@
         "fields":{
             "t212_id_language": 20,
             "t200_id_vacant": 13,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -2881,7 +3097,7 @@
         "fields":{
             "t212_id_language": 21,
             "t200_id_vacant": 14,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -2925,7 +3141,7 @@
         "fields":{
             "t212_id_language": 22,
             "t200_id_vacant": 15,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -2936,7 +3152,7 @@
         "fields":{
             "t212_id_language": 23,
             "t200_id_vacant": 15,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -3112,7 +3328,7 @@
         "fields":{
             "t212_id_language": 24,
             "t200_id_vacant": 16,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -3288,7 +3504,7 @@
         "fields":{
             "t212_id_language": 25,
             "t200_id_vacant": 17,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -3343,7 +3559,7 @@
         "fields":{
             "t212_id_language": 26,
             "t200_id_vacant": 18,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -3354,7 +3570,7 @@
         "fields":{
             "t212_id_language": 27,
             "t200_id_vacant": 18,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -3431,7 +3647,7 @@
         "fields":{
             "t212_id_language": 28,
             "t200_id_vacant": 19,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -3508,7 +3724,7 @@
         "fields":{
             "t212_id_language": 29,
             "t200_id_vacant": 20,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -3519,7 +3735,7 @@
         "fields":{
             "t212_id_language": 30,
             "t200_id_vacant": 20,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -3585,7 +3801,7 @@
         "fields":{
             "t212_id_language": 31,
             "t200_id_vacant": 21,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -3695,7 +3911,7 @@
         "fields":{
             "t212_id_language": 32,
             "t200_id_vacant": 22,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -3706,7 +3922,7 @@
         "fields":{
             "t212_id_language": 33,
             "t200_id_vacant": 22,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -3827,7 +4043,7 @@
         "fields":{
             "t212_id_language": 34,
             "t200_id_vacant": 23,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -3904,7 +4120,7 @@
         "fields":{
             "t212_id_language": 35,
             "t200_id_vacant": 24,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -3915,7 +4131,7 @@
         "fields":{
             "t212_id_language": 36,
             "t200_id_vacant": 24,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -4036,7 +4252,7 @@
         "fields":{
             "t212_id_language": 37,
             "t200_id_vacant": 25,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4102,7 +4318,7 @@
         "fields":{
             "t212_id_language": 38,
             "t200_id_vacant": 26,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4113,7 +4329,7 @@
         "fields":{
             "t212_id_language": 39,
             "t200_id_vacant": 26,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -4234,7 +4450,7 @@
         "fields":{
             "t212_id_language": 40,
             "t200_id_vacant": 27,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4388,7 +4604,7 @@
         "fields":{
             "t212_id_language": 41,
             "t200_id_vacant": 28,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4421,7 +4637,7 @@
         "fields":{
             "t212_id_language": 42,
             "t200_id_vacant": 29,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4432,7 +4648,7 @@
         "fields":{
             "t212_id_language": 43,
             "t200_id_vacant": 29,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -4465,7 +4681,7 @@
         "fields":{
             "t212_id_language": 44,
             "t200_id_vacant": 30,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4575,7 +4791,7 @@
         "fields":{
             "t212_id_language": 45,
             "t200_id_vacant": 31,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4586,7 +4802,7 @@
         "fields":{
             "t212_id_language": 46,
             "t200_id_vacant": 31,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -4641,7 +4857,7 @@
         "fields":{
             "t212_id_language": 47,
             "t200_id_vacant": 32,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4674,7 +4890,7 @@
         "fields":{
             "t212_id_language": 48,
             "t200_id_vacant": 33,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4707,7 +4923,7 @@
         "fields":{
             "t212_id_language": 49,
             "t200_id_vacant": 34,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4718,7 +4934,7 @@
         "fields":{
             "t212_id_language": 50,
             "t200_id_vacant": 34,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -4784,7 +5000,7 @@
         "fields":{
             "t212_id_language": 51,
             "t200_id_vacant": 35,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4817,7 +5033,7 @@
         "fields":{
             "t212_id_language": 52,
             "t200_id_vacant": 36,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4828,7 +5044,7 @@
         "fields":{
             "t212_id_language": 53,
             "t200_id_vacant": 36,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -4872,7 +5088,7 @@
         "fields":{
             "t212_id_language": 54,
             "t200_id_vacant": 37,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4905,7 +5121,7 @@
         "fields":{
             "t212_id_language": 55,
             "t200_id_vacant": 38,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4916,7 +5132,7 @@
         "fields":{
             "t212_id_language": 56,
             "t200_id_vacant": 38,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -4949,7 +5165,7 @@
         "fields":{
             "t212_id_language": 57,
             "t200_id_vacant": 39,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4982,7 +5198,7 @@
         "fields":{
             "t212_id_language": 58,
             "t200_id_vacant": 40,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4993,7 +5209,7 @@
         "fields":{
             "t212_id_language": 59,
             "t200_id_vacant": 40,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -5048,7 +5264,7 @@
         "fields":{
             "t212_id_language": 60,
             "t200_id_vacant": 41,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -5191,7 +5407,7 @@
         "fields":{
             "t212_id_language": 61,
             "t200_id_vacant": 42,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -5202,10 +5418,746 @@
         "fields":{
             "t212_id_language": 62,
             "t200_id_vacant": 42,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":309,
+        "fields":{
+            "t211_id_requirement": 309,
+            "t200_id_vacant": 43,
+            "c116_description": "Tableau",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":310,
+        "fields":{
+            "t211_id_requirement": 310,
+            "t200_id_vacant": 43,
+            "c116_description": "SQL",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":311,
+        "fields":{
+            "t211_id_requirement": 311,
+            "t200_id_vacant": 43,
+            "c116_description": "",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":63,
+        "fields":{
+            "t212_id_language": 63,
+            "t200_id_vacant": 43,
+            "c111_id_language": 47,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":312,
+        "fields":{
+            "t211_id_requirement": 312,
+            "t200_id_vacant": 44,
+            "c116_description": "Tableau",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":313,
+        "fields":{
+            "t211_id_requirement": 313,
+            "t200_id_vacant": 44,
+            "c116_description": "SQL",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":314,
+        "fields":{
+            "t211_id_requirement": 314,
+            "t200_id_vacant": 44,
+            "c116_description": "MYSQL",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":315,
+        "fields":{
+            "t211_id_requirement": 315,
+            "t200_id_vacant": 44,
+            "c116_description": "ORACLE",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":316,
+        "fields":{
+            "t211_id_requirement": 316,
+            "t200_id_vacant": 44,
+            "c116_description": "Business Intelligence",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":317,
+        "fields":{
+            "t211_id_requirement": 317,
+            "t200_id_vacant": 44,
+            "c116_description": " R",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":318,
+        "fields":{
+            "t211_id_requirement": 318,
+            "t200_id_vacant": 44,
+            "c116_description": "Python",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":64,
+        "fields":{
+            "t212_id_language": 64,
+            "t200_id_vacant": 44,
+            "c111_id_language": 47,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":319,
+        "fields":{
+            "t211_id_requirement": 319,
+            "t200_id_vacant": 45,
+            "c116_description": "SQL SERVER",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":320,
+        "fields":{
+            "t211_id_requirement": 320,
+            "t200_id_vacant": 45,
+            "c116_description": "SQL",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":321,
+        "fields":{
+            "t211_id_requirement": 321,
+            "t200_id_vacant": 45,
+            "c116_description": "T-SQl",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":322,
+        "fields":{
+            "t211_id_requirement": 322,
+            "t200_id_vacant": 45,
+            "c116_description": "SQL Server Managment Studio",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":323,
+        "fields":{
+            "t211_id_requirement": 323,
+            "t200_id_vacant": 45,
+            "c116_description": "SSIS",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":324,
+        "fields":{
+            "t211_id_requirement": 324,
+            "t200_id_vacant": 45,
+            "c116_description": "sqlplus",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":325,
+        "fields":{
+            "t211_id_requirement": 325,
+            "t200_id_vacant": 45,
+            "c116_description": "Shell",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":65,
+        "fields":{
+            "t212_id_language": 65,
+            "t200_id_vacant": 45,
+            "c111_id_language": 47,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":326,
+        "fields":{
+            "t211_id_requirement": 326,
+            "t200_id_vacant": 46,
+            "c116_description": "Frontend",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":327,
+        "fields":{
+            "t211_id_requirement": 327,
+            "t200_id_vacant": 46,
+            "c116_description": "Backend",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":328,
+        "fields":{
+            "t211_id_requirement": 328,
+            "t200_id_vacant": 46,
+            "c116_description": "HTML",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":329,
+        "fields":{
+            "t211_id_requirement": 329,
+            "t200_id_vacant": 46,
+            "c116_description": "PHP",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":330,
+        "fields":{
+            "t211_id_requirement": 330,
+            "t200_id_vacant": 46,
+            "c116_description": "Java",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":331,
+        "fields":{
+            "t211_id_requirement": 331,
+            "t200_id_vacant": 46,
+            "c116_description": "Python",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":332,
+        "fields":{
+            "t211_id_requirement": 332,
+            "t200_id_vacant": 46,
+            "c116_description": "C",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":333,
+        "fields":{
+            "t211_id_requirement": 333,
+            "t200_id_vacant": 46,
+            "c116_description": "",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":66,
+        "fields":{
+            "t212_id_language": 66,
+            "t200_id_vacant": 46,
+            "c111_id_language": 47,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":334,
+        "fields":{
+            "t211_id_requirement": 334,
+            "t200_id_vacant": 47,
+            "c116_description": "SQL",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":335,
+        "fields":{
+            "t211_id_requirement": 335,
+            "t200_id_vacant": 47,
+            "c116_description": "Python",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":336,
+        "fields":{
+            "t211_id_requirement": 336,
+            "t200_id_vacant": 47,
+            "c116_description": "Git",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":337,
+        "fields":{
+            "t211_id_requirement": 337,
+            "t200_id_vacant": 47,
+            "c116_description": "PowerBI",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":338,
+        "fields":{
+            "t211_id_requirement": 338,
+            "t200_id_vacant": 47,
+            "c116_description": "Tableu",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":339,
+        "fields":{
+            "t211_id_requirement": 339,
+            "t200_id_vacant": 47,
+            "c116_description": "Mongo",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":67,
+        "fields":{
+            "t212_id_language": 67,
+            "t200_id_vacant": 47,
+            "c111_id_language": 47,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":340,
+        "fields":{
+            "t211_id_requirement": 340,
+            "t200_id_vacant": 48,
+            "c116_description": "C",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":341,
+        "fields":{
+            "t211_id_requirement": 341,
+            "t200_id_vacant": 48,
+            "c116_description": "C++",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":342,
+        "fields":{
+            "t211_id_requirement": 342,
+            "t200_id_vacant": 48,
+            "c116_description": "IDE",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":343,
+        "fields":{
+            "t211_id_requirement": 343,
+            "t200_id_vacant": 48,
+            "c116_description": "microcontroladores",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":344,
+        "fields":{
+            "t211_id_requirement": 344,
+            "t200_id_vacant": 48,
+            "c116_description": "protocolos de comunicación serial",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":345,
+        "fields":{
+            "t211_id_requirement": 345,
+            "t200_id_vacant": 48,
+            "c116_description": "",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":68,
+        "fields":{
+            "t212_id_language": 68,
+            "t200_id_vacant": 48,
+            "c111_id_language": 47,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":69,
+        "fields":{
+            "t212_id_language": 69,
+            "t200_id_vacant": 48,
+            "c111_id_language": 74,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":346,
+        "fields":{
+            "t211_id_requirement": 346,
+            "t200_id_vacant": 49,
+            "c116_description": "Web services",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":347,
+        "fields":{
+            "t211_id_requirement": 347,
+            "t200_id_vacant": 49,
+            "c116_description": "React Native",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":348,
+        "fields":{
+            "t211_id_requirement": 348,
+            "t200_id_vacant": 49,
+            "c116_description": "Laravel",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":349,
+        "fields":{
+            "t211_id_requirement": 349,
+            "t200_id_vacant": 49,
+            "c116_description": "",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":70,
+        "fields":{
+            "t212_id_language": 70,
+            "t200_id_vacant": 49,
+            "c111_id_language": 47,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":350,
+        "fields":{
+            "t211_id_requirement": 350,
+            "t200_id_vacant": 50,
+            "c116_description": "backend",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":351,
+        "fields":{
+            "t211_id_requirement": 351,
+            "t200_id_vacant": 50,
+            "c116_description": "frontend",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":352,
+        "fields":{
+            "t211_id_requirement": 352,
+            "t200_id_vacant": 50,
+            "c116_description": "SQL Server",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":353,
+        "fields":{
+            "t211_id_requirement": 353,
+            "t200_id_vacant": 50,
+            "c116_description": "eclipse",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":354,
+        "fields":{
+            "t211_id_requirement": 354,
+            "t200_id_vacant": 50,
+            "c116_description": "IntellijIdea",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":355,
+        "fields":{
+            "t211_id_requirement": 355,
+            "t200_id_vacant": 50,
+            "c116_description": "Java EE",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":356,
+        "fields":{
+            "t211_id_requirement": 356,
+            "t200_id_vacant": 50,
+            "c116_description": "Spring Boot",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":357,
+        "fields":{
+            "t211_id_requirement": 357,
+            "t200_id_vacant": 50,
+            "c116_description": "Gradle",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":358,
+        "fields":{
+            "t211_id_requirement": 358,
+            "t200_id_vacant": 50,
+            "c116_description": "Git",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":359,
+        "fields":{
+            "t211_id_requirement": 359,
+            "t200_id_vacant": 50,
+            "c116_description": "Web services Rest",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":360,
+        "fields":{
+            "t211_id_requirement": 360,
+            "t200_id_vacant": 50,
+            "c116_description": "Postman",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":361,
+        "fields":{
+            "t211_id_requirement": 361,
+            "t200_id_vacant": 50,
+            "c116_description": "Angular",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":362,
+        "fields":{
+            "t211_id_requirement": 362,
+            "t200_id_vacant": 50,
+            "c116_description": "Visual studio code",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":363,
+        "fields":{
+            "t211_id_requirement": 363,
+            "t200_id_vacant": 50,
+            "c116_description": "HTML",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":364,
+        "fields":{
+            "t211_id_requirement": 364,
+            "t200_id_vacant": 50,
+            "c116_description": "JavaScript",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":365,
+        "fields":{
+            "t211_id_requirement": 365,
+            "t200_id_vacant": 50,
+            "c116_description": "",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":71,
+        "fields":{
+            "t212_id_language": 71,
+            "t200_id_vacant": 50,
+            "c111_id_language": 47,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":72,
+        "fields":{
+            "t212_id_language": 72,
+            "t200_id_vacant": 50,
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     }
-
 
 ]
