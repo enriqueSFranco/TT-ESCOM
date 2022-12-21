@@ -11,12 +11,7 @@ import { HiOutlineUserCircle, HiMenu } from "react-icons/hi";
 import { FaBell } from "react-icons/fa";
 import styles from "./Dropdown.module.css";
 
-const DropMenu = ({
-  typeuser = "",
-  picture,
-  name,
-  type = "avatar"
-}) => {
+const DropMenu = ({ typeuser = "", picture, name, type = "avatar" }) => {
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useDetectClick(dropdownRef, false);
 
@@ -26,7 +21,12 @@ const DropMenu = ({
     return (
       <div className={styles.dropdown}>
         <button className={`${styles.avatarRecruiter}`} onClick={onClick}>
-          <CustomAvatar />
+          <CustomAvatar
+            // picture={picture}
+            username={name}
+            width="50px"
+            height="50px"
+          />
         </button>
         <nav
           ref={dropdownRef}
@@ -48,13 +48,15 @@ const DropMenu = ({
           style={{ backgroundColor: "transparent" }}
           onClick={onClick}
         >
-          {type === 'notify' && <Notify icon={<FaBell />} />}
-          {type === 'avatar' && (<CustomAvatar
-            picture={picture}
-            username={name}
-            width="50px"
-            height="50px"
-          />)}
+          {type === "notify" && <Notify icon={<FaBell />} />}
+          {type === "avatar" && (
+            <CustomAvatar
+              picture={picture}
+              username={name}
+              width="50px"
+              height="50px"
+            />
+          )}
         </button>
         <nav
           ref={dropdownRef}

@@ -2,6 +2,18 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { device } from 'breakpoints'
 
+const WrapperTypeUser = styled.div`
+    @media screen and ${device.laptop} {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .3rem;
+    color: #fff;
+  }
+
+`
+
 const NavLeft = styled.div`
   @media only screen and ${device.mobileM} {
     width: 140px;
@@ -115,4 +127,4 @@ const NavLink = styled(Link)`
     }
   }
 `
-export { Logo, NavLeft, NavList, NavItem, NavLink }
+export { Logo, NavLeft, NavList, NavItem, NavLink, WrapperTypeUser}
