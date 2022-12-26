@@ -117,7 +117,7 @@ class StudentViewSet(viewsets.GenericViewSet):
 		student = self.model.objects.filter(t100_id_student=pk).values('t100_email').first()
 		user_update ={
 			"first_name":request.data['t100_name'],
-			"last_name":request.data['t100_last_name'],#+request.data['t100_second_surname'],
+			"last_name":request.data['t100_last_name']+request.data['t100_second_surname'],
 			"username": student['t100_email'],
 			"email": student['t100_email']
 		}

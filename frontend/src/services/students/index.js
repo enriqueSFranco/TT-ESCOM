@@ -100,8 +100,7 @@ export const postSocialNetwork = (payload = {}) => {
 export const updateStudent = (id, payload = {}) => {
   return API.put(`${REACT_APP_URL_CANDIDATE}${id}/`, payload)
     .then((response) => {
-      const { data } = response;
-      return data;
+      return response
     })
     .catch((error) => {
       if (error.response) {
@@ -286,3 +285,4 @@ export const postCertification = (payload = {}) => {
     .then((response) => response)
     .catch((error) => error);
 };
+

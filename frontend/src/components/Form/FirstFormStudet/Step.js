@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
 import { useForm, useFetch } from "hooks";
-import { helpHttp } from "utils/helpHttp";
+import { helpHttp } from "utils";
 import { formStepCandidate } from "types/formStepCandidate";
 import { AcademicFormat } from "types/schemes";
-import { getAllAcademicUnits, getIntrestJobs } from "services/catalogs/index";
+import { getAllAcademicUnits, getIntrestJobs } from "services";
 import DisplayComponent from "./DisplayComponent";
 import RenderImage from "./RenderImage";
 import styles from "./StylesStepper.module.css";
@@ -20,9 +20,9 @@ const steps = [
 const StepComponent = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [startMonth, setStartMonth] = useState(1);
-  const [startYear, setStartYear] = useState(2022);
+  const [startYear, setStartYear] = useState(new Date().getFullYear());
   const [endMonth, setEndMonth] = useState(1);
-  const [endYear, setEndYear] = useState(2022);
+  const [endYear, setEndYear] = useState(new Date().getFullYear());
   const [hardSkills, setHardSkills] = useState([]);
   const [softSkills, setSoftSkills] = useState([]);
   const [academicUnit, setAcademicUnits] = useState([]);

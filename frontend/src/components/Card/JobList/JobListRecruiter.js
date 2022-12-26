@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { useAuth } from "context/AuthContext";
 import CardJobPreviewRecruiter from "../CardJobPreviewRecruiter";
-import { WrapperList } from './JobListRecruiterStyled'
+import { WrapperList } from "./JobListRecruiterStyled";
 
 <<<<<<< HEAD
 const styles = {
@@ -25,17 +25,24 @@ const ListJobsRecruiter = ({ data, setVacantId }) => {
     console.log(`vacante ${vacantId}`)
 =======
 const ListJobsRecruiter = ({ data, setVacantId }) => {
-  const { token } = useAuth();
-  const typeOfUser = token.user.user_type
 
+<<<<<<< HEAD
   function handleClick(vacantId) {
     setVacantId(vacantId)
+>>>>>>> feature/reclutador
+=======
+  const { token } = useAuth();
+  const typeOfUser = token.user.user_type;
+
+  const handleClick = (e, vacantId) => {
+    e.preventDefault();
+    setVacantId(vacantId);
 >>>>>>> feature/reclutador
   }
 
   return (
     <WrapperList typeOfUser={typeOfUser}>
-      {data?.map((el) => (
+      {data?.map((el, index) => (
         <CardJobPreviewRecruiter
 <<<<<<< HEAD
           key={`${crypto.randomUUID()}`}
@@ -46,7 +53,11 @@ const ListJobsRecruiter = ({ data, setVacantId }) => {
           key={`card-job-id-${crypto.randomUUID()}`}
           el={el}
           typeUser={typeOfUser}
+<<<<<<< HEAD
           onClick={() => handleClick(el?.t200_id_vacant)}
+>>>>>>> feature/reclutador
+=======
+          onClick={(e) => handleClick(e, el?.t200_id_vacant)}
 >>>>>>> feature/reclutador
         />
       ))}
@@ -54,4 +65,4 @@ const ListJobsRecruiter = ({ data, setVacantId }) => {
   );
 };
 
-export default memo(ListJobsRecruiter)
+export default memo(ListJobsRecruiter);

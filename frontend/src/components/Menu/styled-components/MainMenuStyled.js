@@ -1,15 +1,28 @@
 import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { device } from 'breakpoints'
+
+const WrapperTypeUser = styled.div`
+    @media screen and ${device.laptop} {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .3rem;
+    color: #fff;
+  }
+
+`
 
 const NavLeft = styled.div`
   @media only screen and ${device.mobileM} {
     width: 140px;
     height: 40px;
+    
   }
   
   @media screen and ${device.laptop} {
-    width: 140px;
+    width: fit-content;
     height: 40px;
     display: flex;
     align-items: center;
@@ -63,7 +76,7 @@ const NavItem = styled.li`
   width: fit-content;
 `
 
-const Link = styled(NavLink)`
+const NavLink = styled(Link)`
 
   @media screen and ${device.mobileM} {
     color: #000;
@@ -79,14 +92,39 @@ const Link = styled(NavLink)`
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: 1rem;
+    font-size: .95rem;
     justify-content: space-between;
-    gap: .3rem;
+    gap: .2rem;
     color: #fff;
+    padding: 0 .4rem;
+    position: relative;
+    transition: background-color .3s ease-in-out;
+    
+    &::before {
+      content: "";
+      width: 100%;
+      height: 4px;
+      position: absolute;
+      left: 0;
+      top: 1.5rem;
+      background-color: #449AE6;
+      transition: .5s transform ease;
+      transform: scale3d(0,1,1);
+      transform-origin: 0 50%;
+    }
 
     &:hover {
       color: #fff;
     }
+
+    &:hover::before {
+      transform: scale3d(1,1,1);
+      transform-origin: 100% 50%;
+    }
+
+    &:hover::before {
+      transform-origin: 0% 50%;
+    }
   }
 `
-export { Logo, NavLeft, NavList, NavItem, Link }
+export { Logo, NavLeft, NavList, NavItem, NavLink, WrapperTypeUser}

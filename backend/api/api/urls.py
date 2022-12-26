@@ -19,6 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from apps.vacantes.api.views.vacant_viewset import FilterVacant
 from apps.students.api.views.login_viewset import Login
+import apps.vacantes.api.channels.consumers
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -60,3 +61,8 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),    
     re_path('^vacant/search/(?P<search>.+)/$', FilterVacant.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+websocket_urlpatterns = [
+    re_path(r'ws/chat/(?P<room_name>\w+/$',apps.vacantes.api.channels.consumers.chatConsumer.as_asgi())
+]

@@ -1,67 +1,10 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { Checkbox, TextField } from "@mui/material";
+import { Checkbox } from "@mui/material";
 import Input from "components/Input/Input";
-import NumberFormat from "react-number-format";
 import { MdLocationPin } from "react-icons/md";
 import { getLocality } from "services/catalogs";
 import { Select, WrapperSelect } from "./styled-componets/FormStepCandidate";
 import styles from "./StylesStepper.module.css";
-
-const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
-  props,
-  ref
-) {
-  const { onChange, ...other } = props;
-
-  return (
-    <NumberFormat
-      {...other}
-      getInputRef={ref}
-      onValueChange={(values) => {
-        onChange({
-          target: {
-            name: props.name,
-            value: values.value,
-          },
-        });
-      }}
-      isNumericString
-      format="## ## ## ## ##"
-    />
-  );
-});
-
-const BoletaC = React.forwardRef(function NumberFormatCustom(props, ref) {
-  const { onChange, ...other } = props;
-
-  return (
-    <NumberFormat
-      {...other}
-      getInputRef={ref}
-      onValueChange={(values) => {
-        onChange({
-          target: {
-            name: props.name,
-            value: values.value,
-          },
-        });
-      }}
-      isNumericString
-      format="##########"
-    />
-  );
-});
-
-NumberFormatCustom.propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
-
-BoletaC.propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
 
 function DatesPersonal({
   form,
@@ -83,6 +26,7 @@ function DatesPersonal({
 
   const handleLocality = (e) => {
     const { value } = e.target;
+
     setCP(value);
 
     if (value !== "") {
@@ -165,9 +109,14 @@ function DatesPersonal({
             onChange={handleChange}
           />
           <Input
-            label="C.P.*"
+            label="Codigo Postal*"
             value={cp ? parseInt(cp) : ""}
             onChange={handleLocality}
+            onKeyDown={function (e) {
+              let charCode = e.which ? e.which : e.keyCode;
+              if (charCode > 31 && (charCode < 48 || charCode > 57))
+                e.preventDefault();
+            }}
           />
         </div>
         <div className={styles.flex}>
@@ -210,6 +159,8 @@ function DatesPersonal({
             ¿Eres comunidad del IPN? Ingresa tu número de boleta.
           </p>
           <Input
+            maxLength="10"
+            width="260px"
             label="Boleta"
             value={form.t100_boleta}
             onChange={handleChange}

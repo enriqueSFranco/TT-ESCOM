@@ -1,10 +1,17 @@
 import React from "react";
-import { Document } from "react-pdf";
+import { Viewer, Worker } from '@react-pdf-viewer/core'
 
 const ModalPreviewCV = ({ fileUrl }) => {
-  console.log(fileUrl);
-
-  return <Document file={fileUrl}></Document>;
+  return (
+    <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.1.81/build/pdf.worker.js">
+      <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+        <h2>Mi Curriculum</h2>
+        <Viewer 
+          fileUrl={fileUrl}
+        />
+      </div>
+    </Worker>
+  )
 };
 
 export default ModalPreviewCV;
