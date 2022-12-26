@@ -1,22 +1,25 @@
 \clearpage
-\subsection{USR-IU01 Crear perfil}
+\subsection{USR-IU02 Consultar perfil}
 
 \subsubsection{Objetivo}
-En la figura \refElem{USR-IU01} se muestra la interfaz correspondiente con la funcionalidad descrita en las
-trayectorias del caso de uso \refElem{USR-CU01} , la cual permite al actor el acceso al sistema
-siempre y cuando ingrese correctamente las credenciales de su inicio de sesión.
+En la figura \refElem{USR-IU02} se muestra la interfaz correspondiente con la funcionalidad descrita en las
+trayectorias del caso de uso \refElem{USR-CU02} , la cual permite al actor la gestión su perfil y la consulta del mismo.
 
 La interfaz esta compuesta ``secciones'' y cada sección corresponde a un formulario diferente, las secciones
 son las siguientes:
 \begin{itemize}
-   \item \textbf{Datos personales}: esta sección tiene como objetivo preguntarle actor su información
-   personal y un dato de contacto (ver la figura \refElem{USR-IU01}).
-   \item \textbf{Historial académico}: esta sección tiene como objetivo preguntarle actor su información
-   academica referente al ultimo grado de estudios que tiene (ver la figura \refElem{USR-IU01-1}).
-   \item \textbf{Metas profesionales}: esta sección tiene como objetivo preguntarle actor su metas deseadas
-   en em ámbito profesional (ver la figura \refElem{USR-IU01-2}).
-   \item \textbf{Habilidades}: esta sección tiene como objetivo preguntarle actor sus conocimientos
-   y habilidades con los que cuenta (ver la figura \refElem{USR-IU01-3}).
+   \item \textbf{Datos personales}: esta sección tiene como objetivo que el actor actualice su información
+   personal,sus datos de contacto y/o habilidades que posee (ver la figura \refElem{USR-IU02a}).
+   \item \textbf{Objetivos y metas personales}: esta sección tiene como objetivo que el actor actualice sus objetivos, metas personales y laborales 
+   (ver la figura \refElem{USR-IU02b}).
+   \item \textbf{Historial académico}: esta sección tiene como objetivo que el actor actualice su información
+   académica referente a todos los grados de estudios que tiene hasta la fecha (ver la figura \refElem{USR-IU02c}).
+   \item \textbf{Idiomas}: esta sección tiene como objetivo preguntarle que el actor actualice la información de idiomas o en su caso, elimine
+   o agregue nuevos idiomas a su perfil  (ver la figura \refElem{USR-IU02d}).
+   \item \textbf{Experiencia laboral}: esta sección tiene como objetivo que el actor actualice su información de su experiencia
+   laborar que tiene hasta la fecha (ver la figura \refElem{USR-IU02e}).
+   \item \textbf{Cursos/Certificaciones}:  esta sección tiene como objetivo que el actor actualice su información de sus Certificaciones
+   o cursos que ha tenido durante toda su trayectoria académica y laboral (ver la figura \refElem{USR-IU02f}).
 \end{itemize}
 
 \subsubsection{Comandos}
@@ -24,14 +27,17 @@ Los siguientes comandos aparecen durante toda la interfaz es decir, cada secció
 
 %\Titem \IUPass : Al da clic en el ícono, se muestra la contraseña de lo contrario aparecerá \IUOculto \thinspace sustituyendo cada caracter de la contraseña. \\
 
-\Titem \IUbutton{Siguiente} : Cuando presiona el botón, muestra la siguiente sección %\refElem{GRL-IU02-2}.
-\Titem \IUbutton{Atras} : Cuando presiona el botón, muestra la sección anterior.%\refElem{GRL-IU02-2}.
-\Titem \IUbutton{Finalizar} : Cuando presiona el botón en la seccion \refIdElem{USR-IU01-3} , guarda los datos ingresados muestra la interfaz \refIdElem{VCT-IU01}.
+\Titem \IUEditar{} : Cuando presiona el ícono, habilita la sección para hacer los datos editables acorde a la sección o elemento seleccionado.
+\Titem \IUEliminar{} : Cuando presiona el ícono, habilita la sección para eliminar el elemento seleccionado.
+\Titem \IUAgregar{} : Cuando presiona el ícono, habilita la sección para agregar un nuevo el elemento.
 
-\IUfig{.9}{CasosdeUso/USR-CU01/imagenes/USR-IU01.png}{USR-IU01}{Crear perfil}  
-\IUfig{.9}{CasosdeUso/USR-CU01/imagenes/USR-IU01-1.png}{USR-IU01-1}{Crear perfil: Historial académico}
-\IUfig{.9}{CasosdeUso/USR-CU01/imagenes/USR-IU01-2.png}{USR-IU01-2}{Crear perfil: Metas profesionales}  
-\IUfig{.9}{CasosdeUso/USR-CU01/imagenes/USR-IU01-3.png}{USR-IU01-3}{Crear perfil: Habilidades}  
+\IUfig{.9}{CasosdeUso/USR-CU02/imagenes/USR-IU02.png}{USR-IU02}{Consultar perfil}  
+\IUfig{.9}{CasosdeUso/USR-CU02/imagenes/USR-IU02a.png}{USR-IU02a}{Consultar perfil: Datos personales}
+\IUfig{.9}{CasosdeUso/USR-CU02/imagenes/USR-IU02b.png}{USR-IU02b}{Consultar perfil: Objetivos y metas personales}  
+\IUfig{.9}{CasosdeUso/USR-CU02/imagenes/USR-IU02c.png}{USR-IU02c}{Consultar perfil: Historial académico}  
+\IUfig{.9}{CasosdeUso/USR-CU02/imagenes/USR-IU02d.png}{USR-IU02d}{Consultar perfil: Idiomas}
+\IUfig{.9}{CasosdeUso/USR-CU02/imagenes/USR-IU02e.png}{USR-IU02e}{Consultar perfil: Experiencia laboral}  
+\IUfig{.9}{CasosdeUso/USR-CU02/imagenes/USR-IU02f.png}{USR-IU02f}{Consultar perfil: Cursos/Certificaciones}  
 
 
 \clearpage
