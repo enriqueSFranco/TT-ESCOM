@@ -176,8 +176,8 @@ const FormPostJob = () => {
       <ContainerForm>
         <h2
           style={{
-            fontSize: "1rem",
-            fontFamily: "System",
+            fontSize: "1.3rem",
+            fontFamily: "sans-serif",
             fontWeight: "700",
             margin: "1rem 0 0 0",
           }}
@@ -188,13 +188,24 @@ const FormPostJob = () => {
           <section style={{ width: "800px" }}>
             <h2
               style={{
-                fontSize: "1rem",
-                fontFamily: "System",
-                margin: "0 0 .4rem 0",
+                fontSize: "1.1em",
+                fontFamily: "sans-serif",
+                fontWeight: "600",
+                margin: ".5rem 0 1rem 0",
               }}
             >
-              <MdWork style={{ color: "#397AFD" }} /> Titulo de la vacante
+              Sobre la vacante
             </h2>
+
+            <h3
+              style={{
+                "font-size": ".9em",
+                "font-weight": "400",
+                color: "#9BA1A6",
+              }}
+            >
+              Titulo de la vacante
+            </h3>
             <GroupInput>
               <div style={styles.containerError}>
                 <Input
@@ -225,15 +236,15 @@ const FormPostJob = () => {
           </section>
 
           <section style={{ width: "800px" }}>
-            <h2
+            <h3
               style={{
-                fontSize: "1rem",
-                fontFamily: "System",
-                margin: "0 0 .4rem 0",
+                "font-size": ".9em",
+                "font-weight": "400",
+                color: "#9BA1A6",
               }}
             >
-              <HiLocationMarker style={{ color: "red" }} /> Ubicacion
-            </h2>
+              Ubicación
+            </h3>
             <GroupInput>
               <Input
                 label="Codigo postal"
@@ -279,18 +290,19 @@ const FormPostJob = () => {
           </section>
 
           <section style={{ width: "800px" }}>
-            <h2
+            <h3
               style={{
-                fontSize: "1rem",
-                fontFamily: "System",
-                margin: "0 0 .4rem 0",
+                "font-size": ".9em",
+                "font-weight": "400",
+                color: "#9BA1A6",
               }}
             >
-              <ImProfile /> Perfil del candidato
-            </h2>
+              Perfil del candidato
+            </h3>
             <GroupInput>
               <WrapperSelect>
                 <Select
+                  width="390px"
                   name="c206_id_profile"
                   id="c206_id_profile"
                   value={form.c206_id_profile}
@@ -313,6 +325,7 @@ const FormPostJob = () => {
 
               <WrapperSelect>
                 <Select
+                  width="390px"
                   name="c207_id_experience"
                   id="c207_id_experience"
                   value={form.c207_id_experience}
@@ -332,9 +345,64 @@ const FormPostJob = () => {
                     ))}
                 </Select>
               </WrapperSelect>
+            </GroupInput>
+          </section>
 
+          <section style={{ width: "800px" }}>
+            <h3
+              style={{
+                fontSize: "1.1em",
+                fontFamily: "sans-serif",
+                fontWeight: "600",
+                margin: "0 0 1rem 0",
+              }}
+            >
+              Salario mensual
+            </h3>
+            <GroupInput>
+              <Input
+                label="Salario minimo"
+                id=""
+                name=""
+                value=""
+                onChange={handleChange}
+              />
+              <Input
+                label="Salario maximo"
+                id=""
+                name=""
+                value=""
+                onChange={handleChange}
+              />
+            </GroupInput>
+          </section>
+
+          <section style={{ width: "800px" }}>
+            <h3
+              style={{
+                fontSize: "1.1em",
+                fontFamily: "sans-serif",
+                fontWeight: "600",
+                margin: "0 0 1rem 0",
+              }}
+            >
+              Cuéntanos más sobre la vacante
+            </h3>
+
+            <h3
+              style={{
+                "font-size": ".9em",
+                "font-weight": "400",
+                margin: "1rem 0 .5rem .5rem",
+                color: "#9BA1A6",
+              }}
+            >
+              Tipo de contratación:
+            </h3>
+            <GroupInput>
               <WrapperSelect>
                 <Select
+                  width="500px"
                   name="c208_id_contract"
                   id="c208_id_contract"
                   value={form.c208_id_contract}
@@ -352,72 +420,82 @@ const FormPostJob = () => {
                         {el.c208_description}
                       </option>
                     ))}
+                </Select>
+              </WrapperSelect>
+            </GroupInput>
+            {/* Horario */}
+            <h3
+              style={{
+                "font-size": ".9em",
+                "font-weight": "400",
+                margin: "1rem 0 .5rem .5rem",
+                color: "#9BA1A6",
+              }}
+            >
+              Horario:
+            </h3>
+            <GroupInput>
+              <WrapperSelect>
+                <Select
+                  width="500px"
+                  name="horario"
+                  id="horario"
+                  value={form.horario}
+                  onChange={handleChange}
+                >
+                  {typeContractList &&
+                    typeContractList?.map((el) => (
+                      <option
+                        key={`type-contract${crypto.randomUUID()}`}
+                        value={el.c208_id_contract}
+                      >
+                        {el.c208_description}
+                      </option>
+                    ))}
+                </Select>
+              </WrapperSelect>
+            </GroupInput>
+
+            {/* Modalidad */}
+            <h3
+              style={{
+                "font-size": ".9em",
+                "font-weight": "400",
+                margin: "1rem 0 .5rem .5rem",
+                color: "#9BA1A6",
+              }}
+            >
+              Modalidad de empleo:
+            </h3>
+            <GroupInput>
+              <WrapperSelect>
+                <Select
+                  width="500px"
+                  name="modality"
+                  id="modality"
+                  value={form.modality}
+                  onChange={handleChange}
+                >
+                  <option value="">Presencial</option>
+                  <option value="">Desde Casa</option>
+                  <option value="">Hibrido</option>
                 </Select>
               </WrapperSelect>
             </GroupInput>
           </section>
 
-          {/* <section style={{ width: "800px" }}>
-            <h2
-              style={{
-                fontSize: "1rem",
-                fontFamily: "System",
-                margin: "0 0 .4rem 0",
-              }}
-            >
-              <FcMoneyTransfer /> Sueldo por mes y Modalidad de empleo
-            </h2>
-            <GroupInput>
-              <Input
-                label="Sueldo minimo"
-                id=""
-                name=""
-                value=""
-                onChange={handleChange}
-              />
-              <Input
-                label="Sueldo minimo"
-                id=""
-                name=""
-                value=""
-                onChange={handleChange}
-              />
-            <WrapperSelect>
-                <Select
-                  name="c208_id_contract"
-                  id="c208_id_contract"
-                  value={form.c208_id_contract}
-                  onChange={handleChange}
-                >
-                  <option value="" disabled>
-                    Tipo de contratacion
-                  </option>
-                  {typeContractList &&
-                    typeContractList?.map((el) => (
-                      <option
-                        key={`type-contract${crypto.randomUUID()}`}
-                        value={el.c208_id_contract}
-                      >
-                        {el.c208_description}
-                      </option>
-                    ))}
-                </Select>
-              </WrapperSelect>
-            </GroupInput>
-          </section> */}
-
           {/* HABILIDADES REQUERIDAS Y OPCIONALES */}
           <section style={{ width: "800px" }}>
-            <h2
+            <h3
               style={{
                 fontSize: "1rem",
                 fontFamily: "System",
                 margin: "0 0 .4rem 0",
               }}
             >
-              <FaBrain style={{ color: "#5A2889" }} /> Agregar las habilidades
-              requeridas y opcionales para la vacante
-            </h2>
+              ¿Necesitas que el candidato tenga conocimiento de algun tema en
+              especial?
+            </h3>
             <GroupInput>
               <SubGroupInput>
                 <Autocomplete
@@ -433,7 +511,7 @@ const FormPostJob = () => {
                   renderInput={(params) => (
                     <TextField
                       {...params}
-                      label="Agregar nueva habilidad"
+                      label="Conocimiento Requerido"
                       placeholder="Selecciona "
                     />
                   )}
@@ -456,7 +534,7 @@ const FormPostJob = () => {
                   renderInput={(params) => (
                     <TextField
                       {...params}
-                      label="Agregar nueva habilidad"
+                      label="Conocimiento Opcional"
                       placeholder="Selecciona "
                     />
                   )}
@@ -500,15 +578,16 @@ const FormPostJob = () => {
             </GroupInput>
           </section>
           <section style={{ width: "800px" }}>
-            <h2
+            <h3
               style={{
-                fontSize: "1rem",
-                fontFamily: "System",
-                margin: "0 0 .4rem 0",
+                fontSize: "1.1em",
+                fontFamily: "sans-serif",
+                fontWeight: "600",
+                margin: "0 0 1rem 0",
               }}
             >
-              Detalles de la vacante
-            </h2>
+              Descripción de la vacante
+            </h3>
             <TextEditor
               id="body"
               name="body"
