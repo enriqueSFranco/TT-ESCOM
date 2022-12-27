@@ -69,7 +69,7 @@ def get_candidate_info(id_candidate):
     return candidate_data
 
 def candidate_recomendation(id_candidate):
-    weight = [1,0.5,0,1,0]
+    weight = [1,0.5,0.1,1,.5]
     #100+50+10+100+50
     vacants = []
     similarity_vectors = []
