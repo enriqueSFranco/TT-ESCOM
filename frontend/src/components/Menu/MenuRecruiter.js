@@ -54,7 +54,7 @@ const MenuRecruiter = () => {
   let typeuser = token?.user?.user_type;
 
 
-  console.log(recruiter)
+  if (!recruiter) return null
 
   return (
     <>

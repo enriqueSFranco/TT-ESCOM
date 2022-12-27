@@ -17,7 +17,7 @@ const CardCandidate = ({ user }) => {
   const [isOpen, openModal, closeModal] = useModal(false)
 
   if (!user) return null;
-
+  
   return (
     <>
       <Card>

@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Confirm.module.css";
 
+
 /**
  * @param {Function} applyJob es la funcion que desencadenara la accion de postularte a una vacante.
  **/
@@ -16,9 +17,9 @@ const Confirm = ({ applyJob, isApplyJob, job }) => {
     <div className={styles.wrapper}>
       {Object.keys(isApplyJob).length === 0 ? (
         <>
-          <h1 className={styles.title}>
+          <h2 className={styles.title}>
             Estas seguro de aplicar a la vacante {job}?
-          </h1>
+          </h2>
           <button className={styles.btnApplyJob} onClick={applyJob}>
             Postularme
           </button>
@@ -28,7 +29,6 @@ const Confirm = ({ applyJob, isApplyJob, job }) => {
           <p className={styles.message}>
             {message} {job}
           </p>
-          {/* <p className={styles.message}></p> */}
           {/* <img src={burrito} alt="burrito_ipn" className={styles.imgBurrito} /> */}
           <Link to="/mis-postulaciones" className={styles.goToApplicationJob}>
             ir a mis postulaciones

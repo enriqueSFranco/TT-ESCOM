@@ -1,4 +1,4 @@
-export function stringToColor(string) {
+export function stringToColor(string="BT") {
   let hash = 0;
   let i;
 

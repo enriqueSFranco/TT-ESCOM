@@ -11,8 +11,12 @@ const Form = styled.form`
   backdrop-filter: blur(10px);
   padding: 1rem;
   border-radius: 0;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  outline: 2px solid hsla(225, 89%, 47%, 1);
+  border-radius: .2rem .2rem 1rem 1rem;
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; */
+  width: 900px;
   position: relative;
+  margin: 0 0 1rem 0;
 
   &::before {
     content: '';
@@ -20,8 +24,8 @@ const Form = styled.form`
     top: 0;
     left: 0;
     right: 0;
-    background-color: #105AF4;
-    height: 4px;
+    background: linear-gradient(90deg, hsla(192, 95%, 50%, 1) 0%, hsla(225, 89%, 47%, 1) 100%);
+    height: 5px;
     border-radius: 1rem;
   }
 
@@ -64,8 +68,8 @@ const Button = styled.button`
 
 const Select = styled.select`
   height: 100%;
-  width: 250px;
-  border-radius: 0;
+  width: ${props => props.width || '250px'};
+  border-radius: 1rem;
   outline: 0;
   border: 0;
   padding: 0 .5rem;
@@ -75,6 +79,7 @@ const Select = styled.select`
 
 const WrapperSelect = styled.div`
   outline: 1px solid #ccc;
+  border-radius: 1rem;
 `
 
 export { Button, Form, GroupInput, SubGroupInput, Select, WrapperSelect, ContainerForm }
