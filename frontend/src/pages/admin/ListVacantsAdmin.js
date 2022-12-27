@@ -15,13 +15,8 @@ import {
 const { REACT_APP_URL_MANAGER_VALIDATE_VACANT } = process.env;
 
 const ListVacantsAdmin = () => {
-<<<<<<< HEAD
-  const [vacantId, setVacantId] = useState(null)
-  const { token } = useAuth()
-=======
   const [vacantId, setVacantId] = useState(null);
   const { token } = useAuth();
->>>>>>> feature/reclutador
   const { data, error, loading } = useFetch(
     REACT_APP_URL_MANAGER_VALIDATE_VACANT
   );
@@ -36,13 +31,6 @@ const ListVacantsAdmin = () => {
             <ListJobsRecruiter data={data} setVacantId={setVacantId} />
           </Aside>
           <Container>
-<<<<<<< HEAD
-          {/* Widgets */}
-          <HeaderWidgets defaultId={data[0]?.t200_id_vacant} vacantId={vacantId} typeUser={token?.user?.user_type} />
-          {/* Informacion de la vacante y observaciones */}
-          <MainInfoVacant defaultId={data[0]?.t200_id_vacant} vacantId={vacantId} />
-        </Container>
-=======
             {/* Widgets */}
             <HeaderWidgets
               defaultId={data[0]?.t200_id_vacant}
@@ -55,7 +43,6 @@ const ListVacantsAdmin = () => {
               vacantId={vacantId}
             />
           </Container>
->>>>>>> feature/reclutador
         </LayoutDashboard>
       </Content>
     </LayoutHome>

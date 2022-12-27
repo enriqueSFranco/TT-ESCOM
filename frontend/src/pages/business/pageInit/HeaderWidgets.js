@@ -15,11 +15,6 @@ import { USERS } from "types";
 
 const HeaderWidgets = ({ defaultId, vacantId, typeUser }) => {
 
-<<<<<<< HEAD
-  console.log({vacantId, defaultId})
-
-=======
->>>>>>> feature/reclutador
   const {
     data,
     // error: errorVacantInfo,
@@ -134,8 +129,4 @@ const HeaderWidgets = ({ defaultId, vacantId, typeUser }) => {
   );
 };
 
-<<<<<<< HEAD
 export default HeaderWidgets;
-=======
-export default HeaderWidgets;
->>>>>>> feature/reclutador
