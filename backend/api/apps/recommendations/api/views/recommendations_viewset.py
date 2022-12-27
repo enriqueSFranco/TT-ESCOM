@@ -14,12 +14,12 @@ class RecommendationsViewsets(viewsets.GenericViewSet):
 
     def get_queryset(self):
         if self.queryset is None:
-            self.queryset = self.model.objects.filter().all()
+            self.queryset = self.model.objects.filter().order_by('-t500_percentage').all()
         return self.queryset
 	
     def get_object(self, pk):	
         self.queryset = self.model.objects\
-				.filter(t100_id_student = pk)\
+				.filter(t100_id_student = pk).order_by('-t500_percentage')\
 				.all()
         return self.queryset
 

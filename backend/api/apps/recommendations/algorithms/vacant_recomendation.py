@@ -1,5 +1,5 @@
 #import numpy as np
-from apps.vacantes.models import Vacant,RequiredAbility,RequiredLanguage
+from apps.vacantes.models import Vacant,RequiredAbility,RequiredLanguage,Application
 from apps.students.models import Student,StudentSkill,StudentLanguage
 from apps.recommendations.models import Recommendation
 from apps.recommendations.api.serializers.recommendations_serializer import RecommendationSerializer
@@ -12,7 +12,7 @@ recommendation_prototype = {
 }
 
 def get_vacants():
-    vacants_ids = Vacant.objects.filter(c204_id_vacant_status=2).values('t200_id_vacant')
+    vacants_ids = Vacant.objects.filter(c204_id_vacant_status=2).order_by('t200_id_vacant').values('t200_id_vacant')
     return vacants_ids
 
 def get_vacant_mandatory_skills(id_vacant):
@@ -68,8 +68,18 @@ def get_candidate_info(id_candidate):
     candidate_data.append(candidate['c207_id_experience'])
     return candidate_data
 
+def get_candidate_applications(id_candidate):
+    vacants_ids = []
+    vacants_ids = Application.objects.filter(c205_id_application_state__in=[1,2]).order_by('t200_id_vacant').values('t200_id_vacant')
+    vacants = get_similar_vacants(vacants_ids)
+    return vacants
+
+def get_similar_vacants(vacants):
+    print(vacants)
+    return
+
 def candidate_recomendation(id_candidate):
-    weight = [1,0.5,0.1,1,.5]
+    weight = [0.6,0.2,0.1,1,.5]
     #100+50+10+100+50
     vacants = []
     similarity_vectors = []
@@ -113,6 +123,8 @@ def candidate_recomendation(id_candidate):
             recommendation_serializer = RecommendationSerializer(data = recomendation_data)
             if recommendation_serializer.is_valid():
                 recommendation_serializer.save()
+    print(get_candidate_applications(id_candidate))
+    
 
 
         
