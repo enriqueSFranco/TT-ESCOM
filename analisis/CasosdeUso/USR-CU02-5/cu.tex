@@ -14,10 +14,10 @@
 		Media
 	}
 	\UCitem{Precondiciones}{
-		\Titem El candidato debe de tener una cuenta en el sistema.
+		El candidato debe de tener una cuenta en el sistema.
 	}
 	\UCitem{Destino}{
-		\Titem \refElem{USR-IU02.5a}
+		\refElem{USR-IU02.5a}
 	}
 	\UCitem{Viene de}{
 		Caso de uso \refIdElem{GRL-CU03}.
@@ -26,16 +26,16 @@
 
 %Trayectoria Principal
 \begin{UCtrayectoria}
-	\UCpaso [\UCactor] Presiona el ícono \IUAgregar{} en la sección ``Experiencia laboral'' en la interfaz \refIdElem{USR-IU2}.
-	\UCpaso Muestra la interfaz \refIdElem{USR-IU2.5a}.
-	\UCpaso [\UCsist] \label{USRCU02-6} Selecciona el tipo de experiencia que requiera ``Proyecto'' o ``Laboral''.
+	\UCpaso [\UCactor] Presiona el ícono \IUAgregar{} en la sección ``Experiencia laboral'' en la interfaz \refIdElem{USR-IU02}.
+	\UCpaso Muestra la interfaz \refIdElem{USR-IU02.5a}.
+	\UCpaso [\UCsist] \label{USRCU02-5} Selecciona el tipo de experiencia que requiera ``Proyecto'' o ``Laboral''.
 	\UCpaso Habilita el formulario correspondiente al tipo de experiencia que haya seleccionado.
 	\UCpaso [\UCsist] Ingresa la información correspondiente.
 	\UCpaso [\UCsist] Presiona el botón \IUbutton{Aceptar}.\refTray{A}
 	\UCpaso Verifica que los campos marcados como obligatorios hayan sido ingresados con blase ne la regla de negocio \refIdElem{RN-N001}.\refTray{B}
 	\UCpaso Verifica que el formato de los campos ingresados sea correcto con blase ne la regla de negocio \refIdElem{RN-N003}.\refTray{C}
 	\UCpaso Actualiza la información ingresada en el sistema.
-	\UCpaso Muestra la información actualizada en la interfaz \refIdElem{USR-IU2}. 
+	\UCpaso Muestra la información actualizada en la interfaz \refIdElem{USR-IU02}. 
 \end{UCtrayectoria}
 
 \begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor no desea agregar una experiencia laboral}
@@ -45,7 +45,7 @@
 
 \begin{UCtrayectoriaA}[Fin de la trayectoria]{B}{El actor no ingresó uno o más datos obligatorios.}
 	\UCpaso [\UCsist] Muestra el mensaje \refIdElem{MSG4} en los campos que no fueron ingresados.
-	\UCpaso [\UCsist] Continúa en el paso \ref{USRCU02-6} de la trayectoria principal.
+	\UCpaso [\UCsist] Continúa en el paso \ref{USRCU02-5} de la trayectoria principal.
 \end{UCtrayectoriaA} 
 
 \begin{UCtrayectoriaA}[Fin de la trayectoria]{C}{El actor ingresó el dato con formato incorrecto.}

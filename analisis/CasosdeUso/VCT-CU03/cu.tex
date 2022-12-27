@@ -11,16 +11,16 @@
 
 	}
 	\UCitem[admin]{Prioridad}{
-		Media
+		Media.
 	}
 	\UCitem[admin]{Complejidad}{
-		Alta
+		Alta.
 	}
 	\UCitem{Precondiciones}{
-		\Titem El reclutador debe de estar registrado en el sistema.
+		El reclutador debe de estar registrado en el sistema.
 	}
 	\UCitem{Destino}{
-		\Titem \refElem{VCT-IU03}
+		\refElem{VCT-IU03}
 	}
 	\UCitem{Viene de}{
 		\refElem{VCT-CU03}
@@ -30,18 +30,13 @@
 %Trayectoria Principal
 \begin{UCtrayectoria}
 	\UCpaso [\UCactor] Da clic en el botón \IUbutton{Vacantes} en la interfaz de inicio del reclutador
-	\UCpaso [\UCsist] Verifica que el usuario tenga al menos una vacante registrada en el sistema.\refTray{A}
+	\UCpaso [\UCsist] Verifica que el usuario tenga al menos una vacante registrada en el sistema.
 	\UCpaso [\UCsist] Obtiene el título y el número de plazas de la vacante, ingresa el código postal, estado, municipio y colonia donde 
 	se va labora, de cada vacante registrada por el reclutador.
 	\UCpaso [\UCsist] Obtiene el perfil, la experiencia y el tipo de contratación a la que la vacante va dirigida,de cada vacante registrada por el reclutador.
 	\UCpaso [\UCsist] Obtiene el horario laboral y el rango salarial indicando si es neto o no el salario de cada vacante registrada por el reclutador.
 	\UCpaso [\UCsist] Muestra la información obtenida en la interfaz \refElem{VCT-IU03}. \refTray{A}
 \end{UCtrayectoria}
-
-%Trayectorias Alternativas
-\begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor no tiene vacantes registradas en el sistema.}
-	\UCpaso [\UCsist] Muestra la interfaz \refElem{VCT-IU03-1}.
-\end{UCtrayectoriaA} 
 
 %Trayectorias Alternativas
 \begin{UCtrayectoriaA}[Fin de la trayectoria]{A}{El actor quiere consultar la información de una vacante.}

@@ -14,10 +14,10 @@
 		Media
 	}
 	\UCitem{Precondiciones}{
-		\Titem El candidato debe de tener una cuenta en el sistema.
+		El candidato debe de tener una cuenta en el sistema.
 	}
 	\UCitem{Destino}{
-		\Titem \refElem{USR-IU2.7}
+		\refElem{USR-IU02.7}
 	}
 	\UCitem{Viene de}{
 		Caso de uso \refIdElem{GRL-CU03}.
@@ -26,12 +26,12 @@
 
 %Trayectoria Principal
 \begin{UCtrayectoria}
-	\UCpaso [\UCactor] Presiona el ícono \IUEliminar{} en la sección ``Experiencia laboral'' en la interfaz \refIdElem{USR-IU2} en la experiencia que desea eliminar.
-	\UCpaso Muestra la interfaz \refIdElem{USR-IU2.7}.
+	\UCpaso [\UCactor] Presiona el ícono \IUEliminar{} en la sección ``Experiencia laboral'' en la interfaz \refIdElem{USR-IU02} en la experiencia que desea eliminar.
+	\UCpaso Muestra la interfaz \refIdElem{USR-IU02.7}.
 	\UCpaso [\UCsist] Presiona el botón \IUbutton{Aceptar}.\refTray{A}
 	\UCpaso Elimina el registro en de la base de datos del sistema.
 	\UCpaso Actualiza la información ingresada en el sistema.
-	\UCpaso Muestra la información actualizada en la interfaz \refIdElem{USR-IU2}. 
+	\UCpaso Muestra la información actualizada en la interfaz \refIdElem{USR-IU02}. 
 \end{UCtrayectoria}
 
 \begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor no desea eliminar la experiencia}

@@ -14,10 +14,10 @@
 		Media
 	}
 	\UCitem{Precondiciones}{
-		\Titem El candidato debe de tener una cuenta en el sistema.
+		El candidato debe de tener una cuenta en el sistema.
 	}
 	\UCitem{Destino}{
-		\Titem \refElem{USR-IU2.4}
+		\refElem{USR-IU02.4}
 	}
 	\UCitem{Viene de}{
 		Caso de uso \refIdElem{GRL-CU03}.
@@ -26,15 +26,15 @@
 
 %Trayectoria Principal
 \begin{UCtrayectoria}
-	\UCpaso [\UCactor] Presiona el ícono \IUEditar{} en la sección ``Objetivos profesionales'' en la interfaz \refIdElem{USR-IU2}. 
+	\UCpaso [\UCactor] Presiona el ícono \IUEditar{} en la sección ``Objetivos profesionales'' en la interfaz \refIdElem{USR-IU02}. 
 	\UCpaso Obtiene el objetivo, el salario deseado y el trabajo deseado que se tiene registrados actualmente en el sistema.
-	\UCpaso [\UCsist] Muestra la información obtenida en la interfaz \refIdElem{USR-IU2.4}.
+	\UCpaso [\UCsist] Muestra la información obtenida en la interfaz \refIdElem{USR-IU02.4}.
 	\UCpaso \label{USRCU01-4-1} Modifica el objetivo, el salario deseado y/o el trabajo deseado.
 	\UCpaso [\UCsist] Presiona el botón \IUbutton{Aceptar}.\refTray{A}
 	\UCpaso Verifica que los campos marcados como obligatorios hayan sido ingresados con blase ne la regla de negocio \refIdElem{RN-N001}.\refTray{B}
 	\UCpaso Verifica que el formato de los campos ingresados sea correcto con blase ne la regla de negocio \refIdElem{RN-N003}.\refTray{C}
 	\UCpaso Actualiza la información ingresada en el sistema.
-	\UCpaso Muestra la información actualizada en la interfaz \refIdElem{USR-IU2}. 
+	\UCpaso Muestra la información actualizada en la interfaz \refIdElem{USR-IU02}. 
 \end{UCtrayectoria}
 
 \begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor no desea editar los objetivos profesionales}

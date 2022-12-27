@@ -1,4 +1,4 @@
-\begin{UseCase}[]{USR-CU04.1}{Agregar Certificaciones o cursos}{
+\begin{UseCase}[]{USR-CU06.1}{Agregar Certificaciones o cursos}{
 	Permite al candidato agregar alguna certificación o curso  que haya cursado a su perfil.
 }
 	%----------------------------------------------------------------
@@ -8,16 +8,16 @@
 		Candidato. 
 	}
 	\UCitem[admin]{Prioridad}{ 
-		Media
+		Media.
 	}
 	\UCitem[admin]{Complejidad}{
-		Media
+		Media.
 	}
 	\UCitem{Precondiciones}{
-		\Titem El candidato debe de tener una cuenta en el sistema.
+		El candidato debe de tener una cuenta en el sistema.
 	}
 	\UCitem{Destino}{
-		\Titem \refElem{USR-IU06.1}
+		\refElem{USR-IU06.1}
 	}
 	\UCitem{Viene de}{
 		Caso de uso \refIdElem{USR-CU06}.
@@ -26,14 +26,14 @@
 
 %Trayectoria Principal
 \begin{UCtrayectoria}
-	\UCpaso [\UCactor] Presiona el ícono \IUAgregar{} en la interfaz \refIdElem{USR-IU6}.
-	\UCpaso Muestra la interfaz \refIdElem{USR-IU6.1}.
+	\UCpaso [\UCactor] Presiona el ícono \IUAgregar{} en la interfaz \refIdElem{USR-IU06}.
+	\UCpaso Muestra la interfaz \refIdElem{USR-IU06.1}.
 	\UCpaso [\UCsist] \label{USRCU06-1} Ingresa el nombre del curso o certificación, la institución/empresa en donde se certificó, el año y el mes en el que hizo la certificación y en caso de tenerlo el link del comprobante de certificación.
 	\UCpaso [\UCsist] Presiona el botón \IUbutton{Aceptar}.\refTray{A}
 	\UCpaso Verifica que los campos marcados como obligatorios hayan sido ingresados con blase ne la regla de negocio \refIdElem{RN-N001}.\refTray{B}
 	\UCpaso Verifica que el formato de los campos ingresados sea correcto con blase ne la regla de negocio \refIdElem{RN-N003}.\refTray{C}
 	\UCpaso Guarda la información ingresada en el sistema.
-	\UCpaso Muestra la información actualizada en la interfaz \refIdElem{USR-IU6}. 
+	\UCpaso Muestra la información actualizada en la interfaz \refIdElem{USR-IU06}. 
 \end{UCtrayectoria}
 
 \begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor no desea agregar una historial academico}

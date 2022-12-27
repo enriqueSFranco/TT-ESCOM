@@ -8,29 +8,29 @@
 		Candidato. 
 	}
 	\UCitem[admin]{Prioridad}{ 
-		Alta
+		Alta.
 	}
 	\UCitem[admin]{Complejidad}{
-		Media
+		Media.
 	}
 	\UCitem{Precondiciones}{
-		\Titem El candidato debe de tener una cuenta en el sistema.
+		El candidato debe de tener una cuenta en el sistema.
 	}
 	\UCitem{Destino}{
-		\Titem \refElem{USR-IU4.3}
+		\refElem{USR-IU04.3}
 	}
 	\UCitem{Viene de}{
-		Caso de uso \refIdElem{GRL-CU04}.
+		Caso de uso \refIdElem{USR-CU04}.
 	}	
 \end{UseCase}
 
 %Trayectoria Principal
 \begin{UCtrayectoria}
-	\UCpaso [\UCactor] Presiona el ícono \IUEliminar{} en la interfaz \refIdElem{USR-IU4} del historial académico que desea eliminar.
-	\UCpaso Muestra la interfaz \refIdElem{USR-IU4.3}.
+	\UCpaso [\UCactor] Presiona el ícono \IUEliminar{} en la interfaz \refIdElem{USR-IU04} del historial académico que desea eliminar.
+	\UCpaso Muestra la interfaz \refIdElem{USR-IU04.3}.
 	\UCpaso [\UCsist] Presiona el botón \IUbutton{Aceptar}.\refTray{A}
 	\UCpaso Elimina el registro en de la base de datos del sistema.
-	\UCpaso Muestra la información actualizada en la interfaz \refIdElem{USR-IU4}. 
+	\UCpaso Muestra la información actualizada en la interfaz \refIdElem{USR-IU04}. 
 \end{UCtrayectoria}
 
 \begin{UCtrayectoriaA}[Fin del caso de uso]{A}{El actor no desea eliminar la experiencia}
