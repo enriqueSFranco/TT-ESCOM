@@ -107,10 +107,11 @@ const NavLink = styled(Link)`
       position: absolute;
       left: 0;
       top: 1.5rem;
-      background-color: #449AE6;
+      background: linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
       transition: .5s transform ease;
       transform: scale3d(0,1,1);
       transform-origin: 0 50%;
+      border-radius: 5px;
     }
 
     &:hover {
