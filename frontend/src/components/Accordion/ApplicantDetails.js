@@ -10,6 +10,10 @@ import { FaBrain } from "react-icons/fa";
 import { List, ListItem } from "styled-components/CommonStyles";
 import styles from "./Accordion.module.css";
 
+function createMarkup(description) {
+  return { __html: description };
+}
+
 const Accordion = () => {
   const { t200_id_vacant } = useParams();
   const [data] = useGetApplicationJob({ idVacant: t200_id_vacant });
@@ -38,7 +42,7 @@ const Accordion = () => {
               <ListItem>
                 <Chip
                   label={
-                    data[0]?.t200_id_vacant?.c206_id_profile?.c206_description
+                    `Perfil Académico: ${data[0]?.t200_id_vacant?.c206_id_profile?.c206_description}`
                   }
                   bg="#EBF2FD"
                   color="#2864ED"
@@ -47,18 +51,18 @@ const Accordion = () => {
               <ListItem>
                 <Chip
                   label={
-                    data[0]?.t200_id_vacant?.c207_id_experience
-                      ?.c207_description
+                    `Experincia: ${data[0]?.t200_id_vacant?.c207_id_experience
+                      ?.c207_description}`
                   }
                   bg="#EBF2FD"
                   color="#2864ED"
-                  icon={<FaBrain />}
+                  // icon={<FaBrain />}
                 />
               </ListItem>
               <ListItem>
                 <Chip
                   label={
-                    data[0]?.t200_id_vacant?.c208_id_contract?.c208_description
+                    `Contratación: ${data[0]?.t200_id_vacant?.c208_id_contract?.c208_description}`
                   }
                   bg="#EBF2FD"
                   color="#2864ED"
@@ -75,9 +79,7 @@ const Accordion = () => {
                 />
               </ListItem>
             </List>
-            <div>
-              {data[0]?.t200_id_vacant?.t200_description}
-            </div>
+            <div dangerouslySetInnerHTML={createMarkup(data[0]?.t200_id_vacant?.t200_description)} />
           </div>
         </div>
       </article>
@@ -93,11 +95,7 @@ const Accordion = () => {
         <div className={styles.wrapperListApplicants}>
           <Table>
             {data?.map((it, index) => (
-              <TableRow
-                key={index}
-                index={index}
-                it={it}
-              >
+              <TableRow key={index} index={index} it={it}>
                 <RowExpand it={it} />
               </TableRow>
             ))}

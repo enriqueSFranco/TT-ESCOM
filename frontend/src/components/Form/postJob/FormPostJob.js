@@ -15,11 +15,8 @@ import {
 import Input from "components/Input/Input";
 import TextEditor from "components/TextEditor/TextEditor";
 import { Autocomplete, TextField } from "@mui/material";
-import { MdLanguage, MdWork, MdOutlineErrorOutline } from "react-icons/md";
-import { ImProfile } from "react-icons/im";
-import { FcMoneyTransfer } from "react-icons/fc";
-import { FaBrain } from "react-icons/fa";
-import { HiLocationMarker } from "react-icons/hi";
+import { MdLanguage, MdOutlineErrorOutline } from "react-icons/md";
+
 import {
   Button,
   SubGroupInput,

@@ -6,12 +6,13 @@ import Tooltip from "components/Tooltip/Tooltip";
 import CustomChip from "components/Chip/Chip";
 import { BiDislike } from "react-icons/bi";
 import { FaHandshake } from "react-icons/fa";
+import { HiDocumentDownload } from 'react-icons/hi'
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import styles from "./Table.module.css";
 
 const TableRow = ({ children, it, index }) => {
   const { t100_id_student } = it;
-  const { t100_name, t100_last_name } = t100_id_student;
+  const { t100_name, t100_last_name, t100_profile_picture } = t100_id_student;
   const [open, setOpen] = useState(false);
   const { historial } = useAcademicHistorial(
     it.t100_id_student?.t100_id_student
@@ -40,7 +41,8 @@ const TableRow = ({ children, it, index }) => {
             <CustomAvatar
               width="50px"
               height="50px"
-              username={`${t100_name}`}
+              username={t100_name}
+              picture={t100_profile_picture}
             />
             <span>{`${t100_name} ${t100_last_name}`}</span>
           </div>
@@ -55,8 +57,8 @@ const TableRow = ({ children, it, index }) => {
                 <li key={uuid()} className={styles.listItem}>
                   <CustomChip
                     label={skill?.c116_id_skill?.c116_description}
-                    bg="#EBF2FD"
-                    color="#2864ED"
+                    bg="#fff"
+                    color="#000"
                   />
                 </li>
               ))}
@@ -73,6 +75,11 @@ const TableRow = ({ children, it, index }) => {
             <Tooltip title="Rechazar candidato">
               <button className={`btn ${styles.actionsBtn} ${styles.dismiss}`}>
                 <BiDislike />
+              </button>
+            </Tooltip>
+            <Tooltip title="Descargar Currículo">
+              <button className={`btn ${styles.actionsBtn} ${styles.dowloadCV}`}>
+                <HiDocumentDownload />
               </button>
             </Tooltip>
           </div>
