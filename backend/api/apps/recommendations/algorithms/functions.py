@@ -40,11 +40,11 @@ def calculate_languages(candidate_languages,vacant_languages):
 
 def calculate_salary(salary_objetive,min_salary,max_salary):
     porcentage = 0
-    if min_salary < salary_objetive and salary_objetive < max_salary:
+    if min_salary < salary_objetive and salary_objetive < max_salary or salary_objetive == max_salary or min_salary == salary_objetive:
         porcentage = 100
         return porcentage
     if min_salary > salary_objetive:
-        porcentage = (min_salary*100)/salary_objetive
+        porcentage = 100
         return porcentage
     if salary_objetive > max_salary:
         porcentage = (max_salary*100)/salary_objetive
@@ -65,7 +65,7 @@ def calculate_experience(candidate_exp,required_exp):
 def calculate_total_percentage(similarity,wheights):        
     sum = (similarity[0]*wheights[0]) + (similarity[1]*wheights[1]) + (similarity[2]*wheights[2]) + (similarity[3]*wheights[3]) + (similarity[4]*wheights[4])
     total_max_percentage = wheights[0]+wheights[1]+wheights[2]+wheights[3]+wheights[4]
-    #print(total_max_percentage)
-    percentage = sum*100/310
+    print("porcentaje maximo",total_max_percentage)
+    percentage = sum/total_max_percentage
     #print(percentage)
     return percentage

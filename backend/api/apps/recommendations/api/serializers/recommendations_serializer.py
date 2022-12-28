@@ -15,5 +15,4 @@ class RecommendationListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recommendation
         fields = '__all__'
-        depth = 2
-#
+        #depth = 2

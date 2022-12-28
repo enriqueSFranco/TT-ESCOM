@@ -1,5 +1,5 @@
 #import numpy as np
-from apps.vacantes.models import Vacant,RequiredAbility,RequiredLanguage
+from apps.vacantes.models import Vacant,RequiredAbility,RequiredLanguage,Application
 from apps.students.models import Student,StudentSkill,StudentLanguage
 from apps.recommendations.models import Recommendation
 from apps.recommendations.api.serializers.recommendations_serializer import RecommendationSerializer
@@ -12,7 +12,7 @@ recommendation_prototype = {
 }
 
 def get_vacants():
-    vacants_ids = Vacant.objects.filter(c204_id_vacant_status=2).values('t200_id_vacant')
+    vacants_ids = Vacant.objects.filter(c204_id_vacant_status=2).order_by('t200_id_vacant').values('t200_id_vacant')
     return vacants_ids
 
 def get_vacant_mandatory_skills(id_vacant):
@@ -68,15 +68,27 @@ def get_candidate_info(id_candidate):
     candidate_data.append(candidate['c207_id_experience'])
     return candidate_data
 
+def get_candidate_applications(id_candidate):
+    vacants_ids = []
+    vacants_ids = Application.objects.filter(c205_id_application_state__in=[1,2]).order_by('t200_id_vacant').values('t200_id_vacant')
+    vacants = get_similar_vacants(vacants_ids)
+    return vacants
+
+def get_similar_vacants(vacants):
+    print(vacants)
+    return
+
 def candidate_recomendation(id_candidate):
-    weight = [1,0.5,0.1,1,0.5]
+    weight = [0.6,0.2,0.1,1,.5]
+    #100+50+10+100+50
     vacants = []
     similarity_vectors = []
     candidate_vector = []
-    check_recommendations = Recommendation.objects.filter(t100_id_student=id_candidate).all()
-    if len(check_recommendations) > 0:
-        return
-    print("Obteniendo vacantes activas.....")
+    #check_recommendations = Recommendation.objects.filter(t100_id_student=id_candidate).all()    
+    #if len(check_recommendations) > 0:
+    #    return
+    student_destroy = Recommendation.objects.filter(t100_id_student=id_candidate).delete()
+    print("Obteniendo vacantes activas.....")    
     vacants_ids = get_vacants()
     for id in vacants_ids:
         vacant_data = []
@@ -98,6 +110,7 @@ def candidate_recomendation(id_candidate):
         similarity_vector.append(calculate_languages(candidate_vector[2],vacant[3]))
         similarity_vector.append(calculate_salary(candidate_vector[3],vacant[4][0],vacant[4][1]))
         similarity_vector.append(calculate_experience(candidate_vector[4],vacant[5]))#Experiencia 
+        print("vector_similitud",similarity_vector)
         porcentage = calculate_total_percentage(similarity_vector,weight)
         if porcentage >60:
             print("Porcentaje de recomendación:")
@@ -110,8 +123,27 @@ def candidate_recomendation(id_candidate):
             recommendation_serializer = RecommendationSerializer(data = recomendation_data)
             if recommendation_serializer.is_valid():
                 recommendation_serializer.save()
+    print(get_candidate_applications(id_candidate))
+    
 
 
         
 
+
+
+
+
+#####Se debe borrar y crear el vector de recomendaciones cada que se acceda/solicite las recomendaciones
+#Se obtienen las vacantes abiertas y su información
+#Se obtiene la información del candidato
+    #Si el candidato tiene nulo algun rubro necesario para la recomendación, se cancelará el analisis porque el candidato habla puras basuras
+#Se compara cada vacante contra el candidato para obtener el vector de similitud
+    #Si una vacante tiene nulo algun rubro necesario para la recomendación, se saltara el analisis de dicha vacante
+#Se multiplican los vectores de similitudes por el vector de pesos de los rubros (cada peso representa cual seria el porcentaje ideal para aplicar a la vacante)
+#Se obtiene el porcentaje total de vacante-candidato
+#Solo las vacantes con mas de 60% de similitud se agregan a la matriz de recommendations
+
+#Se deben de obtener las vacantes activas a las cuales se postulo el candidato
+#Con base a las vacantes donde se postulo se deben de obtener las vacantes similares a las que se postulo
+#Se deben agregar las vacantes similares al vector de recomendaciones, solo las que cumplan mas del 85% de similitud
 

@@ -137,6 +137,9 @@ const CardProfileStudent = () => {
                 />
               </span>
               <p>
+                {candidate[0]?.c222_id_locality 
+                  ? candidate[0]?.c222_id_locality.c222_state+" , "+ candidate[0]?.c222_id_locality.c222_municipality+" , "
+                  :""}
                 {candidate[0]?.t100_residence
                   ? candidate[0]?.t100_residence
                   : ""}
