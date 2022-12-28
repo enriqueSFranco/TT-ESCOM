@@ -41,6 +41,7 @@ const WrapperSelect = styled.div`
   outline: 1px solid #ccc;
   width: fit-content;
   margin-top: 1rem;
+  border-radius: 1rem;
 `
 
 export { Button, Form, GroupInput, Select, WrapperSelect }

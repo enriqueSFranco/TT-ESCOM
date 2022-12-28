@@ -32,7 +32,7 @@ const DetailsJob = ({ vacantId }) => {
   );
 
   const handleApplyJob = async (idVacant) => {
-    let now = new Date()
+    let now = new Date();
     const response = await applyJob({
       t200_id_vacant: idVacant,
       t100_id_student: token?.user?.id,
@@ -40,7 +40,7 @@ const DetailsJob = ({ vacantId }) => {
       t201_date_application:
         now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate(),
     });
-    console.log(response)
+    console.log(response);
     if (response.status === 201)
       setIsApplyJob({
         succes: response.status,
@@ -113,38 +113,38 @@ const DetailsJob = ({ vacantId }) => {
           {!data.length ? null : (
             <>
               <div>
-                <TextH2>Habilidades requeridas</TextH2>
+                <TextH2 size="1rem">Habilidades requeridas</TextH2>
                 <List>
                   {data
                     .filter((el) => {
                       if (el.t211_mandatory) return el.c116_description;
                       return null;
                     })
-                    .map((el, index) => (
+                    .map((el) => (
                       <ListItem key={`skill-id-${el.t211_id_requirement}`}>
                         <Chip
-                          label={`${el.t211_required_level}: ${el.c116_description}`}
-                          bg={`var(--${el.t211_required_level})`}
-                          color={`var(--color-level_${index})`}
+                          label={el.c116_description}
+                          bg="#e7e7e7"
+                          color="#3a3a3a"
                         />
                       </ListItem>
                     ))}
                 </List>
               </div>
               <div>
-                <TextH2>Habilidades opcionales</TextH2>
+                <TextH2 size="1rem">Habilidades opcionales</TextH2>
                 <List>
                   {data
                     .filter((el) => {
                       if (!el.t211_mandatory) return el.c116_description;
                       return null;
                     })
-                    .map((el, index) => (
+                    .map((el) => (
                       <ListItem key={`skill-id-${el.t211_id_requirement}`}>
                         <Chip
-                          label={`${el.t211_required_level}: ${el.c116_description}`}
-                          bg={`var(--${el.t211_required_level})`}
-                          color={`var(--color-level_${index})`}
+                          label={el.c116_description}
+                          bg="#2172F2"
+                          color="#fff"
                         />
                       </ListItem>
                     ))}

@@ -6,22 +6,12 @@ const Aside = styled.aside`
   flex-direction: column;
   align-items: center;
   padding-top: 1rem;
-<<<<<<< HEAD
-  background-color: #fff;
-  height: ${(props) => props.height || "100%"};
-`;
-=======
   height: ${props => props.height || '100%'};
 `
->>>>>>> feature/reclutador
 
 const Container = styled.main`
   width: 100%;
   height: 100%;
-<<<<<<< HEAD
-`;
-export { Aside, Container };
-=======
   grid-area: container;
   display: flex;
   flex-direction: column;
@@ -64,4 +54,3 @@ const ContentWidget = styled.div`
 
 
 export {Aside, ContentWidget, TextNumber, Grid, ContentWidgetCommon, Container, WrapperWidgets }
->>>>>>> feature/reclutador

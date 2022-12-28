@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import { useViewport } from "hooks/useViewport";
 import DropMenu from "./DropMenu";
 import logo from "assets/icons/briefcase.png";
@@ -16,8 +17,19 @@ import {
   Logo,
   NavLeft,
   NavList,
-  Link,
+  NavLink,
 } from "./styled-components/MainMenuStyled";
+
+const styles = {
+  styledLink: {
+    color: '#000',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    gap: '.3rem',
+  }
+}
+
 
 const MainMenu = () => {
   const [viewport] = useViewport();
@@ -26,26 +38,26 @@ const MainMenu = () => {
     return (
       <>
         <NavList>
-          <Link to="/" data-link className="active">
+          <NavLink to="/" data-link className="active">
             <FcHome style={{ fontSize: "1.5rem" }} />
             Inicio
-          </Link>
-          <Link to="/empresas" data-link>
+          </NavLink>
+          <NavLink to="/empresas" data-link>
             <FcDepartment style={{ fontSize: "1.5rem" }} />
             Empresas
-          </Link>
-          <Link to="/comunicados" data-link>
+          </NavLink>
+          <NavLink to="/comunicados" data-link>
             <FcAdvertising style={{ fontSize: "1.5rem" }} />
             Comunicados
-          </Link>
-          <Link to="/alumno" data-link>
+          </NavLink>
+          <NavLink to="/alumno" data-link>
             <FcGraduationCap style={{ fontSize: "1.5rem" }} />
             Candidato
-          </Link>
-          <Link to="/reclutador" data-link>
+          </NavLink>
+          <NavLink to="/reclutador" data-link>
             <FcBriefcase style={{ fontSize: "1.5rem" }} />
             Reclutador
-          </Link>
+          </NavLink>
         </NavList>
       </>
     );
@@ -54,26 +66,26 @@ const MainMenu = () => {
   return (
     <>
       <NavLeft>
-        <Link to="/">
-          <picture>
+        <Link to="/" style={styles.styledLink}>
+          <picture style={{width: '30px'}}>
             <img src={logo} alt="logo-bte" />
           </picture>
           <Logo>ESCOM</Logo>
         </Link>
       </NavLeft>
       <NavList>
-        <Link to="/" data-link className="active">
+        <NavLink to="/" data-link className="active">
           <HiOutlineHome />
           Inicio
-        </Link>
-        <Link to="/empresas" data-link>
+        </NavLink>
+        <NavLink to="/empresas" data-link>
           <IoBusinessOutline />
           Empresas
-        </Link>
-        <Link to="/comunicados" data-link>
+        </NavLink>
+        <NavLink to="/comunicados" data-link>
           <BsMegaphone />
           Comunicados
-        </Link>
+        </NavLink>
         <DropMenu />
       </NavList>
     </>

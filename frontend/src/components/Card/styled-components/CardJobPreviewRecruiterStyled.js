@@ -15,10 +15,6 @@ const Card = styled.article`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   transition: box-shadow .3s ease-in-out;
-<<<<<<< HEAD
-
-=======
->>>>>>> feature/reclutador
   &:hover {
     color: #000;
     box-shadow: #2172F2 0px 0px 0px 3px;

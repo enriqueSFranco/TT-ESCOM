@@ -1,17 +1,31 @@
 import LoginStudent from "components/Form/login/LoginStudent";
-import fondo from 'assets/images/businessman-with-demanding-job-5652961-4708242.png'
-import { Wrapper, ContainerForm, ContainerBackground, Overelay } from "pages/styled-components/CreateAccountCandidateStyled";
+import fondo from "assets/images/businessman-with-demanding-job-5652961-4708242.png";
+import {
+  Wrapper,
+  ContainerForm,
+  ContainerBackground,
+  Overelay,
+  TextH2
+} from "pages/styled-components/CreateAccountCandidateStyled";
 
 const PageLoginStudent = () => {
   return (
     <Wrapper>
-      <ContainerBackground bg='linear-gradient(to right, #f83600 0%, #f9d423 100%);'>
+      <ContainerBackground bg="linear-gradient(90deg, hsla(280, 95%, 57%, 1) 0%, hsla(193, 90%, 55%, 1) 100%);">
         <Overelay>
-          <picture style={{position: 'relative', top: '14rem', left: '15rem'}}>
-            <img src={fondo} alt="login-candidato-fondo" style={{
-              filter: 'drop-shadow(0 0 0.75rem #fff)',
-              width: '90%'
-            }} />
+        <TextH2 style={{position: 'absolute', top: '3rem', padding: '0 1rem', zIndex: '9'}}>
+          Nuevas ofertas te estan esperando
+        </TextH2>
+          <picture
+            style={{ position: "relative", top: "14rem", left: "15rem" }}
+          >
+            <img
+              src={fondo}
+              alt="login-candidato-fondo"
+              style={{
+                width: "90%",
+              }}
+            />
           </picture>
         </Overelay>
       </ContainerBackground>

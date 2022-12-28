@@ -1,5 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
+import { useGetRecruiter } from "hooks"
+import DropMenu from "./DropMenu";
 import LinkButton from "components/Button/LinkButton";
 import { HiOutlineLogout, HiUserGroup } from "react-icons/hi";
 import { BsFillMegaphoneFill } from "react-icons/bs";
@@ -10,7 +13,8 @@ import {
   NavLeft,
   NavList,
   NavItem,
-  Link,
+  NavLink,
+  WrapperTypeUser
 } from "./styled-components/MainMenuStyled";
 
 const links = [
@@ -34,14 +38,29 @@ const links = [
   },
 ];
 
+const styles = {
+  styledLink: {
+    color: '#000',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    gap: '.3rem',
+  }
+}
+
 const MenuRecruiter = () => {
-  const { logout } = useAuth();
+  const { token } = useAuth();
+  const { recruiter } = useGetRecruiter(token.user.user_id)
+  let typeuser = token?.user?.user_type;
+
+
+  if (!recruiter) return null
 
   return (
     <>
       <NavLeft>
-        <Link to="/">
-          <picture>
+        <Link to="/" style={styles.styledLink}>
+          <picture style={{width: '30px'}}>
             <img src={logo} alt="logo-bte" />
           </picture>
           <Logo>ESCOM</Logo>
@@ -57,15 +76,22 @@ const MenuRecruiter = () => {
           />
         </NavItem>
           {links?.map((link, index) => (
-            <Link data-item key={`linkId-${link.id}`} to={link.to}>
+            <NavLink data-item key={`linkId-${link.id}`} to={link.to}>
               {link.icon}{link.label}
-            </Link>
+            </NavLink>
           ))}
         <NavItem>
-          <Link to="/" onClick={logout}>
+        <WrapperTypeUser>
+            <span>Hola 👋, {recruiter[0]?.t301_name} | Reclutador </span>
+            <DropMenu
+              typeuser={typeuser}
+              name={recruiter[0]?.t301_name}
+            />
+          </WrapperTypeUser>
+          {/* <NavLink to="/" onClick={logout}>
             <HiOutlineLogout style={{ fontSize: "1.4rem" }} />
             Salir
-          </Link>
+          </NavLink> */}
         </NavItem>
       </NavList>
     </>

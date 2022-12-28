@@ -50,11 +50,6 @@ class RecommendationsViewsets(viewsets.GenericViewSet):
 		applications_serializer = self.list_serializer_class(applications, many=True)        
 		return Response(applications_serializer.data, status=status.HTTP_200_OK)
 		
-	def retrieve(self, request, pk):
-		applications = self.get_object(pk)
-		applications_serializer = self.list_serializer_class(applications,many=True)
-		return Response(applications_serializer.data)
-
 
 class StudentApplicationsViewSet(viewsets.GenericViewSet):
 	model = Application

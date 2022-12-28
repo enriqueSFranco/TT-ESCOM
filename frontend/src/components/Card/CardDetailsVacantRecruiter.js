@@ -37,20 +37,12 @@ function createMarkup(description) {
 }
 
 const CardDetailsVacantRecruiter = ({ vacantId }) => {
-<<<<<<< HEAD
-  // const { t200_id_vacant } = useParams();
-=======
->>>>>>> feature/reclutador
   const observation = useGetObservationVacant({ vacantId: vacantId });
   const observationManager = useGetObservationVacantManager({
     vacantId: vacantId,
   });
   const { token } = useAuth();
-<<<<<<< HEAD
-  const { data, error, loading } = useFetch(
-=======
   const { data, loading } = useFetch(
->>>>>>> feature/reclutador
     `${process.env.REACT_APP_URL_VACANTS}${vacantId}/`
   );
 

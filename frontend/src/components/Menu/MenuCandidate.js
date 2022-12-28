@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import { useAuth } from "context/AuthContext";
 import { useViewport, useGetCandidate } from "hooks";
 import DropMenu from "./DropMenu";
@@ -6,15 +7,25 @@ import { IoBusinessOutline } from "react-icons/io5";
 import { IoMdBriefcase } from "react-icons/io";
 import { HiOutlineHome } from "react-icons/hi";
 import { BsMegaphone } from "react-icons/bs";
-import { FaBell } from "react-icons/fa";
 import logo from "assets/icons/briefcase.png";
 import {
   Logo,
   NavLeft,
   NavList,
   NavItem,
-  Link,
+  NavLink,
+  WrapperTypeUser
 } from "./styled-components/MainMenuStyled";
+
+const styles = {
+  styledLink: {
+    color: '#000',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    gap: '.3rem',
+  }
+}
 
 const MenuCandidate = () => {
   const { token } = useAuth();
@@ -24,35 +35,35 @@ const MenuCandidate = () => {
 
   if (!candidate) return null;
 
-  // console.log(candidate[0]?.t100_profile_picture)
+  console.log(candidate)
 
   if (viewport.device === "MOBILE") {
     return (
       <>
         <NavList>
           <NavItem>
-            <Link to="/">
+            <NavLink to="/">
               <HiOutlineHome />
               Inicio
-            </Link>
+            </NavLink>
           </NavItem>
           <NavItem>
-            <Link to="/mis-postulaciones">
+            <NavLink to="/mis-postulaciones">
               <IoMdBriefcase />
               Postulaciones
-            </Link>
+            </NavLink>
           </NavItem>
           <NavItem>
-            <Link to="/">
+            <NavLink to="/">
               <IoBusinessOutline />
               Empresas
-            </Link>
+            </NavLink>
           </NavItem>
           <NavItem>
-            <Link to="/comunicados">
+            <NavLink to="/comunicados">
               <BsMegaphone />
               Comunicados
-            </Link>
+            </NavLink>
           </NavItem>
         </NavList>
       </>
@@ -62,8 +73,8 @@ const MenuCandidate = () => {
   return (
     <>
       <NavLeft>
-        <Link to="/">
-          <picture>
+        <Link to="/" style={styles.styledLink}>
+          <picture style={{width: '30px'}}>
             <img src={logo} alt="logo-bte" />
           </picture>
           <Logo>ESCOM</Logo>
@@ -71,41 +82,38 @@ const MenuCandidate = () => {
       </NavLeft>
       <NavList>
         <NavItem>
-          <Link to="/">
+          <NavLink to="/">
             <HiOutlineHome />
             Inicio
-          </Link>
+          </NavLink>
         </NavItem>
         <NavItem>
-          <Link to="/mis-postulaciones">
+          <NavLink to="/mis-postulaciones">
             <IoMdBriefcase />
             Mis Postulaciones
-          </Link>
+          </NavLink>
         </NavItem>
         <NavItem>
-          <Link to="/empresas">
+          <NavLink to="/empresas">
             <IoBusinessOutline />
             Empresas
-          </Link>
+          </NavLink>
         </NavItem>
         <NavItem>
-          <Link to="/comunicados">
+          <NavLink to="/comunicados">
             <BsMegaphone />
             Comunicados
-          </Link>
+          </NavLink>
         </NavItem>
         <NavItem>
-          <DropMenu
-            typeuser={typeuser}
-            icon={<FaBell />}
-          />
-        </NavItem>
-        <NavItem>
-          <DropMenu
-            typeuser={typeuser}
-            picture={candidate[0]?.t100_profile_picture}
-            name={token.user.username}
-          />
+          <WrapperTypeUser>
+            <span>Hola 👋, {candidate[0]?.t100_name} | Candidato </span>
+            <DropMenu
+              typeuser={typeuser}
+              picture={candidate[0]?.t100_profile_picture}
+              name={token.user.username}
+            />
+          </WrapperTypeUser>
         </NavItem>
       </NavList>
     </>

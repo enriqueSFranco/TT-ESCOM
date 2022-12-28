@@ -51,3 +51,7 @@
   display: grid;
   place-content: center;
 }
+
+.active {
+  border: 2px solid red;
+}

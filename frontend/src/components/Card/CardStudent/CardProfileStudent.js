@@ -1,84 +1,48 @@
-import { useEffect, useReducer, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "context/AuthContext";
 import {
   useGetCandidate,
   useGetSocialNetwork,
   useFetch,
   useModal,
+  useGetSkills,
 } from "hooks";
-import { helpHttp } from "utils/helpHttp";
-import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
+import { helpHttp, uuid } from "utils";
+import { TextField, Autocomplete } from "@mui/material";
 import ModalPortal from "components/Modal/ModalPortal";
 import ModalPreviewCV from "components/Modal/ModalPreviewCV";
-import {
-  fetchDataCandidateReducer,
-  fetchDataCandidateInit,
-} from "reducers/fetchDataCandidateReducer";
-import { TYPES } from "actions/fetchDataCandidateActions";
-import { getAcademicHistorial } from "services/students/index";
-import { getSkill } from "services/catalogs";
-import { uuid } from "utils/uuid";
 import CustomAvatar from "components/Avatar/Avatar";
 import Chip from "components/Chip/Chip";
+import ToolTip from "components/Tooltip/Tooltip";
+import FormSocialNetwork from "components/Form/FormAddSocialNetwork/FormSocialNetwork";
+import FormUpdateDataStudent from "components/Form/updateInfoStudent/FormUpdateDataStudent";
 import {
   MdLocationPin,
   MdOutlineAirplanemodeActive,
   MdOutlineModeEdit,
-  MdOutlineWork,
 } from "react-icons/md";
 import {
   BsFileEarmarkPersonFill,
   BsFillFileEarmarkPostFill,
+  BsLink45Deg,
 } from "react-icons/bs";
-import { BiDislike } from 'react-icons/bi'
+import { BiDislike } from "react-icons/bi";
 import { GoVerified } from "react-icons/go";
-import FormSocialNetwork from "components/Form/FormAddSocialNetwork/FormSocialNetwork";
 import { List } from "styled-components/CommonStyles";
-import FormUpdateDataStudent from "components/Form/updateInfoStudent/FormUpdateDataStudent";
 import styles from "./CardProfileStudent.module.css";
 
 const CardProfileStudent = () => {
-  const [state, dispatch] = useReducer(
-    fetchDataCandidateReducer,
-    fetchDataCandidateInit
-  );
   const [newSkills, setNewSkills] = useState([]);
   const [isOpen, openModal, closeModal] = useModal();
   const [isOpenCV, openModalCV, closeModalCV] = useModal();
   const [isOpenSocialNetwork, openModalSocialNetwork, closeModalSocialNetwork] =
     useModal();
   const [isOpenSkill, openModalSkill, closeModalSkill] = useModal();
-
   const { token } = useAuth();
+  const { skills } = useGetSkills(token?.user?.id);
   const { candidate } = useGetCandidate(token?.user?.user_id);
   const { socialNetworks } = useGetSocialNetwork({ idUser: token?.user?.id });
   const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    getAcademicHistorial(token?.user?.user_id)
-      .then((response) => {
-        dispatch({
-          type: TYPES.FETCH_ACADEMIC_HISTORIAL,
-          payload: response.data,
-        });
-      })
-      .catch((error) => error);
-    return () => controller.abort();
-  }, [token?.user?.user_id]);
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    getSkill(token?.user?.id).then((response) => {
-      dispatch({
-        type: TYPES.FETCH_SKILLS,
-        payload: response,
-      });
-    });
-    return () => controller.abort();
-  }, [token?.user?.id]);
 
   function sendSkill() {
     newSkills.forEach((newSkill) => {
@@ -96,41 +60,51 @@ const CardProfileStudent = () => {
         .POST(`${process.env.REACT_APP_URL_CANDIDATE_SKILLS}`, options)
         .then((response) => {
           if (!response.err) {
-            console.log(response);
+            console.log({ response });
           }
         });
     });
   }
 
-  if (!candidate || !data || !socialNetworks) return null;
+  if (!candidate || !data || !socialNetworks || !skills) return null;
 
   return (
     <>
       {/* inicio del perfil */}
       <article className={`${styles.cardProfile}`}>
-        <MdOutlineModeEdit
-          style={{
-            position: "absolute",
-            right: ".5rem",
-            top: ".5rem",
-            color: "#fff",
-            fontSize: "1.1rem",
-            cursor: "pointer",
-          }}
-          onClick={openModal}
-        />
         <header className={styles.header}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              width: "100%",
+            }}
+          >
+            <ToolTip title="Editar Perfil">
+              <MdOutlineModeEdit
+                style={{
+                  position: "relative",
+                  top: ".2rem",
+                  right: ".5rem",
+                  color: "#fff",
+                  fontSize: "1.1rem",
+                  cursor: "pointer",
+                }}
+                onClick={openModal}
+              />
+            </ToolTip>
+          </div>
           <CustomAvatar
             picture={candidate[0]?.t100_profile_picture}
             username={candidate[0]?.t100_name}
-            width="80px"
-            height="80px"
+            width="90px"
+            height="90px"
           />
           <div style={{ textAlign: "center" }}>
             <span
               style={{
                 color: "#fff",
-                fontWeight: 400,
+                fontWeight: 600,
                 fontFamily: "sans-serif",
               }}
             >
@@ -138,14 +112,6 @@ const CardProfileStudent = () => {
               {candidate[0]?.t100_second_surname}
             </span>
             <div style={{ margin: ".5rem 0 .4rem 0" }}></div>
-            <Chip
-              label={
-                candidate[0]?.t100_interest_job ?? "Puesto deseado no definido"
-              }
-              icon={<MdOutlineWork />}
-              bg="#E8F4EE"
-              color="#368968"
-            />
           </div>
         </header>
         <div className={styles.userDetails}>
@@ -205,10 +171,22 @@ const CardProfileStudent = () => {
             <div className={styles.container_flex}>
               {candidate[0]?.t100_cv ? (
                 <>
-                  <BsFileEarmarkPersonFill style={{ color: "#BEBEBE" }} />
+                  <BsFileEarmarkPersonFill
+                    style={{
+                      backgroundColor: "#37404d",
+                      height: "fit-content",
+                      width: "fit-content",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      padding: ".4rem",
+                      borderRadius: "50%",
+                    }}
+                  />
                   <button
                     onClick={openModalCV}
                     style={{
+                      color: "#fff",
                       backgroundColor: "transparent",
                       outline: "none",
                       border: "none",
@@ -241,7 +219,7 @@ const CardProfileStudent = () => {
                   </span>
                   <p
                     style={{
-                      marginLeft: '.3rem',
+                      marginLeft: ".3rem",
                       paddingLeft: ".2rem",
                       fontWeight: "400",
                       fontFamily: "sans-serif",
@@ -256,14 +234,29 @@ const CardProfileStudent = () => {
           <div className={`${styles.socialNetworks} ${styles.separator}`}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <h4>Redes sociales</h4>
-              <MdOutlineModeEdit
-                onClick={openModalSocialNetwork}
-                style={{ fontSize: "1.1rem", cursor: "pointer" }}
-              />
+              <ToolTip title="Agregar Red Social">
+                <button
+                  className={styles.buttonAdd}
+                  onClick={openModalSocialNetwork}
+                >
+                  +
+                </button>
+              </ToolTip>
             </div>
             <ul className={styles.list}>
+              <li className={styles.list_item}>
+                <BsLink45Deg style={{ fontSize: "1.2rem" }} />
+                <a
+                  href={`mailto:${candidate[0]?.t100_email}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ color: "#fff" }}
+                >
+                  {candidate[0]?.t100_email}
+                </a>
+              </li>
               {socialNetworks?.length > 0 ? (
-                socialNetworks?.map(({ t113_link, c115_id_plataform, c115_description }) => (
+                socialNetworks?.map(({ t113_link, c115_id_plataform }) => (
                   <li
                     key={`item-link-plataform-${crypto.randomUUID()}`}
                     title={`Ir a ${t113_link}`}
@@ -275,7 +268,7 @@ const CardProfileStudent = () => {
                       className={styles.iconSocialNetwork}
                     />
                     <span className={styles.go_link}>
-                    {c115_id_plataform?.c115_description}
+                      {c115_id_plataform?.c115_description}
                       {
                         <a
                           href={`${t113_link}`}
@@ -297,16 +290,23 @@ const CardProfileStudent = () => {
           </div>
           {/* SKILLS */}
           <div className={`${styles.wrapperSkills} ${styles.separator}`}>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: "1rem",
+              }}
+            >
               <h4>Habilidades en</h4>
-              <MdOutlineModeEdit
-                onClick={openModalSkill}
-                style={{ fontSize: "1.1rem", cursor: "pointer" }}
-              />
+              <ToolTip title="Agregar Nueva Habilidad">
+                <button onClick={openModalSkill} className={styles.buttonAdd}>
+                  +
+                </button>
+              </ToolTip>
             </div>
             <List>
-              {state.skills?.length > 0 ? (
-                state.skills?.map(({ c116_id_skill }) => (
+              {skills?.length > 0 ? (
+                skills?.map(({ c116_id_skill }) => (
                   <Chip
                     key={uuid()}
                     label={c116_id_skill?.c116_description}
@@ -324,39 +324,42 @@ const CardProfileStudent = () => {
               display: "grid",
               placeContent: "center",
               textAlign: "center",
-              width: 'fit-content',
-              padding: '0 1rem',
-              height: '40%',
-              margin: '0 auto',
-              borderRadius: '1rem',
-              backgroundColor: '#37404d',
-              color: '#fff',
-              position: 'relative', 
-              top:'1.5rem'
+              width: "fit-content",
+              padding: "0 1rem",
+              height: "40%",
+              margin: "0 auto",
+              borderRadius: "1rem",
+              backgroundColor: "#37404d",
+              color: "#fff",
+              position: "relative",
+              top: "1.5rem",
             }}
           >
             {candidate[0]?.t100_cv === null ? (
-              <div style={{display: 'flex', alignItems: 'center', gap: '.3rem'}}>
-                <BiDislike style={{fontSize: '1.5rem', color: '#fff'}} />
+              <div
+                style={{ display: "flex", alignItems: "center", gap: ".3rem" }}
+              >
+                <BiDislike style={{ fontSize: "1.5rem", color: "#fff" }} />
                 <span>Aun no cuentas con tu cv</span>
               </div>
             ) : (
-              <p>
-                <GoVerified style={{ color: "#38761D" }} /> Tu curriculum esta
+              <div>
+                <GoVerified style={{ color: "#02B700" }} /> Tu curriculum esta
                 activo y visible para las empresas{" "}
-                <span style={{ color: "#38761D", fontWeight: "700" }}>
+                <span style={{ color: "#02B700", fontWeight: "700" }}>
                   Abierto a oportunidades
                 </span>
-              </p>
+              </div>
             )}
           </div>
         </div>
         {/* fin del perfil */}
       </article>
-      <ModalPortal isOpen={isOpen} closeModal={closeModal}>
+      <ModalPortal isOpen={isOpen} closeModal={closeModal} minHeight="700px">
         <FormUpdateDataStudent
           id={candidate[0]?.t100_id_student}
           username={candidate[0]?.t100_name}
+          picture={candidate[0]?.t100_profile_picture}
           candidate={candidate[0]}
         />
       </ModalPortal>
@@ -364,12 +367,13 @@ const CardProfileStudent = () => {
       <ModalPortal
         isOpen={isOpenSocialNetwork}
         closeModal={closeModalSocialNetwork}
-        minHeight="250px"
+        minHeight="300px"
+        minWidth="600px"
       >
         <h2
           style={{
             position: "relative",
-            top: "3rem",
+            top: "0",
             textAlign: "center",
             fontFamily: "sans-serif",
             fontSize: "1.5rem",
@@ -384,11 +388,10 @@ const CardProfileStudent = () => {
         isOpen={isOpenSkill}
         closeModal={closeModalSkill}
         minHeight="300px"
+        minWidth="400px"
       >
         <h2
           style={{
-            position: "relative",
-            top: "3rem",
             textAlign: "center",
             fontFamily: "sans-serif",
             fontSize: "1.5rem",
@@ -404,13 +407,13 @@ const CardProfileStudent = () => {
             gap: ".4rem",
             marginTop: "1rem",
             position: "relative",
-            top: "4rem",
+            top: "2rem",
           }}
         >
           <Autocomplete
             id="skills"
             size="small"
-            sx={{ width: 300, maxWidth: "100%" }}
+            sx={{ width: 350, maxWidth: "100%" }}
             name="skills"
             value={newSkills}
             onChange={(event, newValue) => setNewSkills(newValue)}
@@ -448,11 +451,9 @@ const CardProfileStudent = () => {
         </div>
       </ModalPortal>
 
-      <ModalPortal isOpen={isOpenCV} closeModal={closeModalCV}>
+      <ModalPortal isOpen={isOpenCV} closeModal={closeModalCV} minWidth="1000px">
         <ModalPreviewCV fileUrl={candidate[0]?.t100_cv} />
       </ModalPortal>
-      {/* <Toaster position='top-right' /> */}
-
     </>
   );
 };

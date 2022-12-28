@@ -67,6 +67,8 @@ SWAGGER_SETTINGS = {
     'DOC_EXPANSION' : 'none'
 }
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

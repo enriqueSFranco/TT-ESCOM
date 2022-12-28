@@ -12,7 +12,7 @@ import LayoutHome from "Layout/LayoutHome";
 import LayoutHero from "Layout/LayoutHero";
 import parallaxESCOM from "images/parallaxESCOM.jpg";
 import Filters from "components/Filter/Filters";
-import ButtonScrollTop from "components/Button/ButtonScrollTop";
+// import ButtonScrollTop from "components/Button/ButtonScrollTop";
 import {
   Aside,
   Content,

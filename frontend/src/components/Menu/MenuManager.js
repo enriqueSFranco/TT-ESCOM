@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom"
 import { useAuth } from "context/AuthContext";
 import DropMenu from "./DropMenu";
 import { HiUserGroup } from "react-icons/hi";
-import { FcBusiness, FcBusinessman } from "react-icons/fc";
-import { MdSpeakerNotes } from "react-icons/md";
+import { FaUserTie } from "react-icons/fa";
+import { MdSpeakerNotes, MdOutlineWork } from "react-icons/md";
 import { IoBusinessOutline } from "react-icons/io5";
 import logo from "assets/icons/briefcase.png";
 import {
@@ -11,57 +12,68 @@ import {
   NavLeft,
   NavList,
   NavItem,
-  Link,
+  NavLink,
+  WrapperTypeUser
 } from "./styled-components/MainMenuStyled";
 
 const links = [
   {
     id: crypto.randomUUID(),
     to: "/comunicados",
-    icon: <MdSpeakerNotes
-    style={{
-      marginRight: ".3rem",
-      fontSize: "1.3rem",
-      color: "#673AB7",
-    }}
-  />,
+  //   icon: <MdSpeakerNotes
+  //   style={{
+  //     marginRight: ".3rem",
+  //     fontSize: "1.3rem",
+  //     color: "#FFF",
+  //   }}
+  // />,
     label: "Comunicados",
   },
   {
     id: crypto.randomUUID(),
     to: "/agregar-colaborador",
-    icon: <HiUserGroup
-    style={{
-      marginRight: ".3rem",
-      fontSize: "1.3rem",
-      color: "#F13465",
-    }}
-  />,
+  //   icon: <HiUserGroup
+  //   style={{
+  //     marginRight: ".3rem",
+  //     fontSize: "1.3rem",
+  //     color: "#FFF",
+  //   }}
+  // />,
     label: "Colaboradores",
   },
   {
     id: crypto.randomUUID(),
     to: "/validar-vacante",
-    icon: <FcBusiness
-    style={{ marginRight: ".3rem", fontSize: "1.3rem" }}
-  />,
+  //   icon: <MdOutlineWork
+  //   style={{ marginRight: ".3rem", fontSize: "1.3rem", color: "#FFF", }}
+  // />,
     label: "Validar vacantes",
   },
   {
     id: crypto.randomUUID(),
     to: "/validar-reclutador",
-    icon: <FcBusinessman
-    style={{ marginRight: ".3rem", marginLeft: '0', fontSize: "1.3rem" }}
-  />,
+  //   icon: <FaUserTie
+  //   style={{ marginRight: ".3rem", marginLeft: '0', fontSize: "1.3rem" }}
+  // />,
     label: "Validar reclutadores",
   },
   {
     id: crypto.randomUUID(),
     to: "/validar-empresa",
-    icon: <IoBusinessOutline style={{ fontSize: "1.3rem" }} />,
+    // icon: <FaUserTie style={{ fontSize: "1.3rem" }} />,
     label: "Validar empresas",
   },
 ];
+
+const styles = {
+  styledLink: {
+    color: '#000',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    gap: '.3rem',
+  }
+}
 
 const MenuManager = () => {
   const { token } = useAuth();
@@ -70,26 +82,29 @@ const MenuManager = () => {
   return (
     <>
       <NavLeft>
-        <Link to="/">
-          <picture>
-            <img src={logo} alt="logo-bte" />
+        <Link to="/" style={styles.styledLink}>
+          <picture style={{width: '30px'}}>
+            <img src={logo} alt="logo-bte" width="100%" />
           </picture>
-          <Logo>ESCOM</Logo>
+          <Logo>BTESCOM</Logo>
         </Link>
       </NavLeft>
       <NavList>
-        {links?.map((link, index) => (
-          <Link data-item key={`link-id-${link.id}`} to={link.to}>
+        {links?.map((link) => (
+          <NavLink data-item key={`link-id-${link.id}`} to={link.to}>
             {link.icon}
             {link.label}
-          </Link>
+          </NavLink>
         ))}
-        <Link to="/empresas" data-link>
+        <NavLink to="/empresas" data-link>
           <IoBusinessOutline style={{ fontSize: "1.3rem" }} />
           Empresas
-        </Link>
+        </NavLink>
         <NavItem>
-          <DropMenu typeuser={typeuser} name={token.user.first_name} />
+          <WrapperTypeUser>
+            <span>Hola 👋,  | Administrador </span>
+            <DropMenu typeuser={typeuser} name={token.user.first_name} />
+          </WrapperTypeUser>
         </NavItem>
       </NavList>
     </>

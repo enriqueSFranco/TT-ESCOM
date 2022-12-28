@@ -1,13 +1,4 @@
 import styled from 'styled-components'
-<<<<<<< HEAD
-
-const Grid = styled.div`
-  /* outline: 2px solid blue;   */
-  height: calc(100% - 9.3rem);
-  padding: 0 .5rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-=======
 import { USERS } from "types";
 
 const Grid = styled.div`
@@ -28,7 +19,6 @@ const Grid = styled.div`
   grid-template-columns: repeat(2, 1fr);
   /* justify-items: center; */
   align-content: center;
->>>>>>> feature/reclutador
   gap: 1rem;
 `
 
@@ -37,11 +27,7 @@ const WrapperWidgets = styled.section`
   display: flex;
   justify-content: space-around;
   align-items: center;
-<<<<<<< HEAD
-  margin-top: 1rem;
-=======
   margin-top: .5rem;
->>>>>>> feature/reclutador
 `
 
 const ContentWidgetCommon = styled.div`

@@ -33,11 +33,14 @@ const Select = styled.select`
   outline: 0;
   border: 0;
   background-color: transparent;
+  font-weight: 500;
 `
 
 const WrapperSelect = styled.div`
   outline: 1px solid #ccc;
-  width:200px;
+  border-radius: 1rem;
+  padding: 1rem 1rem;
+
 `
 
 export { Button, Form, GroupInput, Select, WrapperSelect }

@@ -26,18 +26,21 @@ const CardBody = styled.article`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-
-    transition: box-shadow 0.3s ease-in-out;
+    transition: border .3s ease-in-out;
     
-    &:hover {
+    /* &:hover {
       color: #000;
-      box-shadow: #2172f2 0px 0px 0px 3px;
-    }
+      box-shadow: #ccc 0px 0px 0px 1px;
+    } */
 
     ${(props) => {
-      if (props.close >= 1 || props.close <= 8) {
+      if (props.isActive) {
+        return `
+          border: 2px solid #2172F2;
+        `
+      }
+
+      if (props.close === 1) {
         return `
           background: hsla(280, 95%, 57%, 1);
           background: linear-gradient(90deg, hsla(280, 95%, 57%, 1) 0%, hsla(193, 90%, 55%, 1) 100%);
