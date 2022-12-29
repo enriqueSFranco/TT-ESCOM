@@ -3,7 +3,7 @@ import { usePassword, useForm } from "hooks";
 import LayoutHome from "Layout/LayoutHome";
 import { initialFormLoginCompany } from "types/loginUsers";
 import LinkButton from "components/Button/LinkButton";
-import Input from "components/Input/Input";
+import { Input } from "components/Input/Input";
 import { useAuth } from "context/AuthContext";
 import { IoLogInOutline } from "react-icons/io5";
 import { MdEmail, MdVisibility, MdVisibilityOff } from "react-icons/md";
@@ -22,7 +22,18 @@ const LoginCompany = () => {
   return (
     <LayoutHome>
       <WrapperForm>
-        <h2 style={{fontFamily: 'sans-serif', fontSize: '1.5rem', textAlign: 'center', marginBottom: '2rem', color: '#2B3647', fontWeight: '600'}}>Iniciar sesion como reclutador</h2>
+        <h2
+          style={{
+            fontFamily: "sans-serif",
+            fontSize: "1.5rem",
+            textAlign: "center",
+            marginBottom: "2rem",
+            color: "#2B3647",
+            fontWeight: "600",
+          }}
+        >
+          Iniciar sesion como reclutador
+        </h2>
         <Form onSubmit={loginRecruiter}>
           <Input
             label="Correo electronico"

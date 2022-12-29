@@ -2,7 +2,7 @@ import React from "react";
 import { toast } from "react-hot-toast";
 import { useForm } from "hooks";
 import { createNewUser } from "services";
-import Input from "components/Input/Input";
+import { Input } from "components/Input/Input";
 import ButtonFile from "components/Button/ButtonFile";
 import CustomAvatar from "components/Avatar/Avatar";
 import { MdOutlineErrorOutline } from "react-icons/md";
@@ -61,8 +61,7 @@ const validateForm = (form) => {
   if (!form.t400_email.trim())
     errors.t400_email = "El campo 'Correo electronico' es requerido";
   else if (!regex.t400_email.test(form.t400_email.trim()))
-    errors.t400_email =
-      "El campo 'Correo electronico' es incorrecto.";
+    errors.t400_email = "El campo 'Correo electronico' es incorrecto.";
 
   if (!form.t400_position.trim())
     errors.t400_position = "El campo 'Cargo' es requerido";

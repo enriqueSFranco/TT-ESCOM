@@ -3,6 +3,7 @@ import { Toaster, toast } from "react-hot-toast";
 import { useAuth } from "context/AuthContext";
 import {
   useFetch,
+  useModal,
   useGetObservationVacant,
   useGetObservationVacantManager,
 } from "hooks";
@@ -31,12 +32,14 @@ import {
   ListItems,
   Title,
 } from "./styled-components/CardDetailsVacantRecruiterStyled";
+import Tooltip from "components/Tooltip/Tooltip";
 
 function createMarkup(description) {
   return { __html: description };
 }
 
 const CardDetailsVacantRecruiter = ({ vacantId }) => {
+  const [isOpen, openModal, closeModal] = useModal(false)
   const observation = useGetObservationVacant({ vacantId: vacantId });
   const observationManager = useGetObservationVacantManager({
     vacantId: vacantId,
@@ -78,7 +81,9 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
     return null;
 
   const STATUS = data[0]?.c204_id_vacant_status?.c204_id_status;
-  const typeOfUser = token?.user?.user_type
+  const typeOfUser = token?.user?.user_type;
+
+  // console.log(typeOfUser);
 
   return (
     <>
@@ -89,13 +94,15 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
       ) : (
         <>
           <WraperCard typeOfUser={typeOfUser}>
-            <WrapperIconEdit>{STATUS === 1 && <FiEdit />}</WrapperIconEdit>
+            {typeOfUser === USERS.recruiter && (
+              <WrapperIconEdit>{STATUS === 1 && <Tooltip title="Editar Vacante"><FiEdit className="button-edit" /></Tooltip>}</WrapperIconEdit>
+            )}
             <Title>{data[0]?.t200_job}</Title>
             <HeaderInfo>
               <ListItems style={{ justifyContent: "center" }}>
                 <li>
                   <Chip
-                    label={`${data[0]?.c214_id_modality?.c214_description}`}
+                    label={`${data[0]?.t200_street}`}
                     bg="var(--bg-color_3)"
                     color="var(--color_3)"
                     icon={
@@ -273,13 +280,13 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                   </article>
                 ) : (
                   <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "1rem",
-                    overflowY: "auto",
-                    height: "700px",
-                  }}
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "1rem",
+                      overflowY: "auto",
+                      height: "700px",
+                    }}
                   >
                     {observationsManager.map((observation) => (
                       <Comment

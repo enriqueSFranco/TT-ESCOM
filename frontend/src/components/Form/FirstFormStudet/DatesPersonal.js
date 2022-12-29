@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Checkbox } from "@mui/material";
-import Input from "components/Input/Input";
+import { Input } from "components/Input/Input";
 import { MdLocationPin } from "react-icons/md";
 import { getLocality } from "services/catalogs";
 import { Select, WrapperSelect } from "./styled-componets/FormStepCandidate";
@@ -48,9 +48,7 @@ function DatesPersonal({
 
   return (
     <div className={styles.containerPage}>
-      <h5 className={styles.formTitlePersonal}>
-        Información Personal
-      </h5>
+      <h5 className={styles.formTitlePersonal}>Información Personal</h5>
       <form className={styles.form}>
         <div className={styles.inputGroup}>
           <Input
@@ -87,7 +85,7 @@ function DatesPersonal({
             id="t100_phonenumber"
           />
         </div>
-        <div style={{display: 'flex', alignItems: 'center', gap: '.3rem'}}>
+        <div style={{ display: "flex", alignItems: "center", gap: ".3rem" }}>
           <MdLocationPin
             style={{
               fontWeight: "bold",
@@ -95,7 +93,12 @@ function DatesPersonal({
             }}
           />
           <span
-            style={{ fontWeight: "400", fontSize: "1em", color: "#2F4665", margin: '1rem 0' }}
+            style={{
+              fontWeight: "400",
+              fontSize: "1em",
+              color: "#2F4665",
+              margin: "1rem 0",
+            }}
           >
             Donde te ubicas?
           </span>

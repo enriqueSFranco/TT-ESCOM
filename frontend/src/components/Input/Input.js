@@ -5,7 +5,12 @@ import {
   TextField,
 } from "./styled-components/InputStyled";
 
-const Input = ({
+const maskSalary = (value) => {
+  console.log(value)
+}
+
+
+export const Input = ({
   label,
   type = "text",
   icon = null,
@@ -35,5 +40,3 @@ const Input = ({
     </BoxInput>
   );
 };
-
-export default Input;

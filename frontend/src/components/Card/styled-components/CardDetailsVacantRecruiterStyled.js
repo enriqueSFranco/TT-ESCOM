@@ -16,11 +16,16 @@ const WrapperIconEdit = styled.div`
   flex-direction: row-reverse;
   font-size: 1.3rem;
   color: #2172f2;
+  
+  .button-edit {
+    cursor: pointer;
+  }
 `;
 
 const WraperCard = styled.article`
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  outline: 2px solid blue;
   ${({ typeOfUser }) => {
     if (typeOfUser === USERS.manager) {
       return `
@@ -60,7 +65,7 @@ const HeaderInfo = styled.header``;
 const Description = styled.div`
   height: fit-content;
   overflow-y: auto;
-  /* outline: 2px solid orange; */
+  outline: 2px solid orange;
 `;
 
 const WrapperActions = styled.div`

@@ -13,7 +13,7 @@ import {
   NavLeft,
   NavList,
   NavItem,
-  NavLink,
+  MyLink,
   WrapperTypeUser
 } from "./styled-components/MainMenuStyled";
 
@@ -33,37 +33,43 @@ const MenuCandidate = () => {
   const { candidate } = useGetCandidate(token?.user?.user_id);
   let typeuser = token?.user?.user_type;
 
+  let activeStyle = {
+    textDecoration: "underline",
+  };
+
+  let activeClassName = "underline";
+
   if (!candidate) return null;
 
-  console.log(candidate)
+  // console.log(candidate)
 
   if (viewport.device === "MOBILE") {
     return (
       <>
         <NavList>
           <NavItem>
-            <NavLink to="/">
+            <MyLink to="/">
               <HiOutlineHome />
               Inicio
-            </NavLink>
+            </MyLink>
           </NavItem>
           <NavItem>
-            <NavLink to="/mis-postulaciones">
+            <MyLink to="/mis-postulaciones">
               <IoMdBriefcase />
               Postulaciones
-            </NavLink>
+            </MyLink>
           </NavItem>
           <NavItem>
-            <NavLink to="/">
+            <MyLink to="/">
               <IoBusinessOutline />
               Empresas
-            </NavLink>
+            </MyLink>
           </NavItem>
           <NavItem>
-            <NavLink to="/comunicados">
+            <MyLink to="/comunicados">
               <BsMegaphone />
               Comunicados
-            </NavLink>
+            </MyLink>
           </NavItem>
         </NavList>
       </>
@@ -73,37 +79,37 @@ const MenuCandidate = () => {
   return (
     <>
       <NavLeft>
-        <Link to="/" style={styles.styledLink}>
-          <picture style={{width: '30px'}}>
-            <img src={logo} alt="logo-bte" />
+      <Link to="/" style={styles.styledLink}>
+          <picture style={{ width: "30px" }}>
+            <img src={logo} alt="logo-bte" width="100%" />
           </picture>
-          <Logo>ESCOM</Logo>
+          <Logo>Bolsa de Trabajo <span className="escom">ESCOM</span></Logo>
         </Link>
       </NavLeft>
       <NavList>
         <NavItem>
-          <NavLink to="/">
+          <MyLink to="/" className="active">
             <HiOutlineHome />
             Inicio
-          </NavLink>
+          </MyLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/mis-postulaciones">
+          <MyLink to="/mis-postulaciones">
             <IoMdBriefcase />
             Mis Postulaciones
-          </NavLink>
+          </MyLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/empresas">
+          <MyLink to="/empresas">
             <IoBusinessOutline />
             Empresas
-          </NavLink>
+          </MyLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/comunicados">
+          <MyLink to="/comunicados">
             <BsMegaphone />
             Comunicados
-          </NavLink>
+          </MyLink>
         </NavItem>
         <NavItem>
           <WrapperTypeUser>

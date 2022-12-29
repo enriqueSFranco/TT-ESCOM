@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
 import { useForm, useFetch, useLanguage } from "hooks";
@@ -12,7 +12,8 @@ import {
   getAllContracTypes,
   getAllCandidateProfile,
 } from "services";
-import Input from "components/Input/Input";
+import Loader from "components/Loader/Loader";
+import { Input } from "components/Input/Input";
 import TextEditor from "components/TextEditor/TextEditor";
 import { Autocomplete, TextField } from "@mui/material";
 import { MdLanguage, MdOutlineErrorOutline } from "react-icons/md";
@@ -25,6 +26,7 @@ import {
   Select,
   WrapperSelect,
   ContainerForm,
+  TitleH1,
 } from "./styled-componets/FormPostJobStyled";
 
 const validateForm = (form) => {
@@ -90,6 +92,7 @@ const FormPostJob = () => {
     POST_NEW_JOB,
     validateForm
   );
+  const [loading, setLoading] = useState(false)
   const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
   const [body, setBody] = useState("");
   const [expList, setExpList] = useState(null);
@@ -141,15 +144,17 @@ const FormPostJob = () => {
 
   const onSubmitPostJob = (e) => {
     e.preventDefault();
+    setLoading(true)
     postJob(newObject)
       .then((response) => {
-        // toast.success(response)
         console.log(response);
         setTimeout(() => {
+          setLoading(false)
           navigate("/dashboard");
-        }, 2000);
+        }, 3000);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false))
   };
 
   const handleLocality = (e) => {
@@ -168,20 +173,14 @@ const FormPostJob = () => {
 
   if (!expList || !data || !languages) return null;
 
+  console.log(newObject)
+
   return (
     <LayoutHome>
       <ContainerForm>
-        <h2
-          style={{
-            fontSize: "1.3rem",
-            fontFamily: "sans-serif",
-            fontWeight: "700",
-            margin: "1rem 0 0 0",
-          }}
-        >
-          Agregar nueva vacante
-        </h2>
+        <TitleH1>Agregar nueva vacante</TitleH1>
         <Form onSubmit={onSubmitPostJob}>
+          {/* titulo de la vacante y numero de plazas */}
           <section style={{ width: "800px" }}>
             <h2
               style={{
@@ -193,20 +192,10 @@ const FormPostJob = () => {
             >
               Sobre la vacante
             </h2>
-
-            <h3
-              style={{
-                "font-size": ".9em",
-                "font-weight": "400",
-                color: "#9BA1A6",
-              }}
-            >
-              Titulo de la vacante
-            </h3>
             <GroupInput>
               <div style={styles.containerError}>
                 <Input
-                  label="Titulo de la vacante"
+                  label="Título de la vacante"
                   width="500px"
                   id="t200_job"
                   name="t200_job"
@@ -232,19 +221,21 @@ const FormPostJob = () => {
             </GroupInput>
           </section>
 
+          {/* Ubicacion */}
           <section style={{ width: "800px" }}>
             <h3
               style={{
                 "font-size": ".9em",
                 "font-weight": "400",
+                margin: "0 0 1rem .5rem",
                 color: "#9BA1A6",
               }}
             >
-              Ubicación
+              Ubicación:
             </h3>
             <GroupInput>
               <Input
-                label="Codigo postal"
+                label="Código postal"
                 id="cp"
                 name="cp"
                 value={cp ? parseInt(cp) : ""}
@@ -277,7 +268,7 @@ const FormPostJob = () => {
                 </Select>
               </WrapperSelect>
               <Input
-                label="Calle"
+                label="Calle y Número"
                 id="t200_street"
                 name="t200_street"
                 value={form.t200_street}
@@ -286,15 +277,17 @@ const FormPostJob = () => {
             </GroupInput>
           </section>
 
+          {/* Perfil del candidato */}
           <section style={{ width: "800px" }}>
             <h3
               style={{
                 "font-size": ".9em",
                 "font-weight": "400",
+                margin: "0 0 1rem .5rem",
                 color: "#9BA1A6",
               }}
             >
-              Perfil del candidato
+              Perfil del candidato:
             </h3>
             <GroupInput>
               <WrapperSelect>
@@ -345,6 +338,7 @@ const FormPostJob = () => {
             </GroupInput>
           </section>
 
+          {/* Salario minimo y maximo */}
           <section style={{ width: "800px" }}>
             <h3
               style={{
@@ -358,22 +352,23 @@ const FormPostJob = () => {
             </h3>
             <GroupInput>
               <Input
-                label="Salario minimo"
-                id=""
-                name=""
-                value=""
+                label="Salario mínimo"
+                id="t200_min_salary"
+                name="t200_min_salary"
+                value={form?.t200_min_salary}
                 onChange={handleChange}
               />
               <Input
-                label="Salario maximo"
-                id=""
-                name=""
-                value=""
+                label="Salario máximo"
+                id="t200_max_salary"
+                name="t200_max_salary"
+                value={form?.t200_max_salary}
                 onChange={handleChange}
               />
             </GroupInput>
           </section>
 
+          {/* Mas informacion sobre la vacante */}
           <section style={{ width: "800px" }}>
             <h3
               style={{
@@ -390,7 +385,7 @@ const FormPostJob = () => {
               style={{
                 "font-size": ".9em",
                 "font-weight": "400",
-                margin: "1rem 0 .5rem .5rem",
+                margin: "1rem 0 1rem .5rem",
                 color: "#9BA1A6",
               }}
             >
@@ -403,41 +398,6 @@ const FormPostJob = () => {
                   name="c208_id_contract"
                   id="c208_id_contract"
                   value={form.c208_id_contract}
-                  onChange={handleChange}
-                >
-                  <option value="" disabled>
-                    Tipo de contratacion
-                  </option>
-                  {typeContractList &&
-                    typeContractList?.map((el) => (
-                      <option
-                        key={`type-contract${crypto.randomUUID()}`}
-                        value={el.c208_id_contract}
-                      >
-                        {el.c208_description}
-                      </option>
-                    ))}
-                </Select>
-              </WrapperSelect>
-            </GroupInput>
-            {/* Horario */}
-            <h3
-              style={{
-                "font-size": ".9em",
-                "font-weight": "400",
-                margin: "1rem 0 .5rem .5rem",
-                color: "#9BA1A6",
-              }}
-            >
-              Horario:
-            </h3>
-            <GroupInput>
-              <WrapperSelect>
-                <Select
-                  width="500px"
-                  name="horario"
-                  id="horario"
-                  value={form.horario}
                   onChange={handleChange}
                 >
                   {typeContractList &&
@@ -453,12 +413,34 @@ const FormPostJob = () => {
               </WrapperSelect>
             </GroupInput>
 
+            {/* Horario */}
+            <h3
+              style={{
+                "font-size": ".9em",
+                "font-weight": "400",
+                margin: "1rem 0 1rem .5rem",
+                color: "#9BA1A6",
+              }}
+            >
+              Horario:
+            </h3>
+            {/* <GroupInput>
+              <Input
+                label="Horario laboral"
+                width="500px"
+                id=""
+                name=""
+                value=""
+                onChange={handleChange}
+              />
+            </GroupInput> */}
+
             {/* Modalidad */}
             <h3
               style={{
                 "font-size": ".9em",
                 "font-weight": "400",
-                margin: "1rem 0 .5rem .5rem",
+                margin: "1rem 0 1rem .5rem",
                 color: "#9BA1A6",
               }}
             >
@@ -592,7 +574,12 @@ const FormPostJob = () => {
               value={body}
             />
           </section>
-          <Button type="submit">Enviar a revision</Button>
+          <Button type="submit">
+            <span className="send">Enviar a Revisión</span>
+              {loading && <Loader width="18px" height="18px" color="#fff" />}
+              {/* {!loading && <BiCheck style={{'font-size': '25px'}} />} */}
+              
+          </Button>
         </Form>
       </ContainerForm>
     </LayoutHome>

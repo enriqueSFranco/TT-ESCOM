@@ -7,13 +7,12 @@ import {
   getLocality,
   CODE_200,
 } from "services";
-import Input from "components/Input/Input";
+import { Input } from "components/Input/Input";
 import Switch from "components/Switch/Switch";
 import CustomAvatar from "components/Avatar/Avatar";
 import ButtonFile from "components/Button/ButtonFile";
-import { BsFileEarmarkImage } from "react-icons/bs";
 import { HiOutlineLocationMarker } from "react-icons/hi";
-import { AiOutlineFile } from 'react-icons/ai'
+import { AiOutlineFile } from "react-icons/ai";
 import { Select, WrapperSelect } from "./UpdateCandidateComponents";
 import styles from "./FormUpdateDataStudent.module.css";
 
@@ -95,7 +94,7 @@ const FormUpdateDataStudent = ({ id, username, picture, candidate }) => {
     const file = e.target.files[0];
     const imgBase64 = await convertToBase64(file);
 
-    setFiles({img: imgBase64});
+    setFiles({ img: imgBase64 });
 
     if (!file) return;
 

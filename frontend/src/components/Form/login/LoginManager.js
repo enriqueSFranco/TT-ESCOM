@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuth } from "context/AuthContext";
 import { useForm, usePassword } from "hooks";
-import Input from "components/Input/Input";
+import { Input } from "components/Input/Input";
 import { IoLogInOutline } from "react-icons/io5";
 import {
   MdEmail,
@@ -89,7 +89,7 @@ const LoginManager = () => {
         <BoxInput>
           <Input
             label="Correo electronico"
-            icon={<MdEmail style={{color: '#1c8efb'}} />}
+            icon={<MdEmail style={{ color: "#1c8efb" }} />}
             width="400px"
             id="t400_email"
             name="t400_email"
@@ -110,7 +110,13 @@ const LoginManager = () => {
             label="Contraseña"
             width="400px"
             onClick={handleShowPassword}
-            icon={showPassword ? <MdVisibility style={{color: '#1c8efb'}} /> : <MdVisibilityOff style={{color: '#ccc'}} /> }
+            icon={
+              showPassword ? (
+                <MdVisibility style={{ color: "#1c8efb" }} />
+              ) : (
+                <MdVisibilityOff style={{ color: "#ccc" }} />
+              )
+            }
             type={showPassword ? "text" : "password"}
             id="password"
             name="password"
