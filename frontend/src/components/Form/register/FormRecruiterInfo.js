@@ -1,7 +1,7 @@
 import React from "react";
-import Input from 'components/Input/Input'
+import { Input } from "components/Input/Input";
 import { MdOutlineErrorOutline } from "react-icons/md";
-import { TiArrowBackOutline } from 'react-icons/ti'
+import { TiArrowBackOutline } from "react-icons/ti";
 import styles from "../Styles.module.css";
 
 const FormRecruiterInfo = ({
@@ -12,20 +12,39 @@ const FormRecruiterInfo = ({
   handleChange,
   handleValidate,
   isActive,
-  setIsAcitve
+  setIsAcitve,
 }) => {
-
   const handleClick = () => setIsAcitve(!isActive);
 
   return (
     <div className={styles.personalContact}>
       {!isActive ? (
         <h2
-        style={{fontFamily: 'sans-serif', fontSize: '1.1em', textAlign: 'center', marginBottom: '2rem', color: '#2B3647', fontWeight: '600'}}
+          style={{
+            fontFamily: "sans-serif",
+            fontSize: "1.1em",
+            textAlign: "center",
+            marginBottom: "2rem",
+            color: "#2B3647",
+            fontWeight: "600",
+          }}
         >
           Datos Personales del reclutador
         </h2>
-      ) : <h2 style={{fontFamily: 'sans-serif', fontSize: '1.1rem', textAlign: 'center', textTransform: 'none', color: '#2B3647', fontWeight: '600'}}>Datos Personales</h2>}
+      ) : (
+        <h2
+          style={{
+            fontFamily: "sans-serif",
+            fontSize: "1.1rem",
+            textAlign: "center",
+            textTransform: "none",
+            color: "#2B3647",
+            fontWeight: "600",
+          }}
+        >
+          Datos Personales
+        </h2>
+      )}
       <form onSubmit={handleSubmitCompany}>
         <div className={styles.inputGroup}>
           <Input
@@ -75,7 +94,6 @@ const FormRecruiterInfo = ({
             onKeyUp={handleValidate}
             onChange={handleChange}
           />
-
         </div>
         <div className={styles.inputGroup}>
           <Input
@@ -116,11 +134,15 @@ const FormRecruiterInfo = ({
         <div className={styles.wrapperButtons}>
           {!isActive ? (
             <button className={styles.btnBack} onClick={prevStep} type="button">
-              <TiArrowBackOutline style={{fontSize: '1.2rem'}} />
+              <TiArrowBackOutline style={{ fontSize: "1.2rem" }} />
               Regresar
             </button>
           ) : (
-            <button className={styles.btnBack} onClick={handleClick} type="button">
+            <button
+              className={styles.btnBack}
+              onClick={handleClick}
+              type="button"
+            >
               Regresar
             </button>
           )}

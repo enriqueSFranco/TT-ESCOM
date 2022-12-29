@@ -5,6 +5,8 @@ export const POST_NEW_JOB = Object.freeze({
   t200_interior_number:"",
   t200_exterior_number:"",
   t200_vacancy:"",
+  t200_min_salary: null,
+  t200_max_salary: null,
   t300_id_company:null,
   c207_id_experience:null,
   c214_id_modality:null,

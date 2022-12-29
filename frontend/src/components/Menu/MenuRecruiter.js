@@ -4,7 +4,7 @@ import { useAuth } from "context/AuthContext";
 import { useGetRecruiter } from "hooks"
 import DropMenu from "./DropMenu";
 import LinkButton from "components/Button/LinkButton";
-import { HiOutlineLogout, HiUserGroup } from "react-icons/hi";
+import { HiUserGroup } from "react-icons/hi";
 import { BsFillMegaphoneFill } from "react-icons/bs";
 import { MdDashboard } from "react-icons/md";
 import logo from "assets/icons/briefcase.png";
@@ -13,7 +13,7 @@ import {
   NavLeft,
   NavList,
   NavItem,
-  NavLink,
+  MyLink,
   WrapperTypeUser
 } from "./styled-components/MainMenuStyled";
 
@@ -59,11 +59,11 @@ const MenuRecruiter = () => {
   return (
     <>
       <NavLeft>
-        <Link to="/" style={styles.styledLink}>
-          <picture style={{width: '30px'}}>
-            <img src={logo} alt="logo-bte" />
+      <Link to="/" style={styles.styledLink}>
+          <picture style={{ width: "30px" }}>
+            <img src={logo} alt="logo-bte" width="100%" />
           </picture>
-          <Logo>ESCOM</Logo>
+          <Logo>Bolsa de Trabajo <span className="escom">ESCOM</span></Logo>
         </Link>
       </NavLeft>
       <NavList>
@@ -76,9 +76,9 @@ const MenuRecruiter = () => {
           />
         </NavItem>
           {links?.map((link, index) => (
-            <NavLink data-item key={`linkId-${link.id}`} to={link.to}>
+            <MyLink data-item key={`linkId-${link.id}`} to={link.to}>
               {link.icon}{link.label}
-            </NavLink>
+            </MyLink>
           ))}
         <NavItem>
         <WrapperTypeUser>
@@ -88,10 +88,10 @@ const MenuRecruiter = () => {
               name={recruiter[0]?.t301_name}
             />
           </WrapperTypeUser>
-          {/* <NavLink to="/" onClick={logout}>
+          {/* <Link to="/" onClick={logout}>
             <HiOutlineLogout style={{ fontSize: "1.4rem" }} />
             Salir
-          </NavLink> */}
+          </Link> */}
         </NavItem>
       </NavList>
     </>

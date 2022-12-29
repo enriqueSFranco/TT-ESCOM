@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { uploadDocumentValidate } from "services";
-import Input from "components/Input/Input";
-import ButtonFile from 'components/Button/ButtonFile'
+import { Input } from "components/Input/Input";
+import ButtonFile from "components/Button/ButtonFile";
 import * as BsIcon from "react-icons/bs";
 import * as MdIcon from "react-icons/md";
 import styles from "../Styles.module.css";
@@ -34,7 +34,7 @@ const FormCompanyInfo = ({
   async function uploadFile(e) {
     const file = e.target.files[0];
     const base64 = await convertToBase64(file);
-    setDocument(file.name)
+    setDocument(file.name);
     uploadDocumentValidate({ t300_validator_document: base64 })
       .then((response) => console.log(response))
       .catch((error) => console.error(error));
@@ -42,8 +42,8 @@ const FormCompanyInfo = ({
 
   function handleUpload(e) {
     uploadFile(e)
-    .then(response => console.log(response))
-    .catch(error => error)
+      .then((response) => console.log(response))
+      .catch((error) => error);
   }
 
   const continueStep = (e) => {
@@ -142,7 +142,11 @@ const FormCompanyInfo = ({
           onChange={handleUpload}
         />
       </div>
-      <span style={{marginBottom: '1rem', fontSize: '.8em', color: '#b2b5be'}}>{document}</span>
+      <span
+        style={{ marginBottom: "1rem", fontSize: ".8em", color: "#b2b5be" }}
+      >
+        {document}
+      </span>
       <button className={styles.btnNext} type="button" onClick={continueStep}>
         Siguiente
       </button>

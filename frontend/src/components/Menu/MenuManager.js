@@ -13,7 +13,7 @@ import {
   NavLeft,
   NavList,
   NavItem,
-  NavLink,
+  MyLink,
   WrapperTypeUser,
 } from "./styled-components/MainMenuStyled";
 
@@ -85,20 +85,20 @@ const MenuManager = () => {
           <picture style={{ width: "30px" }}>
             <img src={logo} alt="logo-bte" width="100%" />
           </picture>
-          <Logo>BTESCOM</Logo>
+          <Logo>Bolsa de Trabajo <span className="escom">ESCOM</span></Logo>
         </Link>
       </NavLeft>
       <NavList>
         {links?.map((link) => (
-          <NavLink data-item key={`link-id-${link.id}`} to={link.to}>
+          <MyLink data-item key={`link-id-${link.id}`} to={link.to}>
             {link.icon}
             {link.label}
-          </NavLink>
+          </MyLink>
         ))}
-        <NavLink to="/empresas" data-link>
+        <MyLink to="/empresas" data-link>
           <IoBusinessOutline style={{ fontSize: "1.3rem" }} />
           Empresas
-        </NavLink>
+        </MyLink>
         <NavItem>
           <WrapperTypeUser>
             <span>Hola 👋, | Administrador </span>

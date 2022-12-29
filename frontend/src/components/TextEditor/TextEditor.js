@@ -9,11 +9,11 @@ const TextEditor = ({ id, name, value, onChange }) => {
       
       onInit={(evt, editor) => (editorRef.current = editor)}
       initialValue="
-        <h2>Descripcion</h2>
+        <h3>Descripción</h3>
         <br/>
-        <h2>Reqerimientos</h2>
+        <h3>Reqerimientos</h3>
         <br/>
-        <h2>Prestaciones</h2>
+        <h3>Prestaciones</h3>
       "
       init={{
         height: 400,

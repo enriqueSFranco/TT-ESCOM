@@ -3,7 +3,7 @@ import { useAuth } from "context/AuthContext";
 import { useForm, usePassword } from "hooks";
 import { Toaster } from "react-hot-toast";
 import LayoutHome from "Layout/LayoutHome";
-import Input from "components/Input/Input";
+import { Input } from "components/Input/Input";
 import LinkButton from "components/Button/LinkButton";
 import { initialFormLoginCandidate } from "types/loginUsers";
 import {
@@ -54,7 +54,18 @@ const FormLoginCandidate = () => {
   return (
     <LayoutHome>
       <WrapperForm>
-        <h2 style={{fontFamily: 'sans-serif', fontSize: '1.5rem', textAlign: 'center', marginBottom: '2rem', color: '#2B3647', fontWeight: '600'}}>Iniciar sesion como candidato</h2>
+        <h2
+          style={{
+            fontFamily: "sans-serif",
+            fontSize: "1.5rem",
+            textAlign: "center",
+            marginBottom: "2rem",
+            color: "#2B3647",
+            fontWeight: "600",
+          }}
+        >
+          Iniciar sesion como candidato
+        </h2>
         <Form onSubmit={loginCandidate}>
           <BoxInput>
             <Input
