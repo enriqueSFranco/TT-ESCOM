@@ -11,8 +11,18 @@ recommendation_prototype = {
     't500_percentage' : ''
 }
 
-def get_vacants():
-    vacants_ids = Vacant.objects.filter(c204_id_vacant_status=2).order_by('t200_id_vacant').values('t200_id_vacant')
+def get_candidate_applications(id_candidate):    
+    vacants_ids = Application.objects.filter(c205_id_application_state__in=[1,2],t100_id_student=id_candidate).order_by('t200_id_vacant').values('t200_id_vacant')    
+    return vacants_ids
+
+def get_vacants(id_candidate):
+    vacants_ids = []
+    applied_vacants = get_candidate_applications(id_candidate)
+    vacants_ids = Vacant.objects.filter(c204_id_vacant_status=2).exclude(t200_id_vacant__in=applied_vacants).order_by('t200_id_vacant').values('t200_id_vacant')    
+    print(vacants_ids)
+    for vacant in vacants_ids:
+        print(vacant)    
+
     return vacants_ids
 
 def get_vacant_mandatory_skills(id_vacant):
@@ -70,12 +80,17 @@ def get_candidate_info(id_candidate):
 
 def get_candidate_applications(id_candidate):
     vacants_ids = []
-    vacants_ids = Application.objects.filter(c205_id_application_state__in=[1,2]).order_by('t200_id_vacant').values('t200_id_vacant')
-    vacants = get_similar_vacants(vacants_ids)
-    return vacants
+    vacants_ids = Application.objects.filter(c205_id_application_state__in=[1,2]).order_by('t200_id_vacant').values('t200_id_vacant')    
+    return vacants_ids
 
-def get_similar_vacants(vacants):
-    print(vacants)
+def get_similar_vacants(id_candidate):
+    vacants_ids = []
+    recommended_vacants = Recommendation.objects.filter(t100_id_student = id_candidate).all()    
+    applied_vacants = get_candidate_applications(id_candidate)
+    vacants_ids = Vacant.objects.filter(c204_id_vacant_status=2).exclude(t200_id_vacant__in=recommended_vacants).exclude(t200_id_vacant__in=applied_vacants).order_by('t200_id_vacant').values('t200_id_vacant')    
+    print("Vacantes recomendadas",recommended_vacants)
+    print("Vacantes no aplicadas ni recomendadas",vacants_ids)
+    print("Vacantes a las que ha aplicado",applied_vacants)    
     return
 
 def candidate_recomendation(id_candidate):
@@ -89,7 +104,7 @@ def candidate_recomendation(id_candidate):
     #    return
     student_destroy = Recommendation.objects.filter(t100_id_student=id_candidate).delete()
     print("Obteniendo vacantes activas.....")    
-    vacants_ids = get_vacants()
+    vacants_ids = get_vacants(id_candidate)
     for id in vacants_ids:
         vacant_data = []
         vacant_data.append(id['t200_id_vacant'])
@@ -123,7 +138,7 @@ def candidate_recomendation(id_candidate):
             recommendation_serializer = RecommendationSerializer(data = recomendation_data)
             if recommendation_serializer.is_valid():
                 recommendation_serializer.save()
-    print(get_candidate_applications(id_candidate))
+    get_similar_vacants(id_candidate)
     
 
 

@@ -153,8 +153,11 @@ class VacantViewSet(viewsets.GenericViewSet):
 		vacant_mandatory_level = request.data['mandatory_level']
 		vacant_optional = request.data['optional']
 		vacant_optional_level = request.data['optional_level']
-		vacant_languages = request.data['language']
+		vacant_languages = request.data['language']					
 		language_level = request.data['language_level']
+		if len(vacant_languages)==0:
+			vacant_languages.append("47")
+			language_level.append("100")
 		print(vacant_mandatory)
 		vacant_serializer = self.serializer_class(data=vacant_data)
 		print('request: ',request.data)
