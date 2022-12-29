@@ -4,6 +4,11 @@ const List = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
+
+  .new-list {
+    display: flex;
+    outline: 2px solid red;
+  }
 `
 
 const Item = styled.li`
