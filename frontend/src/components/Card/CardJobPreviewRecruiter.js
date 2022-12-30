@@ -88,7 +88,10 @@ const CardJobPreviewRecruiter = ({ el, typeUser, onClick }) => {
           typeUser === USERS.manager && (
             <div style={{display: 'flex', alignItems: 'center', gap: '5px'}}>
               <CustomAvatar username={el?.t301_id_recruiter?.t301_name} />
-              <span style={{color: '#6D6D6D'}}>{el?.t301_id_recruiter?.t301_name}</span>
+              <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+                <span style={{color: '#000', fontSize: '12px'}}>{el?.t301_id_recruiter?.t301_name}</span>
+                <span style={{color: '#6D6D6D', fontSize: '12px'}}>Reclutador de: {el?.t301_id_recruiter?.t300_id_company?.t300_name}</span>
+              </div>
             </div>
           )
         }
