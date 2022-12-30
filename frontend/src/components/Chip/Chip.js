@@ -1,8 +1,8 @@
 import { ChipStyled } from './styled-components/ChipStyled'
 
-function Tag({ label, icon = null, bg = 'transparent', color }) {
+function Tag({ label, icon = null, bg = 'transparent', color, outline }) {
   return (
-    <ChipStyled bg={bg} color={color}>
+    <ChipStyled bg={bg} color={color} outline={outline}>
       {icon}
       {label}
     </ChipStyled>

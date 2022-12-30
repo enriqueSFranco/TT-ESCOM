@@ -9,7 +9,7 @@ import {
 } from "hooks";
 import { stateVacant } from "services";
 import { USERS } from "types";
-import { formatDate } from "utils";
+import { formatDate, numberFormat } from "utils";
 import Loader from "components/Loader/Loader";
 import Chip from "components/Chip/Chip";
 import Comment from "components/Comment/Comment";
@@ -99,7 +99,13 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
               <WrapperIconEdit>
                 {STATUS === 1 && (
                   <Tooltip title="Editar Vacante">
-                    <FiEdit className="button-edit" onClick={() => {openModal(); setDataToEdit(data[0])}} />
+                    <FiEdit
+                      className="button-edit"
+                      onClick={() => {
+                        openModal();
+                        setDataToEdit(data[0]);
+                      }}
+                    />
                   </Tooltip>
                 )}
               </WrapperIconEdit>
@@ -144,12 +150,9 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                   marginBottom: "1rem",
                 }}
               >
-                <span
-                  style={{ fontWeight: "700" }}
-                >{`Perfil del candidato: ${data[0]?.c206_id_profile?.c206_description}`}</span>
-                <span
-                  style={{ fontWeight: "700" }}
-                >{`Contratacion: ${data[0]?.c208_id_contract?.c208_description}`}</span>
+                <span>{`Perfil del candidato: ${data[0]?.c206_id_profile?.c206_description}`}</span>
+                <span>{`Contratacion: ${data[0]?.c208_id_contract?.c208_description}`}</span>
+                <span>{`Sueldo: $${numberFormat(data[0]?.t200_min_salary).replace('MXM', '')} - $${numberFormat(data[0]?.t200_max_salary).replace('MXM', '')}`}</span>
               </div>
             </HeaderInfo>
             <Description>
