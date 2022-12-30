@@ -1,12 +1,13 @@
 import React from "react";
 import { useModal } from "hooks";
-import { formatDate } from "utils/formatDate";
+import { formatDate } from "utils";
 import { deleteAcademicHistorial } from "services/students/index";
+import ModalPortal from "components/Modal/ModalPortal";
 import { GoTrashcan } from "react-icons/go";
 import gifTrash from 'assets/icons/trash.gif'
+import { AiOutlineExclamationCircle } from 'react-icons/ai'
 import { MdSchool, MdEdit } from "react-icons/md";
 import styles from "./AcademicRecord.module.css";
-import ModalPortal from "components/Modal/ModalPortal";
 
 const AcademicRecord = ({
   data,
@@ -50,7 +51,7 @@ const AcademicRecord = ({
         >
           <MdSchool className={styles.icon} />
           <div className={styles.history}>
-            <span>{carrer}</span>
+            <span style={{'font-weight': '700', width: '100%'}}>{carrer}</span>
             <span>{academicUnit}</span>
             <span className={styles.date}>
               {formatDate(startDate)} {" - "} {formatDate(endDate)}
@@ -80,7 +81,7 @@ const AcademicRecord = ({
             <img src={gifTrash} alt="trash" />
           </div>
           <h3 className={styles.tittleProjectExperience}>
-            Estas seguro de eliminar la Unidad Academica{" "}
+            <AiOutlineExclamationCircle />Estas seguro de eliminar la Unidad Academica{" "}
             <span>"{academicUnit}"</span> de tu historial Academico ?
           </h3>
           <button

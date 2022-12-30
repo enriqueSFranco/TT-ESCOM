@@ -3,12 +3,7 @@ import {
   Icon,
   InputLabel,
   TextField,
-} from "./styled-components/InputStyled";
-
-const maskSalary = (value) => {
-  console.log(value)
-}
-
+} from "./styled-components/styles";
 
 export const Input = ({
   label,

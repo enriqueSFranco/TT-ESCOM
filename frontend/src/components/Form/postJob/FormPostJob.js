@@ -522,9 +522,7 @@ const FormPostJob = ({
                   />
                 )}
               />
-              {/* <Tooltip title="Agregar una nueva habilidad">
-                  <Button>+</Button>
-                </Tooltip> */}
+            
             </SubGroupInput>
             <SubGroupInput>
               <Autocomplete
