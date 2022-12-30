@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
 import { useForm, useFetch, useLanguage } from "hooks";
 import { POST_NEW_JOB } from "types/newJob";
-import LayoutHome from "Layout/LayoutHome";
 import {
   postJob,
   getLocality,
@@ -34,7 +33,7 @@ const validateForm = (form) => {
   let regex = {
     t200_job: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{1,255}$/,
     t200_min_salary: /^[0-9]+$/,
-    t200_cp: /^[0-9]+$/,
+    // t200_cp: /^[0-9]+$/,
   };
 
   if (!form.t200_job.trim())
@@ -49,11 +48,11 @@ const validateForm = (form) => {
     errors.t200_min_salary =
       "El campo 'Titulo de la vacante' solo acepta letras y espacios en blanco.";
 
-  if (!form.t200_cp.trim())
-    errors.t200_cp = "El campo 'Titulo de la vacante' es requerido";
-  else if (!regex.t200_cp.test(form.t200_cp.trim()))
-    errors.t200_cp =
-      "El campo 'Titulo de la vacante' solo acepta letras y espacios en blanco.";
+  // if (!form.t200_cp.trim())
+  //   errors.t200_cp = "El campo 'Titulo de la vacante' es requerido";
+  // else if (!regex.t200_cp.test(form.t200_cp.trim()))
+  //   errors.t200_cp =
+  //     "El campo 'Titulo de la vacante' solo acepta letras y espacios en blanco.";
   return errors;
 };
 
@@ -84,15 +83,20 @@ const styles = {
   },
 };
 
-const FormPostJob = () => {
+const FormPostJob = ({
+  top,
+  setDataToEdit,
+  dataToEdit,
+  nameJob,
+}) => {
   const navigate = useNavigate();
   const { token } = useAuth();
   const { languages } = useLanguage();
-  const { form, errors, handleChange, handleValidate } = useForm(
+  const { form, errors, setForm, handleChange, handleValidate } = useForm(
     POST_NEW_JOB,
     validateForm
   );
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
   const [body, setBody] = useState("");
   const [expList, setExpList] = useState(null);
@@ -107,6 +111,15 @@ const FormPostJob = () => {
   const habilidadesOpcionales = recuperarHabilidades(opcionales);
   const habilidadesRequeridas = recuperarHabilidades(requeridas);
   const lagnguageId = recuperarIdiomaId(requiredLanguage);
+  let newObject = {
+    ...form,
+    t200_description: body,
+    t200_street: place,
+    t301_id_recruiter: token?.user?.id,
+    mandatory: habilidadesRequeridas,
+    optional: habilidadesOpcionales,
+    language: lagnguageId,
+  };
 
   useEffect(() => {
     getAllCatalogueExperience()
@@ -132,29 +145,42 @@ const FormPostJob = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  let newObject = {
-    ...form,
-    t200_description: body,
-    t200_street: place,
-    t301_id_recruiter: token?.user?.id,
-    mandatory: habilidadesRequeridas,
-    optional: habilidadesOpcionales,
-    language: lagnguageId,
-  };
+  useEffect(() => {
+    if (dataToEdit) {
+      setForm(dataToEdit)
+    } else {
+      setForm(newObject)
+    }
+  }, [dataToEdit])
 
-  const onSubmitPostJob = (e) => {
-    e.preventDefault();
-    setLoading(true)
+
+  const createJob = () => {
+    setLoading(true);
     postJob(newObject)
       .then((response) => {
-        console.log(response);
         setTimeout(() => {
-          setLoading(false)
+          setLoading(false);
           navigate("/dashboard");
         }, 3000);
       })
       .catch((error) => console.error(error))
-      .finally(() => setLoading(false))
+      .finally(() => setLoading(false));
+  };
+
+  const updateJob = () => {
+    console.log("actualizar vacante");
+  };
+
+  const onSubmitPostJob = (e) => {
+    e.preventDefault();
+
+    // CREAR VACANTE
+    if (form.t200_id_vacant === null) {
+      console.log("crear vacante");
+      createJob();
+    } else {
+      updateJob();
+    }
   };
 
   const handleLocality = (e) => {
@@ -173,258 +199,257 @@ const FormPostJob = () => {
 
   if (!expList || !data || !languages) return null;
 
-  console.log(newObject)
+  console.log(newObject);
 
   return (
-    <LayoutHome>
-      <ContainerForm>
-        <TitleH1>Agregar nueva vacante</TitleH1>
-        <Form onSubmit={onSubmitPostJob}>
-          {/* titulo de la vacante y numero de plazas */}
-          <section style={{ width: "800px" }}>
-            <h2
-              style={{
-                fontSize: "1.1em",
-                fontFamily: "sans-serif",
-                fontWeight: "600",
-                margin: ".5rem 0 1rem 0",
-              }}
-            >
-              Sobre la vacante
-            </h2>
-            <GroupInput>
-              <div style={styles.containerError}>
-                <Input
-                  label="Título de la vacante"
-                  width="500px"
-                  id="t200_job"
-                  name="t200_job"
-                  value={newObject.t200_job}
-                  onChange={handleChange}
-                  onBlur={handleValidate}
-                  onKeyUp={handleValidate}
-                />
-                {errors.t200_job && (
-                  <span style={styles.textError}>
-                    <MdOutlineErrorOutline />
-                    {errors.t200_job}
-                  </span>
-                )}
-              </div>
+    <ContainerForm top={top}>
+      <TitleH1>Agregar nueva vacante {nameJob}</TitleH1>
+      <Form onSubmit={onSubmitPostJob}>
+        {/* titulo de la vacante y numero de plazas */}
+        <section style={{ width: "800px" }}>
+          <h2
+            style={{
+              fontSize: "1.1em",
+              fontFamily: "sans-serif",
+              fontWeight: "600",
+              margin: ".5rem 0 1rem 0",
+            }}
+          >
+            Sobre la vacante
+          </h2>
+          <GroupInput>
+            <div style={styles.containerError}>
               <Input
-                label="Numero de plazas"
-                id="t200_vacancy"
-                name="t200_vacancy"
-                value={form.t200_vacancy}
+                label="Título de la vacante"
+                width="500px"
+                id="t200_job"
+                name="t200_job"
+                value={newObject.t200_job}
                 onChange={handleChange}
+                onBlur={handleValidate}
+                onKeyUp={handleValidate}
               />
-            </GroupInput>
-          </section>
+              {errors.t200_job && (
+                <span style={styles.textError}>
+                  <MdOutlineErrorOutline />
+                  {errors.t200_job}
+                </span>
+              )}
+            </div>
+            <Input
+              label="Numero de plazas"
+              id="t200_vacancy"
+              name="t200_vacancy"
+              value={form.t200_vacancy}
+              onChange={handleChange}
+            />
+          </GroupInput>
+        </section>
 
-          {/* Ubicacion */}
-          <section style={{ width: "800px" }}>
-            <h3
-              style={{
-                "font-size": ".9em",
-                "font-weight": "400",
-                margin: "0 0 1rem .5rem",
-                color: "#9BA1A6",
+        {/* Ubicacion */}
+        <section style={{ width: "800px" }}>
+          <h3
+            style={{
+              "font-size": ".9em",
+              "font-weight": "400",
+              margin: "0 0 1rem .5rem",
+              color: "#9BA1A6",
+            }}
+          >
+            Ubicación:
+          </h3>
+          <GroupInput>
+            <Input
+              label="Código postal"
+              id="cp"
+              name="cp"
+              value={cp ? parseInt(cp) : ""}
+              onChange={handleLocality}
+              onKeyDown={function (e) {
+                let charCode = e.which ? e.which : e.keyCode;
+                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                  e.preventDefault();
               }}
-            >
-              Ubicación:
-            </h3>
-            <GroupInput>
-              <Input
-                label="Código postal"
-                id="cp"
-                name="cp"
-                value={cp ? parseInt(cp) : ""}
-                onChange={handleLocality}
-                onKeyDown={function (e) {
-                  let charCode = e.which ? e.which : e.keyCode;
-                  if (charCode > 31 && (charCode < 48 || charCode > 57))
-                    e.preventDefault();
-                }}
-              />
-              <WrapperSelect>
-                <Select
-                  name="place"
-                  id="place"
-                  value={place}
-                  onChange={(e) => setPlace(e.target.value)}
-                >
-                  <option value="" disabled>
-                    Seleccione una localidad
-                  </option>
-                  {localities &&
-                    localities?.map((township) => (
-                      <option
-                        key={`localities-id-${crypto.randomUUID()}`}
-                        value={township.c222_locality}
-                      >
-                        {township.c222_locality}
-                      </option>
-                    ))}
-                </Select>
-              </WrapperSelect>
-              <Input
-                label="Calle y Número"
-                id="t200_street"
-                name="t200_street"
-                value={form.t200_street}
+            />
+            <WrapperSelect>
+              <Select
+                name="place"
+                id="place"
+                value={place}
+                onChange={(e) => setPlace(e.target.value)}
+              >
+                <option value="" disabled>
+                  Seleccione una localidad
+                </option>
+                {localities &&
+                  localities?.map((township) => (
+                    <option
+                      key={`localities-id-${crypto.randomUUID()}`}
+                      value={township.c222_locality}
+                    >
+                      {township.c222_locality}
+                    </option>
+                  ))}
+              </Select>
+            </WrapperSelect>
+            <Input
+              label="Calle y Número"
+              id="t200_street"
+              name="t200_street"
+              value={form.t200_street}
+              onChange={handleChange}
+            />
+          </GroupInput>
+        </section>
+
+        {/* Perfil del candidato */}
+        <section style={{ width: "800px" }}>
+          <h3
+            style={{
+              "font-size": ".9em",
+              "font-weight": "400",
+              margin: "0 0 1rem .5rem",
+              color: "#9BA1A6",
+            }}
+          >
+            Perfil del candidato:
+          </h3>
+          <GroupInput>
+            <WrapperSelect>
+              <Select
+                width="390px"
+                name="c206_id_profile"
+                id="c206_id_profile"
+                value={form.c206_id_profile}
                 onChange={handleChange}
-              />
-            </GroupInput>
-          </section>
+              >
+                <option value="" disabled>
+                  Perfil del candidato
+                </option>
+                {profileCandidateList &&
+                  profileCandidateList?.map((el) => (
+                    <option
+                      key={`profile-candidate-${crypto.randomUUID()}`}
+                      value={el.c206_id_profile}
+                    >
+                      {el.c206_description}
+                    </option>
+                  ))}
+              </Select>
+            </WrapperSelect>
 
-          {/* Perfil del candidato */}
-          <section style={{ width: "800px" }}>
-            <h3
-              style={{
-                "font-size": ".9em",
-                "font-weight": "400",
-                margin: "0 0 1rem .5rem",
-                color: "#9BA1A6",
-              }}
-            >
-              Perfil del candidato:
-            </h3>
-            <GroupInput>
-              <WrapperSelect>
-                <Select
-                  width="390px"
-                  name="c206_id_profile"
-                  id="c206_id_profile"
-                  value={form.c206_id_profile}
-                  onChange={handleChange}
-                >
-                  <option value="" disabled>
-                    Perfil del candidato
-                  </option>
-                  {profileCandidateList &&
-                    profileCandidateList?.map((el) => (
-                      <option
-                        key={`profile-candidate-${crypto.randomUUID()}`}
-                        value={el.c206_id_profile}
-                      >
-                        {el.c206_description}
-                      </option>
-                    ))}
-                </Select>
-              </WrapperSelect>
-
-              <WrapperSelect>
-                <Select
-                  width="390px"
-                  name="c207_id_experience"
-                  id="c207_id_experience"
-                  value={form.c207_id_experience}
-                  onChange={handleChange}
-                >
-                  <option value="" disabled>
-                    Nivel de Experiencia
-                  </option>
-                  {expList &&
-                    expList?.map((el) => (
-                      <option
-                        key={`exp-${crypto.randomUUID()}`}
-                        value={el.c207_id_experience}
-                      >
-                        {el.c207_description}
-                      </option>
-                    ))}
-                </Select>
-              </WrapperSelect>
-            </GroupInput>
-          </section>
-
-          {/* Salario minimo y maximo */}
-          <section style={{ width: "800px" }}>
-            <h3
-              style={{
-                fontSize: "1.1em",
-                fontFamily: "sans-serif",
-                fontWeight: "600",
-                margin: "0 0 1rem 0",
-              }}
-            >
-              Salario mensual
-            </h3>
-            <GroupInput>
-              <Input
-                label="Salario mínimo"
-                id="t200_min_salary"
-                name="t200_min_salary"
-                value={form?.t200_min_salary}
+            <WrapperSelect>
+              <Select
+                width="390px"
+                name="c207_id_experience"
+                id="c207_id_experience"
+                value={form.c207_id_experience}
                 onChange={handleChange}
-              />
-              <Input
-                label="Salario máximo"
-                id="t200_max_salary"
-                name="t200_max_salary"
-                value={form?.t200_max_salary}
+              >
+                <option value="" disabled>
+                  Nivel de Experiencia
+                </option>
+                {expList &&
+                  expList?.map((el) => (
+                    <option
+                      key={`exp-${crypto.randomUUID()}`}
+                      value={el.c207_id_experience}
+                    >
+                      {el.c207_description}
+                    </option>
+                  ))}
+              </Select>
+            </WrapperSelect>
+          </GroupInput>
+        </section>
+
+        {/* Salario minimo y maximo */}
+        <section style={{ width: "800px" }}>
+          <h3
+            style={{
+              fontSize: "1.1em",
+              fontFamily: "sans-serif",
+              fontWeight: "600",
+              margin: "0 0 1rem 0",
+            }}
+          >
+            Salario mensual
+          </h3>
+          <GroupInput>
+            <Input
+              label="Salario mínimo"
+              id="t200_min_salary"
+              name="t200_min_salary"
+              value={form?.t200_min_salary}
+              onChange={handleChange}
+            />
+            <Input
+              label="Salario máximo"
+              id="t200_max_salary"
+              name="t200_max_salary"
+              value={form?.t200_max_salary}
+              onChange={handleChange}
+            />
+          </GroupInput>
+        </section>
+
+        {/* Mas informacion sobre la vacante */}
+        <section style={{ width: "800px" }}>
+          <h3
+            style={{
+              fontSize: "1.1em",
+              fontFamily: "sans-serif",
+              fontWeight: "600",
+              margin: "0 0 1rem 0",
+            }}
+          >
+            Cuéntanos más sobre la vacante
+          </h3>
+
+          <h3
+            style={{
+              "font-size": ".9em",
+              "font-weight": "400",
+              margin: "1rem 0 1rem .5rem",
+              color: "#9BA1A6",
+            }}
+          >
+            Tipo de contratación:
+          </h3>
+          <GroupInput>
+            <WrapperSelect>
+              <Select
+                width="500px"
+                name="c208_id_contract"
+                id="c208_id_contract"
+                value={form.c208_id_contract}
                 onChange={handleChange}
-              />
-            </GroupInput>
-          </section>
+              >
+                {typeContractList &&
+                  typeContractList?.map((el) => (
+                    <option
+                      key={`type-contract${crypto.randomUUID()}`}
+                      value={el.c208_id_contract}
+                    >
+                      {el.c208_description}
+                    </option>
+                  ))}
+              </Select>
+            </WrapperSelect>
+          </GroupInput>
 
-          {/* Mas informacion sobre la vacante */}
-          <section style={{ width: "800px" }}>
-            <h3
-              style={{
-                fontSize: "1.1em",
-                fontFamily: "sans-serif",
-                fontWeight: "600",
-                margin: "0 0 1rem 0",
-              }}
-            >
-              Cuéntanos más sobre la vacante
-            </h3>
-
-            <h3
-              style={{
-                "font-size": ".9em",
-                "font-weight": "400",
-                margin: "1rem 0 1rem .5rem",
-                color: "#9BA1A6",
-              }}
-            >
-              Tipo de contratación:
-            </h3>
-            <GroupInput>
-              <WrapperSelect>
-                <Select
-                  width="500px"
-                  name="c208_id_contract"
-                  id="c208_id_contract"
-                  value={form.c208_id_contract}
-                  onChange={handleChange}
-                >
-                  {typeContractList &&
-                    typeContractList?.map((el) => (
-                      <option
-                        key={`type-contract${crypto.randomUUID()}`}
-                        value={el.c208_id_contract}
-                      >
-                        {el.c208_description}
-                      </option>
-                    ))}
-                </Select>
-              </WrapperSelect>
-            </GroupInput>
-
-            {/* Horario */}
-            <h3
-              style={{
-                "font-size": ".9em",
-                "font-weight": "400",
-                margin: "1rem 0 1rem .5rem",
-                color: "#9BA1A6",
-              }}
-            >
-              Horario:
-            </h3>
-            {/* <GroupInput>
+          {/* Horario */}
+          <h3
+            style={{
+              "font-size": ".9em",
+              "font-weight": "400",
+              margin: "1rem 0 1rem .5rem",
+              color: "#9BA1A6",
+            }}
+          >
+            Horario:
+          </h3>
+          {/* <GroupInput>
               <Input
                 label="Horario laboral"
                 width="500px"
@@ -435,154 +460,154 @@ const FormPostJob = () => {
               />
             </GroupInput> */}
 
-            {/* Modalidad */}
-            <h3
-              style={{
-                "font-size": ".9em",
-                "font-weight": "400",
-                margin: "1rem 0 1rem .5rem",
-                color: "#9BA1A6",
-              }}
-            >
-              Modalidad de empleo:
-            </h3>
-            <GroupInput>
-              <WrapperSelect>
-                <Select
-                  width="500px"
-                  name="modality"
-                  id="modality"
-                  value={form.modality}
-                  onChange={handleChange}
-                >
-                  <option value="">Presencial</option>
-                  <option value="">Desde Casa</option>
-                  <option value="">Hibrido</option>
-                </Select>
-              </WrapperSelect>
-            </GroupInput>
-          </section>
+          {/* Modalidad */}
+          <h3
+            style={{
+              "font-size": ".9em",
+              "font-weight": "400",
+              margin: "1rem 0 1rem .5rem",
+              color: "#9BA1A6",
+            }}
+          >
+            Modalidad de empleo:
+          </h3>
+          <GroupInput>
+            <WrapperSelect>
+              <Select
+                width="500px"
+                name="c214_id_modality"
+                id="c214_id_modality"
+                value={form.c214_id_modality}
+                onChange={handleChange}
+              >
+                <option value="1" defaultValue={"1"}>
+                  Presencial
+                </option>
+                <option value="2">Desde Casa</option>
+                <option value="3">Híbrido</option>
+              </Select>
+            </WrapperSelect>
+          </GroupInput>
+        </section>
 
-          {/* HABILIDADES REQUERIDAS Y OPCIONALES */}
-          <section style={{ width: "800px" }}>
-            <h3
-              style={{
-                fontSize: "1rem",
-                fontFamily: "System",
-                margin: "0 0 .4rem 0",
-              }}
-            >
-              ¿Necesitas que el candidato tenga conocimiento de algun tema en
-              especial?
-            </h3>
-            <GroupInput>
-              <SubGroupInput>
-                <Autocomplete
-                  id="requeridas"
-                  sx={{ width: 350, maxWidth: "100%" }}
-                  name="requeridas"
-                  value={requeridas}
-                  onChange={(event, newValue) => setRequeridas(newValue)}
-                  multiple={true}
-                  options={data}
-                  getOptionLabel={({ c116_description }) => c116_description}
-                  filterSelectedOptions
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="Conocimiento Requerido"
-                      placeholder="Selecciona "
-                    />
-                  )}
-                />
-                {/* <Tooltip title="Agregar una nueva habilidad">
+        {/* HABILIDADES REQUERIDAS Y OPCIONALES */}
+        <section style={{ width: "800px" }}>
+          <h3
+            style={{
+              fontSize: "1rem",
+              fontFamily: "System",
+              margin: "0 0 .4rem 0",
+            }}
+          >
+            ¿Necesitas que el candidato tenga conocimiento de algun tema en
+            especial?
+          </h3>
+          <GroupInput>
+            <SubGroupInput>
+              <Autocomplete
+                id="requeridas"
+                sx={{ width: 350, maxWidth: "100%" }}
+                name="requeridas"
+                value={requeridas}
+                onChange={(event, newValue) => setRequeridas(newValue)}
+                multiple={true}
+                options={data}
+                getOptionLabel={({ c116_description }) => c116_description}
+                filterSelectedOptions
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Conocimiento Requerido"
+                    placeholder="Selecciona "
+                  />
+                )}
+              />
+              {/* <Tooltip title="Agregar una nueva habilidad">
                   <Button>+</Button>
                 </Tooltip> */}
-              </SubGroupInput>
-              <SubGroupInput>
-                <Autocomplete
-                  id="opcionales"
-                  sx={{ width: 350, maxWidth: "100%" }}
-                  name="opcionales"
-                  value={opcionales}
-                  onChange={(event, newValue) => setOpcionales(newValue)}
-                  multiple
-                  options={data}
-                  getOptionLabel={(option) => option.c116_description}
-                  filterSelectedOptions
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="Conocimiento Opcional"
-                      placeholder="Selecciona "
-                    />
-                  )}
-                />
-                {/* <Tooltip title="Agregar una nueva habilidad">
+            </SubGroupInput>
+            <SubGroupInput>
+              <Autocomplete
+                id="opcionales"
+                sx={{ width: 350, maxWidth: "100%" }}
+                name="opcionales"
+                value={opcionales}
+                onChange={(event, newValue) => setOpcionales(newValue)}
+                multiple
+                options={data}
+                getOptionLabel={(option) => option.c116_description}
+                filterSelectedOptions
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Conocimiento Opcional"
+                    placeholder="Selecciona "
+                  />
+                )}
+              />
+              {/* <Tooltip title="Agregar una nueva habilidad">
                   <Button>+</Button>
                 </Tooltip> */}
-              </SubGroupInput>
-            </GroupInput>
-          </section>
+            </SubGroupInput>
+          </GroupInput>
+        </section>
 
-          {/* IDIOMAS */}
-          <section style={{ width: "800px" }}>
-            <h2
-              style={{
-                fontSize: "1rem",
-                fontFamily: "System",
-                margin: "0 0 .4rem 0",
-              }}
-            >
-              <MdLanguage style={{ color: "blue" }} /> Idioma/Dialecto
-            </h2>
-            <GroupInput>
-              <SubGroupInput>
-                <Autocomplete
-                  disablePortal
-                  id="language"
-                  name="language"
-                  multiple
-                  options={languages}
-                  getOptionLabel={(option) => option.c111_description}
-                  value={requiredLanguage}
-                  onChange={(event, newValue) => setRequiredLanguage(newValue)}
-                  filterSelectedOptions
-                  sx={{ width: 300 }}
-                  renderInput={(params) => (
-                    <TextField {...params} label="Idioma/Dialecto" />
-                  )}
-                />
-              </SubGroupInput>
-            </GroupInput>
-          </section>
-          <section style={{ width: "800px" }}>
-            <h3
-              style={{
-                fontSize: "1.1em",
-                fontFamily: "sans-serif",
-                fontWeight: "600",
-                margin: "0 0 1rem 0",
-              }}
-            >
-              Descripción de la vacante
-            </h3>
-            <TextEditor
-              id="body"
-              name="body"
-              onChange={(newValue) => setBody(newValue)}
-              value={body}
-            />
-          </section>
-          <Button type="submit">
-            <span className="send">Enviar a Revisión</span>
-              {loading && <Loader width="18px" height="18px" color="#fff" />}
-              {/* {!loading && <BiCheck style={{'font-size': '25px'}} />} */}
-              
-          </Button>
-        </Form>
-      </ContainerForm>
-    </LayoutHome>
+        {/* IDIOMAS */}
+        <section style={{ width: "800px" }}>
+          <h2
+            style={{
+              fontSize: "1rem",
+              fontFamily: "System",
+              margin: "0 0 .4rem 0",
+            }}
+          >
+            <MdLanguage style={{ color: "blue" }} /> Idioma/Dialecto
+          </h2>
+          <GroupInput>
+            <SubGroupInput>
+              <Autocomplete
+                disablePortal
+                id="language"
+                name="language"
+                multiple
+                options={languages}
+                getOptionLabel={(option) => option.c111_description}
+                value={requiredLanguage}
+                onChange={(event, newValue) => setRequiredLanguage(newValue)}
+                filterSelectedOptions
+                sx={{ width: 300 }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Idioma/Dialecto" />
+                )}
+              />
+            </SubGroupInput>
+          </GroupInput>
+        </section>
+        <section style={{ width: "800px" }}>
+          <h3
+            style={{
+              fontSize: "1.1em",
+              fontFamily: "sans-serif",
+              fontWeight: "600",
+              margin: "0 0 1rem 0",
+            }}
+          >
+            Descripción de la vacante
+          </h3>
+          <TextEditor
+            id="body"
+            name="body"
+            onChange={(newValue) => setBody(newValue)}
+            value={body}
+          />
+        </section>
+        <Button type="submit">
+          <span className="send">Enviar a Revisión</span>
+          {loading && <Loader width="18px" height="18px" color="#fff" />}
+          {/* {!loading && <BiCheck style={{'font-size': '25px'}} />} */}
+        </Button>
+      </Form>
+    </ContainerForm>
   );
 };
 

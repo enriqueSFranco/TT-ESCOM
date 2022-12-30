@@ -5,6 +5,7 @@ import CustomAvatar from "components/Avatar/Avatar";
 import ProfileCandidate from '../ProfileCandidate'
 import { MdEmail, MdPhoneIphone } from "react-icons/md";
 import { FaUserCircle } from 'react-icons/fa'
+import { AiOutlineWhatsApp } from 'react-icons/ai'
 import {
   Card,
   CardContentAvatar,
@@ -17,7 +18,7 @@ const CardCandidate = ({ user }) => {
   const [isOpen, openModal, closeModal] = useModal(false)
 
   if (!user) return null;
-  
+
   return (
     <>
       <Card>
@@ -46,7 +47,7 @@ const CardCandidate = ({ user }) => {
             <a href={`mailto:${user.t100_email}`}>{user.t100_email}</a>
           </Text>
           <Text style={{ display: "flex", alignItems: "center", gap: ".3rem" }}>
-            <MdPhoneIphone style={{ color: "#5D5E7D", fontSize: "1.1rem" }} />
+            <AiOutlineWhatsApp style={{ color: "#5D5E7D", fontSize: "1.1rem" }} />
             <a
               aria-label="Chat on WhatsApp"
               href={`https://wa.me/55${user.t100_phonenumber}`}
@@ -60,7 +61,8 @@ const CardCandidate = ({ user }) => {
         </CardViwProfile>
       </Card>
       
-      <ModalPortal isOpen={isOpen} closeModal={closeModal} minWidth="1000px" minHeight="800px" bg="#F3F4F4">
+      <ModalPortal isOpen={isOpen} closeModal={closeModal} minWidth="1200px" minHeight="900px" bg="#F3F4F4">
+        <h3>Informacion del candidato: {user.t100_name}{" "}{user.t100_last_name}</h3>
         <ProfileCandidate user={user} />
       </ModalPortal>
     </>

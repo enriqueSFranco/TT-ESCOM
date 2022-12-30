@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const WrapperTooltip = styled.div`
   position: relative;
-
   &:hover {
     span {
       top: 100%;

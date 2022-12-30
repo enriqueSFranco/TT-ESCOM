@@ -36,9 +36,9 @@ const FormUpdateDataStudent = ({ id, username, picture, candidate }) => {
   const [place, setPlace] = useState("");
 
   useEffect(() => {
-    const newInitialForm = {
-      ...candidate,
-    };
+    // const newInitialForm = {
+    //   ...candidate,
+    // };
     setForm(candidate);
   }, [candidate, id, setForm]);
 

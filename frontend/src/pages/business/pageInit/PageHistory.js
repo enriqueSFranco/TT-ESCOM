@@ -23,14 +23,6 @@ const PageHistory = () => {
   });
   const { data } = useRecruiterJobs({ idRcruiter: token?.user?.id });
 
-  // const handleDeleteJob = async () => {
-  //   const response = await deleteJob(job[0]?.t200_id_vacant);
-
-  //   if (response.status === 200)
-  //     setIsDeletedJob({ succes: response.status, message: response.message });
-  //   else
-  //     setIsDeletedJob({ success: response.status, message: response.message });
-  // };
 
   if (!data || !listVacants) return null;
 

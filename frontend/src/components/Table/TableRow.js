@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useGetSkills, useAcademicHistorial } from "hooks";
 import { uuid } from "utils";
 import CustomAvatar from "components/Avatar/Avatar";
-import Tooltip from "components/Tooltip/Tooltip";
+import Tooltip from "components/Tooltip/TooltipText";
 import CustomChip from "components/Chip/Chip";
 import { BiDislike } from "react-icons/bi";
 import { FaHandshake } from "react-icons/fa";

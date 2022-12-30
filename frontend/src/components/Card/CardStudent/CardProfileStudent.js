@@ -13,7 +13,7 @@ import ModalPortal from "components/Modal/ModalPortal";
 import ModalPreviewCV from "components/Modal/ModalPreviewCV";
 import CustomAvatar from "components/Avatar/Avatar";
 import Chip from "components/Chip/Chip";
-import ToolTip from "components/Tooltip/Tooltip";
+import ToolTip from "components/Tooltip/TooltipText";
 import FormSocialNetwork from "components/Form/FormAddSocialNetwork/FormSocialNetwork";
 import FormUpdateDataStudent from "components/Form/updateInfoStudent/FormUpdateDataStudent";
 import {
@@ -137,9 +137,12 @@ const CardProfileStudent = () => {
                 />
               </span>
               <p>
-                {candidate[0]?.c222_id_locality 
-                  ? candidate[0]?.c222_id_locality.c222_state+" , "+ candidate[0]?.c222_id_locality.c222_municipality+" , "
-                  :""}
+                {candidate[0]?.c222_id_locality
+                  ? candidate[0]?.c222_id_locality.c222_state +
+                    " , " +
+                    candidate[0]?.c222_id_locality.c222_municipality +
+                    " , "
+                  : ""}
                 {candidate[0]?.t100_residence
                   ? candidate[0]?.t100_residence
                   : ""}
@@ -258,37 +261,27 @@ const CardProfileStudent = () => {
                   {candidate[0]?.t100_email}
                 </a>
               </li>
-              {socialNetworks?.length > 0 ? (
-                socialNetworks?.map(({ t113_link, c115_id_plataform }) => (
-                  <li
-                    key={`item-link-plataform-${crypto.randomUUID()}`}
-                    title={`Ir a ${t113_link}`}
-                    className={styles.list_item}
-                  >
-                    <img
-                      src={c115_id_plataform?.c115_icon}
-                      alt={c115_id_plataform?.c115_icon}
-                      className={styles.iconSocialNetwork}
-                    />
-                    <span className={styles.go_link}>
-                      {c115_id_plataform?.c115_description}
-                      {
-                        <a
-                          href={`${t113_link}`}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {t113_link}
-                        </a>
-                      }
-                    </span>
-                  </li>
-                ))
-              ) : (
-                <span style={{ padding: 0 }}>
-                  Sin redes sociales por el momento.
-                </span>
-              )}
+              {socialNetworks?.map(({ t113_link, c115_id_plataform }) => (
+                <li
+                  key={`item-link-plataform-${crypto.randomUUID()}`}
+                  title={`Ir a ${t113_link}`}
+                  className={styles.list_item}
+                >
+                  <img
+                    src={c115_id_plataform?.c115_icon}
+                    alt={c115_id_plataform?.c115_icon}
+                    className={styles.iconSocialNetwork}
+                  />
+                  <span className={styles.go_link}>
+                    {c115_id_plataform?.c115_description}
+                    {
+                      <a href={`${t113_link}`} target="_blank" rel="noreferrer">
+                        {t113_link}
+                      </a>
+                    }
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
           {/* SKILLS */}
@@ -300,8 +293,8 @@ const CardProfileStudent = () => {
                 marginBottom: "1rem",
               }}
             >
-              <h4>Habilidades en</h4>
-              <ToolTip title="Agregar Nueva Habilidad">
+              <h4>Conocimientos en:</h4>
+              <ToolTip title="Agregar Nuevo Conocimiento">
                 <button onClick={openModalSkill} className={styles.buttonAdd}>
                   +
                 </button>
@@ -318,7 +311,7 @@ const CardProfileStudent = () => {
                   />
                 ))
               ) : (
-                <span>Sin habilidades registradas</span>
+                <span>Sin conocimientos registradas</span>
               )}
             </List>
           </div>
@@ -454,7 +447,11 @@ const CardProfileStudent = () => {
         </div>
       </ModalPortal>
 
-      <ModalPortal isOpen={isOpenCV} closeModal={closeModalCV} minWidth="1000px">
+      <ModalPortal
+        isOpen={isOpenCV}
+        closeModal={closeModalCV}
+        minWidth="1000px"
+      >
         <ModalPreviewCV fileUrl={candidate[0]?.t100_cv} />
       </ModalPortal>
     </>

@@ -4,7 +4,7 @@ import { useModal, useAcademicHistorial } from "hooks";
 import ModalPortal from "components/Modal/ModalPortal";
 import FormAddAcademicRecord from "components/Form/AcademicRecord/FormAddAcademicRecord";
 import AcademicRecord from "./AcademicRecord";
-import Tooltip from "components/Tooltip/Tooltip";
+import Tooltip from "components/Tooltip/TooltipText";
 import { MdAdd } from "react-icons/md";
 import styles from "./AcademicRecord.module.css";
 

@@ -52,7 +52,7 @@ const TitleH1 = styled.h1`
 
 const ContainerForm = styled.div`
   position: relative;
-  top: 4rem;
+  top: ${props => props.top || '4rem'};
   height: fit-content;
   display: flex;
   flex-direction: column;

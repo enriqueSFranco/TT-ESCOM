@@ -1,12 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
-import { getAcademicHistorial, sendStatusApplication } from "services";
-import { useGetSkills, useLanguageUser } from "hooks";
+import React, { useState, useRef } from "react";
+import { useGetSkills, useLanguageUser, useAcademicHistorial } from "hooks";
 import CustomAvatar from "components/Avatar/Avatar";
 import Chip from "components/Chip/Chip";
-import Button from "components/Button/Button";
 import { ImProfile } from "react-icons/im";
 import { FiFileText } from "react-icons/fi";
-import { MdEmail, MdOutlinePhoneIphone } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
+import { AiOutlineWhatsApp } from 'react-icons/ai'
 import {
   WrapperCard,
   CardLeft,
@@ -23,17 +22,12 @@ const menuItems = [
   { id: 1, label: "Ver curriculumn", icon: <FiFileText /> },
 ];
 
-const ProfileCandidate = ({
-  user,
-  pk,
-  stateApplicationId,
-  isApplying = false,
-}) => {
+const ProfileCandidate = ({ user }) => {
   const [selectedId, setSelectedId] = useState(menuItems[0].id);
   const [stepWidth, _] = useState(0);
-  const [historialAcademico, setHistorialAcademico] = useState(null);
   const listRef = useRef(null);
   const indicatorRef = useRef(null);
+  const { historial } = useAcademicHistorial(user?.t100_id_student);
   const { skills } = useGetSkills(user?.t100_id_student);
   const { languages } = useLanguageUser(user?.t100_id_student);
   const {
@@ -49,65 +43,65 @@ const ProfileCandidate = ({
 
   const handleSelected = (id) => setSelectedId(id);
 
-  const followUpOnTheApplication = (e) => {
-    e.preventDefault();
-    console.log(`candidato con el pk ${pk} aceptado`);
-    sendStatusApplication(
-      {
-        c205_id_application_state: 2,
-      },
-      pk
-    )
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => console.log(error));
-  };
+  // const followUpOnTheApplication = (e) => {
+  //   e.preventDefault();
+  //   console.log(`candidato con el pk ${pk} aceptado`);
+  //   sendStatusApplication(
+  //     {
+  //       c205_id_application_state: 2,
+  //     },
+  //     pk
+  //   )
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
 
-  const hireCandidate = (e) => {
-    e.preventDefault();
-    console.log(`candidato con el pk ${pk} contratado`);
-    sendStatusApplication(
-      {
-        c205_id_application_state: 4,
-      },
-      pk
-    )
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => console.log(error));
-  };
+  // const hireCandidate = (e) => {
+  //   e.preventDefault();
+  //   console.log(`candidato con el pk ${pk} contratado`);
+  //   sendStatusApplication(
+  //     {
+  //       c205_id_application_state: 4,
+  //     },
+  //     pk
+  //   )
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
 
-  const doNotHireCandidate = (e) => {
-    e.preventDefault();
-    console.log(`candidato con el pk ${pk} no contratado`);
-    sendStatusApplication(
-      {
-        c205_id_application_state: 5,
-      },
-      pk
-    )
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => console.log(error));
-  };
+  // const doNotHireCandidate = (e) => {
+  //   e.preventDefault();
+  //   console.log(`candidato con el pk ${pk} no contratado`);
+  //   sendStatusApplication(
+  //     {
+  //       c205_id_application_state: 5,
+  //     },
+  //     pk
+  //   )
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
 
-  const rejectApplication = (e) => {
-    e.preventDefault();
-    console.log(`candidato con el pk ${pk} rechazado`);
-    sendStatusApplication(
-      {
-        c205_id_application_state: 5,
-      },
-      pk
-    )
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => console.log(error));
-  };
+  // const rejectApplication = (e) => {
+  //   e.preventDefault();
+  //   console.log(`candidato con el pk ${pk} rechazado`);
+  //   sendStatusApplication(
+  //     {
+  //       c205_id_application_state: 5,
+  //     },
+  //     pk
+  //   )
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
 
   // useEffect(() => {
   //   setTimeout(() => {
@@ -117,16 +111,8 @@ const ProfileCandidate = ({
   //   }, 50);
   // }, []);
 
-  useEffect(() => {
-    const controller = new AbortController();
-    getAcademicHistorial(user?.t100_id_student)
-      .then(({ data }) => setHistorialAcademico(data))
-      .catch((error) => console.log(error));
 
-    return () => controller.abort();
-  }, [user?.t100_id_student]);
-
-  if (!skills || !languages || !historialAcademico) return null;
+  if (!skills || !languages || !historial) return null;
 
   return (
     <WrapperCard>
@@ -151,13 +137,12 @@ const ProfileCandidate = ({
           <List>
             <ListItem
               style={{
-                backgroundColor: "#EDEFF3",
-                borderRadius: "50%",
+                'background-color': "#EDEFF3",
+                'border-radius': "50%",
                 height: "35px",
                 width: "35px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+                display: "grid",
+                'place-items': "center",
               }}
             >
               <a href={`mailto:${t100_email}`}>
@@ -166,13 +151,12 @@ const ProfileCandidate = ({
             </ListItem>
             <ListItem
               style={{
-                backgroundColor: "#EDEFF3",
-                borderRadius: "50%",
+                'background-color': "#EDEFF3",
+                'border-radius': "50%",
                 height: "35px",
                 width: "35px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+                display: "grid",
+                'place-items': "center",
               }}
             >
               <a
@@ -180,7 +164,7 @@ const ProfileCandidate = ({
                 rel="noopener"
                 target="_blanck"
               >
-                <MdOutlinePhoneIphone />
+                <AiOutlineWhatsApp style={{color: '#00E676', 'font-size': '20px'}} />
               </a>
             </ListItem>
           </List>
@@ -232,65 +216,11 @@ const ProfileCandidate = ({
               </ListItem>
               <ListItem style={{ alignSelf: "flex-start" }}>
                 {" "}
-                <MdOutlinePhoneIphone />
-                {t100_phonenumber}
+                <AiOutlineWhatsApp style={{color: '#00E676', 'font-size': '20px'}} />
+                <span>{t100_phonenumber}</span>
               </ListItem>
             </List>
           </div>
-          {isApplying && (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: "1rem",
-              }}
-            >
-              {/* NOTE: Si el estado de la vacante esta en estado 2 (En seguiminto)
-                se habilitan las acciones de "contratarlo" o "no contratarlo"
-              */}
-
-              {stateApplicationId === 2 ? (
-                <>
-                  <Button
-                    text="Contratar"
-                    color="#e7f6df"
-                    bgColor="#62c62e"
-                    width="10"
-                    height="3"
-                    onClick={hireCandidate}
-                  />
-                  <Button
-                    text="No Contratar"
-                    color="#FFEAE7"
-                    bgColor="#FF5848"
-                    width="10"
-                    height="3"
-                    onClick={doNotHireCandidate}
-                  />
-                </>
-              ) : (
-                <>
-                  <Button
-                    text="Dar seguimiento"
-                    color="#e7f6df"
-                    bgColor="#62c62e"
-                    width="10"
-                    height="3"
-                    onClick={followUpOnTheApplication}
-                  />
-                  <Button
-                    text="Rechazar candidato"
-                    color="#FFEAE7"
-                    bgColor="#FF5848"
-                    width="10"
-                    height="3"
-                    onClick={rejectApplication}
-                  />
-                </>
-              )}
-            </div>
-          )}
         </CardInfo>
       </CardLeft>
       <CardRight>
@@ -321,7 +251,7 @@ const ProfileCandidate = ({
           {selectedId === menuItems[0]?.id ? (
             <CardPersonalInfo
               personalObject={user?.t100_personal_objectives}
-              academicHistory={historialAcademico}
+              academicHistory={historial}
             />
           ) : (
             <h1>curriculumn</h1>

@@ -2,7 +2,7 @@ import React from "react";
 import { useModal, useFetch } from "hooks";
 import LayoutHome from "Layout/LayoutHome";
 import Button from "components/Button/Button";
-import Tooltip from "components/Tooltip/Tooltip";
+import Tooltip from "components/Tooltip/TooltipText";
 import FormAddCollaborator from "components/Form/FormAddCollaborator";
 import ModalPortal from "components/Modal/ModalPortal";
 import CardCollaborator from "components/Card/CardCollaborator";

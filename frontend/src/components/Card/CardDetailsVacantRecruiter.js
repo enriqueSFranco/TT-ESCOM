@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import { useAuth } from "context/AuthContext";
 import {
@@ -32,14 +32,17 @@ import {
   ListItems,
   Title,
 } from "./styled-components/CardDetailsVacantRecruiterStyled";
-import Tooltip from "components/Tooltip/Tooltip";
+import Tooltip from "components/Tooltip/TooltipText";
+import ModalPortal from "components/Modal/ModalPortal";
+import FormPostJob from "components/Form/postJob/FormPostJob";
 
 function createMarkup(description) {
   return { __html: description };
 }
 
 const CardDetailsVacantRecruiter = ({ vacantId }) => {
-  const [isOpen, openModal, closeModal] = useModal(false)
+  const [isOpen, openModal, closeModal] = useModal(false);
+  const [dataToEdit, setDataToEdit] = useState(null);
   const observation = useGetObservationVacant({ vacantId: vacantId });
   const observationManager = useGetObservationVacantManager({
     vacantId: vacantId,
@@ -83,8 +86,6 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
   const STATUS = data[0]?.c204_id_vacant_status?.c204_id_status;
   const typeOfUser = token?.user?.user_type;
 
-  // console.log(typeOfUser);
-
   return (
     <>
       {loading ? (
@@ -95,7 +96,13 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
         <>
           <WraperCard typeOfUser={typeOfUser}>
             {typeOfUser === USERS.recruiter && (
-              <WrapperIconEdit>{STATUS === 1 && <Tooltip title="Editar Vacante"><FiEdit className="button-edit" /></Tooltip>}</WrapperIconEdit>
+              <WrapperIconEdit>
+                {STATUS === 1 && (
+                  <Tooltip title="Editar Vacante">
+                    <FiEdit className="button-edit" onClick={() => {openModal(); setDataToEdit(data[0])}} />
+                  </Tooltip>
+                )}
+              </WrapperIconEdit>
             )}
             <Title>{data[0]?.t200_job}</Title>
             <HeaderInfo>
@@ -311,6 +318,25 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
           )}
         </>
       )}
+      <ModalPortal isOpen={isOpen} closeModal={closeModal} minWidth="1000px">
+        <div
+          style={{
+            height: "85vh",
+            width: "100%",
+            overflowY: "scroll",
+            position: "relative",
+          }}
+        >
+          <FormPostJob
+            top="0"
+            // createJob={createJob}
+            // updateJob={updateJob}
+            setDataToEdit={setDataToEdit}
+            dataToEdit={dataToEdit}
+            nameJob={data[0]?.t200_job}
+          />
+        </div>
+      </ModalPortal>
       <Toaster position="top-right" />
     </>
   );
