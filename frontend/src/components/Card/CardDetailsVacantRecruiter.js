@@ -95,29 +95,29 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
       ) : (
         <>
           <WraperCard typeOfUser={typeOfUser}>
-            {typeOfUser === USERS.recruiter && (
-              <WrapperIconEdit>
-                {STATUS === 1 && (
-                  <Tooltip title="Editar Vacante">
-                    <FiEdit
-                      className="button-edit"
-                      onClick={() => {
-                        openModal();
-                        setDataToEdit(data[0]);
-                      }}
-                    />
-                  </Tooltip>
-                )}
-              </WrapperIconEdit>
-            )}
-            <Title>{data[0]?.t200_job}</Title>
             <HeaderInfo>
-              <ListItems style={{ justifyContent: "center" }}>
+              {typeOfUser === USERS.recruiter && (
+                <WrapperIconEdit>
+                  {STATUS === 1 && (
+                    <Tooltip title="Editar Vacante">
+                      <FiEdit
+                        className="button-edit"
+                        onClick={() => {
+                          openModal();
+                          setDataToEdit(data[0]);
+                        }}
+                      />
+                    </Tooltip>
+                  )}
+                </WrapperIconEdit>
+              )}
+              <Title>{data[0]?.t200_job}</Title>
+              <ListItems>
                 <li>
                   <Chip
                     label={`${data[0]?.t200_street}`}
-                    bg="var(--bg-color_3)"
-                    color="var(--color_3)"
+                    bg="#fff"
+                    color="#6D6D6D"
                     icon={
                       <HiOutlineLocationMarker style={{ fontSize: "1rem" }} />
                     }
@@ -126,8 +126,8 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                 <li>
                   <Chip
                     label={`${data[0]?.c207_id_experience?.c207_description}`}
-                    bg="var(--bg-color_1)"
-                    color="var(--color_1)"
+                    bg="#fff"
+                    color="#6D6D6D"
                     icon={<FaBrain style={{ fontSize: "1rem" }} />}
                   />
                 </li>
@@ -136,8 +136,8 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                     label={`Fecha de cierre: ${formatDate(
                       new Date(data[0]?.t200_close_date).toLocaleDateString()
                     )}`}
-                    bg="#000"
-                    color="#fff"
+                    bg="#fff"
+                    color="#6D6D6D"
                     icon={<FaCalendarAlt style={{ fontSize: "1rem" }} />}
                   />
                 </li>
@@ -152,7 +152,11 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
               >
                 <span>{`Perfil del candidato: ${data[0]?.c206_id_profile?.c206_description}`}</span>
                 <span>{`Contratacion: ${data[0]?.c208_id_contract?.c208_description}`}</span>
-                <span>{`Sueldo: $${numberFormat(data[0]?.t200_min_salary).replace('MXM', '')} - $${numberFormat(data[0]?.t200_max_salary).replace('MXM', '')}`}</span>
+                <span>{`Sueldo al mes: $${numberFormat(
+                  data[0]?.t200_min_salary
+                ).replace("MXM", "")} - $${numberFormat(
+                  data[0]?.t200_max_salary
+                ).replace("MXM", "")}`}</span>
               </div>
             </HeaderInfo>
             <Description>
@@ -195,7 +199,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                 {!observationsManager.length ? (
                   <article
                     style={{
-                      height: "100%",
+                      height: "calc(100% - 9.3rem)",
                       display: "grid",
                       placeContent: "center",
                     }}
@@ -204,7 +208,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                     <div
                       style={{
                         position: "relative",
-                        bottom: ".5rem",
+                        bottom: "1rem",
                         left: "3rem",
                       }}
                     >
@@ -254,14 +258,12 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
           ) : (
             // TODO: Pasar a un componente independiente
             <WrapperComment typeOfUser={typeOfUser}>
-              <header>
-                <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
-              </header>
+              <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
               <>
                 {!observationManager.length ? (
-                  <article
+                  <div
                     style={{
-                      height: "100%",
+                      height: "calc(100% - 10rem)",
                       display: "grid",
                       placeContent: "center",
                     }}
@@ -287,7 +289,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                     >
                       No hay observaciones para esta vacante
                     </h3>
-                  </article>
+                  </div>
                 ) : (
                   <div
                     style={{
@@ -334,6 +336,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
             top="0"
             // createJob={createJob}
             // updateJob={updateJob}
+            vacantId={data[0]?.t200_id_vacant}
             setDataToEdit={setDataToEdit}
             dataToEdit={dataToEdit}
             nameJob={data[0]?.t200_job}

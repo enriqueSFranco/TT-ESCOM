@@ -46,7 +46,7 @@ const WrapperParagraph = styled.div`
   `
 
 const SkeletonParagraph = styled.p`
-  background-color: #2172F2;
+  background-color: #ccc;
   display: block;
   width: 100%;
   height: 8px;

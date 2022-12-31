@@ -65,6 +65,15 @@ export const postJob = (body) => {
     .catch((error) => error);
 };
 
+export const updateVacant = (id) => {
+  return API.put(`${REACT_APP_URL_VACANTS}${id}`)
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => error);
+};
+
 // export const deleteJob = async (id) => {
 //   return API.delete(`${API_JOBS}/${id}/`)
 //     .then((response) => {

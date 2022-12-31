@@ -10,6 +10,7 @@ import {
   getAllCatalogueExperience,
   getAllContracTypes,
   getAllCandidateProfile,
+  updateVacant
 } from "services";
 import Loader from "components/Loader/Loader";
 import { Input } from "components/Input/Input";
@@ -86,6 +87,7 @@ const styles = {
 const FormPostJob = ({
   top,
   setDataToEdit,
+  vacantId,
   dataToEdit,
   nameJob,
 }) => {
@@ -168,7 +170,12 @@ const FormPostJob = ({
   };
 
   const updateJob = () => {
-    console.log("actualizar vacante");
+    console.log("actualizar vacante", vacantId);
+    updateVacant(vacantId)
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => console.log(error))
   };
 
   const onSubmitPostJob = (e) => {
@@ -449,16 +456,16 @@ const FormPostJob = ({
           >
             Horario:
           </h3>
-          {/* <GroupInput>
+          <GroupInput>
               <Input
                 label="Horario laboral"
                 width="500px"
-                id=""
-                name=""
-                value=""
+                id="t200_working_hours"
+                name="t200_working_hours"
+                value={form?.t200_working_hours}
                 onChange={handleChange}
               />
-            </GroupInput> */}
+            </GroupInput>
 
           {/* Modalidad */}
           <h3

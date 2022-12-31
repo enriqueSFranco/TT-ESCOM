@@ -6,18 +6,12 @@ const Grid = styled.div`
     if (typeOfUser === USERS.manager) {
       return `
         height: 100%;
-
-      `
-    }
-    if (typeOfUser === USERS.recruiter) {
-      return `
-        height: calc(100% - 9.5rem);
+        padding: 10px 0;
       `
     }
   }}
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* justify-items: center; */
   align-content: center;
   gap: 1rem;
 `
@@ -27,7 +21,7 @@ const WrapperWidgets = styled.section`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: .5rem;
+  padding: .5rem 0;
 `
 
 const ContentWidgetCommon = styled.div`
@@ -41,6 +35,8 @@ const ContentWidgetCommon = styled.div`
 const TextNumber = styled.span`
   font-size: 2rem;
   font-weight: 700;
+  color: #438ffe;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 `
 
 const ContentWidget = styled.div`

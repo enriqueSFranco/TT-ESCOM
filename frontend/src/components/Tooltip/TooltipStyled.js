@@ -15,11 +15,11 @@ const Title = styled.span`
   position: absolute;
   right: 0;
   top: 60%;
+  font-size: 12px;
   width: max-content;
   border-radius: 1rem;
-  padding: 0.2rem 0.5rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  padding: 4px 0.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background-color: #222;
   color: #fff;
   pointer-events: none;

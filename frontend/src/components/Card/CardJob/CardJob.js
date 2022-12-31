@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import "moment/locale/es-mx";
 import Chip from "components/Chip/Chip";
-import { numberFormat } from "utils/numberFormat";
+import { parseThousands } from "utils";
 import { IoBusiness } from "react-icons/io5";
 import { MdAttachMoney } from "react-icons/md";
 import { HiLocationMarker } from "react-icons/hi";
@@ -37,9 +37,8 @@ const CardJob = ({ job, vacantId, cards, onClick }) => {
     },
     {
       label: job?.t200_max_salary
-        ? `${numberFormat(job?.t200_max_salary).replace(".00", "")}`
-        : "-",
-      icon: <MdAttachMoney style={{ fontSize: "1.1rem" }} />,
+        ? `$${parseThousands(job?.t200_min_salary)}-${parseThousands(job?.t200_max_salary)}`
+        : "Sueldo no especificado",
     },
     {
       label: job?.c214_id_modality?.c214_description,
@@ -79,10 +78,12 @@ const CardJob = ({ job, vacantId, cards, onClick }) => {
           <TitleJob close={currentTime}>{job.t200_job}</TitleJob>
           <Tags>
             {tags.map((tag, index) => (
-              <TagsItem key={crypto.randomUUID()} index={index}>
+              <TagsItem key={`tag-id-${index}`}>
                 <Chip
-                  color={`var(--color_${index + 1})`}
                   label={tag.label}
+                  outline={`1px solid #ccc`}
+                  bg="#fff"
+                  color="#6D6D6D"
                   icon={tag.icon}
                 />
               </TagsItem>
