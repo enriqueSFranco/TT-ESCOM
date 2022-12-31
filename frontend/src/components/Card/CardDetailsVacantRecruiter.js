@@ -43,6 +43,7 @@ function createMarkup(description) {
 const CardDetailsVacantRecruiter = ({ vacantId }) => {
   const [isOpen, openModal, closeModal] = useModal(false);
   const [dataToEdit, setDataToEdit] = useState(null);
+  const [isEdition, setIsEdition] = useState(false);
   const observation = useGetObservationVacant({ vacantId: vacantId });
   const observationManager = useGetObservationVacantManager({
     vacantId: vacantId,
@@ -105,6 +106,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                         onClick={() => {
                           openModal();
                           setDataToEdit(data[0]);
+                          setIsEdition(true)
                         }}
                       />
                     </Tooltip>
@@ -242,7 +244,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                         key={`comment-id-${el?.t223_id_comment}`}
                         comment={el?.t223_comment}
                         date={el?.t223_sent_date}
-                        username={el?.t400_id_admin?.t400_name}
+                        username={token?.user?.first_name}
                         typeUser={el?.t301_id_recruiter?.t301_id_recruiter}
                       />
                     ))}
@@ -305,7 +307,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                         key={`comment-id-${observation?.t223_id_comment}`}
                         comment={observation?.t223_comment}
                         date={observation?.t223_sent_date}
-                        username={observation?.t400_id_admin?.t400_name}
+                        username={token?.user?.first_name}
                         typeUser={
                           observation?.t301_id_recruiter?.t301_id_recruiter
                         }
@@ -334,10 +336,8 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
         >
           <FormPostJob
             top="0"
-            // createJob={createJob}
-            // updateJob={updateJob}
             vacantId={data[0]?.t200_id_vacant}
-            setDataToEdit={setDataToEdit}
+            isEdition={isEdition}
             dataToEdit={dataToEdit}
             nameJob={data[0]?.t200_job}
           />

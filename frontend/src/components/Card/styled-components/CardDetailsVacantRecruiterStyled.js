@@ -29,14 +29,14 @@ const WraperCard = styled.article`
     if (typeOfUser === USERS.manager) {
       return `
         width: 100%;
-        height: calc(100vh - 4rem);
+        height: calc(100vh - 5.5rem);
       `;
     }
     if (typeOfUser === USERS.recruiter) {
       return `
         width: 100%;
         height: 750px;
-      `
+      `;
     }
   }}
   background-color: #fff;
@@ -58,7 +58,7 @@ const WrapperComment = styled.section`
     if (typeOfUser === USERS.recruiter) {
       return `
         background-color: #fff;
-      `
+      `;
     }
   }}
   border-radius: 5px;
@@ -144,9 +144,9 @@ const Title = styled.h2`
   font-weight: 700;
   text-align: center;
   background: linear-gradient(27deg, #3f5efb, #fc466b);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
   margin-bottom: 1rem;
 `;
 

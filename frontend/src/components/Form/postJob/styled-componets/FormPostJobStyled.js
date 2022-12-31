@@ -59,7 +59,7 @@ const ContainerForm = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  background-color: #F7F9FD;
+  background-color: #fff;
 `;
 
 const SubGroupInput = styled.div`

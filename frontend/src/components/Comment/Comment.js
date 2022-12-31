@@ -8,6 +8,7 @@ import {
 } from "./styled-components/CommentStyled";
 
 const Comment = ({ comment, date, username, typeUser }) => {
+
   return (
     <ContainerMessage typeUser={typeUser}>
       <CustomAvatar username={username} width="40px" height="40px" />

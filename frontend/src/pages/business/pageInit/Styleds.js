@@ -36,14 +36,13 @@ const TextNumber = styled.span`
   font-size: 2rem;
   font-weight: 700;
   color: #438ffe;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: monospace;
 `
 
 const ContentWidget = styled.div`
   display: flex;
   align-items: center;
   text-transform: capitalize;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `
 
 export { Grid, WrapperWidgets, ContentWidget, ContentWidgetCommon, TextNumber }

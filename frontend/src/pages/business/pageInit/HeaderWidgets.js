@@ -35,7 +35,7 @@ const HeaderWidgets = ({ defaultId, vacantId, typeUser }) => {
         <ContentWidget>
           <TextNumber>
             {data[0]?.TotalReceived === null ? (
-              <span style={{ fontSize: "1rem" }}>Sin postulaciones</span>
+              <span style={{ fontSize: "1rem", fontFamily: 'monospace' }}>Sin postulaciones</span>
             ) : (
               <div
                 style={{
@@ -46,11 +46,11 @@ const HeaderWidgets = ({ defaultId, vacantId, typeUser }) => {
                   alignItems: "center",
                 }}
               >
-                <span style={{ fontSize: "1.5rem" }}>
+                <span style={{ fontSize: "1rem", fontFamily: 'monospace' }}>
                   {data[0]?.TotalReceived} postulaciones
                 </span>
                 <Link
-                  style={{ fontSize: "1rem" }}
+                  style={{ fontSize: "15px", fontFamily: 'monospace' }}
                   to={`/postulaciones/${vacantId}/`}
                 >
                   Ver Postulados

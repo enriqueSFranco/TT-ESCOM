@@ -86,7 +86,7 @@ const styles = {
 
 const FormPostJob = ({
   top,
-  setDataToEdit,
+  isEdition,
   vacantId,
   dataToEdit,
   nameJob,
@@ -206,11 +206,11 @@ const FormPostJob = ({
 
   if (!expList || !data || !languages) return null;
 
-  console.log(newObject);
+  // console.log(newObject);
 
   return (
     <ContainerForm top={top}>
-      <TitleH1>Agregar nueva vacante {nameJob}</TitleH1>
+      <TitleH1>{isEdition ? `Editar la vacante ${nameJob}` : 'Agregar nueva vacante'}</TitleH1>
       <Form onSubmit={onSubmitPostJob}>
         {/* titulo de la vacante y numero de plazas */}
         <section style={{ width: "800px" }}>

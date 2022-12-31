@@ -9,7 +9,6 @@ const RowExpand = ({ it }) => {
   const { skills } = useGetSkills(it.t100_id_student?.t100_id_student);
   const { languages } = useLanguageUser(it.t100_id_student?.t100_id_student);
 
-
   return (
     <article className={styles.wrapperDetailsUser}>
       <p className={styles.objectPersonal}>
@@ -18,7 +17,9 @@ const RowExpand = ({ it }) => {
           : "Este candidato no cuenta con objetivo profesional"}
       </p>
       <div className={styles.languages}>
-        <span style={{color: 'grey', marginBottom: '.5rem'}}>Idiomas / Dialecto</span>
+        <span style={{ color: "grey", marginBottom: ".5rem" }}>
+          Idiomas / Dialecto:
+        </span>
         <List className={styles.list}>
           {languages?.map((lenguage) => (
             <ListItem
@@ -27,29 +28,31 @@ const RowExpand = ({ it }) => {
             >
               <Chip
                 label={lenguage?.c111_id_language?.c111_description}
-                bg="#000"
-                color="#fff"
+                bg="#fff"
+                color="#6D6D6D"
+                outline="1px solid #ccc"
               />
             </ListItem>
           ))}
         </List>
       </div>
       <div className={styles.wrapperSkills}>
-        <p className={styles.titleSkills}>Conocimientos</p>
+        <p className={styles.titleSkills}>Conocimientos:</p>
         <List>
           {skills?.map((skill) => (
             <ListItem key={uuid()}>
               <Chip
                 label={skill?.c116_id_skill?.c116_description}
-                bg="#000"
-                color="#fff"
+                bg="#fff"
+                color="#6D6D6D"
+                outline="1px solid #ccc"
               />
             </ListItem>
           ))}
         </List>
       </div>
       <div className={styles.aboutMe}>
-        <span style={{color: 'grey', marginBottom: '.5rem'}}>Contacto</span>
+        <span style={{ color: "grey", marginBottom: ".5rem" }}>Contacto</span>
         <List>
           <ListItem>
             <a

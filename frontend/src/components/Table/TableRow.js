@@ -6,7 +6,7 @@ import Tooltip from "components/Tooltip/TooltipText";
 import CustomChip from "components/Chip/Chip";
 import { BiDislike } from "react-icons/bi";
 import { FaHandshake } from "react-icons/fa";
-import { HiDocumentDownload } from 'react-icons/hi'
+import { HiDocumentDownload } from "react-icons/hi";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import styles from "./Table.module.css";
 
@@ -37,7 +37,7 @@ const TableRow = ({ children, it, index }) => {
           )}
         </td>
         <td className={styles.td}>
-          <div style={{display: 'flex', alignItems: 'center', gap: '.8rem'}}>
+          <div style={{ display: "flex", alignItems: "center", gap: ".8rem" }}>
             <CustomAvatar
               width="50px"
               height="50px"
@@ -58,13 +58,16 @@ const TableRow = ({ children, it, index }) => {
                   <CustomChip
                     label={skill?.c116_id_skill?.c116_description}
                     bg="#fff"
-                    color="#000"
+                    color="#6D6D6D"
+                    outline="1px solid #ccc"
                   />
                 </li>
               ))}
           </ul>
         </td>
-        <td className={styles.td}><span>{it?.c205_id_application_state?.c205_description}</span></td>
+        <td className={styles.td}>
+          <span>{it?.c205_id_application_state?.c205_description}</span>
+        </td>
         <td className={styles.td}>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <Tooltip title="Dar seguimiento">
@@ -78,7 +81,9 @@ const TableRow = ({ children, it, index }) => {
               </button>
             </Tooltip>
             <Tooltip title="Descargar Currículo">
-              <button className={`btn ${styles.actionsBtn} ${styles.dowloadCV}`}>
+              <button
+                className={`btn ${styles.actionsBtn} ${styles.dowloadCV}`}
+              >
                 <HiDocumentDownload />
               </button>
             </Tooltip>
