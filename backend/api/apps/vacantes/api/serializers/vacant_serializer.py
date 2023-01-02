@@ -6,7 +6,8 @@ class VacantSerializer(serializers.ModelSerializer):
         model = Vacant        
         fields = ("t300_id_company","t200_job","t200_description","c207_id_experience","c214_id_modality",
         "c206_id_profile","c204_id_vacant_status","t200_creation_date","t200_publish_date","t200_close_date",
-        "c222_id_locality","t200_street","t200_interior_number","t200_exterior_number","t200_vacancy","c208_id_contract","t301_id_recruiter")
+        "c222_id_locality","t200_street","t200_interior_number","t200_exterior_number","t200_vacancy","c208_id_contract",
+        "t301_id_recruiter","t200_min_salary","t200_max_salary","t200_working_hours")
     
     def create(self,validate_data):
         print("Creando nueva vacante...")
