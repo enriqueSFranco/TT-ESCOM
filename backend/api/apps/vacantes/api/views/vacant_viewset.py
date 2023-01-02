@@ -39,7 +39,10 @@ class VacantViewSet(viewsets.GenericViewSet):
     					"c222_id_locality": "",
     					"c208_id_contract": "",
     					"t301_id_recruiter": "",
-    					"t400_id_admin":""
+    					"t400_id_admin":"",
+						"t200_min_salary":"",
+						"t200_max_salary":"",
+						"t200_working_hours":""
 					}
 	requirement_prototype = {"c116_description": "",
     						 "t211_required_level": "",
@@ -110,6 +113,9 @@ class VacantViewSet(viewsets.GenericViewSet):
 		vacant_data["c222_id_locality"] = data["c222_id_locality"]
 		vacant_data["c208_id_contract"] = data["c208_id_contract"]
 		vacant_data["t301_id_recruiter"] = data["t301_id_recruiter"]		
+		vacant_data["t200_min_salary"] = data["t200_min_salary"]
+		vacant_data["t200_max_salary"] = data["t200_max_salary"]
+		vacant_data["t200_working_hours"] = data["t200_working_hours"]
 		return vacant_data
 
 	def set_requirement(self,skill,level,mandatory,id_vacant):
@@ -148,6 +154,7 @@ class VacantViewSet(viewsets.GenericViewSet):
 
 		Dummy text
 		""" 
+		print(request.data)
 		vacant_data = self.set_vacant(request.data)
 		vacant_mandatory = request.data['mandatory']
 		vacant_mandatory_level = request.data['mandatory_level']

@@ -71,3 +71,8 @@ def calculate_total_percentage(similarity,wheights):
     percentage = sum/total_max_percentage
     #print(percentage)
     return percentage
+
+def calculate_vacants_similarity(similarity):
+    sum = similarity[0]+similarity[1]+similarity[2]+similarity[3]        
+    percentage = sum/4
+    return percentage
