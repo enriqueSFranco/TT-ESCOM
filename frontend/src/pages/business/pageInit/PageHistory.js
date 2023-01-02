@@ -19,11 +19,11 @@ const PageHistory = () => {
   const [filterData, setFilterData] = useState(null);
   const { token } = useAuth();
   const { data: listVacants } = useRecruiterJobs({
-    idRcruiter: token?.user?.id,
+    idRcruiter: token?.user?.user_id,
   });
   const { data } = useRecruiterJobs({ idRcruiter: token?.user?.id });
 
-
+  console.log(token);
   if (!data || !listVacants) return null;
 
   return (

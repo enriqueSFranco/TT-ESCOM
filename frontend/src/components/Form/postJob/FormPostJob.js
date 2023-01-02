@@ -10,7 +10,8 @@ import {
   getAllCatalogueExperience,
   getAllContracTypes,
   getAllCandidateProfile,
-  updateVacant
+  updateVacant,
+  getRecruiter
 } from "services";
 import Loader from "components/Loader/Loader";
 import { Input } from "components/Input/Input";
@@ -103,6 +104,7 @@ const FormPostJob = ({
   const [body, setBody] = useState("");
   const [expList, setExpList] = useState(null);
   const [cp, setCP] = useState("");
+  const [company, setCompany] = useState("");
   const [localities, setLocalities] = useState(null);
   const [place, setPlace] = useState("");
   const [typeContractList, setTypeContractList] = useState(null);
@@ -117,7 +119,8 @@ const FormPostJob = ({
     ...form,
     t200_description: body,
     t200_street: place,
-    t301_id_recruiter: token?.user?.id,
+    t301_id_recruiter: token?.user?.user_id,
+    t300_id_company:company[0]?.t300_id_company?.t300_id_company,
     mandatory: habilidadesRequeridas,
     optional: habilidadesOpcionales,
     language: lagnguageId,
@@ -127,6 +130,14 @@ const FormPostJob = ({
     getAllCatalogueExperience()
       .then((res) => {
         setExpList(res);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  useEffect(() => {
+    getRecruiter(token?.user?.user_id)
+      .then((res) => {
+        setCompany(res);
       })
       .catch((error) => console.error(error));
   }, []);
