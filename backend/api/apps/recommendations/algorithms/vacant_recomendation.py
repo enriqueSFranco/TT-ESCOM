@@ -3,7 +3,7 @@ from apps.vacantes.models import Vacant,RequiredAbility,RequiredLanguage,Applica
 from apps.students.models import Student,StudentSkill,StudentLanguage
 from apps.recommendations.models import Recommendation
 from apps.recommendations.api.serializers.recommendations_serializer import RecommendationSerializer
-from apps.recommendations.algorithms.functions import calculate_experience,calculate_salary,calculate_languages,calculate_optional_skills,calculate_mandatory_skills,calculate_total_percentage
+from apps.recommendations.algorithms.functions import calculate_experience,calculate_salary,calculate_languages,calculate_optional_skills,calculate_mandatory_skills,calculate_total_percentage,calculate_vacants_similarity
 
 recommendation_prototype = {
     't100_id_student' : '',
@@ -85,13 +85,45 @@ def get_candidate_applications(id_candidate):
 
 def get_similar_vacants(id_candidate):
     vacants_ids = []
-    recommended_vacants = Recommendation.objects.filter(t100_id_student = id_candidate).all()    
-    applied_vacants = get_candidate_applications(id_candidate)
-    vacants_ids = Vacant.objects.filter(c204_id_vacant_status=2).exclude(t200_id_vacant__in=recommended_vacants).exclude(t200_id_vacant__in=applied_vacants).order_by('t200_id_vacant').values('t200_id_vacant')    
+    vacants_data = []
+    similar_vacants = []
+    recommended_vacants = Recommendation.objects.filter(t100_id_student = id_candidate).values('t200_id_vacant')
+    applied_vacants = get_candidate_applications(id_candidate).values('t200_id_vacant')
+    #vacants_ids = Vacant.objects.filter(c204_id_vacant_status=2).exclude(t200_id_vacant__in=recommended_vacants).exclude(t200_id_vacant__in=applied_vacants).order_by('t200_id_vacant').values('t200_id_vacant')    
+    vacants_ids = Vacant.objects.filter(c204_id_vacant_status=2).exclude(t200_id_vacant__in=applied_vacants).exclude(t200_id_vacant__in=recommended_vacants).order_by('t200_id_vacant').values('t200_id_vacant')    
     print("Vacantes recomendadas",recommended_vacants)
-    print("Vacantes no aplicadas ni recomendadas",vacants_ids)
-    print("Vacantes a las que ha aplicado",applied_vacants)    
-    return
+    print("Vacantes a las que ha aplicado",applied_vacants)   
+    print("Vacantes no aplicadas ni recomendadas",vacants_ids)     
+    for vacant in vacants_ids:
+        vacant_data =[]
+        vacant_data.append(vacant['t200_id_vacant'])
+        vacant_data.append(get_vacant_mandatory_skills(vacant['t200_id_vacant']))
+        vacant_data.append(get_vacant_optional_skills(vacant['t200_id_vacant']))
+        vacant_data.append(get_vacant_languages(vacant['t200_id_vacant']))
+        vacant_data.append(get_vacant_salary_range(vacant['t200_id_vacant']))
+        vacant_data.append(get_vacant_required_experience(vacant['t200_id_vacant']))
+        vacants_data.append(vacant_data)
+    for id_application in applied_vacants:
+        vacant_info =[]
+        vacant_info.append(id_application['t200_id_vacant'])
+        vacant_info.append(get_vacant_mandatory_skills(id_application['t200_id_vacant']))
+        vacant_info.append(get_vacant_optional_skills(id_application['t200_id_vacant']))
+        vacant_info.append(get_vacant_languages(id_application['t200_id_vacant']))
+        vacant_info.append(get_vacant_salary_range(id_application['t200_id_vacant']))
+        vacant_info.append(get_vacant_required_experience(id_application['t200_id_vacant']))
+        print("Vacante a revisar",vacant_info)
+        for vacant in vacants_data:
+            similarity_vector = []
+            similarity_vector.append(calculate_mandatory_skills(vacant_info[1],vacant[1]))
+            similarity_vector.append(calculate_optional_skills(vacant_info[2],vacant[2]))
+            similarity_vector.append(calculate_languages(vacant_info[3],vacant[3]))
+            #similarity_vector.append(calculate_salary(vacant_info[4],vacant[4][0],vacant[4][1]))
+            similarity_vector.append(calculate_experience(vacant_info[5],vacant[5]))#Experiencia             
+            porcentage = calculate_vacants_similarity(similarity_vector)
+            print("Vector_similitud entre vacantes "+str(id_application['t200_id_vacant'])+" y "+str(vacant[0])+":"+str(similarity_vector)+","+str(porcentage))
+            if porcentage > 90:
+                similar_vacants.append(vacant[0])        
+    return similar_vacants
 
 def candidate_recomendation(id_candidate):
     weight = [0.6,0.2,0.1,1,.5]
@@ -99,6 +131,7 @@ def candidate_recomendation(id_candidate):
     vacants = []
     similarity_vectors = []
     candidate_vector = []
+    similar_applied_vacants = []
     #check_recommendations = Recommendation.objects.filter(t100_id_student=id_candidate).all()    
     #if len(check_recommendations) > 0:
     #    return
@@ -138,7 +171,38 @@ def candidate_recomendation(id_candidate):
             recommendation_serializer = RecommendationSerializer(data = recomendation_data)
             if recommendation_serializer.is_valid():
                 recommendation_serializer.save()
-    get_similar_vacants(id_candidate)
+    #Agregar vacantes similares a las vacantes a las que ya haya aplicado el candidato y no se han recomendado
+    similar_applied_vacants = get_similar_vacants(id_candidate)
+    print("Vacantes similares a las que ya se han aplicando",similar_applied_vacants)
+    vacants = []
+    for id in similar_applied_vacants:
+        vacant_data = []
+        vacant_data.append(id)
+        vacant_data.append(get_vacant_mandatory_skills(id))
+        vacant_data.append(get_vacant_optional_skills(id))
+        vacant_data.append(get_vacant_languages(id))
+        vacant_data.append(get_vacant_salary_range(id))
+        vacant_data.append(get_vacant_required_experience(id))
+        print(vacant_data)
+        vacants.append(vacant_data)    
+    for vacant in vacants:
+        similarity_vector = []
+        similarity_vector.append(calculate_mandatory_skills(candidate_vector[1],vacant[1]))
+        similarity_vector.append(calculate_optional_skills(candidate_vector[1],vacant[2]))
+        similarity_vector.append(calculate_languages(candidate_vector[2],vacant[3]))
+        similarity_vector.append(calculate_salary(candidate_vector[3],vacant[4][0],vacant[4][1]))
+        similarity_vector.append(calculate_experience(candidate_vector[4],vacant[5]))#Experiencia 
+        print("vector_similitud",similarity_vector)
+        porcentage = calculate_total_percentage(similarity_vector,weight)        
+        print("Porcentaje de recomendación:",porcentage)
+        recomendation_data = recommendation_prototype
+        recomendation_data['t100_id_student'] = id_candidate
+        recomendation_data['t200_id_vacant'] = vacant[0]
+        recomendation_data['t500_percentage'] = int(porcentage)
+        print(recomendation_data)
+        recommendation_serializer = RecommendationSerializer(data = recomendation_data)
+        if recommendation_serializer.is_valid():
+            recommendation_serializer.save()
     
 
 
