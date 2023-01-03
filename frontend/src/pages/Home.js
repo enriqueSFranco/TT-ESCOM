@@ -22,13 +22,37 @@ import {
   SummaryCard,
 } from "./styled-components/HomeStyled";
 import DetailsJob from "components/Modal/contentModals/DetailsJob";
+import RecommendedVacanciesFilter from "components/Filter/FilterRecommendedVacancies";
 
 const Home = () => {
-  // const [filteredData, setDataFiltered] = useState([]);
+  const [filteredData, setDataFiltered] = useState(new Set());
+  const [selectedFilter, setSelectedFilter] = useState([
+    {
+      label: "Sin experiencia",
+      checked: false,
+    },
+    {
+      label: "0 - 6 meses",
+      checked: false,
+    },
+    {
+      label: "6 meses - 1 año",
+      checked: false,
+    },
+    {
+      label: "1 - 2 años",
+      checked: false,
+    },
+    {
+      label: "Más de 2 años",
+      checked: false,
+    },
+  ]);
+  const [recommended, setRecommended] = useState(false);
   const [vacantId, setVacantId] = useState(null);
   const [isFiltered, setIsFiltered] = useState(false);
   const [query, setQuery] = useState("");
-  const [data, isLoading] = useSearchJob(query);
+  const [data] = useSearchJob(query);
   const externalRef = useRef(null);
   const { response, loading, loadingNextPage, setPage } = useGetAllJobs();
   const { isNearScreen } = useNearScreen({
@@ -45,24 +69,39 @@ const Home = () => {
     handleNextPage();
   }, 400);
 
-  // function handleFilter(value) {
-  //   let lowerValue = value.toLowerCase();
-
-  //   if (lowerValue !== "") {
-  //     const result = data?.results?.filter((el) =>
-  //       el.t200_job.toLowerCase().includes(lowerValue)
-  //       );
-  //       console.log(result)
-  //     setDataFiltered(result);
-  //   }
-  // }
-
   // TODO: Hacer la funcionalidad de filtrado con checkbox
-  function onFiltereChange() {}
+  function onFiltereChange(e) {
+    const { value, checked } = e.target;
+
+    setSelectedFilter({
+      ...selectedFilter,
+      [e.target.name]: checked,
+    });
+
+    if (checked) {
+      const result = response.filter(
+        (it) =>
+          it?.c207_id_experience?.c207_description === value ||
+          it?.c214_id_modality?.c214_description === value
+      );
+      setDataFiltered([...filteredData, ...result]);
+      console.log(filteredData);
+    } else {
+      const result = filteredData.filter(
+        (it) =>
+          it?.c207_id_experience?.c207_description !== value ||
+          it?.c214_id_modality?.c214_description !== value
+      );
+      setDataFiltered([...result]);
+    }
+  }
+
+  function handleChangeRecommended(e) {
+    setRecommended(e.target.checked);
+  }
 
   function handleSearch(value) {
     setIsFiltered(value !== "" ? true : false);
-    // handleFilter(value);
   }
 
   const debouncehandleNextPage = useCallback(debounce, []);
@@ -86,13 +125,17 @@ const Home = () => {
           </LayoutHero>
         </Hero>
         <Aside>
-          <Filters onFiltereChange={onFiltereChange} />
+          <Filters recommended={recommended} handleChangeRecommended={handleChangeRecommended} onFiltereChange={onFiltereChange} />
+          <RecommendedVacanciesFilter
+            handleChangeRecommended={handleChangeRecommended}
+          />
         </Aside>
         <Content>
           <Cards id="cards">
             <JobList
               jobs={isFiltered ? data?.results : response}
               loading={loading}
+              recommended={recommended}
               setVacantId={setVacantId}
             />
             <div

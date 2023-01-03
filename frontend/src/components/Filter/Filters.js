@@ -1,23 +1,25 @@
-import React from 'react'
-import LayoutFilter from 'Layout/LayoutFilter'
-import TypeFilter from './TypeFilter'
-import { WrapperFilters } from './styled-components/FiltersStyled'
+import React from "react";
+import LayoutFilter from "Layout/LayoutFilter";
+import TypeFilter from "./TypeFilter";
+import { WrapperFilters } from "./styled-components/FiltersStyled";
 
-const typeFilters = ['Experincia', 'Modalidad', 'Ver vacantes recomendadas']
+const typeFilters = ["Experincia", "Modalidad"];
 
-const Filters = ({onFiltereChange}) => {
+const Filters = ({ recommended, handleChangeRecommended, onFiltereChange }) => {
   return (
     <WrapperFilters>
-      {
-        typeFilters.map(typeFilter => (
-          <LayoutFilter key={typeFilter} type={typeFilter}>
-            <TypeFilter type={typeFilter} onFiltereChange={onFiltereChange} />
-          </LayoutFilter>
-        ))
-      }
-
+      {typeFilters.map((typeFilter) => (
+        <LayoutFilter key={typeFilter} type={typeFilter}>
+          <TypeFilter
+            type={typeFilter}
+            recommended={recommended}
+            handleChangeRecommended={handleChangeRecommended}
+            onFiltereChange={onFiltereChange}
+          />
+        </LayoutFilter>
+      ))}
     </WrapperFilters>
-  )
-}
+  );
+};
 
-export default Filters
+export default Filters;

@@ -4,7 +4,6 @@ import "moment/locale/es-mx";
 import Chip from "components/Chip/Chip";
 import { parseThousands } from "utils";
 import { IoBusiness } from "react-icons/io5";
-import { MdAttachMoney } from "react-icons/md";
 import { HiLocationMarker } from "react-icons/hi";
 import { FaBrain } from "react-icons/fa";
 import { BsArrowRightShort } from "react-icons/bs";
@@ -25,8 +24,7 @@ import {
 } from "../styled-components/CardJobStyled";
 
 const CardJob = ({ job, vacantId, cards, onClick }) => {
-  const toggleActiveStyled = (index) => {
-    console.log(vacantId, cards.activeCard)
+  const toggleActiveStyled = () => {
     return vacantId === cards.activeCard ? "active" : undefined
   }
 

@@ -2,13 +2,25 @@
 import API from "services/http.service";
 import { CODE_201, CODE_200, CODE_400, CODE_404 } from "services/http.code";
 
+const {
+  REACT_APP_URL_CANDIDATE_LANGUAGE,
+  REACT_APP_URL_CANDIDATE,
+  REACT_APP_URL_CANDIDATE_SKILLS,
+  REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS,
+  REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL,
+  REACT_APP_URL_CANDIDATE_PROJECTS,
+  REACT_APP_URL_CANDIDATE_CERTIFICATIONS,
+  REACT_APP_URL_CANDIDATE_UPLOAD_CV,
+  REACT_APP_URL_CANDIDATE_UPLOAD_IMAGE,
+  REACT_APP_URL_TEST_RECOMMENDATIONS
+} = process.env;
 
-const { REACT_APP_URL_CANDIDATE_LANGUAGE, REACT_APP_URL_CANDIDATE, REACT_APP_URL_CANDIDATE_SKILLS, REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS, REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL, REACT_APP_URL_CANDIDATE_PROJECTS, REACT_APP_URL_CANDIDATE_CERTIFICATIONS, REACT_APP_URL_CANDIDATE_UPLOAD_CV, REACT_APP_URL_CANDIDATE_UPLOAD_IMAGE} = process.env
 
-export const getShortenLink = (url) => {
-  return API(`https://api.shrtco.de/v2/shorten?url=${url}`)
+export const getRecommendations = (candidateId) => {
+  return API(`${REACT_APP_URL_TEST_RECOMMENDATIONS}${candidateId}`)
     .then(response => {
       const { data } = response
+      console.log(data)
       return data
     })
     .catch(error => error)
@@ -19,42 +31,43 @@ export const getShortenLink = (url) => {
  * @returns {Promise}
  **/
 export const getStudent = async (id) => {
-  let controller = new AbortController()
-  let signal = controller.signal
+  let controller = new AbortController();
+  let signal = controller.signal;
 
-  return API(`${REACT_APP_URL_CANDIDATE}${id}/`, {signal})
+  return API(`${REACT_APP_URL_CANDIDATE}${id}/`, { signal })
     .then((response) => {
       const { data } = response;
       return data;
     })
-    .catch((error) => error
-    );
+    .catch((error) => error);
 };
 
 export const getSkills = () => {
-  const controller = new AbortController()
-  const signal = controller.signal
+  const controller = new AbortController();
+  const signal = controller.signal;
 
-  return API.post(`${REACT_APP_URL_CANDIDATE_SKILLS}`, {signal})
-    .then(response => {
-      const { data } = response
-      return data
+  return API.post(`${REACT_APP_URL_CANDIDATE_SKILLS}`, { signal })
+    .then((response) => {
+      const { data } = response;
+      return data;
     })
-    .catch(error => error)
-}
-
+    .catch((error) => error);
+};
 
 export const addSkill = (payload = {}) => {
-  return API.post(`${REACT_APP_URL_CANDIDATE_SKILLS}`, {payload, headers: {
-    accept: 'application/json',
-    'Content-Type': 'application/json'
-  }})
-    .then(response => {
-      const { data } = response
-      return data
+  return API.post(`${REACT_APP_URL_CANDIDATE_SKILLS}`, {
+    payload,
+    headers: {
+      accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      const { data } = response;
+      return data;
     })
-    .catch(error => error)
-}
+    .catch((error) => error);
+};
 
 /**
  * @param {Number} id identificador de un alumno para obtener sus redes sociales
@@ -78,16 +91,12 @@ export const getSocialNetwork = async (id) => {
  * @returns {Promise}
  **/
 export const postSocialNetwork = (payload = {}) => {
-  return API.post(
-    `${REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS}`,
-    payload,
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    }
-  )
+  return API.post(`${REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS}`, payload, {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  })
     .then((response) => response)
     .catch((error) => error);
 };
@@ -100,13 +109,13 @@ export const postSocialNetwork = (payload = {}) => {
 export const updateStudent = (id, payload = {}) => {
   return API.put(`${REACT_APP_URL_CANDIDATE}${id}/`, payload)
     .then((response) => {
-      return response
+      return response;
     })
     .catch((error) => {
       if (error.response) {
         return error.response.data;
       }
-    })
+    });
 };
 
 /**
@@ -117,11 +126,9 @@ export const createAccountStudent = async (payload) => {
   try {
     const controller = new AbortController();
     const signal = controller.signal;
-    const response = await API.post(
-      `${REACT_APP_URL_CANDIDATE}`,
-      payload,
-      { signal }
-    );
+    const response = await API.post(`${REACT_APP_URL_CANDIDATE}`, payload, {
+      signal,
+    });
     if (response.status === CODE_200 || response.status === CODE_201)
       return response;
     else if (response.status === CODE_400 || response.status === CODE_404) {
@@ -137,9 +144,7 @@ export const createAccountStudent = async (payload) => {
   }
 };
 
-
 export const uploadPhotoStudent = (id, payload) => {
-  
   return API.put(`${REACT_APP_URL_CANDIDATE_UPLOAD_IMAGE}${id}/`, payload)
     .then((response) => {
       const { data } = response;
@@ -149,7 +154,6 @@ export const uploadPhotoStudent = (id, payload) => {
 };
 
 export const uploadCVStudent = (id, payload) => {
-  
   return API.put(`${REACT_APP_URL_CANDIDATE_UPLOAD_CV}${id}/`, payload)
     .then((response) => {
       const { data } = response;
@@ -165,16 +169,16 @@ export const addLanguage = (payload) => {
       return data;
     })
     .catch((error) => error);
-}
+};
 
 export const getLanguageUser = (id) => {
-  return API(`${REACT_APP_URL_CANDIDATE_LANGUAGE}${id}/`,)
+  return API(`${REACT_APP_URL_CANDIDATE_LANGUAGE}${id}/`)
     .then((response) => {
       const { data } = response;
       return data;
     })
     .catch((error) => error);
-}
+};
 
 /**
  * @param {Object} payload
@@ -234,8 +238,8 @@ export const addProject = (payload = {}) => {
 export const getAcademicHistorial = (id) => {
   return API(`${REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL}${id}/`)
     .then((response) => {
-      const { data } = response
-      return data
+      const { data } = response;
+      return data;
     })
     .catch((error) => error);
 };
@@ -285,4 +289,3 @@ export const postCertification = (payload = {}) => {
     .then((response) => response)
     .catch((error) => error);
 };
-

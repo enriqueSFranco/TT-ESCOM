@@ -54,21 +54,8 @@ const TypeFilter = ({ type, onFiltereChange }) => {
     </List>
   );
 
-  const RecommendedVacanciesFilter = () => {
-    return (
-      <div>
-        <List className="new-list">
-          <Label htmlFor="recommended-vacancies">Ver recomendaciones</Label>
-          <Checkbox type="checkbox" id="recommended-vacancies" />
-        </List>
-      </div>
-    );
-  };
-
   if (type === "Experincia") return <FilterExp />;
   if (type === "Modalidad") return <FilterModality />;
-  if (type === "Ver vacantes recomendadas")
-    return <RecommendedVacanciesFilter />;
 };
 
 export default TypeFilter;
