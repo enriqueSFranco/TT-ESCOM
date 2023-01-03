@@ -2,11 +2,11 @@ import API from 'services/http.service'
 
 const { REACT_APP_URL_VACANTS, REACT_APP_URL_VACANT_SEARCH, REACT_APP_URL_VACANT_REQUIREMENTS, REACT_APP_URL_VACANT_VACANT_INFO, REACT_APP_URL_VACANT_APPLICATIONS } = process.env
 
-export const getAllJobs = async (numberPage = 1) => {
+export const getAllJobs = async () => {
   const controller = new AbortController()
   const signal = controller.signal
   try {
-    const {data} = await API.get(`${REACT_APP_URL_VACANTS}?page=${numberPage}`, {signal});
+    const {data} = await API.get(REACT_APP_URL_VACANTS, {signal});
     return data;
   } catch (error) {
     if (error.response)
