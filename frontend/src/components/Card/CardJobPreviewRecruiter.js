@@ -28,7 +28,7 @@ const CardJobPreviewRecruiter = ({ el, typeUser, onClick }) => {
 
   if (!el || !data) return null;
 
-  console.log(el)
+  // console.log(el)
 
   return (
     <Card onClick={onClick}>

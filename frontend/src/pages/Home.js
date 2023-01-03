@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useAuth } from "context/AuthContext";
 import {
   useGetAllJobs,
   useNearScreen,
   useCustomDebounce,
   useSearchJob,
+  useRecommendationsVacancies,
 } from "hooks";
 import FormSearchJob from "components/Search/FormSearchJob";
 import JobList from "components/Card/JobList/JobList";
@@ -26,35 +28,18 @@ import RecommendedVacanciesFilter from "components/Filter/FilterRecommendedVacan
 import RecommendedJobs from "components/Card/JobList/RecommendedJobs";
 
 const Home = () => {
+  const { token } = useAuth();
   const [filteredData, setDataFiltered] = useState(new Set());
-  const [selectedFilter, setSelectedFilter] = useState([
-    {
-      label: "Sin experiencia",
-      checked: false,
-    },
-    {
-      label: "0 - 6 meses",
-      checked: false,
-    },
-    {
-      label: "6 meses - 1 año",
-      checked: false,
-    },
-    {
-      label: "1 - 2 años",
-      checked: false,
-    },
-    {
-      label: "Más de 2 años",
-      checked: false,
-    },
-  ]);
+  const [selectedFilter, setSelectedFilter] = useState([]);
   const [recommended, setRecommended] = useState(false);
   const [vacantId, setVacantId] = useState(null);
   const [isFiltered, setIsFiltered] = useState(false);
   const [query, setQuery] = useState("");
   const [data] = useSearchJob(query);
   const externalRef = useRef(null);
+  const { response: recommender, isLoading } = useRecommendationsVacancies(
+    token?.user?.id
+  );
   const { response, loading, loadingNextPage, setPage } = useGetAllJobs();
   const { isNearScreen } = useNearScreen({
     distance: "100px",
@@ -131,14 +116,20 @@ const Home = () => {
             handleChangeRecommended={handleChangeRecommended}
             onFiltereChange={onFiltereChange}
           />
-          <RecommendedVacanciesFilter
-            handleChangeRecommended={handleChangeRecommended}
-          />
+          {token && (
+            <RecommendedVacanciesFilter
+              handleChangeRecommended={handleChangeRecommended}
+            />
+          )}
         </Aside>
         <Content>
           <Cards id="cards">
             {recommended ? (
-              <RecommendedJobs />
+              <RecommendedJobs
+                jobs={recommender}
+                isLoading={isLoading}
+                setVacantId={setVacantId}
+              />
             ) : (
               <JobList
                 jobs={isFiltered ? data?.results : response}

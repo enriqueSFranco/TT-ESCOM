@@ -30,6 +30,7 @@ const Content = styled.div`
   padding: 1rem;
   margin-bottom: 1rem;
   background: linear-gradient(90deg, hsla(333, 100%, 53%, 1) 0%, hsla(33, 94%, 57%, 1) 100%);
+  box-shadow: hsla(333, 100%, 53%, 1) 0px 5px 15px;
 `
 
 const WrapperFilters = styled.div`

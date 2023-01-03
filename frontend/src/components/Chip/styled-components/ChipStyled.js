@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import { device } from 'breakpoints'
 
 export const ChipStyled = styled.span`
-  background-color: ${props => props.bg ? props.bg : 'transparent'};
+  background: ${props => props.bg ? props.bg : 'transparent'};
+  box-shadow: ${props => props.boxShadow || 'none'};
   outline: ${props => props.outline || 'none'};
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   border-radius: 5px;

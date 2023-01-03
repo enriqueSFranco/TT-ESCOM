@@ -23,10 +23,16 @@ import {
   TitleJob,
 } from "../styled-components/CardJobStyled";
 
-const CardJob = ({ job, vacantId, cards, onClick }) => {
+const CardJob = ({
+  job,
+  vacantId,
+  cards,
+  isVacancyRecommended,
+  onClick,
+}) => {
   const toggleActiveStyled = () => {
-    return vacantId === cards.activeCard ? "active" : undefined
-  }
+    return vacantId === cards.activeCard ? "active" : undefined;
+  };
 
   const tags = [
     {
@@ -35,7 +41,9 @@ const CardJob = ({ job, vacantId, cards, onClick }) => {
     },
     {
       label: job?.t200_max_salary
-        ? `$${parseThousands(job?.t200_min_salary)}-${parseThousands(job?.t200_max_salary)}`
+        ? `$${parseThousands(job?.t200_min_salary)}-${parseThousands(
+            job?.t200_max_salary
+          )}`
         : "Sueldo no especificado",
     },
     {
@@ -48,7 +56,12 @@ const CardJob = ({ job, vacantId, cards, onClick }) => {
     return { __html: job.t200_description };
   }
 
-  const currentTime = new Date(job?.t200_publish_date).getUTCDate()
+  const currentTime = new Date(job?.t200_publish_date).getUTCDate();
+
+  console.log(
+    "🚀 ~ file: CardJob.js:27 ~ CardJob ~ isVacancyRecommended",
+    isVacancyRecommended
+  );
 
   return (
     <CardBody close={currentTime} isActive={toggleActiveStyled(vacantId)}>
