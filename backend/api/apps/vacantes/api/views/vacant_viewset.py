@@ -88,10 +88,10 @@ class VacantViewSet(viewsets.GenericViewSet):
 		""" 
 		self.check_outdated_vacants()
 		vacants = self.get_queryset()
-		page = self.paginate_queryset(vacants)
-		if page is not None:
-			vacants_serializer = self.list_serializer_class(page, many=True)
-			return self.get_paginated_response(vacants_serializer.data)
+		#page = self.paginate_queryset(vacants)
+		#if page is not None:
+		#	vacants_serializer = self.list_serializer_class(page, many=True)
+		#	return self.get_paginated_response(vacants_serializer.data)
 		vacants_serializer = self.list_serializer_class(vacants, many=True)
 		return Response(vacants_serializer.data)
 
