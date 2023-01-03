@@ -29,6 +29,7 @@ import RecommendedJobs from "components/Card/JobList/RecommendedJobs";
 
 const Home = () => {
   const { token } = useAuth();
+  const [match, setMatch] = useState(null)
   const [filteredData, setDataFiltered] = useState(new Set());
   const [selectedFilter, setSelectedFilter] = useState([]);
   const [recommended, setRecommended] = useState(false);
@@ -129,6 +130,7 @@ const Home = () => {
                 jobs={recommender}
                 isLoading={isLoading}
                 setVacantId={setVacantId}
+                setMatch={setMatch}
               />
             ) : (
               <JobList
@@ -152,7 +154,7 @@ const Home = () => {
             <div id="visor" ref={externalRef}></div>
           </Cards>
           <SummaryCard>
-            <DetailsJob vacantId={vacantId || response[0]?.t200_id_vacant} />
+            <DetailsJob vacantId={vacantId || response[0]?.t200_id_vacant} recommended={recommended} match={match} />
           </SummaryCard>
         </Content>
         {/* <ButtonScrollTop /> */}

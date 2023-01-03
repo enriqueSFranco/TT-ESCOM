@@ -8,3 +8,4 @@ export * from './numberFormat';
 export * from './uuid';
 export * from './generateCSSClass';
 export * from './removeAccents';
+export * from './getSkillType'

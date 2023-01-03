@@ -41,9 +41,11 @@ const CardHeaderRight = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
   img {
     height: 100%;
-    object-fit: contain;
+    max-width: 50%;
+    object-fit: cover;
     object-position: center center;
     margin-right: 0.5rem;
   }
@@ -83,9 +85,8 @@ const CardFooter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: .5rem 1rem;
+  padding: 0 1rem .3rem 1rem;
   width: 100%;
-  /* height: 100px; */
   border-top: 1px solid #ccc;
   border-radius: 0 0 1rem 1rem;
   color: #000;

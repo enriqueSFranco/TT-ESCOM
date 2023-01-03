@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useGetApplicationJob, useFetch } from "hooks";
-import { parseThousands } from "utils";
+import { useGetApplicationJob, useFetch, useLocalStorage } from "hooks";
+import { parseThousands, getSkillType } from "utils";
 import Chip from "components/Chip/Chip";
 import Table from "components/Table/Table";
 import TableRow from "components/Table/TableRow";
@@ -13,22 +13,14 @@ function createMarkup(description) {
   return { __html: description };
 }
 
-function getSkillType(array, isMandatory = true) {
-  if (!array) return null;
-
-  return array.filter((el) => {
-    if (isMandatory) return el.c116_description;
-    return null;
-  });
-}
-
 const Accordion = () => {
   const { t200_id_vacant } = useParams();
   const { data: requirements } = useFetch(
     `${process.env.REACT_APP_URL_VACANT_REQUIREMENTS}${t200_id_vacant}`
   );
+  const [storedValue, setValue] = useLocalStorage('followUpApplication', [])
   const [data] = useGetApplicationJob({ idVacant: t200_id_vacant });
-  const requredSkill = getSkillType(requirements);
+  const requiredSkill = getSkillType(requirements);
   const optionalSkill = getSkillType(requirements, false);
 
   if (!data || !requirements) return null;
@@ -99,11 +91,11 @@ const Accordion = () => {
 
             {/* habilidades requeridas y opcionales */}
             <div className={styles.listSkill}>
-              {requredSkill.length > 0 ? (
+              {requiredSkill.length > 0 ? (
                 <>
                   <h3 style={{ fontSize: "17px" }}>Habilidades Requeridas</h3>
                   <List>
-                    {requredSkill.map((el) => (
+                    {requiredSkill.map((el) => (
                       <ListItem key={`skill-id-${el.t211_id_requirement}`}>
                         <Chip
                           label={el.c116_description}
@@ -160,7 +152,7 @@ const Accordion = () => {
         <div className={styles.wrapperListApplicants}>
           <Table>
             {data?.map((it, index) => (
-              <TableRow key={index} index={index} it={it}>
+              <TableRow key={index} index={index} it={it} storedValue={storedValue} setValue={setValue}>
                 <RowExpand it={it} />
               </TableRow>
             ))}

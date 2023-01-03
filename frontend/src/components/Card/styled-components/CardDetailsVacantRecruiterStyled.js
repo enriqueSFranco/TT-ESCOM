@@ -130,9 +130,9 @@ const ContentDescription = styled.div`
 
 const ListItems = styled.ul`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   list-style: none;
-  gap: 3px;
+  gap: 1rem;
   margin: 0 0 1rem 0;
   padding: 0;
 `;

@@ -37,19 +37,21 @@ const TextH2 = styled.h2`
 `
 
 const WrapperMoreInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* gap: .5rem; */
   padding: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `
 
 const WrapperRequitements = styled.div`
   padding: 1rem;
   border-bottom: 2px solid #eee;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
+  align-items: flex-start;
+  /* gap: 2rem; */
 `
 
 const DescriptionJob = styled.div`
@@ -58,6 +60,7 @@ const DescriptionJob = styled.div`
   height: 500px;
   background-color: #fff;
   overflow-y: auto;
+  line-height: 30px;
 `
 
 export { DescriptionJob, ContentModal, Header, TextH2, WrapperRequitements, WrapperMoreInfo, WrapperSummaryJob }

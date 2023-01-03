@@ -4,9 +4,7 @@ import React, { useState } from "react";
 import Loader from "components/Loader/Loader";
 import CardJob from "../CardJob/CardJob";
 
-const RecommendedJobs = ({jobs, isLoading, setVacantId}) => {
-  // const { token } = useAuth();
-  // const { response, isLoading } = useRecommendationsVacancies(token?.user?.id);
+const RecommendedJobs = ({ jobs, isLoading, setVacantId, setMatch }) => {
   const [cards, setCards] = useState({
     activeCard: jobs[0]?.t200_id_vacant,
     listCard: jobs,
@@ -16,9 +14,10 @@ const RecommendedJobs = ({jobs, isLoading, setVacantId}) => {
     e.preventDefault();
     setVacantId(vacantId);
     setCards({ ...cards, activeCard: cards.listCard[index]?.t200_id_vacant });
+    setMatch(jobs[index]?.t500_percentage)
   };
 
-  if (!jobs) return null
+  if (!jobs) return null;
 
   return (
     <>

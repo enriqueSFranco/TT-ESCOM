@@ -113,7 +113,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                   )}
                 </WrapperIconEdit>
               )}
-              <Title>{data[0]?.t200_job}</Title>
+              <Title style={{color: '#fff', marginTop: '1rem'}}>{data[0]?.t200_job}</Title>
               <ListItems>
                 <li>
                   <Chip

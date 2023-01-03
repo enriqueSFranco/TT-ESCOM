@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useAuth } from "context/AuthContext";
 import { useFetch, useModal } from "hooks";
 import { applyJob } from "services";
+import { getSkillType } from "utils";
 import Chip from "components/Chip/Chip";
 import Button from "components/Button/Button";
 import { List, ListItem } from "styled-components/CommonStyles";
 import {
   DescriptionJob,
   Header,
-  TextH2,
   WrapperRequitements,
   WrapperMoreInfo,
   WrapperSummaryJob,
@@ -20,7 +20,7 @@ function createMarkup(description) {
   return { __html: description };
 }
 
-const DetailsJob = ({ vacantId }) => {
+const DetailsJob = ({ vacantId, recommended, match }) => {
   const [isApplyJob, setIsApplyJob] = useState({});
   const [isOpen, openModal, closeModal] = useModal(false);
   const { data } = useFetch(
@@ -30,6 +30,9 @@ const DetailsJob = ({ vacantId }) => {
   const { data: summaryJob } = useFetch(
     `${process.env.REACT_APP_URL_VACANTS}${vacantId}`
   );
+
+  const requiredSkills = getSkillType(data);
+  const optionalSkills = getSkillType(data, false);
 
   const handleApplyJob = async (idVacant) => {
     let now = new Date();
@@ -110,69 +113,71 @@ const DetailsJob = ({ vacantId }) => {
           </figure>
         </Header>
         <WrapperRequitements>
-          {!data.length ? null : (
+          {optionalSkills.length > 0 ? (
             <>
-              <div>
-                <TextH2 size="1rem">Conocimientos requeridas</TextH2>
-                <List>
-                  {data
-                    .filter((el) => {
-                      if (el.t211_mandatory) return el.c116_description;
-                      return null;
-                    })
-                    .map((el) => (
-                      <ListItem key={`skill-id-${el.t211_id_requirement}`}>
-                        <Chip
-                          label={el.c116_description}
-                          bg="#fff"
-                          color="#6D6D6D"
-                          outline="1px solid #ccc"
-                        />
-                      </ListItem>
-                    ))}
-                </List>
-              </div>
-              <div>
-                <TextH2 size="1rem">Conocimientos opcionales</TextH2>
-                <List>
-                  {data
-                    .filter((el) => {
-                      if (!el.t211_mandatory) return el.c116_description;
-                      return null;
-                    })
-                    .map((el) => (
-                      <ListItem key={`skill-id-${el.t211_id_requirement}`}>
-                        <Chip
-                          label={el.c116_description}
-                          bg="#fff"
-                          color="#6D6D6D"
-                          outline="1px solid #ccc"
-                        />
-                      </ListItem>
-                    ))}
-                </List>
-              </div>
+              <h3 style={{ fontSize: "17px", marginTop: "18px" }}>
+                Habilidades Requeridas
+              </h3>
+              <List>
+                <ListItem>
+                  {optionalSkills.map((el) => (
+                    <ListItem key={`skill-id-${el.t211_id_requirement}`}>
+                      <Chip
+                        label={el.c116_description}
+                        bg="#fff"
+                        color="#6D6D6D"
+                        outline="1px solid #ccc"
+                      />
+                    </ListItem>
+                  ))}
+                </ListItem>
+              </List>
             </>
-          )}
+          ) : null}
+
+          {requiredSkills.length > 0 ? (
+            <>
+              <h3 style={{ fontSize: "17px" }}>Habilidades Opcionales</h3>
+              <List>
+                {requiredSkills.map((el) => (
+                  <ListItem key={`skill-id-${el.t211_id_requirement}`}>
+                    <Chip
+                      label={el.c116_description}
+                      bg="#fff"
+                      color="#6D6D6D"
+                      outline="1px solid #ccc"
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            </>
+          ) : null}
         </WrapperRequitements>
         <WrapperMoreInfo>
-          <span>
-            Ubicacion:{" "}
-            {`${summaryJob[0]?.t200_street}, ${
-              summaryJob[0]?.t200_interior_number &&
-              summaryJob[0]?.t200_interior_number
-            }`}
-          </span>
-          <span>
-            Perfil: {summaryJob[0]?.c206_id_profile?.c206_description}
-          </span>
-          <span>
-            Tipo de contratacion:{" "}
-            {summaryJob[0]?.c208_id_contract.c208_description}
-          </span>
-          <span>
-            Experiencia: {summaryJob[0]?.c207_id_experience?.c207_description}
-          </span>
+          <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
+            <span style={{ color: "#6D6D6D" }}>
+              Ubicación:{" "}
+              {`${summaryJob[0]?.t200_street}, ${
+                summaryJob[0]?.t200_interior_number &&
+                summaryJob[0]?.t200_interior_number
+              }`}
+            </span>
+            <span style={{ color: "#6D6D6D" }}>
+              Perfil: {summaryJob[0]?.c206_id_profile?.c206_description}
+            </span>
+            <span style={{ color: "#6D6D6D" }}>
+              Tipo de contratacion:{" "}
+              {summaryJob[0]?.c208_id_contract.c208_description}
+            </span>
+            <span style={{ color: "#6D6D6D" }}>
+              Experiencia: {summaryJob[0]?.c207_id_experience?.c207_description}
+            </span>
+          </div>
+          {recommended ? (
+            <div style={{ justifySelf: "flex-end" }}>
+              <p>Porcentaje de recomendación: {match}%</p>
+            </div>
+          ) : null}
         </WrapperMoreInfo>
         <DescriptionJob
           dangerouslySetInnerHTML={createMarkup(
