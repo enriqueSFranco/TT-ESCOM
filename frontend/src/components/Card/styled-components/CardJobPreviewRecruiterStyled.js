@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Card = styled.article`
   position: relative;
-  height: 200px;
+  height: fit-content;
   color: #000;
   border-radius: 8px;
   display: flex;
@@ -79,13 +79,13 @@ const TotalApplications = styled.span`
   font-weight: 700;
 `;
 
-const CardFooter = styled.footer`
+const CardFooter = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 0 1rem 0.5rem 1rem;
-  width: 100;
-  height: 60px;
+  padding: .5rem 1rem;
+  width: 100%;
+  /* height: 100px; */
   border-top: 1px solid #ccc;
   border-radius: 0 0 1rem 1rem;
   color: #000;
