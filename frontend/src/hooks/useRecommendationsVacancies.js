@@ -9,9 +9,8 @@ export const useRecommendationsVacancies = (candidateId) => {
   useEffect(() => {
     setIsLoading(true)
     getRecommendations(candidateId)
-      .then(res => {
-        console.log(res)
-        setTimeout(() => {
+    .then(res => {
+      setTimeout(() => {
           if (isMountend.current) {
             setResponse(res)
           }

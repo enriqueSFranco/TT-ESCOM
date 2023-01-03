@@ -23,6 +23,7 @@ import {
 } from "./styled-components/HomeStyled";
 import DetailsJob from "components/Modal/contentModals/DetailsJob";
 import RecommendedVacanciesFilter from "components/Filter/FilterRecommendedVacancies";
+import RecommendedJobs from "components/Card/JobList/RecommendedJobs";
 
 const Home = () => {
   const [filteredData, setDataFiltered] = useState(new Set());
@@ -125,19 +126,26 @@ const Home = () => {
           </LayoutHero>
         </Hero>
         <Aside>
-          <Filters recommended={recommended} handleChangeRecommended={handleChangeRecommended} onFiltereChange={onFiltereChange} />
+          <Filters
+            recommended={recommended}
+            handleChangeRecommended={handleChangeRecommended}
+            onFiltereChange={onFiltereChange}
+          />
           <RecommendedVacanciesFilter
             handleChangeRecommended={handleChangeRecommended}
           />
         </Aside>
         <Content>
           <Cards id="cards">
-            <JobList
-              jobs={isFiltered ? data?.results : response}
-              loading={loading}
-              recommended={recommended}
-              setVacantId={setVacantId}
-            />
+            {recommended ? (
+              <RecommendedJobs />
+            ) : (
+              <JobList
+                jobs={isFiltered ? data?.results : response}
+                loading={loading}
+                setVacantId={setVacantId}
+              />
+            )}
             <div
               style={{
                 width: "100%",

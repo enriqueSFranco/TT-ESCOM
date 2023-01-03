@@ -21,7 +21,7 @@ const Container = styled.article`
   }
 `
 
-const Title = styled.h1`
+const Title = styled.h2`
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 1px;

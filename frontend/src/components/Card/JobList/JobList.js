@@ -1,7 +1,5 @@
 import { memo, useState } from "react";
 import "moment/locale/es-mx";
-import { useAuth } from "context/AuthContext";
-import { useRecommendationsVacancies } from "hooks";
 import CardJob from "../CardJob/CardJob";
 import styles from "./JobList.module.css";
 
@@ -13,10 +11,7 @@ const ListEmptyJobs = () => {
   );
 };
 
-const JobList = ({ jobs, recommended, setVacantId }) => {
-  const { token } = useAuth();
-  const { response, isLoading } = useRecommendationsVacancies(token?.user?.id,
-  );
+const JobList = ({ jobs, setVacantId }) => {
   const [cards, setCards] = useState({
     activeCard: jobs[0]?.t200_id_vacant,
     listCard: jobs,
@@ -31,27 +26,20 @@ const JobList = ({ jobs, recommended, setVacantId }) => {
   };
 
   if (!jobs) return null;
-  console.log(response)
 
   return (
     <>
-      {recommended ? (
-        <div>
-          <h3>vacantes recomendadas</h3>
-        </div>
-      ) : (
-        jobs
-          .filter((el) => el?.c204_id_vacant_status.c204_id_status === 2)
-          .map((el, index) => (
-            <CardJob
-              key={`card-job-id_${crypto.randomUUID()}`}
-              job={el}
-              vacantId={el?.t200_id_vacant}
-              cards={cards}
-              onClick={(e) => handleClick(e, el?.t200_id_vacant, index)}
-            />
-          ))
-      )}
+      {jobs
+        .filter((el) => el?.c204_id_vacant_status.c204_id_status === 2)
+        .map((el, index) => (
+          <CardJob
+            key={`card-job-id_${crypto.randomUUID()}`}
+            job={el}
+            vacantId={el?.t200_id_vacant}
+            cards={cards}
+            onClick={(e) => handleClick(e, el?.t200_id_vacant, index)}
+          />
+        ))}
     </>
   );
 };
