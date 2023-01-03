@@ -137,8 +137,8 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
             id = admin_data[0]['t400_id_admin']			
             print(admin_data[0]['t400_id_admin'])#-------------Depurargit
         user={
-			'id':id,
-			'user_id':self.user.id,			
+			'id':self.user.id,
+			'user_id':id,			
 			'username':self.user.username,
 			'email':self.user.email,#---------->Quitar cuando se cambie la forma de validar si entrar al step o no
 			'user_type':self.user.user_type,
