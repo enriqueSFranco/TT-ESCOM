@@ -129,12 +129,17 @@ const ContentDescription = styled.div`
 `;
 
 const ListItems = styled.ul`
+  width: fit-content;
   display: flex;
   justify-content: flex-start;
   list-style: none;
   gap: 1rem;
   margin: 0 0 1rem 0;
   padding: 0;
+
+  li {
+    text-align: center;
+  }
 `;
 
 const Title = styled.h2`

@@ -28,26 +28,20 @@ const CardBody = styled.article`
     justify-content: space-around;
     transition: border .3s ease-in-out;
     
-    /* &:hover {
-      color: #000;
-      box-shadow: #ccc 0px 0px 0px 1px;
-    } */
-
     ${(props) => {
       if (props.isActive) {
         return `
           border: 2px solid #2172F2;
         `
       }
-
-      if (props.close === 1) {
+      if (props.time >= 1 && props.time <= 70) {
         return `
-          background: hsla(280, 95%, 57%, 1);
+        background: hsla(280, 95%, 57%, 1);
           background: linear-gradient(90deg, hsla(280, 95%, 57%, 1) 0%, hsla(193, 90%, 55%, 1) 100%);
           background: -moz-linear-gradient(90deg, hsla(280, 95%, 57%, 1) 0%, hsla(193, 90%, 55%, 1) 100%);
           background: -webkit-linear-gradient(90deg, hsla(280, 95%, 57%, 1) 0%, hsla(193, 90%, 55%, 1) 100%);
           filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#B429F9", endColorstr="#26C5F3", GradientType=1 );
-        `;
+        `
       }
     }
   }
@@ -88,13 +82,7 @@ const PublicationDate = styled.span`
   height: fit-content;
 
   ${(props) => {
-    if (props.close > 30) {
-      return `
-          color: red;
-          font-weight: 600;
-        `;
-    }
-    if (props.close < 15) {
+    if (props.time >= 1) {
       return `
           background-color: #E7F6DF; 
           color: #62C62E;
@@ -115,13 +103,13 @@ const TitleJob = styled.span`
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
   ${(props) => {
-    if (props.close > 30) {
+    if (props.time >= 71) {
       return `
-        color: #ccc;
+        color: #000;
         font-weight: 600;
       `;
     }
-    if (props.close < 15) {
+    if (props.time >= 1 && props.time <= 70) {
       return `
         background: linear-gradient(27deg, #3f5efb, #fc466b);
         background-clip: text;

@@ -117,20 +117,16 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
               <ListItems>
                 <li>
                   <Chip
-                    label={`${data[0]?.t200_street}`}
+                    label={`Ubicacion: ${data[0]?.t200_street}`}
                     bg="#fff"
                     color="#6D6D6D"
-                    icon={
-                      <HiOutlineLocationMarker style={{ fontSize: "1rem" }} />
-                    }
                   />
                 </li>
                 <li>
                   <Chip
-                    label={`${data[0]?.c207_id_experience?.c207_description}`}
+                    label={`Experiencia: ${data[0]?.c207_id_experience?.c207_description}`}
                     bg="#fff"
                     color="#6D6D6D"
-                    icon={<FaBrain style={{ fontSize: "1rem" }} />}
                   />
                 </li>
                 <li>
@@ -140,7 +136,6 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                     )}`}
                     bg="#fff"
                     color="#6D6D6D"
-                    icon={<FaCalendarAlt style={{ fontSize: "1rem" }} />}
                   />
                 </li>
               </ListItems>

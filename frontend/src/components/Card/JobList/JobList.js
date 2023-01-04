@@ -35,6 +35,7 @@ const JobList = ({ jobs, setVacantId }) => {
           <CardJob
             key={`card-job-id_${crypto.randomUUID()}`}
             job={el}
+            time={new Date(el?.t200_creation_date).getTime()}
             vacantId={el?.t200_id_vacant}
             cards={cards}
             onClick={(e) => handleClick(e, el?.t200_id_vacant, index)}

@@ -1,6 +1,5 @@
 import React from "react";
-import moment from "moment";
-import "moment/locale/es-mx";
+import { useTimeAgo } from "hooks";
 import Chip from "components/Chip/Chip";
 import { parseThousands } from "utils";
 import { IoBusiness } from "react-icons/io5";
@@ -23,13 +22,13 @@ import {
   TitleJob,
 } from "../styled-components/CardJobStyled";
 
-const CardJob = ({
-  job,
-  vacantId,
-  cards,
-  isVacancyRecommended,
-  onClick,
-}) => {
+
+const now = Date.now()
+
+const CardJob = ({ job, vacantId, time, cards, onClick }) => {
+  const { timeago } = useTimeAgo(time);
+  const elapsed = Math.abs(Math.round(((time - now) / 1000)/60));
+
   const toggleActiveStyled = () => {
     return vacantId === cards.activeCard ? "active" : undefined;
   };
@@ -56,15 +55,8 @@ const CardJob = ({
     return { __html: job.t200_description };
   }
 
-  const currentTime = new Date(job?.t200_publish_date).getUTCDate();
-
-  console.log(
-    "🚀 ~ file: CardJob.js:27 ~ CardJob ~ isVacancyRecommended",
-    isVacancyRecommended
-  );
-
   return (
-    <CardBody close={currentTime} isActive={toggleActiveStyled(vacantId)}>
+    <CardBody time={elapsed} isActive={toggleActiveStyled(vacantId)}>
       <CardBorder>
         <CardHeader>
           <CardImage>
@@ -77,16 +69,12 @@ const CardJob = ({
               <IoBusiness style={{ color: "darkgray", fontSize: "3.5rem" }} />
             )}
           </CardImage>
-          <PublicationDate close={currentTime}>
-            {job?.t200_publish_date
-              ? currentTime >= 30
-                ? "Vacante cerrada"
-                : `Publicada ${moment(job?.t200_publish_date).fromNow()}`
-              : "Sin fecha"}
+          <PublicationDate time={elapsed}>
+            Publicada {timeago}
           </PublicationDate>
         </CardHeader>
         <CardContent>
-          <TitleJob close={currentTime}>{job.t200_job}</TitleJob>
+          <TitleJob time={elapsed}>{job.t200_job}</TitleJob>
           <Tags>
             {tags.map((tag, index) => (
               <TagsItem key={`tag-id-${index}`}>
