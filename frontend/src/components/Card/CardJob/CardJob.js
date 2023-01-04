@@ -119,7 +119,7 @@ const CardJob = ({
 
           <Description dangerouslySetInnerHTML={createMarkup()} />
           <Actions>
-            <Button onClick={onClick} bgColor="#2172f2" color="#fff">
+            <Button onClick={onClick} bgColor="#2172f2" color="#fff" >
               Ver mas <BsArrowRightShort style={{ fontSize: "1.5rem" }} />
             </Button>
           </Actions>

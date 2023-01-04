@@ -58,8 +58,6 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
 
   if (!data || !summaryJob) return null;
 
-  console.log(vacantId, recommended)
-
   return (
     <>
       <WrapperSummaryJob>

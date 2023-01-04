@@ -7,7 +7,6 @@ import {
 } from "hooks";
 import FormSearchJob from "components/Search/FormSearchJob";
 import JobList from "components/Card/JobList/JobList";
-// import Loader from "components/Loader/Loader";
 import LayoutHome from "Layout/LayoutHome";
 import LayoutHero from "Layout/LayoutHero";
 import parallaxESCOM from "images/parallaxESCOM.jpg";
@@ -22,7 +21,6 @@ import {
 } from "./styled-components/HomeStyled";
 import DetailsJob from "components/Modal/contentModals/DetailsJob";
 import RecommendedVacanciesFilter from "components/Filter/FilterRecommendedVacancies";
-// import RecommendedJobs from "components/Card/JobList/RecommendedJobs";
 
 const Home = () => {
   const { token } = useAuth();
@@ -92,36 +90,9 @@ const Home = () => {
               recommendedJobs={recommender}
               loading={loading}
               isVacantRecommended={recommended}
+              setMatch={setMatch}
               setVacantId={setVacantId}
             />
-            {/* {recommended ? (
-              <RecommendedJobs
-                jobs={recommender}
-                isLoading={isLoading}
-                isVacantRecommended={recommended}
-                setVacantId={setVacantId}
-                setMatch={setMatch}
-              />
-            ) : (
-              <JobList
-                jobs={isFiltered ? data?.results : response}
-                loading={loading}
-                isVacantRecommended={recommended}
-                setVacantId={setVacantId}
-              />
-            )} */}
-            {/* <div
-              style={{
-                width: "100%",
-                display: "grid",
-                placeContent: "center",
-                backgroundColor: "transparent",
-                margin: "1rem 0",
-                padding: "0 0 2rem 0",
-              }}
-            >
-              {loadingNextPage && <Loader />}
-            </div> */}
           </Cards>
           <SummaryCard>
             <DetailsJob

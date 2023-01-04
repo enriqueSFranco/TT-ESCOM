@@ -16,6 +16,7 @@ const JobList = ({
   recommendedJobs,
   isVacantRecommended,
   setVacantId,
+  setMatch
 }) => {
   const [cards, setCards] = useState({
     activeCard: isVacantRecommended ? recommendedJobs[0]?.t200_id_vacant?.t200_id_vacant : jobs[0]?.t200_id_vacant,
@@ -27,6 +28,8 @@ const JobList = ({
   const handleClick = (e, vacantId, index) => {
     e.preventDefault();
     setVacantId(vacantId);
+    setMatch(recommendedJobs[index]?.t500_percentage)
+    // setMatch(recommendedJobs[index])
     isVacantRecommended ? setCards({ ...cards, activeCard: cards.listCard[index]?.t200_id_vacant }) : setCards({ ...cards, activeCard: cards.listCard[index]?.t200_id_vacant })
   };
 
@@ -35,6 +38,7 @@ const JobList = ({
   if (isVacantRecommended) {
     return (
       <>
+        <h2 className={styles.title}>Vacantes Recomendadas</h2>
         {recommendedJobs.map((el, index) => (
           <CardJob
             key={`card-job-id_${crypto.randomUUID()}`}

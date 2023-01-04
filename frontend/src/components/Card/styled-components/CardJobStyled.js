@@ -26,13 +26,12 @@ const CardBody = styled.article`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    transition: border .3s ease-in-out;
     
     ${(props) => {
       if (props.isActive) {
         return `
           border: 2px solid #2172F2;
-        `
+        `;
       }
       if (props.time >= 1 && props.time <= 70) {
         return `
@@ -41,10 +40,9 @@ const CardBody = styled.article`
           background: -moz-linear-gradient(90deg, hsla(280, 95%, 57%, 1) 0%, hsla(193, 90%, 55%, 1) 100%);
           background: -webkit-linear-gradient(90deg, hsla(280, 95%, 57%, 1) 0%, hsla(193, 90%, 55%, 1) 100%);
           filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#B429F9", endColorstr="#26C5F3", GradientType=1 );
-        `
+        `;
       }
-    }
-  }
+    }}
 `;
 
 const CardBorder = styled.div`
@@ -54,6 +52,15 @@ const CardBorder = styled.div`
   width: calc(100% + 10px);
   border-radius: 1rem;
   padding: 0.5rem;
+
+  ${(props) => {
+    if (props.isVacantRecommended) {
+      return `
+        background: linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
+        color: #fff;
+      `;
+    }
+  }}
 `;
 
 const CardHeader = styled.header`
@@ -94,7 +101,9 @@ const PublicationDate = styled.span`
   }}
 `;
 
-const CardContent = styled.div``;
+const CardContent = styled.div`
+
+`;
 
 const TitleJob = styled.span`
   font-weight: 700;
@@ -163,6 +172,14 @@ const Description = styled.div`
     color: #000;
     font-size: 15px;
     margin: 0.8rem 0;
+
+    ${(props) => {
+      if (props.isVacantRecommended) {
+        return `
+          color: #fff;
+        `;
+      }
+  }}
   }
 `;
 
@@ -202,6 +219,15 @@ const Button = styled.button`
     border-radius: 4px;
     transition: background-color 0.5s ease;
     cursor: pointer;
+
+    ${(props) => {
+      if (props.isVacantRecommended) {
+        return `
+          background-color: #fff;
+          color: #2172F2;
+        `;
+      }
+  }}
   }
 `;
 
