@@ -40,7 +40,7 @@ const JobList = ({
             key={`card-job-id_${crypto.randomUUID()}`}
             job={el}
             isVacantRecommended={isVacantRecommended}
-            time={new Date(el?.t200_creation_date).getTime()}
+            time={new Date(el?.t200_id_vacant?.t200_creation_date).getTime()}
             vacantId={el?.t200_id_vacant}
             cards={cards}
             onClick={(e) => handleClick(e, el?.t200_id_vacant, index)}

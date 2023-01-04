@@ -30,7 +30,7 @@ const CardJob = ({
   cards,
   onClick,
 }) => {
-  // const { timeago } = useTimeAgo(time);
+  const timeago = useTimeAgo(time);
   const elapsed = Math.abs(Math.round((time - now) / 1000 / 60));
 
   const toggleActiveStyled = () => {
@@ -68,10 +68,8 @@ const CardJob = ({
   ];
 
   function createMarkup() {
-    return { __html: job.t200_description };
+    return { __html: isVacantRecommended ? job.t200_id_vacant?.t200_description : job.t200_description };
   }
-
-  console.log(isVacantRecommended);
 
   return (
     <CardBody time={elapsed} isActive={toggleActiveStyled(vacantId)}>
@@ -87,9 +85,10 @@ const CardJob = ({
               <IoBusiness style={{ color: "darkgray", fontSize: "3.5rem" }} />
             )}
           </CardImage>
-          {/* <PublicationDate time={elapsed}>
+          
+          <PublicationDate time={elapsed}>
             Publicada {timeago}
-          </PublicationDate> */}
+          </PublicationDate>
         </CardHeader>
         <CardContent>
           {isVacantRecommended ? (
@@ -110,7 +109,14 @@ const CardJob = ({
               </TagsItem>
             ))}
           </Tags>
-          <Location>{`${job?.c222_id_locality?.c222_state}, ${job?.c222_id_locality?.c222_municipality}, ${job?.c222_id_locality?.c222_locality}`}</Location>
+          <Location>{`${job?.t200_id_vacant?.t200_street}`}</Location>
+
+          {isVacantRecommended ? (
+            <Location>{`${job?.t200_id_vacant?.t200_street}`}</Location>
+          ) : (
+            <Location>{`${job?.c222_id_locality?.c222_state}, ${job?.c222_id_locality?.c222_municipality}, ${job?.c222_id_locality?.c222_locality}`}</Location>
+          )}
+
           <Description dangerouslySetInnerHTML={createMarkup()} />
           <Actions>
             <Button onClick={onClick} bgColor="#2172f2" color="#fff">
