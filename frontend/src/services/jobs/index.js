@@ -66,7 +66,7 @@ export const postJob = (body) => {
 };
 
 export const updateVacant = (id) => {
-  return API.put(`${REACT_APP_URL_VACANTS}${id}`)
+  return API.put(`${REACT_APP_URL_VACANTS}${id}/`)
     .then((response) => {
       const { data } = response;
       return data;

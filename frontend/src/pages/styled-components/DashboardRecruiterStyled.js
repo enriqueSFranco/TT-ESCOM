@@ -5,7 +5,6 @@ const Aside = styled.aside`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 1rem;
   height: ${(props) => props.height || "100%"};
 `;
 
@@ -53,6 +52,25 @@ const ContentWidget = styled.div`
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 `;
 
+const WrapperNoResults = styled.article`
+  background-color: #E2E9F6;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+`
+
+const ContainerImage = styled.figure`
+`
+const Image = styled.img`
+`
+const TitleImage = styled.figcaption`
+  color: #0068B5;
+  text-align: center;
+  font-weight: 700;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+`
+
 export {
   Aside,
   ContentWidget,
@@ -61,4 +79,8 @@ export {
   ContentWidgetCommon,
   Container,
   WrapperWidgets,
+  WrapperNoResults,
+  ContainerImage,
+  Image,
+  TitleImage,
 };

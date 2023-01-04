@@ -44,11 +44,11 @@ const validateForm = (form) => {
     errors.t200_job =
       "El campo 'Titulo de la vacante' solo acepta letras y espacios en blanco.";
 
-  if (!form.t200_min_salary.trim())
-    errors.t200_min_salary = "El campo 'Titulo de la vacante' es requerido";
-  else if (!regex.t200_min_salary.test(form.t200_min_salary.trim()))
-    errors.t200_min_salary =
-      "El campo 'Titulo de la vacante' solo acepta letras y espacios en blanco.";
+  // if (!form.t200_min_salary.trim())
+  //   errors.t200_min_salary = "El campo 'Titulo de la vacante' es requerido";
+  // else if (!regex.t200_min_salary.test(form.t200_min_salary.trim()))
+  //   errors.t200_min_salary =
+  //     "El campo 'Titulo de la vacante' solo acepta letras y espacios en blanco.";
 
   // if (!form.t200_cp.trim())
   //   errors.t200_cp = "El campo 'Titulo de la vacante' es requerido";
@@ -216,8 +216,6 @@ const FormPostJob = ({
   };
 
   if (!expList || !data || !languages) return null;
-
-  // console.log(newObject);
 
   return (
     <ContainerForm top={top}>
@@ -577,7 +575,7 @@ const FormPostJob = ({
               margin: "0 0 .4rem 0",
             }}
           >
-            <MdLanguage style={{ color: "blue" }} /> Idioma/Dialecto
+          Idioma/Dialecto
           </h2>
           <GroupInput>
             <SubGroupInput>
