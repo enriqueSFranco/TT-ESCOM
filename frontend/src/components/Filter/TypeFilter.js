@@ -7,31 +7,37 @@ import {
   Checkbox,
 } from "./styled-components/TypeFilterStyled";
 
-const { REACT_APP_CATALOG_WORK_MODALITY, REACT_APP_URL_CATALOG_EXP } =
-  process.env;
+const { REACT_APP_CATALOG_WORK_MODALITY } = process.env;
 
 const TypeFilter = ({ type, onFiltereChange }) => {
-  const { data: exps } = useFetch(REACT_APP_URL_CATALOG_EXP);
   const { data: workModality } = useFetch(REACT_APP_CATALOG_WORK_MODALITY);
 
-  if (!exps || !workModality) return null;
+  if (!workModality) return null;
 
   const FilterExp = () => (
     <List>
-      {exps?.map((exp) => (
-        <Item key={`filter-exp-id-${crypto.randomUUID()}`}>
-          <Label htmlFor={exp.c207_description}>
-            <Checkbox
-              type="checkbox"
-              name={exp.c207_description}
-              id={exp.c207_description}
-              value={exp.c207_description}
-              onChange={onFiltereChange}
-            />
-            {exp.c207_description}
-          </Label>
-        </Item>
-      ))}
+      <Item>
+        <Label htmlFor={`Sin experiencia`}>
+          <Checkbox
+            type="checkbox"
+            name={`Sin experiencia`}
+            id={`Sin experiencia`}
+            onChange={onFiltereChange}
+          />
+          {`Sin experiencia`}
+        </Label>
+      </Item>
+      <Item>
+        <Label htmlFor={`0 - 6 meses`}>
+          <Checkbox
+            type="checkbox"
+            name={`experience`}
+            id={`0 - 6 meses`}
+            onChange={onFiltereChange}
+          />
+          {`0 - 6 meses`}
+        </Label>
+      </Item>
     </List>
   );
 
@@ -42,7 +48,7 @@ const TypeFilter = ({ type, onFiltereChange }) => {
           <Label htmlFor={modality.c214_description}>
             <Checkbox
               type="checkbox"
-              name={modality.c214_description}
+              name={`modality`}
               id={modality.c214_description}
               value={modality.c214_description}
               onChange={onFiltereChange}

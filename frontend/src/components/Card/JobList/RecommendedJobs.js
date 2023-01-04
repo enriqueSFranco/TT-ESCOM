@@ -17,8 +17,6 @@ const RecommendedJobs = ({ jobs, isLoading, setVacantId, setMatch }) => {
     setMatch(jobs[index]?.t500_percentage)
   };
 
-  if (!jobs) return null;
-
   return (
     <>
       {jobs.length === 0 ? (

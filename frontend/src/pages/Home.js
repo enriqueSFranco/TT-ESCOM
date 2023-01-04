@@ -1,9 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "context/AuthContext";
 import {
   useGetAllJobs,
-  useNearScreen,
-  useCustomDebounce,
   useSearchJob,
   useRecommendationsVacancies,
 } from "hooks";
@@ -14,7 +12,6 @@ import LayoutHome from "Layout/LayoutHome";
 import LayoutHero from "Layout/LayoutHero";
 import parallaxESCOM from "images/parallaxESCOM.jpg";
 import Filters from "components/Filter/Filters";
-// import ButtonScrollTop from "components/Button/ButtonScrollTop";
 import {
   Aside,
   Content,
@@ -29,58 +26,30 @@ import RecommendedJobs from "components/Card/JobList/RecommendedJobs";
 
 const Home = () => {
   const { token } = useAuth();
-  const [match, setMatch] = useState(null)
-  const [filteredData, setDataFiltered] = useState(new Set());
-  const [selectedFilter, setSelectedFilter] = useState([]);
+  const [match, setMatch] = useState(null);
+  const [selectedFilter, setSelectedFilter] = useState({
+    'Sin experiencia': false,
+    '0 - 6 meses': false,
+    '6 meses - 1 año': false,
+    '1 - 2 años': false,
+    'más de 2 años': false,
+  });
   const [recommended, setRecommended] = useState(false);
   const [vacantId, setVacantId] = useState(null);
   const [isFiltered, setIsFiltered] = useState(false);
   const [query, setQuery] = useState("");
   const [data] = useSearchJob(query);
-  const externalRef = useRef(null);
+  const { response, loading, loadingNextPage } = useGetAllJobs();
   const { response: recommender, isLoading } = useRecommendationsVacancies(
     token?.user?.id
   );
-  const { response, loading, loadingNextPage, setPage } = useGetAllJobs();
-  const { isNearScreen } = useNearScreen({
-    distance: "100px",
-    externalRef: loading ? null : externalRef,
-    once: false,
-  });
-
-  function handleNextPage() {
-    setPage((prevPage) => prevPage + 1);
-  }
-
-  const debounce = useCustomDebounce(() => {
-    handleNextPage();
-  }, 400);
 
   // TODO: Hacer la funcionalidad de filtrado con checkbox
   function onFiltereChange(e) {
-    const { value, checked } = e.target;
-
     setSelectedFilter({
       ...selectedFilter,
-      [e.target.name]: checked,
-    });
-
-    if (checked) {
-      const result = response.filter(
-        (it) =>
-          it?.c207_id_experience?.c207_description === value ||
-          it?.c214_id_modality?.c214_description === value
-      );
-      setDataFiltered([...filteredData, ...result]);
-      console.log(filteredData);
-    } else {
-      const result = filteredData.filter(
-        (it) =>
-          it?.c207_id_experience?.c207_description !== value ||
-          it?.c214_id_modality?.c214_description !== value
-      );
-      setDataFiltered([...result]);
-    }
+      [e.target.value]: e.target.checked
+    })
   }
 
   function handleChangeRecommended(e) {
@@ -91,13 +60,7 @@ const Home = () => {
     setIsFiltered(value !== "" ? true : false);
   }
 
-  const debouncehandleNextPage = useCallback(debounce, []);
-
-  useEffect(() => {
-    if (isNearScreen) debouncehandleNextPage();
-  }, [isNearScreen, debouncehandleNextPage]);
-
-  if (!response) return null;
+  if (!response || !recommended) return null;
 
   return (
     <LayoutHome>
@@ -113,8 +76,7 @@ const Home = () => {
         </Hero>
         <Aside>
           <Filters
-            recommended={recommended}
-            handleChangeRecommended={handleChangeRecommended}
+            // selectedFilter={selectedFilter}
             onFiltereChange={onFiltereChange}
           />
           {token && (
@@ -151,13 +113,15 @@ const Home = () => {
             >
               {loadingNextPage && <Loader />}
             </div>
-            <div id="visor" ref={externalRef}></div>
           </Cards>
           <SummaryCard>
-            <DetailsJob vacantId={vacantId || response[0]?.t200_id_vacant} recommended={recommended} match={match} />
+            <DetailsJob
+              vacantId={vacantId || response[0]?.t200_id_vacant}
+              recommended={recommended}
+              match={match}
+            />
           </SummaryCard>
         </Content>
-        {/* <ButtonScrollTop /> */}
       </Main>
     </LayoutHome>
   );

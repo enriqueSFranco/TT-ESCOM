@@ -5,17 +5,12 @@ import { WrapperFilters } from "./styled-components/FiltersStyled";
 
 const typeFilters = ["Experincia", "Modalidad"];
 
-const Filters = ({ recommended, handleChangeRecommended, onFiltereChange }) => {
+const Filters = ({ onFiltereChange }) => {
   return (
     <WrapperFilters>
       {typeFilters.map((typeFilter) => (
         <LayoutFilter key={typeFilter} type={typeFilter}>
-          <TypeFilter
-            type={typeFilter}
-            recommended={recommended}
-            handleChangeRecommended={handleChangeRecommended}
-            onFiltereChange={onFiltereChange}
-          />
+          <TypeFilter type={typeFilter} onFiltereChange={onFiltereChange} />
         </LayoutFilter>
       ))}
     </WrapperFilters>

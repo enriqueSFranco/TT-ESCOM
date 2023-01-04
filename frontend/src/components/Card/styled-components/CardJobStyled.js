@@ -143,7 +143,7 @@ const TagsItem = styled.li`
   }}
 `;
 
-const Description = styled.p`
+const Description = styled.div`
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -moz-box-orient: vertical;
@@ -161,6 +161,7 @@ const Description = styled.p`
     width: 100%;
     height: 70px;
     color: #000;
+    font-size: 15px;
     margin: 0.8rem 0;
   }
 `;
