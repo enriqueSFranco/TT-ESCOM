@@ -5,7 +5,6 @@ class RecommendationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recommendation
         fields = "__all__"        
-        depth = 2
     
     def create(self,validate_data):
         recommendation = Recommendation(**validate_data)
