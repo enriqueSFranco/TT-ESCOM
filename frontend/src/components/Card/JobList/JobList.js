@@ -27,7 +27,7 @@ const JobList = ({
   const handleClick = (e, vacantId, index) => {
     e.preventDefault();
     setVacantId(vacantId);
-    setCards({ ...cards, activeCard: cards.listCard[index]?.t200_id_vacant });
+    isVacantRecommended ? setCards({ ...cards, activeCard: cards.listCard[index]?.t200_id_vacant }) : setCards({ ...cards, activeCard: cards.listCard[index]?.t200_id_vacant })
   };
 
   if (!jobs) return null;

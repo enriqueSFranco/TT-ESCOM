@@ -7,7 +7,7 @@ import {
 } from "hooks";
 import FormSearchJob from "components/Search/FormSearchJob";
 import JobList from "components/Card/JobList/JobList";
-import Loader from "components/Loader/Loader";
+// import Loader from "components/Loader/Loader";
 import LayoutHome from "Layout/LayoutHome";
 import LayoutHero from "Layout/LayoutHero";
 import parallaxESCOM from "images/parallaxESCOM.jpg";
@@ -22,7 +22,7 @@ import {
 } from "./styled-components/HomeStyled";
 import DetailsJob from "components/Modal/contentModals/DetailsJob";
 import RecommendedVacanciesFilter from "components/Filter/FilterRecommendedVacancies";
-import RecommendedJobs from "components/Card/JobList/RecommendedJobs";
+// import RecommendedJobs from "components/Card/JobList/RecommendedJobs";
 
 const Home = () => {
   const { token } = useAuth();
@@ -39,7 +39,7 @@ const Home = () => {
   const [isFiltered, setIsFiltered] = useState(false);
   const [query, setQuery] = useState("");
   const [data] = useSearchJob(query);
-  const { response, loading, loadingNextPage } = useGetAllJobs();
+  const { response, loading } = useGetAllJobs();
   const { response: recommender, isLoading } = useRecommendationsVacancies(
     token?.user?.id
   );
@@ -125,7 +125,7 @@ const Home = () => {
           </Cards>
           <SummaryCard>
             <DetailsJob
-              vacantId={vacantId || response[0]?.t200_id_vacant}
+              vacantId={vacantId || response[0]?.t200_id_vacant || recommended[0]?.t200_id_vacant?.t200_id_vacant}
               recommended={recommended}
               match={match}
             />

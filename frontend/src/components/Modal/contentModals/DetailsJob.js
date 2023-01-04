@@ -24,11 +24,11 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
   const [isApplyJob, setIsApplyJob] = useState({});
   const [isOpen, openModal, closeModal] = useModal(false);
   const { data } = useFetch(
-    `${process.env.REACT_APP_URL_VACANT_REQUIREMENTS}${vacantId}`
+    `${process.env.REACT_APP_URL_VACANT_REQUIREMENTS}${recommended ? vacantId?.t200_id_vacant :vacantId}`
   );
   const { token } = useAuth();
   const { data: summaryJob } = useFetch(
-    `${process.env.REACT_APP_URL_VACANTS}${vacantId}`
+    `${process.env.REACT_APP_URL_VACANTS}${recommended ? vacantId?.t200_id_vacant :vacantId}`
   );
 
   const requiredSkills = getSkillType(data);
@@ -57,6 +57,8 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
   };
 
   if (!data || !summaryJob) return null;
+
+  console.log(vacantId, recommended)
 
   return (
     <>
