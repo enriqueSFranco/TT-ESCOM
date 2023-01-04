@@ -35,7 +35,7 @@ const Content = styled.div`
 
 const WrapperFilters = styled.div`
   position: sticky;
-  top: 560px;
+  top: 440px;
 `
 
 export { List, Item, Label, Checkbox, Content, WrapperFilters }

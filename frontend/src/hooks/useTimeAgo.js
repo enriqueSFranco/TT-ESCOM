@@ -34,5 +34,5 @@ export function useTimeAgo(timestamp) {
   
   const { value, unit } = timeago
 
-  return {value: Math.abs(value), timeago: rtf.format(value, unit)};
+  return rtf.format(value, unit)
 }

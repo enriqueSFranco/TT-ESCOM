@@ -28,11 +28,11 @@ const Home = () => {
   const { token } = useAuth();
   const [match, setMatch] = useState(null);
   const [selectedFilter, setSelectedFilter] = useState({
-    'Sin experiencia': false,
-    '0 - 6 meses': false,
-    '6 meses - 1 año': false,
-    '1 - 2 años': false,
-    'más de 2 años': false,
+    "Sin experiencia": false,
+    "0 - 6 meses": false,
+    "6 meses - 1 año": false,
+    "1 - 2 años": false,
+    "más de 2 años": false,
   });
   const [recommended, setRecommended] = useState(false);
   const [vacantId, setVacantId] = useState(null);
@@ -48,8 +48,8 @@ const Home = () => {
   function onFiltereChange(e) {
     setSelectedFilter({
       ...selectedFilter,
-      [e.target.value]: e.target.checked
-    })
+      [e.target.value]: e.target.checked,
+    });
   }
 
   function handleChangeRecommended(e) {
@@ -60,7 +60,7 @@ const Home = () => {
     setIsFiltered(value !== "" ? true : false);
   }
 
-  if (!response || !recommended) return null;
+  if (!response) return null;
 
   return (
     <LayoutHome>
@@ -87,10 +87,18 @@ const Home = () => {
         </Aside>
         <Content>
           <Cards id="cards">
-            {recommended ? (
+            <JobList
+              jobs={isFiltered ? data?.results : response}
+              recommendedJobs={recommender}
+              loading={loading}
+              isVacantRecommended={recommended}
+              setVacantId={setVacantId}
+            />
+            {/* {recommended ? (
               <RecommendedJobs
                 jobs={recommender}
                 isLoading={isLoading}
+                isVacantRecommended={recommended}
                 setVacantId={setVacantId}
                 setMatch={setMatch}
               />
@@ -98,10 +106,11 @@ const Home = () => {
               <JobList
                 jobs={isFiltered ? data?.results : response}
                 loading={loading}
+                isVacantRecommended={recommended}
                 setVacantId={setVacantId}
               />
-            )}
-            <div
+            )} */}
+            {/* <div
               style={{
                 width: "100%",
                 display: "grid",
@@ -112,7 +121,7 @@ const Home = () => {
               }}
             >
               {loadingNextPage && <Loader />}
-            </div>
+            </div> */}
           </Cards>
           <SummaryCard>
             <DetailsJob

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Loader from "components/Loader/Loader";
 import CardJob from "../CardJob/CardJob";
 
-const RecommendedJobs = ({ jobs, isLoading, setVacantId, setMatch }) => {
+const RecommendedJobs = ({ jobs, isLoading, isVacantRecommended, setVacantId, setMatch }) => {
   const [cards, setCards] = useState({
     activeCard: jobs[0]?.t200_id_vacant,
     listCard: jobs,
@@ -16,6 +16,8 @@ const RecommendedJobs = ({ jobs, isLoading, setVacantId, setMatch }) => {
     setCards({ ...cards, activeCard: cards.listCard[index]?.t200_id_vacant });
     setMatch(jobs[index]?.t500_percentage)
   };
+
+  if (!jobs) return null
 
   return (
     <>
@@ -35,10 +37,12 @@ const RecommendedJobs = ({ jobs, isLoading, setVacantId, setMatch }) => {
           <p>Vacantes que te recomendamos para aplicar</p>
           {jobs.map((it, index) => (
             <CardJob
-              key={`card-job-id_${crypto.randomUUID()}`}
+              key={`card-recommended-job-id-${crypto.randomUUID()}`}
               job={it}
+              isVacantRecommended={isVacantRecommended}
               vacantId={it?.t200_id_vacant}
               cards={cards}
+              match={it?.t500_percentage}
               onClick={(e) => handleClick(e, it?.t200_id_vacant, index)}
             />
           ))}

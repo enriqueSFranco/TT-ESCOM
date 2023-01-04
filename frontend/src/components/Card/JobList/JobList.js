@@ -11,10 +11,15 @@ const ListEmptyJobs = () => {
   );
 };
 
-const JobList = ({ jobs, setVacantId }) => {
+const JobList = ({
+  jobs,
+  recommendedJobs,
+  isVacantRecommended,
+  setVacantId,
+}) => {
   const [cards, setCards] = useState({
-    activeCard: jobs[0]?.t200_id_vacant,
-    listCard: jobs,
+    activeCard: isVacantRecommended ? recommendedJobs[0]?.t200_id_vacant?.t200_id_vacant : jobs[0]?.t200_id_vacant,
+    listCard: isVacantRecommended ? recommendedJobs : jobs,
   });
 
   if (jobs?.length < 0) return <ListEmptyJobs />;
@@ -27,6 +32,24 @@ const JobList = ({ jobs, setVacantId }) => {
 
   if (!jobs) return null;
 
+  if (isVacantRecommended) {
+    return (
+      <>
+        {recommendedJobs.map((el, index) => (
+          <CardJob
+            key={`card-job-id_${crypto.randomUUID()}`}
+            job={el}
+            isVacantRecommended={isVacantRecommended}
+            time={new Date(el?.t200_creation_date).getTime()}
+            vacantId={el?.t200_id_vacant}
+            cards={cards}
+            onClick={(e) => handleClick(e, el?.t200_id_vacant, index)}
+          />
+        ))}
+      </>
+    );
+  }
+
   return (
     <>
       {jobs
@@ -35,6 +58,7 @@ const JobList = ({ jobs, setVacantId }) => {
           <CardJob
             key={`card-job-id_${crypto.randomUUID()}`}
             job={el}
+            isVacantRecommended={isVacantRecommended}
             time={new Date(el?.t200_creation_date).getTime()}
             vacantId={el?.t200_id_vacant}
             cards={cards}

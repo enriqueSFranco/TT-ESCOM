@@ -20,18 +20,12 @@ import {
   TitleJob,
 } from "../styled-components/CardJobStyled";
 
-const now = Date.now();
 
-const CardJob = ({
-  job,
-  vacantId,
-  isVacantRecommended,
-  time,
-  cards,
-  onClick,
-}) => {
+const now = Date.now()
+
+const CardRecommendedJob = ({ job, vacantId, time, cards, onClick }) => {
   // const { timeago } = useTimeAgo(time);
-  const elapsed = Math.abs(Math.round((time - now) / 1000 / 60));
+  // const elapsed = Math.abs(Math.round(((time - now) / 1000)/60));
 
   const toggleActiveStyled = () => {
     return vacantId === cards.activeCard ? "active" : undefined;
@@ -39,42 +33,26 @@ const CardJob = ({
 
   const tags = [
     {
-      label: isVacantRecommended
-        ? `Exp: ${job?.t200_id_vacant?.c207_id_experience?.c207_description}`
-        : `Exp: ${job?.c207_id_experience?.c207_description}`,
+      label: `Exp: ${job?.t200_id_vacant?.c207_id_experience?.c207_description}`,
     },
     {
-      label: isVacantRecommended
-        ? job?.t200_id_vacant?.t200_max_salary
-          ? `Suledo mensual: $${parseThousands(
-              job?.t200_id_vacant?.t200_max_salary
-            )}-${parseThousands(job?.t200_id_vacant?.t200_max_salary)}`
-          : "Sueldo no especificado"
-        : job?.t200_max_salary
-        ? `Sueldo mensual: $${parseThousands(
-            job?.t200_min_salary
-          )}-${parseThousands(job?.t200_max_salary)}`
+      label: job?.t200_id_vacant?.t200_max_salary
+        ? `Suledo mensual: $${parseThousands(job?.t200_id_vacant?.t200_max_salary)}-${parseThousands(
+          job?.t200_id_vacant?.t200_max_salary
+          )}`
         : "Sueldo no especificado",
     },
     {
-      label: isVacantRecommended
-        ? `Perfil academico: ${job?.t200_id_vacant?.c206_id_profile?.c206_description}`
-        : `Modalidad: ${
-            job?.c214_id_modality?.c214_description
-              ? job?.c214_id_modality?.c214_description
-              : "No especificada"
-          }`,
+      label: `Perfil academico: ${job?.t200_id_vacant?.c206_id_profile?.c206_description}`,
     },
   ];
 
   function createMarkup() {
-    return { __html: job.t200_description };
+    return { __html: job.t200_id_vacant?.t200_description };
   }
 
-  console.log(isVacantRecommended);
-
   return (
-    <CardBody time={elapsed} isActive={toggleActiveStyled(vacantId)}>
+    <CardBody isActive={toggleActiveStyled(vacantId)}>
       <CardBorder>
         <CardHeader>
           <CardImage>
@@ -92,12 +70,7 @@ const CardJob = ({
           </PublicationDate> */}
         </CardHeader>
         <CardContent>
-          {isVacantRecommended ? (
-            <TitleJob>{job.t200_id_vacant?.t200_job}</TitleJob>
-          ) : (
-            <TitleJob time={elapsed}>{job.t200_job}</TitleJob>
-          )}
-
+          <TitleJob>{job.t200_id_vacant?.t200_job}</TitleJob>
           <Tags>
             {tags.map((tag, index) => (
               <TagsItem key={`tag-id-${index}`}>
@@ -110,7 +83,7 @@ const CardJob = ({
               </TagsItem>
             ))}
           </Tags>
-          <Location>{`${job?.c222_id_locality?.c222_state}, ${job?.c222_id_locality?.c222_municipality}, ${job?.c222_id_locality?.c222_locality}`}</Location>
+          <Location>{`${job?.t200_id_vacant?.t200_street}`}</Location>
           <Description dangerouslySetInnerHTML={createMarkup()} />
           <Actions>
             <Button onClick={onClick} bgColor="#2172f2" color="#fff">
@@ -123,4 +96,4 @@ const CardJob = ({
   );
 };
 
-export default CardJob;
+export default CardRecommendedJob;
