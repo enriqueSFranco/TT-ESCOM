@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useAuth } from "context/AuthContext";
-import { modalityList } from "constants";
 import {
   useGetAllJobs,
   useSearchJob,
@@ -11,8 +10,7 @@ import JobList from "components/Card/JobList/JobList";
 import EmptyView from "./EmptyView";
 import DetailsJob from "components/Modal/contentModals/DetailsJob";
 import RecommendedVacanciesFilter from "components/Filter/FilterRecommendedVacancies";
-import ExpFiltered from "components/Filter/ExpFiltered";
-import { Checkbox, FormControlLabel } from "@mui/material";
+import Filteres from "components/Filter/Filters";
 import LayoutFilter from "Layout/LayoutFilter";
 import LayoutHome from "Layout/LayoutHome";
 import LayoutHero from "Layout/LayoutHero";
@@ -37,6 +35,11 @@ const Home = () => {
     { id: 4, checked: false, label: "1 - 2 años" },
     { id: 5, checked: false, label: " más de 2 años" },
   ]);
+  const [selectedFilterModality, setSelectedFilterModality] = useState([
+    { id: 1, checked: false, label: "Presencial" },
+    { id: 2, checked: false, label: "Desde casa" },
+    { id: 3, checked: false, label: "Híbrido" },
+  ]);
   const [recommended, setRecommended] = useState(false);
   const [vacantId, setVacantId] = useState(null);
   const [isFiltered, setIsFiltered] = useState(false);
@@ -57,6 +60,14 @@ const Home = () => {
     setSelectedFilterExp(itemExpChecked);
   }
 
+  function onFiltereModalityChange(id) {
+    const itemsModality = selectedFilterModality;
+    const itemExpChecked = itemsModality.map((it) =>
+      it.id === id ? { ...it, checked: !it.checked } : it
+    );
+    setSelectedFilterModality(itemExpChecked)
+  }
+
   function handleChangeRecommended(e) {
     setRecommended(e.target.checked);
   }
@@ -67,7 +78,7 @@ const Home = () => {
 
   if (!response) return null;
 
-  console.log(`Datos filtrados por exp:`, filterData);
+  console.log(filterData);
 
   return (
     <LayoutHome>
@@ -82,22 +93,15 @@ const Home = () => {
           </LayoutHero>
         </Hero>
         <Aside>
-          <ExpFiltered
+          <Filteres
             data={response}
             selectedFilterExp={selectedFilterExp}
+            selectedFilterModality={selectedFilterModality}
             setFilterData={setFilterData}
             setResultsFound={setResultsFound}
             onFiltereChange={onFiltereChange}
+            onFiltereModalityChange={onFiltereModalityChange}
           />
-          <LayoutFilter title="💼 Modalidad de Empleo">
-            {modalityList.map((item) => (
-              <FormControlLabel
-                key={`filter-checked-id-${item.id}`}
-                label={item.label}
-                control={<Checkbox />}
-              />
-            ))}
-          </LayoutFilter>
           {token && (
             <LayoutFilter title="Vacantes Recomendadas">
               <RecommendedVacanciesFilter

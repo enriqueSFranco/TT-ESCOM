@@ -40,7 +40,7 @@ export const modalityList = [
   },
   {
     id: 3,
-    value: 'Hibrido',
-    label: 'Hibrido',
+    value: 'Híbrido',
+    label: 'Híbrido',
   },
 ];
