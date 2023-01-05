@@ -1,52 +1,49 @@
 import styled from "styled-components";
+import background from 'assets/images/wave.jpg'
 
 const Card = styled.article`
   width: 400px;
   border-radius: 0 0 4px 4px;
-  padding: 1rem;
+  padding: 4px 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  position: relative;
+  border-radius: 10px;
+`;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background-color: #4796E7;
-  }
+const CardHeader = styled.header`
+  background-color: skyblue;
+  border-radius: 10px;
+  width: 100%;
+  background: center/cover no-repeat url(${background});
 `;
 
 const CardContentAvatar = styled.figure`
-  padding: .5rem 0 .3rem 0;
+  padding: 0.5rem 0 0.3rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: .5rem;
+  gap: 0.5rem;
   text-align: center;
-  /* background-color: #FAF9F6; */
   border-radius: 1rem;
-`
+`;
 
 const Text = styled.p`
   display: block;
   margin: 0;
-  font-weight: ${props => props.fontWeight || 'normal'};
-  color: ${props => props.textColor || '#000'};
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-`
+  font-weight: ${(props) => props.fontWeight || "normal"};
+  color: ${(props) => props.textColor || "#000"};
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+`;
 
 const CardContact = styled.div`
   display: flex;
   flex-direction: column;
-  gap: .5rem;
-  background-color: #f2f8fd;
-  padding: .5rem 0 .3rem .5rem;
-  margin-bottom: .8rem;
-  outline: 1px solid #eee;
+  gap: 0.5rem;
+  background-color: #ffff;
+  padding: 0.5rem 0 0.3rem 0.5rem;
+  margin-bottom: 0.8rem;
   border-radius: 5px;
-`
+`;
 
 const CardViwProfile = styled.div`
   display: grid;
@@ -55,14 +52,23 @@ const CardViwProfile = styled.div`
   .button {
     display: flex;
     align-items: center;
-    gap: .3rem;
-    outline: none;
+    gap: 0.3rem;
     border: none;
-    padding: .5rem 1rem;
+    outline: 1px solid #000;
+    background-color: #fff;
+    padding: 0.5rem 1rem;
     border-radius: 1rem;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-bottom: 5px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   }
-`
+`;
 
-
-export { Card, CardContentAvatar, CardViwProfile, Text, CardContact};
+export {
+  Card,
+  CardContentAvatar,
+  CardHeader,
+  CardViwProfile,
+  Text,
+  CardContact,
+};

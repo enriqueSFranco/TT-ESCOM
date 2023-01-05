@@ -3,7 +3,7 @@ import { useModal } from "hooks";
 import ModalPortal from 'components/Modal/ModalPortal'
 import CustomAvatar from "components/Avatar/Avatar";
 import ProfileCandidate from '../ProfileCandidate'
-import { MdEmail, MdPhoneIphone } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
 import { FaUserCircle } from 'react-icons/fa'
 import { AiOutlineWhatsApp } from 'react-icons/ai'
 import {
@@ -11,6 +11,7 @@ import {
   CardContentAvatar,
   Text,
   CardContact,
+  CardHeader,
   CardViwProfile
 } from "./styled-components/CardCandidateStyled";
 
@@ -22,32 +23,34 @@ const CardCandidate = ({ user }) => {
   return (
     <>
       <Card>
-        <CardContentAvatar>
-          <picture>
-            <CustomAvatar
-              picture={user.t100_profile_picture}
-              username={user.t100_name}
-              width="100px"
-              height="100px"
-            />
-          </picture>
-          <figcaption>
-            <Text fontWeight="600">{user.t100_name}{" " + user?.t100_last_name}</Text>
-            <Text fontWeight="400" textColor="#5D5E7D">
-              {user.t100_speciality
-                ? user.t100_speciality
-                : user.t100_interest_job}
-            </Text>
-          </figcaption>
-        </CardContentAvatar>
+        <CardHeader>
+          <CardContentAvatar>
+            <picture>
+              <CustomAvatar
+                picture={user.t100_profile_picture}
+                username={user.t100_name}
+                width="100px"
+                height="100px"
+              />
+            </picture>
+            <figcaption>
+              <Text fontWeight="600" textColor="#fff">{user.t100_name}{" " + user?.t100_last_name}</Text>
+              <Text fontWeight="400" textColor="#fff">
+                {user.t100_speciality
+                  ? user.t100_speciality
+                  : user.t100_interest_job}
+              </Text>
+            </figcaption>
+          </CardContentAvatar>
+        </CardHeader>
 
         <CardContact>
           <Text style={{ display: "flex", alignItems: "center", gap: ".3rem" }}>
-            <MdEmail style={{ color: "#5D5E7D", fontSize: "1.1rem" }} />
+            <MdEmail style={{ color: "#5D5E7D", fontSize: "20px" }} />
             <a href={`mailto:${user.t100_email}`}>{user.t100_email}</a>
           </Text>
           <Text style={{ display: "flex", alignItems: "center", gap: ".3rem" }}>
-            <AiOutlineWhatsApp style={{ color: "#5D5E7D", fontSize: "1.1rem" }} />
+            <AiOutlineWhatsApp style={{ color: "#00E676", fontSize: "21px" }} />
             <a
               aria-label="Chat on WhatsApp"
               href={`https://wa.me/55${user.t100_phonenumber}`}

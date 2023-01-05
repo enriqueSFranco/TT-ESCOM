@@ -14,8 +14,8 @@
 .profileCard {
   grid-area: profile;
   height: 98%;
-  background-color: #191f28;
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   position: relative;
   top: 1rem;
   border-radius: 1rem;
