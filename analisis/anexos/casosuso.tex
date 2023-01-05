@@ -1,9 +1,40 @@
 \chapter{Casos de uso}
-
+\label{anexos:cus}
 %Los casos de uso se identificarán de acuerdo a la siguiente nomenclatura:
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \section{Especificación de casos de uso}
+Es importante mencionar que en cada uno de los módulos propuestos se diseño su respectivo diagrama de casos de uso, el cual se define a continuación:\\
+
+Los diagramas de casos de uso modelan la interacción entre los casos de uso y los actores del sistema. En estos diagramas se podrán observar los siguientes elementos:\\
+
+	\UCsist{ } Representa un caso de uso del sistema. Es un óvalo en el cuál se indica el nombre del caso de uso.\\
+	
+	\UCactor{ } Representa a un actor del sistema, el nombre del actor se indica en la parte inferior.\\
+	
+	Relación $<$- - -$<<extends>>$- - -. Indica que un caso de uso \textbf{puede} ejecutarse a partir de otro.\\
+	
+	Relación - - -$<<include>>$- - -$>$. Indica que un caso de uso \textbf{debe} ejecutarse a partir de otro.\\
+
+La interacción entre los casos de uso y los actores se realiza a través de una linea, la cual indica que el actor puede ejecutar dicha funcionalidad, en la figura \ref{fig:acUC}, se ilustra dicha interacción.
+
+\begin{figure}[hbtp!]
+	\begin{center}
+		\includegraphics[width=.4\textwidth]{LIT/ActorUC.png}
+	\end{center}
+	\caption{Un Actor y un caso de uso}
+	\label{fig:acUC}
+\end{figure}
+
+Los casos de uso se encontrarán dentro de paquetes representados por carpetas, indicando así que pertenecen a un mismo módulo del sistema como se muestra en la figura \ref{fig:pack}.
+
+\begin{figure}[hbtp!]
+	\begin{center}
+		\includegraphics[width=.4\textwidth]{LIT/Paquete.png}
+	\end{center}
+	\caption{Un Actor con varios caso de uso dentro de un módulo}
+	\label{fig:pack}
+\end{figure}
 
 Para poder entender un caso de uso más allá de un diagrama, se lleva a cabo la tarea de especificar cada uno de los casos de uso identificados en el sistema con el fin de describir las secuencias de acciones que realiza el sistema y que lleva a un resultado de valor a un actor específico. Los casos de uso tienen atributos los cuales se describen a continuación:
 
@@ -15,9 +46,9 @@ Para poder entender un caso de uso más allá de un diagrama, se lleva a cabo la
 	\item[Entradas] Lista los datos de entrada que el caso de uso recibe, los cuales harán referencia al modelo de información.
 	\item[Salidas] Lista los datos de salida que el caso de uso genera.
 	\item[Destino] Indica a dónde se dirigen los datos de salida, por ejemplo: interfaz, impresora, repositorio, hacia un servidor o un archivo.
-	\item[Precondiciones] En lista las cosas que deben haber sucedido para que el caso  de uso se lleve a cabo.
-	\item[Postcondiciones] En lista las cosas que suceden en el sistema o negocio de forma inmediata o a corto plazo una vez que se ejecute el caso de uso.
-	\item[Reglas de Negocio] Lista las reglas de negocio que se van a ejecutar en el caso de uso.
+	%\item[Precondiciones] En lista las cosas que deben haber sucedido para que el caso  de uso se lleve a cabo.
+	%\item[Postcondiciones] En lista las cosas que suceden en el sistema o negocio de forma inmediata o a corto plazo una vez que se ejecute el caso de uso.
+	%\item[Reglas de Negocio] Lista las reglas de negocio que se van a ejecutar en el caso de uso.
 	\item[Viene de] Indica cuando el caso de uso se extiende de otro o se incluye en otro.
 	%\item[Casos de prueba] Indican los datos o condiciones con las que se debe probar este caso de uso.
 	\item[Trayectoria principal] Secuencia de pasos que llevan al caso de uso al éxito.
@@ -25,12 +56,14 @@ Para poder entender un caso de uso más allá de un diagrama, se lleva a cabo la
 	\item[Puntos de extensión] Cuando existen casos de uso que pueden ejecutarse a partir del caso de uso en proceso.
 \end{description}
 
+A continuación listamos cada módulo que conforma al sistema, se muestra su respectivo diagrama de casos de uso y la descripción de los mismos. 
+\clearpage
 \section{Módulo General}
 	En la figura \ref{adcu:grl} se muestra el diagrama de casos de uso del módulo general del sistema.
 
 	\begin{figure}[hbtp!]
 		\begin{center}
-			\includegraphics[width=.8\textwidth]{sprints/imagenes/CUGRL.png}
+			\includegraphics[width=1 \textwidth]{anexos/imagenes/CUGRL.png}
 		\end{center}
 		
 		\caption{Diagrama de casos de uso del \textit{Módulo General}.}
@@ -42,9 +75,22 @@ Para poder entender un caso de uso más allá de un diagrama, se lleva a cabo la
 
 	\input{CasosdeUso/GRL-CU02/cu.tex}
 	\input{CasosdeUso/GRL-CU02/iu.tex}
-
+	
 	\input{CasosdeUso/GRL-CU03/cu.tex}
 	\input{CasosdeUso/GRL-CU03/iu.tex}
+
+	\clearpage
+\section{Módulo Administración}
+	En la figura \ref{adcu:admn} se muestra el diagrama de casos de uso del módulo general del sistema.
+
+	\begin{figure}[hbtp!]
+		\begin{center}
+			\includegraphics[width=1 \textwidth]{anexos/imagenes/CUADMN.png}
+		\end{center}
+		
+		\caption{Diagrama de casos de uso del \textit{Módulo Administración}.}
+		\label{adcu:admn}
+	\end{figure}
 
 	\input{CasosdeUso/ADM-CU02/cu.tex}
 	\input{CasosdeUso/ADM-CU02/iu.tex}
@@ -64,6 +110,7 @@ Para poder entender un caso de uso más allá de un diagrama, se lleva a cabo la
 	\input{CasosdeUso/ADM-CU04/cu.tex}
 	\input{CasosdeUso/ADM-CU04/iu.tex}
 
+	\clearpage
 \section{Módulo de Usuarios}
 	En la figura \ref{adcu:usr} se muestra el diagrama de casos de uso del módulo de usuarios del sistema.
 
@@ -143,17 +190,17 @@ Para poder entender un caso de uso más allá de un diagrama, se lleva a cabo la
 	\input{CasosdeUso/USR-CU05/cu.tex}
 	\input{CasosdeUso/USR-CU05/iu.tex}
 
-
+	\clearpage
 \section{Módulo de Vacantes}
-	En la figura \ref{adcu:usr} se muestra el diagrama de casos de uso del módulo vacantes del sistema.
+	En la figura \ref{adcu:vct} se muestra el diagrama de casos de uso del módulo vacantes del sistema.
 
 	\begin{figure}[hbtp!]
 		\begin{center}
-			\includegraphics[width=.8\textwidth]{sprints/imagenes/MUVCT.png}
+			\includegraphics[width=1 \textwidth]{anexos/imagenes/CUVCT.png}
 		\end{center}
 		
 		\caption{Diagrama de casos de uso del \textit{Módulo vacantes}.}
-		\label{adcu:usr}
+		\label{adcu:vct}
 	\end{figure}
 
 	\input{CasosdeUso/VCT-CU01/cu.tex}
@@ -172,17 +219,17 @@ Para poder entender un caso de uso más allá de un diagrama, se lleva a cabo la
 	\input{CasosdeUso/VCT-CU04/iu.tex}
 	
 
-
+	\clearpage
 	\section{Módulo de Postulaciones}
-	En la figura \ref{adcu:usr} se muestra el diagrama de casos de uso del módulo postulaciones del sistema.
+	En la figura \ref{adcu:pst} se muestra el diagrama de casos de uso del módulo postulaciones del sistema.
 
 	\begin{figure}[hbtp!]
 		\begin{center}
-			\includegraphics[width=.8\textwidth]{sprints/imagenes/DCUPST.png}
+			\includegraphics[width=1 \textwidth]{anexos/imagenes/CUPST.png}
 		\end{center}
 		
 		\caption{Diagrama de casos de uso del \textit{Módulo postulaciones}.}
-		\label{adcu:usr}
+		\label{adcu:pst}
 	\end{figure}
 
 	\input{CasosdeUso/PST-CU01/cu.tex}

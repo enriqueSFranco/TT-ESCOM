@@ -1,7 +1,49 @@
-\section{Solución propuesta}
-%En este capítulo se presentan los objetivos que se buscan alcanzar al concluir la implementación del sistema, se 
-%explica la arquitectura del sistema y la forma de trabajo que se utilizará durante el desarrollo del sistema así como 
-%los requerimientos del mismo.
+En este capítulo se presentan los objetivos que se buscan alcanzar al concluir la implementación del sistema y los puntos que se desean cubrir para resolver la problemática anteriormente presentada, se 
+explica la arquitectura del sistema, la forma de trabajo que se utilizará durante el desarrollo del sistema, el flujo del negocio, así como los requerimientos del mismo.\\
+\newline
+
+Recordemos que las plataformas de bolsa de trabajo universitarias al ser diseñadas únicamente para su comunidad estudiantil no se puede acceder 
+a su información tan fácilmente y están diseñadas para satisfacer sus objetivos y necesidades de la propia universidad y comunidad por lo que los objetivos y las necesidades que debe de cubrir una bolsa de trabajo para la ESCOM o  el IPN en general son diferentes en comparación con el Tecnológico de Monterrey o de la Universidad Autónoma de México.\\
+\newline
+Antes de poder definir de forma adecuada los requerimientos y el alcance del proyecto se listan las bolsas de trabajo más populares entre las personas que más se apegan al objetivo del Trabajo Terminal, así como  la bolsa de trabajo oficial del Instituto:
+\begin{itemize}
+    \item OCCMundial
+    \item CompuTrabajo
+    \item Indeed
+    \item Siboltra 
+    \item ESCOMobile: a pesar de que esta aplicación no es una bolsa de trabajo, en ella se pueden consultar los boletines de trabajo
+    publicados por la ESCOM.
+\end{itemize}
+En la tabla \ref{table:herramientasSimilares} se muestran las características de cada una de ellas y las características que pretende tener el Trabajo Terminal.
+%\newpage
+
+
+\begin{longtable}{| p{0.15\textwidth}  | p{0.10\textwidth} | p{0.10\textwidth}  | p{0.10\textwidth}  | p{0.10\textwidth}  | p{0.10\textwidth}  |  p{0.10\textwidth}  |}
+
+    \hline
+
+    \textbf{Herramienta} & \IUocc{}	& \IUcompuT{}&  \IUIneed{} & \IUsisae{} & \scriptsize \textbf{ESCOMobile} & \scriptsize Trabajo Terminal\\ 
+    \hline
+
+    Contacto directo reclutador-candidato dentro de la plataforma & Sí & No  & Sí  & No  & No & Si.\\ \hline
+    Filtrado automático de currículos recibidos & Sí & Sí & No & No & No & Si.\\ \hline
+    Autogenerado de CV & Sí & Sí & Sí  & No & Sí & Sí. \\ \hline
+    Seguimiento del estado de solicitud & Sí  & Sí & No & No  & Si& Sí. \\ \hline
+    Búsqueda de candidatos & Sí & Sí & Sí & Sí & No & Sí\\ \hline
+
+    \caption{Comparación Plataformas para buscar empleo}
+    \label{table:herramientasSimilares}
+\end{longtable}
+
+En general todas las plataformas cumplen con publicar vacantes y consultar perfiles de candidatos, pero el publicar una vacante y dejarla visible en la plataforma para que se postulen no siempre es gratuito, la OCCMundial, CompuTrabajo e Indeed cobran por vacante publicada y el tiempo que dure dicha vacante abierta, así como los servicios que te gustaria tener. Si quieres que se te recomienden candidatos cada cierto tiempo tiene un precio extra.\\
+
+En Ineed si quieres que tu vacante publicada tenga cierto patrocinio es decir, que sean de las primeras en ser vistas se te cobra una comisión extra.\\
+\newline
+Nuestro sistema no se pedirá ninguna comisión por su uso (por el simple hecho que es que para la comunidad de ESCOM), tampoco tendrá límite de vacantes publicadas, el reclutador tendrá total libertad en consultar candidatos y configurar la fecha de publicación y cierre sus vacantes. \\
+
+Un punto importante es que resolverá los problemas de gestión de vacantes  y correos para validar la información de las empresas que actualmente tiene el departamento de extensión y apoyos educativos de la ESCOM.\\
+\newline
+Con base en lo anterior se redacta el objetivo del proyecto, arquitectura y flujo del sistema.
 
 \section{Objetivo}
 \subsection{Objetivo general}
@@ -21,7 +63,9 @@
             \item Implementar un algoritmo de clasificación que automatice la búsqueda de los mejores postulantes, analizando su 
             currículum acorde a sus intereses y los intereses de la empresa.
         \end{itemize}
+%        \section{Objetivo}
 \input{propuesta/arqui.tex}
+\input{propuesta/flujo.tex}
 \input{propuesta/planeacion.tex}
 
 %\section{Arquitectura}

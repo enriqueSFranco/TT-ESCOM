@@ -1,60 +1,19 @@
 %!TEX root = ../example.tex
 \clearpage
-\chapter{Resultados obtenidos}
+\section{Conclusiones}
+Una vez que se finalizó con el desarrollo y todas las etapas especificadas en la metodología SCRUM, se consiguió un software capaz de gestionar la bolsa de trabajo de la ESCOM y de la capacidad de recomendar vacantes que mejor se ajusten acorde a los conocimientos que tenga un candidato, cumpliendo así, de manera satisfactoria con el objetivo general propuesto.
 
- \section{Resultados}
+Sin embargo, a pesar que se cumplió con el objetivo general, se llego a la conclusión de que este software puede tener un mayor alcance, por lo que el sistema se fue construyendo a base de componentes reutilizables.
 
-
-De acuerdo a las fechas de trabajo programadas, al momento de presentar este documento para revisión estamos en el sprint 8, recolección de datos y prueba de algoritmo. Hasta este momento los objetivos que se ha completado son:
-
-\begin{itemize}
-	\item Creación de un proyecto en Django en el backend y con React js para el frontend con funciones básicas para probar el uso de las tecnologías.
-	\item Configuración del entorno de programación del proyecto con Django.
-	\item CRUD de usuarios en backend con Django.
-	\item CRUD de vacantes en backend con Django.
-	\item CRUD de solicitudes en backend con Django.
-	\item CRUD de compañías en backend con Django.
-	\item CRUD de comunicados en backend con Django.
-	\item Implementación de Django API Rest Framework en el backend
-	\item Serializadores de Django API Rest para los CRUDs creados en el backend.
-	\item Viewset correspondientes a cada acción de los CRUDs creados en backend y las serializaciones creadas con DJango API Rest.
-	\item Endpoints para los viewsets creados con Django API Rest.
-	\item Creación e implementación de los catálogos propuestos para el sistema en la base de datos.
-	\item Configuración del entorno de programación para el frontend con React js
-	\item Hooks en JavaScript para gestionar la comunicación entre el frontend y backend.
-	\item Servicios para establecer la comunicación entre el frontend y backend, usando los endpoints de la API creada.
-	\item Plantillas para las vistas mostradas al usuario en el frontend con React js.
-	\item Generación y gestión de tokens en backend para inicios de sesión en el backend con Django API Rest y JSON Web Token.
-	\item Hooks en JavaScript para solicitar y usar tokens en frontend para inicio de sesión y uso del sistema en frontend.
-	\item Uso de rutas privadas en el frontend para su uso dependiendo del inicio de sesión.
-	\item CRUD del usuario Alumno en el frontend.
-	\item Gestionar vacantes desde el frontend.
-	\item Postularse a vacantes desde el frontend
-	\item Gestionar postulaciones desde el frontend.
-\end{itemize}
-\section{Conslusiones}
-
-
-El desarrollo de un proyecto siempre es un reto que se debe afrontar con todas las medidas de planeación con las que contamos como individuos para crear una solución que se útil tanto para resolver la problemática a la que se está atacando como para ser una solución que permita a los usuarios del sistema utilizarlo como una mejor opción a cualquier otra opción con la que pueda contar. En este caso, el proyecto que se está desarrollando tiene el objetivo de apoyar a un sector específico de la institución en la que nos hemos formado en tareas que aunque no son de primera necesidad para el funcionamiento de la institución, son un apoyo dirigido a su comunidad de la cual somos parte.Al iniciar con el desarrollo se tenía contemplado el uso de tecnologías específicas para encargarse de la gestión del backend y frontend, para las cuales se escogieron Django y React js.\\
-\newline
-Para el backend se escogió Django por estar programado en Python el cual es un lenguaje muy versátil para lograr implementaciones de scripts para gestión de datos y ser uno de los lenguajes más usados para programar algoritmos de inteligencia artificial, lo cual nos ayudará a cumplir con uno de los objetivos principales planteados para este proyecto. Cuando se realizó la implementación de prueba en el primer sprint encontramos que el uso de Django podría ofrecer todo lo necesario para crear un proyecto completo. Dado a que la forma de trabajo pensado para Django está basado en modularidad por lo que se podría trabajar en un esquema de Microservicios, haciendo que se tenga todo un módulo como aplicación y en este contenga el uso de la base de datos y renderizado de interfaces. Pero el inconveniente que se presentaría al usar Django para diseñar todo el sistema alrededor de él es que su sistema de renderizado de interfaces no cuenta con todas las herramientas de diseño para generar las interfaces que satisfagan las necesidades de uso que se han planteado para el sistema, ya que el motor de renderizado de Django está pensado para páginas web “simples” como blogs o foros de información.\\
-Mientras para el frontend se escogió la librería React js de JavaScript porque es una herramienta muy usada en el mercado y ha demostrado que su uso nos da una gran libertad creativa para crear interfaces dinámicas, crear funciones para el manejo de las interfaces y ser atractiva para el usuario. Cuando se realizó la implementación de prueba, combinando React con Django, encontramos que el modo de trabajar la comunicación entre ambas partes debía ser a través de una API que logrará la comunicación efectiva de ambas partes con el uso de objetos JSON, los cuales cada parte empaqueta y desempaqueta con sus propios medios y así se evite la pérdida de información. Anteriormente se tenía pensado que se “reemplazará” el motor de renderizado nativo de Django con React como lo sugerían muchos tutoriales de uso combinado de ambas tecnologías. Después de descubrir las necesidades que en realidad se necesitaban cubrir para que ambas tecnologías funcionaran correctamente fue cuando decidimos usar el framework Django API Rest para crear una comunicación entre ambas partes del proyecto y mantener la funcionalidad de ambas tecnologías independientes una de la otra, manteniendo así la construcción del proyecto lo más parecida a la planeación realizada con el análisis hecho en el sprint 2.\\
-\newline
- Esperamos que con la realización de este proyecto se demuestren los conocimientos que hemos adquirido a lo largo de nuestra trayectoria académica y, además, podamos demostrar que en conjunto podemos lograr mejores cosas complementando las fortalezas y debilidades individuales del equipo formado para este proyecto y así lograr los mejores resultados posibles para el objetivo que nos hemos propuesto con el tiempo disponible para concluirlo.
 
 
 
 \section{Trabajo a futuro} 
-
-
-
-Los objetivos que esperamos cumplir para la siguiente entrega es:
+A continuación vamos a listar los diferentes elementos que consideramos relevantes que se pueden tomar en cuenta para terminar de implementar el sistema.
 \begin{itemize}
-	\item Concluir la gestión de usuarios, implementando las funciones del usuario “Encargado” y los usuarios “Colaboradores”.
-	\item Determinar e implementar el algoritmo de recomendación, con la búsqueda y prueba de algoritmos de clasificación para realizar clasificaciones de información para que sea de más utilidad para los usuarios.Implementar el envío de notificaciones para mantener informados a los usuarios acerca de sus interacciones con otros usuarios dentro de la plataforma.
-	\item Concluir las vistas de información para los reclutadores, para que se muestre información útil acerca del uso que le han dado a la plataforma.
-	\item Implementar la gestión de reportes para las vacantes, para tener un medio donde la comunidad de usuarios de tipo “Alumno” puedan manifestar inconvenientes o problemas que hayan detectado con las vacantes publicadas.
-	\item Implementar la gestión de comunicados, para dar más opciones a los reclutadores de difundir información útil para los candidatos objetivo de acuerdo al giro de sus empresas.
-	\item Corrección de errores y Bugs que se presenten durante el desarrollo para entregar un sistema lo mejor implementado posible.
+	\item Implementar la gestión de comunicados para que los reclutadores, colaboradores y el encargado del sistema puedan publicar anuncios dentro del sistema.
+	\item Desarrollar el módulo de reportes y estadísticas de uso del sistema, cuyo objetivo es generar reportes de uso para que el encargado pueda presentar estadísticas  a sus superiores. El formato de descarga para dichos reportes debe ser .pdf, .csv. Recomendamos que se puedan seleccionar los datos que deben de tener cada reporte y de diferente módulo en el sistema.
+	\item Implementar un gestor de versiones para las validaciones de las vacantes. Recomendamos que las observaciones sean de forma específica, es decir, que el usuario pueda seleccionar el párrafo y/o la sección que requiera una observación.
+	\item Implementar el módulo de notificación y envío de correos electrónicos para indicar al usuario los nuevos cambios en el sistema y aquellas partes del negocio que requieran su atención inmediata. 
 \end{itemize}
 

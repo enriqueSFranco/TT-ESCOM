@@ -19,21 +19,25 @@
 \begin{document}
     \frontmatter
         \maketitle
-        \advertisment
-        \responsiveletter
+        %\advertisment
+        %\responsiveletter
         \tableofcontents
         \listoffigures
         \listoftables
     \mainmatter
     
 
-    %\input{introduccion.tex} ---> PENDIENTE
+    \input{introduccion.tex} %---> PENDIENTE
     \label{aloneparts:intro}
 
     \chapter{Marco teórico}
     \label{aloneparts:marcoteorico}
     \input{antecedentes/antecedentes.tex} 
     
+    \chapter{Propuesta de solución}
+    \label{aloneparts:solucionp}
+    \input{propuesta/propuesta.tex} 
+
     \chapter{Trabajo Realizado}
     \label{trabajorealizado}
       \input{desarrollo/trabajorealizaso1.tex}
@@ -46,10 +50,13 @@
      %   \input{sprints/sprint5.tex}
      %   \input{sprints/sprint6.tex}
      %   \input{conclusiones.tex}
-     %   \input{anexos/casosuso.tex}
     
-    \chapter{Desarrollo}
+    %\chapter{Resultados Obtenidos}
       %  \input{desarrollo/desarrollo.tex}
+
+    \chapter{Conclusiones y Trabajo a futuro}
+    \label{conclusiones}
+    \input{conclusiones.tex}
         
     \appendix
 

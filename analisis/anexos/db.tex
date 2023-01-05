@@ -69,43 +69,34 @@ Cada dato puede tener restricciones adicionales, entre las que se encuentran:
             
     \end{bGlosario}
     
-
+\clearpage
 \section{Diagrama Relacional}
 
-En la figura \textbf{ref} se muestra el diagrama de datos con base en el análisis de requerimientos que
-del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
-%\begin{figure}[hbtp!]
-%5    \begin{center}
-%           % \includegraphics[width=.65\textwidth]{negocio/images/MI-POA-CH}
-%            \includegraphics[width=.6\textwidth]{anexos/imagenes/Usuarios.jpeg}
-%            
-%    \end{center}
-%        \label{fig:MI-Planeacion}
-%            \caption{Diagrama de base de datos del módulo de Usuarios}
-%    
-%    \end{figure}
+En la figura \ref{fig:db} se muestra el diagrama de datos con base en el análisis de requerimientos que se presentó en el capitulo \ref{aloneparts:solucionp} y 
+los casos de uso que se redactan en el anexo  \ref{anexos:cus}. El diagrama está dividido por secciones que representan des base de datos los módulos del sistema y la arquitectura del mismo.
 
-% En la figura  \ref{fig:MI-PlaneacionI}
-%\begin{figure}[hbtp!]
-%    \begin{center}
-%        \includegraphics[width=.7\textwidth]{negocio/images/MI-POA-CAT}
-%    \end{center}
-%    \label{fig:MI-PlaneacionI}
-%\end{figure}
-%
-%\begin{figure}[hbtp!]
-%    \begin{center}
-%        \includegraphics[width=.7\textwidth]{negocio/images/MI-POA-CFG}
-%    \end{center}
-%    \label{fig:MI-PlaneacionII}
-%\end{figure}
-%
-%\begin{figure}[hbtp!]
-%    \begin{center}
-%        \includegraphics[width=.7\textwidth]{negocio/images/MI-POA-PLA}
-%    \end{center}
-%    \label{fig:MI-PlaneacionIII}
-%\end{figure}
+\begin{figure}[H]
+    \begin{center}
+        \fbox{\includegraphics[height=0.45\textheight,angle=90]{anexos/imagenes/TTMD.png}}
+    \caption{Diagrama relacional}
+    \label{fig:db}
+    \end{center}
+\end{figure}
+\clearpage
+A continuación se presenta sección por sección el modelo de base de datos para una mejor visualización del diagrama.
+
+
+\subsection{Módulo General}
+
+\begin{figure}[hbtp!]
+    \begin{center}
+        \includegraphics[width=1 \textwidth]{anexos/imagenes/MDGRL.png}
+    \end{center}
+    
+    \caption{Diagrama relacional del \textit{Módulo General}.}
+    \label{adcu:grl}
+\end{figure}
+
 
 %---------------------Usuario-----------------------------
 \begin{cdtEntidad}{users}{Usuario}{
@@ -177,6 +168,19 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
         Es el nombre del tipo del usuario.
     }{\datRequerido}
 \end{cdtEntidad}
+\clearpage
+\subsection{Módulo Administración}
+
+\begin{figure}[hbtp!]
+    \begin{center}
+        \includegraphics[width=1 \textwidth]{anexos/imagenes/MDADMN.png}
+    \end{center}
+    
+    \caption{Diagrama relacional del \textit{Módulo Administración}.}
+    \label{adcu:grl}
+\end{figure}
+
+
 
 %---------------------Empresa-----------------------------
 \begin{cdtEntidad}{empresa}{Empresa}{
@@ -272,7 +276,7 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
         Primer apellido del reclutador con el cual se registra en el sistema.
         Restricciones adicionales:
             \begin{Citemize}
-                \item No debe de execer de 60 caracteres.
+                \item No debe de execeder de 60 caracteres.
             \end{Citemize}
     }{\datRequerido}
 
@@ -280,7 +284,7 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
         Segundo apellido del reclutador con el cual se registra en el sistema.
         Restricciones adicionales:
             \begin{Citemize}
-                \item No debe de execer de 60 caracteres.
+                \item No debe de execeder de 60 caracteres.
             \end{Citemize}
     }{\datOpcional}
 
@@ -363,6 +367,17 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
     }{\datRequerido}
 \end{cdtEntidad}
 
+\clearpage
+\subsection{Módulo Usuarios}
+
+\begin{figure}[hbtp!]
+    \begin{center}
+        \includegraphics[width=1 \textwidth]{anexos/imagenes/MDUSR.png}
+    \end{center}
+    
+    \caption{Diagrama relacional del \textit{Módulo Usuarios}.}
+    \label{adcu:grl}
+\end{figure}
 
 
 %---------------------Alumno-----------------------------
@@ -389,7 +404,7 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
         Nombre del alumno con el cual se registra en el sistema.
         Restricciones adicionales:
             \begin{Citemize}
-                \item No debe de execer de 50 caracteres.
+                \item No debe de execeder de 50 caracteres.
             \end{Citemize}
     }{\datRequerido}
 
@@ -397,7 +412,7 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
         Primer apellido del alumno con el cual se registra en el sistema.
         Restricciones adicionales:
             \begin{Citemize}
-                \item No debe de execer de 60 caracteres.
+                \item No debe de execeder de 60 caracteres.
             \end{Citemize}
     }{\datRequerido}
 
@@ -405,7 +420,7 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
         Segundo apellido del alumno con el cual se registra en el sistema.
         Restricciones adicionales:
             \begin{Citemize}
-                \item No debe de execer de 60 caracteres.
+                \item No debe de execeder de 60 caracteres.
             \end{Citemize}
     }{\datOpcional}
 
@@ -413,7 +428,7 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
         Archivo en formato \textbf{.pdf} del alumno.
         Restricciones adicionales:
             \begin{Citemize}
-                \item No debe de execer de 100 caracteres.
+                \item No debe de execeder de 100 caracteres.
             \end{Citemize}
     }{\datOpcional}
 
@@ -433,7 +448,7 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
         Nombre del puesto deseado del alumno.
         Restricciones adicionales:
             \begin{Citemize}
-                \item No debe de execer de 70 caracteres.
+                \item No debe de execeder de 70 caracteres.
             \end{Citemize}
     }{\datOpcional}
     
@@ -482,8 +497,8 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
     }{\datOpcional}
 
 \end{cdtEntidad}
-%---------------------Historial Academico-----------------------------
-\begin{cdtEntidad}{hacademico}{Historial Academico}{
+%---------------------Historial Académico-----------------------------
+\begin{cdtEntidad}{hacademico}{Historial Académico}{
     Esta entidad almacena todos 
     }
 
@@ -514,7 +529,7 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
         \end{Citemize}
     }{\datRequerido}
 
-    \brAttr{idUnidadAcademica}{idUnidadAcademica}{tInt}{
+    \brAttr{idUnidadAcademica}{idUnidadAcadémica}{tInt}{
         Identificador único para cada registro de la entidad.
         Restricciones adicionales:
         \begin{Citemize}
@@ -542,11 +557,11 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
     }{\datRequerido}
 
     \brAttr{fechaini}{Fecha de inicio}{tDate}{
-        Fecha en la que inicio el nivel academico.
+        Fecha en la que inicio el nivel académico.
     }{\datRequerido}
 
     \brAttr{fechafin}{Fecha final}{tDate}{
-        Fecha en la que finalizó el nivel academico.
+        Fecha en la que finalizó el nivel académico.
     }{\datRequerido}
 \end{cdtEntidad}
 %---------------------Red Social----------------------------
@@ -573,9 +588,9 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
 \end{cdtEntidad}
 
 
-%---------------------Nivel academico-----------------------------
-\begin{cdtEntidad}{NivelAcademico}{Nivel academico}{
-    Esta entidad es el catalogo que indica el nivel academico del usuario.
+%---------------------Nivel académico-----------------------------
+\begin{cdtEntidad}{NivelAcademico}{Nivel académico}{
+    Esta entidad es el catalogo que indica el nivel académico del usuario.
 }
     \brAttr{id}{Id}{tInt}{
         Identificador único para cada registro de la entidad.
@@ -587,13 +602,13 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
     }{\datRequerido}
 
     \brAttr{descripcion}{Descripción}{tVarchar}{
-        Es el nombre del nivel academico.
+        Es el nombre del nivel académico.
     }{\datRequerido}
 \end{cdtEntidad}
 
-%---------------------Unidad Academica-----------------------------
-\begin{cdtEntidad}{UnidadAcademica}{Unidad Academica}{
-    Esta entidad es el catalogo que indica la Unidad Academica a la que el usuario esta asociado.
+%---------------------Unidad Académica-----------------------------
+\begin{cdtEntidad}{UnidadAcademica}{Unidad Académica}{
+    Esta entidad es el catalogo que indica la Unidad Académica a la que el usuario esta asociado.
 }
     \brAttr{id}{Id}{tInt}{
         Identificador único para cada registro de la entidad.
@@ -605,13 +620,13 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
     }{\datRequerido}
 
     \brAttr{descripcion}{Descripción}{tVarchar}{
-        Es el nombre de la Unidad Academica.
+        Es el nombre de la Unidad Académica.
     }{\datRequerido}
 \end{cdtEntidad}
 
-%---------------------Estado Academico-----------------------------
-\begin{cdtEntidad}{EstadoAcademico}{Estado Academico}{
-    Esta entidad es el catalogo que indica el Estado Academico al que el usuario esta asociado.
+%---------------------Estado Académico-----------------------------
+\begin{cdtEntidad}{EstadoAcademico}{Estado Académico}{
+    Esta entidad es el catalogo que indica el Estado Académico al que el usuario esta asociado.
 }
     \brAttr{id}{Id}{tInt}{
         Identificador único para cada registro de la entidad.
@@ -623,7 +638,7 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
     }{\datRequerido}
 
     \brAttr{descripcion}{Descripción}{tVarchar}{
-        Es el nombre del Estado Academico.
+        Es el nombre del Estado Académico.
     }{\datRequerido}
 \end{cdtEntidad}
 
@@ -662,6 +677,19 @@ del \textbf{ref} y los  casos de uso que se presentan en el \textbf{ref}
         Es el nombre de la Plataforma.
     }{\datRequerido}
 \end{cdtEntidad}
+\clearpage
+\subsection{Módulo Vacantes y Postulaciones}
+
+\begin{figure}[hbtp!]
+    \begin{center}
+        \includegraphics[width=1 \textwidth]{anexos/imagenes/MDVCT.png}
+    \end{center}
+    
+    \caption{Diagrama relacional del \textit{Módulo Vacantes y Postulaciones}.}
+    \label{adcu:grl}
+\end{figure}
+
+
 
 %---------------------Vacante----------------------------
 \begin{cdtEntidad}{vacante}{Vacante}{
