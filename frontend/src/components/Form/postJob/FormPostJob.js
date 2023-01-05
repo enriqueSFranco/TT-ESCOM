@@ -182,7 +182,11 @@ const FormPostJob = ({
 
   const updateJob = () => {
     console.log("actualizar vacante", vacantId);
+<<<<<<< HEAD
     updateVacant(vacantId, dataToEdit)
+=======
+    updateVacant(vacantId,newObject)
+>>>>>>> 26a1c6d88b367ac6d6ee2f2f9aff94f4183a1105
       .then(response => {
         console.log(response)
       })

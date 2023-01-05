@@ -65,8 +65,13 @@ export const postJob = (body) => {
     .catch((error) => error);
 };
 
+<<<<<<< HEAD
 export const updateVacant = (id, payload = {}) => {
   return API.put(`${REACT_APP_URL_VACANTS}${id}/`, payload)
+=======
+export const updateVacant = (id,payload={}) => {
+  return API.put(`${REACT_APP_URL_VACANTS}${id}/`,payload)
+>>>>>>> 26a1c6d88b367ac6d6ee2f2f9aff94f4183a1105
     .then((response) => {
       const { data } = response;
       return data;

@@ -4,15 +4,15 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import generics, viewsets
-from django.db.models import Count, IntegerField, OuterRef, Subquery,Max,Q
+from django.db.models import Count, IntegerField, OuterRef, Subquery,Max,Q,CharField,TextField
 from itertools import chain
 from datetime import date
 import datetime
 from apps.vacantes.pagination import CustomPagination
-from apps.vacantes.models import Vacant,Application,Report
+from apps.vacantes.models import Vacant,Application,Report,Locality,Experience,Modality,CandidateProfile,Contract
 from apps.companies.models import Company
 from apps.vacantes.api.serializers.requirements_serializer import RequiredAbilitySerializer,RequiredLanguageSerializer
-from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,VacantListSerializer,UpdateVacantSerializer,VacantInfoListSerializer,VacantFilterSerializer,UpdateVacantStateSerializer
+from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,VacantListSerializer,UpdateVacantSerializer,VacantInfoListSerializer,VacantFilterSerializer,UpdateVacantStateSerializer,PatchVacantSerializer
 
 class VacantViewSet(viewsets.GenericViewSet):
 	model = Vacant
@@ -247,6 +247,7 @@ class VacantViewSet(viewsets.GenericViewSet):
 
 		Dummy text
 		""" 
+		print(request.data)
 		vacant = self.queryset = self.model.objects.filter(t200_id_vacant = pk).first()
 		vacant_serializer = UpdateVacantSerializer(vacant, data=request.data)
 		if vacant_serializer.is_valid():
@@ -254,11 +255,31 @@ class VacantViewSet(viewsets.GenericViewSet):
 			return Response({
 			    'message': 'Vacante actualizada correctamente'
 		    }, status=status.HTTP_200_OK)
+		print(vacant_serializer.errors)
 		return Response({
             'message': 'Hay errores en la actualización',
             'errors': vacant_serializer.errors
         }, status=status.HTTP_400_BAD_REQUEST)
 
+	def patch(self, request, pk):
+		vacant_catalog_values = self.queryset = self.model.objects.filter(t200_id_vacant = pk).values('c222_id_locality','c207_id_experience','c214_id_modality','c206_id_profile','c208_id_contract').first()
+		print(vacant_catalog_values)
+		#,,,
+		Postal_Code = Locality.objects.filter(c222_id=vacant_catalog_values['c222_id_locality']).values('c222_cp')
+		experience = Experience.objects.filter(c207_id_experience=vacant_catalog_values['c207_id_experience']).values('c207_description')
+		modality = Modality.objects.filter(c214_id_modality=vacant_catalog_values['c214_id_modality']).values('c214_description')
+		profile = CandidateProfile.objects.filter(c206_id_profile=vacant_catalog_values['c206_id_profile']).values('c206_description')
+		contract = Contract.objects.filter(c208_id_contract=vacant_catalog_values['c208_id_contract']).values('c208_description')
+		vacant = self.model.objects\
+				.filter(t200_id_vacant = pk).all()\
+				.annotate(CP=Subquery(Postal_Code.values('c222_cp'),output_field=IntegerField()))\
+				.annotate(c207_description=Subquery(experience.values('c207_description'),output_field=CharField()))\
+				.annotate(c214_description=Subquery(modality.values('c214_description'),output_field=CharField()))\
+				.annotate(c206_description=Subquery(profile.values('c206_description'),output_field=CharField()))\
+				.annotate(c208_description=Subquery(contract.values('c208_description'),output_field=CharField()))
+		vacant_serializer = PatchVacantSerializer(vacant,many = True)
+
+		return Response(vacant_serializer.data)
 
 
 class RecruiterVacantViewSet(viewsets.GenericViewSet):
