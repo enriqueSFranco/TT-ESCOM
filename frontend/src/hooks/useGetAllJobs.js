@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getAllJobs } from "services/jobs/index";
 
 // const INITIAL_PAGE = 1;
@@ -6,6 +6,7 @@ import { getAllJobs } from "services/jobs/index";
 export function useGetAllJobs() {
   const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(false);
+  const isMounted = useRef(true)
   // const [loadingNextPage, setLoadinNextPage] = useState(false);
   // const [page, setPage] = useState(INITIAL_PAGE);
   // const [maxPage, setMaxPage] = useState(0)
@@ -14,12 +15,15 @@ export function useGetAllJobs() {
     setLoading(true);
     getAllJobs()
       .then((response) => {
-        setResponse(response);
+        setTimeout(() => {
+          if (isMounted.current)
+            setResponse(response);
+        }, 2000)
       })
       .catch((error) => error)
       .finally(() => setLoading(false));
 
-    return () => {};
+    return () => isMounted.current = false;
   }, []);
 
   // useEffect(function(){

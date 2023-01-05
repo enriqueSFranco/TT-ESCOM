@@ -8,6 +8,8 @@ const Container = styled.article`
   padding: 1rem;
   margin-bottom: 1rem;
   position: relative;
+  display: flex;
+  flex-direction: column;
 
   &::before {
     content: '';

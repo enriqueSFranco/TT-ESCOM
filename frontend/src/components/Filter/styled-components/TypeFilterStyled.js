@@ -23,19 +23,19 @@ const Label = styled.label`
 const Checkbox = styled.input`
 `
 const Content = styled.div`
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  width: 350px;
-  height: 200px;
-  border-radius: 4px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  background: linear-gradient(90deg, hsla(333, 100%, 53%, 1) 0%, hsla(33, 94%, 57%, 1) 100%);
-  box-shadow: hsla(333, 100%, 53%, 1) 0px 5px 15px;
+  /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; */
+  /* width: 350px; */
+  /* height: 200px; */
+  /* border-radius: 4px; */
+  /* padding: 1rem; */
+  /* margin-bottom: 1rem; */
+  /* background: linear-gradient(90deg, hsla(333, 100%, 53%, 1) 0%, hsla(33, 94%, 57%, 1) 100%);
+  box-shadow: hsla(333, 100%, 53%, 1) 0px 5px 15px; */
 `
 
 const WrapperFilters = styled.div`
-  position: sticky;
-  top: 440px;
+  /* position: sticky; */
+  /* top: 440px; */
 `
 
 export { List, Item, Label, Checkbox, Content, WrapperFilters }

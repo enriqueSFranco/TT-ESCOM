@@ -29,16 +29,17 @@ const JobList = ({
     e.preventDefault();
     setVacantId(vacantId);
     setMatch(recommendedJobs[index]?.t500_percentage)
-    // setMatch(recommendedJobs[index])
     isVacantRecommended ? setCards({ ...cards, activeCard: cards.listCard[index]?.t200_id_vacant }) : setCards({ ...cards, activeCard: cards.listCard[index]?.t200_id_vacant })
   };
 
   if (!jobs) return null;
 
+  console.log(jobs)
+
   if (isVacantRecommended) {
     return (
       <>
-        <h2 className={styles.title}>Vacantes Recomendadas</h2>
+        <h2>Vacantes Recomendadas</h2>
         {recommendedJobs.map((el, index) => (
           <CardJob
             key={`card-job-id_${crypto.randomUUID()}`}

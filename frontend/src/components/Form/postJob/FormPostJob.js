@@ -182,7 +182,7 @@ const FormPostJob = ({
 
   const updateJob = () => {
     console.log("actualizar vacante", vacantId);
-    updateVacant(vacantId)
+    updateVacant(vacantId, dataToEdit)
       .then(response => {
         console.log(response)
       })
