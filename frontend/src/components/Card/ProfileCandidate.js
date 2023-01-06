@@ -5,7 +5,7 @@ import Chip from "components/Chip/Chip";
 import { ImProfile } from "react-icons/im";
 import { FiFileText } from "react-icons/fi";
 import { MdEmail } from "react-icons/md";
-import { AiOutlineWhatsApp } from 'react-icons/ai'
+import { AiOutlineWhatsApp } from "react-icons/ai";
 import {
   WrapperCard,
   CardLeft,
@@ -18,9 +18,16 @@ import { List, ListItem } from "styled-components/CommonStyles";
 import CardPersonalInfo from "./CardPersonalInfo";
 
 const menuItems = [
-  { id: 0, label: "Informacion Profesional", icon: <ImProfile /> },
+  { id: 0, label: "Información Profesional", icon: <ImProfile /> },
   { id: 1, label: "Ver curriculumn", icon: <FiFileText /> },
 ];
+
+function generateLevel(level) {
+  let result = ""
+  if (level >= 30 && level <= 50) return result += "Básico"
+  if (level >= 51 && level <= 60) return result += "Intermedio"
+  if (level >= 61 && level <= 100) return result += "Avanzado"
+}
 
 const ProfileCandidate = ({ user }) => {
   const [selectedId, setSelectedId] = useState(menuItems[0].id);
@@ -111,7 +118,6 @@ const ProfileCandidate = ({ user }) => {
   //   }, 50);
   // }, []);
 
-
   if (!skills || !languages || !historial) return null;
 
   return (
@@ -137,12 +143,12 @@ const ProfileCandidate = ({ user }) => {
           <List>
             <ListItem
               style={{
-                'background-color': "#EDEFF3",
-                'border-radius': "50%",
+                "background-color": "#EDEFF3",
+                "border-radius": "50%",
                 height: "35px",
                 width: "35px",
                 display: "grid",
-                'place-items': "center",
+                "place-items": "center",
               }}
             >
               <a href={`mailto:${t100_email}`}>
@@ -151,12 +157,12 @@ const ProfileCandidate = ({ user }) => {
             </ListItem>
             <ListItem
               style={{
-                'background-color': "#EDEFF3",
-                'border-radius': "50%",
+                "background-color": "#EDEFF3",
+                "border-radius": "50%",
                 height: "35px",
                 width: "35px",
                 display: "grid",
-                'place-items': "center",
+                "place-items": "center",
               }}
             >
               <a
@@ -164,7 +170,9 @@ const ProfileCandidate = ({ user }) => {
                 rel="noopener"
                 target="_blanck"
               >
-                <AiOutlineWhatsApp style={{color: '#00E676', 'font-size': '20px'}} />
+                <AiOutlineWhatsApp
+                  style={{ color: "#00E676", "font-size": "20px" }}
+                />
               </a>
             </ListItem>
           </List>
@@ -180,8 +188,9 @@ const ProfileCandidate = ({ user }) => {
                   <ListItem key={`skill-id-${crypto.randomUUID()}`}>
                     <Chip
                       label={skill?.c116_id_skill?.c116_description}
-                      bg="#37404D"
-                      color="#fff"
+                      outline={`1px solid #ccc`}
+                      bg="#fff"
+                      color="#6D6D6D"
                     />
                   </ListItem>
                 ))
@@ -198,9 +207,10 @@ const ProfileCandidate = ({ user }) => {
                 languages?.map((language) => (
                   <ListItem key={`language-id-${crypto.randomUUID()}`}>
                     <Chip
-                      label={language?.c111_id_language?.c111_description}
-                      bg="#37404D"
-                      color="#fff"
+                      label={`${language?.c111_id_language?.c111_description} / ${generateLevel(language?.t110_level)}`}
+                      outline={`1px solid #ccc`}
+                      bg="#fff"
+                      color="#6D6D6D"
                     />
                   </ListItem>
                 ))
@@ -216,7 +226,9 @@ const ProfileCandidate = ({ user }) => {
               </ListItem>
               <ListItem style={{ alignSelf: "flex-start" }}>
                 {" "}
-                <AiOutlineWhatsApp style={{color: '#00E676', 'font-size': '20px'}} />
+                <AiOutlineWhatsApp
+                  style={{ color: "#00E676", "font-size": "20px" }}
+                />
                 <span>{t100_phonenumber}</span>
               </ListItem>
             </List>

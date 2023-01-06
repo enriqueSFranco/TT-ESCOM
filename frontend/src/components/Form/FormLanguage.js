@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useLanguage } from "hooks";
 import { addLanguage } from "services";
-import { IoLanguageOutline } from "react-icons/io5";
-import { Button, Form, Title, Select, Range, Porcentage } from "./styled-components/FormLanguageStyled";
+import { FcOk } from 'react-icons/fc'
+import { Alert, Button, Form, Title, Select, Range, Porcentage } from "./styled-components/FormLanguageStyled";
 
 const FormLanguage = ({ id }) => {
   const { languages } = useLanguage();
   const [idLanguage, setIdLanguage] = useState(0)
   const [value, setValue] = useState(30);
+  const [message, setMessage] = useState("")
 
   const handleRange = (e) => setValue(e.target.value);
 
@@ -18,14 +19,12 @@ const FormLanguage = ({ id }) => {
     addLanguage(payload)
       .then((response) => {
         console.log(response);
+        setMessage(response.message)
       })
       .catch((error) => console.error(error));
+
+    setMessage("")
   };
-
-
-  // 30 - 50 basico
-  // 51 - 60 intermedio
-  // 61 - 100 avanzado
 
   if (!languages) return null;
 
@@ -33,7 +32,6 @@ const FormLanguage = ({ id }) => {
     <Form onSubmit={handleSubmit}>
       <Title>
         Registrar idioma{" "}
-        <IoLanguageOutline style={{ color: "#116BFE", fontWeight: "700" }} />
       </Title>
       <Select
         name="c111_id_language"
@@ -60,6 +58,11 @@ const FormLanguage = ({ id }) => {
         <Porcentage>{value}%</Porcentage>
       </div>
       <Button type="submit" value="Agregar idioma" />
+      {message && (
+        <Alert>
+          <FcOk style={{fontSize: '22px'}} /> <p>{message}</p>
+        </Alert>
+      )}
     </Form>
   );
 };
