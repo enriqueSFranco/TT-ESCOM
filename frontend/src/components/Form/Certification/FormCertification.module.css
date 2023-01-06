@@ -12,6 +12,14 @@
   color: #fff;
 }
 
+.error {
+  color: #fc466b;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 4px 0 10px 0;
+}
 
 .formCertification {
   position: relative;
@@ -35,7 +43,8 @@
 }
 
 .inputGroup {
-  height: 5em;
+  height: fit-content;
+  margin-top: 10px;
 }
 
 .titleCertification {
@@ -54,8 +63,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 17px;
   color: #333333;
+  margin: 10px 0 25px 0;
 }
 
 .wrapperLinkCertification {
