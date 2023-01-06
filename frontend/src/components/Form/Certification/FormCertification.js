@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import { useForm } from "hooks/useForm";
-import TextField from "@mui/material/TextField";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "context/AuthContext";
+import { useForm } from "hooks";
+import { Input } from "components/Input/Input";
+import { Checkbox } from "@mui/material";
+import FormControlLabel from "@mui/material/FormControlLabel";
 import styles from "./FormCertification.module.css";
 
 const initialForm = {
@@ -22,27 +24,38 @@ const validateForm = (form) => {
   };
 };
 
-const FormCertification = ({
-  updateData,
-  dataToEdit,
-  setDataToEdit
-}) => {
+const FormCertification = ({ updateData, dataToEdit, setDataToEdit }) => {
   const { token } = useAuth();
   const [isVisibleLink, setIsVisibleLink] = useState(false);
-  const { form, handleChange, handleChecked, onSubmitPostCertification } = useForm({
-    ...initialForm,
-    t100_id_student: token?.user?.id,
-  }, validateForm);
+  const {
+    form,
+    setForm,
+    handleChange,
+    handleChecked,
+    onSubmitPostCertification,
+  } = useForm(
+    {
+      ...initialForm,
+      t100_id_student: token?.user?.id,
+    },
+    validateForm
+  );
+
+  // useEffect(() => {
+
+  // }, [dataToEdit])
 
   return (
     <>
-      <h1 className={styles.titleCertification}>Agregar un certificacion</h1>
-      <form  onSubmit={onSubmitPostCertification} className={styles.formCertification}>
+      <h1 className={styles.titleCertification}>Agregar un certificación</h1>
+      <form
+        onSubmit={onSubmitPostCertification}
+        className={styles.formCertification}
+      >
         <div className={styles.inputGroup}>
-          <TextField
-            sx={{ width: "100%" }}
-            label="Nombre de tu certificacion o curso"
-            size="small"
+          <Input
+            width={`400px`}
+            label="Nombre de la certificación o curso"
             id="t119_certification"
             name="t119_certification"
             value={form?.t119_certification}
@@ -50,57 +63,47 @@ const FormCertification = ({
           />
         </div>
         <div className={styles.inputGroup}>
-          <TextField
-            sx={{ width: "100%" }}
-            label="Empresa/Compania con la que la realizaste"
-            size="small"
+          <Input
+            label="¿Dónde la realizaste?"
+            width={`400px`}
             id="t119_company"
             name="t119_company"
             value={form?.t119_company}
             onChange={handleChange}
           />
         </div>
-        <p>Fecha en la que esperas terminar el curso/certificacion.</p>
-        <div className={styles.flex_1_2}>
-          <input
-            type="date"
-            id="t119_end_date"
-            name="t119_end_date"
-            value={form?.t119_end_date}
-            onChange={handleChange}
+        <div className={styles.wrapperInCourse}>
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="t119_in_course"
+                id="t119_in_course"
+                value={form?.t119_in_course}
+                onChange={handleChecked}
+                inputProps={{ "aria-label": "controlled" }}
+              />
+            }
+            label="¿Sigues en proceso de acreditación?"
           />
-          <div className={styles.wrapperInCourse}>
-            <input
-              type="checkbox"
-              name="t119_in_course"
-              id="t119_in_course"
-              value={form?.t119_in_course}
-              onChange={handleChecked}
-            />
-            <label htmlFor="t119_in_course">
-              Sigues en proceso de acreditacion?
-            </label>
-          </div>
+
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="isVisibleLink"
+                id="isVisibleLink"
+                value={isVisibleLink}
+                onChange={handleChange}
+                inputProps={{ "aria-label": "controlled" }}
+              />
+            }
+            label="¿Cuentas con el enlace de tu certificación?"
+          />
         </div>
         <div className={styles.wrapperLinkCertification}>
-          <div className={styles.inputGroupCheckbox}>
-            <input
-              type="checkbox"
-              name="isVisibleLink"
-              id="isVisibleLink"
-              value={isVisibleLink}
-              onChange={(e) => setIsVisibleLink(e.target.checked)}
-            />
-            <label htmlFor="isVisibleLink">
-              Cuentas con el enlace de tu certificacion?
-            </label>
-          </div>
           <div className={styles.inputCertificationLink}>
             {isVisibleLink && (
-              <TextField
-                sx={{width: "300px"}}
-                size="small"
-                label="Enlace de certificacion"
+              <Input
+                label="Enlace de certificación"
                 name="t119_voucher_link"
                 id="t119_voucher_link"
                 value={form?.t119_voucher_link}
@@ -109,7 +112,9 @@ const FormCertification = ({
             )}
           </div>
         </div>
-        <button type="submit" className={styles.btnAddCertification}>Guardar</button>
+        <button type="submit" className={styles.btnAddCertification}>
+          Guardar Certificación
+        </button>
       </form>
     </>
   );

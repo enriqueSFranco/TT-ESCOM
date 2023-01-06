@@ -15,6 +15,16 @@ import {
   CardViwProfile
 } from "./styled-components/CardCandidateStyled";
 
+function formatPhone(value) {
+  if (value === null) return
+  let parseValue = String(value)
+  let number = parseValue.slice(0,2)
+  let firstPart = parseValue.slice(2,6)
+  let secondPart = parseValue.slice(6,10)
+  let newFormatPhone = `${number} ${firstPart} ${secondPart}`  
+  return newFormatPhone
+}
+
 const CardCandidate = ({ user }) => {
   const [isOpen, openModal, closeModal] = useModal(false)
 
@@ -55,7 +65,7 @@ const CardCandidate = ({ user }) => {
               aria-label="Chat on WhatsApp"
               href={`https://wa.me/55${user.t100_phonenumber}`}
             >
-              {user.t100_phonenumber}
+              {formatPhone(user.t100_phonenumber)}
             </a>
           </Text>
         </CardContact>

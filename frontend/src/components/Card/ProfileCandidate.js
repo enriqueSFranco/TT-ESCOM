@@ -1,5 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useGetSkills, useLanguageUser, useAcademicHistorial } from "hooks";
+import { getProjects } from "services";
 import CustomAvatar from "components/Avatar/Avatar";
 import Chip from "components/Chip/Chip";
 import { ImProfile } from "react-icons/im";
@@ -22,17 +23,33 @@ const menuItems = [
   { id: 1, label: "Ver curriculumn", icon: <FiFileText /> },
 ];
 
+/**
+ * @param {String} value
+ **/
+function formatPhone(value) {
+  if (value === null) return
+  let parseValue = String(value)
+  let number = parseValue.slice(0,2)
+  let firstPart = parseValue.slice(2,6)
+  let secondPart = parseValue.slice(6,10)
+  let newFormatPhone = `${number} ${firstPart} ${secondPart}`  
+  return newFormatPhone
+}
+
+
 function generateLevel(level) {
-  let result = ""
-  if (level >= 30 && level <= 50) return result += "Básico"
-  if (level >= 51 && level <= 60) return result += "Intermedio"
-  if (level >= 61 && level <= 100) return result += "Avanzado"
+  let result = "";
+  if (level >= 30 && level <= 50) return (result += "Básico");
+  if (level >= 51 && level <= 60) return (result += "Intermedio");
+  if (level >= 61 && level <= 100) return (result += "Avanzado");
 }
 
 const ProfileCandidate = ({ user }) => {
   const [selectedId, setSelectedId] = useState(menuItems[0].id);
+  const [listProjects, setListProjects] = useState(null)
   const [stepWidth, _] = useState(0);
   const listRef = useRef(null);
+  const isMonted = useRef(true)
   const indicatorRef = useRef(null);
   const { historial } = useAcademicHistorial(user?.t100_id_student);
   const { skills } = useGetSkills(user?.t100_id_student);
@@ -47,6 +64,21 @@ const ProfileCandidate = ({ user }) => {
     t100_speciality,
     t100_interest_job,
   } = user;
+
+  let idUser = user?.t100_id_student;
+
+  useEffect(() => {
+    getProjects(idUser)
+      .then((response) => {
+        setTimeout(() => {
+          if (isMonted.current)
+            setListProjects(response);
+        }, 2000)
+      })
+      .catch((error) => console.error(error));
+
+    return () => isMonted.current = false
+  }, [idUser]);
 
   const handleSelected = (id) => setSelectedId(id);
 
@@ -118,7 +150,7 @@ const ProfileCandidate = ({ user }) => {
   //   }, 50);
   // }, []);
 
-  if (!skills || !languages || !historial) return null;
+  if (!skills || !languages || !historial || !listProjects) return null;
 
   return (
     <WrapperCard>
@@ -207,7 +239,9 @@ const ProfileCandidate = ({ user }) => {
                 languages?.map((language) => (
                   <ListItem key={`language-id-${crypto.randomUUID()}`}>
                     <Chip
-                      label={`${language?.c111_id_language?.c111_description} / ${generateLevel(language?.t110_level)}`}
+                      label={`${
+                        language?.c111_id_language?.c111_description
+                      } / ${generateLevel(language?.t110_level)}`}
                       outline={`1px solid #ccc`}
                       bg="#fff"
                       color="#6D6D6D"
@@ -229,7 +263,7 @@ const ProfileCandidate = ({ user }) => {
                 <AiOutlineWhatsApp
                   style={{ color: "#00E676", "font-size": "20px" }}
                 />
-                <span>{t100_phonenumber}</span>
+                <span>{formatPhone(t100_phonenumber)}</span>
               </ListItem>
             </List>
           </div>
@@ -264,6 +298,7 @@ const ProfileCandidate = ({ user }) => {
             <CardPersonalInfo
               personalObject={user?.t100_personal_objectives}
               academicHistory={historial}
+              listProjects={listProjects}
             />
           ) : (
             <h1>curriculumn</h1>

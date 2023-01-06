@@ -6,10 +6,10 @@ import { uuid } from "utils";
 import ModalPortal from "components/Modal/ModalPortal";
 import ExperenceItem from "./ExperienceItem";
 import TypeExperience from "./TypeExperience";
+import Tooltip from "components/Tooltip/TooltipText";
 import { MdAdd } from "react-icons/md";
 import backgroundNoProject from "assets/images/no-project.png";
 import styles from "./Experience.module.css";
-import Tooltip from "components/Tooltip/TooltipText";
 
 const ExperenceList = () => {
   const [listProjects, setListProjects] = useState(null);
@@ -46,7 +46,7 @@ const ExperenceList = () => {
             </figcaption>
           </figure>
         ) : (
-          <>
+          <div className={styles.wrapperList}>
             {listProjects &&
               listProjects?.map((project, i) => (
                 <ExperenceItem
@@ -65,7 +65,7 @@ const ExperenceList = () => {
                   specialty={project?.t117_job}
                 />
               ))}
-          </>
+          </div>
         )}
       </article>
       <ModalPortal isOpen={isOpen} closeModal={closeModal} minHeight="700px">

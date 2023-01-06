@@ -377,6 +377,12 @@
   justify-content: space-between;
 }
 
+.wrapperList {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
 .wrapperCircle {
   /* outline: 2px solid red; */
   position: relative;

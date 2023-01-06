@@ -71,12 +71,16 @@ const ExperenceItem = ({
                   {nameProject}
                 </h3>
                 <span className={styles.speciality}>{idStudent}</span>
-                <br />
               </>
             ) : (
               // proyecto laboral
               <>
-                <h3>{company}</h3>
+                <h3
+                  style={{ fontSize: "16px" }}
+                  className={styles.title}
+                >
+                  {company}
+                </h3>
                 <span className={styles.speciality}>{specialty}</span>
                 <br />
                 <span>{formatDate(startDate)} -</span>{" "}
