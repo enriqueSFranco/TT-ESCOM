@@ -11,29 +11,34 @@ const TypeExperience = () => {
 
   const handleClick = (type) => {
     type === "personalExperience"
-    ? setTypeProject("personalExperience") : setTypeProject("workExperience");
+      ? setTypeProject("personalExperience")
+      : setTypeProject("workExperience");
   };
-  
+
   return (
     <>
       {typeProject === null ? (
         <div className={styles.wrapperMain}>
           <h2 className={styles.titleModal}>
-            Experiencia por proyecto personal o puesto laboral?
+            ¿Proyecto personal o laboral?
           </h2>
           <nav className={styles.nav}>
             <button
               className={styles.btn}
               onClick={() => handleClick("personalExperience")}
             >
-              <BsPersonBadgeFill style={{color: "#028dd4"}} />
+              <BsPersonBadgeFill
+                style={{ color: "#028dd4", fontSize: "20px" }}
+              />
               Proyecto personal
             </button>
             <button
               className={styles.btn}
               onClick={() => handleClick("workExperience")}
             >
-              <MdBusinessCenter style={{color: "#78909c"}} />
+              <MdBusinessCenter
+                style={{ color: "#78909c", fontSize: "20px" }}
+              />
               Puesto laboral
             </button>
           </nav>
