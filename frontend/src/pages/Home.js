@@ -8,6 +8,7 @@ import {
 import FormSearchJob from "components/Search/FormSearchJob";
 import JobList from "components/Card/JobList/JobList";
 import EmptyView from "./EmptyView";
+import ButtonScrollTop from "components/Button/ButtonScrollTop";
 import DetailsJob from "components/Modal/contentModals/DetailsJob";
 import RecommendedVacanciesFilter from "components/Filter/FilterRecommendedVacancies";
 import Filteres from "components/Filter/Filters";
@@ -137,6 +138,7 @@ const Home = () => {
             />
           </SummaryCard>
         </Content>
+        <ButtonScrollTop />
       </Main>
     </LayoutHome>
   );

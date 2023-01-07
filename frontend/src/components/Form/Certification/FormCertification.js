@@ -60,11 +60,6 @@ const FormCertification = ({ updateData, dataToEdit, setDataToEdit }) => {
     setForm(initialForm);
   };
 
-
-  // useEffect(() => {
-
-  // }, [dataToEdit])
-
   return (
     <>
       <h1 className={styles.titleCertification}>Agregar un certificación</h1>

@@ -103,6 +103,7 @@ const FormPostJob = ({
   const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
   const [body, setBody] = useState("");
   const [expList, setExpList] = useState(null);
+  const [salary, setSalary] = useState({min: "", max: ''})
   const [cp, setCP] = useState("");
   const [company, setCompany] = useState("");
   const [localities, setLocalities] = useState(null);

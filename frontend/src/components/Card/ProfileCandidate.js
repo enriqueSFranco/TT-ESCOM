@@ -27,15 +27,14 @@ const menuItems = [
  * @param {String} value
  **/
 function formatPhone(value) {
-  if (value === null) return
-  let parseValue = String(value)
-  let number = parseValue.slice(0,2)
-  let firstPart = parseValue.slice(2,6)
-  let secondPart = parseValue.slice(6,10)
-  let newFormatPhone = `${number} ${firstPart} ${secondPart}`  
-  return newFormatPhone
+  if (value === null) return;
+  let parseValue = String(value);
+  let number = parseValue.slice(0, 2);
+  let firstPart = parseValue.slice(2, 6);
+  let secondPart = parseValue.slice(6, 10);
+  let newFormatPhone = `${number} ${firstPart} ${secondPart}`;
+  return newFormatPhone;
 }
-
 
 function generateLevel(level) {
   let result = "";
@@ -46,10 +45,10 @@ function generateLevel(level) {
 
 const ProfileCandidate = ({ user }) => {
   const [selectedId, setSelectedId] = useState(menuItems[0].id);
-  const [listProjects, setListProjects] = useState(null)
+  const [listProjects, setListProjects] = useState(null);
   const [stepWidth, _] = useState(0);
   const listRef = useRef(null);
-  const isMonted = useRef(true)
+  const isMonted = useRef(true);
   const indicatorRef = useRef(null);
   const { historial } = useAcademicHistorial(user?.t100_id_student);
   const { skills } = useGetSkills(user?.t100_id_student);
@@ -71,13 +70,12 @@ const ProfileCandidate = ({ user }) => {
     getProjects(idUser)
       .then((response) => {
         setTimeout(() => {
-          if (isMonted.current)
-            setListProjects(response);
-        }, 2000)
+          if (isMonted.current) setListProjects(response);
+        }, 2000);
       })
       .catch((error) => console.error(error));
 
-    return () => isMonted.current = false
+    return () => (isMonted.current = false);
   }, [idUser]);
 
   const handleSelected = (id) => setSelectedId(id);
@@ -162,16 +160,12 @@ const ProfileCandidate = ({ user }) => {
             width="100px"
             height="100px"
           />
-          <p>
-            Nombre:{" "}
-            <span>{`${t100_name} ${t100_last_name} ${
-              t100_second_surname ?? ""
-            }`}</span>
-          </p>
-          <p>
-            Perfil:{" "}
-            <span>{t100_speciality ? t100_speciality : t100_interest_job}</span>
-          </p>
+          <span>{`Nombre: ${t100_name} ${t100_last_name} ${
+            t100_second_surname ?? ""
+          }`}</span>
+          <span>
+            Perfil: {t100_speciality ? t100_speciality : t100_interest_job}
+          </span>
           <List>
             <ListItem
               style={{

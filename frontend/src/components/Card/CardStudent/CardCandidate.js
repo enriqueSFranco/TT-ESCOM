@@ -10,6 +10,7 @@ import {
   Card,
   CardContentAvatar,
   Text,
+  TitleModal,
   CardContact,
   CardHeader,
   CardViwProfile
@@ -75,7 +76,7 @@ const CardCandidate = ({ user }) => {
       </Card>
       
       <ModalPortal isOpen={isOpen} closeModal={closeModal} minWidth="1200px" minHeight="900px" bg="#F3F4F4">
-        <h3>Informacion del candidato: {user.t100_name}{" "}{user.t100_last_name}</h3>
+        <TitleModal>Información del candidato: {user.t100_name}{" "}{user.t100_last_name}</TitleModal>
         <ProfileCandidate user={user} />
       </ModalPortal>
     </>

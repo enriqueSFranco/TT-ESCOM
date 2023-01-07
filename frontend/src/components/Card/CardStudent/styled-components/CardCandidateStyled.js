@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import background from 'assets/images/wave.jpg'
+import background from "assets/images/wave.jpg";
 
 const Card = styled.article`
   width: 400px;
@@ -33,6 +33,16 @@ const Text = styled.p`
   color: ${(props) => props.textColor || "#000"};
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+`;
+
+const TitleModal = styled.h3`
+  background: linear-gradient(27deg, #3f5efb, #fc466b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin-bottom: 10px;
 `;
 
 const CardContact = styled.div`
@@ -71,4 +81,5 @@ export {
   CardViwProfile,
   Text,
   CardContact,
+  TitleModal
 };

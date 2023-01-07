@@ -61,6 +61,7 @@ const Cards = styled.div`
 
 const SummaryCard = styled.div`
   background-color: #fff;
+  width: 680px;
   grid-area: summary_card;
 `;
 
