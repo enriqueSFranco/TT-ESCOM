@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const BoxInput = styled.div`
   position: relative;
-  border: 1.5px solid #ccc;
+  border: 1px solid #ccc;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background-color: ${(props) => (props.bgInput ? props.bgInput : "#fff")};
@@ -10,7 +10,7 @@ const BoxInput = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border-radius: 1rem;
+  border-radius: 5px;
 `;
 
 const InputLabel = styled.span`
@@ -35,7 +35,7 @@ const TextField = styled.input`
   border: none;
   font-size: 1rem;
   letter-spacing: 1px;
-  border-radius: 1rem;
+  border-radius: 5px;
 
   &:focus {
     box-shadow: #1a73e8 0px 0px 0px 1px, #1a73e8 0px 0px 0px 1px inset;
@@ -77,7 +77,7 @@ const ContainerTags = styled.div`
   overflow-y: auto;
   margin-top: 10px;
   padding: 5px;
-  border-radius: 1rem;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -117,8 +117,7 @@ const TagInput = styled.input`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 5px;
   outline: 2px solid red;
-  width: 50%;
-  
+  width: ${props => props.width || '100%'};
 `;
 
 export {

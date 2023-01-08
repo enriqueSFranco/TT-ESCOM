@@ -13,7 +13,6 @@ import {
   updateVacant,
   getRecruiter,
 } from "services";
-import Loader from "components/Loader/Loader";
 import { Input } from "components/Input/Input";
 import TextEditor from "components/TextEditor/TextEditor";
 import { Autocomplete, TextField } from "@mui/material";
@@ -29,6 +28,7 @@ import {
   ContainerForm,
   TitleH1,
 } from "./styled-componets/FormPostJobStyled";
+import InputTag from "components/Input/InputTag";
 
 const validateForm = (form) => {
   let errors = {};
@@ -49,7 +49,8 @@ const validateForm = (form) => {
   if (!form.t200_vacancy.trim())
     errors.t200_vacancy = "El campo 'Numero de plazas' es requerido";
   else if (!regex.t200_vacancy.test(form.t200_vacancy.trim()))
-    errors.t200_vacancy = "El campo solo acepta letras y espacios en blanco.";
+    errors.t200_vacancy =
+      "El campo 'Numero de plazas' solo acepta letras y espacios en blanco.";
 
   if (!regex.t200_working_hours.test(form.t200_working_hours.trim()))
     errors.t200_working_hours = "El campo 'Horario Laboral' es requerido.";
@@ -86,7 +87,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     gap: ".3em",
-    fontSize: ".8em",
+    fontSize: "13px",
   },
 };
 
@@ -98,6 +99,7 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
     POST_NEW_JOB,
     validateForm
   );
+  const [textRequeridas, setTextRequeridas] = useState("");
   const [loading, setLoading] = useState(false);
   const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
   const [body, setBody] = useState("");
@@ -112,7 +114,7 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
   const [opcionales, setOpcionales] = useState([]);
   const [requiredLanguage, setRequiredLanguage] = useState([]);
   const habilidadesOpcionales = recuperarHabilidades(opcionales);
-  const habilidadesRequeridas = recuperarHabilidades(requeridas);
+  // const habilidadesRequeridas = recuperarHabilidades(requeridas);
   const lagnguageId = recuperarIdiomaId(requiredLanguage);
   let newObject = {
     ...form,
@@ -120,7 +122,7 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
     t200_street: place,
     t301_id_recruiter: token?.user?.user_id,
     t300_id_company: company[0]?.t300_id_company?.t300_id_company,
-    mandatory: habilidadesRequeridas,
+    mandatory: requeridas,
     optional: habilidadesOpcionales,
     language: lagnguageId,
   };
@@ -189,9 +191,6 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
   };
 
   const onSubmitPostJob = (e) => {
-    e.preventDefault();
-
-    // CREAR VACANTE
     if (form.t200_id_vacant === null) {
       console.log("crear vacante");
       createJob();
@@ -221,12 +220,14 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
 
   if (!expList || !data || !languages) return null;
 
+  console.log(newObject)
+
   return (
     <ContainerForm top={top}>
       <TitleH1>
         {isEdition ? `Editar la vacante ${nameJob}` : "Agregar nueva vacante"}
       </TitleH1>
-      <Form onSubmit={onSubmitPostJob}>
+      <Form>
         {/* titulo de la vacante y numero de plazas */}
         <section style={{ width: "800px" }}>
           <h2
@@ -253,7 +254,7 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
               />
               {errors.t200_job && (
                 <span style={styles.textError}>
-                  <MdOutlineErrorOutline />
+                  <MdOutlineErrorOutline style={{ fontSize: "15px" }} />
                   {errors.t200_job}
                 </span>
               )}
@@ -270,7 +271,7 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
               />
               {errors.t200_vacancy && (
                 <span style={styles.textError}>
-                  <MdOutlineErrorOutline />
+                  <MdOutlineErrorOutline style={{ fontSize: "15px" }} />
                   {errors.t200_vacancy}
                 </span>
               )}
@@ -282,8 +283,8 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
         <section style={{ width: "800px" }}>
           <h3
             style={{
-              "font-size": ".9em",
-              "font-weight": "400",
+              fontSize: ".9em",
+              fontWeight: "400",
               margin: "0 0 1rem .5rem",
               color: "#9BA1A6",
             }}
@@ -315,7 +316,7 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
               />
               {errors.cp && (
                 <span style={styles.textError}>
-                  <MdOutlineErrorOutline />
+                  <MdOutlineErrorOutline style={{ fontSize: "15px" }} />
                   {errors.cp}
                 </span>
               )}
@@ -341,12 +342,14 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
                   ))}
               </Select>
             </WrapperSelect>
-            <div style={{
+            <div
+              style={{
                 width: "300px",
                 display: "flex",
                 flexDirection: "column",
                 gap: "4px",
-              }}>
+              }}
+            >
               <Input
                 label="Calle y Número"
                 id="t200_street"
@@ -359,7 +362,7 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
 
               {errors.t200_street && (
                 <span style={styles.textError}>
-                  <MdOutlineErrorOutline />
+                  <MdOutlineErrorOutline style={{ fontSize: "15px" }} />
                   {errors.t200_street}
                 </span>
               )}
@@ -371,8 +374,8 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
         <section style={{ width: "800px" }}>
           <h3
             style={{
-              "font-size": ".9em",
-              "font-weight": "400",
+              fontSize: ".9em",
+              fontWeight: "400",
               margin: "0 0 1rem .5rem",
               color: "#9BA1A6",
             }}
@@ -475,8 +478,8 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
 
           <h3
             style={{
-              "font-size": ".9em",
-              "font-weight": "400",
+              fontSize: ".9em",
+              fontWeight: "400",
               margin: "1rem 0 1rem .5rem",
               color: "#9BA1A6",
             }}
@@ -508,8 +511,8 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
           {/* Horario */}
           <h3
             style={{
-              "font-size": ".9em",
-              "font-weight": "400",
+              fontSize: ".9em",
+              fontWeight: "400",
               margin: "1rem 0 1rem .5rem",
               color: "#9BA1A6",
             }}
@@ -529,7 +532,7 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
             />
             {errors.t200_working_hours && (
               <span style={styles.textError}>
-                <MdOutlineErrorOutline />
+                <MdOutlineErrorOutline style={{ fontSize: "15px" }} />
                 {errors.t200_working_hours}
               </span>
             )}
@@ -538,8 +541,8 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
           {/* Modalidad */}
           <h3
             style={{
-              "font-size": ".9em",
-              "font-weight": "400",
+              fontSize: ".9em",
+              fontWeight: "400",
               margin: "2rem 0 1rem .5rem",
               color: "#9BA1A6",
             }}
@@ -578,15 +581,27 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
             especial?
           </h3>
           <GroupInput>
-            <SubGroupInput>
+            <InputTag
+              id={`textRequeridas`}
+              name={`textRequeridas`}
+              placeholder={`Conocimiento Requerido`}
+              value={textRequeridas}
+              setValue={setTextRequeridas}
+              setTypeSkills={setRequeridas}
+              onChange={(e) => setTextRequeridas(e.target.value)}
+              width="fit-content"
+            />
+            {/* <SubGroupInput>
               <Autocomplete
                 id="requeridas"
-                sx={{ width: 350, maxWidth: "100%" }}
+                sx={{ width: 400, maxWidth: "100%" }}
                 name="requeridas"
+                limitTags={3}
                 value={requeridas}
                 onChange={(event, newValue) => setRequeridas(newValue)}
                 multiple={true}
                 options={data}
+                includeInputInList
                 getOptionLabel={({ c116_description }) => c116_description}
                 filterSelectedOptions
                 renderInput={(params) => (
@@ -597,13 +612,14 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
                   />
                 )}
               />
-            </SubGroupInput>
+            </SubGroupInput> */}
             <SubGroupInput>
               <Autocomplete
                 id="opcionales"
-                sx={{ width: 350, maxWidth: "100%" }}
+                sx={{ width: 400, maxWidth: "100%" }}
                 name="opcionales"
                 value={opcionales}
+                autoHighlight={false}
                 onChange={(event, newValue) => setOpcionales(newValue)}
                 multiple
                 options={data}
@@ -617,9 +633,6 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
                   />
                 )}
               />
-              {/* <Tooltip title="Agregar una nueva habilidad">
-                  <Button>+</Button>
-                </Tooltip> */}
             </SubGroupInput>
           </GroupInput>
         </section>
@@ -643,6 +656,8 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
                 name="language"
                 multiple
                 options={languages}
+                autoHighlight={false}
+                disableListWrap={false}
                 getOptionLabel={(option) => option.c111_description}
                 value={requiredLanguage}
                 onChange={(event, newValue) => setRequiredLanguage(newValue)}
@@ -673,12 +688,8 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
             value={body}
           />
         </section>
-        <Button type="submit">
-          <span className="send">Enviar a Revisión</span>
-          {loading && <Loader width="18px" height="18px" color="#fff" />}
-          {/* {!loading && <BiCheck style={{'font-size': '25px'}} />} */}
-        </Button>
       </Form>
+      <Button onClick={onSubmitPostJob}>Enviar a Revisión</Button>
     </ContainerForm>
   );
 };

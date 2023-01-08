@@ -7,8 +7,9 @@ import {
   TagInput,
 } from "./styled-components/styles";
 
-const InputTag = ({ placeholder, id, name, value, onChange }) => {
+const InputTag = ({ width, placeholder, id, name, value, setValue, setTypeSkills, onChange }) => {
   const [tags, setTags] = useState([]);
+  // const [text, setText] = useState("")
 
   const handleKeyDow = (e) => {
     if (e.key !== "Enter") return;
@@ -18,16 +19,21 @@ const InputTag = ({ placeholder, id, name, value, onChange }) => {
     if (!value.trim()) return;
 
     setTags([...tags, value]);
+    setTypeSkills([...tags, value])
 
-    e.target.value = "";
+    setValue("");
   };
+
+  const removeTag = (index) => {
+    setTags(tags.filter((_,i) => i !== index))
+  }
 
   return (
     <ContainerTags>
       {tags?.map((tag, index) => (
         <TagItem key={`tag-id-${index}`}>
           <TagText>{tag}</TagText>
-          <ButtonDelete>x</ButtonDelete>
+          <ButtonDelete onClick={() => removeTag(index)}>x</ButtonDelete>
         </TagItem>
       ))}
       <TagInput
@@ -38,6 +44,7 @@ const InputTag = ({ placeholder, id, name, value, onChange }) => {
         onChange={onChange}
         onKeyDown={handleKeyDow}
         placeholder={placeholder}
+        width={width}
       />
     </ContainerTags>
   );

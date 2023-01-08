@@ -37,3 +37,9 @@ body {
 a {
   text-decoration: none;
 }
+
+.MuiAutocomplete-inputRoot {
+  max-height: 50px !important;
+  /* overflow-y: auto !important; */
+  flex-wrap: nowrap !important;
+}
