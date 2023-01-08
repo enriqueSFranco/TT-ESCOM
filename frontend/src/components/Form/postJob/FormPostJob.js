@@ -99,7 +99,9 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
     POST_NEW_JOB,
     validateForm
   );
-  const [textRequeridas, setTextRequeridas] = useState("");
+  const [textRequiredSkills, setTextRequiredSkills] = useState("");
+  const [textOptionalSkills, setTextOptionalSkills] = useState("");
+  const [textLanguages, setTextLanguages] = useState("")
   const [loading, setLoading] = useState(false);
   const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
   const [body, setBody] = useState("");
@@ -180,10 +182,14 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
       .finally(() => setLoading(false));
   };
 
+  const obtaintObjectVacant = () => {
+    // TODO: recuperar el objeto de patch
+    // getObjectUpdateVacant(id)
+  };
+
   const updateJob = () => {
     console.log("actualizar vacante", vacantId);
-    updateVacant(vacantId, dataToEdit);
-    updateVacant(vacantId, newObject)
+    updateVacant(vacantId, dataToEdit)
       .then((response) => {
         console.log(response);
       })
@@ -220,7 +226,7 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
 
   if (!expList || !data || !languages) return null;
 
-  console.log(newObject)
+  console.log(newObject);
 
   return (
     <ContainerForm top={top}>
@@ -582,58 +588,25 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
           </h3>
           <GroupInput>
             <InputTag
-              id={`textRequeridas`}
-              name={`textRequeridas`}
+              id={`textRequiredSkills`}
+              name={`textRequiredSkills`}
               placeholder={`Conocimiento Requerido`}
-              value={textRequeridas}
-              setValue={setTextRequeridas}
+              value={textRequiredSkills}
+              setValue={setTextRequiredSkills}
               setTypeSkills={setRequeridas}
-              onChange={(e) => setTextRequeridas(e.target.value)}
+              onChange={(e) => setTextRequiredSkills(e.target.value)}
               width="fit-content"
             />
-            {/* <SubGroupInput>
-              <Autocomplete
-                id="requeridas"
-                sx={{ width: 400, maxWidth: "100%" }}
-                name="requeridas"
-                limitTags={3}
-                value={requeridas}
-                onChange={(event, newValue) => setRequeridas(newValue)}
-                multiple={true}
-                options={data}
-                includeInputInList
-                getOptionLabel={({ c116_description }) => c116_description}
-                filterSelectedOptions
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    label="Conocimiento Requerido"
-                    placeholder="Selecciona "
-                  />
-                )}
-              />
-            </SubGroupInput> */}
-            <SubGroupInput>
-              <Autocomplete
-                id="opcionales"
-                sx={{ width: 400, maxWidth: "100%" }}
-                name="opcionales"
-                value={opcionales}
-                autoHighlight={false}
-                onChange={(event, newValue) => setOpcionales(newValue)}
-                multiple
-                options={data}
-                getOptionLabel={(option) => option.c116_description}
-                filterSelectedOptions
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    label="Conocimiento Opcional"
-                    placeholder="Selecciona "
-                  />
-                )}
-              />
-            </SubGroupInput>
+            <InputTag
+              id={`textOptionalSkills`}
+              name={`textOptionalSkills`}
+              placeholder={`Conocimiento Opcional`}
+              value={textOptionalSkills}
+              setValue={setTextOptionalSkills}
+              setTypeSkills={setTextOptionalSkills}
+              onChange={(e) => setTextOptionalSkills(e.target.value)}
+              width="fit-content"
+            />
           </GroupInput>
         </section>
 
@@ -649,25 +622,16 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
             Idioma/Dialecto
           </h2>
           <GroupInput>
-            <SubGroupInput>
-              <Autocomplete
-                disablePortal
-                id="language"
-                name="language"
-                multiple
-                options={languages}
-                autoHighlight={false}
-                disableListWrap={false}
-                getOptionLabel={(option) => option.c111_description}
-                value={requiredLanguage}
-                onChange={(event, newValue) => setRequiredLanguage(newValue)}
-                filterSelectedOptions
-                sx={{ width: 300 }}
-                renderInput={(params) => (
-                  <TextField {...params} label="Idioma/Dialecto" />
-                )}
-              />
-            </SubGroupInput>
+            <InputTag
+              id={`textLanguages`}
+              name={`textLanguages`}
+              placeholder={`Conocimiento Requerido`}
+              value={textLanguages}
+              setValue={setTextLanguages}
+              setTypeSkills={setTextLanguages}
+              onChange={(e) => setTextLanguages(e.target.value)}
+              width="fit-content"
+            />
           </GroupInput>
         </section>
         <section style={{ width: "800px" }}>

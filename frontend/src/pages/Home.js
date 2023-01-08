@@ -23,6 +23,8 @@ import {
   Main,
   Cards,
   SummaryCard,
+  WrapperFilters,
+  ButtonShowFilters
 } from "./styled-components/HomeStyled";
 
 const Home = () => {
@@ -66,20 +68,19 @@ const Home = () => {
     const itemExpChecked = itemsModality.map((it) =>
       it.id === id ? { ...it, checked: !it.checked } : it
     );
-    setSelectedFilterModality(itemExpChecked)
+    setSelectedFilterModality(itemExpChecked);
   }
 
   function handleChangeRecommended(e) {
     setRecommended(e.target.checked);
   }
 
+
   function handleSearch(value) {
     setIsFiltered(value !== "" ? true : false);
   }
 
   if (!response) return null;
-
-  console.log(filterData);
 
   return (
     <LayoutHome>
@@ -93,7 +94,8 @@ const Home = () => {
             />
           </LayoutHero>
         </Hero>
-        <Aside>
+
+        <WrapperFilters>
           <Filteres
             data={response}
             selectedFilterExp={selectedFilterExp}
@@ -103,6 +105,10 @@ const Home = () => {
             onFiltereChange={onFiltereChange}
             onFiltereModalityChange={onFiltereModalityChange}
           />
+        </WrapperFilters>
+
+        {/* <Aside>
+          
           {token && (
             <LayoutFilter title="Vacantes Recomendadas">
               <RecommendedVacanciesFilter
@@ -110,12 +116,12 @@ const Home = () => {
               />
             </LayoutFilter>
           )}
-        </Aside>
+        </Aside> */}
         <Content>
           <Cards id="cards">
             {resultsFound ? (
               <JobList
-                jobs={isFiltered ? data?.results : filterData}
+                jobs={isFiltered ? data?.results : response}
                 recommendedJobs={recommender}
                 loading={loading}
                 isVacantRecommended={recommended}

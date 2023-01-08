@@ -11,9 +11,7 @@ const Header = styled.header`
 const WrapperSummaryJob = styled.div`
   outline: 2px solid #ccc;
   border-radius: 5px;
-  height: 860px;
-  position: sticky;
-  top: 90px;
+  height: 680px;
   padding: 0 0 1rem 0;
 `;
 
@@ -75,10 +73,9 @@ const DescriptionJob = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   padding: 0 1rem 1rem 1rem;
-  height: 350px;
+  height: 47%;
   background-color: #fff;
   overflow-y: auto;
-  line-height: 30px;
 `;
 
 export {

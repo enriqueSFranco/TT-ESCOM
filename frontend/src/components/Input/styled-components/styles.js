@@ -72,7 +72,7 @@ const Icon = styled.div`
 // TAG INPUT
 const ContainerTags = styled.div`
   outline: 1px solid #ccc;
-  width: 350px;
+  width: 400px;
   height: 60px;
   overflow-y: auto;
   margin-top: 10px;
@@ -116,7 +116,6 @@ const TagInput = styled.input`
   outline: none;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   padding: 5px;
-  outline: 2px solid red;
   width: ${props => props.width || '100%'};
 `;
 

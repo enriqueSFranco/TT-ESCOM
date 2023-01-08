@@ -185,18 +185,7 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
             summaryJob[0]?.t200_description
           )}
         />
-        <div
-          style={{
-            width: "100%",
-            backgroundColor: "#fff",
-            position: "absolute",
-            bottom: "0",
-            display: "grid",
-            placeContent: "center",
-            padding: "1rem 0",
-            borderRadius: "0 0 1rem 1rem",
-          }}
-        >
+        {/* <div>
           {token ? (
             <Button
               text="Postularme a esta vacante"
@@ -216,7 +205,7 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
               height="3"
             />
           )}
-        </div>
+        </div> */}
       </WrapperSummaryJob>
       <ModalPortal isOpen={isOpen} closeModal={closeModal} minHeight="300px">
         <Confirm
