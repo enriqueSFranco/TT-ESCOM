@@ -18,6 +18,11 @@ export const Input = ({
 }) => {
   return (
     <BoxInput bgInput={bgInput} width={width}>
+      {!icon ? null : (
+        <Icon bgInput={bgInput} iconColor={iconColor} onClick={onClick}>
+          {icon}
+        </Icon>
+      )}
       <TextField
         type={type}
         required="required"
@@ -27,11 +32,6 @@ export const Input = ({
         {...rest}
       />
       <InputLabel>{label}</InputLabel>
-      {!icon ? null : (
-        <Icon bgInput={bgInput} iconColor={iconColor} onClick={onClick}>
-          {icon}
-        </Icon>
-      )}
     </BoxInput>
   );
 };

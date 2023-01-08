@@ -76,19 +76,6 @@ export const useForm = (initialForm, validateForm) => {
     }
   };
 
-  const onSubmitPostCertification = (e) => {
-    e.preventDefault();
-    // setErrors(validateForm(form));
-    postCertification(form).then((response) => {
-      if (response.status === 201) {
-        const { data } = response;
-        setResponse(data);
-        setLoading(false);
-      } else {
-        setLoading(false);
-      }
-    });
-  };
 
   return {
     form,
@@ -101,6 +88,5 @@ export const useForm = (initialForm, validateForm) => {
     handleSubmitStudent,
     handleSubmitCompany,
     handleValidate,
-    onSubmitPostCertification,
   };
 };

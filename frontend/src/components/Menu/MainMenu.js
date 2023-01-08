@@ -66,11 +66,13 @@ const MainMenu = () => {
   return (
     <>
       <NavLeft>
-        <Link to="/" style={styles.styledLink}>
-          <picture style={{width: '30px'}}>
-            <img src={logo} alt="logo-bte" />
+      <Link to="/" style={styles.styledLink}>
+          <picture style={{ width: "30px" }}>
+            <img src={logo} alt="logo-bte" width="100%" />
           </picture>
-          <Logo>ESCOM</Logo>
+          <Logo>
+            Bolsa de Trabajo <span className="escom">ESCOM</span>
+          </Logo>
         </Link>
       </NavLeft>
       <NavList>

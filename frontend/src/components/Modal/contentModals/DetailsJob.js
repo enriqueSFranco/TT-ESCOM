@@ -24,11 +24,15 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
   const [isApplyJob, setIsApplyJob] = useState({});
   const [isOpen, openModal, closeModal] = useModal(false);
   const { data } = useFetch(
-    `${process.env.REACT_APP_URL_VACANT_REQUIREMENTS}${recommended ? vacantId?.t200_id_vacant :vacantId}`
+    `${process.env.REACT_APP_URL_VACANT_REQUIREMENTS}${
+      recommended ? vacantId?.t200_id_vacant : vacantId
+    }`
   );
   const { token } = useAuth();
   const { data: summaryJob } = useFetch(
-    `${process.env.REACT_APP_URL_VACANTS}${recommended ? vacantId?.t200_id_vacant :vacantId}`
+    `${process.env.REACT_APP_URL_VACANTS}${
+      recommended ? vacantId?.t200_id_vacant : vacantId
+    }`
   );
 
   const requiredSkills = getSkillType(data);
@@ -114,10 +118,8 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
         </Header>
         <WrapperRequitements>
           {optionalSkills.length > 0 ? (
-            <>
-              <h3 style={{ fontSize: "17px", marginTop: "18px" }}>
-                Habilidades Requeridas
-              </h3>
+            <div className="containerListSkill">
+              <h3 className="titleTypeSkills">Habilidades Opcionales</h3>
               <List>
                 <ListItem>
                   {optionalSkills.map((el) => (
@@ -132,12 +134,11 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
                   ))}
                 </ListItem>
               </List>
-            </>
+            </div>
           ) : null}
-
           {requiredSkills.length > 0 ? (
-            <>
-              <h3 style={{ fontSize: "17px" }}>Habilidades Opcionales</h3>
+            <div className="containerListSkill">
+              <h3 className="titleTypeSkills">Habilidades Requeridas</h3>
               <List>
                 {requiredSkills.map((el) => (
                   <ListItem key={`skill-id-${el.t211_id_requirement}`}>
@@ -150,11 +151,11 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
                   </ListItem>
                 ))}
               </List>
-            </>
+            </div>
           ) : null}
         </WrapperRequitements>
         <WrapperMoreInfo>
-          <div style={{display: 'flex', flexDirection: 'column', gap: '5px'}}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
             <span style={{ color: "#6D6D6D" }}>
               Ubicación:{" "}
               {`${summaryJob[0]?.t200_street}, ${

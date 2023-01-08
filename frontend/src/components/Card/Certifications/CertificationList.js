@@ -62,8 +62,8 @@ const CertificationList = () => {
       <ModalPortal
         isOpen={isOpenModalAddCertification}
         closeModal={closeModalAddCertification}
-        width="600px"
-        height="600px"
+        minWidth="700px"
+        minHeight="600px"
       >
         <FormCertification />
       </ModalPortal>

@@ -86,7 +86,7 @@ const CardProfileStudent = () => {
                   position: "relative",
                   top: ".2rem",
                   right: ".5rem",
-                  color: "#fff",
+                  color: "#31B1F2",
                   fontSize: "1.1rem",
                   cursor: "pointer",
                 }}
@@ -103,8 +103,8 @@ const CardProfileStudent = () => {
           <div style={{ textAlign: "center" }}>
             <span
               style={{
-                color: "#fff",
-                fontWeight: 600,
+                color: "#000",
+                fontWeight: 400,
                 fontFamily: "sans-serif",
               }}
             >
@@ -117,24 +117,8 @@ const CardProfileStudent = () => {
         <div className={styles.userDetails}>
           <div className={styles.personalInfo}>
             <div className={styles.container_flex}>
-              <span
-                style={{
-                  backgroundColor: "#37404d",
-                  height: "fit-content",
-                  width: "fit-content",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  padding: ".4rem",
-                  borderRadius: "50%",
-                }}
-              >
-                <MdLocationPin
-                  style={{
-                    fontSize: "1rem",
-                    color: "#fff",
-                  }}
-                />
+              <span className={styles.icon}>
+                <MdLocationPin />
               </span>
               <p>
                 {candidate[0]?.c222_id_locality
@@ -149,24 +133,8 @@ const CardProfileStudent = () => {
               </p>
             </div>
             <div className={styles.container_flex}>
-              <span
-                style={{
-                  backgroundColor: "#37404d",
-                  height: "fit-content",
-                  width: "fit-content",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  padding: ".4rem",
-                  borderRadius: "50%",
-                }}
-              >
-                <MdOutlineAirplanemodeActive
-                  style={{
-                    fontSize: "1rem",
-                    color: "#fff",
-                  }}
-                />
+              <span className={styles.icon}>
+                <MdOutlineAirplanemodeActive />
               </span>
               <p>
                 {candidate[0]?.t100_travel
@@ -177,25 +145,16 @@ const CardProfileStudent = () => {
             <div className={styles.container_flex}>
               {candidate[0]?.t100_cv ? (
                 <>
-                  <BsFileEarmarkPersonFill
-                    style={{
-                      backgroundColor: "#37404d",
-                      height: "fit-content",
-                      width: "fit-content",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      padding: ".4rem",
-                      borderRadius: "50%",
-                    }}
-                  />
+                  <BsFileEarmarkPersonFill style={{marginTop: '4px'}} className={styles.icon} />
                   <button
                     onClick={openModalCV}
                     style={{
-                      color: "#fff",
+                      color: "#000",
                       backgroundColor: "transparent",
                       outline: "none",
+                      fontSize: "14px",
                       border: "none",
+                      marginLeft: "8px",
                     }}
                   >
                     Ver CV
@@ -203,25 +162,8 @@ const CardProfileStudent = () => {
                 </>
               ) : (
                 <>
-                  <span
-                    style={{
-                      backgroundColor: "#37404d",
-                      height: "fit-content",
-                      width: "fit-content",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      padding: ".4rem",
-                      borderRadius: "50%",
-                    }}
-                  >
-                    <BsFillFileEarmarkPostFill
-                      style={{
-                        color: "#fff",
-                        fontWeight: "bold",
-                        fontSize: "1rem",
-                      }}
-                    />
+                  <span className={styles.icon}>
+                    <BsFillFileEarmarkPostFill />
                   </span>
                   <p
                     style={{
@@ -256,7 +198,7 @@ const CardProfileStudent = () => {
                   href={`mailto:${candidate[0]?.t100_email}`}
                   target="_blank"
                   rel="noreferrer"
-                  style={{ color: "#fff" }}
+                  style={{ color: "#000" }}
                 >
                   {candidate[0]?.t100_email}
                 </a>
@@ -306,8 +248,9 @@ const CardProfileStudent = () => {
                   <Chip
                     key={uuid()}
                     label={c116_id_skill?.c116_description}
-                    bg="#37404d"
-                    color="#fff"
+                    outline={`1px solid #ccc`}
+                    bg="#fff"
+                    color="#6D6D6D"
                   />
                 ))
               ) : (
@@ -325,8 +268,7 @@ const CardProfileStudent = () => {
               height: "40%",
               margin: "0 auto",
               borderRadius: "1rem",
-              backgroundColor: "#37404d",
-              color: "#fff",
+              color: "#000",
               position: "relative",
               top: "1.5rem",
             }}
@@ -335,7 +277,7 @@ const CardProfileStudent = () => {
               <div
                 style={{ display: "flex", alignItems: "center", gap: ".3rem" }}
               >
-                <BiDislike style={{ fontSize: "1.5rem", color: "#fff" }} />
+                <BiDislike style={{ fontSize: "1.5rem", color: "#000" }} />
                 <span>Aun no cuentas con tu cv</span>
               </div>
             ) : (

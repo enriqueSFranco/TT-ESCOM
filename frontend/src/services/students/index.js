@@ -286,6 +286,9 @@ export const deleteStudentCertification = (id) => {
  **/
 export const postCertification = (payload = {}) => {
   return API.post(REACT_APP_URL_CANDIDATE_CERTIFICATIONS, payload)
-    .then((response) => response)
+    .then((response) => {
+      const { data } = response
+      return data
+    })
     .catch((error) => error);
 };

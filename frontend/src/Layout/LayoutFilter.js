@@ -1,10 +1,10 @@
 import React from 'react'
 import { Container, Title } from './styled-components/LayoutFilterStyled'
 
-const LayoutFilter = ({ children, type }) => {
+const LayoutFilter = ({ children, title }) => {
   return (
     <Container>
-      <Title>{type}</Title>
+      <Title>{title}</Title>
       {children}
     </Container>
   )

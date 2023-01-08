@@ -19,7 +19,7 @@ const Education = styled.div`
   /* height: 1510px; */
   border-top: 1px solid #ccc;
 `
-const WrapperAcademicHostory = styled.div`
+const Container = styled.div`
   height: fit-content;
   background-color: #F1F3F4;
   padding: .5rem;
@@ -42,4 +42,4 @@ const WrapperAcademicHostory = styled.div`
   }
 `
 
-export { Card, ObjectiveProfesional, Experience, Education, WrapperAcademicHostory }
+export { Card, ObjectiveProfesional, Experience, Education, Container }

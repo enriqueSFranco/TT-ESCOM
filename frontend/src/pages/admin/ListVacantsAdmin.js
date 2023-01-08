@@ -7,12 +7,30 @@ import HeaderWidgets from "pages/business/pageInit/HeaderWidgets";
 import MainInfoVacant from "pages/business/pageInit/MainInfoVacant";
 import ListJobsRecruiter from "components/Card/JobList/JobListRecruiter";
 import { Content } from "../styled-components/ListVacantsAdmin";
+import noResutls from 'assets/images/rs-not-results.png'
 import {
   Aside,
   Container,
+  WrapperNoResults,
+  ContainerImage,
+  Image,
+  TitleImage,
 } from "../styled-components/DashboardRecruiterStyled";
 
 const { REACT_APP_URL_MANAGER_VALIDATE_VACANT } = process.env;
+
+const NoResults = () => {
+  return (
+    <WrapperNoResults>
+      <ContainerImage>
+        <Image src={noResutls} alt="no-results" />
+        <TitleImage>
+          <h3>No hay vacantes por validar</h3>
+        </TitleImage>
+      </ContainerImage>
+    </WrapperNoResults>
+  );
+};
 
 const ListVacantsAdmin = () => {
   const [vacantId, setVacantId] = useState(null);
@@ -28,7 +46,11 @@ const ListVacantsAdmin = () => {
       <Content>
         <LayoutDashboard>
           <Aside>
-            <ListJobsRecruiter data={data} setVacantId={setVacantId} />
+            {data.length === 0 ? (
+              <NoResults />
+            ) : (
+              <ListJobsRecruiter data={data} setVacantId={setVacantId} />
+            )}
           </Aside>
           <Container>
             {/* Widgets */}

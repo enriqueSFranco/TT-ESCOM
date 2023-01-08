@@ -33,7 +33,7 @@ img {
 
 .separator {
   width: 100%;
-  border-bottom: 2px solid #37404d;
+  border-bottom: 2px solid #ccc;
 }
 
 .socialNetworks span {
@@ -65,7 +65,7 @@ img {
   gap: .7rem;
   padding: .5rem 0;
   border-radius: 1rem 1rem 0 0;
-  background-color: #37404d;
+  background-color: #fff;
 }
 
 /* 3 */
@@ -87,7 +87,7 @@ img {
 .personalInfo {
   min-width: 100%;
   margin: 0 auto;
-  border-bottom: 2px solid #37404d;
+  border-bottom: 2px solid #ccc;
 }
 
 /* 4 */
@@ -129,7 +129,7 @@ img {
 }
 
 .list_item .go_link a {
-  color: #fff;
+  color: #000;
 }
 
 
@@ -149,4 +149,18 @@ img {
   color: #34bbff;
   border-radius: 50%;
   z-index: 9;
+}
+
+.icon {
+  background-color: #fff;
+  color: #6D6D6D;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .4rem;
+  outline: 1px solid #ccc;
+  border-radius: 50%;
+  font-size: 17px;
 }

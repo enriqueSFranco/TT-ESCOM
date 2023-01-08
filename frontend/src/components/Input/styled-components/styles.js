@@ -58,7 +58,7 @@ const Icon = styled.div`
   position: absolute;
   width: 20px;
   height: 80%;
-  right: 0.2rem;
+  right: 10px;
   top: 0.3rem;
   margin-left: 1rem;
   display: flex;

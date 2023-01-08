@@ -6,7 +6,8 @@ import ModalPortal from "components/Modal/ModalPortal";
 import { GoTrashcan } from "react-icons/go";
 import gifTrash from 'assets/icons/trash.gif'
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
-import { MdSchool, MdEdit } from "react-icons/md";
+import { MdEdit } from "react-icons/md";
+import { FcGraduationCap } from 'react-icons/fc'
 import styles from "./AcademicRecord.module.css";
 
 const AcademicRecord = ({
@@ -49,9 +50,9 @@ const AcademicRecord = ({
             margin: ".5rem 1rem",
           }}
         >
-          <MdSchool className={styles.icon} />
+          <FcGraduationCap className={styles.icon} />
           <div className={styles.history}>
-            <span style={{'font-weight': '700', width: '100%'}}>{carrer}</span>
+            <span className={styles.carrer}>{carrer}</span>
             <span>{academicUnit}</span>
             <span className={styles.date}>
               {formatDate(startDate)} {" - "} {formatDate(endDate)}

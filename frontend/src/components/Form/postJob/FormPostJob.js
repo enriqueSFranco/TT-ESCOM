@@ -11,13 +11,13 @@ import {
   getAllContracTypes,
   getAllCandidateProfile,
   updateVacant,
-  getRecruiter
+  getRecruiter,
 } from "services";
 import Loader from "components/Loader/Loader";
 import { Input } from "components/Input/Input";
 import TextEditor from "components/TextEditor/TextEditor";
 import { Autocomplete, TextField } from "@mui/material";
-import { MdLanguage, MdOutlineErrorOutline } from "react-icons/md";
+import { MdOutlineErrorOutline } from "react-icons/md";
 
 import {
   Button,
@@ -34,8 +34,10 @@ const validateForm = (form) => {
   let errors = {};
   let regex = {
     t200_job: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{1,255}$/,
-    t200_min_salary: /^[0-9]+$/,
-    // t200_cp: /^[0-9]+$/,
+    t200_street: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü0-9,.\s]{1,255}$/,
+    t200_vacancy: /[0-9]/,
+    t200_working_hours: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{1,255}$/,
+    cp: /[0-9]/,
   };
 
   if (!form.t200_job.trim())
@@ -44,17 +46,20 @@ const validateForm = (form) => {
     errors.t200_job =
       "El campo 'Titulo de la vacante' solo acepta letras y espacios en blanco.";
 
-  if (!form.t200_min_salary.trim())
-    errors.t200_min_salary = "El campo 'Titulo de la vacante' es requerido";
-  else if (!regex.t200_min_salary.test(form.t200_min_salary.trim()))
-    errors.t200_min_salary =
-      "El campo 'Titulo de la vacante' solo acepta letras y espacios en blanco.";
+  if (!form.t200_vacancy.trim())
+    errors.t200_vacancy = "El campo 'Numero de plazas' es requerido";
+  else if (!regex.t200_vacancy.test(form.t200_vacancy.trim()))
+    errors.t200_vacancy = "El campo solo acepta letras y espacios en blanco.";
 
-  // if (!form.t200_cp.trim())
-  //   errors.t200_cp = "El campo 'Titulo de la vacante' es requerido";
-  // else if (!regex.t200_cp.test(form.t200_cp.trim()))
-  //   errors.t200_cp =
-  //     "El campo 'Titulo de la vacante' solo acepta letras y espacios en blanco.";
+  if (!regex.t200_working_hours.test(form.t200_working_hours.trim()))
+    errors.t200_working_hours = "El campo 'Horario Laboral' es requerido.";
+
+  if (!regex.cp.test(form.cp.trim()))
+    errors.cp = "El Código postal es requerido.";
+
+  if (!regex.t200_street.test(form.t200_street.trim()))
+    errors.t200_street = "El campo 'Calle y Número' es requerido.";
+
   return errors;
 };
 
@@ -85,13 +90,7 @@ const styles = {
   },
 };
 
-const FormPostJob = ({
-  top,
-  isEdition,
-  vacantId,
-  dataToEdit,
-  nameJob,
-}) => {
+const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
   const navigate = useNavigate();
   const { token } = useAuth();
   const { languages } = useLanguage();
@@ -120,7 +119,7 @@ const FormPostJob = ({
     t200_description: body,
     t200_street: place,
     t301_id_recruiter: token?.user?.user_id,
-    t300_id_company:company[0]?.t300_id_company?.t300_id_company,
+    t300_id_company: company[0]?.t300_id_company?.t300_id_company,
     mandatory: habilidadesRequeridas,
     optional: habilidadesOpcionales,
     language: lagnguageId,
@@ -160,12 +159,11 @@ const FormPostJob = ({
 
   useEffect(() => {
     if (dataToEdit) {
-      setForm(dataToEdit)
+      setForm(dataToEdit);
     } else {
-      setForm(newObject)
+      setForm(newObject);
     }
-  }, [dataToEdit])
-
+  }, [dataToEdit]);
 
   const createJob = () => {
     setLoading(true);
@@ -182,11 +180,12 @@ const FormPostJob = ({
 
   const updateJob = () => {
     console.log("actualizar vacante", vacantId);
-    updateVacant(vacantId,newObject)
-      .then(response => {
-        console.log(response)
+    updateVacant(vacantId, dataToEdit);
+    updateVacant(vacantId, newObject)
+      .then((response) => {
+        console.log(response);
       })
-      .catch(error => console.log(error))
+      .catch((error) => console.log(error));
   };
 
   const onSubmitPostJob = (e) => {
@@ -199,6 +198,11 @@ const FormPostJob = ({
     } else {
       updateJob();
     }
+  };
+
+  const handleValidateNumber = (e) => {
+    let charCode = e.which ? e.which : e.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) e.preventDefault();
   };
 
   const handleLocality = (e) => {
@@ -217,11 +221,11 @@ const FormPostJob = ({
 
   if (!expList || !data || !languages) return null;
 
-  // console.log(newObject);
-
   return (
     <ContainerForm top={top}>
-      <TitleH1>{isEdition ? `Editar la vacante ${nameJob}` : 'Agregar nueva vacante'}</TitleH1>
+      <TitleH1>
+        {isEdition ? `Editar la vacante ${nameJob}` : "Agregar nueva vacante"}
+      </TitleH1>
       <Form onSubmit={onSubmitPostJob}>
         {/* titulo de la vacante y numero de plazas */}
         <section style={{ width: "800px" }}>
@@ -254,13 +258,23 @@ const FormPostJob = ({
                 </span>
               )}
             </div>
-            <Input
-              label="Numero de plazas"
-              id="t200_vacancy"
-              name="t200_vacancy"
-              value={form.t200_vacancy}
-              onChange={handleChange}
-            />
+            <div style={styles.containerError}>
+              <Input
+                label="Numero de plazas"
+                id="t200_vacancy"
+                name="t200_vacancy"
+                value={form.t200_vacancy}
+                onChange={handleChange}
+                onBlur={handleValidate}
+                onKeyUp={handleValidate}
+              />
+              {errors.t200_vacancy && (
+                <span style={styles.textError}>
+                  <MdOutlineErrorOutline />
+                  {errors.t200_vacancy}
+                </span>
+              )}
+            </div>
           </GroupInput>
         </section>
 
@@ -277,18 +291,35 @@ const FormPostJob = ({
             Ubicación:
           </h3>
           <GroupInput>
-            <Input
-              label="Código postal"
-              id="cp"
-              name="cp"
-              value={cp ? parseInt(cp) : ""}
-              onChange={handleLocality}
-              onKeyDown={function (e) {
-                let charCode = e.which ? e.which : e.keyCode;
-                if (charCode > 31 && (charCode < 48 || charCode > 57))
-                  e.preventDefault();
+            <div
+              style={{
+                width: "200px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "4px",
               }}
-            />
+            >
+              <Input
+                label="Código postal"
+                id="cp"
+                name="cp"
+                value={cp ? parseInt(cp) : ""}
+                onChange={handleLocality}
+                onBlur={handleValidate}
+                onKeyUp={handleValidate}
+                onKeyDown={function (e) {
+                  let charCode = e.which ? e.which : e.keyCode;
+                  if (charCode > 31 && (charCode < 48 || charCode > 57))
+                    e.preventDefault();
+                }}
+              />
+              {errors.cp && (
+                <span style={styles.textError}>
+                  <MdOutlineErrorOutline />
+                  {errors.cp}
+                </span>
+              )}
+            </div>
             <WrapperSelect>
               <Select
                 name="place"
@@ -310,13 +341,29 @@ const FormPostJob = ({
                   ))}
               </Select>
             </WrapperSelect>
-            <Input
-              label="Calle y Número"
-              id="t200_street"
-              name="t200_street"
-              value={form.t200_street}
-              onChange={handleChange}
-            />
+            <div style={{
+                width: "300px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "4px",
+              }}>
+              <Input
+                label="Calle y Número"
+                id="t200_street"
+                name="t200_street"
+                value={form.t200_street}
+                onChange={handleChange}
+                onBlur={handleValidate}
+                onKeyUp={handleValidate}
+              />
+
+              {errors.t200_street && (
+                <span style={styles.textError}>
+                  <MdOutlineErrorOutline />
+                  {errors.t200_street}
+                </span>
+              )}
+            </div>
           </GroupInput>
         </section>
 
@@ -400,6 +447,7 @@ const FormPostJob = ({
               name="t200_min_salary"
               value={form?.t200_min_salary}
               onChange={handleChange}
+              onKeyDown={handleValidateNumber}
             />
             <Input
               label="Salario máximo"
@@ -407,6 +455,7 @@ const FormPostJob = ({
               name="t200_max_salary"
               value={form?.t200_max_salary}
               onChange={handleChange}
+              onKeyDown={handleValidateNumber}
             />
           </GroupInput>
         </section>
@@ -467,23 +516,31 @@ const FormPostJob = ({
           >
             Horario:
           </h3>
-          <GroupInput>
-              <Input
-                label="Horario laboral"
-                width="500px"
-                id="t200_working_hours"
-                name="t200_working_hours"
-                value={form?.t200_working_hours}
-                onChange={handleChange}
-              />
-            </GroupInput>
+          <GroupInput style={styles.containerError}>
+            <Input
+              label="Horario laboral"
+              width="500px"
+              id="t200_working_hours"
+              name="t200_working_hours"
+              value={form?.t200_working_hours}
+              onChange={handleChange}
+              onBlur={handleValidate}
+              onKeyUp={handleValidate}
+            />
+            {errors.t200_working_hours && (
+              <span style={styles.textError}>
+                <MdOutlineErrorOutline />
+                {errors.t200_working_hours}
+              </span>
+            )}
+          </GroupInput>
 
           {/* Modalidad */}
           <h3
             style={{
               "font-size": ".9em",
               "font-weight": "400",
-              margin: "1rem 0 1rem .5rem",
+              margin: "2rem 0 1rem .5rem",
               color: "#9BA1A6",
             }}
           >
@@ -540,7 +597,6 @@ const FormPostJob = ({
                   />
                 )}
               />
-            
             </SubGroupInput>
             <SubGroupInput>
               <Autocomplete
@@ -577,7 +633,7 @@ const FormPostJob = ({
               margin: "0 0 .4rem 0",
             }}
           >
-            <MdLanguage style={{ color: "blue" }} /> Idioma/Dialecto
+            Idioma/Dialecto
           </h2>
           <GroupInput>
             <SubGroupInput>
