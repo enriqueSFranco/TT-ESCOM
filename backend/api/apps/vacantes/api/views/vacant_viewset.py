@@ -137,11 +137,11 @@ class VacantViewSet(viewsets.GenericViewSet):
 		print("Si es un nivel valido")
 		language['t200_id_vacant'] = id_vacant
 		language['c111_id_language'] = id_language
-		if level > 30 and level < 50:
+		if level >= 30 and level < 50:
 			language['t110_level_description']='Básico'	
-		if level > 50 and level < 75:
+		if level >= 50 and level < 75:
 			language['t110_level_description']='Medio'	
-		if level > 75 and level <= 100:
+		if level >= 75 and level <= 100:
 			language['t110_level_description']='Avanzado'	
 		return language
 
@@ -157,14 +157,14 @@ class VacantViewSet(viewsets.GenericViewSet):
 		print(request.data)
 		vacant_data = self.set_vacant(request.data)
 		vacant_mandatory = request.data['mandatory']
-		vacant_mandatory_level = request.data['mandatory_level']
+		#vacant_mandatory_level = request.data['mandatory_level']
 		vacant_optional = request.data['optional']
-		vacant_optional_level = request.data['optional_level']
+		#vacant_optional_level = request.data['optional_level']
 		vacant_languages = request.data['language']					
-		language_level = request.data['language_level']
+		#language_level = request.data['language_level']
 		if len(vacant_languages)==0:
 			vacant_languages.append("47")
-			language_level.append("100")
+			#language_level.append("100")
 		print(vacant_mandatory)
 		vacant_serializer = self.serializer_class(data=vacant_data)
 		print('request: ',request.data)
@@ -173,34 +173,37 @@ class VacantViewSet(viewsets.GenericViewSet):
 			vacant = vacant_serializer.save()
 			vacant_id= vacant.t200_id_vacant
 			print(vacant_id)	
-			index = 0		
+			#index = 0		
 			for requirement in vacant_mandatory:
-				print(requirement,vacant_mandatory_level[index])				
-				requirement_data = self.set_requirement(requirement,vacant_mandatory_level[index],True,vacant_id)				
+				#print(requirement,vacant_mandatory_level[index])				
+				#requirement_data = self.set_requirement(requirement,vacant_mandatory_level[index],True,vacant_id)				
+				requirement_data = self.set_requirement(requirement,"",True,vacant_id)				
 				requirement_serializer =self.requirement_serializer(data = requirement_data)
 				if requirement_serializer.is_valid():
 					print("Requerimiento valido")
 					requirement_serializer.save()					
-				index = index + 1
-			index = 0		
+				#index = index + 1
+			#index = 0		
 			for requirement in vacant_optional:
-				print(requirement,vacant_optional_level[index])				
-				requirement_data = self.set_requirement(requirement,vacant_optional_level[index],False,vacant_id)				
+				#print(requirement,vacant_optional_level[index])				
+				#requirement_data = self.set_requirement(requirement,vacant_optional_level[index],False,vacant_id)				
+				requirement_data = self.set_requirement(requirement,"",False,vacant_id)				
 				requirement_serializer =self.requirement_serializer(data = requirement_data)
 				if requirement_serializer.is_valid():
 					print("Requerimiento valido")
 					requirement_serializer.save()					
-				index = index + 1
-			index = 0		
+				#index = index + 1
+			#index = 0		
 			for language in vacant_languages :
-				print(language,language_level[index])				
-				language_data = self.set_language(int(language),vacant_id,int(language_level[index]))				
+				#print(language,language_level[index])				
+				#language_data = self.set_language(int(language),vacant_id,int(language_level[index]))				
+				language_data = self.set_language(int(language),vacant_id,30)
 				language_serializer =self.language_serializer(data = language_data)
 				print(language_data)
 				if language_serializer.is_valid():
 					print("Idioma valido")
 					language_serializer.save()					
-				index = index + 1
+				#index = index + 1
 			return Response({
 				'message': 'Vacante registrada correctamente.'
 			}, status=status.HTTP_201_CREATED)
