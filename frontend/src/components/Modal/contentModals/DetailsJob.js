@@ -11,6 +11,7 @@ import {
   Header,
   WrapperRequitements,
   WrapperMoreInfo,
+  Container,
   WrapperSummaryJob,
 } from "../styled-components/DetailsJobStyled";
 import ModalPortal from "../ModalPortal";
@@ -115,14 +116,54 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
               </span>
             </figcaption>
           </figure>
+          <div style={{marginLeft: '10px'}}>
+          {token ? (
+            <Button
+              text="Postularme"
+              onClick={openModal}
+              bgColor="#2172f2"
+              color="#fff"
+              width="7"
+              height="3"
+            />
+          ) : (
+            <Button
+              text="Postularme a esta vacante"
+              onClick={() => window.location.replace("/registro-alumno")}
+              bgColor="#2172f2"
+              color="#fff"
+              width="7"
+              height="3"
+            />
+          )}
+        </div>
         </Header>
-        <WrapperRequitements>
-          {optionalSkills.length > 0 ? (
-            <div className="containerListSkill">
-              <h3 className="titleTypeSkills">Habilidades Opcionales</h3>
-              <List>
-                <ListItem>
-                  {optionalSkills.map((el) => (
+        <Container>
+          <WrapperRequitements>
+            {optionalSkills.length > 0 ? (
+              <div className="containerListSkill">
+                <h3 className="titleTypeSkills">Habilidades Opcionales</h3>
+                <List>
+                  <ListItem>
+                    {optionalSkills.map((el) => (
+                      <ListItem key={`skill-id-${el.t211_id_requirement}`}>
+                        <Chip
+                          label={el.c116_description}
+                          bg="#fff"
+                          color="#6D6D6D"
+                          outline="1px solid #ccc"
+                        />
+                      </ListItem>
+                    ))}
+                  </ListItem>
+                </List>
+              </div>
+            ) : null}
+            {requiredSkills.length > 0 ? (
+              <div className="containerListSkill">
+                <h3 className="titleTypeSkills">Habilidades Requeridas</h3>
+                <List>
+                  {requiredSkills.map((el) => (
                     <ListItem key={`skill-id-${el.t211_id_requirement}`}>
                       <Chip
                         label={el.c116_description}
@@ -132,80 +173,44 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
                       />
                     </ListItem>
                   ))}
-                </ListItem>
-              </List>
+                </List>
+              </div>
+            ) : null}
+          </WrapperRequitements>
+          <WrapperMoreInfo>
+            <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+              <h4 style={{fontSize: '18px'}}>Etiquetas de la vacante</h4>
+              <span style={{ color: "#6D6D6D" }}>
+                Ubicación:{" "}
+                {`${summaryJob[0]?.t200_street}, ${
+                  summaryJob[0]?.t200_interior_number &&
+                  summaryJob[0]?.t200_interior_number
+                }`}
+              </span>
+              <span style={{ color: "#6D6D6D" }}>
+                Perfil: {summaryJob[0]?.c206_id_profile?.c206_description}
+              </span>
+              <span style={{ color: "#6D6D6D" }}>
+                Tipo de contratacion:{" "}
+                {summaryJob[0]?.c208_id_contract.c208_description}
+              </span>
+              <span style={{ color: "#6D6D6D" }}>
+                Experiencia: {summaryJob[0]?.c207_id_experience?.c207_description}
+              </span>
             </div>
-          ) : null}
-          {requiredSkills.length > 0 ? (
-            <div className="containerListSkill">
-              <h3 className="titleTypeSkills">Habilidades Requeridas</h3>
-              <List>
-                {requiredSkills.map((el) => (
-                  <ListItem key={`skill-id-${el.t211_id_requirement}`}>
-                    <Chip
-                      label={el.c116_description}
-                      bg="#fff"
-                      color="#6D6D6D"
-                      outline="1px solid #ccc"
-                    />
-                  </ListItem>
-                ))}
-              </List>
-            </div>
-          ) : null}
-        </WrapperRequitements>
-        <WrapperMoreInfo>
-          <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-            <span style={{ color: "#6D6D6D" }}>
-              Ubicación:{" "}
-              {`${summaryJob[0]?.t200_street}, ${
-                summaryJob[0]?.t200_interior_number &&
-                summaryJob[0]?.t200_interior_number
-              }`}
-            </span>
-            <span style={{ color: "#6D6D6D" }}>
-              Perfil: {summaryJob[0]?.c206_id_profile?.c206_description}
-            </span>
-            <span style={{ color: "#6D6D6D" }}>
-              Tipo de contratacion:{" "}
-              {summaryJob[0]?.c208_id_contract.c208_description}
-            </span>
-            <span style={{ color: "#6D6D6D" }}>
-              Experiencia: {summaryJob[0]?.c207_id_experience?.c207_description}
-            </span>
-          </div>
-          {recommended ? (
-            <div style={{ justifySelf: "flex-end" }}>
-              <p>Porcentaje de recomendación: {match}%</p>
-            </div>
-          ) : null}
-        </WrapperMoreInfo>
-        <DescriptionJob
-          dangerouslySetInnerHTML={createMarkup(
-            summaryJob[0]?.t200_description
-          )}
-        />
-        {/* <div>
-          {token ? (
-            <Button
-              text="Postularme a esta vacante"
-              onClick={openModal}
-              bgColor="#2172f2"
-              color="#fff"
-              width="20"
-              height="3"
-            />
-          ) : (
-            <Button
-              text="Postularme a esta vacante"
-              onClick={() => window.location.replace("/registro-alumno")}
-              bgColor="#2172f2"
-              color="#fff"
-              width="20"
-              height="3"
-            />
-          )}
-        </div> */}
+            {recommended ? (
+              <div style={{ justifySelf: "flex-end" }}>
+                <p>Porcentaje de recomendación: {match}%</p>
+              </div>
+            ) : null}
+          </WrapperMoreInfo>
+
+          <DescriptionJob
+            dangerouslySetInnerHTML={createMarkup(
+              summaryJob[0]?.t200_description
+            )}
+          />
+        </Container>
       </WrapperSummaryJob>
       <ModalPortal isOpen={isOpen} closeModal={closeModal} minHeight="300px">
         <Confirm

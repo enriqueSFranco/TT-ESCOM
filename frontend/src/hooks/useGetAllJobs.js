@@ -15,10 +15,10 @@ export function useGetAllJobs() {
     setLoading(true);
     getAllJobs()
       .then((response) => {
-        setTimeout(() => {
-          if (isMounted.current)
-            setResponse(response);
-        }, 2000)
+        setResponse(response);
+        // setTimeout(() => {
+        //   if (isMounted.current)
+        // }, 100)
       })
       .catch((error) => error)
       .finally(() => setLoading(false));

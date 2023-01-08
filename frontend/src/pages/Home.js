@@ -17,14 +17,12 @@ import LayoutHome from "Layout/LayoutHome";
 import LayoutHero from "Layout/LayoutHero";
 import parallaxESCOM from "images/parallaxESCOM.jpg";
 import {
-  Aside,
   Content,
   Hero,
   Main,
   Cards,
   SummaryCard,
   WrapperFilters,
-  ButtonShowFilters
 } from "./styled-components/HomeStyled";
 
 const Home = () => {
@@ -75,23 +73,20 @@ const Home = () => {
     setRecommended(e.target.checked);
   }
 
-
   function handleSearch(value) {
     setIsFiltered(value !== "" ? true : false);
   }
 
   if (!response) return null;
 
+  console.log(data)
+
   return (
     <LayoutHome>
       <Main>
         <Hero>
           <LayoutHero src_photo={parallaxESCOM} alt_photo="parallax-ESCOM">
-            <FormSearchJob
-              handleSearch={handleSearch}
-              query={query}
-              setQuery={setQuery}
-            />
+            <FormSearchJob handleSearch={handleSearch} />
           </LayoutHero>
         </Hero>
 
@@ -107,21 +102,11 @@ const Home = () => {
           />
         </WrapperFilters>
 
-        {/* <Aside>
-          
-          {token && (
-            <LayoutFilter title="Vacantes Recomendadas">
-              <RecommendedVacanciesFilter
-                handleChangeRecommended={handleChangeRecommended}
-              />
-            </LayoutFilter>
-          )}
-        </Aside> */}
         <Content>
           <Cards id="cards">
             {resultsFound ? (
               <JobList
-                jobs={isFiltered ? data?.results : response}
+                jobs={response}
                 recommendedJobs={recommender}
                 loading={loading}
                 isVacantRecommended={recommended}

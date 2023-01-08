@@ -1,19 +1,11 @@
 import React from 'react';
+import Skeleton from '@mui/material/Skeleton'
 import styles from './Skeleton.module.css';
 
-const Skeleton = ({ type }) => {
+const CustomSkeleton = ({ type }) => {
   
   const FeedSkeleton = () => (
-    <article className={`${styles.cardSk}`}>
-      <header className={`${styles.cardSkHeader} ${styles.placeholder}`}>
-        <p className={``}></p>
-      </header>
-      <div className={styles.cardSkContent}>
-        <p className={`${styles.lineClamp} ${styles.placeholder}`}></p>
-        <p className={`${styles.timeWork} ${styles.placeholder}`}></p>
-      </div>
-      <span className={`${styles.placeholder} ${styles.buttonSkeleton}`}></span>
-  </article>
+    <Skeleton variant="rectangular" width={210} height={118} />
   );
 
   const BusinessDetailsSkeleton = () => (
@@ -58,4 +50,4 @@ const Skeleton = ({ type }) => {
 
 }
 
-export default Skeleton;
+export default CustomSkeleton;
