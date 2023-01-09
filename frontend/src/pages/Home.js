@@ -45,9 +45,10 @@ const Home = () => {
   ]);
   const [recommended, setRecommended] = useState(false);
   const [vacantId, setVacantId] = useState(null);
+  // const [query, setQuery] = useState("");
+  // const [data] = useSearchJob(query);
+  const [newResponse, setNewResponse] = useState({});
   const [isFiltered, setIsFiltered] = useState(false);
-  const [query, setQuery] = useState("");
-  const [data] = useSearchJob(query);
   const [filterData, setFilterData] = useState([]);
   const { response: recommender, isLoading } = useRecommendationsVacancies(
     token?.user?.id
@@ -102,14 +103,14 @@ const Home = () => {
 
   if (!response) return null;
 
-  console.log(data)
+  console.log(newResponse);
 
   return (
     <LayoutHome>
       <Main>
         <Hero>
           <LayoutHero src_photo={parallaxESCOM} alt_photo="parallax-ESCOM">
-            <FormSearchJob handleSearch={handleSearch} />
+            <FormSearchJob setNewResponse={setNewResponse} newResponse={newResponse} handleSearch={handleSearch} />
           </LayoutHero>
         </Hero>
 
@@ -118,6 +119,7 @@ const Home = () => {
             data={response}
             selectedFilterExp={selectedFilterExp}
             selectedFilterModality={selectedFilterModality}
+            setNewResponse={setNewResponse}
             setFilterData={setFilterData}
             setResultsFound={setResultsFound}
             onFiltereChange={onFiltereChange}
@@ -139,11 +141,7 @@ const Home = () => {
             ) : (
               <EmptyView />
             )}
-            <div
-              
-            >
-              {loadingNextPage && <Loader />}
-            </div>
+            <div>{loadingNextPage && <Loader />}</div>
             <div id="visor" ref={externalRef}></div>
           </Cards>
           <SummaryCard>
