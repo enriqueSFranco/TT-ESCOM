@@ -9,7 +9,7 @@ from itertools import chain
 from datetime import date
 import datetime
 from apps.vacantes.pagination import CustomPagination
-from apps.vacantes.models import Vacant,Application,Report,Locality,Experience,Modality,CandidateProfile,Contract
+from apps.vacantes.models import Vacant,Application,Report,Locality,Experience,Modality,CandidateProfile,Contract,RequiredAbility,RequiredLanguage
 from apps.companies.models import Company
 from apps.vacantes.api.serializers.requirements_serializer import RequiredAbilitySerializer,RequiredLanguageSerializer
 from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,VacantListSerializer,UpdateVacantSerializer,VacantInfoListSerializer,VacantFilterSerializer,UpdateVacantStateSerializer,PatchVacantSerializer
@@ -255,6 +255,8 @@ class VacantViewSet(viewsets.GenericViewSet):
 		vacant_serializer = UpdateVacantSerializer(vacant, data=request.data)
 		if vacant_serializer.is_valid():
 			vacant_serializer.save()
+			actual_skills = RequiredAbility.objects.filter(t200_id_vacant=pk).delete()
+			actual_languages = RequiredLanguage.objects.filter(t200_id_vacant=pk).delete()		
 			return Response({
 			    'message': 'Vacante actualizada correctamente'
 		    }, status=status.HTTP_200_OK)
@@ -484,14 +486,14 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 		if self.filters['job'] == "":
 			filter_vacants = Vacant.objects.filter(Q(c204_id_vacant_status = 2))#,Q(t200_job__icontains=word) )		
 		else:			
-			search = self.filters['job'].split(" ")
-			found_words = 0
-			for word in search:
-				if found_words == 0:
-					filter_vacants = Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) | Q(t200_description__icontains=self.filters['job']))
-					found_words = found_words + 1
-				else:
-					filter_vacants = filter_vacants.union(Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) | Q(t200_description__icontains=self.filters['job'])))				
+			#search = self.filters['job'].split(" ")
+			#found_words = 0
+			#for word in search:
+				#if found_words == 0:
+			filter_vacants = Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=self.filters['job']) | Q(t200_description__icontains=self.filters['job']))
+					#found_words = found_words + 1
+				#else:
+					#filter_vacants = filter_vacants.union(Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) | Q(t200_description__icontains=self.filters['job'])))				
 		if self.filters['ubication'] :
 			filter_vacants = filter_vacants.filter(c222_id_locality__in=self.filters['ubication'])
 		if self.filters['modalities']:
