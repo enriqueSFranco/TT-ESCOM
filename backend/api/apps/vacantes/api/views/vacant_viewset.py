@@ -429,7 +429,7 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 	filters ={
 		'job' : '',
 		'ubication' : '',
-		'profiles' : '',
+		'experience_profiles' : '',
 		'modalities' : '',
 	}
 	def get_company(self,company_name):
@@ -475,22 +475,28 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 
 
 	def set_filter_experience(self,experienceJSON):
-		experience = ""
+		experience = []
 		for object in experienceJSON:
 			#print(object)
 			if object['checked']:
-				experience = experience + str(object['id']) +","
-		if len(experience) >0:
-			experience = experience[0:-1]
+				experience.append(int(object['id']))		
 		return experience
+
+	def set_filter_modality(self,modalityJSON):
+		modality = []
+		for object in modalityJSON:
+			#print(object)
+			if object['checked']:
+				modality.append(int(object['id']))		
+		return modality
 
 
 	def create(self, request):
 		print('request: ',request.data)
-		self.filters['job'] = request.data['Text a buscar']
+		self.filters['job'] = request.data['Texto a buscar']
 		#self.filters['ubication'] = request.data['company_name']
-		self.filters['modalities'] = self.set_filter_experience(request.data['Experiencia laboral'])
-		#self.filters['profiles']  = request.data['id_modality']		
+		self.filters['modalities'] = self.set_filter_modality(request.data['Modalidad de empleo'])
+		self.filters['experience_profiles'] = self.set_filter_experience(request.data['Experiencia laboral'])
 
 		print(self.filters)
 		if self.filters['job'] == "":
@@ -504,8 +510,11 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 					found_words = found_words + 1
 				else:
 					filter_vacants = filter_vacants.union(Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) | Q(t200_description__icontains=self.filters['job'])))
-				#filter_vacants = Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) )	
-
+				#filter_vacants = Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) )			
+		if self.filters['modalities']:
+			filter_vacants = filter_vacants.filter(c214_id_modality__in = self.filters['modalities'])
+		if self.filters['experience_profiles']:
+			filter_vacants = filter_vacants.filter(c207_id_experience__in = self.filters['experience_profiles'])
 		#Paginar resultados	
 		page = self.paginate_queryset(filter_vacants)
 		if page is not None:
