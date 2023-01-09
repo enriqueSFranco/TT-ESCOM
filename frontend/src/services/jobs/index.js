@@ -90,7 +90,7 @@ export const getObjectUpdateVacant = (id) => {
 };
 
 export const searchJob = async (payload = {}) => {
-  return API.delete(`${REACT_APP_URL_FILTER_VACANTS}`, payload)
+  return API.post(`${REACT_APP_URL_FILTER_VACANTS}`, payload)
     .then((response) => {
       const { data } = response;
       return data;
