@@ -58,7 +58,7 @@ const FormSearchJob = ({ newResponse, setNewResponse, handleSearch }) => {
         ...newResponse,
         ...{
           "Texto a buscar": debounce,
-          Donde: "",
+          Donde: locationJob,
           "Modalidad de empleo": [],
           "Experiencia laboral": [],
         }
