@@ -5,7 +5,7 @@ const ButtonScroll = styled.button`
   width: 60px;
   height: 60px;
   position: fixed;
-  background-color: transparent;
+  background: transparent;
   border: none;
   outline: none;
   border-radius: 50%;
@@ -34,8 +34,8 @@ const ButtonScroll = styled.button`
   }
 
   @media only screen and ${device.laptop} {
-    right: 1rem;
-    bottom: 0.3rem;
+    right: 5rem;
+    bottom: 1rem;
   }
 `;
 

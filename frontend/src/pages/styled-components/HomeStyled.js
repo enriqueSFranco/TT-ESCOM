@@ -16,7 +16,8 @@ const Main = styled.main`
     grid-template-columns: 400px 1fr;
     grid-template-areas:
       "hero hero"
-      "aside content_data";
+      "filters filters"
+      "content_data content_data";
     position: relative;
     background-color: #fff;
   }
@@ -25,12 +26,24 @@ const Main = styled.main`
 const Hero = styled.div`
   grid-area: hero;
   width: 100%;
+  background-color: #fff;
+  height: 200px;
+`;
+
+const WrapperFilters = styled.section`
+  grid-area: filters;
+  height: fit-content;
+  background-color: #fff;
+  width: 70%;
+  border-bottom: 1px solid #ccc;
+  margin: 0 auto;
+  position: sticky;
+  top: 250px;
+  z-index: 9;
 `;
 
 const Content = styled.section`
   @media screen and ${device.mobileM} {
-    position: relative;
-    /* top: 280px; */
     grid-area: content_data;
     display: flex;
     flex-wrap: wrap;
@@ -45,29 +58,35 @@ const Content = styled.section`
     display: grid;
     grid-template-areas: "cards summary_card";
     grid-template-columns: 600px 1fr;
-    padding: 1rem;
+    margin: 3rem auto 0 auto;
+    background-color: #f9fbfc;
   }
 `;
 
 const Cards = styled.div`
   grid-area: cards;
+  width: 100%;
   display: flex;
-  background-color: #fff;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: flex-start;
   gap: 1rem;
 `;
 
 const SummaryCard = styled.div`
   background-color: #fff;
   width: 680px;
+  height: fit-content;
   grid-area: summary_card;
+  position: sticky;
+  top: 312px;
 `;
 
-const Aside = styled.aside`
-  grid-area: aside;
-  padding: 1rem;
-`;
 
-export { Aside, Content, Cards, SummaryCard, Hero, Main };
+export {
+  Content,
+  Cards,
+  SummaryCard,
+  Hero,
+  Main,
+  WrapperFilters,
+};

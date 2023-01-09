@@ -4,8 +4,10 @@ import { device } from "breakpoints";
 const LayoutHeroStyled = styled.section`
   @media screen and ${device.laptop} {
     width: 100%;
-    height: 400px;
-    position: relative;
+    height: 250px;
+    position: fixed;
+    z-index: 99;
+    background-color: #fff;
   }
 `;
 
@@ -39,20 +41,18 @@ const WrapperAvatar = styled.div`
 
 const WrapperPhoto = styled.div`
   width: 100%;
-  height: inherit;
-  position: absolute;
+  height: 200px;
 `;
 
 const Photo = styled.img`
   object-fit: cover;
-  object-position: center;
+  object-position: 0 53%;
   width: 100%;
-  height: 400px;
+  height: 200px;
 `;
 
 const Content = styled.div`
   width: 100%;
-  height: inherit;
   background-color: transparent;
   display: flex;
   justify-content: center;

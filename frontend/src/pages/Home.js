@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useAuth } from "context/AuthContext";
 import {
   useGetAllJobs,
+  useNearScreen,
   useSearchJob,
   useRecommendationsVacancies,
 } from "hooks";
@@ -12,17 +13,17 @@ import ButtonScrollTop from "components/Button/ButtonScrollTop";
 import DetailsJob from "components/Modal/contentModals/DetailsJob";
 import RecommendedVacanciesFilter from "components/Filter/FilterRecommendedVacancies";
 import Filteres from "components/Filter/Filters";
-import LayoutFilter from "Layout/LayoutFilter";
+import Loader from "components/Loader/Loader";
 import LayoutHome from "Layout/LayoutHome";
 import LayoutHero from "Layout/LayoutHero";
 import parallaxESCOM from "images/parallaxESCOM.jpg";
 import {
-  Aside,
   Content,
   Hero,
   Main,
   Cards,
   SummaryCard,
+  WrapperFilters,
 } from "./styled-components/HomeStyled";
 
 const Home = () => {
@@ -46,11 +47,18 @@ const Home = () => {
   const [isFiltered, setIsFiltered] = useState(false);
   const [query, setQuery] = useState("");
   const [data] = useSearchJob(query);
-  const { response, loading } = useGetAllJobs();
   const [filterData, setFilterData] = useState([]);
   const { response: recommender, isLoading } = useRecommendationsVacancies(
     token?.user?.id
   );
+
+  const externalRef = useRef(null);
+  const { response, loading, loadingNextPage, setPage } = useGetAllJobs();
+  const { isNearScreen } = useNearScreen({
+    distance: "100px",
+    externalRef: loading ? null : externalRef,
+    once: false,
+  });
 
   // TODO: Hacer la funcionalidad de filtrado con checkbox
   function onFiltereChange(id) {
@@ -66,7 +74,7 @@ const Home = () => {
     const itemExpChecked = itemsModality.map((it) =>
       it.id === id ? { ...it, checked: !it.checked } : it
     );
-    setSelectedFilterModality(itemExpChecked)
+    setSelectedFilterModality(itemExpChecked);
   }
 
   function handleChangeRecommended(e) {
@@ -79,21 +87,18 @@ const Home = () => {
 
   if (!response) return null;
 
-  console.log(filterData);
+  console.log(data)
 
   return (
     <LayoutHome>
       <Main>
         <Hero>
           <LayoutHero src_photo={parallaxESCOM} alt_photo="parallax-ESCOM">
-            <FormSearchJob
-              handleSearch={handleSearch}
-              query={query}
-              setQuery={setQuery}
-            />
+            <FormSearchJob handleSearch={handleSearch} />
           </LayoutHero>
         </Hero>
-        <Aside>
+
+        <WrapperFilters>
           <Filteres
             data={response}
             selectedFilterExp={selectedFilterExp}
@@ -103,19 +108,13 @@ const Home = () => {
             onFiltereChange={onFiltereChange}
             onFiltereModalityChange={onFiltereModalityChange}
           />
-          {token && (
-            <LayoutFilter title="Vacantes Recomendadas">
-              <RecommendedVacanciesFilter
-                handleChangeRecommended={handleChangeRecommended}
-              />
-            </LayoutFilter>
-          )}
-        </Aside>
+        </WrapperFilters>
+
         <Content>
           <Cards id="cards">
             {resultsFound ? (
               <JobList
-                jobs={isFiltered ? data?.results : filterData}
+                jobs={response}
                 recommendedJobs={recommender}
                 loading={loading}
                 isVacantRecommended={recommended}
@@ -125,6 +124,19 @@ const Home = () => {
             ) : (
               <EmptyView />
             )}
+            <div
+              style={{
+                width: "100%",
+                display: "grid",
+                placeContent: "center",
+                backgroundColor: "transparent",
+                margin: "1rem 0",
+                padding: "0 0 2rem 0",
+              }}
+            >
+              {loadingNextPage && <Loader />}
+            </div>
+            <div id="visor" ref={externalRef}></div>
           </Cards>
           <SummaryCard>
             <DetailsJob

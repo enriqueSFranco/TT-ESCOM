@@ -8,7 +8,7 @@ const Header = styled.header`
     backdrop-filter: blur(10px);
     position: fixed;
     bottom: 0;
-    z-index: 10;
+    z-index: 100;
   }
 
   @media screen and ${device.laptop} {
@@ -34,10 +34,7 @@ const Header = styled.header`
           `
         }
       }}
-      z-index: 10;
-      color: blue;
-      font-family: 'Poppins', sans-serif;
-      
+      z-index: 100;      
     }
 `
 

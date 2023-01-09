@@ -1,5 +1,6 @@
 import { memo, useState } from "react";
-import "moment/locale/es-mx";
+// import "moment/locale/es-mx";
+import CustomSkeleton from "components/Skeleton/Skeleton";
 import CardJob from "../CardJob/CardJob";
 import styles from "./JobList.module.css";
 
@@ -67,7 +68,7 @@ const JobList = ({
   return (
     <>
       {loading ? (
-        <h3>cargando</h3>
+        <CustomSkeleton type="feed" />
       ) : (
         <>
           {jobs

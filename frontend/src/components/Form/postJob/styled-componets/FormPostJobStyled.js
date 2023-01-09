@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Form = styled.form`
+const Form = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -66,6 +66,9 @@ const SubGroupInput = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+  /* width: 100%; */
+  /* max-width: ; */
+  /* outline: 2px solid blue; */
 `;
 
 const GroupInput = styled.div`

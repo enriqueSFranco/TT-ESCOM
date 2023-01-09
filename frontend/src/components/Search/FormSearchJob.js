@@ -14,8 +14,9 @@ import {
 } from "./styled-components/FormSearchStyled";
 
 
-const FormSearchJob = ({ handleSearch, query, setQuery }) => {
+const FormSearchJob = ({ handleSearch }) => {
   const inputRef = useRef(null)
+  const [query, setQuery] = useState("")
   const debounce = useDebounce(query, 500);
   const [locationJob, setLocationJob] = useState("");
   const [loading, setLoading] = useState(false);
@@ -24,10 +25,11 @@ const FormSearchJob = ({ handleSearch, query, setQuery }) => {
 
   // filtrado para el autocompletado
   const handleFilterJob = (e) => {
-    const query = e.target.value.trim();
+    const query = e.target.value;
+    console.log("🚀 ~ file: FormSearchJob.js:28 ~ handleFilterJob ~ query", query)
+    
     setQuery(query);
 
-    // hacer la llamada al endpoint de searchCharacter
     if (query !== '') {
       searchCharacter(query)
         .then(res => {

@@ -20,7 +20,7 @@ const CardBody = styled.article`
   @media screen and ${device.laptop} {
     width: 100%;
     height: 330px;
-    border-radius: 1rem;
+    border-radius: 6px;
     color: #222;
     font-family: sans-serif;
     display: flex;

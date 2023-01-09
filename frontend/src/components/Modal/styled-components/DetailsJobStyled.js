@@ -8,12 +8,32 @@ const Header = styled.header`
   background: center/cover no-repeat url(${background});
 `;
 
+const Container = styled.div`
+  background-color: #fff;
+  height: 448px;
+  width: 100%;
+  overflow-y: auto;
+  scrollbar-color: #0a4c95 #c2d2e4;
+
+  &::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+  }
+
+  &::-webkit-scrollbar-track-piece {
+    background-color: #c2d2e4;
+  }
+
+  &::-webkit-scrollbar-thumb:vertical {
+    height: 30px;
+    background-color: #0a4c95;
+  }
+`;
+
 const WrapperSummaryJob = styled.div`
   outline: 2px solid #ccc;
   border-radius: 5px;
-  height: 860px;
-  position: sticky;
-  top: 90px;
+  height: 650px;
   padding: 0 0 1rem 0;
 `;
 
@@ -40,7 +60,7 @@ const TextH2 = styled.h2`
 const WrapperMoreInfo = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* gap: .5rem; */
+  border-bottom: 2px solid #eee;
   padding: 1rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -75,10 +95,6 @@ const DescriptionJob = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   padding: 0 1rem 1rem 1rem;
-  height: 350px;
-  background-color: #fff;
-  overflow-y: auto;
-  line-height: 30px;
 `;
 
 export {
@@ -88,5 +104,6 @@ export {
   TextH2,
   WrapperRequitements,
   WrapperMoreInfo,
+  Container,
   WrapperSummaryJob,
 };
