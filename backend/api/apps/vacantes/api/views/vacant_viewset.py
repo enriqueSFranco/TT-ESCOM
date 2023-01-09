@@ -88,10 +88,10 @@ class VacantViewSet(viewsets.GenericViewSet):
 		""" 
 		self.check_outdated_vacants()
 		vacants = self.get_queryset()
-		#page = self.paginate_queryset(vacants)
-		#if page is not None:
-		#	vacants_serializer = self.list_serializer_class(page, many=True)
-		#	return self.get_paginated_response(vacants_serializer.data)
+		page = self.paginate_queryset(vacants)
+		if page is not None:
+			vacants_serializer = self.list_serializer_class(page, many=True)
+			return self.get_paginated_response(vacants_serializer.data)
 		vacants_serializer = self.list_serializer_class(vacants, many=True)
 		return Response(vacants_serializer.data)
 
@@ -417,6 +417,8 @@ class FilterVacant (generics.ListAPIView):
 				filter = filter.union(Vacant.objects.filter(Q(c204_id_vacant_status = 1),Q(t200_job__icontains=word) | Q(t200_description__icontains=word)))
 		return filter.all()#Vacant.objects.filter(Q(c204_id_vacant_status = 1),Q(t200_job__icontains=search) | Q(t200_description__icontains=search)).values() 
 	
+		
+	
 
 class FilterVacantViewSet(viewsets.GenericViewSet):
 	model = Vacant
@@ -426,9 +428,9 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 	queryset = None
 	filters ={
 		'job' : '',
-		'company_name' : '',
-		'id_profile' : '',
-		'id_modality' : '',
+		'ubication' : '',
+		'profiles' : '',
+		'modalities' : '',
 	}
 	def get_company(self,company_name):
 		company_data = Company.objects.filter(t300_name=company_name)
@@ -472,18 +474,44 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 		return Response(vacants_serializer.data)
 
 
+	def set_filter_experience(self,experienceJSON):
+		experience = ""
+		for object in experienceJSON:
+			#print(object)
+			if object['checked']:
+				experience = experience + str(object['id']) +","
+		if len(experience) >0:
+			experience = experience[0:-1]
+		return experience
+
+
 	def create(self, request):
 		print('request: ',request.data)
-		self.filters['job'] = request.data['job']
-		self.filters['company_name'] = request.data['company_name']
-		self.filters['id_profile'] = request.data['c206_id_profile']
-		self.filters['id_modality']  = request.data['id_modality']
+		self.filters['job'] = request.data['Text a buscar']
+		#self.filters['ubication'] = request.data['company_name']
+		self.filters['modalities'] = self.set_filter_experience(request.data['Experiencia laboral'])
+		#self.filters['profiles']  = request.data['id_modality']		
+
 		print(self.filters)
-		vacants = self.get_object()
-		page = self.paginate_queryset(vacants)
+		if self.filters['job'] == "":
+			filter_vacants = Vacant.objects.filter(Q(c204_id_vacant_status = 2))#,Q(t200_job__icontains=word) )		
+		else:			
+			search = self.filters['job'].split(" ")
+			found_words = 0
+			for word in search:
+				if found_words == 0:
+					filter_vacants = Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) | Q(t200_description__icontains=self.filters['job']))
+					found_words = found_words + 1
+				else:
+					filter_vacants = filter_vacants.union(Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) | Q(t200_description__icontains=self.filters['job'])))
+				#filter_vacants = Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) )	
+
+		#Paginar resultados	
+		page = self.paginate_queryset(filter_vacants)
 		if page is not None:
 			vacants_serializer = self.list_serializer_class(page, many=True)
 			return self.get_paginated_response(vacants_serializer.data)
-		vacants_serializer = self.list_serializer_class(vacants, many=True)
+		vacants_serializer = self.list_serializer_class(filter_vacants, many=True)
 		return Response(vacants_serializer.data)		
 		
+	
