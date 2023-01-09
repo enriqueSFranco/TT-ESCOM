@@ -1,8 +1,9 @@
-import { useState, useRef } from "react";
+import { useEffect, useCallback, useState, useRef } from "react";
 import { useAuth } from "context/AuthContext";
 import {
   useGetAllJobs,
   useNearScreen,
+  useCustomDebounce,
   useSearchJob,
   useRecommendationsVacancies,
 } from "hooks";
@@ -85,6 +86,20 @@ const Home = () => {
     setIsFiltered(value !== "" ? true : false);
   }
 
+  function handleNextPage() {
+    setPage((prevPage) => prevPage + 1);
+  }
+
+  const debounce = useCustomDebounce(() => {
+    handleNextPage();
+  }, 400);
+
+  const debouncehandleNextPage = useCallback(debounce, []);
+
+  useEffect(() => {
+    if (isNearScreen) debouncehandleNextPage();
+  }, [isNearScreen, debouncehandleNextPage]);
+
   if (!response) return null;
 
   console.log(data)
@@ -125,14 +140,7 @@ const Home = () => {
               <EmptyView />
             )}
             <div
-              style={{
-                width: "100%",
-                display: "grid",
-                placeContent: "center",
-                backgroundColor: "transparent",
-                margin: "1rem 0",
-                padding: "0 0 2rem 0",
-              }}
+              
             >
               {loadingNextPage && <Loader />}
             </div>
