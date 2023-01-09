@@ -17,7 +17,7 @@ const ValidateCompany = () => {
   return (
     <LayoutHome>
       <WrapperValidateCompany>
-        <TextH2>Empresar por validar</TextH2>
+        <TextH2>EMPRESAS POR VALIDAR</TextH2>
 
         {listCompanies.length > 0 ? (
           listCompanies?.map((company) => (

@@ -8,6 +8,25 @@ const Header = styled.header`
   background: center/cover no-repeat url(${background});
 `;
 
+const Button = styled.button`
+  background-color: #fff;
+  border: none;
+  outline: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  padding: 8px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow .3s ease-in-out;
+
+  &:hover {
+    box-shadow: #fff 0px 0px 0px 2px;
+  }
+`
+
 const Container = styled.div`
   background-color: #fff;
   height: 448px;
@@ -101,6 +120,7 @@ export {
   DescriptionJob,
   ContentModal,
   Header,
+  Button,
   TextH2,
   WrapperRequitements,
   WrapperMoreInfo,

@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 
 const Card = styled.div`
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  box-shadow: #0B72FF 0px 0px 0px 2px;
   width: 300px;
-  height: fit-content;
-  border-radius: .5rem;
+  height: 220px;
+  border-radius: 5px;
   background-color: #fff;
-  padding: .5rem;
+  padding: .5rem .5rem .7rem .5rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `
 
@@ -15,7 +15,7 @@ const CardActions = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 1rem;
+  gap: 10px;
 `
 
 const CardImage = styled.figure`
@@ -42,7 +42,7 @@ const CardImageName = styled.figcaption`
 const CardFooter = styled.div`
   text-align: center;
   width: fit-content;
-  margin: 1rem auto 0 auto;
+  margin: .3rem auto 0 auto;
 `
 
 export { Card, CardActions, CardImage, CardFooter, CardImageName }
