@@ -490,11 +490,16 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 				modality.append(int(object['id']))		
 		return modality
 
+	def set_search_ubications(self,location_name):
+		id_locations = Locality.objects.filter(Q(c222_state__icontains=location_name)|Q(c222_municipality__icontains=location_name)|Q(c222_locality__icontains=location_name)).values("c222_id").all()
+		#Cuauhtémoc
+		return id_locations
+
 
 	def create(self, request):
 		print('request: ',request.data)
 		self.filters['job'] = request.data['Texto a buscar']
-		#self.filters['ubication'] = request.data['company_name']
+		self.filters['ubication'] = self.set_search_ubications(request.data['Donde'])
 		self.filters['modalities'] = self.set_filter_modality(request.data['Modalidad de empleo'])
 		self.filters['experience_profiles'] = self.set_filter_experience(request.data['Experiencia laboral'])
 
@@ -511,6 +516,8 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 				else:
 					filter_vacants = filter_vacants.union(Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) | Q(t200_description__icontains=self.filters['job'])))
 				#filter_vacants = Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) )			
+		if self.filters['ubication'] :
+			filter_vacants = filter_vacants.filter(c222_id_locality__in=self.filters['ubication'])
 		if self.filters['modalities']:
 			filter_vacants = filter_vacants.filter(c214_id_modality__in = self.filters['modalities'])
 		if self.filters['experience_profiles']:
