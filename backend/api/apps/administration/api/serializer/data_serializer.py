@@ -87,3 +87,11 @@ class ValidateVacantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vacant
         fields = ('t400_id_admin','c204_id_vacant_status','t200_close_date','t200_publish_date')       
+
+
+
+class OnHoldCompanyListSerializer(serializers.ModelSerializer):        
+    class Meta:
+        model = Company
+        fields = '__all__'
+        depth = 2
