@@ -88,10 +88,10 @@ class VacantViewSet(viewsets.GenericViewSet):
 		""" 
 		self.check_outdated_vacants()
 		vacants = self.get_queryset()
-		#page = self.paginate_queryset(vacants)
-		#if page is not None:
-		#	vacants_serializer = self.list_serializer_class(page, many=True)
-		#	return self.get_paginated_response(vacants_serializer.data)
+		page = self.paginate_queryset(vacants)
+		if page is not None:
+			vacants_serializer = self.list_serializer_class(page, many=True)
+			return self.get_paginated_response(vacants_serializer.data)
 		vacants_serializer = self.list_serializer_class(vacants, many=True)
 		return Response(vacants_serializer.data)
 
@@ -137,11 +137,11 @@ class VacantViewSet(viewsets.GenericViewSet):
 		print("Si es un nivel valido")
 		language['t200_id_vacant'] = id_vacant
 		language['c111_id_language'] = id_language
-		if level > 30 and level < 50:
+		if level >= 30 and level < 50:
 			language['t110_level_description']='Básico'	
-		if level > 50 and level < 75:
+		if level >= 50 and level < 75:
 			language['t110_level_description']='Medio'	
-		if level > 75 and level <= 100:
+		if level >= 75 and level <= 100:
 			language['t110_level_description']='Avanzado'	
 		return language
 
@@ -157,14 +157,14 @@ class VacantViewSet(viewsets.GenericViewSet):
 		print(request.data)
 		vacant_data = self.set_vacant(request.data)
 		vacant_mandatory = request.data['mandatory']
-		vacant_mandatory_level = request.data['mandatory_level']
+		#vacant_mandatory_level = request.data['mandatory_level']
 		vacant_optional = request.data['optional']
-		vacant_optional_level = request.data['optional_level']
+		#vacant_optional_level = request.data['optional_level']
 		vacant_languages = request.data['language']					
-		language_level = request.data['language_level']
+		#language_level = request.data['language_level']
 		if len(vacant_languages)==0:
 			vacant_languages.append("47")
-			language_level.append("100")
+			#language_level.append("100")
 		print(vacant_mandatory)
 		vacant_serializer = self.serializer_class(data=vacant_data)
 		print('request: ',request.data)
@@ -173,34 +173,37 @@ class VacantViewSet(viewsets.GenericViewSet):
 			vacant = vacant_serializer.save()
 			vacant_id= vacant.t200_id_vacant
 			print(vacant_id)	
-			index = 0		
+			#index = 0		
 			for requirement in vacant_mandatory:
-				print(requirement,vacant_mandatory_level[index])				
-				requirement_data = self.set_requirement(requirement,vacant_mandatory_level[index],True,vacant_id)				
+				#print(requirement,vacant_mandatory_level[index])				
+				#requirement_data = self.set_requirement(requirement,vacant_mandatory_level[index],True,vacant_id)				
+				requirement_data = self.set_requirement(requirement,"",True,vacant_id)				
 				requirement_serializer =self.requirement_serializer(data = requirement_data)
 				if requirement_serializer.is_valid():
 					print("Requerimiento valido")
 					requirement_serializer.save()					
-				index = index + 1
-			index = 0		
+				#index = index + 1
+			#index = 0		
 			for requirement in vacant_optional:
-				print(requirement,vacant_optional_level[index])				
-				requirement_data = self.set_requirement(requirement,vacant_optional_level[index],False,vacant_id)				
+				#print(requirement,vacant_optional_level[index])				
+				#requirement_data = self.set_requirement(requirement,vacant_optional_level[index],False,vacant_id)				
+				requirement_data = self.set_requirement(requirement,"",False,vacant_id)				
 				requirement_serializer =self.requirement_serializer(data = requirement_data)
 				if requirement_serializer.is_valid():
 					print("Requerimiento valido")
 					requirement_serializer.save()					
-				index = index + 1
-			index = 0		
+				#index = index + 1
+			#index = 0		
 			for language in vacant_languages :
-				print(language,language_level[index])				
-				language_data = self.set_language(int(language),vacant_id,int(language_level[index]))				
+				#print(language,language_level[index])				
+				#language_data = self.set_language(int(language),vacant_id,int(language_level[index]))				
+				language_data = self.set_language(int(language),vacant_id,30)
 				language_serializer =self.language_serializer(data = language_data)
 				print(language_data)
 				if language_serializer.is_valid():
 					print("Idioma valido")
 					language_serializer.save()					
-				index = index + 1
+				#index = index + 1
 			return Response({
 				'message': 'Vacante registrada correctamente.'
 			}, status=status.HTTP_201_CREATED)
@@ -414,6 +417,8 @@ class FilterVacant (generics.ListAPIView):
 				filter = filter.union(Vacant.objects.filter(Q(c204_id_vacant_status = 1),Q(t200_job__icontains=word) | Q(t200_description__icontains=word)))
 		return filter.all()#Vacant.objects.filter(Q(c204_id_vacant_status = 1),Q(t200_job__icontains=search) | Q(t200_description__icontains=search)).values() 
 	
+		
+	
 
 class FilterVacantViewSet(viewsets.GenericViewSet):
 	model = Vacant
@@ -423,9 +428,9 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 	queryset = None
 	filters ={
 		'job' : '',
-		'company_name' : '',
-		'id_profile' : '',
-		'id_modality' : '',
+		'ubication' : '',
+		'experience_profiles' : '',
+		'modalities' : '',
 	}
 	def get_company(self,company_name):
 		company_data = Company.objects.filter(t300_name=company_name)
@@ -469,18 +474,53 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 		return Response(vacants_serializer.data)
 
 
+	def set_filter_experience(self,experienceJSON):
+		experience = []
+		for object in experienceJSON:
+			#print(object)
+			if object['checked']:
+				experience.append(int(object['id']))		
+		return experience
+
+	def set_filter_modality(self,modalityJSON):
+		modality = []
+		for object in modalityJSON:
+			#print(object)
+			if object['checked']:
+				modality.append(int(object['id']))		
+		return modality
+
+
 	def create(self, request):
 		print('request: ',request.data)
-		self.filters['job'] = request.data['job']
-		self.filters['company_name'] = request.data['company_name']
-		self.filters['id_profile'] = request.data['c206_id_profile']
-		self.filters['id_modality']  = request.data['id_modality']
+		self.filters['job'] = request.data['Texto a buscar']
+		#self.filters['ubication'] = request.data['company_name']
+		self.filters['modalities'] = self.set_filter_modality(request.data['Modalidad de empleo'])
+		self.filters['experience_profiles'] = self.set_filter_experience(request.data['Experiencia laboral'])
+
 		print(self.filters)
-		vacants = self.get_object()
-		page = self.paginate_queryset(vacants)
+		if self.filters['job'] == "":
+			filter_vacants = Vacant.objects.filter(Q(c204_id_vacant_status = 2))#,Q(t200_job__icontains=word) )		
+		else:			
+			search = self.filters['job'].split(" ")
+			found_words = 0
+			for word in search:
+				if found_words == 0:
+					filter_vacants = Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) | Q(t200_description__icontains=self.filters['job']))
+					found_words = found_words + 1
+				else:
+					filter_vacants = filter_vacants.union(Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) | Q(t200_description__icontains=self.filters['job'])))
+				#filter_vacants = Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) )			
+		if self.filters['modalities']:
+			filter_vacants = filter_vacants.filter(c214_id_modality__in = self.filters['modalities'])
+		if self.filters['experience_profiles']:
+			filter_vacants = filter_vacants.filter(c207_id_experience__in = self.filters['experience_profiles'])
+		#Paginar resultados	
+		page = self.paginate_queryset(filter_vacants)
 		if page is not None:
 			vacants_serializer = self.list_serializer_class(page, many=True)
 			return self.get_paginated_response(vacants_serializer.data)
-		vacants_serializer = self.list_serializer_class(vacants, many=True)
+		vacants_serializer = self.list_serializer_class(filter_vacants, many=True)
 		return Response(vacants_serializer.data)		
 		
+	
