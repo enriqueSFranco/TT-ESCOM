@@ -19,11 +19,18 @@ let image = {
   display: "inline-block",
 }
 
+let title = {
+  'background': 'linear-gradient(27deg, #3f5efb, #fc466b)',
+  'background-clip': 'text',
+  '-webkit-background-clip': 'text',
+  'color': 'transparent'
+}
+
 const PageSuccesCompany = () => {
 
   return (
     <section style={wrapper}>
-      <h2>
+      <h2 style={title}>
         Gracias, tu pre-registro se ha enviado exitosamente. <br />
         En cuanto se validen tus datos se te haran llegar tus accesos al correo que registraste.
       </h2>

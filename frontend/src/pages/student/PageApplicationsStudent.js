@@ -52,6 +52,7 @@ const PageApplicationsStudent = () => {
   return (
     <LayoutHome>
       <Container>
+        <h2 className="title">Mis postulaciones</h2>
         <TableContainer component={Paper}>
           <Table stickyHeader sx={{ width: "100%" }} aria-label="simple table">
             <TableHead>

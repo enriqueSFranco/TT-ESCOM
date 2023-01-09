@@ -104,11 +104,6 @@ const MyLink = styled(NavLink)`
     position: relative;
     transition: background-color 0.3s ease-in-out;
 
-    .active {
-      color: skyblue;
-      background-color: red;
-    }
-
     &::before {
       content: "";
       width: 100%;

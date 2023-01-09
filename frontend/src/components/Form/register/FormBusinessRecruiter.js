@@ -55,14 +55,7 @@ const FormBusinessRecruiter = ({ isActive, setIsActive }) => {
   const { data } = useFetch(process.env.REACT_APP_URL_COMPANY);
 
   return (
-    <article
-      style={{
-        display: "grid",
-        placeContent: "center",
-        position: "relative",
-        top: "2rem",
-      }}
-    >
+    <>
       <FormControl>
         <Autocomplete
           sx={{ width: 500 }}
@@ -76,7 +69,9 @@ const FormBusinessRecruiter = ({ isActive, setIsActive }) => {
           value={form.t300_id_company}
           getOptionLabel={(option) => option.t300_name || ""}
           options={data && data}
-          renderInput={(params) => <TextField {...params} label="Empresas" />}
+          renderInput={(params) => (
+            <TextField {...params} label="Empresas Registradas" />
+          )}
         />
       </FormControl>
       <FormRecruiterInfo
@@ -88,7 +83,7 @@ const FormBusinessRecruiter = ({ isActive, setIsActive }) => {
         isActive={isActive}
         setIsAcitve={setIsActive}
       />
-    </article>
+    </>
   );
 };
 

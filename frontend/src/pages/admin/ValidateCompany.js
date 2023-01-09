@@ -3,9 +3,9 @@ import { useValidateCompanies, useModal } from "hooks";
 import { validateBusiness, rejectBusiness } from "utils";
 import LayoutHome from "Layout/LayoutHome";
 import CardValidateCompany from "components/Card/CardValidateCompany";
-import { WrapperValidateCompany } from "pages/styled-components/ValidateRecruiterStyled";
 import ModalPortal from "components/Modal/ModalPortal";
 import FormValidateCompany from "components/Form/FormValidate";
+import { WrapperValidateCompany, TextH2 } from "pages/styled-components/ValidateRecruiterStyled";
 
 const ValidateCompany = () => {
   const [listCompanies] = useValidateCompanies();
@@ -17,17 +17,8 @@ const ValidateCompany = () => {
   return (
     <LayoutHome>
       <WrapperValidateCompany>
-        <div
-          style={{
-            width: "100%",
-            backgroundColor: "#fff",
-            paddingTop: "2rem",
-            fontFamily: "sans-serif",
-            textAlign: "center",
-          }}
-        >
-          <h2>Empresar por validar</h2>
-        </div>
+        <TextH2>Empresar por validar</TextH2>
+
         {listCompanies.length > 0 ? (
           listCompanies?.map((company) => (
             <CardValidateCompany
@@ -51,7 +42,7 @@ const ValidateCompany = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontFamily: 'sans-serif'
+              fontFamily: "sans-serif",
             }}
           >
             <h2>Sin Empresas por validar</h2>

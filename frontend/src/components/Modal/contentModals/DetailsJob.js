@@ -128,7 +128,7 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
             />
           ) : (
             <Button
-              text="Postularme a esta vacante"
+              text="Postularme"
               onClick={() => window.location.replace("/registro-alumno")}
               bgColor="#2172f2"
               color="#fff"

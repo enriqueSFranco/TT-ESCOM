@@ -20,30 +20,10 @@ import styles from "../Styles.module.css";
 const validateForm = (form) => {
   let errors = {};
   let regex = {
-    t400_name: /^[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)]*/,
-    t400_last_name: /^[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)]*/,
-    t400_second_surname:
-      /^[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?(( |\-)[a-zA-ZÀ-ÖØ-öø-ÿ]+\.?)]*/,
-    t400_email:
-      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/,
+    t400_email: /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/,
     password:
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/,
   };
-
-  if (!form.t400_name.trim())
-    errors.t400_name = "El campo 'Nombre' es requerido.";
-  else if (!regex.t400_name.test(form.t400_name.trim()))
-    errors.t400_name = "El campo 'Nombre' no es valido.";
-
-  if (!form.t400_last_name.trim())
-    errors.t400_last_name = "El campo 'Primer Apellido' es requerido.";
-  else if (!regex.t400_last_name.test(form.t400_last_name.trim()))
-    errors.t400_last_name = "El campo 'Primer Apellido' no es valido.";
-
-  if (!form.t400_second_surname.trim())
-    errors.t400_second_surname = "El campo 'Segundo Apellido' es requerido.";
-  else if (!regex.t400_second_surname.test(form.t400_second_surname.trim()))
-    errors.t400_second_surname = "El campo 'Segundo Apellido' no es valido.";
 
   if (!form.t400_email.trim())
     errors.t400_email = "El campo 'Email' es requerido.";
@@ -63,9 +43,6 @@ const LoginManager = () => {
   const [showPassword, handleShowPassword] = usePassword();
   const { form, errors, handleChange, handleValidate } = useForm(
     {
-      t400_name: "",
-      t400_last_name: "",
-      t400_second_surname: "",
       t400_email: "",
       password: "",
     },
@@ -95,13 +72,13 @@ const LoginManager = () => {
             name="t400_email"
             value={form.t400_email}
             onBlur={handleValidate}
-            onKeyUp={handleValidate}
+            onKey={handleValidate}
             onChange={handleChange}
           />
           {errors.t400_email && (
             <div className={styles.error}>
               <MdOutlineErrorOutline />
-              {errors.t100_email}
+              {errors.t400_email}
             </div>
           )}
         </BoxInput>
@@ -122,7 +99,15 @@ const LoginManager = () => {
             name="password"
             value={form.password}
             onChange={handleChange}
+            onBlur={handleValidate}
+            onKey={handleValidate}
           />
+          {errors.password && (
+            <div className={styles.error}>
+              <MdOutlineErrorOutline />
+              {errors.password}
+            </div>
+          )}
         </BoxInput>
         <BoxInput>
           <Button type="submit" width="400px">
