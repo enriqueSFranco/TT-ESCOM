@@ -77,7 +77,7 @@ class ValidateCompanySerializer(serializers.ModelSerializer):
 
 
 
-class OnHoldVacantsSerializer(serializers.ModelSerializer):
+class OnHoldVacantsSerializer(serializers.ModelSerializer):    
     class Meta:
         model = Vacant
         fields = '__all__'
@@ -91,6 +91,7 @@ class ValidateVacantSerializer(serializers.ModelSerializer):
 
 
 class OnHoldCompanyListSerializer(serializers.ModelSerializer):        
+    RecruiterCompany = RecruiterListSerializer(many=True, read_only=True)
     class Meta:
         model = Company
         fields = '__all__'
