@@ -13,13 +13,13 @@ import {
   WrapperForm,
 } from "./styled-components/FormSearchStyled";
 
-const FormSearchJob = ({ newResponse, setNewResponse, handleSearch }) => {
+const FormSearchJob = ({ newResponse, setNewResponse, setFilterData, handleSearch }) => {
   const inputRef = useRef(null);
   const [query, setQuery] = useState("");
   const debounce = useDebounce(query, 500);
   const [locationJob, setLocationJob] = useState("");
   const [loading, setLoading] = useState(false);
-  const [filterData, setFilterData] = useState(null);
+  const [filterData, setFilterDataAutocomplete] = useState(null);
   const [viewport] = useViewport();
 
   // filtrado para el autocompletado
@@ -36,8 +36,7 @@ const FormSearchJob = ({ newResponse, setNewResponse, handleSearch }) => {
       searchCharacter(query)
         .then((res) => {
           const { results } = res;
-          console.log(results);
-          setFilterData(results);
+          setFilterDataAutocomplete(results);
         })
         .catch((error) => error);
     }
@@ -65,7 +64,8 @@ const FormSearchJob = ({ newResponse, setNewResponse, handleSearch }) => {
       });
       searchJob(newResponse)
         .then((response) => {
-          console.log(response);
+          const { result } = response
+          setFilterData(result)
         })
         .catch((error) => console.error(error));
       setLoading(false);
@@ -90,7 +90,7 @@ const FormSearchJob = ({ newResponse, setNewResponse, handleSearch }) => {
             onChange={handleFilterJob}
             onBlur={() => {
               setTimeout(() => {
-                setFilterData([]);
+                setFilterDataAutocomplete([]);
               }, 200);
             }}
             autoComplete="off"

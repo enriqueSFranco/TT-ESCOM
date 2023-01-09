@@ -103,14 +103,14 @@ const Home = () => {
 
   if (!response) return null;
 
-  console.log(newResponse);
+  console.log(filterData);
 
   return (
     <LayoutHome>
       <Main>
         <Hero>
           <LayoutHero src_photo={parallaxESCOM} alt_photo="parallax-ESCOM">
-            <FormSearchJob setNewResponse={setNewResponse} newResponse={newResponse} handleSearch={handleSearch} />
+            <FormSearchJob setFilterData={setFilterData} setNewResponse={setNewResponse} newResponse={newResponse} handleSearch={handleSearch} />
           </LayoutHero>
         </Hero>
 
@@ -131,7 +131,7 @@ const Home = () => {
           <Cards id="cards">
             {resultsFound ? (
               <JobList
-                jobs={response}
+                jobs={isFiltered ? filterData :response}
                 recommendedJobs={recommender}
                 loading={loading}
                 isVacantRecommended={recommended}
