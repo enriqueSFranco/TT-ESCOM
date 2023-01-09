@@ -20,7 +20,6 @@ import { MdOutlineErrorOutline } from "react-icons/md";
 
 import {
   Button,
-  SubGroupInput,
   Form,
   GroupInput,
   Select,
@@ -46,7 +45,7 @@ const validateForm = (form) => {
     errors.t200_job =
       "El campo 'Titulo de la vacante' solo acepta letras y espacios en blanco.";
 
-  if (!form.t200_vacancy.trim())
+  if (!form.t200_vacancy)
     errors.t200_vacancy = "El campo 'Numero de plazas' es requerido";
   else if (!regex.t200_vacancy.test(form.t200_vacancy.trim()))
     errors.t200_vacancy =
@@ -182,10 +181,6 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
       .finally(() => setLoading(false));
   };
 
-  const obtaintObjectVacant = () => {
-    // TODO: recuperar el objeto de patch
-    // getObjectUpdateVacant(id)
-  };
 
   const updateJob = () => {
     console.log("actualizar vacante", vacantId);
@@ -226,7 +221,7 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
 
   if (!expList || !data || !languages) return null;
 
-  console.log(newObject);
+  console.log(dataToEdit);
 
   return (
     <ContainerForm top={top}>

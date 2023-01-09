@@ -7,7 +7,7 @@ import {
   useGetObservationVacant,
   useGetObservationVacantManager,
 } from "hooks";
-import { stateVacant } from "services";
+import { stateVacant, getObjectUpdateVacant } from "services";
 import { USERS } from "types";
 import { formatDate, numberFormat } from "utils";
 import Loader from "components/Loader/Loader";
@@ -15,8 +15,6 @@ import Chip from "components/Chip/Chip";
 import Comment from "components/Comment/Comment";
 import NoComment from "./CardNoComment";
 import FormAddComment from "components/Form/FormAddComment";
-import { HiOutlineLocationMarker } from "react-icons/hi";
-import { FaCalendarAlt, FaBrain } from "react-icons/fa";
 import { BiLike } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
 import { IoCloseOutline } from "react-icons/io5";
@@ -81,6 +79,16 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
     [observationManager]
   );
 
+  const loadObjectVacant = () => {
+    getObjectUpdateVacant(vacantId)
+      .then(response => {
+        console.log(response)
+        setDataToEdit(response[0])
+      })
+      .catch(error => console.error(error))
+
+  }
+
   if (!data || !token || !observationsRecruiter || !observationManager)
     return null;
 
@@ -105,7 +113,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                         className="button-edit"
                         onClick={() => {
                           openModal();
-                          setDataToEdit(data[0]);
+                          loadObjectVacant()
                           setIsEdition(true)
                         }}
                       />
