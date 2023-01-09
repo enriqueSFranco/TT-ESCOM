@@ -255,8 +255,8 @@ class VacantViewSet(viewsets.GenericViewSet):
 		vacant_serializer = UpdateVacantSerializer(vacant, data=request.data)
 		if vacant_serializer.is_valid():
 			vacant_serializer.save()
-			actual_skills = RequiredAbility.objects.filter(t200_id_vacant=pk).delete()
-			actual_languages = RequiredLanguage.objects.filter(t200_id_vacant=pk).delete()		
+			#actual_skills = RequiredAbility.objects.filter(t200_id_vacant=pk).delete()
+			#actual_languages = RequiredLanguage.objects.filter(t200_id_vacant=pk).delete()		
 			return Response({
 			    'message': 'Vacante actualizada correctamente'
 		    }, status=status.HTTP_200_OK)
@@ -478,7 +478,8 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 	def create(self, request):
 		print('request: ',request.data)
 		self.filters['job'] = request.data['Texto a buscar']
-		self.filters['ubication'] = self.set_search_ubications(request.data['Donde'])
+		if request.data['Donde']:
+			self.filters['ubication'] = self.set_search_ubications(request.data['Donde'])
 		self.filters['modalities'] = self.set_filter_modality(request.data['Modalidad de empleo'])
 		self.filters['experience_profiles'] = self.set_filter_experience(request.data['Experiencia laboral'])
 
