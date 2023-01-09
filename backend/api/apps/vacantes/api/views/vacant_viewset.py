@@ -431,37 +431,14 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 		'ubication' : '',
 		'experience_profiles' : '',
 		'modalities' : '',
-	}
-	def get_company(self,company_name):
-		company_data = Company.objects.filter(t300_name=company_name)
-		return company_data[0].t300_id_company
+	}	
 
 	def get_object(self):	
-		self.queryset = self.model.objects.filter(c204_id_vacant_status_id = 1)
-		if (self.filters['job']):
-			self.queryset = self.queryset.filter(t200_job__icontains= self.filters['job'])
-		if (self.filters['company_name']):
-			company_id = self.get_company(self.filters['company_name'])
-			self.queryset = self.queryset.filter(t300_id_company = company_id)
-		if (self.filters['id_profile']):
-			self.queryset = self.queryset.filter(c206_id_profile = self.filters['id_profile'])
-		if (self.filters['id_modality']):
-			self.queryset = self.queryset.filter(c214_id_modality = self.filters['id_modality'])
-		self.queryset =	self.queryset.all()
+		self.queryset = self.model.objects.filter(c204_id_vacant_status_id = 2)
 		return self.queryset
 
 	def get_queryset(self):	
-		self.queryset = self.model.objects.filter(c204_id_vacant_status_id = 1)
-		if (self.filters['job']):
-			self.queryset = self.queryset.filter(t200_job__icontains= self.filters['job'])
-		if (self.filters['company_name']):
-			company_id = self.get_company(self.filters['company_name'])
-			self.queryset = self.queryset.filter(t300_id_company = company_id)
-		if (self.filters['id_profile']):
-			self.queryset = self.queryset.filter(c206_id_profile = self.filters['id_profile'])
-		if (self.filters['id_modality']):
-			self.queryset = self.queryset.filter(c214_id_modality = self.filters['id_modality'])
-		self.queryset =	self.queryset.all()
+		self.queryset = self.model.objects.filter(c204_id_vacant_status_id = 2)
 		return self.queryset
 
 	def list(self, request):
@@ -514,8 +491,7 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 					filter_vacants = Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) | Q(t200_description__icontains=self.filters['job']))
 					found_words = found_words + 1
 				else:
-					filter_vacants = filter_vacants.union(Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) | Q(t200_description__icontains=self.filters['job'])))
-				#filter_vacants = Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) )			
+					filter_vacants = filter_vacants.union(Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) | Q(t200_description__icontains=self.filters['job'])))				
 		if self.filters['ubication'] :
 			filter_vacants = filter_vacants.filter(c222_id_locality__in=self.filters['ubication'])
 		if self.filters['modalities']:
