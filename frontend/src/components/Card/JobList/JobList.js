@@ -21,10 +21,8 @@ const JobList = ({
   setMatch,
 }) => {
   const [cards, setCards] = useState({
-    activeCard: isVacantRecommended
-      ? recommendedJobs[0]?.t200_id_vacant?.t200_id_vacant
-      : jobs[0]?.t200_id_vacant,
-    listCard: isVacantRecommended ? recommendedJobs : jobs,
+    activeCard: jobs[0]?.t200_id_vacant,
+    listCard: jobs,
   });
 
   if (jobs?.length < 0) return <ListEmptyJobs />;
@@ -44,7 +42,7 @@ const JobList = ({
         });
   };
 
-  if (!jobs) return null;
+  // if (!jobs) return null;
 
   if (isVacantRecommended) {
     return (
@@ -64,6 +62,8 @@ const JobList = ({
       </>
     );
   }
+
+  // console.log(jobs)
 
   return (
     <>

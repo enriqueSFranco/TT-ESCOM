@@ -10,50 +10,50 @@ const Filteres = ({
   selectedFilterExp,
   selectedFilterModality,
   setResultsFound,
+  // setNewResponse,
   setFilterData,
+  toggleRecommended,
   onFiltereChange,
   onFiltereModalityChange,
 }) => {
   const [seeFilters, setSeeFilters] = useState(false);
-  let didInit = false;
 
-  function applyFilters() {
-    let updateList = data;
+  console.log(selectedFilterExp);
 
-    // experience filter
-    const expChecked = selectedFilterExp
-      .filter((item) => item.checked)
-      .map((item) => item.label.toLowerCase());
 
-    if (expChecked.length) {
-      updateList = updateList.filter((item) =>
-        expChecked.includes(item?.c207_id_experience?.c207_description)
-      );
-    }
+  // function applyFilters() {
+  //   let updateList = data;
 
-    // modality filter
-    const modalityChecked = selectedFilterModality
-      .filter((item) => item.checked)
-      .map((item) => item.label);
+  //   // experience filter
+  //   const expChecked = selectedFilterExp
+  //     .filter((item) => item.checked)
+  //     .map((item) => item.label.toLowerCase());
 
-    if (modalityChecked.length) {
-      updateList = updateList.filter((item) =>
-        modalityChecked.includes(item?.c214_id_modality?.c214_description)
-      );
-    }
+  //   if (expChecked.length) {
+  //     updateList = updateList.filter((item) =>
+  //       expChecked.includes(item?.c207_id_experience?.c207_description)
+  //     );
+  //   }
 
-    setFilterData(updateList);
+  //   // modality filter
+  //   const modalityChecked = selectedFilterModality
+  //     .filter((item) => item.checked)
+  //     .map((item) => item.label);
 
-    !updateList.length ? setResultsFound(false) : setResultsFound(true);
-  }
+  //   if (modalityChecked.length) {
+  //     updateList = updateList.filter((item) =>
+  //       modalityChecked.includes(item?.c214_id_modality?.c214_description)
+  //     );
+  //   }
+
+  //   setFilterData(updateList);
+
+  //   !updateList.length ? setResultsFound(false) : setResultsFound(true);
+  // }
 
   function toggleSeeFilters() {
     setSeeFilters(!seeFilters);
   }
-
-  // useEffect(() => {
-  //   if (!didInit) applyFilters();
-  // }, [selectedFilterExp, selectedFilterModality]);
 
   return (
     <>
@@ -94,7 +94,7 @@ const Filteres = ({
           <LayoutFilter title="Vacantes recomedadas">
             <FormControlLabel
               label="Ver recomendaciones"
-              control={<Checkbox />}
+              control={<Checkbox onChange={toggleRecommended} />}
             />
           </LayoutFilter>
         </div>

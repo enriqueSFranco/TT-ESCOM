@@ -13,25 +13,24 @@ import {
   WrapperForm,
 } from "./styled-components/FormSearchStyled";
 
-const FormSearchJob = ({ newResponse, setNewResponse, setFilterData, handleSearch }) => {
+const FormSearchJob = ({
+  setFilterData,
+  setQueryAux,
+  handleSearch,
+}) => {
   const inputRef = useRef(null);
   const [query, setQuery] = useState("");
   const debounce = useDebounce(query, 500);
   const [locationJob, setLocationJob] = useState("");
   const [loading, setLoading] = useState(false);
-  const [filterData, setFilterDataAutocomplete] = useState(null);
+  const [filterDataAutocomplete, setFilterDataAutocomplete] = useState(null);
   const [viewport] = useViewport();
 
   // filtrado para el autocompletado
   const handleFilterJob = (e) => {
     const query = e.target.value;
-    console.log(
-      "🚀 ~ file: FormSearchJob.js:28 ~ handleFilterJob ~ query",
-      query
-    );
 
     setQuery(query);
-
     if (query !== "") {
       searchCharacter(query)
         .then((res) => {
@@ -53,23 +52,21 @@ const FormSearchJob = ({ newResponse, setNewResponse, setFilterData, handleSearc
     setLoading(true);
     setTimeout(() => {
       setQuery(debounce);
-      setNewResponse({
-        ...newResponse,
-        ...{
-          "Texto a buscar": debounce,
+      setQueryAux(debounce)
+      searchJob({
+        "Texto a buscar": debounce,
           Donde: locationJob,
           "Modalidad de empleo": [],
           "Experiencia laboral": [],
-        }
-      });
-      searchJob(newResponse)
+      })
         .then((response) => {
-          const { result } = response
-          setFilterData(result)
+          const { result } = response;
+          // console.log(response);
+          setFilterData(result);
         })
         .catch((error) => console.error(error));
       setLoading(false);
-      handleSearch(debounce === "" ? filterData : debounce);
+      handleSearch(debounce === "" ? filterDataAutocomplete : debounce);
     }, 500);
   };
 
@@ -99,8 +96,8 @@ const FormSearchJob = ({ newResponse, setNewResponse, setFilterData, handleSearc
           />
           {/* TODO: pasar los elementos de autocompletado a componentes. */}
           <ul className={styles.dataResultsJobs}>
-            {filterData &&
-              filterData?.map((value) => (
+            {filterDataAutocomplete &&
+              filterDataAutocomplete?.map((value) => (
                 <li
                   key={crypto.randomUUID()}
                   value={value?.t200_job}

@@ -4,7 +4,6 @@ import {
   useGetAllJobs,
   useNearScreen,
   useCustomDebounce,
-  useSearchJob,
   useRecommendationsVacancies,
 } from "hooks";
 import FormSearchJob from "components/Search/FormSearchJob";
@@ -12,7 +11,6 @@ import JobList from "components/Card/JobList/JobList";
 import EmptyView from "./EmptyView";
 import ButtonScrollTop from "components/Button/ButtonScrollTop";
 import DetailsJob from "components/Modal/contentModals/DetailsJob";
-import RecommendedVacanciesFilter from "components/Filter/FilterRecommendedVacancies";
 import Filteres from "components/Filter/Filters";
 import Loader from "components/Loader/Loader";
 import LayoutHome from "Layout/LayoutHome";
@@ -26,10 +24,12 @@ import {
   SummaryCard,
   WrapperFilters,
 } from "./styled-components/HomeStyled";
+import { searchJob } from "services";
 
 const Home = () => {
   const { token } = useAuth();
   const [match, setMatch] = useState(null);
+  const [queryAux, setQueryAux] = useState("")
   const [resultsFound, setResultsFound] = useState(true);
   const [selectedFilterExp, setSelectedFilterExp] = useState([
     { id: 1, checked: false, label: "Sin experiencia" },
@@ -45,9 +45,6 @@ const Home = () => {
   ]);
   const [recommended, setRecommended] = useState(false);
   const [vacantId, setVacantId] = useState(null);
-  // const [query, setQuery] = useState("");
-  // const [data] = useSearchJob(query);
-  const [newResponse, setNewResponse] = useState({});
   const [isFiltered, setIsFiltered] = useState(false);
   const [filterData, setFilterData] = useState([]);
   const { response: recommender, isLoading } = useRecommendationsVacancies(
@@ -69,6 +66,13 @@ const Home = () => {
       it.id === id ? { ...it, checked: !it.checked } : it
     );
     setSelectedFilterExp(itemExpChecked);
+    searchJob({
+      "Texto a buscar": queryAux,
+      Donde: "",
+      "Modalidad de empleo": [],
+      "Experiencia laboral": itemExpChecked,
+    }).then(response => setFilterData(response.result))
+    .catch(error => console.error(error))
   }
 
   function onFiltereModalityChange(id) {
@@ -77,6 +81,13 @@ const Home = () => {
       it.id === id ? { ...it, checked: !it.checked } : it
     );
     setSelectedFilterModality(itemExpChecked);
+    searchJob({
+      "Texto a buscar": queryAux,
+      Donde: "",
+      "Modalidad de empleo": itemExpChecked,
+      "Experiencia laboral": [],
+    }).then(response => setFilterData(response.result))
+    .catch(error => console.error(error))
   }
 
   function handleChangeRecommended(e) {
@@ -103,14 +114,18 @@ const Home = () => {
 
   if (!response) return null;
 
-  console.log(filterData);
+  console.log(filterData)
 
   return (
     <LayoutHome>
       <Main>
         <Hero>
           <LayoutHero src_photo={parallaxESCOM} alt_photo="parallax-ESCOM">
-            <FormSearchJob setFilterData={setFilterData} setNewResponse={setNewResponse} newResponse={newResponse} handleSearch={handleSearch} />
+            <FormSearchJob
+              setQueryAux={setQueryAux}
+              setFilterData={setFilterData}
+              handleSearch={handleSearch}
+            />
           </LayoutHero>
         </Hero>
 
@@ -119,7 +134,8 @@ const Home = () => {
             data={response}
             selectedFilterExp={selectedFilterExp}
             selectedFilterModality={selectedFilterModality}
-            setNewResponse={setNewResponse}
+            toggleRecommended={handleChangeRecommended}
+            // setNewResponse={setNewResponse}
             setFilterData={setFilterData}
             setResultsFound={setResultsFound}
             onFiltereChange={onFiltereChange}
@@ -131,7 +147,8 @@ const Home = () => {
           <Cards id="cards">
             {resultsFound ? (
               <JobList
-                jobs={isFiltered ? filterData :response}
+                jobs={isFiltered ? filterData : response}
+                isFiltered={isFiltered}
                 recommendedJobs={recommender}
                 loading={loading}
                 isVacantRecommended={recommended}

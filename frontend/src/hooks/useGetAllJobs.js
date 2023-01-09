@@ -31,7 +31,7 @@ export function useGetAllJobs() {
     if (page <= maxPage) {
       setLoadinNextPage(true);
       getAllJobs(page).then((nextResponse) => {
-        console.log(nextResponse)
+        // console.log(nextResponse)
         setResponse(prevResponse => [...prevResponse, ...nextResponse?.result])
         setLoadinNextPage(false)
       })
