@@ -255,8 +255,8 @@ class VacantViewSet(viewsets.GenericViewSet):
 		vacant_serializer = UpdateVacantSerializer(vacant, data=request.data)
 		if vacant_serializer.is_valid():
 			vacant_serializer.save()
-			actual_skills = RequiredAbility.objects.filter(t200_id_vacant=pk).delete()
-			actual_languages = RequiredLanguage.objects.filter(t200_id_vacant=pk).delete()		
+			#actual_skills = RequiredAbility.objects.filter(t200_id_vacant=pk).delete()
+			#actual_languages = RequiredLanguage.objects.filter(t200_id_vacant=pk).delete()		
 			return Response({
 			    'message': 'Vacante actualizada correctamente'
 		    }, status=status.HTTP_200_OK)
