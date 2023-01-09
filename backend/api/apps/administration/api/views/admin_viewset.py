@@ -10,7 +10,7 @@ from apps.companies.models import Company, Recruiter
 from apps.users.models import User
 from apps.users.api.serializers import UpdateUserSerializer
 from apps.users.api.serializers import UserSerializer
-from apps.administration.api.serializer.data_serializer import OnHoldRecruiterListSerializer
+from apps.administration.api.serializer.data_serializer import OnHoldRecruiterListSerializer,OnHoldCompanyListSerializer
 from apps.administration.api.serializer.admin_serializer import AdminSerializer,AdminListSerializer,UpdateAdminSerializer
 from apps.companies.api.serializer.company_serializer import CompanySerializer,CompanyListSerializer
 
@@ -248,8 +248,8 @@ class OnHoldCompaniesViewSet(viewsets.GenericViewSet):
 	""" 	
 	model = Company
 	user_serializer = UserSerializer
-	serializer_class = CompanySerializer
-	list_serializer_class = CompanyListSerializer
+	serializer_class = OnHoldCompanyListSerializer
+	list_serializer_class = OnHoldCompanyListSerializer
 	queryset = None
 	company_object = {
 					  "t300_name": "",
