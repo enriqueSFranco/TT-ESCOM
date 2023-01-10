@@ -6,7 +6,7 @@ from rest_framework.decorators import action
 from rest_framework import viewsets
 from datetime import datetime
 
-
+from apps.vacantes.pagination import CustomPagination
 from apps.vacantes.models import Application, ApplicationState,Vacant
 from apps.vacantes.api.serializers.vacant_serializer import UpdateVacantStateSerializer
 from apps.vacantes.api.serializers.application_serializer import ApplicationSerializer,ApplicationListSerializer,UpdateApplicationSerializer,ApplicationStateSerializer,ApplicationStateListSerializer
@@ -136,6 +136,7 @@ class ApplicationViewSet(viewsets.GenericViewSet):
 
 class VacantApplicationsViewSet(viewsets.GenericViewSet):
 	model = Application
+	pagination_class = CustomPagination
 	serializer_class = ApplicationSerializer
 	list_serializer_class = ApplicationListSerializer
 	queryset = None
@@ -168,6 +169,7 @@ class VacantApplicationsViewSet(viewsets.GenericViewSet):
 
 class StudentApplicationsViewSet(viewsets.GenericViewSet):
 	model = Application
+	pagination_class = CustomPagination
 	serializer_class = ApplicationSerializer
 	list_serializer_class = ApplicationListSerializer
 	queryset = None
@@ -189,11 +191,19 @@ class StudentApplicationsViewSet(viewsets.GenericViewSet):
 	def list(self, request):
         #print(request.data)
 		applications = self.get_queryset()
+		page = self.paginate_queryset(applications)
+		if page is not None:
+			applications_serializer = self.list_serializer_class(page, many=True)
+			return self.get_paginated_response(applications_serializer.data)
 		applications_serializer = self.list_serializer_class(applications, many=True)        
 		return Response(applications_serializer.data, status=status.HTTP_200_OK)
 		
 	def retrieve(self, request, pk):
 		applications = self.get_object(pk)
+		page = self.paginate_queryset(applications)
+		if page is not None:
+			applications_serializer = self.list_serializer_class(page, many=True)
+			return self.get_paginated_response(applications_serializer.data)
 		applications_serializer = self.list_serializer_class(applications,many=True)
 		return Response(applications_serializer.data)
 
