@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFetch } from "hooks";
 import { uuid } from "utils/uuid";
 import { useAuth } from "context/AuthContext";
@@ -18,24 +18,22 @@ import {
 import { IoIosBusiness } from "react-icons/io";
 import { Container } from "../styled-components/ApplicationStudentStyled";
 import "./PageApplicationsStudent.css";
+import Pagination from "components/Pagination/Pagination";
 
 function replaceBackSpace(string) {
-  return string.replace(' ', '-').toLowerCase()
+  return string.replace(" ", "-").toLowerCase();
 }
 
 const NoApplications = () => {
-  return (
-    <div>
-      No tienes ninguana postulacion
-    </div>
-  )
-}
+  return <div>No tienes ninguana postulacion</div>;
+};
 
 const PageApplicationsStudent = () => {
   const { token } = useAuth();
   const { data } = useFetch(
     `${process.env.REACT_APP_URL_CANDIDATE_APPLICATIONS_JOBS}${token?.user?.id}/`
   );
+  const [page, setPage] = useState(1)
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -49,10 +47,15 @@ const PageApplicationsStudent = () => {
 
   if (!data) return null;
 
+  const filteredApplications = () => {
+    return data.slice(page, page + 5)
+  }
+
   return (
     <LayoutHome>
       <Container>
         <h2 className="title">Mis postulaciones</h2>
+
         <TableContainer component={Paper}>
           <Table stickyHeader sx={{ width: "100%" }} aria-label="simple table">
             <TableHead>
@@ -72,59 +75,68 @@ const PageApplicationsStudent = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {data.lenght === 0 ? <NoApplications /> : (
-                data.map(it => (
+              {filteredApplications().length === 0 ? (
+                <NoApplications />
+              ) : (
+                filteredApplications().map((it) => (
                   <TableRow key={uuid()}>
-                  <TableCell
-                    sx={{ width: 150 }}
-                    style={{ textAlign: "center" }}
-                  >
-                    {it?.t200_id_vacant?.t300_id_company?.t300_logo !==
-                    null ? (
-                      <img
-                        src={it?.t200_id_vacant?.t300_id_company?.t300_logo}
-                        alt={it?.t200_id_vacant?.t300_id_company}
-                        className="image"
+                    <TableCell
+                      sx={{ width: 150 }}
+                      style={{ textAlign: "center" }}
+                    >
+                      {it?.t200_id_vacant?.t300_id_company?.t300_logo !==
+                      null ? (
+                        <img
+                          src={it?.t200_id_vacant?.t300_id_company?.t300_logo}
+                          alt={it?.t200_id_vacant?.t300_id_company}
+                          className="image"
+                        />
+                      ) : (
+                        <IoIosBusiness className="noImage" />
+                      )}
+                    </TableCell>
+                    <TableCell
+                      sx={{ width: 450 }}
+                      align="center"
+                      component="th"
+                      scope="row"
+                    >
+                      <ApplicationJobStudent
+                        nameJob={it?.t200_id_vacant?.t200_job}
+                        salary={it?.t200_id_vacant?.t200_max_salary}
+                        modality={it?.t200_id_vacant?.t200_home_ofice}
+                        experience={
+                          it?.t200_id_vacant?.c207_id_experience
+                            ?.c207_description
+                        }
+                        dateApplication={it?.t201_date_application}
+                        contract={
+                          it?.t200_id_vacant?.c208_id_contract?.c208_description
+                        }
+                        description={it?.t200_id_vacant?.t200_description}
                       />
-                    ) : (
-                      <IoIosBusiness className="noImage" />
-                    )}
-                  </TableCell>
-                  <TableCell
-                    sx={{ width: 450 }}
-                    align="center"
-                    component="th"
-                    scope="row"
-                  >
-                    <ApplicationJobStudent
-                      nameJob={it?.t200_id_vacant?.t200_job}
-                      salary={it?.t200_id_vacant?.t200_max_salary}
-                      modality={it?.t200_id_vacant?.t200_home_ofice}
-                      experience={
-                        it?.t200_id_vacant?.c207_id_experience
-                          ?.c207_description
-                      }
-                      dateApplication={it?.t201_date_application}
-                      contract={it?.t200_id_vacant?.c208_id_contract?.c208_description}
-                      description={it?.t200_id_vacant?.t200_description}
-                    />
-                  </TableCell>
-                  <TableCell
-                    style={{ fontSize: "1rem", textAlign: "center" }}
-                    sx={{ width: 350 }}
-                  >{`${it?.t200_id_vacant?.c222_id_locality?.c222_municipality}, ${it?.t200_id_vacant?.c222_id_locality?.c222_state}, ${it?.t200_id_vacant?.t200_street}`}</TableCell>
-                  <TableCell style={{ fontSize: "1rem" }} align="center">
-                    <div className="tag_state">
-                      <div className={`${replaceBackSpace(it?.c205_id_application_state?.c205_description)} circle_state`}></div>
-                      {it?.c205_id_application_state?.c205_description}
-                    </div>
-                  </TableCell>
-                </TableRow>
+                    </TableCell>
+                    <TableCell
+                      style={{ fontSize: "1rem", textAlign: "center" }}
+                      sx={{ width: 350 }}
+                    >{`${it?.t200_id_vacant?.c222_id_locality?.c222_municipality}, ${it?.t200_id_vacant?.c222_id_locality?.c222_state}, ${it?.t200_id_vacant?.t200_street}`}</TableCell>
+                    <TableCell style={{ fontSize: "1rem" }} align="center">
+                      <div className="tag_state">
+                        <div
+                          className={`${replaceBackSpace(
+                            it?.c205_id_application_state?.c205_description
+                          )} circle_state`}
+                        ></div>
+                        {it?.c205_id_application_state?.c205_description}
+                      </div>
+                    </TableCell>
+                  </TableRow>
                 ))
               )}
             </TableBody>
           </Table>
         </TableContainer>
+          <Pagination total={data.length} limit={7} page={page} setPage={setPage} />
       </Container>
     </LayoutHome>
   );
