@@ -67,6 +67,7 @@ const FormCompany = () => {
   // const { data } = useFetch(process.env.REACT_APP_URL_COMPANY);
   const [step, setStep] = useState(1);
   const [isActive, setIsActive] = useState(false);
+  const [document, setDocument] = useState(null);
 
   const nextStep = () => setStep(step + 1);
 
@@ -86,6 +87,8 @@ const FormCompany = () => {
             handleValidate={handleValidate}
             isActive={isActive}
             handleIsActive={handleIsActive}
+            document = {document}
+            setDocument = {setDocument}
           />
         ) : (
           <article className={styles.wrapperForm3}>

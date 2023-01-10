@@ -13,6 +13,7 @@ const FormRecruiterInfo = ({
   handleValidate,
   isActive,
   setIsAcitve,
+  validatorDocument,
 }) => {
   const handleClick = () => setIsAcitve(!isActive);
 

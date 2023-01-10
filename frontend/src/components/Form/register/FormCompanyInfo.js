@@ -14,8 +14,10 @@ const FormCompanyInfo = ({
   handleValidate,
   isActive,
   handleIsActive,
+  document,
+  setDocument,
 }) => {
-  const [document, setDocument] = useState(null);
+  //const [document, setDocument] = useState(null);
 
   function convertToBase64(file) {
     return new Promise((resolve, reject) => {
@@ -34,10 +36,11 @@ const FormCompanyInfo = ({
   async function uploadFile(e) {
     const file = e.target.files[0];
     const base64 = await convertToBase64(file);
-    setDocument(file.name);
-    uploadDocumentValidate({ t300_validator_document: base64 })
-      .then((response) => console.log(response))
-      .catch((error) => console.error(error));
+    setDocument(file.name); 
+    form.validation_document = base64;
+    //uploadDocumentValidate({ t300_validator_document: base64 })
+    //  .then((response) => console.log(response))
+    //  .catch((error) => console.error(error));
   }
 
   function handleUpload(e) {
@@ -50,6 +53,7 @@ const FormCompanyInfo = ({
     e.preventDefault();
     nextStep();
   };
+
 
   return (
     <div className={styles.companyInfo}>

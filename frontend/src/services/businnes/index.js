@@ -43,8 +43,8 @@ export const validateCompany = () => {
     .catch(error => error)
 };
 
-export const uploadDocumentValidate = (payload = {}) => {
-  return API.put(`${process.env.REACT_APP_URL_COMPANY_UPLOAD_DOCUMENT_VALIDATE}`, {payload})
+export const uploadDocumentValidate = (id,payload ) => {
+  return API.put(`${process.env.REACT_APP_URL_COMPANY_UPLOAD_DOCUMENT_VALIDATE}${id}/`, payload)
     .then(response => {
       const { data } = response
       return data
