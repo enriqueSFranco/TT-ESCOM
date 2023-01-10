@@ -116,7 +116,8 @@ class CompanyViewSet(viewsets.GenericViewSet):
 				recruiter_serializer.save()				
 				return Response({
 					'message': 'Compañia y reclutador registrados correctamente.',
-					'succes': True
+					'succes': True,
+					'new_company_id':id_company[0]['t300_id_company']
 					}, status=status.HTTP_201_CREATED)
 			else:
 				company_destroy = self.model.objects.filter(t300_rfc=request.data['t300_rfc']).delete()
