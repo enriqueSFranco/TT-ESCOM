@@ -125,7 +125,9 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
                 Postularme
               </Button>
             ) : (
-              <Button onClick={() => window.location.replace("/registro-alumno")}>
+              <Button
+                onClick={() => window.location.replace("/registro-alumno")}
+              >
                 Postularme
               </Button>
             )}
@@ -196,7 +198,11 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
             </div>
             {recommended ? (
               <div style={{ justifySelf: "flex-end" }}>
-                <p>Porcentaje de recomendación: {match}%</p>
+                <Chip
+                  label={`Porcentaje de recomendación: ${match}%`}
+                  color="#fff"
+                  bg="linear-gradient(90deg, hsla(333, 100%, 53%, 1) 0%, hsla(33, 94%, 57%, 1) 100%)"
+                />
               </div>
             ) : null}
           </WrapperMoreInfo>

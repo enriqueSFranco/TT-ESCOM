@@ -19,11 +19,11 @@ const GridTop = styled.div`
 
 const GridButtom = styled.div`
   position: relative;
-  top: 6rem;
+  top: 1rem;
   padding: 1rem;
   grid-area: info;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   grid-auto-rows: 220px;
   justify-items: center;
   width: 100%;
@@ -36,10 +36,12 @@ const Form = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #00000010;
+  background-color: #00000021;
   backdrop-filter: blur(10px);
   padding: .5rem;
   border-radius: 4px;
+  position: relative;
+  bottom: 2.5rem;
 `
 
 export { Main, GridButtom, GridTop, Form }

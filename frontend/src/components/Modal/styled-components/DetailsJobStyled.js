@@ -77,8 +77,8 @@ const TextH2 = styled.h2`
 `;
 
 const WrapperMoreInfo = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  justify-content: space-between;
   border-bottom: 2px solid #eee;
   padding: 1rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,

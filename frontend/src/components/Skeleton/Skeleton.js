@@ -1,11 +1,19 @@
 import React from 'react';
 import Skeleton from '@mui/material/Skeleton'
+import Box from '@mui/material/Box';
+
 import styles from './Skeleton.module.css';
 
 const CustomSkeleton = ({ type }) => {
   
   const FeedSkeleton = () => (
-    <Skeleton variant="rectangular" width={210} height={118} />
+    <Box sx={{ width: 500, height: 250}}>
+      <Skeleton variant="rectangular" width={500} height={118} />
+      <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+      <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+      <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
+      <Skeleton variant="rectangular" width={130} height={40} />
+    </Box>
   );
 
   const BusinessDetailsSkeleton = () => (
@@ -38,10 +46,12 @@ const CustomSkeleton = ({ type }) => {
   );
 
   const BusinessSkeleton = () => (
-    <article className={styles.cardSkBusiness}>
-      <div className={`${styles.cardSKLogo} ${styles.placeholder}`}></div>
-      <div className={`${styles.cardSKBtnExpand} ${styles.placeholder}`}></div>
-    </article>
+    <Box sx={{ width: 200, height: 160}}>
+      <Skeleton animation="wave" variant="rectangular" width={200} height={160} />
+      <div style={{display: 'flex', justifyContent: 'center', marginTop: '10px'}}>
+        <Skeleton animation="wave" variant="rectangular" width={130} height={30} />
+      </div>
+    </Box>
   );
 
   if (type === "feed") return Array.from({length: 10}, (_, i) => <FeedSkeleton key={i}/>);

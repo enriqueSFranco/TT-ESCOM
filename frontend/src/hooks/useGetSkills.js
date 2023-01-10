@@ -12,7 +12,7 @@ export function useGetSkills(id) {
           if(isMountedRef.current)
           setSkills(res)
 
-        }, 2000)
+        }, 200)
       })
       .catch(error => error)
 
