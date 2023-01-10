@@ -34,6 +34,7 @@ const PageApplicationsStudent = () => {
     `${process.env.REACT_APP_URL_CANDIDATE_APPLICATIONS_JOBS}${token?.user?.id}/`
   );
   const [page, setPage] = useState(1)
+  const [limit, setLimit] = useState(5)
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -48,8 +49,10 @@ const PageApplicationsStudent = () => {
   if (!data) return null;
 
   const filteredApplications = () => {
-    return data.slice(page, page + 5)
+    return data.slice(page, page + limit)
   }
+
+  console.log(filteredApplications())
 
   return (
     <LayoutHome>
@@ -136,7 +139,8 @@ const PageApplicationsStudent = () => {
             </TableBody>
           </Table>
         </TableContainer>
-          <Pagination total={data.length} limit={7} page={page} setPage={setPage} />
+        {page}
+          <Pagination total={data.length} page={page} setPage={setPage} limit={limit} setLimit={setLimit} />
       </Container>
     </LayoutHome>
   );
