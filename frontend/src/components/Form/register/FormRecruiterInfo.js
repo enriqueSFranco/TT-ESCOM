@@ -17,7 +17,6 @@ const FormRecruiterInfo = ({
 }) => {
   const handleClick = () => setIsAcitve(!isActive);
 
-  console.log("Documento cargado: "+validatorDocument);
   return (
     <div className={styles.personalContact}>
       {!isActive ? (

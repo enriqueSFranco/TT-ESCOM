@@ -14,13 +14,10 @@ const FormCompanyInfo = ({
   handleValidate,
   isActive,
   handleIsActive,
-  validatorDocument,
-  setValidatorDocument,
   document,
   setDocument,
 }) => {
   //const [document, setDocument] = useState(null);
-  const [convertedDocument,setConvertedDocument] = useState(validatorDocument);
 
   function convertToBase64(file) {
     return new Promise((resolve, reject) => {
@@ -40,7 +37,6 @@ const FormCompanyInfo = ({
     const file = e.target.files[0];
     const base64 = await convertToBase64(file);
     setDocument(file.name); 
-    setValidatorDocument(base64);
     form.validation_document = base64;
     //uploadDocumentValidate({ t300_validator_document: base64 })
     //  .then((response) => console.log(response))
@@ -57,10 +53,6 @@ const FormCompanyInfo = ({
     e.preventDefault();
     nextStep();
   };
-
-  console.log("Documento general: "+ validatorDocument);
-  console.log("Documento cargado: "+document);
-  console.log(form);
 
 
   return (

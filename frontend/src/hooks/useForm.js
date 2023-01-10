@@ -66,8 +66,7 @@ export const useForm = (initialForm, validateForm) => {
       createAccountRecruiter(form).then((response) => {
         console.log(response);
         if (response.status === 201) {                    
-          toast.success(response?.data?.message);
-          console.log(response?.data?.new_company_id);
+          toast.success(response?.data?.message);          
           uploadDocumentValidate(response?.data?.new_company_id,{ t300_validator_document: form.validation_document })
           .then((response) => console.log(response))
           .catch((error) => console.error(error));
