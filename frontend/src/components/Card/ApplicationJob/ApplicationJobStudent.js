@@ -7,6 +7,10 @@ import { TiLocation } from "react-icons/ti";
 import { FaBrain } from "react-icons/fa";
 import "./ApplicationJobStudent.css";
 
+// function createMarkup() {
+//   return { __html: isVacantRecommended ? job.t200_id_vacant?.t200_description : job.t200_description };
+// }
+
 const ApplicationJobStudent = ({
   nameJob,
   salary,

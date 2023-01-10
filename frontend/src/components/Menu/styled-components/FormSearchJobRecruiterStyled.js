@@ -3,14 +3,8 @@ import styled from "styled-components"
 const Form = styled.form`
   width: 85%;
   height: 80px;
+  margin-top: 1rem;
   background-color: #fff;
-`
-
-const Button = styled.button`
-  color: #000;
-  background-color: transparent;
-  border: none;
-  font-size: .8rem;
 `
 
 const BoxInput = styled.div`
@@ -18,4 +12,4 @@ const BoxInput = styled.div`
   gap: .4rem;
 `
 
-export { BoxInput, Button, Form }
+export { BoxInput, Form }

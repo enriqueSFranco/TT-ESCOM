@@ -21,9 +21,9 @@ const PageHistory = () => {
   const { data: listVacants } = useRecruiterJobs({
     idRcruiter: token?.user?.user_id,
   });
-  const { data } = useRecruiterJobs({ idRcruiter: token?.user?.id });
+  const { data, loading } = useRecruiterJobs({ idRcruiter: token?.user?.id });
 
-  console.log(token);
+  // console.log(token);
   if (!data || !listVacants) return null;
 
   return (
@@ -36,7 +36,7 @@ const PageHistory = () => {
             setFilterData={setFilterData}
           />
           {/* LISTA DE VACANTES */}
-          <ListJobsRecruiter data={isDataFilter ? filterData : listVacants} setVacantId={setVacantId} />
+          <ListJobsRecruiter data={isDataFilter ? filterData : listVacants} loading={loading} setVacantId={setVacantId} />
         </Aside>
         <Container>
           {/* Widgets */}

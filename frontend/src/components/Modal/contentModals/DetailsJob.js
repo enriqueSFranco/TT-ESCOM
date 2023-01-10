@@ -216,7 +216,7 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
       </WrapperSummaryJob>
       <ModalPortal isOpen={isOpen} closeModal={closeModal} minHeight="300px">
         <Confirm
-          applyJob={() => handleApplyJob(vacantId)}
+          applyJob={() => handleApplyJob(recommended ? vacantId?.t200_id_vacant : vacantId)}
           isApplyJob={isApplyJob}
           job={summaryJob[0]?.t200_job}
         />
