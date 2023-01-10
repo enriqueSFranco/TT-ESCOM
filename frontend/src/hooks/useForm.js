@@ -6,6 +6,7 @@ import {
   createAccountRecruiter,
   createAccountStudent,
   postCertification,
+  uploadDocumentValidate,
 } from "services";
 
 export const useForm = (initialForm, validateForm) => {
@@ -64,8 +65,12 @@ export const useForm = (initialForm, validateForm) => {
     if (Object.keys(errors).length === 0) {
       createAccountRecruiter(form).then((response) => {
         console.log(response);
-        if (response.status === 201) {
+        if (response.status === 201) {                    
           toast.success(response?.data?.message);
+          console.log(response?.data?.new_company_id);
+          uploadDocumentValidate(response?.data?.new_company_id,{ t300_validator_document: form.validation_document })
+          .then((response) => console.log(response))
+          .catch((error) => console.error(error));
           setTimeout(() => {
             navigate("/pre-registro");
           }, 3000);
