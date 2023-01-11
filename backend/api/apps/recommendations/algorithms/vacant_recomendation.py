@@ -121,7 +121,7 @@ def get_similar_vacants(id_candidate):
             similarity_vector.append(calculate_experience(vacant_info[5],vacant[5]))#Experiencia             
             porcentage = calculate_vacants_similarity(similarity_vector)
             print("Vector_similitud entre vacantes "+str(id_application['t200_id_vacant'])+" y "+str(vacant[0])+":"+str(similarity_vector)+","+str(porcentage))
-            if porcentage > 50:
+            if porcentage > 85:
                 similar_vacants.append(vacant[0])        
     return similar_vacants
 
