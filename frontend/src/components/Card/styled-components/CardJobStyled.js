@@ -50,17 +50,8 @@ const CardBorder = styled.div`
   left: -5px;
   background-color: #fff;
   width: calc(100% + 10px);
-  border-radius: 1rem;
+  border-radius: 4px;
   padding: 0.5rem;
-
-  ${(props) => {
-    if (props.isVacantRecommended) {
-      return `
-        background: linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
-        color: #fff;
-      `;
-    }
-  }}
 `;
 
 const CardHeader = styled.header`

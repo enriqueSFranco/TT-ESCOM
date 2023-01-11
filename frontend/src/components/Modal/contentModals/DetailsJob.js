@@ -4,14 +4,16 @@ import { useFetch, useModal } from "hooks";
 import { applyJob } from "services";
 import { getSkillType } from "utils";
 import Chip from "components/Chip/Chip";
-import Button from "components/Button/Button";
+// import Button from "components/Button/Button";
 import { List, ListItem } from "styled-components/CommonStyles";
+import arrowRigth from "assets/images/flecha-correcta.gif";
 import {
   DescriptionJob,
   Header,
   WrapperRequitements,
   WrapperMoreInfo,
   Container,
+  Button,
   WrapperSummaryJob,
 } from "../styled-components/DetailsJobStyled";
 import ModalPortal from "../ModalPortal";
@@ -116,27 +118,20 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
               </span>
             </figcaption>
           </figure>
-          <div style={{marginLeft: '10px'}}>
-          {token ? (
-            <Button
-              text="Postularme"
-              onClick={openModal}
-              bgColor="#2172f2"
-              color="#fff"
-              width="7"
-              height="3"
-            />
-          ) : (
-            <Button
-              text="Postularme a esta vacante"
-              onClick={() => window.location.replace("/registro-alumno")}
-              bgColor="#2172f2"
-              color="#fff"
-              width="7"
-              height="3"
-            />
-          )}
-        </div>
+          <div style={{ marginLeft: "10px" }}>
+            {token ? (
+              <Button onClick={openModal}>
+                <img src={arrowRigth} alt="flecha-derecha" width="30px" />
+                Postularme
+              </Button>
+            ) : (
+              <Button
+                onClick={() => window.location.replace("/registro-alumno")}
+              >
+                Postularme
+              </Button>
+            )}
+          </div>
         </Header>
         <Container>
           <WrapperRequitements>
@@ -178,8 +173,10 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
             ) : null}
           </WrapperRequitements>
           <WrapperMoreInfo>
-            <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-              <h4 style={{fontSize: '18px'}}>Etiquetas de la vacante</h4>
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: "5px" }}
+            >
+              <h4 style={{ fontSize: "18px" }}>Etiquetas de la vacante</h4>
               <span style={{ color: "#6D6D6D" }}>
                 Ubicación:{" "}
                 {`${summaryJob[0]?.t200_street}, ${
@@ -195,12 +192,17 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
                 {summaryJob[0]?.c208_id_contract.c208_description}
               </span>
               <span style={{ color: "#6D6D6D" }}>
-                Experiencia: {summaryJob[0]?.c207_id_experience?.c207_description}
+                Experiencia:{" "}
+                {summaryJob[0]?.c207_id_experience?.c207_description}
               </span>
             </div>
             {recommended ? (
               <div style={{ justifySelf: "flex-end" }}>
-                <p>Porcentaje de recomendación: {match}%</p>
+                <Chip
+                  label={`Porcentaje de recomendación: ${match}%`}
+                  color="#fff"
+                  bg="linear-gradient(90deg, hsla(333, 100%, 53%, 1) 0%, hsla(33, 94%, 57%, 1) 100%)"
+                />
               </div>
             ) : null}
           </WrapperMoreInfo>
@@ -214,7 +216,7 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
       </WrapperSummaryJob>
       <ModalPortal isOpen={isOpen} closeModal={closeModal} minHeight="300px">
         <Confirm
-          applyJob={() => handleApplyJob(vacantId)}
+          applyJob={() => handleApplyJob(recommended ? vacantId?.t200_id_vacant : vacantId)}
           isApplyJob={isApplyJob}
           job={summaryJob[0]?.t200_job}
         />

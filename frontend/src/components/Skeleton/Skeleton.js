@@ -1,11 +1,18 @@
-import React from 'react';
-import Skeleton from '@mui/material/Skeleton'
-import styles from './Skeleton.module.css';
+import React from "react";
+import Skeleton from "@mui/material/Skeleton";
+import Box from "@mui/material/Box";
+
+import styles from "./Skeleton.module.css";
 
 const CustomSkeleton = ({ type }) => {
-  
   const FeedSkeleton = () => (
-    <Skeleton variant="rectangular" width={210} height={118} />
+    <Box sx={{ width: 500, height: 250 }}>
+      <Skeleton variant="rectangular" width={500} height={118} />
+      <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+      <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+      <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
+      <Skeleton variant="rectangular" width={130} height={40} />
+    </Box>
   );
 
   const BusinessDetailsSkeleton = () => (
@@ -20,7 +27,7 @@ const CustomSkeleton = ({ type }) => {
               <li className={`${styles.tagsSk} ${styles.placeholder}`}></li>
             </ul>
           </div>
-            <div className={`${styles.btnApply} ${styles.placeholder}`}></div>
+          <div className={`${styles.btnApply} ${styles.placeholder}`}></div>
         </div>
       </div>
       <div className={`container ${styles.bodySk}`}>
@@ -37,17 +44,79 @@ const CustomSkeleton = ({ type }) => {
     </article>
   );
 
+  const CardDetailsAndObservations = () => {
+    return (
+      <div
+        style={{
+          width: "1300px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <div style={{display: 'flex', flexDirection: 'column', gap: '10px', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px'}}>
+          <Skeleton
+            animation="wave"
+            variant="rectangular"
+            width={640}
+            height={150}
+          />
+          <Skeleton
+            animation="wave"
+            variant="rectangular"
+            width={640}
+            height={550}
+          />
+        </div>
+        <div style={{display: 'flex', flexDirection: 'column', gap: '10px', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px'}}>
+          <Skeleton
+            animation="wave"
+            variant="rectangular"
+            width={640}
+            height={150}
+          />
+          <Skeleton
+            animation="wave"
+            variant="rectangular"
+            width={640}
+            height={550}
+          />
+        </div>
+      </div>
+    );
+  };
+
   const BusinessSkeleton = () => (
-    <article className={styles.cardSkBusiness}>
-      <div className={`${styles.cardSKLogo} ${styles.placeholder}`}></div>
-      <div className={`${styles.cardSKBtnExpand} ${styles.placeholder}`}></div>
-    </article>
+    <Box sx={{ width: 200, height: 160 }}>
+      <Skeleton
+        animation="wave"
+        variant="rectangular"
+        width={200}
+        height={160}
+      />
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}
+      >
+        <Skeleton
+          animation="wave"
+          variant="rectangular"
+          width={130}
+          height={30}
+        />
+      </div>
+    </Box>
   );
 
-  if (type === "feed") return Array.from({length: 10}, (_, i) => <FeedSkeleton key={i}/>);
-  if (type === "business") return Array.from({length: 10}, (_, i) => <BusinessSkeleton key={i} />);
-  if (type === "businessDetails") return Array.from({length: 1}, (_, i) => <BusinessDetailsSkeleton key={i} />);
-
-}
+  if (type === "cardDetailsAndObservations")
+    return <CardDetailsAndObservations />;
+  if (type === "feed")
+    return Array.from({ length: 10 }, (_, i) => <FeedSkeleton key={i} />);
+  if (type === "business")
+    return Array.from({ length: 10 }, (_, i) => <BusinessSkeleton key={i} />);
+  if (type === "businessDetails")
+    return Array.from({ length: 1 }, (_, i) => (
+      <BusinessDetailsSkeleton key={i} />
+    ));
+};
 
 export default CustomSkeleton;

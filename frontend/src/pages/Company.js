@@ -47,7 +47,6 @@ const Company = () => {
                 type="text"
                 label="Buscar una empresa"
                 width="400px"
-                // bgInput='#00000097'
                 icon={<BsSearch />}
                 iconColor="#000"
                 id="query"

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { useAuth } from "context/AuthContext";
 import { useViewport, useGetCandidate } from "hooks";
 import DropMenu from "./DropMenu";
@@ -14,18 +14,18 @@ import {
   NavList,
   NavItem,
   MyLink,
-  WrapperTypeUser
+  WrapperTypeUser,
 } from "./styled-components/MainMenuStyled";
 
 const styles = {
   styledLink: {
-    color: '#000',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    gap: '.3rem',
-  }
-}
+    color: "#000",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    gap: ".3rem",
+  },
+};
 
 const MenuCandidate = () => {
   const { token } = useAuth();
@@ -33,15 +33,7 @@ const MenuCandidate = () => {
   const { candidate } = useGetCandidate(token?.user?.user_id);
   let typeuser = token?.user?.user_type;
 
-  let activeStyle = {
-    textDecoration: "underline",
-  };
-
-  let activeClassName = "underline";
-
   if (!candidate) return null;
-
-  // console.log(candidate)
 
   if (viewport.device === "MOBILE") {
     return (
@@ -65,12 +57,6 @@ const MenuCandidate = () => {
               Empresas
             </MyLink>
           </NavItem>
-          <NavItem>
-            <MyLink to="/comunicados">
-              <BsMegaphone />
-              Comunicados
-            </MyLink>
-          </NavItem>
         </NavList>
       </>
     );
@@ -79,11 +65,13 @@ const MenuCandidate = () => {
   return (
     <>
       <NavLeft>
-      <Link to="/" style={styles.styledLink}>
+        <Link to="/" style={styles.styledLink}>
           <picture style={{ width: "30px" }}>
             <img src={logo} alt="logo-bte" width="100%" />
           </picture>
-          <Logo>Bolsa de Trabajo <span className="escom">ESCOM</span></Logo>
+          <Logo>
+            Bolsa de Trabajo <span className="escom">ESCOM</span>
+          </Logo>
         </Link>
       </NavLeft>
       <NavList>
@@ -105,12 +93,7 @@ const MenuCandidate = () => {
             Empresas
           </MyLink>
         </NavItem>
-        <NavItem>
-          <MyLink to="/comunicados">
-            <BsMegaphone />
-            Comunicados
-          </MyLink>
-        </NavItem>
+
         <NavItem>
           <WrapperTypeUser>
             <span>Hola 👋, {candidate[0]?.t100_name} | Candidato </span>

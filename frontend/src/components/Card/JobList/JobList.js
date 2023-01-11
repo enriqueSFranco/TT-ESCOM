@@ -42,12 +42,12 @@ const JobList = ({
         });
   };
 
-  // if (!jobs) return null;
+  if (!jobs) return null;
 
   if (isVacantRecommended) {
     return (
       <>
-        <h2>Vacantes Recomendadas</h2>
+        <h2 className={styles.title}>Vacantes Recomendadas</h2>
         {recommendedJobs.map((el, index) => (
           <CardJob
             key={`card-job-id_${crypto.randomUUID()}`}
@@ -62,8 +62,6 @@ const JobList = ({
       </>
     );
   }
-
-  // console.log(jobs)
 
   return (
     <>

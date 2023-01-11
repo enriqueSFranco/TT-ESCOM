@@ -58,21 +58,21 @@ const FormCompanyInfo = ({
   return (
     <div className={styles.companyInfo}>
       <div className={`${styles.welcome}`}>
-        <h2
-          style={{
-            fontFamily: "sans-serif",
-            fontSize: "1.1em",
-            marginBottom: ".5rem",
-            color: "#2B3647",
-            fontWeight: "600",
-          }}
-        >
-          Datos de la empresa <BsIcon.BsQuestionCircle />
+        <h2 className={styles.title} style={{ marginBottom: "20px" }}>
+          Datos de la empresa
         </h2>
         {!isActive && (
-          <span>
+          <span style={{ color: "#000" }}>
             Verifica si tu empresa ya esta registrada{" "}
-            <a onClick={handleIsActive} href="#/">
+            <a
+              style={{
+                fontWeight: "700",
+                fontFamily: "sans-serif",
+                borderBottom: "2px solid #039DEB",
+              }}
+              onClick={handleIsActive}
+              href="#/"
+            >
               aqui
             </a>
           </span>
@@ -147,7 +147,12 @@ const FormCompanyInfo = ({
         />
       </div>
       <span
-        style={{ marginBottom: "1rem", fontSize: ".8em", color: "#b2b5be" }}
+        style={{
+          marginBottom: "2rem",
+          fontSize: "14px",
+          color: "#039DEB",
+          borderBottom: "2px solid #039DEB",
+        }}
       >
         {document}
       </span>

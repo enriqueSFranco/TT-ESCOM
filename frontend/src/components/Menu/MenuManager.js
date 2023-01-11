@@ -20,19 +20,6 @@ import {
 const links = [
   {
     id: crypto.randomUUID(),
-    to: "/comunicados",
-    icon: (
-      <BsMegaphone
-        style={{
-          marginRight: ".3rem",
-          color: "#FFF",
-        }}
-      />
-    ),
-    label: "Comunicados",
-  },
-  {
-    id: crypto.randomUUID(),
     to: "/agregar-colaborador",
     icon: (
       <HiUserGroup
@@ -59,7 +46,11 @@ const links = [
   {
     id: crypto.randomUUID(),
     to: "/validar-empresa",
-    icon: <BsShieldCheck style={{marginRight: ".3rem", marginLeft: "0", color: "#fff"}} />,
+    icon: (
+      <BsShieldCheck
+        style={{ marginRight: ".3rem", marginLeft: "0", color: "#fff" }}
+      />
+    ),
     label: "Aprobar empresa",
   },
 ];
@@ -78,6 +69,14 @@ const MenuManager = () => {
   const { token } = useAuth();
   let typeuser = token?.user?.user_type;
 
+  const navLinkStyle = ({isActive}) => {
+    return {
+      fontWeight: isActive ? 'bold' : 'normal',
+      textDecoration: isActive ? 'underline' : 'none',
+      color: isActive ? 'red' : 'blue'
+    }
+  }
+
   return (
     <>
       <NavLeft>
@@ -85,17 +84,23 @@ const MenuManager = () => {
           <picture style={{ width: "30px" }}>
             <img src={logo} alt="logo-bte" width="100%" />
           </picture>
-          <Logo>Bolsa de Trabajo <span className="escom">ESCOM</span></Logo>
+          <Logo>
+            Bolsa de Trabajo <span className="escom">ESCOM</span>
+          </Logo>
         </Link>
       </NavLeft>
       <NavList>
         {links?.map((link) => (
-          <MyLink data-item key={`link-id-${link.id}`} to={link.to}>
+          <MyLink
+            key={`link-id-${link.id}`}
+            to={link.to}
+            style={navLinkStyle}
+          >
             {link.icon}
             {link.label}
           </MyLink>
         ))}
-        <MyLink to="/empresas" data-link>
+        <MyLink to="/empresas" activeClassName="active">
           <IoBusinessOutline style={{ fontSize: "1.3rem" }} />
           Empresas
         </MyLink>

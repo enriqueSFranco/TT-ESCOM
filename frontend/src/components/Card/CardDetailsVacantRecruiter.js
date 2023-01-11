@@ -10,7 +10,6 @@ import {
 import { stateVacant, getObjectUpdateVacant } from "services";
 import { USERS } from "types";
 import { formatDate, numberFormat } from "utils";
-import Loader from "components/Loader/Loader";
 import Chip from "components/Chip/Chip";
 import Comment from "components/Comment/Comment";
 import NoComment from "./CardNoComment";
@@ -33,6 +32,7 @@ import {
 import Tooltip from "components/Tooltip/TooltipText";
 import ModalPortal from "components/Modal/ModalPortal";
 import FormPostJob from "components/Form/postJob/FormPostJob";
+import CustomSkeleton from "components/Skeleton/Skeleton";
 
 function createMarkup(description) {
   return { __html: description };
@@ -99,7 +99,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
     <>
       {loading ? (
         <WrapperLoader>
-          <Loader />
+          <CustomSkeleton type={"cardDetailsAndObservations"} />
         </WrapperLoader>
       ) : (
         <>

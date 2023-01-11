@@ -21,27 +21,15 @@ const FormRecruiterInfo = ({
     <div className={styles.personalContact}>
       {!isActive ? (
         <h2
-          style={{
-            fontFamily: "sans-serif",
-            fontSize: "1.1em",
-            textAlign: "center",
-            marginBottom: "2rem",
-            color: "#2B3647",
-            fontWeight: "600",
-          }}
+          className={styles.title}
+          style={{ marginBottom: "22px", textAlign: "center" }}
         >
           Datos Personales del reclutador
         </h2>
       ) : (
         <h2
-          style={{
-            fontFamily: "sans-serif",
-            fontSize: "1.1rem",
-            textAlign: "center",
-            textTransform: "none",
-            color: "#2B3647",
-            fontWeight: "600",
-          }}
+          className={styles.title}
+          style={{ marginBottom: "10px", textAlign: "center" }}
         >
           Datos Personales
         </h2>
@@ -68,7 +56,7 @@ const FormRecruiterInfo = ({
         </div>
         <div className={styles.inputGroup}>
           <Input
-            label="Primer Apellido"
+            label="Apellidos"
             id="t301_last_name"
             name="t301_last_name"
             width="500px"
@@ -84,7 +72,7 @@ const FormRecruiterInfo = ({
             </span>
           )}
         </div>
-        <div className={styles.inputGroup}>
+        {/* <div className={styles.inputGroup}>
           <Input
             label="Segundo Apellido"
             id="t301_second_surname"
@@ -95,7 +83,7 @@ const FormRecruiterInfo = ({
             onKeyUp={handleValidate}
             onChange={handleChange}
           />
-        </div>
+        </div> */}
         <div className={styles.inputGroup}>
           <Input
             label="Correo electronico"

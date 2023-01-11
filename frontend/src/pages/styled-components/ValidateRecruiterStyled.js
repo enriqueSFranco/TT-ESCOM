@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const WrapperValidateCompany = styled.section`
   overflow-y: auto;
@@ -11,8 +11,18 @@ const WrapperValidateCompany = styled.section`
   color: #000;
   background-color: #fff;
   border-radius: 5px;
-  padding: .5rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-`
+  padding: 0.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+`;
 
-export { WrapperValidateCompany }
+const TextH2 = styled.h2`
+  background: linear-gradient(27deg, #3f5efb, #fc466b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+  margin-top: 1rem;
+`;
+
+export { WrapperValidateCompany, TextH2 };

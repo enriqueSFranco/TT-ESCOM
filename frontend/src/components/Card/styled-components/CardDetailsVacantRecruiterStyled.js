@@ -2,13 +2,12 @@ import styled from "styled-components";
 import background from "assets/images/PolygonLuminary.png";
 import { USERS } from "types";
 
-const WrapperLoader = styled.div`
-  width: 100vh;
-  height: 70vh;
-  position: relative;
-  left: 10rem;
+const WrapperLoader = styled.section`
+  width: 1370px;
+  height: 78vh;
   display: grid;
   place-content: center;
+  background-color: #fff;
 `;
 
 const WrapperIconEdit = styled.div`

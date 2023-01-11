@@ -24,10 +24,15 @@ const ListCollaborators = () => {
   return (
     <LayoutHome>
       <HeaderTop>
+        <h2 className="title">Agregar Colaborador</h2>
         <Tooltip title="Agregar un nuevo colaborador">
           <Button
             onClick={openModalAdd}
-            text={<MdAddCircleOutline style={{ fontSize: "2rem" }} />}
+            text={
+              <MdAddCircleOutline
+                style={{ fontSize: "2rem", color: "#125dfc" }}
+              />
+            }
             bgColor="transparent"
             color="#000"
           />
@@ -37,6 +42,7 @@ const ListCollaborators = () => {
         {data?.map((el) => (
           <CardCollaborator
             key={`item-collaborator-${crypto.randomUUID()}`}
+            userId={el?.t400_id_admin}
             collaboratorName={el?.t400_name}
             position={el?.t400_position}
             openModalDelete={openModalDelete}
@@ -46,12 +52,12 @@ const ListCollaborators = () => {
       </WrapperList>
 
       <ModalPortal isOpen={isOpenModalEdit} closeModal={closeModalEdit}>
-        <h2 style={{ textAlign: "center" }}>Editar colaborador</h2>
+        <h2 className="title">Editar colaborador</h2>
         <FormAddCollaborator />
       </ModalPortal>
 
       <ModalPortal isOpen={isOpenModalDelete} closeModal={closeModalDelete}>
-        <h2 style={{ textAlign: "center" }}>Eliminar colaborador</h2>
+        <h2 className="title">Eliminar colaborador</h2>
       </ModalPortal>
 
       <ModalPortal
@@ -59,15 +65,7 @@ const ListCollaborators = () => {
         closeModal={closeModalAdd}
         minWidth="750px"
       >
-        <h2
-          style={{
-            textAlign: "center",
-            fontFamily: "sans-serif",
-            fontSize: "1.5em",
-          }}
-        >
-          Agregar colaborador
-        </h2>
+        <h2 className="title">Agregar colaborador</h2>
         <FormAddCollaborator />
       </ModalPortal>
     </LayoutHome>

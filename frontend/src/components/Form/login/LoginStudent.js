@@ -72,7 +72,7 @@ const FormLoginCandidate = () => {
               label="Correo electronico"
               id="t100_email"
               name="t100_email"
-              icon={<MdEmail />}
+              icon={<MdEmail style={{ color: "#1C8EFB" }} />}
               value={form.t100_email}
               onChange={handleChange}
               onBlur={handleValidate}
@@ -91,7 +91,13 @@ const FormLoginCandidate = () => {
               id="password"
               name="password"
               type={showPassword ? "text" : "password"}
-              icon={showPassword ? <MdVisibility /> : <MdVisibilityOff />}
+              icon={
+                showPassword ? (
+                  <MdVisibility style={{ color: "#1c8efb" }} />
+                ) : (
+                  <MdVisibilityOff style={{ color: "#ccc" }} />
+                )
+              }
               value={form.password}
               onClick={handleShowPassword}
               onChange={handleChange}
