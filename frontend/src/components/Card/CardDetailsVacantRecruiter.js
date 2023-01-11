@@ -50,7 +50,6 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
   const { data, loading } = useFetch(
     `${process.env.REACT_APP_URL_VACANTS}${vacantId}/`
   );
-
   const handlePublish = (e) => {
     e.preventDefault();
     stateVacant(vacantId, {
@@ -73,24 +72,16 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
       .catch((error) => toast.error(error.message));
   };
 
-  const observationsRecruiter = useMemo(() => observation, [observation]);
-  const observationsManager = useMemo(
-    () => observationManager,
-    [observationManager]
-  );
-
   const loadObjectVacant = () => {
     getObjectUpdateVacant(vacantId)
-      .then(response => {
-        console.log(response)
-        setDataToEdit(response[0])
+      .then((response) => {
+        console.log(response);
+        setDataToEdit(response[0]);
       })
-      .catch(error => console.error(error))
+      .catch((error) => console.error(error));
+  };
 
-  }
-
-  if (!data || !token || !observationsRecruiter || !observationManager)
-    return null;
+  if (!data || !token || !observation || !observationManager) return null;
 
   const STATUS = data[0]?.c204_id_vacant_status?.c204_id_status;
   const typeOfUser = token?.user?.user_type;
@@ -113,15 +104,17 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                         className="button-edit"
                         onClick={() => {
                           openModal();
-                          loadObjectVacant()
-                          setIsEdition(true)
+                          loadObjectVacant();
+                          setIsEdition(true);
                         }}
                       />
                     </Tooltip>
                   )}
                 </WrapperIconEdit>
               )}
-              <Title style={{color: '#fff', marginTop: '1rem'}}>{data[0]?.t200_job}</Title>
+              <Title style={{ color: "#fff", marginTop: "1rem" }}>
+                {data[0]?.t200_job}
+              </Title>
               <ListItems>
                 <li>
                   <Chip
@@ -171,7 +164,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                 )}
               />
             </Description>
-            {token.user.user_type === USERS.recruiter ? (
+            {typeOfUser === USERS.recruiter ? (
               <WrapperActions>
                 {data[0]?.c204_id_vacant_status?.c204_id_status === 1 && (
                   <span>Vacante en revision</span>
@@ -195,13 +188,13 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
               </WrapperActions>
             )}
           </WraperCard>
-          {token.user.user_type === USERS.recruiter ? (
+          {typeOfUser === USERS.recruiter ? (
             <WrapperComment typeOfUser={typeOfUser}>
               <header>
                 <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
               </header>
               <>
-                {!observationsManager.length ? (
+                {!observationManager.length ? (
                   <article
                     style={{
                       height: "calc(100% - 9.3rem)",
@@ -242,13 +235,14 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                       padding: ".5rem",
                     }}
                   >
-                    {observationsRecruiter?.map((el) => (
+                    {observation?.map((el) => (
                       <Comment
                         key={`comment-id-${el?.t223_id_comment}`}
                         comment={el?.t223_comment}
                         date={el?.t223_sent_date}
-                        username={token?.user?.first_name}
-                        typeUser={el?.t301_id_recruiter?.t301_id_recruiter}
+                        // username={token?.user?.first_name}
+                        whereIsIt={typeOfUser}
+                        typeUser={el?.t301_id_recruiter}
                       />
                     ))}
                   </div>
@@ -261,7 +255,6 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
               />
             </WrapperComment>
           ) : (
-            // TODO: Pasar a un componente independiente
             <WrapperComment typeOfUser={typeOfUser}>
               <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
               <>
@@ -305,22 +298,20 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                       height: "700px",
                     }}
                   >
-                    {observationsManager.map((observation) => (
+                    {observationManager.map((observation) => (
                       <Comment
                         key={`comment-id-${observation?.t223_id_comment}`}
                         comment={observation?.t223_comment}
                         date={observation?.t223_sent_date}
                         username={token?.user?.first_name}
-                        typeUser={
-                          observation?.t301_id_recruiter?.t301_id_recruiter
-                        }
+                        typeUser={observation?.t301_id_recruiter}
                       />
                     ))}
                   </div>
                 )}
               </>
               <FormAddComment
-                typeUser={token.user.user_type}
+                typeUser={typeOfUser}
                 userId={token.user.id}
                 vacantId={vacantId}
               />

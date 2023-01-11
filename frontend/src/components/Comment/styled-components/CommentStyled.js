@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { USERS } from "types";
 
 const Message = styled.div`
   background-color: #f9f9f9;
@@ -73,11 +74,24 @@ const ContainerMessage = styled.div`
   position: relative;
   display: flex;
   ${(props) => {
-    if (props.typeUser) {
+  
+    if (!props.typeUser && props.whereIsIt === USERS.recruiter) {
       return `
-        flex-direction: row-reverse;
-      `;
+      flex-direction: row-reverse;
+      `
     }
+
+    if (props.typeUser === null && props.whereIsIt === USERS.manager) {
+      return`
+        flex-direction: row-reverse;
+      `
+    }
+    
+    // if (props.typeUser === null ) {
+    //   return `
+    //     background-color: red;
+    //   `
+    // }
   }}
   align-items: center;
   gap: 0.5rem;

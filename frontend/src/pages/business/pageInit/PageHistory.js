@@ -23,7 +23,6 @@ const PageHistory = () => {
   });
   const { data, loading } = useRecruiterJobs({ idRcruiter: token?.user?.id });
 
-  // console.log(token);
   if (!data || !listVacants) return null;
 
   return (

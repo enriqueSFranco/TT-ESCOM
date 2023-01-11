@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useFetch } from "hooks";
+import { useGetApplicationsCandidate } from "hooks";
 import { uuid } from "utils/uuid";
 import { useAuth } from "context/AuthContext";
 import ApplicationJobStudent from "components/Card/ApplicationJob/ApplicationJobStudent";
@@ -30,9 +30,10 @@ const NoApplications = () => {
 
 const PageApplicationsStudent = () => {
   const { token } = useAuth();
-  const { data } = useFetch(
-    `${process.env.REACT_APP_URL_CANDIDATE_APPLICATIONS_JOBS}${token?.user?.id}/`
-  );
+  const { applications } = useGetApplicationsCandidate(token?.user?.id)
+  // const { data } = useFetch(
+  //   `${process.env.REACT_APP_URL_CANDIDATE_APPLICATIONS_JOBS}${token?.user?.id}/`
+  // );
   const [page, setPage] = useState(1)
   const [limit, setLimit] = useState(5)
 
@@ -46,13 +47,7 @@ const PageApplicationsStudent = () => {
     },
   }));
 
-  if (!data) return null;
-
-  const filteredApplications = () => {
-    return data.slice(page, page + limit)
-  }
-
-  console.log(filteredApplications())
+  if (!applications) return null;
 
   return (
     <LayoutHome>
@@ -78,10 +73,10 @@ const PageApplicationsStudent = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {filteredApplications().length === 0 ? (
+              {applications.length === 0 ? (
                 <NoApplications />
               ) : (
-                filteredApplications().map((it) => (
+                applications.map((it) => (
                   <TableRow key={uuid()}>
                     <TableCell
                       sx={{ width: 150 }}
@@ -140,7 +135,7 @@ const PageApplicationsStudent = () => {
           </Table>
         </TableContainer>
         {page}
-          <Pagination total={data.length} page={page} setPage={setPage} limit={limit} setLimit={setLimit} />
+          <Pagination total={applications.length} page={page} setPage={setPage} limit={limit} setLimit={setLimit} />
       </Container>
     </LayoutHome>
   );

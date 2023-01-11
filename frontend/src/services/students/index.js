@@ -12,7 +12,8 @@ const {
   REACT_APP_URL_CANDIDATE_CERTIFICATIONS,
   REACT_APP_URL_CANDIDATE_UPLOAD_CV,
   REACT_APP_URL_CANDIDATE_UPLOAD_IMAGE,
-  REACT_APP_URL_TEST_RECOMMENDATIONS
+  REACT_APP_URL_TEST_RECOMMENDATIONS,
+  REACT_APP_URL_CANDIDATE_APPLICATIONS_JOBS
 } = process.env;
 
 
@@ -286,6 +287,17 @@ export const deleteStudentCertification = (id) => {
  **/
 export const postCertification = (payload = {}) => {
   return API.post(REACT_APP_URL_CANDIDATE_CERTIFICATIONS, payload)
+    .then((response) => {
+      const { data } = response
+      return data
+    })
+    .catch((error) => error);
+};
+
+
+
+export const getApplicationsCandidate = (numberPage, candidateId) => {
+  return API(`${REACT_APP_URL_CANDIDATE_APPLICATIONS_JOBS}${candidateId}/`)
     .then((response) => {
       const { data } = response
       return data

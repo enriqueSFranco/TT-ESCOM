@@ -9,14 +9,15 @@ const {
   REACT_APP_URL_FILTER_VACANTS
 } = process.env;
 
-export const getAllJobs = async () => {
-  const controller = new AbortController();
-  const signal = controller.signal;
+export const getAllJobs = async (numberPage = 1) => {
+  const controller = new AbortController()
+  const signal = controller.signal
   try {
-    const { data } = await API.get(REACT_APP_URL_VACANTS, { signal });
+    const {data} = await API.get(`${REACT_APP_URL_VACANTS}?page=${numberPage}`, {signal});
     return data;
   } catch (error) {
-    if (error.response) return error.response;
+    if (error.response)
+      return error.response;
   }
 };
 

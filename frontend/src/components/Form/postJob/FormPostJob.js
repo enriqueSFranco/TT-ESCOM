@@ -221,7 +221,7 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
 
   if (!expList || !data || !languages) return null;
 
-  console.log(dataToEdit);
+  // console.log(dataToEdit);
 
   return (
     <ContainerForm top={top}>
