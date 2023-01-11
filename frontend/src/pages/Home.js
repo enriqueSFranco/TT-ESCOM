@@ -1,4 +1,5 @@
 import { useEffect, useCallback, useState, useRef } from "react";
+import debounce from 'just-debounce-it'
 import { useAuth } from "context/AuthContext";
 import {
   useGetAllJobs,
@@ -59,7 +60,16 @@ const Home = () => {
     once: false,
   });
 
-  // TODO: Hacer la funcionalidad de filtrado con checkbox
+  function handleNextPage() {
+    setPage((prevPage) => prevPage + 1);
+  }
+
+  const debounce = useCustomDebounce(() => {
+    handleNextPage();
+  }, 400);
+
+  const debouncehandleNextPage = useCallback(debounce, [debounce]);
+
   function onFiltereChange(id) {
     const itemsExp = selectedFilterExp;
     const itemExpChecked = itemsExp.map((it) =>
@@ -71,7 +81,10 @@ const Home = () => {
       Donde: "",
       "Modalidad de empleo": [],
       "Experiencia laboral": itemExpChecked,
-    }).then(response => setFilterData(response.result))
+    }).then(response => {
+      setIsFiltered(true)
+      setFilterData(response.result)
+    })
     .catch(error => console.error(error))
   }
 
@@ -86,7 +99,10 @@ const Home = () => {
       Donde: "",
       "Modalidad de empleo": itemExpChecked,
       "Experiencia laboral": [],
-    }).then(response => setFilterData(response.result))
+    }).then(response => {
+      setIsFiltered(true)
+      setFilterData(response.result)
+    })
     .catch(error => console.error(error))
   }
 
@@ -98,23 +114,11 @@ const Home = () => {
     setIsFiltered(value !== "" ? true : false);
   }
 
-  function handleNextPage() {
-    setPage((prevPage) => prevPage + 1);
-  }
-
-  const debounce = useCustomDebounce(() => {
-    handleNextPage();
-  }, 400);
-
-  const debouncehandleNextPage = useCallback(debounce, []);
-
   useEffect(() => {
     if (isNearScreen) debouncehandleNextPage();
   }, [isNearScreen, debouncehandleNextPage]);
 
   if (!response) return null;
-
-  console.log(filterData)
 
   return (
     <LayoutHome>
@@ -135,7 +139,6 @@ const Home = () => {
             selectedFilterExp={selectedFilterExp}
             selectedFilterModality={selectedFilterModality}
             toggleRecommended={handleChangeRecommended}
-            // setNewResponse={setNewResponse}
             setFilterData={setFilterData}
             setResultsFound={setResultsFound}
             onFiltereChange={onFiltereChange}
@@ -146,20 +149,22 @@ const Home = () => {
         <Content>
           <Cards id="cards">
             {resultsFound ? (
-              <JobList
-                jobs={isFiltered ? filterData : response}
-                isFiltered={isFiltered}
-                recommendedJobs={recommender}
-                loading={loading}
-                isVacantRecommended={recommended}
-                setMatch={setMatch}
-                setVacantId={setVacantId}
-              />
+              <>
+                <JobList
+                  jobs={isFiltered ? filterData : response}
+                  isFiltered={isFiltered}
+                  recommendedJobs={recommender}
+                  loading={loading}
+                  isVacantRecommended={recommended}
+                  setMatch={setMatch}
+                  setVacantId={setVacantId}
+                  />
+                  <div>{loadingNextPage && <Loader />}</div>
+                  <div id="visor" ref={externalRef}></div>
+              </>
             ) : (
               <EmptyView />
             )}
-            <div>{loadingNextPage && <Loader />}</div>
-            <div id="visor" ref={externalRef}></div>
           </Cards>
           <SummaryCard>
             <DetailsJob

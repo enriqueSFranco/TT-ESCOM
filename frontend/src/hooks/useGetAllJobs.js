@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllJobs } from "services";
+import { getAllJobs } from "services/jobs/index";
 
 const INITIAL_PAGE = 1;
 
@@ -19,7 +19,7 @@ export function useGetAllJobs() {
         setMaxPage(totalPage)
         setResponse(response.result);
       })
-      .catch((error) => error)
+      .catch((error) => console.log(error))
       .finally(() => setLoading(false));
 
     return () => {};
@@ -31,14 +31,14 @@ export function useGetAllJobs() {
     if (page <= maxPage) {
       setLoadinNextPage(true);
       getAllJobs(page).then((nextResponse) => {
+        console.log("🚀 ~ file: useGetAllJobs.js:34 ~ getAllJobs ~ nextResponse", nextResponse)
+        
         setResponse(prevResponse => [...prevResponse, ...nextResponse?.result])
-        setLoadinNextPage(false)
-        console.log(response)
       })
       .catch(error => console.log(error))
+      .finally(() => setLoadinNextPage(false))
     } else return;
   }, [maxPage, page]);
 
-  return { response, loading, loadingNextPage, setPage }
-
+  return { response, loading, loadingNextPage, setPage };
 }

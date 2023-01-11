@@ -56,8 +56,8 @@ const Content = styled.section`
     min-height: 100vh;
     grid-area: content_data;
     display: grid;
-    grid-template-areas: "cards summary_card";
     grid-template-columns: 600px 1fr;
+    grid-template-areas: "cards summary_card";
     margin: 3rem auto 0 auto;
     background-color: #f9fbfc;
   }
@@ -70,6 +70,7 @@ const Cards = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   gap: 1rem;
+  /* background-color: red; */
 `;
 
 const SummaryCard = styled.div`
