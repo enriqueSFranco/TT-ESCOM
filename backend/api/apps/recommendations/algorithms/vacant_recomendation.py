@@ -121,7 +121,7 @@ def get_similar_vacants(id_candidate):
             similarity_vector.append(calculate_experience(vacant_info[5],vacant[5]))#Experiencia             
             porcentage = calculate_vacants_similarity(similarity_vector)
             print("Vector_similitud entre vacantes "+str(id_application['t200_id_vacant'])+" y "+str(vacant[0])+":"+str(similarity_vector)+","+str(porcentage))
-            if porcentage > 90:
+            if porcentage > 50:
                 similar_vacants.append(vacant[0])        
     return similar_vacants
 
@@ -138,6 +138,8 @@ def candidate_recomendation(id_candidate):
     student_destroy = Recommendation.objects.filter(t100_id_student=id_candidate).delete()
     print("Obteniendo vacantes activas.....")    
     vacants_ids = get_vacants(id_candidate)
+    if len(vacants_ids) == 0:
+        pass
     for id in vacants_ids:
         vacant_data = []
         vacant_data.append(id['t200_id_vacant'])
