@@ -13,6 +13,8 @@ class CommentSerializer(serializers.ModelSerializer):
         return new_report
     
 class CommentListSerializer(serializers.ModelSerializer):
+    Manager_name = serializers.CharField()    
+    Recruiter_name = serializers.CharField()    
     class Meta:
         model = Comment
         fields = '__all__'

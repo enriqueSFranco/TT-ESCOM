@@ -5,10 +5,12 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import generics, viewsets
 from datetime import date
-from django.db.models import Count, IntegerField, OuterRef, Subquery,Max,Q
+from django.db.models import Count, IntegerField, OuterRef, Subquery,Max,Q,CharField
 from itertools import chain
 from apps.vacantes.pagination import CustomPagination
 from apps.vacantes.models import Comment
+from apps.companies.models import Recruiter
+from apps.administration.models import Admin
 from apps.vacantes.api.serializers.comment_serializer import CommentSerializer,CommentListSerializer
 
 class CommentViewset(viewsets.GenericViewSet):
@@ -24,16 +26,23 @@ class CommentViewset(viewsets.GenericViewSet):
     			't223_sent_date':''}
 
 	def get_object(self, pk):	
+		#recruiter_id = self.model.objects.filter(t200_id_vacant = pk).values("t301_id_recruiter").first()
+		#recruiter_name = Recruiter.objects.filter(t301_id_recruiter=recruiter_id['t301_id_recruiter']).values('t301_name')
+		#print(recruiter_name)
 		self.queryset = self.model.objects\
 				.filter(t200_id_vacant = pk)\
-				.all()
+				.annotate(Recruiter_name=Subquery(Recruiter.objects.filter(t301_id_recruiter=OuterRef('t301_id_recruiter')).values('t301_name'),output_field=CharField()))\
+				.annotate(Manager_name=Subquery(Admin.objects.filter(t400_id_admin=OuterRef('t400_id_admin')).values('t400_name'),output_field=CharField()))\
+				.all()				
+				#Agregar consulta para obtener nombre del administrador que lo hizo
 		return self.queryset
 	
-	def get_queryset(self):
-		if self.queryset is None:
-			self.queryset = self.model.objects\
-				.filter()\
-				.all()
+	def get_queryset(self):		
+		recruiter_name = Recruiter.objects.filter(t301_id_recruiter=OuterRef('t301_id_recruiter')).values('t301_name')
+		self.queryset = self.model.objects\
+			.filter()\
+			.all()\
+			.annotate(Recruiter_name=Subquery(recruiter_name.values('t301_name'),output_field=CharField()))
 		return self.queryset
 
 	def list(self, request):
