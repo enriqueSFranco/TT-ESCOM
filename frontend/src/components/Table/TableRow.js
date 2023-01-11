@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGetSkills, useAcademicHistorial } from "hooks";
+import { useGetSkills, useAcademicHistorial, useModal } from "hooks";
 import { uuid } from "utils";
 import { sendStatusApplication } from "services";
 import CustomAvatar from "components/Avatar/Avatar";
@@ -8,15 +8,18 @@ import CustomChip from "components/Chip/Chip";
 import { BiDislike } from "react-icons/bi";
 import { FaRegHandshake } from "react-icons/fa";
 import { FcBinoculars } from "react-icons/fc";
-import { HiDocumentDownload } from "react-icons/hi";
+import { BsFileEarmarkPdf } from "react-icons/bs";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import styles from "./Table.module.css";
+import ModalPortal from "components/Modal/ModalPortal";
+import ModalPreviewCV from "components/Modal/ModalPreviewCV";
 
-const TableRow = ({ children, it, index, storedValue, setValue }) => {
+const TableRow = ({ children, it, index }) => {
   const { t100_id_student, t201_id_application } = it;
   const { t100_name, t100_last_name, t100_profile_picture } = t100_id_student;
   const [open, setOpen] = useState(false);
-
+  const [isOpen, openModal, closeModal] = useModal(false)
+  const [click, setClick] = useState(false)
   const { historial } = useAcademicHistorial(
     it.t100_id_student?.t100_id_student
   );
@@ -29,6 +32,7 @@ const TableRow = ({ children, it, index, storedValue, setValue }) => {
 
   const handleHireCandidate = () => {
     console.log("contratar candidato");
+    setClick(false)
     sendStatusApplication(
       {
         c205_id_application_state: 4,
@@ -40,8 +44,9 @@ const TableRow = ({ children, it, index, storedValue, setValue }) => {
   };
 
   const handleFollowUpApplication = () => {
-    console.log("dar seguimiento");
-    setValue(true);
+    // console.log("dar seguimiento");
+    // setValue(true);
+    setClick(true)
     sendStatusApplication(
       {
         c205_id_application_state: 2,
@@ -66,7 +71,7 @@ const TableRow = ({ children, it, index, storedValue, setValue }) => {
 
   if (!historial) return null;
 
-  console.log("🚀 ~ file: TableRow.js:16 ~ TableRow ~ it", it);
+  console.log(it)
 
   return (
     <>
@@ -112,14 +117,14 @@ const TableRow = ({ children, it, index, storedValue, setValue }) => {
         </td>
         <td className={styles.td}>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <Tooltip title={storedValue ? "Contratar" : `Dar seguimiento`}>
+            <Tooltip title={click ? "Contratar" : `Dar seguimiento`}>
               <button
                 className={`btn ${styles.actionsBtn} ${styles.accept}`}
                 onClick={
-                  storedValue ? handleHireCandidate : handleFollowUpApplication
+                  click ? handleHireCandidate : handleFollowUpApplication
                 }
               >
-                {storedValue ? (
+                {click ? (
                   <FaRegHandshake style={{ fontSize: "22px" }} />
                 ) : (
                   <FcBinoculars />
@@ -134,11 +139,12 @@ const TableRow = ({ children, it, index, storedValue, setValue }) => {
                 <BiDislike />
               </button>
             </Tooltip>
-            <Tooltip title="Descargar Currículo">
+            <Tooltip title="Ver Currículo">
               <button
                 className={`btn ${styles.actionsBtn} ${styles.dowloadCV}`}
+                onClick={openModal}
               >
-                <HiDocumentDownload />
+                <BsFileEarmarkPdf />
               </button>
             </Tooltip>
           </div>
@@ -149,6 +155,9 @@ const TableRow = ({ children, it, index, storedValue, setValue }) => {
           <td colSpan="6">{children}</td>
         </tr>
       ) : null}
+      <ModalPortal isOpen={isOpen} closeModal={closeModal} minWidth="1000px">
+        <ModalPreviewCV  fileUrl={it?.t100_id_student?.t100_cv}/>
+      </ModalPortal>
     </>
   );
 };

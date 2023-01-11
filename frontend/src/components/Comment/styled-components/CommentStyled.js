@@ -81,17 +81,16 @@ const ContainerMessage = styled.div`
       `
     }
 
-    if (props.typeUser === null && props.whereIsIt === USERS.manager) {
+    if (props.typeUser && props.whereIsIt === USERS.manager) {
+      return`
+        flex-direction: row;
+      `
+    }
+    if (!props.typeUser && props.whereIsIt === USERS.manager) {
       return`
         flex-direction: row-reverse;
       `
     }
-    
-    // if (props.typeUser === null ) {
-    //   return `
-    //     background-color: red;
-    //   `
-    // }
   }}
   align-items: center;
   gap: 0.5rem;

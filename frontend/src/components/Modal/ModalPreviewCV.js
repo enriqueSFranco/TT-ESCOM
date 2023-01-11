@@ -7,7 +7,7 @@ const ModalPreviewCV = ({ fileUrl }) => {
   return (
     <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.1.81/build/pdf.worker.js">
       <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-        <h2>Mi Curriculum</h2>
+        <h2 style={{margin: '0', fontFamily: 'sans-serif', fontWeight: '700'}}>Mi Currículo</h2>
         <Viewer 
           fileUrl={fileUrl}
         />

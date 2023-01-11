@@ -18,7 +18,7 @@ const Accordion = () => {
   const { data: requirements } = useFetch(
     `${process.env.REACT_APP_URL_VACANT_REQUIREMENTS}${t200_id_vacant}`
   );
-  const [storedValue, setValue] = useLocalStorage('followUpApplication', [])
+  // const [storedValue, setValue] = useLocalStorage('followUpApplication', [])
   const [data] = useGetApplicationJob({ idVacant: t200_id_vacant });
   const requiredSkill = getSkillType(requirements);
   const optionalSkill = getSkillType(requirements, false);
@@ -152,7 +152,7 @@ const Accordion = () => {
         <div className={styles.wrapperListApplicants}>
           <Table>
             {data?.map((it, index) => (
-              <TableRow key={index} index={index} it={it} storedValue={storedValue} setValue={setValue}>
+              <TableRow key={index} index={index} it={it}>
                 <RowExpand it={it} />
               </TableRow>
             ))}

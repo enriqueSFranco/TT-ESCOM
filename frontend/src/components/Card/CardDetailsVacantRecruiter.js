@@ -240,7 +240,8 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                         key={`comment-id-${el?.t223_id_comment}`}
                         comment={el?.t223_comment}
                         date={el?.t223_sent_date}
-                        // username={token?.user?.first_name}
+                        usernameRecruiter={el?.Recruiter_name}
+                        usernameManager={el?.Manager_name}
                         whereIsIt={typeOfUser}
                         typeUser={el?.t301_id_recruiter}
                       />
@@ -303,7 +304,9 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                         key={`comment-id-${observation?.t223_id_comment}`}
                         comment={observation?.t223_comment}
                         date={observation?.t223_sent_date}
-                        username={token?.user?.first_name}
+                        whereIsIt={typeOfUser}
+                        usernameRecruiter={observation?.Recruiter_name}
+                        usernameManager={observation?.Manager_name}
                         typeUser={observation?.t301_id_recruiter}
                       />
                     ))}

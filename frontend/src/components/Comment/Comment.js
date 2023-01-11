@@ -7,11 +7,11 @@ import {
   TextDate,
 } from "./styled-components/CommentStyled";
 
-const Comment = ({ comment, date, username, whereIsIt, typeUser }) => {
+const Comment = ({ comment, date, usernameRecruiter, usernameManager, whereIsIt, typeUser }) => {
 
   return (
     <ContainerMessage typeUser={typeUser} whereIsIt={whereIsIt}>
-      <CustomAvatar username={username} width="40px" height="40px" />
+      <CustomAvatar username={usernameRecruiter ? usernameRecruiter : usernameManager} width="40px" height="40px" />
       <Message typeUser={typeUser}>
         <p style={{margin: '0'}}>{comment}</p>
         <TextDate typeUser={typeUser}>{formatDate(date)}</TextDate>
