@@ -118,7 +118,7 @@ function DatesSchool({
         <div className={styles.inputGroup}>
           <TextField
             label="Profesion Academica"
-            size="small"
+            // size="small"
             name="t104_carreer"
             id="t104_carreer"
             value={form.t104_carreer}
@@ -130,7 +130,7 @@ function DatesSchool({
         <div className={styles.inputGroup}>
           <Autocomplete
             sx={{ width: "100%", maxWidth: "100%", marginRight: 15 }}
-            size="small"
+            // size="small"
             id="t104_academic_unit"
             name="t104_academic_unit"
             freeSolo
@@ -150,7 +150,7 @@ function DatesSchool({
                 Estado academico
               </InputLabel>
               <Select
-                size="small"
+                
                 id="c109_id_academic_state"
                 name="c109_id_academic_state"
                 onChange={handleChangeState}
@@ -172,7 +172,7 @@ function DatesSchool({
                 Nivel academico
               </InputLabel>
               <Select
-                size="small"
+                
                 id="c107_id_academic_level"
                 name="c107_id_academic_level"
                 onChange={handleChangeLevel}
@@ -219,7 +219,7 @@ function DatesSchool({
           <FormControl>
             <InputLabel id="mes-inicio-1">Mes</InputLabel>
             <Select
-              size="small"
+              
               labelId="mes-inicio-1"
               id="mes-inicio-1"
               value={startMonth}
@@ -239,7 +239,7 @@ function DatesSchool({
           <FormControl>
             <InputLabel id="anio-inicio-1">Año</InputLabel>
             <Select
-              size="small"
+              
               labelId="anio-inicio-1"
               id="anio-inicio-1"
               value={startYear}
@@ -285,7 +285,7 @@ function DatesSchool({
           <FormControl>
             <InputLabel id="mes-final-2">Mes</InputLabel>
             <Select
-              size="small"
+              
               labelId="mes-final-2"
               id="mes-final-2"
               value={endMonth}
@@ -305,7 +305,7 @@ function DatesSchool({
           <FormControl>
             <InputLabel id="anio-final-2">Año</InputLabel>
             <Select
-              size="small"
+              
               labelId="anio-final-2"
               id="anio-final-2"
               value={endYear}

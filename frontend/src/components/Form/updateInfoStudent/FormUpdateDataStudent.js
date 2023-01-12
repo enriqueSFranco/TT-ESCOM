@@ -181,7 +181,7 @@ const FormUpdateDataStudent = ({ id, username, picture, candidate }) => {
           </div>
           <h2
             style={{
-              fontSize: "1.2rem",
+              fontSize: "1rem",
               fontFamily: "sans-serif",
               marginTop: "1rem",
               display: "flex",
@@ -190,7 +190,7 @@ const FormUpdateDataStudent = ({ id, username, picture, candidate }) => {
               marginBottom: "1rem",
             }}
           >
-            <HiOutlineLocationMarker style={{ color: "red" }} /> Ubicacion
+          Ubicación 
           </h2>
           <div className={styles.groupsInputs}>
             <Input

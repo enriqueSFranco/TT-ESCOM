@@ -3,9 +3,11 @@ import { useGetSkills, useLanguageUser, useAcademicHistorial } from "hooks";
 import { getProjects } from "services";
 import CustomAvatar from "components/Avatar/Avatar";
 import Chip from "components/Chip/Chip";
+import CardPersonalInfo from "./CardPersonalInfo";
 import { ImProfile } from "react-icons/im";
 import { FiFileText } from "react-icons/fi";
 import { MdEmail } from "react-icons/md";
+import { BsFilePdf } from 'react-icons/bs'
 import { AiOutlineWhatsApp } from "react-icons/ai";
 import {
   WrapperCard,
@@ -14,9 +16,10 @@ import {
   CardHeader,
   CardInfo,
   Item,
+  LinkToCV,
+  WrapperCV
 } from "./styled-components/CardProfileCandidateStyled";
 import { List, ListItem } from "styled-components/CommonStyles";
-import CardPersonalInfo from "./CardPersonalInfo";
 
 const menuItems = [
   { id: 0, label: "Información Profesional", icon: <ImProfile /> },
@@ -79,74 +82,6 @@ const ProfileCandidate = ({ user }) => {
   }, [idUser]);
 
   const handleSelected = (id) => setSelectedId(id);
-
-  // const followUpOnTheApplication = (e) => {
-  //   e.preventDefault();
-  //   console.log(`candidato con el pk ${pk} aceptado`);
-  //   sendStatusApplication(
-  //     {
-  //       c205_id_application_state: 2,
-  //     },
-  //     pk
-  //   )
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
-
-  // const hireCandidate = (e) => {
-  //   e.preventDefault();
-  //   console.log(`candidato con el pk ${pk} contratado`);
-  //   sendStatusApplication(
-  //     {
-  //       c205_id_application_state: 4,
-  //     },
-  //     pk
-  //   )
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
-
-  // const doNotHireCandidate = (e) => {
-  //   e.preventDefault();
-  //   console.log(`candidato con el pk ${pk} no contratado`);
-  //   sendStatusApplication(
-  //     {
-  //       c205_id_application_state: 5,
-  //     },
-  //     pk
-  //   )
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
-
-  // const rejectApplication = (e) => {
-  //   e.preventDefault();
-  //   console.log(`candidato con el pk ${pk} rechazado`);
-  //   sendStatusApplication(
-  //     {
-  //       c205_id_application_state: 5,
-  //     },
-  //     pk
-  //   )
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((error) => console.log(error));
-  // };
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     const menuItem = listRef.current.querySelectorAll('.menu_item')
-  //     indicatorRef.current.style.width = `${menuItem.clientWidth}px`;
-  //     setStepWidth(menuItem.clientWidth);
-  //   }, 50);
-  // }, []);
 
   if (!skills || !languages || !historial || !listProjects) return null;
 
@@ -295,7 +230,11 @@ const ProfileCandidate = ({ user }) => {
               listProjects={listProjects}
             />
           ) : (
-            <h1>curriculumn</h1>
+            <WrapperCV>
+              {
+                user?.t100_cv === null ? (<h3>Este usuario no cuenta con su curriculumn</h3>) : <LinkToCV href={user?.t100_cv} alt="curriculum" target="_blank" rel="noreferrer">Abrir curriculumn <BsFilePdf /></LinkToCV>
+              }
+            </WrapperCV>
           )}
         </div>
       </CardRight>

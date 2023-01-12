@@ -12,6 +12,33 @@ const WrapperCard = styled.article`
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 `;
 
+const WrapperCV = styled.div`
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  `
+
+const LinkToCV = styled.a`
+  background-color: #0A58CA;
+  border-radius: 5px;
+  color: #fff;
+  width: 180px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 10px;
+  transition: all .4s ease-in-out;
+
+  &:hover {
+    color: #fff;
+    background-color: #1591D7;
+    font-weight: 700;
+  }
+`
+
 const CardLeft = styled.div`
   grid-area: card_left;
   padding: 1rem;
@@ -60,4 +87,4 @@ const CardHeader = styled.header`
   align-items: center;
 `;
 
-export { WrapperCard, CardLeft, CardHeader, CardInfo, CardRight, Item };
+export { WrapperCard, CardLeft, CardHeader, CardInfo, WrapperCV, LinkToCV, CardRight, Item };

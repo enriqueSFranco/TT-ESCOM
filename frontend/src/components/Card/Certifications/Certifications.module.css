@@ -80,10 +80,11 @@
 .detailsCertification {
   position: relative;
   left: 0;
-  width: 100%;
+  width: 450px;
   display: flex;
   gap: .5rem;
-  border-bottom: 2px solid #eee;
+  background-color: #F5F7F8;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 .detailsCertification a {
   color: #5c5c5c;
@@ -125,6 +126,7 @@
 
 .titleCertification {
   margin: 0;
+  font-size: 1rem;
   color: #363636;
   width: 450px;
 }
@@ -143,6 +145,7 @@
 .partnership {
   font-weight: 700;
   color: #028dd4;
+  text-transform: capitalize;
   /* background-color: red; */
 }
 

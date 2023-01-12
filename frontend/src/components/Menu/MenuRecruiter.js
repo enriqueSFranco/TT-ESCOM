@@ -26,12 +26,6 @@ const links = [
   },
   {
     id: crypto.randomUUID(),
-    to: "/publicar-comunicado",
-    icon: <BsFillMegaphoneFill />,
-    label: "Comunicados",
-  },
-  {
-    id: crypto.randomUUID(),
     to: "/candidatos",
     icon: <HiUserGroup />,
     label: "Talentos",
@@ -87,10 +81,6 @@ const MenuRecruiter = () => {
             <span>Hola 👋, {recruiter[0]?.t301_name} | Reclutador </span>
             <DropMenu typeuser={typeuser} name={recruiter[0]?.t301_name} />
           </WrapperTypeUser>
-          {/* <Link to="/" onClick={logout}>
-            <HiOutlineLogout style={{ fontSize: "1.4rem" }} />
-            Salir
-          </Link> */}
         </NavItem>
       </NavList>
     </>

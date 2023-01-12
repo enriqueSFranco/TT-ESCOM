@@ -44,20 +44,22 @@ const CertificationList = () => {
           <MdAdd />
         </button>
       </div>
-      {
-        data && data?.map(certification => (
-          <CertificationItem
-            key={certification?.t119_id_registrer}
-            data={data}
-            setData={setData}
-            idCertification={certification?.t119_id_registrer}
-            title={certification?.t119_certification}
-            partnership={certification?.t119_company}
-            endDate={certification?.t119_end_date}
-            link={certification?.t119_voucher_link}
-          />
-        ))
-      }
+      <div style={{backgroundColor: 'blue', width: 'fit-content', position: 'relative', top: '1rem'}}>
+        {
+          data && data?.map(certification => (
+            <CertificationItem
+              key={certification?.t119_id_registrer}
+              data={data}
+              setData={setData}
+              idCertification={certification?.t119_id_registrer}
+              title={certification?.t119_certification}
+              partnership={certification?.t119_company}
+              endDate={certification?.t119_end_date}
+              link={certification?.t119_voucher_link}
+            />
+          ))
+        }
+      </div>
 
       <ModalPortal
         isOpen={isOpenModalAddCertification}
