@@ -57,6 +57,7 @@ const WrapperComment = styled.section`
     if (typeOfUser === USERS.recruiter) {
       return `
         background-color: #fff;
+        height: 99%;
       `;
     }
   }}
@@ -76,7 +77,8 @@ const HeaderInfo = styled.header`
 `;
 
 const Description = styled.div`
-  height: fit-content;
+  height: 510px;
+  background-color: #fff;
   overflow-y: auto;
   padding: 10px 12px;
   line-height: 25px;

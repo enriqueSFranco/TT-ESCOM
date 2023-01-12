@@ -5,7 +5,7 @@ import LayoutHome from "Layout/LayoutHome";
 import CardValidateCompany from "components/Card/CardValidateCompany";
 import ModalPortal from "components/Modal/ModalPortal";
 import FormValidateCompany from "components/Form/FormValidate";
-import { WrapperValidateCompany, TextH2 } from "pages/styled-components/ValidateRecruiterStyled";
+import { WrapperValidateCompany, TextH2, ContainerList } from "pages/styled-components/ValidateRecruiterStyled";
 
 const ValidateCompany = () => {
   const [listCompanies] = useValidateCompanies();
@@ -18,36 +18,37 @@ const ValidateCompany = () => {
     <LayoutHome>
       <WrapperValidateCompany>
         <TextH2>EMPRESAS POR VALIDAR</TextH2>
-
-        {listCompanies.length > 0 ? (
-          listCompanies?.map((company) => (
-            <CardValidateCompany
-              key={`list-item-company-${company?.t300_id_company}`}
-              nameCompany={company?.t300_name}
-              busisnessName={company?.t300_bussiness_name}
-              document={company?.t300_validator_document}
-              rfc={company?.t300_rfc}
-              nameRecruiter={`${company?.RecruiterCompany[0].t301_name} ${company?.RecruiterCompany[0]?.t301_last_name} ${company?.RecruiterCompany[0]?.t301_second_surname}`}
-              emailRecruiter={company?.RecruiterCompany[0]?.t301_email}
-              phoneRecriter={company?.RecruiterCompany[0]?.t301_phonenumber}
-              openModalAccept={openModalAccept}
-              openModalReject={openModalReject}
-            />
-          ))
-        ) : (
-          <section
-            style={{
-              backgroundColor: "#fff",
-              height: "inherit",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontFamily: "sans-serif",
-            }}
-          >
-            <h2>Sin Empresas por validar</h2>
-          </section>
-        )}
+        <ContainerList>
+          {listCompanies.length > 0 ? (
+            listCompanies?.map((company) => (
+              <CardValidateCompany
+                key={`list-item-company-${company?.t300_id_company}`}
+                nameCompany={company?.t300_name}
+                busisnessName={company?.t300_bussiness_name}
+                document={company?.t300_validator_document}
+                rfc={company?.t300_rfc}
+                nameRecruiter={`${company?.RecruiterCompany[0].t301_name} ${company?.RecruiterCompany[0]?.t301_last_name} ${company?.RecruiterCompany[0]?.t301_second_surname}`}
+                emailRecruiter={company?.RecruiterCompany[0]?.t301_email}
+                phoneRecriter={company?.RecruiterCompany[0]?.t301_phonenumber}
+                openModalAccept={openModalAccept}
+                openModalReject={openModalReject}
+              />
+            ))
+          ) : (
+            <div
+              style={{
+                backgroundColor: "#fff",
+                height: "inherit",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontFamily: "sans-serif",
+              }}
+            >
+              <h2>Sin Empresas por validar</h2>
+            </div>
+          )}
+        </ContainerList>
       </WrapperValidateCompany>
       <ModalPortal isOpen={isOpenAccept} closeModal={closeModalAccept}>
         <FormValidateCompany

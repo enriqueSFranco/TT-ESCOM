@@ -106,7 +106,7 @@ const Select = styled.select`
 
 const WrapperSelect = styled.div`
   outline: 1px solid #ccc;
-  border-radius: 1rem;
+  border-radius: 5px;
 `;
 export {
   Button,

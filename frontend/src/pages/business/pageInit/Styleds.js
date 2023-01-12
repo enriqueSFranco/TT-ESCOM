@@ -11,7 +11,7 @@ const Grid = styled.div`
     }
   }}
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 800px 1fr;
   align-content: center;
   gap: 1rem;
 `

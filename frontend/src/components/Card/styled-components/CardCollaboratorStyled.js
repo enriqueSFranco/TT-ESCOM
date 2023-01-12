@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
 const Card = styled.div`
-  box-shadow: #0B72FF 0px 0px 0px 2px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   width: 300px;
   height: 220px;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: #e5edf1;
   padding: .5rem .5rem .7rem .5rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `

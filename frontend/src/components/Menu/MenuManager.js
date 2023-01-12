@@ -68,6 +68,7 @@ const styles = {
 const MenuManager = () => {
   const { token } = useAuth();
   let typeuser = token?.user?.user_type;
+  let name = token?.user?.first_name
 
   const navLinkStyle = ({isActive}) => {
     return {
@@ -106,7 +107,7 @@ const MenuManager = () => {
         </MyLink>
         <NavItem>
           <WrapperTypeUser>
-            <span>Hola 👋, | Administrador </span>
+            <span>Hola 👋, {name}| Administrador </span>
             <DropMenu typeuser={typeuser} name={token.user.first_name} />
           </WrapperTypeUser>
         </NavItem>

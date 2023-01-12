@@ -1,12 +1,22 @@
 import styled from 'styled-components'
+import { USERS } from 'types'
 
 const Form = styled.form`
-  background-color: #fff;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: .4rem;
+  
+  ${props => {
+    if (props.typeUser === USERS.recruiter) {
+      return`
+        background-color: #FFF;
+        position: relative;
+        bottom: 2rem;
+        `
+    }
+  }}
 `
 
 const BoxComment = styled.textarea`

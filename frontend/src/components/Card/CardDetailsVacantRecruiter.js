@@ -46,10 +46,13 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
   const observationManager = useGetObservationVacantManager({
     vacantId: vacantId,
   });
+
   const { token } = useAuth();
   const { data, loading } = useFetch(
     `${process.env.REACT_APP_URL_VACANTS}${vacantId}/`
   );
+
+
   const handlePublish = (e) => {
     e.preventDefault();
     stateVacant(vacantId, {
@@ -85,6 +88,8 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
 
   const STATUS = data[0]?.c204_id_vacant_status?.c204_id_status;
   const typeOfUser = token?.user?.user_type;
+
+  console.log(observation)
 
   return (
     <>
@@ -130,15 +135,17 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                     color="#6D6D6D"
                   />
                 </li>
-                <li>
-                  <Chip
-                    label={`Fecha de cierre: ${formatDate(
-                      new Date(data[0]?.t200_close_date).toLocaleDateString()
-                    )}`}
-                    bg="#fff"
-                    color="#6D6D6D"
-                  />
-                </li>
+                {data[0]?.t200_close_date && (
+                  <li>
+                    <Chip
+                      label={`Fecha de cierre: ${formatDate(
+                        new Date(data[0]?.t200_close_date).toLocaleDateString()
+                      )}`}
+                      bg="#fff"
+                      color="#6D6D6D"
+                    />
+                  </li>
+                )}
               </ListItems>
               <div
                 style={{
@@ -148,6 +155,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                   marginBottom: "1rem",
                 }}
               >
+                <span>Estado de la postulacion: {data[0]?.c204_id_vacant_status?.c204_description}</span>
                 <span>{`Perfil del candidato: ${data[0]?.c206_id_profile?.c206_description}`}</span>
                 <span>{`Contratacion: ${data[0]?.c208_id_contract?.c208_description}`}</span>
                 <span>{`Sueldo al mes: $${numberFormat(
@@ -164,13 +172,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
                 )}
               />
             </Description>
-            {typeOfUser === USERS.recruiter ? (
-              <WrapperActions>
-                {data[0]?.c204_id_vacant_status?.c204_id_status === 1 && (
-                  <span>Vacante en revision</span>
-                )}
-              </WrapperActions>
-            ) : (
+            {typeOfUser === USERS.recruiter ? null : (
               <WrapperActions>
                 <button
                   className="button_admin publish"
@@ -256,6 +258,7 @@ const CardDetailsVacantRecruiter = ({ vacantId }) => {
               />
             </WrapperComment>
           ) : (
+            // NOTE: seccion de comentarios para el administrador
             <WrapperComment typeOfUser={typeOfUser}>
               <Title>Observaciones de la Vacante {data[0]?.t200_job}</Title>
               <>

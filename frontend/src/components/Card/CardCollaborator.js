@@ -14,7 +14,6 @@ import {
 import Tooltip from "components/Tooltip/TooltipText";
 
 const CardCollaborator = ({
-  userId,
   collaboratorName,
   position,
   picture,
@@ -58,8 +57,8 @@ const CardCollaborator = ({
         <Chip
           label={`Cargo en ESCOM: ${position}`}
           outline={`1px solid #ccc`}
-          bg="#fff"
-          color="#6D6D6D"
+          bg="#000"
+          color="#ffff"
         />
       </CardFooter>
     </Card>

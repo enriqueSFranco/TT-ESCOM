@@ -25,6 +25,7 @@ import {
   Select,
   WrapperSelect,
   ContainerForm,
+  SubGroupInput,
   TitleH1,
 } from "./styled-componets/FormPostJobStyled";
 import InputTag from "components/Input/InputTag";
@@ -35,7 +36,7 @@ const validateForm = (form) => {
     t200_job: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{1,255}$/,
     t200_street: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü0-9,.\s]{1,255}$/,
     t200_vacancy: /[0-9]/,
-    t200_working_hours: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{1,255}$/,
+    t200_working_hours: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü0-9,:\s]{1,255}$/,
     cp: /[0-9]/,
   };
 
@@ -100,7 +101,7 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
   );
   const [textRequiredSkills, setTextRequiredSkills] = useState("");
   const [textOptionalSkills, setTextOptionalSkills] = useState("");
-  const [textLanguages, setTextLanguages] = useState("")
+  const [textLanguages, setTextLanguages] = useState("");
   const [loading, setLoading] = useState(false);
   const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
   const [body, setBody] = useState("");
@@ -180,7 +181,6 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
   };
-
 
   const updateJob = () => {
     console.log("actualizar vacante", vacantId);
@@ -617,16 +617,23 @@ const FormPostJob = ({ top, isEdition, vacantId, dataToEdit, nameJob }) => {
             Idioma/Dialecto
           </h2>
           <GroupInput>
-            <InputTag
-              id={`textLanguages`}
-              name={`textLanguages`}
-              placeholder={`Conocimiento Requerido`}
-              value={textLanguages}
-              setValue={setTextLanguages}
-              setTypeSkills={setTextLanguages}
-              onChange={(e) => setTextLanguages(e.target.value)}
-              width="fit-content"
-            />
+            <SubGroupInput>
+              <Autocomplete
+                disablePortal
+                id="language"
+                name="language"
+                multiple
+                options={languages}
+                getOptionLabel={(option) => option.c111_description}
+                value={requiredLanguage}
+                onChange={(event, newValue) => setRequiredLanguage(newValue)}
+                filterSelectedOptions
+                sx={{ width: 300 }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Idioma/Dialecto" />
+                )}
+              />
+            </SubGroupInput>
           </GroupInput>
         </section>
         <section style={{ width: "800px" }}>

@@ -16,6 +16,13 @@ const WrapperValidateCompany = styled.section`
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 `;
 
+
+const ContainerList = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+`
+
 const TextH2 = styled.h2`
   background: linear-gradient(27deg, #3f5efb, #fc466b);
   background-clip: text;
@@ -25,4 +32,4 @@ const TextH2 = styled.h2`
   margin-top: 1rem;
 `;
 
-export { WrapperValidateCompany, TextH2 };
+export { WrapperValidateCompany, ContainerList, TextH2 };
