@@ -1,87 +1,164 @@
-.container{
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; 
-  overflow: hidden;
-  color: #000;
-  border-radius: 0 0 4px 4px;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  width: 1200px;
-  height: 480px;
-  display: flex;
-}
-
-.container1{
-  background-color:aqua;
-  width: 40%;
-}
-
-.bg {
-  position: relative;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  backdrop-filter: calc(10px);
-  height: 460px;
+.container {
   width: 100%;
-  background-image: url(../../../images/escom1.jpeg);
+  height: 100%;
+  color: #000;
+  display: flex;
+  overflow: hidden;
+}
+
+.container1 {
+  background-color: #fff;
+  width: 20%;
+  height: 100%;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bg{
+  background-color: #f1f1f181;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
 }
 
 .container2 {
-  margin: 1em;
-}
-
-.container3 {
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
   display: flex;
-  margin: 1em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .stepper {
-  width: 150px;
-  display: flex;
-  margin-right: 190px;
-  align-items: center;
+  width: 100%;
+  position: relative;
+  top: 8rem;
 }
 
-.pages {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-height: 180px;
-  margin-top: 1rem;
+.titleCurrent {
+  color: #2F4665;
+  font-weight: 700;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align: left;
+  position: relative;
+  top: 4rem;
+}
+
+.subTitleCurrent {
+  color: #2F4665;
+  font-weight: 500;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align: left;
+  position: relative;
+  top: 6rem;
 }
 
 .buttons {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   display: flex;
   align-items: center;
-  justify-content: right;
+  justify-content: flex-start;
+  gap: 3rem;
 }
 
-
 .button {
-  padding: 5px 35px;
+  padding: .5rem;
+  width: 130px;
   background-color: white;
-  border: 1px solid rgb(0, 128, 255);
+  outline: 2px solid #0080ff;
+  border: none;
   border-radius: 5px;
+  transition: background-color .4s ease;
 }
 
 .button:hover {
-  background-color: #7d7d7d1e;
+  background-color: #0080ff;
+  color: #fff;
 }
 
-.space {
-  width: 30px;
+.form1 {
+  position: relative;
+  top: 1rem;
+}
+
+.form {
+  height: fit-content;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+
+.formDataSchool {
+  /* outline: 2px solid red; */
+  position: relative;
+  top: -.5rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.formTitle,
+.formTitleDataSchool,
+.formTitleSkills {
+  color: #028dd4;
+  font-weight: bold;
+  width: 650px;
+  position: relative;
+  left: .8rem;
+  top: -1rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-transform: uppercase;
+}
+
+.formTitlePersonal {
+  color: #2F4665;
+  font-weight: normal;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-transform: uppercase;
+}
+
+.formTitleSkills {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  /* text-align: center; */
+}
+
+.formTitleDataSchool {
+  top: 0;
+}
+
+.formJob {
+  /* outline: 2px solid red; */
+  position: relative;
+  left: -2rem;
+  top: -2rem;
+}
+
+.formSkills {
+  position: absolute;
+  top: 6rem;
 }
 
 .containerPage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: left;
-  height: 370px;
-  min-width: 600px;
-  
+  width: fit-content;
+  height: fit-content;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  background-color: #fff;
 }
 
 .icon {
@@ -90,51 +167,16 @@
   margin-right: 3px;
 }
 
-
 .inputGroup {
-  justify-content: center;
-  align-items: center;
-  text-align: left;
-  margin: 1rem;
-  
-}
-
-.inputGroupP {
+  width: 100%;
+  height: fit-content;
   display: flex;
-  margin:1em;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
 }
 
-.inputGroupP1 {
-  display: flex;
-  justify-content: left;
-  align-items: left;
-  text-align: left;
-  margin: 1rem;
-}
-
-
-.Col1{
-  display: flex;
-  margin-right:1em;
-}
-.Col2{
-  text-align: left;
-}
-
-.Col4{
-  margin-right: 2em;
-}
-
-.Col3{
-
-  text-align: left;
-}
-
-.Col21{
-  margin:30px;
-}
-
-.texto{
+.texto {
   margin-bottom: 7px;
 }
 
@@ -157,8 +199,28 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: 1rem;
+  margin-top: 2rem;
   width: 490px;
 }
 
-.text { text-align: left; }
+.text {
+  text-align: left;
+}
+
+.title {
+  /* outline: 2px solid red; */
+  width: 300px;
+  position: relative;
+  left: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  /* color: #028dd4; */
+  display: flex;
+  align-items: center;
+  gap: .2rem;
+}
+
+.titleParagraph {
+  padding: 0;
+  margin: 0 0 .7rem 0;
+}

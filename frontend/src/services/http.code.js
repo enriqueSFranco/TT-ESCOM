@@ -1,0 +1,6 @@
+const CODE_200 = 200
+const CODE_201 = 201
+const CODE_400 = 400
+const CODE_404 = 404
+
+export { CODE_200, CODE_201, CODE_400, CODE_404 }

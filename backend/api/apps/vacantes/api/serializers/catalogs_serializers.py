@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.vacantes.models import VacantStatus,CandidateProfile,Experience,ApplicationState,ReportType,ReportState,Locality,Contract,ReportState,Modality
+from apps.vacantes.models import VacantStatus,CandidateProfile,Experience,ApplicationState,ReportType,ReportState,Locality,Contract,ReportState,Modality,RequiredLevel
 
 class VacantStatusSerializer(serializers.ModelSerializer):
     class Meta:
@@ -228,3 +228,25 @@ class ModalityListSerializer(serializers.ModelSerializer):
             'c214_id_modality' : instance['c214_id_modality'],
             'c214_description' : instance['c214_description']
         }
+
+class RequiredLevelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RequiredLevel
+        fields = '__all__'
+    
+    def create(self,validate_data):
+        register = RequiredLevel(**validate_data)
+        register.save()
+        return register
+    
+class RequiredLevelListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RequiredLevel
+        fields = '__all__'
+
+    def to_representation(self,instance):
+        return{
+            'c113_id_required_level' : instance['c113_id_required_level'],
+	        'c113_description' : instance['c113_description']
+        }
+

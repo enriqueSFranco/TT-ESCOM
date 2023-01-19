@@ -1,7 +1,6 @@
 import LoginStudentUpdateInformation from "components/Form/FirstFormStudet/Step";
 
 const Container = {
-  // backgroundColor: "blue",
   fontFamily: "sans-serif",
   width: "100%",
   height: "100vh",
@@ -12,7 +11,6 @@ const Form = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  // backgroundColor: "green"
 };
 
 const PageLoginStudent = () => {

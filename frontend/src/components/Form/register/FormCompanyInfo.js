@@ -1,11 +1,8 @@
-import React from "react";
-import TextField from "@mui/material/TextField";
-import { InputAdornment } from "@mui/material";
-import Label from "components/Element/Label/Label";
-import { IoIosBusiness } from "react-icons/io";
-import { HiOutlineIdentification } from "react-icons/hi";
+import React, { useState } from "react";
+import { uploadDocumentValidate } from "services";
+import { Input } from "components/Input/Input";
+import ButtonFile from "components/Button/ButtonFile";
 import * as BsIcon from "react-icons/bs";
-import * as BiIcon from "react-icons/bi";
 import * as MdIcon from "react-icons/md";
 import styles from "../Styles.module.css";
 
@@ -15,40 +12,82 @@ const FormCompanyInfo = ({
   errors,
   handleChange,
   handleValidate,
+  isActive,
+  handleIsActive,
+  document,
+  setDocument,
 }) => {
+  //const [document, setDocument] = useState(null);
+
+  function convertToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const fr = new FileReader();
+      fr.readAsDataURL(file);
+
+      fr.onload = () => {
+        resolve(fr.result);
+      };
+      fr.onerror = (error) => {
+        reject(error);
+      };
+    });
+  }
+
+  async function uploadFile(e) {
+    const file = e.target.files[0];
+    const base64 = await convertToBase64(file);
+    setDocument(file.name); 
+    form.validation_document = base64;
+    //uploadDocumentValidate({ t300_validator_document: base64 })
+    //  .then((response) => console.log(response))
+    //  .catch((error) => console.error(error));
+  }
+
+  function handleUpload(e) {
+    uploadFile(e)
+      .then((response) => console.log(response))
+      .catch((error) => error);
+  }
 
   const continueStep = (e) => {
     e.preventDefault();
     nextStep();
   };
 
+
   return (
     <div className={styles.companyInfo}>
       <div className={`${styles.welcome}`}>
-        <h2>
-          Datos de la empresa <BsIcon.BsQuestionCircle />
+        <h2 className={styles.title} style={{ marginBottom: "20px" }}>
+          Datos de la empresa
         </h2>
-        <a className={styles.youHaveAccountComany} href="#/">
-          Tu empresa ya esta registrada con nosotros ?
-        </a>
+        {!isActive && (
+          <span style={{ color: "#000" }}>
+            Verifica si tu empresa ya esta registrada{" "}
+            <a
+              style={{
+                fontWeight: "700",
+                fontFamily: "sans-serif",
+                borderBottom: "2px solid #039DEB",
+              }}
+              onClick={handleIsActive}
+              href="#/"
+            >
+              aqui
+            </a>
+          </span>
+        )}
       </div>
       <div className={styles.inputGroup}>
-        <TextField
+        <Input
           label="Nombre de su empresa"
           id="t300_name"
           name="t300_name"
-          sx={{ width: 500, maxWidth: "100%" }}
+          width="500px"
           value={form.t300_name}
           onBlur={handleValidate}
           onKeyUp={handleValidate}
           onChange={handleChange}
-          InputProps={{
-            startAdornment: form.t300_name && (
-              <InputAdornment position="start">
-                <IoIosBusiness />
-              </InputAdornment>
-            )
-          }}
         />
         {errors.t300_name && (
           <span className={styles.error}>
@@ -58,22 +97,15 @@ const FormCompanyInfo = ({
         )}
       </div>
       <div className={styles.inputGroup}>
-        <TextField
+        <Input
           label="RFC"
           id="t300_rfc"
           name="t300_rfc"
-          sx={{ width: 500, maxWidth: "100%" }}
+          width="500px"
           value={form.t300_rfc}
           onBlur={handleValidate}
           onKeyUp={handleValidate}
           onChange={handleChange}
-          InputProps={{
-            startAdornment: form.t300_rfc && (
-              <InputAdornment position="start">
-                <HiOutlineIdentification />
-              </InputAdornment>
-            )
-          }}
         />
         {errors.t300_rfc && (
           <span className={styles.error}>
@@ -83,11 +115,11 @@ const FormCompanyInfo = ({
         )}
       </div>
       <div className={styles.inputGroup}>
-        <TextField
+        <Input
           label="Razon Social"
           id="t300_bussiness_name"
           name="t300_bussiness_name"
-          sx={{ width: 500, maxWidth: "100%" }}
+          width="500px"
           value={form.t300_bussiness_name}
           onBlur={handleValidate}
           onKeyUp={handleValidate}
@@ -100,26 +132,32 @@ const FormCompanyInfo = ({
           </span>
         )}
       </div>
-      <div className={styles.flexRow}>
-        <p style={{ marginBottom: "1rem" }}>
+      <div className={styles.wrapperFile}>
+        <p style={{ margin: "0" }}>
           Proporcionanos el documento que valide que tu empresa esta
           constituida.
         </p>
-        <input
+        <ButtonFile
           type="file"
-          name="cv"
-          id="cv"
-          className={`${styles.inputFile}`}
-          value={form.file}
-          onChange={handleChange}
+          name="file"
+          id="file"
+          text="Subir Documento"
+          color="#116BFE"
+          onChange={handleUpload}
         />
-        <Label htmlFor="cv">
-          <BiIcon.BiCloudUpload />
-          subir cv
-        </Label>
       </div>
+      <span
+        style={{
+          marginBottom: "2rem",
+          fontSize: "14px",
+          color: "#039DEB",
+          borderBottom: "2px solid #039DEB",
+        }}
+      >
+        {document}
+      </span>
       <button className={styles.btnNext} type="button" onClick={continueStep}>
-        siguiente
+        Siguiente
       </button>
     </div>
   );

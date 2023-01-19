@@ -1,27 +1,27 @@
 from rest_framework import serializers
-from apps.vacantes.models import LenguageRequired
+from apps.vacantes.models import LanguageRequired
 
-class LenguageRequiredSerializer(serializers.ModelSerializer):
+class LanguageRequiredSerializer(serializers.ModelSerializer):
     class Meta:
-        model = LenguageRequired
+        model = LanguageRequired
         fields = ('t200_id_vacant','c111_id_language','t215_written_level','t215_reading_level','t215_speaking_level','t215_comprension_level')
         #'__all__'
     
     def create(self,validate_data):
-        aplication = LenguageRequired(**validate_data)
+        aplication = LanguageRequired(**validate_data)
         aplication.save()
         return aplication
     
-class LenguageRequiredListSerializer(serializers.ModelSerializer):
+class LanguageRequiredListSerializer(serializers.ModelSerializer):
     class Meta:
-        model = LenguageRequired
+        model = LanguageRequired
         fields = '__all__'
         depth = 2
 
 
-class UpdateLenguageRequiredSerializer(serializers.ModelSerializer):
+class UpdateLanguageRequiredSerializer(serializers.ModelSerializer):
         class Meta:
-            model = LenguageRequired
+            model = LanguageRequired
             fields = ('t200_id_vacant','c111_id_language','t215_written_level','t215_reading_level','t215_speaking_level','t215_comprension_level')
         
         def update(self,instance,validate_data):

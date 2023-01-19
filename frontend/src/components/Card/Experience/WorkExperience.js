@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "context/AuthContext";
+import { useAuth } from "context/AuthContext";
 import { useForm } from "hooks/useForm";
 import { addProject } from "services/students/index";
 import TextField from "@mui/material/TextField";
@@ -25,9 +25,9 @@ const validateForm = (form) => {
 
 const WorkExperience = ({ setTypeProject }) => {
   const navigate = useNavigate();
-  const { token } = useContext(AuthContext);
+  const { token } = useAuth();
   const { form, handleChange } = useForm(
-    { ...initialForm, t100_id_student: token?.user?.user_id },
+    { ...initialForm, t100_id_student: token?.user?.id },
     validateForm
   );
   const [succes, setSucces] = useState(null);
@@ -112,10 +112,11 @@ const WorkExperience = ({ setTypeProject }) => {
               name="t117_description"
               id="t117_description"
               cols="30"
-              rows="10"
+              rows="5"
               placeholder="Descripcion de tu proyecto"
               value={form.t117_description}
               onChange={handleChange}
+              className={styles.textArea}
             ></textarea>
             <input
               className={styles.btnSubmitWorkExperience}

@@ -1,16 +1,15 @@
+
 import React from 'react';
 import { uuid } from 'utils/uuid';
-import TableRow from './TableRow';
 import styles from './Table.module.css';
 
 const menu = [
   {label: ""},
   {label: "Nombre",},
-  {label: "Carrera"},
-  {label: "Conocimientos Tecnicos"},
-  {label: "Experiencia"},
-  {label: "Certificaciones"},
-  {label: "Acciones"},
+  {label: "Perfil"},
+  {label: "Conocimientos"},
+  {label: "Estado de la postulacion"},
+  {label: "Opciones"},
 ]
 
 const Table = ({children}) => {
@@ -25,7 +24,7 @@ const Table = ({children}) => {
         ))}
       </tr>
     </thead>
-    <tbody>
+    <tbody className={styles.tbody}>
       {children}
     </tbody>
   </table>

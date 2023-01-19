@@ -1,49 +1,132 @@
 import React from "react";
-import Chip from "@mui/material/Chip";
-import { numberFormat } from "utils/numberFormat";
-import { formatDate } from "utils/formatDate";
-import * as GiIcon from "react-icons/gi";
-import * as BsIcon from "react-icons/bs";
-import * as MdIcon from "react-icons/md";
-import * as IoIcon from "react-icons/io";
-import styles from "./CardJob.module.css";
+import { useTimeAgo } from "hooks";
+import Chip from "components/Chip/Chip";
+import { parseThousands } from "utils";
+import { IoBusiness } from "react-icons/io5";
+import { BsArrowRightShort } from "react-icons/bs";
+import {
+  Actions,
+  Button,
+  CardImage,
+  CardBody,
+  CardHeader,
+  CardContent,
+  CardBorder,
+  Description,
+  Location,
+  PublicationDate,
+  Tags,
+  TagsItem,
+  TitleJob,
+} from "../styled-components/CardJobStyled";
 
+const now = Date.now();
 
-const JobCard = ({ job }) => {
-  
-  if (!job) return null;
+const CardJob = ({
+  job,
+  vacantId,
+  isVacantRecommended,
+  time,
+  cards,
+  onClick,
+}) => {
+  const timeago = useTimeAgo(time);
+  const elapsed = Math.abs(Math.round((time - now) / 1000 / 60));
+
+  const toggleActiveStyled = () => {
+    return vacantId === cards.activeCard ? "active" : undefined;
+  };
+
+  const tags = [
+    {
+      label: isVacantRecommended
+        ? `Exp: ${job?.t200_id_vacant?.c207_id_experience?.c207_description}`
+        : `Exp: ${job?.c207_id_experience?.c207_description}`,
+    },
+    {
+      label: isVacantRecommended
+        ? job?.t200_id_vacant?.t200_max_salary
+          ? `Suledo mensual: $${parseThousands(
+              job?.t200_id_vacant?.t200_max_salary
+            )}-${parseThousands(job?.t200_id_vacant?.t200_max_salary)}`
+          : "Sueldo no especificado"
+        : job?.t200_max_salary
+        ? `Sueldo mensual: $${parseThousands(
+            job?.t200_min_salary
+          )}-${parseThousands(job?.t200_max_salary)}`
+        : "Sueldo no especificado",
+    },
+    {
+      label: isVacantRecommended
+        ? `Perfil academico: ${job?.t200_id_vacant?.c206_id_profile?.c206_description}`
+        : `Modalidad: ${
+            job?.c214_id_modality?.c214_description
+              ? job?.c214_id_modality?.c214_description
+              : "No especificada"
+          }`,
+    },
+  ];
+
+  function createMarkup() {
+    return { __html: isVacantRecommended ? job.t200_id_vacant?.t200_description : job.t200_description };
+  }
 
   return (
-    <article className={`${styles.card}`}>
-      <header className={styles.cardHeader}>
-        <h3 className={`${styles.nameCompany}`}>{job?.t200_job}</h3>
-      </header>
-      <div>
-        <div className={styles.summary}>
-          <p className={`${styles.lineClamp}`}>{job?.t200_description}</p>
-        </div>
-        <div className={styles.wrapper}>
-          <div className={styles.wrapperTags}>
-            <Chip label={`Modalidad: ${job?.t200_home_ofice ? "Remoto" : "Presencial"}`} size="small" icon={<MdIcon.MdBusinessCenter />} />
-
-            <Chip label={`Sueldo: ${numberFormat(job?.t200_min_salary).slice(4,)}MXN a ${numberFormat(job?.t200_max_salary).slice(4,)}MXN al mes`} size="small" icon={<GiIcon.GiMoneyStack />} />
-
-            <Chip label={`Fecha de publicacion: ${formatDate(job?.t200_publish_date)}`} size="small" icon={<BsIcon.BsCalendarDate />} />
-          </div>
-          <div className={styles.logoBusiness}>
+    <CardBody time={elapsed} isActive={toggleActiveStyled(vacantId)}>
+      <CardBorder>
+        <CardHeader>
+          <CardImage>
             {job?.t300_id_company?.t300_logo ? (
               <img
                 src={job?.t300_id_company?.t300_logo}
-                alt={job?.t300_id_company?.t300_name}
+                alt={job?.greent300_id_company?.t300_name}
               />
             ) : (
-              <IoIcon.IoMdBusiness className={styles.notLogo} />
+              <IoBusiness style={{ color: "darkgray", fontSize: "3.5rem" }} />
             )}
-          </div>
-        </div>
-      </div>
-    </article>
+          </CardImage>
+          
+          <PublicationDate time={elapsed}>
+            Publicada {timeago}
+          </PublicationDate>
+        </CardHeader>
+        <CardContent>
+          {isVacantRecommended ? (
+            <TitleJob>{job.t200_id_vacant?.t200_job}</TitleJob>
+          ) : (
+            <TitleJob time={elapsed}>{job.t200_job}</TitleJob>
+          )}
+
+          <Tags>
+            {tags.map((tag, index) => (
+              <TagsItem key={`tag-id-${index}`}>
+                <Chip
+                  label={tag.label}
+                  outline={`1px solid #ccc`}
+                  bg="#fff"
+                  color="#6D6D6D"
+                />
+              </TagsItem>
+            ))}
+          </Tags>
+          <Location>{`${job?.t200_id_vacant?.t200_street}`}</Location>
+
+          {isVacantRecommended ? (
+            <Location>{`${job?.t200_id_vacant?.t200_street}`}</Location>
+          ) : (
+            <Location>{`${job?.c222_id_locality?.c222_state}, ${job?.c222_id_locality?.c222_municipality}, ${job?.c222_id_locality?.c222_locality}`}</Location>
+          )}
+
+          <Description dangerouslySetInnerHTML={createMarkup()} />
+          <Actions>
+            <Button onClick={onClick} bgColor="#2172f2" color="#fff" >
+              Ver mas <BsArrowRightShort style={{ fontSize: "1.5rem" }} />
+            </Button>
+          </Actions>
+        </CardContent>
+      </CardBorder>
+    </CardBody>
   );
 };
 
-export default JobCard;
+export default CardJob;

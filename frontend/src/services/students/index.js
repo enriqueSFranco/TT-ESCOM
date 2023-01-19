@@ -1,50 +1,81 @@
 // @ts-check
+import API from "services/http.service";
+import { CODE_201, CODE_200, CODE_400, CODE_404 } from "services/http.code";
 
-import axios from "axios";
-import toast from "react-hot-toast";
-import {
-  API_STUDENT,
-  API_SOCIAL_NETWORK,
-  API_PHOTO_STUDENT,
-  API_PROJECT_STUDENT,
-  API_CATALOGUE_PLATAFORM,
-  API_ACADEMIC_HISTORIAL
-} from "../settings";
+const {
+  REACT_APP_URL_CANDIDATE_LANGUAGE,
+  REACT_APP_URL_CANDIDATE,
+  REACT_APP_URL_CANDIDATE_SKILLS,
+  REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS,
+  REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL,
+  REACT_APP_URL_CANDIDATE_PROJECTS,
+  REACT_APP_URL_CANDIDATE_CERTIFICATIONS,
+  REACT_APP_URL_CANDIDATE_UPLOAD_CV,
+  REACT_APP_URL_CANDIDATE_UPLOAD_IMAGE,
+  REACT_APP_URL_TEST_RECOMMENDATIONS,
+  REACT_APP_URL_CANDIDATE_APPLICATIONS_JOBS
+} = process.env;
+
+
+export const getRecommendations = (candidateId) => {
+  return API(`${REACT_APP_URL_TEST_RECOMMENDATIONS}${candidateId}`)
+    .then(response => {
+      const { data } = response
+      console.log(data)
+      return data
+    })
+    .catch(error => error)
+}
 
 /**
  * @param {Number} id identificador para obtner un alumno en especifico
  * @returns {Promise}
  **/
 export const getStudent = async (id) => {
+  let controller = new AbortController();
+  let signal = controller.signal;
 
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-      // 'Authorization': `Bearer ${token?.access}`,
-      'Accept': 'application/json',
-    },
-  };
-  return axios
-    .get(`${API_STUDENT}${id}/`, config)
+  return API(`${REACT_APP_URL_CANDIDATE}${id}/`, { signal })
     .then((response) => {
       const { data } = response;
       return data;
     })
-    .catch((error) => {
-      if (error.response) {
-        return error.response.data.errors;
-      }
-    }
-    );
+    .catch((error) => error);
+};
+
+export const getSkills = () => {
+  const controller = new AbortController();
+  const signal = controller.signal;
+
+  return API.post(`${REACT_APP_URL_CANDIDATE_SKILLS}`, { signal })
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => error);
+};
+
+export const addSkill = (payload = {}) => {
+  return API.post(`${REACT_APP_URL_CANDIDATE_SKILLS}`, {
+    payload,
+    headers: {
+      accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => error);
 };
 
 /**
- * @param {Number} id identificador de un alumno para obtener sus skills
+ * @param {Number} id identificador de un alumno para obtener sus redes sociales
  * @returns {Promise}
  **/
 export const getSocialNetwork = async (id) => {
-  return axios
-    .get(`${API_SOCIAL_NETWORK}/${id}/`)
+  return API(`${REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS}${id}/`)
     .then((response) => {
       const { data } = response;
       return data;
@@ -56,17 +87,20 @@ export const getSocialNetwork = async (id) => {
     });
 };
 
-export const getLinks = () => {
-  return axios.get(API_CATALOGUE_PLATAFORM)
-    .then(response => {
-      const { data } = response;
-      return data;
-    })
-    .catch(error => error);
+/**
+ * @param {Object} payload informacion que llevara la petcion
+ * @returns {Promise}
+ **/
+export const postSocialNetwork = (payload = {}) => {
+  return API.post(`${REACT_APP_URL_CANDIDATE_SOCIAL_NETWORKS}`, payload, {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  })
+    .then((response) => response)
+    .catch((error) => error);
 };
-
-
-
 
 /**
  * @param {Object} payload objeto que contiene la informacion que se enviara para crear la cuenta de un alumno
@@ -74,29 +108,15 @@ export const getLinks = () => {
  * @return {Promise}
  **/
 export const updateStudent = (id, payload = {}) => {
-  return toast.promise(
-    axios
-      .put(`${API_STUDENT}${id}/`, payload, {
-        headers: {
-          "Content-Type": "application/json",
-          accept: "application/json",
-        },
-      })
-      .then((response) => {
-        const { data } = response;
-        return data;
-      })
-      .catch((error) => {
-        if (error.response) {
-          return error.response.data;
-        }
-      }),
-    {
-      loading: "Actualizando Perfil",
-      success: "Tu perfil se ha actualizado correctamente",
-      error: "Hubo erro en la actualizacion",
-    }
-  );
+  return API.put(`${REACT_APP_URL_CANDIDATE}${id}/`, payload)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      if (error.response) {
+        return error.response.data;
+      }
+    });
 };
 
 /**
@@ -105,28 +125,55 @@ export const updateStudent = (id, payload = {}) => {
  **/
 export const createAccountStudent = async (payload) => {
   try {
-    const response = await axios.post(API_STUDENT, payload, {
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
+    const controller = new AbortController();
+    const signal = controller.signal;
+    const response = await API.post(`${REACT_APP_URL_CANDIDATE}`, payload, {
+      signal,
     });
-    return response;
-  } catch (error) {
-    if (error.response) {
-      return error.response.data.errors;
+    if (response.status === CODE_200 || response.status === CODE_201)
+      return response;
+    else if (response.status === CODE_400 || response.status === CODE_404) {
+      let error = {
+        err: true,
+        status: response.status || "00",
+        statusText: response.statusText || "Opppps, ha ocurrido un error",
+      };
+      throw error;
     }
+  } catch (error) {
+    return error;
   }
 };
 
-// TODO:terminar la funcion para subir una imagen
-export const uploadPhotoStudent = (id, img) => {
-  const formData = new FormData();
+export const uploadPhotoStudent = (id, payload) => {
+  return API.put(`${REACT_APP_URL_CANDIDATE_UPLOAD_IMAGE}${id}/`, payload)
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => error);
+};
 
-  formData.append("photo", img);
+export const uploadCVStudent = (id, payload) => {
+  return API.put(`${REACT_APP_URL_CANDIDATE_UPLOAD_CV}${id}/`, payload)
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => error);
+};
 
-  return axios
-    .put(`${API_PHOTO_STUDENT}/${id}/`, formData)
+export const addLanguage = (payload) => {
+  return API.post(`${REACT_APP_URL_CANDIDATE_LANGUAGE}`, payload)
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => error);
+};
+
+export const getLanguageUser = (id) => {
+  return API(`${REACT_APP_URL_CANDIDATE_LANGUAGE}${id}/`)
     .then((response) => {
       const { data } = response;
       return data;
@@ -139,19 +186,12 @@ export const uploadPhotoStudent = (id, img) => {
  * @return {Promise}
  **/
 export const applyJob = (payload) => {
-  return axios.post(`/api/Applications/`, payload, {
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    },
-  })
-    .then(response => {
-      console.log(response);
-      return response;
-    })
-    .catch(error => {
-      if (error.response) return error.response;
-    })
+  return API.post(
+    `${process.env.REACT_APP_URL_VACANT_APPLICATION_FOR_JOB}`,
+    payload
+  )
+    .then((response) => response)
+    .catch((error) => error);
 };
 
 /**
@@ -159,14 +199,14 @@ export const applyJob = (payload) => {
  * @returns {Promise}
  **/
 export const getProjects = (id) => {
-  return axios.get(`${API_PROJECT_STUDENT}${id}/`)
-    .then(response => {
+  return API(`${REACT_APP_URL_CANDIDATE_PROJECTS}${id}/`)
+    .then((response) => {
       const { data } = response;
       return data;
     })
-    .catch(error => {
+    .catch((error) => {
       return error;
-    })
+    });
 };
 
 /**
@@ -174,22 +214,22 @@ export const getProjects = (id) => {
  * @returns {Promise}
  **/
 export const deleteProject = (id) => {
-  return axios.delete(`${API_PROJECT_STUDENT}${id}/`)
-    .then(response => response)
-    .catch(error => error);
-}
+  return API.delete(`${REACT_APP_URL_CANDIDATE_PROJECTS}${id}/`)
+    .then((response) => response)
+    .catch((error) => error);
+};
 
 /**
  * @param {Object} payload objeto con los campos a enviar
  **/
 export const addProject = (payload = {}) => {
-  return axios.post(`${API_PROJECT_STUDENT}`, payload)
-    .then(response => {
+  return API.post(REACT_APP_URL_CANDIDATE_PROJECTS, payload)
+    .then((response) => {
       return response;
     })
-    .catch(error => {
+    .catch((error) => {
       return error;
-    })
+    });
 };
 
 /**
@@ -197,13 +237,70 @@ export const addProject = (payload = {}) => {
  * @returns {Promise}
  **/
 export const getAcademicHistorial = (id) => {
-  return axios.get(API_ACADEMIC_HISTORIAL)
-    .then(response => response)
-    .catch(error => error);
-}
+  return API(`${REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL}${id}/`)
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => error);
+};
 
 export const postAcademicHistorial = (payload = {}) => {
-  return axios.post(API_ACADEMIC_HISTORIAL, payload)
-    .then(response => response)
-    .catch(error => error);
+  return API.post(REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL, payload)
+    .then((response) => response)
+    .catch((error) => error);
+};
+
+/**
+ * @param {Number} id identificador de una unidad academica
+ * @returns {Promise}
+ **/
+export const deleteAcademicHistorial = (id) => {
+  return API.delete(`${REACT_APP_URL_CANDIDATE_ACADEMIC_HISTORIAL}${id}/`)
+    .then((response) => response)
+    .catch((error) => error);
+};
+
+/**
+ * @param {Number} id identificador de un estudiante para obtener sus certificaciones
+ * @returns {Promise}
+ **/
+export const getStudentCertifications = (id) => {
+  return API(`${REACT_APP_URL_CANDIDATE_CERTIFICATIONS}${id}/`)
+    .then((response) => response)
+    .catch((error) => error);
+};
+
+/**
+ * @param {Number} id identificador de un registro para eliminarlo
+ * @returns {Promise}
+ **/
+export const deleteStudentCertification = (id) => {
+  return API.delete(`${REACT_APP_URL_CANDIDATE_CERTIFICATIONS}${id}/`)
+    .then((response) => response)
+    .catch((error) => error);
+};
+
+/**
+ * @param {Object} payload informacion que llevara el cuerpo de la peticion
+ * @returns {Promise}
+ **/
+export const postCertification = (payload = {}) => {
+  return API.post(REACT_APP_URL_CANDIDATE_CERTIFICATIONS, payload)
+    .then((response) => {
+      const { data } = response
+      return data
+    })
+    .catch((error) => error);
+};
+
+
+
+export const getApplicationsCandidate = (numberPage, candidateId) => {
+  return API(`${REACT_APP_URL_CANDIDATE_APPLICATIONS_JOBS}${candidateId}/`)
+    .then((response) => {
+      const { data } = response
+      return data
+    })
+    .catch((error) => error);
 };

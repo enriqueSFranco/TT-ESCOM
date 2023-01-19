@@ -1,8 +1,9 @@
-import axios from "axios";
-import { API_RELEASE } from "../settings";
+import API from 'services/http.service'
+
+const { REACT_APP_URL_VACANT_ANNOUNCEMENTS } = process.env
 
 export const getAllReleases = () => {
-  return axios.get(API_RELEASE)
+  return API(REACT_APP_URL_VACANT_ANNOUNCEMENTS)
     .then(response => {
       const { data } = response;
       return data;

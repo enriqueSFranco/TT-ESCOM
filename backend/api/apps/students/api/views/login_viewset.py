@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import APIView
 from rest_framework.authtoken.views import ObtainAuthToken
-from apps.students.api.serializer.student_serializer import StudentTokenSerializer
+#from apps.students.api.serializer.student_serializer import StudentTokenSerializer
 from apps.users.api.serializers import UserSerializer
 
 
@@ -41,7 +41,7 @@ class Login(ObtainAuthToken):
                          ,status = status.HTTP_401_UNAUTHORIZED)
     else:
       #print("No paso validación")
-      return Response({'error':'Nombre de usuario o contraseña incorrecta'},status = status.HTTP_400_BAD_REQUEST)    
+      return Response({'error':'Nombre de usuario o contraseña incorrecta'},status = status.HTTP_200_OK)    
 
 
 class Logout(APIView):

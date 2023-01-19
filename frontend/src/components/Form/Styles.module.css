@@ -1,10 +1,33 @@
-.bg {
+.bg, .bgRecruiter {
   position: relative;
-  background-image: url(../../images/loginStudent.jpeg);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  backdrop-filter: calc(10px);
+}
+
+/* .active {
+  background-color: #2b2b2bcc;
+} */
+
+.bg {
+  background-image: url(../../images/beneficios-del-smart-working.jpg);
+}
+
+.bgLoginCompany {
+  background-image: url(../../images/reclutamiento.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.bgCompany {
+  position: relative;
+  background-image: url(../../images/Lavoro\ Agile\ sito_0.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.bgRecruiter {
+  background-image: url(../../images/homeoffice.png);
 }
 
 .bgCreateAccountCompany {
@@ -22,7 +45,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.534);
+  background-color: rgba(22, 150, 235, 0.062);
 }
 
 .bg blockquote {
@@ -43,6 +66,12 @@
   left: 0;
 }
 
+.linkToRegisterRecruiter {
+  /* background-color: red; */
+  position: relative;
+  top: 1rem;
+}
+
 .createAccount {
   width: 200px;
   position: relative;
@@ -51,17 +80,18 @@
 }
 
 .error {
+  width: 400px;
   font-weight: 300;
-  color: #5f2120;
+  font-size: .9rem;
+  color: #ff0400;
   text-align: left;
   padding: .3rem;
-  background-color: #fceded;
   border-radius: 0 0 4px 4px;
 }
 
 .error svg {
-  color: #ef6360;
-  font-size: 1.2rem;
+  color: #ff0400;
+  font-size: 1rem;
   margin-right: .4rem;
 }
 
@@ -74,9 +104,17 @@
   align-items: center;
 }
 
+.title {
+  background: linear-gradient(27deg, #3f5efb, #fc466b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 22px;
+}
+
 .createAccountStudentForm {
   width: auto;
-  height: 480px;
+  height: 600px;
   /* padding: 1rem; */
   display: flex;
   flex-direction: column;
@@ -90,12 +128,25 @@
   bottom: 1rem;
 }
 
-.companyInfo { text-align: left; }
+.companyInfo { 
+  height: fit-content;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 4rem;
+}
 
-.personalContact { height: 450px; }
+.personalContact { 
+  height: fit-content;
+  position: relative;
+  top: 2rem;
+}
 
 .yohaveAccount {
-  background-color: red;
+  /* background-color: red; */
   position: relative;
   right: 0rem;
   display: flex;
@@ -109,17 +160,7 @@
   font-size: 2.5rem;
 }
 
-.welcome { margin-bottom: 1rem; }
-
-.welcome h2, .personalContact h2 {
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #222;
-  letter-spacing: 2px;
-  padding: 0;
-  position: relative;
-}
+.welcome { margin: 1rem 0; }
 
 .welcome svg {
   font-size: .8rem;
@@ -136,18 +177,36 @@
   text-align: center;
 }
 
-.welcome a { color: #000; transition: color .3s ease-in; }
-.welcome a:hover { color: #90314b; }
+.welcome a { color: #000; transition: color .3s ease-in; font-family: 'Poppins', sans-serif; font-weight: 300; }
+.welcome a:hover { color: #016da3; }
 
 .wrapper {
   position: relative;
   top: 10rem;
 }
 
+.wrapperBottom {
+  /* outline: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 1rem;
+  right: 1.5rem;
+}
+
+.wrapperForm3 {
+  height: fit-content;
+  position: relative;
+  top: 6rem;
+}
+
 .wrapperCreateAccountStudent {
   position: relative;
   top: 12rem;
-  /* height: 500px; */
+  /* outline: 2px solid red; */
+  height: 600px;
 }
 
 .wrapperCreateAccountCompany {
@@ -161,33 +220,40 @@
   flex-direction: column;
 }
 
-.login {
+.wrapperColumn {
+  padding-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 4rem;
+}
+
+.wrapperLinkToLoginCompany {
+  background-color: #fff;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 22rem;
   right: 0;
+  left: 0;
   bottom: 0;
-  backdrop-filter: blur(2px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.login span, a {
-  color: #fff;
-  font-size: 1rem;
-}
-
-.login a {
+.login {
   position: relative;
-  right: 1.9rem;
+  bottom: 2rem;
+  /* outline: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.login a:hover { color: #fff; }
 
 .linkToLogin {
-  color: #04c8eb;
+  color: #017ec0;
   position: relative;
   left: 0;
 }
@@ -219,18 +285,15 @@
   height: 100px;
   display: flex;
   flex-direction: column;
-  /* margin-bottom: 1.4rem; */
 }
 
-.flexRow {
-  position: relative;
-  top: 0;
-  width: 490px;
+.wrapperFile {
+  width: fit-content;
+  height: 40px;
   display: flex;
   align-items: center;
-  gap: .5rem;
+  justify-content: center;
 }
-
 
 /* input file */
 .inputFile {
@@ -242,23 +305,22 @@
 }
 
 .inputFile + label {
-  max-width: 150px;
+  width: fit-content;
   font-size: .9rem;
-  font-weight: 700;
+  font-weight: 500;
   text-overflow: ellipsis;
   text-align: center;
   white-space: nowrap;
   cursor: pointer;
   display: inline-block;
   overflow: hidden;
-  padding: .65rem 1.25rem;
-  border-radius: var(--size-radius);
+  transition: color .3s ease;
 }
 
 .inputFile + label svg {
-  width: 1rem;
-  height: 1rem;
-  color: #fff;
+  width: 1.4rem;
+  height: 1.4rem;
+  color: #000;
   vertical-align: middle;
   fill: currentColor;
   margin-top: -.25rem;
@@ -266,31 +328,49 @@
 }
 
 .inputFile + label {
-  color: #fff;
-  background-color: #90314b;
+  color: #000;
+}
+
+.inputFile + label:hover, .inputFile {
+  color: #116BFE;
 }
 
 
 .wrapperButtons {
-  /* outline: 1px solid red; */
+  width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 1rem;
 }
 
 .btnBack, 
 .btnRegister, 
 .btnNext {
-  background-color: #90314b;
+  background-color: #116BFE;
   color: #fff;
   outline: none;
   border: none;
   padding: .5rem;
   width: 150px;
-  border-radius: 8px;
-  font-weight: bold;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  gap: .3rem;
+  align-items: center;
+}
+
+.btnBack, .btnNext {
+  transition: background-color .3s ease-in;
+
+}
+
+.btnNext:hover,
+.btnBack:hover,
+.btnRegister:hover {
+  background-color: #039deb;
 }
 
 .btnRegister {
   width: 190px;
+  transition: background-color .3s ease-in;
 }

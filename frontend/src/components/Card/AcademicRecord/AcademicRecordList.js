@@ -1,69 +1,52 @@
-import React, { useEffect, useContext, useState } from 'react';
-import AuthContext from 'context/AuthContext';
-import { useModal } from "hooks/useModal";
-import Modal from "components/Modal/Modal";
+import React, { useEffect, useState } from "react";
+import { useAuth } from "context/AuthContext";
+import { useModal, useAcademicHistorial } from "hooks";
+import ModalPortal from "components/Modal/ModalPortal";
 import FormAddAcademicRecord from "components/Form/AcademicRecord/FormAddAcademicRecord";
-import { getAcademicHistorial } from 'services/students';
-import AcademicRecord from './AcademicRecord';
+import AcademicRecord from "./AcademicRecord";
+import Tooltip from "components/Tooltip/TooltipText";
 import { MdAdd } from "react-icons/md";
-import styles from './AcademicRecord.module.css';
+import styles from "./AcademicRecord.module.css";
 
 const AcademicRecordList = () => {
   const [data, setData] = useState(null);
-  const { token } = useContext(AuthContext);
-  const [
-    isOpenModalAcademicRecord,
-    openModalAcademicRecord,
-    closeModalAcademicRecord,
-  ] = useModal();
-
-  let id = token?.user?.user_id;
-
+  const { token } = useAuth();
+  const { historial } = useAcademicHistorial(token?.user?.id)
+  const [isOpenModal, openModal, closeModal] = useModal(false);
 
   useEffect(() => {
-    getAcademicHistorial(id)
-      .then(response => {
-        console.log(response);
-        if (response.status === 200) {
-          const { data } = response;
-          setData(data);
-        } else {
-          setData(null);
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      })  
-  }, [id]);
+    setData(historial);
+  }, [historial]);
 
   return (
     <article className={styles.wrapper}>
-      {
-        data && data?.map(el => (
-          <AcademicRecord
-            key={el?.t100_id_student?.t100_id_studentv}
-            academicUnit={el?.t104_academic_unit}
-            carrer={el?.t104_carreer}
-            startDate={el?.t104_start_date}
-            endDate={el?.t104_end_date}
-            idStudent={el?.t100_id_student?.t100_id_student}
-          />
-        ))
-      }
-      <button
-        onClick={openModalAcademicRecord}
-        className={styles.btnAddProject}
-      >
-        <MdAdd />
-      </button>
-      <Modal
-        isOpen={isOpenModalAcademicRecord}
-        closeModal={closeModalAcademicRecord}
-      >
+      <div className={styles.container_botton}>
+        <Tooltip title="Agregar historial academico">
+          <button onClick={openModal} className={styles.btnAddProject}>
+            <MdAdd />
+          </button>
+        </Tooltip>
+      </div>
+      <div className={styles.listAcademicRecord}>
+        {
+          data?.map((el) => (
+            <AcademicRecord
+              key={`academic-item-${crypto.randomUUID()}`}
+              academicUnit={el?.t104_academic_unit}
+              carrer={el?.t104_carreer}
+              id={el?.t104_id_registrer}
+              startDate={el?.t104_start_date}
+              endDate={el?.t104_end_date}
+              setData={setData}
+              idStudent={el?.t100_id_student?.t100_id_student}
+            />
+          ))}
+      </div>
+      <ModalPortal isOpen={isOpenModal} closeModal={closeModal} minWidth="550px" minHeight="510px">
         <FormAddAcademicRecord />
-      </Modal>
+      </ModalPortal>
     </article>
-  )
-}
+  );
+};
 
 export default AcademicRecordList;

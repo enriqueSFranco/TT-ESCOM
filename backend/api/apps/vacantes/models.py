@@ -1,7 +1,8 @@
 from django.db import models
-from  apps.students.models import Student,Skills,Lenguage
+from apps.students.models import Student,Language
 from apps.administration.models import Admin
 from apps.companies.models import Company,Recruiter
+import datetime 
 
 def upload_comunicate(instance, filename):
     return f"comunicates/{instance.t300_id_company}-{filename}"
@@ -118,8 +119,18 @@ class Locality(models.Model):
 		db_table = 'c222_localidades'
     
 	def __str__(self) -> str:
-		return self.c222_cp+":"+self.c222_state+","+self.c222_municipality+","+self.c222_locality
+		return str(self.c222_cp)+":"+self.c222_state+","+self.c222_municipality+","+self.c222_locality
 
+class RequiredLevel(models.Model):
+    c113_id_required_level = models.AutoField(primary_key=True)
+    c113_description = models.CharField(max_length=50,blank=True,null=True)
+    class Meta:
+        verbose_name = 'RequiredLevel'
+        verbose_name_plural = 'RequiredLevels'
+        db_table = 'c213_nivel_requerido'
+    
+    def __str__(self) -> str:
+        return str(self.c113_description)
 
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
 #T200 Vacants
@@ -127,58 +138,64 @@ class Vacant(models.Model):
     t200_id_vacant = models.AutoField(primary_key=True)
     t300_id_company = models.ForeignKey(
         Company,
-        blank=True,
         null=True,
+		blank=True,
+        default=1,
         related_name='CompanyOffering',
         on_delete=models.CASCADE
     )
-    t200_job = models.CharField(max_length=70)
-    t200_description = models.TextField(null=True,blank=True) 
-    t200_benefits = models.TextField(null=True,blank=True)    
-    t200_check_time = models.TimeField(auto_now=False)
-    t200_closing_hour = models.TimeField(auto_now=False)
-    t200_work_days = models.CharField(max_length=50,blank=True,null=True,default="Sin horario")  
+    t200_job = models.CharField(max_length=125,null=False,blank=False)
+    t200_description = models.TextField(null=True,blank=True)     
+    t200_min_salary = models.IntegerField(null=False,default=0)
+    t200_max_salary = models.IntegerField(null=False,default=1)
+    t200_working_hours = models.CharField(max_length=125,null=False,blank=False,default="Flexible")    
     c207_id_experience = models.ForeignKey(
         Experience,
-        null=False,
-		blank=False,
+        blank=True,
+        null=True,
         default=1,
 		related_name='NecesaryExperience',
         on_delete=models.CASCADE)
-    t200_min_salary = models.IntegerField()
-    t200_max_salary = models.IntegerField()
-    t200_gross_salary = models.BooleanField()
-    t200_home_ofice = models.BooleanField(default=True)#c214_id_modality
-    #c214_id_modality = models
+    c214_id_modality = models.ForeignKey(
+        Modality,
+        null=True,
+		blank=True,
+        default=1,
+        related_name='WorkModality',
+        on_delete=models.CASCADE
+    )
     c206_id_profile = models.ForeignKey(
         CandidateProfile,
         null=True,
-        blank=True,
+		blank=True,
         default=1,
         related_name='ProfileRequired',
         on_delete=models.CASCADE
     )
     c204_id_vacant_status = models.ForeignKey(
         VacantStatus,
-        null=False,
-		blank=False,
+        null=True,
+		blank=True,
         default=1,
 		related_name='ActualState',
         on_delete=models.CASCADE)
-    t200_publish_date = models.DateField()
-    t200_close_date = models.DateField()
-    t200_state = models.CharField(max_length=50,null=True,blank=True)
-    t200_municipality = models.CharField(max_length=100,null=True,blank=True)
-    t200_locality = models.CharField(max_length=100,null=False,blank=False,default='No definido')
+    t200_creation_date = models.DateTimeField(null=True,default=str(datetime.datetime.now()))
+    t200_publish_date = models.DateTimeField(blank=True,null=True)
+    t200_close_date = models.DateTimeField(blank=True,null=True)
+    c222_id_locality = models.ForeignKey(
+        Locality,
+        null=True,
+		blank=True,
+		related_name='Locality',
+        on_delete=models.CASCADE)
     t200_street = models.CharField(max_length=60,null=True,blank=True)
-    t200_cp = models.IntegerField(blank=True,null=True)
     t200_interior_number = models.CharField(max_length=20,blank=True,null=True)
     t200_exterior_number = models.CharField(max_length=20,blank=True,null=True)    
-    t200_vacancy = models.PositiveIntegerField(default=1)
+    t200_vacancy = models.PositiveIntegerField(default=1,blank=True,null=True)
     c208_id_contract = models.ForeignKey(
         Contract,
-        null=False,
-		blank=False,
+        blank=True,
+        null=True,
         default=1,
 		related_name='ContractType',
         on_delete=models.CASCADE)
@@ -186,9 +203,17 @@ class Vacant(models.Model):
         Recruiter,
         null=True,
         blank=True,
+        default=1,
         related_name='RecruiterVacant',
         on_delete=models.CASCADE
     )
+    t400_id_admin = models.ForeignKey(
+        Admin,
+        null=True,
+        blank=True,
+        related_name='ValidatedAdmin',
+        on_delete=models.CASCADE
+    ) 
 
     class Meta:
         verbose_name = 'Vacant'
@@ -198,79 +223,82 @@ class Vacant(models.Model):
     def __str__(self) ->str:
 	    return str(self.t200_id_vacant)
 
-#T214 Requerimiento
-class Requirement(models.Model):
-    t214_id_requirement = models.AutoField(primary_key=True)
+#T211 Habilidades requeridas
+class RequiredAbility(models.Model):
+    t211_id_requirement = models.AutoField(primary_key=True)
     t200_id_vacant = models.ForeignKey(
 		Vacant,
-		null=True,
-		blank=True,
-		related_name='VacantRequirement',
-		on_delete=models.CASCADE)
-    c116_id_skill = models.ForeignKey(
-		Skills,
 		null=False,
 		blank=False,
-		related_name='SkillRequired',
-		on_delete=models.CASCADE
-	)
+        default=1,
+		related_name='VacantAbility',
+		on_delete=models.CASCADE)
+    c116_description = models.CharField(max_length=150)
+    c113_id_required_level=models.ForeignKey(
+        RequiredLevel,
+        null=True,
+		blank=True,
+        default=1,
+        related_name='SkillRequiredLevel',
+        on_delete=models.CASCADE
+    )#models.CharField(max_length=50,blank=True,null=True)
+    t211_mandatory=models.BooleanField(default=False)
     class Meta:
-        verbose_name = 'Requirement'
-        verbose_name_plural = 'Requierements'
-        db_table = "t214_requerimiento"
+        verbose_name = 'RequieredAbility'
+        verbose_name_plural = 'RequieredAbilities'
+        db_table = "t211_habilidad"
 
     def __str__(self) ->str:
-	    return str(self.t214_id_requirement)
+	    return str(self.c116_description)
 
-
-#T215 Idioma 
-class LenguageRequired (models.Model):
-    t215_id_lenguage = models.AutoField(primary_key=True)
+#t212 Idioma requerido
+class RequiredLanguage(models.Model):
+    t212_id_language = models.AutoField(primary_key=True)
     t200_id_vacant = models.ForeignKey(
 		Vacant,
-		null=True,
-		blank=True,
-		related_name='VacantLenguange',
+		null=False,
+		blank=False,
+        default=1,
+		related_name='VacantLanguage',
 		on_delete=models.CASCADE)
     c111_id_language = models.ForeignKey(
-		Lenguage,#"Lenguage.c111_id_lenguage",
+		Language,
 		null=False,
 		blank=False,
-		related_name='LenguageRequired',
-		on_delete=models.CASCADE
-	)
-    t215_written_level = models.PositiveSmallIntegerField(null=True, blank=True)
-    t215_reading_level = models.PositiveSmallIntegerField(null=True, blank=True)
-    t215_speaking_level = models.PositiveSmallIntegerField(null=True, blank=True)
-    t215_comprension_level = models.PositiveSmallIntegerField(null=True, blank=True)
-
+		default=1,
+		related_name='VacantLanguageDescription',
+		on_delete=models.CASCADE)
+    t110_level_description = models.CharField(max_length=50,null=True,blank=True)
     class Meta:
-        verbose_name = 'LenguageRequired'
-        verbose_name_plural = 'LenguagesRequired'
-        db_table = "t215_idioma"
-
+        verbose_name = 'RequiredLanguage'
+        verbose_name = 'RequiredLanguages'
+        db_table = 't212_idioma'
     def __str__(self) ->str:
-	    return str(self.t215_id_lenguage)
+        return str(self.c111_id_language)
+
 
 #T201_applications
 class Application(models.Model):
     t201_id_application = models.AutoField(primary_key=True)
     t200_id_vacant = models.ForeignKey(
 		Vacant,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+        default=1,
 		related_name='VacantApplicated',
 		on_delete=models.CASCADE)
     t100_id_student = models.ForeignKey(        
 		Student,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+        default=1,
 		related_name='AppliedStudent',
 		on_delete=models.CASCADE)
     c205_id_application_state = models.ForeignKey(
 		ApplicationState,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+        default=1,
 		related_name='ApplicationStatus',
         on_delete=models.CASCADE)       
     t201_date_application = models.DateField()
@@ -288,14 +316,16 @@ class ApplicationStateHistory(models.Model):
     t216_id_state = models.AutoField(primary_key=True)
     t201_id_application= models.ForeignKey(
 		Application,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+        default=1,
 		related_name='ApplicationRegister',
         on_delete=models.CASCADE)
     c205_id_application_state = models.ForeignKey(
 		ApplicationState,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+        default=1,
 		related_name='ApplicationStatuses',
         on_delete=models.CASCADE)
     t216_modify_date = models.DateField()        
@@ -317,8 +347,9 @@ class Announcement(models.Model):
     t202_link = models.CharField(max_length=60,blank=True,null=True)#enlaces
     t300_id_company = models.ForeignKey(
         Company,
-        blank=True,
-        null=True,
+        blank=False,
+        null=False,
+        default=1,
         related_name='CompanyCommunicate',
         on_delete=models.CASCADE
     )
@@ -352,21 +383,24 @@ class Report(models.Model):
     t203_id_report = models.AutoField(primary_key=True)
     t200_id_vacant = models.ForeignKey(
 		Vacant,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+        default=1,
 		related_name='Report',
 		on_delete=models.CASCADE)
     t203_publish_type = models.CharField(max_length=15,blank=True,null=True)#Vacante/Comunicado
     t100_id_student = models.ForeignKey(        
 		Student,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+        default=1,
 		related_name='ReportStudent',
 		on_delete=models.CASCADE)    
     t300_id_company = models.ForeignKey(
         Company,
-        blank=True,
-        null=True,
+        blank=False,
+        null=False,
+        default=1,
         related_name='CompanyReport',
         on_delete=models.CASCADE
     )
@@ -383,7 +417,7 @@ class Report(models.Model):
         null=False,
 		blank=False,
         default=1,
-		related_name='StudentLenguages',        
+		related_name='StudentLanguages',        
         on_delete=models.CASCADE
     )
     t203_report_date = models.DateField(null=True)
@@ -404,4 +438,41 @@ class Report(models.Model):
 
     def __str__(self) -> str:
         return self.t203_id_report    
+
+
+#T223 Observaciones/Comentarios
+class Comment(models.Model):
+    t223_id_comment = models.AutoField(primary_key=True)
+    t200_id_vacant = models.ForeignKey(
+		Vacant,
+		null=False,
+		blank=False,
+        default=1,
+		related_name='Vacantrelative',
+		on_delete=models.CASCADE)
+    t400_id_admin = models.ForeignKey(
+        Admin,
+        null=True,
+        blank=True,
+        related_name='WatcherAdmin',
+        on_delete=models.CASCADE
+    ) 
+    t301_id_recruiter = models.ForeignKey(
+        Recruiter,
+        null=True,
+        blank=True,
+        related_name='RecruiterComment',
+        on_delete=models.CASCADE
+    )
+    t223_comment = models.CharField(null=False,blank=False,max_length=250)
+    t223_sent_date = models.DateField(null=True)
+    
+
+    class Meta:
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comments'
+        db_table = 't223_comentario'
+
+    def __str__(self) -> str:
+        return self.t223_id_comment    
 

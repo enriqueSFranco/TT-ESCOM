@@ -1,0 +1,9 @@
+.active {
+  position: absolute;
+  width: fit-content;
+  height: 5px;
+  background-color: #fff;
+  border-radius: 1rem;
+  transition: .3s ease-in-out;
+  color: #fff;
+}

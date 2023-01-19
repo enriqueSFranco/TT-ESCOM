@@ -1,18 +1,9 @@
-import axios from "axios";
-import {   
-  API_CATALOGUE_CANDIDATE_PROFILE, 
-  API_CATALOGUE_EXPERIENCE,
-  API_STUDENT_LENGUAGES,
-  API_CATALOGUE_STATES,
-  API_ACADEMIC_UNITS,
-  API_INTEREST_JOBS,
-  API_CONTRACT,
-  API_SKILLS,
-  API_CP
-} from "services/settings";
+import API from 'services/http.service'
+
+const { REACT_APP_CATALOG_LANGUAGE, REACT_APP_URL_CANDIDATE_LANGUAGE, REACT_APP_URL_CATALOG_PROFILE_CANDIDATE, REACT_APP_URL_CATALOG_EXP, REACT_APP_URL_CATALOG_CONTRACTS, REACT_APP_CATALOG_LOCALITIES, REACT_APP_URL_CATALOG_ACADEMIC_UNITS, REACT_APP_URL_CATALOGUE_JOBS, REACT_APP_URL_CATALOGUE_ACADEMIC_STATE, REACT_APP_URL_CATALOGUE_ACADEMIC_LEVEL } = process.env;
 
 export const getSkill = async (id) => {
-  return axios.get(`${API_SKILLS}${id}/`)
+  return API(`${process.env.REACT_APP_URL_CANDIDATE_SKILLS}${id}/`)
     .then(response => {
       const { data } = response;
       return data;
@@ -24,8 +15,30 @@ export const getSkill = async (id) => {
     })
 };
 
-export const getLenguages = async (id) => {
-  return axios.get(`${API_STUDENT_LENGUAGES}${id}/`)
+export const getAllLanguage = () => {
+  return API(`${REACT_APP_CATALOG_LANGUAGE}`)
+    .then(response => {
+      const { data } = response
+      return data;
+    })
+    .catch(error => error)
+}
+
+export const getAllSocialNetworks = () => {
+  return API(`${process.env.REACT_APP_URL_CATALOG_PLATAFORM}`)
+    .then(response => {
+      const { data } = response;
+      return data;
+    })
+    .catch(error => {
+      if (error.response) {
+        return error.response.data;
+      }
+    })
+}
+
+export const getLanguages = async (id) => {
+  return API(`${REACT_APP_URL_CANDIDATE_LANGUAGE}${id}/`)
     .then(response => {
       const { data } = response;
       return data;
@@ -38,7 +51,7 @@ export const getLenguages = async (id) => {
 };
 
 export const getAllCatalogueExperience = () => {
-  return axios.get(`${API_CATALOGUE_EXPERIENCE}`)
+  return API(`${REACT_APP_URL_CATALOG_EXP}`)
     .then(response => {
       const { data } = response;
       return data;
@@ -47,7 +60,7 @@ export const getAllCatalogueExperience = () => {
 };
 
 export const getAllCandidateProfile = () => {
-  return axios.get(API_CATALOGUE_CANDIDATE_PROFILE)
+  return API(REACT_APP_URL_CATALOG_PROFILE_CANDIDATE)
     .then(response => {
       const { data } = response;
       return data;
@@ -55,22 +68,22 @@ export const getAllCandidateProfile = () => {
     .catch(error => error);
 };
 
-// export const getAllMunicipality = () => {
-  
-// };
-
-export const getAllStates = async () => {
-  try {
-    const { data } = await axios.get(API_CATALOGUE_STATES);
-    return data;
-  } catch (error) {
-    if (error.response)
-      return error.response.message;
-  }
-}
+// export const getAllStates = async () => {
+//   try {
+//     const { data } = await API(API_CATALOGUE_STATES);
+//     return data;
+//   } catch (error) {
+//     if (error.response)
+//       return error.response.message;
+//   }
+// }
 
 export const getLocality = cp => {
-  return axios.get(`${API_CP}${cp}/`)
+  let regex = /^[0-9]+$/
+  
+  if(!regex.test(cp)) return
+  
+  return API(`${REACT_APP_CATALOG_LOCALITIES}${cp}/`)
     .then(response => {
       const { data } = response;
       return data;
@@ -84,7 +97,7 @@ export const getLocality = cp => {
 
 export const getAllAcademicUnits = async () => {
   try {
-    const { data } = await axios.get(API_ACADEMIC_UNITS);
+    const { data } = await API(REACT_APP_URL_CATALOG_ACADEMIC_UNITS);
     return data;
   } catch (error) {
     if (error.response)
@@ -92,9 +105,9 @@ export const getAllAcademicUnits = async () => {
   }
 }
 
-export const getAllJobs = async () => {
+export const getIntrestJobs = async () => {
   try {
-    const { data } = await axios.get(API_INTEREST_JOBS);
+    const { data } = await API(REACT_APP_URL_CATALOGUE_JOBS);
     return data;
   } catch (error) {
     if (error.response)
@@ -104,7 +117,28 @@ export const getAllJobs = async () => {
 
 export const getAllContracTypes = async () => {
   try {
-    const { data } = await axios.get(API_CONTRACT);
+    const { data } = await API(REACT_APP_URL_CATALOG_CONTRACTS);
+    return data;
+  } catch (error) {
+    if (error.response)
+      return error.response.message;
+  }
+}
+
+export const getAllAcademicStates = async () => {
+  try {
+    const { data } = await API(REACT_APP_URL_CATALOGUE_ACADEMIC_STATE);
+    return data;
+  } catch (error) {
+    if (error.response)
+      return error.response.message;
+  }
+}
+
+
+export const getAllAcademicLevels = async () => {
+  try {
+    const { data } = await API(REACT_APP_URL_CATALOGUE_ACADEMIC_LEVEL);
     return data;
   } catch (error) {
     if (error.response)

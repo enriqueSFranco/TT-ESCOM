@@ -1,4 +1,4 @@
-from lib2to3.pgen2 import token
+import email
 from django.shortcuts import get_object_or_404
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
@@ -12,7 +12,7 @@ from apps.users.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
 from apps.users.views import MyTokenObtainPairSerializer
 from apps.users.api.serializers import UserSerializer,UpdateUserSerializer
-from apps.students.api.serializer.student_serializer import StudentSerializer, StudentListSerializer, PasswordSerializer, UpdateStudentSerializer
+from apps.students.api.serializer.student_serializer import StudentSerializer, StudentListSerializer, UpdateStudentSerializer
 
 class StudentViewSet(viewsets.GenericViewSet):
 	model = Student
@@ -21,6 +21,14 @@ class StudentViewSet(viewsets.GenericViewSet):
 	serializer_class = StudentSerializer
 	list_serializer_class = StudentListSerializer
 	queryset = None
+	create_user = {"password": "",
+   							"is_superuser": False,
+   							"username": "","first_name": "","last_name": "",
+   							"email": "",
+   							"is_staff": False,
+   							"user_type": "STUDENT",
+   							"is_active": True
+				}
 
 	def get_tokens_for_user(self,user):
 		refresh = RefreshToken.for_user(user)
@@ -32,104 +40,72 @@ class StudentViewSet(viewsets.GenericViewSet):
 	def get_object(self, pk):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
-				.filter(t100_id_student=pk)\
-				.values('t100_id_student','t100_boleta','t100_name','t100_last_name','t100_username','t100_email','t100_gender',
-    					't100_date_of_birth','t100_personal_objectives','t100_speciality','t100_phonenumber','t100_residence',
-						't100_modalities','t100_target_salary','t100_travel','t100_interest_job','is_active')
+				.filter(id_user=pk)\
+				.all()
 		return self.queryset
 	def get_queryset(self):
 		if self.queryset is None:
 			self.queryset = self.model.objects\
 				.filter()\
-				.values('t100_id_student','t100_boleta','t100_name','t100_last_name','t100_username','t100_email','t100_gender',
-    					't100_date_of_birth','t100_personal_objectives','t100_speciality','t100_phonenumber','t100_residence',
-						't100_modalities','t100_target_salary','t100_travel','t100_interest_job','is_active')
+				.all()								
 		return self.queryset
-
-  # TODO terminar ruta para cambiar el password
-	@action(detail=True, methods=['post'],url_path='cambio_pass')
-	def set_password(self, request, pk=None):
-		student = self.get_object(pk)
-		password_serializer = PasswordSerializer(data=request.data)
-		if password_serializer.is_valid():
-			student.set_password(
-				password_serializer.validated_data['password'])
-			student.save()
-			return Response({
-				'message': 'Contraseña actualizada correctamente'
-			})
-		return Response({
-			'message': 'Hay errores en la información enviada',
-			'errors': password_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
-
+		
 	def list(self, request):
 		print(request.data)
 		students = self.get_queryset()
 		students_serializer = self.list_serializer_class(students, many=True)
 		return Response(students_serializer.data, status=status.HTTP_200_OK)
 
+	def set_user(self,data):
+		user=self.create_user
+		user['password']=data['password']
+		user['username']=data['t100_email']
+		user['email']=data['t100_email']
+		return user
+		
+	def set_alumno(self,data,user):
+		alumno = {
+			"id_user" : user,
+			"t100_email" : data['t100_email']
+		}
+		return alumno
+
 	def create(self, request):
-		user_data={
-   				"password": request.data['password'],
-   				"is_superuser": False,
-   				"username": request.data['t100_email'],
-   				"first_name": "",
-   				"last_name": "",
-   				"email": request.data['t100_email'],
-   				"is_staff": False,
-   				"user_type": "STUDENT",
-   				"is_active": True,
-				"user_id":0
-		}
-		credentials={
-			"username" : request.data['t100_email'],
-			"password" : request.data['password']
-		}
-		student_serializer = self.serializer_class(data=request.data)
-		#print('request: ',request.data)
-		if student_serializer.is_valid():#Validar datos
-			student_serializer.save()#Crear estudiantes
-			print(user_data)
-			id_student = self.model.objects.filter(t100_email=request.data['t100_email']).values('t100_id_student','t100_email')
-			print("ID DEL NUEVO ESTUDIANTE", id_student[0]['t100_id_student'])
-			user_data['user_id']=id_student[0]['t100_id_student']
-			print(user_data)
-			#student_serializer = self.serializer_class(id_student,many=True)
-			student_user= self.user_serializer(data = user_data)
-			if student_user.is_valid():#Validar datos de usuario
-				user = student_user.save()#Guardar usuario				
-				if user:
-					print("Usuario creado")
-					credentials_serializer = ObtainAuthToken.serializer_class(data = credentials, context = {'request':request})
-					if credentials_serializer.is_valid():
-						print("Credenciales correctas")
-						user= credentials_serializer.validated_data['user']
-						tokens = self.get_tokens_for_user(user)
-						print(tokens)
-						#token,created = Token.objects.get_or_create(user = user)     
-						user_serializer = UserSerializer(user)    
-						if tokens:
-							print("Token creado")
-							return Response({'access':tokens['access'],
-							 'refresh':tokens['refresh'],
-                             'user':user_serializer.data,
-                             'message':'Cuenta registrada con éxito'},
-                  			 status.HTTP_201_CREATED)						
-						else:
-							return Response({'error':'No se pudo crear el token'},status = status.HTTP_400_BAD_REQUEST)
-					else:
-						student_destroy = self.model.objects.filter(t100_email=request.data['t100_email']).delete()
-						return Response({
-							'message': 'Hay errores en el registro',
-							'errors': credentials_serializer.errors
+		user_data = self.set_user(request.data)		
+		#Crear usuario
+		student_user= self.user_serializer(data = user_data)
+		if student_user.is_valid():#Validar datos de usuario
+			user = student_user.save()
+			if user:
+				print("Usuario Creado")#-------------------------------------------------------
+				user_register = self.user_model.objects.filter(email=request.data['t100_email']).values('id','email')
+				print(user_register[0]['id'])#-------------------------------------
+				alumno = self.set_alumno(request.data,user_register[0]['id'])
+				print(alumno)#--------------------------
+				student_serializer = self.serializer_class(data=alumno)
+				if student_serializer.is_valid():
+					student_serializer.save()
+					return Response({
+						'message':'Cuenta registrada con éxito'},
+						status.HTTP_201_CREATED)		
+				else:
+					user_delete = self.user_model.objects.filter(email=request.data['t100_email']).delete()
+					return Response({
+						'message': 'Hay errores en el registro',
+						'errors': student_user.errors
 						}, status=status.HTTP_400_BAD_REQUEST)
-		else:	
-			student_destroy = self.model.objects.filter(t100_email=request.data['t100_email']).delete()
+			else:
+				return Response({
+					'message': 'Hay errores en el registro',
+					'errors': student_user.errors
+					}, status=status.HTTP_400_BAD_REQUEST)
+		else:
 			return Response({
 				'message': 'Hay errores en el registro',
-				'errors': student_serializer.errors
-			}, status=status.HTTP_400_BAD_REQUEST)
+				'errors': student_user.errors
+				}, status=status.HTTP_400_BAD_REQUEST)
+
+
 
 	def retrieve(self, request, pk):
 		student = self.get_object(pk)
@@ -137,9 +113,13 @@ class StudentViewSet(viewsets.GenericViewSet):
 		return Response(student_serializer.data)
 
 	def update(self, request, pk):
+		print(request.data)
+		student = self.model.objects.filter(t100_id_student=pk).values('t100_email').first()
 		user_update ={
 			"first_name":request.data['t100_name'],
-			"last_name":request.data['t100_last_name']
+			"last_name":request.data['t100_last_name']+request.data['t100_second_surname'],
+			"username": student['t100_email'],
+			"email": student['t100_email']
 		}
 		print(request.data)
 		student = self.model.objects.filter(t100_id_student=pk).first()
@@ -147,8 +127,7 @@ class StudentViewSet(viewsets.GenericViewSet):
 		print(student)
 		if student_serializer.is_valid():
 			student_serializer.save()
-			student_user = self.user_model.objects.filter(username = student).first()
-			print(student_user)
+			student_user = self.user_model.objects.filter(username = student).first()						
 			print(user_update)
 			student_user_serializer = UpdateUserSerializer(student_user,data = user_update)
 			if student_user_serializer.is_valid():
@@ -156,8 +135,13 @@ class StudentViewSet(viewsets.GenericViewSet):
 				return Response({
 					'message': 'Alumno actualizado correctamente'
 				}, status=status.HTTP_200_OK)
+			else:
+				return Response({
+					'message': 'Hay errores en la actualización del usuario del alumno',
+					'errors': student_user_serializer.errors
+		}, status=status.HTTP_400_BAD_REQUEST)
 		return Response({
-			'message': 'Hay errores en la actualización',
+			'message': 'Hay errores en la actualización del alumno',
 			'errors': student_serializer.errors
 		}, status=status.HTTP_400_BAD_REQUEST)
 

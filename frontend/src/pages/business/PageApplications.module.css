@@ -1,8 +1,36 @@
 .wrapper {
-  background-color: #fff;
+  background-color: #ffffff;
   position: absolute;
   top: 4rem;
   width: 100%;
   padding: 1rem;
   height: calc(100% - 4rem);
+}
+
+.TitleAllTalents {
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.5em;
+  font-family: sans-serif;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+  background: linear-gradient(27deg, #3f5efb, #fc466b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.allTalents {
+  background-color: #F4F6F8;
+  color: #B2B5BE;
+  padding: .3rem 1rem;
+  border-radius: .8rem;
+}
+
+.gridFluid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }

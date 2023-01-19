@@ -1,86 +1,71 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import { uuid } from "utils/uuid";
+import React from "react";
+import { useGetValidateAllRecruiters, useModal } from "hooks";
+import { validateRecruiter, rejectRecruiter } from "utils";
+import LayoutHome from "Layout/LayoutHome";
+import ModalPortal from "components/Modal/ModalPortal";
+import FormValidateCompany from "components/Form/FormValidate";
+import CardRecruiter from "components/Card/CardRecruiter";
+import noRecruiters from 'assets/images/job-recruitment-website-5241930-4390947.png'
+import { WrapperValidateCompany, TextH2, ContainerList } from "../styled-components/ValidateRecruiterStyled";
 
-const wrapper = {
-  position: "relative",
-  top: "4rem",
-};
+const styles = {
+  noRecruiters: {
+    margin: '0 auto',
+    filter: 'drop-shadow(0 0 0.75rem #4E649E)'
+  },
+  text: {
+    textAlign: 'center',
+    color: '#4E649E',
+    fontWeight: '700',
+  }
+}
 
 const PageValidateRecruiter = () => {
-  const [listRecruiter, setListRecruiter] = useState([]);
+  const listRecruiter = useGetValidateAllRecruiters();
+  const [isOpenAccept, openModalAccept, closeModalAccept] = useModal(false);
+  const [isOpenReject, openModalReject, closeModalReject] = useModal(false);
 
-  // obtenemos la lista de reclutadores
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await axios.get("/api/ValidateRecruiter/", {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-      setListRecruiter(data);
-    };
-
-    fetchData();
-  }, []);
-
-  // enviamos la validacion para dar de alta a un reclutador
-  const validateRecruiter = async (idRecruiter) => {
-    const payload = {
-      is_active: "true",
-    };
-    console.log(idRecruiter)
-    const { data } = await axios.put(`/api/ValidateRecruiter/${idRecruiter}/`, payload, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      }
-    })
-    console.log(listRecruiter);
-  }
-
-  if (listRecruiter.length === 0) return null;
+  if (!listRecruiter) return null;
 
   return (
-    <section style={wrapper}>
-      <h2>VALIDAR RECLUTADORES</h2>
-      <TableContainer>
-        <Table sx={{ maxWidth: 600 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>id</TableCell>
-              <TableCell>Nombre</TableCell>
-              <TableCell>Empresa</TableCell>
-              <TableCell>Opciones</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {listRecruiter?.map((recruiter) => (
-              <TableRow key={uuid()}>
-                <TableCell component="th" scope="row">
-                  {recruiter?.t301_id_recruiter}
-                </TableCell>
-                <TableCell>
-                  {recruiter?.t301_name} {recruiter?.t301_last_name}
-                </TableCell>
-                <TableCell>{recruiter?.t300_id_company?.t300_name}</TableCell>
-                <TableCell>
-                  <button onClick={() => validateRecruiter(recruiter?.t301_id_recruiter)}>Crear credenciales</button>
-                  {/* <button>Eliminar</button> */}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </section>
+    <LayoutHome>
+      <WrapperValidateCompany>
+        <TextH2>Aprobar Reclutador</TextH2>
+        <ContainerList>
+          {listRecruiter.length > 0 ? (
+            listRecruiter?.map((recruiter) => (
+              <CardRecruiter
+                key={`list-item-recruiter-${recruiter?.t301_id_recruiter}`}
+                recruiterName={`${recruiter?.t301_name} ${recruiter?.t301_last_name} ${recruiter?.t301_second_surname}`}
+                companyName={recruiter?.t300_id_company?.t300_name}
+                recruiterEmail={recruiter?.t301_email}
+                recruiterPhone={recruiter?.t301_phonenumber}
+                openModalAccept={openModalAccept}
+                openModalReject={openModalReject}
+              />
+            ))
+          ) : (
+            <article style={styles.noRecruiters}>
+              <img src={noRecruiters} alt="sin-reclutadores-por-validar" />
+              <h2 style={styles.text}>No hay reclutdores por validar</h2>
+            </article>
+          )}
+        </ContainerList>
+      </WrapperValidateCompany>
+      <ModalPortal isOpen={isOpenAccept} closeModal={closeModalAccept}>
+        <FormValidateCompany
+          typeAction={1}
+          resolve={() => validateRecruiter(listRecruiter[0]?.t301_id_recruiter)}
+        />
+      </ModalPortal>
+
+      <ModalPortal isOpen={isOpenReject} closeModal={closeModalReject}>
+        <FormValidateCompany
+          typeAction={0}
+          reject={() => rejectRecruiter(listRecruiter[0]?.t301_id_recruiter)}
+        />
+      </ModalPortal>
+    </LayoutHome>
   );
 };
 

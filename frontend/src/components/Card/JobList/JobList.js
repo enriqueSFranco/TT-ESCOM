@@ -1,57 +1,91 @@
-import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
-import Skeleton from "../../Skeleton/Skeleton";
+import { memo, useState } from "react";
+// import "moment/locale/es-mx";
+import CustomSkeleton from "components/Skeleton/Skeleton";
 import CardJob from "../CardJob/CardJob";
-import { GrFormPreviousLink, GrFormNextLink } from "react-icons/gr";
-import burrito from "images/emoji_angustiado.jpg"
 import styles from "./JobList.module.css";
 
-const JobList = ({jobs, loading, setPage, maxLenPage}) => {
+const ListEmptyJobs = () => {
+  return (
+    <article className={`${styles.notJobs}`}>
+      <h2>¡Upps, no tenemos vacantes registradas!</h2>
+    </article>
+  );
+};
 
-  const prevPage = () => {
-    setPage((currentPage) => Math.max(currentPage - 1, 1));
+const JobList = ({
+  jobs,
+  loading,
+  recommendedJobs,
+  isVacantRecommended,
+  setVacantId,
+  setMatch,
+}) => {
+  const [cards, setCards] = useState({
+    activeCard: jobs[0]?.t200_id_vacant,
+    listCard: jobs,
+  });
+
+  if (jobs?.length < 0) return <ListEmptyJobs />;
+
+  const handleClick = (e, vacantId, index) => {
+    e.preventDefault();
+    setVacantId(vacantId);
+    setMatch(recommendedJobs[index]?.t500_percentage);
+    isVacantRecommended
+      ? setCards({
+          ...cards,
+          activeCard: cards.listCard[index]?.t200_id_vacant,
+        })
+      : setCards({
+          ...cards,
+          activeCard: cards.listCard[index]?.t200_id_vacant,
+        });
   };
 
-  const nextPage = () => {
-    setPage((currentPage) => Math.min(currentPage + 1, maxLenPage));
-  };
-  
+  if (!jobs) return null;
+
+  if (isVacantRecommended) {
+    return (
+      <>
+        <h2 className={styles.title}>Vacantes Recomendadas</h2>
+        {recommendedJobs.map((el, index) => (
+          <CardJob
+            key={`card-job-id_${crypto.randomUUID()}`}
+            job={el}
+            isVacantRecommended={isVacantRecommended}
+            time={new Date(el?.t200_id_vacant?.t200_creation_date).getTime()}
+            vacantId={el?.t200_id_vacant}
+            cards={cards}
+            onClick={(e) => handleClick(e, el?.t200_id_vacant, index)}
+          />
+        ))}
+      </>
+    );
+  }
 
   return (
     <>
-    {jobs?.length > 0 ? (
-      <>
-        <article className={`${styles.wrapper} ${styles.grid}`}>
-          <div style={{ width: "550px" }}>
-            {loading ? (
-              <Skeleton type="feed" />
-            ) : jobs?.map((job) => (
-              <Link
-                to={`vacante/${job?.t200_id_vacant}`}
-                key={job?.t200_id_vacant}
-              >
-                <CardJob job={job} />
-              </Link>
-            )
-            )}
-          </div>
-          <Outlet />
-        </article>
-        <div className={styles.pagination}>
-          <button onClick={prevPage}><GrFormPreviousLink className={styles.icon} />Anterior</button>
-          <button onClick={nextPage}>Siguiente <GrFormNextLink className={styles.icon} /></button>
-        </div>
-      </>
-    ) : (
-      <article className={`container ${styles.notJobs}`}>
-        <div className={styles.bodyNotJobs}>
-          <h2>¡Upps, no tenemos vacantes registradas!</h2>
-          <img src={burrito} alt="burrito_ipn" />
-        </div>
-      </article>
-    )}
+      {loading ? (
+        <CustomSkeleton type="feed" />
+      ) : (
+        <>
+          {jobs
+            // .filter((el) => el?.c204_id_vacant_status.c204_id_status === 2)
+            .map((el, index) => (
+              <CardJob
+                key={`card-job-id_${crypto.randomUUID()}`}
+                job={el}
+                isVacantRecommended={isVacantRecommended}
+                time={new Date(el?.t200_creation_date).getTime()}
+                vacantId={el?.t200_id_vacant}
+                cards={cards}
+                onClick={(e) => handleClick(e, el?.t200_id_vacant, index)}
+              />
+            ))}
+        </>
+      )}
     </>
   );
 };
 
-export default JobList;
+export default memo(JobList);

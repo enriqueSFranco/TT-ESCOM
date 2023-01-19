@@ -7,13 +7,14 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import styles from "./StylesStepper.module.css";
 
 const DatesJob = ({ form, handleChange, interestJobs, setInterestJobs }) => {
-  console.log(form);
+
   return (
     <div className={styles.containerPage}>
-      <form>
-      <h5>¿Como son tus metas Profesionales?</h5>
+      <h5 className={styles.formTitlePersonal}>Meta Profesional</h5>
+      <form className={styles.form}>
         <div className={styles.inputGroup}>
-          <Autocomplete            
+          <Autocomplete   
+                    
             id="t100_interest_job"
             name="t100_interest_job"
             value={form.t100_interest_job}
@@ -29,18 +30,30 @@ const DatesJob = ({ form, handleChange, interestJobs, setInterestJobs }) => {
 
         <div className={styles.inputGroup}>
           <TextField
+            
             label="¿Cuanto te gustaria ganar?"
             name="t100_target_salary"
             id="t100_target_salary"
             inputProps={{ min: 7000, max: 99999, type: "number" }}
             value={form.t100_target_salary}
             onChange={handleChange}
-            sx={{ width: 400, maxWidth: "100%" }}
+            sx={{ width: "100%"}}
           />
         </div>
-
-        <div className={styles.inputGroupCheckbox}>
-          <div className={styles.text}>Preferirias un trabajo ??</div>
+        <div style={{display: 'flex', alignItems: 'center', gap: '.3rem'}}>
+          {/* <MdLocationPin
+            style={{
+              fontWeight: "bold",
+              fontSize: "1rem",
+            }}
+          /> */}
+          <span
+            style={{ fontWeight: "400", fontSize: "1em", color: "#2F4665" }}
+          >
+            Modalidad de empleo
+          </span>
+        </div>
+        <div className={styles.inputGroup}>
           <RadioGroup
             row
             id="t100_modalities"
@@ -49,7 +62,7 @@ const DatesJob = ({ form, handleChange, interestJobs, setInterestJobs }) => {
             onChange={handleChange}
           >
             <FormControlLabel
-              value="Hibrodo"
+              value="Hibrido"
               control={<Radio />}
               label="Hibrido"
             />

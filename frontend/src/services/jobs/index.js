@@ -1,46 +1,102 @@
-import axios from "axios";
-import { API_JOBS, API_VACANTS_APPLICATIONS_JOB_STUDENT } from "../settings";
+import API from "services/http.service";
 
-export const getAllJobs = async(page) => {
+const {
+  REACT_APP_URL_VACANTS,
+  REACT_APP_URL_VACANT_SEARCH,
+  REACT_APP_URL_VACANT_REQUIREMENTS,
+  REACT_APP_URL_VACANT_VACANT_INFO,
+  REACT_APP_URL_VACANT_APPLICATIONS,
+  REACT_APP_URL_FILTER_VACANTS
+} = process.env;
+
+export const getAllJobs = async (numberPage = 1) => {
+  const controller = new AbortController()
+  const signal = controller.signal
   try {
-    const response = await axios.get(`/api/Vacants/?page=${page}`);
-    return response;
+    const {data} = await API.get(`${REACT_APP_URL_VACANTS}?page=${numberPage}`, {signal});
+    return data;
   } catch (error) {
-    if (error.response) {
+    if (error.response)
       return error.response;
-    }
   }
 };
 
-export const getJob = (id) => {
-  return axios.get(`${API_JOBS}${id}/`)
-    .then(response => {
-      const { data } = response;
+export const searchCharacter = (nameJob) => {
+  return API(`${REACT_APP_URL_VACANT_SEARCH}${nameJob}`)
+    .then((res) => {
+      const { data } = res;
       return data;
     })
-    .catch(error => console.log(error));
+    .catch((error) => error);
 };
 
+export const getJobRequirements = (id) => {
+  return API(`${REACT_APP_URL_VACANT_REQUIREMENTS}${id}/`)
+    .then((response) => response)
+    .catch((error) => error);
+};
 
-export const getApplicationsJobs = (id) => {
-  return axios.get(`${API_VACANTS_APPLICATIONS_JOB_STUDENT}${id}/`)
-    .then(response => {
+export const getJob = (id) => {
+  return API(`${REACT_APP_URL_VACANTS}${id}/`)
+    .then((response) => {
       const { data } = response;
       return data;
     })
-    .catch(error => error);
-}
+    .catch((error) => console.log(error));
+};
+
+export const getVacantInfo = (id) => {
+  return API(`${REACT_APP_URL_VACANT_VACANT_INFO}${id}/`)
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => console.log(error));
+};
+
+export const getApplicationsJobs = (idVacant) => {
+  return API(`${REACT_APP_URL_VACANT_APPLICATIONS}${idVacant}/`)
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => error);
+};
 
 export const postJob = (body) => {
-  return axios.post(API_JOBS, body, {
-    headers: {
-      'Content-Type': 'application/json',
-      accept: 'application/json',
-    }
-  })
-  .then(response => {
-    const { data } = response;
-    return data;
-  })
-  .catch(error => error);
-}
+  return API.post(REACT_APP_URL_VACANTS, body)
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => error);
+};
+
+export const updateVacant = (id, payload = {}) => {
+  return API.put(`${REACT_APP_URL_VACANTS}${id}/`, payload)
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => error);
+};
+
+export const getObjectUpdateVacant = (id) => {
+  return API.patch(`${REACT_APP_URL_VACANTS}${id}/`)
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => error);
+};
+
+export const searchJob = async (payload = {}) => {
+  return API.post(`${REACT_APP_URL_FILTER_VACANTS}`, payload)
+    .then((response) => {
+      const { data } = response;
+      return data;
+    })
+    .catch((error) => {
+      return error
+    });
+};

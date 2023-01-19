@@ -31,13 +31,27 @@ class HistorialViewSet(viewsets.GenericViewSet):
   
 
 	def list(self, request):
-		print(request.data)		
+		"""
+		Muestra el historial academico de todos los candidatos registrados
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#----------------------------------------------	
 		historial = self.get_queryset()
 		historials_serializer = self.list_serializer_class(historial, many=True)
 		return Response(historials_serializer.data, status=status.HTTP_200_OK)
 
 	def create(self, request):
-		print(request.data)		
+		"""
+		Agrega un registro de historial academico a un candidato
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#-----------------------------------------	
 		historial_serializer = self.serializer_class(data=request.data)
 		print('request: ',request.data)
 		if historial_serializer.is_valid():
@@ -51,13 +65,27 @@ class HistorialViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def retrieve(self, request, pk):
-		print(request.data)		
+		"""
+		Muestra el historial academico de un candidato
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#--------------------------------------	
 		historial = self.get_object(pk)
 		historial_serializer = self.list_serializer_class(historial,many=True)
 		return Response(historial_serializer.data)
 
 	def update(self, request, pk):
-		print(request.data)		
+		"""
+		Actualiza un registro del historial academico de un candidato
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#-----------------------------------------	
 		historial = self.model.objects.filter(t104_id_registrer = pk).first()
 		historial_serializer = UpdateAcademicHistorySerializer(historial, data=request.data)
 		if historial_serializer.is_valid():
@@ -71,7 +99,14 @@ class HistorialViewSet(viewsets.GenericViewSet):
 		}, status=status.HTTP_400_BAD_REQUEST)
 
 	def destroy(self, request, pk):
-		print(request.data)		
+		"""
+		Elimina un registro del historial academico de un candidato
+
+
+
+		Dummy text
+		""" 
+		print(request.data)#----------------------------------------------	
 		historial_destroy = self.model.objects.filter(t104_id_registrer=pk).first()
 		print(historial_destroy)
 		if historial_destroy:

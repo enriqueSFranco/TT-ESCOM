@@ -1,5 +1,9 @@
 from django.contrib.auth.models import  AbstractBaseUser,PermissionsMixin
 from apps.users.models import User
+from drf_extra_fields.fields import Base64FileField
+import PyPDF2
+import io
+#from apps.vacantes import models
 
 #from turtle import ondrag
 from django.db import models
@@ -14,7 +18,18 @@ def upload_platoform_icon(instance, filename):
     return f"icons/{instance.t100_id_student}-{filename}"
 
 def upload_cv(instance, filename):
-    return f"{instance.t100_boleta}-{filename}"	
+    return f"files/candidates/{instance.t100_boleta}-{filename}"	
+
+class PDFBase64File(Base64FileField):
+    ALLOWED_TYPES = ['pdf']
+
+    def get_file_extension(self, filename, decoded_file):
+        try:
+            PyPDF2.PdfFileReader(io.BytesIO(decoded_file))
+        except PyPDF2.utils.PdfReadError as e:
+            logger.warning(e)
+        else:
+            return 'pdf'
 
 """----------------------------------------------------------- Catalogos --------------------------------------------------------"""
 
@@ -98,20 +113,20 @@ class Skills(models.Model):
 			
 
 #C111 Idiomas
-class Lenguage(models.Model):
-	c111_id_lenguage = models.AutoField(primary_key=True)
+class Language(models.Model):
+	c111_id_language = models.AutoField(primary_key=True)
 	c111_description = models.CharField(max_length=60,blank=True,null=True)	
-
+	c111_type = models.CharField(max_length=20,blank=True,null=True)
 	class Meta:
-		verbose_name = 'Lenguange'
-		verbose_name_plural = 'Lenguages'
+		verbose_name = 'Languange'
+		verbose_name_plural = 'Languages'
 		db_table = 'c111_idiomas'
 	
 	def __str__(self) -> str:
 		return self.c111_description
 
 
-#C118 Idiomas
+#C118 Tipo de proyecto
 class ProjectType(models.Model):
 	c118_id_type = models.AutoField(primary_key=True)
 	c118_description = models.CharField(max_length=60,blank=True,null=True)	
@@ -128,12 +143,13 @@ class ProjectType(models.Model):
 
 """------------------------------------------------ Tablas de información -------------------------------------------------------"""
 #T100 Alumno
-class Student(AbstractBaseUser):	
-	#user = models.OneToOneField(User,on_delete=models.CASCADE)
+class Student(models.Model):	
+	id_user = models.OneToOneField(User,on_delete=models.CASCADE,null=False,blank=False)
 	t100_id_student = models.AutoField(primary_key=True)
 	t100_boleta = models.CharField(max_length=14, null=True, blank=True)
 	t100_name = models.CharField(max_length=50, null=True, blank=True)
 	t100_last_name = models.CharField(max_length=50, null=True, blank=True)
+	t100_second_surname = models.CharField(max_length=50, null=True, blank=True)
 	t100_username = models.CharField(max_length=40, null=True, blank=True)
 	t100_cv = models.FileField(null=True, blank=True,default="",upload_to=upload_cv)
 	t100_email = models.EmailField(unique=True,max_length=50, null=False, blank=False)
@@ -147,15 +163,27 @@ class Student(AbstractBaseUser):
 	t100_speciality = models.CharField(max_length=100,null=True,blank=True)
 	t100_phonenumber = models.PositiveBigIntegerField (null=True,blank=True)
 	t100_residence = models.CharField(max_length=100,null=True,blank=True)
+	c222_id_locality = models.ForeignKey(
+        'vacantes.Locality',
+        null=True,
+		blank=True,
+		related_name='StudentLocality',
+        on_delete=models.CASCADE)
 	t100_modalities = models.CharField(max_length=20,null=True,blank=True)
 	t100_target_salary = models.PositiveIntegerField(null=True, blank=True)	
 	t100_travel = models.BooleanField(default=False)
 	t100_interest_job = models.CharField(max_length=70,null=True,blank=True)
 	t100_profile_picture = models.ImageField(blank=True,null=True,default="",upload_to=upload_image_profile)
+	c207_id_experience = models.ForeignKey(
+        'vacantes.Experience',
+        null=False,
+		blank=False,
+		related_name='StudentExperience',
+		default=1,
+        on_delete=models.CASCADE)
 	is_active = models.BooleanField(default=False)
 
 	USERNAME_FIELD = 't100_email'
-	REQUIRED_FIELDS = ['password']
 	class Meta:		
 		verbose_name = 'Student'
 		verbose_name_plural = 'Students'
@@ -176,8 +204,9 @@ class StudentSkill(models.Model):
 	)
 	t100_id_student = models.ForeignKey(
 		Student, 
-		null=True, 
-		blank=True, 
+		null=False, 
+		blank=False, 
+		default=1,
 		related_name='StudentSkills',
 		on_delete=models.CASCADE
 	)
@@ -196,8 +225,9 @@ class AcademicHistory(models.Model):
 	t104_id_registrer = models.AutoField(primary_key=True)
 	t100_id_student = models.ForeignKey(
 		Student,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+		default=1,
 		related_name='StudentAcademics',
 		on_delete=models.CASCADE)
 	t104_academic_unit = models.CharField(max_length=150,null=True,blank=True)
@@ -205,7 +235,7 @@ class AcademicHistory(models.Model):
 	c107_id_academic_level = models.ForeignKey(
 		AcademicLevel,
 		null=False,
-		blank=False,
+		blank=False,		
 		related_name='AcademicLevel',
 		on_delete=models.CASCADE,
 		default=1
@@ -223,37 +253,23 @@ class AcademicHistory(models.Model):
 	t104_end_date = models.DateField(null=True,blank=True)
 
 	class Meta:
-		unique_together = ['t100_id_student','t104_carreer','t104_academic_unit']
+		#unique_together = ['t100_id_student','t104_carreer','t104_academic_unit']
 		verbose_name="Academic history"
 		db_table="t104_historial_academico"
 	
 	def __str__ (self) ->str:
 		return self.t104_academic_unit+" : "+self.t104_carreer
 
-#T113 Areas de interes
-class InterestArea(models.Model):
-	t113_id_registrer = models.AutoField(primary_key=True)
-	t100_id_student = models.ForeignKey(
-		Student,
-		null=True,
-		blank=True,
-		related_name='StudentInterests',
-		on_delete=models.CASCADE)
-	
 
-	class Meta:
-		verbose_name="Areas of interest"
-		db_table="t113_areas_interes"
-	def __str__ (self):
-		return "Areas de interes"
 
 #T114 Enlaces
 class Link(models.Model):
 	t114_id_registrer = models.AutoField(primary_key=True)
 	t100_id_student = models.ForeignKey(
 		Student,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+		default=1,
 		related_name='StudentLinks',
 		on_delete=models.CASCADE)
 	t113_link = models.CharField(max_length=100,blank=True,null=True)
@@ -261,9 +277,9 @@ class Link(models.Model):
 		Plataform,
 		null=False,
 		blank=False,
+		default=1,
 		related_name='PlataformDescription',
-		on_delete=models.CASCADE,
-		default=1)	
+		on_delete=models.CASCADE)	
 
 	class Meta:
 		unique_together = ['t100_id_student','c115_id_plataform']
@@ -275,32 +291,28 @@ class Link(models.Model):
 		return self.t113_link
 
 #T110 Idiomas
-class StudentLenguage(models.Model):
+class StudentLanguage(models.Model):
 	t110_id_registrer = models.AutoField(primary_key=True)
 	t100_id_student = models.ForeignKey(
 		Student,
-		null=True,
-		blank=True,
-		related_name='StudentLenguages',
-		on_delete=models.CASCADE)
-	c111_id_language = models.ForeignKey(
-		Lenguage,#"Lenguage.c111_id_lenguage",
 		null=False,
 		blank=False,
-		related_name='LenguageDescription',
-		on_delete=models.CASCADE,
-		default=1
-	)
-	t110_written_level = models.PositiveSmallIntegerField(null=True, blank=True)
-	t110_reading_level = models.PositiveSmallIntegerField(null=True, blank=True)
-	t110_speaking_level = models.PositiveSmallIntegerField(null=True, blank=True)
-	t110_comprension_level = models.PositiveSmallIntegerField(null=True, blank=True)
-	t110_native = models.BooleanField(default=False)
-
+		default=1,
+		related_name='StudentLanguages',
+		on_delete=models.CASCADE)
+	c111_id_language = models.ForeignKey(
+		Language,#"Language.c111_id_language",
+		null=False,
+		blank=False,
+		default=1,
+		related_name='LanguageDescription',
+		on_delete=models.CASCADE)
+	t110_level_description = models.CharField(max_length=50,null=True,blank=True)
+	t110_level = models.PositiveSmallIntegerField(null=True,blank=True)
 	class Meta:
 		unique_together = ['t100_id_student','c111_id_language']
-		verbose_name='StudentLenguage'
-		verbose_name_plural='StudentLenguages'
+		verbose_name='StudentLanguage'
+		verbose_name_plural='StudentLanguages'
 		db_table='t110_idiomas'
 	
 	def __str__(self):
@@ -311,8 +323,9 @@ class EmploymentHistory(models.Model):
 	t103_id_registrer = models.AutoField(primary_key=True)
 	t100_id_student = models.ForeignKey(
 		Student,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+		default=1,
 		related_name='StudentEmployments',
 		on_delete=models.CASCADE)
 	t103_corporation = models.CharField(max_length=80,null=True,blank=True)	
@@ -329,27 +342,28 @@ class EmploymentHistory(models.Model):
 	def __str__(self)->str:
 		return self.t103_corporation+', '+self.t103_employment
 		
-#T117 Historial laboral
+#T117 Proyectos personales
 class PersonalProjects(models.Model):
 	t117_id_registrer = models.AutoField(primary_key=True)
 	t117_project_name = models.CharField(max_length=100,blank=True,null=True)
 	t100_id_student = models.ForeignKey(
 		Student,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+		default=1,
 		related_name='StudentProjects',
 		on_delete=models.CASCADE)
 	t117_group = models.CharField(max_length=80,null=True,blank=True)	
 	t117_job = models.CharField(max_length=80,null=True,blank=True)
 	t117_link = models.CharField(max_length=100,blank=True,null=True)
-	t117_banner = models.ImageField(blank=True,null=True,default="",upload_to=upload_project_banner)
 	t117_description = models.TextField()
 	t117_start_date = models.DateField(null=True)
 	t117_end_date = models.DateField(null=True)	
 	c118_project_type = models.ForeignKey(
 		ProjectType,
-		null=True,
-		blank=True,
+		null=False,
+		blank=False,
+		default=1,
 		related_name='ProjectType',
 		on_delete=models.CASCADE)
 
@@ -359,3 +373,28 @@ class PersonalProjects(models.Model):
 	
 	def __str__(self)->str:
 		return self.t117_group+', '+self.t117_job
+
+
+#T119 Certificaciones
+class Certifications(models.Model):
+	t119_id_registrer = models.AutoField(primary_key=True)	
+	t100_id_student = models.ForeignKey(
+		Student,
+		null=False,
+		blank=False,
+		default=1,
+		related_name='StudentCertification',
+		on_delete=models.CASCADE)
+	t119_certification = models.CharField(max_length=150,null=False,blank=False)
+	t119_company = models.CharField(max_length=150,blank=True,null=False)
+	t119_start_date = models.DateField(null=True,blank=True)
+	t119_in_course = models.BooleanField(default=False)
+	t119_voucher_link = models.CharField(max_length=200,null=True,blank=True)
+	
+	class Meta:		
+		verbose_name='Certification'
+		verbose_name_plural='Certifications'
+		db_table='t119_certificacion'
+	
+	def __str__(self)->str:
+		return self.t119_certification

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { useForm } from "hooks/useForm";
-import { companyInitialForm } from "../schemes";
+import { companyInitialForm } from "types/schemes";
+import FormBusinessRecruiter from "./FormBusinessRecruiter";
 import FormCompanyInfo from "./FormCompanyInfo";
 import FormRecruiterInfo from "./FormRecruiterInfo";
 import styles from "../Styles.module.css";
@@ -19,10 +19,11 @@ const validateForm = (form) => {
   let regex = {
     t300_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
     t300_rfc: /^([A-ZÑ\x26]{3,4})([0-9]{6})([A-Z0-9]{3})$/,
-    t300_bussiness_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,255}$/,
+    t300_bussiness_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü.,\s]{4,255}$/,
     t301_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
     t301_last_name: /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]{4,16}$/,
-    t301_email: /^(\w+[/./-]?){1,}@[A-Za-z]+[/.]\w{2,}$/,
+    t301_email:
+      /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
     t301_phonenumber: /\x2b[0-9]+/,
   };
 
@@ -42,6 +43,16 @@ const validateForm = (form) => {
     errors.t300_bussiness_name =
       "El campo 'razon social' solo acepta letras y espacion en blanco";
 
+  if (!form.t301_name.trim())
+    errors.t301_name = "El campo 'Nombre' es requerido";
+  else if (!regex.t301_name.test(form.t301_name))
+    errors.t301_name = "Elmm campo 'Nombre' es incorrecto";
+
+  if (!form.t301_last_name.trim())
+    errors.t301_last_name = "El campo 'Apellidos' es requerido";
+  else if (!regex.t301_last_name.test(form.t301_last_name))
+    errors.t301_last_name = "Elmm campo 'Apellidos' es incorrecto";
+
   if (!form.t301_email.trim())
     errors.t301_email = "El campo 'Email' es requerido.";
   else if (!regex.t301_email.test(form.t301_email))
@@ -51,85 +62,63 @@ const validateForm = (form) => {
 };
 
 const FormCompany = () => {
-  const { 
-    form, 
-    errors, 
-    handleChange, 
-    handleValidate, 
-    handleSubmitCompany } = useForm(companyInitialForm, validateForm);
+  const { form, errors, handleChange, handleValidate, handleSubmitCompany } =
+    useForm(companyInitialForm, validateForm);
+  // const { data } = useFetch(process.env.REACT_APP_URL_COMPANY);
   const [step, setStep] = useState(1);
+  const [isActive, setIsActive] = useState(false);
+  const [document, setDocument] = useState(null);
 
   const nextStep = () => setStep(step + 1);
 
   const prevStep = () => setStep(step - 1);
 
+  const handleIsActive = () => setIsActive(!isActive);
+
   if (step === 1)
     return (
-      <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
-        <div className="row text-center">
-          <div className={`${styles.bg} col rounded`}>
-            <div className={`${styles.login}`}>
-              <blockquote>
-                Un paso más cerca de tu nuevo <em>empleo</em>.
-              </blockquote>
-              <span>
-                Ya tines cuenta?{" "}
-                <Link className={`${styles.linkToLogin}`} to="/reclutador">
-                  Inicia sesion
-                </Link>
-              </span>
-              <span>
-                <a href="/#">Recuperar contraseña</a>
-              </span>
-            </div>
-          </div>
-          <div className={`col bg-white p-5 rounded-end`}>
-            <h2 className={`${styles.welcome}`}>Bienvenido</h2>
-            <FormCompanyInfo
-              nextStep={nextStep}
-              form={form}
-              errors={errors}
-              handleChange={handleChange}
-              handleValidate={handleValidate}
+      <div className={`${styles.wrapperColumn}`}>
+        {!isActive ? (
+          <FormCompanyInfo
+            nextStep={nextStep}
+            form={form}
+            errors={errors}
+            handleChange={handleChange}
+            handleValidate={handleValidate}
+            isActive={isActive}
+            handleIsActive={handleIsActive}
+            document = {document}
+            setDocument = {setDocument}
+          />
+        ) : (
+          <article className={styles.wrapperForm3}>
+            <h2
+              className={styles.title}
+              style={{ margin: "0 0 1.5rem 0", textAlign: "center" }}
+            >
+              Proporcionanos el nombre de la empresa.
+            </h2>
+            <FormBusinessRecruiter
+              isActive={isActive}
+              setIsActive={setIsActive}
             />
-          </div>
-        </div>
+          </article>
+        )}
       </div>
     );
   else if (step === 2)
     return (
-      <div className={`container bg-primary shadow rounded ${styles.wrapper}`}>
-        <div className="row">
-          <div
-            className={`${styles.bg} col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded`}
-          >
-            <div className={`${styles.login}`}>
-              <blockquote>
-                Crea tu cuenta y publica tus vacantes con nosotros.
-              </blockquote>
-              <span>
-                Ya tines cuenta?{" "}
-                <Link className={`${styles.linkToLogin}`} to="/reclutador">
-                  Inicia sesion
-                </Link>
-              </span>
-              <span>
-                <a href="/#">Recuperar contraseña</a>
-              </span>
-            </div>
-          </div>
-          <div className={`col bg-white p-5 rounded-end`}>
-            <h2 className={`${styles.welcome}`}>Bienvenido</h2>
-            <FormRecruiterInfo
-              prevStep={prevStep}
-              form={form}
-              errors={errors}
-              handleSubmitCompany={handleSubmitCompany}
-              handleChange={handleChange}
-              handleValidate={handleValidate}
-            />
-          </div>
-        </div>
+      <div className={`${styles.wrapperColumn}`}>
+        <FormRecruiterInfo
+          prevStep={prevStep}
+          form={form}
+          errors={errors}
+          handleSubmitCompany={handleSubmitCompany}
+          handleChange={handleChange}
+          handleValidate={handleValidate}
+          isActive={isActive}
+          setIsAcitve={setIsActive}
+        />
       </div>
     );
 };

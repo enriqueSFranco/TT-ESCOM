@@ -2,10 +2,11 @@ import React from "react";
 import { useModal } from "hooks/useModal";
 import { formatDate } from "utils/formatDate";
 import { deleteProject } from "services/students/index";
-import Modal from "components/Modal/Modal";
-import logoProject from "images/project.svg";
+import ModalPortal from "components/Modal/ModalPortal";
+import TypeExperience from "./TypeExperience";
 import { GoTrashcan } from "react-icons/go";
 import { MdEdit } from "react-icons/md";
+import iconExp from "assets/images/experience.png";
 import styles from "./Experience.module.css";
 
 const ExperenceItem = ({
@@ -32,7 +33,6 @@ const ExperenceItem = ({
     useModal();
 
   const deleteData = (id) => {
-    console.log("id:", id);
     deleteProject(id).then((response) => {
       if (data !== null) {
         let newData = data.filter((el) => el?.t117_id_registrer !== id);
@@ -40,6 +40,8 @@ const ExperenceItem = ({
       }
     });
   };
+
+  if (!data) return null;
 
   return (
     <>
@@ -49,40 +51,50 @@ const ExperenceItem = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
+            gap: "1rem",
             margin: ".5rem 0",
           }}
         >
           <img
             className={styles.logoProject}
-            src={logoProject}
-            alt="projectLogo"
+            src={iconExp}
+            alt="proyecto-icon"
           />
           <div className={styles.descriptionProject}>
-            <div className={styles.groupDetails}>
-              {typeProject === 1 ? (
-                // proyecto personal
-                <>
-                  <h3>{nameProject}</h3>
-                  <span className={styles.speciality}>{idStudent}</span>
-                  <br />
-                </>
-              ) : (
-                // proyecto laboral
-                <>
-                  <h3>{company}</h3>
-                  <span className={styles.speciality}>{specialty}</span>
-                  <br />
-                  <span>{formatDate(startDate)} -</span>{" "}
-                  <span>{formatDate(endDate)}</span>
-                </>
-              )}
-            </div>
-            <div className={styles.desription}>
+            {typeProject === 1 ? (
+              // proyecto personal
+              <>
+                <h3
+                  style={{ fontSize: "16px", marginTop: "10px" }}
+                  className={styles.title}
+                >
+                  {nameProject}
+                </h3>
+                <span className={styles.speciality}>{idStudent}</span>
+              </>
+            ) : (
+              // proyecto laboral
+              <>
+                <h3
+                  style={{ fontSize: "16px" }}
+                  className={styles.title}
+                >
+                  {company}
+                </h3>
+                <span className={styles.speciality}>{specialty}</span>
+                <br />
+                <span>{formatDate(startDate)} -</span>{" "}
+                <span>{formatDate(endDate)}</span>
+              </>
+            )}
+            <div className={styles.description}>
               <p>{description}</p>
+              {typeProject === 1 ? (
+                <a href={link} target="_blank" rel="noreferrer">
+                  ver proyecto
+                </a>
+              ) : null}
             </div>
-            <a href={link} target="_blank" rel="noreferrer">
-              ver proyecto
-            </a>
           </div>
         </div>
         <div className={styles.actions}>
@@ -97,17 +109,40 @@ const ExperenceItem = ({
           </button>
         </div>
       </div>
-      <Modal
+
+      <ModalPortal
         isOpen={isOpenModalDeleteProject}
         closeModal={closeModalDeleteProject}
+        minWidth="500px"
+        minHeight="450px"
       >
-        <h1>{nameProject}</h1>
-        <button onClick={() => deleteData(id)}>Eliminar</button>
-      </Modal>
+        <div className={styles.mainWrapper}>
+          <div className={styles.wrapperCircle}>
+            <div className={styles.circleDelete}></div>
+            <GoTrashcan />
+          </div>
+          <h3 className={styles.tittleProjectExperience}>
+            Estas seguro de eliminar el proyecto{" "}
+            <span style={{ fontWeight: "700", fontSize: "1rem" }}>
+              "{nameProject}"
+            </span>{" "}
+            de tu historial de experiencia ?
+          </h3>
+          <button
+            className={styles.btnDeleteExperience}
+            onClick={() => deleteData(id)}
+          >
+            Si, Eliminar
+          </button>
+        </div>
+      </ModalPortal>
 
-      <Modal isOpen={isOpenModalEditProject} closeModal={closeModalEditProject}>
-        <h1>Editar proyecto</h1>
-      </Modal>
+      <ModalPortal
+        isOpen={isOpenModalEditProject}
+        closeModal={closeModalEditProject}
+      >
+        <TypeExperience />
+      </ModalPortal>
     </>
   );
 };

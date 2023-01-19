@@ -1,71 +1,144 @@
-import React, { useContext } from 'react';
-import { useFetch } from 'hooks/useFetch';
-import AuthContext from 'context/AuthContext';
-import { API_APPLICATIONS_JOB_STUDENT } from 'services/settings';
-import ApplicationJob from 'components/Card/ApplicationJob/ApplicationJob';
-import { uuid, } from 'utils/uuid';
-import { formatDate } from 'utils/formatDate';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import { IoIosBusiness } from 'react-icons/io'
-import styles from './PageApplicationsStudent.module.css';
+import React, { useState } from "react";
+import { useGetApplicationsCandidate } from "hooks";
+import { uuid } from "utils/uuid";
+import { useAuth } from "context/AuthContext";
+import ApplicationJobStudent from "components/Card/ApplicationJob/ApplicationJobStudent";
+import LayoutHome from "Layout/LayoutHome";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  styled,
+  tableCellClasses,
+} from "@mui/material";
+import { IoIosBusiness } from "react-icons/io";
+import { Container } from "../styled-components/ApplicationStudentStyled";
+import "./PageApplicationsStudent.css";
+import Pagination from "components/Pagination/Pagination";
+
+function replaceBackSpace(string) {
+  return string.replace(" ", "-").toLowerCase();
+}
+
+const NoApplications = () => {
+  return <div>No tienes ninguana postulacion</div>;
+};
 
 const PageApplicationsStudent = () => {
-  const { token } = useContext(AuthContext);
-  const { data } = useFetch(`${API_APPLICATIONS_JOB_STUDENT}${token?.user?.user_id}/`);
+  const { token } = useAuth();
+  const { applications } = useGetApplicationsCandidate(token?.user?.id)
+  // const { data } = useFetch(
+  //   `${process.env.REACT_APP_URL_CANDIDATE_APPLICATIONS_JOBS}${token?.user?.id}/`
+  // );
+  const [page, setPage] = useState(1)
+  const [limit, setLimit] = useState(5)
 
+  const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: "#000",
+      color: theme.palette.common.white,
+    },
+    [`&.${tableCellClasses.body}`]: {
+      fontSize: 14,
+    },
+  }));
 
-  if (!data) return null;
+  if (!applications) return null;
 
-  // console.log(formatDate("2022-04-04"))
-
-  // TODO: ELIMINAR ELEMENTOS DUPLICADOS DE LA LISTA DE VACANTES EN RELACION AL CAMPO T200_JOB
   return (
-    <section className={styles.wrapper}>
-      <h1 className={styles.title}>Mis Postulaciones</h1>
-      <TableContainer>
-        <Table sx={{ width: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Empresa</TableCell>
-              <TableCell>Detalles de la vacante</TableCell>
-              <TableCell align='center' >Fecha de postulacion</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {
-              data?.map(row => (
-                <TableRow key={uuid()}>
-                <TableCell sx={{width: 400}}>
-                  {
-                    row?.t200_id_vacant?.t300_id_company?.t300_logo !== null ? 
-                      <img src={row?.t200_id_vacant?.t300_id_company?.t300_logo} alt={row?.t200_id_vacant?.t300_id_company} className={styles.image} />
-                    : <IoIosBusiness className={styles.noImage} />
-                  }
-                  
-                </TableCell>
-                <TableCell align='center' component="th" scope="row">
-                  <ApplicationJob 
-                    nameJob={row?.t200_id_vacant?.t200_job} 
-                    salary={row?.t200_id_vacant?.t200_max_salary}
-                    modality={row?.t200_id_vacant?.t200_home_ofice}
-                    nameBusisness={row?.t200_id_vacant?.t300_id_company?.t300_name}
-                    workingHours={`${row?.t200_id_vacant?.t200_check_time}am-${row?.t200_id_vacant?.t200_closing_hour}pm`}
-                  />
-                </TableCell>
-                <TableCell align='center'>{formatDate(row?.t201_date_application)}</TableCell>
-              </TableRow> 
-              ))
-            }
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </section>
-  )
+    <LayoutHome>
+      <Container>
+        <h2 className="title">Mis postulaciones</h2>
+
+        <TableContainer component={Paper}>
+          <Table stickyHeader sx={{ width: "100%" }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <StyledTableCell style={{ fontSize: "1.2rem" }} align="center">
+                  Empresa
+                </StyledTableCell>
+                <StyledTableCell style={{ fontSize: "1.2rem" }} align="center">
+                  Resumen de la vacante
+                </StyledTableCell>
+                <StyledTableCell style={{ fontSize: "1.2rem" }} align="center">
+                  Ubicacion de la vacante
+                </StyledTableCell>
+                <StyledTableCell style={{ fontSize: "1.2rem" }} align="center">
+                  Estado de la postulacion
+                </StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {applications.length === 0 ? (
+                <NoApplications />
+              ) : (
+                applications.map((it) => (
+                  <TableRow key={uuid()}>
+                    <TableCell
+                      sx={{ width: 150 }}
+                      style={{ textAlign: "center" }}
+                    >
+                      {it?.t200_id_vacant?.t300_id_company?.t300_logo !==
+                      null ? (
+                        <img
+                          src={it?.t200_id_vacant?.t300_id_company?.t300_logo}
+                          alt={it?.t200_id_vacant?.t300_id_company}
+                          className="image"
+                        />
+                      ) : (
+                        <IoIosBusiness className="noImage" />
+                      )}
+                    </TableCell>
+                    <TableCell
+                      sx={{ width: 450 }}
+                      align="center"
+                      component="th"
+                      scope="row"
+                    >
+                      <ApplicationJobStudent
+                        nameJob={it?.t200_id_vacant?.t200_job}
+                        salary={it?.t200_id_vacant?.t200_max_salary}
+                        modality={it?.t200_id_vacant?.t200_home_ofice}
+                        experience={
+                          it?.t200_id_vacant?.c207_id_experience
+                            ?.c207_description
+                        }
+                        dateApplication={it?.t201_date_application}
+                        contract={
+                          it?.t200_id_vacant?.c208_id_contract?.c208_description
+                        }
+                        description={it?.t200_id_vacant?.t200_description}
+                      />
+                    </TableCell>
+                    <TableCell
+                      style={{ fontSize: "1rem", textAlign: "center" }}
+                      sx={{ width: 350 }}
+                    >{`${it?.t200_id_vacant?.c222_id_locality?.c222_municipality}, ${it?.t200_id_vacant?.c222_id_locality?.c222_state}, ${it?.t200_id_vacant?.t200_street}`}</TableCell>
+                    <TableCell style={{ fontSize: "1rem" }} align="center">
+                      <div className="tag_state">
+                        <div
+                          className={`${replaceBackSpace(
+                            it?.c205_id_application_state?.c205_description
+                          )} circle_state`}
+                        ></div>
+                        {it?.c205_id_application_state?.c205_description}
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))
+              )}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        {page}
+          <Pagination total={applications.length} page={page} setPage={setPage} limit={limit} setLimit={setLimit} />
+      </Container>
+    </LayoutHome>
+  );
 };
 
 export default PageApplicationsStudent;

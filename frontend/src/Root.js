@@ -2,8 +2,8 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { ROLE } from "routes/roles";
 import PrivateRoute from "routes/PrivateRoute";
-import PageHome from "pages/main/PageHome";
-import PageCompany from "pages/main/PageCompany";
+import Home from "pages/Home";
+import Company from "pages/Company";
 import PageLoginStudent from "pages/login/PageLoginStudent";
 import PageReleases from "pages/main/PageReleases";
 import PageCreateAccountStudent from "pages/login/PageCreateAccountStudent";
@@ -11,90 +11,93 @@ import PageLoginCompany from "pages/login/PageLoginCompany";
 import PageRegisterCompany from "pages/login/PageRegisterCompany";
 import PageProfileStudent from "pages/student/PageProfileStudent";
 import PageLoginStudentUpdate from "pages/login/PageLoginStudentUpdate";
-import PageDashBoard from "pages/business/PageDashBoard";
-import PageHistory from "pages/business/PageHistory";
+import PageHistory from "pages/business/pageInit/PageHistory";
+import PageLanguages from "pages/student/PageLanguages";
 import PageSuccesCompany from "pages/login/PageSuccesCompany";
 import PageValidateRecruiter from "pages/admin/PageValidateRecruiter";
-import PageApplications from "pages/business/PageApplications";
+import AllCandidates from "pages/business/AllCandidates";
 import PagePostRelease from "pages/business/PagePostRelease";
 import PageApplicationsStudent from "pages/student/PageApplicationsStudent";
 import ExperienceList from "components/Card/Experience/ExperienceList";
-import Certifications from "components/Card/Certifications/Certifications";
-import Accordion from "components/Accordion/Accordion";
+import CertificationList from "components/Card/Certifications/CertificationList";
+import Accordion from "components/Accordion/ApplicantDetails";
+import ListCollaborators from "pages/admin/ListCollaborators";
 import AcademicRecordList from "components/Card/AcademicRecord/AcademicRecordList";
 import ModalRelease from "components/Modal/ModalRelease";
 import ModalBusiness from "components/Modal/ModalBusiness";
-import CardJobDetails from "components/Card/CardJobDetails/CardJobDetails";
+import FullProfileUser from "components/Card/CardStudent/FullProfileUser";
+import RegisteredCompanies from "pages/admin/RegisteredCompanies";
+import DetailsCompany from "pages/admin/DetailsCompany";
+import ValidateCompany from "pages/admin/ValidateCompany";
+import ListVacantsAdmin from "pages/admin/ListVacantsAdmin";
+import Postulates from "pages/business/Postulates";
+import LoginAdmin from "pages/login/LoginAdmin";
+import CreateJob from "pages/business/CreateJob";
 
 const Root = () => {
   return (
     <Routes>
       {/* Indice de rutas publicas */}
-      <Route path="/" element={<PageHome />}>
-        <Route path="vacante">
-          <Route path=":t200_id_vacant" element={<CardJobDetails />} />
-        </Route>
-      </Route>
-      
-      <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>   
-        <Route path="/dashboard" element={<PageDashBoard />} />
-        <Route path="/mis-vacantes" element={<PageHistory />}>
-          <Route path=":t200_id_vacant" element={<CardJobDetails />} />
-        </Route>
-        <Route path="/solicitudes" element={<PageApplications />}>
+      <Route path="/" element={<Home />} />
+
+      <Route path="/perfil-del-candidato" element={<FullProfileUser />} />
+
+      <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>
+        <Route path="/candidatos" element={<AllCandidates />} />
+        <Route path="/publicar-comunicado" element={<PagePostRelease />} />
+        <Route path="/dashboard" element={<PageHistory />} />
+        {/* <Route
+            path=":t200_id_vacant"
+            element={<CardDetailsVacantRecruiter height="80%" />}
+          /> */}
+        <Route path="/crear-vacante" element={<CreateJob />} />
+        <Route path="/postulaciones" element={<Postulates />}>
           <Route path=":t200_id_vacant" element={<Accordion />} />
         </Route>
-        <Route path="/publicar-comunicado" element={<PagePostRelease />} />
-        {/* <Route path="/candidatos" element={<PageApplications />} /> */}
       </Route>
 
-      {/* FEATURE:  */}
-      {/* <Route path="empleos" element={<PageJobs />}>
-        <Route path=":t200_id_vacant" element={<CardJobDetails />} />
-      </Route> */}
-
       {/* RUTAS DEL ADMINISTRADOR */}
-      <Route path="/validar-reclutador" element={<PageValidateRecruiter />} />
-
+      <Route element={<PrivateRoute role={ROLE.MANAGER} />}>
+        <Route path="/agregar-colaborador" element={<ListCollaborators />} />
+        <Route path="/validar-reclutador" element={<PageValidateRecruiter />} />
+        <Route path="/validar-empresa" element={<ValidateCompany />} />
+        <Route path="/empresas-registradas" element={<RegisteredCompanies />} />
+        <Route path="/validar-vacante" element={<ListVacantsAdmin />} />
+        <Route
+          path="/detalles-de-emperesa/:t300_id_company"
+          element={<DetailsCompany />}
+        />
+      </Route>
 
       <Route path="/alumno" element={<PageLoginStudent />} />
       <Route path="/registro-alumno" element={<PageCreateAccountStudent />} />
       <Route path="/reclutador" element={<PageLoginCompany />} />
+      {/* <Route path="/registro-administrador" element={<CreateAccountAdmin />} /> */}
+      <Route path="/administrador" element={<LoginAdmin />} />
       <Route path="/registro-reclutador" element={<PageRegisterCompany />} />
       <Route path="/pre-registro" element={<PageSuccesCompany />} />
-      
-      <Route path="empresas" element={<PageCompany />}>
+
+      <Route path="empresas" element={<Company />}>
         <Route path=":t301_id_company" element={<ModalBusiness />} />
       </Route>
-      
+
       <Route path="comunicados" element={<PageReleases />}>
         <Route path=":t202_id_announcement" element={<ModalRelease />} />
       </Route>
 
       {/* TODO Hacer ruta privada  */}
-      <Route path="/actualiza-alumno" element={<PageLoginStudentUpdate />}/>
+      <Route path="/actualiza-alumno" element={<PageLoginStudentUpdate />} />
 
       {/* Indice de rutas privadas para un alumno si funciona */}
       <Route element={<PrivateRoute role={ROLE.STUDENT} />}>
         <Route path="/perfil" element={<PageProfileStudent />}>
           <Route path="historial-academico" element={<AcademicRecordList />} />
+          <Route path="idiomas" element={<PageLanguages />} />
           <Route path="experiencia" element={<ExperienceList />} />
-          <Route path="certificaciones" element={<Certifications />} />
+          <Route path="certificaciones" element={<CertificationList />} />
         </Route>
         <Route path="mis-postulaciones" element={<PageApplicationsStudent />} />
       </Route>
-
-      {/* Indice de rutas privadas para un reclutador */}
-      {/* <Route element={<PrivateRoute role={ROLE.RECRUITER} />}>   
-        <Route path="/historial" element={<PageHistory />}>
-          <Route path="dashboard" element={<PageDashBoard />} />
-          <Route path="mis-vacantes" element={<PageMyJobs />} />
-          <Route path="solicitudes" element={<PageApplications />} />
-          <Route path="publicar-vacante" element={<PageAddJob />} />
-          <Route path="publicar-comunicado" element={<PagePostRelease />} />
-        </Route>
-      </Route> */}
-
     </Routes>
   );
 };

@@ -11,15 +11,41 @@ class UserSerializer(serializers.ModelSerializer):
     #password = serializers.CharField(min_length=8, write_only=True)
     class Meta:
         model = User
-        fields = ('password','is_superuser','username','first_name','last_name','email','is_staff','user_type','is_active','user_id')
+        fields = ('password','is_superuser','username','first_name','last_name','email','is_staff','user_type','is_active')
 
     def create(self, validate_data):
         new_user = User(**validate_data)
         new_user.set_password(validate_data['password']) 
-        print(new_user)
+        print("users.serializers Linea 19:"+str(new_user))#---------------
         # generar token de autenticacion
         new_user.save() # guardamos al usuario
         return new_user
+    
+    def validate_username(self,value):
+      # custom validation
+      print ("Validando usuario")
+      if value == '':
+        raise serializers.ValidationError("El campo correo esta vacio")
+      if User.objects.filter(username=value):
+        raise serializers.ValidationError("Ya hay un usuario registrado con ese correo")
+      return value
+
+    def validate_email(self,value):
+      # custom validation
+      print ("Validando correo")
+      if value == '':
+        raise serializers.ValidationError("El campo correo esta vacio")
+      if User.objects.filter(email=value):
+        raise serializers.ValidationError("Ya hay un usuario registrado con ese correo")
+      return value
+
+    def validate_password(self,value):
+      # custom validation
+      print ("Validando contraseña")
+      if value == '':
+        raise serializers.ValidationError("El campo contraseña esta vacio")
+      
+      return value
 
 class ListUserSerializer(serializers.ModelSerializer):
     """
@@ -33,12 +59,11 @@ class ListUserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
 class UpdateUserSerializer(serializers.ModelSerializer):
   # skills=SkillSerializer(many=True)
   class Meta:
     model = User
-    fields = ('first_name','last_name')
+    fields = ('username','first_name','last_name','email')
       # encriptamos el password cuando el usuario quiera actualizar su informacion
     def update(self, instance, validate_data):
       update_user = super().update(instance, validate_data)

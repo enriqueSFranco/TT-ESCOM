@@ -9,8 +9,9 @@ h3 {
   letter-spacing: 1;
 }
 
-.body { 
-  height: 670px; 
+.body {
+  background-color: #fff;
+  height: 710px;
   overflow-y: scroll; 
   padding-top: 1rem;
   font-family: 'Poppins', sans-serif;
@@ -22,6 +23,22 @@ h3 {
   top: 100px;
 }
 
+.listRequirements {
+  /* background-color: red; */
+  height: 60px;
+  margin: 0;
+  padding: 0;
+
+  /* position: absolute; */
+}
+
+.paragraph {
+  font-size: 1rem;
+  color: #222;
+  letter-spacing: .5px;
+  /* margin: 0; */
+}
+
 .actions {
   width: 70px;
   display: flex;
@@ -31,14 +48,17 @@ h3 {
 
 .btnApplyEmployment {
   background-color: transparent;
-  border: none;
-  outline: 2px solid #90314b;
-  padding: .6rem;
-  border-radius: 10px;
-  position: relative;
-  width: 90px;
-  top: .5rem;
-  transition: background-color .3s ease-in;
+    border: none;
+    outline: 2px solid #90314b;
+    padding: 0.6rem;
+    border-radius: 10px;
+    position: relative;
+    width: 90px;
+    top: 0.5rem;
+    transition: background-color .3s ease-in;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .btnApplyEmployment svg {
@@ -95,7 +115,7 @@ h3 {
 
 .tagsBody {
   /* outline: 2px solid blue; */
-  width: 400px;
+  width: 430px;
 }
 
 .title {
@@ -108,11 +128,17 @@ h3 {
 .wrapper {
   background-color: #fff;
   font-family: sans-serif;
-  height: 800px;
+  height: 840px;
   width: 100%;
   border-radius: 8px;
   outline: 1px solid #ccc;
   padding: .4rem 0 1rem 0;
+  /* position: relative; */
+}
+
+.wrapperRequirements {
+  /* background-color: red; */
+  height: 100px;
 }
 
 .wrapper::-webkit-scrollbar { width: 8px; }

@@ -1,13 +1,21 @@
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import { toast } from "react-hot-toast"
 import { loginService } from "services/auth/index";
 
-const AuthContext = createContext(); // creamos el contexto
+// creamos el contexto
+const AuthContext = createContext({
+  user: null,
+  token: null,
+  loginRecruiter: (e) => {},
+  loginCandidate: (e) => {},
+  loginAdmin: (e) => {},
+  logout: () => {},
+});
 
 // Provider
-const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }) => {
+  let navigate = useNavigate();
   const [user, setUser] = useState(() =>
     window.sessionStorage.getItem("token")
       ? jwt_decode(window.sessionStorage.getItem("token"))
@@ -18,14 +26,11 @@ const AuthProvider = ({ children }) => {
       ? JSON.parse(window.sessionStorage.getItem("token"))
       : null
   );
-  const [loading, setLoading] = useState(true);
-  const [errors, setErrors] = useState(null);
-  let navigate = useNavigate();
 
-  /*const login = async (e) => {
+  const loginAdmin = async (e) => {
     e.preventDefault();
     loginService({
-      "username": e.target.t100_email.value.trim(),
+      "username": e.target.t400_email.value.trim(),
       "password": e.target.password.value.trim(),
     })
       .then((response) => {
@@ -33,18 +38,16 @@ const AuthProvider = ({ children }) => {
           setUser(jwt_decode(response?.data?.access));
           setToken(response?.data);
           window.sessionStorage.setItem("token", JSON.stringify(response?.data));
-          navigate("/");
+          navigate("/validar-empresa");
         } else {
-          setErrors(response)
-          toast.error("correo o password incorrectos.");
           window.sessionStorage.removeItem('token', JSON.stringify(response?.data))
         }
       })
       .catch((error) => {
-        return error;
+        console.log(error)
       });
-  };*/
-  
+  }
+
   const loginRecruiter = async (e) => {
     e.preventDefault();
     loginService({
@@ -56,48 +59,45 @@ const AuthProvider = ({ children }) => {
           setUser(jwt_decode(response?.data?.access));
           setToken(response?.data);
           window.sessionStorage.setItem("token", JSON.stringify(response?.data));
-          navigate("/");
+          navigate("dashboard");
         } else {
-          setErrors(response)
-          toast.error("correo o password incorrectos.");
           window.sessionStorage.removeItem('token', JSON.stringify(response?.data))
         }
       })
       .catch((error) => {
-        return error;
+        console.log(error)
       });
   };
 
-  const login = async (e) => {
-    e.preventDefault();
+  const loginCandidate = async (e) => {
+    e.preventDefault()
     loginService({
       "username": e.target.t100_email.value.trim(),
       "password": e.target.password.value.trim(),
     })
       .then((response) => {
-        // console.log(response)
         if (response.status === 200 || response.status === 201) {
-          setUser(jwt_decode(response?.data?.access));
+          setUser(response?.data?.access);
           setToken(response?.data);
-          window.sessionStorage.setItem("token", JSON.stringify(response?.data));
-          //console.log(response.data['user']);
-          //console.log(response.data['user']['first_name']);                   
-          let val = response.data['user']['first_name'];
-          console.log(val);
-          console.log(Boolean(val));
+          window.sessionStorage.setItem("token", JSON.stringify(response?.data));                
           
-          if (Boolean(val))
-            navigate("/perfil");
-          else
-            navigate("/actualiza-alumno");
+          let val = response.data?.user?.first_name
+
+          console.log(val)
+          
+          if (val === '') {
+            new Promise(resolve => {
+              setTimeout(() => {
+                resolve(navigate("/actualiza-alumno"))
+              }, 3000);
+            });
+          }
+          else navigate("/");
         } else {
-          console.log(`error: ${response.error}`);
           window.sessionStorage.removeItem('token', JSON.stringify(response?.data))
         }
       })
-      .catch((error) => {
-        if (error.response) console.log(error.response.data);
-      });
+      .catch((error) => console.log(error))
   };
 
   const logout = () => {
@@ -107,27 +107,27 @@ const AuthProvider = ({ children }) => {
     navigate("/");
   };
 
+  
+  useEffect(() => {
+    if (token) setUser(jwt_decode(token?.access));
+  }, [token]);
+
   const data = {
     user,
     token,
-    errors,
-    loading,
-    login,
+    loginCandidate,
+    loginRecruiter,
+    loginAdmin,
     logout,
-    loginRecruiter
   };
-
-  useEffect(() => {
-    if (token) setUser(jwt_decode(token?.access));
-    setLoading(false);
-  }, [token, loading]);
 
   return (
     <AuthContext.Provider value={data}>
-      {loading ? null : children}
+      {children}
     </AuthContext.Provider>
   );
 };
 
-export { AuthProvider };
-export default AuthContext;
+export function useAuth() {
+  return useContext(AuthContext);
+}

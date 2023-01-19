@@ -1,0 +1,350 @@
+[
+    {
+        "model" : "users.User",
+        "pk" : 1,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$q2hM0ylazDZb68qcK0jjT9$StaYleM6xdrM5kHH54aIA4nJHQ938vnlhs/m2t1CF88=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "joel_kratos@hotmail.com",
+            "first_name": "Joel Antonio",
+            "last_name": "Cruz Heras",
+            "email": "joel_kratos@hotmail.com",
+            "is_staff": false,
+            "date_joined": "2022-04-25T06:25:37.005568Z",
+            "user_type": "STUDENT",
+            "is_active": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },    
+    
+    {
+        "model" : "users.User",
+        "pk" : 2,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$IW1Bp9IQGZP5yu2cY0eKuO$K4vXpOuGbWbTgsUYZEIXuhZWp9Xtyyc9Adojuqxx0zE=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "jcruzh1301@alumno.ipn.mx",
+            "first_name": "Eduardo",
+            "last_name": "Heras",
+            "email": "jcruzh1301@alumno.ipn.mx",
+            "is_staff": false,
+            "date_joined": "2022-04-25T06:25:37.005568Z",
+            "user_type": "RECRUITER",
+            "is_active": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+
+    {
+        "model" : "users.User",
+        "pk" : 4,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$gO13DS6FTonkwp0UKzVbqG$2ddsLbUja6PPEYFiH2pas8THPkLsfRQJfjIdKvP/Me8=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "eduardo@amazon.com",
+            "first_name": "Eduardo",
+            "last_name": "Cruz Heras",
+            "email": "eduardo@amazon.com",
+            "is_staff": false,
+            "date_joined": "2022-08-04T06:13:40.826308Z",
+            "user_type": "RECRUITER",
+            "is_active": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model" : "users.User",
+        "pk" : 5,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$RjzQPWgwi2TfdiIWvMv0WK$cu2DTer3FoRdvWIZETXWHmTK0x6Ob3vae/7oSob9L7s=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "enrique@cyberpuerta.com",
+            "first_name": "Enrique",
+            "last_name": "SalinasFranco",
+            "email": "enrique@cyberpuerta.com",
+            "is_staff": false,
+            "date_joined": "2022-08-04T06:14:11.205283Z",
+            "user_type": "RECRUITER",
+            "is_active": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model" : "users.User",
+        "pk" : 6,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$BfOCWXN3ZcaOI9D5DjV1Q9$AZTR2nCyMQWQs2bKMXApQ6JPcOvuVVWP+WIQ+xwHZks=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "jesusR@audi.com",
+            "first_name": "Jesus",
+            "last_name": "RiveraOrtiz",
+            "email": "jesusR@audi.com",
+            "is_staff": false,
+            "date_joined": "2022-08-04T06:14:15.862355Z",
+            "user_type": "RECRUITER",
+            "is_active": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model" : "users.User",
+        "pk" : 7,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$ueKTFlNblKSpOtdDSI9PXR$06hmPILr7SoJUrO6ept6uU00rdqMXztxgus6nFiMmSs=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "rafaelF@microsoft.com",
+            "first_name": "Rafael",
+            "last_name": "FloresGonzales",
+            "email": "rafaelF@microsoft.com",
+            "is_staff": false,
+            "date_joined": "2022-08-04T06:14:20.663627Z",
+            "user_type": "RECRUITER",
+            "is_active": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model" : "users.User",
+        "pk" : 8,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$qC3StKwDYAg2k64OqaBELL$5LUXvdyK4bBz8z0eVZY2qCOyqseME86sAb/PB1xdghA=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "kevinM@banxico.org.mx",
+            "first_name": "Kevin Alejandro",
+            "last_name": "MartinezHernandez",
+            "email": "kevinM@banxico.org.mx",
+            "is_staff": false,
+            "date_joined": "2022-08-04T06:14:25.169358Z",
+            "user_type": "RECRUITER",
+            "is_active": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model" : "users.User",
+        "pk" : 9,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$O2US58lI6f4gg0Wg7gC0mY$t46Is5TOrJHCEqh02yvwORdLQ3K23GBz4gsI8LTjUGM=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Carlos@dell.com.mx",
+            "first_name": "Carlos",
+            "last_name": "ZambranoLopez",
+            "email": "Carlos@dell.com.mx",
+            "is_staff": false,
+            "date_joined": "2022-08-04T06:14:28.672529Z",
+            "user_type": "RECRUITER",
+            "is_active": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model" : "users.User",
+        "pk" : 10,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$nXJqjUuGQAZoQ4LQ8gimHI$R4bObAgstu3dToSEXD2W8uhj3iuDCLfwOt/+ivknjRY=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Joel@AXXIS.COM.MX",
+            "first_name": "Joel",
+            "last_name": "GarciaConcepcion",
+            "email": "Joel@AXXIS.COM.MX",
+            "is_staff": false,
+            "date_joined": "2022-08-04T06:14:32.566762Z",
+            "user_type": "RECRUITER",
+            "is_active": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model" : "users.User",
+        "pk" : 11,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$AzaobUFZPAA9iQAL8zUHMf$uPvPann/eE+g4lDXiUqEBwe9V7LO1h6bq4Qciw0Pl+A=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Enrique@bbva.com",
+            "first_name": "Enrique",
+            "last_name": "FernandezLopez",
+            "email": "Enrique@bbva.com",
+            "is_staff": false,
+            "date_joined": "2022-08-04T06:14:36.588711Z",
+            "user_type": "RECRUITER",
+            "is_active": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model" : "users.User",
+        "pk" : 12,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$g0vzXgfiv9oXzEfAtrq22z$DgZ3z8WnCECNcbUDoUdhXRQmV158bqydRZtkRic43T0=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Hugo@coppel.com",
+            "first_name": "Hugo",
+            "last_name": "Heras Guzman",
+            "email": "Hugo@coppel.com",
+            "is_staff": false,
+            "date_joined": "2022-08-04T06:14:41.679367Z",
+            "user_type": "RECRUITER",
+            "is_active": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model" : "users.User",
+        "pk" : 13,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$eDPhHrsbQTRZdS2OQZtroL$LOvemYsa1cS0ODdwk/ql4aH+nTnE0XRxEGgvWll4NpI=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Alfonso@coca-cola.com",
+            "first_name": "Alfonso",
+            "last_name": "SaiasCarrillo",
+            "email": "Alfonso@coca-cola.com",
+            "is_staff": false,
+            "date_joined": "2022-08-04T06:14:46.203962Z",
+            "user_type": "RECRUITER",
+            "is_active": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model" : "users.User",
+        "pk" : 14,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$xXLDfHCriJbwiDWKh47aNM$ViDuLKbzXkPGifGAHnFLgYH40ZhW91r+OkSKmp50JRQ=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Manuel@grupobimbo.com",
+            "first_name": "Manuel",
+            "last_name": "MondragonMartnez",
+            "email": "Manuel@grupobimbo.com",
+            "is_staff": false,
+            "date_joined": "2022-08-04T06:14:50.077393Z",
+            "user_type": "RECRUITER",
+            "is_active": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model" : "users.User",
+        "pk" : 15,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$uyxr9kI4jVTwdcP7ZgQY6C$iAcovq7OXi4FlzTG84hfXA/7dibzav3h7+Zlj/jwOlw=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Porfirio@bmw.com.mx",
+            "first_name": "Porfiria",
+            "last_name": "DíazCalles",
+            "email": "Porfirio@bmw.com.mx",
+            "is_staff": false,
+            "date_joined": "2022-08-04T06:14:53.635542Z",
+            "user_type": "RECRUITER",
+            "is_active": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model" : "users.User",
+        "pk" : 16,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$qE25btGXEKvlbjCrOb75Q5$kW+x7KSxfQdNP/BmwB8MO0aQn4vFNrESyAe0jiLUSZ4=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "Lazaro@uber.com.mx",
+            "first_name": "Lazaro",
+            "last_name": "HuertaVictoriano",
+            "email": "Lazaro@uber.com.mx",
+            "is_staff": false,
+            "date_joined": "2022-08-04T06:14:57.030496Z",
+            "user_type": "RECRUITER",
+            "is_active": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+
+    {
+        "model" : "users.User",
+        "pk" : 17,
+        "fields":{
+            "password": "pbkdf2_sha256$320000$8t5lqqlUBLSKSRa8Joc67V$DYPbGr4nytQB3e1JHu6wAbXaOhqKQTZyHvfykNLaKWw=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "ex_ap_escom@ipn.mx",
+            "first_name": "José Francisco",
+            "last_name": "Serrano García",
+            "email": "ex_ap_escom@ipn.mx",
+            "is_staff": false,
+            "date_joined": "2022-10-07T06:51:56.124153Z",
+            "user_type": "MANAGER",
+            "is_active": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+
+    {
+        "model" : "students.Student",
+        "pk" : 1,
+        "fields":{
+            "id_user": 1,
+            "t100_boleta": "2014080325",
+            "t100_name": "Joel Antonio",
+            "t100_last_name": "Cruz",
+            "t100_second_surname":"Heras",
+            "t100_username": "JoelHeras",
+            "t100_email": "joel_kratos@hotmail.com",
+            "t100_gender": "M",
+            "t100_date_of_birth": "1998-08-28",
+            "t100_personal_objectives": "Deseo aumentar mis capacidades como ingeniero, ya que soy un recién egresado y quiero entrar al campo laboral. Mi expectativa de empleo es ser un miembro funcional de un equipo de trabajo de tecnolgias y me permita implementar todos mis conocimientos.",
+            "t100_phonenumber": "5540182513",
+            "t100_residence": "Poniente 152",
+            "c222_id_locality":69708,
+            "t100_modalities": "Hibrido",
+            "t100_speciality": "Sistemas computacionales",
+            "t100_target_salary": "16000",
+            "t100_travel": false,
+            "is_active": true            
+        }
+    },    
+
+    {
+        "model":"administration.Admin",
+        "pk": 17,
+        "fields":{
+            "id_user": 17,
+            "t400_id_admin":1,
+            "t400_name": "José Francisco",
+            "t400_last_name": "Serrano",
+            "t400_second_surname":"García",
+            "t400_email":"ex_ap_escom@ipn.mx",            
+            "t400_position": "Jefe de departamento",
+            "c401_id_rol":1
+        }
+    }
+    
+]
