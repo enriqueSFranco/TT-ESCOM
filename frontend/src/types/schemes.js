@@ -25,6 +25,7 @@ export const companyInitialForm = {
   t301_email: "",
   t301_phonenumber: "",
   t301_second_surname: "",
+  validation_document:""
 };
 
 export const AcademicFormat = {

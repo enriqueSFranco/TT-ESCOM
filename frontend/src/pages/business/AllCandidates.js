@@ -15,7 +15,7 @@ function AllCandidates() {
   return (
     <LayoutHome>
       <section className={styles.wrapper}>
-        <h1 className={styles.TitleAllTalents}>candidatos <span className={styles.allTalents}>{allTalents}</span></h1>
+        <h1 className={styles.TitleAllTalents}>candidatos registrados: <span className={styles.allTalents}>{allTalents}</span></h1>
         {/* form */}
         <div className={styles.gridFluid}>
           <ListCandidates />

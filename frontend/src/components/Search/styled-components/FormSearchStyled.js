@@ -14,8 +14,8 @@ const Button = styled.button`
   }
 
   @media only screen and ${device.laptop} {
-    width: fit-content;
-    height: fit-content;
+    width: 45px;
+    height: 45px;
     padding: 1rem;
     border-radius: 50%;
     border: none;
@@ -40,14 +40,17 @@ const WrapperForm = styled.div`
   
   @media only screen and ${device.laptop} {
     width: fit-content;
-    height: fit-content;
+    height: 70px;
     background-color: #00000097;
     backdrop-filter: blur(10px);
     box-shadow: #1C8EFB 0px 1px 1px, #1C8EFB 0px 1px 1px;
     border-radius: .5rem;
     position: absolute;
-    top: 8rem;
-    z-index: 0;
+    top: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
   }
   
 `
@@ -65,13 +68,14 @@ const Form = styled.form`
 
   @media only screen and ${device.laptop} {
     position: relative;
-    height: inherit;
     width: 100%;
     height: fit-content;
+    background-color: red;
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 1rem;
+    z-index: 100;
     background-color: transparent;
   }
 `

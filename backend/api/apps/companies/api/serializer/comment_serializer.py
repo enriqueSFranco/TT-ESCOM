@@ -4,8 +4,7 @@ from apps.vacantes.models import Comment
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = '__all__'
-        deptg = 2
+        fields = '__all__'        
     
     def create(self,validate_data):
         new_report = Comment(**validate_data)

@@ -4,9 +4,9 @@ import { formatDate } from "utils/formatDate";
 import { deleteProject } from "services/students/index";
 import ModalPortal from "components/Modal/ModalPortal";
 import TypeExperience from "./TypeExperience";
-import logoProject from "images/project.svg";
 import { GoTrashcan } from "react-icons/go";
 import { MdEdit } from "react-icons/md";
+import iconExp from "assets/images/experience.png";
 import styles from "./Experience.module.css";
 
 const ExperenceItem = ({
@@ -41,7 +41,7 @@ const ExperenceItem = ({
     });
   };
 
-  if (!data) return null
+  if (!data) return null;
 
   return (
     <>
@@ -51,44 +51,50 @@ const ExperenceItem = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
+            gap: "1rem",
             margin: ".5rem 0",
           }}
         >
           <img
             className={styles.logoProject}
-            src={logoProject}
-            alt="projectLogo"
+            src={iconExp}
+            alt="proyecto-icon"
           />
           <div className={styles.descriptionProject}>
-            <div className={styles.groupDetails}>
-              {typeProject === 1 ? (
-                // proyecto personal
-                <>
-                  <p>{nameProject}</p>
-                  <span className={styles.speciality}>{idStudent}</span>
-                  <br />
-                </>
-              ) : (
-                // proyecto laboral
-                <>
-                  <h3>{company}</h3>
-                  <span className={styles.speciality}>{specialty}</span>
-                  <br />
-                  <span>{formatDate(startDate)} -</span>{" "}
-                  <span>{formatDate(endDate)}</span>
-                </>
-              )}
-            </div>
-            <div className={styles.desription}>
+            {typeProject === 1 ? (
+              // proyecto personal
+              <>
+                <h3
+                  style={{ fontSize: "16px", marginTop: "10px" }}
+                  className={styles.title}
+                >
+                  {nameProject}
+                </h3>
+                <span className={styles.speciality}>{idStudent}</span>
+              </>
+            ) : (
+              // proyecto laboral
+              <>
+                <h3
+                  style={{ fontSize: "16px" }}
+                  className={styles.title}
+                >
+                  {company}
+                </h3>
+                <span className={styles.speciality}>{specialty}</span>
+                <br />
+                <span>{formatDate(startDate)} -</span>{" "}
+                <span>{formatDate(endDate)}</span>
+              </>
+            )}
+            <div className={styles.description}>
               <p>{description}</p>
-            </div>
-            {
-              typeProject === 1 ? (
+              {typeProject === 1 ? (
                 <a href={link} target="_blank" rel="noreferrer">
                   ver proyecto
                 </a>
-              ) : null
-            }
+              ) : null}
+            </div>
           </div>
         </div>
         <div className={styles.actions}>
@@ -104,7 +110,6 @@ const ExperenceItem = ({
         </div>
       </div>
 
-      
       <ModalPortal
         isOpen={isOpenModalDeleteProject}
         closeModal={closeModalDeleteProject}
@@ -117,13 +122,25 @@ const ExperenceItem = ({
             <GoTrashcan />
           </div>
           <h3 className={styles.tittleProjectExperience}>
-            Estas seguro de eliminar el proyecto <span style={{fontWeight: '700', fontSize: '1rem'}}>"{nameProject}"</span> de tu historial de experiencia ?
+            Estas seguro de eliminar el proyecto{" "}
+            <span style={{ fontWeight: "700", fontSize: "1rem" }}>
+              "{nameProject}"
+            </span>{" "}
+            de tu historial de experiencia ?
           </h3>
-          <button className={styles.btnDeleteExperience} onClick={() => deleteData(id)}>Si, Eliminar</button>
+          <button
+            className={styles.btnDeleteExperience}
+            onClick={() => deleteData(id)}
+          >
+            Si, Eliminar
+          </button>
         </div>
       </ModalPortal>
 
-      <ModalPortal isOpen={isOpenModalEditProject} closeModal={closeModalEditProject}>
+      <ModalPortal
+        isOpen={isOpenModalEditProject}
+        closeModal={closeModalEditProject}
+      >
         <TypeExperience />
       </ModalPortal>
     </>

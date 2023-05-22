@@ -9,17 +9,17 @@ const RowExpand = ({ it }) => {
   const { skills } = useGetSkills(it.t100_id_student?.t100_id_student);
   const { languages } = useLanguageUser(it.t100_id_student?.t100_id_student);
 
-  console.log(it)
-
   return (
     <article className={styles.wrapperDetailsUser}>
       <p className={styles.objectPersonal}>
         {it?.t100_id_student?.t100_personal_objectives
           ? it?.t100_id_student?.t100_personal_objectives
-          : "Sin objetivo profesional"}
+          : "Este candidato no cuenta con objetivo profesional"}
       </p>
       <div className={styles.languages}>
-        <span>Idioma / Dialecto</span>
+        <span style={{ color: "grey", marginBottom: ".5rem" }}>
+          Idiomas / Dialecto:
+        </span>
         <List className={styles.list}>
           {languages?.map((lenguage) => (
             <ListItem
@@ -28,15 +28,31 @@ const RowExpand = ({ it }) => {
             >
               <Chip
                 label={lenguage?.c111_id_language?.c111_description}
-                bg="#EBF2FD"
-                color="#2864ED"
+                bg="#fff"
+                color="#6D6D6D"
+                outline="1px solid #ccc"
+              />
+            </ListItem>
+          ))}
+        </List>
+      </div>
+      <div className={styles.wrapperSkills}>
+        <p className={styles.titleSkills}>Conocimientos:</p>
+        <List>
+          {skills?.map((skill) => (
+            <ListItem key={uuid()}>
+              <Chip
+                label={skill?.c116_id_skill?.c116_description}
+                bg="#fff"
+                color="#6D6D6D"
+                outline="1px solid #ccc"
               />
             </ListItem>
           ))}
         </List>
       </div>
       <div className={styles.aboutMe}>
-        <span>Contacto</span>
+        <span style={{ color: "grey", marginBottom: ".5rem" }}>Contacto</span>
         <List>
           <ListItem>
             <a
@@ -50,20 +66,6 @@ const RowExpand = ({ it }) => {
               />
             </a>
           </ListItem>
-        </List>
-      </div>
-      <div className={styles.wrapperSkills}>
-        <p className={styles.titleSkills}>Skills</p>
-        <List className={styles.listItemsSkill}>
-          {skills?.map((skill) => (
-            <ListItem key={uuid()}>
-              <Chip
-                label={skill?.c116_id_skill?.c116_description}
-                bg="#EBF2FD"
-                color="#2864ED"
-              />
-            </ListItem>
-          ))}
         </List>
       </div>
     </article>

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import { useModal } from "hooks/useModal";
-import { formatDate } from "utils/formatDate";
 import { deleteStudentCertification } from "services/students/index";
 import FormCertification from "components/Form/Certification/FormCertification";
 import Modal from "components/Modal/Modal";
@@ -67,7 +66,7 @@ const CertificationItem = ({
               <h3 className={styles.titleCertification}>{title}</h3>
               <span className={styles.partnership}>{partnership}</span>
               <br />
-              <p className={styles.dateEnd}>Finalizada en: <span>{formatDate(endDate)}</span></p>
+              {/* <p className={styles.dateEnd}>Finalizada en: <span>{formatDate(endDate)}</span></p> */}
             </div>
             {
               link.length > 0 ? (

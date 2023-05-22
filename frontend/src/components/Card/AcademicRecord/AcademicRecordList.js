@@ -4,7 +4,7 @@ import { useModal, useAcademicHistorial } from "hooks";
 import ModalPortal from "components/Modal/ModalPortal";
 import FormAddAcademicRecord from "components/Form/AcademicRecord/FormAddAcademicRecord";
 import AcademicRecord from "./AcademicRecord";
-import Tooltip from "components/Tooltip/Tooltip";
+import Tooltip from "components/Tooltip/TooltipText";
 import { MdAdd } from "react-icons/md";
 import styles from "./AcademicRecord.module.css";
 
@@ -31,7 +31,7 @@ const AcademicRecordList = () => {
         {
           data?.map((el) => (
             <AcademicRecord
-              key={`academic-item${el?.t100_id_student?.t100_id_studentv}`}
+              key={`academic-item-${crypto.randomUUID()}`}
               academicUnit={el?.t104_academic_unit}
               carrer={el?.t104_carreer}
               id={el?.t104_id_registrer}
@@ -42,7 +42,7 @@ const AcademicRecordList = () => {
             />
           ))}
       </div>
-      <ModalPortal isOpen={isOpenModal} closeModal={closeModal} minWidth="550px" minHeight="450px">
+      <ModalPortal isOpen={isOpenModal} closeModal={closeModal} minWidth="550px" minHeight="510px">
         <FormAddAcademicRecord />
       </ModalPortal>
     </article>

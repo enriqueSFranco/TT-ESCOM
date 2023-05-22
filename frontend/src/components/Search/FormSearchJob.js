@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useDebounce, useViewport } from "hooks";
-import { searchCharacter } from "services"
+import { searchCharacter, searchJob } from "services";
 import Loader from "components/Loader/Loader";
 import * as BiIcon from "react-icons/bi";
 import styles from "./Search.module.css";
@@ -13,28 +13,31 @@ import {
   WrapperForm,
 } from "./styled-components/FormSearchStyled";
 
-
-const FormSearchJob = ({ handleSearch, query, setQuery }) => {
-  const inputRef = useRef(null)
+const FormSearchJob = ({
+  setFilterData,
+  setQueryAux,
+  handleSearch,
+}) => {
+  const inputRef = useRef(null);
+  const [query, setQuery] = useState("");
   const debounce = useDebounce(query, 500);
   const [locationJob, setLocationJob] = useState("");
   const [loading, setLoading] = useState(false);
-  const [filterData, setFilterData] = useState(null);
+  const [filterDataAutocomplete, setFilterDataAutocomplete] = useState(null);
   const [viewport] = useViewport();
 
   // filtrado para el autocompletado
   const handleFilterJob = (e) => {
-    const query = e.target.value.trim();
-    setQuery(query);
+    const query = e.target.value;
 
-    // hacer la llamada al endpoint de searchCharacter
-    if (query !== '') {
+    setQuery(query);
+    if (query !== "") {
       searchCharacter(query)
-        .then(res => {
-          const { results } = res
-          setFilterData(results)
-      })
-        .catch(error => console.error(error))
+        .then((res) => {
+          const { results } = res;
+          setFilterDataAutocomplete(results);
+        })
+        .catch((error) => error);
     }
     return;
   };
@@ -44,20 +47,32 @@ const FormSearchJob = ({ handleSearch, query, setQuery }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (query === "") return
+    if (query === "") return;
 
     setLoading(true);
     setTimeout(() => {
-      setQuery(debounce)
+      setQuery(debounce);
+      setQueryAux(debounce)
+      searchJob({
+        "Texto a buscar": debounce,
+          Donde: locationJob,
+          "Modalidad de empleo": [],
+          "Experiencia laboral": [],
+      })
+        .then((response) => {
+          const { result } = response;
+          // console.log(response);
+          setFilterData(result);
+        })
+        .catch((error) => console.error(error));
       setLoading(false);
-      handleSearch(debounce === "" ? filterData : debounce);
+      handleSearch(debounce === "" ? filterDataAutocomplete : debounce);
     }, 500);
   };
 
   useEffect(() => {
-    if (inputRef.current)
-      inputRef.current.focus()
-  }, [])
+    if (inputRef.current) inputRef.current.focus();
+  }, []);
 
   return (
     <WrapperForm>
@@ -72,7 +87,7 @@ const FormSearchJob = ({ handleSearch, query, setQuery }) => {
             onChange={handleFilterJob}
             onBlur={() => {
               setTimeout(() => {
-                setFilterData([]);
+                setFilterDataAutocomplete([]);
               }, 200);
             }}
             autoComplete="off"
@@ -81,16 +96,17 @@ const FormSearchJob = ({ handleSearch, query, setQuery }) => {
           />
           {/* TODO: pasar los elementos de autocompletado a componentes. */}
           <ul className={styles.dataResultsJobs}>
-            {filterData && filterData?.map((value) => (
-              <li
-                key={crypto.randomUUID()}
-                value={value?.t200_job}
-                onClick={() => handleClick(value?.t200_job)}
-                className={styles.dataItem}
-              >
-                {value?.t200_job}
-              </li>
-            ))}
+            {filterDataAutocomplete &&
+              filterDataAutocomplete?.map((value) => (
+                <li
+                  key={crypto.randomUUID()}
+                  value={value?.t200_job}
+                  onClick={() => handleClick(value?.t200_job)}
+                  className={styles.dataItem}
+                >
+                  {value?.t200_job}
+                </li>
+              ))}
           </ul>
         </WrapperInput>
         <Separator></Separator>
@@ -110,12 +126,12 @@ const FormSearchJob = ({ handleSearch, query, setQuery }) => {
           {viewport.device === "MOBILE" ? (
             <>
               {loading && <Loader />}
-              {!loading && 'Buscar vacante'}
+              {!loading && "Buscar vacante"}
               {loading && ""}
             </>
           ) : (
             <>
-              {loading && <Loader width='20' height='20' color="#fff" />}
+              {loading && <Loader width="20" height="20" color="#fff" />}
               {!loading && <BiIcon.BiSearch />}
               {loading && ""}
             </>

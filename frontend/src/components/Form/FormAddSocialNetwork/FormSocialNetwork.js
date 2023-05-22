@@ -2,7 +2,7 @@ import React from "react";
 import { toast } from "react-hot-toast";
 import { useForm, useGetPlataforms } from "hooks";
 import { postSocialNetwork } from "services";
-import Input from "components/Input/Input";
+import { Input } from "components/Input/Input";
 import { INITIAL_FORM_ADD_SOCIAL_NETWORK } from "types/addSocialNetwork";
 import {
   Button,
@@ -23,7 +23,7 @@ const FormSocialNetwork = ({ idUser }) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!e.target.value) return
+    if (!e.target.value) return;
 
     r["c115_id_plataform"] = parseInt(r.c115_id_plataform);
     postSocialNetwork(r)
@@ -71,7 +71,17 @@ const FormSocialNetwork = ({ idUser }) => {
           placeholder="https://..."
         />
       </div>
-        <span style={{position: 'relative', bottom: '.8rem', left: '3.4rem', fontSize: '.9em', color: 'grey'}}>La dirección debe se https://</span>
+      <span
+        style={{
+          position: "relative",
+          bottom: ".8rem",
+          left: "3.4rem",
+          fontSize: ".9em",
+          color: "grey",
+        }}
+      >
+        La dirección debe se https://
+      </span>
       <Button type="submit" value="Agregar" />
     </Form>
   );

@@ -10,7 +10,7 @@ const LoginAdmin = () => {
   return (
   <LayoutHome>
     <Wrapper>
-        <ContainerBackground bg="linear-gradient(to top, #88d3ce 0%, #6e45e2 100%);">
+        <ContainerBackground>
           <Overelay>
             <picture style={{width: '100%', position: 'relative', top: '15rem', left: '20rem'}}>
               <img src={background} alt="login-reclutador-fondo" width='80%' />

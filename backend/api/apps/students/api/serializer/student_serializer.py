@@ -35,7 +35,7 @@ class UpdateStudentSerializer(serializers.ModelSerializer):
   # skills=SkillSerializer(many=True)
   class Meta:
     model = Student
-    fields = ('t100_boleta','t100_name','t100_last_name','t100_username','t100_gender','t100_second_surname',
+    fields = ('t100_boleta','t100_name','t100_last_name','t100_username','t100_gender','t100_second_surname', 
     't100_date_of_birth','t100_personal_objectives','t100_speciality','t100_phonenumber','t100_residence','t100_modalities',
     't100_target_salary','t100_travel','t100_interest_job','is_active')          
     def update(self, instance, validate_data):

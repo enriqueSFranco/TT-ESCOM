@@ -3,7 +3,7 @@ import { useForm } from "hooks/useForm";
 import { usePassword } from "hooks/usePassword";
 import { initialForm } from "types/createNewCanditate";
 import LinkButton from "components/Button/LinkButton";
-import Input from "components/Input/Input";
+import { Input } from "components/Input/Input";
 import LayoutHome from "Layout/LayoutHome";
 import {
   MdEmail,
@@ -49,7 +49,18 @@ const CreateAccount = () => {
   return (
     <LayoutHome>
       <WrapperForm>
-        <h2 style={{fontFamily: 'sans-serif', fontSize: '1.5rem', textAlign: 'center', marginBottom: '2rem', color: '#2B3647', fontWeight: '600'}}>Crear cuenta como candidato</h2>
+        <h2
+          style={{
+            fontFamily: "sans-serif",
+            fontSize: "1.5rem",
+            textAlign: "center",
+            marginBottom: "2rem",
+            color: "#2B3647",
+            fontWeight: "600",
+          }}
+        >
+          Crear cuenta como candidato
+        </h2>
         <Form onSubmit={handleSubmitStudent}>
           <BoxInput>
             <Input
@@ -94,9 +105,7 @@ const CreateAccount = () => {
           </Button>
         </Form>
         <Register>
-          <span>
-            ¿Ya tines una cuenta?
-          </span>
+          <span>¿Ya tines una cuenta?</span>
           <LinkButton text="Inicia sesion aqui" to="/alumno" />
         </Register>
       </WrapperForm>

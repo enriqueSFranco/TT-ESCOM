@@ -14,7 +14,7 @@ const DatesJob = ({ form, handleChange, interestJobs, setInterestJobs }) => {
       <form className={styles.form}>
         <div className={styles.inputGroup}>
           <Autocomplete   
-            size="small"         
+                    
             id="t100_interest_job"
             name="t100_interest_job"
             value={form.t100_interest_job}
@@ -30,7 +30,7 @@ const DatesJob = ({ form, handleChange, interestJobs, setInterestJobs }) => {
 
         <div className={styles.inputGroup}>
           <TextField
-            size="small"
+            
             label="¿Cuanto te gustaria ganar?"
             name="t100_target_salary"
             id="t100_target_salary"

@@ -4,10 +4,17 @@ const LanguageStyled = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   position: relative;
   width: 300px;
-  height: 120px;
-  outline: 1px solid #ccc;
+  height: fit-content;
   border-radius: 4px;
   padding: .5rem;
+  background-color: #F5F7F8;
+
+  .image {
+    width: 50px;
+    position: absolute;
+    top: 1.3rem;
+    left: 1.3rem;
+  }
 `
 
 const Actions = styled.div`
@@ -32,6 +39,10 @@ const HeaderLanguage = styled.header`
 const LanguageText = styled.h1`
   text-align: center;
   font-size: 1.5rem;
+  background: linear-gradient(27deg, #3f5efb, #fc466b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 `
 
 export { Actions, Level, LanguageStyled, HeaderLanguage, LanguageText }

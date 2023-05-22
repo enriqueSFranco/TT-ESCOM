@@ -2,9 +2,8 @@ import styled from "styled-components";
 
 const WrapperCard = styled.article`
   min-width: 100%;
-  min-height: calc(100vh - 15rem);
+  min-height: calc(100vh - 10rem);
   position: relative;
-  /* top: 2.5rem; */
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(2, 1fr);
@@ -12,6 +11,33 @@ const WrapperCard = styled.article`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 `;
+
+const WrapperCV = styled.div`
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  `
+
+const LinkToCV = styled.a`
+  background-color: #0A58CA;
+  border-radius: 5px;
+  color: #fff;
+  width: 180px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 10px;
+  transition: all .4s ease-in-out;
+
+  &:hover {
+    color: #fff;
+    background-color: #1591D7;
+    font-weight: 700;
+  }
+`
 
 const CardLeft = styled.div`
   grid-area: card_left;
@@ -61,4 +87,4 @@ const CardHeader = styled.header`
   align-items: center;
 `;
 
-export { WrapperCard, CardLeft, CardHeader, CardInfo, CardRight, Item };
+export { WrapperCard, CardLeft, CardHeader, CardInfo, WrapperCV, LinkToCV, CardRight, Item };

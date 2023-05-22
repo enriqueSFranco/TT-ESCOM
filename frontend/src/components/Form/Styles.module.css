@@ -104,6 +104,14 @@
   align-items: center;
 }
 
+.title {
+  background: linear-gradient(27deg, #3f5efb, #fc466b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 22px;
+}
+
 .createAccountStudentForm {
   width: auto;
   height: 600px;
@@ -129,14 +137,12 @@
   align-items: center;
   position: relative;
   top: 4rem;
-  /* outline: 2px solid red; */
 }
 
 .personalContact { 
   height: fit-content;
-  /* outline: 2px solid red; */
   position: relative;
-  top: 4rem;
+  top: 2rem;
 }
 
 .yohaveAccount {
@@ -155,16 +161,6 @@
 }
 
 .welcome { margin: 1rem 0; }
-
-.welcome h2, .personalContact h2 {
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #0081c3;
-  letter-spacing: 2px;
-  padding: 0;
-  position: relative;
-}
 
 .welcome svg {
   font-size: .8rem;
@@ -201,10 +197,9 @@
 }
 
 .wrapperForm3 {
-  /* outline: 2px solid red; */
-  height: 590px;
-  padding-top: 1rem;
-  margin-left: 2rem;
+  height: fit-content;
+  position: relative;
+  top: 6rem;
 }
 
 .wrapperCreateAccountStudent {
@@ -293,7 +288,6 @@
 }
 
 .wrapperFile {
-  /* margin-bottom: 1rem; */
   width: fit-content;
   height: 40px;
   display: flex;

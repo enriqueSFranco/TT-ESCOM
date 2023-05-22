@@ -1,12 +1,8 @@
 import React from "react";
-import moment from "moment";
-import "moment/locale/es-mx";
+import { useTimeAgo } from "hooks";
 import Chip from "components/Chip/Chip";
-import { numberFormat } from "utils/numberFormat";
+import { parseThousands } from "utils";
 import { IoBusiness } from "react-icons/io5";
-import { MdAttachMoney } from "react-icons/md";
-import { HiLocationMarker } from "react-icons/hi";
-import { FaBrain } from "react-icons/fa";
 import { BsArrowRightShort } from "react-icons/bs";
 import {
   Actions,
@@ -24,37 +20,59 @@ import {
   TitleJob,
 } from "../styled-components/CardJobStyled";
 
-const CardJob = ({ job, vacantId, cards, onClick }) => {
-  const toggleActiveStyled = (index) => {
-    console.log(vacantId, cards.activeCard)
-    return vacantId === cards.activeCard ? "active" : undefined
-  }
+const now = Date.now();
+
+const CardJob = ({
+  job,
+  vacantId,
+  isVacantRecommended,
+  time,
+  cards,
+  onClick,
+}) => {
+  const timeago = useTimeAgo(time);
+  const elapsed = Math.abs(Math.round((time - now) / 1000 / 60));
+
+  const toggleActiveStyled = () => {
+    return vacantId === cards.activeCard ? "active" : undefined;
+  };
 
   const tags = [
     {
-      label: job?.c207_id_experience?.c207_description,
-      icon: <FaBrain style={{ fontSize: "1.1rem" }} />,
+      label: isVacantRecommended
+        ? `Exp: ${job?.t200_id_vacant?.c207_id_experience?.c207_description}`
+        : `Exp: ${job?.c207_id_experience?.c207_description}`,
     },
     {
-      label: job?.t200_max_salary
-        ? `${numberFormat(job?.t200_max_salary).replace(".00", "")}`
-        : "-",
-      icon: <MdAttachMoney style={{ fontSize: "1.1rem" }} />,
+      label: isVacantRecommended
+        ? job?.t200_id_vacant?.t200_max_salary
+          ? `Suledo mensual: $${parseThousands(
+              job?.t200_id_vacant?.t200_max_salary
+            )}-${parseThousands(job?.t200_id_vacant?.t200_max_salary)}`
+          : "Sueldo no especificado"
+        : job?.t200_max_salary
+        ? `Sueldo mensual: $${parseThousands(
+            job?.t200_min_salary
+          )}-${parseThousands(job?.t200_max_salary)}`
+        : "Sueldo no especificado",
     },
     {
-      label: job?.c214_id_modality?.c214_description,
-      icon: <HiLocationMarker style={{ fontSize: "1.1rem" }} />,
+      label: isVacantRecommended
+        ? `Perfil academico: ${job?.t200_id_vacant?.c206_id_profile?.c206_description}`
+        : `Modalidad: ${
+            job?.c214_id_modality?.c214_description
+              ? job?.c214_id_modality?.c214_description
+              : "No especificada"
+          }`,
     },
   ];
 
   function createMarkup() {
-    return { __html: job.t200_description };
+    return { __html: isVacantRecommended ? job.t200_id_vacant?.t200_description : job.t200_description };
   }
 
-  const currentTime = new Date(job?.t200_publish_date).getUTCDate()
-
   return (
-    <CardBody close={currentTime} isActive={toggleActiveStyled(vacantId)}>
+    <CardBody time={elapsed} isActive={toggleActiveStyled(vacantId)}>
       <CardBorder>
         <CardHeader>
           <CardImage>
@@ -67,31 +85,41 @@ const CardJob = ({ job, vacantId, cards, onClick }) => {
               <IoBusiness style={{ color: "darkgray", fontSize: "3.5rem" }} />
             )}
           </CardImage>
-          <PublicationDate close={currentTime}>
-            {job?.t200_publish_date
-              ? currentTime >= 30
-                ? "Vacante cerrada"
-                : `Publicada ${moment(job?.t200_publish_date).fromNow()}`
-              : "Sin fecha"}
+          
+          <PublicationDate time={elapsed}>
+            Publicada {timeago}
           </PublicationDate>
         </CardHeader>
         <CardContent>
-          <TitleJob close={currentTime}>{job.t200_job}</TitleJob>
+          {isVacantRecommended ? (
+            <TitleJob>{job.t200_id_vacant?.t200_job}</TitleJob>
+          ) : (
+            <TitleJob time={elapsed}>{job.t200_job}</TitleJob>
+          )}
+
           <Tags>
             {tags.map((tag, index) => (
-              <TagsItem key={crypto.randomUUID()} index={index}>
+              <TagsItem key={`tag-id-${index}`}>
                 <Chip
-                  color={`var(--color_${index + 1})`}
                   label={tag.label}
-                  icon={tag.icon}
+                  outline={`1px solid #ccc`}
+                  bg="#fff"
+                  color="#6D6D6D"
                 />
               </TagsItem>
             ))}
           </Tags>
-          <Location>{`${job?.c222_id_locality?.c222_state}, ${job?.c222_id_locality?.c222_municipality}, ${job?.c222_id_locality?.c222_locality}`}</Location>
+          <Location>{`${job?.t200_id_vacant?.t200_street}`}</Location>
+
+          {isVacantRecommended ? (
+            <Location>{`${job?.t200_id_vacant?.t200_street}`}</Location>
+          ) : (
+            <Location>{`${job?.c222_id_locality?.c222_state}, ${job?.c222_id_locality?.c222_municipality}, ${job?.c222_id_locality?.c222_locality}`}</Location>
+          )}
+
           <Description dangerouslySetInnerHTML={createMarkup()} />
           <Actions>
-            <Button onClick={onClick} bgColor="#2172f2" color="#fff">
+            <Button onClick={onClick} bgColor="#2172f2" color="#fff" >
               Ver mas <BsArrowRightShort style={{ fontSize: "1.5rem" }} />
             </Button>
           </Actions>

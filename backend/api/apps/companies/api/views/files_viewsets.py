@@ -220,14 +220,15 @@ class ValidationDocumentViewSet(viewsets.GenericViewSet):
 	
 
 	def update(self, request, pk):
-		print(request.data)
-		u_file = self.model.objects.filter(t300_rfc = request.data['t300_rfc']).first()
-		file_serializer = self.serializer_class(u_file, data=request.data)
+		#print(request.data)
+		u_file = self.model.objects.filter(t300_id_company = pk).first()
+		file_serializer = self.serializer_class(u_file, data=request.data)		
 		if file_serializer.is_valid():
 			file_serializer.save()
 			return Response({
 				'message': 'Archivo validador agregado correctamente'
 			}, status=status.HTTP_200_OK)
+		print(file_serializer.errors)
 		return Response({
 			'message': 'Hay errores en la actualización',
 			'errors': file_serializer.errors

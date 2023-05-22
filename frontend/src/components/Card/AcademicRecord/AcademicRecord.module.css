@@ -18,13 +18,13 @@
 }
 
 .body {
-  background-color: #fff;
+  background-color: #F5F7F8;
+  color: #000;
   width: 400px;
   border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid #ccc;
   padding: .5rem;
 }
 
@@ -40,7 +40,6 @@
   align-items: center;
   justify-content: center;
   background-color: #028ed43f;
-  /* z-index: 99; */
   margin-bottom: .3rem;
 }
 
@@ -83,14 +82,28 @@
 
 .date {
   font-size: .7rem;
-  color: #616161;
+  color: #000;
 }
 
-.editAction, .deleteAction { color: #363636;  transition: color .5s ease;}
+.carrer {
+  font-weight: 600;
+  width: 100%;
+  background: linear-gradient(27deg, #3f5efb, #fc466b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.editAction,
+.deleteAction {
+  color: #000;
+  transition: color .5s ease;
+}
 
 .editAction:hover {
-  color: #0000ff;
+  color: #34BBFF;
 }
+
 .deleteAction:hover {
   color: #ff0000;
 }
@@ -101,8 +114,10 @@
 }
 
 .history {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  gap: .5rem;
 }
 
 .logoProject {
@@ -122,6 +137,9 @@
   padding: 1rem;
   border-radius: 5px;
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: .2rem;
 }
 
 .wrapper {
@@ -135,10 +153,10 @@
 
 .listAcademicRecord {
   width: 100%;
+  padding: .5rem 0;
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .wrapperCircle {

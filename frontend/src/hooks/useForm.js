@@ -6,6 +6,7 @@ import {
   createAccountRecruiter,
   createAccountStudent,
   postCertification,
+  uploadDocumentValidate,
 } from "services";
 
 export const useForm = (initialForm, validateForm) => {
@@ -64,8 +65,11 @@ export const useForm = (initialForm, validateForm) => {
     if (Object.keys(errors).length === 0) {
       createAccountRecruiter(form).then((response) => {
         console.log(response);
-        if (response.status === 201) {
-          toast.success(response?.data?.message);
+        if (response.status === 201) {                    
+          toast.success(response?.data?.message);          
+          uploadDocumentValidate(response?.data?.new_company_id,{ t300_validator_document: form.validation_document })
+          .then((response) => console.log(response))
+          .catch((error) => console.error(error));
           setTimeout(() => {
             navigate("/pre-registro");
           }, 3000);
@@ -76,19 +80,6 @@ export const useForm = (initialForm, validateForm) => {
     }
   };
 
-  const onSubmitPostCertification = (e) => {
-    e.preventDefault();
-    // setErrors(validateForm(form));
-    postCertification(form).then((response) => {
-      if (response.status === 201) {
-        const { data } = response;
-        setResponse(data);
-        setLoading(false);
-      } else {
-        setLoading(false);
-      }
-    });
-  };
 
   return {
     form,
@@ -101,6 +92,5 @@ export const useForm = (initialForm, validateForm) => {
     handleSubmitStudent,
     handleSubmitCompany,
     handleValidate,
-    onSubmitPostCertification,
   };
 };

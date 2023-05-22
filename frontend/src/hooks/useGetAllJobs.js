@@ -19,7 +19,7 @@ export function useGetAllJobs() {
         setMaxPage(totalPage)
         setResponse(response.result);
       })
-      .catch((error) => error)
+      .catch((error) => console.log(error))
       .finally(() => setLoading(false));
 
     return () => {};
@@ -31,11 +31,12 @@ export function useGetAllJobs() {
     if (page <= maxPage) {
       setLoadinNextPage(true);
       getAllJobs(page).then((nextResponse) => {
-        console.log(nextResponse)
+        console.log("🚀 ~ file: useGetAllJobs.js:34 ~ getAllJobs ~ nextResponse", nextResponse)
+        
         setResponse(prevResponse => [...prevResponse, ...nextResponse?.result])
-        setLoadinNextPage(false)
       })
       .catch(error => console.log(error))
+      .finally(() => setLoadinNextPage(false))
     } else return;
   }, [maxPage, page]);
 

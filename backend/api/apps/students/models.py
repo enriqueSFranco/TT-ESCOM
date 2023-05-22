@@ -388,7 +388,6 @@ class Certifications(models.Model):
 	t119_certification = models.CharField(max_length=150,null=False,blank=False)
 	t119_company = models.CharField(max_length=150,blank=True,null=False)
 	t119_start_date = models.DateField(null=True,blank=True)
-	t119_end_date = models.DateField(null=True,blank=True)
 	t119_in_course = models.BooleanField(default=False)
 	t119_voucher_link = models.CharField(max_length=200,null=True,blank=True)
 	

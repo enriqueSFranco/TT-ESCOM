@@ -1,5 +1,6 @@
 [
-    
+
+
     {
         "model":"vacantes.Vacant",        
         "pk":1,
@@ -7,13 +8,13 @@
             "t200_id_vacant": 1,
             "t300_id_company": 1,
             "t200_job": "Sr. Backend Developer NodeJS",
-            "t200_description": "Buscamos al mejor programador Backend en NodeJS para integrarse a la familia de Feek Technologies. y unirse a nuestro equipo para desarrollar un producto increíble de clase mundial.\n\nResponsabilidades y actividades:\r\nDesarrollar el backend de uno de nuestros productos por salir al mercado.\r\nColaborar en un equipo multidisciplinario para la creación del producto.\r\n\r\nGenerar un código de calidad, correctamente documentado y comentado.\r\nUso de GIT como repositorio y versionario.\r\n\r\nComunicación con Servidores y el Setup de los mismos.\r\nCapacidad de cumplir metas y fechas limite\r\nUso de plataformas de manejo de proyectos como Monday.\r\nResponsabilidades y actividades:\r\n\r\nDesarrollar el backend de uno de nuestros productos por salir al mercado.\r\n\r\nColaborar en un equipo multidisciplinario para la creación del producto.\r\n\r\nGenerar un código de calidad, correctamente documentado y comentado.\r\n\r\nUso de GIT como repositorio y versionario.\r\n\r\nComunicación con Servidores y el Setup de los mismos.\r\n\r\nCapacidad de cumplir metas y fechas limite\r\nUso de plataformas de manejo de proyectos como Monday\nRequisitos\nNodeJS,GIT\nBeneficios\nPlan de carrera y crecimiento\r\nSeguro de gastos médicos\r\nFlex time (home office, viernes corto)\n Horario:9:00-18:00 Lunes a Viernes\nSalario:35000 - 45000",
+            "t200_description": "Buscamos al mejor programador Backend en NodeJS para integrarse a la familia de Feek Technologies. y unirse a nuestro equipo para desarrollar un producto increíble de clase mundial.\n\nResponsabilidades y actividades:\r\nDesarrollar el backend de uno de nuestros productos por salir al mercado.\r\nColaborar en un equipo multidisciplinario para la creación del producto.\r\n\r\nGenerar un código de calidad, correctamente documentado y comentado.\r\nUso de GIT como repositorio y versionario.\r\n\r\nComunicación con Servidores y el Setup de los mismos.\r\nCapacidad de cumplir metas y fechas limite\r\nUso de plataformas de manejo de proyectos como Monday.\r\nResponsabilidades y actividades:\r\n\r\nDesarrollar el backend de uno de nuestros productos por salir al mercado.\r\n\r\nColaborar en un equipo multidisciplinario para la creación del producto.\r\n\r\nGenerar un código de calidad, correctamente documentado y comentado.\r\n\r\nUso de GIT como repositorio y versionario.\r\n\r\nComunicación con Servidores y el Setup de los mismos.\r\n\r\nCapacidad de cumplir metas y fechas limite\r\nUso de plataformas de manejo de proyectos como Monday\nRequisitos\nNodeJS,GIT\nBeneficios\nPlan de carrera y crecimiento\r\nSeguro de gastos médicos\r\nFlex time (home office, viernes corto)\nSalario:35000 - 45000",
             "c214_id_modality": 1,
             "c206_id_profile": 5,
-            "c204_id_vacant_status": 1,
+            "c204_id_vacant_status": 2,
             "c207_id_experience": 5,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29620,
             "t200_street": "Paseo de la reforma",
             "t200_interior_number": "Reforma 198",
@@ -21,9 +22,10 @@
             "t200_vacancy": 2,
             "c208_id_contract": 1,
             "t301_id_recruiter": 1,
-            "t400_id_admin": null,
+            "t400_id_admin": 1,
             "t200_min_salary": 35000,
-            "t200_max_salary": 45000
+            "t200_max_salary": 45000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:00"
         }
     },
 
@@ -32,25 +34,26 @@
         "pk":2,
         "fields":{
             "t200_id_vacant": 2,
-            "t300_id_company": 2,
+            "t300_id_company": 1,
             "t200_job": "Desarrollador Backend. Desarrollador Frontend",
-            "t200_description": "Desarrollador web,desarrollo de aplicaciones móviles, administración de proyectos, Desarrollo de platafomras y consultoria tecnológica\nRequisitos\nDesarrollador web\nBeneficios\n\n Horario:10:00-19:00 Lunes a Viernes\nSalario:15000 - 25000",
+            "t200_description": "Desarrollador web,desarrollo de aplicaciones móviles, administración de proyectos, Desarrollo de platafomras y consultoria tecnológica\nRequisitos\nDesarrollador web\nBeneficios\n\nSalario:15000 - 25000",
             "c214_id_modality": 1,
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 3,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29620,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 2,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 2,
+            "t301_id_recruiter": 1,
             "t400_id_admin": 1,
             "t200_min_salary": 15000,
-            "t200_max_salary": 25000
+            "t200_max_salary": 25000,
+            "t200_working_hours": "Lunes a Viernes Horario:10:00-19:00"
         }
     },
 
@@ -59,25 +62,26 @@
         "pk":3,
         "fields":{
             "t200_id_vacant": 3,
-            "t300_id_company": 3,
+            "t300_id_company": 1,
             "t200_job": "Programador",
-            "t200_description": "Conocimientos en PHP, LARAVEL\nFRANEWORK 5 O SUPERIOR, CSS3,\nJAVASCRIPT VANILLA, JQUERY, PLUS,\nREACT, VUE O ANGULAR, HTML5,\nAJAX, MYSQL, SQL, DML, DDL\nGIT.\nRequisitos\nPHP,LARAVEL,CSS3,JAVASCRIPT VANILLA,JQUERY,PLUS,REACT,VUE,ANGULAR,HTML5,AJAX\nBeneficios\nPrestaciones de Ley.\n Horario:9:00-19:00 Lunes a Viernes\nSalario:16000 - 25000",
+            "t200_description": "Conocimientos en PHP, LARAVEL\nFRANEWORK 5 O SUPERIOR, CSS3,\nJAVASCRIPT VANILLA, JQUERY, PLUS,\nREACT, VUE O ANGULAR, HTML5,\nAJAX, MYSQL, SQL, DML, DDL\nGIT.\nRequisitos\nPHP,LARAVEL,CSS3,JAVASCRIPT VANILLA,JQUERY,PLUS,REACT,VUE,ANGULAR,HTML5,AJAX\nBeneficios\nPrestaciones de Ley.\nSalario:16000 - 25000",
             "c214_id_modality": 1,
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 3,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29620,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 3,
+            "t301_id_recruiter": 1,
             "t400_id_admin": 1,
             "t200_min_salary": 16000,
-            "t200_max_salary": 25000
+            "t200_max_salary": 25000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-19:00"
         }
     },
 
@@ -87,41 +91,14 @@
         "fields":{
             "t200_id_vacant": 4,
             "t300_id_company": 1,
-            "t200_job": "",
-            "t200_description": "Desarrollo de un sistema de encuestas simple de 3 preguntas atravez de codigos de QR que funcione como sistema de verificacion para la encuestas.\nRequisitos\ncodigos de QR\nBeneficios\n\n Horario:10:00-19:00 Lunes a Viernes\nSalario:16000 - 25000",
+            "t200_job": "Desarrollador",
+            "t200_description": "Desarrollo de un sistema de encuestas simple de 3 preguntas atravez de codigos de QR que funcione como sistema de verificacion para la encuestas.\nRequisitos\ncodigos de QR\nBeneficios\n\nSalario:16000 - 25000",
             "c214_id_modality": 1,
-            "c206_id_profile": 5,
-            "c204_id_vacant_status": 1,
-            "c207_id_experience": 2,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
-            "c222_id_locality": 29620,
-            "t200_street": "",
-            "t200_interior_number": "",
-            "t200_exterior_number": "",
-            "t200_vacancy": 1,
-            "c208_id_contract": 1,
-            "t301_id_recruiter": 4,
-            "t400_id_admin": null,
-            "t200_min_salary": 16000,
-            "t200_max_salary": 25000
-        }
-    },
-
-    {
-        "model":"vacantes.Vacant",        
-        "pk":5,
-        "fields":{
-            "t200_id_vacant": 5,
-            "t300_id_company": 2,
-            "t200_job": "Analista de Sistemas",
-            "t200_description": "Experiencia en: Análisis, desarrollo e implantación de sistema de computo. Manejo de bases de datos, programación de sistemas, lenguajes dede estudios de posgrado en el Correo: rcampos@banxico.org.mx programación C, C++, JAVA, HTML5, sistemas operativos Windows - UNIX, programación orientada a objetos y sistemas operativos\nRequisitos\nAnálisis,desarrollo de sistema de computo,bases de datos,programación de sistemas,C,C++,JAVA,HTML5,Windows\nBeneficios\nComedor, 20 días de Vacaciones al año Capacitación, Beca\n Horario:10:00-18:00 Lunes a Viernes\nSalario:16000 - 25000",
-            "c214_id_modality": 2,
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 2,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29620,
             "t200_street": "",
             "t200_interior_number": "",
@@ -131,7 +108,36 @@
             "t301_id_recruiter": 1,
             "t400_id_admin": 1,
             "t200_min_salary": 16000,
-            "t200_max_salary": 25000
+            "t200_max_salary": 25000,
+            "t200_working_hours": "Lunes a Viernes Horario:10:00-19:00"
+        }
+    },
+
+    {
+        "model":"vacantes.Vacant",        
+        "pk":5,
+        "fields":{
+            "t200_id_vacant": 5,
+            "t300_id_company": 1,
+            "t200_job": "Analista de Sistemas",
+            "t200_description": "Experiencia en: Análisis, desarrollo e implantación de sistema de computo. Manejo de bases de datos, programación de sistemas, lenguajes dede estudios de posgrado en el Correo: rcampos@banxico.org.mx programación C, C++, JAVA, HTML5, sistemas operativos Windows - UNIX, programación orientada a objetos y sistemas operativos\nRequisitos\nAnálisis,desarrollo de sistema de computo,bases de datos,programación de sistemas,C,C++,JAVA,HTML5,Windows\nBeneficios\nComedor, 20 días de Vacaciones al año Capacitación, Beca\nSalario:16000 - 25000",
+            "c214_id_modality": 2,
+            "c206_id_profile": 5,
+            "c204_id_vacant_status": 2,
+            "c207_id_experience": 2,                                    
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
+            "c222_id_locality": 29620,
+            "t200_street": "",
+            "t200_interior_number": "",
+            "t200_exterior_number": "",
+            "t200_vacancy": 1,
+            "c208_id_contract": 1,
+            "t301_id_recruiter": 1,
+            "t400_id_admin": 1,
+            "t200_min_salary": 16000,
+            "t200_max_salary": 25000,
+            "t200_working_hours": "Lunes a Viernes Horario:10:00-18:00"
         }
     },
 
@@ -140,25 +146,26 @@
         "pk":6,
         "fields":{
             "t200_id_vacant": 6,
-            "t300_id_company": 3,
+            "t300_id_company": 1,
             "t200_job": "Desarrollador Frontend",
-            "t200_description": "Conocimiento en Java, HTML 5, CSS3,JS, Jquery, spring, hibernate, JSF, GWT.\nRequisitos\nJava,HTML 5,CSS3,JS,Jquery,spring\nBeneficios\nSeguro Médico,\nSeguro de Vida,\nFondo de Ahorro,\nCaja de Ahorro, prima vacacional de 25%\n Horario:9:00-19:00 Lunes a Viernes\nSalario:30000 - 40000",
+            "t200_description": "Conocimiento en Java, HTML 5, CSS3,JS, Jquery, spring, hibernate, JSF, GWT.\nRequisitos\nJava,HTML 5,CSS3,JS,Jquery,spring\nBeneficios\nSeguro Médico,\nSeguro de Vida,\nFondo de Ahorro,\nCaja de Ahorro, prima vacacional de 25%\nSalario:30000 - 40000",
             "c214_id_modality": 2,
             "c206_id_profile": 5,
-            "c204_id_vacant_status": 1,
+            "c204_id_vacant_status": 2,
             "c207_id_experience": 3,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29620,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 2,
-            "t400_id_admin": null,
+            "t301_id_recruiter": 1,
+            "t400_id_admin": 1,
             "t200_min_salary": 30000,
-            "t200_max_salary": 40000
+            "t200_max_salary": 40000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-19:00"
         }
     },
 
@@ -167,25 +174,26 @@
         "pk":7,
         "fields":{
             "t200_id_vacant": 7,
-            "t300_id_company": 4,
+            "t300_id_company": 2,
             "t200_job": "Data Scientist.",
-            "t200_description": "Diseño e implementación de modelos de inteligencia artificial y de estadística.\nExperiencia de 2 años con Python.\nExperiencia en modelos y procesamiento de Lenguaje Natural\n(NLP). GitHub. Deseable experiencia en Linux.\nRequisitos\ninteligencia artificial,estadística,Python\nBeneficios\nPrestaciones de Ley y Seguro de Gastos Médicos\n Horario:9:00-19:00 Lunes a Viernes\nSalario:20000 - 20000",
+            "t200_description": "Diseño e implementación de modelos de inteligencia artificial y de estadística.\nExperiencia de 2 años con Python.\nExperiencia en modelos y procesamiento de Lenguaje Natural\n(NLP). GitHub. Deseable experiencia en Linux.\nRequisitos\ninteligencia artificial,estadística,Python\nBeneficios\nPrestaciones de Ley y Seguro de Gastos Médicos\nSalario:20000 - 20000",
             "c214_id_modality": 2,
             "c206_id_profile": 5,
-            "c204_id_vacant_status": 1,
+            "c204_id_vacant_status": 2,
             "c207_id_experience": 2,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29620,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 3,
-            "t400_id_admin": null,
+            "t301_id_recruiter": 5,
+            "t400_id_admin": 1,
             "t200_min_salary": 20000,
-            "t200_max_salary": 20000
+            "t200_max_salary": 20000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-19:00"
         }
     },
 
@@ -194,25 +202,26 @@
         "pk":8,
         "fields":{
             "t200_id_vacant": 8,
-            "t300_id_company": 1,
+            "t300_id_company": 2,
             "t200_job": "Desarrollador de Software Junior",
-            "t200_description": "Conocimiento de lenguajes de codificación básicos, incluidos Python, JavaScript. \nConocimiento de bases de datos y sistemas operativos. \nCapacidad para aprender nuevas tecnologías rápidamente. \nCapacidad para seguir instrucciones y trabajar en un ambiente de equipo. \nCapaz de trabajar de forma independiente y como parte de un equipo. \nCompetencia oral y escrita en inglés imprescindible.\nRequisitos\nPython,JavaScript,bases de datos,sistemas operativos\nBeneficios\n\n Horario:9:00-19:00 Lunes a Viernes\nSalario:15000 - 20000",
+            "t200_description": "Conocimiento de lenguajes de codificación básicos, incluidos Python, JavaScript. \nConocimiento de bases de datos y sistemas operativos. \nCapacidad para aprender nuevas tecnologías rápidamente. \nCapacidad para seguir instrucciones y trabajar en un ambiente de equipo. \nCapaz de trabajar de forma independiente y como parte de un equipo. \nCompetencia oral y escrita en inglés imprescindible.\nRequisitos\nPython,JavaScript,bases de datos,sistemas operativos\nBeneficios\n\nSalario:15000 - 20000",
             "c214_id_modality": 2,
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 5,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29620,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 4,
+            "t301_id_recruiter": 5,
             "t400_id_admin": 1,
             "t200_min_salary": 15000,
-            "t200_max_salary": 20000
+            "t200_max_salary": 20000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-19:00"
         }
     },
 
@@ -223,23 +232,24 @@
             "t200_id_vacant": 9,
             "t300_id_company": 2,
             "t200_job": "Senior de Data Engineer y Backend",
-            "t200_description": "Competencias en Python/PHP avanzado. AWS (en particular Glue, Lambda, EC2 and ingestion pipelines). Spark. Docker. MySQL, PostgreSQL. Flask. ETL applications y arquitectura de microservicio. REST API's development. Java/Spring. OpenAPI. Docker.\nRequisitos\nPython,PHP,AWS,Glue,Lambda,EC2,ingestion pipelines,Spark,Docker,MySQL,PostgreSQL,Flask\nBeneficios\n\n Horario:9:00-14:00 Lunes a Viernes\nSalario:15000 - 20000",
+            "t200_description": "Competencias en Python/PHP avanzado. AWS (en particular Glue, Lambda, EC2 and ingestion pipelines). Spark. Docker. MySQL, PostgreSQL. Flask. ETL applications y arquitectura de microservicio. REST API's development. Java/Spring. OpenAPI. Docker.\nRequisitos\nPython,PHP,AWS,Glue,Lambda,EC2,ingestion pipelines,Spark,Docker,MySQL,PostgreSQL,Flask\nBeneficios\n\nSalario:15000 - 20000",
             "c214_id_modality": 2,
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 5,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29620,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 1,
+            "t301_id_recruiter": 5,
             "t400_id_admin": 1,
             "t200_min_salary": 15000,
-            "t200_max_salary": 20000
+            "t200_max_salary": 20000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-14:00"
         }
     },
 
@@ -248,25 +258,26 @@
         "pk":10,
         "fields":{
             "t200_id_vacant": 10,
-            "t300_id_company": 3,
+            "t300_id_company": 2,
             "t200_job": "Desarrollador .Net Sr. ",
-            "t200_description": "Lenguajes de programación: C* 8.0,T-SQL, ES5 o ES6, TypeScript Frameworks: .NET FRAMEWORK 4.8, .NET CORE 3.1, NET STANDARD 2.0, ASP.NET MVC 5, ASP.NET CORE MVC, ASP.NET WEB API 2, ASP.NET CORE WEB API, Control de versiones: VSTS antes (TFS) 0 Git. Metodología para el desarrollo de software: Scrum, Arquitecturas: N capas, MVC — MVVM — MVP, Cliente — servidor. Actividades: Redacción de una historia de usuario y criterio de aceptación, publicaciones automáticas, configuración de Sprints. Codificar: desarrollar back end. Codificar: desarrollar front end. Realizar pruebas unitarias. Resolución de bugs. Gestionar  los tiempos para entrega de actividades propias y del equipo a cargo. Revisión de los entregables del equipo a cargo manteniendo la calidad del código.\nRequisitos\nC* 8.0,T-SQL,ES5,ES6,.NET FRAMEWORK 4.8,.NET CORE 3.1,NET STANDARD 2.0,ASP.NET MVC 5,ASP.NET CORE MVC\nBeneficios\nPrestaciones de ley. Prestaciones superiores a los de la ley. SGMM. 11 días de vacaciones. 100% nómina. 100% home office. Descuentos corporativos. Clases de inglés gratuitas. Capacitaciones gratuitas. Plan de nutrición.\n Horario:9:00-19:00 Lunes a Viernes\nSalario:19000 - 24000",
+            "t200_description": "Lenguajes de programación: C* 8.0,T-SQL, ES5 o ES6, TypeScript Frameworks: .NET FRAMEWORK 4.8, .NET CORE 3.1, NET STANDARD 2.0, ASP.NET MVC 5, ASP.NET CORE MVC, ASP.NET WEB API 2, ASP.NET CORE WEB API, Control de versiones: VSTS antes (TFS) 0 Git. Metodología para el desarrollo de software: Scrum, Arquitecturas: N capas, MVC — MVVM — MVP, Cliente — servidor. Actividades: Redacción de una historia de usuario y criterio de aceptación, publicaciones automáticas, configuración de Sprints. Codificar: desarrollar back end. Codificar: desarrollar front end. Realizar pruebas unitarias. Resolución de bugs. Gestionar  los tiempos para entrega de actividades propias y del equipo a cargo. Revisión de los entregables del equipo a cargo manteniendo la calidad del código.\nRequisitos\nC* 8.0,T-SQL,ES5,ES6,.NET FRAMEWORK 4.8,.NET CORE 3.1,NET STANDARD 2.0,ASP.NET MVC 5,ASP.NET CORE MVC\nBeneficios\nPrestaciones de ley. Prestaciones superiores a los de la ley. SGMM. 11 días de vacaciones. 100% nómina. 100% home office. Descuentos corporativos. Clases de inglés gratuitas. Capacitaciones gratuitas. Plan de nutrición.\nSalario:19000 - 24000",
             "c214_id_modality": 2,
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 5,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29620,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 2,
+            "t301_id_recruiter": 5,
             "t400_id_admin": 1,
             "t200_min_salary": 19000,
-            "t200_max_salary": 24000
+            "t200_max_salary": 24000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-19:00"
         }
     },
 
@@ -275,25 +286,26 @@
         "pk":11,
         "fields":{
             "t200_id_vacant": 11,
-            "t300_id_company": 4,
+            "t300_id_company": 2,
             "t200_job": "Desarrollador Aplicaciones Backend",
-            "t200_description": "Al menos 3 años de experiencia profesional. Pensamiento analítico y resolución de problemas. Conocimientos de Programación en Ruby y su Framework Ruby On Rails (Al menos 2 años). Conocimientos de Programación en Java (8, 11 o 17) (Al menos 1 año). Conocimiento de SpringBoot o Spring Framework. Conocimientos desarrollando e integrando Servicios Web y API's (SOAP y RestFul). Manejo de Bases de Datos Relacionales (PostgreSQL, MariaDB, MySQL). Conocimiento de Bases de Datos No Relacionales (Redis, MongoDB). Creación de Pruebas Unitarias. Versionamiento utilizando Git. Conocimiento de Servicios y Herramientas de Nube Pública (AWS, GCP). Conocimiento de trabajo con DevOps y QA enfocado a CI/CD. Conocimiento de HTML5, CSS, Javascript. Habilidad para depurar aplicaciones, encontrar errores y corregirlos. Inglés Intermedio (Escrito y Hablado, hay interacción con clientes/proveedores).\nRequisitos\nPensamiento analítico,resolución de problemas,Ruby,Ruby On Rails,Java,SpringBoot,Spring Framework,PostgreSQL\nBeneficios\nPrestaciones de Ley y después de periodo de prueba Prestaciones Superiores.\n Horario:10:00-18:00 Lunes a Viernes\nSalario:15000 - 35000",
+            "t200_description": "Al menos 3 años de experiencia profesional. Pensamiento analítico y resolución de problemas. Conocimientos de Programación en Ruby y su Framework Ruby On Rails (Al menos 2 años). Conocimientos de Programación en Java (8, 11 o 17) (Al menos 1 año). Conocimiento de SpringBoot o Spring Framework. Conocimientos desarrollando e integrando Servicios Web y API's (SOAP y RestFul). Manejo de Bases de Datos Relacionales (PostgreSQL, MariaDB, MySQL). Conocimiento de Bases de Datos No Relacionales (Redis, MongoDB). Creación de Pruebas Unitarias. Versionamiento utilizando Git. Conocimiento de Servicios y Herramientas de Nube Pública (AWS, GCP). Conocimiento de trabajo con DevOps y QA enfocado a CI/CD. Conocimiento de HTML5, CSS, Javascript. Habilidad para depurar aplicaciones, encontrar errores y corregirlos. Inglés Intermedio (Escrito y Hablado, hay interacción con clientes/proveedores).\nRequisitos\nPensamiento analítico,resolución de problemas,Ruby,Ruby On Rails,Java,SpringBoot,Spring Framework,PostgreSQL\nBeneficios\nPrestaciones de Ley y después de periodo de prueba Prestaciones Superiores.\nSalario:15000 - 35000",
             "c214_id_modality": 2,
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 3,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 30163,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 2,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 3,
+            "t301_id_recruiter": 5,
             "t400_id_admin": 1,
             "t200_min_salary": 15000,
-            "t200_max_salary": 35000
+            "t200_max_salary": 35000,
+            "t200_working_hours": "Lunes a Viernes Horario:10:00-18:00"
         }
     },
 
@@ -302,25 +314,26 @@
         "pk":12,
         "fields":{
             "t200_id_vacant": 12,
-            "t300_id_company": 1,
+            "t300_id_company": 2,
             "t200_job": "Desarrollador Web Java.",
-            "t200_description": "Desarrollo Web Avanzado, HTML, Css3, Javascript, Jquery, Json, Responsive Design, etc. Programación en Java J2EE Web (Servlets, JSP, WebServices). Frameworks: Apache Struts 2 , MyBatis. Base de datos: SQL (Querys, Stored Procedures).\nRequisitos\nHTML,Css3,Javascript,Jquery,Json,Responsive Design,Java,J2EE Web,Servlets,JSP,\nBeneficios\nFacturación de servicios o por honorarios.\n Horario:9:00-18:00 Lunes a Viernes\nSalario:25000 - 25000",
+            "t200_description": "Desarrollo Web Avanzado, HTML, Css3, Javascript, Jquery, Json, Responsive Design, etc. Programación en Java J2EE Web (Servlets, JSP, WebServices). Frameworks: Apache Struts 2 , MyBatis. Base de datos: SQL (Querys, Stored Procedures).\nRequisitos\nHTML,Css3,Javascript,Jquery,Json,Responsive Design,Java,J2EE Web,Servlets,JSP,\nBeneficios\nFacturación de servicios o por honorarios.\nSalario:25000 - 25000",
             "c214_id_modality": 2,
             "c206_id_profile": 5,
-            "c204_id_vacant_status": 1,
+            "c204_id_vacant_status": 2,
             "c207_id_experience": 2,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 30163,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 4,
-            "t400_id_admin": null,
+            "t301_id_recruiter": 5,
+            "t400_id_admin": 1,
             "t200_min_salary": 25000,
-            "t200_max_salary": 25000
+            "t200_max_salary": 25000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:00"
         }
     },
 
@@ -331,23 +344,24 @@
             "t200_id_vacant": 13,
             "t300_id_company": 2,
             "t200_job": "Trainee",
-            "t200_description": "Recién egresado con conocimientos escolares en JAVA, HTML, Programación Orientada a objetos. Se capacitarán un mes y posterior Se asignarán a clientes. Inglés Técnico.\nRequisitos\nJAVA,HTML\nBeneficios\nEsquema 100 % nominal, gastos médicos\n Horario:9:00-18:00 Lunes a Viernes\nSalario:19199 - 19200",
+            "t200_description": "Recién egresado con conocimientos escolares en JAVA, HTML, Programación Orientada a objetos. Se capacitarán un mes y posterior Se asignarán a clientes. Inglés Técnico.\nRequisitos\nJAVA,HTML\nBeneficios\nEsquema 100 % nominal, gastos médicos\nSalario:19199 - 19200",
             "c214_id_modality": 2,
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 1,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 30163,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 25,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 1,
+            "t301_id_recruiter": 5,
             "t400_id_admin": 1,
             "t200_min_salary": 19199,
-            "t200_max_salary": 19200
+            "t200_max_salary": 19200,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:00"
         }
     },
 
@@ -358,23 +372,24 @@
             "t200_id_vacant": 14,
             "t300_id_company": 3,
             "t200_job": "Ingeniero Desarrollador",
-            "t200_description": "Recien egresado con conocimientos en .NET , Céf, JAVASCRIPT, VISUAL BASIC .NET, C++, ANGULAR, BOOTS, MCV, MVP, SQL. Actividades: programación y desarrollo.\nRequisitos\n.NET,Céf,JAVASCRIPT,VISUAL BASIC,.NET,C++\nBeneficios\nPrestaciones: Vales de despensa, fondo de ahorro, caja de ahorro, seguro de vida, gastos médicos, etc.\n Horario:9:00-18:00 Lunes a Viernes\nSalario:21000 - 21000",
+            "t200_description": "Recien egresado con conocimientos en .NET , Céf, JAVASCRIPT, VISUAL BASIC .NET, C++, ANGULAR, BOOTS, MCV, MVP, SQL. Actividades: programación y desarrollo.\nRequisitos\n.NET,Céf,JAVASCRIPT,VISUAL BASIC,.NET,C++\nBeneficios\nPrestaciones: Vales de despensa, fondo de ahorro, caja de ahorro, seguro de vida, gastos médicos, etc.\nSalario:21000 - 21000",
             "c214_id_modality": 2,
             "c206_id_profile": 5,
-            "c204_id_vacant_status": 1,
+            "c204_id_vacant_status": 2,
             "c207_id_experience": 1,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 30163,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 2,
-            "t400_id_admin": null,
+            "t301_id_recruiter": 6,
+            "t400_id_admin": 1,
             "t200_min_salary": 21000,
-            "t200_max_salary": 21000
+            "t200_max_salary": 21000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:00"
         }
     },
 
@@ -383,25 +398,26 @@
         "pk":15,
         "fields":{
             "t200_id_vacant": 15,
-            "t300_id_company": 4,
+            "t300_id_company": 3,
             "t200_job": "Ingeniero Java",
-            "t200_description": "Conocimientos en actividades de programación y evaluación de sistemas. Amplios conocimientos en SQL, Java Script y C*f. Inglés conversacional.\nRequisitos\nSQL,Java Script\nBeneficios\nPrestaciones: sueldo base 100% nómina. Prestaciones de Ley.\n Horario:09:00-19:00 Lunes a Viernes\nSalario:16000 - 19000",
+            "t200_description": "Conocimientos en actividades de programación y evaluación de sistemas. Amplios conocimientos en SQL, Java Script y C*f. Inglés conversacional.\nRequisitos\nSQL,Java Script\nBeneficios\nPrestaciones: sueldo base 100% nómina. Prestaciones de Ley.\nSalario:16000 - 19000",
             "c214_id_modality": 2,
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 2,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 30163,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 3,
+            "t301_id_recruiter": 6,
             "t400_id_admin": 1,
             "t200_min_salary": 16000,
-            "t200_max_salary": 19000
+            "t200_max_salary": 19000,
+            "t200_working_hours": "Lunes a Viernes Horario:09:00-19:00"
         }
     },
 
@@ -410,25 +426,26 @@
         "pk":16,
         "fields":{
             "t200_id_vacant": 16,
-            "t300_id_company": 1,
+            "t300_id_company": 3,
             "t200_job": "Desarrollador .Net Front End Semi Sr.",
-            "t200_description": "Conocimientos en MVC en ASP Net, HTML 5, CSS y JS, Boostrap, Servicios RESTful, Metodología SCRUM, Nociones de Angular, Deseable: SQL, TFS, Git, Azure Devops, Razor, Typescript, .Net Core. Actividades en Desarrollo enfocado a Front End, Resolución de bugs, Comentar código, Réplica de vistas a partir de una maqueta usando HTML 5, CSS y JS. Creación de vistas responsivas usando Boostrap.\nRequisitos\nMVC,HTML,CSS,JavaScript,Boostrap,Servicios RESTful,SCRUM,Angular,SQL,TFS\nBeneficios\nPrestaciones de ley. Prestaciones superiores a los de la ley. SGMM. 11 días de vacaciones. 100% nómina. 100% home office. Descuentos corporativos. Clases de inglés gratuitas. Capacitaciones gratuitas. Plan de nutrición.\n Horario:9:00-18:00 Lunes a Viernes\nSalario:16000 - 19000",
+            "t200_description": "Conocimientos en MVC en ASP Net, HTML 5, CSS y JS, Boostrap, Servicios RESTful, Metodología SCRUM, Nociones de Angular, Deseable: SQL, TFS, Git, Azure Devops, Razor, Typescript, .Net Core. Actividades en Desarrollo enfocado a Front End, Resolución de bugs, Comentar código, Réplica de vistas a partir de una maqueta usando HTML 5, CSS y JS. Creación de vistas responsivas usando Boostrap.\nRequisitos\nMVC,HTML,CSS,JavaScript,Boostrap,Servicios RESTful,SCRUM,Angular,SQL,TFS\nBeneficios\nPrestaciones de ley. Prestaciones superiores a los de la ley. SGMM. 11 días de vacaciones. 100% nómina. 100% home office. Descuentos corporativos. Clases de inglés gratuitas. Capacitaciones gratuitas. Plan de nutrición.\nSalario:16000 - 19000",
             "c214_id_modality": 2,
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 3,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 30163,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 2,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 4,
+            "t301_id_recruiter": 6,
             "t400_id_admin": 1,
             "t200_min_salary": 16000,
-            "t200_max_salary": 19000
+            "t200_max_salary": 19000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:00"
         }
     },
 
@@ -437,25 +454,26 @@
         "pk":17,
         "fields":{
             "t200_id_vacant": 17,
-            "t300_id_company": 2,
+            "t300_id_company": 3,
             "t200_job": "Desarrollador .Net Semi Sr.",
-            "t200_description": "Conocimientos en Lenguajes de programación:\nCH 8.0,T-SQL, ES5 o ES6, TypeScript.\nFrameworks: .NET FRAMEWORK 4.8, .NET CORE 3.1, NET STANDARD 2.0, ASP.NET MVC 5, ASP.NET CORE MVC, ASP.NET WEB API 2,ASP.NET CORE WEB API. \nControl de versiones:\nVSTS antes (TFS) o Git. \nMetodología para el desarrollo de software:\nScrum. \nActividades:\nAplicar metodología Scrum.\nCumplimiento/actualizar actividades en Devops.\nCodificar: desarrollar back end. \nCodificar:\ndesarrollar front end. \nRealizar pruebas unitarias.\nResolución de bugs y comentar código.\nRequisitos\nT-SQL,ES5,ES6,TypeScript,.NET FRAMEWORK,.NET CORE 3.1,NET STANDARD 2.0,ASP.NET MVC 5,ASP.NET CORE MVC,ASP.NET WEB API 2\nBeneficios\nPrestaciones de ley. Prestaciones superiores a los de la ley. SGMM. 11 días de vacaciones. 100% nómina. 100% home office. Descuentos corporativos. Clases de inglés gratuitas. Capacitaciones gratuitas. Plan de nutrición.\n Horario:9:00-18:00 Lunes a Viernes\nSalario:14000 - 19000",
+            "t200_description": "Conocimientos en Lenguajes de programación:\nCH 8.0,T-SQL, ES5 o ES6, TypeScript.\nFrameworks: .NET FRAMEWORK 4.8, .NET CORE 3.1, NET STANDARD 2.0, ASP.NET MVC 5, ASP.NET CORE MVC, ASP.NET WEB API 2,ASP.NET CORE WEB API. \nControl de versiones:\nVSTS antes (TFS) o Git. \nMetodología para el desarrollo de software:\nScrum. \nActividades:\nAplicar metodología Scrum.\nCumplimiento/actualizar actividades en Devops.\nCodificar: desarrollar back end. \nCodificar:\ndesarrollar front end. \nRealizar pruebas unitarias.\nResolución de bugs y comentar código.\nRequisitos\nT-SQL,ES5,ES6,TypeScript,.NET FRAMEWORK,.NET CORE 3.1,NET STANDARD 2.0,ASP.NET MVC 5,ASP.NET CORE MVC,ASP.NET WEB API 2\nBeneficios\nPrestaciones de ley. Prestaciones superiores a los de la ley. SGMM. 11 días de vacaciones. 100% nómina. 100% home office. Descuentos corporativos. Clases de inglés gratuitas. Capacitaciones gratuitas. Plan de nutrición.\nSalario:14000 - 19000",
             "c214_id_modality": 2,
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 3,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 30163,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 2,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 1,
+            "t301_id_recruiter": 6,
             "t400_id_admin": 1,
             "t200_min_salary": 14000,
-            "t200_max_salary": 19000
+            "t200_max_salary": 19000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:00"
         }
     },
 
@@ -466,23 +484,24 @@
             "t200_id_vacant": 18,
             "t300_id_company": 3,
             "t200_job": "Ing. en Sistemas",
-            "t200_description": "LAVAREL (básico), LINUX (básico) y JAVA SCRIPT Análisis, Diseño y Construcción de aplicaciones web.\nRequisitos\nLAVAREL,LINUX,JAVASCRIPT\nBeneficios\nPrestaciones de ley\n Horario:9:00-18:00 Lunes a Viernes\nSalario:14000 - 19000",
+            "t200_description": "LAVAREL (básico), LINUX (básico) y JAVA SCRIPT Análisis, Diseño y Construcción de aplicaciones web.\nRequisitos\nLAVAREL,LINUX,JAVASCRIPT\nBeneficios\nPrestaciones de ley\nSalario:14000 - 19000",
             "c214_id_modality": 2,
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 1,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 30163,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 2,
+            "t301_id_recruiter": 6,
             "t400_id_admin": 1,
             "t200_min_salary": 14000,
-            "t200_max_salary": 19000
+            "t200_max_salary": 19000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:00"
         }
     },
 
@@ -493,23 +512,24 @@
             "t200_id_vacant": 19,
             "t300_id_company": 4,
             "t200_job": " Becario de soporte para operaciones, Backend o Frontend",
-            "t200_description": "Diseño Web, API Rest, OGC Mapeo y georreferenciación, minería de datos, análisis de datos, bases de datos relacionales y/o no relacionables.\nRequisitos\nDiseño Web,API Rest,OGC Mapeo y georreferenciación\nBeneficios\nPrestaciones de ley\n Horario:9:00-18:00 Lunes a Viernes\nSalario:14000 - 19000",
+            "t200_description": "Diseño Web, API Rest, OGC Mapeo y georreferenciación, minería de datos, análisis de datos, bases de datos relacionales y/o no relacionables.\nRequisitos\nDiseño Web,API Rest,OGC Mapeo y georreferenciación\nBeneficios\nPrestaciones de ley\nSalario:14000 - 19000",
             "c214_id_modality": 2,
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 1,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 30163,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 3,
+            "t301_id_recruiter": 7,
             "t400_id_admin": 1,
             "t200_min_salary": 14000,
-            "t200_max_salary": 19000
+            "t200_max_salary": 19000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:00"
         }
     },
 
@@ -518,25 +538,26 @@
         "pk":20,
         "fields":{
             "t200_id_vacant": 20,
-            "t300_id_company": 1,
+            "t300_id_company": 4,
             "t200_job": "Desarrollador Web Java.",
-            "t200_description": "Web (Servlets, JSP, WebServices). Frameworks: Apache Struts 2, MyBatis. Base de datos: SQL (Querys, Stored Procedures).\nRequisitos\nServlets,JSP,WebServices,Apache Struts 2\nBeneficios\nFacturación de servicios o por honorarios.\n Horario:9:00-18:00 Lunes a Viernes\nSalario:25000 - 25000",
+            "t200_description": "Web (Servlets, JSP, WebServices). Frameworks: Apache Struts 2, MyBatis. Base de datos: SQL (Querys, Stored Procedures).\nRequisitos\nServlets,JSP,WebServices,Apache Struts 2\nBeneficios\nFacturación de servicios o por honorarios.\nSalario:25000 - 25000",
             "c214_id_modality": 2,
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 2,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 30163,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 1,
+            "t301_id_recruiter": 7,
             "t400_id_admin": 1,
             "t200_min_salary": 25000,
-            "t200_max_salary": 25000
+            "t200_max_salary": 25000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:00"
         }
     },
 
@@ -545,25 +566,26 @@
         "pk":21,
         "fields":{
             "t200_id_vacant": 21,
-            "t300_id_company": 12,
+            "t300_id_company": 4,
             "t200_job": "Desarrollador Movil Android Jr",
-            "t200_description": " Formación académica como Ingeniero de software, sistemas computacionales, informática, ciencia de la computación, y a fines. Experiencia en desarrollos con Android Studio. Fundamentos sólidos en Java y/o Kotlin. Consumo de Web Services tipo REST (Conocimiento en algún patrón de diseño MVC, MVP, VIPER, Singleton, u otro). Uso de Control de versiones GIT.\nRequisitos\nAndroid Studio,Java,Kotlin\nBeneficios\nPrestaciones de ley desde el primer día (Seguro social, Infonavit, Afore, 15 días de aguinaldo, días de paternidad/maternidad, vacaciones, 25% de prima vacacional, etc.). Contrataciones directas con la empresa (no outsourcing). Bono de apoyo económico por Home Office. Vacantes 100% nómina. Buen ambiente laboral. Proyectos con grandes clientes nacionales.\n Horario:9:00-18:30 Lunes a Viernes\nSalario:25000 - 25000",
+            "t200_description": " Formación académica como Ingeniero de software, sistemas computacionales, informática, ciencia de la computación, y a fines. Experiencia en desarrollos con Android Studio. Fundamentos sólidos en Java y/o Kotlin. Consumo de Web Services tipo REST (Conocimiento en algún patrón de diseño MVC, MVP, VIPER, Singleton, u otro). Uso de Control de versiones GIT.\nRequisitos\nAndroid Studio,Java,Kotlin\nBeneficios\nPrestaciones de ley desde el primer día (Seguro social, Infonavit, Afore, 15 días de aguinaldo, días de paternidad/maternidad, vacaciones, 25% de prima vacacional, etc.). Contrataciones directas con la empresa (no outsourcing). Bono de apoyo económico por Home Office. Vacantes 100% nómina. Buen ambiente laboral. Proyectos con grandes clientes nacionales.\nSalario:25000 - 25000",
             "c214_id_modality": 2,
             "c206_id_profile": 1,
-            "c204_id_vacant_status": 1,
+            "c204_id_vacant_status": 2,
             "c207_id_experience": 2,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 30163,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 2,
-            "t400_id_admin": null,
+            "t301_id_recruiter": 7,
+            "t400_id_admin": 1,
             "t200_min_salary": 25000,
-            "t200_max_salary": 25000
+            "t200_max_salary": 25000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:30"
         }
     },
 
@@ -572,25 +594,26 @@
         "pk":22,
         "fields":{
             "t200_id_vacant": 22,
-            "t300_id_company": 12,
+            "t300_id_company": 4,
             "t200_job": "Desarrollador Móvil iOS Jr",
-            "t200_description": "Desarrollador Móvil iOS Jr. (una vacante) Conocimientos en Programación Orientada a Objetos y su aplicación. Fundamentos sólidos en Swift con xCode. Implementación de Web Services tipo REST (JSON). Creación de Interfaces con storyboard, autolayout (contraints), StackViews ylo UI Kit. Uso de Control de versiones GIT.\nRequisitos\niOS,Swift,xCode,REST,storyboard,autolayout\nBeneficios\nPrestaciones de ley desde el primer día (Seguro social, Infonavit, Afore, 15 días de aguinaldo, días de paternidad/maternidad, vacaciones, 25% de prima vacacional, etc.). Contrataciones directas con la empresa (no outsourcing). Bono de apoyo económico por Home Office. Vacantes 100% nómina. Buen ambiente laboral. Proyectos con grandes clientes nacionales.\n Horario:9:00-18:00 Lunes a Viernes\nSalario:25000 - 25000",
+            "t200_description": "Desarrollador Móvil iOS Jr. (una vacante) Conocimientos en Programación Orientada a Objetos y su aplicación. Fundamentos sólidos en Swift con xCode. Implementación de Web Services tipo REST (JSON). Creación de Interfaces con storyboard, autolayout (contraints), StackViews ylo UI Kit. Uso de Control de versiones GIT.\nRequisitos\niOS,Swift,xCode,REST,storyboard,autolayout\nBeneficios\nPrestaciones de ley desde el primer día (Seguro social, Infonavit, Afore, 15 días de aguinaldo, días de paternidad/maternidad, vacaciones, 25% de prima vacacional, etc.). Contrataciones directas con la empresa (no outsourcing). Bono de apoyo económico por Home Office. Vacantes 100% nómina. Buen ambiente laboral. Proyectos con grandes clientes nacionales.\nSalario:25000 - 25000",
             "c214_id_modality": 2,
             "c206_id_profile": 1,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 2,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 30163,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 2,
+            "t301_id_recruiter": 7,
             "t400_id_admin": 1,
             "t200_min_salary": 25000,
-            "t200_max_salary": 25000
+            "t200_max_salary": 25000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:00"
         }
     },
 
@@ -599,25 +622,26 @@
         "pk":23,
         "fields":{
             "t200_id_vacant": 23,
-            "t300_id_company": 12,
+            "t300_id_company": 7,
             "t200_job": "Desarrollador de Software PHP Jr",
-            "t200_description": "Desarrollador de Software PHP Jr. Conocimientos en Programación Orientada a Objetos y su aplicación. Utilización de algún frameworks como pudiera ser Laravel. Symphony, CakePHP. Desarrollo en HTML5 y CSS3. Desarrollo de Servicios Web como pueden ser WSDL, RESTY SOAP. Conocimientos de SQL en especial consultas, updates, inserts y deletes. Uso de Control de versiones GIT.\nRequisitos\nPHP,Laravel,Symphony,CakePHP,HTML5,CSS3\nBeneficios\n Prestaciones de ley desde el primer día (Seguro social, Infonavit, Afore, 15 días de aguinaldo, días de paternidad/maternidad, vacaciones, 25% de prima vacacional, etc.). Contrataciones directas con la empresa (no outsourcing). Bono de apoyo económico por Home Office. Vacantes 100% nómina Buen ambiente laboral. Proyectos con grandes clientes nacionales.\n Horario:9:00-18:30 Lunes a Viernes\nSalario:25000 - 25000",
+            "t200_description": "Desarrollador de Software PHP Jr. Conocimientos en Programación Orientada a Objetos y su aplicación. Utilización de algún frameworks como pudiera ser Laravel. Symphony, CakePHP. Desarrollo en HTML5 y CSS3. Desarrollo de Servicios Web como pueden ser WSDL, RESTY SOAP. Conocimientos de SQL en especial consultas, updates, inserts y deletes. Uso de Control de versiones GIT.\nRequisitos\nPHP,Laravel,Symphony,CakePHP,HTML5,CSS3\nBeneficios\n Prestaciones de ley desde el primer día (Seguro social, Infonavit, Afore, 15 días de aguinaldo, días de paternidad/maternidad, vacaciones, 25% de prima vacacional, etc.). Contrataciones directas con la empresa (no outsourcing). Bono de apoyo económico por Home Office. Vacantes 100% nómina Buen ambiente laboral. Proyectos con grandes clientes nacionales.\nSalario:25000 - 25000",
             "c214_id_modality": 2,
             "c206_id_profile": 1,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 2,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 30163,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 2,
+            "t301_id_recruiter": 10,
             "t400_id_admin": 1,
             "t200_min_salary": 25000,
-            "t200_max_salary": 25000
+            "t200_max_salary": 25000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:30"
         }
     },
 
@@ -626,25 +650,26 @@
         "pk":24,
         "fields":{
             "t200_id_vacant": 24,
-            "t300_id_company": 12,
+            "t300_id_company": 7,
             "t200_job": "Tester de Software Jr.",
-            "t200_description": "Tester de Software Jr. Formación académica como Ingeniero de software, sistemas computacionales, informática, ciencias de la computación, o a fines. Experiencia en ejecución de pruebas funcionales, no funcionales y de Caja Negra. Experiencia en testeo de aplicaciones. Experiencia diseñando matrices de prueba. Experiencia participando en el ciclo de vida de un software. Conocimientos básicos en SQL, programación java, PHP, Android, servicios web, Jmeter. Excelente ortografía y redacción.\nRequisitos\nSQL,java,PHP,Android\nBeneficios\n Prestaciones de ley desde el primer día (Seguro social, Infonavit, Afore, 15 días de aguinaldo, días de paternidad/maternidad, vacaciones, 25% de prima vacacional, etc.). Contrataciones directas con la empresa (no outsourcing). Bono de apoyo económico por Home Office. Vacantes 100% nómina. Buen ambiente laboral. Proyectos con grandes clientes nacionales.\n Horario:9:00-18:00 Lunes a Viernes\nSalario:25000 - 25000",
+            "t200_description": "Tester de Software Jr. Formación académica como Ingeniero de software, sistemas computacionales, informática, ciencias de la computación, o a fines. Experiencia en ejecución de pruebas funcionales, no funcionales y de Caja Negra. Experiencia en testeo de aplicaciones. Experiencia diseñando matrices de prueba. Experiencia participando en el ciclo de vida de un software. Conocimientos básicos en SQL, programación java, PHP, Android, servicios web, Jmeter. Excelente ortografía y redacción.\nRequisitos\nSQL,java,PHP,Android\nBeneficios\n Prestaciones de ley desde el primer día (Seguro social, Infonavit, Afore, 15 días de aguinaldo, días de paternidad/maternidad, vacaciones, 25% de prima vacacional, etc.). Contrataciones directas con la empresa (no outsourcing). Bono de apoyo económico por Home Office. Vacantes 100% nómina. Buen ambiente laboral. Proyectos con grandes clientes nacionales.\nSalario:25000 - 25000",
             "c214_id_modality": 2,
             "c206_id_profile": 1,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 2,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 30163,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 2,
             "c208_id_contract": 1,
-            "t301_id_recruiter": 2,
+            "t301_id_recruiter": 10,
             "t400_id_admin": 1,
             "t200_min_salary": 25000,
-            "t200_max_salary": 25000
+            "t200_max_salary": 25000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:00"
         }
     },
 
@@ -653,25 +678,26 @@
         "pk":25,
         "fields":{
             "t200_id_vacant": 25,
-            "t300_id_company": 12,
+            "t300_id_company": 9,
             "t200_job": "Desarrollador BackEnd Jr",
-            "t200_description": "Desarrollador BackEnd Jr. Al menos 6 meses de experiencia en prácticas profesionales, servicio social, proyectos de titulación haciendo uso de: Java, Spring Framework, Maven, Servidor JBoss, Web Services SOAP y/o REST, IDE Eclipse o Netbean, Manejo de Repositorios GIT (GitHub, BitBucket, GitLab)). Se asigna directamente al equipo de Desarrolladores de BBVA.\nRequisitos\nJava,Spring Framework,Maven,Servidor JBoss,Web Services,SOAP,REST\nBeneficios\nSe brinda apoyo económico por 2 meses, y se les paga 3 certificaciones con valor en el mercado, previo a entrar al banco. Posteriormente se brinda sueldo de $10,000 aprox netos, con un plan de crecimiento anual del 30%.\n Horario:9:00-18:30 Lunes a Viernes\nSalario:25000 - 25000",
+            "t200_description": "Desarrollador BackEnd Jr. Al menos 6 meses de experiencia en prácticas profesionales, servicio social, proyectos de titulación haciendo uso de: Java, Spring Framework, Maven, Servidor JBoss, Web Services SOAP y/o REST, IDE Eclipse o Netbean, Manejo de Repositorios GIT (GitHub, BitBucket, GitLab)). Se asigna directamente al equipo de Desarrolladores de BBVA.\nRequisitos\nJava,Spring Framework,Maven,Servidor JBoss,Web Services,SOAP,REST\nBeneficios\nSe brinda apoyo económico por 2 meses, y se les paga 3 certificaciones con valor en el mercado, previo a entrar al banco. Posteriormente se brinda sueldo de $10,000 aprox netos, con un plan de crecimiento anual del 30%.\nSalario:25000 - 25000",
             "c214_id_modality": 2,
             "c206_id_profile": 1,
-            "c204_id_vacant_status": 1,
+            "c204_id_vacant_status": 2,
             "c207_id_experience": 3,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 30163,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 5,
             "c208_id_contract": 7,
-            "t301_id_recruiter": 2,
-            "t400_id_admin": null,
+            "t301_id_recruiter": 4,
+            "t400_id_admin": 1,
             "t200_min_salary": 25000,
-            "t200_max_salary": 25000
+            "t200_max_salary": 25000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:30"
         }
     },
 
@@ -680,25 +706,26 @@
         "pk":26,
         "fields":{
             "t200_id_vacant": 26,
-            "t300_id_company": 12,
+            "t300_id_company": 9,
             "t200_job": "Desarrollador FrontEnd Jr",
-            "t200_description": "Desarrollador FrontEnd Jr.Al menos 6 meses de económico por 2 experiencia en prácticas profesionales meses, y se les paga servicio social, proyectos de titulación 3 certificaciones con haciendo uso de POO, JavaScript valor en el mercado, previo a entrar al (Vanilla), Manejo de variables, banco. condicionales, iterados en JavaScript, Posteriormente se Manejo de Peticiones APIs REST desde brinda sueldo de Web, Manejo de Repositorios GIT $10,000 aprox netos, (GitHub, BitBucket, GitLab). Se asigna con un plan directamente al equipo de crecimiento anual del Desarrolladores de BBVA.\nRequisitos\nPOO,JavaScript,JavaScript\nBeneficios\nSe brinda apoyo económico por 2 meses, y se les paga 3 certificaciones con valor en el mercado, previo a entrar al banco. Posteriormente se brinda sueldo de $10,000 aprox netos, con un plan de crecimiento anual del 30%.\n Horario:9:00-18:00 Lunes a Viernes\nSalario:25000 - 25000",
+            "t200_description": "Desarrollador FrontEnd Jr.Al menos 6 meses de económico por 2 experiencia en prácticas profesionales meses, y se les paga servicio social, proyectos de titulación 3 certificaciones con haciendo uso de POO, JavaScript valor en el mercado, previo a entrar al (Vanilla), Manejo de variables, banco. condicionales, iterados en JavaScript, Posteriormente se Manejo de Peticiones APIs REST desde brinda sueldo de Web, Manejo de Repositorios GIT $10,000 aprox netos, (GitHub, BitBucket, GitLab). Se asigna con un plan directamente al equipo de crecimiento anual del Desarrolladores de BBVA.\nRequisitos\nPOO,JavaScript,JavaScript\nBeneficios\nSe brinda apoyo económico por 2 meses, y se les paga 3 certificaciones con valor en el mercado, previo a entrar al banco. Posteriormente se brinda sueldo de $10,000 aprox netos, con un plan de crecimiento anual del 30%.\nSalario:25000 - 25000",
             "c214_id_modality": 2,
             "c206_id_profile": 1,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 3,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 30163,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 5,
             "c208_id_contract": 7,
-            "t301_id_recruiter": 2,
+            "t301_id_recruiter": 4,
             "t400_id_admin": 1,
             "t200_min_salary": 25000,
-            "t200_max_salary": 25000
+            "t200_max_salary": 25000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:00"
         }
     },
 
@@ -707,25 +734,26 @@
         "pk":27,
         "fields":{
             "t200_id_vacant": 27,
-            "t300_id_company": 12,
+            "t300_id_company": 9,
             "t200_job": "Desarrollador Aplicaciones Móviles React Native.",
-            "t200_description": "De 2 o 3 años de experiencia en desarrollo de Aplicaciones móviles con React Native. React Hooks, React Custom hooks, HTML, CSS y JavaScript, Yarn, Node, Git Consumo de Servicios o Microservicios REST y SOAP, Notificaciones Push Chatbot\nRequisitos\nReact Native,React Hooks,React Custom hooks,HTML,CSS\nBeneficios\nSalario competitivo de acuerdo con aptitudes, Contrato por Proyecto, Incorporación Inmediata.\n Horario:9:00-18:00 Lunes a Viernes\nSalario:20000 - 30000",
+            "t200_description": "De 2 o 3 años de experiencia en desarrollo de Aplicaciones móviles con React Native. React Hooks, React Custom hooks, HTML, CSS y JavaScript, Yarn, Node, Git Consumo de Servicios o Microservicios REST y SOAP, Notificaciones Push Chatbot\nRequisitos\nReact Native,React Hooks,React Custom hooks,HTML,CSS\nBeneficios\nSalario competitivo de acuerdo con aptitudes, Contrato por Proyecto, Incorporación Inmediata.\nSalario:20000 - 30000",
             "c214_id_modality": 3,
             "c206_id_profile": 5,
-            "c204_id_vacant_status": 1,
+            "c204_id_vacant_status": 2,
             "c207_id_experience": 5,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 30163,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 4,
-            "t301_id_recruiter": 2,
-            "t400_id_admin": null,
+            "t301_id_recruiter": 4,
+            "t400_id_admin": 1,
             "t200_min_salary": 20000,
-            "t200_max_salary": 30000
+            "t200_max_salary": 30000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:00"
         }
     },
 
@@ -734,25 +762,26 @@
         "pk":28,
         "fields":{
             "t200_id_vacant": 28,
-            "t300_id_company": 11,
+            "t300_id_company": 9,
             "t200_job": "Full stack developer (.Net)",
-            "t200_description": "El desarrollador de software debe tener un mínimo de 8 años de experiencia industrial relevante en lo siguiente: Programación en ASP .Net MVC, C#, jQuery AngularJS. Dominio de las bases de datos de SQL Server (2016 o posterior), incluidos Transact-SQL, procedimientos almacenados y disparadores. Creación de informes en SQL Server Reporting Services (SSRS). El desarrollador debe tener una licenciatura en un título relacionado con la ciencia o la tecnología aprobado con un alto nivel e, idealmente, será en informática o un título similar con un fuerte enfoque en la programación y el diseño de bases de datos.\nAdicional: Idealmente, el desarrollador de software también debería tener experiencia en: Diseño, construcción, prueba e implementación de software financiero para la industria de gestión de activos.\nConstrucción de procesos usando Service Broker dentro de SQL Server, Experiencia en control de versiones Git, idealmente en Azure DevOps, Experiencia en el uso de Jira para la gestión del ciclo de vida del desarrollo de software, Trabajando de cerca con equipos distribuidos de desarrollo y pruebas en ubicaciones globales. \nAgradable tener: El desarrollador debe ser capaz de desglosar, comprender, comunicar y resolver problemas técnicos complejos, fuertes habilidades de comunicación en inglés, fuertes habilidades de trabajo en equipo, fuertes habilidades escritas, adjunte un currículum actualizado en inglés.\nRequisitos\nASP,.Net,MVC,C#,jQuery,AngularJS,SQL,Transact-SQL,SSRS,Service Broker\nBeneficios\nNo especificados.\n Horario:9:00-18:00 Lunes a Viernes\nSalario:10000 - 12000",
+            "t200_description": "El desarrollador de software debe tener un mínimo de 8 años de experiencia industrial relevante en lo siguiente: Programación en ASP .Net MVC, C#, jQuery AngularJS. Dominio de las bases de datos de SQL Server (2016 o posterior), incluidos Transact-SQL, procedimientos almacenados y disparadores. Creación de informes en SQL Server Reporting Services (SSRS). El desarrollador debe tener una licenciatura en un título relacionado con la ciencia o la tecnología aprobado con un alto nivel e, idealmente, será en informática o un título similar con un fuerte enfoque en la programación y el diseño de bases de datos.\nAdicional: Idealmente, el desarrollador de software también debería tener experiencia en: Diseño, construcción, prueba e implementación de software financiero para la industria de gestión de activos.\nConstrucción de procesos usando Service Broker dentro de SQL Server, Experiencia en control de versiones Git, idealmente en Azure DevOps, Experiencia en el uso de Jira para la gestión del ciclo de vida del desarrollo de software, Trabajando de cerca con equipos distribuidos de desarrollo y pruebas en ubicaciones globales. \nAgradable tener: El desarrollador debe ser capaz de desglosar, comprender, comunicar y resolver problemas técnicos complejos, fuertes habilidades de comunicación en inglés, fuertes habilidades de trabajo en equipo, fuertes habilidades escritas, adjunte un currículum actualizado en inglés.\nRequisitos\nASP,.Net,MVC,C#,jQuery,AngularJS,SQL,Transact-SQL,SSRS,Service Broker\nBeneficios\nNo especificados.\nSalario:10000 - 12000",
             "c214_id_modality": 1,
             "c206_id_profile": 5,
-            "c204_id_vacant_status": 1,
+            "c204_id_vacant_status": 2,
             "c207_id_experience": 5,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29620,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 4,
-            "t301_id_recruiter": 2,
-            "t400_id_admin": null,
+            "t301_id_recruiter": 4,
+            "t400_id_admin": 1,
             "t200_min_salary": 10000,
-            "t200_max_salary": 12000
+            "t200_max_salary": 12000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:00"
         }
     },
 
@@ -761,25 +790,26 @@
         "pk":29,
         "fields":{
             "t200_id_vacant": 29,
-            "t300_id_company": 11,
+            "t300_id_company": 9,
             "t200_job": "UI / UX Senior Designer",
-            "t200_description": "Estamos buscando un diseñador web senior que haya ejecutado docenas de diseños para clientes en México y alrededor del mundo. Sabes cómo ser dueño de tu trabajo y hacer las cosas. Envíanos tu increíble portafolio. Contratación inmediata.\nRequisitos\ndiseñador web\nBeneficios\n\n Horario:9:00-18:30 Lunes a Viernes\nSalario:25000 - 30000",
+            "t200_description": "Estamos buscando un diseñador web senior que haya ejecutado docenas de diseños para clientes en México y alrededor del mundo. Sabes cómo ser dueño de tu trabajo y hacer las cosas. Envíanos tu increíble portafolio. Contratación inmediata.\nRequisitos\ndiseñador web\nBeneficios\n\nSalario:25000 - 30000",
             "c214_id_modality": 1,
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 5,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29620,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 4,
-            "t301_id_recruiter": 2,
+            "t301_id_recruiter": 4,
             "t400_id_admin": 1,
             "t200_min_salary": 25000,
-            "t200_max_salary": 30000
+            "t200_max_salary": 30000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:30"
         }
     },
 
@@ -788,25 +818,26 @@
         "pk":30,
         "fields":{
             "t200_id_vacant": 30,
-            "t300_id_company": 11,
+            "t300_id_company": 9,
             "t200_job": "Junior iOS Developer",
-            "t200_description": "Es todo acerca de usted\n¿Está buscando crecer y mejorar su carrera técnica a nuevas alturas, en una oportunidad W-2 de tiempo completo?\n¿Qué pasaría si una organización existiera únicamente con el propósito de invertir en USTED, siendo de servicio para USTED, mostrándole cómo hacerlo y apoyándolo en cada paso del camino?\n¿Es importante para usted un enfoque personalizado y personalizado para su viaje de aprendizaje, desarrollo profesional y capacidad general para maximizar su potencial de ingresos?\nHagamos que suceda, juntos\nRequisitos\n\nBeneficios\nseguro de vista y seguro dental\n Horario:9:00-18:00 Lunes a Viernes\nSalario:50000 - 55000",
+            "t200_description": "Es todo acerca de usted\n¿Está buscando crecer y mejorar su carrera técnica a nuevas alturas, en una oportunidad W-2 de tiempo completo?\n¿Qué pasaría si una organización existiera únicamente con el propósito de invertir en USTED, siendo de servicio para USTED, mostrándole cómo hacerlo y apoyándolo en cada paso del camino?\n¿Es importante para usted un enfoque personalizado y personalizado para su viaje de aprendizaje, desarrollo profesional y capacidad general para maximizar su potencial de ingresos?\nHagamos que suceda, juntos\nRequisitos\n\nBeneficios\nseguro de vista y seguro dental\nSalario:50000 - 55000",
             "c214_id_modality": 1,
             "c206_id_profile": 5,
-            "c204_id_vacant_status": 1,
+            "c204_id_vacant_status": 2,
             "c207_id_experience": 5,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29620,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 4,
-            "t301_id_recruiter": 2,
-            "t400_id_admin": null,
+            "t301_id_recruiter": 4,
+            "t400_id_admin": 1,
             "t200_min_salary": 50000,
-            "t200_max_salary": 55000
+            "t200_max_salary": 55000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:00"
         }
     },
 
@@ -817,13 +848,13 @@
             "t200_id_vacant": 31,
             "t300_id_company": 11,
             "t200_job": "Desarrollador de Software",
-            "t200_description": "Buscamos colaboradores/as para el equipo de desarrollo de Yomyom. Somos una startup de Guadalajara enfocada en generar impacto en el sector restaurantero y hotelero en México y USA\nNo requieres conocimientos profundos, sin embargo debes dominar al menos tres de las siguientes tecnologías: JavaScript / TypeScript, React Native, React JS, \nNode, Express / Nest, SQL, UX\nRequisitos\nJavaScript,TypeScript,React Native,React JS\nBeneficios\n\n Horario:9:00-18:00 Lunes a Viernes\nSalario:40000 - 45000",
+            "t200_description": "Buscamos colaboradores/as para el equipo de desarrollo de Yomyom. Somos una startup de Guadalajara enfocada en generar impacto en el sector restaurantero y hotelero en México y USA\nNo requieres conocimientos profundos, sin embargo debes dominar al menos tres de las siguientes tecnologías: JavaScript / TypeScript, React Native, React JS, \nNode, Express / Nest, SQL, UX\nRequisitos\nJavaScript,TypeScript,React Native,React JS\nBeneficios\n\nSalario:40000 - 45000",
             "c214_id_modality": 1,
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 5,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29620,
             "t200_street": "",
             "t200_interior_number": "",
@@ -833,7 +864,8 @@
             "t301_id_recruiter": 3,
             "t400_id_admin": 1,
             "t200_min_salary": 40000,
-            "t200_max_salary": 45000
+            "t200_max_salary": 45000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:00"
         }
     },
 
@@ -844,13 +876,13 @@
             "t200_id_vacant": 32,
             "t300_id_company": 11,
             "t200_job": "Desarrollador Java Jr/ Java Developer",
-            "t200_description": "Desarrollar y asegurar la calidad del código de los componentes que se le soliciten para atender los requerimientos de TI de complejidad baja-media en los que participa, cumpliendo con la arquitectura tecnológica, lineamientos técnicos y procesos aplicables. Licenciatura en Tecnologías de información, Sistemas, Computación o afín, terminada, 100% de créditos. Java, Python,SQL, DB2\nRequisitos\nJava,Python,SQL\nBeneficios\n45 días de Aguinaldo, 20 días de Vacaciones, 15 días de Prima Vacacional, 13% Fondo de Ahorro ,$684 + 3% de sueldo base en Vales de Despensa Mensuales ,Bono de Beneficios (24.2 días de sueldo base en julio), Bono por desempeño, Pago 100% Nominal, Contratación directa con GNP Seguros, Modalidad de trabajo híbrido, Horario L-V 8:30 am a 6:00 pm (1 hora de comida), Descuentos en productos de la marca, Rutas de transporte de GNP a diversos puntos, Club Deportivo, Si te encuentras interesado en esta vacante y cumples con el perfil postulate por este medio\n Horario:9:00-18:30 Lunes a Viernes\nSalario:18000 - 20000",
+            "t200_description": "Desarrollar y asegurar la calidad del código de los componentes que se le soliciten para atender los requerimientos de TI de complejidad baja-media en los que participa, cumpliendo con la arquitectura tecnológica, lineamientos técnicos y procesos aplicables. Licenciatura en Tecnologías de información, Sistemas, Computación o afín, terminada, 100% de créditos. Java, Python,SQL, DB2\nRequisitos\nJava,Python,SQL\nBeneficios\n45 días de Aguinaldo, 20 días de Vacaciones, 15 días de Prima Vacacional, 13% Fondo de Ahorro ,$684 + 3% de sueldo base en Vales de Despensa Mensuales ,Bono de Beneficios (24.2 días de sueldo base en julio), Bono por desempeño, Pago 100% Nominal, Contratación directa con GNP Seguros, Modalidad de trabajo híbrido, Horario L-V 8:30 am a 6:00 pm (1 hora de comida), Descuentos en productos de la marca, Rutas de transporte de GNP a diversos puntos, Club Deportivo, Si te encuentras interesado en esta vacante y cumples con el perfil postulate por este medio\nSalario:18000 - 20000",
             "c214_id_modality": 1,
             "c206_id_profile": 5,
-            "c204_id_vacant_status": 1,
+            "c204_id_vacant_status": 2,
             "c207_id_experience": 5,                                    
-            "t200_publish_date": "2022-11-12",
-            "t200_close_date": "2022-12-23",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29620,
             "t200_street": "",
             "t200_interior_number": "",
@@ -858,9 +890,10 @@
             "t200_vacancy": 3,
             "c208_id_contract": 4,
             "t301_id_recruiter": 3,
-            "t400_id_admin": null,
+            "t400_id_admin": 1,
             "t200_min_salary": 18000,
-            "t200_max_salary": 20000
+            "t200_max_salary": 20000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:30"
         }
     },
 
@@ -869,15 +902,15 @@
         "pk":33,
         "fields":{
             "t200_id_vacant": 33,
-            "t300_id_company": 9,
+            "t300_id_company": 11,
             "t200_job": "Desarrollador Front End",
-            "t200_description": "Estamos buscando desarrollador front end con experiencia en Drupal para ocupar una posición en el área de Tecnología del Gobierno de Nuevo León. Formarás parte de un equipo multidisciplinario que estará a cargo de la red de sitios web de la organización. La vacante es presencial, de tiempo completo y el salario con base en experiencia. Tipo de puesto: Tiempo completo\nRequisitos\nDrupal\nBeneficios\nNo especificados\n Horario:9:00-18:30 Lunes a Viernes\nSalario:15000 - 18000",
+            "t200_description": "Estamos buscando desarrollador front end con experiencia en Drupal para ocupar una posición en el área de Tecnología del Gobierno de Nuevo León. Formarás parte de un equipo multidisciplinario que estará a cargo de la red de sitios web de la organización. La vacante es presencial, de tiempo completo y el salario con base en experiencia. Tipo de puesto: Tiempo completo\nRequisitos\nDrupal\nBeneficios\nNo especificados\nSalario:15000 - 18000",
             "c214_id_modality": 1,
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 5,                                    
-            "t200_publish_date": "2022-11-13",
-            "t200_close_date": "2022-12-24",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29620,
             "t200_street": "",
             "t200_interior_number": "",
@@ -887,7 +920,8 @@
             "t301_id_recruiter": 3,
             "t400_id_admin": 1,
             "t200_min_salary": 15000,
-            "t200_max_salary": 18000
+            "t200_max_salary": 18000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:30"
         }
     },
 
@@ -896,15 +930,15 @@
         "pk":34,
         "fields":{
             "t200_id_vacant": 34,
-            "t300_id_company": 9,
+            "t300_id_company": 11,
             "t200_job": "Desarrollador DJANGO python",
-            "t200_description": "Estarás realizando desarrollo de funcionalidades Back para unos de los clientes más importantes de la empresa por lo que se requiere de un alto compromiso y responsabilidad. Participaras en sesiones de análisis de requerimientos con el cliente, así como sesiones internas con el equipo de trabajo y Project Manager asignado. Estará realizando pruebas unitarias sobre el desarrollo que realizamos, con el fin de asegurar en todo momento la calidad del desarrollo. Estarás reportando avances sobre las tareas asignadas bajo el framework de SCRUM, por lo que es indispensable que cuentes con un alto control y gestión de tus actividades.\nRequisitos\nSCRUM\nBeneficios\nSeguro de gastos médicos, Trabajar desde casa, Vacaciones superiores a las de ley\n Horario:8:00-17:00 Lunes a Viernes\nSalario:35000 - 48000",
+            "t200_description": "Estarás realizando desarrollo de funcionalidades Back para unos de los clientes más importantes de la empresa por lo que se requiere de un alto compromiso y responsabilidad. Participaras en sesiones de análisis de requerimientos con el cliente, así como sesiones internas con el equipo de trabajo y Project Manager asignado. Estará realizando pruebas unitarias sobre el desarrollo que realizamos, con el fin de asegurar en todo momento la calidad del desarrollo. Estarás reportando avances sobre las tareas asignadas bajo el framework de SCRUM, por lo que es indispensable que cuentes con un alto control y gestión de tus actividades.\nRequisitos\nSCRUM\nBeneficios\nSeguro de gastos médicos, Trabajar desde casa, Vacaciones superiores a las de ley\nSalario:35000 - 48000",
             "c214_id_modality": 2,
             "c206_id_profile": 5,
-            "c204_id_vacant_status": 1,
+            "c204_id_vacant_status": 2,
             "c207_id_experience": 5,                                    
-            "t200_publish_date": "2022-11-14",
-            "t200_close_date": "2022-12-25",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29620,
             "t200_street": "",
             "t200_interior_number": "",
@@ -912,9 +946,10 @@
             "t200_vacancy": 3,
             "c208_id_contract": 4,
             "t301_id_recruiter": 3,
-            "t400_id_admin": null,
+            "t400_id_admin": 1,
             "t200_min_salary": 35000,
-            "t200_max_salary": 48000
+            "t200_max_salary": 48000,
+            "t200_working_hours": "Lunes a Viernes Horario:8:00-17:00"
         }
     },
 
@@ -923,15 +958,15 @@
         "pk":35,
         "fields":{
             "t200_id_vacant": 35,
-            "t300_id_company": 9,
+            "t300_id_company": 11,
             "t200_job": "Desarrollador Laravel intermedio",
-            "t200_description": "Desarrollar módulos en laravel, Creación de tablas relacionales, Creación de endpoints para un API REST, Creación de vistas usando Blade, Creación de endpoints para un API SOAP, Manejo de control de versiones, \nRequisitos\nlaravel,API REST,Blade\nBeneficios\nVacaciones superiores a las de ley\n Horario:8:00-17:00 Lunes a Viernes\nSalario:20000 - 22000",
+            "t200_description": "Desarrollar módulos en laravel, Creación de tablas relacionales, Creación de endpoints para un API REST, Creación de vistas usando Blade, Creación de endpoints para un API SOAP, Manejo de control de versiones, \nRequisitos\nlaravel,API REST,Blade\nBeneficios\nVacaciones superiores a las de ley\nSalario:20000 - 22000",
             "c214_id_modality": 1,
             "c206_id_profile": 5,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 5,                                    
-            "t200_publish_date": "2022-11-15",
-            "t200_close_date": "2022-12-26",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29620,
             "t200_street": "",
             "t200_interior_number": "",
@@ -941,7 +976,8 @@
             "t301_id_recruiter": 3,
             "t400_id_admin": 1,
             "t200_min_salary": 20000,
-            "t200_max_salary": 22000
+            "t200_max_salary": 22000,
+            "t200_working_hours": "Lunes a Viernes Horario:8:00-17:00"
         }
     },
 
@@ -950,25 +986,26 @@
         "pk":36,
         "fields":{
             "t200_id_vacant": 36,
-            "t300_id_company": 9,
+            "t300_id_company": 12,
             "t200_job": "IT - Software Application Developer",
-            "t200_description": "Nuestro mundo nunca ha estado más lleno de oportunidades y, en Kyndryl, estamos listos para aprovecharlas. Diseñamos, construimos, administramos y modernizamos los sistemas de tecnología de misión crítica de los que el mundo dependen todos los días. Kyndryl está en el corazón del progreso, dedicado a ayudar a las empresas y las personas a fortalecerse. Nuestra gente está descubriendo, co-creando y fortaleciendo activamente. Nos impulsamos a nosotros mismos y a los demás a buscar algo mejor, a ir más allá, y llevamos esta energía a nuestros clientes. En Kyndryl, queremos que siga creciendo y le brindaremos muchas oportunidades para que eso suceda. Tenga en cuenta que tenemos la zona de candidatos de Kyndryl alojada por IBM durante un período determinado. Si ha solicitado un rol de IBM anteriormente, podrá iniciar sesión en la zona de candidatos utilizando sus detalles de inicio de sesión anteriores de IBM. Cuando esté en la zona de candidatos, podrá ver sus solicitudes anteriores para IBM y Kyndryl. Para obtener más información sobre privacidad, visite www.kyndryl.com/privacy. Su papel y responsabilidades Investigar, diseñar, implementar y mantener las características de la aplicación.\nRequisitos\n\nBeneficios\nNo especificados\n Horario:8:30-17:30 Lunes a Viernes\nSalario:15000 - 18000",
+            "t200_description": "Nuestro mundo nunca ha estado más lleno de oportunidades y, en Kyndryl, estamos listos para aprovecharlas. Diseñamos, construimos, administramos y modernizamos los sistemas de tecnología de misión crítica de los que el mundo dependen todos los días. Kyndryl está en el corazón del progreso, dedicado a ayudar a las empresas y las personas a fortalecerse. Nuestra gente está descubriendo, co-creando y fortaleciendo activamente. Nos impulsamos a nosotros mismos y a los demás a buscar algo mejor, a ir más allá, y llevamos esta energía a nuestros clientes. En Kyndryl, queremos que siga creciendo y le brindaremos muchas oportunidades para que eso suceda. Tenga en cuenta que tenemos la zona de candidatos de Kyndryl alojada por IBM durante un período determinado. Si ha solicitado un rol de IBM anteriormente, podrá iniciar sesión en la zona de candidatos utilizando sus detalles de inicio de sesión anteriores de IBM. Cuando esté en la zona de candidatos, podrá ver sus solicitudes anteriores para IBM y Kyndryl. Para obtener más información sobre privacidad, visite www.kyndryl.com/privacy. Su papel y responsabilidades Investigar, diseñar, implementar y mantener las características de la aplicación.\nRequisitos\n\nBeneficios\nNo especificados\nSalario:15000 - 18000",
             "c214_id_modality": 1,
             "c206_id_profile": 3,
-            "c204_id_vacant_status": 1,
+            "c204_id_vacant_status": 2,
             "c207_id_experience": 4,                                    
-            "t200_publish_date": "2022-11-16",
-            "t200_close_date": "2022-12-27",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29620,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 4,
-            "t301_id_recruiter": 3,
-            "t400_id_admin": null,
+            "t301_id_recruiter": 2,
+            "t400_id_admin": 1,
             "t200_min_salary": 15000,
-            "t200_max_salary": 18000
+            "t200_max_salary": 18000,
+            "t200_working_hours": "Lunes a Viernes Horario:8:30-17:30"
         }
     },
 
@@ -977,25 +1014,26 @@
         "pk":37,
         "fields":{
             "t200_id_vacant": 37,
-            "t300_id_company": 9,
+            "t300_id_company": 12,
             "t200_job": "Desarrollador de Aplicaciones Móviles Senior",
-            "t200_description": "Trabajar en estrecha colaboración con los compañeros de equipo para ayudarlos a comprender las mejores prácticas de iOS y Android. Establecer estándares de rendimiento y código mediante la revisión y la participación en debates. Crear experiencias de usuario únicas y contribuir a la evolución de la arquitectura móvil para mejorar constantemente la eficiencia del desarrollo. Entregar el primer código en cuestión de días, iterando sobre el producto de manera ágil, Colaborar con un grupo diverso de personas para fomentar el crecimiento, proporcionando y recibiendo feedback.\nRequisitos\niOS,Android\nBeneficios\nVacaciones superiores a las de ley\n Horario:9:00-18:00 Lunes a Viernes\nSalario:25000 - 35000",
+            "t200_description": "Trabajar en estrecha colaboración con los compañeros de equipo para ayudarlos a comprender las mejores prácticas de iOS y Android. Establecer estándares de rendimiento y código mediante la revisión y la participación en debates. Crear experiencias de usuario únicas y contribuir a la evolución de la arquitectura móvil para mejorar constantemente la eficiencia del desarrollo. Entregar el primer código en cuestión de días, iterando sobre el producto de manera ágil, Colaborar con un grupo diverso de personas para fomentar el crecimiento, proporcionando y recibiendo feedback.\nRequisitos\niOS,Android\nBeneficios\nVacaciones superiores a las de ley\nSalario:25000 - 35000",
             "c214_id_modality": 1,
             "c206_id_profile": 3,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 4,                                    
-            "t200_publish_date": "2022-11-17",
-            "t200_close_date": "2022-12-28",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29448,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 4,
-            "t301_id_recruiter": 3,
+            "t301_id_recruiter": 2,
             "t400_id_admin": 1,
             "t200_min_salary": 25000,
-            "t200_max_salary": 35000
+            "t200_max_salary": 35000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-18:00"
         }
     },
 
@@ -1004,25 +1042,26 @@
         "pk":38,
         "fields":{
             "t200_id_vacant": 38,
-            "t300_id_company": 9,
+            "t300_id_company": 12,
             "t200_job": "Ingeniero de Procesos",
-            "t200_description": "Liderear programas de Mejora Continua, Controlar y supervisar el cumplimiento de las metas e indicadores operacionales, Aplicación Lean Manufacturing y herramientas Kaizen, Supervisando los procesos de producción, Garantizar la eficiencia, calidad y mejora el desempeño, Identifica e implementa mejoras a los sistemas, procesos y prácticas de producción, Desarrolla mejores prácticas, Imparte capacitaciones al personal, Evalúa continuamente los equipos y procesos en conjunto con el área de mantenimiento incluidas las pruebas periódicas y garantiza que se lleven a cabo las tareas de mantenimiento, Plazos y condiciones diligentes para la prestación de servicios, contribuyendo a satisfacer las demandas de las áreas, controlando y supervisando el cumplimiento de los objetivos e indicadores de productividad de los empleados, contribuyendo al proceso de mejora continua en la calidad de los servicios ofrecidos, Trabajar con las áreas de la compañía, analizando y resolviendo eventos relacionados con el incumplimiento de los compromisos firmados, así como activando las áreas involucradas, para asegurar el cumplimiento de los acuerdos de servicio, Preparar informes operativos y estratégicos, responder al monitoreo y envío de situaciones y sucesos relacionados con las entregas previstas por las áreas, organizar y mantener los documentos que se refieren a operaciones y suministros de servicios, así como respaldar análisis y definiciones de gestión, Responsable operacional de los principales contratos laborales subcontratados que se producen en el departamento de producción, Monitorear el lanzamiento de la producción para garantizar la información correcta dentro del sistema operativo SAP - Trazabilidad, Evaluar las rutinas, diarias en las líneas de producción para mejorar los estándares de Seguridad, Calidad y Productividad, Participa como miembro del equipo en asignaciones de CAPEX o lidera proyectos de instalación y/o mejora de procesos asignados, dentro de los lineamientos de gestión de proyectos, redactando objetivos técnicos, determina las especificaciones del proyecto de acuerdo con los, requisitos de las operaciones y los estándares de desempeño y prepara estimaciones de costos, Asegura la finalización exitosa de los proyectos, instalación y puesta en marcha proporcionando documentación de procesos e instrucciones de funcionamiento de las fases asignadas dentro de las limitaciones de tiempo y costo presupuestadas, Asiste al personal de producción en la resolución de problemas; realiza análisis de causa raíz en caso de mal funcionamiento (recurrente); sugiere soluciones para evitar que se repitan los fallos de funcionamiento.\nRequisitos\n\nBeneficios\nCaja de ahorro, Seguro de gastos médicos mayores, Seguro de vida, Servicio de comedor con descuento, Vacaciones superiores a las de ley\n Horario:10:00-19:00 Lunes a Viernes\nSalario:20000 - 25000",
+            "t200_description": "Liderear programas de Mejora Continua, Controlar y supervisar el cumplimiento de las metas e indicadores operacionales, Aplicación Lean Manufacturing y herramientas Kaizen, Supervisando los procesos de producción, Garantizar la eficiencia, calidad y mejora el desempeño, Identifica e implementa mejoras a los sistemas, procesos y prácticas de producción, Desarrolla mejores prácticas, Imparte capacitaciones al personal, Evalúa continuamente los equipos y procesos en conjunto con el área de mantenimiento incluidas las pruebas periódicas y garantiza que se lleven a cabo las tareas de mantenimiento, Plazos y condiciones diligentes para la prestación de servicios, contribuyendo a satisfacer las demandas de las áreas, controlando y supervisando el cumplimiento de los objetivos e indicadores de productividad de los empleados, contribuyendo al proceso de mejora continua en la calidad de los servicios ofrecidos, Trabajar con las áreas de la compañía, analizando y resolviendo eventos relacionados con el incumplimiento de los compromisos firmados, así como activando las áreas involucradas, para asegurar el cumplimiento de los acuerdos de servicio, Preparar informes operativos y estratégicos, responder al monitoreo y envío de situaciones y sucesos relacionados con las entregas previstas por las áreas, organizar y mantener los documentos que se refieren a operaciones y suministros de servicios, así como respaldar análisis y definiciones de gestión, Responsable operacional de los principales contratos laborales subcontratados que se producen en el departamento de producción, Monitorear el lanzamiento de la producción para garantizar la información correcta dentro del sistema operativo SAP - Trazabilidad, Evaluar las rutinas, diarias en las líneas de producción para mejorar los estándares de Seguridad, Calidad y Productividad, Participa como miembro del equipo en asignaciones de CAPEX o lidera proyectos de instalación y/o mejora de procesos asignados, dentro de los lineamientos de gestión de proyectos, redactando objetivos técnicos, determina las especificaciones del proyecto de acuerdo con los, requisitos de las operaciones y los estándares de desempeño y prepara estimaciones de costos, Asegura la finalización exitosa de los proyectos, instalación y puesta en marcha proporcionando documentación de procesos e instrucciones de funcionamiento de las fases asignadas dentro de las limitaciones de tiempo y costo presupuestadas, Asiste al personal de producción en la resolución de problemas; realiza análisis de causa raíz en caso de mal funcionamiento (recurrente); sugiere soluciones para evitar que se repitan los fallos de funcionamiento.\nRequisitos\n\nBeneficios\nCaja de ahorro, Seguro de gastos médicos mayores, Seguro de vida, Servicio de comedor con descuento, Vacaciones superiores a las de ley\nSalario:20000 - 25000",
             "c214_id_modality": 1,
             "c206_id_profile": 3,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 4,                                    
-            "t200_publish_date": "2022-11-18",
-            "t200_close_date": "2022-12-29",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29448,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 4,
-            "t301_id_recruiter": 3,
+            "t301_id_recruiter": 2,
             "t400_id_admin": 1,
             "t200_min_salary": 20000,
-            "t200_max_salary": 25000
+            "t200_max_salary": 25000,
+            "t200_working_hours": "Lunes a Viernes Horario:10:00-19:00"
         }
     },
 
@@ -1031,25 +1070,26 @@
         "pk":39,
         "fields":{
             "t200_id_vacant": 39,
-            "t300_id_company": 7,
+            "t300_id_company": 12,
             "t200_job": "Account Manager TI",
-            "t200_description": "SOLO LOS CANDIDATOS QUE RESPONDAN EL SIGUIENTE FORMULARIO SERÁN CONSIDERADOS PARA UNA ENTREVISTA DESCRIPCIÓN DEL EMPLEO: Somos una empresa Consultora de Big Data en México, desde hace 13 años proporcionamos servicios en Business Analytics mediante Knowledge Discovery in Database (KDD). Actualmente somos uno de los tres mejores partners de Tableau y Salesforce. Implementando BI en México y Latinoamérica. POR CRECIMIENTO SOLICITAMOS: Jr. DE PM: PROPÓSITO DE LA POSICIÓN: Monitorear las actividades, asignar tareas, recursos y presupuestos a cada uno de los proyectos de la empresa, para cumplir con la realización de cada uno en tiempo y forma.\nRequisitos\nProject Manager\nBeneficios\nAumentos salariales,Trabajar desde casa\n Horario:9:00-16:00 Lunes a Viernes\nSalario:18000 - 22000",
+            "t200_description": "SOLO LOS CANDIDATOS QUE RESPONDAN EL SIGUIENTE FORMULARIO SERÁN CONSIDERADOS PARA UNA ENTREVISTA DESCRIPCIÓN DEL EMPLEO: Somos una empresa Consultora de Big Data en México, desde hace 13 años proporcionamos servicios en Business Analytics mediante Knowledge Discovery in Database (KDD). Actualmente somos uno de los tres mejores partners de Tableau y Salesforce. Implementando BI en México y Latinoamérica. POR CRECIMIENTO SOLICITAMOS: Jr. DE PM: PROPÓSITO DE LA POSICIÓN: Monitorear las actividades, asignar tareas, recursos y presupuestos a cada uno de los proyectos de la empresa, para cumplir con la realización de cada uno en tiempo y forma.\nRequisitos\nProject Manager\nBeneficios\nAumentos salariales,Trabajar desde casa\nSalario:18000 - 22000",
             "c214_id_modality": 1,
             "c206_id_profile": 3,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 4,                                    
-            "t200_publish_date": "2022-11-19",
-            "t200_close_date": "2022-12-30",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29448,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 3,
             "c208_id_contract": 7,
-            "t301_id_recruiter": 3,
+            "t301_id_recruiter": 2,
             "t400_id_admin": 1,
             "t200_min_salary": 18000,
-            "t200_max_salary": 22000
+            "t200_max_salary": 22000,
+            "t200_working_hours": "Lunes a Viernes Horario:9:00-16:00"
         }
     },
 
@@ -1058,25 +1098,26 @@
         "pk":40,
         "fields":{
             "t200_id_vacant": 40,
-            "t300_id_company": 7,
+            "t300_id_company": 12,
             "t200_job": "Consultor SQL",
-            "t200_description": "DESCRIPCIÓN DEL EMPLEO: Somos una empresa Consultora de Big Data en México, desde hace 13 años proporcionamos servicios en Business Analytics mediante Knowledge Discovery in Database (KDD). Actualmente somos uno de los tres mejores partners de Tableau y Salesforce. Implementando BI en México y Latinoamérica. POR CRECIMIENTO SOLICITAMOS: CONSULTOR SQL Propósito de la posición: Utilizar habilidades de diseño, análisis y programación para recopilar y organizar datos; así como para presentar información tanto a niveles ejecutivos internos como a clientes externos. Capacidades: Poseer experiencia en el análisis y minería de datos. Perfil Educativo y Experiencia: Licenciatura, Ingeniería o a fin en el área de sistemas, informática y/o computación, Experiencia de 2 a 3 año en posiciones similares.\nRequisitos\n\nBeneficios\nAumentos salariales, Opción a contrato indefinido, Trabajar desde casa\n Horario:8-17:30 Lunes a Viernes\nSalario:10000 - 14000",
+            "t200_description": "DESCRIPCIÓN DEL EMPLEO: Somos una empresa Consultora de Big Data en México, desde hace 13 años proporcionamos servicios en Business Analytics mediante Knowledge Discovery in Database (KDD). Actualmente somos uno de los tres mejores partners de Tableau y Salesforce. Implementando BI en México y Latinoamérica. POR CRECIMIENTO SOLICITAMOS: CONSULTOR SQL Propósito de la posición: Utilizar habilidades de diseño, análisis y programación para recopilar y organizar datos; así como para presentar información tanto a niveles ejecutivos internos como a clientes externos. Capacidades: Poseer experiencia en el análisis y minería de datos. Perfil Educativo y Experiencia: Licenciatura, Ingeniería o a fin en el área de sistemas, informática y/o computación, Experiencia de 2 a 3 año en posiciones similares.\nRequisitos\n\nBeneficios\nAumentos salariales, Opción a contrato indefinido, Trabajar desde casa\nSalario:10000 - 14000",
             "c214_id_modality": 1,
             "c206_id_profile": 3,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 4,                                    
-            "t200_publish_date": "2022-11-20",
-            "t200_close_date": "2022-12-31",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29448,
             "t200_street": "",
             "t200_interior_number": "",
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 7,
-            "t301_id_recruiter": 3,
+            "t301_id_recruiter": 2,
             "t400_id_admin": 1,
             "t200_min_salary": 10000,
-            "t200_max_salary": 14000
+            "t200_max_salary": 14000,
+            "t200_working_hours": "Lunes a Viernes Horario:8-17:30"
         }
     },
 
@@ -1085,25 +1126,26 @@
         "pk":41,
         "fields":{
             "t200_id_vacant": 41,
-            "t300_id_company": 2,
+            "t300_id_company": 12,
             "t200_job": "Analista en Sistemas",
-            "t200_description": "Desarrollo de aplicaciones cliente - servidor. Creación de reportes y documentación, pruebas y evaluación de sistemas. Conocimientos y/o certificaciones: Técnicas de levanamiento de requerimientos, metodologías de desarrollo ágil, técnicas de pruebas de SW y estándares de diseño de sistemas.\nRequisitos\nlevanamiento de requerimientos,metodologías de desarrollo ágil,técnicas de pruebas de SW\nBeneficios\nComedor, 20 días de vacaciones al año, Capacitación, Beca de inglés, Posibilidad de estudios de posgrado en el extranjero.\n Horario:10:00-19:00 Lunes a Viernes\nSalario:10000 - 14000",
+            "t200_description": "Desarrollo de aplicaciones cliente - servidor. Creación de reportes y documentación, pruebas y evaluación de sistemas. Conocimientos y/o certificaciones: Técnicas de levanamiento de requerimientos, metodologías de desarrollo ágil, técnicas de pruebas de SW y estándares de diseño de sistemas.\nRequisitos\nlevanamiento de requerimientos,metodologías de desarrollo ágil,técnicas de pruebas de SW\nBeneficios\nComedor, 20 días de vacaciones al año, Capacitación, Beca de inglés, Posibilidad de estudios de posgrado en el extranjero.\nSalario:10000 - 14000",
             "c214_id_modality": 1,
             "c206_id_profile": 4,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 1,                                    
-            "t200_publish_date": "2022-11-21",
-            "t200_close_date": "2022-12-31",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29637,
             "t200_street": "Av. 5 de mayo",
             "t200_interior_number": "2",
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 3,
-            "t301_id_recruiter": 5,
+            "t301_id_recruiter": 2,
             "t400_id_admin": 1,
             "t200_min_salary": 10000,
-            "t200_max_salary": 14000
+            "t200_max_salary": 14000,
+            "t200_working_hours": "Lunes a Viernes Horario:10:00-19:00"
         }
     },
 
@@ -1112,27 +1154,253 @@
         "pk":42,
         "fields":{
             "t200_id_vacant": 42,
-            "t300_id_company": 2,
+            "t300_id_company": 12,
             "t200_job": "Desarrollador de software ",
-            "t200_description": "Conocimiento NIvel Medio en C/C++ y/o Java. Nivel medio en el manejo de bases de datos relacionales (SQL). Nivel básico/medio en Javascript y bibliotecas como React. Nivel básico/medio en HTML, CSS3 y XML. Nivel básico en el manejo de Linux como usuario. NIvel básico en nociones criptográficas y desarrollo seguro. Experiencia en el manejo de al menos  un gestor de bases de datos no relacional (noSQL). Uso de sistemas para control de versiones.\nRequisitos\nC,C++,Java,SQL,Javascript,React,HTML,CSS3,XML\nBeneficios\nCapacitación constante.\nApoyo para cursar idioma inglés.\nServicio de comedor.\nPrestaciones superiores a las de ley.\n Horario:10:00-19:00 Lunes a Viernes\nSalario:20000 - 20000",
+            "t200_description": "Conocimiento NIvel Medio en C/C++ y/o Java. Nivel medio en el manejo de bases de datos relacionales (SQL). Nivel básico/medio en Javascript y bibliotecas como React. Nivel básico/medio en HTML, CSS3 y XML. Nivel básico en el manejo de Linux como usuario. NIvel básico en nociones criptográficas y desarrollo seguro. Experiencia en el manejo de al menos  un gestor de bases de datos no relacional (noSQL). Uso de sistemas para control de versiones.\nRequisitos\nC,C++,Java,SQL,Javascript,React,HTML,CSS3,XML\nBeneficios\nCapacitación constante.\nApoyo para cursar idioma inglés.\nServicio de comedor.\nPrestaciones superiores a las de ley.\nSalario:20000 - 20000",
             "c214_id_modality": 3,
             "c206_id_profile": 3,
             "c204_id_vacant_status": 2,
             "c207_id_experience": 3,                                    
-            "t200_publish_date": "2022-11-22",
-            "t200_close_date": "2022-12-31",                        
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
             "c222_id_locality": 29637,
             "t200_street": "Av. 5 de mayo",
             "t200_interior_number": "2",
             "t200_exterior_number": "",
             "t200_vacancy": 1,
             "c208_id_contract": 3,
-            "t301_id_recruiter": 5,
+            "t301_id_recruiter": 2,
             "t400_id_admin": 1,
             "t200_min_salary": 20000,
-            "t200_max_salary": 2000
+            "t200_max_salary": 20000,
+            "t200_working_hours": "Lunes a Viernes Horario:10:00-19:00"
         }
     },
+
+    {
+        "model":"vacantes.Vacant",        
+        "pk":43,
+        "fields":{
+            "t200_id_vacant": 43,
+            "t300_id_company": 5,
+            "t200_job": "Pasante Tableau Data Science",
+            "t200_description": "Extracción, transformación y carga de información para la realización y actualización de dashboards mediante el uso de Tableau. Análisis e interpretación de base de datos. Modelado en base de datos. Intervención para el mejoramiento de procesos. Manejo de las fuentes de datos para mejor utilización.\nRequisitos\nTableau,SQL\nBeneficios\nBonos de productividad. Sueldo base netos + bono de productividad. Descuentos en Universidades y Escuelas de Idiomas.\nSalario:8000 - 10000",
+            "c214_id_modality": 2,
+            "c206_id_profile": 4,
+            "c204_id_vacant_status": 2,
+            "c207_id_experience": 3,                                    
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
+            "c222_id_locality": 29637,
+            "t200_street": "",
+            "t200_interior_number": "",
+            "t200_exterior_number": "",
+            "t200_vacancy": 3,
+            "c208_id_contract": 1,
+            "t301_id_recruiter": 8,
+            "t400_id_admin": 1,
+            "t200_min_salary": 8000,
+            "t200_max_salary": 10000,
+            "t200_working_hours": "Lunes a Viernes Horario:09:00-19:00"
+        }
+    },
+
+    {
+        "model":"vacantes.Vacant",        
+        "pk":44,
+        "fields":{
+            "t200_id_vacant": 44,
+            "t300_id_company": 5,
+            "t200_job": "Titulado Tableau Data Science",
+            "t200_description": "Conocimiento en el manejo de bases de datos SQL, MY SQL, ORACLE (Querys y Stored Procedures). Conocimiento en Business Intelligence (Preferentemente). Conocimiento en algún lenguaje de programación (Opcional). Conocimiento en R y Python (Preferentemente). Extracción, transformación y carga de información para la realización y actualización de dashboards mediante el uso de Tableau. Análisis e interpretación de base de datos. Modelado en base de datos. Intervención para el mejoramiento de procesos. Manejo de las fuentes de datos para mejor utilización.\nRequisitos\nTableau,SQL,MYSQL,ORACLE\nBeneficios\nBonos de productividad. Sueldo base netos + bono de productividad. Descuentos en Universidades y Escuelas de Idiomas.\nSalario:10000 - 13000",
+            "c214_id_modality": 3,
+            "c206_id_profile": 5,
+            "c204_id_vacant_status": 2,
+            "c207_id_experience": 3,                                    
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
+            "c222_id_locality": 29637,
+            "t200_street": "",
+            "t200_interior_number": "",
+            "t200_exterior_number": "",
+            "t200_vacancy": 3,
+            "c208_id_contract": 1,
+            "t301_id_recruiter": 8,
+            "t400_id_admin": 1,
+            "t200_min_salary": 10000,
+            "t200_max_salary": 13000,
+            "t200_working_hours": "Lunes a Viernes Horario:09:00-19:00"
+        }
+    },
+
+    {
+        "model":"vacantes.Vacant",        
+        "pk":45,
+        "fields":{
+            "t200_id_vacant": 45,
+            "t300_id_company": 5,
+            "t200_job": "Jr Consultor BI (SQL- T-SQL)",
+            "t200_description": "Experiencia en manejo de bases de datos en SQL SERVER (Avanzado). Conocimiento comprobable en SQL estándar y T-SQL (Avanzado). Experiencia utilizando cursores, Indices, Triggers, Store Procedure. Uso avanzado de SQL Server Managment Studio (Avanzado). Uso avanzado de SSIS (Avanzado). Experiencia en migración de datos. (Necesaria). Manejo de sqlplus y Shell scripts. (DESEABLE). Conocimientos de conceptos de análisis de datos, ETL's y modelamiento de datos. Desarrollo de lenguaje SQL (DML y DDL).\nRequisitos\nSQL SERVER,SQL,T-SQl,SQL Server Managment Studio,SSIS\nBeneficios\nBonos de productividad. Sueldo base netos + bono de productividad. Descuentos en Universidades y Escuelas de Idiomas.\nSalario:13000 - 17000",
+            "c214_id_modality": 3,
+            "c206_id_profile": 5,
+            "c204_id_vacant_status": 2,
+            "c207_id_experience": 5,                                    
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
+            "c222_id_locality": 29637,
+            "t200_street": "",
+            "t200_interior_number": "",
+            "t200_exterior_number": "",
+            "t200_vacancy": 1,
+            "c208_id_contract": 1,
+            "t301_id_recruiter": 8,
+            "t400_id_admin": 1,
+            "t200_min_salary": 13000,
+            "t200_max_salary": 17000,
+            "t200_working_hours": "Lunes a Viernes Horario:09:00-19:00"
+        }
+    },
+
+    {
+        "model":"vacantes.Vacant",        
+        "pk":46,
+        "fields":{
+            "t200_id_vacant": 46,
+            "t300_id_company": 6,
+            "t200_job": "Becario",
+            "t200_description": "Conocimientos en Front end, Back end, HTML, PHP, Java, Python C. Actividades a realizar Páginas web, interfaces de usuarios, programación, plataformas, flujos de negocios, conexión de base de datos, investigación.\nRequisitos\nFrontend,Backend,HTML,PHP,Java,Python,C\nBeneficios\n\nSalario:6000 - 6000",
+            "c214_id_modality": 1,
+            "c206_id_profile": 1,
+            "c204_id_vacant_status": 2,
+            "c207_id_experience": 1,                                    
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
+            "c222_id_locality": 29334,
+            "t200_street": "Cerrada de Suiza #40",
+            "t200_interior_number": "",
+            "t200_exterior_number": "",
+            "t200_vacancy": 2,
+            "c208_id_contract": 1,
+            "t301_id_recruiter": 9,
+            "t400_id_admin": 1,
+            "t200_min_salary": 6000,
+            "t200_max_salary": 6000,
+            "t200_working_hours": "Lunes a Viernes Horario:09:00-14:00"
+        }
+    },
+
+    {
+        "model":"vacantes.Vacant",        
+        "pk":47,
+        "fields":{
+            "t200_id_vacant": 47,
+            "t300_id_company": 6,
+            "t200_job": "Ingeniero de datos Jr (Data Engineer Jr)",
+            "t200_description": "Experiencia en consultas y procesos almacenados SQL. Experiencia práctica en análisis de datos. Manejo de diferentes Bases de datos. Lógica de programación aplicada a la resolución de problemas. Receptividad y adaptación al cambio. Conocimiento en Python (pandas, automatización). Modelo entidad Relación. Manejo de control de versiones. Deseable PowerBI / Mongo. Experiencia de Power BI: 1 año (Obligatorio). Experiencia de Tableau: 1 año (Obligatorio).\nRequisitos\nSQL,Python,Git,PowerBI,Tableu\nBeneficios\nUn entorno de alta energía, dinámico y orientado a equipos, interactuando con nuestro equipo de Brasil. Vacaciones adicionales o permisos con goce de sueldo. Iniciando 12 días el primer año. Capacitaciones internas y cursos en la Academia Online con validez y certificación. Oportunidad de aprender otro idioma. Bono de recomendación. Trabajo híbrido o remoto. Aumentos salariales. Bebidas gratis. Días de maternidad superiores a los de la ley. Días de paternidad superiores a los de la ley. Estacionamiento gratuito. Horarios flexibles. Programa de referidos. Seguro de gastos médicos mayores. Seguro de vida.\nSalario:10000 - 15000",
+            "c214_id_modality": 3,
+            "c206_id_profile": 5,
+            "c204_id_vacant_status": 2,
+            "c207_id_experience": 3,                                    
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
+            "c222_id_locality": 30141,
+            "t200_street": "Lago Alberto",
+            "t200_interior_number": "",
+            "t200_exterior_number": "",
+            "t200_vacancy": 1,
+            "c208_id_contract": 1,
+            "t301_id_recruiter": 9,
+            "t400_id_admin": 1,
+            "t200_min_salary": 10000,
+            "t200_max_salary": 15000,
+            "t200_working_hours": "Lunes a Viernes Horario:09:00-19:00"
+        }
+    },
+
+    {
+        "model":"vacantes.Vacant",        
+        "pk":48,
+        "fields":{
+            "t200_id_vacant": 48,
+            "t300_id_company": 8,
+            "t200_job": "Ingeniero de Sistemas Embebidos",
+            "t200_description": "Conocimiento en Lenguajes de programación: C/C++ (Intermedio/avanzado). Experiencia usando herramientas de desarrollo: IDEs, debuggers, simuladores y emuladores. Experiencia en proyectos con microcontroladores o microprocesadores de 8, 16 y/o 32 bits. Conocimientos generales de electrónica analógica y digital. Experiencia en operación de instrumentos de medición: multímetro, osciloscopio. Conocimientos sobre uso y programación sobre protocolos de comunicación serial y redes convencionales e industriales (RS232, RS485, SPI, I2C, 1-Wire, MODBUS, etc). Experiencia básica en programación estructurada, modular y arquitecturas basadas en capas. Nivel de Inglés: A2 - B1.\nRequisitos\nC,C++,IDE,microcontroladores,protocolos de comunicación serial\nBeneficios\n3 meses a prueba. Posterior a los 3 meses, las de la Ley.\nSalario:12000 - 14000",
+            "c214_id_modality": 1,
+            "c206_id_profile": 4,
+            "c204_id_vacant_status": 2,
+            "c207_id_experience": 2,                                    
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
+            "c222_id_locality": 29628,
+            "t200_street": "",
+            "t200_interior_number": "",
+            "t200_exterior_number": "",
+            "t200_vacancy": 2,
+            "c208_id_contract": 1,
+            "t301_id_recruiter": 11,
+            "t400_id_admin": 1,
+            "t200_min_salary": 12000,
+            "t200_max_salary": 14000,
+            "t200_working_hours": "Lunes a Viernes Horario:09:00-18:00"
+        }
+    },
+
+    {
+        "model":"vacantes.Vacant",        
+        "pk":49,
+        "fields":{
+            "t200_id_vacant": 49,
+            "t300_id_company": 8,
+            "t200_job": "Web Developer Jr",
+            "t200_description": "Conocimientos básicos en desarrollo. Conocimiento básico en Web services, diseño y construcción. Conocimiento básico en desarrollo de aplicaciones móviles (React Native). Conocimiento intermedio en API de terceros como (Facebook, plataformas sociales). Conocimiento básico de maquetación o maquetado Front End (PHP Laravel y/o React Native).\nRequisitos\nWeb services,React Native,Laravel\nBeneficios\nSuperiores a las de la Ley. \nSalario:13000 - 13000",
+            "c214_id_modality": 3,
+            "c206_id_profile": 3,
+            "c204_id_vacant_status": 2,
+            "c207_id_experience": 3,                                    
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
+            "c222_id_locality": 29427,
+            "t200_street": "",
+            "t200_interior_number": "",
+            "t200_exterior_number": "",
+            "t200_vacancy": 1,
+            "c208_id_contract": 1,
+            "t301_id_recruiter": 11,
+            "t400_id_admin": 1,
+            "t200_min_salary": 13000,
+            "t200_max_salary": 13000,
+            "t200_working_hours": "Lunes a Viernes Horario:08:30-17:30"
+        }
+    },
+
+    {
+        "model":"vacantes.Vacant",        
+        "pk":50,
+        "fields":{
+            "t200_id_vacant": 50,
+            "t300_id_company": 8,
+            "t200_job": "Java Dedveloper",
+            "t200_description": "Desarrollo del backend y frontend de los proyectos asignados. Uso de las siguientes herramientas en backend: SQL Server, eclipse, IntellijIdea, Java EE, Spring Boot, Gradle, Git, Web services Rest y Postman. Uso de las siguientes herramientas para frontend: Angular, Visual studio code, IntellijIdea, Postman, Git, consumo de servicios web, HTML y JavaScript. Inglés avanzado. Experiencia en desarrollo de al menos 5 años.\nRequisitos\nbackend,frontend,SQL Server,eclipse,IntellijIdea,Java EE,Spring Boot,Gradle,Git,Web services Rest,Postman,Angular,Visual studio code,HTML,JavaScript\nBeneficios\nEsquema 100% nominal, más prestaciones de Ley, horario Flexible, modalidad híbrida.\nSalario:35000 - 45000",
+            "c214_id_modality": 1,
+            "c206_id_profile": 5,
+            "c204_id_vacant_status": 2,
+            "c207_id_experience": 5,                                    
+            "t200_publish_date": "2022-12-20",
+            "t200_close_date": "2023-01-20",                        
+            "c222_id_locality": 69265,
+            "t200_street": "",
+            "t200_interior_number": "",
+            "t200_exterior_number": "",
+            "t200_vacancy": 2,
+            "c208_id_contract": 1,
+            "t301_id_recruiter": 11,
+            "t400_id_admin": 1,
+            "t200_min_salary": 35000,
+            "t200_max_salary": 45000,
+            "t200_working_hours": "Lunes a Viernes Horario:07:00-16:00"
+        }
+    },
+
 
 
     {
@@ -1174,7 +1442,7 @@
         "fields":{
             "t212_id_language": 1,
             "t200_id_vacant": 1,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -1207,7 +1475,7 @@
         "fields":{
             "t212_id_language": 2,
             "t200_id_vacant": 2,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -1218,7 +1486,7 @@
         "fields":{
             "t212_id_language": 3,
             "t200_id_vacant": 2,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -1405,7 +1673,7 @@
         "fields":{
             "t212_id_language": 4,
             "t200_id_vacant": 3,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -1438,7 +1706,7 @@
         "fields":{
             "t212_id_language": 5,
             "t200_id_vacant": 4,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -1449,7 +1717,7 @@
         "fields":{
             "t212_id_language": 6,
             "t200_id_vacant": 4,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -1592,7 +1860,7 @@
         "fields":{
             "t212_id_language": 7,
             "t200_id_vacant": 5,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -1702,7 +1970,7 @@
         "fields":{
             "t212_id_language": 8,
             "t200_id_vacant": 6,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -1713,7 +1981,7 @@
         "fields":{
             "t212_id_language": 9,
             "t200_id_vacant": 6,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -1790,7 +2058,7 @@
         "fields":{
             "t212_id_language": 10,
             "t200_id_vacant": 7,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -1889,7 +2157,7 @@
         "fields":{
             "t212_id_language": 11,
             "t200_id_vacant": 8,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -1900,7 +2168,7 @@
         "fields":{
             "t212_id_language": 12,
             "t200_id_vacant": 8,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -2109,7 +2377,7 @@
         "fields":{
             "t212_id_language": 13,
             "t200_id_vacant": 9,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -2285,7 +2553,7 @@
         "fields":{
             "t212_id_language": 14,
             "t200_id_vacant": 10,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -2296,7 +2564,7 @@
         "fields":{
             "t212_id_language": 15,
             "t200_id_vacant": 10,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -2505,7 +2773,7 @@
         "fields":{
             "t212_id_language": 16,
             "t200_id_vacant": 11,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -2681,7 +2949,7 @@
         "fields":{
             "t212_id_language": 17,
             "t200_id_vacant": 12,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -2692,7 +2960,7 @@
         "fields":{
             "t212_id_language": 18,
             "t200_id_vacant": 12,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -2736,7 +3004,7 @@
         "fields":{
             "t212_id_language": 19,
             "t200_id_vacant": 13,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -2747,7 +3015,7 @@
         "fields":{
             "t212_id_language": 20,
             "t200_id_vacant": 13,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -2879,7 +3147,7 @@
         "fields":{
             "t212_id_language": 21,
             "t200_id_vacant": 14,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -2923,7 +3191,7 @@
         "fields":{
             "t212_id_language": 22,
             "t200_id_vacant": 15,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -2934,7 +3202,7 @@
         "fields":{
             "t212_id_language": 23,
             "t200_id_vacant": 15,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -3110,7 +3378,7 @@
         "fields":{
             "t212_id_language": 24,
             "t200_id_vacant": 16,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -3286,7 +3554,7 @@
         "fields":{
             "t212_id_language": 25,
             "t200_id_vacant": 17,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -3341,7 +3609,7 @@
         "fields":{
             "t212_id_language": 26,
             "t200_id_vacant": 18,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -3352,7 +3620,7 @@
         "fields":{
             "t212_id_language": 27,
             "t200_id_vacant": 18,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -3429,7 +3697,7 @@
         "fields":{
             "t212_id_language": 28,
             "t200_id_vacant": 19,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -3506,7 +3774,7 @@
         "fields":{
             "t212_id_language": 29,
             "t200_id_vacant": 20,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -3517,7 +3785,7 @@
         "fields":{
             "t212_id_language": 30,
             "t200_id_vacant": 20,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -3583,7 +3851,7 @@
         "fields":{
             "t212_id_language": 31,
             "t200_id_vacant": 21,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -3693,7 +3961,7 @@
         "fields":{
             "t212_id_language": 32,
             "t200_id_vacant": 22,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -3704,7 +3972,7 @@
         "fields":{
             "t212_id_language": 33,
             "t200_id_vacant": 22,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -3825,7 +4093,7 @@
         "fields":{
             "t212_id_language": 34,
             "t200_id_vacant": 23,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -3902,7 +4170,7 @@
         "fields":{
             "t212_id_language": 35,
             "t200_id_vacant": 24,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -3913,7 +4181,7 @@
         "fields":{
             "t212_id_language": 36,
             "t200_id_vacant": 24,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -4034,7 +4302,7 @@
         "fields":{
             "t212_id_language": 37,
             "t200_id_vacant": 25,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4100,7 +4368,7 @@
         "fields":{
             "t212_id_language": 38,
             "t200_id_vacant": 26,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4111,7 +4379,7 @@
         "fields":{
             "t212_id_language": 39,
             "t200_id_vacant": 26,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -4232,7 +4500,7 @@
         "fields":{
             "t212_id_language": 40,
             "t200_id_vacant": 27,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4386,7 +4654,7 @@
         "fields":{
             "t212_id_language": 41,
             "t200_id_vacant": 28,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4419,7 +4687,7 @@
         "fields":{
             "t212_id_language": 42,
             "t200_id_vacant": 29,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4430,7 +4698,7 @@
         "fields":{
             "t212_id_language": 43,
             "t200_id_vacant": 29,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -4463,7 +4731,7 @@
         "fields":{
             "t212_id_language": 44,
             "t200_id_vacant": 30,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4573,7 +4841,7 @@
         "fields":{
             "t212_id_language": 45,
             "t200_id_vacant": 31,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4584,7 +4852,7 @@
         "fields":{
             "t212_id_language": 46,
             "t200_id_vacant": 31,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -4639,7 +4907,7 @@
         "fields":{
             "t212_id_language": 47,
             "t200_id_vacant": 32,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4672,7 +4940,7 @@
         "fields":{
             "t212_id_language": 48,
             "t200_id_vacant": 33,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4705,7 +4973,7 @@
         "fields":{
             "t212_id_language": 49,
             "t200_id_vacant": 34,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4716,7 +4984,7 @@
         "fields":{
             "t212_id_language": 50,
             "t200_id_vacant": 34,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -4782,7 +5050,7 @@
         "fields":{
             "t212_id_language": 51,
             "t200_id_vacant": 35,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4815,7 +5083,7 @@
         "fields":{
             "t212_id_language": 52,
             "t200_id_vacant": 36,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4826,7 +5094,7 @@
         "fields":{
             "t212_id_language": 53,
             "t200_id_vacant": 36,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -4870,7 +5138,7 @@
         "fields":{
             "t212_id_language": 54,
             "t200_id_vacant": 37,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4903,7 +5171,7 @@
         "fields":{
             "t212_id_language": 55,
             "t200_id_vacant": 38,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4914,7 +5182,7 @@
         "fields":{
             "t212_id_language": 56,
             "t200_id_vacant": 38,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -4947,7 +5215,7 @@
         "fields":{
             "t212_id_language": 57,
             "t200_id_vacant": 39,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4980,7 +5248,7 @@
         "fields":{
             "t212_id_language": 58,
             "t200_id_vacant": 40,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -4991,7 +5259,7 @@
         "fields":{
             "t212_id_language": 59,
             "t200_id_vacant": 40,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     },
@@ -5046,7 +5314,7 @@
         "fields":{
             "t212_id_language": 60,
             "t200_id_vacant": 41,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -5189,7 +5457,7 @@
         "fields":{
             "t212_id_language": 61,
             "t200_id_vacant": 42,
-            "c111_id_language": "47",
+            "c111_id_language": 47,
             "t110_level_description": "Básico"
         }
     },
@@ -5200,10 +5468,746 @@
         "fields":{
             "t212_id_language": 62,
             "t200_id_vacant": 42,
-            "c111_id_language": "74",
+            "c111_id_language": 74,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":309,
+        "fields":{
+            "t211_id_requirement": 309,
+            "t200_id_vacant": 43,
+            "c116_description": "Tableau",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":310,
+        "fields":{
+            "t211_id_requirement": 310,
+            "t200_id_vacant": 43,
+            "c116_description": "SQL",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":311,
+        "fields":{
+            "t211_id_requirement": 311,
+            "t200_id_vacant": 43,
+            "c116_description": "",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":63,
+        "fields":{
+            "t212_id_language": 63,
+            "t200_id_vacant": 43,
+            "c111_id_language": 47,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":312,
+        "fields":{
+            "t211_id_requirement": 312,
+            "t200_id_vacant": 44,
+            "c116_description": "Tableau",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":313,
+        "fields":{
+            "t211_id_requirement": 313,
+            "t200_id_vacant": 44,
+            "c116_description": "SQL",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":314,
+        "fields":{
+            "t211_id_requirement": 314,
+            "t200_id_vacant": 44,
+            "c116_description": "MYSQL",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":315,
+        "fields":{
+            "t211_id_requirement": 315,
+            "t200_id_vacant": 44,
+            "c116_description": "ORACLE",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":316,
+        "fields":{
+            "t211_id_requirement": 316,
+            "t200_id_vacant": 44,
+            "c116_description": "Business Intelligence",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":317,
+        "fields":{
+            "t211_id_requirement": 317,
+            "t200_id_vacant": 44,
+            "c116_description": " R",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":318,
+        "fields":{
+            "t211_id_requirement": 318,
+            "t200_id_vacant": 44,
+            "c116_description": "Python",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":64,
+        "fields":{
+            "t212_id_language": 64,
+            "t200_id_vacant": 44,
+            "c111_id_language": 47,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":319,
+        "fields":{
+            "t211_id_requirement": 319,
+            "t200_id_vacant": 45,
+            "c116_description": "SQL SERVER",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":320,
+        "fields":{
+            "t211_id_requirement": 320,
+            "t200_id_vacant": 45,
+            "c116_description": "SQL",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":321,
+        "fields":{
+            "t211_id_requirement": 321,
+            "t200_id_vacant": 45,
+            "c116_description": "T-SQl",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":322,
+        "fields":{
+            "t211_id_requirement": 322,
+            "t200_id_vacant": 45,
+            "c116_description": "SQL Server Managment Studio",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":323,
+        "fields":{
+            "t211_id_requirement": 323,
+            "t200_id_vacant": 45,
+            "c116_description": "SSIS",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":324,
+        "fields":{
+            "t211_id_requirement": 324,
+            "t200_id_vacant": 45,
+            "c116_description": "sqlplus",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":325,
+        "fields":{
+            "t211_id_requirement": 325,
+            "t200_id_vacant": 45,
+            "c116_description": "Shell",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":65,
+        "fields":{
+            "t212_id_language": 65,
+            "t200_id_vacant": 45,
+            "c111_id_language": 47,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":326,
+        "fields":{
+            "t211_id_requirement": 326,
+            "t200_id_vacant": 46,
+            "c116_description": "Frontend",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":327,
+        "fields":{
+            "t211_id_requirement": 327,
+            "t200_id_vacant": 46,
+            "c116_description": "Backend",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":328,
+        "fields":{
+            "t211_id_requirement": 328,
+            "t200_id_vacant": 46,
+            "c116_description": "HTML",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":329,
+        "fields":{
+            "t211_id_requirement": 329,
+            "t200_id_vacant": 46,
+            "c116_description": "PHP",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":330,
+        "fields":{
+            "t211_id_requirement": 330,
+            "t200_id_vacant": 46,
+            "c116_description": "Java",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":331,
+        "fields":{
+            "t211_id_requirement": 331,
+            "t200_id_vacant": 46,
+            "c116_description": "Python",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":332,
+        "fields":{
+            "t211_id_requirement": 332,
+            "t200_id_vacant": 46,
+            "c116_description": "C",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":333,
+        "fields":{
+            "t211_id_requirement": 333,
+            "t200_id_vacant": 46,
+            "c116_description": "",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":66,
+        "fields":{
+            "t212_id_language": 66,
+            "t200_id_vacant": 46,
+            "c111_id_language": 47,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":334,
+        "fields":{
+            "t211_id_requirement": 334,
+            "t200_id_vacant": 47,
+            "c116_description": "SQL",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":335,
+        "fields":{
+            "t211_id_requirement": 335,
+            "t200_id_vacant": 47,
+            "c116_description": "Python",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":336,
+        "fields":{
+            "t211_id_requirement": 336,
+            "t200_id_vacant": 47,
+            "c116_description": "Git",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":337,
+        "fields":{
+            "t211_id_requirement": 337,
+            "t200_id_vacant": 47,
+            "c116_description": "PowerBI",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":338,
+        "fields":{
+            "t211_id_requirement": 338,
+            "t200_id_vacant": 47,
+            "c116_description": "Tableu",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":339,
+        "fields":{
+            "t211_id_requirement": 339,
+            "t200_id_vacant": 47,
+            "c116_description": "Mongo",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":67,
+        "fields":{
+            "t212_id_language": 67,
+            "t200_id_vacant": 47,
+            "c111_id_language": 47,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":340,
+        "fields":{
+            "t211_id_requirement": 340,
+            "t200_id_vacant": 48,
+            "c116_description": "C",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":341,
+        "fields":{
+            "t211_id_requirement": 341,
+            "t200_id_vacant": 48,
+            "c116_description": "C++",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":342,
+        "fields":{
+            "t211_id_requirement": 342,
+            "t200_id_vacant": 48,
+            "c116_description": "IDE",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":343,
+        "fields":{
+            "t211_id_requirement": 343,
+            "t200_id_vacant": 48,
+            "c116_description": "microcontroladores",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":344,
+        "fields":{
+            "t211_id_requirement": 344,
+            "t200_id_vacant": 48,
+            "c116_description": "protocolos de comunicación serial",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":345,
+        "fields":{
+            "t211_id_requirement": 345,
+            "t200_id_vacant": 48,
+            "c116_description": "",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":68,
+        "fields":{
+            "t212_id_language": 68,
+            "t200_id_vacant": 48,
+            "c111_id_language": 47,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":69,
+        "fields":{
+            "t212_id_language": 69,
+            "t200_id_vacant": 48,
+            "c111_id_language": 74,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":346,
+        "fields":{
+            "t211_id_requirement": 346,
+            "t200_id_vacant": 49,
+            "c116_description": "Web services",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":347,
+        "fields":{
+            "t211_id_requirement": 347,
+            "t200_id_vacant": 49,
+            "c116_description": "React Native",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":348,
+        "fields":{
+            "t211_id_requirement": 348,
+            "t200_id_vacant": 49,
+            "c116_description": "Laravel",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":349,
+        "fields":{
+            "t211_id_requirement": 349,
+            "t200_id_vacant": 49,
+            "c116_description": "",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":70,
+        "fields":{
+            "t212_id_language": 70,
+            "t200_id_vacant": 49,
+            "c111_id_language": 47,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":350,
+        "fields":{
+            "t211_id_requirement": 350,
+            "t200_id_vacant": 50,
+            "c116_description": "backend",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":351,
+        "fields":{
+            "t211_id_requirement": 351,
+            "t200_id_vacant": 50,
+            "c116_description": "frontend",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":352,
+        "fields":{
+            "t211_id_requirement": 352,
+            "t200_id_vacant": 50,
+            "c116_description": "SQL Server",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":353,
+        "fields":{
+            "t211_id_requirement": 353,
+            "t200_id_vacant": 50,
+            "c116_description": "eclipse",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":354,
+        "fields":{
+            "t211_id_requirement": 354,
+            "t200_id_vacant": 50,
+            "c116_description": "IntellijIdea",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":355,
+        "fields":{
+            "t211_id_requirement": 355,
+            "t200_id_vacant": 50,
+            "c116_description": "Java EE",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":356,
+        "fields":{
+            "t211_id_requirement": 356,
+            "t200_id_vacant": 50,
+            "c116_description": "Spring Boot",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":357,
+        "fields":{
+            "t211_id_requirement": 357,
+            "t200_id_vacant": 50,
+            "c116_description": "Gradle",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":358,
+        "fields":{
+            "t211_id_requirement": 358,
+            "t200_id_vacant": 50,
+            "c116_description": "Git",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":359,
+        "fields":{
+            "t211_id_requirement": 359,
+            "t200_id_vacant": 50,
+            "c116_description": "Web services Rest",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":360,
+        "fields":{
+            "t211_id_requirement": 360,
+            "t200_id_vacant": 50,
+            "c116_description": "Postman",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":361,
+        "fields":{
+            "t211_id_requirement": 361,
+            "t200_id_vacant": 50,
+            "c116_description": "Angular",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":362,
+        "fields":{
+            "t211_id_requirement": 362,
+            "t200_id_vacant": 50,
+            "c116_description": "Visual studio code",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":363,
+        "fields":{
+            "t211_id_requirement": 363,
+            "t200_id_vacant": 50,
+            "c116_description": "HTML",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":364,
+        "fields":{
+            "t211_id_requirement": 364,
+            "t200_id_vacant": 50,
+            "c116_description": "JavaScript",
+            "t211_mandatory": true
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredAbility",        
+        "pk":365,
+        "fields":{
+            "t211_id_requirement": 365,
+            "t200_id_vacant": 50,
+            "c116_description": "",
+            "t211_mandatory": false
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":71,
+        "fields":{
+            "t212_id_language": 71,
+            "t200_id_vacant": 50,
+            "c111_id_language": 47,
+            "t110_level_description": "Básico"
+        }
+    },
+
+    {
+        "model":"vacantes.RequiredLanguage",        
+        "pk":72,
+        "fields":{
+            "t212_id_language": 72,
+            "t200_id_vacant": 50,
+            "c111_id_language": 74,
             "t110_level_description": "Básico"
         }
     }
-
 
 ]

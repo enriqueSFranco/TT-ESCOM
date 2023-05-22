@@ -3,9 +3,9 @@ import {
   Icon,
   InputLabel,
   TextField,
-} from "./styled-components/InputStyled";
+} from "./styled-components/styles";
 
-const Input = ({
+export const Input = ({
   label,
   type = "text",
   icon = null,
@@ -18,6 +18,11 @@ const Input = ({
 }) => {
   return (
     <BoxInput bgInput={bgInput} width={width}>
+      {!icon ? null : (
+        <Icon bgInput={bgInput} iconColor={iconColor} onClick={onClick}>
+          {icon}
+        </Icon>
+      )}
       <TextField
         type={type}
         required="required"
@@ -27,13 +32,6 @@ const Input = ({
         {...rest}
       />
       <InputLabel>{label}</InputLabel>
-      {!icon ? null : (
-        <Icon bgInput={bgInput} iconColor={iconColor} onClick={onClick}>
-          {icon}
-        </Icon>
-      )}
     </BoxInput>
   );
 };
-
-export default Input;

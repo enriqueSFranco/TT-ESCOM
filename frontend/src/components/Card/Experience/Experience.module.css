@@ -1,3 +1,36 @@
+.alert {
+  background-color: #DDF5DF;
+  color: #64B661;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  padding: 15px;
+  border-radius: 4px;
+  margin: 0 auto;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  position: relative;
+  bottom: 2rem;
+}
+
+.alert::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  border-radius: 4px 0 0 4px;
+  height: 100%;
+  background-color: #64B661;
+}
+
+.alert > p {
+  margin: 0;
+}
+
 .actions {
   color: #000;
   width: 60px;
@@ -58,9 +91,6 @@
 
 .btnGoToMain {
   width: 150px;
-  position: absolute;
-  right: 12rem;
-  bottom: 4rem;
   border-radius: 5px;
   border: none;
   height: 3rem;
@@ -68,13 +98,11 @@
 }
 
 .btnSubmit {
-  width: 150px;
-  position: absolute;
-  right: 1rem;
-  bottom: 4rem;
+  width: fit-content;
   border-radius: 5px;
   border: none;
   height: 3rem;
+  padding: 0 10px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   display: flex;
   justify-content: center;
@@ -135,7 +163,7 @@
   background-color: #fc1f39;
 }
 
-.container  > h4 {
+.container>h4 {
   font-size: 1rem;
   margin-bottom: 1rem;
   /* outline: 2px solid blue; */
@@ -164,9 +192,9 @@
   position: relative;
   border-radius: 5px;
   left: 0;
+  background-color: #F5F7F8;
   width: 450px;
   display: flex;
-  border: 1px solid #eee;
 }
 
 .descriptionProject {
@@ -190,11 +218,16 @@
 
 }
 
-.desription {
+.description {
   color: #5c5c5c;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   height: auto;
-  margin-top: .4rem;
+}
+
+.description > a {
+  color: #0082c4;
+  position: relative;
+  left: 14rem;
 }
 
 .flex_1_2 {
@@ -249,20 +282,23 @@
 }
 
 .notProjects {
-  height: 100%;
+  height: calc(100% - 4rem);
   padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 16px;
   background-color: #fff;
 }
 
-.notProjects h3 {
-  color: #04547e;
-  text-align: center;
-  font-size: 1.4rem;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+.title {
+  background: linear-gradient(27deg, #3f5efb, #fc466b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 22px;
+  letter-spacing: 2px;
 }
 
 .titleModal {
@@ -270,16 +306,11 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin-bottom: 3rem;
   text-transform: uppercase;
-  font-weight: bold;
+  text-align: center;
   background: linear-gradient(270deg, #3f5efb, #fc466b);
   background-clip: text;
--webkit-background-clip: text;
-color: transparent;
-
--webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-foll-color: transparent;
-  -moz-text-foll-color: transparent;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .tittleProjectExperience {
@@ -299,7 +330,7 @@ color: transparent;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   border-radius: 8px;
   margin-top: .7rem;
-  border:none;
+  border: none;
   width: 100%;
   padding: 1rem;
   letter-spacing: 1px;
@@ -312,6 +343,17 @@ color: transparent;
   border-radius: 1rem;
   background-color: #fff;
   padding: 0 0 0 .5rem;
+}
+
+.wraperDescriptionProject {
+  margin-top: 10px;
+}
+
+.wrapperButtons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
 .wrapperMain {
@@ -333,6 +375,12 @@ color: transparent;
 .wrapperInput {
   display: flex;
   justify-content: space-between;
+}
+
+.wrapperList {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .wrapperCircle {
@@ -378,4 +426,3 @@ color: transparent;
   display: flex;
   gap: 1rem;
 }
-

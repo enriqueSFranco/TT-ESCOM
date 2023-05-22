@@ -6,7 +6,7 @@ import ModalPortal from "components/Modal/ModalPortal";
 import FormValidateCompany from "components/Form/FormValidate";
 import CardRecruiter from "components/Card/CardRecruiter";
 import noRecruiters from 'assets/images/job-recruitment-website-5241930-4390947.png'
-import { WrapperValidateCompany } from "../styled-components/ValidateRecruiterStyled";
+import { WrapperValidateCompany, TextH2, ContainerList } from "../styled-components/ValidateRecruiterStyled";
 
 const styles = {
   noRecruiters: {
@@ -30,24 +30,27 @@ const PageValidateRecruiter = () => {
   return (
     <LayoutHome>
       <WrapperValidateCompany>
-        {listRecruiter.length > 0 ? (
-          listRecruiter?.map((recruiter) => (
-            <CardRecruiter
-              key={`list-item-recruiter-${recruiter?.t301_id_recruiter}`}
-              recruiterName={`${recruiter?.t301_name} ${recruiter?.t301_last_name} ${recruiter?.t301_second_surname}`}
-              companyName={recruiter?.t300_id_company?.t300_name}
-              recruiterEmail={recruiter?.t301_email}
-              recruiterPhone={recruiter?.t301_phonenumber}
-              openModalAccept={openModalAccept}
-              openModalReject={openModalReject}
-            />
-          ))
-        ) : (
-          <article style={styles.noRecruiters}>
-            <img src={noRecruiters} alt="sin-reclutadores-por-validar" />
-            <h2 style={styles.text}>No hay reclutdores por validar</h2>
-          </article>
-        )}
+        <TextH2>Aprobar Reclutador</TextH2>
+        <ContainerList>
+          {listRecruiter.length > 0 ? (
+            listRecruiter?.map((recruiter) => (
+              <CardRecruiter
+                key={`list-item-recruiter-${recruiter?.t301_id_recruiter}`}
+                recruiterName={`${recruiter?.t301_name} ${recruiter?.t301_last_name} ${recruiter?.t301_second_surname}`}
+                companyName={recruiter?.t300_id_company?.t300_name}
+                recruiterEmail={recruiter?.t301_email}
+                recruiterPhone={recruiter?.t301_phonenumber}
+                openModalAccept={openModalAccept}
+                openModalReject={openModalReject}
+              />
+            ))
+          ) : (
+            <article style={styles.noRecruiters}>
+              <img src={noRecruiters} alt="sin-reclutadores-por-validar" />
+              <h2 style={styles.text}>No hay reclutdores por validar</h2>
+            </article>
+          )}
+        </ContainerList>
       </WrapperValidateCompany>
       <ModalPortal isOpen={isOpenAccept} closeModal={closeModalAccept}>
         <FormValidateCompany

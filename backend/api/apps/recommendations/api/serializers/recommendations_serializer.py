@@ -4,7 +4,7 @@ from apps.recommendations.models import Recommendation
 class RecommendationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recommendation
-        fields = "__all__"
+        fields = "__all__"        
     
     def create(self,validate_data):
         recommendation = Recommendation(**validate_data)
@@ -16,4 +16,3 @@ class RecommendationListSerializer(serializers.ModelSerializer):
         model = Recommendation
         fields = '__all__'
         depth = 2
-#

@@ -22,6 +22,7 @@ class Recommendation(models.Model):
     t500_percentage = models.IntegerField(null= False,blank= False)
 
     class Meta:
+        unique_together = ('t200_id_vacant','t100_id_student')
         verbose_name = 'Recommendation'
         verbose_name_plural = 'Recommendations'
         db_table = "t500_recomendacion"

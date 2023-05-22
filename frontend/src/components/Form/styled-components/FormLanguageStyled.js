@@ -6,14 +6,35 @@ const Form = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 2rem;
+`;
+
+const Alert = styled.div`
+  background-color: #EBF7EE;
+  color: #000;
+  font-size: 16px;
+  text-align: center;
+  padding: 15px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  p {
+    margin: 0;
+  }
 `;
 
 const Title = styled.h2`
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-size: 1.5rem;
-  text-transform: capitalize;
+  background: linear-gradient(27deg, #3f5efb, #fc466b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  text-transform: uppercase;
 `;
 
 const Button = styled.input`
@@ -114,4 +135,4 @@ const Porcentage = styled.span`
   font-weight: 700;
 `;
 
-export { Button, Form, Title, Select, Range, Porcentage };
+export { Button, Alert, Form, Title, Select, Range, Porcentage };

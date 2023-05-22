@@ -4,15 +4,15 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework import generics, viewsets
-from django.db.models import Count, IntegerField, OuterRef, Subquery,Max,Q
+from django.db.models import Count, IntegerField, OuterRef, Subquery,Max,Q,CharField,TextField
 from itertools import chain
 from datetime import date
 import datetime
 from apps.vacantes.pagination import CustomPagination
-from apps.vacantes.models import Vacant,Application,Report
+from apps.vacantes.models import Vacant,Application,Report,Locality,Experience,Modality,CandidateProfile,Contract,RequiredAbility,RequiredLanguage
 from apps.companies.models import Company
 from apps.vacantes.api.serializers.requirements_serializer import RequiredAbilitySerializer,RequiredLanguageSerializer
-from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,VacantListSerializer,UpdateVacantSerializer,VacantInfoListSerializer,VacantFilterSerializer,UpdateVacantStateSerializer
+from apps.vacantes.api.serializers.vacant_serializer import VacantSerializer,VacantListSerializer,UpdateVacantSerializer,VacantInfoListSerializer,VacantFilterSerializer,UpdateVacantStateSerializer,PatchVacantSerializer
 
 class VacantViewSet(viewsets.GenericViewSet):
 	model = Vacant
@@ -39,7 +39,10 @@ class VacantViewSet(viewsets.GenericViewSet):
     					"c222_id_locality": "",
     					"c208_id_contract": "",
     					"t301_id_recruiter": "",
-    					"t400_id_admin":""
+    					"t400_id_admin":"",
+						"t200_min_salary":"",
+						"t200_max_salary":"",
+						"t200_working_hours":""
 					}
 	requirement_prototype = {"c116_description": "",
     						 "t211_required_level": "",
@@ -110,6 +113,9 @@ class VacantViewSet(viewsets.GenericViewSet):
 		vacant_data["c222_id_locality"] = data["c222_id_locality"]
 		vacant_data["c208_id_contract"] = data["c208_id_contract"]
 		vacant_data["t301_id_recruiter"] = data["t301_id_recruiter"]		
+		vacant_data["t200_min_salary"] = data["t200_min_salary"]
+		vacant_data["t200_max_salary"] = data["t200_max_salary"]
+		vacant_data["t200_working_hours"] = data["t200_working_hours"]
 		return vacant_data
 
 	def set_requirement(self,skill,level,mandatory,id_vacant):
@@ -131,11 +137,11 @@ class VacantViewSet(viewsets.GenericViewSet):
 		print("Si es un nivel valido")
 		language['t200_id_vacant'] = id_vacant
 		language['c111_id_language'] = id_language
-		if level > 30 and level < 50:
+		if level >= 30 and level < 50:
 			language['t110_level_description']='Básico'	
-		if level > 50 and level < 75:
+		if level >= 50 and level < 75:
 			language['t110_level_description']='Medio'	
-		if level > 75 and level <= 100:
+		if level >= 75 and level <= 100:
 			language['t110_level_description']='Avanzado'	
 		return language
 
@@ -148,13 +154,17 @@ class VacantViewSet(viewsets.GenericViewSet):
 
 		Dummy text
 		""" 
+		print(request.data)
 		vacant_data = self.set_vacant(request.data)
 		vacant_mandatory = request.data['mandatory']
-		vacant_mandatory_level = request.data['mandatory_level']
+		#vacant_mandatory_level = request.data['mandatory_level']
 		vacant_optional = request.data['optional']
-		vacant_optional_level = request.data['optional_level']
-		vacant_languages = request.data['language']
-		language_level = request.data['language_level']
+		#vacant_optional_level = request.data['optional_level']
+		vacant_languages = request.data['language']					
+		#language_level = request.data['language_level']
+		if len(vacant_languages)==0:
+			vacant_languages.append("47")
+			#language_level.append("100")
 		print(vacant_mandatory)
 		vacant_serializer = self.serializer_class(data=vacant_data)
 		print('request: ',request.data)
@@ -163,34 +173,37 @@ class VacantViewSet(viewsets.GenericViewSet):
 			vacant = vacant_serializer.save()
 			vacant_id= vacant.t200_id_vacant
 			print(vacant_id)	
-			index = 0		
+			#index = 0		
 			for requirement in vacant_mandatory:
-				print(requirement,vacant_mandatory_level[index])				
-				requirement_data = self.set_requirement(requirement,vacant_mandatory_level[index],True,vacant_id)				
+				#print(requirement,vacant_mandatory_level[index])				
+				#requirement_data = self.set_requirement(requirement,vacant_mandatory_level[index],True,vacant_id)				
+				requirement_data = self.set_requirement(requirement,"",True,vacant_id)				
 				requirement_serializer =self.requirement_serializer(data = requirement_data)
 				if requirement_serializer.is_valid():
 					print("Requerimiento valido")
 					requirement_serializer.save()					
-				index = index + 1
-			index = 0		
+				#index = index + 1
+			#index = 0		
 			for requirement in vacant_optional:
-				print(requirement,vacant_optional_level[index])				
-				requirement_data = self.set_requirement(requirement,vacant_optional_level[index],False,vacant_id)				
+				#print(requirement,vacant_optional_level[index])				
+				#requirement_data = self.set_requirement(requirement,vacant_optional_level[index],False,vacant_id)				
+				requirement_data = self.set_requirement(requirement,"",False,vacant_id)				
 				requirement_serializer =self.requirement_serializer(data = requirement_data)
 				if requirement_serializer.is_valid():
 					print("Requerimiento valido")
 					requirement_serializer.save()					
-				index = index + 1
-			index = 0		
+				#index = index + 1
+			#index = 0		
 			for language in vacant_languages :
-				print(language,language_level[index])				
-				language_data = self.set_language(int(language),vacant_id,int(language_level[index]))				
+				#print(language,language_level[index])				
+				#language_data = self.set_language(int(language),vacant_id,int(language_level[index]))				
+				language_data = self.set_language(int(language),vacant_id,30)
 				language_serializer =self.language_serializer(data = language_data)
 				print(language_data)
 				if language_serializer.is_valid():
 					print("Idioma valido")
 					language_serializer.save()					
-				index = index + 1
+				#index = index + 1
 			return Response({
 				'message': 'Vacante registrada correctamente.'
 			}, status=status.HTTP_201_CREATED)
@@ -237,18 +250,41 @@ class VacantViewSet(viewsets.GenericViewSet):
 
 		Dummy text
 		""" 
+		print(request.data)
 		vacant = self.queryset = self.model.objects.filter(t200_id_vacant = pk).first()
 		vacant_serializer = UpdateVacantSerializer(vacant, data=request.data)
 		if vacant_serializer.is_valid():
 			vacant_serializer.save()
+			#actual_skills = RequiredAbility.objects.filter(t200_id_vacant=pk).delete()
+			#actual_languages = RequiredLanguage.objects.filter(t200_id_vacant=pk).delete()		
 			return Response({
 			    'message': 'Vacante actualizada correctamente'
 		    }, status=status.HTTP_200_OK)
+		print(vacant_serializer.errors)
 		return Response({
             'message': 'Hay errores en la actualización',
             'errors': vacant_serializer.errors
         }, status=status.HTTP_400_BAD_REQUEST)
 
+	def patch(self, request, pk):
+		vacant_catalog_values = self.queryset = self.model.objects.filter(t200_id_vacant = pk).values('c222_id_locality','c207_id_experience','c214_id_modality','c206_id_profile','c208_id_contract').first()
+		print(vacant_catalog_values)
+		#,,,
+		Postal_Code = Locality.objects.filter(c222_id=vacant_catalog_values['c222_id_locality']).values('c222_cp')
+		experience = Experience.objects.filter(c207_id_experience=vacant_catalog_values['c207_id_experience']).values('c207_description')
+		modality = Modality.objects.filter(c214_id_modality=vacant_catalog_values['c214_id_modality']).values('c214_description')
+		profile = CandidateProfile.objects.filter(c206_id_profile=vacant_catalog_values['c206_id_profile']).values('c206_description')
+		contract = Contract.objects.filter(c208_id_contract=vacant_catalog_values['c208_id_contract']).values('c208_description')
+		vacant = self.model.objects\
+				.filter(t200_id_vacant = pk).all()\
+				.annotate(CP=Subquery(Postal_Code.values('c222_cp'),output_field=IntegerField()))\
+				.annotate(c207_description=Subquery(experience.values('c207_description'),output_field=CharField()))\
+				.annotate(c214_description=Subquery(modality.values('c214_description'),output_field=CharField()))\
+				.annotate(c206_description=Subquery(profile.values('c206_description'),output_field=CharField()))\
+				.annotate(c208_description=Subquery(contract.values('c208_description'),output_field=CharField()))
+		vacant_serializer = PatchVacantSerializer(vacant,many = True)
+
+		return Response(vacant_serializer.data)
 
 
 class RecruiterVacantViewSet(viewsets.GenericViewSet):
@@ -376,12 +412,14 @@ class FilterVacant (generics.ListAPIView):
 		count =0
 		for word in search:
 			if count==0:
-				filter = Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) | Q(t200_description__icontains=word))
+				filter = Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) )
 				count = count+1
 			else:
 				print(word)
 				filter = filter.union(Vacant.objects.filter(Q(c204_id_vacant_status = 1),Q(t200_job__icontains=word) | Q(t200_description__icontains=word)))
 		return filter.all()#Vacant.objects.filter(Q(c204_id_vacant_status = 1),Q(t200_job__icontains=search) | Q(t200_description__icontains=search)).values() 
+	
+		
 	
 
 class FilterVacantViewSet(viewsets.GenericViewSet):
@@ -392,40 +430,17 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 	queryset = None
 	filters ={
 		'job' : '',
-		'company_name' : '',
-		'id_profile' : '',
-		'id_modality' : '',
-	}
-	def get_company(self,company_name):
-		company_data = Company.objects.filter(t300_name=company_name)
-		return company_data[0].t300_id_company
+		'ubication' : '',
+		'experience_profiles' : '',
+		'modalities' : '',
+	}	
 
 	def get_object(self):	
-		self.queryset = self.model.objects.filter(c204_id_vacant_status_id = 1)
-		if (self.filters['job']):
-			self.queryset = self.queryset.filter(t200_job__icontains= self.filters['job'])
-		if (self.filters['company_name']):
-			company_id = self.get_company(self.filters['company_name'])
-			self.queryset = self.queryset.filter(t300_id_company = company_id)
-		if (self.filters['id_profile']):
-			self.queryset = self.queryset.filter(c206_id_profile = self.filters['id_profile'])
-		if (self.filters['id_modality']):
-			self.queryset = self.queryset.filter(c214_id_modality = self.filters['id_modality'])
-		self.queryset =	self.queryset.all()
+		self.queryset = self.model.objects.filter(c204_id_vacant_status_id = 2)
 		return self.queryset
 
 	def get_queryset(self):	
-		self.queryset = self.model.objects.filter(c204_id_vacant_status_id = 1)
-		if (self.filters['job']):
-			self.queryset = self.queryset.filter(t200_job__icontains= self.filters['job'])
-		if (self.filters['company_name']):
-			company_id = self.get_company(self.filters['company_name'])
-			self.queryset = self.queryset.filter(t300_id_company = company_id)
-		if (self.filters['id_profile']):
-			self.queryset = self.queryset.filter(c206_id_profile = self.filters['id_profile'])
-		if (self.filters['id_modality']):
-			self.queryset = self.queryset.filter(c214_id_modality = self.filters['id_modality'])
-		self.queryset =	self.queryset.all()
+		self.queryset = self.model.objects.filter(c204_id_vacant_status_id = 2)
 		return self.queryset
 
 	def list(self, request):
@@ -438,18 +453,60 @@ class FilterVacantViewSet(viewsets.GenericViewSet):
 		return Response(vacants_serializer.data)
 
 
+	def set_filter_experience(self,experienceJSON):
+		experience = []
+		for object in experienceJSON:
+			#print(object)
+			if object['checked']:
+				experience.append(int(object['id']))		
+		return experience
+
+	def set_filter_modality(self,modalityJSON):
+		modality = []
+		for object in modalityJSON:
+			#print(object)
+			if object['checked']:
+				modality.append(int(object['id']))		
+		return modality
+
+	def set_search_ubications(self,location_name):
+		id_locations = Locality.objects.filter(Q(c222_state__icontains=location_name)|Q(c222_municipality__icontains=location_name)|Q(c222_locality__icontains=location_name)).values("c222_id").all()
+		#Cuauhtémoc
+		return id_locations
+
+
 	def create(self, request):
 		print('request: ',request.data)
-		self.filters['job'] = request.data['job']
-		self.filters['company_name'] = request.data['company_name']
-		self.filters['id_profile'] = request.data['c206_id_profile']
-		self.filters['id_modality']  = request.data['id_modality']
+		self.filters['job'] = request.data['Texto a buscar']
+		if request.data['Donde'] != "":
+			self.filters['ubication'] = self.set_search_ubications(request.data['Donde'])
+		self.filters['modalities'] = self.set_filter_modality(request.data['Modalidad de empleo'])
+		self.filters['experience_profiles'] = self.set_filter_experience(request.data['Experiencia laboral'])
+
 		print(self.filters)
-		vacants = self.get_object()
-		page = self.paginate_queryset(vacants)
+		if self.filters['job'] == "":
+			filter_vacants = Vacant.objects.filter(Q(c204_id_vacant_status = 2))#,Q(t200_job__icontains=word) )		
+		else:			
+			#search = self.filters['job'].split(" ")
+			#found_words = 0
+			#for word in search:
+				#if found_words == 0:
+			filter_vacants = Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=self.filters['job']) | Q(t200_description__icontains=self.filters['job']))
+					#found_words = found_words + 1
+				#else:
+					#filter_vacants = filter_vacants.union(Vacant.objects.filter(Q(c204_id_vacant_status = 2),Q(t200_job__icontains=word) | Q(t200_description__icontains=self.filters['job'])))				
+		if self.filters['ubication'] :
+			filter_vacants = filter_vacants.filter(c222_id_locality__in=self.filters['ubication'])
+		if self.filters['modalities']:
+			filter_vacants = filter_vacants.filter(c214_id_modality__in = self.filters['modalities'])
+		if self.filters['experience_profiles']:
+			filter_vacants = filter_vacants.filter(c207_id_experience__in = self.filters['experience_profiles'])
+		#Paginar resultados	
+		page = self.paginate_queryset(filter_vacants)
 		if page is not None:
 			vacants_serializer = self.list_serializer_class(page, many=True)
 			return self.get_paginated_response(vacants_serializer.data)
-		vacants_serializer = self.list_serializer_class(vacants, many=True)
+		vacants_serializer = self.list_serializer_class(filter_vacants, many=True)
 		return Response(vacants_serializer.data)		
 		
+	

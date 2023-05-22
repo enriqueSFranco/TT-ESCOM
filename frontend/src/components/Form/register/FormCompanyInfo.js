@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { uploadDocumentValidate } from "services";
-import Input from "components/Input/Input";
-import ButtonFile from 'components/Button/ButtonFile'
+import { Input } from "components/Input/Input";
+import ButtonFile from "components/Button/ButtonFile";
 import * as BsIcon from "react-icons/bs";
 import * as MdIcon from "react-icons/md";
 import styles from "../Styles.module.css";
@@ -14,8 +14,10 @@ const FormCompanyInfo = ({
   handleValidate,
   isActive,
   handleIsActive,
+  document,
+  setDocument,
 }) => {
-  const [document, setDocument] = useState(null);
+  //const [document, setDocument] = useState(null);
 
   function convertToBase64(file) {
     return new Promise((resolve, reject) => {
@@ -34,16 +36,17 @@ const FormCompanyInfo = ({
   async function uploadFile(e) {
     const file = e.target.files[0];
     const base64 = await convertToBase64(file);
-    setDocument(file.name)
-    uploadDocumentValidate({ t300_validator_document: base64 })
-      .then((response) => console.log(response))
-      .catch((error) => console.error(error));
+    setDocument(file.name); 
+    form.validation_document = base64;
+    //uploadDocumentValidate({ t300_validator_document: base64 })
+    //  .then((response) => console.log(response))
+    //  .catch((error) => console.error(error));
   }
 
   function handleUpload(e) {
     uploadFile(e)
-    .then(response => console.log(response))
-    .catch(error => error)
+      .then((response) => console.log(response))
+      .catch((error) => error);
   }
 
   const continueStep = (e) => {
@@ -51,24 +54,25 @@ const FormCompanyInfo = ({
     nextStep();
   };
 
+
   return (
     <div className={styles.companyInfo}>
       <div className={`${styles.welcome}`}>
-        <h2
-          style={{
-            fontFamily: "sans-serif",
-            fontSize: "1.1em",
-            marginBottom: ".5rem",
-            color: "#2B3647",
-            fontWeight: "600",
-          }}
-        >
-          Datos de la empresa <BsIcon.BsQuestionCircle />
+        <h2 className={styles.title} style={{ marginBottom: "20px" }}>
+          Datos de la empresa
         </h2>
         {!isActive && (
-          <span>
+          <span style={{ color: "#000" }}>
             Verifica si tu empresa ya esta registrada{" "}
-            <a onClick={handleIsActive} href="#/">
+            <a
+              style={{
+                fontWeight: "700",
+                fontFamily: "sans-serif",
+                borderBottom: "2px solid #039DEB",
+              }}
+              onClick={handleIsActive}
+              href="#/"
+            >
               aqui
             </a>
           </span>
@@ -142,7 +146,16 @@ const FormCompanyInfo = ({
           onChange={handleUpload}
         />
       </div>
-      <span style={{marginBottom: '1rem', fontSize: '.8em', color: '#b2b5be'}}>{document}</span>
+      <span
+        style={{
+          marginBottom: "2rem",
+          fontSize: "14px",
+          color: "#039DEB",
+          borderBottom: "2px solid #039DEB",
+        }}
+      >
+        {document}
+      </span>
       <button className={styles.btnNext} type="button" onClick={continueStep}>
         Siguiente
       </button>

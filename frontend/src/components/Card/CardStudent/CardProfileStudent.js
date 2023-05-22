@@ -13,7 +13,7 @@ import ModalPortal from "components/Modal/ModalPortal";
 import ModalPreviewCV from "components/Modal/ModalPreviewCV";
 import CustomAvatar from "components/Avatar/Avatar";
 import Chip from "components/Chip/Chip";
-import ToolTip from "components/Tooltip/Tooltip";
+import ToolTip from "components/Tooltip/TooltipText";
 import FormSocialNetwork from "components/Form/FormAddSocialNetwork/FormSocialNetwork";
 import FormUpdateDataStudent from "components/Form/updateInfoStudent/FormUpdateDataStudent";
 import {
@@ -86,7 +86,7 @@ const CardProfileStudent = () => {
                   position: "relative",
                   top: ".2rem",
                   right: ".5rem",
-                  color: "#fff",
+                  color: "#31B1F2",
                   fontSize: "1.1rem",
                   cursor: "pointer",
                 }}
@@ -103,8 +103,8 @@ const CardProfileStudent = () => {
           <div style={{ textAlign: "center" }}>
             <span
               style={{
-                color: "#fff",
-                fontWeight: 600,
+                color: "#000",
+                fontWeight: 400,
                 fontFamily: "sans-serif",
               }}
             >
@@ -117,50 +117,24 @@ const CardProfileStudent = () => {
         <div className={styles.userDetails}>
           <div className={styles.personalInfo}>
             <div className={styles.container_flex}>
-              <span
-                style={{
-                  backgroundColor: "#37404d",
-                  height: "fit-content",
-                  width: "fit-content",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  padding: ".4rem",
-                  borderRadius: "50%",
-                }}
-              >
-                <MdLocationPin
-                  style={{
-                    fontSize: "1rem",
-                    color: "#fff",
-                  }}
-                />
+              <span className={styles.icon}>
+                <MdLocationPin />
               </span>
               <p>
+                {candidate[0]?.c222_id_locality
+                  ? candidate[0]?.c222_id_locality.c222_state +
+                    " , " +
+                    candidate[0]?.c222_id_locality.c222_municipality +
+                    " , "
+                  : ""}
                 {candidate[0]?.t100_residence
                   ? candidate[0]?.t100_residence
                   : ""}
               </p>
             </div>
             <div className={styles.container_flex}>
-              <span
-                style={{
-                  backgroundColor: "#37404d",
-                  height: "fit-content",
-                  width: "fit-content",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  padding: ".4rem",
-                  borderRadius: "50%",
-                }}
-              >
-                <MdOutlineAirplanemodeActive
-                  style={{
-                    fontSize: "1rem",
-                    color: "#fff",
-                  }}
-                />
+              <span className={styles.icon}>
+                <MdOutlineAirplanemodeActive />
               </span>
               <p>
                 {candidate[0]?.t100_travel
@@ -171,25 +145,16 @@ const CardProfileStudent = () => {
             <div className={styles.container_flex}>
               {candidate[0]?.t100_cv ? (
                 <>
-                  <BsFileEarmarkPersonFill
-                    style={{
-                      backgroundColor: "#37404d",
-                      height: "fit-content",
-                      width: "fit-content",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      padding: ".4rem",
-                      borderRadius: "50%",
-                    }}
-                  />
+                  <BsFileEarmarkPersonFill style={{marginTop: '4px'}} className={styles.icon} />
                   <button
                     onClick={openModalCV}
                     style={{
-                      color: "#fff",
+                      color: "#000",
                       backgroundColor: "transparent",
                       outline: "none",
+                      fontSize: "14px",
                       border: "none",
+                      marginLeft: "8px",
                     }}
                   >
                     Ver CV
@@ -197,25 +162,8 @@ const CardProfileStudent = () => {
                 </>
               ) : (
                 <>
-                  <span
-                    style={{
-                      backgroundColor: "#37404d",
-                      height: "fit-content",
-                      width: "fit-content",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      padding: ".4rem",
-                      borderRadius: "50%",
-                    }}
-                  >
-                    <BsFillFileEarmarkPostFill
-                      style={{
-                        color: "#fff",
-                        fontWeight: "bold",
-                        fontSize: "1rem",
-                      }}
-                    />
+                  <span className={styles.icon}>
+                    <BsFillFileEarmarkPostFill />
                   </span>
                   <p
                     style={{
@@ -250,42 +198,32 @@ const CardProfileStudent = () => {
                   href={`mailto:${candidate[0]?.t100_email}`}
                   target="_blank"
                   rel="noreferrer"
-                  style={{ color: "#fff" }}
+                  style={{ color: "#000" }}
                 >
                   {candidate[0]?.t100_email}
                 </a>
               </li>
-              {socialNetworks?.length > 0 ? (
-                socialNetworks?.map(({ t113_link, c115_id_plataform }) => (
-                  <li
-                    key={`item-link-plataform-${crypto.randomUUID()}`}
-                    title={`Ir a ${t113_link}`}
-                    className={styles.list_item}
-                  >
-                    <img
-                      src={c115_id_plataform?.c115_icon}
-                      alt={c115_id_plataform?.c115_icon}
-                      className={styles.iconSocialNetwork}
-                    />
-                    <span className={styles.go_link}>
-                      {c115_id_plataform?.c115_description}
-                      {
-                        <a
-                          href={`${t113_link}`}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {t113_link}
-                        </a>
-                      }
-                    </span>
-                  </li>
-                ))
-              ) : (
-                <span style={{ padding: 0 }}>
-                  Sin redes sociales por el momento.
-                </span>
-              )}
+              {socialNetworks?.map(({ t113_link, c115_id_plataform }) => (
+                <li
+                  key={`item-link-plataform-${crypto.randomUUID()}`}
+                  title={`Ir a ${t113_link}`}
+                  className={styles.list_item}
+                >
+                  <img
+                    src={c115_id_plataform?.c115_icon}
+                    alt={c115_id_plataform?.c115_icon}
+                    className={styles.iconSocialNetwork}
+                  />
+                  <span className={styles.go_link}>
+                    {c115_id_plataform?.c115_description}
+                    {
+                      <a href={`${t113_link}`} target="_blank" rel="noreferrer">
+                        {t113_link}
+                      </a>
+                    }
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
           {/* SKILLS */}
@@ -297,8 +235,8 @@ const CardProfileStudent = () => {
                 marginBottom: "1rem",
               }}
             >
-              <h4>Habilidades en</h4>
-              <ToolTip title="Agregar Nueva Habilidad">
+              <h4>Conocimientos en:</h4>
+              <ToolTip title="Agregar Nuevo Conocimiento">
                 <button onClick={openModalSkill} className={styles.buttonAdd}>
                   +
                 </button>
@@ -310,12 +248,13 @@ const CardProfileStudent = () => {
                   <Chip
                     key={uuid()}
                     label={c116_id_skill?.c116_description}
-                    bg="#37404d"
-                    color="#fff"
+                    outline={`1px solid #ccc`}
+                    bg="#fff"
+                    color="#6D6D6D"
                   />
                 ))
               ) : (
-                <span>Sin habilidades registradas</span>
+                <span>Sin conocimientos registradas</span>
               )}
             </List>
           </div>
@@ -329,8 +268,7 @@ const CardProfileStudent = () => {
               height: "40%",
               margin: "0 auto",
               borderRadius: "1rem",
-              backgroundColor: "#37404d",
-              color: "#fff",
+              color: "#000",
               position: "relative",
               top: "1.5rem",
             }}
@@ -339,7 +277,7 @@ const CardProfileStudent = () => {
               <div
                 style={{ display: "flex", alignItems: "center", gap: ".3rem" }}
               >
-                <BiDislike style={{ fontSize: "1.5rem", color: "#fff" }} />
+                <BiDislike style={{ fontSize: "1.5rem", color: "#000" }} />
                 <span>Aun no cuentas con tu cv</span>
               </div>
             ) : (
@@ -451,7 +389,11 @@ const CardProfileStudent = () => {
         </div>
       </ModalPortal>
 
-      <ModalPortal isOpen={isOpenCV} closeModal={closeModalCV} minWidth="1000px">
+      <ModalPortal
+        isOpen={isOpenCV}
+        closeModal={closeModalCV}
+        minWidth="1000px"
+      >
         <ModalPreviewCV fileUrl={candidate[0]?.t100_cv} />
       </ModalPortal>
     </>

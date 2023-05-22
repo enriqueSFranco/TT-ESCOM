@@ -2,7 +2,7 @@ import React from "react";
 import { useAuth } from "context/AuthContext";
 import { useModal, useLanguageUser } from "hooks";
 import Language from "components/Card/Language/Language";
-import Tooltip from "components/Tooltip/Tooltip";
+import Tooltip from "components/Tooltip/TooltipText";
 import { MdAdd } from "react-icons/md";
 import { Header, AddLanguage } from "../styled-components/LanguageStyled";
 import ModalPortal from "components/Modal/ModalPortal";

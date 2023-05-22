@@ -11,7 +11,6 @@ import PageLoginCompany from "pages/login/PageLoginCompany";
 import PageRegisterCompany from "pages/login/PageRegisterCompany";
 import PageProfileStudent from "pages/student/PageProfileStudent";
 import PageLoginStudentUpdate from "pages/login/PageLoginStudentUpdate";
-import FormPostJob from "components/Form/postJob/FormPostJob";
 import PageHistory from "pages/business/pageInit/PageHistory";
 import PageLanguages from "pages/student/PageLanguages";
 import PageSuccesCompany from "pages/login/PageSuccesCompany";
@@ -33,6 +32,7 @@ import ValidateCompany from "pages/admin/ValidateCompany";
 import ListVacantsAdmin from "pages/admin/ListVacantsAdmin";
 import Postulates from "pages/business/Postulates";
 import LoginAdmin from "pages/login/LoginAdmin";
+import CreateJob from "pages/business/CreateJob";
 
 const Root = () => {
   return (
@@ -50,7 +50,7 @@ const Root = () => {
             path=":t200_id_vacant"
             element={<CardDetailsVacantRecruiter height="80%" />}
           /> */}
-        <Route path="/crear-vacante" element={<FormPostJob />} />
+        <Route path="/crear-vacante" element={<CreateJob />} />
         <Route path="/postulaciones" element={<Postulates />}>
           <Route path=":t200_id_vacant" element={<Accordion />} />
         </Route>

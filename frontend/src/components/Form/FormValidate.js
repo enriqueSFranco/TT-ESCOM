@@ -6,6 +6,7 @@ import {
   TextArea,
   WrapperForm,
   WrapperLegend,
+  SuccesLegen
 } from "./styled-components/FormValidateCompanyStyled";
 
 const FormValidateCompany = ({ typeAction, resolve, reject }) => {
@@ -14,10 +15,10 @@ const FormValidateCompany = ({ typeAction, resolve, reject }) => {
       {typeAction === 1 && (
         <WrapperLegend>
           <h2>Aceptar Registro</h2>
-          <label>
-            Al aceptar el registro se le crearán credenciales ya accesos al
-            sistema al reclutador.
-          </label>
+          <SuccesLegen>
+            Al aceptar el registro se le crearán credenciales y a accesos al
+            reclutador.
+          </SuccesLegen>
           <span>¿Esta seguro de continuar?</span>
         </WrapperLegend>
       )}
@@ -25,10 +26,10 @@ const FormValidateCompany = ({ typeAction, resolve, reject }) => {
       {typeAction === 0 && (
         <WrapperLegend>
           <h2>Rechazar Registro</h2>
-          <label>
+          <SuccesLegen>
             Al declinar la empresa se le enviara un correo al reclutador de que
-            se ha\r rechazado su solicitud.
-          </label>
+            se ha rechazado su solicitud.
+          </SuccesLegen>
           <span>¿Esta seguro de continuar?</span>
           <TextArea
             name=""
@@ -45,8 +46,8 @@ const FormValidateCompany = ({ typeAction, resolve, reject }) => {
             text="Aceptar Empresa"
             bgColor="#30D46F"
             color="#fff"
-            width="10"
-            height="2"
+            width="12"
+            height="3"
             icon={<AiFillCheckCircle />}
             onClick={resolve}
           />
@@ -57,8 +58,8 @@ const FormValidateCompany = ({ typeAction, resolve, reject }) => {
             text="Enviar observacion"
             bgColor="#30D46F"
             color="#fff"
-            width="11"
-            height="2"
+            width="13"
+            height="3"
             icon={<AiOutlineSend />}
             onClick={reject}
           />

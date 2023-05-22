@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "hooks";
 import { sendComment, sendCommentRecruiter } from "services";
 import Button from "components/Button/Button";
@@ -6,23 +6,9 @@ import { AiOutlineSend } from "react-icons/ai";
 import { USERS } from "types";
 import { BoxComment, Form } from "./styled-components/FormAddCommentStyled";
 
-const textError = {
-  color: "#FF0000",
-  fontFamily: "sans-serif",
-  margin: "0",
-};
-
-const textSucces = {
-  color: "#09C992",
-  fontFamily: "sans-serif",
-  margin: "0",
-};
-
 
 const FormAddComment = ({ typeUser, userId, vacantId }) => {
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState(false);
-  const { form, errors, setForm, handleChange } = useForm({
+  const { form, setForm, handleChange } = useForm({
     t223_comment: "",
     t200_id_vacant: vacantId,
   });
@@ -35,8 +21,6 @@ const FormAddComment = ({ typeUser, userId, vacantId }) => {
     }
 
     if (typeUser === USERS.recruiter) {
-      console.log("enviando mensaje desde reclutador");
-
       const payload = { ...form, t301_id_recruiter: userId };
 
       sendCommentRecruiter(payload)
@@ -50,7 +34,6 @@ const FormAddComment = ({ typeUser, userId, vacantId }) => {
     }
 
     if (typeUser === USERS.manager) {
-      console.log("enviando mensaje desde manager");
       const payload = { ...form, t400_id_admin: userId };
 
       sendComment(payload)
@@ -67,7 +50,7 @@ const FormAddComment = ({ typeUser, userId, vacantId }) => {
   }
 
   return (
-    <Form onSubmit={onSendComment}>
+    <Form onSubmit={onSendComment} typeUser={typeUser}>
       <BoxComment
         name="t223_comment"
         id="t223_comment"

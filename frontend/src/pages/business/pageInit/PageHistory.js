@@ -19,18 +19,9 @@ const PageHistory = () => {
   const [filterData, setFilterData] = useState(null);
   const { token } = useAuth();
   const { data: listVacants } = useRecruiterJobs({
-    idRcruiter: token?.user?.id,
+    idRcruiter: token?.user?.user_id,
   });
-  const { data } = useRecruiterJobs({ idRcruiter: token?.user?.id });
-
-  // const handleDeleteJob = async () => {
-  //   const response = await deleteJob(job[0]?.t200_id_vacant);
-
-  //   if (response.status === 200)
-  //     setIsDeletedJob({ succes: response.status, message: response.message });
-  //   else
-  //     setIsDeletedJob({ success: response.status, message: response.message });
-  // };
+  const { data, loading } = useRecruiterJobs({ idRcruiter: token?.user?.id });
 
   if (!data || !listVacants) return null;
 
@@ -44,7 +35,7 @@ const PageHistory = () => {
             setFilterData={setFilterData}
           />
           {/* LISTA DE VACANTES */}
-          <ListJobsRecruiter data={isDataFilter ? filterData : listVacants} setVacantId={setVacantId} />
+          <ListJobsRecruiter data={isDataFilter ? filterData : listVacants} loading={loading} setVacantId={setVacantId} />
         </Aside>
         <Container>
           {/* Widgets */}

@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 const Card = styled.article`
   position: relative;
-  height: 200px;
+  height: fit-content;
   color: #000;
-  border-radius: 1rem;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -15,17 +15,19 @@ const Card = styled.article`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   transition: box-shadow .3s ease-in-out;
+  
   &:hover {
     color: #000;
-    box-shadow: #2172F2 0px 0px 0px 3px;
+    box-shadow: #2172F2 0px 0px 0px 2px;
   }
 `;
 
 const CardHeader = styled.header`
   height: fit-content;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
 `;
 
 const CardHeaderLeft = styled.div`
@@ -39,9 +41,11 @@ const CardHeaderRight = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
   img {
     height: 100%;
-    object-fit: contain;
+    max-width: 50%;
+    object-fit: cover;
     object-position: center center;
     margin-right: 0.5rem;
   }
@@ -51,15 +55,15 @@ const CardListTags = styled.ul`
   display: flex;
   gap: 1rem;
   padding: 0;
-  margin: 0 0 0.5rem 0.5rem;
+  margin: 0 0 18px 0.5rem;
   list-style: none;
 `;
 
 const CardListItemTags = styled.li``;
 
 const TitleJob = styled.h2`
-  margin: 0 0 0.5rem 0.5rem;
-  font-size: 1em;
+  margin: 0 0 10px 10px;
+  font-size: 18px;
   font-weight: 700;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -77,16 +81,25 @@ const TotalApplications = styled.span`
   font-weight: 700;
 `;
 
-const CardFooter = styled.footer`
+const CardFooter = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem 0.5rem 1rem;
+  align-items: flex-end;
+  padding: 0 1rem .3rem 1rem;
   width: 100%;
-  height: 60px;
+  border-top: 1px solid #ccc;
   border-radius: 0 0 1rem 1rem;
-  background-color: #2172f2;
-  color: #fff;
+  color: #000;
+
+  .cerrada {
+    color: #FF0000;
+  }
+  .abierta {
+    color: #31C27C;
+  }
+  .en-revision {
+    color: #E56A1B;
+  }
 `;
 
 export {

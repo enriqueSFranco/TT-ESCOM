@@ -7,7 +7,7 @@ const menu = [
   {label: ""},
   {label: "Nombre",},
   {label: "Perfil"},
-  {label: "Habilidades"},
+  {label: "Conocimientos"},
   {label: "Estado de la postulacion"},
   {label: "Opciones"},
 ]

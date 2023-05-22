@@ -2,9 +2,11 @@ import styled from 'styled-components'
 import { device } from 'breakpoints'
 
 export const ChipStyled = styled.span`
-  background-color: ${props => props.bg ? props.bg : 'transparent'};
+  background: ${props => props.bg ? props.bg : 'transparent'};
+  box-shadow: ${props => props.boxShadow || 'none'};
+  outline: ${props => props.outline || 'none'};
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  border-radius: 1rem;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   gap: .3rem;
@@ -15,10 +17,10 @@ export const ChipStyled = styled.span`
 }
 
   @media screen and ${device.laptop} {
-    font-size: .87rem;
+    font-size: 15px;
     font-weight: 600;
-    padding: .3rem .7rem;
-    color: ${props => props.color || '#000'}
+    padding: 4px 6px;
+    color: ${props => props.color || '#000'};
   }
 
 `

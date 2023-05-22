@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { getApplicationsJobs } from 'services/jobs/index'
+import { getApplicationsJobs } from 'services'
 
 export function useGetApplicationJob({ idVacant }) {
   const [data, setData] = useState(null)
