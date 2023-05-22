@@ -71,16 +71,4 @@ const TitleImage = styled.figcaption`
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 `
 
-export {
-  Aside,
-  ContentWidget,
-  TextNumber,
-  Grid,
-  ContentWidgetCommon,
-  Container,
-  WrapperWidgets,
-  WrapperNoResults,
-  ContainerImage,
-  Image,
-  TitleImage,
-};
+export {Aside, ContentWidget, TextNumber, Grid, ContentWidgetCommon, Container, WrapperWidgets }

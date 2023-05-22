@@ -1,10 +1,31 @@
-import React from 'react'
-import { numberFormat } from 'utils';
-import CustomAvatar from 'components/Avatar/Avatar';
-import Button from 'components/Button/Button';
-import { HiUserCircle } from 'react-icons/hi'
-import { List, ListItem } from 'styled-components/CommonStyles';
+import React from "react";
+import { numberFormat } from "utils";
+import CustomAvatar from "components/Avatar/Avatar";
+import Button from "components/Button/Button";
+import { HiUserCircle } from "react-icons/hi";
+import { List, ListItem } from "styled-components/CommonStyles";
 
+const styles = {
+  containerCard: {
+    height: "200px",
+    backgroundColor: "#fff",
+    borderRadius: "5px",
+    display: "grid",
+    gridTemplateColumns: "150px 1fr",
+    alignContent: "center",
+    gap: "1rem",
+    outline: "1px solid #ccc",
+  },
+  subWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "1rem",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#F2F8FD",
+    height: "200px",
+  },
+};
 
 const CardApplicantDetails = ({
   name,
@@ -14,31 +35,9 @@ const CardApplicantDetails = ({
   salary,
   onClick,
 }) => {
-
   return (
-    <article
-      style={{
-        height: "200px",
-        backgroundColor: "#fff",
-        borderRadius: "5px",
-        display: "grid",
-        gridTemplateColumns: "150px 1fr",
-        alignContent: "center",
-        gap: "1rem",
-        outline: "1px solid #ccc",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "1rem",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "#F2F8FD",
-          height: "200px",
-        }}
-      >
+    <article style={styles.containerCard}>
+      <div style={styles.subWrapper}>
         <CustomAvatar
           height="90px"
           width="90px"
@@ -57,28 +56,22 @@ const CardApplicantDetails = ({
       </div>
       <List>
         <ListItem>
-          {/* <HiUserCircle style={{fontSize: '1.3rem'}} />  */}
           <span style={{ fontSize: ".9rem" }}>Nombre: {name}</span>
         </ListItem>
         <ListItem>
-          {/* <TiLocationOutline style={{fontSize: '1.4rem'}} /> */}
           <span style={{ fontSize: ".9rem" }}>Ubicacion: {residence}</span>
         </ListItem>
         <ListItem>
-          {/* <MdAttachMoney style={{fontSize: '1.3rem'}} /> */}
           <span style={{ fontSize: ".9rem" }}>
             Salario deseado: {numberFormat(salary)}
           </span>
         </ListItem>
         <ListItem>
-          {/* <MdAttachMoney style={{fontSize: '1.3rem'}} /> */}
-          <span style={{ fontSize: ".9rem" }}>
-            Estado: {stateApplication}
-          </span>
+          <span style={{ fontSize: ".9rem" }}>Estado: {stateApplication}</span>
         </ListItem>
       </List>
     </article>
   );
 };
 
-export default CardApplicantDetails
+export default CardApplicantDetails;
