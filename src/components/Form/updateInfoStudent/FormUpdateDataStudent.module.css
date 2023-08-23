@@ -1,0 +1,21 @@
+.wrapperForm {}
+
+.groupsInputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.wrapperAvatar {
+  width: 300px;
+  height: 170px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: .5rem 0 0 1rem;
+  background: #fff;
+}

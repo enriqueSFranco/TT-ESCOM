@@ -1,0 +1,65 @@
+/* img {
+  max-width: 100%;
+  height: 700px;
+  object-fit: contain;
+} */
+
+.btnClose {
+  position: absolute;
+  top: 2rem;
+  right: 8rem;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.btnClose svg {
+  color: #fff;
+  font-size: 2rem;
+}
+
+.details { 
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.details h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.details span {
+  display: block;
+  color: #fff;
+  text-align: left;
+  margin-bottom: .7rem;
+}
+
+.grid {
+  position: relative;
+  top: 6rem;
+  left: 0;
+  height: 800px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  overflow-y: auto;
+  align-content: center;
+  justify-items: center;
+}
+
+.releaseDescription {
+  margin-top: 3rem;
+  height: auto;
+  font-size: 1.1rem;
+}
+
+.wrapper {
+  position: fixed;
+  top: 3rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000000de;
+}

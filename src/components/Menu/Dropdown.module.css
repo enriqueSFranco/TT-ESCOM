@@ -1,0 +1,74 @@
+.dropdown {
+  position: relative;
+}
+
+.menu {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 210px;
+  box-shadow: 0 1px 8px #0000004d;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: opacity .4s ease, transform .4s ease, visibility .4s;
+}
+
+.menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.menuList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.menu li a {
+  color: #353434e3;
+  font-size: .9rem;
+  padding: 15px 20px;
+  display: block;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  transition: all .5s ease;
+}
+
+.menu li a:hover {
+  background-color: #f0efef;
+  border-radius: 1rem;
+  color: #000;
+}
+
+.avatarRecruiter {
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .4rem;
+  cursor: pointer;
+  border: none;
+  font-size: 1.5rem;
+  background-color: transparent;
+}
+
+.trigger {
+  background-color: #fff;
+  border-radius: 1rem;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  vertical-align: middle;
+  width: fit-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .3rem;
+  transition: box-shadow .4s ease;
+}

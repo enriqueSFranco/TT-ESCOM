@@ -1,0 +1,376 @@
+.bg, .bgRecruiter {
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* .active {
+  background-color: #2b2b2bcc;
+} */
+
+.bg {
+  background-image: url(../../images/beneficios-del-smart-working.jpg);
+}
+
+.bgLoginCompany {
+  background-image: url(../../images/reclutamiento.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.bgCompany {
+  position: relative;
+  background-image: url(../../images/Lavoro\ Agile\ sito_0.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.bgRecruiter {
+  background-image: url(../../images/homeoffice.png);
+}
+
+.bgCreateAccountCompany {
+  position: relative;
+  /* background-image: url(../../images/crearCuentaEmpresa.jpg); */
+  background-size: cover;
+  background-position: -20rem center;
+  background-repeat: no-repeat;
+}
+
+.bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(22, 150, 235, 0.062);
+}
+
+.bg blockquote {
+  width: 350px;
+  backdrop-filter: blur(10px);
+  font-weight: bold;
+  color: #fff;
+  padding: 1rem;
+  position: relative;
+  font-size: 2.5rem;
+}
+
+.bg blockquote em { color: #04c8eb; }
+
+.btLogin { 
+  width: 490px; 
+  position: relative;
+  left: 0;
+}
+
+.linkToRegisterRecruiter {
+  /* background-color: red; */
+  position: relative;
+  top: 1rem;
+}
+
+.createAccount {
+  width: 200px;
+  position: relative;
+  left: 5.3rem;
+  bottom: 1rem;
+}
+
+.error {
+  width: 400px;
+  font-weight: 300;
+  font-size: .9rem;
+  color: #ff0400;
+  text-align: left;
+  padding: .3rem;
+  border-radius: 0 0 4px 4px;
+}
+
+.error svg {
+  color: #ff0400;
+  font-size: 1rem;
+  margin-right: .4rem;
+}
+
+.form {
+  width: auto;
+  height: auto;
+  /* padding: 1rem; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  background: linear-gradient(27deg, #3f5efb, #fc466b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 22px;
+}
+
+.createAccountStudentForm {
+  width: auto;
+  height: 600px;
+  /* padding: 1rem; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.passwordLogin {
+  width: 300px;
+  position: relative;
+  left: 5.3rem;
+  bottom: 1rem;
+}
+
+.companyInfo { 
+  height: fit-content;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 4rem;
+}
+
+.personalContact { 
+  height: fit-content;
+  position: relative;
+  top: 2rem;
+}
+
+.yohaveAccount {
+  /* background-color: red; */
+  position: relative;
+  right: 0rem;
+  display: flex;
+  justify-content: flex-start;
+  /* width: 100%; */
+  flex-direction: column;
+}
+
+.work {
+  color: #a5d0d8;
+  font-size: 2.5rem;
+}
+
+.welcome { margin: 1rem 0; }
+
+.welcome svg {
+  font-size: .8rem;
+  position: absolute;
+  top: 0;
+  margin-left: .2rem;
+  font-weight: bold;
+  color: #90314b;
+}
+
+.welcome span {
+  color: #b9b9b9;
+  font-size: .9rem;
+  text-align: center;
+}
+
+.welcome a { color: #000; transition: color .3s ease-in; font-family: 'Poppins', sans-serif; font-weight: 300; }
+.welcome a:hover { color: #016da3; }
+
+.wrapper {
+  position: relative;
+  top: 10rem;
+}
+
+.wrapperBottom {
+  /* outline: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 1rem;
+  right: 1.5rem;
+}
+
+.wrapperForm3 {
+  height: fit-content;
+  position: relative;
+  top: 6rem;
+}
+
+.wrapperCreateAccountStudent {
+  position: relative;
+  top: 12rem;
+  /* outline: 2px solid red; */
+  height: 600px;
+}
+
+.wrapperCreateAccountCompany {
+  position: relative;
+  top: 2rem;
+}
+
+.wrapperYouHaveAccount {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapperColumn {
+  padding-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 4rem;
+}
+
+.wrapperLinkToLoginCompany {
+  background-color: #fff;
+  position: absolute;
+  top: 22rem;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login {
+  position: relative;
+  bottom: 2rem;
+  /* outline: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.linkToLogin {
+  color: #017ec0;
+  position: relative;
+  left: 0;
+}
+
+.recoverAccount {  margin-top: 2rem;  }
+
+.recoverAccount h1 {
+  font-size: 2rem;
+  text-align: center;
+  color: #90314b;
+  font-weight: bold;
+}
+
+/* ESTILOS DEL FORMULARIO DE CREAR CUENTA EMPRESA */
+.inputGroup {
+  position: relative;
+  top: 0;
+  width: 490px;
+  height: 85px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: .5rem;
+}
+
+.inputGroupCreatAccountStudent {
+  position: relative;
+  top: 0;
+  width: 490px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapperFile {
+  width: fit-content;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* input file */
+.inputFile {
+  width: .1px;
+  height: .1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.inputFile + label {
+  width: fit-content;
+  font-size: .9rem;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  transition: color .3s ease;
+}
+
+.inputFile + label svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  color: #000;
+  vertical-align: middle;
+  fill: currentColor;
+  margin-top: -.25rem;
+  margin-right: .25rem;
+}
+
+.inputFile + label {
+  color: #000;
+}
+
+.inputFile + label:hover, .inputFile {
+  color: #116BFE;
+}
+
+
+.wrapperButtons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btnBack, 
+.btnRegister, 
+.btnNext {
+  background-color: #116BFE;
+  color: #fff;
+  outline: none;
+  border: none;
+  padding: .5rem;
+  width: 150px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  gap: .3rem;
+  align-items: center;
+}
+
+.btnBack, .btnNext {
+  transition: background-color .3s ease-in;
+
+}
+
+.btnNext:hover,
+.btnBack:hover,
+.btnRegister:hover {
+  background-color: #039deb;
+}
+
+.btnRegister {
+  width: 190px;
+  transition: background-color .3s ease-in;
+}

@@ -1,0 +1,27 @@
+.btnEdit, .btnDelete {
+  margin: .5rem;
+  border: none;
+  height: 30px;
+  width: 150px;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 1.4rem;
+  background-color: transparent;
+  transition: color .3s ease;
+}
+
+.btnEdit:hover {
+  color: #028dd4;
+}
+
+.btnDelete:hover {
+  color: #ef482a;
+}
+
+.wrapper {
+  position: absolute;
+  top: 4rem;
+  width: 100%;
+  height: calc(100% - 4rem);
+  /* background-color: red; */
+}

@@ -1,0 +1,132 @@
+.btnEdit {
+  position: absolute;
+  right: 1rem;
+  border: none;
+  background-color: transparent;
+  color: #000;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  transition: background-color .3s ease-in-out;
+  border-radius: 50%;
+}
+
+.btnEdit:hover {
+  background-color: #116BFE;
+  color: #fff;
+}
+
+.btnSave {
+  width: 120px;
+  height: 3rem;
+  border-radius: 2px;
+  border: none;
+  color: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+  background-color: #116BFE;
+  outline: none;
+  transition: background-color .3s ease-in;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+
+.flex_1_2 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: .2rem;
+}
+
+.salary,
+.employmentModality {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  font-weight: 400;
+}
+
+.title {
+  background: linear-gradient(27deg, #3f5efb, #fc466b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 25px;
+  font-weight: 500;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  letter-spacing: 1px;
+}
+
+.textArea {
+  resize: none;
+  border: none;
+  outline: 1px solid #cccbcb;
+  border-radius: 1rem;
+  width: 600px;
+  padding: 1rem;
+}
+
+.textArea::placeholder {
+  color: #616161;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.tip,
+.totalChar {
+  font-size: .89rem;
+  color: #616161;
+  font-weight: 500;
+}
+
+.position {
+  font-size: .87rem;
+  width: 100%;
+  position: absolute;
+  left: 1rem;
+  bottom: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.professionalObjective {
+  font-size: 1em;
+  letter-spacing: 1px;
+  width: 1000px;
+}
+
+.wrapper,
+.infoWork {
+  position: relative;
+  color: #000;
+  border-radius: 1rem;
+  padding: 1rem;
+  /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
+  height: 240px;
+  width: 60%;
+  background-color: #F3F5F8;
+  font-weight: 400;
+}
+
+
+.wrapperTextEdit {
+  position: absolute;
+  top: 3.5rem;
+  right: 2rem;
+  left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wrapperTextArea {
+  display: flex;
+  flex-direction: column;
+}
+
+/* infoWork */
+.infoWork {
+  width: 100%;
+}

@@ -1,0 +1,68 @@
+.nav {
+  height: 44px;
+  background-color: #fff;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.navMenu {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navMenu,
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.navList {
+  width: 100%;
+  height: 2.5rem;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  user-select: none;
+}
+
+.navLink {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 2.5rem;
+  color: #000;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navLink:hover { color: #000; }
+
+.navList.selected {
+  background-color: rgba(204, 204, 204, 0.274);
+  color: #fff;
+  transition: all .5s ease;
+}
+
+.underline {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 100%);
+}

@@ -1,0 +1,69 @@
+/* ESTILOS PARA EL COMPONENTE CARDJOBLIST */
+
+.grid {
+  width: 70%;
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination button {
+  position: relative;
+  border: none;
+  width: 120px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 8px;
+  margin: .5rem;
+  background-color: #2687ab;
+  color: #fff;
+  z-index: 1;
+  transition: background-color .3s ease;
+}
+
+.icon {
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+.wrapper {
+  width: 70%;
+  min-height: 100vh;
+  border-radius: 8px;
+  background-color: #fff;
+  position: relative;
+}
+
+/* SIN VACANTES */
+
+.notJobs {
+  width: 100%;
+  height: calc(100vh - 300px - 4rem);
+  position: relative;
+  display: grid;
+  place-content: center;
+}
+
+.active {
+  border: 2px solid red;
+}
+
+.title {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+  text-align: center;
+  margin: 0;
+  background: linear-gradient(27deg, #3f5efb, #fc466b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}

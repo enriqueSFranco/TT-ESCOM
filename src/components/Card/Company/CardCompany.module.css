@@ -1,0 +1,111 @@
+.card {
+  width: 200px;
+  height: 160px;
+  background-color: #fff;
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow .3s, transform .3s ease-out;
+}
+
+.card:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  transform: translateY(-3%);
+}
+
+.card img {
+  width: 150px;
+  height: 70px;
+  margin-top: .5rem;
+  object-fit: contain;
+  object-position: center;
+}
+
+.card svg {
+  font-size: 5rem;
+  color: #afaeae;
+}
+
+.card button {
+  border: none;
+  background-color: #125dfc;
+  color: #ffffff;
+  border-radius: 4px;
+  padding: .3rem;
+  margin-bottom:.5rem;
+  width: 100px;
+  position: absolute;
+  bottom: 0rem;
+  left: 3.2rem;
+}
+
+/* .card a, span {
+  font-size: .9rem;
+  color: #616161;
+  font-weight: 600;
+  text-align: center;
+} */
+
+.cardExpand {
+  background-color: #90314b;
+  color: #fff;
+  padding-top: .5rem;
+  box-shadow: #00000029 0px 1px 4px;
+  width: 300px;
+  height: auto;
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cardExpandSubTitle {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.cardExpand p {
+  width: 300px;
+  font-size: 13px;
+  padding: .3rem;
+  margin: 0;
+}
+
+
+.infoCompany {
+  position: absolute;
+  top: 5rem;
+}
+
+.nameCompany {
+  margin: 0;
+  font-size: .9rem;
+  color: #007ec7;
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.grid {
+  position: relative;
+  top: 0rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-content: center;
+  justify-items: center;
+  color: #000;
+  font-size: 3rem;
+}
+
+.description {
+  margin-top: 3rem;
+  height: auto;
+  font-size: 1.1rem;
+}
