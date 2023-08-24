@@ -44,7 +44,7 @@ const CardProfileStudent = () => {
   const { socialNetworks } = useGetSocialNetwork({ idUser: token?.user?.id });
   const { data } = useFetch(process.env.REACT_APP_URL_CATALOG_SKILLS);
 
-  function sendSkill() {
+  function sendSkill () {
     newSkills.forEach((newSkill) => {
       let options = {
         headers: {
@@ -123,9 +123,9 @@ const CardProfileStudent = () => {
               <p>
                 {candidate[0]?.c222_id_locality
                   ? candidate[0]?.c222_id_locality.c222_state +
-                    " , " +
-                    candidate[0]?.c222_id_locality.c222_municipality +
-                    " , "
+                  " , " +
+                  candidate[0]?.c222_id_locality.c222_municipality +
+                  " , "
                   : ""}
                 {candidate[0]?.t100_residence
                   ? candidate[0]?.t100_residence
@@ -145,7 +145,7 @@ const CardProfileStudent = () => {
             <div className={styles.container_flex}>
               {candidate[0]?.t100_cv ? (
                 <>
-                  <BsFileEarmarkPersonFill style={{marginTop: '4px'}} className={styles.icon} />
+                  <BsFileEarmarkPersonFill style={{ marginTop: '4px' }} className={styles.icon} />
                   <button
                     onClick={openModalCV}
                     style={{

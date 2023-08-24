@@ -21,7 +21,7 @@ const FormSocialNetwork = ({ idUser }) => {
     t100_id_student: idUser,
   };
 
-  function handleSubmit(e) {
+  function handleSubmit (e) {
     e.preventDefault();
     if (!e.target.value) return;
 

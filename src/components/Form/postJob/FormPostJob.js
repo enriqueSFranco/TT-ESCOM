@@ -64,13 +64,13 @@ const validateForm = (form) => {
   return errors;
 };
 
-function recuperarHabilidades(array) {
+function recuperarHabilidades (array) {
   let arrayAuxiliar = [];
   array.forEach((el) => arrayAuxiliar.push(el.c116_description));
   return arrayAuxiliar;
 }
 
-function recuperarIdiomaId(array) {
+function recuperarIdiomaId (array) {
   let arrayAuxiliar = [];
   array.forEach((el) => arrayAuxiliar.push(el.c111_id_language));
   return arrayAuxiliar;

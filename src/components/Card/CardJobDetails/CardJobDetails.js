@@ -121,7 +121,7 @@ const CardJobDetails = () => {
                       label={job[0]?.c214_id_modality?.c214_description}
                       icon={
                         job[0]?.c214_id_modality?.c214_description ===
-                        "Remoto" ? (
+                          "Remoto" ? (
                           <IoIcon.IoMdHome
                             style={{ fontSize: "1rem", color: "#028dd4" }}
                           />
@@ -136,22 +136,19 @@ const CardJobDetails = () => {
                 </ul>
                 <p className={styles.paragraph}>
                   Ubicacion:{" "}
-                  {`${
-                    job[0]?.t200_municipality === null ||
+                  {`${job[0]?.t200_municipality === null ||
                     job[0]?.t200_municipality === ""
+                    ? ""
+                    : job[0]?.t200_municipality + ","
+                    } 
+                    ${job[0]?.t200_state === null || job[0]?.t200_state === ""
                       ? ""
-                      : job[0]?.t200_municipality + ","
-                  } 
-                    ${
-                      job[0]?.t200_state === null || job[0]?.t200_state === ""
-                        ? ""
-                        : job[0]?.t200_state + ","
+                      : job[0]?.t200_state + ","
                     }
-                    ${
-                      job[0]?.t200_locality === null ||
+                    ${job[0]?.t200_locality === null ||
                       job[0]?.t200_locality === ""
-                        ? ""
-                        : job[0]?.t200_locality + ","
+                      ? ""
+                      : job[0]?.t200_locality + ","
                     }` ?? "No especificada"}
                 </p>
               </div>
@@ -201,20 +198,18 @@ const CardJobDetails = () => {
             </div>
             <div>
               <h3>OFRECEMOS</h3>
-              <p className={styles.paragraph}>{`${
-                job[0]?.t200_benefits !== ""
-                  ? job[0]?.t200_benefits
-                  : "No hay beneficios para esta vacante"
-              }`}</p>
+              <p className={styles.paragraph}>{`${job[0]?.t200_benefits !== ""
+                ? job[0]?.t200_benefits
+                : "No hay beneficios para esta vacante"
+                }`}</p>
             </div>
             <div>
               <p className={styles.paragraph}>
                 Salario:{" "}
                 <span>
                   $
-                  {`${job[0]?.t200_min_salary} - ${
-                    job[0]?.t200_max_salary ?? ""
-                  }`}{" "}
+                  {`${job[0]?.t200_min_salary} - ${job[0]?.t200_max_salary ?? ""
+                    }`}{" "}
                   al mes
                 </span>
               </p>

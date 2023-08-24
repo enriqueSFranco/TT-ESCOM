@@ -44,12 +44,12 @@ const AboutMe = () => {
         </button>
         <h1 className={styles.title}>Mi Objetivo Profesional es:</h1>
         <p className={styles.professionalObjective}>
-          {candidate[0]?.t100_personal_objectives === '' ? <p style={{fontFamily: 'sans-serif'}}>Aun no tienes tu objetivo profesional</p> : candidate[0]?.t100_personal_objectives}
+          {candidate[0]?.t100_personal_objectives === '' ? <p style={{ fontFamily: 'sans-serif' }}>Aun no tienes tu objetivo profesional</p> : candidate[0]?.t100_personal_objectives}
         </p>
       </article>
       <ModalPortal isOpen={isOpenModalEdit} closeModal={closeOpenModalEdit} minWidth='550px' minHeight='440px'>
-        <h2 style={{position: 'relative', top: '2rem', textAlign: 'center', fontFamily: 'sans-serif', fontSize: '1.5rem'}}>Editar mi Objetivo Profesional</h2>
-        <form onSubmit={handleSubmit} className={styles.wrapperTextEdit} style={{width: '100%', position: 'relative', top: '3rem', left: '0rem'}}>
+        <h2 style={{ position: 'relative', top: '2rem', textAlign: 'center', fontFamily: 'sans-serif', fontSize: '1.5rem' }}>Editar mi Objetivo Profesional</h2>
+        <form onSubmit={handleSubmit} className={styles.wrapperTextEdit} style={{ width: '100%', position: 'relative', top: '3rem', left: '0rem' }}>
           <div className={styles.wrapperTextArea}>
             <textarea
               name="t100_personal_objectives"

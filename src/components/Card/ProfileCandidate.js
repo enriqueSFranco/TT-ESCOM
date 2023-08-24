@@ -29,7 +29,7 @@ const menuItems = [
 /**
  * @param {String} value
  **/
-function formatPhone(value) {
+function formatPhone (value) {
   if (value === null) return;
   let parseValue = String(value);
   let number = parseValue.slice(0, 2);
@@ -39,7 +39,7 @@ function formatPhone(value) {
   return newFormatPhone;
 }
 
-function generateLevel(level) {
+function generateLevel (level) {
   let result = "";
   if (level >= 30 && level <= 50) return (result += "Básico");
   if (level >= 51 && level <= 60) return (result += "Intermedio");
@@ -95,9 +95,8 @@ const ProfileCandidate = ({ user }) => {
             width="100px"
             height="100px"
           />
-          <span>{`Nombre: ${t100_name} ${t100_last_name} ${
-            t100_second_surname ?? ""
-          }`}</span>
+          <span>{`Nombre: ${t100_name} ${t100_last_name} ${t100_second_surname ?? ""
+            }`}</span>
           <span>
             Perfil: {t100_speciality ? t100_speciality : t100_interest_job}
           </span>
@@ -168,9 +167,8 @@ const ProfileCandidate = ({ user }) => {
                 languages?.map((language) => (
                   <ListItem key={`language-id-${crypto.randomUUID()}`}>
                     <Chip
-                      label={`${
-                        language?.c111_id_language?.c111_description
-                      } / ${generateLevel(language?.t110_level)}`}
+                      label={`${language?.c111_id_language?.c111_description
+                        } / ${generateLevel(language?.t110_level)}`}
                       outline={`1px solid #ccc`}
                       bg="#fff"
                       color="#6D6D6D"
@@ -204,9 +202,8 @@ const ProfileCandidate = ({ user }) => {
             ref={indicatorRef}
             className="menu_item_indicator"
             style={{
-              transform: `translateY(30%) translateX(${
-                selectedId * stepWidth
-              }px)`,
+              transform: `translateY(30%) translateX(${selectedId * stepWidth
+                }px)`,
             }}
           ></div>
           <List ref={listRef} style={{ justifyContent: "center", gap: "2rem" }}>

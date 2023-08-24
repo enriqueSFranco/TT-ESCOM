@@ -44,7 +44,7 @@ const CertificationList = () => {
           <MdAdd />
         </button>
       </div>
-      <div style={{backgroundColor: 'blue', width: 'fit-content', position: 'relative', top: '1rem'}}>
+      <div style={{ backgroundColor: 'blue', width: 'fit-content', position: 'relative', top: '1rem' }}>
         {
           data && data?.map(certification => (
             <CertificationItem

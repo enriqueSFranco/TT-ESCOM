@@ -16,13 +16,13 @@ import {
   CardViwProfile
 } from "./styled-components/CardCandidateStyled";
 
-function formatPhone(value) {
+function formatPhone (value) {
   if (value === null) return
   let parseValue = String(value)
-  let number = parseValue.slice(0,2)
-  let firstPart = parseValue.slice(2,6)
-  let secondPart = parseValue.slice(6,10)
-  let newFormatPhone = `${number} ${firstPart} ${secondPart}`  
+  let number = parseValue.slice(0, 2)
+  let firstPart = parseValue.slice(2, 6)
+  let secondPart = parseValue.slice(6, 10)
+  let newFormatPhone = `${number} ${firstPart} ${secondPart}`
   return newFormatPhone
 }
 
@@ -74,7 +74,7 @@ const CardCandidate = ({ user }) => {
           <button onClick={openModal} className="button"> <FaUserCircle /> Ver perfil</button>
         </CardViwProfile>
       </Card>
-      
+
       <ModalPortal isOpen={isOpen} closeModal={closeModal} minWidth="1200px" minHeight="900px" bg="#F3F4F4">
         <TitleModal>Información del candidato: {user.t100_name}{" "}{user.t100_last_name}</TitleModal>
         <ProfileCandidate user={user} />

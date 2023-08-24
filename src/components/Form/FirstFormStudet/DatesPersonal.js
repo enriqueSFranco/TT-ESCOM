@@ -6,7 +6,7 @@ import { getLocality } from "services/catalogs";
 import { Select, WrapperSelect } from "./styled-componets/FormStepCandidate";
 import styles from "./StylesStepper.module.css";
 
-function DatesPersonal({
+function DatesPersonal ({
   form,
   handleChange,
   id_locality,

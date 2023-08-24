@@ -39,7 +39,7 @@ const PersonalExperience = ({ setTypeProject }) => {
   const handleClick = () => setTypeProject(null);
 
   // Funcion para agregar un nuevo proyecto personal
-  function onSubmit(e) {
+  function onSubmit (e) {
     e.preventDefault();
     addProject(form)
       .then((response) => {
@@ -59,7 +59,7 @@ const PersonalExperience = ({ setTypeProject }) => {
     setMessage("");
   }
 
-  function updatTotalChar(e) {
+  function updatTotalChar (e) {
     setTotalChar(e.target.value.length);
   }
 
@@ -98,7 +98,7 @@ const PersonalExperience = ({ setTypeProject }) => {
           />
           <div className={styles.flex_1_2}>
             <p>Por favor, Escribe la descripcion de tu proyecto.</p>
-            <span style={{color: '#5c5c5c', fontSize: '15px'}}>{totalChar}/255</span>
+            <span style={{ color: '#5c5c5c', fontSize: '15px' }}>{totalChar}/255</span>
           </div>
         </div>
         <div className={styles.wrapperButtons}>

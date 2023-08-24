@@ -63,7 +63,7 @@ const FormUpdateDataStudent = ({ id, username, picture, candidate }) => {
     setPlace(locality[1]);
   };
 
-  function convertToBase64(file) {
+  function convertToBase64 (file) {
     return new Promise((resolve, reject) => {
       const fr = new FileReader();
       fr.readAsDataURL(file);
@@ -79,7 +79,7 @@ const FormUpdateDataStudent = ({ id, username, picture, candidate }) => {
     });
   }
 
-  async function uploadCV(e) {
+  async function uploadCV (e) {
     const file = e.target.files[0];
     console.log(file);
     if (!file) return;
@@ -90,7 +90,7 @@ const FormUpdateDataStudent = ({ id, username, picture, candidate }) => {
       .catch((error) => console.error(error));
   }
 
-  async function updateImage(e) {
+  async function updateImage (e) {
     const file = e.target.files[0];
     const imgBase64 = await convertToBase64(file);
 
@@ -106,7 +106,7 @@ const FormUpdateDataStudent = ({ id, username, picture, candidate }) => {
       .catch((error) => console.error(error));
   }
 
-  function update(e) {
+  function update (e) {
     e.preventDefault();
     console.log("formulario enviado...");
 
@@ -190,7 +190,7 @@ const FormUpdateDataStudent = ({ id, username, picture, candidate }) => {
               marginBottom: "1rem",
             }}
           >
-          Ubicación 
+            Ubicación
           </h2>
           <div className={styles.groupsInputs}>
             <Input
@@ -206,7 +206,7 @@ const FormUpdateDataStudent = ({ id, username, picture, candidate }) => {
                 value={place}
                 width="450px"
                 onChange={(e) => set_locality(e.target.value)}
-                //sx={{ width:300, padding:1}}
+              //sx={{ width:300, padding:1}}
               >
                 <option value="" disabled>
                   Seleccione una Colonia

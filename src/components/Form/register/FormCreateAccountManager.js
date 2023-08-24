@@ -88,7 +88,7 @@ const FormCreateAccountManager = () => {
               label="Nombre(s)"
               id="t400_name"
               name="t400_name"
-              icon={<FaUser style={{color: '#1c8efb'}} />}
+              icon={<FaUser style={{ color: '#1c8efb' }} />}
               value={form.t400_name}
               onBlur={handleValidate}
               onKeyUp={handleValidate}
@@ -151,7 +151,7 @@ const FormCreateAccountManager = () => {
               label="Correo electronico"
               id="t400_email"
               name="t400_email"
-              icon={<MdEmail style={{color: '#1c8efb'}} />}
+              icon={<MdEmail style={{ color: '#1c8efb' }} />}
               value={form.t400_email}
               onBlur={handleValidate}
               onKeyUp={handleValidate}
@@ -170,7 +170,7 @@ const FormCreateAccountManager = () => {
               id="password"
               name="password"
               type={showPassword ? "text" : "password"}
-              icon={showPassword ? <MdVisibility style={{color: '#1c8efb'}} /> : <MdVisibilityOff style={{color: '#ccc'}} />}
+              icon={showPassword ? <MdVisibility style={{ color: '#1c8efb' }} /> : <MdVisibilityOff style={{ color: '#ccc' }} />}
               value={form.password}
               onBlur={handleValidate}
               onKeyUp={handleValidate}
@@ -179,7 +179,7 @@ const FormCreateAccountManager = () => {
             />
             {errors.password && (
               <div className={styles.error}>
-                <MdOutlineErrorOutline  />
+                <MdOutlineErrorOutline />
                 {errors.password}
               </div>
             )}

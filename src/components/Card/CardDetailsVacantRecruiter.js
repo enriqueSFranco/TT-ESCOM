@@ -34,7 +34,7 @@ import ModalPortal from "components/Modal/ModalPortal";
 import FormPostJob from "components/Form/postJob/FormPostJob";
 import CustomSkeleton from "components/Skeleton/Skeleton";
 
-function createMarkup(description) {
+function createMarkup (description) {
   return { __html: description };
 }
 

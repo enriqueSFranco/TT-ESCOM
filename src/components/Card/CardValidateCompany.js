@@ -18,7 +18,7 @@ import {
   MyButton,
 } from "./styled-components/CardValidateCompanyStyled";
 
-function formatPhone(value) {
+function formatPhone (value) {
   if (value === null) return;
   let parseValue = String(value);
   let number = parseValue.slice(0, 2);

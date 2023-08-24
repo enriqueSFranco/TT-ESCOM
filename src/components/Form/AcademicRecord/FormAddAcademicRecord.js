@@ -42,7 +42,7 @@ const FormAddAcademicRecord = () => {
   );
   const [response, setResponse] = useState("");
 
-  function onSubmitAcademicHistorial(e) {
+  function onSubmitAcademicHistorial (e) {
     e.preventDefault();
     let copyForm = {
       ...form,

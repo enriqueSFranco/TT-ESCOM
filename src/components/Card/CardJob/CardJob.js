@@ -47,27 +47,26 @@ const CardJob = ({
       label: isVacantRecommended
         ? job?.t200_id_vacant?.t200_max_salary
           ? `Suledo mensual: $${parseThousands(
-              job?.t200_id_vacant?.t200_max_salary
-            )}-${parseThousands(job?.t200_id_vacant?.t200_max_salary)}`
+            job?.t200_id_vacant?.t200_max_salary
+          )}-${parseThousands(job?.t200_id_vacant?.t200_max_salary)}`
           : "Sueldo no especificado"
         : job?.t200_max_salary
-        ? `Sueldo mensual: $${parseThousands(
+          ? `Sueldo mensual: $${parseThousands(
             job?.t200_min_salary
           )}-${parseThousands(job?.t200_max_salary)}`
-        : "Sueldo no especificado",
+          : "Sueldo no especificado",
     },
     {
       label: isVacantRecommended
         ? `Perfil academico: ${job?.t200_id_vacant?.c206_id_profile?.c206_description}`
-        : `Modalidad: ${
-            job?.c214_id_modality?.c214_description
-              ? job?.c214_id_modality?.c214_description
-              : "No especificada"
-          }`,
+        : `Modalidad: ${job?.c214_id_modality?.c214_description
+          ? job?.c214_id_modality?.c214_description
+          : "No especificada"
+        }`,
     },
   ];
 
-  function createMarkup() {
+  function createMarkup () {
     return { __html: isVacantRecommended ? job.t200_id_vacant?.t200_description : job.t200_description };
   }
 
@@ -85,7 +84,7 @@ const CardJob = ({
               <IoBusiness style={{ color: "darkgray", fontSize: "3.5rem" }} />
             )}
           </CardImage>
-          
+
           <PublicationDate time={elapsed}>
             Publicada {timeago}
           </PublicationDate>

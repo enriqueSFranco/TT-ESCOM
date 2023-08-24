@@ -18,7 +18,7 @@ const CertificationItem = ({
   endDate,
   link,
 }) => {
-  const[dataToEdit, setDataToEdit] = useState(null);
+  const [dataToEdit, setDataToEdit] = useState(null);
   const [
     isOpenModalDeleteCertification,
     openModalDeleteCertification,
@@ -116,7 +116,7 @@ const CertificationItem = ({
           setDataToEdit={setDataToEdit}
         />
       </Modal>
-      <Toaster position="top-right"/>
+      <Toaster position="top-right" />
     </>
   );
 };

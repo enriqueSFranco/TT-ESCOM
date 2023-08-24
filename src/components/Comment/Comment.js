@@ -13,7 +13,7 @@ const Comment = ({ comment, date, usernameRecruiter, usernameManager, whereIsIt,
     <ContainerMessage typeUser={typeUser} whereIsIt={whereIsIt}>
       <CustomAvatar username={usernameRecruiter ? usernameRecruiter : usernameManager} width="40px" height="40px" />
       <Message typeUser={typeUser}>
-        <p style={{margin: '0'}}>{comment}</p>
+        <p style={{ margin: '0' }}>{comment}</p>
         <TextDate typeUser={typeUser}>{formatDate(date)}</TextDate>
       </Message>
     </ContainerMessage>

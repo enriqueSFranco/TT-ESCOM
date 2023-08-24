@@ -5,7 +5,7 @@ import Chip from "components/Chip/Chip";
 import ModalPortal from "components/Modal/ModalPortal";
 import "./ApplicationJobStudent.css";
 
-function createMarkup(isVacantRecommended, job) {
+function createMarkup (isVacantRecommended, job) {
   return {
     __html: isVacantRecommended
       ? job.t200_id_vacant?.t200_description

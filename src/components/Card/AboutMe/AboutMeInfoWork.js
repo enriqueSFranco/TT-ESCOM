@@ -6,7 +6,7 @@ import Chip from "components/Chip/Chip";
 import { ListItem, List } from "styled-components/CommonStyles";
 import styles from "./AboutMe.module.css";
 
-function generateLevel(level) {
+function generateLevel (level) {
   let result = "";
   if (level >= 30 && level <= 50) return (result += "Básico");
   if (level >= 51 && level <= 60) return (result += "Intermedio");
@@ -29,7 +29,7 @@ const AboutMeInfoWork = () => {
           <Chip
             label={`Sueldo deseado: ${numberFormat(
               candidate[0]?.t100_target_salary
-            ).replace(".00", "").replace("MXM",'$')}`}
+            ).replace(".00", "").replace("MXM", '$')}`}
             outline={`1px solid #ccc`}
             bg="#fff"
             color="#6D6D6D"
@@ -49,14 +49,13 @@ const AboutMeInfoWork = () => {
         )}
       </p>
       <div>
-        <h3 style={{fontSize: '16px', fontWeight: '400'}} className={styles.title}>Idiomas / Dialectos</h3>
+        <h3 style={{ fontSize: '16px', fontWeight: '400' }} className={styles.title}>Idiomas / Dialectos</h3>
         <List>
           {languages?.map((language) => (
             <ListItem>
               <Chip
-                label={`${
-                  language?.c111_id_language?.c111_description
-                } / ${generateLevel(language?.t110_level)}`}
+                label={`${language?.c111_id_language?.c111_description
+                  } / ${generateLevel(language?.t110_level)}`}
                 outline={`1px solid #ccc`}
                 bg="#fff"
                 color="#6D6D6D"

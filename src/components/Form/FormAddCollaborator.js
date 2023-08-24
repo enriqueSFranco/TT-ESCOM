@@ -104,7 +104,7 @@ const FormAddCollaborator = () => {
   return (
     <WrapperForm>
       <WrapperPhoto>
-        <CustomAvatar width="100px" height="100px"  />
+        <CustomAvatar width="100px" height="100px" />
         <ButtonFile
           text="Subir foto"
           bgColor="transparent"

@@ -13,7 +13,7 @@ const FormAddComment = ({ typeUser, userId, vacantId }) => {
     t200_id_vacant: vacantId,
   });
 
-  function onSendComment(e) {
+  function onSendComment (e) {
     e.preventDefault();
 
     if (!form.t223_comment.trim()) {

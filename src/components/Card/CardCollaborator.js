@@ -23,23 +23,23 @@ const CardCollaborator = ({
   return (
     <Card>
       <CardActions>
-          <>
-            <Tooltip title={`Editar informacion`}>
-              <Button
-                onClick={openModalEdit}
-                bgColor="transparent"
-                icon={<FiEdit style={{ color: "#125dfc", fontSize: "18px" }} />}
-              />
-            </Tooltip>
-            <Tooltip title={`Eliminar usuario`}>
-              <Button
-                onClick={openModalDelete}
-                bgColor="transparent"
-                color="red"
-                icon={<MdDelete style={{ fontSize: "18px" }} />}
-              />
-            </Tooltip>
-          </>
+        <>
+          <Tooltip title={`Editar informacion`}>
+            <Button
+              onClick={openModalEdit}
+              bgColor="transparent"
+              icon={<FiEdit style={{ color: "#125dfc", fontSize: "18px" }} />}
+            />
+          </Tooltip>
+          <Tooltip title={`Eliminar usuario`}>
+            <Button
+              onClick={openModalDelete}
+              bgColor="transparent"
+              color="red"
+              icon={<MdDelete style={{ fontSize: "18px" }} />}
+            />
+          </Tooltip>
+        </>
 
       </CardActions>
       <CardImage>

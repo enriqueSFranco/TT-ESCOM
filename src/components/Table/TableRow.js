@@ -156,7 +156,7 @@ const TableRow = ({ children, it, index }) => {
         </tr>
       ) : null}
       <ModalPortal isOpen={isOpen} closeModal={closeModal} minWidth="1000px">
-        <ModalPreviewCV  fileUrl={it?.t100_id_student?.t100_cv}/>
+        <ModalPreviewCV fileUrl={it?.t100_id_student?.t100_cv} />
       </ModalPortal>
     </>
   );

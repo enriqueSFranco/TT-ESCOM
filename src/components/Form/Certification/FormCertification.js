@@ -56,7 +56,7 @@ const FormCertification = ({ updateData, dataToEdit, setDataToEdit }) => {
     postCertification(form).then((response) => {
       console.log(response)
     })
-    .catch(error => console.error(error))
+      .catch(error => console.error(error))
     setForm(initialForm);
   };
 
@@ -79,13 +79,13 @@ const FormCertification = ({ updateData, dataToEdit, setDataToEdit }) => {
             onKeyUp={handleValidate}
           />
           {errors.t119_certification && (
-          <span className={styles.error}>
-            <MdOutlineErrorOutline />
-            {errors.t119_certification}
-          </span>
-        )}
+            <span className={styles.error}>
+              <MdOutlineErrorOutline />
+              {errors.t119_certification}
+            </span>
+          )}
         </div>
-        <div style={{margin: '10px 0'}}></div>
+        <div style={{ margin: '10px 0' }}></div>
         <div className={styles.inputGroup}>
           <Input
             label="¿Dónde la realizaste?"
@@ -98,11 +98,11 @@ const FormCertification = ({ updateData, dataToEdit, setDataToEdit }) => {
             onKeyUp={handleValidate}
           />
           {errors.t119_company && (
-          <span className={styles.error}>
-            <MdOutlineErrorOutline />
-            {errors.t119_company}
-          </span>
-        )}
+            <span className={styles.error}>
+              <MdOutlineErrorOutline />
+              {errors.t119_company}
+            </span>
+          )}
         </div>
 
         <div className={styles.wrapperInCourse}>

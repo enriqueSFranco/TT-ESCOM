@@ -9,7 +9,7 @@ import RowExpand from "components/Table/RowExpand";
 import { List, ListItem } from "styled-components/CommonStyles";
 import styles from "./Accordion.module.css";
 
-function createMarkup(description) {
+function createMarkup (description) {
   return { __html: description };
 }
 
@@ -68,7 +68,7 @@ const Accordion = () => {
                   bg="#fff"
                   color="#6D6D6D"
                   outline="1px solid #ccc"
-                  // icon={<FaBrain />}
+                // icon={<FaBrain />}
                 />
               </ListItem>
               <ListItem>

@@ -19,7 +19,7 @@ const FormCompanyInfo = ({
 }) => {
   //const [document, setDocument] = useState(null);
 
-  function convertToBase64(file) {
+  function convertToBase64 (file) {
     return new Promise((resolve, reject) => {
       const fr = new FileReader();
       fr.readAsDataURL(file);
@@ -33,17 +33,17 @@ const FormCompanyInfo = ({
     });
   }
 
-  async function uploadFile(e) {
+  async function uploadFile (e) {
     const file = e.target.files[0];
     const base64 = await convertToBase64(file);
-    setDocument(file.name); 
+    setDocument(file.name);
     form.validation_document = base64;
     //uploadDocumentValidate({ t300_validator_document: base64 })
     //  .then((response) => console.log(response))
     //  .catch((error) => console.error(error));
   }
 
-  function handleUpload(e) {
+  function handleUpload (e) {
     uploadFile(e)
       .then((response) => console.log(response))
       .catch((error) => error);

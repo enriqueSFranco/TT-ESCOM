@@ -55,9 +55,9 @@ const FormSearchJob = ({
       setQueryAux(debounce)
       searchJob({
         "Texto a buscar": debounce,
-          Donde: locationJob,
-          "Modalidad de empleo": [],
-          "Experiencia laboral": [],
+        Donde: locationJob,
+        "Modalidad de empleo": [],
+        "Experiencia laboral": [],
       })
         .then((response) => {
           const { result } = response;

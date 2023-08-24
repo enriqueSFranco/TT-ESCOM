@@ -52,9 +52,9 @@ const LoginCompany = () => {
   return (
     <LayoutHome>
       <WrapperForm>
-        <h2 className="title" style={{fontSize: '20px', marginBottom: '20px'}}>Iniciar sesión como reclutador</h2>
+        <h2 className="title" style={{ fontSize: '20px', marginBottom: '20px' }}>Iniciar sesión como reclutador</h2>
         <Form onSubmit={loginRecruiter}>
-          <div style={{height: '90px'}}>
+          <div style={{ height: '90px' }}>
             <Input
               label="Correo electronico"
               icon={<MdEmail style={{ color: "#1C8EFB" }} />}
@@ -73,7 +73,7 @@ const LoginCompany = () => {
               </div>
             )}
           </div>
-          <div style={{height: '90px'}}>
+          <div style={{ height: '90px' }}>
             <Input
               label="Contraseña"
               width="400px"

@@ -33,13 +33,13 @@ const JobList = ({
     setMatch(recommendedJobs[index]?.t500_percentage);
     isVacantRecommended
       ? setCards({
-          ...cards,
-          activeCard: cards.listCard[index]?.t200_id_vacant,
-        })
+        ...cards,
+        activeCard: cards.listCard[index]?.t200_id_vacant,
+      })
       : setCards({
-          ...cards,
-          activeCard: cards.listCard[index]?.t200_id_vacant,
-        });
+        ...cards,
+        activeCard: cards.listCard[index]?.t200_id_vacant,
+      });
   };
 
   if (!jobs) return null;

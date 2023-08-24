@@ -19,7 +19,7 @@ import {
 import ModalPortal from "../ModalPortal";
 import Confirm from "components/Alert/Confirm/Confirm";
 
-function createMarkup(description) {
+function createMarkup (description) {
   return { __html: description };
 }
 
@@ -27,14 +27,12 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
   const [isApplyJob, setIsApplyJob] = useState({});
   const [isOpen, openModal, closeModal] = useModal(false);
   const { data } = useFetch(
-    `${process.env.REACT_APP_URL_VACANT_REQUIREMENTS}${
-      recommended ? vacantId?.t200_id_vacant : vacantId
+    `${process.env.REACT_APP_URL_VACANT_REQUIREMENTS}${recommended ? vacantId?.t200_id_vacant : vacantId
     }`
   );
   const { token } = useAuth();
   const { data: summaryJob } = useFetch(
-    `${process.env.REACT_APP_URL_VACANTS}${
-      recommended ? vacantId?.t200_id_vacant : vacantId
+    `${process.env.REACT_APP_URL_VACANTS}${recommended ? vacantId?.t200_id_vacant : vacantId
     }`
   );
 
@@ -179,10 +177,9 @@ const DetailsJob = ({ vacantId, recommended, match }) => {
               <h4 style={{ fontSize: "18px" }}>Etiquetas de la vacante</h4>
               <span style={{ color: "#6D6D6D" }}>
                 Ubicación:{" "}
-                {`${summaryJob[0]?.t200_street}, ${
-                  summaryJob[0]?.t200_interior_number &&
+                {`${summaryJob[0]?.t200_street}, ${summaryJob[0]?.t200_interior_number &&
                   summaryJob[0]?.t200_interior_number
-                }`}
+                  }`}
               </span>
               <span style={{ color: "#6D6D6D" }}>
                 Perfil: {summaryJob[0]?.c206_id_profile?.c206_description}
