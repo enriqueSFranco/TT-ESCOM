@@ -2,20 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --bg-color_1: #000000;
-  --bg-color_2: #000000;
-  --bg-color_3: #000000;
-
-  --color_1: #ffffff;
-  --color_2: #ffffff;
-  --color_3: #ffffff;
-
-  --link-color: #0B1033;
-  --font-size-mobile-M: .77rem;
-  --font-family-mobile-M: 'Secular One', sans-serif;
-}
-
 html {
   box-sizing: border-box;
   background-color: #fff;
@@ -23,16 +9,8 @@ html {
   font-family: 'Poppins', sans-serif;
 }
 
-*,
-*::after,
-*::before {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
 body {
   width: 100%;
   height: 100vh;
-  background: #FFF;
 }
