@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --bg-color_1: #000000;
   --bg-color_2: #000000;
@@ -32,8 +36,3 @@ body {
   height: 100vh;
   background: #FFF;
 }
-
-a {
-  text-decoration: none;
-}
-
