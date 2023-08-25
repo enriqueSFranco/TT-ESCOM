@@ -1,7 +1,7 @@
 import { FormCreateAccount } from "../components/FormCreateAccountCandidate"
 // import Background from 'assets/images/job-portal-development.png'
 
-export const CreateAccountStudent = () => {
+const CreateAccountCandidate = () => {
   return (
     <section>
       <FormCreateAccount />
@@ -9,3 +9,5 @@ export const CreateAccountStudent = () => {
 
   )
 }
+
+export default CreateAccountCandidate

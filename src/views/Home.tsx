@@ -26,10 +26,9 @@
 //   WrapperFilters,
 // } from "./styled-components/HomeStyled";
 // import { searchJob } from "services";
-import CardJob from "../components/CardJob";
-import FormSearchJob from "../components/FormSearchJob"
 import data from "../api/jobs.json"
-import { Link } from "react-router-dom";
+import { Header } from "../components/Header";
+import { JobList } from "../components/JobList";
 
 export const Home: React.FC = () => {
   // const { token } = useAuth();
@@ -125,27 +124,20 @@ export const Home: React.FC = () => {
   // if (!response) return null;
 
   return (
-    <div className="w-full h-full">
-      <section className="bg-slate-50 text-black p-4">
-        <header className="w-full h-16">
-          <nav className="h-full w-full flex items-center justify-between text-sm">
-            <h1 className="font-semibold">TrabajaYA</h1>
-            <ul className="flex flex-col items-center font-light">
-              <li><Link to='/'>inicio</Link></li>
-              <li><Link to='/crear-cuenta-empresa'></Link>ingresar como Empresa</li>
-              <li><Link to='/crear-cuenta-candidato'>ingresar como Postulante</Link></li>
-            </ul>
-          </nav>
-        </header>
-        <FormSearchJob />
+    <div className="w-full h-screen min-h-screen flex flex-col">
+      <section className="text-black p-4">
+        <Header />
       </section>
-      <main className="w-full h-full text-sm p-4">
+      <main className="w-full h-full flex-1 overflow-y-auto text-sm p-4 lg:flex">
+        <aside className="w-2/6">
+          <h2>filters</h2>
+        </aside>
         <section className="w-full h-full">
-          <ul className="w-full grid grid-cols-1 gap-4">
-            {data.map(it => (
-              <CardJob key={`jobId-${it.id}`} job={it} />
-            ))}
-          </ul>
+          <JobList
+            jobs={data}
+            recommendedJobs={[]}
+            loading={false}
+          />
         </section>
       </main>
     </div>

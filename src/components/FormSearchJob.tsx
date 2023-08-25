@@ -1,6 +1,7 @@
 import { Loader } from './Loader'
-import BaseInput from './BaseInput'
+import { BaseInput } from './BaseInput'
 import { getFieldsValues, hasNonEmptyField } from '../helpers/form-utils'
+import { Job } from '../shared/interfaces.d'
 // import { useDebounce, useViewport } from 'hooks'
 // import { searchCharacter, searchJob } from 'services'
 // import styles from './Search.module.css'
@@ -12,6 +13,11 @@ import { getFieldsValues, hasNonEmptyField } from '../helpers/form-utils'
 //   div,
 //   WrapperForm,
 // } from './styled-components/FormSearchStyled'
+
+function findJobs (jobs: Job[], titleJob: string) {
+  const matched = jobs.filter(job => job.title.toLowerCase().includes(titleJob.toLowerCase()))
+  return matched
+}
 
 const FormSearchJob: React.FC = () => {
   // const debounce = useDebounce(query, 500)
@@ -54,8 +60,11 @@ const FormSearchJob: React.FC = () => {
     const isAnyFieldNotEmpty = hasNonEmptyField(fieldValues)
 
     if (isAnyFieldNotEmpty) {
-      console.log(fieldValues)
+
+      // TODO: IMPLEMENTAR SERVICIO DE BUSQUEDA
+      findJobs()
     }
+
     return
     // setLoading(true)
     // setTimeout(() => {
@@ -81,7 +90,7 @@ const FormSearchJob: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className='w-full flex flex-col items-center justify-between gap-4 overflow-hidden'
+      className='w-full flex flex-col items-center justify-between gap-4 overflow-hidden lg:flex-row'
     >
       <div className='w-full'>
         <BaseInput
@@ -131,7 +140,7 @@ const FormSearchJob: React.FC = () => {
         // onChange={(e) => setLocationJob(e.target.value)}
         />
       </div>
-      <button className='w-full py-1 bg-blue-600 rounded-sm font-light flex items-center justify-center text-white'>
+      <button className='w-full py-1 bg-blue-600 rounded-sm font-light flex items-center justify-center text-white lg:w-auto lg:px-4 lg:py-2'>
         {/* {loading && <Loader width={20} height={20} colorHex='#fff' />} */}
         Buscar
       </button>

@@ -1,4 +1,5 @@
 // import { useTimeAgo } from "hooks";
+import { Link } from "react-router-dom"
 import { Chip } from "./Chip"
 import { type Job } from '../shared/interfaces'
 import { parseThousands } from "../helpers"
@@ -8,7 +9,7 @@ interface CardJobInterface {
   job: Job
 }
 
-const CardJob: React.FC<CardJobInterface> = ({ job }) => {
+export const CardJob: React.FC<CardJobInterface> = ({ job }) => {
   // const timeago = useTimeAgo(time);
   // const elapsed = Math.abs(Math.round((time - now) / 1000 / 60));
 
@@ -50,30 +51,30 @@ const CardJob: React.FC<CardJobInterface> = ({ job }) => {
   // }
 
   return (
-    <article className="w-full h-48 flex flex-col justify-start items-start gap-4 border border-slate-300 rounded-md font-light text-slate-500 p-3">
-      <header className="w-full flex items-center justify-between">
-        <div className="w-ful flex items-center justify-between gap-4">
-          {/* IMAGE */}
-          <h3>{job.company}</h3>
-          <h2>{job.title}</h2>
+    <Link to={`/job/${job.title}`} className="shadow-lg shadow-slate-600">
+      <article className="w-full h-48 flex flex-col justify-start items-start gap-4 border border-slate-300 rounded-md font-light text-slate-500 p-3">
+        <header className="w-full flex items-center justify-between">
+          <div className="w-ful flex items-center justify-between gap-4">
+            {/* IMAGE */}
+            <h3>{job.company}</h3>
+            <h2>{job.title}</h2>
+          </div>
+          <button><IconBookMar /></button>
+        </header>
+        <div className="w-full h-full flex flex-col divide-y">
+          <div className="h-full w-full">
+            <p>{job.description}</p>
+          </div>
+          <footer className="w-full flex flex-1 items-end justify-center">
+            <ul className="flex items-center flex-grow justify-between">
+              <li>{job.location}</li>
+              <li>{job.salary}</li>
+              <li>{job.workType}</li>
+              <li>{job.experienceLevel}</li>
+            </ul>
+          </footer>
         </div>
-        <button><IconBookMar /></button>
-      </header>
-      <div className="w-full h-full flex flex-col divide-y">
-        <div className="h-full w-full">
-          <p>{job.description}</p>
-        </div>
-        <footer className="w-full flex flex-1 items-end justify-center">
-          <ul className="flex items-center flex-grow justify-between">
-            <li>{job.location}</li>
-            <li>{job.salary}</li>
-            <li>{job.workType}</li>
-            <li>{job.experienceLevel}</li>
-          </ul>
-        </footer>
-      </div>
-    </article>
+      </article>
+    </Link>
   )
 }
-
-export default CardJob;

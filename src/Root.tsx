@@ -1,3 +1,4 @@
+import { Suspense, lazy } from "react"
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import { Home } from "./views/Home"
 // import { ROLE } from "routes/roles"
@@ -33,35 +34,38 @@ import { Home } from "./views/Home"
 // import LoginAdmin from "views/login/LoginAdmin"
 // import CreateJob from "views/business/CreateJob"
 
-const CreateAccountCompany = () => {
-  return (
-    <section>
-      CreateAccountCompany
-    </section>
-  )
-}
-
-const CreateAccountCandidate = () => {
-  return (
-    <section>
-      CreateAccountCandidate
-    </section>
-  )
-}
+const CreateAccountCandidate = lazy(() => import("./views/CreateAccountCandidate"))
+const CreateAccountCompany = lazy(() => import("./views/CreateAccountCompany"))
+const DetailsJob = lazy(() => import("./views/DetailsJob"))
+const ProfileCandidate = lazy(() => import("./views/ProfileCandidate"))
 
 export const router = createBrowserRouter(
   [
     {
       path: "/",
-      element: <Home />
+      element: <Home />,
     },
     {
       path: "/crear-cuenta-empresa",
-      element: <CreateAccountCompany />
+      element: <Suspense fallback={<div>cargando...</div>}><CreateAccountCompany /></Suspense>
     },
     {
       path: "/crear-cuenta-candidato",
-      element: <CreateAccountCandidate />
+      element: <Suspense fallback={<div>cargando...</div>}><CreateAccountCandidate /></Suspense>
+    },
+    {
+      path: "/job/:title",
+      element: <Suspense fallback={<div>cargando informacion de la vacante...</div>}><DetailsJob /></Suspense>
+    },
+    {
+      path: "/candidato",
+      element: <Suspense fallback={<div>cargando informacion de la vacante...</div>}><ProfileCandidate /></Suspense>
+      // children: [
+      //   {
+      //     path: "perfil",
+      //     element: <Suspense fallback={<div>cargando informacion de la vacante...</div>}><ProfileCandidate /></Suspense>
+      //   }
+      // ]
     }
   ]
 )

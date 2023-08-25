@@ -5,7 +5,7 @@ interface BaseInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   onChange?: React.ChangeEventHandler<HTMLInputElement>
 }
 
-const BaseInput: React.FC<BaseInputProps> = ({ value, onChange, ...props }) => {
+export const BaseInput: React.FC<BaseInputProps> = ({ value, onChange, ...props }) => {
   const inputHintId = useId()
   return (
     <input
@@ -17,5 +17,3 @@ const BaseInput: React.FC<BaseInputProps> = ({ value, onChange, ...props }) => {
     />
   )
 }
-
-export default BaseInput
