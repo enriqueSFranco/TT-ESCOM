@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "firstName": "Alice",
+    "lastName": "Smith",
+    "email": "alice@example.com",
+    "collegeCareer": "Computer Science"
+  },
+  {
+    "id": 2,
+    "firstName": "Bob",
+    "lastName": "Johnson",
+    "email": "bob@example.com",
+    "collegeCareer": "Engineering"
+  },
+  {
+    "id": 3,
+    "firstName": "Charlie",
+    "lastName": "Williams",
+    "email": "charlie@example.com",
+    "collegeCareer": "Business"
+  },
+  {
+    "id": 4,
+    "firstName": "David",
+    "lastName": "Jones",
+    "email": "david@example.com",
+    "collegeCareer": "Medicine"
+  },
+  {
+    "id": 5,
+    "firstName": "Emma",
+    "lastName": "Brown",
+    "email": "emma@example.com",
+    "collegeCareer": "Computer Science"
+  },
+  {
+    "id": 6,
+    "firstName": "Frank",
+    "lastName": "Davis",
+    "email": "frank@example.com",
+    "collegeCareer": "Engineering"
+  },
+  {
+    "id": 7,
+    "firstName": "Grace",
+    "lastName": "Miller",
+    "email": "grace@example.com",
+    "collegeCareer": "Business"
+  },
+  {
+    "id": 8,
+    "firstName": "Hannah",
+    "lastName": "Wilson",
+    "email": "hannah@example.com",
+    "collegeCareer": "Medicine"
+  },
+  {
+    "id": 9,
+    "firstName": "Isaac",
+    "lastName": "Moore",
+    "email": "isaac@example.com",
+    "collegeCareer": "Computer Science"
+  },
+  {
+    "id": 10,
+    "firstName": "Jack",
+    "lastName": "Taylor",
+    "email": "jack@example.com",
+    "collegeCareer": "Engineering"
+  }
+]
