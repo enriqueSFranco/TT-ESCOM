@@ -26,7 +26,7 @@
 //   WrapperFilters,
 // } from "./styled-components/HomeStyled";
 // import { searchJob } from "services";
-import data from "../api/jobs.json"
+// import data from "../../public/api/jobs.json"
 import { Header } from "../components/Header";
 import { JobList } from "../components/JobList";
 
@@ -122,22 +122,17 @@ export const Home: React.FC = () => {
   // }, [isNearScreen, debouncehandleNextPage]);
 
   // if (!response) return null;
-
   return (
     <div className="w-full h-screen min-h-screen flex flex-col">
-      <section className="text-black p-4">
+      <section className="text-black">
         <Header />
       </section>
-      <main className="w-full h-full flex-1 overflow-y-auto text-sm p-4 lg:flex">
+      <main className="w-full h-full bg-black flex-1 overflow-y-auto text-sm p-4 lg:flex">
         <aside className="w-2/6">
           <h2>filters</h2>
         </aside>
         <section className="w-full h-full">
-          <JobList
-            jobs={data}
-            recommendedJobs={[]}
-            loading={false}
-          />
+          <JobList />
         </section>
       </main>
     </div>
