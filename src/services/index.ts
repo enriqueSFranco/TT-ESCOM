@@ -1,7 +1,6 @@
 export * from './auth'
 export * from './business'
 export * from './catalogs'
-export * from './http.code'
 export * from './jobs'
 export * from './recruiters'
 export * from './releases'

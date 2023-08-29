@@ -1,6 +1,4 @@
 // import { useEffect, useState, useRef } from "react"
-import { CardExperience } from "../components/CardExperience"
-import { Chip } from "../components/Chip"
 import { type Candidate } from "../shared"
 // import { useGetSkills, useLanguageUser, useAcademicHistorial } from "hooks"
 // import { getProjects } from "services"
@@ -16,55 +14,26 @@ import { type Candidate } from "../shared"
 const stack = ["reactjs", "vuejs", "typescript", "javascript", "tailwindcss", "kotlin"]
 const experience = [
   {
-    id: 1,
-    jobTitle: "Software Developer",
-    description: "Developed web applications using modern technologies and frameworks.",
-    date: new Date(),
-    technologiesUsed: ["JavaScript", "React", "Node.js", "MongoDB"]
-  },
-  {
-    id: 2,
-    jobTitle: "Frontend Engineer",
-    description: "Designed and implemented user interfaces for responsive web applications.",
-    date: new Date(),
-    technologiesUsed: ["HTML", "CSS", "Vue.js", "Sass"]
-  },
-  {
-    id: 3,
-    jobTitle: "Backend Developer",
-    description: "Built robust APIs and server-side logic for scalable web services.",
-    date: new Date(),
-    technologiesUsed: ["Python", "Django", "PostgreSQL", "REST"]
-  },
-  {
-    id: 4,
-    jobTitle: "Full Stack Developer",
-    description: "Contributed to end-to-end development of web applications, from frontend to backend.",
-    date: new Date(),
-    technologiesUsed: ["React", "Node.js", "Express", "MongoDB"]
-  },
-  {
-    id: 5,
-    jobTitle: "UI/UX Designer",
-    description: "Created intuitive and visually appealing user interfaces for digital products.",
-    date: new Date(),
-    technologiesUsed: ["Figma", "Sketch", "Adobe XD"]
+    "id": 1,
+    "jobTitle": "Software Developer",
+    "description": "Developed web applications using modern technologies and frameworks.",
+    "date": "2022-01-15 to 2023-06-30",
+    "technologiesUsed": ["JavaScript", "React", "Node.js", "MongoDB"],
   }
 ]
 
-
 const languages = [
   {
-    language: "English",
-    fluency: "Advanced"
+    "language": "English",
+    "fluency": "Advanced"
   },
   {
-    language: "Spanish",
-    fluency: "Native"
+    "language": "Spanish",
+    "fluency": "Native"
   },
   {
-    language: "French",
-    fluency: "Intermediate"
+    "language": "French",
+    "fluency": "Intermediate"
   }
 ]
 
@@ -92,7 +61,7 @@ interface ProfileCandidateProps {
   user: Candidate
 }
 
-const ProfileCandidate: React.FC = () => {
+const ProfileCandidate: React.FC<ProfileCandidateProps> = () => {
   // const [selectedId, setSelectedId] = useState(menuItems[0].id)
   // const [listProjects, setListProjects] = useState(null)
   // const [stepWidth, _] = useState(0)
@@ -118,14 +87,14 @@ const ProfileCandidate: React.FC = () => {
   // }, [idUser])
 
   return (
-    <div className="w-full p-4 text-sm text-slate-300 flex flex-col divide-y divide-slate-700">
-      <header className="w-full h-20 flex items-center justify-start">
-        <picture className="w-20 h-20 overflow-hidden">
-          <img src="https://unavatar.io/github/enriqueSFranco" alt="kike" className="rounded-full object-cover" />
+    <section>
+      <header>
+        <picture>
+          <img src="https://unavatar.io/github/enriqueSFranco" alt="kike" />
         </picture>
-        <div className="w-full h-full flex flex-col items-start justify-start">
-          <h2 className="text-white font-bold">Enrique SFranco</h2>
-          <ul className="flex flex-wrap items-center gap-2 text-slate-400">
+        <div>
+          <h2>Enrique SFranco</h2>
+          <ul>
             <li>experiencia</li>
             <li>ubicacion</li>
             <li>username</li>
@@ -133,54 +102,77 @@ const ProfileCandidate: React.FC = () => {
           </ul>
         </div>
       </header>
-      <article className="w-full flex flex-col flex-1 gap-8 divide-y divide-slate-700">
-        <section className="w-full flex flex-col gap-4">
-          <h2 className="capitalize font-bold">conocimientos</h2>
-          <ul className="flex flex-wrap items-center justify-start gap-2">
+      <article>
+        <div>
+          <h2>conocimientos</h2>
+          <ul>
             {stack.length === 0 ? (
               <span>Sin habilidades registradas.</span>
             ) : (
               stack.map((it) => (
                 <li key={`skill-${it}`}>
-                  <Chip label={it} />
+                  <span>{it}</span>
                 </li>
               ))
             )}
           </ul>
-        </section>
+        </div>
 
-        <section className="w-full h-2/3 flex flex-col gap-4">
-          <h2 className="capitalize font-bold">experiencia</h2>
-          <ul className="w-full flex flex-col items-center justify-between gap-2 overflow-y-scroll">
+        <div>
+          <h2>experiencia</h2>
+          <ul>
             {experience.length === 0 ? (
-              <span>No tienes experiencia laboral.</span>
+              <span>Sin habilidades registradas.</span>
             ) : (
-              experience.map((it) => (
-                <li key={`experience-${it?.id}`}>
-                  <CardExperience experience={it} />
+              experience?.map((it) => (
+                <li key={`experience-${it.id}`}>
+                  <article>
+                    <header>
+                      <picture>
+                        <img src="" alt="empresa" />
+                      </picture>
+                      <div>
+                        <h2>puesto</h2>
+                        <h3>fecha</h3>
+                      </div>
+                    </header>
+                    <div>
+                      <p>descripcion</p>
+                    </div>
+                    <div>
+                      <h2>tecnologias</h2>
+                      <ul>
+                        {
+                          stack.map(it => (
+                            <li key={`stack-${it}`}>{it}</li>
+                          ))
+                        }
+                      </ul>
+                    </div>
+                  </article>
                 </li>
               ))
             )}
           </ul>
-        </section>
-
-        <section className="w-full h-auto flex flex-col gap-4">
-          <h2 className="capitalize font-bold">idiomas</h2>
-          <ul className="w-full h-full flex flex-wrap items-center justify-start gap-2">
+        </div>
+        <div>
+          <h2>Idioma/Dialecto</h2>
+          <ul>
             {languages.length === 0 ? (
               <span>Sin idiomas registrados.</span>
             ) : (
               languages.map(({ fluency, language }) => (
-                <li key={`language-id-${language}`}>
-                  <Chip label={`${language} - ${fluency}`} />
+                <li key={`language-${language}`}>
+                  <span
+                  >{language}{fluency}</span>
                 </li>
               ))
             )}
           </ul>
-        </section>
+        </div>
       </article>
 
-    </div>
+    </section>
   )
 }
 

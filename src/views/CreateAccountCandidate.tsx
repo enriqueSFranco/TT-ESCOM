@@ -1,11 +1,11 @@
 import { FormCreateAccount } from "../components/FormCreateAccountCandidate"
-// import Background from 'assets/images/job-portal-development.png'
+import { LayoutFormView } from "../layouts/LayoutFormView"
 
 const CreateAccountCandidate = () => {
   return (
-    <section>
+    <LayoutFormView>
       <FormCreateAccount />
-    </section>
+    </LayoutFormView>
 
   )
 }

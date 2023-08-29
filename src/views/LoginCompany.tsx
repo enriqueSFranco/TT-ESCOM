@@ -1,11 +1,12 @@
-import { LoginCompany } from '../components/LoginCompany'
+import { Outlet } from 'react-router-dom'
+import { LayoutFormView } from '../layouts/LayoutFormView'
 
-const PageLoginCompany = () => {
+const LoginCompany = () => {
   return (
-    <section>
-      <LoginCompany />
-    </section>
+    <LayoutFormView>
+      <Outlet />
+    </LayoutFormView>
   )
 }
 
-export default PageLoginCompany
+export default LoginCompany

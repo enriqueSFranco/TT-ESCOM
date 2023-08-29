@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react"
-import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import { RouterProvider, createHashRouter } from "react-router-dom"
 import { Home } from "./views/Home"
 import { Error } from "./views/Error"
 // import { ROLE } from "routes/roles"
@@ -42,30 +42,50 @@ const DetailsJob = lazy(() => import("./views/DetailsJob"))
 const ProfileCandidate = lazy(() => import("./views/ProfileCandidate"))
 const Applications = lazy(() => import("./views/Applications"))
 
-const LoginCandidate = lazy(() => import("./views/LoginCandidate"))
+const Candidate = lazy(() => import("./views/Candidate"))
+const FormLoginCandidate = lazy(() => import("./components/FormLoginCandidate"))
 const LoginCompany = lazy(() => import("./views/LoginCompany"))
+const FormLoginCompany = lazy(() => import("./components/FormLoginCompany"))
 
-
-export const router = createBrowserRouter(
+export const router = createHashRouter(
   [
     {
       path: "/",
-      element: <Home />,
+      element: <Home />
+    },
+    {
+      path: "/candidato",
+      element: <Suspense fallback={<div>cargando formulario...</div>}><Candidate /></Suspense>,
       children: [
         {
-          path: "/candidato/iniciar-sesion",
-          element: <Suspense fallback={<div>cargando formulario...</div>}><LoginCandidate /></Suspense>
+          path: "iniciar-sesion",
+          element: <Suspense fallback={<div>cargando informacion de la vacante...</div>}><FormLoginCandidate /></Suspense>,
+          errorElement: <Error />
         },
         {
-          path: "/reclutador/iniciar-sesion",
-          element: <Suspense fallback={<div>cargando formulario...</div>}><LoginCompany /></Suspense>
+          path: "crear-cuenta",
+          element: <Suspense fallback={<div>cargando informacion de la vacante...</div>}><CreateAccountCandidate /></Suspense>
         },
         {
-          path: "candidato/crear-cuenta",
-          element: <Suspense fallback={<div>cargando formulario...</div>}><CreateAccountCandidate /></Suspense>
+          path: "perfil",
+          element: <Suspense fallback={<div>cargando informacion de la vacante...</div>}><ProfileCandidate /></Suspense>,
         },
         {
-          path: "/reclutador/crear-cuenta",
+          path: "postulaciones",
+          element: <Suspense fallback={<div>cargando postulaciones...</div>}><Applications /></Suspense>
+        }
+      ]
+    },
+    {
+      path: "/reclutador",
+      element: <Suspense fallback={<div>cargando formulario...</div>}><LoginCompany /></Suspense>,
+      children: [
+        {
+          path: "iniciar-sesion",
+          element: <Suspense fallback={<div>cargando formulario...</div>}><FormLoginCompany /></Suspense>
+        },
+        {
+          path: "crear-cuenta",
           element: <Suspense fallback={<div>cargando formulario...</div>}><CreateAccountCompany /></Suspense>
         }
       ]
@@ -74,14 +94,6 @@ export const router = createBrowserRouter(
       path: "/job/:title",
       element: <Suspense fallback={<div>cargando informacion de la vacante...</div>}><DetailsJob /></Suspense>,
       errorElement: <Error />
-    },
-    {
-      path: "/perfil",
-      element: <Suspense fallback={<div>cargando informacion de la vacante...</div>}><ProfileCandidate /></Suspense>,
-    },
-    {
-      path: "/postulaciones",
-      element: <Suspense fallback={<div>cargando postulaciones...</div>}><Applications /></Suspense>
     }
   ]
 )

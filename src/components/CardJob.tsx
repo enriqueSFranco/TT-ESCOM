@@ -10,8 +10,8 @@ interface CardJobProps {
 
 export const CardJob: React.FC<CardJobProps> = ({ job }) => {
   return (
-    <Link to={`/job/${encodeURIComponent(job.title)}`} className="shadow-lg shadow-slate-600 text-slate-300">
-      <article className="w-full h-48 flex flex-col justify-start items-start gap-4 border border-slate-700 rounded-lg font-light p-4">
+    <Link to={`/job/${encodeURIComponent(job.title)}`} className="text-slate-300">
+      <article className="w-full h-48 flex flex-col justify-start items-start gap-4 bg-gray-900/75 border border-slate-700 rounded-lg font-light p-4">
         <header className="w-full flex items-center justify-between">
           <figure className="w-ful flex items-center justify-between gap-4">
             {/* IMAGE */}

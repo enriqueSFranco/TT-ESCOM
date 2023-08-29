@@ -27,8 +27,9 @@
 // } from "./styled-components/HomeStyled";
 // import { searchJob } from "services";
 // import data from "../../public/api/jobs.json"
-import { AsideMenu } from "../components/AsideMenu"
-import { Header } from "../components/Header"
+// import { AsideMenu } from "../components/AsideMenu"
+// import { Header } from "../components/Header"
+import { LayoutApp } from "../layouts/LayoutApp"
 import { JobList } from "../components/JobList"
 
 export const Home: React.FC = () => {
@@ -124,9 +125,7 @@ export const Home: React.FC = () => {
 
   // if (!response) return null;
   return (
-    <div className="w-full h-screen min-h-screen flex flex-col">
-      <Header />
-      <AsideMenu />
+    <LayoutApp>
       <main className="w-full h-full flex-1 overflow-y-auto text-sm p-4 lg:flex">
         <aside className="w-2/6">
           <h2>filters</h2>
@@ -135,7 +134,7 @@ export const Home: React.FC = () => {
           <JobList />
         </section>
       </main>
-    </div>
+    </LayoutApp>
     // <LayoutHome>
     //   <Main>
     //     <Hero>

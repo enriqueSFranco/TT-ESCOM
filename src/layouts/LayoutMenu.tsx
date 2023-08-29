@@ -1,18 +1,18 @@
-// import { useScroll } from "hooks/useScroll";
-import { Header, Nav } from './styled-components/LayoutMenuStyled'
+import { AsideMenu } from "../components/AsideMenu"
+import { Header } from "../components/Header"
 
 interface Props {
   children: React.ReactNode
 }
 
-const LayoutMenu: React.FC<Props> = ({ children }) => {
-  // const onScreen = useScroll(300, false)
+export const LayoutMenu: React.FC<Props> = ({ children }) => {
 
   return (
-    <Header>
-      <Nav>{children}</Nav>
-    </Header>
+    <div className="w-full h-screen min-h-screen flex flex-col">
+      <Header />
+      <AsideMenu />
+      {children}
+    </div>
   );
 };
 
-export default LayoutMenu;

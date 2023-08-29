@@ -1,20 +1,20 @@
 interface ChipProps {
-  label: string;
-  bgColor?: `#${string}`;
-  textColor?: `#${string}`;
+  label: string
+  bgColor?: `#${string}`
+  textColor?: `#${string}`
 }
 
 export const Chip: React.FC<ChipProps> = ({
   label,
-  bgColor = "#ccc",
-  textColor = "#000",
+  bgColor = "#1a1a1a ",
+  textColor = "#718096",
 }) => {
   return (
-    <div
+    <span
       style={{ backgroundColor: bgColor, color: textColor }}
-      className='w-auto rounded-full px-2 py-0.5'
+      className='py-2 px-3 text-xs rounded-md inline-block whitespace-nowrap text-center bg-white/10 align-baseline font-light capitalize leading-none'
     >
-      <span className="font-light text-xs">{label}</span>
-    </div>
+      {label}
+    </span>
   );
 };
