@@ -27,8 +27,9 @@
 // } from "./styled-components/HomeStyled";
 // import { searchJob } from "services";
 // import data from "../../public/api/jobs.json"
-import { Header } from "../components/Header";
-import { JobList } from "../components/JobList";
+import { AsideMenu } from "../components/AsideMenu"
+import { Header } from "../components/Header"
+import { JobList } from "../components/JobList"
 
 export const Home: React.FC = () => {
   // const { token } = useAuth();
@@ -124,10 +125,9 @@ export const Home: React.FC = () => {
   // if (!response) return null;
   return (
     <div className="w-full h-screen min-h-screen flex flex-col">
-      <section className="text-black">
-        <Header />
-      </section>
-      <main className="w-full h-full bg-black flex-1 overflow-y-auto text-sm p-4 lg:flex">
+      <Header />
+      <AsideMenu />
+      <main className="w-full h-full flex-1 overflow-y-auto text-sm p-4 lg:flex">
         <aside className="w-2/6">
           <h2>filters</h2>
         </aside>

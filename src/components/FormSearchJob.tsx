@@ -2,6 +2,7 @@ import { Loader } from './Loader'
 import { BaseInput } from './BaseInput'
 import { getFieldsValues, hasNonEmptyField } from '../helpers/form-utils'
 import { Job } from '../shared/interfaces.d'
+import { IconLocation, IconSearch } from './Icon'
 // import { useDebounce, useViewport } from 'hooks'
 // import { searchCharacter, searchJob } from 'services'
 // import styles from './Search.module.css'
@@ -62,7 +63,6 @@ const FormSearchJob: React.FC = () => {
     if (isAnyFieldNotEmpty) {
 
       // TODO: IMPLEMENTAR SERVICIO DE BUSQUEDA
-      findJobs()
     }
 
     return
@@ -90,57 +90,32 @@ const FormSearchJob: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className='w-full flex flex-col items-center justify-between gap-4 overflow-hidden lg:flex-row'
+      role='search'
+      className='w-full flex flex-col items-center justify-between gap-4 overflow-hidden lg:flex-row lg:border lg:border-white/30 lg:h-12 lg:overflow-hidden lg:rounded-full'
     >
-      <div className='w-full'>
-        <BaseInput
-          type='text'
-          name='job'
-          placeholder='Desarrollador Backend'
-          autoFocus
-          autoComplete='off'
-        />
-        {/* <input
-          type='text'
-          id='job'
-          name='job'
-          ref={inputRef}
-          value={query}
-          className='w-full outline-none border-none indent-3'
-          onChange={handleFilterJob}
-          onBlur={() => {
-            setTimeout(() => {
-              setFilterDataAutocomplete([])
-            }, 200)
-          }}
-          autoComplete='off'
-          placeholder='Desarrollador Backend'
-        /> */}
-        {/* <ul>
-            {filterDataAutocomplete &&
-              filterDataAutocomplete?.map((value) => (
-                <li
-                  key={crypto.randomUUID()}
-                  value={value?.t200_job}
-                  onClick={() => handleClick(value?.t200_job)}
-                >
-                  {value?.t200_job}
-                </li>
-              ))}
-          </ul> */}
+      <div className='w-full h-full flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:divide-x'>
+        <div className='flex items-center bg-white/10 rounded-sm px-2'>
+          <IconSearch />
+          <BaseInput
+            type='text'
+            name='job'
+            aria-label='Search jobs'
+            placeholder='Desarrollador Backend'
+            autoFocus
+            autoComplete='off'
+          />
+        </div>
+        <div className='flex items-center bg-white/10 rounded-sm px-2'>
+          <IconLocation />
+          <BaseInput
+            type='text'
+            name='location'
+            autoComplete='off'
+            placeholder='Ciudad de Mexico'
+          />
+        </div>
       </div>
-      {/* <Separator></Separator> */}
-      <div className='w-full'>
-        <BaseInput
-          type='text'
-          name='location'
-          autoComplete='off'
-          placeholder='Ciudad de Mexico'
-        // value={locationJob}
-        // onChange={(e) => setLocationJob(e.target.value)}
-        />
-      </div>
-      <button className='w-full py-1 bg-blue-600 rounded-sm font-light flex items-center justify-center text-white lg:w-auto lg:px-4 lg:py-2'>
+      <button className='w-full h-full py-2 bg-blue-500 rounded-sm font-light flex items-center justify-center text-white lg:w-14 lg:h-full lg:p-0 lg:rounded-full lg:hover:bg-blue-600'>
         {/* {loading && <Loader width={20} height={20} colorHex='#fff' />} */}
         Buscar
       </button>

@@ -1,4 +1,4 @@
-import API from "services/http.service";
+import API from "services/http-service";
 
 const {
   REACT_APP_URL_VACANT_RECRUITER,

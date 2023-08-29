@@ -12,7 +12,7 @@ export interface Job {
 }
 
 export interface Candidate {
-  id: CandidateId
+  id: string
   firstName: string
   lastName: string
   email: string
@@ -20,6 +20,12 @@ export interface Candidate {
 }
 
 export interface Application {
-  candidateId: CandidateId
-  applications: Job[]
+  candidateId: string
+  applications: ApplicationItem[]
+}
+
+export interface ApplicationItem {
+  title: string
+  company: string
+  location: string
 }

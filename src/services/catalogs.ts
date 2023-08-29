@@ -1,4 +1,4 @@
-import API from 'services/http.service'
+import API from 'services/http-service'
 
 const { REACT_APP_CATALOG_LANGUAGE, REACT_APP_URL_CANDIDATE_LANGUAGE, REACT_APP_URL_CATALOG_PROFILE_CANDIDATE, REACT_APP_URL_CATALOG_EXP, REACT_APP_URL_CATALOG_CONTRACTS, REACT_APP_CATALOG_LOCALITIES, REACT_APP_URL_CATALOG_ACADEMIC_UNITS, REACT_APP_URL_CATALOGUE_JOBS, REACT_APP_URL_CATALOGUE_ACADEMIC_STATE, REACT_APP_URL_CATALOGUE_ACADEMIC_LEVEL } = process.env;
 
@@ -80,9 +80,9 @@ export const getAllCandidateProfile = () => {
 
 export const getLocality = cp => {
   let regex = /^[0-9]+$/
-  
-  if(!regex.test(cp)) return
-  
+
+  if (!regex.test(cp)) return
+
   return API(`${REACT_APP_CATALOG_LOCALITIES}${cp}/`)
     .then(response => {
       const { data } = response;

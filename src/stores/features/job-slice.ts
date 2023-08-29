@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 import type { PayloadAction } from "@reduxjs/toolkit"
 import { Job } from "../../shared/interfaces"
-import data from "../../../public/api/jobs.json"
+import data from "../../api/jobs.json"
 
 interface JobsState {
   jobs: Job[]

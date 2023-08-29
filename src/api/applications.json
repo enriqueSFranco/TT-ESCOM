@@ -1,0 +1,15 @@
+{
+  "candidateId": "a633f5fd-e548-403a-8b29-73df3b9f24d9",
+  "applications": [
+    {
+      "title": "Frontend Developer",
+      "company": "TechCo",
+      "location": "City A"
+    },
+    {
+      "title": "Backend Developer",
+      "company": "CodeTech",
+      "location": "City B"
+    }
+  ]
+}

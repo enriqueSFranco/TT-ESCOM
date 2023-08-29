@@ -2,7 +2,7 @@ interface IconProps {
   fill?: `#${string}`
 }
 
-export const IconBookMar: React.FC<IconProps> = ({ fill = '#0F1729' }) => {
+export const IconBookMar: React.FC<IconProps> = ({ fill = '#9CA3AF' }) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -19,6 +19,45 @@ export const IconBookMar: React.FC<IconProps> = ({ fill = '#0F1729' }) => {
       ></path>
     </svg>
   )
+}
+
+export function IconClose () {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width='22'
+      height='22'
+      fill='none'
+      viewBox='0 0 24 24'
+    >
+      <g>
+        <g fill='#9CA3AF' fillRule='evenodd' clipRule='evenodd'>
+          <path d='M6.22 6.215a.75.75 0 011.06 0L17.786 16.72a.75.75 0 01-1.06 1.06L6.22 7.275a.75.75 0 010-1.06z'></path>
+          <path d='M17.785 6.215a.75.75 0 010 1.06L7.28 17.78a.75.75 0 11-1.06-1.06L16.725 6.214a.75.75 0 011.06 0z'></path>
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+export function IconMenu () {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width='22'
+      height='22'
+      fill='none'
+      viewBox='0 0 24 24'
+    >
+      <path
+        stroke='#9CA3AF'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        strokeWidth='2'
+        d='M4 6h16M4 12h16M4 18h16'
+      ></path>
+    </svg>
+  );
 }
 
 export function IconArrowLeft () {
@@ -41,22 +80,41 @@ export function IconArrowLeft () {
   )
 }
 
-export function IconLocation () {
+export function IconSearch () {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      width='22'
-      height='22'
+      width='20'
+      height='20'
       fill='none'
       viewBox='0 0 24 24'
     >
       <path
-        stroke='#292D32'
+        fill='#9CA3AF'
+        fillRule='evenodd'
+        d='M4 11a7 7 0 1114 0 7 7 0 01-14 0zm7-9a9 9 0 105.618 16.032l3.675 3.675a1 1 0 001.414-1.414l-3.675-3.675A9 9 0 0011 2z'
+        clipRule='evenodd'
+      ></path>
+    </svg>
+  );
+}
+
+export function IconLocation () {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width='20'
+      height='20'
+      fill='none'
+      viewBox='0 0 24 24'
+    >
+      <path
+        stroke='#9CA3AF'
         strokeWidth='1.5'
         d='M12 13.43a3.12 3.12 0 100-6.24 3.12 3.12 0 000 6.24z'
       ></path>
       <path
-        stroke='#292D32'
+        stroke='#9CA3AF'
         strokeWidth='1.5'
         d='M3.62 8.49c1.97-8.66 14.8-8.65 16.76.01 1.15 5.08-2.01 9.38-4.78 12.04a5.193 5.193 0 01-7.21 0c-2.76-2.66-5.92-6.97-4.77-12.05z'
       ></path>

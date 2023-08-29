@@ -1,4 +1,4 @@
-import API from 'services/http.service'
+import API from 'services/http-service'
 
 export const getAllBusiness = async () => {
   return API(process.env.REACT_APP_URL_COMPANY)
@@ -43,7 +43,7 @@ export const validateCompany = () => {
     .catch(error => error)
 };
 
-export const uploadDocumentValidate = (id,payload ) => {
+export const uploadDocumentValidate = (id, payload) => {
   return API.put(`${process.env.REACT_APP_URL_COMPANY_UPLOAD_DOCUMENT_VALIDATE}${id}/`, payload)
     .then(response => {
       const { data } = response

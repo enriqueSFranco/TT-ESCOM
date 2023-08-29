@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react"
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import { Home } from "./views/Home"
+import { Error } from "./views/Error"
 // import { ROLE } from "routes/roles"
 // import PrivateRoute from "routes/PrivateRoute"
 // import Company from "views/Company"
@@ -37,35 +38,50 @@ import { Home } from "./views/Home"
 const CreateAccountCandidate = lazy(() => import("./views/CreateAccountCandidate"))
 const CreateAccountCompany = lazy(() => import("./views/CreateAccountCompany"))
 const DetailsJob = lazy(() => import("./views/DetailsJob"))
+
 const ProfileCandidate = lazy(() => import("./views/ProfileCandidate"))
+const Applications = lazy(() => import("./views/Applications"))
+
+const LoginCandidate = lazy(() => import("./views/LoginCandidate"))
+const LoginCompany = lazy(() => import("./views/LoginCompany"))
+
 
 export const router = createBrowserRouter(
   [
     {
       path: "/",
       element: <Home />,
-    },
-    {
-      path: "/crear-cuenta-empresa",
-      element: <Suspense fallback={<div>cargando...</div>}><CreateAccountCompany /></Suspense>
-    },
-    {
-      path: "/crear-cuenta-candidato",
-      element: <Suspense fallback={<div>cargando...</div>}><CreateAccountCandidate /></Suspense>
+      children: [
+        {
+          path: "/candidato/iniciar-sesion",
+          element: <Suspense fallback={<div>cargando formulario...</div>}><LoginCandidate /></Suspense>
+        },
+        {
+          path: "/reclutador/iniciar-sesion",
+          element: <Suspense fallback={<div>cargando formulario...</div>}><LoginCompany /></Suspense>
+        },
+        {
+          path: "candidato/crear-cuenta",
+          element: <Suspense fallback={<div>cargando formulario...</div>}><CreateAccountCandidate /></Suspense>
+        },
+        {
+          path: "/reclutador/crear-cuenta",
+          element: <Suspense fallback={<div>cargando formulario...</div>}><CreateAccountCompany /></Suspense>
+        }
+      ]
     },
     {
       path: "/job/:title",
-      element: <Suspense fallback={<div>cargando informacion de la vacante...</div>}><DetailsJob /></Suspense>
+      element: <Suspense fallback={<div>cargando informacion de la vacante...</div>}><DetailsJob /></Suspense>,
+      errorElement: <Error />
     },
     {
-      path: "/candidato",
-      element: <Suspense fallback={<div>cargando informacion de la vacante...</div>}><ProfileCandidate /></Suspense>
-      // children: [
-      //   {
-      //     path: "perfil",
-      //     element: <Suspense fallback={<div>cargando informacion de la vacante...</div>}><ProfileCandidate /></Suspense>
-      //   }
-      // ]
+      path: "/perfil",
+      element: <Suspense fallback={<div>cargando informacion de la vacante...</div>}><ProfileCandidate /></Suspense>,
+    },
+    {
+      path: "/postulaciones",
+      element: <Suspense fallback={<div>cargando postulaciones...</div>}><Applications /></Suspense>
     }
   ]
 )
