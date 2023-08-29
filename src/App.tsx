@@ -1,19 +1,14 @@
+import { LayoutMenu } from "./layouts/LayoutMenu";
 import { Root } from "./Root"
-// import { ThemeProvider } from "context/ThemeContext";
-// import { AuthProvider } from "context/AuthContext";
+
 
 function App () {
   return (
-    <>
-      <h1>hello world 🌎</h1>
+    <LayoutMenu>
       <Root />
+    </LayoutMenu>
 
-      {/* <AuthProvider>
-        <ThemeProvider>
-        </ThemeProvider>
-      </AuthProvider> */}
-    </>
-  );
+  )
 }
 
-export default App;
+export default App
