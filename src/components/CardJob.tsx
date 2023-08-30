@@ -10,15 +10,15 @@ interface CardJobProps {
 
 export const CardJob: React.FC<CardJobProps> = ({ job }) => {
   return (
-    <Link to={`/job/${encodeURIComponent(job.title)}`} className="text-slate-300">
-      <article className="w-full h-48 flex flex-col justify-start items-start gap-4 bg-gray-900/75 border border-slate-700 rounded-lg font-light p-4">
+    <Link to={`/job/${encodeURIComponent(job.title)}`} className="text-slate-300 text-sm">
+      <article className="w-full h-48 flex flex-col justify-start items-start gap-4 bg-gray-900/75 border border-slate-700 rounded-xl font-light p-4">
         <header className="w-full flex items-center justify-between">
           <figure className="w-ful flex items-center justify-between gap-4">
             {/* IMAGE */}
             <img src="" alt={job.company} />
             <figcaption className="w-full h-full font-bold">
               <h3>{job.company}</h3>
-              <h2>{job.title}</h2>
+              <h2 className="text-blue-500">{job.title}</h2>
             </figcaption>
           </figure>
           <button><IconBookMar /></button>
@@ -29,10 +29,10 @@ export const CardJob: React.FC<CardJobProps> = ({ job }) => {
           </div>
           <footer className="w-full h-12 flex items-end justify-center">
             <ul className="flex items-center flex-grow justify-between">
-              <li>{job.location}</li>
-              <li>{formatCurrencyWithoutDecimals(job.salary)}</li>
-              <li>{job.workType}</li>
-              <li>{job.experienceLevel}</li>
+              <li><span>{job.location}</span></li>
+              <li><span>{formatCurrencyWithoutDecimals(job.salary)}</span></li>
+              <li><span>{job.workType}</span></li>
+              <li><span>{job.experienceLevel}</span></li>
             </ul>
           </footer>
         </div>

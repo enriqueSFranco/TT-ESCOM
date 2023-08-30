@@ -1,4 +1,4 @@
-import { AsideMenu } from "../components/AsideMenu"
+import { AsideMenu } from "../components/FloatingMenu"
 import { Header } from "../components/Header"
 
 interface Props {

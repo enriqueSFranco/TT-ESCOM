@@ -29,10 +29,13 @@
 // import data from "../../public/api/jobs.json"
 // import { AsideMenu } from "../components/AsideMenu"
 // import { Header } from "../components/Header"
+import { useAppSelector } from "../hooks/store"
 import { LayoutApp } from "../layouts/LayoutApp"
 import { JobList } from "../components/JobList"
+import { useMemo } from "react";
 
 export const Home: React.FC = () => {
+  const { jobs } = useAppSelector(state => state.jobs)
   // const { token } = useAuth();
   // const [match, setMatch] = useState(null);
   // const [queryAux, setQueryAux] = useState("")
@@ -123,6 +126,8 @@ export const Home: React.FC = () => {
   //   if (isNearScreen) debouncehandleNextPage();
   // }, [isNearScreen, debouncehandleNextPage]);
 
+  const hasJobOffers = useMemo(() => jobs.length, [jobs])
+
   // if (!response) return null;
   return (
     <LayoutApp>
@@ -131,6 +136,10 @@ export const Home: React.FC = () => {
           <h2>filters</h2>
         </aside>
         <section className="w-full h-full">
+          <header className="w-full flex items-center gap-2">
+            <h2 className="font-bold">Total de vacantes: </h2>
+            <span className="grid place-items-center rounded-md bg-white/20 w-6 h-6 px-1">{hasJobOffers}</span>
+          </header>
           <JobList />
         </section>
       </main>

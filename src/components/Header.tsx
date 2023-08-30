@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
     <header className="w-full flex flex-col items-start justify-center gap-4 p-4 lg:h-20">
       <div className="w-full flex justify-between items-center">
         <h1 className="font-semibold">Trabaja<span className="text-blue-500">YA</span></h1>
-        <button onClick={handleToggle}>{isOpenMenu === STATE_MENU.CLOSE ? <IconClose /> : <IconMenu />}</button>
+        <button onClick={handleToggle}>{isOpenMenu === STATE_MENU.CLOSE ? <IconMenu /> : <IconClose />}</button>
       </div>
       <nav className="w-full h-full flex flex-col items-center justify-center text-sm">
         <FormSearchJob />

@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react"
 import { RouterProvider, createHashRouter } from "react-router-dom"
 import { Home } from "./views/Home"
 import { Error } from "./views/Error"
+// import FormCreateJob from "components/FormCreateJob"
 // import { ROLE } from "routes/roles"
 // import PrivateRoute from "routes/PrivateRoute"
 // import Company from "views/Company"
@@ -44,8 +45,12 @@ const Applications = lazy(() => import("./views/Applications"))
 
 const Candidate = lazy(() => import("./views/Candidate"))
 const FormLoginCandidate = lazy(() => import("./components/FormLoginCandidate"))
+
+
 const LoginCompany = lazy(() => import("./views/LoginCompany"))
+const RecruiterJobs = lazy(() => import("./views/RecruiterJobs"))
 const FormLoginCompany = lazy(() => import("./components/FormLoginCompany"))
+const FormCreateJob = lazy(() => import("./components/FormCreateJob"))
 
 export const router = createHashRouter(
   [
@@ -71,8 +76,12 @@ export const router = createHashRouter(
           element: <Suspense fallback={<div>cargando informacion de la vacante...</div>}><ProfileCandidate /></Suspense>,
         },
         {
-          path: "postulaciones",
+          path: "mi-postulaciones",
           element: <Suspense fallback={<div>cargando postulaciones...</div>}><Applications /></Suspense>
+        },
+        {
+          path: "vacantes-guardadas",
+          element: <Suspense fallback={<div>cargando postulaciones...</div>}><div>vacantes-guardadas</div></Suspense>
         }
       ]
     },
@@ -87,6 +96,18 @@ export const router = createHashRouter(
         {
           path: "crear-cuenta",
           element: <Suspense fallback={<div>cargando formulario...</div>}><CreateAccountCompany /></Suspense>
+        },
+        {
+          path: "vacantes",
+          element: <Suspense fallback={<div>cargando formulario...</div>}><RecruiterJobs /></Suspense>
+        },
+        {
+          path: "nueva-vacante",
+          element: <Suspense fallback={<div>cargando formulario...</div>}><FormCreateJob /></Suspense>
+        },
+        {
+          path: "candidatos",
+          element: <Suspense fallback={<div>cargando formulario...</div>}><div>candidatos</div></Suspense>
         }
       ]
     },

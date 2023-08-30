@@ -1,5 +1,5 @@
 import { MenuProvider } from '../context/MenuContext'
-import { AsideMenu } from '../components/AsideMenu'
+import { FloatingMenu } from '../components/FloatingMenu'
 import { Header } from '../components/Header'
 
 interface LayoutAppProps {
@@ -11,7 +11,7 @@ export const LayoutApp: React.FC<LayoutAppProps> = ({ children }) => {
     <div className='w-full h-screen'>
       <MenuProvider>
         <Header />
-        <AsideMenu />
+        <FloatingMenu />
       </MenuProvider>
       {children}
     </div>

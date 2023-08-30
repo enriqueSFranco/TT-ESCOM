@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuth } from "context/AuthContext";
 import { useViewport } from "hooks/useViewport";
-import CustomAvatar from "components/Avatar/Avatar";
+import CustomAvatar from "components/Avatar";
 import {
   Content,
   ContainerText,
