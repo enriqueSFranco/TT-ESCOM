@@ -2,6 +2,8 @@ import { Suspense, lazy } from "react"
 import { RouterProvider, createHashRouter } from "react-router-dom"
 import { Home } from "./views/Home"
 import { Error } from "./views/Error"
+import { PrivateRoute } from "./routes/PrivateRoute"
+import { TypeUser } from "./shared"
 // import FormCreateJob from "components/FormCreateJob"
 // import { ROLE } from "routes/roles"
 // import PrivateRoute from "routes/PrivateRoute"
@@ -50,27 +52,28 @@ const FormLoginCandidate = lazy(() => import("./components/FormLoginCandidate"))
 const LoginCompany = lazy(() => import("./views/LoginCompany"))
 const RecruiterJobs = lazy(() => import("./views/RecruiterJobs"))
 const FormLoginCompany = lazy(() => import("./components/FormLoginCompany"))
-const FormCreateJob = lazy(() => import("./components/FormCreateJob"))
+const CreateJob = lazy(() => import("./views/CreateJob"))
 
 export const router = createHashRouter(
   [
     {
       path: "/",
-      element: <Home />
+      element: <Home />,
+
+    },
+    {
+      path: "/candidato/iniciar-sesion",
+      element: <Suspense fallback={<div>cargando informacion de la vacante...</div>}><FormLoginCandidate /></Suspense>,
+      errorElement: <Error />
+    },
+    {
+      path: "/candidato/crear-cuenta",
+      element: <Suspense fallback={<div>cargando informacion de la vacante...</div>}><CreateAccountCandidate /></Suspense>
     },
     {
       path: "/candidato",
-      element: <Suspense fallback={<div>cargando formulario...</div>}><Candidate /></Suspense>,
+      element: <PrivateRoute typeUser={TypeUser.CANDIDATE} />,
       children: [
-        {
-          path: "iniciar-sesion",
-          element: <Suspense fallback={<div>cargando informacion de la vacante...</div>}><FormLoginCandidate /></Suspense>,
-          errorElement: <Error />
-        },
-        {
-          path: "crear-cuenta",
-          element: <Suspense fallback={<div>cargando informacion de la vacante...</div>}><CreateAccountCandidate /></Suspense>
-        },
         {
           path: "perfil",
           element: <Suspense fallback={<div>cargando informacion de la vacante...</div>}><ProfileCandidate /></Suspense>,
@@ -86,24 +89,24 @@ export const router = createHashRouter(
       ]
     },
     {
+      path: "/reclutador/iniciar-sesion",
+      element: <Suspense fallback={<div>cargando formulario...</div>}><FormLoginCompany /></Suspense>
+    },
+    {
+      path: "/reclutador/crear-cuenta",
+      element: <Suspense fallback={<div>cargando formulario...</div>}><CreateAccountCompany /></Suspense>
+    },
+    {
       path: "/reclutador",
-      element: <Suspense fallback={<div>cargando formulario...</div>}><LoginCompany /></Suspense>,
+      element: <PrivateRoute typeUser={TypeUser.RECRUITER} />,
       children: [
-        {
-          path: "iniciar-sesion",
-          element: <Suspense fallback={<div>cargando formulario...</div>}><FormLoginCompany /></Suspense>
-        },
-        {
-          path: "crear-cuenta",
-          element: <Suspense fallback={<div>cargando formulario...</div>}><CreateAccountCompany /></Suspense>
-        },
         {
           path: "vacantes",
           element: <Suspense fallback={<div>cargando formulario...</div>}><RecruiterJobs /></Suspense>
         },
         {
           path: "nueva-vacante",
-          element: <Suspense fallback={<div>cargando formulario...</div>}><FormCreateJob /></Suspense>
+          element: <Suspense fallback={<div>cargando formulario...</div>}><CreateJob /></Suspense>
         },
         {
           path: "candidatos",
