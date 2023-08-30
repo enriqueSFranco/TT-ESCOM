@@ -29,3 +29,16 @@ export interface ApplicationItem {
   company: string
   location: string
 }
+
+interface ExperienceItem {
+  id: number
+  jobTitle: string
+  description: string
+  date: Date
+  technologiesUsed: string[]
+}
+
+interface LanguageItem {
+  language: string
+  fluency: string
+}
