@@ -14,7 +14,7 @@ interface CardExperienceProps {
 
 export const CardExperience: React.FC<CardExperienceProps> = ({ experience }) => {
   return (
-    <article className="w-full h-auto flex flex-col gap-4 bg-slate-900/75 p-4 rounded-md">
+    <article className="w-full h-auto flex flex-col gap-4 bg-slate-95 border border-slate-700 p-4 rounded-md">
       <header className="w-full flex items-start gap-4">
         <picture className="w-12 h-12 overflow-hidden shadow-lg">
           <img src="https://unavatar.io/github/meta" alt="empresa" className="object-cover rounded-full" />

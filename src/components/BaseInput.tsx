@@ -13,7 +13,7 @@ export const BaseInput: React.FC<BaseInputProps> = ({ value, onChange, ...props 
       value={value}
       onChange={onChange}
       {...props}
-      className='w-full py-2 caret-white outline-none border-none indent-3 bg-transparent rounded-sm text-white font-light placeholder:text-gray-400 placeholder:font-light placeholder:text-sm'
+      className='w-full py-2 focus:border-blue-500 caret-black outline-none border-none indent-3 bg-transparent rounded-sm text-black font-light placeholder:text-gray-400 placeholder:font-light placeholder:text-sm'
     />
   )
 }

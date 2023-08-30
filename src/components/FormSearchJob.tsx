@@ -1,7 +1,6 @@
 import { Loader } from './Loader'
 import { BaseInput } from './BaseInput'
 import { getFieldsValues, hasNonEmptyField } from '../helpers/form-utils'
-import { Job } from '../shared/interfaces.d'
 import { IconLocation, IconSearch } from './Icon'
 // import { useDebounce, useViewport } from 'hooks'
 // import { searchCharacter, searchJob } from 'services'
@@ -15,12 +14,12 @@ import { IconLocation, IconSearch } from './Icon'
 //   WrapperForm,
 // } from './styled-components/FormSearchStyled'
 
-function findJobs (jobs: Job[], titleJob: string) {
-  const matched = jobs.filter(job => job.title.toLowerCase().includes(titleJob.toLowerCase()))
-  return matched
-}
+// function findJobs (jobs: Job[], titleJob: string) {
+//   const matched = jobs.filter(job => job.title.toLowerCase().includes(titleJob.toLowerCase()))
+//   return matched
+// }
 
-const FormSearchJob: React.FC = () => {
+export const FormSearchJob: React.FC = () => {
   // const debounce = useDebounce(query, 500)
   // const [viewport] = useViewport()
 
@@ -123,5 +122,3 @@ const FormSearchJob: React.FC = () => {
 
   )
 }
-
-export default FormSearchJob
