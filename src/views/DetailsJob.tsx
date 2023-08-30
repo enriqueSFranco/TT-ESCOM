@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
+import { useFetchJobByTitle } from "../hooks/useFetchJobByTitle"
 import { Toaster, toast } from 'sonner'
 import { IconArrowLeft, IconBookMar, IconInstagram } from "../components/Icon"
-import { useFetchJobByTitle } from "../hooks/useFetchJobByTitle"
 // import { useModal } from "hooks/useModal"
 // import { getJob, getJobRequirements } from "services/jobs/index"
 // import { applyJob } from "services/students/index"
@@ -62,14 +62,14 @@ const DetailsJob = () => {
         <section><h2>cargando informacion...</h2></section>
       ) : (
         // <Skeleton type="businessDetails" />
-        <section className='w-full h-full flex flex-col items-center font-light text-sm'>
+        <section className='w-full h-screen flex flex-col items-center font-light text-sm p-4'>
           <Toaster position="top-center" richColors />
-          <header className='w-full h-16 flex items-center justify-between px-4'>
-            <Link to="/"><IconArrowLeft /></Link>
-            <h2 className="capitalize">{job?.company}</h2>
+          <header className='w-full h-16 flex items-center justify-between'>
+            <Link to="/" className="flex items-center capitalize font-light"><IconArrowLeft /></Link>
+            <h2 className="font-semibold tracking-wide">Detalles de la vacante</h2>
             <button><IconBookMar /></button>
           </header>
-          <article className='h-full flex flex-col flex-1'>
+          <article className='h-full w-full flex flex-col flex-1'>
             <figure className="w-full flex flex-col items-center justify-center gap-2">
               {/* <img src="" alt="" /> */}
               <IconInstagram />

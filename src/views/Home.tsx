@@ -29,10 +29,11 @@
 // import data from "../../public/api/jobs.json"
 // import { AsideMenu } from "../components/AsideMenu"
 // import { Header } from "../components/Header"
+import { useMemo } from "react"
 import { useAppSelector } from "../hooks/store"
 import { LayoutApp } from "../layouts/LayoutApp"
+import { Blob } from "../components/Blob"
 import { JobList } from "../components/JobList"
-import { useMemo } from "react";
 
 export const Home: React.FC = () => {
   const { jobs } = useAppSelector(state => state.jobs)
@@ -131,14 +132,14 @@ export const Home: React.FC = () => {
   // if (!response) return null;
   return (
     <LayoutApp>
-      <main className="w-full h-full flex-1 overflow-y-auto text-sm p-4 lg:flex">
+      <main className="relative w-full h-full flex flex-col flex-1 gap-4 overflow-y-auto z-10">
         <aside className="w-2/6">
           <h2>filters</h2>
         </aside>
-        <section className="w-full h-full">
-          <header className="w-full flex items-center gap-2">
-            <h2 className="font-bold">Total de vacantes: </h2>
-            <span className="grid place-items-center rounded-md bg-white/20 w-6 h-6 px-1">{hasJobOffers}</span>
+        <section className="w-full h-full flex flex-col gap-2">
+          <header className="w-full flex items-center gap-2 text-sm">
+            <h2>Total de vacantes: </h2>
+            <span className="grid place-items-center rounded-md font-bold bg-white/20 w-6 h-6 px-1">{hasJobOffers}</span>
           </header>
           <JobList />
         </section>
