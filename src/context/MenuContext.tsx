@@ -1,8 +1,8 @@
 import { createContext, useState } from "react"
-import { STATE_MENU } from "../shared/enum.d"
+import { StateMenu } from "../shared/enum.d"
 
 interface MenuContext {
-  isOpenMenu: STATE_MENU.CLOSE | STATE_MENU.OPEN
+  isOpenMenu: StateMenu.CLOSE | StateMenu.OPEN
   handleToggle: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
@@ -11,18 +11,18 @@ interface MenuProviderProps {
 }
 
 const MenuContext = createContext<MenuContext>({
-  isOpenMenu: STATE_MENU.CLOSE,
+  isOpenMenu: StateMenu.CLOSE,
   handleToggle: () => { }
 })
 
 export const MenuProvider: React.FC<MenuProviderProps> = ({ children }) => {
-  const [isOpenMenu, setIsOpenMenu] = useState<STATE_MENU>(STATE_MENU.CLOSE)
+  const [isOpenMenu, setIsOpenMenu] = useState<StateMenu>(StateMenu.CLOSE)
 
   const handleToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
     setIsOpenMenu(
-      prevMenuState => prevMenuState === STATE_MENU.CLOSE ? STATE_MENU.OPEN : STATE_MENU.CLOSE
+      prevMenuState => prevMenuState === StateMenu.CLOSE ? StateMenu.OPEN : StateMenu.CLOSE
     )
   }
 
