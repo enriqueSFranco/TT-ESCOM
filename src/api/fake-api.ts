@@ -1,6 +1,6 @@
 import type { Application, Candidate, Job } from "../shared"
 import jobs from "./jobs.json"
-import users from "./users.json"
+import users from "./candidates.json"
 import applications from "./applications.json"
 
 const DELAY = 1000

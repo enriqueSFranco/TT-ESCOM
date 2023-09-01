@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { type Job } from "../shared/interfaces.d"
+import { api } from "../api/fake-api"
 
 type UseFetchJobByTitleResult = {
   job: Job | null;
@@ -10,13 +11,11 @@ type UseFetchJobByTitleResult = {
 // TODO: PASAR A UN SERVICIO
 async function findJobByTitle (jobTitle: string): Promise<Job | null> {
   try {
-    const response = await fetch("/public/api/jobs.json")
+    // if (!response.ok) {
+    //   throw new Error(`Network response was not ok (status ${response.status})`);
+    // }
 
-    if (!response.ok) {
-      throw new Error(`Network response was not ok (status ${response.status})`);
-    }
-
-    const data: Job[] = await response.json()
+    const data: Job[] = await api.jobsList()
     const jobIdx = data.findIndex(item => item.title.toLowerCase().includes(jobTitle.toLowerCase()))
 
     if (jobIdx >= 0) {

@@ -11,17 +11,19 @@ export const ItemList = <T,> ({ data, direction = Direction.ROW, emptyMessage, r
   const row = "flex-row flex-wrap"
   const column = "flex-col"
 
+  if (data.length === 0) {
+    return (
+      <span>{emptyMessage || "No tienes elementos."}</span>
+    )
+  }
+
   return (
     <ul className={`w-full flex ${direction === Direction.ROW ? row : column} items-center gap-2`}>
-      {data.length === 0 ? (
-        <span>{emptyMessage || "No tienes elementos."}</span>
-      ) : (
-        data.map((it) => (
-          <li key={`id-${crypto.randomUUID()}`}>
-            {render(it)}
-          </li>
-        ))
-      )}
+      {data.map((it) => (
+        <li key={`id-${crypto.randomUUID()}`} className="w-full h-full">
+          {render(it)}
+        </li>
+      ))}
     </ul>
   )
 }

@@ -1,13 +1,14 @@
 interface IconProps {
   fill?: `#${string}`
+  size?: number
 }
 
-export const IconBookMar: React.FC<IconProps> = ({ fill = '#9CA3AF' }) => {
+export const IconBookMar: React.FC<IconProps> = ({ fill = '#9CA3AF', size = 22 }) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      width='22'
-      height='22'
+      width={size}
+      height={size}
       fill='none'
       viewBox='0 0 24 24'
     >
@@ -21,17 +22,17 @@ export const IconBookMar: React.FC<IconProps> = ({ fill = '#9CA3AF' }) => {
   )
 }
 
-export function IconClose () {
+export const IconClose: React.FC<IconProps> = ({ fill = '#9CA3AF', size = 22 }) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      width='22'
-      height='22'
+      width={size}
+      height={size}
       fill='none'
       viewBox='0 0 24 24'
     >
       <g>
-        <g fill='#9CA3AF' fillRule='evenodd' clipRule='evenodd'>
+        <g fill={fill} fillRule='evenodd' clipRule='evenodd'>
           <path d='M6.22 6.215a.75.75 0 011.06 0L17.786 16.72a.75.75 0 01-1.06 1.06L6.22 7.275a.75.75 0 010-1.06z'></path>
           <path d='M17.785 6.215a.75.75 0 010 1.06L7.28 17.78a.75.75 0 11-1.06-1.06L16.725 6.214a.75.75 0 011.06 0z'></path>
         </g>
@@ -186,7 +187,26 @@ export function IconCalendar () {
   )
 }
 
-export function IconClock () {
+export const IconClock: React.FC<IconProps> = ({ fill = '#9CA3AF', size = 22 }) => {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width={size}
+      height={size}
+      fill='none'
+      viewBox='0 0 24 24'
+    >
+      <path
+        fill={fill}
+        fillRule='evenodd'
+        d='M12 2.75a9.25 9.25 0 100 18.5 9.25 9.25 0 000-18.5zM1.25 12C1.25 6.063 6.063 1.25 12 1.25S22.75 6.063 22.75 12 17.937 22.75 12 22.75 1.25 17.937 1.25 12zM12 7.25a.75.75 0 01.75.75v3.69l2.28 2.28a.75.75 0 11-1.06 1.06l-2.5-2.5a.75.75 0 01-.22-.53V8a.75.75 0 01.75-.75z'
+        clipRule='evenodd'
+      ></path>
+    </svg>
+  );
+}
+
+export const IconDelete = () => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -196,10 +216,11 @@ export function IconClock () {
       viewBox='0 0 24 24'
     >
       <path
-        fill='#9CA3A'
-        fillRule='evenodd'
-        d='M12 2.75a9.25 9.25 0 100 18.5 9.25 9.25 0 000-18.5zM1.25 12C1.25 6.063 6.063 1.25 12 1.25S22.75 6.063 22.75 12 17.937 22.75 12 22.75 1.25 17.937 1.25 12zM12 7.25a.75.75 0 01.75.75v3.69l2.28 2.28a.75.75 0 11-1.06 1.06l-2.5-2.5a.75.75 0 01-.22-.53V8a.75.75 0 01.75-.75z'
-        clipRule='evenodd'
+        stroke='#ccc'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        strokeWidth='2'
+        d='M10 12v5M14 12v5M4 7h16M6 10v8a3 3 0 003 3h6a3 3 0 003-3v-8M9 5a2 2 0 012-2h2a2 2 0 012 2v2H9V5z'
       ></path>
     </svg>
   );
@@ -266,22 +287,22 @@ export function IconSearch () {
   )
 }
 
-export function IconLocation () {
+export const IconLocation: React.FC<IconProps> = ({ fill = '#9CA3AF', size = 22 }) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      width='20'
-      height='20'
+      width={size}
+      height={size}
       fill='none'
       viewBox='0 0 24 24'
     >
       <path
-        stroke='#9CA3AF'
+        stroke={fill}
         strokeWidth='1.5'
         d='M12 13.43a3.12 3.12 0 100-6.24 3.12 3.12 0 000 6.24z'
       ></path>
       <path
-        stroke='#9CA3AF'
+        stroke={fill}
         strokeWidth='1.5'
         d='M3.62 8.49c1.97-8.66 14.8-8.65 16.76.01 1.15 5.08-2.01 9.38-4.78 12.04a5.193 5.193 0 01-7.21 0c-2.76-2.66-5.92-6.97-4.77-12.05z'
       ></path>

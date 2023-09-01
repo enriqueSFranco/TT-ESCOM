@@ -9,7 +9,6 @@ import { TypeUser } from "./shared"
 // import PrivateRoute from "routes/PrivateRoute"
 // import Company from "views/Company"
 // import PageLoginStudent from "views/login/PageLoginStudent"
-// import PageReleases from "views/main/PageReleases"
 // import PageCreateAccountStudent from "views/login/PageCreateAccountStudent"
 // import PageLoginCompany from "views/login/PageLoginCompany"
 // import PageRegisterCompany from "views/login/PageRegisterCompany"
@@ -36,7 +35,6 @@ import { TypeUser } from "./shared"
 // import ListVacantsAdmin from "views/admin/ListVacantsAdmin"
 // import Postulates from "views/business/Postulates"
 // import LoginAdmin from "views/login/LoginAdmin"
-// import CreateJob from "views/business/CreateJob"
 
 const CreateAccountCandidate = lazy(() => import("./views/CreateAccountCandidate"))
 const CreateAccountCompany = lazy(() => import("./views/CreateAccountCompany"))

@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useFetchJobByTitle } from "../hooks/useFetchJobByTitle"
 import { Toaster, toast } from 'sonner'
 import { IconArrowLeft, IconBookMar, IconInstagram } from "../components/Icon"
+import { Box } from "../components/Box"
 // import { useModal } from "hooks/useModal"
 // import { getJob, getJobRequirements } from "services/jobs/index"
 // import { applyJob } from "services/students/index"
@@ -14,6 +15,7 @@ import { IconArrowLeft, IconBookMar, IconInstagram } from "../components/Icon"
 // import Confirm from "components/Alert/Confirm/Confirm"
 
 const DetailsJob = () => {
+  const navigate = useNavigate()
   const { job, loading } = useFetchJobByTitle()
   // const { token } = useAuth()
   // const [isOpen, openModal, closeModal] = useModal()
@@ -59,7 +61,9 @@ const DetailsJob = () => {
   return (
     <>
       {loading ? (
-        <section><h2>cargando informacion...</h2></section>
+        <section className="w-full h-screen grid place-items-center">
+          <h2>cargando detalles de la vacante...</h2>
+        </section>
       ) : (
         // <Skeleton type="businessDetails" />
         <section className='w-full h-screen flex flex-col items-center font-light text-sm p-4'>
@@ -69,25 +73,31 @@ const DetailsJob = () => {
             <h2 className="font-semibold tracking-wide">Detalles de la vacante</h2>
             <button><IconBookMar /></button>
           </header>
-          <article className='h-full w-full flex flex-col flex-1'>
+          <Box as='article' className='h-full w-full flex flex-col flex-1'>
             <figure className="w-full flex flex-col items-center justify-center gap-2">
               {/* <img src="" alt="" /> */}
               <IconInstagram />
               <figcaption className="flex flex-col items-center justify-center gap-1 capitalize">
                 <h2 className="font-semibold">{job?.title}</h2>
+                <ul className="w-full flex items-center justify-between">
+                  <li>
+                    <h2 className="font-semibold">{job?.company}</h2>
+                  </li>
+                  <li>
+                    <h2 className="font-semibold">{job?.location}</h2>
+                  </li>
+                </ul>
               </figcaption>
             </figure>
 
-            <p className=''>Perfil:</p>
-            <p className=''>Tipo de contratacion:</p>
-            <div>
+            <Box className="">
               <h3>DESCRIPCION DE LA VACANTE</h3>
-              <p className=''>descripcion</p>
-            </div>
-            <div>
-              <h3>OFRECEMOS</h3>
-              prestaciones
-            </div>
+              <p className=''>{job?.description}</p>
+              <div>
+                <h3>OFRECEMOS</h3>
+                prestaciones
+              </div>
+            </Box>
             <div>
               <p className=''>Salario:</p>
             </div>
@@ -104,7 +114,7 @@ const DetailsJob = () => {
                 <li>requirements</li>
               </ul>
             </div>
-          </article>
+          </Box>
           <div className="w-full grid place-items-center fixed bottom-4">
             <button onClick={submitJobApplication} className="bg-blue-600 text-white px-4 py-2 rounded-md">Postularme a esta vacante</button>
           </div>

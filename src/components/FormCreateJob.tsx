@@ -1,25 +1,47 @@
+import { useRef } from "react"
+import { useRecruiter } from "../hooks/useRecruter"
 import BaseButton from "./BaseButton"
-import { IconAcademic, IconBriefcase, IconCalendar, IconClock, IconLocation, IconMoney } from "./Icon"
 import { BaseInput } from "./BaseInput"
 import { Box } from "./Box"
 import { TextEditor } from "./TextEditor"
+import { IconAcademic, IconBriefcase, IconCalendar, IconClock, IconLocation, IconMoney } from "./Icon"
+
+function validateForm (form: Record<string, string>): boolean {
+  return Object.values(form).some(field => field.trim() === '')
+}
 
 const FormCreateJob = () => {
+  const editorRef = useRef(null)
+  const { createNewJob } = useRecruiter()
 
   function handleSubmit (e: React.ChangeEvent<HTMLFormElement>) {
     e.preventDefault()
 
     const $form = e.target
+
+    // TODO: ARREGLAR EL ESTADO DEL EDITOR
+    const $editor = editorRef.current
+    let editorValue = $editor?.editorValue()
+
+    // recuperamos los fields
+    const fields = new FormData($form)
+    fields.append('jobDetails', editorValue)
+
+    const formValues: Record<string, string> = {}
     if ($form instanceof HTMLFormElement) {
-      // recuperamos los fields
-      const fields = new FormData($form)
-      const formValues: Record<string, string> = {}
 
       fields.forEach((value, key) => {
         formValues[key] = value.toString()
       })
+      console.log(formValues)
 
       // TODO: IMPLEMENTAR UN SERVICIO PARA ENVIAR LA VACANTE A LA API
+      if (validateForm(formValues)) {
+        console.log('faltan campos por completar')
+      } else {
+        console.log('creando nuevo empleo')
+      }
+      // createNewJob(formValues)
     }
   }
 
@@ -36,7 +58,7 @@ const FormCreateJob = () => {
 
         <Box className="flex flex-col gap-2">
           <h2 className="font-light text-slate-400 text-sm">Detalles de la vacante</h2>
-          <TextEditor />
+          <TextEditor ref={editorRef} />
         </Box>
 
         <Box className="flex flex-col gap-2">
@@ -49,7 +71,7 @@ const FormCreateJob = () => {
 
         <Box className="flex items-center  rounded-sm px-2 border border-slate-300">
           <IconClock />
-          <select name="" id="" className="w-full h-full bg-transparent border-none outline-none">
+          <select name="jobType" id="" className="w-full h-full bg-transparent border-none outline-none">
             <option>tiempo completo</option>
             <option>medio tiempo</option>
             <option>por contrato</option>
@@ -57,7 +79,7 @@ const FormCreateJob = () => {
         </Box>
 
         <Box className="flex items-center  rounded-sm px-2 border border-slate-300">
-          <select name="" id="">
+          <select name="experience" id="">
             <option>inter</option>
             <option>junior</option>
             <option>semi-senior</option>
@@ -71,7 +93,7 @@ const FormCreateJob = () => {
 
         <Box className="flex items-center  rounded-sm px-2 border border-slate-300">
           <IconAcademic />
-          <select name="" id="">
+          <select name="studyGrade" id="">
             <option>licenciatura</option>
             <option>maestria</option>
             <option>bachiller</option>

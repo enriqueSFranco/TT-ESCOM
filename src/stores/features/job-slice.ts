@@ -1,13 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit"
-import type { PayloadAction } from "@reduxjs/toolkit"
-import { Job } from "../../shared/interfaces"
+import { Job } from "../../shared/interfaces.d"
 import data from "../../api/jobs.json"
 
 interface JobsState {
   jobs: Job[]
 }
 
-type JobWithId = Pick<Job, "id">
+type JobTitle = Pick<Job, "title">
 
 const initialState: JobsState = {
   jobs: data
@@ -16,7 +15,10 @@ const initialState: JobsState = {
 export const jobsSlice = createSlice({
   name: 'jobs',
   initialState,
-  reducers: {}
+  reducers: {
+  }
 })
+
+
 
 export default jobsSlice.reducer
