@@ -6,8 +6,6 @@ interface JobsState {
   jobs: Job[]
 }
 
-type JobTitle = Pick<Job, "title">
-
 const initialState: JobsState = {
   jobs: data
 }

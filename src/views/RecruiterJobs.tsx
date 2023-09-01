@@ -2,7 +2,7 @@
 // import { getJobsForRecruiter } from "services/recruiter"
 import { Link } from "react-router-dom"
 import { useAppSelector } from "../hooks/store"
-import { useRecruiterJobOffer } from "../hooks/useRecruter"
+import { useRecruiterActions } from "../hooks/useRecruterActions"
 import { ItemList } from "../components/ItemList"
 import { Direction } from "../shared"
 import { IconArrowLeft, IconDelete } from "../components/Icon"
@@ -24,7 +24,7 @@ import { IconArrowLeft, IconDelete } from "../components/Icon"
 
 const RecruiterJobs = () => {
   const { jobOffers } = useAppSelector(state => state.recruiter)
-  const { removeJob } = useRecruiterJobOffer()
+  const { removeJob } = useRecruiterActions()
 
   const handleRemoveJob = (jobId: number) => () => removeJob(jobId)
 

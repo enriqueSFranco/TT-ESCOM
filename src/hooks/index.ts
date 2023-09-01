@@ -1,7 +1,7 @@
 export * from './useForm'
 export * from './usePassword'
 export * from './useMenu'
-export * from './useCandidate'
+export * from './useCandidateActions'
 // export * from './useDebounce'
 // export * from './useDetectClick'
 // export * from './useFetch'

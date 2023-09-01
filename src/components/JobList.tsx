@@ -4,11 +4,11 @@ import { CardJob } from "./CardJob"
 import { ItemList } from "./ItemList"
 
 export const JobList: React.FC = () => {
-  const { jobs } = useAppSelector(state => state.jobs)
+  const { jobOffers } = useAppSelector(state => state.recruiter)
 
   return (
     <ItemList
-      data={jobs}
+      data={jobOffers}
       direction={Direction.COLUMN}
       emptyMessage="¡Upps, no tenemos vacantes registradas!"
       render={(job) => <CardJob job={job} />}

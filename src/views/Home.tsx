@@ -36,7 +36,7 @@ import { Blob } from "../components/Blob"
 import { JobList } from "../components/JobList"
 
 export const Home: React.FC = () => {
-  const { jobs } = useAppSelector(state => state.jobs)
+  const { jobOffers } = useAppSelector(state => state.recruiter)
   // const { token } = useAuth();
   // const [match, setMatch] = useState(null);
   // const [queryAux, setQueryAux] = useState("")
@@ -127,7 +127,7 @@ export const Home: React.FC = () => {
   //   if (isNearScreen) debouncehandleNextPage();
   // }, [isNearScreen, debouncehandleNextPage]);
 
-  const hasJobOffers = useMemo(() => jobs.length, [jobs])
+  const hasJobOffers = useMemo(() => jobOffers.length, [jobOffers])
 
   // if (!response) return null;
   return (

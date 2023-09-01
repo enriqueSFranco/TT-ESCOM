@@ -11,9 +11,9 @@ export const ItemList = <T,> ({ data, direction = Direction.ROW, emptyMessage, r
   const row = "flex-row flex-wrap"
   const column = "flex-col"
 
-  if (data.length === 0) {
+  if (data === null || data.length === 0) {
     return (
-      <span>{emptyMessage || "No tienes elementos."}</span>
+      <h2>{emptyMessage || "No tienes elementos."}</h2>
     )
   }
 

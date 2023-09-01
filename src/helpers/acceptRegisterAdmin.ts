@@ -1,4 +1,3 @@
-import API from "services/http-service";
 
 // const { REACT_APP_URL_VALIDATE_RECRUITER, REACT_APP_URL_MANAGER_VALIDATE_COMPANY } = process.env;
 

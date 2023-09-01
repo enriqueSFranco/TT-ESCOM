@@ -5,21 +5,18 @@
   "type": "module",
   "proxy": "http://127.0.0.1:8000",
   "dependencies": {
-    "@draft-js-plugins/editor": "^4.1.4",
-    "@draft-js-plugins/static-toolbar": "^4.1.4",
     "@reduxjs/toolkit": "1.9.5",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.26.1",
-    "babel-polyfill": "^6.26.0",
     "dayjs": "^1.11.1",
-    "draft-js": "0.11.7",
     "intersection-observer": "^0.12.2",
     "just-debounce-it": "^3.2.0",
     "jwt-decode": "^3.1.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-quill": "^2.0.0",
     "react-redux": "8.1.2",
     "react-router-dom": "^6.15.0",
     "sonner": "^0.7.0"
@@ -30,7 +27,6 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@types/draft-js": "^0.11.12",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "@typescript-eslint/eslint-plugin": "6.1.0",

@@ -1,46 +1,25 @@
-import { forwardRef, useImperativeHandle, useRef, useState } from "react"
-import Editor from '@draft-js-plugins/editor'
-import createToolbarPlugin from '@draft-js-plugins/static-toolbar'
-import { EditorState } from 'draft-js'
-import { Box } from "./Box"
-import '@draft-js-plugins/static-toolbar/lib/plugin.css'
-
-
-const toolbarPlugin = createToolbarPlugin({
-})
-const { Toolbar } = toolbarPlugin
-const plugins = [toolbarPlugin]
-
+import { forwardRef, useImperativeHandle, useState } from "react"
+import ReactQuill from "react-quill"
+import "react-quill/dist/quill.snow.css"
 
 export const TextEditor = forwardRef((_, ref) => {
-  const [editorState, setEditorState] = useState(() => EditorState.createEmpty())
-  const editorRef = useRef<Editor | null>(null)
+  const [editorHTML, setEditorHTML] = useState("")
 
-  useImperativeHandle(ref, () => ({
-    editorValue: () => editorState.getCurrentContent().getPlainText()
-  }), [])
+  useImperativeHandle(
+    ref,
+    () => ({
+      editorValue: () => editorHTML,
+    }),
+    [editorHTML]
+  )
 
-  const focus = (e: MouseEvent) => {
-    e.preventDefault()
-    const $editor = editorRef.current
-
-    if ($editor != null) {
-      $editor.focus()
-    }
+  function handleChange (html: string) {
+    setEditorHTML(html)
   }
 
-  return (
-    <Box className="flex flex-col">
-      <Toolbar />
-      <Box onClick={focus} className="editor flex flex-col border border-slate-300 rounded-sm overflow-hidden">
-        <Editor
-          data-editor
-          editorState={editorState}
-          onChange={setEditorState}
-          plugins={plugins}
-          ref={editorRef}
-        />
-      </Box>
-    </Box>
-  )
+  return <ReactQuill
+    theme='snow' value={editorHTML}
+    placeholder="Detalles de la vacante"
+    onChange={handleChange}
+  />
 })

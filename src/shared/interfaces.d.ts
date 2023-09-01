@@ -9,14 +9,6 @@ export interface Job {
   salary: number
   workType: string
   experienceLevel: string
-}
-
-export interface RecruiterJobOffer {
-  id: number
-  title: string
-  company: string
-  location: string
-  description: string
   requirements: string
   postedDate: string
   applicantCount: number
