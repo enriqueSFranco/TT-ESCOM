@@ -6,6 +6,7 @@
   "proxy": "http://127.0.0.1:8000",
   "dependencies": {
     "@reduxjs/toolkit": "1.9.5",
+    "@tanstack/react-query": "^4.33.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -29,6 +30,7 @@
     "fake-api": "json-server --watch db.json"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^4.34.1",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "@typescript-eslint/eslint-plugin": "6.1.0",
