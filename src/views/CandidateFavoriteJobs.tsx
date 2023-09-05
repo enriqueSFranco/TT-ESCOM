@@ -1,3 +1,4 @@
+import { useMemo } from "react"
 import { useAppSelector } from "../hooks/store"
 import { Direction } from "../shared"
 import { ItemList } from "../components/ItemList"
@@ -6,10 +7,12 @@ import { CardJob } from "../components/CardJob"
 const CandidateJobsSave = () => {
   const { myJobs } = useAppSelector(state => state.candidate)
 
+  const totalJobs = useMemo(() => myJobs.length, [myJobs])
+
   return (
     <section>
       <header>
-        <h2>vacantes guardadas</h2>
+        <h2>vacantes guardadas {totalJobs}</h2>
       </header>
 
       <article>

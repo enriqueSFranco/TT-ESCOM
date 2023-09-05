@@ -4,6 +4,7 @@ import { type Job } from '../shared/interfaces'
 import { formatCurrencyWithoutDecimals } from "../helpers"
 import { Box } from "./Box"
 import { IconClock, IconInstagram } from "./Icon"
+import { Chip } from "./Chip"
 
 interface CardJobProps {
   job: Job
@@ -31,14 +32,15 @@ export const CardJob: React.FC<CardJobProps> = ({ job }) => {
           </div>
         </div>
         <footer className="w-full h-auto flex items-end justify-start">
-          <ul className="flex items-center flex-wrap gap-4">
-            <li><span>{formatCurrencyWithoutDecimals(job.salary)}</span></li>
-            <li><span>{job.requirements}</span></li>
+          <ul className="w-full flex items-center gap-2">
             <li>
-              <Box className="flex items-center gap-1">
-                <IconClock size={14} />
-                <span>{job.applicantCount}</span>
-              </Box>
+              <Chip label={formatCurrencyWithoutDecimals(job.salary)} textColor="#008000" bgColor="#c7f9cc" />
+            </li>
+            <li>
+              <Chip label={job.experienceLevel} textColor="#7371fc" bgColor="#f5efff" />
+            </li>
+            <li>
+              <Chip label={job.workType} textColor="#4f6d7a" bgColor="#dbe9ee" />
             </li>
           </ul>
         </footer>

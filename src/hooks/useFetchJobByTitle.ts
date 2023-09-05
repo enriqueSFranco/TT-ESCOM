@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { type Job } from "../shared/interfaces.d"
-import { api } from "../api/fake-api"
+import { findJobByTitle } from "../services"
 
 type UseFetchJobByTitleResult = {
   job: Job | null
@@ -9,24 +9,7 @@ type UseFetchJobByTitleResult = {
 }
 
 // TODO: PASAR A UN SERVICIO
-async function findJobByTitle (jobTitle: string): Promise<Job | null> {
-  try {
-    const data: Job[] = await api.jobsList()
-    const jobIdx = data.findIndex(item => item.title.toLowerCase().includes(jobTitle.toLowerCase()))
 
-    if (jobIdx >= 0) {
-      const matchedJob: Job = data[jobIdx]
-      return matchedJob
-    }
-    return null
-  } catch (error) {
-    if (error instanceof Error) {
-      throw new Error(`Error fetching or processing data: ${error.message}`)
-    } else {
-      throw new Error(`Unknown error occurred`)
-    }
-  }
-}
 
 export function useFetchJobByTitle (): UseFetchJobByTitleResult {
   const { title } = useParams<{ title: string }>()

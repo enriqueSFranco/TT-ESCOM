@@ -13,13 +13,15 @@ import type { Job } from "../shared"
 
 /**
  * Realiza una solicitud a la API para obtener la lista de trabajos.
+ * 
  * @returns {Promise<Job[]>} Una promesa que resuelve en una matriz de trabajos.
+ * @throws {Error} - Si hay un error al buscar o procesar los datos.
  */
 export const getJobsQuery = async (): Promise<Job[]> => {
   const controller = new AbortController()
   const signal = controller.signal
 
-  setTimeout(() => signal, 1000);
+  setTimeout(() => signal, 1000)
 
   try {
     const jobsResponse = await fetch('http://localhost:3000/jobs', { signal })
@@ -43,6 +45,71 @@ export const getJobsQuery = async (): Promise<Job[]> => {
   }
 }
 
+/**
+ * Busca trabajos por título en una API.
+ *
+ * @param {string} jobTitle - El título del trabajo que se desea buscar.
+ * @returns {Promise<Job | null>} - Una promesa que resuelve en un objeto Job si se encuentra el trabajo, o null si no se encuentra.
+ * @throws {Error} - Si hay un error al buscar o procesar los datos.
+ */
+export const findJobByTitle = async (jobTitle: string): Promise<Job | null> => {
+  try {
+    const response = await fetch('http://localhost:3000/jobs')
+
+    if (!response.ok) {
+      throw new Error(`Error al buscar trabajos por título. Código de estado: ${response.status}`);
+    }
+
+    const data = await response.json()
+
+    const job = data.find((job: Job) => job.title === jobTitle)
+
+    return job || null
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(`Error al buscar o procesar datos: ${error.message}`);
+    } else {
+      throw new Error(`Error desconocido`);
+    }
+  }
+}
+
+export const savedJob = async ({ job }: { job: Job }) => {
+  try {
+    const response = await fetch(`http://localhost:3000/jobs/${job.id}`, {
+      method: 'PUT',
+      body: JSON.stringify({ ...job, isFavorite: true })
+    })
+
+    if (!response.ok) {
+      throw new Error("Error durante la petición")
+    }
+
+    const data = await response.json()
+    return data
+  } catch (error) {
+
+  }
+}
+
+export const removeJob = async ({ jobId }: { jobId: number }) => {
+  try {
+    const response = await fetch(`http://localhost:3000/jobs/${jobId}`, {
+      method: 'DELETE',
+      body: JSON.stringify({ isFavorite: false })
+    })
+
+    if (!response.ok) {
+      throw new Error("Error durante la petición")
+    }
+
+    const data = await response.json()
+    return data
+  } catch (error) {
+
+  }
+}
+
 // export const searchCharacter = (nameJob) => {
 //   return API(`${REACT_APP_URL_VACANT_SEARCH}${nameJob}`)
 //     .then((res) => {
@@ -58,24 +125,6 @@ export const getJobsQuery = async (): Promise<Job[]> => {
 //     .catch((error) => error)
 // }
 
-// export const getJob = (id) => {
-//   return API(`${REACT_APP_URL_VACANTS}${id}/`)
-//     .then((response) => {
-//       const { data } = response
-//       return data
-//     })
-//     .catch((error) => console.log(error))
-// }
-
-// export const getVacantInfo = (id) => {
-//   return API(`${REACT_APP_URL_VACANT_VACANT_INFO}${id}/`)
-//     .then((response) => {
-//       const { data } = response
-//       return data
-//     })
-//     .catch((error) => console.log(error))
-// }
-
 // export const getApplicationsJobs = (idVacant) => {
 //   return API(`${REACT_APP_URL_VACANT_APPLICATIONS}${idVacant}/`)
 //     .then((response) => {
@@ -87,15 +136,6 @@ export const getJobsQuery = async (): Promise<Job[]> => {
 
 // export const postJob = (body) => {
 //   return API.post(REACT_APP_URL_VACANTS, body)
-//     .then((response) => {
-//       const { data } = response
-//       return data
-//     })
-//     .catch((error) => error)
-// }
-
-// export const updateVacant = (id, payload = {}) => {
-//   return API.put(`${REACT_APP_URL_VACANTS}${id}/`, payload)
 //     .then((response) => {
 //       const { data } = response
 //       return data
