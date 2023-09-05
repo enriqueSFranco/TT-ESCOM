@@ -17,11 +17,12 @@ const candidateSlice = createSlice({
     jobToSave: (state, action: PayloadAction<Job>) => {
       const job: Job = action.payload
 
-      // buscar si la vacante se encuentra en la lista de favoritos
+      // buscar si la vacante se encuentra en la lista de favoritos para no agregarla mas de una vez
       const jobIndx = state.myJobs.findIndex(myJob => myJob.id === job.id)
       if (jobIndx === -1) {
-        job.isFavorite = true
-        state.myJobs.push(job)
+        const updatedJob = { ...job, isFavorite: true }
+        console.log(updatedJob)
+        state.myJobs = [...state.myJobs, updatedJob]
       }
     },
     removeJobToFavs: (state, action: PayloadAction<JobId>) => {
@@ -34,6 +35,9 @@ const candidateSlice = createSlice({
         console.log('removiendo vacante de favoritos')
         state.myJobs.filter(myJob => myJob.id !== jobIdx)
       }
+    },
+    rollbackSaveJob: (state, action: PayloadAction<Job>) => {
+
     }
   }
 })

@@ -1,8 +1,9 @@
 import { configureStore, type Middleware } from '@reduxjs/toolkit'
 // import jobsReducer from './features/job-slice'
+import { savedJob } from '../services'
+import { toast } from 'sonner'
 import candidateReducer from './features/candidate-slice'
 import recruiterReducer from './features/recruiter-slice'
-import { trabajaYa } from '../api/trabajaYaApi'
 
 const persistMiddleware: Middleware = (store) => (next) => (action) => {
   next(action)
@@ -11,16 +12,40 @@ const persistMiddleware: Middleware = (store) => (next) => (action) => {
 }
 
 const syncWithDatabaseMiddleware: Middleware = (store) => (next) => (action) => {
+  const { type, payload } = action
+  // console.log(store.getState()) // fase 1
+  const previousState = store.getState()
+  console.log({ type, payload })
 
+  next(action)
+  if (type === 'candidate/jobToSave') {
+    console.log('agregando vacante favoritos')
+    toast.success(`Se ha guardado ${payload.title} correctamente`)
+    // TODO: CREAR SERVICIO PARA GUARDAR UNA VACANTE EN FAVORITOS
+    savedJob({ jobId: payload.id })
+      .then((res: Response) => {
+        if (res.ok) {
+          toast.success(`Se ha guardado ${payload.title} correctamente`)
+        }
+      })
+      .catch(error => console.log('error: ', error))
+  }
+
+  if (type === 'candidate/removeJobToFavs') {
+    console.log('quitando vacante de favoritos')
+    toast.success(`Se ha eliminado la vacante ${payload.title} de tus favoritos`)
+    // TODO: CREAR SERVICIO PARA REMOVER UNA VACANTE EN FAVORITOS
+
+  }
+  // console.log(store.getState()) // fase 2
 }
 
 const store = configureStore({
   reducer: {
-    [trabajaYa.reducerPath]: trabajaYa.reducer,
     recruiter: recruiterReducer,
     candidate: candidateReducer
   },
-  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware().concat(trabajaYa.middleware), persistMiddleware, syncWithDatabaseMiddleware]
+  middleware: [persistMiddleware, syncWithDatabaseMiddleware]
 })
 
 export type RootState = ReturnType<typeof store.getState>
