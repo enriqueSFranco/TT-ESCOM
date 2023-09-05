@@ -7,36 +7,33 @@
 //   useCustomDebounce,
 //   useRecommendationsVacancies,
 // } from "hooks";
-// import FormSearchJob from "components/Search/FormSearchJob";
-// import JobList from "components/Card/JobList/JobList";
-// import EmptyView from "./EmptyView";
-// import ButtonScrollTop from "components/Button/ButtonScrollTop";
-// import DetailsJob from "components/Modal/contentModals/DetailsJob";
 // import Filteres from "components/Filter/Filters";
 // import Loader from "components/Loader/Loader";
 // import LayoutHome from "Layout/LayoutHome";
 // import LayoutHero from "Layout/LayoutHero";
-// import parallaxESCOM from "images/parallaxESCOM.jpg";
-// import {
-//   Content,
-//   Hero,
-//   Main,
-//   Cards,
-//   SummaryCard,
-//   WrapperFilters,
-// } from "./styled-components/HomeStyled";
 // import { searchJob } from "services";
-// import data from "../../public/api/jobs.json"
-// import { AsideMenu } from "../components/AsideMenu"
-// import { Header } from "../components/Header"
 import { useMemo } from "react"
-import { useAppSelector } from "../hooks/store"
+import { Direction, Job } from "../shared"
+import { useQuery } from '@tanstack/react-query'
+import { getJobsQuery } from "../services"
+// import { useAppSelector } from "../hooks/store"
 import { LayoutApp } from "../layouts/LayoutApp"
 import { Blob } from "../components/Blob"
-import { JobList } from "../components/JobList"
+import { CardJob } from "../components/CardJob"
+import { ItemList } from "../components/ItemList"
+import { SpyButton } from "../components/SpyButton"
 
 export const Home: React.FC = () => {
-  const { jobOffers } = useAppSelector(state => state.recruiter)
+  const { data, isError, isLoading } = useQuery({ queryKey: ['jobOffers'], queryFn: getJobsQuery })
+
+  const totalJobOffers: number = useMemo(() => {
+    if (data !== undefined) {
+      return data.length
+    }
+  }, [data.length])
+
+  // const { data, isSuccess, isError, isLoading, isFetching } = useGetJobsQuery()
+  // const { jobOffers } = useAppSelector(state => state.recruiter)
   // const { token } = useAuth();
   // const [match, setMatch] = useState(null);
   // const [queryAux, setQueryAux] = useState("")
@@ -127,9 +124,11 @@ export const Home: React.FC = () => {
   //   if (isNearScreen) debouncehandleNextPage();
   // }, [isNearScreen, debouncehandleNextPage]);
 
-  const hasJobOffers = useMemo(() => jobOffers.length, [jobOffers])
+  if (isLoading) return <h2>cargando vacantes...</h2>
 
-  // if (!response) return null;
+  if (isError || !data) return <h2>Ocurrio algun error</h2>
+
+
   return (
     <LayoutApp>
       <main className="relative w-full h-full flex flex-col flex-1 gap-4 overflow-y-auto z-10">
@@ -139,10 +138,16 @@ export const Home: React.FC = () => {
         <section className="w-full h-full flex flex-col gap-2">
           <header className="w-full flex items-center gap-2 text-sm">
             <h2>Total de vacantes: </h2>
-            <span className="grid place-items-center rounded-md font-bold bg-white/20 w-6 h-6 px-1">{hasJobOffers}</span>
+            <span className="grid place-items-center rounded-md font-bold bg-white/20 w-6 h-6 px-1">{totalJobOffers}</span>
           </header>
-          <JobList />
+          {data ? <ItemList
+            data={data}
+            direction={Direction.COLUMN}
+            emptyMessage='¡Upps, no tenemos vacantes registradas!'
+            render={(job: Job) => <CardJob job={job} />}
+          /> : <h2>No data available</h2>}
         </section>
+        <SpyButton />
       </main>
     </LayoutApp>
     // <LayoutHome>
@@ -202,7 +207,6 @@ export const Home: React.FC = () => {
     //         />
     //       </SummaryCard>
     //     </Content>
-    //     <ButtonScrollTop />
     //   </Main>
     // </LayoutHome>
   );

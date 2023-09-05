@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import type { Job, RecruiterJobOfferId } from "../../shared"
+import type { Job } from "../../shared"
 
 // DATA
 const DEFAULT_STATE: Job[] = [
@@ -151,7 +151,7 @@ const recruiterSlice = createSlice({
     createJob: (state, action: PayloadAction<Job>) => {
       state.jobOffers.push(action.payload)
     },
-    deleteJob: (state, action: PayloadAction<RecruiterJobOfferId>) => {
+    deleteJob: (state, action: PayloadAction<Job['id']>) => {
       const jobIdx = action.payload.id
       state.jobOffers = state.jobOffers.filter(job => job.id !== jobIdx)
     }

@@ -13,7 +13,9 @@ export const ItemList = <T,> ({ data, direction = Direction.ROW, emptyMessage, r
 
   if (data === null || data.length === 0) {
     return (
-      <h2>{emptyMessage || "No tienes elementos."}</h2>
+      <div className="w-full h-44 grid place-items-center text-center bg-gray-100/75 rounded-xl">
+        <h2>{emptyMessage || "No tienes elementos."}</h2>
+      </div>
     )
   }
 

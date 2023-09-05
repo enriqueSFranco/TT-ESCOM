@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { Job } from "../../shared"
+import type { Job, JobId } from "../../shared"
 
 interface CandidateSliceState {
   myJobs: Job[]
@@ -7,19 +7,37 @@ interface CandidateSliceState {
 
 const initialState: CandidateSliceState = (() => {
   const store = window.localStorage.getItem('__redux__state__')
-  return store != null ? JSON.parse(store).candidate : { myJobs: null }
+  return store != null ? JSON.parse(store).candidate : { myJobs: [] }
 })()
 
 const candidateSlice = createSlice({
   name: 'candidate',
   initialState,
   reducers: {
-    saveJobToFavs: (state, action: PayloadAction<Job>) => {
-      state.myJobs.concat([...state.myJobs, action.payload])
+    jobToSave: (state, action: PayloadAction<Job>) => {
+      const job: Job = action.payload
+
+      // buscar si la vacante se encuentra en la lista de favoritos
+      const jobIndx = state.myJobs.findIndex(myJob => myJob.id === job.id)
+      if (jobIndx === -1) {
+        job.isFavorite = true
+        state.myJobs.push(job)
+      }
+    },
+    removeJobToFavs: (state, action: PayloadAction<JobId>) => {
+      const jobIdx = action.payload.id
+      const draft = [...state.myJobs]
+
+      // buscamos si la vacante se encuentra en la lista de favoritos
+      const isJobInFavorites = draft.findIndex(myJob => myJob.id === jobIdx)
+      if (isJobInFavorites >= 0) {
+        console.log('removiendo vacante de favoritos')
+        state.myJobs.filter(myJob => myJob.id !== jobIdx)
+      }
     }
   }
 })
 
-export const { saveJobToFavs } = candidateSlice.actions
+export const { jobToSave, removeJobToFavs } = candidateSlice.actions
 
 export default candidateSlice.reducer

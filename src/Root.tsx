@@ -42,6 +42,8 @@ const DetailsJob = lazy(() => import("./views/DetailsJob"))
 
 const ProfileCandidate = lazy(() => import("./views/ProfileCandidate"))
 const Applications = lazy(() => import("./views/Applications"))
+const CandidateFavoriteJobs = lazy(() => import("./views/CandidateFavoriteJobs"))
+
 
 const Candidate = lazy(() => import("./views/Candidate"))
 const FormLoginCandidate = lazy(() => import("./components/FormLoginCandidate"))
@@ -82,7 +84,7 @@ export const router = createHashRouter(
         },
         {
           path: "vacantes-guardadas",
-          element: <Suspense fallback={<div>cargando postulaciones...</div>}><div>vacantes-guardadas</div></Suspense>
+          element: <Suspense fallback={<div>cargando postulaciones...</div>}><CandidateFavoriteJobs /></Suspense>
         }
       ]
     },

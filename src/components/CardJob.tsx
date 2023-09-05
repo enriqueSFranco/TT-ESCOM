@@ -1,19 +1,15 @@
 // import { useTimeAgo } from "hooks";
 import { Link } from "react-router-dom"
-import { useCandidateActions } from "../hooks"
 import { type Job } from '../shared/interfaces'
 import { formatCurrencyWithoutDecimals } from "../helpers"
 import { Box } from "./Box"
-import { IconBookMar, IconClock, IconInstagram } from "./Icon"
+import { IconClock, IconInstagram } from "./Icon"
 
 interface CardJobProps {
   job: Job
 }
 
 export const CardJob: React.FC<CardJobProps> = ({ job }) => {
-  const { saveJob } = useCandidateActions()
-
-  const handleSaveJob = (job: Job) => () => saveJob(job)
 
   return (
     <Link to={`/job/${encodeURIComponent(job.title)}`} className="text-slate-500 text-sm z-10">
@@ -28,7 +24,6 @@ export const CardJob: React.FC<CardJobProps> = ({ job }) => {
               <h2 className="text-black font-semibold">{job.title}</h2>
             </figcaption>
           </figure>
-          <button onClick={handleSaveJob(job)} className="z-10"><IconBookMar /></button>
         </header>
         <div className="w-full h-full flex flex-col divide-y divide-slate-700">
           <div className="h-full w-full">

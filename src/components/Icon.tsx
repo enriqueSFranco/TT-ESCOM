@@ -9,7 +9,7 @@ export const IconBookMar: React.FC<IconProps> = ({ fill = '#9CA3AF', size = 22 }
       xmlns='http://www.w3.org/2000/svg'
       width={size}
       height={size}
-      fill='none'
+      fill={fill}
       viewBox='0 0 24 24'
     >
       <path

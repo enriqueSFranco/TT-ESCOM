@@ -8,10 +8,15 @@ export interface Job {
   description: string
   salary: number
   workType: string
+  workSchedule: string
   experienceLevel: string
   requirements: string
   postedDate: string
   applicantCount: number
+  applicationDeadline: string
+  contractType: string
+  isFavorite?: boolean
+  requiredLanguage?: string
 }
 
 export interface Candidate {

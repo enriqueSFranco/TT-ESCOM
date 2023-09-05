@@ -4,17 +4,13 @@ import { type Job } from "../shared/interfaces.d"
 import { api } from "../api/fake-api"
 
 type UseFetchJobByTitleResult = {
-  job: Job | null;
-  loading: boolean;
+  job: Job | null
+  loading: boolean
 }
 
 // TODO: PASAR A UN SERVICIO
 async function findJobByTitle (jobTitle: string): Promise<Job | null> {
   try {
-    // if (!response.ok) {
-    //   throw new Error(`Network response was not ok (status ${response.status})`);
-    // }
-
     const data: Job[] = await api.jobsList()
     const jobIdx = data.findIndex(item => item.title.toLowerCase().includes(jobTitle.toLowerCase()))
 
@@ -45,8 +41,6 @@ export function useFetchJobByTitle (): UseFetchJobByTitleResult {
         const job: Job | null = title ? await findJobByTitle(decodeURIComponent(title)) : null
         if (isMounted && job != null) {
           setJob(job)
-        } else {
-          setJob(null)
         }
       } catch (error) {
         if (isMounted) {
