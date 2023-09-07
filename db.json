@@ -20,21 +20,19 @@
     },
     {
       "id": 2,
-      "title": "Data Analyst",
-      "company": "DataTech",
-      "location": "New York, NY",
-      "description": "Description of the data analyst job...",
-      "salary": 80000,
+      "title": "UX Designer 2",
+      "company": "DesignCo",
+      "location": "Los Angeles, CA",
+      "description": "Description of the UX designer job...",
+      "salary": 8000,
       "workType": "Full-time",
-      "workSchedule": "Monday to Friday, 9 AM to 5 PM",
-      "experienceLevel": "Entry-level",
-      "requirements": "Requirements for the data analyst job...",
-      "postedDate": "2023-09-02",
-      "applicantCount": 30,
-      "applicationDeadline": "2023-09-14",
-      "contractType": "Permanent",
-      "isFavorite": false,
-      "requiredLanguage": "Spanish"
+      "workSchedule": "Monday to Friday, 10 AM to 6 PM",
+      "experienceLevel": "Senior",
+      "requirements": "Requirements for the UX designer job...",
+      "postedDate": "2023-09-03",
+      "applicantCount": 40,
+      "applicationDeadline": "2023-09-16",
+      "contractType": "Permanent"
     },
     {
       "id": 3,
@@ -121,22 +119,6 @@
       "applicationDeadline": "2023-09-19",
       "contractType": "Permanent",
       "requiredLanguage": "English"
-    },
-    {
-      "id": 8,
-      "title": "Nurse",
-      "company": "HealthCare",
-      "location": "Chicago, IL",
-      "description": "Description of the nurse job...",
-      "salary": 75000,
-      "workType": "Full-time",
-      "workSchedule": "Various shifts",
-      "experienceLevel": "Experienced",
-      "requirements": "Requirements for the nurse job...",
-      "postedDate": "2023-09-08",
-      "applicantCount": 15,
-      "applicationDeadline": "2023-09-21",
-      "contractType": "Permanent"
     },
     {
       "id": 9,
@@ -254,20 +236,7 @@
       "contractType": "Permanent"
     },
     {
-      "id": 16,
-      "title": "Product Owner",
-      "company": "TechCo",
-      "location": "San Francisco, CA",
-      "description": "Description of the product owner job...",
-      "salary": 100000,
-      "workType": "Full-time",
-      "workSchedule": "Monday to Friday, 9 AM to 5 PM",
-      "experienceLevel": "Senior",
-      "requirements": "Requirements for the product owner job...",
-      "postedDate": "2023-09-16",
-      "applicantCount": 35,
-      "applicationDeadline": "2023-09-29",
-      "contractType": "Permanent"
+      "id": 16
     },
     {
       "id": 17,
@@ -333,5 +302,6 @@
       "applicationDeadline": "2023-10-03",
       "contractType": "Permanent"
     }
-  ]
+  ],
+  "myJobs": []
 }
