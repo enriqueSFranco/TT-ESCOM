@@ -8,8 +8,8 @@ interface ItemListProps<T> {
 }
 
 export const ItemList = <T,> ({ data, direction = Direction.ROW, emptyMessage, render }: ItemListProps<T>) => {
-  const row = "flex-row flex-wrap"
-  const column = "flex-col"
+  const row = "grid grid-cols-3 gap-4"
+  const column = "flex-col gap-2"
 
   if (data === null || data.length === 0) {
     return (
@@ -18,9 +18,8 @@ export const ItemList = <T,> ({ data, direction = Direction.ROW, emptyMessage, r
       </div>
     )
   }
-
   return (
-    <ul className={`w-full flex ${direction === Direction.ROW ? row : column} items-center gap-2`}>
+    <ul className={`w-full flex ${direction === Direction.ROW ? row : column} items-center`}>
       {data.map((it) => (
         <li key={`id-${crypto.randomUUID()}`} className="w-full h-full">
           {render(it)}

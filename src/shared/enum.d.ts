@@ -10,3 +10,9 @@ export enum TypeUser {
   RECRUITER = "RECRUITER",
   CANDIDATE = "CANDIDATE"
 }
+
+export enum Device {
+  Mobile = 'MOBILE',
+  Tablet = 'TABLET',
+  Desktop = 'DESKTOP'
+}

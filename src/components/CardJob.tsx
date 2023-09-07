@@ -2,8 +2,7 @@
 import { Link } from "react-router-dom"
 import { type Job } from '../shared/interfaces'
 import { formatCurrencyWithoutDecimals } from "../helpers"
-import { Box } from "./Box"
-import { IconClock, IconInstagram } from "./Icon"
+import { IconInstagram } from "./Icon"
 import { Chip } from "./Chip"
 
 interface CardJobProps {
@@ -14,8 +13,8 @@ export const CardJob: React.FC<CardJobProps> = ({ job }) => {
 
   return (
     <Link to={`/job/${encodeURIComponent(job.title)}`} className="text-slate-500 text-sm z-10">
-      <article className="w-full flex flex-col justify-start items-start gap-4 bg-gray-100/75 rounded-xl font-light p-4">
-        <header className="w-full flex items-center justify-between">
+      <article className="w-full h-full flex flex-col justify-start items-start gap-4 bg-gray-100/75 rounded-xl font-light p-4 scale-95 ease-in duration-300 hover:scale-100">
+        <header className="flex items-center justify-between">
           <figure className="w-ful flex items-center justify-between gap-4">
             {/* IMAGE */}
             <IconInstagram />

@@ -1,5 +1,4 @@
-// import API from "services/http-service"
-
+import { fetcher } from "../services"
 import type { Job } from "../shared"
 
 // // const {
@@ -76,8 +75,7 @@ export const findJobByTitle = async (jobTitle: string): Promise<Job | null> => {
 
 export const savedJob = async ({ job }: { job: Job }) => {
   try {
-    const response = await fetch(`http://localhost:3000/jobs/${job.id}`, {
-      method: 'PUT',
+    const response = await fetcher().PUT(new URL(`http://localhost:3000/jobs/${job.id}`), {
       body: JSON.stringify({ ...job, isFavorite: true })
     })
 
@@ -94,8 +92,7 @@ export const savedJob = async ({ job }: { job: Job }) => {
 
 export const removeJob = async ({ jobId }: { jobId: number }) => {
   try {
-    const response = await fetch(`http://localhost:3000/jobs/${jobId}`, {
-      method: 'DELETE',
+    const response = await fetcher().DEL(new URL(`http://localhost:3000/jobs/${jobId}`), {
       body: JSON.stringify({ isFavorite: false })
     })
 

@@ -7,7 +7,7 @@ interface LayoutAppProps {
 
 export const LayoutApp: React.FC<LayoutAppProps> = ({ children }) => {
   return (
-    <div className='w-full h-full flex flex-col justify-between gap-4 p-4'>
+    <div className='w-full h-full flex flex-col items-center justify-between gap-4 p-4'>
       <MenuProvider>
         <Header />
       </MenuProvider>

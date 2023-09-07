@@ -14,13 +14,17 @@
 // import { searchJob } from "services";
 import { Direction, Job } from "../shared"
 import { useQuery } from '@tanstack/react-query'
+import { useViewport } from "../hooks"
 import { getJobsQuery } from "../services"
+import { Device } from "../shared"
 import { LayoutApp } from "../layouts/LayoutApp"
 import { CardJob } from "../components/CardJob"
 import { ItemList } from "../components/ItemList"
+import { FormSearchJob } from "../components/FormSearchJob"
 
 export const Home: React.FC = () => {
   const { data, isError, isLoading } = useQuery({ queryKey: ['jobOffers'], queryFn: getJobsQuery })
+  const viewport = useViewport()
   // const { token } = useAuth();
   // const [match, setMatch] = useState(null);
   // const [queryAux, setQueryAux] = useState("")
@@ -115,11 +119,11 @@ export const Home: React.FC = () => {
 
   if (isError || !data) return <h2>Ocurrio algun error</h2>
 
-  console.log('home: ', data)
   return (
     <LayoutApp>
-      <main className="relative w-full h-full flex flex-col flex-1 gap-4 overflow-y-auto z-10">
-        <aside className="w-2/6">
+      <FormSearchJob />
+      <main className="relative w-full h-full flex flex-col flex-1 gap-4 overflow-y-auto z-10 lg:flex-row">
+        <aside className="w-96 bg-gray-100/75">
           <h2>filters</h2>
         </aside>
         <section className="w-full h-full flex flex-col gap-2">
@@ -129,7 +133,7 @@ export const Home: React.FC = () => {
           </header>
           {data ? <ItemList
             data={data}
-            direction={Direction.COLUMN}
+            direction={viewport.device === Device.Desktop ? Direction.ROW : Direction.COLUMN}
             emptyMessage='¡Upps, no tenemos vacantes registradas!'
             render={(job: Job) => <CardJob job={job} />}
           /> : <h2>No data available</h2>}
