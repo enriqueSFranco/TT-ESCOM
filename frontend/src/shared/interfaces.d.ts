@@ -1,4 +1,4 @@
-import { CandidateId } from "./types.d"
+import { CandidateId } from "./types"
 
 export interface Job {
   id: number

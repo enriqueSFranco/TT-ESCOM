@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { Job } from "../../shared/interfaces.d"
+import { Job } from "../../shared/interfaces"
 import data from "../../api/jobs.json"
 
 interface JobsState {

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useMenu } from "../hooks"
-import { StateMenu } from "../shared/enum.d"
+import { StateMenu } from "../shared/enum"
 import { Avatar } from "./Avatar"
 
 export const FloatingMenu = () => {

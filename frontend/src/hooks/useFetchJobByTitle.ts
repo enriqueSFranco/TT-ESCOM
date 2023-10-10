@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { type Job } from "../shared/interfaces.d"
+import { type Job } from "../shared/interfaces"
 import { api } from "../api/fake-api"
 
 type UseFetchJobByTitleResult = {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { STATE_MENU } from "../shared/enum.d"
+import { STATE_MENU } from "../shared/enum"
 
 interface useDetectClickProps {
   element: React.RefObject<HTMLElement>

@@ -1,6 +1,6 @@
 // @ts-check
-import { fetcher } from "../services/http-service"
-import { CandidateId } from "../shared/types.d"
+import { fetcher } from "./http-service"
+import { CandidateId } from "../shared/types"
 
 // const {
 //   REACT_APP_URL_CANDIDATE_LANGUAGE,

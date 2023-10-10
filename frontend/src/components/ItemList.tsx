@@ -1,4 +1,4 @@
-import { Direction } from "../shared/enum.d"
+import { Direction } from "../shared/enum"
 
 interface ItemListProps<T> {
   data: T[]

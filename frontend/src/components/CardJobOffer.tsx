@@ -1,4 +1,4 @@
-import { ApplicationItem } from '../shared/interfaces.d'
+import { ApplicationItem } from '../shared/interfaces'
 
 interface CardJobOfferProps {
   jobOffer: ApplicationItem

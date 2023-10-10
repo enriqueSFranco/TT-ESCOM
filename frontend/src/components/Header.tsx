@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
 import { useMenu } from "../hooks"
 import { IconClose, IconMenu } from "./Icon"
-import { StateMenu } from "../shared/enum.d"
-import { FormSearchJob } from "../components/FormSearchJob"
+import { StateMenu } from "../shared/enum"
+import { FormSearchJob } from "./FormSearchJob"
 import { FloatingMenu } from "./FloatingMenu"
 
 export const Header: React.FC = () => {

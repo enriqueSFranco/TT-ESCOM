@@ -1,5 +1,5 @@
 import { createContext, useState } from "react"
-import { StateMenu } from "../shared/enum.d"
+import { StateMenu } from "../shared/enum"
 
 interface MenuContext {
   isOpenMenu: StateMenu.CLOSE | StateMenu.OPEN
