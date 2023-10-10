@@ -2,7 +2,7 @@
 // import { api } from "../api/fake-api"
 // import { Application } from "shared"
 import { ItemList } from "../components/ItemList"
-import { CardJobOffer } from "../components/CardJobOffer"
+import { CardJobOffer } from "../components/card-offer"
 import { useAppSelector } from "../hooks/store"
 import { Direction } from "../shared"
 // import { useApplications } from "../hooks/useCandidate"

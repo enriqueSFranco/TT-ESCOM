@@ -1,4 +1,4 @@
-import { BaseInput } from './BaseInput'
+import { BaseInput } from './base-input'
 
 export const FormRecruiterInfo: React.FC = ({ }) => {
 

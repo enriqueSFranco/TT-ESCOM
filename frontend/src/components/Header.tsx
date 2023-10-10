@@ -1,28 +1,32 @@
-import { Link } from "react-router-dom"
-import { useMenu } from "../hooks"
-import { IconClose, IconMenu } from "./Icon"
-import { StateMenu } from "../shared/enum"
-import { FormSearchJob } from "./FormSearchJob"
-import { FloatingMenu } from "./FloatingMenu"
+import { Link } from 'react-router-dom'
+import { FormSearchJob } from './form-search'
+import { Dropdown } from './dropdown'
+import { Avatar } from './avatar'
+import { useState } from 'react'
 
 export const Header: React.FC = () => {
-  const { isOpenMenu, handleToggle } = useMenu()
+  const [open, updateOpen] = useState(false)
+
+  function toggle () {
+    updateOpen(prevState => !prevState)
+  }
 
   return (
-    <header className="w-full flex flex-col items-start justify-center gap-4 lg:h-20">
-      <div className="w-full flex justify-between items-center">
-        <h1 className="font-semibold">Trabaja<span className="text-blue-500">YA</span></h1>
-        <button onClick={handleToggle}>{isOpenMenu === StateMenu.CLOSE ? <IconMenu /> : <IconClose />}</button>
+    <header className='w-full flex flex-col items-center justify-center gap-4 lg:h-20'>
+      <div className='w-full flex justify-between items-center'>
+        <h1 className='font-semibold'>Trabaja<span className='text-blue-500'>YA</span></h1>
+        <Dropdown
+          open={open}
+          trigger={<button onClick={toggle}>{open ? <span>open</span> : <span>close</span>}</button>}
+          menu={[
+            <Link to='/'>Inicio</Link>,
+            <Link to='/reclutador/iniciar-sesion'>¿Eres empresa?</Link>,
+            <Link to='/candidato/iniciar-sesion'>¿Eres candidato?</Link>,
+            <Link to='/candidato/perfil' className='flex items-center gap-2'><Avatar photo={new URL('https://unavatar.io/github/enriqueSFranco')} size={30} /> Perfil</Link>
+          ]}
+        />
       </div>
-      <FloatingMenu />
-      <nav className="w-full h-full flex flex-col items-center justify-center text-sm">
-        <FormSearchJob />
-        <ul className="w-full hidden font-light opacity-0 invisible lg:opacity-100 lg:visible lg:flex-row">
-          <li><Link to='/'>Inicio</Link></li>
-          <li><Link to='reclutador/iniciar-sesion'>Ingresar como Empresa</Link></li>
-          <li><Link to='candidato/iniciar-sesion'>Ingresar como Candidato</Link></li>
-        </ul>
-      </nav>
+      <FormSearchJob />
     </header>
   )
 }

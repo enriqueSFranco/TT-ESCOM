@@ -1,0 +1,110 @@
+%!TEX root = ../example.tex
+\chapter{Modelo de Información}
+\label{ch:modInfo}
+
+%----------------------- ENTIDAD -------------------
+\subsection{Entidad: Alumno}
+
+Descripción
+\begin{longtable}{| p{0.4\textwidth} | p{0.2\textwidth} | p{0.3\textwidth} |}
+    \hline
+        Atributo & Tipo & Descripción\\
+    \hline
+    \endhead
+    \hline
+    %************
+    \bf{T100\_BOLETA}& \bf PK number(12)& \\
+    \hline
+    T100\_NOMBRE& char(50)& \\
+    \hline
+    T100\_PATERNO& char(30)& \\
+    \hline
+    T100\_MATERNO& char(30)& \\
+    \hline
+    T100\_USUARIO& varchar2(40)& \\
+    \hline
+    T100\_FECHA\_NAC& date& \\
+    \hline
+    T100\_GRAD\_ESTUDIOS& int& \\
+    \hline
+    T100\_PASSWORD& varchar2(100)& \\
+    \hline
+    T100\_RFC& number(12)& \\
+    \hline
+    T100\_NSS& number(20)& \\
+    \hline
+    T100\_CV& file& \\
+    \hline
+    T100\_CORREO\_ELECTRONICO& varchar2(50)& \\ 
+    \hline
+    T100\_BUSCA\_EMPLEO& boolean& \\
+    \hline
+    \caption{Tabla: Alumno}
+    %\label{table:usuarios\_tipo\_contacto}\\
+\end{longtable}
+%-------------------------- TERMINA ENTIDAD ----------------------
+
+%----------------------- ENTIDAD -------------------
+\subsection{Entidad: Reclutador}
+
+Descripción
+\begin{longtable}{| p{0.4\textwidth} | p{0.2\textwidth} | p{0.3\textwidth} |}
+    \hline
+        Atributo & Tipo & Descripción\\
+    \hline
+    \endhead
+    \hline
+    %************
+    \bf{T301\_RFC}&   \bf PK  varchar2(12)&\\
+    \hline
+    T301\_NOMBRE&  char(50)&\\
+    \hline
+    T301\_PATERNO&  char(25)&\\
+    \hline
+    T301\_MATERNO&  char(25)&\\
+    \hline
+    T301\_CORREO\_ELECTRONICO&  varchar2(50)&\\
+    \hline
+    T300\_ID\_EMPRESA&  \bf{FK} number(10)&\\
+    \hline
+    T301\_TELEFONO&  number(10)&\\
+    \hline
+    T301\_EXTENSION&  number(5)&\\
+    \hline
+    T301\_CELULAR&  number(10)&\\
+    \hline
+    \caption{Tabla: Alumno}
+    %\label{table:usuarios\_tipo\_contacto}\\
+\end{longtable}
+%-------------------------- TERMINA ENTIDAD ----------------------
+%----------------------- ENTIDAD -------------------
+\subsection{Entidad: Empresa}
+
+Descripción
+\begin{longtable}{| p{0.4\textwidth} | p{0.2\textwidth} | p{0.3\textwidth} |}
+    \hline
+        Atributo & Tipo & Descripción\\
+    \hline
+    \endhead
+    \hline
+    %************
+    \bf{T300\_ID\_EMPRESA}& number(10)&\\
+    \hline
+    T301\_NOMBRE& varchar2(30)&\\
+    \hline
+    T301\_RFC& varchar2(12)&\\
+    \hline
+    T301\_NSS& number(20)&\\
+    \hline
+    T300\_PAGINA\_WEB& varchar2(50)&\\
+    \hline
+    T300\_TELEFONO& number(10)&\\
+    \hline
+    T400\_ID\_ADMIN\_ALTA& \bf{FK} varchar2(12)&\\
+    \hline
+    T400\_FECHA\_ALTA& date&\\
+    \hline
+    \caption{Tabla: Empresa}
+    %\label{table:usuarios\_tipo\_contacto}\\
+\end{longtable}
+%-------------------------- TERMINA ENTIDAD ----------------------

@@ -1,12 +1,15 @@
-export enum StateMenu {
-  OPEN = "Open",
-  CLOSE = "Close"
+enum DEVICE {
+  MOBILE = 'MOBILE',
+  TABLET = 'TABLET',
+  DESKTOP = 'DESKTOP'
 }
 
-export enum Direction { ROW = "row", COLUMN = "column" }
+enum Direction { ROW = "row", COLUMN = "column" }
 
-export enum TypeUser {
+enum TypeUser {
   MANAGER = "MANAGER",
   RECRUITER = "RECRUITER",
   CANDIDATE = "CANDIDATE"
 }
+
+export { DEVICE, Direction, TypeUser }

@@ -1,12 +1,12 @@
 import { useRef } from "react"
 import { useRecruiterActions } from "../hooks/useRecruterActions"
 import { getFieldsValues } from "../helpers"
-import BaseButton from "./BaseButton"
-import { BaseInput } from "./BaseInput"
-import { Box } from "./Box"
+import BaseButton from "./base-button"
+import { BaseInput } from "./base-input"
+import { Box } from "./box"
 import { TextEditor } from "./TextEditor"
 import { IconAcademic, IconBriefcase, IconCalendar, IconClock, IconLocation, IconMoney } from "./Icon"
-import { BaseSelect } from "./BaseSelect"
+import { BaseSelect } from "./base-select"
 
 function validateForm (form: Record<string, string>): boolean {
   return Object.values(form).some(field => field.trim() === '')

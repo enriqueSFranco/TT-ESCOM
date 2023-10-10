@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { usePassword } from "../hooks/usePassword"
 // import { initialForm } from "types/createNewCanditate"
-import { BaseInput } from "./BaseInput"
+import { BaseInput } from "./base-input"
 
 // const validateForm = (form) => {
 //   let errors = {}

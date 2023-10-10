@@ -1,7 +1,7 @@
 
 import { useRef } from "react"
 import { unmountComponentAtNode } from "react-dom"
-import BaseButton from "./BaseButton"
+import BaseButton from "./base-button"
 
 interface ModalProps {
   children: React.ReactNode

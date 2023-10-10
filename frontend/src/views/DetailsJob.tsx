@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useFetchJobByTitle } from "../hooks/useFetchJobByTitle"
 import { Toaster, toast } from 'sonner'
 import { IconArrowLeft, IconBookMar, IconInstagram } from "../components/Icon"
-import { Box } from "../components/Box"
+import { Box } from "../components/box"
 // import { useModal } from "hooks/useModal"
 // import { getJob, getJobRequirements } from "services/jobs/index"
 // import { applyJob } from "services/students/index"

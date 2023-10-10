@@ -1,6 +1,6 @@
 // import { uploadDocumentValidate } from "services"
 
-import { BaseInput } from "./BaseInput"
+import { BaseInput } from "./base-input"
 
 interface FormCompanyInfoProps { }
 
