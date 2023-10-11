@@ -13,7 +13,7 @@ import {
   GridButtom,
   GridTop,
   Form,
-} from "./styled-components/CompanyStyled";
+} from "../styled-components/CompanyStyled";
 
 const Company = () => {
   const [query, setQuery] = useState("");

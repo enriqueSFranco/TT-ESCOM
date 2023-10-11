@@ -6,7 +6,7 @@ import ModalPortal from "components/Modal/ModalPortal";
 import FormValidateCompany from "components/Form/FormValidate";
 import CardRecruiter from "components/Card/CardRecruiter";
 import noRecruiters from 'assets/images/job-recruitment-website-5241930-4390947.png'
-import { WrapperValidateCompany, TextH2, ContainerList } from "./styled-components/ValidateRecruiterStyled";
+import { WrapperValidateCompany, TextH2, ContainerList } from "../styled-components/ValidateRecruiterStyled";
 
 const styles = {
   noRecruiters: {

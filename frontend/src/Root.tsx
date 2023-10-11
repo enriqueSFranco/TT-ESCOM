@@ -1,7 +1,7 @@
 import { Suspense, lazy } from 'react'
 import { RouterProvider, createHashRouter } from 'react-router-dom'
 import { Home } from './views/app/home'
-import { Error } from './views/Error'
+import { Error } from './views/error'
 import { PrivateRoute } from './routes/PrivateRoute'
 import { TypeUser } from './shared'
 // import FormCreateJob from 'components/FormCreateJob'

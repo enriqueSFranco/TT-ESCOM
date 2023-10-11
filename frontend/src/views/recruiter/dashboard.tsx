@@ -5,13 +5,13 @@ import LayoutDashboard from "Layout/LayoutDashboard";
 import LayoutHome from "Layout/LayoutHome";
 // import FormUpdateJob from "components/Form/postJob/FormUpdateJob";
 import ListJobsRecruiter from "components/Card/JobList/JobListRecruiter";
-import HeaderWidgets from "./HeaderWidgets";
+import HeaderWidgets from "../business/pageInit/HeaderWidgets";
 import FormSearchJob from "components/Menu/FormSearchJobRecruiter";
-import MainInfoVacant from "./MainInfoVacant";
+import MainInfoVacant from "../business/pageInit/MainInfoVacant";
 import {
   Aside,
   Container,
-} from "../../styled-components/DashboardRecruiterStyled";
+} from "../styled-components/DashboardRecruiterStyled";
 
 const PageHistory = () => {
   const [vacantId, setVacantId] = useState(null);
