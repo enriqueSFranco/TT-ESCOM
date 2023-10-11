@@ -1,3 +1,6 @@
-export type CandidateId = `${string}-${string}-${string}-${string}-${string}`
+type CandidateId = `${string}-${string}-${string}-${string}-${string}`
 
-export type RecruiterJobOfferId = Pick<RecruiterJobOffer, "id">
+type RecruiterJobOfferId = Pick<RecruiterJobOffer, 'id'>
+
+
+export { CandidateId, RecruiterJobOfferId }

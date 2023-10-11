@@ -4,6 +4,11 @@ enum DEVICE {
   DESKTOP = 'DESKTOP'
 }
 
+enum Theme {
+  DARK = 'dark',
+  LIGHT = 'light'
+}
+
 enum Direction { ROW = "row", COLUMN = "column" }
 
 enum TypeUser {
@@ -12,4 +17,4 @@ enum TypeUser {
   CANDIDATE = "CANDIDATE"
 }
 
-export { DEVICE, Direction, TypeUser }
+export { DEVICE, Direction, TypeUser, Theme }

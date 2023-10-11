@@ -1,5 +1,3 @@
-import { useThemeContext } from '../hooks/useThemeContext'
-
 type DropdownProps<T> = {
   open: boolean
   trigger: React.ReactNode
@@ -7,18 +5,13 @@ type DropdownProps<T> = {
 }
 
 export const Dropdown = <T extends React.ReactNode> ({ open, trigger, menu }: DropdownProps<T>) => {
-  const { theme } = useThemeContext()
-
-  const currentTheme = theme ? 'light' : 'dark'
-
-  console.log(currentTheme)
 
   return (
     <div className='relative'>
       {trigger}
       {
         open
-          ? <ul className='absolute right-7 bg-slate-500 z-20'>{menu.map((it) => <li key={`item-id-${crypto.randomUUID()}`}>{it}</li>)}</ul>
+          ? <ul className='absolute right-0 top-10 z-40 w-56 flex flex-col items-end gap-4 border border-slate-200 bg-slate-50 p-5 rounded-lg'>{menu.map((it) => <li key={`item-id-${crypto.randomUUID()}`}>{it}</li>)}</ul>
           : null
       }
     </div>

@@ -1,11 +1,12 @@
 import { useCandidateActions } from './useCandidateActions'
+import { useAppDispatch, useAppSelector } from './store'
 import { useForm } from './useForm'
 import { usePassword } from './usePassword'
 import { useViewport } from './useViewport'
-import { useAppDispatch, useAppSelector } from './store'
+import { useThemeContext } from './useThemeContext'
 
 
-export { useCandidateActions, useForm, usePassword, useViewport, useAppDispatch, useAppSelector }
+export { useCandidateActions, useForm, usePassword, useViewport, useAppDispatch, useAppSelector, useThemeContext }
 // export * from './useDebounce'
 // export * from './useDetectClick'
 // export * from './useFetch'

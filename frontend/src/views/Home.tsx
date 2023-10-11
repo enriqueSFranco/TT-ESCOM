@@ -34,6 +34,7 @@ import { useAppSelector } from '../hooks/store'
 import { LayoutApp } from '../layouts/LayoutApp'
 // import { Blob } from '../components/blob'
 import { JobList } from '../components/JobList'
+import { FormSearchJob } from '../components/form-search'
 
 export const Home: React.FC = () => {
   const { jobOffers } = useAppSelector(state => state.recruiter)
@@ -132,7 +133,8 @@ export const Home: React.FC = () => {
   // if (!response) return null;
   return (
     <LayoutApp>
-      <main className='relative w-full h-full flex flex-col flex-1 gap-4 overflow-y-auto z-10'>
+      <FormSearchJob />
+      <main className='w-full h-full flex flex-col flex-1 gap-4 overflow-y-auto z-10'>
         <aside className='w-2/6'>
           <h2>filters</h2>
         </aside>

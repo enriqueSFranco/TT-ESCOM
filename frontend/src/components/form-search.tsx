@@ -1,7 +1,9 @@
+import { useThemeContext } from '../hooks'
 import { Loader } from './Loader'
 import { BaseInput } from './base-input'
 import { getFieldsValues, hasNonEmptyField } from '../helpers/form-utils'
 import { IconLocation, IconSearch } from './Icon'
+import { Theme } from '../shared'
 // import { useDebounce, useViewport } from 'hooks'
 // import { searchCharacter, searchJob } from 'services'
 // import styles from './Search.module.css'
@@ -20,6 +22,7 @@ import { IconLocation, IconSearch } from './Icon'
 // }
 
 export const FormSearchJob: React.FC = () => {
+  const { theme } = useThemeContext()
   // const debounce = useDebounce(query, 500)
   // const [viewport] = useViewport()
 
@@ -64,27 +67,10 @@ export const FormSearchJob: React.FC = () => {
       // TODO: IMPLEMENTAR SERVICIO DE BUSQUEDA
     }
 
+
     return
-    // setLoading(true)
-    // setTimeout(() => {
-    //   updatedQuery(debounce)
-    //   // updatedQueryAux(debounce)
-    //   searchJob({
-    //     'Texto a buscar': debounce,
-    //     Donde: locationJob,
-    //     'Modalidad de empleo': [],
-    //     'Experiencia laboral': [],
-    //   })
-    //     .then((response) => {
-    //       const { result } = response
-    //       // console.log(response)
-    //       setFilterData(result)
-    //     })
-    //     .catch((error) => console.error(error))
-    //   setLoading(false)
-    //   // handleSearch(debounce === '' ? filterDataAutocomplete : debounce)
-    // }, 500)
   }
+  const buttonTheme = theme.toString() === Theme.LIGHT ? 'bg-slate-100 text-slate-950' : 'bg-slate-800 text-slate-100 transition-colors duration-150 ease-in-out'
 
   return (
     <form
@@ -92,7 +78,7 @@ export const FormSearchJob: React.FC = () => {
       role='search'
       className='
         flex flex-col items-center justify-between gap-4 overflow-hidden 
-        lg:flex-row lg:w-1/2 lg:h-12 lg:overflow-hidden
+        lg:flex-row lg:w-1/2 lg:overflow-hidden
       '
     >
       <div className='w-full h-full flex items-center rounded-sm px-2 lg:border lg:border-gray/30  lg:rounded-full'>
@@ -115,7 +101,7 @@ export const FormSearchJob: React.FC = () => {
           placeholder='Ciudad de Mexico'
         />
       </div>
-      <button className='bg-black rounded-sm font-light flex items-center justify-center capitalize text-white lg:w-1/2 lg:p-3 lg:rounded-full'>
+      <button className={`rounded-sm font-light text-sm flex items-center justify-center capitalize ${buttonTheme} lg:w-1/2 lg:p-3 lg:rounded-full`}>
         {/* {loading && <Loader width={20} height={20} colorHex='#fff' />} */}
         buscar empleos
       </button>

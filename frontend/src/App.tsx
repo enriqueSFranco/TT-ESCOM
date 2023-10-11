@@ -1,4 +1,3 @@
-import { ThemeProvider } from 'context/ThemeContext'
 import { LayoutMenu } from './layouts/LayoutMenu'
 import { Root } from './Root'
 
@@ -6,11 +5,8 @@ import { Root } from './Root'
 function App () {
   return (
     <LayoutMenu>
-      <ThemeProvider>
-        <Root />
-      </ThemeProvider>
+      <Root />
     </LayoutMenu>
-
   )
 }
 

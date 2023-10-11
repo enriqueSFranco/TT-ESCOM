@@ -19,10 +19,21 @@ export type ThemeContextType = {
 export const ThemeContext = createContext<ThemeContextType | null>(null)
 
 export function ThemeProvider ({ children }: ThemeProviderProps) {
-  const [theme, updateTheme] = useState<ThemeType>(Theme.Light)
+  const [theme, updateTheme] = useState<ThemeType>(() => {
+    const storedTheme = window.localStorage.getItem('theme')
+
+    if (storedTheme !== null) {
+      return JSON.parse(storedTheme)
+    }
+    return Theme.Light
+  })
 
   function toggle () {
-    updateTheme(prevTheme => prevTheme === Theme.Light ? Theme.Dark : Theme.Light)
+    updateTheme(prevTheme => {
+      const newTheme = prevTheme === Theme.Light ? Theme.Dark : Theme.Light
+      window.localStorage.setItem('theme', JSON.stringify(newTheme))
+      return newTheme
+    })
   }
 
   const data: ThemeContextType = {
