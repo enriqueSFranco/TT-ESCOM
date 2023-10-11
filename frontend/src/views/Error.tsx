@@ -1,8 +1,8 @@
-import { useRouteError } from "react-router-dom"
+import { useRouteError } from 'react-router-dom'
 
-export const Error: React.FC = () => {
+export const Error = () => {
   const error = useRouteError()
-  console.log(error)
+
   return (
     <section>
       <h1>Oops!</h1>
@@ -13,5 +13,3 @@ export const Error: React.FC = () => {
     </section>
   )
 }
-
-export default Error

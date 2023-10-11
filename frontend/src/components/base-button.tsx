@@ -1,12 +1,24 @@
+import { HexadecimalColor } from '../shared'
 
-interface BaseButtonProps {
+type Size = {
+  width: number
+  height: number
+}
+
+type BaseButtonProps = {
+  size: Size
+  bgColor?: HexadecimalColor
+  color?: HexadecimalColor
   children: React.ReactNode
 }
 
-const BaseButton: React.FC<BaseButtonProps> = ({ children, ...props }) => {
+export const BaseButton = ({ children, size, color = '#fff', bgColor = '#222', ...props }: BaseButtonProps) => {
   return (
-    <button className="w-full py-2 bg-blue-500 rounded-sm font-light flex items-center justify-center text-white lg:w-14 lg:h-full lg:p-0 lg:rounded-full lg:hover:bg-blue-600" {...props}>{children}</button>
+    <button
+      className={`w-[${size.width}px] h-[${size.height}px] py-3 px-4 bg-[${bgColor}] text-[${color}] rounded-sm font-light flex items-center justify-center rounded-ld`}
+      {...props}
+    >
+      {children}
+    </button>
   )
 }
-
-export default BaseButton

@@ -1,6 +1,6 @@
 import { Suspense, lazy } from 'react'
 import { RouterProvider, createHashRouter } from 'react-router-dom'
-import { Home } from './views/Home'
+import { Home } from './views/app/home'
 import { Error } from './views/Error'
 import { PrivateRoute } from './routes/PrivateRoute'
 import { TypeUser } from './shared'
@@ -36,21 +36,21 @@ import { TypeUser } from './shared'
 // import Postulates from 'views/business/Postulates'
 // import LoginAdmin from 'views/login/LoginAdmin'
 
-const CreateAccountCandidate = lazy(() => import('./views/create-account-candidate'))
-const CreateAccountCompany = lazy(() => import('./views/create-account-company'))
-const DetailsJob = lazy(() => import('./views/job-detail'))
+const CreateAccountCandidate = lazy(() => import('./views/auth/create-account-candidate'))
+const CreateAccountCompany = lazy(() => import('./views/auth/create-account-company'))
+const DetailsJob = lazy(() => import('./views/app/job-detail'))
 
-const ProfileCandidate = lazy(() => import('./views/ProfileCandidate'))
-const Applications = lazy(() => import('./views/Applications'))
+const ProfileCandidate = lazy(() => import('./views/candidate/profile-candidate'))
+const Applications = lazy(() => import('./views/candidate/applications'))
 
 const Candidate = lazy(() => import('./views/Candidate'))
 const FormLoginCandidate = lazy(() => import('./components/FormLoginCandidate'))
 
 
-const LoginCompany = lazy(() => import('./views/LoginCompany'))
-const RecruiterJobs = lazy(() => import('./views/RecruiterJobs'))
+const LoginCompany = lazy(() => import('./views/auth/login-company'))
+const RecruiterJobs = lazy(() => import('./views/recruiter/jobs-list'))
 const FormLoginCompany = lazy(() => import('./components/FormLoginCompany'))
-const CreateJob = lazy(() => import('./views/create-job'))
+const CreateJob = lazy(() => import('./views/recruiter/create-job'))
 
 export const router = createHashRouter(
   [
