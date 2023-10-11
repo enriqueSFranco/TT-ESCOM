@@ -1,4 +1,4 @@
-import { ApplicationItem } from '../shared/interfaces'
+import { ApplicationItem } from '../shared'
 
 interface CardJobOfferProps {
   jobOffer: ApplicationItem

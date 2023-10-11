@@ -1,10 +1,11 @@
-// import { uploadDocumentValidate } from "services"
+import { BaseInput } from './base-input'
+// import { uploadDocumentValidate } from 'services'
 
-import { BaseInput } from "./base-input"
+type FormCompanyInfoProps = {
+  updateStep: () => void
+}
 
-interface FormCompanyInfoProps { }
-
-export const FormCompanyInfo: React.FC<FormCompanyInfoProps> = ({ }) => {
+export const FormCompanyInfo = ({ updateStep }: FormCompanyInfoProps) => {
 
   // function convertToBase64 (file) {
   //   return new Promise((resolve, reject) => {
@@ -39,14 +40,14 @@ export const FormCompanyInfo: React.FC<FormCompanyInfoProps> = ({ }) => {
 
 
   return (
-    <div className="">
-      <header className="">
-        <h2 className="">Datos de la empresa</h2>
+    <div className=''>
+      <header className=''>
+        <h2 className=''>Datos de la empresa</h2>
       </header>
       <div>
         <BaseInput
-          name="t300_name"
-          placeholder="Nombre de su empresa"
+          name='t300_name'
+          placeholder='Nombre de su empresa'
         // value={form.t300_name}
         // onBlur={handleValidate}
         // onKeyUp={handleValidate}
@@ -55,8 +56,8 @@ export const FormCompanyInfo: React.FC<FormCompanyInfoProps> = ({ }) => {
       </div>
       <div>
         <BaseInput
-          name="rfc"
-          placeholder="RFC"
+          name='rfc'
+          placeholder='RFC'
         // value={form.t300_rfc}
         // onBlur={handleValidate}
         // onKeyUp={handleValidate}
@@ -65,8 +66,8 @@ export const FormCompanyInfo: React.FC<FormCompanyInfoProps> = ({ }) => {
       </div>
       <div>
         <BaseInput
-          name="t300_bussiness_name"
-          placeholder="Razon Social"
+          name='t300_bussiness_name'
+          placeholder='Razon Social'
         // value={form.t300_bussiness_name}
         // onBlur={handleValidate}
         // onKeyUp={handleValidate}
@@ -79,14 +80,14 @@ export const FormCompanyInfo: React.FC<FormCompanyInfoProps> = ({ }) => {
           constituida.
         </p>
         <BaseInput
-          type="file"
-          name="file"
-          id="file"
-          color="#116BFE"
+          type='file'
+          name='file'
+          id='file'
+          color='#116BFE'
         // onChange={handleUpload}
         />
       </div>
-      <button type="button">
+      <button aria-label='' onClick={updateStep}>
         Siguiente
       </button>
     </div>

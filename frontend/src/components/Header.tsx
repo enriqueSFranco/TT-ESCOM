@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Theme } from '../shared'
 import { useThemeContext } from '../hooks'
-import { IconClose, IconMenu, IconMoon, IconSun } from './Icon'
+import { IconClose, IconMenu, IconMoon, IconSun } from './icon'
 import { Dropdown } from './dropdown'
 import { Avatar } from './avatar'
 

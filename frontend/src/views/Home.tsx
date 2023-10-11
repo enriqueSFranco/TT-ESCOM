@@ -31,9 +31,9 @@
 // import { Header } from '../components/Header'
 import { useMemo } from 'react'
 import { useAppSelector } from '../hooks/store'
-import { LayoutApp } from '../layouts/LayoutApp'
+import { LayoutApp } from '../layouts/layout-app'
 // import { Blob } from '../components/blob'
-import { JobList } from '../components/JobList'
+import { JobList } from '../components/job-list'
 import { FormSearchJob } from '../components/form-search'
 
 export const Home: React.FC = () => {
@@ -143,7 +143,18 @@ export const Home: React.FC = () => {
             <h2>Total de vacantes: </h2>
             <span className='grid place-items-center rounded-md font-bold bg-white/20 w-6 h-6 px-1'>{hasJobOffers}</span>
           </header>
-          <JobList />
+          <article>
+            <div>
+              <header>
+                <h2>vacantes recomendadas</h2>
+              </header>
+              <JobList />
+            </div>
+            <div>
+              <h2>vacantes agregadas recientemente</h2>
+              <JobList />
+            </div>
+          </article>
         </section>
       </main>
     </LayoutApp>

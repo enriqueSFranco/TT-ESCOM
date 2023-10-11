@@ -36,9 +36,9 @@ import { TypeUser } from './shared'
 // import Postulates from 'views/business/Postulates'
 // import LoginAdmin from 'views/login/LoginAdmin'
 
-const CreateAccountCandidate = lazy(() => import('./views/CreateAccountCandidate'))
-const CreateAccountCompany = lazy(() => import('./views/CreateAccountCompany'))
-const DetailsJob = lazy(() => import('./views/DetailsJob'))
+const CreateAccountCandidate = lazy(() => import('./views/create-account-candidate'))
+const CreateAccountCompany = lazy(() => import('./views/create-account-company'))
+const DetailsJob = lazy(() => import('./views/job-detail'))
 
 const ProfileCandidate = lazy(() => import('./views/ProfileCandidate'))
 const Applications = lazy(() => import('./views/Applications'))
@@ -50,7 +50,7 @@ const FormLoginCandidate = lazy(() => import('./components/FormLoginCandidate'))
 const LoginCompany = lazy(() => import('./views/LoginCompany'))
 const RecruiterJobs = lazy(() => import('./views/RecruiterJobs'))
 const FormLoginCompany = lazy(() => import('./components/FormLoginCompany'))
-const CreateJob = lazy(() => import('./views/CreateJob'))
+const CreateJob = lazy(() => import('./views/create-job'))
 
 export const router = createHashRouter(
   [

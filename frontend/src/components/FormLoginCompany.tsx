@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import BaseButton from "./base-button"
 import { BaseInput } from "./base-input"
-import { IconEmail, IconEyeOn } from "./Icon"
+import { IconEmail, IconEyeOn } from "./icon"
 // import { usePassword, useForm } from "hooks"
 // import { initialFormLoginCompany } from "types/loginUsers"
 // import { useAuth } from "context/AuthContext"

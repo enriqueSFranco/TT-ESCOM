@@ -5,7 +5,7 @@ import { useAppSelector } from "../hooks/store"
 import { useRecruiterActions } from "../hooks/useRecruterActions"
 import { ItemList } from "../components/ItemList"
 import { Direction } from "../shared"
-import { IconArrowLeft, IconDelete } from "../components/Icon"
+import { IconArrowLeft, IconDelete } from "../components/icon"
 
 // const mappedJobOffer = jobs.map(job => ({
 //   id: job.id,

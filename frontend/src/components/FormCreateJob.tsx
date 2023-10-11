@@ -5,7 +5,7 @@ import BaseButton from "./base-button"
 import { BaseInput } from "./base-input"
 import { Box } from "./box"
 import { TextEditor } from "./TextEditor"
-import { IconAcademic, IconBriefcase, IconCalendar, IconClock, IconLocation, IconMoney } from "./Icon"
+import { IconAcademic, IconBriefcase, IconCalendar, IconClock, IconLocation, IconMoney } from "./icon"
 import { BaseSelect } from "./base-select"
 
 function validateForm (form: Record<string, string>): boolean {

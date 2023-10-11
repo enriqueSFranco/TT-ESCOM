@@ -3,7 +3,7 @@
 import { BaseInput } from "./base-input"
 import BaseButton from "./base-button"
 import { Link } from "react-router-dom"
-import { IconEmail, IconEyeOn } from "./Icon"
+import { IconEmail, IconEyeOn } from "./icon"
 // import { initialFormLoginCandidate } from "types/loginUsers"
 
 // const validateForm = (form) => {
