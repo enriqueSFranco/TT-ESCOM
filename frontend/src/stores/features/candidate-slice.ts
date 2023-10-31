@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { Job } from "../../shared"
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { Job } from '../../shared'
 
 interface CandidateSliceState {
   myJobs: Job[]

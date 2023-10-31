@@ -4,9 +4,19 @@ import { useForm } from './useForm'
 import { usePassword } from './usePassword'
 import { useViewport } from './useViewport'
 import { useThemeContext } from './useThemeContext'
+import { useModal } from './useModal'
 
 
-export { useCandidateActions, useForm, usePassword, useViewport, useAppDispatch, useAppSelector, useThemeContext }
+export {
+  useCandidateActions,
+  useForm,
+  usePassword,
+  useViewport,
+  useAppDispatch,
+  useAppSelector,
+  useThemeContext,
+  useModal
+}
 // export * from './useDebounce'
 // export * from './useDetectClick'
 // export * from './useFetch'
@@ -16,7 +26,6 @@ export { useCandidateActions, useForm, usePassword, useViewport, useAppDispatch,
 // export * from './useGetSkills'
 // export * from './useGetSocialNetwork'
 // export * from './useGetCandidate'
-// export * from './useModal'
 // export * from './useNearScreen'
 // export * from './useRecruiterJobs'
 // export * from './useScroll'

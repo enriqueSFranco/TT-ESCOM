@@ -1,7 +1,7 @@
 // import { useAuth } from "context/AuthContext"
 // import { usePassword } from "../hooks"
 import { BaseInput } from "./base-input"
-import BaseButton from "./base-button"
+import { BaseButton } from "./base-button"
 import { Link } from "react-router-dom"
 import { IconEmail, IconEyeOn } from "./icon"
 // import { initialFormLoginCandidate } from "types/loginUsers"

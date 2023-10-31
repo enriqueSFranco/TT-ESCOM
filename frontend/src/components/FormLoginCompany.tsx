@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import BaseButton from "./base-button"
+import { BaseButton } from "./base-button"
 import { BaseInput } from "./base-input"
 import { IconEmail, IconEyeOn } from "./icon"
 // import { usePassword, useForm } from "hooks"
