@@ -45,7 +45,7 @@ class AbilityViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en el registro',
 			'errors': ability_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	def retrieve(self, request, pk):
 		print(request.data)
@@ -101,7 +101,7 @@ class LanguageViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en el registro',
 			'errors': language_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	def retrieve(self, request, pk):
 		print(request.data)

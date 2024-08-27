@@ -93,6 +93,6 @@ class Login(ObtainAuthToken):
       else:
         return Response({'error': 'Este usuario no puede inicar sesion'}, status=status.HTTP_401_UNAUTHORIZED)
     else:
-      Response({'error': 'Nombre de usuario o password incorrectos'}, status=status.HTTP_400_BAD_REQUEST)
-    return Response({'error': 'Contraseña o nombre de usuario incorrectos', 'status':status.HTTP_400_BAD_REQUEST})"""
+      Response({'error': 'Nombre de usuario o password incorrectos'}, status=status.HTTP_200_OK)
+    return Response({'error': 'Contraseña o nombre de usuario incorrectos', 'status':status.HTTP_200_OK})"""
 

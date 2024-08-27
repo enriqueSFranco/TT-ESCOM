@@ -127,7 +127,7 @@ class AdminViewSet(viewsets.GenericViewSet):
 			return Response({
 				'message': 'Hay errores en el registro',
 				'errors': manager_user.errors
-			}, status=status.HTTP_400_BAD_REQUEST)
+			}, status=status.HTTP_200_OK)
 
 	def retrieve(self, request, pk):
 		"""
@@ -175,7 +175,7 @@ class AdminViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en la actualización',
 			'errors': admin_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	def destroy(self, request, pk):
 		"""

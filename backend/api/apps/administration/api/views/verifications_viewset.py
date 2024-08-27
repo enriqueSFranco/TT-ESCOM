@@ -112,12 +112,12 @@ class ValidateRecruiterViewSet(viewsets.GenericViewSet):
 					user_delete = User.objects.filter(username=recruiter_data[0]['t301_email']).delete()
 					return Response({'message': 'No se pudo actualizar el reclutador, intentalo de nuevo',
 									'errors': recruiter_user.errors
-									}, status=status.HTTP_400_BAD_REQUEST)
+									}, status=status.HTTP_200_OK)
 			else:
 				#user_delete = User.objects.filter(username=recruiter_data[0]['t301_email']).delete()#----------Validar si este caso es valido
 				return Response({'message': 'No se pudo validar el reclutador, intentalo de nuevo',
 						'errors': recruiter_user.errors
-						}, status=status.HTTP_400_BAD_REQUEST)
+						}, status=status.HTTP_200_OK)
 		else:
 			print("Reclutador eliminado por solicitud rechazada")#---------------------------
 			recruiter_destroy = self.model.objects.filter(t301_id_recruiter=pk).delete()			
@@ -215,11 +215,11 @@ class ActivateCompanyViewSet(viewsets.GenericViewSet):
 				return Response({
 					'message': 'Hay errores en la actualización, no se pudo cambiar el estado del reclutador',
 					'errors': recruiter_serializer.errors
-				}, status=status.HTTP_400_BAD_REQUEST)
+				}, status=status.HTTP_200_OK)
 			return Response({
 				'message': 'Hay errores en la actualización, no se pudo validar empresa',
 				'errors': company_serializer.errors
-			}, status=status.HTTP_400_BAD_REQUEST)
+			}, status=status.HTTP_200_OK)
 		else:
 			#Borrar reclutador asociado
 			recruiter_destroy = Recruiter.objects.filter(t300_id_company=pk)
@@ -326,7 +326,7 @@ class ActivateVacantViewSet(viewsets.GenericViewSet):
 			return Response({
 					'message': 'Hay errores en la actualización, no se pudo cambiar el estado de la vacante',
 					'errors': vacant_serializer.errors
-				}, status=status.HTTP_400_BAD_REQUEST)						
+				}, status=status.HTTP_200_OK)						
 		#Cerrar vacante por rechazo
 		else:
 			vacant_validation["c204_id_vacant_status"] = 3
@@ -340,4 +340,4 @@ class ActivateVacantViewSet(viewsets.GenericViewSet):
 			return Response({
 					'message': 'Hay errores en la actualización, no se pudo cambiar el estado de la vacante',
 					'errors': vacant_serializer.errors
-				}, status=status.HTTP_400_BAD_REQUEST)			
+				}, status=status.HTTP_200_OK)			

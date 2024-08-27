@@ -45,7 +45,7 @@ class LinkViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en el registro',
 			'errors': link_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	#Obtener todos los links de un estudiante
 	def retrieve(self, request, pk):
@@ -64,7 +64,7 @@ class LinkViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en la actualización',
 			'errors': link_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	def destroy(self, request, pk):
 		link_destroy = self.model.objects.filter(t114_id_registrer=pk).first()		

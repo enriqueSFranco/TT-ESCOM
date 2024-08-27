@@ -210,7 +210,7 @@ class VacantViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en el registro',
 			'errors': vacant_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	def retrieve(self, request, pk):
 		"""
@@ -264,7 +264,7 @@ class VacantViewSet(viewsets.GenericViewSet):
 		return Response({
             'message': 'Hay errores en la actualización',
             'errors': vacant_serializer.errors
-        }, status=status.HTTP_400_BAD_REQUEST)
+        }, status=status.HTTP_200_OK)
 
 	def patch(self, request, pk):
 		vacant_catalog_values = self.queryset = self.model.objects.filter(t200_id_vacant = pk).values('c222_id_locality','c207_id_experience','c214_id_modality','c206_id_profile','c208_id_contract').first()

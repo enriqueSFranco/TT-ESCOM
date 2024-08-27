@@ -45,7 +45,7 @@ class AnnouncementViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en el registro',
 			'errors': announcement_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	def retrieve(self, request, pk):
 		announcement = self.get_object(pk)
@@ -74,4 +74,4 @@ class AnnouncementViewSet(viewsets.GenericViewSet):
             return Response({
                 'message': 'Hay errores en la actualización',
                 'errors': announcement_serializer.errors
-            }, status=status.HTTP_400_BAD_REQUEST)
+            }, status=status.HTTP_200_OK)

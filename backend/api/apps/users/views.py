@@ -23,7 +23,7 @@ class UserCreate(viewsets.GenericViewSet):
             if user:
                 json = serializer.data
                 return Response(json, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_200_OK)
 
 
 class BlacklistTokenUpdateView(APIView):
@@ -37,7 +37,7 @@ class BlacklistTokenUpdateView(APIView):
             token.blacklist()
             return Response(status=status.HTTP_205_RESET_CONTENT)
         except Exception as e:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response(status=status.HTTP_200_OK)
 
 
 class UserViewSet(viewsets.GenericViewSet):
@@ -76,7 +76,7 @@ class UserViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en el registro',
 			'errors': user_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	def retrieve(self, request, pk):
 		get_user = self.get_object(pk)
@@ -94,7 +94,7 @@ class UserViewSet(viewsets.GenericViewSet):
 		return Response({
 			'message': 'Hay errores en la actualización',
 			'errors': user_serializer.errors
-		}, status=status.HTTP_400_BAD_REQUEST)
+		}, status=status.HTTP_200_OK)
 
 	#def destroy(self, request, pk):
 	#	student_destroy = self.model.objects.filter(t100_id_student=pk).first()
