@@ -66,13 +66,23 @@ El motor de recomendación puede emplear:
    git checkout -b feature/nueva-funcionalidad
 ``
 ---
+
+### 🏗️ Arquitectura de la aplicación
+<img width="1437" height="726" alt="Screenshot 2025-11-11 at 2 37 52 p m" src="https://github.com/user-attachments/assets/faf2faac-5299-4174-9656-462f7add9122" />
+
+---
+
 📸 Capturas de pantalla
+
 ### ✅ Lista de vacantes
 <img width="480" alt="home-page" src="https://github.com/user-attachments/assets/619845ba-1deb-4722-aa3b-a9748df945a4" />
 
 ### ✅ Dashboard del reclutador
 <img width="480" alt="dashboard-recruiter" src="https://github.com/user-attachments/assets/8429f884-166b-4132-ac1f-f918183c2a62" />
 
-### ✅ Arquitectura de la aplicación
-<img width="1437" height="726" alt="Screenshot 2025-11-11 at 2 37 52 p m" src="https://github.com/user-attachments/assets/faf2faac-5299-4174-9656-462f7add9122" />
+### ✅ Formulario para iniciar sesión
+<img width="1235" height="631" alt="Bolsa de trabajo - Login" src="https://github.com/user-attachments/assets/139a551e-0c1a-4e91-bc32-7defdfb5dca8" />
+
+### ✅ Perfil de un candidato
+<img width="1038" height="531" alt="Bolsa de trabajo - Perfil de usuario" src="https://github.com/user-attachments/assets/40fb0c7a-b8f6-403d-a3ed-9c6c5b2e7a96" />
 
