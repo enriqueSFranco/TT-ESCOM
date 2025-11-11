@@ -1,7 +1,8 @@
-# 🎓 Trabajo Terminal - ESCOM | Sistema Web de Bolsa de Trabajo
+# 🎓 Bolsa de Trabajo Inteligente para Estudiantes — ESCOM (IPN)
 
 **Proyecto de Tesis - Escuela Superior de Cómputo (IPN)**  
-Sistema web desarrollado para facilitar la conexión entre estudiantes y oportunidades laborales adecuadas a su perfil profesional.
+Sistema web desarrollado como Proyecto Terminal para la **Escuela Superior de Cómputo (IPN)**.  
+Su objetivo es conectar a estudiantes con oportunidades laborales adecuadas a su perfil mediante un sistema de recomendación inteligente.
 
 ### 👥 Integrantes del equipo
 - **Cruz Heras Joel Antonio**  
@@ -10,23 +11,21 @@ Sistema web desarrollado para facilitar la conexión entre estudiantes y oportun
 
 ---
 
-## 💡 Descripción del proyecto
+## 🚀 Características principales
+✅ Registro y autenticación de usuarios (estudiantes y empresas)  
+✅ Publicación y gestión de vacantes  
+✅ Postulación a vacantes por parte de estudiantes  
+✅ Sistema de recomendación basado en:
+- Conocimientos técnicos
+- Habilidades blandas
+- Modalidad de trabajo
+- Disponibilidad de horario
+- Nivel de experiencia
+- Rango salarial
 
-Este sistema es una **bolsa de trabajo inteligente** enfocada en estudiantes, que permite recomendar vacantes con base en su perfil profesional.  
-El objetivo principal es apoyar a los alumnos en su inserción al mundo laboral mediante recomendaciones personalizadas.
-
-### 🔍 Características principales
-- Registro y autenticación de usuarios (alumnos y empresas).
-- Publicación y gestión de vacantes por parte de empresas.
-- Postulación a vacantes por parte de estudiantes.
-- Sistema de **recomendación de vacantes** basado en:
-  - Conocimientos técnicos
-  - Habilidades blandas
-  - Horario disponible
-  - Modalidad de trabajo (remoto/presencial)
-  - Rango salarial
-  - Nivel de experiencia laboral
-
+✅ Panel para empresas  
+✅ Perfil profesional del estudiante  
+✅ Filtros y buscador de vacantes 
 ---
 
 ## 🛠️ Tecnologías utilizadas
@@ -41,6 +40,23 @@ El objetivo principal es apoyar a los alumnos en su inserción al mundo laboral 
 
 ---
 
+## 🧠 Sistema de Recomendación
+El sistema analiza el perfil profesional del estudiante y calcula la afinidad con las vacantes registradas por las empresas.  
+Algunos criterios utilizados:
+
+- Coincidencia de skills técnicos  
+- Match de habilidades blandas  
+- Compatibilidad de horario  
+- Experiencia requerida  
+- Modalidad (remoto, híbrido, presencial)
+
+El motor de recomendación puede emplear:
+- Distancia semántica entre habilidades  
+- Ponderación personalizada
+- Algoritmos de scoring  
+
+---
+
 ## 🚀 Instrucciones para contribuir
 
 1. Asegúrate de ser **colaborador** del repositorio.
@@ -48,3 +64,7 @@ El objetivo principal es apoyar a los alumnos en su inserción al mundo laboral 
    ```bash
    git checkout develop
    git checkout -b feature/nueva-funcionalidad
+``
+---
+📸 Capturas de pantalla
+
