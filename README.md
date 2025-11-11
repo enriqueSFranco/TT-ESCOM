@@ -68,11 +68,11 @@ El motor de recomendación puede emplear:
 ---
 📸 Capturas de pantalla
 ### ✅ Lista de vacantes
-<p align="center">
-   <img width="480" alt="home-page" src="https://github.com/user-attachments/assets/619845ba-1deb-4722-aa3b-a9748df945a4" />
-</p>
+<img width="480" alt="home-page" src="https://github.com/user-attachments/assets/619845ba-1deb-4722-aa3b-a9748df945a4" />
 
 ### ✅ Dashboard del reclutador
-<p align="center">
-   <img width="480" alt="dashboard-recruiter" src="https://github.com/user-attachments/assets/8429f884-166b-4132-ac1f-f918183c2a62" />
-</p>
+<img width="480" alt="dashboard-recruiter" src="https://github.com/user-attachments/assets/8429f884-166b-4132-ac1f-f918183c2a62" />
+
+### ✅ Arquitectura de la aplicación
+<img width="1437" height="726" alt="Screenshot 2025-11-11 at 2 37 52 p m" src="https://github.com/user-attachments/assets/faf2faac-5299-4174-9656-462f7add9122" />
+
